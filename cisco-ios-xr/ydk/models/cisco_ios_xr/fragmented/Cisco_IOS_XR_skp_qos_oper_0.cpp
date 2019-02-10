@@ -1537,6 +1537,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "qos-show-pclass-st";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3119,6 +3120,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "mark-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3318,6 +3320,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "mark-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3517,6 +3520,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "mark-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4355,6 +4359,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "qos-show-pclass-st";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5937,6 +5942,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "mark-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6136,6 +6142,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "mark-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6335,6 +6342,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaces::BundleInterface::MemberI
 {
     std::ostringstream path_buffer;
     path_buffer << "mark-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7572,6 +7580,7 @@ std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosP
 {
     std::ostringstream path_buffer;
     path_buffer << "qos-show-pclass-st";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9154,6 +9163,7 @@ std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosP
 {
     std::ostringstream path_buffer;
     path_buffer << "mark-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9353,6 +9363,7 @@ std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosP
 {
     std::ostringstream path_buffer;
     path_buffer << "mark-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9552,6 +9563,7 @@ std::string PlatformQos::Nodes::Node::Interfaces::Interface::Output::SkywarpQosP
 {
     std::ostringstream path_buffer;
     path_buffer << "mark-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10390,6 +10402,7 @@ std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPo
 {
     std::ostringstream path_buffer;
     path_buffer << "qos-show-pclass-st";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11972,6 +11985,7 @@ std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPo
 {
     std::ostringstream path_buffer;
     path_buffer << "mark-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12171,6 +12185,7 @@ std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPo
 {
     std::ostringstream path_buffer;
     path_buffer << "mark-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12370,6 +12385,7 @@ std::string PlatformQos::Nodes::Node::Interfaces::Interface::Input::SkywarpQosPo
 {
     std::ostringstream path_buffer;
     path_buffer << "mark-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13858,6 +13874,7 @@ std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::Membe
 {
     std::ostringstream path_buffer;
     path_buffer << "qos-show-ea-pclass-st";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16072,6 +16089,7 @@ std::string PlatformQosEa::Nodes::Node::BundleInterfaces::BundleInterface::Membe
 {
     std::ostringstream path_buffer;
     path_buffer << "qos-show-ea-pclass-st";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -1232,6 +1232,7 @@ std::string LptsPifib_::Nodes::Node::DynamicFlowsStats::Flow::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "flow";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1783,6 +1784,7 @@ std::string LptsPifib_::Nodes::Node::Hardware::UsageEntries::UsageEntry::UsageIn
 {
     std::ostringstream path_buffer;
     path_buffer << "usage-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2028,6 +2030,7 @@ std::string LptsPifib_::Nodes::Node::Hardware::Police::PoliceInfo::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "police-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2330,6 +2333,7 @@ std::string LptsPifib_::Nodes::Node::Hardware::StaticPolice::StaticInfo::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "static-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2590,6 +2594,7 @@ std::string LptsPifib_::Nodes::Node::Hardware::Bfd::BfdEntryInfo::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-entry-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3692,6 +3697,7 @@ std::string LptsPifib_::Nodes::Node::Hardware::IndexEntries::IndexEntry::HwInfo:
 {
     std::ostringstream path_buffer;
     path_buffer << "hw-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

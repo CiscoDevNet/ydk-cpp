@@ -2826,6 +2826,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qI
 {
     std::ostringstream path_buffer;
     path_buffer << "local-traffic-tag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2930,6 +2931,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qI
 {
     std::ostringstream path_buffer;
     path_buffer << "tags-to-match";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3039,6 +3041,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qI
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3131,6 +3134,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qI
 {
     std::ostringstream path_buffer;
     path_buffer << "pushe";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3756,6 +3760,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qI
 {
     std::ostringstream path_buffer;
     path_buffer << "local-traffic-tag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3860,6 +3865,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qI
 {
     std::ostringstream path_buffer;
     path_buffer << "tags-to-match";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3969,6 +3975,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qI
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4061,6 +4068,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::Dot1qI
 {
     std::ostringstream path_buffer;
     path_buffer << "pushe";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4316,6 +4324,7 @@ std::string Interfaces::InterfaceXr::Interface::EncapsulationInformation::PppInf
 {
     std::ostringstream path_buffer;
     path_buffer << "ncp-info-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5004,6 +5013,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 {
     std::ostringstream path_buffer;
     path_buffer << "local-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5492,6 +5502,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 {
     std::ostringstream path_buffer;
     path_buffer << "asserted-failure";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5985,6 +5996,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 {
     std::ostringstream path_buffer;
     path_buffer << "asserted-failure";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6249,6 +6261,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 {
     std::ostringstream path_buffer;
     path_buffer << "local-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6403,6 +6416,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 {
     std::ostringstream path_buffer;
     path_buffer << "ring-node";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6725,6 +6739,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 {
     std::ostringstream path_buffer;
     path_buffer << "srr-detailed-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7020,6 +7035,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes-on-ring";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7182,6 +7198,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes-not-on-ring";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7433,6 +7450,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::SrpInf
 {
     std::ostringstream path_buffer;
     path_buffer << "rate-limit-detailed-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8567,6 +8585,7 @@ std::string Interfaces::InterfaceXr::Interface::InterfaceTypeInformation::Bundle
 {
     std::ostringstream path_buffer;
     path_buffer << "member";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12108,6 +12127,7 @@ std::string Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::BlockArra
 {
     std::ostringstream path_buffer;
     path_buffer << "block-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12220,6 +12240,7 @@ std::string Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementAr
 {
     std::ostringstream path_buffer;
     path_buffer << "element-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12321,6 +12342,7 @@ std::string Interfaces::InterfaceXr::Interface::L2InterfaceStatistics::ElementAr
 {
     std::ostringstream path_buffer;
     path_buffer << "block-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12536,6 +12558,7 @@ std::string Interfaces::NodeTypeSets::NodeTypeSet::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node-type-set";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12898,6 +12921,7 @@ std::string Interfaces::NodeTypeSets::NodeTypeSet::InterfaceSummary::InterfaceTy
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-type";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13755,6 +13779,7 @@ std::string Interfaces::InventorySummary::InterfaceType::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-type";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14486,6 +14511,7 @@ std::string Interfaces::InterfaceSummary::InterfaceType::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-type";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -828,6 +828,7 @@ std::string Evpn::Nodes::Node::EvpnGroups::EvpnGroup::CoreInterface::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "core-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -920,6 +921,7 @@ std::string Evpn::Nodes::Node::EvpnGroups::EvpnGroup::AccessInterface::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "access-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1137,6 +1139,7 @@ std::string Evpn::Nodes::Node::RemoteShgs::RemoteShg::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-shg";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1293,6 +1296,7 @@ std::string Evpn::Nodes::Node::RemoteShgs::RemoteShg::EthernetSegmentIdentifier:
 {
     std::ostringstream path_buffer;
     path_buffer << "ethernet-segment-identifier";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1374,6 +1378,7 @@ std::string Evpn::Nodes::Node::RemoteShgs::RemoteShg::RemoteSplitHorizonGroupLab
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-split-horizon-group-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1705,6 +1710,7 @@ std::string Evpn::Nodes::Node::Igmps::Igmp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "igmp";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2761,6 +2767,7 @@ std::string Evpn::Nodes::Node::Igmps::Igmp::SourceInfo::LocalInfo::Parameters::V
 {
     std::ostringstream path_buffer;
     path_buffer << "rewrite-tag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2842,6 +2849,7 @@ std::string Evpn::Nodes::Node::Igmps::Igmp::SourceInfo::LocalInfo::Parameters::V
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3707,6 +3715,7 @@ std::string Evpn::Nodes::Node::Igmps::Igmp::SourceInfo::LocalInfo::Parameters::P
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4031,6 +4040,7 @@ std::string Evpn::Nodes::Node::Igmps::Igmp::SourceInfo::LocalInfo::Parameters::P
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4120,6 +4130,7 @@ std::string Evpn::Nodes::Node::Igmps::Igmp::EthernetSegmentIdentifier::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "ethernet-segment-identifier";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4207,6 +4218,7 @@ std::string Evpn::Nodes::Node::Igmps::Igmp::NextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4426,6 +4438,7 @@ std::string Evpn::Nodes::Node::Evis::Evi::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "evi";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5331,6 +5344,7 @@ std::string Evpn::Nodes::Node::EviDetail::Elements::Element::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "element";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7729,6 +7743,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::Neighbors::Neighbor::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8136,6 +8151,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::
 {
     std::ostringstream path_buffer;
     path_buffer << "ethernet-auto-discovery";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8536,6 +8552,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::
 {
     std::ostringstream path_buffer;
     path_buffer << "ethernet-segment-identifier";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8623,6 +8640,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::EthernetAutoDiscoveries::
 {
     std::ostringstream path_buffer;
     path_buffer << "path-buffer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8865,6 +8883,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::InclusiveMulticasts::Incl
 {
     std::ostringstream path_buffer;
     path_buffer << "inclusive-multicast";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9327,6 +9346,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::RouteTargets::RouteTarget
 {
     std::ostringstream path_buffer;
     path_buffer << "route-target";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10386,6 +10406,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "mac";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10957,6 +10978,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::LocalEthernetS
 {
     std::ostringstream path_buffer;
     path_buffer << "local-ethernet-segment-identifier";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11035,6 +11057,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::RemoteEthernet
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-ethernet-segment-identifier";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11122,6 +11145,7 @@ std::string Evpn::Nodes::Node::EviDetail::EviChildren::Macs::Mac::PathBuffer::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "path-buffer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11937,6 +11961,7 @@ std::string Evpn::Nodes::Node::InternalLabels::InternalLabel::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "internal-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12435,6 +12460,7 @@ std::string Evpn::Nodes::Node::InternalLabels::InternalLabel::MacPathBuffer::get
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-path-buffer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12555,6 +12581,7 @@ std::string Evpn::Nodes::Node::InternalLabels::InternalLabel::EadPathBuffer::get
 {
     std::ostringstream path_buffer;
     path_buffer << "ead-path-buffer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12675,6 +12702,7 @@ std::string Evpn::Nodes::Node::InternalLabels::InternalLabel::EviPathBuffer::get
 {
     std::ostringstream path_buffer;
     path_buffer << "evi-path-buffer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12795,6 +12823,7 @@ std::string Evpn::Nodes::Node::InternalLabels::InternalLabel::SummaryPathBuffer:
 {
     std::ostringstream path_buffer;
     path_buffer << "summary-path-buffer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13267,6 +13296,7 @@ std::string Evpn::Nodes::Node::EthernetSegments::EthernetSegment::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "ethernet-segment";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14044,6 +14074,7 @@ std::string Evpn::Nodes::Node::EthernetSegments::EthernetSegment::EthernetSegmen
 {
     std::ostringstream path_buffer;
     path_buffer << "ethernet-segment-identifier";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14122,6 +14153,7 @@ std::string Evpn::Nodes::Node::EthernetSegments::EthernetSegment::PrimaryService
 {
     std::ostringstream path_buffer;
     path_buffer << "primary-service";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14200,6 +14232,7 @@ std::string Evpn::Nodes::Node::EthernetSegments::EthernetSegment::SecondaryServi
 {
     std::ostringstream path_buffer;
     path_buffer << "secondary-service";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14278,6 +14311,7 @@ std::string Evpn::Nodes::Node::EthernetSegments::EthernetSegment::ServiceCarving
 {
     std::ostringstream path_buffer;
     path_buffer << "service-carving-i-sidelected-result";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14356,6 +14390,7 @@ std::string Evpn::Nodes::Node::EthernetSegments::EthernetSegment::ServiceCarving
 {
     std::ostringstream path_buffer;
     path_buffer << "service-carving-isid-not-elected-result";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14434,6 +14469,7 @@ std::string Evpn::Nodes::Node::EthernetSegments::EthernetSegment::ServiceCarving
 {
     std::ostringstream path_buffer;
     path_buffer << "service-carving-evi-elected-result";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14512,6 +14548,7 @@ std::string Evpn::Nodes::Node::EthernetSegments::EthernetSegment::ServiceCarving
 {
     std::ostringstream path_buffer;
     path_buffer << "service-carving-evi-not-elected-result";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14590,6 +14627,7 @@ std::string Evpn::Nodes::Node::EthernetSegments::EthernetSegment::ServiceCarving
 {
     std::ostringstream path_buffer;
     path_buffer << "service-carving-vni-elected-result";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14668,6 +14706,7 @@ std::string Evpn::Nodes::Node::EthernetSegments::EthernetSegment::ServiceCarving
 {
     std::ostringstream path_buffer;
     path_buffer << "service-carving-vni-not-elected-result";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14755,6 +14794,7 @@ std::string Evpn::Nodes::Node::EthernetSegments::EthernetSegment::NextHop::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14872,6 +14912,7 @@ std::string Evpn::Nodes::Node::EthernetSegments::EthernetSegment::ServiceCarving
 {
     std::ostringstream path_buffer;
     path_buffer << "service-carving-vpws-permanent-result";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14975,6 +15016,7 @@ std::string Evpn::Nodes::Node::EthernetSegments::EthernetSegment::RemoteSplitHor
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-split-horizon-group-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15168,6 +15210,7 @@ std::string Evpn::Nodes::Node::AcIds::AcId::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ac-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15945,6 +15988,7 @@ std::string Evpn::Active::EvpnGroups::EvpnGroup::CoreInterface::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "core-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16037,6 +16081,7 @@ std::string Evpn::Active::EvpnGroups::EvpnGroup::AccessInterface::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "access-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16268,6 +16313,7 @@ std::string Evpn::Active::RemoteShgs::RemoteShg::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-shg";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16431,6 +16477,7 @@ std::string Evpn::Active::RemoteShgs::RemoteShg::EthernetSegmentIdentifier::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "ethernet-segment-identifier";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16519,6 +16566,7 @@ std::string Evpn::Active::RemoteShgs::RemoteShg::RemoteSplitHorizonGroupLabel::g
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-split-horizon-group-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16871,6 +16919,7 @@ std::string Evpn::Active::Igmps::Igmp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "igmp";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17969,6 +18018,7 @@ std::string Evpn::Active::Igmps::Igmp::SourceInfo::LocalInfo::Parameters::Vlan::
 {
     std::ostringstream path_buffer;
     path_buffer << "rewrite-tag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18057,6 +18107,7 @@ std::string Evpn::Active::Igmps::Igmp::SourceInfo::LocalInfo::Parameters::Vlan::
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18971,6 +19022,7 @@ std::string Evpn::Active::Igmps::Igmp::SourceInfo::LocalInfo::Parameters::Pseudo
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19316,6 +19368,7 @@ std::string Evpn::Active::Igmps::Igmp::SourceInfo::LocalInfo::Parameters::Pseudo
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19412,6 +19465,7 @@ std::string Evpn::Active::Igmps::Igmp::EthernetSegmentIdentifier::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "ethernet-segment-identifier";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19506,6 +19560,7 @@ std::string Evpn::Active::Igmps::Igmp::NextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19739,6 +19794,7 @@ std::string Evpn::Active::Evis::Evi::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "evi";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20672,6 +20728,7 @@ std::string Evpn::Active::EviDetail::Elements::Element::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "element";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

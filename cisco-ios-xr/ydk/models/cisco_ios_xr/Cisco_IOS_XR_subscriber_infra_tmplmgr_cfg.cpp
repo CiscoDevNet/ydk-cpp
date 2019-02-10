@@ -260,27 +260,27 @@ DynamicTemplate::Ppps::Ppp::Ppp()
     vrf{YType::str, "Cisco-IOS-XR-infra-rsi-subscriber-cfg:vrf"}
         ,
     pppoe_template(nullptr) // presence node
-    , dhcpv6(std::make_shared<DynamicTemplate::Ppps::Ppp::Dhcpv6>())
     , pbr(std::make_shared<DynamicTemplate::Ppps::Ppp::Pbr>())
-    , ipv6_neighbor(std::make_shared<DynamicTemplate::Ppps::Ppp::Ipv6Neighbor>())
-    , igmp(std::make_shared<DynamicTemplate::Ppps::Ppp::Igmp>())
     , ipv4_network(std::make_shared<DynamicTemplate::Ppps::Ppp::Ipv4Network>())
+    , dhcpv6(std::make_shared<DynamicTemplate::Ppps::Ppp::Dhcpv6>())
+    , ipv6_neighbor(std::make_shared<DynamicTemplate::Ppps::Ppp::Ipv6Neighbor>())
+    , accounting(std::make_shared<DynamicTemplate::Ppps::Ppp::Accounting>())
     , ipv4_packet_filter(std::make_shared<DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter>())
     , ipv6_packet_filter(std::make_shared<DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter>())
     , ipv6_network(std::make_shared<DynamicTemplate::Ppps::Ppp::Ipv6Network>())
+    , igmp(std::make_shared<DynamicTemplate::Ppps::Ppp::Igmp>())
     , ppp_template(std::make_shared<DynamicTemplate::Ppps::Ppp::PppTemplate>())
-    , accounting(std::make_shared<DynamicTemplate::Ppps::Ppp::Accounting>())
 {
-    dhcpv6->parent = this;
     pbr->parent = this;
-    ipv6_neighbor->parent = this;
-    igmp->parent = this;
     ipv4_network->parent = this;
+    dhcpv6->parent = this;
+    ipv6_neighbor->parent = this;
+    accounting->parent = this;
     ipv4_packet_filter->parent = this;
     ipv6_packet_filter->parent = this;
     ipv6_network->parent = this;
+    igmp->parent = this;
     ppp_template->parent = this;
-    accounting->parent = this;
 
     yang_name = "ppp"; yang_parent_name = "ppps"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -295,16 +295,16 @@ bool DynamicTemplate::Ppps::Ppp::has_data() const
     return template_name.is_set
 	|| vrf.is_set
 	|| (pppoe_template !=  nullptr && pppoe_template->has_data())
-	|| (dhcpv6 !=  nullptr && dhcpv6->has_data())
 	|| (pbr !=  nullptr && pbr->has_data())
-	|| (ipv6_neighbor !=  nullptr && ipv6_neighbor->has_data())
-	|| (igmp !=  nullptr && igmp->has_data())
 	|| (ipv4_network !=  nullptr && ipv4_network->has_data())
+	|| (dhcpv6 !=  nullptr && dhcpv6->has_data())
+	|| (ipv6_neighbor !=  nullptr && ipv6_neighbor->has_data())
+	|| (accounting !=  nullptr && accounting->has_data())
 	|| (ipv4_packet_filter !=  nullptr && ipv4_packet_filter->has_data())
 	|| (ipv6_packet_filter !=  nullptr && ipv6_packet_filter->has_data())
 	|| (ipv6_network !=  nullptr && ipv6_network->has_data())
-	|| (ppp_template !=  nullptr && ppp_template->has_data())
-	|| (accounting !=  nullptr && accounting->has_data());
+	|| (igmp !=  nullptr && igmp->has_data())
+	|| (ppp_template !=  nullptr && ppp_template->has_data());
 }
 
 bool DynamicTemplate::Ppps::Ppp::has_operation() const
@@ -313,16 +313,16 @@ bool DynamicTemplate::Ppps::Ppp::has_operation() const
 	|| ydk::is_set(template_name.yfilter)
 	|| ydk::is_set(vrf.yfilter)
 	|| (pppoe_template !=  nullptr && pppoe_template->has_operation())
-	|| (dhcpv6 !=  nullptr && dhcpv6->has_operation())
 	|| (pbr !=  nullptr && pbr->has_operation())
-	|| (ipv6_neighbor !=  nullptr && ipv6_neighbor->has_operation())
-	|| (igmp !=  nullptr && igmp->has_operation())
 	|| (ipv4_network !=  nullptr && ipv4_network->has_operation())
+	|| (dhcpv6 !=  nullptr && dhcpv6->has_operation())
+	|| (ipv6_neighbor !=  nullptr && ipv6_neighbor->has_operation())
+	|| (accounting !=  nullptr && accounting->has_operation())
 	|| (ipv4_packet_filter !=  nullptr && ipv4_packet_filter->has_operation())
 	|| (ipv6_packet_filter !=  nullptr && ipv6_packet_filter->has_operation())
 	|| (ipv6_network !=  nullptr && ipv6_network->has_operation())
-	|| (ppp_template !=  nullptr && ppp_template->has_operation())
-	|| (accounting !=  nullptr && accounting->has_operation());
+	|| (igmp !=  nullptr && igmp->has_operation())
+	|| (ppp_template !=  nullptr && ppp_template->has_operation());
 }
 
 std::string DynamicTemplate::Ppps::Ppp::get_absolute_path() const
@@ -362,15 +362,6 @@ std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::get_child_by_name(const
         return pppoe_template;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-ipv6-new-dhcpv6d-subscriber-cfg:dhcpv6")
-    {
-        if(dhcpv6 == nullptr)
-        {
-            dhcpv6 = std::make_shared<DynamicTemplate::Ppps::Ppp::Dhcpv6>();
-        }
-        return dhcpv6;
-    }
-
     if(child_yang_name == "Cisco-IOS-XR-pbr-subscriber-cfg:pbr")
     {
         if(pbr == nullptr)
@@ -378,6 +369,24 @@ std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::get_child_by_name(const
             pbr = std::make_shared<DynamicTemplate::Ppps::Ppp::Pbr>();
         }
         return pbr;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network")
+    {
+        if(ipv4_network == nullptr)
+        {
+            ipv4_network = std::make_shared<DynamicTemplate::Ppps::Ppp::Ipv4Network>();
+        }
+        return ipv4_network;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-ipv6-new-dhcpv6d-subscriber-cfg:dhcpv6")
+    {
+        if(dhcpv6 == nullptr)
+        {
+            dhcpv6 = std::make_shared<DynamicTemplate::Ppps::Ppp::Dhcpv6>();
+        }
+        return dhcpv6;
     }
 
     if(child_yang_name == "Cisco-IOS-XR-ipv6-nd-subscriber-cfg:ipv6-neighbor")
@@ -389,22 +398,13 @@ std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::get_child_by_name(const
         return ipv6_neighbor;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-ipv4-igmp-dyn-tmpl-cfg:igmp")
+    if(child_yang_name == "Cisco-IOS-XR-subscriber-accounting-cfg:accounting")
     {
-        if(igmp == nullptr)
+        if(accounting == nullptr)
         {
-            igmp = std::make_shared<DynamicTemplate::Ppps::Ppp::Igmp>();
+            accounting = std::make_shared<DynamicTemplate::Ppps::Ppp::Accounting>();
         }
-        return igmp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network")
-    {
-        if(ipv4_network == nullptr)
-        {
-            ipv4_network = std::make_shared<DynamicTemplate::Ppps::Ppp::Ipv4Network>();
-        }
-        return ipv4_network;
+        return accounting;
     }
 
     if(child_yang_name == "Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv4-packet-filter")
@@ -434,6 +434,15 @@ std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::get_child_by_name(const
         return ipv6_network;
     }
 
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-igmp-dyn-tmpl-cfg:igmp")
+    {
+        if(igmp == nullptr)
+        {
+            igmp = std::make_shared<DynamicTemplate::Ppps::Ppp::Igmp>();
+        }
+        return igmp;
+    }
+
     if(child_yang_name == "Cisco-IOS-XR-ppp-ma-gbl-cfg:ppp-template")
     {
         if(ppp_template == nullptr)
@@ -441,15 +450,6 @@ std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::get_child_by_name(const
             ppp_template = std::make_shared<DynamicTemplate::Ppps::Ppp::PppTemplate>();
         }
         return ppp_template;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-subscriber-accounting-cfg:accounting")
-    {
-        if(accounting == nullptr)
-        {
-            accounting = std::make_shared<DynamicTemplate::Ppps::Ppp::Accounting>();
-        }
-        return accounting;
     }
 
     return nullptr;
@@ -464,14 +464,19 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::
         _children["Cisco-IOS-XR-subscriber-pppoe-ma-gbl-cfg:pppoe-template"] = pppoe_template;
     }
 
-    if(dhcpv6 != nullptr)
-    {
-        _children["Cisco-IOS-XR-ipv6-new-dhcpv6d-subscriber-cfg:dhcpv6"] = dhcpv6;
-    }
-
     if(pbr != nullptr)
     {
         _children["Cisco-IOS-XR-pbr-subscriber-cfg:pbr"] = pbr;
+    }
+
+    if(ipv4_network != nullptr)
+    {
+        _children["Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network"] = ipv4_network;
+    }
+
+    if(dhcpv6 != nullptr)
+    {
+        _children["Cisco-IOS-XR-ipv6-new-dhcpv6d-subscriber-cfg:dhcpv6"] = dhcpv6;
     }
 
     if(ipv6_neighbor != nullptr)
@@ -479,14 +484,9 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::
         _children["Cisco-IOS-XR-ipv6-nd-subscriber-cfg:ipv6-neighbor"] = ipv6_neighbor;
     }
 
-    if(igmp != nullptr)
+    if(accounting != nullptr)
     {
-        _children["Cisco-IOS-XR-ipv4-igmp-dyn-tmpl-cfg:igmp"] = igmp;
-    }
-
-    if(ipv4_network != nullptr)
-    {
-        _children["Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network"] = ipv4_network;
+        _children["Cisco-IOS-XR-subscriber-accounting-cfg:accounting"] = accounting;
     }
 
     if(ipv4_packet_filter != nullptr)
@@ -504,14 +504,14 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::
         _children["Cisco-IOS-XR-ipv6-ma-subscriber-cfg:ipv6-network"] = ipv6_network;
     }
 
+    if(igmp != nullptr)
+    {
+        _children["Cisco-IOS-XR-ipv4-igmp-dyn-tmpl-cfg:igmp"] = igmp;
+    }
+
     if(ppp_template != nullptr)
     {
         _children["Cisco-IOS-XR-ppp-ma-gbl-cfg:ppp-template"] = ppp_template;
-    }
-
-    if(accounting != nullptr)
-    {
-        _children["Cisco-IOS-XR-subscriber-accounting-cfg:accounting"] = accounting;
     }
 
     return _children;
@@ -547,7 +547,7 @@ void DynamicTemplate::Ppps::Ppp::set_filter(const std::string & value_path, YFil
 
 bool DynamicTemplate::Ppps::Ppp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "pppoe-template" || name == "dhcpv6" || name == "pbr" || name == "ipv6-neighbor" || name == "igmp" || name == "ipv4-network" || name == "ipv4-packet-filter" || name == "ipv6-packet-filter" || name == "ipv6-network" || name == "ppp-template" || name == "accounting" || name == "template-name" || name == "vrf")
+    if(name == "pppoe-template" || name == "pbr" || name == "ipv4-network" || name == "dhcpv6" || name == "ipv6-neighbor" || name == "accounting" || name == "ipv4-packet-filter" || name == "ipv6-packet-filter" || name == "ipv6-network" || name == "igmp" || name == "ppp-template" || name == "template-name" || name == "vrf")
         return true;
     return false;
 }
@@ -626,6 +626,301 @@ void DynamicTemplate::Ppps::Ppp::PppoeTemplate::set_filter(const std::string & v
 bool DynamicTemplate::Ppps::Ppp::PppoeTemplate::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "port-limit")
+        return true;
+    return false;
+}
+
+DynamicTemplate::Ppps::Ppp::Pbr::Pbr()
+    :
+    service_policy_in{YType::str, "service-policy-in"}
+        ,
+    service_policy(std::make_shared<DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy>())
+{
+    service_policy->parent = this;
+
+    yang_name = "pbr"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+DynamicTemplate::Ppps::Ppp::Pbr::~Pbr()
+{
+}
+
+bool DynamicTemplate::Ppps::Ppp::Pbr::has_data() const
+{
+    if (is_presence_container) return true;
+    return service_policy_in.is_set
+	|| (service_policy !=  nullptr && service_policy->has_data());
+}
+
+bool DynamicTemplate::Ppps::Ppp::Pbr::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(service_policy_in.yfilter)
+	|| (service_policy !=  nullptr && service_policy->has_operation());
+}
+
+std::string DynamicTemplate::Ppps::Ppp::Pbr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-pbr-subscriber-cfg:pbr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Pbr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (service_policy_in.is_set || is_set(service_policy_in.yfilter)) leaf_name_data.push_back(service_policy_in.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Pbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "service-policy")
+    {
+        if(service_policy == nullptr)
+        {
+            service_policy = std::make_shared<DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy>();
+        }
+        return service_policy;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Pbr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(service_policy != nullptr)
+    {
+        _children["service-policy"] = service_policy;
+    }
+
+    return _children;
+}
+
+void DynamicTemplate::Ppps::Ppp::Pbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "service-policy-in")
+    {
+        service_policy_in = value;
+        service_policy_in.value_namespace = name_space;
+        service_policy_in.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void DynamicTemplate::Ppps::Ppp::Pbr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "service-policy-in")
+    {
+        service_policy_in.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Pbr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "service-policy" || name == "service-policy-in")
+        return true;
+    return false;
+}
+
+DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::ServicePolicy()
+    :
+    input{YType::str, "input"}
+{
+
+    yang_name = "service-policy"; yang_parent_name = "pbr"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::~ServicePolicy()
+{
+}
+
+bool DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::has_data() const
+{
+    if (is_presence_container) return true;
+    return input.is_set;
+}
+
+bool DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(input.yfilter);
+}
+
+std::string DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "service-policy";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (input.is_set || is_set(input.yfilter)) leaf_name_data.push_back(input.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "input")
+    {
+        input = value;
+        input.value_namespace = name_space;
+        input.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "input")
+    {
+        input.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+DynamicTemplate::Ppps::Ppp::Ipv4Network::Ipv4Network()
+    :
+    unnumbered{YType::str, "unnumbered"},
+    mtu{YType::uint32, "mtu"},
+    unreachables{YType::boolean, "unreachables"},
+    rpf{YType::boolean, "rpf"}
+{
+
+    yang_name = "ipv4-network"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+DynamicTemplate::Ppps::Ppp::Ipv4Network::~Ipv4Network()
+{
+}
+
+bool DynamicTemplate::Ppps::Ppp::Ipv4Network::has_data() const
+{
+    if (is_presence_container) return true;
+    return unnumbered.is_set
+	|| mtu.is_set
+	|| unreachables.is_set
+	|| rpf.is_set;
+}
+
+bool DynamicTemplate::Ppps::Ppp::Ipv4Network::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unnumbered.yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(unreachables.yfilter)
+	|| ydk::is_set(rpf.yfilter);
+}
+
+std::string DynamicTemplate::Ppps::Ppp::Ipv4Network::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Ipv4Network::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unnumbered.is_set || is_set(unnumbered.yfilter)) leaf_name_data.push_back(unnumbered.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (unreachables.is_set || is_set(unreachables.yfilter)) leaf_name_data.push_back(unreachables.get_name_leafdata());
+    if (rpf.is_set || is_set(rpf.yfilter)) leaf_name_data.push_back(rpf.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Ipv4Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Ipv4Network::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void DynamicTemplate::Ppps::Ppp::Ipv4Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unnumbered")
+    {
+        unnumbered = value;
+        unnumbered.value_namespace = name_space;
+        unnumbered.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mtu")
+    {
+        mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unreachables")
+    {
+        unreachables = value;
+        unreachables.value_namespace = name_space;
+        unreachables.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpf")
+    {
+        rpf = value;
+        rpf.value_namespace = name_space;
+        rpf.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void DynamicTemplate::Ppps::Ppp::Ipv4Network::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unnumbered")
+    {
+        unnumbered.yfilter = yfilter;
+    }
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "unreachables")
+    {
+        unreachables.yfilter = yfilter;
+    }
+    if(value_path == "rpf")
+    {
+        rpf.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Ipv4Network::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unnumbered" || name == "mtu" || name == "unreachables" || name == "rpf")
         return true;
     return false;
 }
@@ -912,181 +1207,6 @@ void DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix::set_filter(const std::
 bool DynamicTemplate::Ppps::Ppp::Dhcpv6::DelegatedPrefix::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "prefix" || name == "prefix-length")
-        return true;
-    return false;
-}
-
-DynamicTemplate::Ppps::Ppp::Pbr::Pbr()
-    :
-    service_policy_in{YType::str, "service-policy-in"}
-        ,
-    service_policy(std::make_shared<DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy>())
-{
-    service_policy->parent = this;
-
-    yang_name = "pbr"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-DynamicTemplate::Ppps::Ppp::Pbr::~Pbr()
-{
-}
-
-bool DynamicTemplate::Ppps::Ppp::Pbr::has_data() const
-{
-    if (is_presence_container) return true;
-    return service_policy_in.is_set
-	|| (service_policy !=  nullptr && service_policy->has_data());
-}
-
-bool DynamicTemplate::Ppps::Ppp::Pbr::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(service_policy_in.yfilter)
-	|| (service_policy !=  nullptr && service_policy->has_operation());
-}
-
-std::string DynamicTemplate::Ppps::Ppp::Pbr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-pbr-subscriber-cfg:pbr";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Pbr::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (service_policy_in.is_set || is_set(service_policy_in.yfilter)) leaf_name_data.push_back(service_policy_in.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Pbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "service-policy")
-    {
-        if(service_policy == nullptr)
-        {
-            service_policy = std::make_shared<DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy>();
-        }
-        return service_policy;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Pbr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(service_policy != nullptr)
-    {
-        _children["service-policy"] = service_policy;
-    }
-
-    return _children;
-}
-
-void DynamicTemplate::Ppps::Ppp::Pbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "service-policy-in")
-    {
-        service_policy_in = value;
-        service_policy_in.value_namespace = name_space;
-        service_policy_in.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void DynamicTemplate::Ppps::Ppp::Pbr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "service-policy-in")
-    {
-        service_policy_in.yfilter = yfilter;
-    }
-}
-
-bool DynamicTemplate::Ppps::Ppp::Pbr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "service-policy" || name == "service-policy-in")
-        return true;
-    return false;
-}
-
-DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::ServicePolicy()
-    :
-    input{YType::str, "input"}
-{
-
-    yang_name = "service-policy"; yang_parent_name = "pbr"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::~ServicePolicy()
-{
-}
-
-bool DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::has_data() const
-{
-    if (is_presence_container) return true;
-    return input.is_set;
-}
-
-bool DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(input.yfilter);
-}
-
-std::string DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "service-policy";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (input.is_set || is_set(input.yfilter)) leaf_name_data.push_back(input.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "input")
-    {
-        input = value;
-        input.value_namespace = name_space;
-        input.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "input")
-    {
-        input.yfilter = yfilter;
-    }
-}
-
-bool DynamicTemplate::Ppps::Ppp::Pbr::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input")
         return true;
     return false;
 }
@@ -1775,462 +1895,467 @@ bool DynamicTemplate::Ppps::Ppp::Ipv6Neighbor::RaInitial::has_leaf_or_child_of_n
     return false;
 }
 
-DynamicTemplate::Ppps::Ppp::Igmp::Igmp()
+DynamicTemplate::Ppps::Ppp::Accounting::Accounting()
     :
-    default_vrf(std::make_shared<DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf>())
-{
-    default_vrf->parent = this;
-
-    yang_name = "igmp"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-DynamicTemplate::Ppps::Ppp::Igmp::~Igmp()
-{
-}
-
-bool DynamicTemplate::Ppps::Ppp::Igmp::has_data() const
-{
-    if (is_presence_container) return true;
-    return (default_vrf !=  nullptr && default_vrf->has_data());
-}
-
-bool DynamicTemplate::Ppps::Ppp::Igmp::has_operation() const
-{
-    return is_set(yfilter)
-	|| (default_vrf !=  nullptr && default_vrf->has_operation());
-}
-
-std::string DynamicTemplate::Ppps::Ppp::Igmp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-igmp-dyn-tmpl-cfg:igmp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Igmp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "default-vrf")
-    {
-        if(default_vrf == nullptr)
-        {
-            default_vrf = std::make_shared<DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf>();
-        }
-        return default_vrf;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Igmp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(default_vrf != nullptr)
-    {
-        _children["default-vrf"] = default_vrf;
-    }
-
-    return _children;
-}
-
-void DynamicTemplate::Ppps::Ppp::Igmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void DynamicTemplate::Ppps::Ppp::Igmp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool DynamicTemplate::Ppps::Ppp::Igmp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "default-vrf")
-        return true;
-    return false;
-}
-
-DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::DefaultVrf()
-    :
-    max_groups{YType::uint32, "max-groups"},
-    access_group{YType::str, "access-group"},
-    version{YType::uint32, "version"},
-    query_interval{YType::uint32, "query-interval"},
-    query_max_response_time{YType::uint32, "query-max-response-time"},
-    multicast_mode{YType::enumeration, "multicast-mode"}
+    monitor_feature{YType::str, "monitor-feature"},
+    prepaid_feature{YType::str, "prepaid-feature"}
         ,
-    explicit_tracking(nullptr) // presence node
+    idle_timeout(std::make_shared<DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout>())
+    , session(std::make_shared<DynamicTemplate::Ppps::Ppp::Accounting::Session>())
+    , service_accounting(std::make_shared<DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting>())
 {
+    idle_timeout->parent = this;
+    session->parent = this;
+    service_accounting->parent = this;
 
-    yang_name = "default-vrf"; yang_parent_name = "igmp"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "accounting"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::~DefaultVrf()
+DynamicTemplate::Ppps::Ppp::Accounting::~Accounting()
 {
 }
 
-bool DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::has_data() const
+bool DynamicTemplate::Ppps::Ppp::Accounting::has_data() const
 {
     if (is_presence_container) return true;
-    return max_groups.is_set
-	|| access_group.is_set
-	|| version.is_set
-	|| query_interval.is_set
-	|| query_max_response_time.is_set
-	|| multicast_mode.is_set
-	|| (explicit_tracking !=  nullptr && explicit_tracking->has_data());
+    return monitor_feature.is_set
+	|| prepaid_feature.is_set
+	|| (idle_timeout !=  nullptr && idle_timeout->has_data())
+	|| (session !=  nullptr && session->has_data())
+	|| (service_accounting !=  nullptr && service_accounting->has_data());
 }
 
-bool DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::has_operation() const
+bool DynamicTemplate::Ppps::Ppp::Accounting::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(max_groups.yfilter)
-	|| ydk::is_set(access_group.yfilter)
-	|| ydk::is_set(version.yfilter)
-	|| ydk::is_set(query_interval.yfilter)
-	|| ydk::is_set(query_max_response_time.yfilter)
-	|| ydk::is_set(multicast_mode.yfilter)
-	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation());
+	|| ydk::is_set(monitor_feature.yfilter)
+	|| ydk::is_set(prepaid_feature.yfilter)
+	|| (idle_timeout !=  nullptr && idle_timeout->has_operation())
+	|| (session !=  nullptr && session->has_operation())
+	|| (service_accounting !=  nullptr && service_accounting->has_operation());
 }
 
-std::string DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::get_segment_path() const
+std::string DynamicTemplate::Ppps::Ppp::Accounting::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "default-vrf";
+    path_buffer << "Cisco-IOS-XR-subscriber-accounting-cfg:accounting";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Accounting::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (max_groups.is_set || is_set(max_groups.yfilter)) leaf_name_data.push_back(max_groups.get_name_leafdata());
-    if (access_group.is_set || is_set(access_group.yfilter)) leaf_name_data.push_back(access_group.get_name_leafdata());
-    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
-    if (query_interval.is_set || is_set(query_interval.yfilter)) leaf_name_data.push_back(query_interval.get_name_leafdata());
-    if (query_max_response_time.is_set || is_set(query_max_response_time.yfilter)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
-    if (multicast_mode.is_set || is_set(multicast_mode.yfilter)) leaf_name_data.push_back(multicast_mode.get_name_leafdata());
+    if (monitor_feature.is_set || is_set(monitor_feature.yfilter)) leaf_name_data.push_back(monitor_feature.get_name_leafdata());
+    if (prepaid_feature.is_set || is_set(prepaid_feature.yfilter)) leaf_name_data.push_back(prepaid_feature.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "explicit-tracking")
+    if(child_yang_name == "idle-timeout")
     {
-        if(explicit_tracking == nullptr)
+        if(idle_timeout == nullptr)
         {
-            explicit_tracking = std::make_shared<DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking>();
+            idle_timeout = std::make_shared<DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout>();
         }
-        return explicit_tracking;
+        return idle_timeout;
+    }
+
+    if(child_yang_name == "session")
+    {
+        if(session == nullptr)
+        {
+            session = std::make_shared<DynamicTemplate::Ppps::Ppp::Accounting::Session>();
+        }
+        return session;
+    }
+
+    if(child_yang_name == "service-accounting")
+    {
+        if(service_accounting == nullptr)
+        {
+            service_accounting = std::make_shared<DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting>();
+        }
+        return service_accounting;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(explicit_tracking != nullptr)
+    if(idle_timeout != nullptr)
     {
-        _children["explicit-tracking"] = explicit_tracking;
+        _children["idle-timeout"] = idle_timeout;
+    }
+
+    if(session != nullptr)
+    {
+        _children["session"] = session;
+    }
+
+    if(service_accounting != nullptr)
+    {
+        _children["service-accounting"] = service_accounting;
     }
 
     return _children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DynamicTemplate::Ppps::Ppp::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "max-groups")
+    if(value_path == "monitor-feature")
     {
-        max_groups = value;
-        max_groups.value_namespace = name_space;
-        max_groups.value_namespace_prefix = name_space_prefix;
+        monitor_feature = value;
+        monitor_feature.value_namespace = name_space;
+        monitor_feature.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "access-group")
+    if(value_path == "prepaid-feature")
     {
-        access_group = value;
-        access_group.value_namespace = name_space;
-        access_group.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "version")
-    {
-        version = value;
-        version.value_namespace = name_space;
-        version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "query-interval")
-    {
-        query_interval = value;
-        query_interval.value_namespace = name_space;
-        query_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "query-max-response-time")
-    {
-        query_max_response_time = value;
-        query_max_response_time.value_namespace = name_space;
-        query_max_response_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "multicast-mode")
-    {
-        multicast_mode = value;
-        multicast_mode.value_namespace = name_space;
-        multicast_mode.value_namespace_prefix = name_space_prefix;
+        prepaid_feature = value;
+        prepaid_feature.value_namespace = name_space;
+        prepaid_feature.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::set_filter(const std::string & value_path, YFilter yfilter)
+void DynamicTemplate::Ppps::Ppp::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "max-groups")
+    if(value_path == "monitor-feature")
     {
-        max_groups.yfilter = yfilter;
+        monitor_feature.yfilter = yfilter;
     }
-    if(value_path == "access-group")
+    if(value_path == "prepaid-feature")
     {
-        access_group.yfilter = yfilter;
-    }
-    if(value_path == "version")
-    {
-        version.yfilter = yfilter;
-    }
-    if(value_path == "query-interval")
-    {
-        query_interval.yfilter = yfilter;
-    }
-    if(value_path == "query-max-response-time")
-    {
-        query_max_response_time.yfilter = yfilter;
-    }
-    if(value_path == "multicast-mode")
-    {
-        multicast_mode.yfilter = yfilter;
+        prepaid_feature.yfilter = yfilter;
     }
 }
 
-bool DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::has_leaf_or_child_of_name(const std::string & name) const
+bool DynamicTemplate::Ppps::Ppp::Accounting::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "explicit-tracking" || name == "max-groups" || name == "access-group" || name == "version" || name == "query-interval" || name == "query-max-response-time" || name == "multicast-mode")
+    if(name == "idle-timeout" || name == "session" || name == "service-accounting" || name == "monitor-feature" || name == "prepaid-feature")
         return true;
     return false;
 }
 
-DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::ExplicitTracking()
+DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::IdleTimeout()
     :
-    enable{YType::boolean, "enable"},
-    access_list_name{YType::str, "access-list-name"}
+    timeout_value{YType::uint32, "timeout-value"},
+    threshold{YType::uint32, "threshold"},
+    direction{YType::str, "direction"}
 {
 
-    yang_name = "explicit-tracking"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+    yang_name = "idle-timeout"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::~ExplicitTracking()
+DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::~IdleTimeout()
 {
 }
 
-bool DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::has_data() const
+bool DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::has_data() const
 {
     if (is_presence_container) return true;
-    return enable.is_set
-	|| access_list_name.is_set;
+    return timeout_value.is_set
+	|| threshold.is_set
+	|| direction.is_set;
 }
 
-bool DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::has_operation() const
+bool DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(access_list_name.yfilter);
+	|| ydk::is_set(timeout_value.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(direction.yfilter);
 }
 
-std::string DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::get_segment_path() const
+std::string DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "explicit-tracking";
+    path_buffer << "idle-timeout";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (timeout_value.is_set || is_set(timeout_value.yfilter)) leaf_name_data.push_back(timeout_value.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "enable")
+    if(value_path == "timeout-value")
     {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
+        timeout_value = value;
+        timeout_value.value_namespace = name_space;
+        timeout_value.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "access-list-name")
+    if(value_path == "threshold")
     {
-        access_list_name = value;
-        access_list_name.value_namespace = name_space;
-        access_list_name.value_namespace_prefix = name_space_prefix;
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "direction")
+    {
+        direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::set_filter(const std::string & value_path, YFilter yfilter)
+void DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "enable")
+    if(value_path == "timeout-value")
     {
-        enable.yfilter = yfilter;
+        timeout_value.yfilter = yfilter;
     }
-    if(value_path == "access-list-name")
+    if(value_path == "threshold")
     {
-        access_list_name.yfilter = yfilter;
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
     }
 }
 
-bool DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::has_leaf_or_child_of_name(const std::string & name) const
+bool DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "enable" || name == "access-list-name")
+    if(name == "timeout-value" || name == "threshold" || name == "direction")
         return true;
     return false;
 }
 
-DynamicTemplate::Ppps::Ppp::Ipv4Network::Ipv4Network()
+DynamicTemplate::Ppps::Ppp::Accounting::Session::Session()
     :
-    unnumbered{YType::str, "unnumbered"},
-    mtu{YType::uint32, "mtu"},
-    unreachables{YType::boolean, "unreachables"},
-    rpf{YType::boolean, "rpf"}
+    method_list_name{YType::str, "method-list-name"},
+    periodic_interval{YType::uint32, "periodic-interval"},
+    dual_stack_delay{YType::uint32, "dual-stack-delay"},
+    hold_acct_start{YType::enumeration, "hold-acct-start"}
 {
 
-    yang_name = "ipv4-network"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "session"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-DynamicTemplate::Ppps::Ppp::Ipv4Network::~Ipv4Network()
+DynamicTemplate::Ppps::Ppp::Accounting::Session::~Session()
 {
 }
 
-bool DynamicTemplate::Ppps::Ppp::Ipv4Network::has_data() const
+bool DynamicTemplate::Ppps::Ppp::Accounting::Session::has_data() const
 {
     if (is_presence_container) return true;
-    return unnumbered.is_set
-	|| mtu.is_set
-	|| unreachables.is_set
-	|| rpf.is_set;
+    return method_list_name.is_set
+	|| periodic_interval.is_set
+	|| dual_stack_delay.is_set
+	|| hold_acct_start.is_set;
 }
 
-bool DynamicTemplate::Ppps::Ppp::Ipv4Network::has_operation() const
+bool DynamicTemplate::Ppps::Ppp::Accounting::Session::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(unnumbered.yfilter)
-	|| ydk::is_set(mtu.yfilter)
-	|| ydk::is_set(unreachables.yfilter)
-	|| ydk::is_set(rpf.yfilter);
+	|| ydk::is_set(method_list_name.yfilter)
+	|| ydk::is_set(periodic_interval.yfilter)
+	|| ydk::is_set(dual_stack_delay.yfilter)
+	|| ydk::is_set(hold_acct_start.yfilter);
 }
 
-std::string DynamicTemplate::Ppps::Ppp::Ipv4Network::get_segment_path() const
+std::string DynamicTemplate::Ppps::Ppp::Accounting::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network";
+    path_buffer << "session";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Ipv4Network::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Accounting::Session::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unnumbered.is_set || is_set(unnumbered.yfilter)) leaf_name_data.push_back(unnumbered.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (unreachables.is_set || is_set(unreachables.yfilter)) leaf_name_data.push_back(unreachables.get_name_leafdata());
-    if (rpf.is_set || is_set(rpf.yfilter)) leaf_name_data.push_back(rpf.get_name_leafdata());
+    if (method_list_name.is_set || is_set(method_list_name.yfilter)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
+    if (periodic_interval.is_set || is_set(periodic_interval.yfilter)) leaf_name_data.push_back(periodic_interval.get_name_leafdata());
+    if (dual_stack_delay.is_set || is_set(dual_stack_delay.yfilter)) leaf_name_data.push_back(dual_stack_delay.get_name_leafdata());
+    if (hold_acct_start.is_set || is_set(hold_acct_start.yfilter)) leaf_name_data.push_back(hold_acct_start.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Ipv4Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Accounting::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Ipv4Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Accounting::Session::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void DynamicTemplate::Ppps::Ppp::Ipv4Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DynamicTemplate::Ppps::Ppp::Accounting::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "unnumbered")
+    if(value_path == "method-list-name")
     {
-        unnumbered = value;
-        unnumbered.value_namespace = name_space;
-        unnumbered.value_namespace_prefix = name_space_prefix;
+        method_list_name = value;
+        method_list_name.value_namespace = name_space;
+        method_list_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mtu")
+    if(value_path == "periodic-interval")
     {
-        mtu = value;
-        mtu.value_namespace = name_space;
-        mtu.value_namespace_prefix = name_space_prefix;
+        periodic_interval = value;
+        periodic_interval.value_namespace = name_space;
+        periodic_interval.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "unreachables")
+    if(value_path == "dual-stack-delay")
     {
-        unreachables = value;
-        unreachables.value_namespace = name_space;
-        unreachables.value_namespace_prefix = name_space_prefix;
+        dual_stack_delay = value;
+        dual_stack_delay.value_namespace = name_space;
+        dual_stack_delay.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "rpf")
+    if(value_path == "hold-acct-start")
     {
-        rpf = value;
-        rpf.value_namespace = name_space;
-        rpf.value_namespace_prefix = name_space_prefix;
+        hold_acct_start = value;
+        hold_acct_start.value_namespace = name_space;
+        hold_acct_start.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void DynamicTemplate::Ppps::Ppp::Ipv4Network::set_filter(const std::string & value_path, YFilter yfilter)
+void DynamicTemplate::Ppps::Ppp::Accounting::Session::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "unnumbered")
+    if(value_path == "method-list-name")
     {
-        unnumbered.yfilter = yfilter;
+        method_list_name.yfilter = yfilter;
     }
-    if(value_path == "mtu")
+    if(value_path == "periodic-interval")
     {
-        mtu.yfilter = yfilter;
+        periodic_interval.yfilter = yfilter;
     }
-    if(value_path == "unreachables")
+    if(value_path == "dual-stack-delay")
     {
-        unreachables.yfilter = yfilter;
+        dual_stack_delay.yfilter = yfilter;
     }
-    if(value_path == "rpf")
+    if(value_path == "hold-acct-start")
     {
-        rpf.yfilter = yfilter;
+        hold_acct_start.yfilter = yfilter;
     }
 }
 
-bool DynamicTemplate::Ppps::Ppp::Ipv4Network::has_leaf_or_child_of_name(const std::string & name) const
+bool DynamicTemplate::Ppps::Ppp::Accounting::Session::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "unnumbered" || name == "mtu" || name == "unreachables" || name == "rpf")
+    if(name == "method-list-name" || name == "periodic-interval" || name == "dual-stack-delay" || name == "hold-acct-start")
+        return true;
+    return false;
+}
+
+DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::ServiceAccounting()
+    :
+    method_list_name{YType::str, "method-list-name"},
+    accounting_interim_interval{YType::uint32, "accounting-interim-interval"}
+{
+
+    yang_name = "service-accounting"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::~ServiceAccounting()
+{
+}
+
+bool DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::has_data() const
+{
+    if (is_presence_container) return true;
+    return method_list_name.is_set
+	|| accounting_interim_interval.is_set;
+}
+
+bool DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(method_list_name.yfilter)
+	|| ydk::is_set(accounting_interim_interval.yfilter);
+}
+
+std::string DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "service-accounting";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (method_list_name.is_set || is_set(method_list_name.yfilter)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
+    if (accounting_interim_interval.is_set || is_set(accounting_interim_interval.yfilter)) leaf_name_data.push_back(accounting_interim_interval.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "method-list-name")
+    {
+        method_list_name = value;
+        method_list_name.value_namespace = name_space;
+        method_list_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-interim-interval")
+    {
+        accounting_interim_interval = value;
+        accounting_interim_interval.value_namespace = name_space;
+        accounting_interim_interval.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "method-list-name")
+    {
+        method_list_name.yfilter = yfilter;
+    }
+    if(value_path == "accounting-interim-interval")
+    {
+        accounting_interim_interval.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "method-list-name" || name == "accounting-interim-interval")
         return true;
     return false;
 }
@@ -3168,6 +3293,346 @@ void DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfiguration::set_
 bool DynamicTemplate::Ppps::Ppp::Ipv6Network::Addresses::AutoConfiguration::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "enable")
+        return true;
+    return false;
+}
+
+DynamicTemplate::Ppps::Ppp::Igmp::Igmp()
+    :
+    default_vrf(std::make_shared<DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf>())
+{
+    default_vrf->parent = this;
+
+    yang_name = "igmp"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+DynamicTemplate::Ppps::Ppp::Igmp::~Igmp()
+{
+}
+
+bool DynamicTemplate::Ppps::Ppp::Igmp::has_data() const
+{
+    if (is_presence_container) return true;
+    return (default_vrf !=  nullptr && default_vrf->has_data());
+}
+
+bool DynamicTemplate::Ppps::Ppp::Igmp::has_operation() const
+{
+    return is_set(yfilter)
+	|| (default_vrf !=  nullptr && default_vrf->has_operation());
+}
+
+std::string DynamicTemplate::Ppps::Ppp::Igmp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-igmp-dyn-tmpl-cfg:igmp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Igmp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "default-vrf")
+    {
+        if(default_vrf == nullptr)
+        {
+            default_vrf = std::make_shared<DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf>();
+        }
+        return default_vrf;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Igmp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(default_vrf != nullptr)
+    {
+        _children["default-vrf"] = default_vrf;
+    }
+
+    return _children;
+}
+
+void DynamicTemplate::Ppps::Ppp::Igmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void DynamicTemplate::Ppps::Ppp::Igmp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::Ppps::Ppp::Igmp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-vrf")
+        return true;
+    return false;
+}
+
+DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::DefaultVrf()
+    :
+    max_groups{YType::uint32, "max-groups"},
+    access_group{YType::str, "access-group"},
+    version{YType::uint32, "version"},
+    query_interval{YType::uint32, "query-interval"},
+    query_max_response_time{YType::uint32, "query-max-response-time"},
+    multicast_mode{YType::enumeration, "multicast-mode"}
+        ,
+    explicit_tracking(nullptr) // presence node
+{
+
+    yang_name = "default-vrf"; yang_parent_name = "igmp"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::~DefaultVrf()
+{
+}
+
+bool DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::has_data() const
+{
+    if (is_presence_container) return true;
+    return max_groups.is_set
+	|| access_group.is_set
+	|| version.is_set
+	|| query_interval.is_set
+	|| query_max_response_time.is_set
+	|| multicast_mode.is_set
+	|| (explicit_tracking !=  nullptr && explicit_tracking->has_data());
+}
+
+bool DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_groups.yfilter)
+	|| ydk::is_set(access_group.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| ydk::is_set(query_interval.yfilter)
+	|| ydk::is_set(query_max_response_time.yfilter)
+	|| ydk::is_set(multicast_mode.yfilter)
+	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation());
+}
+
+std::string DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "default-vrf";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_groups.is_set || is_set(max_groups.yfilter)) leaf_name_data.push_back(max_groups.get_name_leafdata());
+    if (access_group.is_set || is_set(access_group.yfilter)) leaf_name_data.push_back(access_group.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (query_interval.is_set || is_set(query_interval.yfilter)) leaf_name_data.push_back(query_interval.get_name_leafdata());
+    if (query_max_response_time.is_set || is_set(query_max_response_time.yfilter)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
+    if (multicast_mode.is_set || is_set(multicast_mode.yfilter)) leaf_name_data.push_back(multicast_mode.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "explicit-tracking")
+    {
+        if(explicit_tracking == nullptr)
+        {
+            explicit_tracking = std::make_shared<DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking>();
+        }
+        return explicit_tracking;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(explicit_tracking != nullptr)
+    {
+        _children["explicit-tracking"] = explicit_tracking;
+    }
+
+    return _children;
+}
+
+void DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-groups")
+    {
+        max_groups = value;
+        max_groups.value_namespace = name_space;
+        max_groups.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "access-group")
+    {
+        access_group = value;
+        access_group.value_namespace = name_space;
+        access_group.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "version")
+    {
+        version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "query-interval")
+    {
+        query_interval = value;
+        query_interval.value_namespace = name_space;
+        query_interval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "query-max-response-time")
+    {
+        query_max_response_time = value;
+        query_max_response_time.value_namespace = name_space;
+        query_max_response_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "multicast-mode")
+    {
+        multicast_mode = value;
+        multicast_mode.value_namespace = name_space;
+        multicast_mode.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-groups")
+    {
+        max_groups.yfilter = yfilter;
+    }
+    if(value_path == "access-group")
+    {
+        access_group.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "query-interval")
+    {
+        query_interval.yfilter = yfilter;
+    }
+    if(value_path == "query-max-response-time")
+    {
+        query_max_response_time.yfilter = yfilter;
+    }
+    if(value_path == "multicast-mode")
+    {
+        multicast_mode.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "explicit-tracking" || name == "max-groups" || name == "access-group" || name == "version" || name == "query-interval" || name == "query-max-response-time" || name == "multicast-mode")
+        return true;
+    return false;
+}
+
+DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::ExplicitTracking()
+    :
+    enable{YType::boolean, "enable"},
+    access_list_name{YType::str, "access-list-name"}
+{
+
+    yang_name = "explicit-tracking"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::~ExplicitTracking()
+{
+}
+
+bool DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set
+	|| access_list_name.is_set;
+}
+
+bool DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(access_list_name.yfilter);
+}
+
+std::string DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "explicit-tracking";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "access-list-name")
+    {
+        access_list_name.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::Ppps::Ppp::Igmp::DefaultVrf::ExplicitTracking::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "access-list-name")
         return true;
     return false;
 }
@@ -4886,471 +5351,6 @@ bool DynamicTemplate::Ppps::Ppp::PppTemplate::Ipcp::PeerAddress::has_leaf_or_chi
     return false;
 }
 
-DynamicTemplate::Ppps::Ppp::Accounting::Accounting()
-    :
-    monitor_feature{YType::str, "monitor-feature"},
-    prepaid_feature{YType::str, "prepaid-feature"}
-        ,
-    idle_timeout(std::make_shared<DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout>())
-    , session(std::make_shared<DynamicTemplate::Ppps::Ppp::Accounting::Session>())
-    , service_accounting(std::make_shared<DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting>())
-{
-    idle_timeout->parent = this;
-    session->parent = this;
-    service_accounting->parent = this;
-
-    yang_name = "accounting"; yang_parent_name = "ppp"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-DynamicTemplate::Ppps::Ppp::Accounting::~Accounting()
-{
-}
-
-bool DynamicTemplate::Ppps::Ppp::Accounting::has_data() const
-{
-    if (is_presence_container) return true;
-    return monitor_feature.is_set
-	|| prepaid_feature.is_set
-	|| (idle_timeout !=  nullptr && idle_timeout->has_data())
-	|| (session !=  nullptr && session->has_data())
-	|| (service_accounting !=  nullptr && service_accounting->has_data());
-}
-
-bool DynamicTemplate::Ppps::Ppp::Accounting::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(monitor_feature.yfilter)
-	|| ydk::is_set(prepaid_feature.yfilter)
-	|| (idle_timeout !=  nullptr && idle_timeout->has_operation())
-	|| (session !=  nullptr && session->has_operation())
-	|| (service_accounting !=  nullptr && service_accounting->has_operation());
-}
-
-std::string DynamicTemplate::Ppps::Ppp::Accounting::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-subscriber-accounting-cfg:accounting";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Accounting::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (monitor_feature.is_set || is_set(monitor_feature.yfilter)) leaf_name_data.push_back(monitor_feature.get_name_leafdata());
-    if (prepaid_feature.is_set || is_set(prepaid_feature.yfilter)) leaf_name_data.push_back(prepaid_feature.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "idle-timeout")
-    {
-        if(idle_timeout == nullptr)
-        {
-            idle_timeout = std::make_shared<DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout>();
-        }
-        return idle_timeout;
-    }
-
-    if(child_yang_name == "session")
-    {
-        if(session == nullptr)
-        {
-            session = std::make_shared<DynamicTemplate::Ppps::Ppp::Accounting::Session>();
-        }
-        return session;
-    }
-
-    if(child_yang_name == "service-accounting")
-    {
-        if(service_accounting == nullptr)
-        {
-            service_accounting = std::make_shared<DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting>();
-        }
-        return service_accounting;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Accounting::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(idle_timeout != nullptr)
-    {
-        _children["idle-timeout"] = idle_timeout;
-    }
-
-    if(session != nullptr)
-    {
-        _children["session"] = session;
-    }
-
-    if(service_accounting != nullptr)
-    {
-        _children["service-accounting"] = service_accounting;
-    }
-
-    return _children;
-}
-
-void DynamicTemplate::Ppps::Ppp::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "monitor-feature")
-    {
-        monitor_feature = value;
-        monitor_feature.value_namespace = name_space;
-        monitor_feature.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prepaid-feature")
-    {
-        prepaid_feature = value;
-        prepaid_feature.value_namespace = name_space;
-        prepaid_feature.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void DynamicTemplate::Ppps::Ppp::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "monitor-feature")
-    {
-        monitor_feature.yfilter = yfilter;
-    }
-    if(value_path == "prepaid-feature")
-    {
-        prepaid_feature.yfilter = yfilter;
-    }
-}
-
-bool DynamicTemplate::Ppps::Ppp::Accounting::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "idle-timeout" || name == "session" || name == "service-accounting" || name == "monitor-feature" || name == "prepaid-feature")
-        return true;
-    return false;
-}
-
-DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::IdleTimeout()
-    :
-    timeout_value{YType::uint32, "timeout-value"},
-    threshold{YType::uint32, "threshold"},
-    direction{YType::str, "direction"}
-{
-
-    yang_name = "idle-timeout"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::~IdleTimeout()
-{
-}
-
-bool DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::has_data() const
-{
-    if (is_presence_container) return true;
-    return timeout_value.is_set
-	|| threshold.is_set
-	|| direction.is_set;
-}
-
-bool DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(timeout_value.yfilter)
-	|| ydk::is_set(threshold.yfilter)
-	|| ydk::is_set(direction.yfilter);
-}
-
-std::string DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "idle-timeout";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (timeout_value.is_set || is_set(timeout_value.yfilter)) leaf_name_data.push_back(timeout_value.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "timeout-value")
-    {
-        timeout_value = value;
-        timeout_value.value_namespace = name_space;
-        timeout_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "direction")
-    {
-        direction = value;
-        direction.value_namespace = name_space;
-        direction.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "timeout-value")
-    {
-        timeout_value.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-    if(value_path == "direction")
-    {
-        direction.yfilter = yfilter;
-    }
-}
-
-bool DynamicTemplate::Ppps::Ppp::Accounting::IdleTimeout::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "timeout-value" || name == "threshold" || name == "direction")
-        return true;
-    return false;
-}
-
-DynamicTemplate::Ppps::Ppp::Accounting::Session::Session()
-    :
-    method_list_name{YType::str, "method-list-name"},
-    periodic_interval{YType::uint32, "periodic-interval"},
-    dual_stack_delay{YType::uint32, "dual-stack-delay"},
-    hold_acct_start{YType::enumeration, "hold-acct-start"}
-{
-
-    yang_name = "session"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-DynamicTemplate::Ppps::Ppp::Accounting::Session::~Session()
-{
-}
-
-bool DynamicTemplate::Ppps::Ppp::Accounting::Session::has_data() const
-{
-    if (is_presence_container) return true;
-    return method_list_name.is_set
-	|| periodic_interval.is_set
-	|| dual_stack_delay.is_set
-	|| hold_acct_start.is_set;
-}
-
-bool DynamicTemplate::Ppps::Ppp::Accounting::Session::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(method_list_name.yfilter)
-	|| ydk::is_set(periodic_interval.yfilter)
-	|| ydk::is_set(dual_stack_delay.yfilter)
-	|| ydk::is_set(hold_acct_start.yfilter);
-}
-
-std::string DynamicTemplate::Ppps::Ppp::Accounting::Session::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "session";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Accounting::Session::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (method_list_name.is_set || is_set(method_list_name.yfilter)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
-    if (periodic_interval.is_set || is_set(periodic_interval.yfilter)) leaf_name_data.push_back(periodic_interval.get_name_leafdata());
-    if (dual_stack_delay.is_set || is_set(dual_stack_delay.yfilter)) leaf_name_data.push_back(dual_stack_delay.get_name_leafdata());
-    if (hold_acct_start.is_set || is_set(hold_acct_start.yfilter)) leaf_name_data.push_back(hold_acct_start.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Accounting::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Accounting::Session::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void DynamicTemplate::Ppps::Ppp::Accounting::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "method-list-name")
-    {
-        method_list_name = value;
-        method_list_name.value_namespace = name_space;
-        method_list_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "periodic-interval")
-    {
-        periodic_interval = value;
-        periodic_interval.value_namespace = name_space;
-        periodic_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dual-stack-delay")
-    {
-        dual_stack_delay = value;
-        dual_stack_delay.value_namespace = name_space;
-        dual_stack_delay.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hold-acct-start")
-    {
-        hold_acct_start = value;
-        hold_acct_start.value_namespace = name_space;
-        hold_acct_start.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void DynamicTemplate::Ppps::Ppp::Accounting::Session::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "method-list-name")
-    {
-        method_list_name.yfilter = yfilter;
-    }
-    if(value_path == "periodic-interval")
-    {
-        periodic_interval.yfilter = yfilter;
-    }
-    if(value_path == "dual-stack-delay")
-    {
-        dual_stack_delay.yfilter = yfilter;
-    }
-    if(value_path == "hold-acct-start")
-    {
-        hold_acct_start.yfilter = yfilter;
-    }
-}
-
-bool DynamicTemplate::Ppps::Ppp::Accounting::Session::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "method-list-name" || name == "periodic-interval" || name == "dual-stack-delay" || name == "hold-acct-start")
-        return true;
-    return false;
-}
-
-DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::ServiceAccounting()
-    :
-    method_list_name{YType::str, "method-list-name"},
-    accounting_interim_interval{YType::uint32, "accounting-interim-interval"}
-{
-
-    yang_name = "service-accounting"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::~ServiceAccounting()
-{
-}
-
-bool DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::has_data() const
-{
-    if (is_presence_container) return true;
-    return method_list_name.is_set
-	|| accounting_interim_interval.is_set;
-}
-
-bool DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(method_list_name.yfilter)
-	|| ydk::is_set(accounting_interim_interval.yfilter);
-}
-
-std::string DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "service-accounting";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (method_list_name.is_set || is_set(method_list_name.yfilter)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
-    if (accounting_interim_interval.is_set || is_set(accounting_interim_interval.yfilter)) leaf_name_data.push_back(accounting_interim_interval.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "method-list-name")
-    {
-        method_list_name = value;
-        method_list_name.value_namespace = name_space;
-        method_list_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-interim-interval")
-    {
-        accounting_interim_interval = value;
-        accounting_interim_interval.value_namespace = name_space;
-        accounting_interim_interval.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "method-list-name")
-    {
-        method_list_name.yfilter = yfilter;
-    }
-    if(value_path == "accounting-interim-interval")
-    {
-        accounting_interim_interval.yfilter = yfilter;
-    }
-}
-
-bool DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "method-list-name" || name == "accounting-interim-interval")
-        return true;
-    return false;
-}
-
 DynamicTemplate::IpSubscribers::IpSubscribers()
     :
     ip_subscriber(this, {"template_name"})
@@ -5456,27 +5456,27 @@ DynamicTemplate::IpSubscribers::IpSubscriber::IpSubscriber()
     template_name{YType::str, "template-name"},
     vrf{YType::str, "Cisco-IOS-XR-infra-rsi-subscriber-cfg:vrf"}
         ,
-    dhcpv6(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6>())
-    , pbr(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Pbr>())
-    , ipv6_neighbor(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor>())
-    , igmp(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Igmp>())
-    , dhcpd(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd>())
+    pbr(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Pbr>())
     , ipv4_network(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network>())
+    , dhcpv6(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6>())
+    , ipv6_neighbor(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor>())
+    , accounting(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Accounting>())
+    , dhcpd(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd>())
     , ipv4_packet_filter(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter>())
     , ipv6_packet_filter(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter>())
     , ipv6_network(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network>())
-    , accounting(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Accounting>())
+    , igmp(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Igmp>())
 {
-    dhcpv6->parent = this;
     pbr->parent = this;
-    ipv6_neighbor->parent = this;
-    igmp->parent = this;
-    dhcpd->parent = this;
     ipv4_network->parent = this;
+    dhcpv6->parent = this;
+    ipv6_neighbor->parent = this;
+    accounting->parent = this;
+    dhcpd->parent = this;
     ipv4_packet_filter->parent = this;
     ipv6_packet_filter->parent = this;
     ipv6_network->parent = this;
-    accounting->parent = this;
+    igmp->parent = this;
 
     yang_name = "ip-subscriber"; yang_parent_name = "ip-subscribers"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -5490,16 +5490,16 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::has_data() const
     if (is_presence_container) return true;
     return template_name.is_set
 	|| vrf.is_set
-	|| (dhcpv6 !=  nullptr && dhcpv6->has_data())
 	|| (pbr !=  nullptr && pbr->has_data())
-	|| (ipv6_neighbor !=  nullptr && ipv6_neighbor->has_data())
-	|| (igmp !=  nullptr && igmp->has_data())
-	|| (dhcpd !=  nullptr && dhcpd->has_data())
 	|| (ipv4_network !=  nullptr && ipv4_network->has_data())
+	|| (dhcpv6 !=  nullptr && dhcpv6->has_data())
+	|| (ipv6_neighbor !=  nullptr && ipv6_neighbor->has_data())
+	|| (accounting !=  nullptr && accounting->has_data())
+	|| (dhcpd !=  nullptr && dhcpd->has_data())
 	|| (ipv4_packet_filter !=  nullptr && ipv4_packet_filter->has_data())
 	|| (ipv6_packet_filter !=  nullptr && ipv6_packet_filter->has_data())
 	|| (ipv6_network !=  nullptr && ipv6_network->has_data())
-	|| (accounting !=  nullptr && accounting->has_data());
+	|| (igmp !=  nullptr && igmp->has_data());
 }
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::has_operation() const
@@ -5507,16 +5507,16 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(template_name.yfilter)
 	|| ydk::is_set(vrf.yfilter)
-	|| (dhcpv6 !=  nullptr && dhcpv6->has_operation())
 	|| (pbr !=  nullptr && pbr->has_operation())
-	|| (ipv6_neighbor !=  nullptr && ipv6_neighbor->has_operation())
-	|| (igmp !=  nullptr && igmp->has_operation())
-	|| (dhcpd !=  nullptr && dhcpd->has_operation())
 	|| (ipv4_network !=  nullptr && ipv4_network->has_operation())
+	|| (dhcpv6 !=  nullptr && dhcpv6->has_operation())
+	|| (ipv6_neighbor !=  nullptr && ipv6_neighbor->has_operation())
+	|| (accounting !=  nullptr && accounting->has_operation())
+	|| (dhcpd !=  nullptr && dhcpd->has_operation())
 	|| (ipv4_packet_filter !=  nullptr && ipv4_packet_filter->has_operation())
 	|| (ipv6_packet_filter !=  nullptr && ipv6_packet_filter->has_operation())
 	|| (ipv6_network !=  nullptr && ipv6_network->has_operation())
-	|| (accounting !=  nullptr && accounting->has_operation());
+	|| (igmp !=  nullptr && igmp->has_operation());
 }
 
 std::string DynamicTemplate::IpSubscribers::IpSubscriber::get_absolute_path() const
@@ -5547,15 +5547,6 @@ std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::I
 
 std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "Cisco-IOS-XR-ipv6-new-dhcpv6d-subscriber-cfg:dhcpv6")
-    {
-        if(dhcpv6 == nullptr)
-        {
-            dhcpv6 = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6>();
-        }
-        return dhcpv6;
-    }
-
     if(child_yang_name == "Cisco-IOS-XR-pbr-subscriber-cfg:pbr")
     {
         if(pbr == nullptr)
@@ -5563,6 +5554,24 @@ std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::get_c
             pbr = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Pbr>();
         }
         return pbr;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network")
+    {
+        if(ipv4_network == nullptr)
+        {
+            ipv4_network = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network>();
+        }
+        return ipv4_network;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-ipv6-new-dhcpv6d-subscriber-cfg:dhcpv6")
+    {
+        if(dhcpv6 == nullptr)
+        {
+            dhcpv6 = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6>();
+        }
+        return dhcpv6;
     }
 
     if(child_yang_name == "Cisco-IOS-XR-ipv6-nd-subscriber-cfg:ipv6-neighbor")
@@ -5574,13 +5583,13 @@ std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::get_c
         return ipv6_neighbor;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-ipv4-igmp-dyn-tmpl-cfg:igmp")
+    if(child_yang_name == "Cisco-IOS-XR-subscriber-accounting-cfg:accounting")
     {
-        if(igmp == nullptr)
+        if(accounting == nullptr)
         {
-            igmp = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Igmp>();
+            accounting = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Accounting>();
         }
-        return igmp;
+        return accounting;
     }
 
     if(child_yang_name == "Cisco-IOS-XR-ipv4-dhcpd-subscriber-cfg:dhcpd")
@@ -5590,15 +5599,6 @@ std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::get_c
             dhcpd = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd>();
         }
         return dhcpd;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network")
-    {
-        if(ipv4_network == nullptr)
-        {
-            ipv4_network = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network>();
-        }
-        return ipv4_network;
     }
 
     if(child_yang_name == "Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv4-packet-filter")
@@ -5628,13 +5628,13 @@ std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::get_c
         return ipv6_network;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-subscriber-accounting-cfg:accounting")
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-igmp-dyn-tmpl-cfg:igmp")
     {
-        if(accounting == nullptr)
+        if(igmp == nullptr)
         {
-            accounting = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Accounting>();
+            igmp = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Igmp>();
         }
-        return accounting;
+        return igmp;
     }
 
     return nullptr;
@@ -5644,14 +5644,19 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribe
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(dhcpv6 != nullptr)
-    {
-        _children["Cisco-IOS-XR-ipv6-new-dhcpv6d-subscriber-cfg:dhcpv6"] = dhcpv6;
-    }
-
     if(pbr != nullptr)
     {
         _children["Cisco-IOS-XR-pbr-subscriber-cfg:pbr"] = pbr;
+    }
+
+    if(ipv4_network != nullptr)
+    {
+        _children["Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network"] = ipv4_network;
+    }
+
+    if(dhcpv6 != nullptr)
+    {
+        _children["Cisco-IOS-XR-ipv6-new-dhcpv6d-subscriber-cfg:dhcpv6"] = dhcpv6;
     }
 
     if(ipv6_neighbor != nullptr)
@@ -5659,19 +5664,14 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribe
         _children["Cisco-IOS-XR-ipv6-nd-subscriber-cfg:ipv6-neighbor"] = ipv6_neighbor;
     }
 
-    if(igmp != nullptr)
+    if(accounting != nullptr)
     {
-        _children["Cisco-IOS-XR-ipv4-igmp-dyn-tmpl-cfg:igmp"] = igmp;
+        _children["Cisco-IOS-XR-subscriber-accounting-cfg:accounting"] = accounting;
     }
 
     if(dhcpd != nullptr)
     {
         _children["Cisco-IOS-XR-ipv4-dhcpd-subscriber-cfg:dhcpd"] = dhcpd;
-    }
-
-    if(ipv4_network != nullptr)
-    {
-        _children["Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network"] = ipv4_network;
     }
 
     if(ipv4_packet_filter != nullptr)
@@ -5689,9 +5689,9 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribe
         _children["Cisco-IOS-XR-ipv6-ma-subscriber-cfg:ipv6-network"] = ipv6_network;
     }
 
-    if(accounting != nullptr)
+    if(igmp != nullptr)
     {
-        _children["Cisco-IOS-XR-subscriber-accounting-cfg:accounting"] = accounting;
+        _children["Cisco-IOS-XR-ipv4-igmp-dyn-tmpl-cfg:igmp"] = igmp;
     }
 
     return _children;
@@ -5727,7 +5727,302 @@ void DynamicTemplate::IpSubscribers::IpSubscriber::set_filter(const std::string 
 
 bool DynamicTemplate::IpSubscribers::IpSubscriber::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "dhcpv6" || name == "pbr" || name == "ipv6-neighbor" || name == "igmp" || name == "dhcpd" || name == "ipv4-network" || name == "ipv4-packet-filter" || name == "ipv6-packet-filter" || name == "ipv6-network" || name == "accounting" || name == "template-name" || name == "vrf")
+    if(name == "pbr" || name == "ipv4-network" || name == "dhcpv6" || name == "ipv6-neighbor" || name == "accounting" || name == "dhcpd" || name == "ipv4-packet-filter" || name == "ipv6-packet-filter" || name == "ipv6-network" || name == "igmp" || name == "template-name" || name == "vrf")
+        return true;
+    return false;
+}
+
+DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::Pbr()
+    :
+    service_policy_in{YType::str, "service-policy-in"}
+        ,
+    service_policy(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy>())
+{
+    service_policy->parent = this;
+
+    yang_name = "pbr"; yang_parent_name = "ip-subscriber"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::~Pbr()
+{
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::has_data() const
+{
+    if (is_presence_container) return true;
+    return service_policy_in.is_set
+	|| (service_policy !=  nullptr && service_policy->has_data());
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(service_policy_in.yfilter)
+	|| (service_policy !=  nullptr && service_policy->has_operation());
+}
+
+std::string DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-pbr-subscriber-cfg:pbr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (service_policy_in.is_set || is_set(service_policy_in.yfilter)) leaf_name_data.push_back(service_policy_in.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "service-policy")
+    {
+        if(service_policy == nullptr)
+        {
+            service_policy = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy>();
+        }
+        return service_policy;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(service_policy != nullptr)
+    {
+        _children["service-policy"] = service_policy;
+    }
+
+    return _children;
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "service-policy-in")
+    {
+        service_policy_in = value;
+        service_policy_in.value_namespace = name_space;
+        service_policy_in.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "service-policy-in")
+    {
+        service_policy_in.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "service-policy" || name == "service-policy-in")
+        return true;
+    return false;
+}
+
+DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::ServicePolicy()
+    :
+    input{YType::str, "input"}
+{
+
+    yang_name = "service-policy"; yang_parent_name = "pbr"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::~ServicePolicy()
+{
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::has_data() const
+{
+    if (is_presence_container) return true;
+    return input.is_set;
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(input.yfilter);
+}
+
+std::string DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "service-policy";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (input.is_set || is_set(input.yfilter)) leaf_name_data.push_back(input.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "input")
+    {
+        input = value;
+        input.value_namespace = name_space;
+        input.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "input")
+    {
+        input.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::Ipv4Network()
+    :
+    unnumbered{YType::str, "unnumbered"},
+    mtu{YType::uint32, "mtu"},
+    unreachables{YType::boolean, "unreachables"},
+    rpf{YType::boolean, "rpf"}
+{
+
+    yang_name = "ipv4-network"; yang_parent_name = "ip-subscriber"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::~Ipv4Network()
+{
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::has_data() const
+{
+    if (is_presence_container) return true;
+    return unnumbered.is_set
+	|| mtu.is_set
+	|| unreachables.is_set
+	|| rpf.is_set;
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unnumbered.yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(unreachables.yfilter)
+	|| ydk::is_set(rpf.yfilter);
+}
+
+std::string DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unnumbered.is_set || is_set(unnumbered.yfilter)) leaf_name_data.push_back(unnumbered.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (unreachables.is_set || is_set(unreachables.yfilter)) leaf_name_data.push_back(unreachables.get_name_leafdata());
+    if (rpf.is_set || is_set(rpf.yfilter)) leaf_name_data.push_back(rpf.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unnumbered")
+    {
+        unnumbered = value;
+        unnumbered.value_namespace = name_space;
+        unnumbered.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mtu")
+    {
+        mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unreachables")
+    {
+        unreachables = value;
+        unreachables.value_namespace = name_space;
+        unreachables.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpf")
+    {
+        rpf = value;
+        rpf.value_namespace = name_space;
+        rpf.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unnumbered")
+    {
+        unnumbered.yfilter = yfilter;
+    }
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "unreachables")
+    {
+        unreachables.yfilter = yfilter;
+    }
+    if(value_path == "rpf")
+    {
+        rpf.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unnumbered" || name == "mtu" || name == "unreachables" || name == "rpf")
         return true;
     return false;
 }
@@ -6014,181 +6309,6 @@ void DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix::set_
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6::DelegatedPrefix::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "prefix" || name == "prefix-length")
-        return true;
-    return false;
-}
-
-DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::Pbr()
-    :
-    service_policy_in{YType::str, "service-policy-in"}
-        ,
-    service_policy(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy>())
-{
-    service_policy->parent = this;
-
-    yang_name = "pbr"; yang_parent_name = "ip-subscriber"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::~Pbr()
-{
-}
-
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::has_data() const
-{
-    if (is_presence_container) return true;
-    return service_policy_in.is_set
-	|| (service_policy !=  nullptr && service_policy->has_data());
-}
-
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(service_policy_in.yfilter)
-	|| (service_policy !=  nullptr && service_policy->has_operation());
-}
-
-std::string DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-pbr-subscriber-cfg:pbr";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (service_policy_in.is_set || is_set(service_policy_in.yfilter)) leaf_name_data.push_back(service_policy_in.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "service-policy")
-    {
-        if(service_policy == nullptr)
-        {
-            service_policy = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy>();
-        }
-        return service_policy;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(service_policy != nullptr)
-    {
-        _children["service-policy"] = service_policy;
-    }
-
-    return _children;
-}
-
-void DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "service-policy-in")
-    {
-        service_policy_in = value;
-        service_policy_in.value_namespace = name_space;
-        service_policy_in.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "service-policy-in")
-    {
-        service_policy_in.yfilter = yfilter;
-    }
-}
-
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "service-policy" || name == "service-policy-in")
-        return true;
-    return false;
-}
-
-DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::ServicePolicy()
-    :
-    input{YType::str, "input"}
-{
-
-    yang_name = "service-policy"; yang_parent_name = "pbr"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::~ServicePolicy()
-{
-}
-
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::has_data() const
-{
-    if (is_presence_container) return true;
-    return input.is_set;
-}
-
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(input.yfilter);
-}
-
-std::string DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "service-policy";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (input.is_set || is_set(input.yfilter)) leaf_name_data.push_back(input.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "input")
-    {
-        input = value;
-        input.value_namespace = name_space;
-        input.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "input")
-    {
-        input.yfilter = yfilter;
-    }
-}
-
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Pbr::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input")
         return true;
     return false;
 }
@@ -6877,342 +6997,467 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor::RaInitial::has_
     return false;
 }
 
-DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::Igmp()
+DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Accounting()
     :
-    default_vrf(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf>())
-{
-    default_vrf->parent = this;
-
-    yang_name = "igmp"; yang_parent_name = "ip-subscriber"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::~Igmp()
-{
-}
-
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::has_data() const
-{
-    if (is_presence_container) return true;
-    return (default_vrf !=  nullptr && default_vrf->has_data());
-}
-
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::has_operation() const
-{
-    return is_set(yfilter)
-	|| (default_vrf !=  nullptr && default_vrf->has_operation());
-}
-
-std::string DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-igmp-dyn-tmpl-cfg:igmp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "default-vrf")
-    {
-        if(default_vrf == nullptr)
-        {
-            default_vrf = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf>();
-        }
-        return default_vrf;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(default_vrf != nullptr)
-    {
-        _children["default-vrf"] = default_vrf;
-    }
-
-    return _children;
-}
-
-void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "default-vrf")
-        return true;
-    return false;
-}
-
-DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::DefaultVrf()
-    :
-    max_groups{YType::uint32, "max-groups"},
-    access_group{YType::str, "access-group"},
-    version{YType::uint32, "version"},
-    query_interval{YType::uint32, "query-interval"},
-    query_max_response_time{YType::uint32, "query-max-response-time"},
-    multicast_mode{YType::enumeration, "multicast-mode"}
+    monitor_feature{YType::str, "monitor-feature"},
+    prepaid_feature{YType::str, "prepaid-feature"}
         ,
-    explicit_tracking(nullptr) // presence node
+    service_accounting(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting>())
+    , session(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session>())
+    , idle_timeout(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout>())
 {
+    service_accounting->parent = this;
+    session->parent = this;
+    idle_timeout->parent = this;
 
-    yang_name = "default-vrf"; yang_parent_name = "igmp"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "accounting"; yang_parent_name = "ip-subscriber"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::~DefaultVrf()
+DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::~Accounting()
 {
 }
 
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::has_data() const
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::has_data() const
 {
     if (is_presence_container) return true;
-    return max_groups.is_set
-	|| access_group.is_set
-	|| version.is_set
-	|| query_interval.is_set
-	|| query_max_response_time.is_set
-	|| multicast_mode.is_set
-	|| (explicit_tracking !=  nullptr && explicit_tracking->has_data());
+    return monitor_feature.is_set
+	|| prepaid_feature.is_set
+	|| (service_accounting !=  nullptr && service_accounting->has_data())
+	|| (session !=  nullptr && session->has_data())
+	|| (idle_timeout !=  nullptr && idle_timeout->has_data());
 }
 
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::has_operation() const
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(max_groups.yfilter)
-	|| ydk::is_set(access_group.yfilter)
-	|| ydk::is_set(version.yfilter)
-	|| ydk::is_set(query_interval.yfilter)
-	|| ydk::is_set(query_max_response_time.yfilter)
-	|| ydk::is_set(multicast_mode.yfilter)
-	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation());
+	|| ydk::is_set(monitor_feature.yfilter)
+	|| ydk::is_set(prepaid_feature.yfilter)
+	|| (service_accounting !=  nullptr && service_accounting->has_operation())
+	|| (session !=  nullptr && session->has_operation())
+	|| (idle_timeout !=  nullptr && idle_timeout->has_operation());
 }
 
-std::string DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::get_segment_path() const
+std::string DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "default-vrf";
+    path_buffer << "Cisco-IOS-XR-subscriber-accounting-cfg:accounting";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (max_groups.is_set || is_set(max_groups.yfilter)) leaf_name_data.push_back(max_groups.get_name_leafdata());
-    if (access_group.is_set || is_set(access_group.yfilter)) leaf_name_data.push_back(access_group.get_name_leafdata());
-    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
-    if (query_interval.is_set || is_set(query_interval.yfilter)) leaf_name_data.push_back(query_interval.get_name_leafdata());
-    if (query_max_response_time.is_set || is_set(query_max_response_time.yfilter)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
-    if (multicast_mode.is_set || is_set(multicast_mode.yfilter)) leaf_name_data.push_back(multicast_mode.get_name_leafdata());
+    if (monitor_feature.is_set || is_set(monitor_feature.yfilter)) leaf_name_data.push_back(monitor_feature.get_name_leafdata());
+    if (prepaid_feature.is_set || is_set(prepaid_feature.yfilter)) leaf_name_data.push_back(prepaid_feature.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "explicit-tracking")
+    if(child_yang_name == "service-accounting")
     {
-        if(explicit_tracking == nullptr)
+        if(service_accounting == nullptr)
         {
-            explicit_tracking = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking>();
+            service_accounting = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting>();
         }
-        return explicit_tracking;
+        return service_accounting;
+    }
+
+    if(child_yang_name == "session")
+    {
+        if(session == nullptr)
+        {
+            session = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session>();
+        }
+        return session;
+    }
+
+    if(child_yang_name == "idle-timeout")
+    {
+        if(idle_timeout == nullptr)
+        {
+            idle_timeout = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout>();
+        }
+        return idle_timeout;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(explicit_tracking != nullptr)
+    if(service_accounting != nullptr)
     {
-        _children["explicit-tracking"] = explicit_tracking;
+        _children["service-accounting"] = service_accounting;
+    }
+
+    if(session != nullptr)
+    {
+        _children["session"] = session;
+    }
+
+    if(idle_timeout != nullptr)
+    {
+        _children["idle-timeout"] = idle_timeout;
     }
 
     return _children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "max-groups")
+    if(value_path == "monitor-feature")
     {
-        max_groups = value;
-        max_groups.value_namespace = name_space;
-        max_groups.value_namespace_prefix = name_space_prefix;
+        monitor_feature = value;
+        monitor_feature.value_namespace = name_space;
+        monitor_feature.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "access-group")
+    if(value_path == "prepaid-feature")
     {
-        access_group = value;
-        access_group.value_namespace = name_space;
-        access_group.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "version")
-    {
-        version = value;
-        version.value_namespace = name_space;
-        version.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "query-interval")
-    {
-        query_interval = value;
-        query_interval.value_namespace = name_space;
-        query_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "query-max-response-time")
-    {
-        query_max_response_time = value;
-        query_max_response_time.value_namespace = name_space;
-        query_max_response_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "multicast-mode")
-    {
-        multicast_mode = value;
-        multicast_mode.value_namespace = name_space;
-        multicast_mode.value_namespace_prefix = name_space_prefix;
+        prepaid_feature = value;
+        prepaid_feature.value_namespace = name_space;
+        prepaid_feature.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::set_filter(const std::string & value_path, YFilter yfilter)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "max-groups")
+    if(value_path == "monitor-feature")
     {
-        max_groups.yfilter = yfilter;
+        monitor_feature.yfilter = yfilter;
     }
-    if(value_path == "access-group")
+    if(value_path == "prepaid-feature")
     {
-        access_group.yfilter = yfilter;
-    }
-    if(value_path == "version")
-    {
-        version.yfilter = yfilter;
-    }
-    if(value_path == "query-interval")
-    {
-        query_interval.yfilter = yfilter;
-    }
-    if(value_path == "query-max-response-time")
-    {
-        query_max_response_time.yfilter = yfilter;
-    }
-    if(value_path == "multicast-mode")
-    {
-        multicast_mode.yfilter = yfilter;
+        prepaid_feature.yfilter = yfilter;
     }
 }
 
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::has_leaf_or_child_of_name(const std::string & name) const
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "explicit-tracking" || name == "max-groups" || name == "access-group" || name == "version" || name == "query-interval" || name == "query-max-response-time" || name == "multicast-mode")
+    if(name == "service-accounting" || name == "session" || name == "idle-timeout" || name == "monitor-feature" || name == "prepaid-feature")
         return true;
     return false;
 }
 
-DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::ExplicitTracking()
+DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::ServiceAccounting()
     :
-    enable{YType::boolean, "enable"},
-    access_list_name{YType::str, "access-list-name"}
+    method_list_name{YType::str, "method-list-name"},
+    accounting_interim_interval{YType::uint32, "accounting-interim-interval"}
 {
 
-    yang_name = "explicit-tracking"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+    yang_name = "service-accounting"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::~ExplicitTracking()
+DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::~ServiceAccounting()
 {
 }
 
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::has_data() const
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::has_data() const
 {
     if (is_presence_container) return true;
-    return enable.is_set
-	|| access_list_name.is_set;
+    return method_list_name.is_set
+	|| accounting_interim_interval.is_set;
 }
 
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::has_operation() const
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(access_list_name.yfilter);
+	|| ydk::is_set(method_list_name.yfilter)
+	|| ydk::is_set(accounting_interim_interval.yfilter);
 }
 
-std::string DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::get_segment_path() const
+std::string DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "explicit-tracking";
+    path_buffer << "service-accounting";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
+    if (method_list_name.is_set || is_set(method_list_name.yfilter)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
+    if (accounting_interim_interval.is_set || is_set(accounting_interim_interval.yfilter)) leaf_name_data.push_back(accounting_interim_interval.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "enable")
+    if(value_path == "method-list-name")
     {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
+        method_list_name = value;
+        method_list_name.value_namespace = name_space;
+        method_list_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "access-list-name")
+    if(value_path == "accounting-interim-interval")
     {
-        access_list_name = value;
-        access_list_name.value_namespace = name_space;
-        access_list_name.value_namespace_prefix = name_space_prefix;
+        accounting_interim_interval = value;
+        accounting_interim_interval.value_namespace = name_space;
+        accounting_interim_interval.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::set_filter(const std::string & value_path, YFilter yfilter)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "enable")
+    if(value_path == "method-list-name")
     {
-        enable.yfilter = yfilter;
+        method_list_name.yfilter = yfilter;
     }
-    if(value_path == "access-list-name")
+    if(value_path == "accounting-interim-interval")
     {
-        access_list_name.yfilter = yfilter;
+        accounting_interim_interval.yfilter = yfilter;
     }
 }
 
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::has_leaf_or_child_of_name(const std::string & name) const
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "enable" || name == "access-list-name")
+    if(name == "method-list-name" || name == "accounting-interim-interval")
+        return true;
+    return false;
+}
+
+DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::Session()
+    :
+    method_list_name{YType::str, "method-list-name"},
+    periodic_interval{YType::uint32, "periodic-interval"},
+    dual_stack_delay{YType::uint32, "dual-stack-delay"},
+    hold_acct_start{YType::enumeration, "hold-acct-start"}
+{
+
+    yang_name = "session"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::~Session()
+{
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::has_data() const
+{
+    if (is_presence_container) return true;
+    return method_list_name.is_set
+	|| periodic_interval.is_set
+	|| dual_stack_delay.is_set
+	|| hold_acct_start.is_set;
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(method_list_name.yfilter)
+	|| ydk::is_set(periodic_interval.yfilter)
+	|| ydk::is_set(dual_stack_delay.yfilter)
+	|| ydk::is_set(hold_acct_start.yfilter);
+}
+
+std::string DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (method_list_name.is_set || is_set(method_list_name.yfilter)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
+    if (periodic_interval.is_set || is_set(periodic_interval.yfilter)) leaf_name_data.push_back(periodic_interval.get_name_leafdata());
+    if (dual_stack_delay.is_set || is_set(dual_stack_delay.yfilter)) leaf_name_data.push_back(dual_stack_delay.get_name_leafdata());
+    if (hold_acct_start.is_set || is_set(hold_acct_start.yfilter)) leaf_name_data.push_back(hold_acct_start.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "method-list-name")
+    {
+        method_list_name = value;
+        method_list_name.value_namespace = name_space;
+        method_list_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "periodic-interval")
+    {
+        periodic_interval = value;
+        periodic_interval.value_namespace = name_space;
+        periodic_interval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dual-stack-delay")
+    {
+        dual_stack_delay = value;
+        dual_stack_delay.value_namespace = name_space;
+        dual_stack_delay.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hold-acct-start")
+    {
+        hold_acct_start = value;
+        hold_acct_start.value_namespace = name_space;
+        hold_acct_start.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "method-list-name")
+    {
+        method_list_name.yfilter = yfilter;
+    }
+    if(value_path == "periodic-interval")
+    {
+        periodic_interval.yfilter = yfilter;
+    }
+    if(value_path == "dual-stack-delay")
+    {
+        dual_stack_delay.yfilter = yfilter;
+    }
+    if(value_path == "hold-acct-start")
+    {
+        hold_acct_start.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "method-list-name" || name == "periodic-interval" || name == "dual-stack-delay" || name == "hold-acct-start")
+        return true;
+    return false;
+}
+
+DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::IdleTimeout()
+    :
+    timeout_value{YType::uint32, "timeout-value"},
+    threshold{YType::uint32, "threshold"},
+    direction{YType::str, "direction"}
+{
+
+    yang_name = "idle-timeout"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::~IdleTimeout()
+{
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::has_data() const
+{
+    if (is_presence_container) return true;
+    return timeout_value.is_set
+	|| threshold.is_set
+	|| direction.is_set;
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(timeout_value.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(direction.yfilter);
+}
+
+std::string DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "idle-timeout";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (timeout_value.is_set || is_set(timeout_value.yfilter)) leaf_name_data.push_back(timeout_value.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "timeout-value")
+    {
+        timeout_value = value;
+        timeout_value.value_namespace = name_space;
+        timeout_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "direction")
+    {
+        direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "timeout-value")
+    {
+        timeout_value.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "timeout-value" || name == "threshold" || name == "direction")
         return true;
     return false;
 }
@@ -7347,126 +7592,6 @@ void DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd::set_filter(const std::
 bool DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "dhcpv4-iplease" || name == "class" || name == "default-gateway" || name == "session-limit" || name == "dhcpv4-option")
-        return true;
-    return false;
-}
-
-DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::Ipv4Network()
-    :
-    unnumbered{YType::str, "unnumbered"},
-    mtu{YType::uint32, "mtu"},
-    unreachables{YType::boolean, "unreachables"},
-    rpf{YType::boolean, "rpf"}
-{
-
-    yang_name = "ipv4-network"; yang_parent_name = "ip-subscriber"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::~Ipv4Network()
-{
-}
-
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::has_data() const
-{
-    if (is_presence_container) return true;
-    return unnumbered.is_set
-	|| mtu.is_set
-	|| unreachables.is_set
-	|| rpf.is_set;
-}
-
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(unnumbered.yfilter)
-	|| ydk::is_set(mtu.yfilter)
-	|| ydk::is_set(unreachables.yfilter)
-	|| ydk::is_set(rpf.yfilter);
-}
-
-std::string DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (unnumbered.is_set || is_set(unnumbered.yfilter)) leaf_name_data.push_back(unnumbered.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (unreachables.is_set || is_set(unreachables.yfilter)) leaf_name_data.push_back(unreachables.get_name_leafdata());
-    if (rpf.is_set || is_set(rpf.yfilter)) leaf_name_data.push_back(rpf.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "unnumbered")
-    {
-        unnumbered = value;
-        unnumbered.value_namespace = name_space;
-        unnumbered.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mtu")
-    {
-        mtu = value;
-        mtu.value_namespace = name_space;
-        mtu.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unreachables")
-    {
-        unreachables = value;
-        unreachables.value_namespace = name_space;
-        unreachables.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rpf")
-    {
-        rpf = value;
-        rpf.value_namespace = name_space;
-        rpf.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "unnumbered")
-    {
-        unnumbered.yfilter = yfilter;
-    }
-    if(value_path == "mtu")
-    {
-        mtu.yfilter = yfilter;
-    }
-    if(value_path == "unreachables")
-    {
-        unreachables.yfilter = yfilter;
-    }
-    if(value_path == "rpf")
-    {
-        rpf.yfilter = yfilter;
-    }
-}
-
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4Network::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "unnumbered" || name == "mtu" || name == "unreachables" || name == "rpf")
         return true;
     return false;
 }
@@ -8408,467 +8533,342 @@ bool DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Network::Addresses::AutoC
     return false;
 }
 
-DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Accounting()
+DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::Igmp()
     :
-    monitor_feature{YType::str, "monitor-feature"},
-    prepaid_feature{YType::str, "prepaid-feature"}
+    default_vrf(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf>())
+{
+    default_vrf->parent = this;
+
+    yang_name = "igmp"; yang_parent_name = "ip-subscriber"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::~Igmp()
+{
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::has_data() const
+{
+    if (is_presence_container) return true;
+    return (default_vrf !=  nullptr && default_vrf->has_data());
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::has_operation() const
+{
+    return is_set(yfilter)
+	|| (default_vrf !=  nullptr && default_vrf->has_operation());
+}
+
+std::string DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-igmp-dyn-tmpl-cfg:igmp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "default-vrf")
+    {
+        if(default_vrf == nullptr)
+        {
+            default_vrf = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf>();
+        }
+        return default_vrf;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(default_vrf != nullptr)
+    {
+        _children["default-vrf"] = default_vrf;
+    }
+
+    return _children;
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "default-vrf")
+        return true;
+    return false;
+}
+
+DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::DefaultVrf()
+    :
+    max_groups{YType::uint32, "max-groups"},
+    access_group{YType::str, "access-group"},
+    version{YType::uint32, "version"},
+    query_interval{YType::uint32, "query-interval"},
+    query_max_response_time{YType::uint32, "query-max-response-time"},
+    multicast_mode{YType::enumeration, "multicast-mode"}
         ,
-    service_accounting(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting>())
-    , session(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session>())
-    , idle_timeout(std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout>())
+    explicit_tracking(nullptr) // presence node
 {
-    service_accounting->parent = this;
-    session->parent = this;
-    idle_timeout->parent = this;
 
-    yang_name = "accounting"; yang_parent_name = "ip-subscriber"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "default-vrf"; yang_parent_name = "igmp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::~Accounting()
+DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::~DefaultVrf()
 {
 }
 
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::has_data() const
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::has_data() const
 {
     if (is_presence_container) return true;
-    return monitor_feature.is_set
-	|| prepaid_feature.is_set
-	|| (service_accounting !=  nullptr && service_accounting->has_data())
-	|| (session !=  nullptr && session->has_data())
-	|| (idle_timeout !=  nullptr && idle_timeout->has_data());
+    return max_groups.is_set
+	|| access_group.is_set
+	|| version.is_set
+	|| query_interval.is_set
+	|| query_max_response_time.is_set
+	|| multicast_mode.is_set
+	|| (explicit_tracking !=  nullptr && explicit_tracking->has_data());
 }
 
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::has_operation() const
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(monitor_feature.yfilter)
-	|| ydk::is_set(prepaid_feature.yfilter)
-	|| (service_accounting !=  nullptr && service_accounting->has_operation())
-	|| (session !=  nullptr && session->has_operation())
-	|| (idle_timeout !=  nullptr && idle_timeout->has_operation());
+	|| ydk::is_set(max_groups.yfilter)
+	|| ydk::is_set(access_group.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| ydk::is_set(query_interval.yfilter)
+	|| ydk::is_set(query_max_response_time.yfilter)
+	|| ydk::is_set(multicast_mode.yfilter)
+	|| (explicit_tracking !=  nullptr && explicit_tracking->has_operation());
 }
 
-std::string DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::get_segment_path() const
+std::string DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-subscriber-accounting-cfg:accounting";
+    path_buffer << "default-vrf";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (monitor_feature.is_set || is_set(monitor_feature.yfilter)) leaf_name_data.push_back(monitor_feature.get_name_leafdata());
-    if (prepaid_feature.is_set || is_set(prepaid_feature.yfilter)) leaf_name_data.push_back(prepaid_feature.get_name_leafdata());
+    if (max_groups.is_set || is_set(max_groups.yfilter)) leaf_name_data.push_back(max_groups.get_name_leafdata());
+    if (access_group.is_set || is_set(access_group.yfilter)) leaf_name_data.push_back(access_group.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (query_interval.is_set || is_set(query_interval.yfilter)) leaf_name_data.push_back(query_interval.get_name_leafdata());
+    if (query_max_response_time.is_set || is_set(query_max_response_time.yfilter)) leaf_name_data.push_back(query_max_response_time.get_name_leafdata());
+    if (multicast_mode.is_set || is_set(multicast_mode.yfilter)) leaf_name_data.push_back(multicast_mode.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "service-accounting")
+    if(child_yang_name == "explicit-tracking")
     {
-        if(service_accounting == nullptr)
+        if(explicit_tracking == nullptr)
         {
-            service_accounting = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting>();
+            explicit_tracking = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking>();
         }
-        return service_accounting;
-    }
-
-    if(child_yang_name == "session")
-    {
-        if(session == nullptr)
-        {
-            session = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session>();
-        }
-        return session;
-    }
-
-    if(child_yang_name == "idle-timeout")
-    {
-        if(idle_timeout == nullptr)
-        {
-            idle_timeout = std::make_shared<DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout>();
-        }
-        return idle_timeout;
+        return explicit_tracking;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(service_accounting != nullptr)
+    if(explicit_tracking != nullptr)
     {
-        _children["service-accounting"] = service_accounting;
-    }
-
-    if(session != nullptr)
-    {
-        _children["session"] = session;
-    }
-
-    if(idle_timeout != nullptr)
-    {
-        _children["idle-timeout"] = idle_timeout;
+        _children["explicit-tracking"] = explicit_tracking;
     }
 
     return _children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "monitor-feature")
+    if(value_path == "max-groups")
     {
-        monitor_feature = value;
-        monitor_feature.value_namespace = name_space;
-        monitor_feature.value_namespace_prefix = name_space_prefix;
+        max_groups = value;
+        max_groups.value_namespace = name_space;
+        max_groups.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "prepaid-feature")
+    if(value_path == "access-group")
     {
-        prepaid_feature = value;
-        prepaid_feature.value_namespace = name_space;
-        prepaid_feature.value_namespace_prefix = name_space_prefix;
+        access_group = value;
+        access_group.value_namespace = name_space;
+        access_group.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "version")
+    {
+        version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "query-interval")
+    {
+        query_interval = value;
+        query_interval.value_namespace = name_space;
+        query_interval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "query-max-response-time")
+    {
+        query_max_response_time = value;
+        query_max_response_time.value_namespace = name_space;
+        query_max_response_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "multicast-mode")
+    {
+        multicast_mode = value;
+        multicast_mode.value_namespace = name_space;
+        multicast_mode.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "monitor-feature")
+    if(value_path == "max-groups")
     {
-        monitor_feature.yfilter = yfilter;
+        max_groups.yfilter = yfilter;
     }
-    if(value_path == "prepaid-feature")
+    if(value_path == "access-group")
     {
-        prepaid_feature.yfilter = yfilter;
+        access_group.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "query-interval")
+    {
+        query_interval.yfilter = yfilter;
+    }
+    if(value_path == "query-max-response-time")
+    {
+        query_max_response_time.yfilter = yfilter;
+    }
+    if(value_path == "multicast-mode")
+    {
+        multicast_mode.yfilter = yfilter;
     }
 }
 
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::has_leaf_or_child_of_name(const std::string & name) const
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "service-accounting" || name == "session" || name == "idle-timeout" || name == "monitor-feature" || name == "prepaid-feature")
+    if(name == "explicit-tracking" || name == "max-groups" || name == "access-group" || name == "version" || name == "query-interval" || name == "query-max-response-time" || name == "multicast-mode")
         return true;
     return false;
 }
 
-DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::ServiceAccounting()
+DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::ExplicitTracking()
     :
-    method_list_name{YType::str, "method-list-name"},
-    accounting_interim_interval{YType::uint32, "accounting-interim-interval"}
+    enable{YType::boolean, "enable"},
+    access_list_name{YType::str, "access-list-name"}
 {
 
-    yang_name = "service-accounting"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "explicit-tracking"; yang_parent_name = "default-vrf"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::~ServiceAccounting()
+DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::~ExplicitTracking()
 {
 }
 
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::has_data() const
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::has_data() const
 {
     if (is_presence_container) return true;
-    return method_list_name.is_set
-	|| accounting_interim_interval.is_set;
+    return enable.is_set
+	|| access_list_name.is_set;
 }
 
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::has_operation() const
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(method_list_name.yfilter)
-	|| ydk::is_set(accounting_interim_interval.yfilter);
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(access_list_name.yfilter);
 }
 
-std::string DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::get_segment_path() const
+std::string DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "service-accounting";
+    path_buffer << "explicit-tracking";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (method_list_name.is_set || is_set(method_list_name.yfilter)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
-    if (accounting_interim_interval.is_set || is_set(accounting_interim_interval.yfilter)) leaf_name_data.push_back(accounting_interim_interval.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (access_list_name.is_set || is_set(access_list_name.yfilter)) leaf_name_data.push_back(access_list_name.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "method-list-name")
+    if(value_path == "enable")
     {
-        method_list_name = value;
-        method_list_name.value_namespace = name_space;
-        method_list_name.value_namespace_prefix = name_space_prefix;
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "accounting-interim-interval")
+    if(value_path == "access-list-name")
     {
-        accounting_interim_interval = value;
-        accounting_interim_interval.value_namespace = name_space;
-        accounting_interim_interval.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "method-list-name")
-    {
-        method_list_name.yfilter = yfilter;
-    }
-    if(value_path == "accounting-interim-interval")
-    {
-        accounting_interim_interval.yfilter = yfilter;
+        access_list_name = value;
+        access_list_name.value_namespace = name_space;
+        access_list_name.value_namespace_prefix = name_space_prefix;
     }
 }
 
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::ServiceAccounting::has_leaf_or_child_of_name(const std::string & name) const
+void DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(name == "method-list-name" || name == "accounting-interim-interval")
-        return true;
-    return false;
-}
-
-DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::Session()
-    :
-    method_list_name{YType::str, "method-list-name"},
-    periodic_interval{YType::uint32, "periodic-interval"},
-    dual_stack_delay{YType::uint32, "dual-stack-delay"},
-    hold_acct_start{YType::enumeration, "hold-acct-start"}
-{
-
-    yang_name = "session"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::~Session()
-{
-}
-
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::has_data() const
-{
-    if (is_presence_container) return true;
-    return method_list_name.is_set
-	|| periodic_interval.is_set
-	|| dual_stack_delay.is_set
-	|| hold_acct_start.is_set;
-}
-
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(method_list_name.yfilter)
-	|| ydk::is_set(periodic_interval.yfilter)
-	|| ydk::is_set(dual_stack_delay.yfilter)
-	|| ydk::is_set(hold_acct_start.yfilter);
-}
-
-std::string DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "session";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (method_list_name.is_set || is_set(method_list_name.yfilter)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
-    if (periodic_interval.is_set || is_set(periodic_interval.yfilter)) leaf_name_data.push_back(periodic_interval.get_name_leafdata());
-    if (dual_stack_delay.is_set || is_set(dual_stack_delay.yfilter)) leaf_name_data.push_back(dual_stack_delay.get_name_leafdata());
-    if (hold_acct_start.is_set || is_set(hold_acct_start.yfilter)) leaf_name_data.push_back(hold_acct_start.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "method-list-name")
+    if(value_path == "enable")
     {
-        method_list_name = value;
-        method_list_name.value_namespace = name_space;
-        method_list_name.value_namespace_prefix = name_space_prefix;
+        enable.yfilter = yfilter;
     }
-    if(value_path == "periodic-interval")
+    if(value_path == "access-list-name")
     {
-        periodic_interval = value;
-        periodic_interval.value_namespace = name_space;
-        periodic_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dual-stack-delay")
-    {
-        dual_stack_delay = value;
-        dual_stack_delay.value_namespace = name_space;
-        dual_stack_delay.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hold-acct-start")
-    {
-        hold_acct_start = value;
-        hold_acct_start.value_namespace = name_space;
-        hold_acct_start.value_namespace_prefix = name_space_prefix;
+        access_list_name.yfilter = yfilter;
     }
 }
 
-void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::set_filter(const std::string & value_path, YFilter yfilter)
+bool DynamicTemplate::IpSubscribers::IpSubscriber::Igmp::DefaultVrf::ExplicitTracking::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(value_path == "method-list-name")
-    {
-        method_list_name.yfilter = yfilter;
-    }
-    if(value_path == "periodic-interval")
-    {
-        periodic_interval.yfilter = yfilter;
-    }
-    if(value_path == "dual-stack-delay")
-    {
-        dual_stack_delay.yfilter = yfilter;
-    }
-    if(value_path == "hold-acct-start")
-    {
-        hold_acct_start.yfilter = yfilter;
-    }
-}
-
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::Session::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "method-list-name" || name == "periodic-interval" || name == "dual-stack-delay" || name == "hold-acct-start")
-        return true;
-    return false;
-}
-
-DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::IdleTimeout()
-    :
-    timeout_value{YType::uint32, "timeout-value"},
-    threshold{YType::uint32, "threshold"},
-    direction{YType::str, "direction"}
-{
-
-    yang_name = "idle-timeout"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::~IdleTimeout()
-{
-}
-
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::has_data() const
-{
-    if (is_presence_container) return true;
-    return timeout_value.is_set
-	|| threshold.is_set
-	|| direction.is_set;
-}
-
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(timeout_value.yfilter)
-	|| ydk::is_set(threshold.yfilter)
-	|| ydk::is_set(direction.yfilter);
-}
-
-std::string DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "idle-timeout";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (timeout_value.is_set || is_set(timeout_value.yfilter)) leaf_name_data.push_back(timeout_value.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "timeout-value")
-    {
-        timeout_value = value;
-        timeout_value.value_namespace = name_space;
-        timeout_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "direction")
-    {
-        direction = value;
-        direction.value_namespace = name_space;
-        direction.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "timeout-value")
-    {
-        timeout_value.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-    if(value_path == "direction")
-    {
-        direction.yfilter = yfilter;
-    }
-}
-
-bool DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "timeout-value" || name == "threshold" || name == "direction")
+    if(name == "enable" || name == "access-list-name")
         return true;
     return false;
 }
@@ -8979,20 +8979,20 @@ DynamicTemplate::SubscriberServices::SubscriberService::SubscriberService()
     vrf{YType::str, "Cisco-IOS-XR-infra-rsi-subscriber-cfg:vrf"}
         ,
     pbr(std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Pbr>())
-    , ipv6_neighbor(std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor>())
     , ipv4_network(std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network>())
+    , ipv6_neighbor(std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor>())
+    , accounting(std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Accounting>())
     , ipv4_packet_filter(std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter>())
     , ipv6_packet_filter(std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter>())
     , ipv6_network(std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network>())
-    , accounting(std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Accounting>())
 {
     pbr->parent = this;
-    ipv6_neighbor->parent = this;
     ipv4_network->parent = this;
+    ipv6_neighbor->parent = this;
+    accounting->parent = this;
     ipv4_packet_filter->parent = this;
     ipv6_packet_filter->parent = this;
     ipv6_network->parent = this;
-    accounting->parent = this;
 
     yang_name = "subscriber-service"; yang_parent_name = "subscriber-services"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -9007,12 +9007,12 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::has_data() const
     return template_name.is_set
 	|| vrf.is_set
 	|| (pbr !=  nullptr && pbr->has_data())
-	|| (ipv6_neighbor !=  nullptr && ipv6_neighbor->has_data())
 	|| (ipv4_network !=  nullptr && ipv4_network->has_data())
+	|| (ipv6_neighbor !=  nullptr && ipv6_neighbor->has_data())
+	|| (accounting !=  nullptr && accounting->has_data())
 	|| (ipv4_packet_filter !=  nullptr && ipv4_packet_filter->has_data())
 	|| (ipv6_packet_filter !=  nullptr && ipv6_packet_filter->has_data())
-	|| (ipv6_network !=  nullptr && ipv6_network->has_data())
-	|| (accounting !=  nullptr && accounting->has_data());
+	|| (ipv6_network !=  nullptr && ipv6_network->has_data());
 }
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::has_operation() const
@@ -9021,12 +9021,12 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::has_operation() con
 	|| ydk::is_set(template_name.yfilter)
 	|| ydk::is_set(vrf.yfilter)
 	|| (pbr !=  nullptr && pbr->has_operation())
-	|| (ipv6_neighbor !=  nullptr && ipv6_neighbor->has_operation())
 	|| (ipv4_network !=  nullptr && ipv4_network->has_operation())
+	|| (ipv6_neighbor !=  nullptr && ipv6_neighbor->has_operation())
+	|| (accounting !=  nullptr && accounting->has_operation())
 	|| (ipv4_packet_filter !=  nullptr && ipv4_packet_filter->has_operation())
 	|| (ipv6_packet_filter !=  nullptr && ipv6_packet_filter->has_operation())
-	|| (ipv6_network !=  nullptr && ipv6_network->has_operation())
-	|| (accounting !=  nullptr && accounting->has_operation());
+	|| (ipv6_network !=  nullptr && ipv6_network->has_operation());
 }
 
 std::string DynamicTemplate::SubscriberServices::SubscriberService::get_absolute_path() const
@@ -9066,6 +9066,15 @@ std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberServ
         return pbr;
     }
 
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network")
+    {
+        if(ipv4_network == nullptr)
+        {
+            ipv4_network = std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network>();
+        }
+        return ipv4_network;
+    }
+
     if(child_yang_name == "Cisco-IOS-XR-ipv6-nd-subscriber-cfg:ipv6-neighbor")
     {
         if(ipv6_neighbor == nullptr)
@@ -9075,13 +9084,13 @@ std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberServ
         return ipv6_neighbor;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network")
+    if(child_yang_name == "Cisco-IOS-XR-subscriber-accounting-cfg:accounting")
     {
-        if(ipv4_network == nullptr)
+        if(accounting == nullptr)
         {
-            ipv4_network = std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network>();
+            accounting = std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Accounting>();
         }
-        return ipv4_network;
+        return accounting;
     }
 
     if(child_yang_name == "Cisco-IOS-XR-ip-pfilter-subscriber-cfg:ipv4-packet-filter")
@@ -9111,15 +9120,6 @@ std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberServ
         return ipv6_network;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-subscriber-accounting-cfg:accounting")
-    {
-        if(accounting == nullptr)
-        {
-            accounting = std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Accounting>();
-        }
-        return accounting;
-    }
-
     return nullptr;
 }
 
@@ -9132,14 +9132,19 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberS
         _children["Cisco-IOS-XR-pbr-subscriber-cfg:pbr"] = pbr;
     }
 
+    if(ipv4_network != nullptr)
+    {
+        _children["Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network"] = ipv4_network;
+    }
+
     if(ipv6_neighbor != nullptr)
     {
         _children["Cisco-IOS-XR-ipv6-nd-subscriber-cfg:ipv6-neighbor"] = ipv6_neighbor;
     }
 
-    if(ipv4_network != nullptr)
+    if(accounting != nullptr)
     {
-        _children["Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network"] = ipv4_network;
+        _children["Cisco-IOS-XR-subscriber-accounting-cfg:accounting"] = accounting;
     }
 
     if(ipv4_packet_filter != nullptr)
@@ -9155,11 +9160,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberS
     if(ipv6_network != nullptr)
     {
         _children["Cisco-IOS-XR-ipv6-ma-subscriber-cfg:ipv6-network"] = ipv6_network;
-    }
-
-    if(accounting != nullptr)
-    {
-        _children["Cisco-IOS-XR-subscriber-accounting-cfg:accounting"] = accounting;
     }
 
     return _children;
@@ -9195,7 +9195,7 @@ void DynamicTemplate::SubscriberServices::SubscriberService::set_filter(const st
 
 bool DynamicTemplate::SubscriberServices::SubscriberService::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "pbr" || name == "ipv6-neighbor" || name == "ipv4-network" || name == "ipv4-packet-filter" || name == "ipv6-packet-filter" || name == "ipv6-network" || name == "accounting" || name == "template-name" || name == "vrf")
+    if(name == "pbr" || name == "ipv4-network" || name == "ipv6-neighbor" || name == "accounting" || name == "ipv4-packet-filter" || name == "ipv6-packet-filter" || name == "ipv6-network" || name == "template-name" || name == "vrf")
         return true;
     return false;
 }
@@ -9371,6 +9371,126 @@ void DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServicePolicy:
 bool DynamicTemplate::SubscriberServices::SubscriberService::Pbr::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "input")
+        return true;
+    return false;
+}
+
+DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::Ipv4Network()
+    :
+    unnumbered{YType::str, "unnumbered"},
+    mtu{YType::uint32, "mtu"},
+    unreachables{YType::boolean, "unreachables"},
+    rpf{YType::boolean, "rpf"}
+{
+
+    yang_name = "ipv4-network"; yang_parent_name = "subscriber-service"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::~Ipv4Network()
+{
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::has_data() const
+{
+    if (is_presence_container) return true;
+    return unnumbered.is_set
+	|| mtu.is_set
+	|| unreachables.is_set
+	|| rpf.is_set;
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unnumbered.yfilter)
+	|| ydk::is_set(mtu.yfilter)
+	|| ydk::is_set(unreachables.yfilter)
+	|| ydk::is_set(rpf.yfilter);
+}
+
+std::string DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unnumbered.is_set || is_set(unnumbered.yfilter)) leaf_name_data.push_back(unnumbered.get_name_leafdata());
+    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
+    if (unreachables.is_set || is_set(unreachables.yfilter)) leaf_name_data.push_back(unreachables.get_name_leafdata());
+    if (rpf.is_set || is_set(rpf.yfilter)) leaf_name_data.push_back(rpf.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unnumbered")
+    {
+        unnumbered = value;
+        unnumbered.value_namespace = name_space;
+        unnumbered.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mtu")
+    {
+        mtu = value;
+        mtu.value_namespace = name_space;
+        mtu.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "unreachables")
+    {
+        unreachables = value;
+        unreachables.value_namespace = name_space;
+        unreachables.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rpf")
+    {
+        rpf = value;
+        rpf.value_namespace = name_space;
+        rpf.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unnumbered")
+    {
+        unnumbered.yfilter = yfilter;
+    }
+    if(value_path == "mtu")
+    {
+        mtu.yfilter = yfilter;
+    }
+    if(value_path == "unreachables")
+    {
+        unreachables.yfilter = yfilter;
+    }
+    if(value_path == "rpf")
+    {
+        rpf.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unnumbered" || name == "mtu" || name == "unreachables" || name == "rpf")
         return true;
     return false;
 }
@@ -10059,122 +10179,467 @@ bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor::RaIni
     return false;
 }
 
-DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::Ipv4Network()
+DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Accounting()
     :
-    unnumbered{YType::str, "unnumbered"},
-    mtu{YType::uint32, "mtu"},
-    unreachables{YType::boolean, "unreachables"},
-    rpf{YType::boolean, "rpf"}
+    monitor_feature{YType::str, "monitor-feature"},
+    prepaid_feature{YType::str, "prepaid-feature"}
+        ,
+    service_accounting(std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting>())
+    , session(std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session>())
+    , idle_timeout(std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout>())
 {
+    service_accounting->parent = this;
+    session->parent = this;
+    idle_timeout->parent = this;
 
-    yang_name = "ipv4-network"; yang_parent_name = "subscriber-service"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "accounting"; yang_parent_name = "subscriber-service"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::~Ipv4Network()
+DynamicTemplate::SubscriberServices::SubscriberService::Accounting::~Accounting()
 {
 }
 
-bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::has_data() const
+bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::has_data() const
 {
     if (is_presence_container) return true;
-    return unnumbered.is_set
-	|| mtu.is_set
-	|| unreachables.is_set
-	|| rpf.is_set;
+    return monitor_feature.is_set
+	|| prepaid_feature.is_set
+	|| (service_accounting !=  nullptr && service_accounting->has_data())
+	|| (session !=  nullptr && session->has_data())
+	|| (idle_timeout !=  nullptr && idle_timeout->has_data());
 }
 
-bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::has_operation() const
+bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(unnumbered.yfilter)
-	|| ydk::is_set(mtu.yfilter)
-	|| ydk::is_set(unreachables.yfilter)
-	|| ydk::is_set(rpf.yfilter);
+	|| ydk::is_set(monitor_feature.yfilter)
+	|| ydk::is_set(prepaid_feature.yfilter)
+	|| (service_accounting !=  nullptr && service_accounting->has_operation())
+	|| (session !=  nullptr && session->has_operation())
+	|| (idle_timeout !=  nullptr && idle_timeout->has_operation());
 }
 
-std::string DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::get_segment_path() const
+std::string DynamicTemplate::SubscriberServices::SubscriberService::Accounting::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-ma-subscriber-cfg:ipv4-network";
+    path_buffer << "Cisco-IOS-XR-subscriber-accounting-cfg:accounting";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServices::SubscriberService::Accounting::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (unnumbered.is_set || is_set(unnumbered.yfilter)) leaf_name_data.push_back(unnumbered.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (unreachables.is_set || is_set(unreachables.yfilter)) leaf_name_data.push_back(unreachables.get_name_leafdata());
-    if (rpf.is_set || is_set(rpf.yfilter)) leaf_name_data.push_back(rpf.get_name_leafdata());
+    if (monitor_feature.is_set || is_set(monitor_feature.yfilter)) leaf_name_data.push_back(monitor_feature.get_name_leafdata());
+    if (prepaid_feature.is_set || is_set(prepaid_feature.yfilter)) leaf_name_data.push_back(prepaid_feature.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "service-accounting")
+    {
+        if(service_accounting == nullptr)
+        {
+            service_accounting = std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting>();
+        }
+        return service_accounting;
+    }
+
+    if(child_yang_name == "session")
+    {
+        if(session == nullptr)
+        {
+            session = std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session>();
+        }
+        return session;
+    }
+
+    if(child_yang_name == "idle-timeout")
+    {
+        if(idle_timeout == nullptr)
+        {
+            idle_timeout = std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout>();
+        }
+        return idle_timeout;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(service_accounting != nullptr)
+    {
+        _children["service-accounting"] = service_accounting;
+    }
+
+    if(session != nullptr)
+    {
+        _children["session"] = session;
+    }
+
+    if(idle_timeout != nullptr)
+    {
+        _children["idle-timeout"] = idle_timeout;
+    }
+
+    return _children;
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "monitor-feature")
+    {
+        monitor_feature = value;
+        monitor_feature.value_namespace = name_space;
+        monitor_feature.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prepaid-feature")
+    {
+        prepaid_feature = value;
+        prepaid_feature.value_namespace = name_space;
+        prepaid_feature.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "monitor-feature")
+    {
+        monitor_feature.yfilter = yfilter;
+    }
+    if(value_path == "prepaid-feature")
+    {
+        prepaid_feature.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "service-accounting" || name == "session" || name == "idle-timeout" || name == "monitor-feature" || name == "prepaid-feature")
+        return true;
+    return false;
+}
+
+DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::ServiceAccounting()
+    :
+    method_list_name{YType::str, "method-list-name"},
+    accounting_interim_interval{YType::uint32, "accounting-interim-interval"}
+{
+
+    yang_name = "service-accounting"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::~ServiceAccounting()
+{
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::has_data() const
+{
+    if (is_presence_container) return true;
+    return method_list_name.is_set
+	|| accounting_interim_interval.is_set;
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(method_list_name.yfilter)
+	|| ydk::is_set(accounting_interim_interval.yfilter);
+}
+
+std::string DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "service-accounting";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (method_list_name.is_set || is_set(method_list_name.yfilter)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
+    if (accounting_interim_interval.is_set || is_set(accounting_interim_interval.yfilter)) leaf_name_data.push_back(accounting_interim_interval.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "unnumbered")
+    if(value_path == "method-list-name")
     {
-        unnumbered = value;
-        unnumbered.value_namespace = name_space;
-        unnumbered.value_namespace_prefix = name_space_prefix;
+        method_list_name = value;
+        method_list_name.value_namespace = name_space;
+        method_list_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "mtu")
+    if(value_path == "accounting-interim-interval")
     {
-        mtu = value;
-        mtu.value_namespace = name_space;
-        mtu.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unreachables")
-    {
-        unreachables = value;
-        unreachables.value_namespace = name_space;
-        unreachables.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rpf")
-    {
-        rpf = value;
-        rpf.value_namespace = name_space;
-        rpf.value_namespace_prefix = name_space_prefix;
+        accounting_interim_interval = value;
+        accounting_interim_interval.value_namespace = name_space;
+        accounting_interim_interval.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::set_filter(const std::string & value_path, YFilter yfilter)
+void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "unnumbered")
+    if(value_path == "method-list-name")
     {
-        unnumbered.yfilter = yfilter;
+        method_list_name.yfilter = yfilter;
     }
-    if(value_path == "mtu")
+    if(value_path == "accounting-interim-interval")
     {
-        mtu.yfilter = yfilter;
-    }
-    if(value_path == "unreachables")
-    {
-        unreachables.yfilter = yfilter;
-    }
-    if(value_path == "rpf")
-    {
-        rpf.yfilter = yfilter;
+        accounting_interim_interval.yfilter = yfilter;
     }
 }
 
-bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network::has_leaf_or_child_of_name(const std::string & name) const
+bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "unnumbered" || name == "mtu" || name == "unreachables" || name == "rpf")
+    if(name == "method-list-name" || name == "accounting-interim-interval")
+        return true;
+    return false;
+}
+
+DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::Session()
+    :
+    method_list_name{YType::str, "method-list-name"},
+    periodic_interval{YType::uint32, "periodic-interval"},
+    dual_stack_delay{YType::uint32, "dual-stack-delay"},
+    hold_acct_start{YType::enumeration, "hold-acct-start"}
+{
+
+    yang_name = "session"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::~Session()
+{
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::has_data() const
+{
+    if (is_presence_container) return true;
+    return method_list_name.is_set
+	|| periodic_interval.is_set
+	|| dual_stack_delay.is_set
+	|| hold_acct_start.is_set;
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(method_list_name.yfilter)
+	|| ydk::is_set(periodic_interval.yfilter)
+	|| ydk::is_set(dual_stack_delay.yfilter)
+	|| ydk::is_set(hold_acct_start.yfilter);
+}
+
+std::string DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (method_list_name.is_set || is_set(method_list_name.yfilter)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
+    if (periodic_interval.is_set || is_set(periodic_interval.yfilter)) leaf_name_data.push_back(periodic_interval.get_name_leafdata());
+    if (dual_stack_delay.is_set || is_set(dual_stack_delay.yfilter)) leaf_name_data.push_back(dual_stack_delay.get_name_leafdata());
+    if (hold_acct_start.is_set || is_set(hold_acct_start.yfilter)) leaf_name_data.push_back(hold_acct_start.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "method-list-name")
+    {
+        method_list_name = value;
+        method_list_name.value_namespace = name_space;
+        method_list_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "periodic-interval")
+    {
+        periodic_interval = value;
+        periodic_interval.value_namespace = name_space;
+        periodic_interval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dual-stack-delay")
+    {
+        dual_stack_delay = value;
+        dual_stack_delay.value_namespace = name_space;
+        dual_stack_delay.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hold-acct-start")
+    {
+        hold_acct_start = value;
+        hold_acct_start.value_namespace = name_space;
+        hold_acct_start.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "method-list-name")
+    {
+        method_list_name.yfilter = yfilter;
+    }
+    if(value_path == "periodic-interval")
+    {
+        periodic_interval.yfilter = yfilter;
+    }
+    if(value_path == "dual-stack-delay")
+    {
+        dual_stack_delay.yfilter = yfilter;
+    }
+    if(value_path == "hold-acct-start")
+    {
+        hold_acct_start.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "method-list-name" || name == "periodic-interval" || name == "dual-stack-delay" || name == "hold-acct-start")
+        return true;
+    return false;
+}
+
+DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::IdleTimeout()
+    :
+    timeout_value{YType::uint32, "timeout-value"},
+    threshold{YType::uint32, "threshold"},
+    direction{YType::str, "direction"}
+{
+
+    yang_name = "idle-timeout"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::~IdleTimeout()
+{
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::has_data() const
+{
+    if (is_presence_container) return true;
+    return timeout_value.is_set
+	|| threshold.is_set
+	|| direction.is_set;
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(timeout_value.yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(direction.yfilter);
+}
+
+std::string DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "idle-timeout";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (timeout_value.is_set || is_set(timeout_value.yfilter)) leaf_name_data.push_back(timeout_value.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "timeout-value")
+    {
+        timeout_value = value;
+        timeout_value.value_namespace = name_space;
+        timeout_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "direction")
+    {
+        direction = value;
+        direction.value_namespace = name_space;
+        direction.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "timeout-value")
+    {
+        timeout_value.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "direction")
+    {
+        direction.yfilter = yfilter;
+    }
+}
+
+bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "timeout-value" || name == "threshold" || name == "direction")
         return true;
     return false;
 }
@@ -11112,471 +11577,6 @@ void DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addres
 bool DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network::Addresses::AutoConfiguration::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "enable")
-        return true;
-    return false;
-}
-
-DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Accounting()
-    :
-    monitor_feature{YType::str, "monitor-feature"},
-    prepaid_feature{YType::str, "prepaid-feature"}
-        ,
-    service_accounting(std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting>())
-    , session(std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session>())
-    , idle_timeout(std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout>())
-{
-    service_accounting->parent = this;
-    session->parent = this;
-    idle_timeout->parent = this;
-
-    yang_name = "accounting"; yang_parent_name = "subscriber-service"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-DynamicTemplate::SubscriberServices::SubscriberService::Accounting::~Accounting()
-{
-}
-
-bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::has_data() const
-{
-    if (is_presence_container) return true;
-    return monitor_feature.is_set
-	|| prepaid_feature.is_set
-	|| (service_accounting !=  nullptr && service_accounting->has_data())
-	|| (session !=  nullptr && session->has_data())
-	|| (idle_timeout !=  nullptr && idle_timeout->has_data());
-}
-
-bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(monitor_feature.yfilter)
-	|| ydk::is_set(prepaid_feature.yfilter)
-	|| (service_accounting !=  nullptr && service_accounting->has_operation())
-	|| (session !=  nullptr && session->has_operation())
-	|| (idle_timeout !=  nullptr && idle_timeout->has_operation());
-}
-
-std::string DynamicTemplate::SubscriberServices::SubscriberService::Accounting::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-subscriber-accounting-cfg:accounting";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServices::SubscriberService::Accounting::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (monitor_feature.is_set || is_set(monitor_feature.yfilter)) leaf_name_data.push_back(monitor_feature.get_name_leafdata());
-    if (prepaid_feature.is_set || is_set(prepaid_feature.yfilter)) leaf_name_data.push_back(prepaid_feature.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "service-accounting")
-    {
-        if(service_accounting == nullptr)
-        {
-            service_accounting = std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting>();
-        }
-        return service_accounting;
-    }
-
-    if(child_yang_name == "session")
-    {
-        if(session == nullptr)
-        {
-            session = std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session>();
-        }
-        return session;
-    }
-
-    if(child_yang_name == "idle-timeout")
-    {
-        if(idle_timeout == nullptr)
-        {
-            idle_timeout = std::make_shared<DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout>();
-        }
-        return idle_timeout;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(service_accounting != nullptr)
-    {
-        _children["service-accounting"] = service_accounting;
-    }
-
-    if(session != nullptr)
-    {
-        _children["session"] = session;
-    }
-
-    if(idle_timeout != nullptr)
-    {
-        _children["idle-timeout"] = idle_timeout;
-    }
-
-    return _children;
-}
-
-void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "monitor-feature")
-    {
-        monitor_feature = value;
-        monitor_feature.value_namespace = name_space;
-        monitor_feature.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prepaid-feature")
-    {
-        prepaid_feature = value;
-        prepaid_feature.value_namespace = name_space;
-        prepaid_feature.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "monitor-feature")
-    {
-        monitor_feature.yfilter = yfilter;
-    }
-    if(value_path == "prepaid-feature")
-    {
-        prepaid_feature.yfilter = yfilter;
-    }
-}
-
-bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "service-accounting" || name == "session" || name == "idle-timeout" || name == "monitor-feature" || name == "prepaid-feature")
-        return true;
-    return false;
-}
-
-DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::ServiceAccounting()
-    :
-    method_list_name{YType::str, "method-list-name"},
-    accounting_interim_interval{YType::uint32, "accounting-interim-interval"}
-{
-
-    yang_name = "service-accounting"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::~ServiceAccounting()
-{
-}
-
-bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::has_data() const
-{
-    if (is_presence_container) return true;
-    return method_list_name.is_set
-	|| accounting_interim_interval.is_set;
-}
-
-bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(method_list_name.yfilter)
-	|| ydk::is_set(accounting_interim_interval.yfilter);
-}
-
-std::string DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "service-accounting";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (method_list_name.is_set || is_set(method_list_name.yfilter)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
-    if (accounting_interim_interval.is_set || is_set(accounting_interim_interval.yfilter)) leaf_name_data.push_back(accounting_interim_interval.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "method-list-name")
-    {
-        method_list_name = value;
-        method_list_name.value_namespace = name_space;
-        method_list_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accounting-interim-interval")
-    {
-        accounting_interim_interval = value;
-        accounting_interim_interval.value_namespace = name_space;
-        accounting_interim_interval.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "method-list-name")
-    {
-        method_list_name.yfilter = yfilter;
-    }
-    if(value_path == "accounting-interim-interval")
-    {
-        accounting_interim_interval.yfilter = yfilter;
-    }
-}
-
-bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::ServiceAccounting::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "method-list-name" || name == "accounting-interim-interval")
-        return true;
-    return false;
-}
-
-DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::Session()
-    :
-    method_list_name{YType::str, "method-list-name"},
-    periodic_interval{YType::uint32, "periodic-interval"},
-    dual_stack_delay{YType::uint32, "dual-stack-delay"},
-    hold_acct_start{YType::enumeration, "hold-acct-start"}
-{
-
-    yang_name = "session"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::~Session()
-{
-}
-
-bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::has_data() const
-{
-    if (is_presence_container) return true;
-    return method_list_name.is_set
-	|| periodic_interval.is_set
-	|| dual_stack_delay.is_set
-	|| hold_acct_start.is_set;
-}
-
-bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(method_list_name.yfilter)
-	|| ydk::is_set(periodic_interval.yfilter)
-	|| ydk::is_set(dual_stack_delay.yfilter)
-	|| ydk::is_set(hold_acct_start.yfilter);
-}
-
-std::string DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "session";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (method_list_name.is_set || is_set(method_list_name.yfilter)) leaf_name_data.push_back(method_list_name.get_name_leafdata());
-    if (periodic_interval.is_set || is_set(periodic_interval.yfilter)) leaf_name_data.push_back(periodic_interval.get_name_leafdata());
-    if (dual_stack_delay.is_set || is_set(dual_stack_delay.yfilter)) leaf_name_data.push_back(dual_stack_delay.get_name_leafdata());
-    if (hold_acct_start.is_set || is_set(hold_acct_start.yfilter)) leaf_name_data.push_back(hold_acct_start.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "method-list-name")
-    {
-        method_list_name = value;
-        method_list_name.value_namespace = name_space;
-        method_list_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "periodic-interval")
-    {
-        periodic_interval = value;
-        periodic_interval.value_namespace = name_space;
-        periodic_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dual-stack-delay")
-    {
-        dual_stack_delay = value;
-        dual_stack_delay.value_namespace = name_space;
-        dual_stack_delay.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hold-acct-start")
-    {
-        hold_acct_start = value;
-        hold_acct_start.value_namespace = name_space;
-        hold_acct_start.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "method-list-name")
-    {
-        method_list_name.yfilter = yfilter;
-    }
-    if(value_path == "periodic-interval")
-    {
-        periodic_interval.yfilter = yfilter;
-    }
-    if(value_path == "dual-stack-delay")
-    {
-        dual_stack_delay.yfilter = yfilter;
-    }
-    if(value_path == "hold-acct-start")
-    {
-        hold_acct_start.yfilter = yfilter;
-    }
-}
-
-bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::Session::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "method-list-name" || name == "periodic-interval" || name == "dual-stack-delay" || name == "hold-acct-start")
-        return true;
-    return false;
-}
-
-DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::IdleTimeout()
-    :
-    timeout_value{YType::uint32, "timeout-value"},
-    threshold{YType::uint32, "threshold"},
-    direction{YType::str, "direction"}
-{
-
-    yang_name = "idle-timeout"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::~IdleTimeout()
-{
-}
-
-bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::has_data() const
-{
-    if (is_presence_container) return true;
-    return timeout_value.is_set
-	|| threshold.is_set
-	|| direction.is_set;
-}
-
-bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(timeout_value.yfilter)
-	|| ydk::is_set(threshold.yfilter)
-	|| ydk::is_set(direction.yfilter);
-}
-
-std::string DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "idle-timeout";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (timeout_value.is_set || is_set(timeout_value.yfilter)) leaf_name_data.push_back(timeout_value.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "timeout-value")
-    {
-        timeout_value = value;
-        timeout_value.value_namespace = name_space;
-        timeout_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "direction")
-    {
-        direction = value;
-        direction.value_namespace = name_space;
-        direction.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "timeout-value")
-    {
-        timeout_value.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-    if(value_path == "direction")
-    {
-        direction.yfilter = yfilter;
-    }
-}
-
-bool DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "timeout-value" || name == "threshold" || name == "direction")
         return true;
     return false;
 }

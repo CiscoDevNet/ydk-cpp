@@ -133,16 +133,16 @@ ActiveNodes::ActiveNode::ActiveNode()
     :
     node_name{YType::str, "node-name"}
         ,
-    watchdog_node_threshold(std::make_shared<ActiveNodes::ActiveNode::WatchdogNodeThreshold>())
-    , ltrace(std::make_shared<ActiveNodes::ActiveNode::Ltrace>())
+    ltrace(std::make_shared<ActiveNodes::ActiveNode::Ltrace>())
     , clock_interface(std::make_shared<ActiveNodes::ActiveNode::ClockInterface>())
     , ssrp_group(std::make_shared<ActiveNodes::ActiveNode::SsrpGroup>())
+    , watchdog_node_threshold(std::make_shared<ActiveNodes::ActiveNode::WatchdogNodeThreshold>())
     , lpts_local(std::make_shared<ActiveNodes::ActiveNode::LptsLocal>())
 {
-    watchdog_node_threshold->parent = this;
     ltrace->parent = this;
     clock_interface->parent = this;
     ssrp_group->parent = this;
+    watchdog_node_threshold->parent = this;
     lpts_local->parent = this;
 
     yang_name = "active-node"; yang_parent_name = "active-nodes"; is_top_level_class = false; has_list_ancestor = false; 
@@ -156,10 +156,10 @@ bool ActiveNodes::ActiveNode::has_data() const
 {
     if (is_presence_container) return true;
     return node_name.is_set
-	|| (watchdog_node_threshold !=  nullptr && watchdog_node_threshold->has_data())
 	|| (ltrace !=  nullptr && ltrace->has_data())
 	|| (clock_interface !=  nullptr && clock_interface->has_data())
 	|| (ssrp_group !=  nullptr && ssrp_group->has_data())
+	|| (watchdog_node_threshold !=  nullptr && watchdog_node_threshold->has_data())
 	|| (lpts_local !=  nullptr && lpts_local->has_data());
 }
 
@@ -167,10 +167,10 @@ bool ActiveNodes::ActiveNode::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node_name.yfilter)
-	|| (watchdog_node_threshold !=  nullptr && watchdog_node_threshold->has_operation())
 	|| (ltrace !=  nullptr && ltrace->has_operation())
 	|| (clock_interface !=  nullptr && clock_interface->has_operation())
 	|| (ssrp_group !=  nullptr && ssrp_group->has_operation())
+	|| (watchdog_node_threshold !=  nullptr && watchdog_node_threshold->has_operation())
 	|| (lpts_local !=  nullptr && lpts_local->has_operation());
 }
 
@@ -201,15 +201,6 @@ std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::get_name
 
 std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold")
-    {
-        if(watchdog_node_threshold == nullptr)
-        {
-            watchdog_node_threshold = std::make_shared<ActiveNodes::ActiveNode::WatchdogNodeThreshold>();
-        }
-        return watchdog_node_threshold;
-    }
-
     if(child_yang_name == "Cisco-IOS-XR-infra-ltrace-cfg:ltrace")
     {
         if(ltrace == nullptr)
@@ -237,6 +228,15 @@ std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::get_child_by_name(const st
         return ssrp_group;
     }
 
+    if(child_yang_name == "Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold")
+    {
+        if(watchdog_node_threshold == nullptr)
+        {
+            watchdog_node_threshold = std::make_shared<ActiveNodes::ActiveNode::WatchdogNodeThreshold>();
+        }
+        return watchdog_node_threshold;
+    }
+
     if(child_yang_name == "Cisco-IOS-XR-lpts-pre-ifib-cfg:lpts-local")
     {
         if(lpts_local == nullptr)
@@ -253,11 +253,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::get
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(watchdog_node_threshold != nullptr)
-    {
-        _children["Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold"] = watchdog_node_threshold;
-    }
-
     if(ltrace != nullptr)
     {
         _children["Cisco-IOS-XR-infra-ltrace-cfg:ltrace"] = ltrace;
@@ -271,6 +266,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::get
     if(ssrp_group != nullptr)
     {
         _children["Cisco-IOS-XR-ppp-ma-ssrp-cfg:ssrp-group"] = ssrp_group;
+    }
+
+    if(watchdog_node_threshold != nullptr)
+    {
+        _children["Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold"] = watchdog_node_threshold;
     }
 
     if(lpts_local != nullptr)
@@ -301,319 +301,7 @@ void ActiveNodes::ActiveNode::set_filter(const std::string & value_path, YFilter
 
 bool ActiveNodes::ActiveNode::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "watchdog-node-threshold" || name == "ltrace" || name == "clock-interface" || name == "ssrp-group" || name == "lpts-local" || name == "node-name")
-        return true;
-    return false;
-}
-
-ActiveNodes::ActiveNode::WatchdogNodeThreshold::WatchdogNodeThreshold()
-    :
-    disk_threshold(std::make_shared<ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold>())
-    , memory_threshold(std::make_shared<ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold>())
-{
-    disk_threshold->parent = this;
-    memory_threshold->parent = this;
-
-    yang_name = "watchdog-node-threshold"; yang_parent_name = "active-node"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-ActiveNodes::ActiveNode::WatchdogNodeThreshold::~WatchdogNodeThreshold()
-{
-}
-
-bool ActiveNodes::ActiveNode::WatchdogNodeThreshold::has_data() const
-{
-    if (is_presence_container) return true;
-    return (disk_threshold !=  nullptr && disk_threshold->has_data())
-	|| (memory_threshold !=  nullptr && memory_threshold->has_data());
-}
-
-bool ActiveNodes::ActiveNode::WatchdogNodeThreshold::has_operation() const
-{
-    return is_set(yfilter)
-	|| (disk_threshold !=  nullptr && disk_threshold->has_operation())
-	|| (memory_threshold !=  nullptr && memory_threshold->has_operation());
-}
-
-std::string ActiveNodes::ActiveNode::WatchdogNodeThreshold::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::WatchdogNodeThreshold::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::WatchdogNodeThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "disk-threshold")
-    {
-        if(disk_threshold == nullptr)
-        {
-            disk_threshold = std::make_shared<ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold>();
-        }
-        return disk_threshold;
-    }
-
-    if(child_yang_name == "memory-threshold")
-    {
-        if(memory_threshold == nullptr)
-        {
-            memory_threshold = std::make_shared<ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold>();
-        }
-        return memory_threshold;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::WatchdogNodeThreshold::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(disk_threshold != nullptr)
-    {
-        _children["disk-threshold"] = disk_threshold;
-    }
-
-    if(memory_threshold != nullptr)
-    {
-        _children["memory-threshold"] = memory_threshold;
-    }
-
-    return _children;
-}
-
-void ActiveNodes::ActiveNode::WatchdogNodeThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ActiveNodes::ActiveNode::WatchdogNodeThreshold::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ActiveNodes::ActiveNode::WatchdogNodeThreshold::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "disk-threshold" || name == "memory-threshold")
-        return true;
-    return false;
-}
-
-ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::DiskThreshold()
-    :
-    minor{YType::uint32, "minor"},
-    severe{YType::uint32, "severe"},
-    critical{YType::uint32, "critical"}
-{
-
-    yang_name = "disk-threshold"; yang_parent_name = "watchdog-node-threshold"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::~DiskThreshold()
-{
-}
-
-bool ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::has_data() const
-{
-    if (is_presence_container) return true;
-    return minor.is_set
-	|| severe.is_set
-	|| critical.is_set;
-}
-
-bool ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(minor.yfilter)
-	|| ydk::is_set(severe.yfilter)
-	|| ydk::is_set(critical.yfilter);
-}
-
-std::string ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "disk-threshold";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (minor.is_set || is_set(minor.yfilter)) leaf_name_data.push_back(minor.get_name_leafdata());
-    if (severe.is_set || is_set(severe.yfilter)) leaf_name_data.push_back(severe.get_name_leafdata());
-    if (critical.is_set || is_set(critical.yfilter)) leaf_name_data.push_back(critical.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "minor")
-    {
-        minor = value;
-        minor.value_namespace = name_space;
-        minor.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "severe")
-    {
-        severe = value;
-        severe.value_namespace = name_space;
-        severe.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "critical")
-    {
-        critical = value;
-        critical.value_namespace = name_space;
-        critical.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "minor")
-    {
-        minor.yfilter = yfilter;
-    }
-    if(value_path == "severe")
-    {
-        severe.yfilter = yfilter;
-    }
-    if(value_path == "critical")
-    {
-        critical.yfilter = yfilter;
-    }
-}
-
-bool ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "minor" || name == "severe" || name == "critical")
-        return true;
-    return false;
-}
-
-ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::MemoryThreshold()
-    :
-    minor{YType::uint32, "minor"},
-    severe{YType::uint32, "severe"},
-    critical{YType::uint32, "critical"}
-{
-
-    yang_name = "memory-threshold"; yang_parent_name = "watchdog-node-threshold"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::~MemoryThreshold()
-{
-}
-
-bool ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::has_data() const
-{
-    if (is_presence_container) return true;
-    return minor.is_set
-	|| severe.is_set
-	|| critical.is_set;
-}
-
-bool ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(minor.yfilter)
-	|| ydk::is_set(severe.yfilter)
-	|| ydk::is_set(critical.yfilter);
-}
-
-std::string ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "memory-threshold";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (minor.is_set || is_set(minor.yfilter)) leaf_name_data.push_back(minor.get_name_leafdata());
-    if (severe.is_set || is_set(severe.yfilter)) leaf_name_data.push_back(severe.get_name_leafdata());
-    if (critical.is_set || is_set(critical.yfilter)) leaf_name_data.push_back(critical.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "minor")
-    {
-        minor = value;
-        minor.value_namespace = name_space;
-        minor.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "severe")
-    {
-        severe = value;
-        severe.value_namespace = name_space;
-        severe.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "critical")
-    {
-        critical = value;
-        critical.value_namespace = name_space;
-        critical.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "minor")
-    {
-        minor.yfilter = yfilter;
-    }
-    if(value_path == "severe")
-    {
-        severe.yfilter = yfilter;
-    }
-    if(value_path == "critical")
-    {
-        critical.yfilter = yfilter;
-    }
-}
-
-bool ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "minor" || name == "severe" || name == "critical")
+    if(name == "ltrace" || name == "clock-interface" || name == "ssrp-group" || name == "watchdog-node-threshold" || name == "lpts-local" || name == "node-name")
         return true;
     return false;
 }
@@ -2171,6 +1859,318 @@ bool ActiveNodes::ActiveNode::SsrpGroup::Groups::Group::has_leaf_or_child_of_nam
     return false;
 }
 
+ActiveNodes::ActiveNode::WatchdogNodeThreshold::WatchdogNodeThreshold()
+    :
+    disk_threshold(std::make_shared<ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold>())
+    , memory_threshold(std::make_shared<ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold>())
+{
+    disk_threshold->parent = this;
+    memory_threshold->parent = this;
+
+    yang_name = "watchdog-node-threshold"; yang_parent_name = "active-node"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+ActiveNodes::ActiveNode::WatchdogNodeThreshold::~WatchdogNodeThreshold()
+{
+}
+
+bool ActiveNodes::ActiveNode::WatchdogNodeThreshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return (disk_threshold !=  nullptr && disk_threshold->has_data())
+	|| (memory_threshold !=  nullptr && memory_threshold->has_data());
+}
+
+bool ActiveNodes::ActiveNode::WatchdogNodeThreshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| (disk_threshold !=  nullptr && disk_threshold->has_operation())
+	|| (memory_threshold !=  nullptr && memory_threshold->has_operation());
+}
+
+std::string ActiveNodes::ActiveNode::WatchdogNodeThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::WatchdogNodeThreshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::WatchdogNodeThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "disk-threshold")
+    {
+        if(disk_threshold == nullptr)
+        {
+            disk_threshold = std::make_shared<ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold>();
+        }
+        return disk_threshold;
+    }
+
+    if(child_yang_name == "memory-threshold")
+    {
+        if(memory_threshold == nullptr)
+        {
+            memory_threshold = std::make_shared<ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold>();
+        }
+        return memory_threshold;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::WatchdogNodeThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(disk_threshold != nullptr)
+    {
+        _children["disk-threshold"] = disk_threshold;
+    }
+
+    if(memory_threshold != nullptr)
+    {
+        _children["memory-threshold"] = memory_threshold;
+    }
+
+    return _children;
+}
+
+void ActiveNodes::ActiveNode::WatchdogNodeThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ActiveNodes::ActiveNode::WatchdogNodeThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ActiveNodes::ActiveNode::WatchdogNodeThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disk-threshold" || name == "memory-threshold")
+        return true;
+    return false;
+}
+
+ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::DiskThreshold()
+    :
+    minor{YType::uint32, "minor"},
+    severe{YType::uint32, "severe"},
+    critical{YType::uint32, "critical"}
+{
+
+    yang_name = "disk-threshold"; yang_parent_name = "watchdog-node-threshold"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::~DiskThreshold()
+{
+}
+
+bool ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return minor.is_set
+	|| severe.is_set
+	|| critical.is_set;
+}
+
+bool ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(minor.yfilter)
+	|| ydk::is_set(severe.yfilter)
+	|| ydk::is_set(critical.yfilter);
+}
+
+std::string ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "disk-threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (minor.is_set || is_set(minor.yfilter)) leaf_name_data.push_back(minor.get_name_leafdata());
+    if (severe.is_set || is_set(severe.yfilter)) leaf_name_data.push_back(severe.get_name_leafdata());
+    if (critical.is_set || is_set(critical.yfilter)) leaf_name_data.push_back(critical.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "minor")
+    {
+        minor = value;
+        minor.value_namespace = name_space;
+        minor.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "severe")
+    {
+        severe = value;
+        severe.value_namespace = name_space;
+        severe.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "critical")
+    {
+        critical = value;
+        critical.value_namespace = name_space;
+        critical.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "minor")
+    {
+        minor.yfilter = yfilter;
+    }
+    if(value_path == "severe")
+    {
+        severe.yfilter = yfilter;
+    }
+    if(value_path == "critical")
+    {
+        critical.yfilter = yfilter;
+    }
+}
+
+bool ActiveNodes::ActiveNode::WatchdogNodeThreshold::DiskThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minor" || name == "severe" || name == "critical")
+        return true;
+    return false;
+}
+
+ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::MemoryThreshold()
+    :
+    minor{YType::uint32, "minor"},
+    severe{YType::uint32, "severe"},
+    critical{YType::uint32, "critical"}
+{
+
+    yang_name = "memory-threshold"; yang_parent_name = "watchdog-node-threshold"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::~MemoryThreshold()
+{
+}
+
+bool ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return minor.is_set
+	|| severe.is_set
+	|| critical.is_set;
+}
+
+bool ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(minor.yfilter)
+	|| ydk::is_set(severe.yfilter)
+	|| ydk::is_set(critical.yfilter);
+}
+
+std::string ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "memory-threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (minor.is_set || is_set(minor.yfilter)) leaf_name_data.push_back(minor.get_name_leafdata());
+    if (severe.is_set || is_set(severe.yfilter)) leaf_name_data.push_back(severe.get_name_leafdata());
+    if (critical.is_set || is_set(critical.yfilter)) leaf_name_data.push_back(critical.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "minor")
+    {
+        minor = value;
+        minor.value_namespace = name_space;
+        minor.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "severe")
+    {
+        severe = value;
+        severe.value_namespace = name_space;
+        severe.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "critical")
+    {
+        critical = value;
+        critical.value_namespace = name_space;
+        critical.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "minor")
+    {
+        minor.yfilter = yfilter;
+    }
+    if(value_path == "severe")
+    {
+        severe.yfilter = yfilter;
+    }
+    if(value_path == "critical")
+    {
+        critical.yfilter = yfilter;
+    }
+}
+
+bool ActiveNodes::ActiveNode::WatchdogNodeThreshold::MemoryThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minor" || name == "severe" || name == "critical")
+        return true;
+    return false;
+}
+
 ActiveNodes::ActiveNode::LptsLocal::LptsLocal()
     :
     ipolicer_local_tables(std::make_shared<ActiveNodes::ActiveNode::LptsLocal::IpolicerLocalTables>())
@@ -3470,14 +3470,14 @@ PreconfiguredNodes::PreconfiguredNode::PreconfiguredNode()
     :
     node_name{YType::str, "node-name"}
         ,
-    watchdog_node_threshold(std::make_shared<PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold>())
-    , ltrace(std::make_shared<PreconfiguredNodes::PreconfiguredNode::Ltrace>())
+    ltrace(std::make_shared<PreconfiguredNodes::PreconfiguredNode::Ltrace>())
     , clock_interface(std::make_shared<PreconfiguredNodes::PreconfiguredNode::ClockInterface>())
+    , watchdog_node_threshold(std::make_shared<PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold>())
     , lpts_local(std::make_shared<PreconfiguredNodes::PreconfiguredNode::LptsLocal>())
 {
-    watchdog_node_threshold->parent = this;
     ltrace->parent = this;
     clock_interface->parent = this;
+    watchdog_node_threshold->parent = this;
     lpts_local->parent = this;
 
     yang_name = "preconfigured-node"; yang_parent_name = "preconfigured-nodes"; is_top_level_class = false; has_list_ancestor = false; 
@@ -3491,9 +3491,9 @@ bool PreconfiguredNodes::PreconfiguredNode::has_data() const
 {
     if (is_presence_container) return true;
     return node_name.is_set
-	|| (watchdog_node_threshold !=  nullptr && watchdog_node_threshold->has_data())
 	|| (ltrace !=  nullptr && ltrace->has_data())
 	|| (clock_interface !=  nullptr && clock_interface->has_data())
+	|| (watchdog_node_threshold !=  nullptr && watchdog_node_threshold->has_data())
 	|| (lpts_local !=  nullptr && lpts_local->has_data());
 }
 
@@ -3501,9 +3501,9 @@ bool PreconfiguredNodes::PreconfiguredNode::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node_name.yfilter)
-	|| (watchdog_node_threshold !=  nullptr && watchdog_node_threshold->has_operation())
 	|| (ltrace !=  nullptr && ltrace->has_operation())
 	|| (clock_interface !=  nullptr && clock_interface->has_operation())
+	|| (watchdog_node_threshold !=  nullptr && watchdog_node_threshold->has_operation())
 	|| (lpts_local !=  nullptr && lpts_local->has_operation());
 }
 
@@ -3534,15 +3534,6 @@ std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::Preconfigured
 
 std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold")
-    {
-        if(watchdog_node_threshold == nullptr)
-        {
-            watchdog_node_threshold = std::make_shared<PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold>();
-        }
-        return watchdog_node_threshold;
-    }
-
     if(child_yang_name == "Cisco-IOS-XR-infra-ltrace-cfg:ltrace")
     {
         if(ltrace == nullptr)
@@ -3561,6 +3552,15 @@ std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::get_child_by
         return clock_interface;
     }
 
+    if(child_yang_name == "Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold")
+    {
+        if(watchdog_node_threshold == nullptr)
+        {
+            watchdog_node_threshold = std::make_shared<PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold>();
+        }
+        return watchdog_node_threshold;
+    }
+
     if(child_yang_name == "Cisco-IOS-XR-lpts-pre-ifib-cfg:lpts-local")
     {
         if(lpts_local == nullptr)
@@ -3577,11 +3577,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::Preconfi
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(watchdog_node_threshold != nullptr)
-    {
-        _children["Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold"] = watchdog_node_threshold;
-    }
-
     if(ltrace != nullptr)
     {
         _children["Cisco-IOS-XR-infra-ltrace-cfg:ltrace"] = ltrace;
@@ -3590,6 +3585,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::Preconfi
     if(clock_interface != nullptr)
     {
         _children["Cisco-IOS-XR-freqsync-cfg:clock-interface"] = clock_interface;
+    }
+
+    if(watchdog_node_threshold != nullptr)
+    {
+        _children["Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold"] = watchdog_node_threshold;
     }
 
     if(lpts_local != nullptr)
@@ -3620,319 +3620,7 @@ void PreconfiguredNodes::PreconfiguredNode::set_filter(const std::string & value
 
 bool PreconfiguredNodes::PreconfiguredNode::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "watchdog-node-threshold" || name == "ltrace" || name == "clock-interface" || name == "lpts-local" || name == "node-name")
-        return true;
-    return false;
-}
-
-PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::WatchdogNodeThreshold()
-    :
-    disk_threshold(std::make_shared<PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold>())
-    , memory_threshold(std::make_shared<PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold>())
-{
-    disk_threshold->parent = this;
-    memory_threshold->parent = this;
-
-    yang_name = "watchdog-node-threshold"; yang_parent_name = "preconfigured-node"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::~WatchdogNodeThreshold()
-{
-}
-
-bool PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::has_data() const
-{
-    if (is_presence_container) return true;
-    return (disk_threshold !=  nullptr && disk_threshold->has_data())
-	|| (memory_threshold !=  nullptr && memory_threshold->has_data());
-}
-
-bool PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::has_operation() const
-{
-    return is_set(yfilter)
-	|| (disk_threshold !=  nullptr && disk_threshold->has_operation())
-	|| (memory_threshold !=  nullptr && memory_threshold->has_operation());
-}
-
-std::string PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "disk-threshold")
-    {
-        if(disk_threshold == nullptr)
-        {
-            disk_threshold = std::make_shared<PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold>();
-        }
-        return disk_threshold;
-    }
-
-    if(child_yang_name == "memory-threshold")
-    {
-        if(memory_threshold == nullptr)
-        {
-            memory_threshold = std::make_shared<PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold>();
-        }
-        return memory_threshold;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(disk_threshold != nullptr)
-    {
-        _children["disk-threshold"] = disk_threshold;
-    }
-
-    if(memory_threshold != nullptr)
-    {
-        _children["memory-threshold"] = memory_threshold;
-    }
-
-    return _children;
-}
-
-void PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "disk-threshold" || name == "memory-threshold")
-        return true;
-    return false;
-}
-
-PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::DiskThreshold()
-    :
-    minor{YType::uint32, "minor"},
-    severe{YType::uint32, "severe"},
-    critical{YType::uint32, "critical"}
-{
-
-    yang_name = "disk-threshold"; yang_parent_name = "watchdog-node-threshold"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::~DiskThreshold()
-{
-}
-
-bool PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::has_data() const
-{
-    if (is_presence_container) return true;
-    return minor.is_set
-	|| severe.is_set
-	|| critical.is_set;
-}
-
-bool PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(minor.yfilter)
-	|| ydk::is_set(severe.yfilter)
-	|| ydk::is_set(critical.yfilter);
-}
-
-std::string PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "disk-threshold";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (minor.is_set || is_set(minor.yfilter)) leaf_name_data.push_back(minor.get_name_leafdata());
-    if (severe.is_set || is_set(severe.yfilter)) leaf_name_data.push_back(severe.get_name_leafdata());
-    if (critical.is_set || is_set(critical.yfilter)) leaf_name_data.push_back(critical.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "minor")
-    {
-        minor = value;
-        minor.value_namespace = name_space;
-        minor.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "severe")
-    {
-        severe = value;
-        severe.value_namespace = name_space;
-        severe.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "critical")
-    {
-        critical = value;
-        critical.value_namespace = name_space;
-        critical.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "minor")
-    {
-        minor.yfilter = yfilter;
-    }
-    if(value_path == "severe")
-    {
-        severe.yfilter = yfilter;
-    }
-    if(value_path == "critical")
-    {
-        critical.yfilter = yfilter;
-    }
-}
-
-bool PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "minor" || name == "severe" || name == "critical")
-        return true;
-    return false;
-}
-
-PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::MemoryThreshold()
-    :
-    minor{YType::uint32, "minor"},
-    severe{YType::uint32, "severe"},
-    critical{YType::uint32, "critical"}
-{
-
-    yang_name = "memory-threshold"; yang_parent_name = "watchdog-node-threshold"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::~MemoryThreshold()
-{
-}
-
-bool PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::has_data() const
-{
-    if (is_presence_container) return true;
-    return minor.is_set
-	|| severe.is_set
-	|| critical.is_set;
-}
-
-bool PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(minor.yfilter)
-	|| ydk::is_set(severe.yfilter)
-	|| ydk::is_set(critical.yfilter);
-}
-
-std::string PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "memory-threshold";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (minor.is_set || is_set(minor.yfilter)) leaf_name_data.push_back(minor.get_name_leafdata());
-    if (severe.is_set || is_set(severe.yfilter)) leaf_name_data.push_back(severe.get_name_leafdata());
-    if (critical.is_set || is_set(critical.yfilter)) leaf_name_data.push_back(critical.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "minor")
-    {
-        minor = value;
-        minor.value_namespace = name_space;
-        minor.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "severe")
-    {
-        severe = value;
-        severe.value_namespace = name_space;
-        severe.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "critical")
-    {
-        critical = value;
-        critical.value_namespace = name_space;
-        critical.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "minor")
-    {
-        minor.yfilter = yfilter;
-    }
-    if(value_path == "severe")
-    {
-        severe.yfilter = yfilter;
-    }
-    if(value_path == "critical")
-    {
-        critical.yfilter = yfilter;
-    }
-}
-
-bool PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "minor" || name == "severe" || name == "critical")
+    if(name == "ltrace" || name == "clock-interface" || name == "watchdog-node-threshold" || name == "lpts-local" || name == "node-name")
         return true;
     return false;
 }
@@ -5218,6 +4906,318 @@ void PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncC
 bool PreconfiguredNodes::PreconfiguredNode::ClockInterface::Clocks::Clock::SyncController::TransportMode::FrequencyMode::PortMode::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "option1" || name == "option2" || name == "option3" || name == "option4" || name == "option5")
+        return true;
+    return false;
+}
+
+PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::WatchdogNodeThreshold()
+    :
+    disk_threshold(std::make_shared<PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold>())
+    , memory_threshold(std::make_shared<PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold>())
+{
+    disk_threshold->parent = this;
+    memory_threshold->parent = this;
+
+    yang_name = "watchdog-node-threshold"; yang_parent_name = "preconfigured-node"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::~WatchdogNodeThreshold()
+{
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return (disk_threshold !=  nullptr && disk_threshold->has_data())
+	|| (memory_threshold !=  nullptr && memory_threshold->has_data());
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| (disk_threshold !=  nullptr && disk_threshold->has_operation())
+	|| (memory_threshold !=  nullptr && memory_threshold->has_operation());
+}
+
+std::string PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-watchd-cfg:watchdog-node-threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "disk-threshold")
+    {
+        if(disk_threshold == nullptr)
+        {
+            disk_threshold = std::make_shared<PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold>();
+        }
+        return disk_threshold;
+    }
+
+    if(child_yang_name == "memory-threshold")
+    {
+        if(memory_threshold == nullptr)
+        {
+            memory_threshold = std::make_shared<PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold>();
+        }
+        return memory_threshold;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(disk_threshold != nullptr)
+    {
+        _children["disk-threshold"] = disk_threshold;
+    }
+
+    if(memory_threshold != nullptr)
+    {
+        _children["memory-threshold"] = memory_threshold;
+    }
+
+    return _children;
+}
+
+void PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disk-threshold" || name == "memory-threshold")
+        return true;
+    return false;
+}
+
+PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::DiskThreshold()
+    :
+    minor{YType::uint32, "minor"},
+    severe{YType::uint32, "severe"},
+    critical{YType::uint32, "critical"}
+{
+
+    yang_name = "disk-threshold"; yang_parent_name = "watchdog-node-threshold"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::~DiskThreshold()
+{
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return minor.is_set
+	|| severe.is_set
+	|| critical.is_set;
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(minor.yfilter)
+	|| ydk::is_set(severe.yfilter)
+	|| ydk::is_set(critical.yfilter);
+}
+
+std::string PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "disk-threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (minor.is_set || is_set(minor.yfilter)) leaf_name_data.push_back(minor.get_name_leafdata());
+    if (severe.is_set || is_set(severe.yfilter)) leaf_name_data.push_back(severe.get_name_leafdata());
+    if (critical.is_set || is_set(critical.yfilter)) leaf_name_data.push_back(critical.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "minor")
+    {
+        minor = value;
+        minor.value_namespace = name_space;
+        minor.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "severe")
+    {
+        severe = value;
+        severe.value_namespace = name_space;
+        severe.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "critical")
+    {
+        critical = value;
+        critical.value_namespace = name_space;
+        critical.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "minor")
+    {
+        minor.yfilter = yfilter;
+    }
+    if(value_path == "severe")
+    {
+        severe.yfilter = yfilter;
+    }
+    if(value_path == "critical")
+    {
+        critical.yfilter = yfilter;
+    }
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::DiskThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minor" || name == "severe" || name == "critical")
+        return true;
+    return false;
+}
+
+PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::MemoryThreshold()
+    :
+    minor{YType::uint32, "minor"},
+    severe{YType::uint32, "severe"},
+    critical{YType::uint32, "critical"}
+{
+
+    yang_name = "memory-threshold"; yang_parent_name = "watchdog-node-threshold"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::~MemoryThreshold()
+{
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return minor.is_set
+	|| severe.is_set
+	|| critical.is_set;
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(minor.yfilter)
+	|| ydk::is_set(severe.yfilter)
+	|| ydk::is_set(critical.yfilter);
+}
+
+std::string PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "memory-threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (minor.is_set || is_set(minor.yfilter)) leaf_name_data.push_back(minor.get_name_leafdata());
+    if (severe.is_set || is_set(severe.yfilter)) leaf_name_data.push_back(severe.get_name_leafdata());
+    if (critical.is_set || is_set(critical.yfilter)) leaf_name_data.push_back(critical.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "minor")
+    {
+        minor = value;
+        minor.value_namespace = name_space;
+        minor.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "severe")
+    {
+        severe = value;
+        severe.value_namespace = name_space;
+        severe.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "critical")
+    {
+        critical = value;
+        critical.value_namespace = name_space;
+        critical.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "minor")
+    {
+        minor.yfilter = yfilter;
+    }
+    if(value_path == "severe")
+    {
+        severe.yfilter = yfilter;
+    }
+    if(value_path == "critical")
+    {
+        critical.yfilter = yfilter;
+    }
+}
+
+bool PreconfiguredNodes::PreconfiguredNode::WatchdogNodeThreshold::MemoryThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minor" || name == "severe" || name == "critical")
         return true;
     return false;
 }

@@ -1089,6 +1089,7 @@ std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::A
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2177,6 +2178,7 @@ std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::G
 {
     std::ostringstream path_buffer;
     path_buffer << "inbound";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2255,6 +2257,7 @@ std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::G
 {
     std::ostringstream path_buffer;
     path_buffer << "outbound";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2333,6 +2336,7 @@ std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::G
 {
     std::ostringstream path_buffer;
     path_buffer << "common";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3153,6 +3157,7 @@ std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::G
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3243,6 +3248,7 @@ std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::G
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3365,6 +3371,7 @@ std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::G
 {
     std::ostringstream path_buffer;
     path_buffer << "client-multicast-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3836,6 +3843,7 @@ std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::Gl
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4924,6 +4932,7 @@ std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 {
     std::ostringstream path_buffer;
     path_buffer << "inbound";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5002,6 +5011,7 @@ std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 {
     std::ostringstream path_buffer;
     path_buffer << "outbound";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5080,6 +5090,7 @@ std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 {
     std::ostringstream path_buffer;
     path_buffer << "common";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5900,6 +5911,7 @@ std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5990,6 +6002,7 @@ std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6112,6 +6125,7 @@ std::string Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 {
     std::ostringstream path_buffer;
     path_buffer << "client-multicast-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

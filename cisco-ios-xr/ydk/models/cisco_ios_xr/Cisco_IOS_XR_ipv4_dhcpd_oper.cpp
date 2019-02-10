@@ -5919,6 +5919,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-dhcpd-proxy-vrf-reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6090,6 +6091,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReference
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-dhcpd-proxy-interface-reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6266,6 +6268,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-dhcpd-proxy-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8100,6 +8103,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Statistics::Ipv4DhcpdProxyStat::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-dhcpd-proxy-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10879,6 +10883,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-dhcpd-base-interface-reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11062,6 +11067,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::I
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-dhcpd-base-child-profile-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12292,6 +12298,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Server::Statistics::Ipv4DhcpdProxyStat::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-dhcpd-proxy-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16363,6 +16370,7 @@ std::string Ipv4Dhcpd::Nodes::Node::Relay::Statistics::Ipv4DhcpdRelayStat::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-dhcpd-relay-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

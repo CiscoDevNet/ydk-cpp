@@ -16,11 +16,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Interface::PortChannel::AnalysisModule::Monitoring : public ydk::Entity
+class Native::Interface::PortChannel::Mvrp::Timer::LeaveAll : public ydk::Entity
 {
     public:
-        Monitoring();
-        ~Monitoring();
+        LeaveAll();
+        ~LeaveAll();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -32,9 +32,9 @@ class Native::Interface::PortChannel::AnalysisModule::Monitoring : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf y_range; //type: uint32
 
-}; // Native::Interface::PortChannel::AnalysisModule::Monitoring
+}; // Native::Interface::PortChannel::Mvrp::Timer::LeaveAll
 
 
 class Native::Interface::PortChannelSubinterface : public ydk::Entity

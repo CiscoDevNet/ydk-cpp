@@ -596,6 +596,7 @@ std::string ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol:
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -708,6 +709,7 @@ std::string ManagementPlaneProtection::Outband::Interfaces::Interface::Protocol:
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1127,6 +1129,7 @@ std::string ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1239,6 +1242,7 @@ std::string ManagementPlaneProtection::Inband::Interfaces::Interface::Protocol::
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

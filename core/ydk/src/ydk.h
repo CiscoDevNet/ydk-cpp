@@ -154,6 +154,7 @@ const char* DataNodeGetKeyword(DataNode);
 const char* DataNodeGetPath(DataNode);
 const char* DataNodeGetValue(DataNode);
 DataNode DataNodeGetParent(DataNode);
+DataNode DataNodeGetTopDataNode(DataNode);
 void DataNodeAddAnnotation(DataNode, const char*);
 DataNodeChildren DataNodeGetChildren(DataNode);
 const char* DataNodeGetSegmentPath(DataNode);

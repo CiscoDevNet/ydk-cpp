@@ -2502,6 +2502,7 @@ std::string L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTa
 {
     std::ostringstream path_buffer;
     path_buffer << "rewrite-tag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2583,6 +2584,7 @@ std::string L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTa
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3448,6 +3450,7 @@ std::string L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTa
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3772,6 +3775,7 @@ std::string L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTa
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4460,6 +4464,7 @@ std::string L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTa
 {
     std::ostringstream path_buffer;
     path_buffer << "rewrite-tag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4541,6 +4546,7 @@ std::string L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTa
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5406,6 +5412,7 @@ std::string L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTa
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5730,6 +5737,7 @@ std::string L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTa
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6304,6 +6312,7 @@ std::string L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTa
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6669,6 +6678,7 @@ std::string L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTa
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10874,6 +10884,7 @@ std::string L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTa
 {
     std::ostringstream path_buffer;
     path_buffer << "static-mac";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11184,6 +11195,7 @@ std::string L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTabl
 {
     std::ostringstream path_buffer;
     path_buffer << "bridge-pw";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15434,6 +15446,7 @@ std::string L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTabl
 {
     std::ostringstream path_buffer;
     path_buffer << "rewrite-tag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15515,6 +15528,7 @@ std::string L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTabl
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16380,6 +16394,7 @@ std::string L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTabl
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16704,6 +16719,7 @@ std::string L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTabl
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17392,6 +17408,7 @@ std::string L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTabl
 {
     std::ostringstream path_buffer;
     path_buffer << "rewrite-tag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17473,6 +17490,7 @@ std::string L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTabl
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18338,6 +18356,7 @@ std::string L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTabl
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18662,6 +18681,7 @@ std::string L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTabl
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19236,6 +19256,7 @@ std::string L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTabl
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19601,6 +19622,7 @@ std::string L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTabl
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -940,6 +940,7 @@ std::string FlowMonitors::FlowExportStatistics::TransportStats::FlowExporterStat
 {
     std::ostringstream path_buffer;
     path_buffer << "flow-exporter-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1048,6 +1049,7 @@ std::string FlowMonitors::FlowExportStatistics::ExportClient::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "export-client";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

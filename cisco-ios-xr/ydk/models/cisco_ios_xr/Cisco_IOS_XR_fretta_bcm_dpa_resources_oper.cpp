@@ -959,6 +959,7 @@ std::string Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuI
 {
     std::ostringstream path_buffer;
     path_buffer << "block-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1071,6 +1072,7 @@ std::string Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuI
 {
     std::ostringstream path_buffer;
     path_buffer << "field-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3433,6 +3435,7 @@ std::string Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHa
 {
     std::ostringstream path_buffer;
     path_buffer << "voq-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3936,6 +3939,7 @@ std::string Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers
 {
     std::ostringstream path_buffer;
     path_buffer << "voq-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4677,6 +4681,7 @@ std::string Dpa::Resources::Nodes::Node::TableDatas::TableData::NpuTblr::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "npu-tblr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

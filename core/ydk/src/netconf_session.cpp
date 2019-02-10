@@ -84,6 +84,10 @@ NetconfSession::NetconfSession(path::Repository & repo,
                                bool on_demand,
                                int timeout)
 {
+    // Correct default settings
+    if (port == 0)
+        port = 830;
+
     initialize_client(address, username, password, port, protocol, timeout);
     initialize_repo(repo, on_demand);
     YLOG_INFO("Connected to {} on port {} using {} with timeout of {}", address, port, protocol, timeout);
@@ -98,6 +102,10 @@ NetconfSession::NetconfSession(const string& address,
                                bool common_cache,
                                int timeout)
 {
+    // Correct default settings
+    if (port == 0)
+        port = 830;
+
     initialize_client(address, username, password, port, protocol, timeout);
     auto caching_option = common_cache ? path::ModelCachingOption::COMMON : path::ModelCachingOption::PER_DEVICE;
     path::Repository repo(caching_option);
@@ -117,11 +125,13 @@ NetconfSession::NetconfSession(path::Repository& repo,
                                bool on_demand,
                                int timeout)
 {
-    initialize_client_with_key(address, username, private_key_path, public_key_path,
-        port, timeout);
+    // Correct default settings
+    if (port == 0)
+        port = 830;
+
+    initialize_client_with_key(address, username, private_key_path, public_key_path, port, timeout);
     initialize_repo(repo, on_demand);
-   YLOG_INFO("Connected to {} on port {} using SSH with timeout of {}",
-       address, port, timeout);
+    YLOG_INFO("Connected to {} on port {} using SSH with timeout of {}", address, port, timeout);
 }
 
 NetconfSession::NetconfSession(const string& address,
@@ -133,13 +143,15 @@ NetconfSession::NetconfSession(const string& address,
                                bool common_cache,
                                int timeout)
 {
-    initialize_client_with_key(address, username, private_key_path, public_key_path,
-        port, timeout);
+    // Correct default settings
+    if (port == 0)
+        port = 830;
+
+    initialize_client_with_key(address, username, private_key_path, public_key_path, port, timeout);
     auto caching_option = common_cache ? path::ModelCachingOption::COMMON : path::ModelCachingOption::PER_DEVICE;
     path::Repository repo(caching_option);
     initialize_repo(repo, on_demand);
-   YLOG_INFO("Connected to {} on port {} using SSH with timeout of {}",
-       address, port, timeout);
+    YLOG_INFO("Connected to {} on port {} using SSH with timeout of {}", address, port, timeout);
 }
 
 void NetconfSession::initialize_client_with_key(const string& address,
@@ -160,7 +172,7 @@ void NetconfSession::initialize_client(const string& address,
                                        const string& protocol,
                                        int timeout)
 {
-    if (protocol.compare(PROTOCOL_SSH) == 0)
+    if (protocol.compare(PROTOCOL_SSH) == 0 || protocol.empty())
     {
         client = make_shared<NetconfSSHClient>(username, password, address, port, timeout);
     }
@@ -340,19 +352,16 @@ shared_ptr<path::DataNode> NetconfSession::invoke(path::Rpc& rpc) const
 string NetconfSession::execute_payload(const string & payload) const
 {
     string reply = client->execute_payload(payload);
-    YLOG_INFO("=============Reply payload received from device=============");
-    YLOG_INFO("\n{}", reply);
-    YLOG_INFO("\n");
+    YLOG_INFO("============= Reply RPC received from device =============\n{}", reply);
     return reply;
 }
 
 vector<string> NetconfSession::get_yang_1_1_capabilities() const
 {
     IetfCapabilitiesXmlParser parser{};
-    IetfCapabilitiesParser capabilities_parser{};
     string payload = get_caps_rpc_payload();
 
-    YLOG_INFO("=============Requesting YANG 1.1 capabilities=============");
+    YLOG_INFO("============= Requesting YANG 1.1 capabilities =============");
     string reply = execute_payload(payload);
     return parser.parse_yang_1_1(reply);
 }
@@ -523,13 +532,10 @@ static shared_ptr<path::DataNode> handle_crud_edit_reply(string reply, NetconfCl
         //need to send the commit request
         string commit_payload = get_commit_rpc_payload();
 
-        YLOG_INFO( "=============Executing commit=============");
-        YLOG_INFO("\n{}", commit_payload);
+        YLOG_INFO("============= Executing commit =============\n{}\n", commit_payload);
         reply = client.execute_payload(commit_payload);
 
-        YLOG_INFO("=============Reply payload received from device=============");
-        YLOG_INFO("\n{}", reply.c_str());
-        YLOG_INFO("\n");
+        YLOG_INFO("============= Reply RPC received from device =============\n{}", reply);
         if(reply.find("<ok/>") == string::npos)
         {
             YLOG_ERROR("RPC error occurred: {}", reply);
@@ -564,7 +570,7 @@ static shared_ptr<path::DataNode> handle_netconf_get_output(const string & reply
         throw(YServiceProviderError{reply});
     }
     data_start += sizeof("<data>") - 1;
-    auto data_end = reply.find("</data>", data_start);
+    auto data_end = reply.rfind("</data>");
     if(data_end == string::npos)
     {
         YLOG_ERROR( "No end data tag found in reply sent by device {}", reply);
@@ -644,9 +650,7 @@ static void check_rpc_reply_for_error(const string& reply)
 
 static void log_rpc_request(const string& payload)
 {
-    YLOG_INFO("=============Generating payload to send to device=============");
-    YLOG_INFO("\n{}", payload);
-    YLOG_INFO("\n");
+    YLOG_INFO("============= Generated RPC to send to device =============\n{}\n", payload);
 }
 
 } //namespace path

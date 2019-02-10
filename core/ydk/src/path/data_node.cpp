@@ -23,7 +23,9 @@
 
 
 #include "path_private.hpp"
+
 #include "../logger.hpp"
+#include "../filters.hpp"
 
 namespace ydk
 {
@@ -70,7 +72,7 @@ ydk::path::DataNodeImpl::DataNodeImpl(DataNode* parent, lyd_node* node, const st
             child_map.insert(std::make_pair(iter, std::make_shared<DataNodeImpl>(this, iter, m_priv_repo)));
         }
     }
-
+    yfilter = YFilter::not_set;
 }
 
 ydk::path::DataNodeImpl::~DataNodeImpl()

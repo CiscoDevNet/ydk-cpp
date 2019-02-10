@@ -932,6 +932,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Neigh
 {
     std::ostringstream path_buffer;
     path_buffer << "last-notification-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1145,6 +1146,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Neigh
 {
     std::ostringstream path_buffer;
     path_buffer << "last-notification-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5698,6 +5700,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Neigh
 {
     std::ostringstream path_buffer;
     path_buffer << "af-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7460,6 +7463,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Neigh
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7538,6 +7542,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Neigh
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-community-standby";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7909,6 +7914,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 {
     std::ostringstream path_buffer;
     path_buffer << "update-generation-neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13115,6 +13121,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampe
 {
     std::ostringstream path_buffer;
     path_buffer << "dampening";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22721,6 +22728,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampe
 {
     std::ostringstream path_buffer;
     path_buffer << "rcvd-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22799,6 +22807,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampe
 {
     std::ostringstream path_buffer;
     path_buffer << "l2vpn-circuit-status-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22877,6 +22886,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampe
 {
     std::ostringstream path_buffer;
     path_buffer << "mvpn-pmsi-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22955,6 +22965,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampe
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23044,6 +23055,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampe
 {
     std::ostringstream path_buffer;
     path_buffer << "local-peers-advertised-to";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23926,6 +23938,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Dampe
 {
     std::ostringstream path_buffer;
     path_buffer << "pe-peers-advertised-to";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

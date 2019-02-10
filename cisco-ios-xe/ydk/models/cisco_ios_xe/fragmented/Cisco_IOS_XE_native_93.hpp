@@ -2651,9 +2651,9 @@ class Native::Interface::Cellular : public ydk::Entity
         class RcvQueue; //type: Native::Interface::Cellular::RcvQueue
         class Peer; //type: Native::Interface::Cellular::Peer
         class PmPath; //type: Native::Interface::Cellular::PmPath
-        class ServicePolicy; //type: Native::Interface::Cellular::ServicePolicy
         class Dialer; //type: Native::Interface::Cellular::Dialer
         class Async; //type: Native::Interface::Cellular::Async
+        class ServicePolicy; //type: Native::Interface::Cellular::ServicePolicy
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::SwitchportConf> switchport_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Switchport> switchport;
@@ -2692,9 +2692,9 @@ class Native::Interface::Cellular : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::RcvQueue> rcv_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Peer> peer;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::PmPath> pm_path;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::ServicePolicy> service_policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Dialer> dialer;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::Async> async;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Cellular::ServicePolicy> service_policy;
                 class IfState;
         class ServiceInsertion;
 

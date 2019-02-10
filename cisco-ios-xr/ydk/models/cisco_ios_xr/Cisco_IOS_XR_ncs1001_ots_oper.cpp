@@ -608,6 +608,7 @@ std::string HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData::Ampli
 {
     std::ostringstream path_buffer;
     path_buffer << "ampli-trail-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1069,6 +1070,7 @@ std::string HwModule::AmplifierTrails::AmplifierTrail::AmplifierTrailData::Chann
 {
     std::ostringstream path_buffer;
     path_buffer << "channel-trail-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1745,6 +1747,7 @@ std::string HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData::AmpliTra
 {
     std::ostringstream path_buffer;
     path_buffer << "ampli-trail-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2206,6 +2209,7 @@ std::string HwModule::ChannelsTrails::ChannelsTrail::ChannelsTrailData::ChannelT
 {
     std::ostringstream path_buffer;
     path_buffer << "channel-trail-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

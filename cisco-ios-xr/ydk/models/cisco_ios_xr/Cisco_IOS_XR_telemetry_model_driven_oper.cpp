@@ -455,6 +455,7 @@ std::string TelemetryModelDriven::Destinations::Destination::Destination_::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "destination";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1045,6 +1046,7 @@ std::string TelemetryModelDriven::Destinations::Destination::Destination_::Colle
 {
     std::ostringstream path_buffer;
     path_buffer << "collection-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1339,6 +1341,7 @@ std::string TelemetryModelDriven::Destinations::Destination::Destination_::Colle
 {
     std::ostringstream path_buffer;
     path_buffer << "collection-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1517,6 +1520,7 @@ std::string TelemetryModelDriven::Destinations::Destination::Destination_::Colle
 {
     std::ostringstream path_buffer;
     path_buffer << "internal-collection-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2440,6 +2444,7 @@ std::string TelemetryModelDriven::Subscriptions::Subscription::Subscription_::Se
 {
     std::ostringstream path_buffer;
     path_buffer << "sensor-profile";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2681,6 +2686,7 @@ std::string TelemetryModelDriven::Subscriptions::Subscription::Subscription_::Se
 {
     std::ostringstream path_buffer;
     path_buffer << "sensor-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2796,6 +2802,7 @@ std::string TelemetryModelDriven::Subscriptions::Subscription::Subscription_::De
 {
     std::ostringstream path_buffer;
     path_buffer << "destination-grp";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2961,6 +2968,7 @@ std::string TelemetryModelDriven::Subscriptions::Subscription::Subscription_::De
 {
     std::ostringstream path_buffer;
     path_buffer << "destination";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3394,6 +3402,7 @@ std::string TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::
 {
     std::ostringstream path_buffer;
     path_buffer << "collection-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3688,6 +3697,7 @@ std::string TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::
 {
     std::ostringstream path_buffer;
     path_buffer << "collection-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3866,6 +3876,7 @@ std::string TelemetryModelDriven::Subscriptions::Subscription::CollectionGroup::
 {
     std::ostringstream path_buffer;
     path_buffer << "internal-collection-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4479,6 +4490,7 @@ std::string TelemetryModelDriven::SensorGroups::SensorGroup::SensorPath::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "sensor-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -326,6 +326,7 @@ std::string PppData::PppInterface::PppVa::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ppp-va";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -873,6 +874,7 @@ std::string PppData::Pppoe::PppoeSessionList::Session::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "session";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

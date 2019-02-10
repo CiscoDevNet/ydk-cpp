@@ -381,6 +381,7 @@ std::string MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::ExtendedAffi
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-affinity-attribute-flag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -469,6 +470,7 @@ std::string MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::SharedRiskLi
 {
     std::ostringstream path_buffer;
     path_buffer << "shared-risk-link-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -571,6 +573,7 @@ std::string MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::ReceivingRes
 {
     std::ostringstream path_buffer;
     path_buffer << "receiving-reservable-bandwidth";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -684,6 +687,7 @@ std::string MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::Transmitting
 {
     std::ostringstream path_buffer;
     path_buffer << "transmitting-reservable-bandwidth";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4607,6 +4611,7 @@ std::string MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAl
 {
     std::ostringstream path_buffer;
     path_buffer << "shared-risk-link-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4702,6 +4707,7 @@ std::string MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAl
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-switching-capability-descriptor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4802,6 +4808,7 @@ std::string MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAl
 {
     std::ostringstream path_buffer;
     path_buffer << "flooded-areas";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5055,6 +5062,7 @@ std::string MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAl
 {
     std::ostringstream path_buffer;
     path_buffer << "bandwidth-pool0";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5189,6 +5197,7 @@ std::string MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAl
 {
     std::ostringstream path_buffer;
     path_buffer << "bandwidth-pool1";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5486,6 +5495,7 @@ std::string MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAl
 {
     std::ostringstream path_buffer;
     path_buffer << "bandwidth-pool0";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5620,6 +5630,7 @@ std::string MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAl
 {
     std::ostringstream path_buffer;
     path_buffer << "bandwidth-pool1";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5742,6 +5753,7 @@ std::string MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAl
 {
     std::ostringstream path_buffer;
     path_buffer << "flooding-up-threshold";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5820,6 +5832,7 @@ std::string MplsLcac::BandwidthAllocation::BandwidthAllocationLinks::BandwidthAl
 {
     std::ostringstream path_buffer;
     path_buffer << "flooding-down-threshold";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6361,6 +6374,7 @@ std::string MplsLcac::BfdNeighbors::BfdNeighbor::Neighbor::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7414,6 +7428,7 @@ std::string MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountL
 {
     std::ostringstream path_buffer;
     path_buffer << "rsvp-te-active-interval-sample";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7576,6 +7591,7 @@ std::string MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountL
 {
     std::ostringstream path_buffer;
     path_buffer << "rsvp-te-previous-interval-sample";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7847,6 +7863,7 @@ std::string MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountL
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-active-interval-sample";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7953,6 +7970,7 @@ std::string MplsLcac::BandwidthAccount::BandwidthAccountLinks::BandwidthAccountL
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-previous-interval-sample";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8427,6 +8445,7 @@ std::string MplsLcac::LinkSummary::AreasSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "areas-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9974,6 +9993,7 @@ std::string MplsLcac::LinkInformation::Links::Link::LinkCommon::SharedRiskLinkGr
 {
     std::ostringstream path_buffer;
     path_buffer << "shared-risk-link-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10069,6 +10089,7 @@ std::string MplsLcac::LinkInformation::Links::Link::LinkCommon::InterfaceSwitchi
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-switching-capability-descriptor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10169,6 +10190,7 @@ std::string MplsLcac::LinkInformation::Links::Link::LinkCommon::FloodedAreas::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "flooded-areas";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11046,6 +11068,7 @@ std::string MplsLcac::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBand
 {
     std::ostringstream path_buffer;
     path_buffer << "rsvp-te-active-interval-sample";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11166,6 +11189,7 @@ std::string MplsLcac::LinkInformation::Links::Link::BandwidthAccount::RsvpTeBand
 {
     std::ostringstream path_buffer;
     path_buffer << "rsvp-te-previous-interval-sample";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11401,6 +11425,7 @@ std::string MplsLcac::LinkInformation::Links::Link::BandwidthAccount::SrBandwidt
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-active-interval-sample";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11493,6 +11518,7 @@ std::string MplsLcac::LinkInformation::Links::Link::BandwidthAccount::SrBandwidt
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-previous-interval-sample";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11735,6 +11761,7 @@ std::string MplsLcac::LinkInformation::Links::Link::HwOor::HwOOrLinkStatistic::g
 {
     std::ostringstream path_buffer;
     path_buffer << "hw-o-or-link-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11879,6 +11906,7 @@ std::string MplsLcac::LinkInformation::Links::Link::LinkExtendedAttribute::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "link-extended-attribute";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11957,6 +11985,7 @@ std::string MplsLcac::LinkInformation::Links::Link::LinkForwadRefValue::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "link-forwad-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12056,6 +12085,7 @@ std::string MplsLcac::LinkInformation::Links::Link::AffinityMap::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "affinity-map";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12184,6 +12214,7 @@ std::string MplsLcac::LinkInformation::Links::Link::AffinityMap::AffinityExtende
 {
     std::ostringstream path_buffer;
     path_buffer << "affinity-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12274,6 +12305,7 @@ std::string MplsLcac::LinkInformation::Links::Link::Areas::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "areas";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12402,6 +12434,7 @@ std::string MplsLcac::LinkInformation::Links::Link::Lockout::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "lockout";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13984,6 +14017,7 @@ std::string MplsLcac::SoftPreemptions::SoftPreemption::CurrentSoftPreemptionLsp:
 {
     std::ostringstream path_buffer;
     path_buffer << "current-soft-preemption-lsp";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15776,6 +15810,7 @@ std::string MplsPce::Lsps::Lsp::Autoroute::Destination::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "destination";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15854,6 +15889,7 @@ std::string MplsPce::Lsps::Lsp::BackupPath::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15971,6 +16007,7 @@ std::string MplsPce::Lsps::Lsp::Paths::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "paths";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16312,6 +16349,7 @@ std::string MplsPce::Lsps::Lsp::Paths::Ero::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16438,6 +16476,7 @@ std::string MplsPce::Lsps::Lsp::Paths::Ero::Subobject::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "subobject";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17003,6 +17042,7 @@ std::string MplsPce::Lsps::Lsp::Paths::Rro::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17129,6 +17169,7 @@ std::string MplsPce::Lsps::Lsp::Paths::Rro::Subobject::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "subobject";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17386,6 +17427,7 @@ std::string MplsPce::Lsps::Lsp::Paths::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "metric";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17977,6 +18019,7 @@ std::string MplsPce::Lsps::Autoroute::Destination::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "destination";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18062,6 +18105,7 @@ std::string MplsPce::Lsps::BackupPath::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18186,6 +18230,7 @@ std::string MplsPce::Lsps::Paths::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "paths";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18541,6 +18586,7 @@ std::string MplsPce::Lsps::Paths::Ero::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18674,6 +18720,7 @@ std::string MplsPce::Lsps::Paths::Ero::Subobject::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "subobject";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19260,6 +19307,7 @@ std::string MplsPce::Lsps::Paths::Rro::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19393,6 +19441,7 @@ std::string MplsPce::Lsps::Paths::Rro::Subobject::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "subobject";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19657,6 +19706,7 @@ std::string MplsPce::Lsps::Paths::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "metric";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20194,6 +20244,7 @@ std::string MplsPce::Statistics::MaximumInQueueDepth::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "maximum-in-queue-depth";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20279,6 +20330,7 @@ std::string MplsPce::Statistics::AverageInQueueDepth::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "average-in-queue-depth";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21551,6 +21603,7 @@ std::string MplsPce::Peers::Peer::IgPs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ig-ps";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21851,6 +21904,7 @@ std::string MplsPce::Topology::Global::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -412,6 +412,7 @@ std::string Snmp::TrapServers::TrapServer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "trap-server";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2123,6 +2124,7 @@ std::string Snmp::Information::RxQueue::IncomingQ::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "incoming-q";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2236,6 +2238,7 @@ std::string Snmp::Information::RxQueue::PendingQ::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pending-q";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3406,6 +3409,7 @@ std::string Snmp::Information::TrapInfos::TrapInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "trap-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3567,6 +3571,7 @@ std::string Snmp::Information::TrapInfos::TrapInfo::TrapOiDinfo::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "trap-oi-dinfo";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4075,6 +4080,7 @@ std::string Snmp::Information::InfomDetails::InfomDetail::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "infom-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4236,6 +4242,7 @@ std::string Snmp::Information::InfomDetails::InfomDetail::TrapOiDinfo::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "trap-oi-dinfo";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4993,6 +5000,7 @@ std::string Snmp::Information::IncomingQueue::InqEntry::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "inq-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5234,6 +5242,7 @@ std::string Snmp::Information::ContextMapping::ContexMapping::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "contex-mapping";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6540,6 +6549,7 @@ std::string Snmp::Information::SerialNumbers::SerialNumber::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "serial-number";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7917,6 +7927,7 @@ std::string Snmp::Information::Tables::Groups::Group::GroupInformations::GroupIn
 {
     std::ostringstream path_buffer;
     path_buffer << "group-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8612,6 +8623,7 @@ std::string Snmp::Information::TrapQueue::TrapQ::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "trap-q";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9567,6 +9579,7 @@ std::string Snmp::Correlator::RuleDetails::RuleDetail::RootCause::VarBind::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "var-bind";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9679,6 +9692,7 @@ std::string Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "non-rootcaus";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9780,6 +9794,7 @@ std::string Snmp::Correlator::RuleDetails::RuleDetail::NonRootcaus::VarBind::get
 {
     std::ostringstream path_buffer;
     path_buffer << "var-bind";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9883,6 +9898,7 @@ std::string Snmp::Correlator::RuleDetails::RuleDetail::ApplyHost::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "apply-host";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10306,6 +10322,7 @@ std::string Snmp::Correlator::RuleSetDetails::RuleSetDetail::Rules::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "rules";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10791,6 +10808,7 @@ std::string Snmp::Correlator::Traps::Trap::TrapInfo::VarBind::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "var-bind";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13307,6 +13325,7 @@ std::string Snmp::SensorMib::PhysicalIndexes::PhysicalIndex::ThresholdIndexes::T
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold-index";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -1459,6 +1459,7 @@ std::string Vpdn::TunnelDestinations::TunnelDestination::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-destination";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3152,6 +3153,7 @@ std::string Vpdn::HistoryFailures::HistoryFailure::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "history-failure";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

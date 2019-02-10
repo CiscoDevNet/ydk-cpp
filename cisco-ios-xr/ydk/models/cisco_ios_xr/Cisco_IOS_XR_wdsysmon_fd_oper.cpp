@@ -326,6 +326,7 @@ std::string SystemMonitoring::CpuUtilization::ProcessCpu::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "process-cpu";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

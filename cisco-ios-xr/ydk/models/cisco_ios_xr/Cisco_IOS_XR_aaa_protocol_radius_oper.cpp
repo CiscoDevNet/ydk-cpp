@@ -755,6 +755,7 @@ std::string Radius::Nodes::Node::DeadCriteria::Hosts::Host::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "host";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1174,6 +1175,7 @@ std::string Radius::Nodes::Node::Authentication::AuthenticationGroup::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "authentication-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1722,6 +1724,7 @@ std::string Radius::Nodes::Node::Accounting::AccountingGroup::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "accounting-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2300,6 +2303,7 @@ std::string Radius::Nodes::Node::DynamicAuthorizationClients::DynamicAuthorClien
 {
     std::ostringstream path_buffer;
     path_buffer << "dynamic-author-client";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2930,6 +2934,7 @@ std::string Radius::Nodes::Node::ServerGroups::ServerGroup::ServerGroup_::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "server-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

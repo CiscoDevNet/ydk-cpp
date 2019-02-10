@@ -577,6 +577,7 @@ std::string Config::Global::Validation::UnsupportedConfigs::UnsupportedConfig::F
 {
     std::ostringstream path_buffer;
     path_buffer << "failure";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -912,6 +913,7 @@ std::string Config::Global::Validation::PersistentFailures::PersistentFailure::F
 {
     std::ostringstream path_buffer;
     path_buffer << "failure";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

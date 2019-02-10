@@ -329,6 +329,7 @@ std::string MplsPceStdby::Lsps::Lsp::Autoroute::Destination::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "destination";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -407,6 +408,7 @@ std::string MplsPceStdby::Lsps::Lsp::BackupPath::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -524,6 +526,7 @@ std::string MplsPceStdby::Lsps::Lsp::Paths::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "paths";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -865,6 +868,7 @@ std::string MplsPceStdby::Lsps::Lsp::Paths::Ero::Address::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -991,6 +995,7 @@ std::string MplsPceStdby::Lsps::Lsp::Paths::Ero::Subobject::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "subobject";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1556,6 +1561,7 @@ std::string MplsPceStdby::Lsps::Lsp::Paths::Rro::Address::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1682,6 +1688,7 @@ std::string MplsPceStdby::Lsps::Lsp::Paths::Rro::Subobject::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "subobject";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1939,6 +1946,7 @@ std::string MplsPceStdby::Lsps::Lsp::Paths::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "metric";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2530,6 +2538,7 @@ std::string MplsPceStdby::Lsps::Autoroute::Destination::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "destination";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2615,6 +2624,7 @@ std::string MplsPceStdby::Lsps::BackupPath::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2739,6 +2749,7 @@ std::string MplsPceStdby::Lsps::Paths::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "paths";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3094,6 +3105,7 @@ std::string MplsPceStdby::Lsps::Paths::Ero::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3227,6 +3239,7 @@ std::string MplsPceStdby::Lsps::Paths::Ero::Subobject::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "subobject";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3813,6 +3826,7 @@ std::string MplsPceStdby::Lsps::Paths::Rro::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3946,6 +3960,7 @@ std::string MplsPceStdby::Lsps::Paths::Rro::Subobject::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "subobject";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4210,6 +4225,7 @@ std::string MplsPceStdby::Lsps::Paths::Metric::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "metric";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4747,6 +4763,7 @@ std::string MplsPceStdby::Statistics::MaximumInQueueDepth::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "maximum-in-queue-depth";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4832,6 +4849,7 @@ std::string MplsPceStdby::Statistics::AverageInQueueDepth::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "average-in-queue-depth";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6104,6 +6122,7 @@ std::string MplsPceStdby::Peers::Peer::IgPs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ig-ps";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6404,6 +6423,7 @@ std::string MplsPceStdby::Topology::Global::Nodes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "nodes";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13343,6 +13363,7 @@ std::string MplsTeStandby::HardwareOutOfResources::Summary::HardwareOutOfResourc
 {
     std::ostringstream path_buffer;
     path_buffer << "hardware-out-of-resources-state";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14440,6 +14461,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemoteBriefs::TunnelRemoteBrief:
 {
     std::ostringstream path_buffer;
     path_buffer << "s2l";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16016,6 +16038,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "s2l";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18829,6 +18852,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "named-affinity";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18963,6 +18987,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "constraint-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19041,6 +19066,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-forward-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19211,6 +19237,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19295,6 +19322,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "version-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19980,6 +20008,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "named-affinity";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20114,6 +20143,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "constraint-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20192,6 +20222,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-forward-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20446,6 +20477,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "policy-class-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20524,6 +20556,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20602,6 +20635,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "protected-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21309,6 +21343,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "named-affinity";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21443,6 +21478,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "constraint-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21521,6 +21557,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-forward-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21775,6 +21812,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "policy-class-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21853,6 +21891,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "mesh-group-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21931,6 +21970,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22223,6 +22263,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "xro-subobject";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23714,6 +23755,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "named-affinity";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23848,6 +23890,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "constraint-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23926,6 +23969,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-forward-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24004,6 +24048,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25086,6 +25131,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "named-affinity";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25220,6 +25266,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "constraint-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25298,6 +25345,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::Acti
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-forward-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

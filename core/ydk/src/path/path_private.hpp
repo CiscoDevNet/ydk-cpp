@@ -39,7 +39,7 @@
 #include "libyang/xml.h"
 
 #include "../path_api.hpp"
-
+#include "../filters.hpp"
 
 namespace ydk {
     namespace path {
@@ -229,6 +229,7 @@ namespace ydk {
             DataNode* m_parent;
             struct lyd_node* m_node;
             std::map<struct lyd_node*, std::shared_ptr<DataNode>> child_map;
+            YFilter yfilter;
 
         private:
             const std::shared_ptr<RepositoryPtr> m_priv_repo;

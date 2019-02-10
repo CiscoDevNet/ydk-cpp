@@ -461,7 +461,7 @@ TEST_CASE("test_ylist")
     REQUIRE(ylist_0.len() == 2);
 
     auto keys = ylist_0.keys();
-    REQUIRE(vector_to_string(keys) == R"("1000000", "1000001")");
+    REQUIRE(vector_to_string(keys) == R"("1000001", "1000002")");
 
     auto ep = ylist_0.pop(1);
     REQUIRE(ep != nullptr);

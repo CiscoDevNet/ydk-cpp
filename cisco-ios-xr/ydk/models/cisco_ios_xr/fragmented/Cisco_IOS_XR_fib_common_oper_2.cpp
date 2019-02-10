@@ -1636,6 +1636,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInf
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3184,6 +3185,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInf
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4732,6 +4734,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInf
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6280,6 +6283,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInf
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7075,6 +7079,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInf
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-remote-brief";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7977,6 +7982,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInf
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8772,6 +8778,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInf
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-local-brief";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9674,6 +9681,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInf
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10459,6 +10467,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "exact-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12392,6 +12401,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::Deta
 {
     std::ostringstream path_buffer;
     path_buffer << "sanity-flag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12470,6 +12480,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::Deta
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-handle";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12548,6 +12559,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::Deta
 {
     std::ostringstream path_buffer;
     path_buffer << "weights-of-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12626,6 +12638,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::Deta
 {
     std::ostringstream path_buffer;
     path_buffer << "adjacency-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12704,6 +12717,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::Deta
 {
     std::ostringstream path_buffer;
     path_buffer << "pbts-class-is-fallback-mapped";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12782,6 +12796,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::Deta
 {
     std::ostringstream path_buffer;
     path_buffer << "pbts-fallback-to-drop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12860,6 +12875,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::Deta
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-is-forward-class";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13103,6 +13119,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::FibE
 {
     std::ostringstream path_buffer;
     path_buffer << "fib-sh-tbl-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13961,6 +13978,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::FibE
 {
     std::ostringstream path_buffer;
     path_buffer << "spd-ipencap";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14150,6 +14168,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::FibE
 {
     std::ostringstream path_buffer;
     path_buffer << "ip-encap-hdr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14256,6 +14275,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::FibE
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14533,6 +14553,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::FibE
 {
     std::ostringstream path_buffer;
     path_buffer << "recursive-lbl-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14629,6 +14650,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::FibE
 {
     std::ostringstream path_buffer;
     path_buffer << "igp-label-stack-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14746,6 +14768,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::FibE
 {
     std::ostringstream path_buffer;
     path_buffer << "lstack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14829,6 +14852,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::Exte
 {
     std::ostringstream path_buffer;
     path_buffer << "extension-object";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15318,6 +15342,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ProtocolGlobal::SegmentRoutin
 {
     std::ostringstream path_buffer;
     path_buffer << "locator";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15544,6 +15569,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::NhIds::NhId::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15865,6 +15891,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::Exte
 {
     std::ostringstream path_buffer;
     path_buffer << "external-client-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16166,6 +16193,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExternalClientSummaries::Exte
 {
     std::ostringstream path_buffer;
     path_buffer << "sep-num-ecd-pl-per-interest";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17303,6 +17331,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiIssuState::FisProtoSt
 {
     std::ostringstream path_buffer;
     path_buffer << "fis-proto-state";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18051,6 +18080,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::Fpc
 {
     std::ostringstream path_buffer;
     path_buffer << "fpc-lisp-decap-over-v4";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18129,6 +18159,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::Fpc
 {
     std::ostringstream path_buffer;
     path_buffer << "fpc-lisp-decap-over-v6";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18207,6 +18238,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::Fpc
 {
     std::ostringstream path_buffer;
     path_buffer << "fpc-lisp-ucmp";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18285,6 +18317,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiPlatCapabilities::Fpc
 {
     std::ostringstream path_buffer;
     path_buffer << "fpc-resolve-via-table";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18363,6 +18396,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbExtCleanupFailedCo
 {
     std::ostringstream path_buffer;
     path_buffer << "mi-idb-ext-cleanup-failed-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18441,6 +18475,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiLrpfStatsFail::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "mi-lrpf-stats-fail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18519,6 +18554,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiLrpfStatsAct::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "mi-lrpf-stats-act";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18597,6 +18633,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiLrpfNum::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "mi-lrpf-num";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18675,6 +18712,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbLsecEnabledNum::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "mi-idb-lsec-enabled-num";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18753,6 +18791,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiNumLispEid::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "mi-num-lisp-eid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18831,6 +18870,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiNumLispValidEid::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "mi-num-lisp-valid-eid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18909,6 +18949,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiCpulessNode::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "mi-cpuless-node";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19170,6 +19211,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "mi-proto-dbg-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19994,6 +20036,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlat
 {
     std::ostringstream path_buffer;
     path_buffer << "fpus-obj-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20118,6 +20161,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdPlat
 {
     std::ostringstream path_buffer;
     path_buffer << "fos-obj-act-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20412,6 +20456,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGtri
 {
     std::ostringstream path_buffer;
     path_buffer << "fgt-gtrie-fn-timing";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20545,6 +20590,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdGblt
 {
     std::ostringstream path_buffer;
     path_buffer << "fpd-gbltbl-src-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20623,6 +20669,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdVrft
 {
     std::ostringstream path_buffer;
     path_buffer << "fpd-vrftbl-src-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20701,6 +20748,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiProtoDbgStat::FpdNumR
 {
     std::ostringstream path_buffer;
     path_buffer << "fpd-num-retry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20788,6 +20836,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbPurgeCntr::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "mi-idb-purge-cntr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20872,6 +20921,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiIdbPurgeCntr::FppCntr
 {
     std::ostringstream path_buffer;
     path_buffer << "fpp-cntr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20962,6 +21012,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiDel::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "mi-del";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21126,6 +21177,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Misc::MiFrrStat::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "mi-frr-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21568,6 +21620,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Confli
 {
     std::ostringstream path_buffer;
     path_buffer << "conflict";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22912,6 +22965,7 @@ std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::La
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23743,6 +23797,7 @@ std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEnt
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24574,6 +24629,7 @@ std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEnt
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

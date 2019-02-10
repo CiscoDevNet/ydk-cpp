@@ -1405,6 +1405,7 @@ std::string MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "clients-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1953,6 +1954,7 @@ std::string MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-path-protection";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2788,6 +2790,7 @@ std::string MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Curren
 {
     std::ostringstream path_buffer;
     path_buffer << "srlsp-outgoing-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2893,6 +2896,7 @@ std::string MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Curren
 {
     std::ostringstream path_buffer;
     path_buffer << "lsp-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3461,6 +3465,7 @@ std::string MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Standb
 {
     std::ostringstream path_buffer;
     path_buffer << "srlsp-outgoing-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3566,6 +3571,7 @@ std::string MplsTe::Tunnels::TunnelPathProtections::TunnelPathProtection::Standb
 {
     std::ostringstream path_buffer;
     path_buffer << "lsp-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4480,6 +4486,7 @@ std::string MplsTe::PathProtection::SwitchoverLog::PathProtectionSwitchoverEntry
 {
     std::ostringstream path_buffer;
     path_buffer << "path-protection-switchover-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5124,6 +5131,7 @@ std::string MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::NextHopPath::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5263,6 +5271,7 @@ std::string MplsTe::FibNextHopLabelRoutes::FibNextHopLabelRoute::NextHopPath::La
 {
     std::ostringstream path_buffer;
     path_buffer << "label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6395,6 +6404,7 @@ std::string MplsTe::P2mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::Tunn
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6636,6 +6646,7 @@ std::string MplsTe::P2mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrite::Tunn
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7408,6 +7419,7 @@ std::string MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRe
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7649,6 +7661,7 @@ std::string MplsTe::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::TunnelRe
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8421,6 +8434,7 @@ std::string MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelR
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8662,6 +8676,7 @@ std::string MplsTe::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::TunnelR
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8943,6 +8958,7 @@ std::string MplsTe::P2mp::CollaboratorTimers::P2mpTimer::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "p2mp-timer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10406,6 +10422,7 @@ std::string MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10647,6 +10664,7 @@ std::string MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11087,6 +11105,7 @@ std::string MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11328,6 +11347,7 @@ std::string MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11768,6 +11788,7 @@ std::string MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12009,6 +12030,7 @@ std::string MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12093,6 +12115,7 @@ std::string MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 {
     std::ostringstream path_buffer;
     path_buffer << "s2l";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12220,6 +12243,7 @@ std::string MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 {
     std::ostringstream path_buffer;
     path_buffer << "s2lsr-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12370,6 +12394,7 @@ std::string MplsTe::P2mp::ForwardingOutputLabelRewrites::ForwardingOutputLabelRe
 {
     std::ostringstream path_buffer;
     path_buffer << "outgoing-labels-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12740,6 +12765,7 @@ std::string MplsTe::LspOutOfResources::Summary::LspOorStateXr::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "lsp-oor-state-xr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13988,6 +14014,7 @@ std::string MplsTe::Bfd::Links::Link::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14213,6 +14240,7 @@ std::string MplsTe::Bfd::TailInfos::TailInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tail-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16813,6 +16841,7 @@ std::string MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::Vi
 {
     std::ostringstream path_buffer;
     path_buffer << "vif-pending";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16915,6 +16944,7 @@ std::string MplsTe::Nsr::Status::SyncStatusInformation::SlaveSyncInformation::S2
 {
     std::ostringstream path_buffer;
     path_buffer << "s2l-pending";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18376,6 +18406,7 @@ std::string MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::Vi
 {
     std::ostringstream path_buffer;
     path_buffer << "vif-pending";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18478,6 +18509,7 @@ std::string MplsTe::Nsr::Detail::SyncStatusInformation::SlaveSyncInformation::S2
 {
     std::ostringstream path_buffer;
     path_buffer << "s2l-pending";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19837,6 +19869,7 @@ std::string MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::Explicit
 {
     std::ostringstream path_buffer;
     path_buffer << "explicit-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20102,6 +20135,7 @@ std::string MplsTe::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::Explicit
 {
     std::ostringstream path_buffer;
     path_buffer << "hops";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20330,6 +20364,7 @@ std::string MplsTe::AffinityMap::AffinityMapArray::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "affinity-map-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

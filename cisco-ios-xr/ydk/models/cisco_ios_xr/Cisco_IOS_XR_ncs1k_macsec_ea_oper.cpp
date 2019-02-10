@@ -723,6 +723,7 @@ std::string Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kS
 {
     std::ostringstream path_buffer;
     path_buffer << "active-association";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1084,6 +1085,7 @@ std::string Ncs1kMacsecOper::Ncs1kMacsecCtrlrNames::Ncs1kMacsecCtrlrName::Ncs1kS
 {
     std::ostringstream path_buffer;
     path_buffer << "active-association";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

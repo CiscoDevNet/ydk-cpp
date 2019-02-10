@@ -963,6 +963,7 @@ std::string MplsTe::DiffServTeClasses::TeClass::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "te-class";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2036,6 +2037,7 @@ std::string MplsTe::Issu::Status::SyncStatusInformation::SlaveSyncInformation::V
 {
     std::ostringstream path_buffer;
     path_buffer << "vif-pending";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2138,6 +2140,7 @@ std::string MplsTe::Issu::Status::SyncStatusInformation::SlaveSyncInformation::S
 {
     std::ostringstream path_buffer;
     path_buffer << "s2l-pending";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3599,6 +3602,7 @@ std::string MplsTe::Issu::Detail::SyncStatusInformation::SlaveSyncInformation::V
 {
     std::ostringstream path_buffer;
     path_buffer << "vif-pending";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3701,6 +3705,7 @@ std::string MplsTe::Issu::Detail::SyncStatusInformation::SlaveSyncInformation::S
 {
     std::ostringstream path_buffer;
     path_buffer << "s2l-pending";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4562,6 +4567,7 @@ std::string MplsTe::AutoRouteDestinationEntries::AutoRouteDestinationEntry::Tunn
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-autoroute-dest";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8046,6 +8052,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "named-affinity";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8180,6 +8187,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "constraint-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8258,6 +8266,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-forward-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8428,6 +8437,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8512,6 +8522,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "version-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9197,6 +9208,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "named-affinity";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9331,6 +9343,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "constraint-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9409,6 +9422,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-forward-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9663,6 +9677,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "policy-class-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9741,6 +9756,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9819,6 +9835,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "protected-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10526,6 +10543,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "named-affinity";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10660,6 +10678,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "constraint-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10738,6 +10757,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-forward-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10992,6 +11012,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "policy-class-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11070,6 +11091,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "mesh-group-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11148,6 +11170,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11440,6 +11463,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "xro-subobject";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12931,6 +12955,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "named-affinity";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13065,6 +13090,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "constraint-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13143,6 +13169,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-forward-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13221,6 +13248,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14303,6 +14331,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "named-affinity";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14437,6 +14466,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "constraint-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14515,6 +14545,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-forward-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14868,6 +14899,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "prepend-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14968,6 +15000,7 @@ std::string MplsTe::AttributeSets::AttributeSet::AttributeSetUnion::AttributeSet
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15444,6 +15477,7 @@ std::string MplsTe::IgpAreaBriefs::IgpAreaBrief::SecondaryRouterId::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "secondary-router-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15536,6 +15570,7 @@ std::string MplsTe::IgpAreaBriefs::IgpAreaBrief::Area::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "area";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16495,6 +16530,7 @@ std::string MplsTe::Tunnels::TunnelFlexLsps::TunnelFlexLsp::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-flex-lsp";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17650,6 +17686,7 @@ std::string MplsTe::Tunnels::TunnelFlexLsps::TunnelFlexLsp::WorkingLsp::Associat
 {
     std::ostringstream path_buffer;
     path_buffer << "s2l-extended-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18641,6 +18678,7 @@ std::string MplsTe::Tunnels::TunnelFlexLsps::TunnelFlexLsp::WorkingLsp::ReverseL
 {
     std::ostringstream path_buffer;
     path_buffer << "s2l-extended-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19044,6 +19082,7 @@ std::string MplsTe::Tunnels::TunnelFlexLsps::TunnelFlexLsp::WorkingLsp::LspHop::
 {
     std::ostringstream path_buffer;
     path_buffer << "lsp-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20362,6 +20401,7 @@ std::string MplsTe::Tunnels::TunnelFlexLsps::TunnelFlexLsp::ProtectLsp::Associat
 {
     std::ostringstream path_buffer;
     path_buffer << "s2l-extended-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21353,6 +21393,7 @@ std::string MplsTe::Tunnels::TunnelFlexLsps::TunnelFlexLsp::ProtectLsp::ReverseL
 {
     std::ostringstream path_buffer;
     path_buffer << "s2l-extended-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21756,6 +21797,7 @@ std::string MplsTe::Tunnels::TunnelFlexLsps::TunnelFlexLsp::ProtectLsp::LspHop::
 {
     std::ostringstream path_buffer;
     path_buffer << "lsp-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

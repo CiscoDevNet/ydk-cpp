@@ -55,6 +55,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "uloop-explicit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -197,6 +198,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nnh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -334,6 +336,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -457,6 +460,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "tags";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -556,6 +560,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nodal-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -737,6 +742,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -860,6 +866,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "tags";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -959,6 +966,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nodal-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1204,6 +1212,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "backup";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1499,6 +1508,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "paths";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2195,6 +2205,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2288,6 +2299,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2436,6 +2448,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "uloop-explicit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2578,6 +2591,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nnh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2721,6 +2735,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "ucmp-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3383,6 +3398,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3476,6 +3492,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3663,6 +3680,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4359,6 +4377,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4452,6 +4471,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4600,6 +4620,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "uloop-explicit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4742,6 +4763,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nnh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4907,6 +4929,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "srte-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5603,6 +5626,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5696,6 +5720,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5844,6 +5869,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "uloop-explicit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5986,6 +6012,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nnh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6151,6 +6178,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "explicit-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6847,6 +6875,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6940,6 +6969,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7088,6 +7118,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "uloop-explicit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7230,6 +7261,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nnh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7367,6 +7399,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7490,6 +7523,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "tags";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7589,6 +7623,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nodal-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7770,6 +7805,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7893,6 +7929,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "tags";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7992,6 +8029,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nodal-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8192,6 +8230,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "per-level-advertising-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8573,6 +8612,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "tags";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8672,6 +8712,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "nodal-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8947,6 +8988,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6frr-backup";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9285,6 +9327,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9558,6 +9601,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "isis-sh-route-redist-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10419,6 +10463,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "paths";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11115,6 +11160,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11208,6 +11254,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11356,6 +11403,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "uloop-explicit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11498,6 +11546,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "nnh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11641,6 +11690,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "ucmp-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12303,6 +12353,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12396,6 +12447,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12583,6 +12635,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13279,6 +13332,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13372,6 +13426,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13520,6 +13575,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "uloop-explicit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13662,6 +13718,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "nnh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13827,6 +13884,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "srte-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14523,6 +14581,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14616,6 +14675,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14764,6 +14824,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "uloop-explicit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14906,6 +14967,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "nnh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15071,6 +15133,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "explicit-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15767,6 +15830,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15860,6 +15924,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16008,6 +16073,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "uloop-explicit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16150,6 +16216,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "nnh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16287,6 +16354,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16410,6 +16478,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "tags";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16509,6 +16578,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "nodal-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16690,6 +16760,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16813,6 +16884,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "tags";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16912,6 +16984,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "nodal-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17157,6 +17230,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "backup";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17452,6 +17526,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "paths";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18148,6 +18223,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18241,6 +18317,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18389,6 +18466,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "uloop-explicit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18531,6 +18609,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "nnh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18674,6 +18753,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "ucmp-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19336,6 +19416,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19429,6 +19510,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19616,6 +19698,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20312,6 +20395,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20405,6 +20489,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20553,6 +20638,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "uloop-explicit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20695,6 +20781,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "nnh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20860,6 +20947,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "srte-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21556,6 +21644,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21649,6 +21738,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21797,6 +21887,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "uloop-explicit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21939,6 +22030,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "nnh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22104,6 +22196,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "explicit-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22800,6 +22893,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22893,6 +22987,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23041,6 +23136,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "uloop-explicit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23183,6 +23279,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "nnh";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23320,6 +23417,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23443,6 +23541,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "tags";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23542,6 +23641,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "nodal-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23723,6 +23823,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23846,6 +23947,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "tags";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23945,6 +24047,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "nodal-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24145,6 +24248,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "per-level-advertising-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24526,6 +24630,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "tags";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24625,6 +24730,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "nodal-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24900,6 +25006,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4frr-backup";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25238,6 +25345,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25511,6 +25619,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "isis-sh-route-redist-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -26372,6 +26481,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "paths";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -27068,6 +27178,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-routing-sid-value-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -27161,6 +27272,7 @@ std::string Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

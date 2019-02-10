@@ -977,6 +977,7 @@ std::string Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuI
 {
     std::ostringstream path_buffer;
     path_buffer << "block-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1089,6 +1090,7 @@ std::string Dpa::Stats::Nodes::Node::AsicStatistics::AsicStatisticsDetailForNpuI
 {
     std::ostringstream path_buffer;
     path_buffer << "field-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3451,6 +3453,7 @@ std::string Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::InterfaceHa
 {
     std::ostringstream path_buffer;
     path_buffer << "voq-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3954,6 +3957,7 @@ std::string Dpa::Stats::Nodes::Node::NpuNumbers::NpuNumber::Display::BaseNumbers
 {
     std::ostringstream path_buffer;
     path_buffer << "voq-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4323,6 +4327,7 @@ std::string Dpa::Stats::Nodes::Node::StatsResourcesDatas::StatsResourcesData::Cn
 {
     std::ostringstream path_buffer;
     path_buffer << "cntr-engine";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4435,6 +4440,7 @@ std::string Dpa::Stats::Nodes::Node::StatsResourcesDatas::StatsResourcesData::Cn
 {
     std::ostringstream path_buffer;
     path_buffer << "apps-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4840,6 +4846,7 @@ std::string Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::
 {
     std::ostringstream path_buffer;
     path_buffer << "npu-hwr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5076,6 +5083,7 @@ std::string Dpa::Stats::Nodes::Node::HwResourcesDatas::HwResourcesData::NpuHwr::
 {
     std::ostringstream path_buffer;
     path_buffer << "lt-hwr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -1276,6 +1276,7 @@ std::string LacpBundles::Bundles::Bundle::Data::ActorBundleData::BfdConfig::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-config";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3881,6 +3882,7 @@ std::string BundleInformation::BfdCounters::BfdCountersBundles::BfdCountersBundl
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-counter";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5225,6 +5227,7 @@ std::string BundleInformation::ScheduledActions::ScheduledActionsBundles::Schedu
 {
     std::ostringstream path_buffer;
     path_buffer << "scheduled-action";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6530,6 +6533,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-config";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6849,6 +6853,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 {
     std::ostringstream path_buffer;
     path_buffer << "member-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9844,6 +9849,7 @@ std::string BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundle
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-config";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11199,6 +11205,7 @@ std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMember
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-config";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11518,6 +11525,7 @@ std::string BundleInformation::Bundle::BundleMembers::BundleMember::BundleMember
 {
     std::ostringstream path_buffer;
     path_buffer << "member-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14108,6 +14116,7 @@ std::string BundleInformation::EventsRg::EventsRgMembers::EventsRgMember::Events
 {
     std::ostringstream path_buffer;
     path_buffer << "items";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15246,6 +15255,7 @@ std::string BundleInformation::EventsRg::EventsRgIccpGroups::EventsRgIccpGroup::
 {
     std::ostringstream path_buffer;
     path_buffer << "items";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16384,6 +16394,7 @@ std::string BundleInformation::EventsRg::EventsRgBundles::EventsRgBundle::Events
 {
     std::ostringstream path_buffer;
     path_buffer << "items";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18449,6 +18460,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::Ac
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-config";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19913,6 +19925,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-config";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20400,6 +20413,7 @@ std::string BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescenda
 {
     std::ostringstream path_buffer;
     path_buffer << "member-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

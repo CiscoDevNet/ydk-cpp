@@ -566,6 +566,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::EntityC
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1638,6 +1639,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::EntityC
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2710,6 +2712,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::EntityC
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3782,6 +3785,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::EntityC
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4854,6 +4858,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::EntityC
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5926,6 +5931,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::EntityC
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6998,6 +7004,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::EntityC
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8070,6 +8077,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::EntityC
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9069,6 +9077,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::Configu
 {
     std::ostringstream path_buffer;
     path_buffer << "configuration-user";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10108,6 +10117,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::Configu
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10988,6 +10998,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::Configu
 {
     std::ostringstream path_buffer;
     path_buffer << "af-dependent-relative";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11083,6 +11094,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::Configu
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12082,6 +12094,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::Configu
 {
     std::ostringstream path_buffer;
     path_buffer << "configuration-inheritance";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13121,6 +13134,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::Configu
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14001,6 +14015,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::Configu
 {
     std::ostringstream path_buffer;
     path_buffer << "af-dependent-relative";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14096,6 +14111,7 @@ std::string Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::Configu
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-config-entid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16606,6 +16622,7 @@ std::string Bgp::Instances::Instance::InstanceActive::LabelRpfEntries::LabelRpfE
 {
     std::ostringstream path_buffer;
     path_buffer << "rpf";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17784,6 +17801,7 @@ std::string Bgp::Instances::Instance::InstanceActive::UpdateGenerationProcess::U
 {
     std::ostringstream path_buffer;
     path_buffer << "update-address-family";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19539,6 +19557,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::RpkiRe
 {
     std::ostringstream path_buffer;
     path_buffer << "refresh-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19799,6 +19818,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Afs::Af::Polici
 {
     std::ostringstream path_buffer;
     path_buffer << "policy";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

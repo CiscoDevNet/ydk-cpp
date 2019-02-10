@@ -1134,6 +1134,7 @@ std::string Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSumm
 {
     std::ostringstream path_buffer;
     path_buffer << "ipfrr-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1313,6 +1314,7 @@ std::string Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSumm
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-node";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1455,6 +1457,7 @@ std::string Rcmd::Ospf::Instances::Instance::IpfrrEventSummaries::IpfrrEventSumm
 {
     std::ostringstream path_buffer;
     path_buffer << "primary-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2433,6 +2436,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Spf
 {
     std::ostringstream path_buffer;
     path_buffer << "priority-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2978,6 +2982,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Spf
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3141,6 +3146,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 {
     std::ostringstream path_buffer;
     path_buffer << "dijkstra-run";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3351,6 +3357,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 {
     std::ostringstream path_buffer;
     path_buffer << "trigger-lsa";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3518,6 +3525,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 {
     std::ostringstream path_buffer;
     path_buffer << "priority";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4222,6 +4230,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4384,6 +4393,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 {
     std::ostringstream path_buffer;
     path_buffer << "convergence-timeline";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5453,6 +5463,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-ip";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5670,6 +5681,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-mpls";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5882,6 +5894,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 {
     std::ostringstream path_buffer;
     path_buffer << "leaf-networks-added";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5974,6 +5987,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 {
     std::ostringstream path_buffer;
     path_buffer << "leaf-networks-deleted";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6078,6 +6092,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Dij
 {
     std::ostringstream path_buffer;
     path_buffer << "lsa-processed";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6220,6 +6235,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 {
     std::ostringstream path_buffer;
     path_buffer << "inter-area-and-external";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6338,6 +6354,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 {
     std::ostringstream path_buffer;
     path_buffer << "priority";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7098,6 +7115,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 {
     std::ostringstream path_buffer;
     path_buffer << "convergence-timeline";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8167,6 +8185,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-ip";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8384,6 +8403,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-mpls";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8596,6 +8616,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 {
     std::ostringstream path_buffer;
     path_buffer << "leaf-networks-added";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8688,6 +8709,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunSummaries::SpfRunSummary::Int
 {
     std::ostringstream path_buffer;
     path_buffer << "leaf-networks-deleted";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9181,6 +9203,7 @@ std::string Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffli
 {
     std::ostringstream path_buffer;
     path_buffer << "ipfrr-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9360,6 +9383,7 @@ std::string Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffli
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-node";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9502,6 +9526,7 @@ std::string Rcmd::Ospf::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffli
 {
     std::ostringstream path_buffer;
     path_buffer << "primary-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10098,6 +10123,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfS
 {
     std::ostringstream path_buffer;
     path_buffer << "priority-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10643,6 +10669,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfS
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10806,6 +10833,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 {
     std::ostringstream path_buffer;
     path_buffer << "dijkstra-run";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11016,6 +11044,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 {
     std::ostringstream path_buffer;
     path_buffer << "trigger-lsa";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11183,6 +11212,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 {
     std::ostringstream path_buffer;
     path_buffer << "priority";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11887,6 +11917,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12049,6 +12080,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 {
     std::ostringstream path_buffer;
     path_buffer << "convergence-timeline";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13118,6 +13150,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-ip";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13335,6 +13368,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-mpls";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13547,6 +13581,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 {
     std::ostringstream path_buffer;
     path_buffer << "leaf-networks-added";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13639,6 +13674,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 {
     std::ostringstream path_buffer;
     path_buffer << "leaf-networks-deleted";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13743,6 +13779,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Dijk
 {
     std::ostringstream path_buffer;
     path_buffer << "lsa-processed";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13885,6 +13922,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 {
     std::ostringstream path_buffer;
     path_buffer << "inter-area-and-external";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14003,6 +14041,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 {
     std::ostringstream path_buffer;
     path_buffer << "priority";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14763,6 +14802,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 {
     std::ostringstream path_buffer;
     path_buffer << "convergence-timeline";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15832,6 +15872,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-ip";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16049,6 +16090,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-mpls";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16261,6 +16303,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 {
     std::ostringstream path_buffer;
     path_buffer << "leaf-networks-added";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16353,6 +16396,7 @@ std::string Rcmd::Ospf::Instances::Instance::SpfRunOfflines::SpfRunOffline::Inte
 {
     std::ostringstream path_buffer;
     path_buffer << "leaf-networks-deleted";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17178,6 +17222,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summ
 {
     std::ostringstream path_buffer;
     path_buffer << "path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17321,6 +17366,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summ
 {
     std::ostringstream path_buffer;
     path_buffer << "lfa-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17469,6 +17515,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summ
 {
     std::ostringstream path_buffer;
     path_buffer << "trigger-lsa";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17646,6 +17693,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summ
 {
     std::ostringstream path_buffer;
     path_buffer << "time-line";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17841,6 +17889,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summ
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-ip";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17947,6 +17996,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summ
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-mpls";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18062,6 +18112,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventSummaries::Summ
 {
     std::ostringstream path_buffer;
     path_buffer << "lsa-processed";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18931,6 +18982,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 {
     std::ostringstream path_buffer;
     path_buffer << "path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19074,6 +19126,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 {
     std::ostringstream path_buffer;
     path_buffer << "lfa-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19222,6 +19275,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 {
     std::ostringstream path_buffer;
     path_buffer << "trigger-lsa";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19399,6 +19453,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 {
     std::ostringstream path_buffer;
     path_buffer << "time-line";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19594,6 +19649,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-ip";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19700,6 +19756,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-mpls";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19815,6 +19872,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 {
     std::ostringstream path_buffer;
     path_buffer << "lsa-processed";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20684,6 +20742,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summa
 {
     std::ostringstream path_buffer;
     path_buffer << "path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20827,6 +20886,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summa
 {
     std::ostringstream path_buffer;
     path_buffer << "lfa-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

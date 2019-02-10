@@ -3286,6 +3286,7 @@ std::string PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::HardwareIn
 {
     std::ostringstream path_buffer;
     path_buffer << "disks";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

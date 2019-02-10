@@ -570,6 +570,7 @@ std::string PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType
 {
     std::ostringstream path_buffer;
     path_buffer << "uint16_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1480,6 +1481,7 @@ std::string PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType
 {
     std::ostringstream path_buffer;
     path_buffer << "uint16_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1665,6 +1667,7 @@ std::string PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType
 {
     std::ostringstream path_buffer;
     path_buffer << "uint16_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3767,6 +3770,7 @@ std::string PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType
 {
     std::ostringstream path_buffer;
     path_buffer << "clock-rate";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4022,6 +4026,7 @@ std::string PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType
 {
     std::ostringstream path_buffer;
     path_buffer << "clock-rate";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4277,6 +4282,7 @@ std::string PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType
 {
     std::ostringstream path_buffer;
     path_buffer << "clock-rate";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4532,6 +4538,7 @@ std::string PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType
 {
     std::ostringstream path_buffer;
     path_buffer << "clock-rate";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5279,6 +5286,7 @@ std::string PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType
 {
     std::ostringstream path_buffer;
     path_buffer << "action-pbf-info-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5486,6 +5494,7 @@ std::string PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType
 {
     std::ostringstream path_buffer;
     path_buffer << "action-ipv4-nh-info-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5671,6 +5680,7 @@ std::string PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType
 {
     std::ostringstream path_buffer;
     path_buffer << "action-ipv6-nh-info-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6065,6 +6075,7 @@ std::string PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType
 {
     std::ostringstream path_buffer;
     path_buffer << "reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6165,6 +6176,7 @@ std::string PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType
 {
     std::ostringstream path_buffer;
     path_buffer << "objects";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6255,6 +6267,7 @@ std::string PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType
 {
     std::ostringstream path_buffer;
     path_buffer << "class-map-reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6353,6 +6366,7 @@ std::string PolicyManager::Nodes::Node::PolicyMap::PolicyMapTypes::PolicyMapType
 {
     std::ostringstream path_buffer;
     path_buffer << "policy-map-reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6938,6 +6952,7 @@ std::string PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::Tran
 {
     std::ostringstream path_buffer;
     path_buffer << "reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7038,6 +7053,7 @@ std::string PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::Tran
 {
     std::ostringstream path_buffer;
     path_buffer << "objects";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7128,6 +7144,7 @@ std::string PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::Tran
 {
     std::ostringstream path_buffer;
     path_buffer << "class-map-reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7226,6 +7243,7 @@ std::string PolicyManager::Nodes::Node::PolicyMap::TransientPolicyMapTypes::Tran
 {
     std::ostringstream path_buffer;
     path_buffer << "policy-map-reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7532,6 +7550,7 @@ std::string PolicyManager::Nodes::Node::Summary::ClassMaps::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "class-maps";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7689,6 +7708,7 @@ std::string PolicyManager::Nodes::Node::Summary::ClassMaps::Reference::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7789,6 +7809,7 @@ std::string PolicyManager::Nodes::Node::Summary::ClassMaps::Objects::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "objects";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7879,6 +7900,7 @@ std::string PolicyManager::Nodes::Node::Summary::ClassMaps::ClassMapReference::g
 {
     std::ostringstream path_buffer;
     path_buffer << "class-map-reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7977,6 +7999,7 @@ std::string PolicyManager::Nodes::Node::Summary::ClassMaps::ClassMapReference::P
 {
     std::ostringstream path_buffer;
     path_buffer << "policy-map-reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8106,6 +8129,7 @@ std::string PolicyManager::Nodes::Node::Summary::PolicyMaps::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "policy-maps";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8263,6 +8287,7 @@ std::string PolicyManager::Nodes::Node::Summary::PolicyMaps::Reference::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8363,6 +8388,7 @@ std::string PolicyManager::Nodes::Node::Summary::PolicyMaps::Objects::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "objects";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8453,6 +8479,7 @@ std::string PolicyManager::Nodes::Node::Summary::PolicyMaps::ClassMapReference::
 {
     std::ostringstream path_buffer;
     path_buffer << "class-map-reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8551,6 +8578,7 @@ std::string PolicyManager::Nodes::Node::Summary::PolicyMaps::ClassMapReference::
 {
     std::ostringstream path_buffer;
     path_buffer << "policy-map-reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

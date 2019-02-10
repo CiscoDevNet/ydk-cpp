@@ -728,6 +728,7 @@ std::string MplsTeStandby::Tunnels::TunnelFlexLsps::TunnelFlexLsp::WorkingLsp::A
 {
     std::ostringstream path_buffer;
     path_buffer << "s2l-extended-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1719,6 +1720,7 @@ std::string MplsTeStandby::Tunnels::TunnelFlexLsps::TunnelFlexLsp::WorkingLsp::R
 {
     std::ostringstream path_buffer;
     path_buffer << "s2l-extended-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2122,6 +2124,7 @@ std::string MplsTeStandby::Tunnels::TunnelFlexLsps::TunnelFlexLsp::WorkingLsp::L
 {
     std::ostringstream path_buffer;
     path_buffer << "lsp-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3440,6 +3443,7 @@ std::string MplsTeStandby::Tunnels::TunnelFlexLsps::TunnelFlexLsp::ProtectLsp::A
 {
     std::ostringstream path_buffer;
     path_buffer << "s2l-extended-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4431,6 +4435,7 @@ std::string MplsTeStandby::Tunnels::TunnelFlexLsps::TunnelFlexLsp::ProtectLsp::R
 {
     std::ostringstream path_buffer;
     path_buffer << "s2l-extended-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4834,6 +4839,7 @@ std::string MplsTeStandby::Tunnels::TunnelFlexLsps::TunnelFlexLsp::ProtectLsp::L
 {
     std::ostringstream path_buffer;
     path_buffer << "lsp-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10111,6 +10117,7 @@ std::string MplsTeStandby::Tunnels::Summary::AutoTunServerSummary::ClientsSummar
 {
     std::ostringstream path_buffer;
     path_buffer << "clients-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10659,6 +10666,7 @@ std::string MplsTeStandby::Tunnels::TunnelPathProtections::TunnelPathProtection:
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-path-protection";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11494,6 +11502,7 @@ std::string MplsTeStandby::Tunnels::TunnelPathProtections::TunnelPathProtection:
 {
     std::ostringstream path_buffer;
     path_buffer << "srlsp-outgoing-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11599,6 +11608,7 @@ std::string MplsTeStandby::Tunnels::TunnelPathProtections::TunnelPathProtection:
 {
     std::ostringstream path_buffer;
     path_buffer << "lsp-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12167,6 +12177,7 @@ std::string MplsTeStandby::Tunnels::TunnelPathProtections::TunnelPathProtection:
 {
     std::ostringstream path_buffer;
     path_buffer << "srlsp-outgoing-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12272,6 +12283,7 @@ std::string MplsTeStandby::Tunnels::TunnelPathProtections::TunnelPathProtection:
 {
     std::ostringstream path_buffer;
     path_buffer << "lsp-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13186,6 +13198,7 @@ std::string MplsTeStandby::PathProtection::SwitchoverLog::PathProtectionSwitchov
 {
     std::ostringstream path_buffer;
     path_buffer << "path-protection-switchover-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13830,6 +13843,7 @@ std::string MplsTeStandby::FibNextHopLabelRoutes::FibNextHopLabelRoute::NextHopP
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13969,6 +13983,7 @@ std::string MplsTeStandby::FibNextHopLabelRoutes::FibNextHopLabelRoute::NextHopP
 {
     std::ostringstream path_buffer;
     path_buffer << "label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15101,6 +15116,7 @@ std::string MplsTeStandby::P2mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrit
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15342,6 +15358,7 @@ std::string MplsTeStandby::P2mp::TunnelRewrites::TunnelRewrite::SuccessfulRewrit
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16114,6 +16131,7 @@ std::string MplsTeStandby::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::T
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16355,6 +16373,7 @@ std::string MplsTeStandby::P2mp::TunnelRewrites::TunnelRewrite::FailedRewrite::T
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17127,6 +17146,7 @@ std::string MplsTeStandby::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17368,6 +17388,7 @@ std::string MplsTeStandby::P2mp::TunnelRewrites::TunnelRewrite::PendingRewrite::
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17649,6 +17670,7 @@ std::string MplsTeStandby::P2mp::CollaboratorTimers::P2mpTimer::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "p2mp-timer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19112,6 +19134,7 @@ std::string MplsTeStandby::P2mp::ForwardingOutputLabelRewrites::ForwardingOutput
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19353,6 +19376,7 @@ std::string MplsTeStandby::P2mp::ForwardingOutputLabelRewrites::ForwardingOutput
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19793,6 +19817,7 @@ std::string MplsTeStandby::P2mp::ForwardingOutputLabelRewrites::ForwardingOutput
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20034,6 +20059,7 @@ std::string MplsTeStandby::P2mp::ForwardingOutputLabelRewrites::ForwardingOutput
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20474,6 +20500,7 @@ std::string MplsTeStandby::P2mp::ForwardingOutputLabelRewrites::ForwardingOutput
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20715,6 +20742,7 @@ std::string MplsTeStandby::P2mp::ForwardingOutputLabelRewrites::ForwardingOutput
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20799,6 +20827,7 @@ std::string MplsTeStandby::P2mp::ForwardingOutputLabelRewrites::ForwardingOutput
 {
     std::ostringstream path_buffer;
     path_buffer << "s2l";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20926,6 +20955,7 @@ std::string MplsTeStandby::P2mp::ForwardingOutputLabelRewrites::ForwardingOutput
 {
     std::ostringstream path_buffer;
     path_buffer << "s2lsr-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21076,6 +21106,7 @@ std::string MplsTeStandby::P2mp::ForwardingOutputLabelRewrites::ForwardingOutput
 {
     std::ostringstream path_buffer;
     path_buffer << "outgoing-labels-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21446,6 +21477,7 @@ std::string MplsTeStandby::LspOutOfResources::Summary::LspOorStateXr::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "lsp-oor-state-xr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22694,6 +22726,7 @@ std::string MplsTeStandby::Bfd::Links::Link::Neighbor::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22919,6 +22952,7 @@ std::string MplsTeStandby::Bfd::TailInfos::TailInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tail-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

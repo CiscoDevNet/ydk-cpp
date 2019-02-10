@@ -4570,6 +4570,7 @@ std::string Pim::Standby::DefaultContext::GlobalInterfaces::GlobalInterface::Int
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5449,6 +5450,7 @@ std::string Pim::Standby::DefaultContext::IfrsInterfaces::IfrsInterface::Interfa
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5672,6 +5674,7 @@ std::string Pim::Standby::DefaultContext::Safs::Saf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "saf";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5937,6 +5940,7 @@ std::string Pim::Standby::DefaultContext::Safs::Saf::RpfHashSourceGroups::RpfHas
 {
     std::ostringstream path_buffer;
     path_buffer << "rpf-hash-source-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6463,6 +6467,7 @@ std::string Pim::Standby::DefaultContext::Safs::Saf::RpfHashSources::RpfHashSour
 {
     std::ostringstream path_buffer;
     path_buffer << "rpf-hash-source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7261,6 +7266,7 @@ std::string Pim::Standby::DefaultContext::Safs::Saf::Rpfs::Rpf::RpfPath::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "rpf-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8809,6 +8815,7 @@ std::string Pim::Standby::DefaultContext::MibDatabases::MibDatabase::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "mib-database";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9749,6 +9756,7 @@ std::string Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat:
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-old-format";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10033,6 +10041,7 @@ std::string Pim::Standby::DefaultContext::NeighborOldFormats::NeighborOldFormat:
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-address-xr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10371,6 +10380,7 @@ std::string Pim::Standby::DefaultContext::Ranges::Range::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10786,6 +10796,7 @@ std::string Pim::Standby::DefaultContext::Ranges::Range::GroupRange::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "group-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11919,6 +11930,7 @@ std::string Pim::Standby::DefaultContext::InterfaceOldFormats::InterfaceOldForma
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12611,6 +12623,7 @@ std::string Pim::Standby::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpLis
 {
     std::ostringstream path_buffer;
     path_buffer << "pim-bsr-crp-bag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13293,6 +13306,7 @@ std::string Pim::Standby::DefaultContext::Bsr::CandidateRps::CandidateRp::CrpAcc
 {
     std::ostringstream path_buffer;
     path_buffer << "crp-access";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14371,6 +14385,7 @@ std::string Pim::Standby::DefaultContext::RoutePolicy::RoutePolicyTests::RoutePo
 {
     std::ostringstream path_buffer;
     path_buffer << "route-policy-test";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15923,6 +15938,7 @@ std::string Pim::Standby::DefaultContext::Interfaces::Interface::InterfaceAddres
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16853,6 +16869,7 @@ std::string Pim::Standby::DefaultContext::BidirDfStates::BidirDfState::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "bidir-df-state";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17454,6 +17471,7 @@ std::string Pim::Standby::DefaultContext::Topologies::Topology::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "topology";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19274,6 +19292,7 @@ std::string Pim::Standby::DefaultContext::Topologies::Topology::OutgoingInterfac
 {
     std::ostringstream path_buffer;
     path_buffer << "outgoing-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19908,6 +19927,7 @@ std::string Pim::Standby::DefaultContext::BgpAfs::BgpAf::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-af";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20890,6 +20910,7 @@ std::string Pim::Standby::DefaultContext::GroupMapSources::GroupMapSource::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "group-map-source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22683,6 +22704,7 @@ std::string Pim::Standby::DefaultContext::TrafficCounters::PacketQueue::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "packet-queue";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23183,6 +23205,7 @@ std::string Pim::Standby::DefaultContext::GroupMapRpfs::GroupMapRpf::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "group-map-rpf";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -1770,6 +1770,27 @@ class Native::Interface::Vasileft::PmPath : public ydk::Entity
 }; // Native::Interface::Vasileft::PmPath
 
 
+class Native::Interface::Vasileft::EtAnalytics : public ydk::Entity
+{
+    public:
+        EtAnalytics();
+        ~EtAnalytics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enable; //type: empty
+
+}; // Native::Interface::Vasileft::EtAnalytics
+
+
 class Native::Interface::Vasileft::ServicePolicy : public ydk::Entity
 {
     public:
@@ -1934,11 +1955,11 @@ class Native::Interface::Vasileft::ServicePolicy::Type::ServiceChain::Output : p
 }; // Native::Interface::Vasileft::ServicePolicy::Type::ServiceChain::Output
 
 
-class Native::Interface::Vasileft::EtAnalytics : public ydk::Entity
+class Native::Interface::Vasileft::Umbrella : public ydk::Entity
 {
     public:
-        EtAnalytics();
-        ~EtAnalytics();
+        Umbrella();
+        ~Umbrella();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1950,9 +1971,10 @@ class Native::Interface::Vasileft::EtAnalytics : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf out; //type: empty
+        ydk::YLeaf in; //type: string
 
-}; // Native::Interface::Vasileft::EtAnalytics
+}; // Native::Interface::Vasileft::Umbrella
 
 
 class Native::Interface::Vasileft::ZoneMember : public ydk::Entity
@@ -1995,28 +2017,6 @@ class Native::Interface::Vasileft::Utd : public ydk::Entity
         ydk::YLeaf enable; //type: empty
 
 }; // Native::Interface::Vasileft::Utd
-
-
-class Native::Interface::Vasileft::Umbrella : public ydk::Entity
-{
-    public:
-        Umbrella();
-        ~Umbrella();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf out; //type: empty
-        ydk::YLeaf in; //type: string
-
-}; // Native::Interface::Vasileft::Umbrella
 
 
 class Native::Interface::Vasiright : public ydk::Entity
@@ -2084,11 +2084,11 @@ class Native::Interface::Vasiright : public ydk::Entity
         class RcvQueue; //type: Native::Interface::Vasiright::RcvQueue
         class Peer; //type: Native::Interface::Vasiright::Peer
         class PmPath; //type: Native::Interface::Vasiright::PmPath
-        class ServicePolicy; //type: Native::Interface::Vasiright::ServicePolicy
         class EtAnalytics; //type: Native::Interface::Vasiright::EtAnalytics
+        class ServicePolicy; //type: Native::Interface::Vasiright::ServicePolicy
+        class Umbrella; //type: Native::Interface::Vasiright::Umbrella
         class ZoneMember; //type: Native::Interface::Vasiright::ZoneMember
         class Utd; //type: Native::Interface::Vasiright::Utd
-        class Umbrella; //type: Native::Interface::Vasiright::Umbrella
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::SwitchportConf> switchport_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::Switchport> switchport;
@@ -2127,11 +2127,11 @@ class Native::Interface::Vasiright : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::RcvQueue> rcv_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::Peer> peer;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::PmPath> pm_path;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::ServicePolicy> service_policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::EtAnalytics> et_analytics;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::ServicePolicy> service_policy;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::Umbrella> umbrella;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::ZoneMember> zone_member;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::Utd> utd;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vasiright::Umbrella> umbrella;
                 class IfState;
         class ServiceInsertion;
 

@@ -78,7 +78,20 @@ using json = nlohmann::json;
             {
                 for (auto i = it->begin(); i != it->end(); i++)
                 {
-                    get_module_names_from_json_object(*i, module_names);
+                    if (i->is_primitive())
+                    {
+                        auto v = i->dump();
+                        if (v.find("\"") == 0 && v.rfind("\"") == v.length()-1) {
+                            v = v.substr(1, v.length()-2);
+                        }
+                        auto ns = path::segmentalize_module_names(v);
+                        if (ns.size() > 0)
+                            module_names.insert(ns.begin(), ns.end());
+                    }
+                    else
+                    {
+                        get_module_names_from_json_object(*i, module_names);
+                    }
                 }
             }
             else
@@ -86,7 +99,7 @@ using json = nlohmann::json;
                 // extract module name from key
                 auto identifier = std::string(it.key());
                 auto found = identifier.find(":");
-                if (found != std::string::npos)
+                if (found != std::string::npos && found > 0)
                 {
                     module_names.insert(identifier.substr(0, found));
                 }
@@ -94,10 +107,12 @@ using json = nlohmann::json;
                 if (it->is_primitive())
                 {
                     auto v = it->dump();
-                    if (v.find("\"") == 0)
-                        v = v.substr(1);
+                    if (v.find("\"") == 0 && v.rfind("\"") == v.length()-1) {
+                        v = v.substr(1, v.length()-2);
+                    }
                     auto ns = path::segmentalize_module_names(v);
-                    module_names.insert(ns.begin(), ns.end());
+                    if (ns.size() > 0)
+                        module_names.insert(ns.begin(), ns.end());
                 }
                 else
                 {

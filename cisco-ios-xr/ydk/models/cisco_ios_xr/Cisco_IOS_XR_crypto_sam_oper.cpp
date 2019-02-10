@@ -622,6 +622,7 @@ std::string Sam::LogContents::LogContent::Logs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "logs";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

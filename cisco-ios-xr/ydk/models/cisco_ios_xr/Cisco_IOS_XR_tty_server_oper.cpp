@@ -3356,6 +3356,7 @@ std::string Tty::VtyLines::VtyLine::Sessions::OutgoingConnection::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "outgoing-connection";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

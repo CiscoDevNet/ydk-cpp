@@ -677,6 +677,7 @@ std::string ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "fpd-info-detaile";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -974,6 +975,7 @@ std::string ShowFpd::HwModuleFpd::FpdInfoDetaile::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fpd-info-detaile";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1430,6 +1432,7 @@ std::string ShowFpd::HelpLocations::HelpLocation::HelpFpd::FpdName::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "fpd-name";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1629,6 +1632,7 @@ std::string ShowFpd::HwModuleFpdHelpFpd::FpdName::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fpd-name";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1840,6 +1844,7 @@ std::string ShowFpd::Package::FpdPkgData::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "fpd-pkg-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2080,6 +2085,7 @@ std::string ShowFpd::LocationHelp::LocationName::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "location-name";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

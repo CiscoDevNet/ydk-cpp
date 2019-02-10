@@ -494,6 +494,7 @@ std::string Sbfd::TargetIdentifier::RemoteVrfs::RemoteVrf::RemoteDiscriminator::
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-discriminator";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1016,6 +1017,7 @@ std::string Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator::get
 {
     std::ostringstream path_buffer;
     path_buffer << "local-discriminator";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

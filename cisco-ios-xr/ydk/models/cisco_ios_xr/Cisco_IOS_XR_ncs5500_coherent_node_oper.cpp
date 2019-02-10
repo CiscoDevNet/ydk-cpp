@@ -1148,6 +1148,7 @@ std::string Coherent::Nodes::Node::CoherentTimeStats::PortStat::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "port-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2840,6 +2841,7 @@ std::string Coherent::Nodes::Node::Coherenthealth::PortData::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "port-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3836,6 +3838,7 @@ std::string Coherent::Nodes::Node::Coherenthealth::PortData::InterfaceInfo::EthD
 {
     std::ostringstream path_buffer;
     path_buffer << "eth-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

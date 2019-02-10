@@ -572,6 +572,7 @@ std::string Pim::Standby::DefaultContext::Gre::GreNextHops::GreNextHop::GrePath:
 {
     std::ostringstream path_buffer;
     path_buffer << "gre-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1071,6 +1072,7 @@ std::string Pim::Standby::DefaultContext::BidirDfWinners::BidirDfWinner::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "bidir-df-winner";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1623,6 +1625,7 @@ std::string Pim::Standby::DefaultContext::TableContexts::TableContext::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "table-context";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4766,6 +4769,7 @@ std::string Pim::Standby::DefaultContext::Context::ExportRouteTarget::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "export-route-target";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4935,6 +4939,7 @@ std::string Pim::Standby::DefaultContext::Context::ImportRouteTarget::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "import-route-target";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5094,6 +5099,7 @@ std::string Pim::Standby::DefaultContext::Context::AnycastRpRange::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "anycast-rp-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5823,6 +5829,7 @@ std::string Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::R
 {
     std::ostringstream path_buffer;
     path_buffer << "redirect-route-database";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6232,6 +6239,7 @@ std::string Pim::Standby::DefaultContext::RpfRedirect::RedirectRouteDatabases::R
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6629,6 +6637,7 @@ std::string Pim::Standby::DefaultContext::RpfRedirect::BundleInterfaces::BundleI
 {
     std::ostringstream path_buffer;
     path_buffer << "bundle-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7645,6 +7654,7 @@ std::string Pim::Standby::DefaultContext::MulticastStaticRoutes::MulticastStatic
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-static-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8199,6 +8209,7 @@ std::string Pim::Standby::DefaultContext::Neighbors::Neighbor::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8483,6 +8494,7 @@ std::string Pim::Standby::DefaultContext::Neighbors::Neighbor::NeighborAddressXr
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-address-xr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11736,6 +11748,7 @@ std::string Pim::Standby::Vrfs::Vrf::IfrsInterfaces::IfrsInterface::InterfaceAdd
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11945,6 +11958,7 @@ std::string Pim::Standby::Vrfs::Vrf::Safs::Saf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "saf";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12196,6 +12210,7 @@ std::string Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSourceGroups::RpfHashSour
 {
     std::ostringstream path_buffer;
     path_buffer << "rpf-hash-source-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12694,6 +12709,7 @@ std::string Pim::Standby::Vrfs::Vrf::Safs::Saf::RpfHashSources::RpfHashSource::g
 {
     std::ostringstream path_buffer;
     path_buffer << "rpf-hash-source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13464,6 +13480,7 @@ std::string Pim::Standby::Vrfs::Vrf::Safs::Saf::Rpfs::Rpf::RpfPath::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "rpf-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14963,6 +14980,7 @@ std::string Pim::Standby::Vrfs::Vrf::MibDatabases::MibDatabase::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "mib-database";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15861,6 +15879,7 @@ std::string Pim::Standby::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-old-format";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16138,6 +16157,7 @@ std::string Pim::Standby::Vrfs::Vrf::NeighborOldFormats::NeighborOldFormat::Neig
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-address-xr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16455,6 +16475,7 @@ std::string Pim::Standby::Vrfs::Vrf::Ranges::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16849,6 +16870,7 @@ std::string Pim::Standby::Vrfs::Vrf::Ranges::Range::GroupRange::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "group-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17954,6 +17976,7 @@ std::string Pim::Standby::Vrfs::Vrf::InterfaceOldFormats::InterfaceOldFormat::In
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18625,6 +18648,7 @@ std::string Pim::Standby::Vrfs::Vrf::Bsr::RpCaches::RpCache::CandidateRpList::Pi
 {
     std::ostringstream path_buffer;
     path_buffer << "pim-bsr-crp-bag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19293,6 +19317,7 @@ std::string Pim::Standby::Vrfs::Vrf::Bsr::CandidateRps::CandidateRp::CrpAccess::
 {
     std::ostringstream path_buffer;
     path_buffer << "crp-access";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20329,6 +20354,7 @@ std::string Pim::Standby::Vrfs::Vrf::RoutePolicy::RoutePolicyTests::RoutePolicyT
 {
     std::ostringstream path_buffer;
     path_buffer << "route-policy-test";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21846,6 +21872,7 @@ std::string Pim::Standby::Vrfs::Vrf::Interfaces::Interface::InterfaceAddress::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22748,6 +22775,7 @@ std::string Pim::Standby::Vrfs::Vrf::BidirDfStates::BidirDfState::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "bidir-df-state";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23328,6 +23356,7 @@ std::string Pim::Standby::Vrfs::Vrf::Topologies::Topology::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "topology";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25085,6 +25114,7 @@ std::string Pim::Standby::Vrfs::Vrf::Topologies::Topology::OutgoingInterface::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "outgoing-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25698,6 +25728,7 @@ std::string Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-af";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

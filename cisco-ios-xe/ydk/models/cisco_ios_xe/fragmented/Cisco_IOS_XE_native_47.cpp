@@ -3025,6 +3025,782 @@ bool Native::Interface::TwoGigabitEthernet::PmPath::has_leaf_or_child_of_name(co
     return false;
 }
 
+Native::Interface::TwoGigabitEthernet::Power::Power()
+    :
+    inline_(std::make_shared<Native::Interface::TwoGigabitEthernet::Power::Inline>())
+{
+    inline_->parent = this;
+
+    yang_name = "power"; yang_parent_name = "TwoGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwoGigabitEthernet::Power::~Power()
+{
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::has_data() const
+{
+    if (is_presence_container) return true;
+    return (inline_ !=  nullptr && inline_->has_data());
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::has_operation() const
+{
+    return is_set(yfilter)
+	|| (inline_ !=  nullptr && inline_->has_operation());
+}
+
+std::string Native::Interface::TwoGigabitEthernet::Power::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-power:power";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthernet::Power::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Power::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "inline")
+    {
+        if(inline_ == nullptr)
+        {
+            inline_ = std::make_shared<Native::Interface::TwoGigabitEthernet::Power::Inline>();
+        }
+        return inline_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Power::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(inline_ != nullptr)
+    {
+        _children["inline"] = inline_;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TwoGigabitEthernet::Power::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TwoGigabitEthernet::Power::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "inline")
+        return true;
+    return false;
+}
+
+Native::Interface::TwoGigabitEthernet::Power::Inline::Inline()
+    :
+    consumption{YType::uint16, "consumption"},
+    never{YType::empty, "never"}
+        ,
+    auto_(nullptr) // presence node
+    , four_pair(std::make_shared<Native::Interface::TwoGigabitEthernet::Power::Inline::FourPair>())
+    , police(nullptr) // presence node
+    , port(std::make_shared<Native::Interface::TwoGigabitEthernet::Power::Inline::Port>())
+    , static_(nullptr) // presence node
+{
+    four_pair->parent = this;
+    port->parent = this;
+
+    yang_name = "inline"; yang_parent_name = "power"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwoGigabitEthernet::Power::Inline::~Inline()
+{
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::Inline::has_data() const
+{
+    if (is_presence_container) return true;
+    return consumption.is_set
+	|| never.is_set
+	|| (auto_ !=  nullptr && auto_->has_data())
+	|| (four_pair !=  nullptr && four_pair->has_data())
+	|| (police !=  nullptr && police->has_data())
+	|| (port !=  nullptr && port->has_data())
+	|| (static_ !=  nullptr && static_->has_data());
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::Inline::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(consumption.yfilter)
+	|| ydk::is_set(never.yfilter)
+	|| (auto_ !=  nullptr && auto_->has_operation())
+	|| (four_pair !=  nullptr && four_pair->has_operation())
+	|| (police !=  nullptr && police->has_operation())
+	|| (port !=  nullptr && port->has_operation())
+	|| (static_ !=  nullptr && static_->has_operation());
+}
+
+std::string Native::Interface::TwoGigabitEthernet::Power::Inline::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "inline";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthernet::Power::Inline::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (consumption.is_set || is_set(consumption.yfilter)) leaf_name_data.push_back(consumption.get_name_leafdata());
+    if (never.is_set || is_set(never.yfilter)) leaf_name_data.push_back(never.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Power::Inline::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "auto")
+    {
+        if(auto_ == nullptr)
+        {
+            auto_ = std::make_shared<Native::Interface::TwoGigabitEthernet::Power::Inline::Auto>();
+        }
+        return auto_;
+    }
+
+    if(child_yang_name == "four-pair")
+    {
+        if(four_pair == nullptr)
+        {
+            four_pair = std::make_shared<Native::Interface::TwoGigabitEthernet::Power::Inline::FourPair>();
+        }
+        return four_pair;
+    }
+
+    if(child_yang_name == "police")
+    {
+        if(police == nullptr)
+        {
+            police = std::make_shared<Native::Interface::TwoGigabitEthernet::Power::Inline::Police>();
+        }
+        return police;
+    }
+
+    if(child_yang_name == "port")
+    {
+        if(port == nullptr)
+        {
+            port = std::make_shared<Native::Interface::TwoGigabitEthernet::Power::Inline::Port>();
+        }
+        return port;
+    }
+
+    if(child_yang_name == "static")
+    {
+        if(static_ == nullptr)
+        {
+            static_ = std::make_shared<Native::Interface::TwoGigabitEthernet::Power::Inline::Static>();
+        }
+        return static_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Power::Inline::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(auto_ != nullptr)
+    {
+        _children["auto"] = auto_;
+    }
+
+    if(four_pair != nullptr)
+    {
+        _children["four-pair"] = four_pair;
+    }
+
+    if(police != nullptr)
+    {
+        _children["police"] = police;
+    }
+
+    if(port != nullptr)
+    {
+        _children["port"] = port;
+    }
+
+    if(static_ != nullptr)
+    {
+        _children["static"] = static_;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TwoGigabitEthernet::Power::Inline::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "consumption")
+    {
+        consumption = value;
+        consumption.value_namespace = name_space;
+        consumption.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "never")
+    {
+        never = value;
+        never.value_namespace = name_space;
+        never.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TwoGigabitEthernet::Power::Inline::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "consumption")
+    {
+        consumption.yfilter = yfilter;
+    }
+    if(value_path == "never")
+    {
+        never.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::Inline::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auto" || name == "four-pair" || name == "police" || name == "port" || name == "static" || name == "consumption" || name == "never")
+        return true;
+    return false;
+}
+
+Native::Interface::TwoGigabitEthernet::Power::Inline::Auto::Auto()
+    :
+    max{YType::int32, "max"}
+{
+
+    yang_name = "auto"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::TwoGigabitEthernet::Power::Inline::Auto::~Auto()
+{
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::Inline::Auto::has_data() const
+{
+    if (is_presence_container) return true;
+    return max.is_set;
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::Inline::Auto::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max.yfilter);
+}
+
+std::string Native::Interface::TwoGigabitEthernet::Power::Inline::Auto::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "auto";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthernet::Power::Inline::Auto::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max.is_set || is_set(max.yfilter)) leaf_name_data.push_back(max.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Power::Inline::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Power::Inline::Auto::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TwoGigabitEthernet::Power::Inline::Auto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max")
+    {
+        max = value;
+        max.value_namespace = name_space;
+        max.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TwoGigabitEthernet::Power::Inline::Auto::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max")
+    {
+        max.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::Inline::Auto::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max")
+        return true;
+    return false;
+}
+
+Native::Interface::TwoGigabitEthernet::Power::Inline::FourPair::FourPair()
+    :
+    forced{YType::empty, "forced"}
+{
+
+    yang_name = "four-pair"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwoGigabitEthernet::Power::Inline::FourPair::~FourPair()
+{
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::Inline::FourPair::has_data() const
+{
+    if (is_presence_container) return true;
+    return forced.is_set;
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::Inline::FourPair::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(forced.yfilter);
+}
+
+std::string Native::Interface::TwoGigabitEthernet::Power::Inline::FourPair::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "four-pair";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthernet::Power::Inline::FourPair::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (forced.is_set || is_set(forced.yfilter)) leaf_name_data.push_back(forced.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Power::Inline::FourPair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Power::Inline::FourPair::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TwoGigabitEthernet::Power::Inline::FourPair::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "forced")
+    {
+        forced = value;
+        forced.value_namespace = name_space;
+        forced.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TwoGigabitEthernet::Power::Inline::FourPair::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "forced")
+    {
+        forced.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::Inline::FourPair::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "forced")
+        return true;
+    return false;
+}
+
+Native::Interface::TwoGigabitEthernet::Power::Inline::Police::Police()
+    :
+    action(std::make_shared<Native::Interface::TwoGigabitEthernet::Power::Inline::Police::Action>())
+{
+    action->parent = this;
+
+    yang_name = "police"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::TwoGigabitEthernet::Power::Inline::Police::~Police()
+{
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::Inline::Police::has_data() const
+{
+    if (is_presence_container) return true;
+    return (action !=  nullptr && action->has_data());
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::Inline::Police::has_operation() const
+{
+    return is_set(yfilter)
+	|| (action !=  nullptr && action->has_operation());
+}
+
+std::string Native::Interface::TwoGigabitEthernet::Power::Inline::Police::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "police";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthernet::Power::Inline::Police::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Power::Inline::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "action")
+    {
+        if(action == nullptr)
+        {
+            action = std::make_shared<Native::Interface::TwoGigabitEthernet::Power::Inline::Police::Action>();
+        }
+        return action;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Power::Inline::Police::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(action != nullptr)
+    {
+        _children["action"] = action;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TwoGigabitEthernet::Power::Inline::Police::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TwoGigabitEthernet::Power::Inline::Police::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::Inline::Police::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action")
+        return true;
+    return false;
+}
+
+Native::Interface::TwoGigabitEthernet::Power::Inline::Police::Action::Action()
+    :
+    errdisable{YType::empty, "errdisable"},
+    log{YType::empty, "log"}
+{
+
+    yang_name = "action"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwoGigabitEthernet::Power::Inline::Police::Action::~Action()
+{
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::Inline::Police::Action::has_data() const
+{
+    if (is_presence_container) return true;
+    return errdisable.is_set
+	|| log.is_set;
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::Inline::Police::Action::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(errdisable.yfilter)
+	|| ydk::is_set(log.yfilter);
+}
+
+std::string Native::Interface::TwoGigabitEthernet::Power::Inline::Police::Action::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "action";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthernet::Power::Inline::Police::Action::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (errdisable.is_set || is_set(errdisable.yfilter)) leaf_name_data.push_back(errdisable.get_name_leafdata());
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Power::Inline::Police::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Power::Inline::Police::Action::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TwoGigabitEthernet::Power::Inline::Police::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "errdisable")
+    {
+        errdisable = value;
+        errdisable.value_namespace = name_space;
+        errdisable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "log")
+    {
+        log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TwoGigabitEthernet::Power::Inline::Police::Action::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "errdisable")
+    {
+        errdisable.yfilter = yfilter;
+    }
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::Inline::Police::Action::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "errdisable" || name == "log")
+        return true;
+    return false;
+}
+
+Native::Interface::TwoGigabitEthernet::Power::Inline::Port::Port()
+    :
+    poe_ha{YType::empty, "poe-ha"},
+    perpetual_poe_ha{YType::empty, "perpetual-poe-ha"},
+    two_event{YType::empty, "two-event"}
+{
+
+    yang_name = "port"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwoGigabitEthernet::Power::Inline::Port::~Port()
+{
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::Inline::Port::has_data() const
+{
+    if (is_presence_container) return true;
+    return poe_ha.is_set
+	|| perpetual_poe_ha.is_set
+	|| two_event.is_set;
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::Inline::Port::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(poe_ha.yfilter)
+	|| ydk::is_set(perpetual_poe_ha.yfilter)
+	|| ydk::is_set(two_event.yfilter);
+}
+
+std::string Native::Interface::TwoGigabitEthernet::Power::Inline::Port::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "port";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthernet::Power::Inline::Port::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (poe_ha.is_set || is_set(poe_ha.yfilter)) leaf_name_data.push_back(poe_ha.get_name_leafdata());
+    if (perpetual_poe_ha.is_set || is_set(perpetual_poe_ha.yfilter)) leaf_name_data.push_back(perpetual_poe_ha.get_name_leafdata());
+    if (two_event.is_set || is_set(two_event.yfilter)) leaf_name_data.push_back(two_event.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Power::Inline::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Power::Inline::Port::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TwoGigabitEthernet::Power::Inline::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "poe-ha")
+    {
+        poe_ha = value;
+        poe_ha.value_namespace = name_space;
+        poe_ha.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "perpetual-poe-ha")
+    {
+        perpetual_poe_ha = value;
+        perpetual_poe_ha.value_namespace = name_space;
+        perpetual_poe_ha.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "two-event")
+    {
+        two_event = value;
+        two_event.value_namespace = name_space;
+        two_event.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TwoGigabitEthernet::Power::Inline::Port::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "poe-ha")
+    {
+        poe_ha.yfilter = yfilter;
+    }
+    if(value_path == "perpetual-poe-ha")
+    {
+        perpetual_poe_ha.yfilter = yfilter;
+    }
+    if(value_path == "two-event")
+    {
+        two_event.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::Inline::Port::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "poe-ha" || name == "perpetual-poe-ha" || name == "two-event")
+        return true;
+    return false;
+}
+
+Native::Interface::TwoGigabitEthernet::Power::Inline::Static::Static()
+    :
+    max{YType::int32, "max"}
+{
+
+    yang_name = "static"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::TwoGigabitEthernet::Power::Inline::Static::~Static()
+{
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::Inline::Static::has_data() const
+{
+    if (is_presence_container) return true;
+    return max.is_set;
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::Inline::Static::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max.yfilter);
+}
+
+std::string Native::Interface::TwoGigabitEthernet::Power::Inline::Static::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "static";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthernet::Power::Inline::Static::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max.is_set || is_set(max.yfilter)) leaf_name_data.push_back(max.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Power::Inline::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Power::Inline::Static::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TwoGigabitEthernet::Power::Inline::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max")
+    {
+        max = value;
+        max.value_namespace = name_space;
+        max.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TwoGigabitEthernet::Power::Inline::Static::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max")
+    {
+        max.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TwoGigabitEthernet::Power::Inline::Static::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max")
+        return true;
+    return false;
+}
+
 Native::Interface::TwoGigabitEthernet::CarrierDelay::CarrierDelay()
     :
     seconds{YType::uint8, "seconds"},
@@ -14092,842 +14868,6 @@ bool Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Disca
     return false;
 }
 
-Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Peer()
-    :
-    protocol{YType::enumeration, "protocol"}
-{
-
-    yang_name = "peer"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::~Peer()
-{
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::has_data() const
-{
-    if (is_presence_container) return true;
-    for (auto const & leaf : protocol.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::has_operation() const
-{
-    for (auto const & leaf : protocol.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(protocol.yfilter);
-}
-
-std::string Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "peer";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto protocol_name_datas = protocol.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), protocol_name_datas.begin(), protocol_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "protocol")
-    {
-        protocol.append(value);
-    }
-}
-
-void Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "protocol")
-    {
-        protocol.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "protocol")
-        return true;
-    return false;
-}
-
-Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Forward()
-    :
-    protocol{YType::enumeration, "protocol"}
-{
-
-    yang_name = "forward"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::~Forward()
-{
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::has_data() const
-{
-    if (is_presence_container) return true;
-    for (auto const & leaf : protocol.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::has_operation() const
-{
-    for (auto const & leaf : protocol.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(protocol.yfilter);
-}
-
-std::string Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "forward";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto protocol_name_datas = protocol.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), protocol_name_datas.begin(), protocol_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "protocol")
-    {
-        protocol.append(value);
-    }
-}
-
-void Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "protocol")
-    {
-        protocol.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "protocol")
-        return true;
-    return false;
-}
-
-Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Tunnel()
-    :
-    protocol{YType::enumeration, "protocol"}
-{
-
-    yang_name = "tunnel"; yang_parent_name = "l2protocol"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::~Tunnel()
-{
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::has_data() const
-{
-    if (is_presence_container) return true;
-    for (auto const & leaf : protocol.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::has_operation() const
-{
-    for (auto const & leaf : protocol.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(protocol.yfilter);
-}
-
-std::string Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tunnel";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto protocol_name_datas = protocol.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), protocol_name_datas.begin(), protocol_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "protocol")
-    {
-        protocol.append(value);
-    }
-}
-
-void Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "protocol")
-    {
-        protocol.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "protocol")
-        return true;
-    return false;
-}
-
-Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Xconnect()
-    :
-    address{YType::str, "address"},
-    vcid{YType::uint32, "vcid"},
-    encapsulation{YType::enumeration, "encapsulation"},
-    manual{YType::empty, "manual"},
-    pw_class{YType::str, "pw-class"},
-    sequencing{YType::enumeration, "sequencing"},
-    mtu{YType::uint32, "mtu"}
-        ,
-    backup(std::make_shared<Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup>())
-{
-    backup->parent = this;
-
-    yang_name = "xconnect"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::~Xconnect()
-{
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::has_data() const
-{
-    if (is_presence_container) return true;
-    return address.is_set
-	|| vcid.is_set
-	|| encapsulation.is_set
-	|| manual.is_set
-	|| pw_class.is_set
-	|| sequencing.is_set
-	|| mtu.is_set
-	|| (backup !=  nullptr && backup->has_data());
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address.yfilter)
-	|| ydk::is_set(vcid.yfilter)
-	|| ydk::is_set(encapsulation.yfilter)
-	|| ydk::is_set(manual.yfilter)
-	|| ydk::is_set(pw_class.yfilter)
-	|| ydk::is_set(sequencing.yfilter)
-	|| ydk::is_set(mtu.yfilter)
-	|| (backup !=  nullptr && backup->has_operation());
-}
-
-std::string Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-l2vpn:xconnect";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (vcid.is_set || is_set(vcid.yfilter)) leaf_name_data.push_back(vcid.get_name_leafdata());
-    if (encapsulation.is_set || is_set(encapsulation.yfilter)) leaf_name_data.push_back(encapsulation.get_name_leafdata());
-    if (manual.is_set || is_set(manual.yfilter)) leaf_name_data.push_back(manual.get_name_leafdata());
-    if (pw_class.is_set || is_set(pw_class.yfilter)) leaf_name_data.push_back(pw_class.get_name_leafdata());
-    if (sequencing.is_set || is_set(sequencing.yfilter)) leaf_name_data.push_back(sequencing.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "backup")
-    {
-        if(backup == nullptr)
-        {
-            backup = std::make_shared<Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup>();
-        }
-        return backup;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(backup != nullptr)
-    {
-        _children["backup"] = backup;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address")
-    {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vcid")
-    {
-        vcid = value;
-        vcid.value_namespace = name_space;
-        vcid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "encapsulation")
-    {
-        encapsulation = value;
-        encapsulation.value_namespace = name_space;
-        encapsulation.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "manual")
-    {
-        manual = value;
-        manual.value_namespace = name_space;
-        manual.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pw-class")
-    {
-        pw_class = value;
-        pw_class.value_namespace = name_space;
-        pw_class.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sequencing")
-    {
-        sequencing = value;
-        sequencing.value_namespace = name_space;
-        sequencing.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mtu")
-    {
-        mtu = value;
-        mtu.value_namespace = name_space;
-        mtu.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address")
-    {
-        address.yfilter = yfilter;
-    }
-    if(value_path == "vcid")
-    {
-        vcid.yfilter = yfilter;
-    }
-    if(value_path == "encapsulation")
-    {
-        encapsulation.yfilter = yfilter;
-    }
-    if(value_path == "manual")
-    {
-        manual.yfilter = yfilter;
-    }
-    if(value_path == "pw-class")
-    {
-        pw_class.yfilter = yfilter;
-    }
-    if(value_path == "sequencing")
-    {
-        sequencing.yfilter = yfilter;
-    }
-    if(value_path == "mtu")
-    {
-        mtu.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "backup" || name == "address" || name == "vcid" || name == "encapsulation" || name == "manual" || name == "pw-class" || name == "sequencing" || name == "mtu")
-        return true;
-    return false;
-}
-
-Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Backup()
-    :
-    peer(std::make_shared<Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Peer>())
-    , delay(std::make_shared<Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Delay>())
-{
-    peer->parent = this;
-    delay->parent = this;
-
-    yang_name = "backup"; yang_parent_name = "xconnect"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::~Backup()
-{
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::has_data() const
-{
-    if (is_presence_container) return true;
-    return (peer !=  nullptr && peer->has_data())
-	|| (delay !=  nullptr && delay->has_data());
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::has_operation() const
-{
-    return is_set(yfilter)
-	|| (peer !=  nullptr && peer->has_operation())
-	|| (delay !=  nullptr && delay->has_operation());
-}
-
-std::string Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "backup";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "peer")
-    {
-        if(peer == nullptr)
-        {
-            peer = std::make_shared<Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Peer>();
-        }
-        return peer;
-    }
-
-    if(child_yang_name == "delay")
-    {
-        if(delay == nullptr)
-        {
-            delay = std::make_shared<Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Delay>();
-        }
-        return delay;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(peer != nullptr)
-    {
-        _children["peer"] = peer;
-    }
-
-    if(delay != nullptr)
-    {
-        _children["delay"] = delay;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "peer" || name == "delay")
-        return true;
-    return false;
-}
-
-Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Peer::Peer()
-    :
-    peer_router_ip_addr{YType::str, "peer-router-ip-addr"},
-    vcid{YType::uint32, "vcid"},
-    pw_class{YType::str, "pw-class"},
-    priority{YType::uint8, "priority"}
-{
-
-    yang_name = "peer"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Peer::~Peer()
-{
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Peer::has_data() const
-{
-    if (is_presence_container) return true;
-    return peer_router_ip_addr.is_set
-	|| vcid.is_set
-	|| pw_class.is_set
-	|| priority.is_set;
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Peer::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(peer_router_ip_addr.yfilter)
-	|| ydk::is_set(vcid.yfilter)
-	|| ydk::is_set(pw_class.yfilter)
-	|| ydk::is_set(priority.yfilter);
-}
-
-std::string Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Peer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "peer";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Peer::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (peer_router_ip_addr.is_set || is_set(peer_router_ip_addr.yfilter)) leaf_name_data.push_back(peer_router_ip_addr.get_name_leafdata());
-    if (vcid.is_set || is_set(vcid.yfilter)) leaf_name_data.push_back(vcid.get_name_leafdata());
-    if (pw_class.is_set || is_set(pw_class.yfilter)) leaf_name_data.push_back(pw_class.get_name_leafdata());
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Peer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Peer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Peer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "peer-router-ip-addr")
-    {
-        peer_router_ip_addr = value;
-        peer_router_ip_addr.value_namespace = name_space;
-        peer_router_ip_addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vcid")
-    {
-        vcid = value;
-        vcid.value_namespace = name_space;
-        vcid.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "pw-class")
-    {
-        pw_class = value;
-        pw_class.value_namespace = name_space;
-        pw_class.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority")
-    {
-        priority = value;
-        priority.value_namespace = name_space;
-        priority.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Peer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "peer-router-ip-addr")
-    {
-        peer_router_ip_addr.yfilter = yfilter;
-    }
-    if(value_path == "vcid")
-    {
-        vcid.yfilter = yfilter;
-    }
-    if(value_path == "pw-class")
-    {
-        pw_class.yfilter = yfilter;
-    }
-    if(value_path == "priority")
-    {
-        priority.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Peer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "peer-router-ip-addr" || name == "vcid" || name == "pw-class" || name == "priority")
-        return true;
-    return false;
-}
-
-Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Delay::Delay()
-    :
-    min{YType::uint32, "min"},
-    max{YType::uint32, "max"}
-{
-
-    yang_name = "delay"; yang_parent_name = "backup"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Delay::~Delay()
-{
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Delay::has_data() const
-{
-    if (is_presence_container) return true;
-    return min.is_set
-	|| max.is_set;
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Delay::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(min.yfilter)
-	|| ydk::is_set(max.yfilter);
-}
-
-std::string Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Delay::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "delay";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Delay::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (min.is_set || is_set(min.yfilter)) leaf_name_data.push_back(min.get_name_leafdata());
-    if (max.is_set || is_set(max.yfilter)) leaf_name_data.push_back(max.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Delay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Delay::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Delay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "min")
-    {
-        min = value;
-        min.value_namespace = name_space;
-        min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "max")
-    {
-        max = value;
-        max.value_namespace = name_space;
-        max.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Delay::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "min")
-    {
-        min.yfilter = yfilter;
-    }
-    if(value_path == "max")
-    {
-        max.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Backup::Delay::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "min" || name == "max")
-        return true;
-    return false;
-}
-
-Native::Interface::TwoGigabitEthernet::Service::Instance::XconnectPwClass::XconnectPwClass()
-    :
-    xconnect(std::make_shared<Native::Interface::TwoGigabitEthernet::Service::Instance::XconnectPwClass::Xconnect>())
-{
-    xconnect->parent = this;
-
-    yang_name = "xconnect-pw-class"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwoGigabitEthernet::Service::Instance::XconnectPwClass::~XconnectPwClass()
-{
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::XconnectPwClass::has_data() const
-{
-    if (is_presence_container) return true;
-    return (xconnect !=  nullptr && xconnect->has_data());
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::XconnectPwClass::has_operation() const
-{
-    return is_set(yfilter)
-	|| (xconnect !=  nullptr && xconnect->has_operation());
-}
-
-std::string Native::Interface::TwoGigabitEthernet::Service::Instance::XconnectPwClass::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-l2vpn:xconnect-pw-class";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthernet::Service::Instance::XconnectPwClass::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Service::Instance::XconnectPwClass::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "xconnect")
-    {
-        if(xconnect == nullptr)
-        {
-            xconnect = std::make_shared<Native::Interface::TwoGigabitEthernet::Service::Instance::XconnectPwClass::Xconnect>();
-        }
-        return xconnect;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Service::Instance::XconnectPwClass::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(xconnect != nullptr)
-    {
-        _children["xconnect"] = xconnect;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TwoGigabitEthernet::Service::Instance::XconnectPwClass::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TwoGigabitEthernet::Service::Instance::XconnectPwClass::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TwoGigabitEthernet::Service::Instance::XconnectPwClass::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "xconnect")
-        return true;
-    return false;
-}
-
 const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Trust::Device::cisco_phone {0, "cisco-phone"};
 const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Trust::Device::cts {1, "cts"};
 const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Trust::Device::ip_camera {2, "ip-camera"};
@@ -15014,82 +14954,6 @@ const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2pr
 const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Discard::Protocol::stp {19, "stp"};
 const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Discard::Protocol::udld {20, "udld"};
 const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Discard::Protocol::vtp {21, "vtp"};
-
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Protocol::R4 {0, "R4"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Protocol::R5 {1, "R5"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Protocol::R6 {2, "R6"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Protocol::R8 {3, "R8"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Protocol::R9 {4, "R9"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Protocol::RA {5, "RA"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Protocol::RB {6, "RB"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Protocol::RC {7, "RC"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Protocol::RD {8, "RD"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Protocol::RF {9, "RF"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Protocol::cdp {10, "cdp"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Protocol::dtp {11, "dtp"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Protocol::elmi {12, "elmi"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Protocol::esmc {13, "esmc"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Protocol::lacp {14, "lacp"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Protocol::lldp {15, "lldp"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Protocol::loam {16, "loam"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Protocol::pagp {17, "pagp"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Protocol::ptppd {18, "ptppd"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Protocol::stp {19, "stp"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Protocol::udld {20, "udld"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Peer::Protocol::vtp {21, "vtp"};
-
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Protocol::R4 {0, "R4"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Protocol::R5 {1, "R5"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Protocol::R6 {2, "R6"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Protocol::R8 {3, "R8"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Protocol::R9 {4, "R9"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Protocol::RA {5, "RA"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Protocol::RB {6, "RB"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Protocol::RC {7, "RC"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Protocol::RD {8, "RD"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Protocol::RF {9, "RF"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Protocol::cdp {10, "cdp"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Protocol::dtp {11, "dtp"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Protocol::elmi {12, "elmi"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Protocol::esmc {13, "esmc"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Protocol::lacp {14, "lacp"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Protocol::lldp {15, "lldp"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Protocol::loam {16, "loam"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Protocol::pagp {17, "pagp"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Protocol::ptppd {18, "ptppd"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Protocol::stp {19, "stp"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Protocol::udld {20, "udld"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Forward::Protocol::vtp {21, "vtp"};
-
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Protocol::R4 {0, "R4"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Protocol::R5 {1, "R5"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Protocol::R6 {2, "R6"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Protocol::R8 {3, "R8"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Protocol::R9 {4, "R9"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Protocol::RA {5, "RA"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Protocol::RB {6, "RB"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Protocol::RC {7, "RC"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Protocol::RD {8, "RD"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Protocol::RF {9, "RF"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Protocol::cdp {10, "cdp"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Protocol::dtp {11, "dtp"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Protocol::elmi {12, "elmi"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Protocol::esmc {13, "esmc"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Protocol::lacp {14, "lacp"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Protocol::lldp {15, "lldp"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Protocol::loam {16, "loam"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Protocol::pagp {17, "pagp"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Protocol::ptppd {18, "ptppd"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Protocol::stp {19, "stp"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Protocol::udld {20, "udld"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::L2protocol::Tunnel::Protocol::vtp {21, "vtp"};
-
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Encapsulation::mpls {0, "mpls"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Encapsulation::l2tpv3 {1, "l2tpv3"};
-
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Sequencing::both {0, "both"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Sequencing::receive {1, "receive"};
-const Enum::YLeaf Native::Interface::TwoGigabitEthernet::Service::Instance::Xconnect::Sequencing::transmit {2, "transmit"};
 
 
 }

@@ -1104,6 +1104,7 @@ std::string NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter:
 {
     std::ostringstream path_buffer;
     path_buffer << "statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1325,6 +1326,7 @@ std::string NetFlow::Statistics::Statistic::Server::FlowExporters::FlowExporter:
 {
     std::ostringstream path_buffer;
     path_buffer << "collector";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

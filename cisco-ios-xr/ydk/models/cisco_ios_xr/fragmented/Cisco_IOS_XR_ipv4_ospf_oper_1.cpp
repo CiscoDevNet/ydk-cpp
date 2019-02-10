@@ -620,6 +620,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::SpfHeader
 {
     std::ostringstream path_buffer;
     path_buffer << "area-summ";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -721,6 +722,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsRuntime
 {
     std::ostringstream path_buffer;
     path_buffer << "os-runtime";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1037,6 +1039,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsSumRunt
 {
     std::ostringstream path_buffer;
     path_buffer << "os-sum-runtime";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1364,6 +1367,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::OsExRunti
 {
     std::ostringstream path_buffer;
     path_buffer << "os-ex-runtime";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1706,6 +1710,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::
 {
     std::ostringstream path_buffer;
     path_buffer << "runtime";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2017,6 +2022,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::
 {
     std::ostringstream path_buffer;
     path_buffer << "lsa-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2155,6 +2161,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::
 {
     std::ostringstream path_buffer;
     path_buffer << "area-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2426,6 +2433,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::SpfStats::Runtime::
 {
     std::ostringstream path_buffer;
     path_buffer << "lsa-type-cnt";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2639,6 +2647,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibBatchStats::Prio
 {
     std::ostringstream path_buffer;
     path_buffer << "priority-batch";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3607,6 +3616,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrThdSc
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-pri";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4002,6 +4012,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrRtrTh
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-pri";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4168,6 +4179,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrFsmFl
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-fsm-flag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4246,6 +4258,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrFsmRu
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-fsm-running-timer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4327,6 +4340,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrIssuM
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-issu-milestone";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4431,6 +4445,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrErrHi
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-err-history";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4545,6 +4560,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::IssuStats::NsrErrHi
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-error-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5384,6 +5400,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::RibThreadStats::Rib
 {
     std::ostringstream path_buffer;
     path_buffer << "ribqueue";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5923,6 +5940,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri:
 {
     std::ostringstream path_buffer;
     path_buffer << "ncd-pri";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6058,6 +6076,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri:
 {
     std::ostringstream path_buffer;
     path_buffer << "num-sent";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6136,6 +6155,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri:
 {
     std::ostringstream path_buffer;
     path_buffer << "num-recv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6223,6 +6243,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri:
 {
     std::ostringstream path_buffer;
     path_buffer << "num-sent-drop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6307,6 +6328,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri:
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-pl-send-drop-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6394,6 +6416,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri:
 {
     std::ostringstream path_buffer;
     path_buffer << "num-recv-drop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6478,6 +6501,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrPlStats::NcdPri:
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-pl-recv-drop-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7292,6 +7316,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrThdSch
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-pri";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7687,6 +7712,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrRtrThd
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-pri";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7853,6 +7879,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrFsmFla
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-fsm-flag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7931,6 +7958,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrFsmRun
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-fsm-running-timer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8012,6 +8040,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrIssuMi
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-issu-milestone";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8116,6 +8145,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrErrHis
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-err-history";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8230,6 +8260,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::NsrStats::NsrErrHis
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-error-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10034,6 +10065,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::InterfaceStatsEntri
 {
     std::ostringstream path_buffer;
     path_buffer << "if-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10151,6 +10183,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::Statistics::InterfaceStatsEntri
 {
     std::ostringstream path_buffer;
     path_buffer << "if-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10493,6 +10526,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Neighbors
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10904,6 +10938,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Requests:
 {
     std::ostringstream path_buffer;
     path_buffer << "request";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11058,6 +11093,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Requests:
 {
     std::ostringstream path_buffer;
     path_buffer << "request";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11325,6 +11361,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Retransmi
 {
     std::ostringstream path_buffer;
     path_buffer << "retransmission";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11518,6 +11555,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Retransmi
 {
     std::ostringstream path_buffer;
     path_buffer << "retransmission-area-db";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11666,6 +11704,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Retransmi
 {
     std::ostringstream path_buffer;
     path_buffer << "retransmission-asdb";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11983,6 +12022,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::NeighborD
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13465,6 +13505,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::BackupRoutes:
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14172,6 +14213,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::BackupRoutes:
 {
     std::ostringstream path_buffer;
     path_buffer << "route-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14755,6 +14797,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::BackupRoutes:
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14996,6 +15039,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::BackupRoutes:
 {
     std::ostringstream path_buffer;
     path_buffer << "microloop-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15102,6 +15146,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::BackupRoutes:
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15329,6 +15374,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastInta
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16032,6 +16078,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastInta
 {
     std::ostringstream path_buffer;
     path_buffer << "route-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16447,6 +16494,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastInta
 {
     std::ostringstream path_buffer;
     path_buffer << "microloop-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16553,6 +16601,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastInta
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16780,6 +16829,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastInta
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-intact-backup-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17487,6 +17537,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastInta
 {
     std::ostringstream path_buffer;
     path_buffer << "route-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18070,6 +18121,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastInta
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18311,6 +18363,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastInta
 {
     std::ostringstream path_buffer;
     path_buffer << "microloop-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18417,6 +18470,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::MulticastInta
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19027,6 +19081,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::ConnectedRout
 {
     std::ostringstream path_buffer;
     path_buffer << "connected-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19730,6 +19785,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::ConnectedRout
 {
     std::ostringstream path_buffer;
     path_buffer << "route-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20145,6 +20201,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::ConnectedRout
 {
     std::ostringstream path_buffer;
     path_buffer << "microloop-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20251,6 +20308,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::ConnectedRout
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20478,6 +20536,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::LocalRoutes::
 {
     std::ostringstream path_buffer;
     path_buffer << "local-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21181,6 +21240,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::LocalRoutes::
 {
     std::ostringstream path_buffer;
     path_buffer << "route-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21596,6 +21656,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::LocalRoutes::
 {
     std::ostringstream path_buffer;
     path_buffer << "microloop-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21702,6 +21763,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::LocalRoutes::
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22228,6 +22290,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::R
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-intact-backup-route-area";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22935,6 +22998,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::R
 {
     std::ostringstream path_buffer;
     path_buffer << "route-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23518,6 +23582,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::R
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23759,6 +23824,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::R
 {
     std::ostringstream path_buffer;
     path_buffer << "microloop-repair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23865,6 +23931,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::R
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24092,6 +24159,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::RouteInformation::RouteAreas::R
 {
     std::ostringstream path_buffer;
     path_buffer << "connected-route-area";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

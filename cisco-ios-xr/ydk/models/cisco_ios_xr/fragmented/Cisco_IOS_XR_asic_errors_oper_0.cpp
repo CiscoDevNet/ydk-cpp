@@ -816,6 +816,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath
 {
     std::ostringstream path_buffer;
     path_buffer << "sum-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1007,6 +1008,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath
 {
     std::ostringstream path_buffer;
     path_buffer << "err-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1099,6 +1101,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::AllInstances::AllErrorPath
 {
     std::ostringstream path_buffer;
     path_buffer << "pcie-err-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2510,6 +2513,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2749,6 +2753,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2870,6 +2875,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3140,6 +3146,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3379,6 +3386,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3500,6 +3508,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3770,6 +3779,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4009,6 +4019,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4130,6 +4141,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4400,6 +4412,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4639,6 +4652,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4760,6 +4774,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5030,6 +5045,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5269,6 +5285,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5390,6 +5407,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5660,6 +5678,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5899,6 +5918,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6020,6 +6040,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6290,6 +6311,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6529,6 +6551,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6650,6 +6673,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6920,6 +6944,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7159,6 +7184,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7280,6 +7306,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7550,6 +7577,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7789,6 +7817,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7910,6 +7939,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8180,6 +8210,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8419,6 +8450,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8540,6 +8572,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8810,6 +8843,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9049,6 +9083,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9170,6 +9205,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9440,6 +9476,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9679,6 +9716,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9800,6 +9838,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10070,6 +10109,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10309,6 +10349,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10430,6 +10471,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10700,6 +10742,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10939,6 +10982,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11060,6 +11104,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11330,6 +11375,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11569,6 +11615,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11690,6 +11737,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11960,6 +12008,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12199,6 +12248,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12320,6 +12370,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12590,6 +12641,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12829,6 +12881,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12950,6 +13003,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13220,6 +13274,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13459,6 +13514,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13580,6 +13636,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13850,6 +13907,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14089,6 +14147,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14210,6 +14269,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14480,6 +14540,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14719,6 +14780,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14840,6 +14902,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15110,6 +15173,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15349,6 +15413,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15470,6 +15535,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15740,6 +15806,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15979,6 +16046,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16100,6 +16168,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16370,6 +16439,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16609,6 +16679,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16730,6 +16801,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17000,6 +17072,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17239,6 +17312,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17360,6 +17434,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17630,6 +17705,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17869,6 +17945,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17990,6 +18067,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18285,6 +18363,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "sum-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18476,6 +18555,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "err-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18568,6 +18648,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "pcie-err-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18806,6 +18887,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19045,6 +19127,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19166,6 +19249,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19436,6 +19520,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19675,6 +19760,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19796,6 +19882,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20066,6 +20153,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20305,6 +20393,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20426,6 +20515,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20696,6 +20786,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20935,6 +21026,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21056,6 +21148,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21326,6 +21419,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21565,6 +21659,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21686,6 +21781,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21956,6 +22052,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22195,6 +22292,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22316,6 +22414,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22586,6 +22685,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22825,6 +22925,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22946,6 +23047,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23216,6 +23318,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23455,6 +23558,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "csrs-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23576,6 +23680,7 @@ std::string AsicErrors::Nodes::Node::AsicInformation::Instances::Instance::Error
 {
     std::ostringstream path_buffer;
     path_buffer << "last-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

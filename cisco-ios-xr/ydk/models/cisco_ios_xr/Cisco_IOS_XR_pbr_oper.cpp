@@ -874,6 +874,7 @@ std::string Pbr::Nodes::Node::PolicyMap::Interfaces::Interface::Direction::Input
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

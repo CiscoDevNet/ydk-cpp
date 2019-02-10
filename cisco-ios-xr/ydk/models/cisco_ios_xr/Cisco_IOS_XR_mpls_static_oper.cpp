@@ -1318,6 +1318,7 @@ std::string MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::PathInfo::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "path-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1716,6 +1717,7 @@ std::string MplsStatic::Vrfs::Vrf::Lsps::Lsp::Label::BackupPathInfo::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-path-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2910,6 +2912,7 @@ std::string MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::PathInfo::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "path-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3308,6 +3311,7 @@ std::string MplsStatic::Vrfs::Vrf::LocalLabels::LocalLabel::BackupPathInfo::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-path-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4811,6 +4815,7 @@ std::string MplsStatic::LocalLabels::LocalLabel::PathInfo::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "path-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5209,6 +5214,7 @@ std::string MplsStatic::LocalLabels::LocalLabel::BackupPathInfo::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-path-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

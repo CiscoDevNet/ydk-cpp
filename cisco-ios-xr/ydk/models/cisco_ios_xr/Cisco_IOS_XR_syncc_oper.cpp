@@ -528,6 +528,7 @@ std::string TimingController::Nodes::Node::State::SynccInstance::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "syncc-instance";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -884,6 +885,7 @@ std::string TimingController::Nodes::Node::Clock::SynccInstance::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "syncc-instance";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1109,6 +1111,7 @@ std::string TimingController::Nodes::Node::Clock::SynccInstance::Clock_::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "clock";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1828,6 +1831,7 @@ std::string TimingController::Nodes::Node::TimingSource::SynccInstance::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "syncc-instance";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1973,6 +1977,7 @@ std::string TimingController::Nodes::Node::TimingSource::SynccInstance::TimingSt
 {
     std::ostringstream path_buffer;
     path_buffer << "timing-status-t0";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2177,6 +2182,7 @@ std::string TimingController::Nodes::Node::TimingSource::SynccInstance::TimingSt
 {
     std::ostringstream path_buffer;
     path_buffer << "timing-status-t4";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2381,6 +2387,7 @@ std::string TimingController::Nodes::Node::TimingSource::SynccInstance::TimingSt
 {
     std::ostringstream path_buffer;
     path_buffer << "timing-status1588";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

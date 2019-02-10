@@ -1611,22 +1611,22 @@ class Native::Ip : public ydk::Entity
         class Tftp; //type: Native::Ip::Tftp
         class AccessList; //type: Native::Ip::AccessList
         class Device; //type: Native::Ip::Device
-        class Igmp; //type: Native::Ip::Igmp
-        class Radius; //type: Native::Ip::Radius
-        class Tacacs; //type: Native::Ip::Tacacs
-        class Nbar; //type: Native::Ip::Nbar
         class Msdp; //type: Native::Ip::Msdp
         class McrConf; //type: Native::Ip::McrConf
         class MulticastRouting; //type: Native::Ip::MulticastRouting
         class Mroute; //type: Native::Ip::Mroute
-        class Rsvp; //type: Native::Ip::Rsvp
-        class Http; //type: Native::Ip::Http
-        class Nat; //type: Native::Ip::Nat
-        class Icmp; //type: Native::Ip::Icmp
+        class Igmp; //type: Native::Ip::Igmp
         class CommunityList; //type: Native::Ip::CommunityList
         class ExtcommunityList; //type: Native::Ip::ExtcommunityList
+        class Icmp; //type: Native::Ip::Icmp
+        class Nat; //type: Native::Ip::Nat
+        class Nbar; //type: Native::Ip::Nbar
         class Sla; //type: Native::Ip::Sla
+        class Rsvp; //type: Native::Ip::Rsvp
         class Wccp; //type: Native::Ip::Wccp
+        class Radius; //type: Native::Ip::Radius
+        class Tacacs; //type: Native::Ip::Tacacs
+        class Http; //type: Native::Ip::Http
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Ospf> ospf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Admission> admission;
@@ -1664,22 +1664,22 @@ class Native::Ip : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Tftp> tftp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::AccessList> access_list;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Device> device;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Igmp> igmp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Radius> radius;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Tacacs> tacacs;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nbar> nbar;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Msdp> msdp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::McrConf> mcr_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::MulticastRouting> multicast_routing; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Mroute> mroute;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Rsvp> rsvp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Http> http;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat> nat;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Icmp> icmp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Igmp> igmp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::CommunityList> community_list;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::ExtcommunityList> extcommunity_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Icmp> icmp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nat> nat;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Nbar> nbar;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Sla> sla;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Rsvp> rsvp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Wccp> wccp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Radius> radius;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Tacacs> tacacs;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Http> http;
         
 }; // Native::Ip
 

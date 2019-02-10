@@ -1848,6 +1848,7 @@ std::string SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionD
 {
     std::ostringstream path_buffer;
     path_buffer << "session-detailed-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1976,6 +1977,7 @@ std::string SubscriberRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionS
 {
     std::ostringstream path_buffer;
     path_buffer << "session-sync-error-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2786,6 +2788,7 @@ std::string SubscriberRedundancyAgent::Nodes::Node::Interfaces::Interface::Clien
 {
     std::ostringstream path_buffer;
     path_buffer << "client-status";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3979,6 +3982,7 @@ std::string SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

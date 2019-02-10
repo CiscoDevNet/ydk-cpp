@@ -251,6 +251,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::I
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1109,6 +1110,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::I
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1982,6 +1984,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::I
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2312,6 +2315,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::I
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-instance-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2404,6 +2408,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::I
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-average-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2496,6 +2501,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::I
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-max-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2626,6 +2632,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::I
 {
     std::ostringstream path_buffer;
     path_buffer << "police-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3202,6 +3209,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::I
 {
     std::ostringstream path_buffer;
     path_buffer << "wred-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3388,6 +3396,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::I
 {
     std::ostringstream path_buffer;
     path_buffer << "red-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3713,6 +3722,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::I
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4043,6 +4053,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::I
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-instance-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4135,6 +4146,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::I
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-average-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4227,6 +4239,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::I
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-max-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4357,6 +4370,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::I
 {
     std::ostringstream path_buffer;
     path_buffer << "police-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4933,6 +4947,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::I
 {
     std::ostringstream path_buffer;
     path_buffer << "wred-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5119,6 +5134,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::I
 {
     std::ostringstream path_buffer;
     path_buffer << "red-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5692,6 +5708,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::O
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6550,6 +6567,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::O
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7423,6 +7441,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::O
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7753,6 +7772,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::O
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-instance-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7845,6 +7865,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::O
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-average-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7937,6 +7958,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::O
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-max-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8067,6 +8089,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::O
 {
     std::ostringstream path_buffer;
     path_buffer << "police-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8643,6 +8666,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::O
 {
     std::ostringstream path_buffer;
     path_buffer << "wred-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8829,6 +8853,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::O
 {
     std::ostringstream path_buffer;
     path_buffer << "red-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9154,6 +9179,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::O
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9484,6 +9510,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::O
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-instance-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9576,6 +9603,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::O
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-average-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9668,6 +9696,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::O
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-max-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9798,6 +9827,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::O
 {
     std::ostringstream path_buffer;
     path_buffer << "police-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10374,6 +10404,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::O
 {
     std::ostringstream path_buffer;
     path_buffer << "wred-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10560,6 +10591,7 @@ std::string Qos::InterfaceTable::Interface::MemberInterfaces::MemberInterface::O
 {
     std::ostringstream path_buffer;
     path_buffer << "red-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11342,6 +11374,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Se
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12200,6 +12233,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Se
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13073,6 +13107,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Se
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13403,6 +13438,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Se
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-instance-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13495,6 +13531,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Se
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-average-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13587,6 +13624,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Se
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-max-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13717,6 +13755,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Se
 {
     std::ostringstream path_buffer;
     path_buffer << "police-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14293,6 +14332,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Se
 {
     std::ostringstream path_buffer;
     path_buffer << "wred-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14479,6 +14519,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Se
 {
     std::ostringstream path_buffer;
     path_buffer << "red-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14804,6 +14845,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Se
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15134,6 +15176,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Se
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-instance-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15226,6 +15269,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Se
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-average-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15318,6 +15362,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Se
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-max-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15448,6 +15493,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Se
 {
     std::ostringstream path_buffer;
     path_buffer << "police-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16024,6 +16070,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Se
 {
     std::ostringstream path_buffer;
     path_buffer << "wred-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16210,6 +16257,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Input::Se
 {
     std::ostringstream path_buffer;
     path_buffer << "red-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16783,6 +16831,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::S
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17641,6 +17690,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::S
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18514,6 +18564,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::S
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18844,6 +18895,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::S
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-instance-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18936,6 +18988,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::S
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-average-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19028,6 +19081,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::S
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-max-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19158,6 +19212,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::S
 {
     std::ostringstream path_buffer;
     path_buffer << "police-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19734,6 +19789,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::S
 {
     std::ostringstream path_buffer;
     path_buffer << "wred-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19920,6 +19976,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::S
 {
     std::ostringstream path_buffer;
     path_buffer << "red-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20245,6 +20302,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::S
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20575,6 +20633,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::S
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-instance-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20667,6 +20726,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::S
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-average-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20759,6 +20819,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::S
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-max-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20889,6 +20950,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::S
 {
     std::ostringstream path_buffer;
     path_buffer << "police-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21465,6 +21527,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::S
 {
     std::ostringstream path_buffer;
     path_buffer << "wred-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21651,6 +21714,7 @@ std::string Qos::InterfaceTable::Interface::SatelliteIds::SatelliteId::Output::S
 {
     std::ostringstream path_buffer;
     path_buffer << "red-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22224,6 +22288,7 @@ std::string Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePo
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23082,6 +23147,7 @@ std::string Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePo
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23955,6 +24021,7 @@ std::string Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePo
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24285,6 +24352,7 @@ std::string Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePo
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-instance-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24377,6 +24445,7 @@ std::string Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePo
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-average-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24469,6 +24538,7 @@ std::string Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePo
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-max-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24599,6 +24669,7 @@ std::string Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePo
 {
     std::ostringstream path_buffer;
     path_buffer << "police-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25175,6 +25246,7 @@ std::string Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePo
 {
     std::ostringstream path_buffer;
     path_buffer << "wred-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25361,6 +25433,7 @@ std::string Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePo
 {
     std::ostringstream path_buffer;
     path_buffer << "red-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25686,6 +25759,7 @@ std::string Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePo
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -26016,6 +26090,7 @@ std::string Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePo
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-instance-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -26108,6 +26183,7 @@ std::string Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePo
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-average-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -26200,6 +26276,7 @@ std::string Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePo
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-max-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -26330,6 +26407,7 @@ std::string Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePo
 {
     std::ostringstream path_buffer;
     path_buffer << "police-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -26906,6 +26984,7 @@ std::string Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePo
 {
     std::ostringstream path_buffer;
     path_buffer << "wred-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -27092,6 +27171,7 @@ std::string Qos::InterfaceTable::Interface::Input::ServicePolicyNames::ServicePo
 {
     std::ostringstream path_buffer;
     path_buffer << "red-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -27665,6 +27745,7 @@ std::string Qos::InterfaceTable::Interface::Output::ServicePolicyNames::ServiceP
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

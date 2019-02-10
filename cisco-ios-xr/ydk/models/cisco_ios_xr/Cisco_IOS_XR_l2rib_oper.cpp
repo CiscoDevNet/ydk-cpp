@@ -394,6 +394,7 @@ std::string L2rib::ProducersDetails::ProducersDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "producers-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -973,6 +974,7 @@ std::string L2rib::ProducersDetails::ProducersDetail::Statistics::Statistics_::E
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-counter";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1259,6 +1261,7 @@ std::string L2rib::Summary::TableSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "table-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1391,6 +1394,7 @@ std::string L2rib::Summary::TableSummary::ProducerStat::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "producer-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1658,6 +1662,7 @@ std::string L2rib::Summary::TableSummary::ProducerStat::Statistics::ExtendedCoun
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-counter";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1922,6 +1927,7 @@ std::string L2rib::Producers::Producer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "producer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3427,6 +3433,7 @@ std::string L2rib::ClientsDetails::ClientsDetail::RegistrationTableStatistics::S
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-counter";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3572,6 +3579,7 @@ std::string L2rib::ClientsDetails::ClientsDetail::ProducerArray::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "producer-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4020,6 +4028,7 @@ std::string L2rib::EviChildTables::MacipDetails::MacipDetail::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "macip-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4953,6 +4962,7 @@ std::string L2rib::EviChildTables::MacipDetails::MacipDetail::RtTlv::TlvVal::get
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv-val";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5166,6 +5176,7 @@ std::string L2rib::EviChildTables::MacipDetails::MacipDetail::NhTlv::TlvVal::get
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv-val";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5386,6 +5397,7 @@ std::string L2rib::EviChildTables::MacIps::MacIp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-ip";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6143,6 +6155,7 @@ std::string L2rib::EviChildTables::Macs::Mac::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mac";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7762,6 +7775,7 @@ std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::PathList
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-update-next-hop-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8266,6 +8280,7 @@ std::string L2rib::EviChildTables::Macs::Mac::Route::EvpnEsi::PathList::NextHopA
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9330,6 +9345,7 @@ std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::PathListInf
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-update-next-hop-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9834,6 +9850,7 @@ std::string L2rib::EviChildTables::Macs::Mac::Route::Bmac::PathList::NextHopArra
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10372,6 +10389,7 @@ std::string L2rib::EviChildTables::Imets::Imet::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "imet";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10698,6 +10716,7 @@ std::string L2rib::EviChildTables::MacDetails::MacDetail::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12510,6 +12529,7 @@ std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnE
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-update-next-hop-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13014,6 +13034,7 @@ std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::EvpnE
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14078,6 +14099,7 @@ std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac:
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-update-next-hop-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14582,6 +14604,7 @@ std::string L2rib::EviChildTables::MacDetails::MacDetail::MacRoute::Route::Bmac:
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15121,6 +15144,7 @@ std::string L2rib::EviChildTables::MacDetails::MacDetail::RtTlv::TlvVal::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv-val";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15341,6 +15365,7 @@ std::string L2rib::EviChildTables::ImetDetails::ImetDetail::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "imet-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

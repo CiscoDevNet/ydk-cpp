@@ -13,80 +13,80 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
-Native::Interface::PortChannel::AnalysisModule::Monitoring::Monitoring()
+Native::Interface::PortChannel::Mvrp::Timer::LeaveAll::LeaveAll()
     :
-    interface_name{YType::str, "interface-name"}
+    y_range{YType::uint32, "_range"}
 {
 
-    yang_name = "monitoring"; yang_parent_name = "analysis-module"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "leave-all"; yang_parent_name = "timer"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
-Native::Interface::PortChannel::AnalysisModule::Monitoring::~Monitoring()
+Native::Interface::PortChannel::Mvrp::Timer::LeaveAll::~LeaveAll()
 {
 }
 
-bool Native::Interface::PortChannel::AnalysisModule::Monitoring::has_data() const
+bool Native::Interface::PortChannel::Mvrp::Timer::LeaveAll::has_data() const
 {
     if (is_presence_container) return true;
-    return interface_name.is_set;
+    return y_range.is_set;
 }
 
-bool Native::Interface::PortChannel::AnalysisModule::Monitoring::has_operation() const
+bool Native::Interface::PortChannel::Mvrp::Timer::LeaveAll::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter);
+	|| ydk::is_set(y_range.yfilter);
 }
 
-std::string Native::Interface::PortChannel::AnalysisModule::Monitoring::get_segment_path() const
+std::string Native::Interface::PortChannel::Mvrp::Timer::LeaveAll::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "monitoring";
+    path_buffer << "leave-all";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannel::AnalysisModule::Monitoring::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannel::Mvrp::Timer::LeaveAll::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (y_range.is_set || is_set(y_range.yfilter)) leaf_name_data.push_back(y_range.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> Native::Interface::PortChannel::AnalysisModule::Monitoring::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::PortChannel::Mvrp::Timer::LeaveAll::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::PortChannel::AnalysisModule::Monitoring::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::PortChannel::Mvrp::Timer::LeaveAll::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void Native::Interface::PortChannel::AnalysisModule::Monitoring::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::PortChannel::Mvrp::Timer::LeaveAll::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "interface-name")
+    if(value_path == "_range")
     {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
+        y_range = value;
+        y_range.value_namespace = name_space;
+        y_range.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Interface::PortChannel::AnalysisModule::Monitoring::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::PortChannel::Mvrp::Timer::LeaveAll::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "interface-name")
+    if(value_path == "_range")
     {
-        interface_name.yfilter = yfilter;
+        y_range.yfilter = yfilter;
     }
 }
 
-bool Native::Interface::PortChannel::AnalysisModule::Monitoring::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::PortChannel::Mvrp::Timer::LeaveAll::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface-name")
+    if(name == "_range")
         return true;
     return false;
 }

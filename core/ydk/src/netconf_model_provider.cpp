@@ -102,7 +102,7 @@ string NetconfModelProvider::get_model(const string& name, const string& version
         return model;
     }
 
-    auto data_end = reply.find("</data>", data_start);
+    auto data_end = reply.rfind("</data>");
     if(data_end == string::npos)
     {
         //indicates that data was probably empty

@@ -140,12 +140,12 @@ Vrfs::Vrf::Vrf()
         ,
     vpn_id(nullptr) // presence node
     , afs(std::make_shared<Vrfs::Vrf::Afs>())
-    , bgp_global(std::make_shared<Vrfs::Vrf::BgpGlobal>())
     , multicast_host(std::make_shared<Vrfs::Vrf::MulticastHost>())
+    , bgp_global(std::make_shared<Vrfs::Vrf::BgpGlobal>())
 {
     afs->parent = this;
-    bgp_global->parent = this;
     multicast_host->parent = this;
+    bgp_global->parent = this;
 
     yang_name = "vrf"; yang_parent_name = "vrfs"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -165,8 +165,8 @@ bool Vrfs::Vrf::has_data() const
 	|| description.is_set
 	|| (vpn_id !=  nullptr && vpn_id->has_data())
 	|| (afs !=  nullptr && afs->has_data())
-	|| (bgp_global !=  nullptr && bgp_global->has_data())
-	|| (multicast_host !=  nullptr && multicast_host->has_data());
+	|| (multicast_host !=  nullptr && multicast_host->has_data())
+	|| (bgp_global !=  nullptr && bgp_global->has_data());
 }
 
 bool Vrfs::Vrf::has_operation() const
@@ -180,8 +180,8 @@ bool Vrfs::Vrf::has_operation() const
 	|| ydk::is_set(description.yfilter)
 	|| (vpn_id !=  nullptr && vpn_id->has_operation())
 	|| (afs !=  nullptr && afs->has_operation())
-	|| (bgp_global !=  nullptr && bgp_global->has_operation())
-	|| (multicast_host !=  nullptr && multicast_host->has_operation());
+	|| (multicast_host !=  nullptr && multicast_host->has_operation())
+	|| (bgp_global !=  nullptr && bgp_global->has_operation());
 }
 
 std::string Vrfs::Vrf::get_absolute_path() const
@@ -234,15 +234,6 @@ std::shared_ptr<ydk::Entity> Vrfs::Vrf::get_child_by_name(const std::string & ch
         return afs;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-ipv4-bgp-cfg:bgp-global")
-    {
-        if(bgp_global == nullptr)
-        {
-            bgp_global = std::make_shared<Vrfs::Vrf::BgpGlobal>();
-        }
-        return bgp_global;
-    }
-
     if(child_yang_name == "Cisco-IOS-XR-ip-iarm-vrf-cfg:multicast-host")
     {
         if(multicast_host == nullptr)
@@ -250,6 +241,15 @@ std::shared_ptr<ydk::Entity> Vrfs::Vrf::get_child_by_name(const std::string & ch
             multicast_host = std::make_shared<Vrfs::Vrf::MulticastHost>();
         }
         return multicast_host;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XR-ipv4-bgp-cfg:bgp-global")
+    {
+        if(bgp_global == nullptr)
+        {
+            bgp_global = std::make_shared<Vrfs::Vrf::BgpGlobal>();
+        }
+        return bgp_global;
     }
 
     return nullptr;
@@ -269,14 +269,14 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Vrfs::Vrf::get_children() co
         _children["afs"] = afs;
     }
 
-    if(bgp_global != nullptr)
-    {
-        _children["Cisco-IOS-XR-ipv4-bgp-cfg:bgp-global"] = bgp_global;
-    }
-
     if(multicast_host != nullptr)
     {
         _children["Cisco-IOS-XR-ip-iarm-vrf-cfg:multicast-host"] = multicast_host;
+    }
+
+    if(bgp_global != nullptr)
+    {
+        _children["Cisco-IOS-XR-ipv4-bgp-cfg:bgp-global"] = bgp_global;
     }
 
     return _children;
@@ -352,7 +352,7 @@ void Vrfs::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool Vrfs::Vrf::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "vpn-id" || name == "afs" || name == "bgp-global" || name == "multicast-host" || name == "vrf-name" || name == "fallback-vrf" || name == "remote-route-filter-disable" || name == "create" || name == "mode-big" || name == "description")
+    if(name == "vpn-id" || name == "afs" || name == "multicast-host" || name == "bgp-global" || name == "vrf-name" || name == "fallback-vrf" || name == "remote-route-filter-disable" || name == "create" || name == "mode-big" || name == "description")
         return true;
     return false;
 }
@@ -2352,236 +2352,6 @@ bool Vrfs::Vrf::Afs::Af::Bgp::GlobalToVrfImportRoutePolicy::has_leaf_or_child_of
     return false;
 }
 
-Vrfs::Vrf::BgpGlobal::BgpGlobal()
-    :
-    route_distinguisher(std::make_shared<Vrfs::Vrf::BgpGlobal::RouteDistinguisher>())
-{
-    route_distinguisher->parent = this;
-
-    yang_name = "bgp-global"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Vrfs::Vrf::BgpGlobal::~BgpGlobal()
-{
-}
-
-bool Vrfs::Vrf::BgpGlobal::has_data() const
-{
-    if (is_presence_container) return true;
-    return (route_distinguisher !=  nullptr && route_distinguisher->has_data());
-}
-
-bool Vrfs::Vrf::BgpGlobal::has_operation() const
-{
-    return is_set(yfilter)
-	|| (route_distinguisher !=  nullptr && route_distinguisher->has_operation());
-}
-
-std::string Vrfs::Vrf::BgpGlobal::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-bgp-cfg:bgp-global";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Vrfs::Vrf::BgpGlobal::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Vrfs::Vrf::BgpGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "route-distinguisher")
-    {
-        if(route_distinguisher == nullptr)
-        {
-            route_distinguisher = std::make_shared<Vrfs::Vrf::BgpGlobal::RouteDistinguisher>();
-        }
-        return route_distinguisher;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Vrfs::Vrf::BgpGlobal::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(route_distinguisher != nullptr)
-    {
-        _children["route-distinguisher"] = route_distinguisher;
-    }
-
-    return _children;
-}
-
-void Vrfs::Vrf::BgpGlobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Vrfs::Vrf::BgpGlobal::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Vrfs::Vrf::BgpGlobal::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "route-distinguisher")
-        return true;
-    return false;
-}
-
-Vrfs::Vrf::BgpGlobal::RouteDistinguisher::RouteDistinguisher()
-    :
-    type{YType::enumeration, "type"},
-    as_xx{YType::uint32, "as-xx"},
-    as{YType::uint32, "as"},
-    as_index{YType::uint32, "as-index"},
-    address{YType::str, "address"},
-    address_index{YType::uint32, "address-index"}
-{
-
-    yang_name = "route-distinguisher"; yang_parent_name = "bgp-global"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Vrfs::Vrf::BgpGlobal::RouteDistinguisher::~RouteDistinguisher()
-{
-}
-
-bool Vrfs::Vrf::BgpGlobal::RouteDistinguisher::has_data() const
-{
-    if (is_presence_container) return true;
-    return type.is_set
-	|| as_xx.is_set
-	|| as.is_set
-	|| as_index.is_set
-	|| address.is_set
-	|| address_index.is_set;
-}
-
-bool Vrfs::Vrf::BgpGlobal::RouteDistinguisher::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(type.yfilter)
-	|| ydk::is_set(as_xx.yfilter)
-	|| ydk::is_set(as.yfilter)
-	|| ydk::is_set(as_index.yfilter)
-	|| ydk::is_set(address.yfilter)
-	|| ydk::is_set(address_index.yfilter);
-}
-
-std::string Vrfs::Vrf::BgpGlobal::RouteDistinguisher::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "route-distinguisher";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Vrfs::Vrf::BgpGlobal::RouteDistinguisher::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (as_xx.is_set || is_set(as_xx.yfilter)) leaf_name_data.push_back(as_xx.get_name_leafdata());
-    if (as.is_set || is_set(as.yfilter)) leaf_name_data.push_back(as.get_name_leafdata());
-    if (as_index.is_set || is_set(as_index.yfilter)) leaf_name_data.push_back(as_index.get_name_leafdata());
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (address_index.is_set || is_set(address_index.yfilter)) leaf_name_data.push_back(address_index.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Vrfs::Vrf::BgpGlobal::RouteDistinguisher::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Vrfs::Vrf::BgpGlobal::RouteDistinguisher::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Vrfs::Vrf::BgpGlobal::RouteDistinguisher::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "as-xx")
-    {
-        as_xx = value;
-        as_xx.value_namespace = name_space;
-        as_xx.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "as")
-    {
-        as = value;
-        as.value_namespace = name_space;
-        as.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "as-index")
-    {
-        as_index = value;
-        as_index.value_namespace = name_space;
-        as_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "address")
-    {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "address-index")
-    {
-        address_index = value;
-        address_index.value_namespace = name_space;
-        address_index.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Vrfs::Vrf::BgpGlobal::RouteDistinguisher::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-    if(value_path == "as-xx")
-    {
-        as_xx.yfilter = yfilter;
-    }
-    if(value_path == "as")
-    {
-        as.yfilter = yfilter;
-    }
-    if(value_path == "as-index")
-    {
-        as_index.yfilter = yfilter;
-    }
-    if(value_path == "address")
-    {
-        address.yfilter = yfilter;
-    }
-    if(value_path == "address-index")
-    {
-        address_index.yfilter = yfilter;
-    }
-}
-
-bool Vrfs::Vrf::BgpGlobal::RouteDistinguisher::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "type" || name == "as-xx" || name == "as" || name == "as-index" || name == "address" || name == "address-index")
-        return true;
-    return false;
-}
-
 Vrfs::Vrf::MulticastHost::MulticastHost()
     :
     ipv4(std::make_shared<Vrfs::Vrf::MulticastHost::Ipv4>())
@@ -2834,6 +2604,236 @@ void Vrfs::Vrf::MulticastHost::Ipv6::set_filter(const std::string & value_path, 
 bool Vrfs::Vrf::MulticastHost::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface")
+        return true;
+    return false;
+}
+
+Vrfs::Vrf::BgpGlobal::BgpGlobal()
+    :
+    route_distinguisher(std::make_shared<Vrfs::Vrf::BgpGlobal::RouteDistinguisher>())
+{
+    route_distinguisher->parent = this;
+
+    yang_name = "bgp-global"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Vrfs::Vrf::BgpGlobal::~BgpGlobal()
+{
+}
+
+bool Vrfs::Vrf::BgpGlobal::has_data() const
+{
+    if (is_presence_container) return true;
+    return (route_distinguisher !=  nullptr && route_distinguisher->has_data());
+}
+
+bool Vrfs::Vrf::BgpGlobal::has_operation() const
+{
+    return is_set(yfilter)
+	|| (route_distinguisher !=  nullptr && route_distinguisher->has_operation());
+}
+
+std::string Vrfs::Vrf::BgpGlobal::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ipv4-bgp-cfg:bgp-global";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vrfs::Vrf::BgpGlobal::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Vrfs::Vrf::BgpGlobal::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "route-distinguisher")
+    {
+        if(route_distinguisher == nullptr)
+        {
+            route_distinguisher = std::make_shared<Vrfs::Vrf::BgpGlobal::RouteDistinguisher>();
+        }
+        return route_distinguisher;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vrfs::Vrf::BgpGlobal::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(route_distinguisher != nullptr)
+    {
+        _children["route-distinguisher"] = route_distinguisher;
+    }
+
+    return _children;
+}
+
+void Vrfs::Vrf::BgpGlobal::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Vrfs::Vrf::BgpGlobal::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Vrfs::Vrf::BgpGlobal::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-distinguisher")
+        return true;
+    return false;
+}
+
+Vrfs::Vrf::BgpGlobal::RouteDistinguisher::RouteDistinguisher()
+    :
+    type{YType::enumeration, "type"},
+    as_xx{YType::uint32, "as-xx"},
+    as{YType::uint32, "as"},
+    as_index{YType::uint32, "as-index"},
+    address{YType::str, "address"},
+    address_index{YType::uint32, "address-index"}
+{
+
+    yang_name = "route-distinguisher"; yang_parent_name = "bgp-global"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Vrfs::Vrf::BgpGlobal::RouteDistinguisher::~RouteDistinguisher()
+{
+}
+
+bool Vrfs::Vrf::BgpGlobal::RouteDistinguisher::has_data() const
+{
+    if (is_presence_container) return true;
+    return type.is_set
+	|| as_xx.is_set
+	|| as.is_set
+	|| as_index.is_set
+	|| address.is_set
+	|| address_index.is_set;
+}
+
+bool Vrfs::Vrf::BgpGlobal::RouteDistinguisher::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(as_xx.yfilter)
+	|| ydk::is_set(as.yfilter)
+	|| ydk::is_set(as_index.yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(address_index.yfilter);
+}
+
+std::string Vrfs::Vrf::BgpGlobal::RouteDistinguisher::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-distinguisher";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Vrfs::Vrf::BgpGlobal::RouteDistinguisher::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (as_xx.is_set || is_set(as_xx.yfilter)) leaf_name_data.push_back(as_xx.get_name_leafdata());
+    if (as.is_set || is_set(as.yfilter)) leaf_name_data.push_back(as.get_name_leafdata());
+    if (as_index.is_set || is_set(as_index.yfilter)) leaf_name_data.push_back(as_index.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (address_index.is_set || is_set(address_index.yfilter)) leaf_name_data.push_back(address_index.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Vrfs::Vrf::BgpGlobal::RouteDistinguisher::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Vrfs::Vrf::BgpGlobal::RouteDistinguisher::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Vrfs::Vrf::BgpGlobal::RouteDistinguisher::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "as-xx")
+    {
+        as_xx = value;
+        as_xx.value_namespace = name_space;
+        as_xx.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "as")
+    {
+        as = value;
+        as.value_namespace = name_space;
+        as.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "as-index")
+    {
+        as_index = value;
+        as_index.value_namespace = name_space;
+        as_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "address")
+    {
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "address-index")
+    {
+        address_index = value;
+        address_index.value_namespace = name_space;
+        address_index.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Vrfs::Vrf::BgpGlobal::RouteDistinguisher::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "as-xx")
+    {
+        as_xx.yfilter = yfilter;
+    }
+    if(value_path == "as")
+    {
+        as.yfilter = yfilter;
+    }
+    if(value_path == "as-index")
+    {
+        as_index.yfilter = yfilter;
+    }
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "address-index")
+    {
+        address_index.yfilter = yfilter;
+    }
+}
+
+bool Vrfs::Vrf::BgpGlobal::RouteDistinguisher::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "type" || name == "as-xx" || name == "as" || name == "as-index" || name == "address" || name == "address-index")
         return true;
     return false;
 }

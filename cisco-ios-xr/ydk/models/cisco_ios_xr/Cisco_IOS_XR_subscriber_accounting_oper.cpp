@@ -1011,6 +1011,7 @@ std::string SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatur
 {
     std::ostringstream path_buffer;
     path_buffer << "service-accounting-feature";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

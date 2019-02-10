@@ -640,6 +640,7 @@ std::string Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "network";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1309,6 +1310,7 @@ std::string Ipv4arm::Addresses::Vrfs::Vrf::Interfaces::Interface::Address::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -11297,13 +11297,13 @@ Native::Interface::HundredGigE::Ip::Ip()
     , dhcp(std::make_shared<Native::Interface::HundredGigE::Ip::Dhcp>())
     , summary_address(std::make_shared<Native::Interface::HundredGigE::Ip::SummaryAddress>())
     , verify(std::make_shared<Native::Interface::HundredGigE::Ip::Verify>())
-    , igmp(std::make_shared<Native::Interface::HundredGigE::Ip::Igmp>())
     , flow(std::make_shared<Native::Interface::HundredGigE::Ip::Flow>())
-    , nbar(std::make_shared<Native::Interface::HundredGigE::Ip::Nbar>())
+    , igmp(std::make_shared<Native::Interface::HundredGigE::Ip::Igmp>())
     , ospf(std::make_shared<Native::Interface::HundredGigE::Ip::Ospf>())
     , lisp(std::make_shared<Native::Interface::HundredGigE::Ip::Lisp>())
-    , rsvp(std::make_shared<Native::Interface::HundredGigE::Ip::Rsvp>())
     , nat(std::make_shared<Native::Interface::HundredGigE::Ip::Nat>())
+    , nbar(std::make_shared<Native::Interface::HundredGigE::Ip::Nbar>())
+    , rsvp(std::make_shared<Native::Interface::HundredGigE::Ip::Rsvp>())
     , wccp(std::make_shared<Native::Interface::HundredGigE::Ip::Wccp>())
 {
     access_group->parent = this;
@@ -11324,13 +11324,13 @@ Native::Interface::HundredGigE::Ip::Ip()
     dhcp->parent = this;
     summary_address->parent = this;
     verify->parent = this;
-    igmp->parent = this;
     flow->parent = this;
-    nbar->parent = this;
+    igmp->parent = this;
     ospf->parent = this;
     lisp->parent = this;
-    rsvp->parent = this;
     nat->parent = this;
+    nbar->parent = this;
+    rsvp->parent = this;
     wccp->parent = this;
 
     yang_name = "ip"; yang_parent_name = "HundredGigE"; is_top_level_class = false; has_list_ancestor = true; 
@@ -11376,13 +11376,13 @@ bool Native::Interface::HundredGigE::Ip::has_data() const
 	|| (dhcp !=  nullptr && dhcp->has_data())
 	|| (summary_address !=  nullptr && summary_address->has_data())
 	|| (verify !=  nullptr && verify->has_data())
-	|| (igmp !=  nullptr && igmp->has_data())
 	|| (flow !=  nullptr && flow->has_data())
-	|| (nbar !=  nullptr && nbar->has_data())
+	|| (igmp !=  nullptr && igmp->has_data())
 	|| (ospf !=  nullptr && ospf->has_data())
 	|| (lisp !=  nullptr && lisp->has_data())
-	|| (rsvp !=  nullptr && rsvp->has_data())
 	|| (nat !=  nullptr && nat->has_data())
+	|| (nbar !=  nullptr && nbar->has_data())
+	|| (rsvp !=  nullptr && rsvp->has_data())
 	|| (wccp !=  nullptr && wccp->has_data());
 }
 
@@ -11422,13 +11422,13 @@ bool Native::Interface::HundredGigE::Ip::has_operation() const
 	|| (dhcp !=  nullptr && dhcp->has_operation())
 	|| (summary_address !=  nullptr && summary_address->has_operation())
 	|| (verify !=  nullptr && verify->has_operation())
-	|| (igmp !=  nullptr && igmp->has_operation())
 	|| (flow !=  nullptr && flow->has_operation())
-	|| (nbar !=  nullptr && nbar->has_operation())
+	|| (igmp !=  nullptr && igmp->has_operation())
 	|| (ospf !=  nullptr && ospf->has_operation())
 	|| (lisp !=  nullptr && lisp->has_operation())
-	|| (rsvp !=  nullptr && rsvp->has_operation())
 	|| (nat !=  nullptr && nat->has_operation())
+	|| (nbar !=  nullptr && nbar->has_operation())
+	|| (rsvp !=  nullptr && rsvp->has_operation())
 	|| (wccp !=  nullptr && wccp->has_operation());
 }
 
@@ -11646,15 +11646,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Ip::get_child_by_na
         return verify;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-igmp:igmp")
-    {
-        if(igmp == nullptr)
-        {
-            igmp = std::make_shared<Native::Interface::HundredGigE::Ip::Igmp>();
-        }
-        return igmp;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-flow:flow")
     {
         if(flow == nullptr)
@@ -11664,13 +11655,13 @@ std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Ip::get_child_by_na
         return flow;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-nbar:nbar")
+    if(child_yang_name == "Cisco-IOS-XE-igmp:igmp")
     {
-        if(nbar == nullptr)
+        if(igmp == nullptr)
         {
-            nbar = std::make_shared<Native::Interface::HundredGigE::Ip::Nbar>();
+            igmp = std::make_shared<Native::Interface::HundredGigE::Ip::Igmp>();
         }
-        return nbar;
+        return igmp;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-ospf:ospf")
@@ -11691,15 +11682,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Ip::get_child_by_na
         return lisp;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-rsvp:rsvp")
-    {
-        if(rsvp == nullptr)
-        {
-            rsvp = std::make_shared<Native::Interface::HundredGigE::Ip::Rsvp>();
-        }
-        return rsvp;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-nat:nat")
     {
         if(nat == nullptr)
@@ -11707,6 +11689,24 @@ std::shared_ptr<ydk::Entity> Native::Interface::HundredGigE::Ip::get_child_by_na
             nat = std::make_shared<Native::Interface::HundredGigE::Ip::Nat>();
         }
         return nat;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-nbar:nbar")
+    {
+        if(nbar == nullptr)
+        {
+            nbar = std::make_shared<Native::Interface::HundredGigE::Ip::Nbar>();
+        }
+        return nbar;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-rsvp:rsvp")
+    {
+        if(rsvp == nullptr)
+        {
+            rsvp = std::make_shared<Native::Interface::HundredGigE::Ip::Rsvp>();
+        }
+        return rsvp;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-wccp:wccp")
@@ -11834,19 +11834,14 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGi
         _children["verify"] = verify;
     }
 
-    if(igmp != nullptr)
-    {
-        _children["Cisco-IOS-XE-igmp:igmp"] = igmp;
-    }
-
     if(flow != nullptr)
     {
         _children["Cisco-IOS-XE-flow:flow"] = flow;
     }
 
-    if(nbar != nullptr)
+    if(igmp != nullptr)
     {
-        _children["Cisco-IOS-XE-nbar:nbar"] = nbar;
+        _children["Cisco-IOS-XE-igmp:igmp"] = igmp;
     }
 
     if(ospf != nullptr)
@@ -11859,14 +11854,19 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::HundredGi
         _children["Cisco-IOS-XE-lisp:lisp"] = lisp;
     }
 
-    if(rsvp != nullptr)
-    {
-        _children["Cisco-IOS-XE-rsvp:rsvp"] = rsvp;
-    }
-
     if(nat != nullptr)
     {
         _children["Cisco-IOS-XE-nat:nat"] = nat;
+    }
+
+    if(nbar != nullptr)
+    {
+        _children["Cisco-IOS-XE-nbar:nbar"] = nbar;
+    }
+
+    if(rsvp != nullptr)
+    {
+        _children["Cisco-IOS-XE-rsvp:rsvp"] = rsvp;
     }
 
     if(wccp != nullptr)
@@ -11967,7 +11967,7 @@ void Native::Interface::HundredGigE::Ip::set_filter(const std::string & value_pa
 
 bool Native::Interface::HundredGigE::Ip::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "access-group" || name == "arp" || name == "vrf" || name == "no-address" || name == "address" || name == "directed-broadcast" || name == "hello-interval" || name == "authentication" || name == "hold-time" || name == "helper-address" || name == "pim" || name == "policy" || name == "rip" || name == "route-cache-conf" || name == "route-cache" || name == "router" || name == "tcp" || name == "virtual-reassembly" || name == "dhcp" || name == "summary-address" || name == "verify" || name == "igmp" || name == "flow" || name == "nbar" || name == "ospf" || name == "lisp" || name == "rsvp" || name == "nat" || name == "wccp" || name == "admission" || name == "unnumbered" || name == "local-proxy-arp" || name == "proxy-arp" || name == "redirects" || name == "mtu" || name == "mroute-cache" || name == "unreachables")
+    if(name == "access-group" || name == "arp" || name == "vrf" || name == "no-address" || name == "address" || name == "directed-broadcast" || name == "hello-interval" || name == "authentication" || name == "hold-time" || name == "helper-address" || name == "pim" || name == "policy" || name == "rip" || name == "route-cache-conf" || name == "route-cache" || name == "router" || name == "tcp" || name == "virtual-reassembly" || name == "dhcp" || name == "summary-address" || name == "verify" || name == "flow" || name == "igmp" || name == "ospf" || name == "lisp" || name == "nat" || name == "nbar" || name == "rsvp" || name == "wccp" || name == "admission" || name == "unnumbered" || name == "local-proxy-arp" || name == "proxy-arp" || name == "redirects" || name == "mtu" || name == "mroute-cache" || name == "unreachables")
         return true;
     return false;
 }

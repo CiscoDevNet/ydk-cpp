@@ -6901,6 +6901,7 @@ std::string Pmipv6::Lma::Bindings::Binding::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "binding";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7405,6 +7406,7 @@ std::string Pmipv6::Lma::Bindings::Binding::Coa::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "coa";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7713,6 +7715,7 @@ std::string Pmipv6::Lma::Bindings::Binding::DmnpV4::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dmnp-v4";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7812,6 +7815,7 @@ std::string Pmipv6::Lma::Bindings::Binding::DmnpV6::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "dmnp-v6";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9936,6 +9940,7 @@ std::string Pmipv6::Lma::ConfigVariables::GlobalVariables::Intf::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "intf";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10061,6 +10066,7 @@ std::string Pmipv6::Lma::ConfigVariables::GlobalVariables::Peer::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "peer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10233,6 +10239,7 @@ std::string Pmipv6::Lma::ConfigVariables::GlobalVariables::Network::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "network";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10419,6 +10426,7 @@ std::string Pmipv6::Lma::ConfigVariables::GlobalVariables::Cust::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "cust";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

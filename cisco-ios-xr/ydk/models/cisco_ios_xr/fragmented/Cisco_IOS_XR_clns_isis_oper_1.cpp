@@ -231,6 +231,7 @@ std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Is
 {
     std::ostringstream path_buffer;
     path_buffer << "mt-isn-neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

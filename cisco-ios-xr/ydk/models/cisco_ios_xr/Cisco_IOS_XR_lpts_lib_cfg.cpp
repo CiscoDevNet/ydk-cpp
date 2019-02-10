@@ -13,8 +13,8 @@ namespace Cisco_IOS_XR_lpts_lib_cfg {
 
 Lpts::Lpts()
     :
-    punt(std::make_shared<Lpts::Punt>())
-    , ipolicer(nullptr) // presence node
+    ipolicer(nullptr) // presence node
+    , punt(std::make_shared<Lpts::Punt>())
 {
     punt->parent = this;
 
@@ -28,15 +28,15 @@ Lpts::~Lpts()
 bool Lpts::has_data() const
 {
     if (is_presence_container) return true;
-    return (punt !=  nullptr && punt->has_data())
-	|| (ipolicer !=  nullptr && ipolicer->has_data());
+    return (ipolicer !=  nullptr && ipolicer->has_data())
+	|| (punt !=  nullptr && punt->has_data());
 }
 
 bool Lpts::has_operation() const
 {
     return is_set(yfilter)
-	|| (punt !=  nullptr && punt->has_operation())
-	|| (ipolicer !=  nullptr && ipolicer->has_operation());
+	|| (ipolicer !=  nullptr && ipolicer->has_operation())
+	|| (punt !=  nullptr && punt->has_operation());
 }
 
 std::string Lpts::get_segment_path() const
@@ -57,15 +57,6 @@ std::vector<std::pair<std::string, LeafData> > Lpts::get_name_leaf_data() const
 
 std::shared_ptr<ydk::Entity> Lpts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt")
-    {
-        if(punt == nullptr)
-        {
-            punt = std::make_shared<Lpts::Punt>();
-        }
-        return punt;
-    }
-
     if(child_yang_name == "Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer")
     {
         if(ipolicer == nullptr)
@@ -75,6 +66,15 @@ std::shared_ptr<ydk::Entity> Lpts::get_child_by_name(const std::string & child_y
         return ipolicer;
     }
 
+    if(child_yang_name == "Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt")
+    {
+        if(punt == nullptr)
+        {
+            punt = std::make_shared<Lpts::Punt>();
+        }
+        return punt;
+    }
+
     return nullptr;
 }
 
@@ -82,14 +82,14 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(punt != nullptr)
-    {
-        _children["Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt"] = punt;
-    }
-
     if(ipolicer != nullptr)
     {
         _children["Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer"] = ipolicer;
+    }
+
+    if(punt != nullptr)
+    {
+        _children["Cisco-IOS-XR-lpts-punt-flowtrap-cfg:punt"] = punt;
     }
 
     return _children;
@@ -130,7 +130,1017 @@ std::map<std::pair<std::string, std::string>, std::string> Lpts::get_namespace_i
 
 bool Lpts::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "punt" || name == "ipolicer")
+    if(name == "ipolicer" || name == "punt")
+        return true;
+    return false;
+}
+
+Lpts::Ipolicer::Ipolicer()
+    :
+    enable{YType::empty, "enable"}
+        ,
+    acls(std::make_shared<Lpts::Ipolicer::Acls>())
+    , flows(std::make_shared<Lpts::Ipolicer::Flows>())
+{
+    acls->parent = this;
+    flows->parent = this;
+
+    yang_name = "ipolicer"; yang_parent_name = "lpts"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
+}
+
+Lpts::Ipolicer::~Ipolicer()
+{
+}
+
+bool Lpts::Ipolicer::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set
+	|| (acls !=  nullptr && acls->has_data())
+	|| (flows !=  nullptr && flows->has_data());
+}
+
+bool Lpts::Ipolicer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| (acls !=  nullptr && acls->has_operation())
+	|| (flows !=  nullptr && flows->has_operation());
+}
+
+std::string Lpts::Ipolicer::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Lpts::Ipolicer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Lpts::Ipolicer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "acls")
+    {
+        if(acls == nullptr)
+        {
+            acls = std::make_shared<Lpts::Ipolicer::Acls>();
+        }
+        return acls;
+    }
+
+    if(child_yang_name == "flows")
+    {
+        if(flows == nullptr)
+        {
+            flows = std::make_shared<Lpts::Ipolicer::Flows>();
+        }
+        return flows;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(acls != nullptr)
+    {
+        _children["acls"] = acls;
+    }
+
+    if(flows != nullptr)
+    {
+        _children["flows"] = flows;
+    }
+
+    return _children;
+}
+
+void Lpts::Ipolicer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Lpts::Ipolicer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Lpts::Ipolicer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acls" || name == "flows" || name == "enable")
+        return true;
+    return false;
+}
+
+Lpts::Ipolicer::Acls::Acls()
+    :
+    acl(this, {"acl_name"})
+{
+
+    yang_name = "acls"; yang_parent_name = "ipolicer"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Lpts::Ipolicer::Acls::~Acls()
+{
+}
+
+bool Lpts::Ipolicer::Acls::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<acl.len(); index++)
+    {
+        if(acl[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Lpts::Ipolicer::Acls::has_operation() const
+{
+    for (std::size_t index=0; index<acl.len(); index++)
+    {
+        if(acl[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Lpts::Ipolicer::Acls::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Lpts::Ipolicer::Acls::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "acls";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Acls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "acl")
+    {
+        auto ent_ = std::make_shared<Lpts::Ipolicer::Acls::Acl>();
+        ent_->parent = this;
+        acl.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Acls::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : acl.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Lpts::Ipolicer::Acls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Lpts::Ipolicer::Acls::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lpts::Ipolicer::Acls::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acl")
+        return true;
+    return false;
+}
+
+Lpts::Ipolicer::Acls::Acl::Acl()
+    :
+    acl_name{YType::str, "acl-name"}
+        ,
+    afi_types(std::make_shared<Lpts::Ipolicer::Acls::Acl::AfiTypes>())
+{
+    afi_types->parent = this;
+
+    yang_name = "acl"; yang_parent_name = "acls"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Lpts::Ipolicer::Acls::Acl::~Acl()
+{
+}
+
+bool Lpts::Ipolicer::Acls::Acl::has_data() const
+{
+    if (is_presence_container) return true;
+    return acl_name.is_set
+	|| (afi_types !=  nullptr && afi_types->has_data());
+}
+
+bool Lpts::Ipolicer::Acls::Acl::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(acl_name.yfilter)
+	|| (afi_types !=  nullptr && afi_types->has_operation());
+}
+
+std::string Lpts::Ipolicer::Acls::Acl::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer/acls/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Lpts::Ipolicer::Acls::Acl::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "acl";
+    ADD_KEY_TOKEN(acl_name, "acl-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::Acl::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (acl_name.is_set || is_set(acl_name.yfilter)) leaf_name_data.push_back(acl_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Acls::Acl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "afi-types")
+    {
+        if(afi_types == nullptr)
+        {
+            afi_types = std::make_shared<Lpts::Ipolicer::Acls::Acl::AfiTypes>();
+        }
+        return afi_types;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Acls::Acl::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(afi_types != nullptr)
+    {
+        _children["afi-types"] = afi_types;
+    }
+
+    return _children;
+}
+
+void Lpts::Ipolicer::Acls::Acl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "acl-name")
+    {
+        acl_name = value;
+        acl_name.value_namespace = name_space;
+        acl_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Lpts::Ipolicer::Acls::Acl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "acl-name")
+    {
+        acl_name.yfilter = yfilter;
+    }
+}
+
+bool Lpts::Ipolicer::Acls::Acl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi-types" || name == "acl-name")
+        return true;
+    return false;
+}
+
+Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiTypes()
+    :
+    afi_type(this, {"afi_family_type"})
+{
+
+    yang_name = "afi-types"; yang_parent_name = "acl"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Lpts::Ipolicer::Acls::Acl::AfiTypes::~AfiTypes()
+{
+}
+
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<afi_type.len(); index++)
+    {
+        if(afi_type[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::has_operation() const
+{
+    for (std::size_t index=0; index<afi_type.len(); index++)
+    {
+        if(afi_type[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Lpts::Ipolicer::Acls::Acl::AfiTypes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "afi-types";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::Acl::AfiTypes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Acls::Acl::AfiTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "afi-type")
+    {
+        auto ent_ = std::make_shared<Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType>();
+        ent_->parent = this;
+        afi_type.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Acls::Acl::AfiTypes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : afi_type.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Lpts::Ipolicer::Acls::Acl::AfiTypes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Lpts::Ipolicer::Acls::Acl::AfiTypes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "afi-type")
+        return true;
+    return false;
+}
+
+Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::AfiType()
+    :
+    afi_family_type{YType::enumeration, "afi-family-type"}
+        ,
+    vrf_names(std::make_shared<Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames>())
+{
+    vrf_names->parent = this;
+
+    yang_name = "afi-type"; yang_parent_name = "afi-types"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::~AfiType()
+{
+}
+
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::has_data() const
+{
+    if (is_presence_container) return true;
+    return afi_family_type.is_set
+	|| (vrf_names !=  nullptr && vrf_names->has_data());
+}
+
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(afi_family_type.yfilter)
+	|| (vrf_names !=  nullptr && vrf_names->has_operation());
+}
+
+std::string Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "afi-type";
+    ADD_KEY_TOKEN(afi_family_type, "afi-family-type");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi_family_type.is_set || is_set(afi_family_type.yfilter)) leaf_name_data.push_back(afi_family_type.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "vrf-names")
+    {
+        if(vrf_names == nullptr)
+        {
+            vrf_names = std::make_shared<Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames>();
+        }
+        return vrf_names;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(vrf_names != nullptr)
+    {
+        _children["vrf-names"] = vrf_names;
+    }
+
+    return _children;
+}
+
+void Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "afi-family-type")
+    {
+        afi_family_type = value;
+        afi_family_type.value_namespace = name_space;
+        afi_family_type.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi-family-type")
+    {
+        afi_family_type.yfilter = yfilter;
+    }
+}
+
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-names" || name == "afi-family-type")
+        return true;
+    return false;
+}
+
+Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfNames()
+    :
+    vrf_name(this, {"vrf_name"})
+{
+
+    yang_name = "vrf-names"; yang_parent_name = "afi-type"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::~VrfNames()
+{
+}
+
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vrf_name.len(); index++)
+    {
+        if(vrf_name[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::has_operation() const
+{
+    for (std::size_t index=0; index<vrf_name.len(); index++)
+    {
+        if(vrf_name[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vrf-names";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "vrf-name")
+    {
+        auto ent_ = std::make_shared<Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName>();
+        ent_->parent = this;
+        vrf_name.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vrf_name.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-name")
+        return true;
+    return false;
+}
+
+Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::VrfName()
+    :
+    vrf_name{YType::str, "vrf-name"},
+    acl_rate{YType::uint32, "acl-rate"}
+{
+
+    yang_name = "vrf-name"; yang_parent_name = "vrf-names"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::~VrfName()
+{
+}
+
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::has_data() const
+{
+    if (is_presence_container) return true;
+    return vrf_name.is_set
+	|| acl_rate.is_set;
+}
+
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
+	|| ydk::is_set(acl_rate.yfilter);
+}
+
+std::string Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vrf-name";
+    ADD_KEY_TOKEN(vrf_name, "vrf-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
+    if (acl_rate.is_set || is_set(acl_rate.yfilter)) leaf_name_data.push_back(acl_rate.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "acl-rate")
+    {
+        acl_rate = value;
+        acl_rate.value_namespace = name_space;
+        acl_rate.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
+    if(value_path == "acl-rate")
+    {
+        acl_rate.yfilter = yfilter;
+    }
+}
+
+bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-name" || name == "acl-rate")
+        return true;
+    return false;
+}
+
+Lpts::Ipolicer::Flows::Flows()
+    :
+    flow(this, {"flow_type"})
+{
+
+    yang_name = "flows"; yang_parent_name = "ipolicer"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Lpts::Ipolicer::Flows::~Flows()
+{
+}
+
+bool Lpts::Ipolicer::Flows::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<flow.len(); index++)
+    {
+        if(flow[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Lpts::Ipolicer::Flows::has_operation() const
+{
+    for (std::size_t index=0; index<flow.len(); index++)
+    {
+        if(flow[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Lpts::Ipolicer::Flows::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Lpts::Ipolicer::Flows::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "flows";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Flows::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Flows::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "flow")
+    {
+        auto ent_ = std::make_shared<Lpts::Ipolicer::Flows::Flow>();
+        ent_->parent = this;
+        flow.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Flows::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : flow.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Lpts::Ipolicer::Flows::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Lpts::Ipolicer::Flows::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Lpts::Ipolicer::Flows::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flow")
+        return true;
+    return false;
+}
+
+Lpts::Ipolicer::Flows::Flow::Flow()
+    :
+    flow_type{YType::enumeration, "flow-type"},
+    rate{YType::uint32, "rate"}
+        ,
+    precedences(std::make_shared<Lpts::Ipolicer::Flows::Flow::Precedences>())
+{
+    precedences->parent = this;
+
+    yang_name = "flow"; yang_parent_name = "flows"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Lpts::Ipolicer::Flows::Flow::~Flow()
+{
+}
+
+bool Lpts::Ipolicer::Flows::Flow::has_data() const
+{
+    if (is_presence_container) return true;
+    return flow_type.is_set
+	|| rate.is_set
+	|| (precedences !=  nullptr && precedences->has_data());
+}
+
+bool Lpts::Ipolicer::Flows::Flow::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(flow_type.yfilter)
+	|| ydk::is_set(rate.yfilter)
+	|| (precedences !=  nullptr && precedences->has_operation());
+}
+
+std::string Lpts::Ipolicer::Flows::Flow::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer/flows/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Lpts::Ipolicer::Flows::Flow::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "flow";
+    ADD_KEY_TOKEN(flow_type, "flow-type");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Flows::Flow::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (flow_type.is_set || is_set(flow_type.yfilter)) leaf_name_data.push_back(flow_type.get_name_leafdata());
+    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Flows::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "precedences")
+    {
+        if(precedences == nullptr)
+        {
+            precedences = std::make_shared<Lpts::Ipolicer::Flows::Flow::Precedences>();
+        }
+        return precedences;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Flows::Flow::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(precedences != nullptr)
+    {
+        _children["precedences"] = precedences;
+    }
+
+    return _children;
+}
+
+void Lpts::Ipolicer::Flows::Flow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "flow-type")
+    {
+        flow_type = value;
+        flow_type.value_namespace = name_space;
+        flow_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rate")
+    {
+        rate = value;
+        rate.value_namespace = name_space;
+        rate.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Lpts::Ipolicer::Flows::Flow::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "flow-type")
+    {
+        flow_type.yfilter = yfilter;
+    }
+    if(value_path == "rate")
+    {
+        rate.yfilter = yfilter;
+    }
+}
+
+bool Lpts::Ipolicer::Flows::Flow::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "precedences" || name == "flow-type" || name == "rate")
+        return true;
+    return false;
+}
+
+Lpts::Ipolicer::Flows::Flow::Precedences::Precedences()
+    :
+    precedence{YType::str, "precedence"}
+{
+
+    yang_name = "precedences"; yang_parent_name = "flow"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Lpts::Ipolicer::Flows::Flow::Precedences::~Precedences()
+{
+}
+
+bool Lpts::Ipolicer::Flows::Flow::Precedences::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : precedence.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool Lpts::Ipolicer::Flows::Flow::Precedences::has_operation() const
+{
+    for (auto const & leaf : precedence.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(precedence.yfilter);
+}
+
+std::string Lpts::Ipolicer::Flows::Flow::Precedences::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "precedences";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Flows::Flow::Precedences::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto precedence_name_datas = precedence.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), precedence_name_datas.begin(), precedence_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Flows::Flow::Precedences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Flows::Flow::Precedences::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Lpts::Ipolicer::Flows::Flow::Precedences::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "precedence")
+    {
+        precedence.append(value);
+    }
+}
+
+void Lpts::Ipolicer::Flows::Flow::Precedences::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "precedence")
+    {
+        precedence.yfilter = yfilter;
+    }
+}
+
+bool Lpts::Ipolicer::Flows::Flow::Precedences::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "precedence")
         return true;
     return false;
 }
@@ -1189,1016 +2199,6 @@ void Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::set_filter(co
 bool Lpts::Punt::Flowtrap::Exclude::InterfaceNames::InterfaceName::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ifname" || name == "id1")
-        return true;
-    return false;
-}
-
-Lpts::Ipolicer::Ipolicer()
-    :
-    enable{YType::empty, "enable"}
-        ,
-    acls(std::make_shared<Lpts::Ipolicer::Acls>())
-    , flows(std::make_shared<Lpts::Ipolicer::Flows>())
-{
-    acls->parent = this;
-    flows->parent = this;
-
-    yang_name = "ipolicer"; yang_parent_name = "lpts"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
-}
-
-Lpts::Ipolicer::~Ipolicer()
-{
-}
-
-bool Lpts::Ipolicer::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set
-	|| (acls !=  nullptr && acls->has_data())
-	|| (flows !=  nullptr && flows->has_data());
-}
-
-bool Lpts::Ipolicer::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| (acls !=  nullptr && acls->has_operation())
-	|| (flows !=  nullptr && flows->has_operation());
-}
-
-std::string Lpts::Ipolicer::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Lpts::Ipolicer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Lpts::Ipolicer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "acls")
-    {
-        if(acls == nullptr)
-        {
-            acls = std::make_shared<Lpts::Ipolicer::Acls>();
-        }
-        return acls;
-    }
-
-    if(child_yang_name == "flows")
-    {
-        if(flows == nullptr)
-        {
-            flows = std::make_shared<Lpts::Ipolicer::Flows>();
-        }
-        return flows;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(acls != nullptr)
-    {
-        _children["acls"] = acls;
-    }
-
-    if(flows != nullptr)
-    {
-        _children["flows"] = flows;
-    }
-
-    return _children;
-}
-
-void Lpts::Ipolicer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Lpts::Ipolicer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Lpts::Ipolicer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "acls" || name == "flows" || name == "enable")
-        return true;
-    return false;
-}
-
-Lpts::Ipolicer::Acls::Acls()
-    :
-    acl(this, {"acl_name"})
-{
-
-    yang_name = "acls"; yang_parent_name = "ipolicer"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Lpts::Ipolicer::Acls::~Acls()
-{
-}
-
-bool Lpts::Ipolicer::Acls::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<acl.len(); index++)
-    {
-        if(acl[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Lpts::Ipolicer::Acls::has_operation() const
-{
-    for (std::size_t index=0; index<acl.len(); index++)
-    {
-        if(acl[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Lpts::Ipolicer::Acls::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Lpts::Ipolicer::Acls::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "acls";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Acls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "acl")
-    {
-        auto ent_ = std::make_shared<Lpts::Ipolicer::Acls::Acl>();
-        ent_->parent = this;
-        acl.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Acls::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : acl.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Lpts::Ipolicer::Acls::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Lpts::Ipolicer::Acls::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Lpts::Ipolicer::Acls::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "acl")
-        return true;
-    return false;
-}
-
-Lpts::Ipolicer::Acls::Acl::Acl()
-    :
-    acl_name{YType::str, "acl-name"}
-        ,
-    afi_types(std::make_shared<Lpts::Ipolicer::Acls::Acl::AfiTypes>())
-{
-    afi_types->parent = this;
-
-    yang_name = "acl"; yang_parent_name = "acls"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Lpts::Ipolicer::Acls::Acl::~Acl()
-{
-}
-
-bool Lpts::Ipolicer::Acls::Acl::has_data() const
-{
-    if (is_presence_container) return true;
-    return acl_name.is_set
-	|| (afi_types !=  nullptr && afi_types->has_data());
-}
-
-bool Lpts::Ipolicer::Acls::Acl::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(acl_name.yfilter)
-	|| (afi_types !=  nullptr && afi_types->has_operation());
-}
-
-std::string Lpts::Ipolicer::Acls::Acl::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer/acls/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Lpts::Ipolicer::Acls::Acl::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "acl";
-    ADD_KEY_TOKEN(acl_name, "acl-name");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::Acl::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (acl_name.is_set || is_set(acl_name.yfilter)) leaf_name_data.push_back(acl_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Acls::Acl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "afi-types")
-    {
-        if(afi_types == nullptr)
-        {
-            afi_types = std::make_shared<Lpts::Ipolicer::Acls::Acl::AfiTypes>();
-        }
-        return afi_types;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Acls::Acl::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(afi_types != nullptr)
-    {
-        _children["afi-types"] = afi_types;
-    }
-
-    return _children;
-}
-
-void Lpts::Ipolicer::Acls::Acl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "acl-name")
-    {
-        acl_name = value;
-        acl_name.value_namespace = name_space;
-        acl_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Lpts::Ipolicer::Acls::Acl::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "acl-name")
-    {
-        acl_name.yfilter = yfilter;
-    }
-}
-
-bool Lpts::Ipolicer::Acls::Acl::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "afi-types" || name == "acl-name")
-        return true;
-    return false;
-}
-
-Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiTypes()
-    :
-    afi_type(this, {"afi_family_type"})
-{
-
-    yang_name = "afi-types"; yang_parent_name = "acl"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Lpts::Ipolicer::Acls::Acl::AfiTypes::~AfiTypes()
-{
-}
-
-bool Lpts::Ipolicer::Acls::Acl::AfiTypes::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<afi_type.len(); index++)
-    {
-        if(afi_type[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Lpts::Ipolicer::Acls::Acl::AfiTypes::has_operation() const
-{
-    for (std::size_t index=0; index<afi_type.len(); index++)
-    {
-        if(afi_type[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Lpts::Ipolicer::Acls::Acl::AfiTypes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "afi-types";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::Acl::AfiTypes::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Acls::Acl::AfiTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "afi-type")
-    {
-        auto ent_ = std::make_shared<Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType>();
-        ent_->parent = this;
-        afi_type.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Acls::Acl::AfiTypes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : afi_type.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Lpts::Ipolicer::Acls::Acl::AfiTypes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Lpts::Ipolicer::Acls::Acl::AfiTypes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Lpts::Ipolicer::Acls::Acl::AfiTypes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "afi-type")
-        return true;
-    return false;
-}
-
-Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::AfiType()
-    :
-    afi_family_type{YType::enumeration, "afi-family-type"}
-        ,
-    vrf_names(std::make_shared<Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames>())
-{
-    vrf_names->parent = this;
-
-    yang_name = "afi-type"; yang_parent_name = "afi-types"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::~AfiType()
-{
-}
-
-bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::has_data() const
-{
-    if (is_presence_container) return true;
-    return afi_family_type.is_set
-	|| (vrf_names !=  nullptr && vrf_names->has_data());
-}
-
-bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(afi_family_type.yfilter)
-	|| (vrf_names !=  nullptr && vrf_names->has_operation());
-}
-
-std::string Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "afi-type";
-    ADD_KEY_TOKEN(afi_family_type, "afi-family-type");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi_family_type.is_set || is_set(afi_family_type.yfilter)) leaf_name_data.push_back(afi_family_type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "vrf-names")
-    {
-        if(vrf_names == nullptr)
-        {
-            vrf_names = std::make_shared<Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames>();
-        }
-        return vrf_names;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(vrf_names != nullptr)
-    {
-        _children["vrf-names"] = vrf_names;
-    }
-
-    return _children;
-}
-
-void Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "afi-family-type")
-    {
-        afi_family_type = value;
-        afi_family_type.value_namespace = name_space;
-        afi_family_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "afi-family-type")
-    {
-        afi_family_type.yfilter = yfilter;
-    }
-}
-
-bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vrf-names" || name == "afi-family-type")
-        return true;
-    return false;
-}
-
-Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfNames()
-    :
-    vrf_name(this, {"vrf_name"})
-{
-
-    yang_name = "vrf-names"; yang_parent_name = "afi-type"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::~VrfNames()
-{
-}
-
-bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<vrf_name.len(); index++)
-    {
-        if(vrf_name[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::has_operation() const
-{
-    for (std::size_t index=0; index<vrf_name.len(); index++)
-    {
-        if(vrf_name[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vrf-names";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "vrf-name")
-    {
-        auto ent_ = std::make_shared<Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName>();
-        ent_->parent = this;
-        vrf_name.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : vrf_name.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vrf-name")
-        return true;
-    return false;
-}
-
-Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::VrfName()
-    :
-    vrf_name{YType::str, "vrf-name"},
-    acl_rate{YType::uint32, "acl-rate"}
-{
-
-    yang_name = "vrf-name"; yang_parent_name = "vrf-names"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::~VrfName()
-{
-}
-
-bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::has_data() const
-{
-    if (is_presence_container) return true;
-    return vrf_name.is_set
-	|| acl_rate.is_set;
-}
-
-bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(vrf_name.yfilter)
-	|| ydk::is_set(acl_rate.yfilter);
-}
-
-std::string Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vrf-name";
-    ADD_KEY_TOKEN(vrf_name, "vrf-name");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (acl_rate.is_set || is_set(acl_rate.yfilter)) leaf_name_data.push_back(acl_rate.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acl-rate")
-    {
-        acl_rate = value;
-        acl_rate.value_namespace = name_space;
-        acl_rate.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
-    if(value_path == "acl-rate")
-    {
-        acl_rate.yfilter = yfilter;
-    }
-}
-
-bool Lpts::Ipolicer::Acls::Acl::AfiTypes::AfiType::VrfNames::VrfName::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vrf-name" || name == "acl-rate")
-        return true;
-    return false;
-}
-
-Lpts::Ipolicer::Flows::Flows()
-    :
-    flow(this, {"flow_type"})
-{
-
-    yang_name = "flows"; yang_parent_name = "ipolicer"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Lpts::Ipolicer::Flows::~Flows()
-{
-}
-
-bool Lpts::Ipolicer::Flows::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<flow.len(); index++)
-    {
-        if(flow[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Lpts::Ipolicer::Flows::has_operation() const
-{
-    for (std::size_t index=0; index<flow.len(); index++)
-    {
-        if(flow[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Lpts::Ipolicer::Flows::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Lpts::Ipolicer::Flows::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "flows";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Flows::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Flows::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "flow")
-    {
-        auto ent_ = std::make_shared<Lpts::Ipolicer::Flows::Flow>();
-        ent_->parent = this;
-        flow.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Flows::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : flow.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Lpts::Ipolicer::Flows::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Lpts::Ipolicer::Flows::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Lpts::Ipolicer::Flows::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "flow")
-        return true;
-    return false;
-}
-
-Lpts::Ipolicer::Flows::Flow::Flow()
-    :
-    flow_type{YType::enumeration, "flow-type"},
-    rate{YType::uint32, "rate"}
-        ,
-    precedences(std::make_shared<Lpts::Ipolicer::Flows::Flow::Precedences>())
-{
-    precedences->parent = this;
-
-    yang_name = "flow"; yang_parent_name = "flows"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Lpts::Ipolicer::Flows::Flow::~Flow()
-{
-}
-
-bool Lpts::Ipolicer::Flows::Flow::has_data() const
-{
-    if (is_presence_container) return true;
-    return flow_type.is_set
-	|| rate.is_set
-	|| (precedences !=  nullptr && precedences->has_data());
-}
-
-bool Lpts::Ipolicer::Flows::Flow::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(flow_type.yfilter)
-	|| ydk::is_set(rate.yfilter)
-	|| (precedences !=  nullptr && precedences->has_operation());
-}
-
-std::string Lpts::Ipolicer::Flows::Flow::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-lpts-lib-cfg:lpts/Cisco-IOS-XR-lpts-pre-ifib-cfg:ipolicer/flows/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Lpts::Ipolicer::Flows::Flow::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "flow";
-    ADD_KEY_TOKEN(flow_type, "flow-type");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Flows::Flow::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (flow_type.is_set || is_set(flow_type.yfilter)) leaf_name_data.push_back(flow_type.get_name_leafdata());
-    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Flows::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "precedences")
-    {
-        if(precedences == nullptr)
-        {
-            precedences = std::make_shared<Lpts::Ipolicer::Flows::Flow::Precedences>();
-        }
-        return precedences;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Flows::Flow::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(precedences != nullptr)
-    {
-        _children["precedences"] = precedences;
-    }
-
-    return _children;
-}
-
-void Lpts::Ipolicer::Flows::Flow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "flow-type")
-    {
-        flow_type = value;
-        flow_type.value_namespace = name_space;
-        flow_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rate")
-    {
-        rate = value;
-        rate.value_namespace = name_space;
-        rate.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Lpts::Ipolicer::Flows::Flow::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "flow-type")
-    {
-        flow_type.yfilter = yfilter;
-    }
-    if(value_path == "rate")
-    {
-        rate.yfilter = yfilter;
-    }
-}
-
-bool Lpts::Ipolicer::Flows::Flow::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "precedences" || name == "flow-type" || name == "rate")
-        return true;
-    return false;
-}
-
-Lpts::Ipolicer::Flows::Flow::Precedences::Precedences()
-    :
-    precedence{YType::str, "precedence"}
-{
-
-    yang_name = "precedences"; yang_parent_name = "flow"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Lpts::Ipolicer::Flows::Flow::Precedences::~Precedences()
-{
-}
-
-bool Lpts::Ipolicer::Flows::Flow::Precedences::has_data() const
-{
-    if (is_presence_container) return true;
-    for (auto const & leaf : precedence.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool Lpts::Ipolicer::Flows::Flow::Precedences::has_operation() const
-{
-    for (auto const & leaf : precedence.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(precedence.yfilter);
-}
-
-std::string Lpts::Ipolicer::Flows::Flow::Precedences::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "precedences";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Lpts::Ipolicer::Flows::Flow::Precedences::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto precedence_name_datas = precedence.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), precedence_name_datas.begin(), precedence_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Lpts::Ipolicer::Flows::Flow::Precedences::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Lpts::Ipolicer::Flows::Flow::Precedences::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Lpts::Ipolicer::Flows::Flow::Precedences::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "precedence")
-    {
-        precedence.append(value);
-    }
-}
-
-void Lpts::Ipolicer::Flows::Flow::Precedences::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "precedence")
-    {
-        precedence.yfilter = yfilter;
-    }
-}
-
-bool Lpts::Ipolicer::Flows::Flow::Precedences::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "precedence")
         return true;
     return false;
 }

@@ -419,6 +419,7 @@ std::string MplsForwardingOperData::MplsLocalLabel::ForwardingPaths::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "forwarding-paths";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -5367,6 +5367,9 @@ Native::Interface::PortChannel::PortChannel()
     , service(std::make_shared<Native::Interface::PortChannel::Service>())
     , lacp(std::make_shared<Native::Interface::PortChannel::Lacp>())
     , mlacp(std::make_shared<Native::Interface::PortChannel::Mlacp>())
+    , snmp(std::make_shared<Native::Interface::PortChannel::Snmp>())
+    , authentication(std::make_shared<Native::Interface::PortChannel::Authentication>())
+    , mab(nullptr) // presence node
     , service_policy(std::make_shared<Native::Interface::PortChannel::ServicePolicy>())
     , auto_(std::make_shared<Native::Interface::PortChannel::Auto>())
     , datalink(std::make_shared<Native::Interface::PortChannel::Datalink>())
@@ -5380,19 +5383,16 @@ Native::Interface::PortChannel::PortChannel()
     , switch_(std::make_shared<Native::Interface::PortChannel::Switch>())
     , srr_queue(std::make_shared<Native::Interface::PortChannel::SrrQueue>())
     , macsec_option(std::make_shared<Native::Interface::PortChannel::MacsecOption>())
-    , snmp(std::make_shared<Native::Interface::PortChannel::Snmp>())
-    , crypto(std::make_shared<Native::Interface::PortChannel::Crypto>())
+    , ospfv3(std::make_shared<Native::Interface::PortChannel::Ospfv3>())
+    , lisp(std::make_shared<Native::Interface::PortChannel::Lisp>())
+    , spanning_tree(std::make_shared<Native::Interface::PortChannel::SpanningTree>())
     , xconnect(std::make_shared<Native::Interface::PortChannel::Xconnect>())
     , evpn(std::make_shared<Native::Interface::PortChannel::Evpn>())
-    , mvrp(nullptr) // presence node
-    , lisp(std::make_shared<Native::Interface::PortChannel::Lisp>())
-    , authentication(std::make_shared<Native::Interface::PortChannel::Authentication>())
-    , mab(nullptr) // presence node
     , dot1x(std::make_shared<Native::Interface::PortChannel::Dot1x>())
-    , spanning_tree(std::make_shared<Native::Interface::PortChannel::SpanningTree>())
-    , ospfv3(std::make_shared<Native::Interface::PortChannel::Ospfv3>())
-    , cts(std::make_shared<Native::Interface::PortChannel::Cts>())
+    , crypto(std::make_shared<Native::Interface::PortChannel::Crypto>())
     , analysis_module(std::make_shared<Native::Interface::PortChannel::AnalysisModule>())
+    , cts(std::make_shared<Native::Interface::PortChannel::Cts>())
+    , mvrp(nullptr) // presence node
 {
     port_channel->parent = this;
     switchport_conf->parent = this;
@@ -5442,6 +5442,8 @@ Native::Interface::PortChannel::PortChannel()
     service->parent = this;
     lacp->parent = this;
     mlacp->parent = this;
+    snmp->parent = this;
+    authentication->parent = this;
     service_policy->parent = this;
     auto_->parent = this;
     datalink->parent = this;
@@ -5453,17 +5455,15 @@ Native::Interface::PortChannel::PortChannel()
     switch_->parent = this;
     srr_queue->parent = this;
     macsec_option->parent = this;
-    snmp->parent = this;
-    crypto->parent = this;
+    ospfv3->parent = this;
+    lisp->parent = this;
+    spanning_tree->parent = this;
     xconnect->parent = this;
     evpn->parent = this;
-    lisp->parent = this;
-    authentication->parent = this;
     dot1x->parent = this;
-    spanning_tree->parent = this;
-    ospfv3->parent = this;
-    cts->parent = this;
+    crypto->parent = this;
     analysis_module->parent = this;
+    cts->parent = this;
 
     yang_name = "Port-channel"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -5550,6 +5550,9 @@ bool Native::Interface::PortChannel::has_data() const
 	|| (service !=  nullptr && service->has_data())
 	|| (lacp !=  nullptr && lacp->has_data())
 	|| (mlacp !=  nullptr && mlacp->has_data())
+	|| (snmp !=  nullptr && snmp->has_data())
+	|| (authentication !=  nullptr && authentication->has_data())
+	|| (mab !=  nullptr && mab->has_data())
 	|| (service_policy !=  nullptr && service_policy->has_data())
 	|| (auto_ !=  nullptr && auto_->has_data())
 	|| (datalink !=  nullptr && datalink->has_data())
@@ -5562,19 +5565,16 @@ bool Native::Interface::PortChannel::has_data() const
 	|| (switch_ !=  nullptr && switch_->has_data())
 	|| (srr_queue !=  nullptr && srr_queue->has_data())
 	|| (macsec_option !=  nullptr && macsec_option->has_data())
-	|| (snmp !=  nullptr && snmp->has_data())
-	|| (crypto !=  nullptr && crypto->has_data())
+	|| (ospfv3 !=  nullptr && ospfv3->has_data())
+	|| (lisp !=  nullptr && lisp->has_data())
+	|| (spanning_tree !=  nullptr && spanning_tree->has_data())
 	|| (xconnect !=  nullptr && xconnect->has_data())
 	|| (evpn !=  nullptr && evpn->has_data())
-	|| (mvrp !=  nullptr && mvrp->has_data())
-	|| (lisp !=  nullptr && lisp->has_data())
-	|| (authentication !=  nullptr && authentication->has_data())
-	|| (mab !=  nullptr && mab->has_data())
 	|| (dot1x !=  nullptr && dot1x->has_data())
-	|| (spanning_tree !=  nullptr && spanning_tree->has_data())
-	|| (ospfv3 !=  nullptr && ospfv3->has_data())
+	|| (crypto !=  nullptr && crypto->has_data())
+	|| (analysis_module !=  nullptr && analysis_module->has_data())
 	|| (cts !=  nullptr && cts->has_data())
-	|| (analysis_module !=  nullptr && analysis_module->has_data());
+	|| (mvrp !=  nullptr && mvrp->has_data());
 }
 
 bool Native::Interface::PortChannel::has_operation() const
@@ -5655,6 +5655,9 @@ bool Native::Interface::PortChannel::has_operation() const
 	|| (service !=  nullptr && service->has_operation())
 	|| (lacp !=  nullptr && lacp->has_operation())
 	|| (mlacp !=  nullptr && mlacp->has_operation())
+	|| (snmp !=  nullptr && snmp->has_operation())
+	|| (authentication !=  nullptr && authentication->has_operation())
+	|| (mab !=  nullptr && mab->has_operation())
 	|| (service_policy !=  nullptr && service_policy->has_operation())
 	|| (auto_ !=  nullptr && auto_->has_operation())
 	|| (datalink !=  nullptr && datalink->has_operation())
@@ -5667,19 +5670,16 @@ bool Native::Interface::PortChannel::has_operation() const
 	|| (switch_ !=  nullptr && switch_->has_operation())
 	|| (srr_queue !=  nullptr && srr_queue->has_operation())
 	|| (macsec_option !=  nullptr && macsec_option->has_operation())
-	|| (snmp !=  nullptr && snmp->has_operation())
-	|| (crypto !=  nullptr && crypto->has_operation())
+	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
+	|| (lisp !=  nullptr && lisp->has_operation())
+	|| (spanning_tree !=  nullptr && spanning_tree->has_operation())
 	|| (xconnect !=  nullptr && xconnect->has_operation())
 	|| (evpn !=  nullptr && evpn->has_operation())
-	|| (mvrp !=  nullptr && mvrp->has_operation())
-	|| (lisp !=  nullptr && lisp->has_operation())
-	|| (authentication !=  nullptr && authentication->has_operation())
-	|| (mab !=  nullptr && mab->has_operation())
 	|| (dot1x !=  nullptr && dot1x->has_operation())
-	|| (spanning_tree !=  nullptr && spanning_tree->has_operation())
-	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
+	|| (crypto !=  nullptr && crypto->has_operation())
+	|| (analysis_module !=  nullptr && analysis_module->has_operation())
 	|| (cts !=  nullptr && cts->has_operation())
-	|| (analysis_module !=  nullptr && analysis_module->has_operation());
+	|| (mvrp !=  nullptr && mvrp->has_operation());
 }
 
 std::string Native::Interface::PortChannel::get_absolute_path() const
@@ -6173,6 +6173,33 @@ std::shared_ptr<ydk::Entity> Native::Interface::PortChannel::get_child_by_name(c
         return mlacp;
     }
 
+    if(child_yang_name == "Cisco-IOS-XE-snmp:snmp")
+    {
+        if(snmp == nullptr)
+        {
+            snmp = std::make_shared<Native::Interface::PortChannel::Snmp>();
+        }
+        return snmp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-sanet:authentication")
+    {
+        if(authentication == nullptr)
+        {
+            authentication = std::make_shared<Native::Interface::PortChannel::Authentication>();
+        }
+        return authentication;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-sanet:mab")
+    {
+        if(mab == nullptr)
+        {
+            mab = std::make_shared<Native::Interface::PortChannel::Mab>();
+        }
+        return mab;
+    }
+
     if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
     {
         if(service_policy == nullptr)
@@ -6289,22 +6316,31 @@ std::shared_ptr<ydk::Entity> Native::Interface::PortChannel::get_child_by_name(c
         return macsec_option;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-snmp:snmp")
+    if(child_yang_name == "Cisco-IOS-XE-ospfv3:ospfv3")
     {
-        if(snmp == nullptr)
+        if(ospfv3 == nullptr)
         {
-            snmp = std::make_shared<Native::Interface::PortChannel::Snmp>();
+            ospfv3 = std::make_shared<Native::Interface::PortChannel::Ospfv3>();
         }
-        return snmp;
+        return ospfv3;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-crypto:crypto")
+    if(child_yang_name == "Cisco-IOS-XE-lisp:lisp")
     {
-        if(crypto == nullptr)
+        if(lisp == nullptr)
         {
-            crypto = std::make_shared<Native::Interface::PortChannel::Crypto>();
+            lisp = std::make_shared<Native::Interface::PortChannel::Lisp>();
         }
-        return crypto;
+        return lisp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-spanning-tree:spanning-tree")
+    {
+        if(spanning_tree == nullptr)
+        {
+            spanning_tree = std::make_shared<Native::Interface::PortChannel::SpanningTree>();
+        }
+        return spanning_tree;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-l2vpn:xconnect")
@@ -6325,42 +6361,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::PortChannel::get_child_by_name(c
         return evpn;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-mvrp:mvrp")
-    {
-        if(mvrp == nullptr)
-        {
-            mvrp = std::make_shared<Native::Interface::PortChannel::Mvrp>();
-        }
-        return mvrp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-lisp:lisp")
-    {
-        if(lisp == nullptr)
-        {
-            lisp = std::make_shared<Native::Interface::PortChannel::Lisp>();
-        }
-        return lisp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-sanet:authentication")
-    {
-        if(authentication == nullptr)
-        {
-            authentication = std::make_shared<Native::Interface::PortChannel::Authentication>();
-        }
-        return authentication;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-sanet:mab")
-    {
-        if(mab == nullptr)
-        {
-            mab = std::make_shared<Native::Interface::PortChannel::Mab>();
-        }
-        return mab;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-dot1x:dot1x")
     {
         if(dot1x == nullptr)
@@ -6370,22 +6370,22 @@ std::shared_ptr<ydk::Entity> Native::Interface::PortChannel::get_child_by_name(c
         return dot1x;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-spanning-tree:spanning-tree")
+    if(child_yang_name == "Cisco-IOS-XE-crypto:crypto")
     {
-        if(spanning_tree == nullptr)
+        if(crypto == nullptr)
         {
-            spanning_tree = std::make_shared<Native::Interface::PortChannel::SpanningTree>();
+            crypto = std::make_shared<Native::Interface::PortChannel::Crypto>();
         }
-        return spanning_tree;
+        return crypto;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-ospfv3:ospfv3")
+    if(child_yang_name == "Cisco-IOS-XE-nam:analysis-module")
     {
-        if(ospfv3 == nullptr)
+        if(analysis_module == nullptr)
         {
-            ospfv3 = std::make_shared<Native::Interface::PortChannel::Ospfv3>();
+            analysis_module = std::make_shared<Native::Interface::PortChannel::AnalysisModule>();
         }
-        return ospfv3;
+        return analysis_module;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-cts:cts")
@@ -6397,13 +6397,13 @@ std::shared_ptr<ydk::Entity> Native::Interface::PortChannel::get_child_by_name(c
         return cts;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-nam:analysis-module")
+    if(child_yang_name == "Cisco-IOS-XE-mvrp:mvrp")
     {
-        if(analysis_module == nullptr)
+        if(mvrp == nullptr)
         {
-            analysis_module = std::make_shared<Native::Interface::PortChannel::AnalysisModule>();
+            mvrp = std::make_shared<Native::Interface::PortChannel::Mvrp>();
         }
-        return analysis_module;
+        return mvrp;
     }
 
     return nullptr;
@@ -6667,6 +6667,21 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::PortChann
         _children["Cisco-IOS-XE-ethernet:mlacp"] = mlacp;
     }
 
+    if(snmp != nullptr)
+    {
+        _children["Cisco-IOS-XE-snmp:snmp"] = snmp;
+    }
+
+    if(authentication != nullptr)
+    {
+        _children["Cisco-IOS-XE-sanet:authentication"] = authentication;
+    }
+
+    if(mab != nullptr)
+    {
+        _children["Cisco-IOS-XE-sanet:mab"] = mab;
+    }
+
     if(service_policy != nullptr)
     {
         _children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
@@ -6736,14 +6751,19 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::PortChann
         _children["Cisco-IOS-XE-switch:macsec-option"] = macsec_option;
     }
 
-    if(snmp != nullptr)
+    if(ospfv3 != nullptr)
     {
-        _children["Cisco-IOS-XE-snmp:snmp"] = snmp;
+        _children["Cisco-IOS-XE-ospfv3:ospfv3"] = ospfv3;
     }
 
-    if(crypto != nullptr)
+    if(lisp != nullptr)
     {
-        _children["Cisco-IOS-XE-crypto:crypto"] = crypto;
+        _children["Cisco-IOS-XE-lisp:lisp"] = lisp;
+    }
+
+    if(spanning_tree != nullptr)
+    {
+        _children["Cisco-IOS-XE-spanning-tree:spanning-tree"] = spanning_tree;
     }
 
     if(xconnect != nullptr)
@@ -6756,39 +6776,19 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::PortChann
         _children["Cisco-IOS-XE-l2vpn:evpn"] = evpn;
     }
 
-    if(mvrp != nullptr)
-    {
-        _children["Cisco-IOS-XE-mvrp:mvrp"] = mvrp;
-    }
-
-    if(lisp != nullptr)
-    {
-        _children["Cisco-IOS-XE-lisp:lisp"] = lisp;
-    }
-
-    if(authentication != nullptr)
-    {
-        _children["Cisco-IOS-XE-sanet:authentication"] = authentication;
-    }
-
-    if(mab != nullptr)
-    {
-        _children["Cisco-IOS-XE-sanet:mab"] = mab;
-    }
-
     if(dot1x != nullptr)
     {
         _children["Cisco-IOS-XE-dot1x:dot1x"] = dot1x;
     }
 
-    if(spanning_tree != nullptr)
+    if(crypto != nullptr)
     {
-        _children["Cisco-IOS-XE-spanning-tree:spanning-tree"] = spanning_tree;
+        _children["Cisco-IOS-XE-crypto:crypto"] = crypto;
     }
 
-    if(ospfv3 != nullptr)
+    if(analysis_module != nullptr)
     {
-        _children["Cisco-IOS-XE-ospfv3:ospfv3"] = ospfv3;
+        _children["Cisco-IOS-XE-nam:analysis-module"] = analysis_module;
     }
 
     if(cts != nullptr)
@@ -6796,9 +6796,9 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::PortChann
         _children["Cisco-IOS-XE-cts:cts"] = cts;
     }
 
-    if(analysis_module != nullptr)
+    if(mvrp != nullptr)
     {
-        _children["Cisco-IOS-XE-nam:analysis-module"] = analysis_module;
+        _children["Cisco-IOS-XE-mvrp:mvrp"] = mvrp;
     }
 
     return _children;
@@ -6974,7 +6974,7 @@ void Native::Interface::PortChannel::set_filter(const std::string & value_path, 
 
 bool Native::Interface::PortChannel::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "port-channel" || name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "carrier-delay" || name == "channel-group" || name == "ethernet" || name == "eapol" || name == "synchronous" || name == "speed" || name == "negotiation" || name == "plim" || name == "pppoe" || name == "service" || name == "lacp" || name == "mlacp" || name == "service-policy" || name == "auto" || name == "datalink" || name == "energywise" || name == "location" || name == "mac" || name == "macro" || name == "dual-active" || name == "load-balancing" || name == "vlan-range" || name == "switch" || name == "srr-queue" || name == "macsec-option" || name == "snmp" || name == "crypto" || name == "xconnect" || name == "evpn" || name == "mvrp" || name == "lisp" || name == "authentication" || name == "mab" || name == "dot1x" || name == "spanning-tree" || name == "ospfv3" || name == "cts" || name == "analysis-module" || name == "name" || name == "pc-speed" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "channel-protocol" || name == "duplex" || name == "macsec" || name == "nat66")
+    if(name == "port-channel" || name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "carrier-delay" || name == "channel-group" || name == "ethernet" || name == "eapol" || name == "synchronous" || name == "speed" || name == "negotiation" || name == "plim" || name == "pppoe" || name == "service" || name == "lacp" || name == "mlacp" || name == "snmp" || name == "authentication" || name == "mab" || name == "service-policy" || name == "auto" || name == "datalink" || name == "energywise" || name == "location" || name == "mac" || name == "macro" || name == "dual-active" || name == "load-balancing" || name == "vlan-range" || name == "switch" || name == "srr-queue" || name == "macsec-option" || name == "ospfv3" || name == "lisp" || name == "spanning-tree" || name == "xconnect" || name == "evpn" || name == "dot1x" || name == "crypto" || name == "analysis-module" || name == "cts" || name == "mvrp" || name == "name" || name == "pc-speed" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "channel-protocol" || name == "duplex" || name == "macsec" || name == "nat66")
         return true;
     return false;
 }
@@ -16496,13 +16496,13 @@ Native::Interface::PortChannel::Ip::Ip()
     , dhcp(std::make_shared<Native::Interface::PortChannel::Ip::Dhcp>())
     , summary_address(std::make_shared<Native::Interface::PortChannel::Ip::SummaryAddress>())
     , verify(std::make_shared<Native::Interface::PortChannel::Ip::Verify>())
-    , igmp(std::make_shared<Native::Interface::PortChannel::Ip::Igmp>())
     , flow(std::make_shared<Native::Interface::PortChannel::Ip::Flow>())
-    , nbar(std::make_shared<Native::Interface::PortChannel::Ip::Nbar>())
+    , igmp(std::make_shared<Native::Interface::PortChannel::Ip::Igmp>())
     , ospf(std::make_shared<Native::Interface::PortChannel::Ip::Ospf>())
     , lisp(std::make_shared<Native::Interface::PortChannel::Ip::Lisp>())
-    , rsvp(std::make_shared<Native::Interface::PortChannel::Ip::Rsvp>())
     , nat(std::make_shared<Native::Interface::PortChannel::Ip::Nat>())
+    , nbar(std::make_shared<Native::Interface::PortChannel::Ip::Nbar>())
+    , rsvp(std::make_shared<Native::Interface::PortChannel::Ip::Rsvp>())
     , wccp(std::make_shared<Native::Interface::PortChannel::Ip::Wccp>())
 {
     access_group->parent = this;
@@ -16523,13 +16523,13 @@ Native::Interface::PortChannel::Ip::Ip()
     dhcp->parent = this;
     summary_address->parent = this;
     verify->parent = this;
-    igmp->parent = this;
     flow->parent = this;
-    nbar->parent = this;
+    igmp->parent = this;
     ospf->parent = this;
     lisp->parent = this;
-    rsvp->parent = this;
     nat->parent = this;
+    nbar->parent = this;
+    rsvp->parent = this;
     wccp->parent = this;
 
     yang_name = "ip"; yang_parent_name = "Port-channel"; is_top_level_class = false; has_list_ancestor = true; 
@@ -16574,13 +16574,13 @@ bool Native::Interface::PortChannel::Ip::has_data() const
 	|| (dhcp !=  nullptr && dhcp->has_data())
 	|| (summary_address !=  nullptr && summary_address->has_data())
 	|| (verify !=  nullptr && verify->has_data())
-	|| (igmp !=  nullptr && igmp->has_data())
 	|| (flow !=  nullptr && flow->has_data())
-	|| (nbar !=  nullptr && nbar->has_data())
+	|| (igmp !=  nullptr && igmp->has_data())
 	|| (ospf !=  nullptr && ospf->has_data())
 	|| (lisp !=  nullptr && lisp->has_data())
-	|| (rsvp !=  nullptr && rsvp->has_data())
 	|| (nat !=  nullptr && nat->has_data())
+	|| (nbar !=  nullptr && nbar->has_data())
+	|| (rsvp !=  nullptr && rsvp->has_data())
 	|| (wccp !=  nullptr && wccp->has_data());
 }
 
@@ -16619,13 +16619,13 @@ bool Native::Interface::PortChannel::Ip::has_operation() const
 	|| (dhcp !=  nullptr && dhcp->has_operation())
 	|| (summary_address !=  nullptr && summary_address->has_operation())
 	|| (verify !=  nullptr && verify->has_operation())
-	|| (igmp !=  nullptr && igmp->has_operation())
 	|| (flow !=  nullptr && flow->has_operation())
-	|| (nbar !=  nullptr && nbar->has_operation())
+	|| (igmp !=  nullptr && igmp->has_operation())
 	|| (ospf !=  nullptr && ospf->has_operation())
 	|| (lisp !=  nullptr && lisp->has_operation())
-	|| (rsvp !=  nullptr && rsvp->has_operation())
 	|| (nat !=  nullptr && nat->has_operation())
+	|| (nbar !=  nullptr && nbar->has_operation())
+	|| (rsvp !=  nullptr && rsvp->has_operation())
 	|| (wccp !=  nullptr && wccp->has_operation());
 }
 
@@ -16842,15 +16842,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::PortChannel::Ip::get_child_by_na
         return verify;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-igmp:igmp")
-    {
-        if(igmp == nullptr)
-        {
-            igmp = std::make_shared<Native::Interface::PortChannel::Ip::Igmp>();
-        }
-        return igmp;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-flow:flow")
     {
         if(flow == nullptr)
@@ -16860,13 +16851,13 @@ std::shared_ptr<ydk::Entity> Native::Interface::PortChannel::Ip::get_child_by_na
         return flow;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-nbar:nbar")
+    if(child_yang_name == "Cisco-IOS-XE-igmp:igmp")
     {
-        if(nbar == nullptr)
+        if(igmp == nullptr)
         {
-            nbar = std::make_shared<Native::Interface::PortChannel::Ip::Nbar>();
+            igmp = std::make_shared<Native::Interface::PortChannel::Ip::Igmp>();
         }
-        return nbar;
+        return igmp;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-ospf:ospf")
@@ -16887,15 +16878,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::PortChannel::Ip::get_child_by_na
         return lisp;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-rsvp:rsvp")
-    {
-        if(rsvp == nullptr)
-        {
-            rsvp = std::make_shared<Native::Interface::PortChannel::Ip::Rsvp>();
-        }
-        return rsvp;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-nat:nat")
     {
         if(nat == nullptr)
@@ -16903,6 +16885,24 @@ std::shared_ptr<ydk::Entity> Native::Interface::PortChannel::Ip::get_child_by_na
             nat = std::make_shared<Native::Interface::PortChannel::Ip::Nat>();
         }
         return nat;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-nbar:nbar")
+    {
+        if(nbar == nullptr)
+        {
+            nbar = std::make_shared<Native::Interface::PortChannel::Ip::Nbar>();
+        }
+        return nbar;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-rsvp:rsvp")
+    {
+        if(rsvp == nullptr)
+        {
+            rsvp = std::make_shared<Native::Interface::PortChannel::Ip::Rsvp>();
+        }
+        return rsvp;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-wccp:wccp")
@@ -17030,19 +17030,14 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::PortChann
         _children["verify"] = verify;
     }
 
-    if(igmp != nullptr)
-    {
-        _children["Cisco-IOS-XE-igmp:igmp"] = igmp;
-    }
-
     if(flow != nullptr)
     {
         _children["Cisco-IOS-XE-flow:flow"] = flow;
     }
 
-    if(nbar != nullptr)
+    if(igmp != nullptr)
     {
-        _children["Cisco-IOS-XE-nbar:nbar"] = nbar;
+        _children["Cisco-IOS-XE-igmp:igmp"] = igmp;
     }
 
     if(ospf != nullptr)
@@ -17055,14 +17050,19 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::PortChann
         _children["Cisco-IOS-XE-lisp:lisp"] = lisp;
     }
 
-    if(rsvp != nullptr)
-    {
-        _children["Cisco-IOS-XE-rsvp:rsvp"] = rsvp;
-    }
-
     if(nat != nullptr)
     {
         _children["Cisco-IOS-XE-nat:nat"] = nat;
+    }
+
+    if(nbar != nullptr)
+    {
+        _children["Cisco-IOS-XE-nbar:nbar"] = nbar;
+    }
+
+    if(rsvp != nullptr)
+    {
+        _children["Cisco-IOS-XE-rsvp:rsvp"] = rsvp;
     }
 
     if(wccp != nullptr)
@@ -17153,7 +17153,7 @@ void Native::Interface::PortChannel::Ip::set_filter(const std::string & value_pa
 
 bool Native::Interface::PortChannel::Ip::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "access-group" || name == "arp" || name == "vrf" || name == "no-address" || name == "address" || name == "directed-broadcast" || name == "hello-interval" || name == "authentication" || name == "hold-time" || name == "helper-address" || name == "pim" || name == "policy" || name == "rip" || name == "route-cache-conf" || name == "route-cache" || name == "router" || name == "tcp" || name == "virtual-reassembly" || name == "dhcp" || name == "summary-address" || name == "verify" || name == "igmp" || name == "flow" || name == "nbar" || name == "ospf" || name == "lisp" || name == "rsvp" || name == "nat" || name == "wccp" || name == "admission" || name == "unnumbered" || name == "local-proxy-arp" || name == "proxy-arp" || name == "redirects" || name == "mtu" || name == "mroute-cache")
+    if(name == "access-group" || name == "arp" || name == "vrf" || name == "no-address" || name == "address" || name == "directed-broadcast" || name == "hello-interval" || name == "authentication" || name == "hold-time" || name == "helper-address" || name == "pim" || name == "policy" || name == "rip" || name == "route-cache-conf" || name == "route-cache" || name == "router" || name == "tcp" || name == "virtual-reassembly" || name == "dhcp" || name == "summary-address" || name == "verify" || name == "flow" || name == "igmp" || name == "ospf" || name == "lisp" || name == "nat" || name == "nbar" || name == "rsvp" || name == "wccp" || name == "admission" || name == "unnumbered" || name == "local-proxy-arp" || name == "proxy-arp" || name == "redirects" || name == "mtu" || name == "mroute-cache")
         return true;
     return false;
 }

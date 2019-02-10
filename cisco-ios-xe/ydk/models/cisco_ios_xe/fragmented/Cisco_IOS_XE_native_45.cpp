@@ -8715,13 +8715,13 @@ Native::Interface::TwoGigabitEthernet::Ip::Ip()
     , dhcp(std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Dhcp>())
     , summary_address(std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::SummaryAddress>())
     , verify(std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Verify>())
-    , igmp(std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Igmp>())
     , flow(std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Flow>())
-    , nbar(std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Nbar>())
+    , igmp(std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Igmp>())
     , ospf(std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Ospf>())
     , lisp(std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Lisp>())
-    , rsvp(std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Rsvp>())
     , nat(std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Nat>())
+    , nbar(std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Nbar>())
+    , rsvp(std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Rsvp>())
     , wccp(std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Wccp>())
 {
     access_group->parent = this;
@@ -8742,13 +8742,13 @@ Native::Interface::TwoGigabitEthernet::Ip::Ip()
     dhcp->parent = this;
     summary_address->parent = this;
     verify->parent = this;
-    igmp->parent = this;
     flow->parent = this;
-    nbar->parent = this;
+    igmp->parent = this;
     ospf->parent = this;
     lisp->parent = this;
-    rsvp->parent = this;
     nat->parent = this;
+    nbar->parent = this;
+    rsvp->parent = this;
     wccp->parent = this;
 
     yang_name = "ip"; yang_parent_name = "TwoGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true; 
@@ -8794,13 +8794,13 @@ bool Native::Interface::TwoGigabitEthernet::Ip::has_data() const
 	|| (dhcp !=  nullptr && dhcp->has_data())
 	|| (summary_address !=  nullptr && summary_address->has_data())
 	|| (verify !=  nullptr && verify->has_data())
-	|| (igmp !=  nullptr && igmp->has_data())
 	|| (flow !=  nullptr && flow->has_data())
-	|| (nbar !=  nullptr && nbar->has_data())
+	|| (igmp !=  nullptr && igmp->has_data())
 	|| (ospf !=  nullptr && ospf->has_data())
 	|| (lisp !=  nullptr && lisp->has_data())
-	|| (rsvp !=  nullptr && rsvp->has_data())
 	|| (nat !=  nullptr && nat->has_data())
+	|| (nbar !=  nullptr && nbar->has_data())
+	|| (rsvp !=  nullptr && rsvp->has_data())
 	|| (wccp !=  nullptr && wccp->has_data());
 }
 
@@ -8840,13 +8840,13 @@ bool Native::Interface::TwoGigabitEthernet::Ip::has_operation() const
 	|| (dhcp !=  nullptr && dhcp->has_operation())
 	|| (summary_address !=  nullptr && summary_address->has_operation())
 	|| (verify !=  nullptr && verify->has_operation())
-	|| (igmp !=  nullptr && igmp->has_operation())
 	|| (flow !=  nullptr && flow->has_operation())
-	|| (nbar !=  nullptr && nbar->has_operation())
+	|| (igmp !=  nullptr && igmp->has_operation())
 	|| (ospf !=  nullptr && ospf->has_operation())
 	|| (lisp !=  nullptr && lisp->has_operation())
-	|| (rsvp !=  nullptr && rsvp->has_operation())
 	|| (nat !=  nullptr && nat->has_operation())
+	|| (nbar !=  nullptr && nbar->has_operation())
+	|| (rsvp !=  nullptr && rsvp->has_operation())
 	|| (wccp !=  nullptr && wccp->has_operation());
 }
 
@@ -9064,15 +9064,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Ip::get_chil
         return verify;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-igmp:igmp")
-    {
-        if(igmp == nullptr)
-        {
-            igmp = std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Igmp>();
-        }
-        return igmp;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-flow:flow")
     {
         if(flow == nullptr)
@@ -9082,13 +9073,13 @@ std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Ip::get_chil
         return flow;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-nbar:nbar")
+    if(child_yang_name == "Cisco-IOS-XE-igmp:igmp")
     {
-        if(nbar == nullptr)
+        if(igmp == nullptr)
         {
-            nbar = std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Nbar>();
+            igmp = std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Igmp>();
         }
-        return nbar;
+        return igmp;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-ospf:ospf")
@@ -9109,15 +9100,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Ip::get_chil
         return lisp;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-rsvp:rsvp")
-    {
-        if(rsvp == nullptr)
-        {
-            rsvp = std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Rsvp>();
-        }
-        return rsvp;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-nat:nat")
     {
         if(nat == nullptr)
@@ -9125,6 +9107,24 @@ std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Ip::get_chil
             nat = std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Nat>();
         }
         return nat;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-nbar:nbar")
+    {
+        if(nbar == nullptr)
+        {
+            nbar = std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Nbar>();
+        }
+        return nbar;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-rsvp:rsvp")
+    {
+        if(rsvp == nullptr)
+        {
+            rsvp = std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Rsvp>();
+        }
+        return rsvp;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-wccp:wccp")
@@ -9252,19 +9252,14 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabi
         _children["verify"] = verify;
     }
 
-    if(igmp != nullptr)
-    {
-        _children["Cisco-IOS-XE-igmp:igmp"] = igmp;
-    }
-
     if(flow != nullptr)
     {
         _children["Cisco-IOS-XE-flow:flow"] = flow;
     }
 
-    if(nbar != nullptr)
+    if(igmp != nullptr)
     {
-        _children["Cisco-IOS-XE-nbar:nbar"] = nbar;
+        _children["Cisco-IOS-XE-igmp:igmp"] = igmp;
     }
 
     if(ospf != nullptr)
@@ -9277,14 +9272,19 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabi
         _children["Cisco-IOS-XE-lisp:lisp"] = lisp;
     }
 
-    if(rsvp != nullptr)
-    {
-        _children["Cisco-IOS-XE-rsvp:rsvp"] = rsvp;
-    }
-
     if(nat != nullptr)
     {
         _children["Cisco-IOS-XE-nat:nat"] = nat;
+    }
+
+    if(nbar != nullptr)
+    {
+        _children["Cisco-IOS-XE-nbar:nbar"] = nbar;
+    }
+
+    if(rsvp != nullptr)
+    {
+        _children["Cisco-IOS-XE-rsvp:rsvp"] = rsvp;
     }
 
     if(wccp != nullptr)
@@ -9385,7 +9385,7 @@ void Native::Interface::TwoGigabitEthernet::Ip::set_filter(const std::string & v
 
 bool Native::Interface::TwoGigabitEthernet::Ip::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "access-group" || name == "arp" || name == "vrf" || name == "no-address" || name == "address" || name == "directed-broadcast" || name == "hello-interval" || name == "authentication" || name == "hold-time" || name == "helper-address" || name == "pim" || name == "policy" || name == "rip" || name == "route-cache-conf" || name == "route-cache" || name == "router" || name == "tcp" || name == "virtual-reassembly" || name == "dhcp" || name == "summary-address" || name == "verify" || name == "igmp" || name == "flow" || name == "nbar" || name == "ospf" || name == "lisp" || name == "rsvp" || name == "nat" || name == "wccp" || name == "admission" || name == "unnumbered" || name == "local-proxy-arp" || name == "proxy-arp" || name == "redirects" || name == "mtu" || name == "mroute-cache" || name == "unreachables")
+    if(name == "access-group" || name == "arp" || name == "vrf" || name == "no-address" || name == "address" || name == "directed-broadcast" || name == "hello-interval" || name == "authentication" || name == "hold-time" || name == "helper-address" || name == "pim" || name == "policy" || name == "rip" || name == "route-cache-conf" || name == "route-cache" || name == "router" || name == "tcp" || name == "virtual-reassembly" || name == "dhcp" || name == "summary-address" || name == "verify" || name == "flow" || name == "igmp" || name == "ospf" || name == "lisp" || name == "nat" || name == "nbar" || name == "rsvp" || name == "wccp" || name == "admission" || name == "unnumbered" || name == "local-proxy-arp" || name == "proxy-arp" || name == "redirects" || name == "mtu" || name == "mroute-cache" || name == "unreachables")
         return true;
     return false;
 }
@@ -15757,96 +15757,82 @@ bool Native::Interface::TwoGigabitEthernet::Ip::Verify::Unicast::Source::has_lea
     return false;
 }
 
-Native::Interface::TwoGigabitEthernet::Ip::Igmp::Igmp()
+Native::Interface::TwoGigabitEthernet::Ip::Flow::Flow()
     :
-    version{YType::uint8, "version"}
+    ingress{YType::empty, "ingress"},
+    egress{YType::empty, "egress"}
         ,
-    static_group(std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Igmp::StaticGroup>())
-    , join_group(this, {"ip_group_address"})
+    monitor(this, {"name"})
 {
-    static_group->parent = this;
 
-    yang_name = "igmp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "flow"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::TwoGigabitEthernet::Ip::Igmp::~Igmp()
+Native::Interface::TwoGigabitEthernet::Ip::Flow::~Flow()
 {
 }
 
-bool Native::Interface::TwoGigabitEthernet::Ip::Igmp::has_data() const
+bool Native::Interface::TwoGigabitEthernet::Ip::Flow::has_data() const
 {
     if (is_presence_container) return true;
-    for (std::size_t index=0; index<join_group.len(); index++)
+    for (std::size_t index=0; index<monitor.len(); index++)
     {
-        if(join_group[index]->has_data())
+        if(monitor[index]->has_data())
             return true;
     }
-    return version.is_set
-	|| (static_group !=  nullptr && static_group->has_data());
+    return ingress.is_set
+	|| egress.is_set;
 }
 
-bool Native::Interface::TwoGigabitEthernet::Ip::Igmp::has_operation() const
+bool Native::Interface::TwoGigabitEthernet::Ip::Flow::has_operation() const
 {
-    for (std::size_t index=0; index<join_group.len(); index++)
+    for (std::size_t index=0; index<monitor.len(); index++)
     {
-        if(join_group[index]->has_operation())
+        if(monitor[index]->has_operation())
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(version.yfilter)
-	|| (static_group !=  nullptr && static_group->has_operation());
+	|| ydk::is_set(ingress.yfilter)
+	|| ydk::is_set(egress.yfilter);
 }
 
-std::string Native::Interface::TwoGigabitEthernet::Ip::Igmp::get_segment_path() const
+std::string Native::Interface::TwoGigabitEthernet::Ip::Flow::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-igmp:igmp";
+    path_buffer << "Cisco-IOS-XE-flow:flow";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthernet::Ip::Igmp::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwoGigabitEthernet::Ip::Flow::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (ingress.is_set || is_set(ingress.yfilter)) leaf_name_data.push_back(ingress.get_name_leafdata());
+    if (egress.is_set || is_set(egress.yfilter)) leaf_name_data.push_back(egress.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Ip::Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwoGigabitEthernet::Ip::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "static-group")
+    if(child_yang_name == "monitor")
     {
-        if(static_group == nullptr)
-        {
-            static_group = std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Igmp::StaticGroup>();
-        }
-        return static_group;
-    }
-
-    if(child_yang_name == "join-group")
-    {
-        auto ent_ = std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Igmp::JoinGroup>();
+        auto ent_ = std::make_shared<Native::Interface::TwoGigabitEthernet::Ip::Flow::Monitor>();
         ent_->parent = this;
-        join_group.append(ent_);
+        monitor.append(ent_);
         return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Ip::Igmp::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabitEthernet::Ip::Flow::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(static_group != nullptr)
-    {
-        _children["static-group"] = static_group;
-    }
-
     count_ = 0;
-    for (auto ent_ : join_group.entities())
+    for (auto ent_ : monitor.entities())
     {
         if(_children.find(ent_->get_segment_path()) == _children.end())
             _children[ent_->get_segment_path()] = ent_;
@@ -15857,27 +15843,37 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwoGigabi
     return _children;
 }
 
-void Native::Interface::TwoGigabitEthernet::Ip::Igmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::TwoGigabitEthernet::Ip::Flow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "version")
+    if(value_path == "ingress")
     {
-        version = value;
-        version.value_namespace = name_space;
-        version.value_namespace_prefix = name_space_prefix;
+        ingress = value;
+        ingress.value_namespace = name_space;
+        ingress.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "egress")
+    {
+        egress = value;
+        egress.value_namespace = name_space;
+        egress.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Interface::TwoGigabitEthernet::Ip::Igmp::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::TwoGigabitEthernet::Ip::Flow::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "version")
+    if(value_path == "ingress")
     {
-        version.yfilter = yfilter;
+        ingress.yfilter = yfilter;
+    }
+    if(value_path == "egress")
+    {
+        egress.yfilter = yfilter;
     }
 }
 
-bool Native::Interface::TwoGigabitEthernet::Ip::Igmp::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::TwoGigabitEthernet::Ip::Flow::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "static-group" || name == "join-group" || name == "version")
+    if(name == "monitor" || name == "ingress" || name == "egress")
         return true;
     return false;
 }

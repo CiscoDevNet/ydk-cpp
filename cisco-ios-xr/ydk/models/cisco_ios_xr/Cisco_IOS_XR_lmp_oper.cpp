@@ -3926,6 +3926,7 @@ std::string Lmp::GmplsUni::Neighbors::Neighbor::TeLink::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "te-link";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5582,6 +5583,7 @@ std::string Lmp::GmplsUni::Neighbors::Neighbor::Ipcc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipcc";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -1479,6 +1479,7 @@ std::string Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::
 {
     std::ostringstream path_buffer;
     path_buffer << "fallback-keepalive";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1719,6 +1720,7 @@ std::string Macsec::Mka::Interfaces::Interface::Session::Vp::FallbackKeepalive::
 {
     std::ostringstream path_buffer;
     path_buffer << "peer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1991,6 +1993,7 @@ std::string Macsec::Mka::Interfaces::Interface::Session::Ca::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "ca";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2392,6 +2395,7 @@ std::string Macsec::Mka::Interfaces::Interface::Session::Ca::PeersStatus::Peer::
 {
     std::ostringstream path_buffer;
     path_buffer << "peer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2602,6 +2606,7 @@ std::string Macsec::Mka::Interfaces::Interface::Session::Ca::LivePeer::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "live-peer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2736,6 +2741,7 @@ std::string Macsec::Mka::Interfaces::Interface::Session::Ca::PotentialPeer::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "potential-peer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2870,6 +2876,7 @@ std::string Macsec::Mka::Interfaces::Interface::Session::Ca::DormantPeer::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "dormant-peer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

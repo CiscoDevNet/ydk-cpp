@@ -293,6 +293,7 @@ std::string L2vpnv2::Nodes::Node::FlexibleXconnectServices::FlexibleXconnectServ
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3540,6 +3541,7 @@ std::string L2vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "encapsulation-report-matrix";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3633,6 +3635,7 @@ std::string L2vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix::Ac1:
 {
     std::ostringstream path_buffer;
     path_buffer << "ac1";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3757,6 +3760,7 @@ std::string L2vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix::Ac1:
 {
     std::ostringstream path_buffer;
     path_buffer << "ac2";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3908,6 +3912,7 @@ std::string L2vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix::Ac1:
 {
     std::ostringstream path_buffer;
     path_buffer << "up-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3986,6 +3991,7 @@ std::string L2vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix::Ac1:
 {
     std::ostringstream path_buffer;
     path_buffer << "down-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4064,6 +4070,7 @@ std::string L2vpnv2::Nodes::Node::XconnectBrief::EncapsulationReportMatrix::Ac1:
 {
     std::ostringstream path_buffer;
     path_buffer << "unresolved-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4182,6 +4189,7 @@ std::string L2vpnv2::Nodes::Node::XconnectBrief::EncapsulationTotal::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "encapsulation-total";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4333,6 +4341,7 @@ std::string L2vpnv2::Nodes::Node::XconnectBrief::EncapsulationTotal::UpCount::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "up-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4411,6 +4420,7 @@ std::string L2vpnv2::Nodes::Node::XconnectBrief::EncapsulationTotal::DownCount::
 {
     std::ostringstream path_buffer;
     path_buffer << "down-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4489,6 +4499,7 @@ std::string L2vpnv2::Nodes::Node::XconnectBrief::EncapsulationTotal::UnresolvedC
 {
     std::ostringstream path_buffer;
     path_buffer << "unresolved-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5195,6 +5206,7 @@ std::string GenericInterfaceListV2::Nodes::Node::GenericInterfaceLists::GenericI
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5689,6 +5701,7 @@ std::string GenericInterfaceListV2::Standby::GenericInterfaceLists::GenericInter
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6183,6 +6196,7 @@ std::string GenericInterfaceListV2::Active::GenericInterfaceLists::GenericInterf
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

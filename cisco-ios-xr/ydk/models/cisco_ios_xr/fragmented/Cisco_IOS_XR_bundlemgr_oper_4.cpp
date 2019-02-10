@@ -689,6 +689,7 @@ std::string BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Brief::S
 {
     std::ostringstream path_buffer;
     path_buffer << "sub-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1002,6 +1003,7 @@ std::string BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::Member::
 {
     std::ostringstream path_buffer;
     path_buffer << "member";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1118,6 +1120,7 @@ std::string BundlesAdjacency::Nodes::Node::Bundles::Bundle::BundleInfo::SubInter
 {
     std::ostringstream path_buffer;
     path_buffer << "sub-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

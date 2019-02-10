@@ -43,6 +43,7 @@ std::string Qos::NvInterfaceTable::Interface::Output::ServicePolicyNames::Servic
 {
     std::ostringstream path_buffer;
     path_buffer << "red-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1680,6 +1681,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2538,6 +2540,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3411,6 +3414,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3741,6 +3745,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-instance-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3833,6 +3838,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-average-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3925,6 +3931,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-max-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4055,6 +4062,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "police-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4631,6 +4639,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "wred-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4817,6 +4826,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "red-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5142,6 +5152,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5472,6 +5483,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-instance-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5564,6 +5576,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-average-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5656,6 +5669,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-max-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5786,6 +5800,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "police-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6362,6 +6377,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "wred-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6548,6 +6564,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "red-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7121,6 +7138,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7979,6 +7997,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8852,6 +8871,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9182,6 +9202,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-instance-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9274,6 +9295,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-average-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9366,6 +9388,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-max-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9496,6 +9519,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "police-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10072,6 +10096,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "wred-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10258,6 +10283,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "red-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10583,6 +10609,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10913,6 +10940,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-instance-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11005,6 +11033,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-average-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11097,6 +11126,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-max-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11227,6 +11257,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "police-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11803,6 +11834,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "wred-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11989,6 +12021,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "red-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12562,6 +12595,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13420,6 +13454,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14293,6 +14328,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14623,6 +14659,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-instance-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14715,6 +14752,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-average-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14807,6 +14845,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-max-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14937,6 +14976,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "police-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15513,6 +15553,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "wred-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15699,6 +15740,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "red-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16024,6 +16066,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16354,6 +16397,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-instance-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16446,6 +16490,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-average-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16538,6 +16583,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-max-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16668,6 +16714,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "police-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17244,6 +17291,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "wred-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17430,6 +17478,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "red-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18003,6 +18052,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18861,6 +18911,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19734,6 +19785,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20064,6 +20116,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-instance-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20156,6 +20209,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-average-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20248,6 +20302,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-max-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20378,6 +20433,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "police-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20954,6 +21010,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "wred-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21140,6 +21197,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "red-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21465,6 +21523,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21795,6 +21854,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-instance-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21887,6 +21947,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-average-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21979,6 +22040,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-max-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22109,6 +22171,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "police-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22685,6 +22748,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "wred-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22871,6 +22935,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "red-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23444,6 +23509,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24302,6 +24368,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "class-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25175,6 +25242,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25505,6 +25573,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-instance-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25597,6 +25666,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-average-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25689,6 +25759,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-max-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25819,6 +25890,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "police-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -26395,6 +26467,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "wred-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -26581,6 +26654,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "red-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -26906,6 +26980,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-stats-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -27236,6 +27311,7 @@ std::string Qos::NvSatellite::NvSatelliteStatistics::NvSatelliteIds::NvSatellite
 {
     std::ostringstream path_buffer;
     path_buffer << "queue-instance-length";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

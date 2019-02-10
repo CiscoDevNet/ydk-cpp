@@ -423,6 +423,7 @@ std::string Services::AllLocations::Services_::Endpoint::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "endpoint";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -559,6 +560,7 @@ std::string Services::AllLocations::Services_::Registrations::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "registrations";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1214,6 +1216,7 @@ std::string ServicesStats::Ds::Trace::Location::AllOptions::TraceBlocks::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "trace-blocks";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

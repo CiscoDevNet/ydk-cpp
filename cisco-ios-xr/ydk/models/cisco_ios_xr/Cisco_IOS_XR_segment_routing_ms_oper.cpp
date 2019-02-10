@@ -431,6 +431,7 @@ std::string Srms::Mapping::MappingIpv4::MappingMi::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mapping-mi";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -888,6 +889,7 @@ std::string Srms::Mapping::MappingIpv6::MappingMi::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "mapping-mi";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1808,6 +1810,7 @@ std::string Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamil
 {
     std::ostringstream path_buffer;
     path_buffer << "sid-record";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2216,6 +2219,7 @@ std::string Srms::AdjacencySid::L2Adjacency::Interfaces::Interface::AddressFamil
 {
     std::ostringstream path_buffer;
     path_buffer << "sid-record";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

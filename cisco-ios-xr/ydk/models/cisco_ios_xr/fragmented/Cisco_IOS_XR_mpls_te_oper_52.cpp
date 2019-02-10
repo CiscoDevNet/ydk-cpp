@@ -54,6 +54,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "path-calculation-error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -160,6 +161,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "remerge-error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -281,6 +283,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "signalling-error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -538,6 +541,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "path-option";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1930,6 +1934,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "named-affinity";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2064,6 +2069,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "constraint-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2142,6 +2148,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-forward-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2312,6 +2319,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2396,6 +2404,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "version-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3081,6 +3090,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "named-affinity";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3215,6 +3225,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "constraint-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3293,6 +3304,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-forward-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3547,6 +3559,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "policy-class-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3625,6 +3638,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3703,6 +3717,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "protected-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4410,6 +4425,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "named-affinity";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4544,6 +4560,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "constraint-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4622,6 +4639,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-forward-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4876,6 +4894,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "policy-class-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4954,6 +4973,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "mesh-group-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5032,6 +5052,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5324,6 +5345,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "xro-subobject";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6815,6 +6837,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "named-affinity";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6949,6 +6972,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "constraint-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7027,6 +7051,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-forward-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7105,6 +7130,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8187,6 +8213,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "named-affinity";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8321,6 +8348,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "constraint-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8399,6 +8427,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-forward-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8752,6 +8781,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "prepend-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8852,6 +8882,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9945,6 +9976,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "named-affinity";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10079,6 +10111,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "constraint-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10157,6 +10190,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-forward-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10327,6 +10361,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10411,6 +10446,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "version-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11096,6 +11132,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "named-affinity";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11230,6 +11267,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "constraint-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11308,6 +11346,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-forward-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11562,6 +11601,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "policy-class-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11640,6 +11680,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11718,6 +11759,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "protected-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12425,6 +12467,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "named-affinity";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12559,6 +12602,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "constraint-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12637,6 +12681,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-forward-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12891,6 +12936,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "policy-class-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12969,6 +13015,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "mesh-group-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13047,6 +13094,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13339,6 +13387,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "xro-subobject";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14830,6 +14879,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "named-affinity";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14964,6 +15014,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "constraint-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15042,6 +15093,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-forward-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15120,6 +15172,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16202,6 +16255,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "named-affinity";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16336,6 +16390,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "constraint-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16414,6 +16469,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-forward-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16767,6 +16823,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "prepend-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16867,6 +16924,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16951,6 +17009,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "path-calculation-error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17057,6 +17116,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "remerge-error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17178,6 +17238,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::NniTunnels::NniTunnel::Destination::Pa
 {
     std::ostringstream path_buffer;
     path_buffer << "signalling-error";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19699,6 +19760,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelHeads::TunnelHead::Config::Affin
 {
     std::ostringstream path_buffer;
     path_buffer << "named-affinity";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19833,6 +19895,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelHeads::TunnelHead::Config::Affin
 {
     std::ostringstream path_buffer;
     path_buffer << "constraint-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19911,6 +19974,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelHeads::TunnelHead::Config::Affin
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-forward-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20685,6 +20749,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelHeads::TunnelHead::Config::Polic
 {
     std::ostringstream path_buffer;
     path_buffer << "policy-class-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20766,6 +20831,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelHeads::TunnelHead::Config::Autor
 {
     std::ostringstream path_buffer;
     path_buffer << "autoroute-destination";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21879,6 +21945,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelCurrent
 {
     std::ostringstream path_buffer;
     path_buffer << "s2l";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24692,6 +24759,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelCurrent
 {
     std::ostringstream path_buffer;
     path_buffer << "named-affinity";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24826,6 +24894,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelCurrent
 {
     std::ostringstream path_buffer;
     path_buffer << "constraint-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24904,6 +24973,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelCurrent
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-forward-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25074,6 +25144,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelCurrent
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25158,6 +25229,7 @@ std::string MplsTeStandby::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelCurrent
 {
     std::ostringstream path_buffer;
     path_buffer << "version-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

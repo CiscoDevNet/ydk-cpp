@@ -1943,6 +1943,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 {
     std::ostringstream path_buffer;
     path_buffer << "si-arr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3508,6 +3509,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 {
     std::ostringstream path_buffer;
     path_buffer << "si-arr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4973,6 +4975,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionPath::
 {
     std::ostringstream path_buffer;
     path_buffer << "si-arr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6629,6 +6632,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunction::SfNa
 {
     std::ostringstream path_buffer;
     path_buffer << "si-arr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8276,6 +8280,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 {
     std::ostringstream path_buffer;
     path_buffer << "si-arr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9850,6 +9855,7 @@ std::string ServiceFunctionChaining::Nodes::Node::Process::ServiceFunctionForwar
 {
     std::ostringstream path_buffer;
     path_buffer << "si-arr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

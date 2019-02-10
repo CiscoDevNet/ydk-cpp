@@ -2252,6 +2252,7 @@ std::string MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::St
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2340,6 +2341,7 @@ std::string MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::St
 {
     std::ostringstream path_buffer;
     path_buffer << "label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2952,6 +2954,7 @@ std::string MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::St
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3040,6 +3043,7 @@ std::string MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::St
 {
     std::ostringstream path_buffer;
     path_buffer << "label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4066,6 +4070,7 @@ std::string MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Nn
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4154,6 +4159,7 @@ std::string MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Nn
 {
     std::ostringstream path_buffer;
     path_buffer << "label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4256,6 +4262,7 @@ std::string MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Nn
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4996,6 +5003,7 @@ std::string MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Nn
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5084,6 +5092,7 @@ std::string MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Nn
 {
     std::ostringstream path_buffer;
     path_buffer << "label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5186,6 +5195,7 @@ std::string MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::Moi::Nn
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6873,6 +6883,7 @@ std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::FpiKey::ApplicationOwner::g
 {
     std::ostringstream path_buffer;
     path_buffer << "application-owner";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11156,6 +11167,7 @@ std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::RewriteId::RewriteId_::Loca
 {
     std::ostringstream path_buffer;
     path_buffer << "label-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11246,6 +11258,7 @@ std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "associated-fpi";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12275,6 +12288,7 @@ std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::AssociatedFpi::ApplicationO
 {
     std::ostringstream path_buffer;
     path_buffer << "application-owner";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12400,6 +12414,7 @@ std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::V4Rpf::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "v4-rpf";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12492,6 +12507,7 @@ std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::V6Rpf::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "v6-rpf";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12593,6 +12609,7 @@ std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "mois";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12826,6 +12843,7 @@ std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "moi-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15646,6 +15664,7 @@ std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15727,6 +15746,7 @@ std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv
 {
     std::ostringstream path_buffer;
     path_buffer << "label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16311,6 +16331,7 @@ std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16392,6 +16413,7 @@ std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::Stackv
 {
     std::ostringstream path_buffer;
     path_buffer << "label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17369,6 +17391,7 @@ std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhSta
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17450,6 +17473,7 @@ std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhSta
 {
     std::ostringstream path_buffer;
     path_buffer << "label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17545,6 +17569,7 @@ std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhSta
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18250,6 +18275,7 @@ std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhSta
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18331,6 +18357,7 @@ std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhSta
 {
     std::ostringstream path_buffer;
     path_buffer << "label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18426,6 +18453,7 @@ std::string MplsLsd::Rewrite::RewriteTes::RewriteTe::Mois::MoiArray::Moi::NnhSta
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20106,6 +20134,7 @@ std::string MplsLsd::Rewrite::RewriteLabels::RewriteLabel::FpiKey::ApplicationOw
 {
     std::ostringstream path_buffer;
     path_buffer << "application-owner";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

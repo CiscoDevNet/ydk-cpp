@@ -1612,6 +1612,7 @@ std::string Otu::Controllers::Controller::Info::TtiMode::Tx::Sapi::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "sapi";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1690,6 +1691,7 @@ std::string Otu::Controllers::Controller::Info::TtiMode::Tx::Dapi::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "dapi";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1768,6 +1770,7 @@ std::string Otu::Controllers::Controller::Info::TtiMode::Tx::OperatorSpecific::g
 {
     std::ostringstream path_buffer;
     path_buffer << "operator-specific";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2009,6 +2012,7 @@ std::string Otu::Controllers::Controller::Info::TtiMode::Exp::Sapi::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "sapi";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2087,6 +2091,7 @@ std::string Otu::Controllers::Controller::Info::TtiMode::Exp::Dapi::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "dapi";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2165,6 +2170,7 @@ std::string Otu::Controllers::Controller::Info::TtiMode::Exp::OperatorSpecific::
 {
     std::ostringstream path_buffer;
     path_buffer << "operator-specific";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2406,6 +2412,7 @@ std::string Otu::Controllers::Controller::Info::TtiMode::Rec::Sapi::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "sapi";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2484,6 +2491,7 @@ std::string Otu::Controllers::Controller::Info::TtiMode::Rec::Dapi::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "dapi";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2562,6 +2570,7 @@ std::string Otu::Controllers::Controller::Info::TtiMode::Rec::OperatorSpecific::
 {
     std::ostringstream path_buffer;
     path_buffer << "operator-specific";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2745,6 +2754,7 @@ std::string Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "srlg-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2840,6 +2850,7 @@ std::string Otu::Controllers::Controller::Info::NetworkSrlg::SrlgInfo::Srlg::get
 {
     std::ostringstream path_buffer;
     path_buffer << "srlg";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

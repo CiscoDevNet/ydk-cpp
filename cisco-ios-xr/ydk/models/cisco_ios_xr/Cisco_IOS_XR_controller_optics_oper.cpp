@@ -585,6 +585,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMap::Dw
 {
     std::ostringstream path_buffer;
     path_buffer << "dwdm-carrier-map-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -931,6 +932,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OtsSpectrumInfo::SpectrumInfo::
 {
     std::ostringstream path_buffer;
     path_buffer << "spectrum-slice-power-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1219,6 +1221,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDwdmCarrierChannelMapFlex
 {
     std::ostringstream path_buffer;
     path_buffer << "dwdm-carrier-map-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3072,6 +3075,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo::Ne
 {
     std::ostringstream path_buffer;
     path_buffer << "network-srlg-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15007,6 +15011,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::LaneData::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "lane-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16948,6 +16953,7 @@ std::string OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::
 {
     std::ostringstream path_buffer;
     path_buffer << "network-srlg-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

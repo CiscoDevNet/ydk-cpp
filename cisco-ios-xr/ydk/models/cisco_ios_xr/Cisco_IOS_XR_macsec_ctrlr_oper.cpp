@@ -688,6 +688,7 @@ std::string MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo:
 {
     std::ostringstream path_buffer;
     path_buffer << "active-association";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -957,6 +958,7 @@ std::string MacsecCtrlrOper::MacsecCtrlrPorts::MacsecCtrlrPort::MacsecCtrlrInfo:
 {
     std::ostringstream path_buffer;
     path_buffer << "active-association";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -983,6 +983,7 @@ std::string Macsec::Secy::Interfaces::Interface::Stats::TxScStats::TxsaStat::get
 {
     std::ostringstream path_buffer;
     path_buffer << "txsa-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1128,6 +1129,7 @@ std::string Macsec::Secy::Interfaces::Interface::Stats::RxScStats::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "rx-sc-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1359,6 +1361,7 @@ std::string Macsec::Secy::Interfaces::Interface::Stats::RxScStats::RxsaStat::get
 {
     std::ostringstream path_buffer;
     path_buffer << "rxsa-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

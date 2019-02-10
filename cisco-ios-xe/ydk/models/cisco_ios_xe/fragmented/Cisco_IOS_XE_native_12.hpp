@@ -15,11 +15,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Ip::Wccp::Vrf::WebCache : public ydk::Entity
+class Native::Ip::Http::Client : public ydk::Entity
 {
     public:
-        WebCache();
-        ~WebCache();
+        Client();
+        ~Client();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -30,25 +30,22 @@ class Native::Ip::Wccp::Vrf::WebCache : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf group_address; //type: string
-        ydk::YLeaf group_list; //type: one of uint16, string
-        ydk::YLeaf mode; //type: Mode
-        ydk::YLeaf redirect_list; //type: one of uint16, string
-        ydk::YLeaf snmp_disabled; //type: empty
-        class Password; //type: Native::Ip::Wccp::Vrf::WebCache::Password
+        ydk::YLeaf secure_trustpoint; //type: string
+        ydk::YLeaf source_interface; //type: string
+        class ProxyServer; //type: Native::Ip::Http::Client::ProxyServer
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Wccp::Vrf::WebCache::Password> password;
-                class Mode;
-
-}; // Native::Ip::Wccp::Vrf::WebCache
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ip::Http::Client::ProxyServer> proxy_server;
+        
+}; // Native::Ip::Http::Client
 
 
-class Native::Ip::Wccp::Vrf::WebCache::Password : public ydk::Entity
+class Native::Ip::Http::Client::ProxyServer : public ydk::Entity
 {
     public:
-        Password();
-        ~Password();
+        ProxyServer();
+        ~ProxyServer();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -59,12 +56,12 @@ class Native::Ip::Wccp::Vrf::WebCache::Password : public ydk::Entity
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-        ydk::YLeaf encryption; //type: Encryption
-        ydk::YLeaf clear_key; //type: string
-        class Encryption;
+        ydk::YLeaf proxy_server_name; //type: string
+        ydk::YLeaf proxy_port; //type: uint16
 
-}; // Native::Ip::Wccp::Vrf::WebCache::Password
+}; // Native::Ip::Http::Client::ProxyServer
 
 
 class Native::Mka : public ydk::Entity
@@ -365,9 +362,9 @@ class Native::Ipv6 : public ydk::Entity
         class Spd; //type: Native::Ipv6::Spd
         class PrefixList; //type: Native::Ipv6::PrefixList
         class Neighbor; //type: Native::Ipv6::Neighbor
-        class Mld; //type: Native::Ipv6::Mld
         class MulticastRouting; //type: Native::Ipv6::MulticastRouting
         class Rip; //type: Native::Ipv6::Rip
+        class Mld; //type: Native::Ipv6::Mld
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::SourceGuard> source_guard;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::DestinationGuard> destination_guard;
@@ -382,9 +379,9 @@ class Native::Ipv6 : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Spd> spd;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::PrefixList> prefix_list;
         ydk::YList neighbor;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Mld> mld;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::MulticastRouting> multicast_routing; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Rip> rip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Mld> mld;
         
 }; // Native::Ipv6
 
@@ -3939,22 +3936,6 @@ class Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgr
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::RipMetricRouteMap::Metric> metric;
         
 }; // Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp::RipMetricRouteMap
-
-class Native::Ip::Wccp::Vrf::WebCache::Mode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf closed;
-        static const ydk::Enum::YLeaf open;
-
-};
-
-class Native::Ip::Wccp::Vrf::WebCache::Password::Encryption : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf Y_0;
-        static const ydk::Enum::YLeaf Y_7;
-
-};
 
 class Native::Mka::Policy::ConfidentialityOffset : public ydk::Enum
 {

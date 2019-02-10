@@ -2818,6 +2818,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Neighbors::Nei
 {
     std::ostringstream path_buffer;
     path_buffer << "af-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4580,6 +4581,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Neighbors::Nei
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4658,6 +4660,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Neighbors::Nei
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-community-standby";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9037,6 +9040,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::NeighborRanges
 {
     std::ostringstream path_buffer;
     path_buffer << "af-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10161,6 +10165,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::NeighborRanges
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10239,6 +10244,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::NeighborRanges
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-community-standby";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10333,6 +10339,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::NeighborRanges
 {
     std::ostringstream path_buffer;
     path_buffer << "instance";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11513,6 +11520,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::MessageLogs::M
 {
     std::ostringstream path_buffer;
     path_buffer << "message-log";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11641,6 +11649,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::MessageLogs::M
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-message";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11864,6 +11873,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::MessageLogs::M
 {
     std::ostringstream path_buffer;
     path_buffer << "logged-message-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12278,6 +12288,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::get
 {
     std::ostringstream path_buffer;
     path_buffer << "attribute";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13848,6 +13859,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "prefix-sid-tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14453,6 +14465,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-list";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14557,6 +14570,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "segment";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14668,6 +14682,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14746,6 +14761,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14824,6 +14840,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "unknown-attribute";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14902,6 +14919,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "cluster";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14980,6 +14998,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tpv3-cookie";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15058,6 +15077,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "connector-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15136,6 +15156,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "pmsi-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15214,6 +15235,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "ls-attr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15295,6 +15317,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "pe-distinguisher-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15390,6 +15413,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "large-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16432,6 +16456,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "prefix-sid-tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17037,6 +17062,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "segment-list";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17141,6 +17167,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "segment";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17252,6 +17279,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17330,6 +17358,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17408,6 +17437,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "unknown-attribute";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17486,6 +17516,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "cluster";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17564,6 +17595,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "l2tpv3-cookie";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17642,6 +17674,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "connector-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17720,6 +17753,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "pmsi-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17798,6 +17832,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "ls-attr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17879,6 +17914,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "pe-distinguisher-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17974,6 +18010,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Attributes::Attribute::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "large-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19061,6 +19098,7 @@ std::string Bgp::Instances::Instance::InstanceActive::RtEntries::RtEntry::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "rt-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19510,6 +19548,7 @@ std::string Bgp::Instances::Instance::InstanceActive::AttributeFilterGroups::Att
 {
     std::ostringstream path_buffer;
     path_buffer << "attribute-filter-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19790,6 +19829,7 @@ std::string Bgp::Instances::Instance::InstanceActive::RpkiServerList::RpkiServer
 {
     std::ostringstream path_buffer;
     path_buffer << "rpki-server";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20301,6 +20341,7 @@ std::string Bgp::Instances::Instance::InstanceActive::RpkiRoutes::RpkiRoute::get
 {
     std::ostringstream path_buffer;
     path_buffer << "rpki-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20450,6 +20491,7 @@ std::string Bgp::Instances::Instance::InstanceActive::RpkiRoutes::RpkiRoute::Rpk
 {
     std::ostringstream path_buffer;
     path_buffer << "rpki-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22341,6 +22383,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::UpdateGenerationProcess::
 {
     std::ostringstream path_buffer;
     path_buffer << "update-address-family";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24096,6 +24139,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::RpkiR
 {
     std::ostringstream path_buffer;
     path_buffer << "refresh-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24356,6 +24400,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::Afs::Af::Polic
 {
     std::ostringstream path_buffer;
     path_buffer << "policy";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

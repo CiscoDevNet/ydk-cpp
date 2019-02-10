@@ -251,6 +251,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -514,6 +515,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "ext-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -598,6 +600,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "unknown-attributes";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

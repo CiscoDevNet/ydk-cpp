@@ -1427,9 +1427,9 @@ class Native::Interface::Ethernet : public ydk::Entity
         class Peer; //type: Native::Interface::Ethernet::Peer
         class PmPath; //type: Native::Interface::Ethernet::PmPath
         class EtAnalytics; //type: Native::Interface::Ethernet::EtAnalytics
+        class Umbrella; //type: Native::Interface::Ethernet::Umbrella
         class ZoneMember; //type: Native::Interface::Ethernet::ZoneMember
         class Utd; //type: Native::Interface::Ethernet::Utd
-        class Umbrella; //type: Native::Interface::Ethernet::Umbrella
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Ethernet::SwitchportConf> switchport_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Ethernet::Switchport> switchport;
@@ -1469,9 +1469,9 @@ class Native::Interface::Ethernet : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Ethernet::Peer> peer;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Ethernet::PmPath> pm_path;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Ethernet::EtAnalytics> et_analytics;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Ethernet::Umbrella> umbrella;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Ethernet::ZoneMember> zone_member;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Ethernet::Utd> utd;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Ethernet::Umbrella> umbrella;
                 class IfState;
         class ServiceInsertion;
 

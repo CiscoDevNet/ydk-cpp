@@ -16,11 +16,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap : public ydk::Entity
+class Native::Interface::VirtualTemplate::Ntp::BroadcastOption : public ydk::Entity
 {
     public:
-        NoEncap();
-        ~NoEncap();
+        BroadcastOption();
+        ~BroadcastOption();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -32,18 +32,18 @@ class Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEnc
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Gmac; //type: Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac
+        class Broadcast; //type: Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac> gmac; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast> broadcast;
         
-}; // Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap
+}; // Native::Interface::VirtualTemplate::Ntp::BroadcastOption
 
 
-class Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac : public ydk::Entity
+class Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast : public ydk::Entity
 {
     public:
-        Gmac();
-        ~Gmac();
+        Broadcast();
+        ~Broadcast();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -55,16 +55,16 @@ class Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEnc
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf gcm_encrypt; //type: empty
+        ydk::YLeaf client; //type: empty
 
-}; // Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac
+}; // Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast
 
 
-class Native::Interface::VirtualTemplate::Cts::Manual::Propagate : public ydk::Entity
+class Native::Interface::VirtualTemplate::Utd : public ydk::Entity
 {
     public:
-        Propagate();
-        ~Propagate();
+        Utd();
+        ~Utd();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -76,9 +76,9 @@ class Native::Interface::VirtualTemplate::Cts::Manual::Propagate : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf sgt; //type: boolean
+        ydk::YLeaf enable; //type: empty
 
-}; // Native::Interface::VirtualTemplate::Cts::Manual::Propagate
+}; // Native::Interface::VirtualTemplate::Utd
 
 
 class Native::Interface::VirtualPortGroup : public ydk::Entity
@@ -159,9 +159,9 @@ class Native::Interface::VirtualPortGroup : public ydk::Entity
         class Pppoe; //type: Native::Interface::VirtualPortGroup::Pppoe
         class Service; //type: Native::Interface::VirtualPortGroup::Service
         class Lacp; //type: Native::Interface::VirtualPortGroup::Lacp
-        class ServicePolicy; //type: Native::Interface::VirtualPortGroup::ServicePolicy
         class Snmp; //type: Native::Interface::VirtualPortGroup::Snmp
         class Mab; //type: Native::Interface::VirtualPortGroup::Mab
+        class ServicePolicy; //type: Native::Interface::VirtualPortGroup::ServicePolicy
         class Cts; //type: Native::Interface::VirtualPortGroup::Cts
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::SwitchportConf> switchport_conf;
@@ -212,9 +212,9 @@ class Native::Interface::VirtualPortGroup : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Pppoe> pppoe;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Service> service;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Lacp> lacp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::ServicePolicy> service_policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Snmp> snmp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Mab> mab; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::ServicePolicy> service_policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualPortGroup::Cts> cts;
                 class IfState;
         class ServiceInsertion;

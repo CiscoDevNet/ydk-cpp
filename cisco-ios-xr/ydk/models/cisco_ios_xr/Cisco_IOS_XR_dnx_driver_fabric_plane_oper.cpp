@@ -375,6 +375,7 @@ std::string Fabric::PlaneTable::Statistics::PlaneStatsInfo::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "plane-stats-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -639,6 +640,7 @@ std::string Fabric::PlaneTable::Plane::DetailPlaneInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "detail-plane-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -160,9 +160,12 @@ static GnmiClientRequest build_set_request(gNMIServiceProvider& provider, Entity
     else {
         parse_entity_prefix(entity, path);
         payload = get_data_payload(provider, entity);
-        auto pos = payload.find("{", 4);
-        if (pos != string::npos)
-            payload = payload.substr(pos, payload.length()-pos-1);
+        if (entity.is_top_level_class) {
+            // Remove prefix part from the payload
+            auto pos = payload.find("{", 4);
+            if (pos != string::npos)
+                payload = payload.substr(pos, payload.length()-pos-1);
+        }
     }
 
     GnmiClientRequest request{};

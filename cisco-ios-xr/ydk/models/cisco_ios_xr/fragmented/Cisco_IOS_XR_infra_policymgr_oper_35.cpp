@@ -139,6 +139,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "class-match-info-st";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1974,6 +1975,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "uint8_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2159,6 +2161,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "uint8_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2344,6 +2347,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "uint8_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2877,6 +2881,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "uint16_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3062,6 +3067,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "uint8_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3247,6 +3253,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "uint16_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3616,6 +3623,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "uint16_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3801,6 +3809,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "uint16_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3986,6 +3995,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "uint16_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4171,6 +4181,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "uint8_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4448,6 +4459,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "uint8_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4633,6 +4645,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "uint8_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4818,6 +4831,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "uint8_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5003,6 +5017,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "uint8_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5536,6 +5551,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "uint32_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6054,6 +6070,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-id-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6250,6 +6267,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "uint16_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6435,6 +6453,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "uint16_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7708,6 +7727,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "domain-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7893,6 +7913,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "domain-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8081,6 +8102,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "nas-port-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8451,6 +8473,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-addr-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8636,6 +8659,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-addr-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8821,6 +8845,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-addr-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9006,6 +9031,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-addr-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9210,6 +9236,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "mac-addr-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11046,6 +11073,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "uint16_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11956,6 +11984,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "uint16_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12141,6 +12170,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "uint16_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12331,6 +12361,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "policy-action-info-st";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13472,6 +13503,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "action-mark-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13674,6 +13706,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "action-mark2-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13897,6 +13930,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "action-wred-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14135,6 +14169,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "uint8_rng_array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16097,6 +16132,7 @@ std::string PolicyManager::Global::PolicyMap::TransientPolicyMapTypeXr::Transien
 {
     std::ostringstream path_buffer;
     path_buffer << "action-qlimit-info-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

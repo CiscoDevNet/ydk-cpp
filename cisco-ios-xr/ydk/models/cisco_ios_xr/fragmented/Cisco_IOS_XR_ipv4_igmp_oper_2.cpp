@@ -1635,6 +1635,7 @@ std::string Mld::Active::DefaultContext::SsmMapDetails::SsmMapDetail::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "ssm-map-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2043,6 +2044,7 @@ std::string Mld::Active::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::g
 {
     std::ostringstream path_buffer;
     path_buffer << "sources";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4371,6 +4373,7 @@ std::string Igmp::Standby::Vrfs::Vrf::Summary::Interface::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5864,6 +5867,7 @@ std::string Igmp::Standby::Vrfs::Vrf::DetailGroups::DetailGroup::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "detail-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6648,6 +6652,7 @@ std::string Igmp::Standby::Vrfs::Vrf::DetailGroups::DetailGroup::Source::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7028,6 +7033,7 @@ std::string Igmp::Standby::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "non-active-groups";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7464,6 +7470,7 @@ std::string Igmp::Standby::Vrfs::Vrf::SsmMaps::SsmMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ssm-map";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7816,6 +7823,7 @@ std::string Igmp::Standby::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "explicit-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8599,6 +8607,7 @@ std::string Igmp::Standby::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "host";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8853,6 +8862,7 @@ std::string Igmp::Standby::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Sourc
 {
     std::ostringstream path_buffer;
     path_buffer << "source-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10442,6 +10452,7 @@ std::string Igmp::Standby::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnica
 {
     std::ostringstream path_buffer;
     path_buffer << "update";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10892,6 +10903,7 @@ std::string Igmp::Standby::Vrfs::Vrf::Ranges::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13147,6 +13159,7 @@ std::string Igmp::Standby::Vrfs::Vrf::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15281,6 +15294,7 @@ std::string Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "ssm-map-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15668,6 +15682,7 @@ std::string Igmp::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "sources";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17818,6 +17833,7 @@ std::string Igmp::Standby::Process::AmtGateways::AmtGateway::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "amt-gateway";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19707,6 +19723,7 @@ std::string Igmp::Standby::DefaultContext::Summary::Interface::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21228,6 +21245,7 @@ std::string Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "detail-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22047,6 +22065,7 @@ std::string Igmp::Standby::DefaultContext::DetailGroups::DetailGroup::Source::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22448,6 +22467,7 @@ std::string Igmp::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "non-active-groups";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22912,6 +22932,7 @@ std::string Igmp::Standby::DefaultContext::SsmMaps::SsmMap::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "ssm-map";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23285,6 +23306,7 @@ std::string Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "explicit-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24103,6 +24125,7 @@ std::string Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::
 {
     std::ostringstream path_buffer;
     path_buffer << "host";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24371,6 +24394,7 @@ std::string Igmp::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::
 {
     std::ostringstream path_buffer;
     path_buffer << "source-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25988,6 +26012,7 @@ std::string Igmp::Standby::DefaultContext::InterfaceUnicastQosAdjusts::Interface
 {
     std::ostringstream path_buffer;
     path_buffer << "update";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -26452,6 +26477,7 @@ std::string Igmp::Standby::DefaultContext::Ranges::Range::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

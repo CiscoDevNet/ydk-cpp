@@ -1958,6 +1958,7 @@ std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-config";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2445,6 +2446,7 @@ std::string BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor
 {
     std::ostringstream path_buffer;
     path_buffer << "member-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6462,6 +6464,7 @@ std::string BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpG
 {
     std::ostringstream path_buffer;
     path_buffer << "bundle-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6867,6 +6870,7 @@ std::string BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpG
 {
     std::ostringstream path_buffer;
     path_buffer << "node-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7519,6 +7523,7 @@ std::string BundleInformation::MlacpBundleCounters::IccpGroups::IccpGroup::IccpG
 {
     std::ostringstream path_buffer;
     path_buffer << "bundle-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8222,6 +8227,7 @@ std::string BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem:
 {
     std::ostringstream path_buffer;
     path_buffer << "iccp-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8902,6 +8908,7 @@ std::string BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem:
 {
     std::ostringstream path_buffer;
     path_buffer << "bundle-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9307,6 +9314,7 @@ std::string BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem:
 {
     std::ostringstream path_buffer;
     path_buffer << "node-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9959,6 +9967,7 @@ std::string BundleInformation::MlacpBundleCounters::Bundles::Bundle::BundleItem:
 {
     std::ostringstream path_buffer;
     path_buffer << "bundle-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11249,6 +11258,7 @@ std::string BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::IccpG
 {
     std::ostringstream path_buffer;
     path_buffer << "bundle-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11654,6 +11664,7 @@ std::string BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeD
 {
     std::ostringstream path_buffer;
     path_buffer << "node-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12306,6 +12317,7 @@ std::string BundleInformation::MlacpBundleCounters::Nodes::Node::NodeItem::NodeD
 {
     std::ostringstream path_buffer;
     path_buffer << "bundle-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13236,6 +13248,7 @@ std::string BundleInformation::Protect::ProtectBundles::ProtectBundle::ProtectBu
 {
     std::ostringstream path_buffer;
     path_buffer << "member-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13819,6 +13832,7 @@ std::string BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::
 {
     std::ostringstream path_buffer;
     path_buffer << "mlacp-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14069,6 +14083,7 @@ std::string BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::
 {
     std::ostringstream path_buffer;
     path_buffer << "node-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14409,6 +14424,7 @@ std::string BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::
 {
     std::ostringstream path_buffer;
     path_buffer << "bundle-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14560,6 +14576,7 @@ std::string BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::
 {
     std::ostringstream path_buffer;
     path_buffer << "mlacp-bundle-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14792,6 +14809,7 @@ std::string BundleInformation::MlacpBrief::MlacpBundleBriefs::MlacpBundleBrief::
 {
     std::ostringstream path_buffer;
     path_buffer << "mlacp-member-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15403,6 +15421,7 @@ std::string BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpG
 {
     std::ostringstream path_buffer;
     path_buffer << "node-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15743,6 +15762,7 @@ std::string BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpG
 {
     std::ostringstream path_buffer;
     path_buffer << "bundle-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15894,6 +15914,7 @@ std::string BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpG
 {
     std::ostringstream path_buffer;
     path_buffer << "mlacp-bundle-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16126,6 +16147,7 @@ std::string BundleInformation::MlacpBrief::MlacpBriefIccpGroups::MlacpBriefIccpG
 {
     std::ostringstream path_buffer;
     path_buffer << "mlacp-member-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16687,6 +16709,7 @@ std::string BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem
 {
     std::ostringstream path_buffer;
     path_buffer << "mlacp-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16937,6 +16960,7 @@ std::string BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem
 {
     std::ostringstream path_buffer;
     path_buffer << "node-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17277,6 +17301,7 @@ std::string BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem
 {
     std::ostringstream path_buffer;
     path_buffer << "bundle-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17428,6 +17453,7 @@ std::string BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem
 {
     std::ostringstream path_buffer;
     path_buffer << "mlacp-bundle-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17660,6 +17686,7 @@ std::string BundleInformation::Mlacp::MlacpBundles::MlacpBundle::MlacpBundleItem
 {
     std::ostringstream path_buffer;
     path_buffer << "mlacp-member-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

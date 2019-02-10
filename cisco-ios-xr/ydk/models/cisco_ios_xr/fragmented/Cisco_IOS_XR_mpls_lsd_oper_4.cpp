@@ -2031,6 +2031,7 @@ std::string MplsLsd::Labels::Label::ApplicationOwner::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "application-owner";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2932,6 +2933,7 @@ std::string MplsLsd::FrrDatabase::TunnelMidpoints::TunnelMidpoint::OutPath::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "out-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3654,6 +3656,7 @@ std::string MplsLsd::FrrDatabase::TunnelHeads::TunnelHead::OutPath::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "out-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4747,6 +4750,7 @@ std::string MplsLsd::Rewrite::RewriteLabelRangeCnts::RewriteLabelRangeCnt::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "rewrite-label-range-cnt";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6131,6 +6135,7 @@ std::string MplsLsd::Rewrite::RewriteLabelRangeCnts::RewriteLabelRangeCnt::FpiKe
 {
     std::ostringstream path_buffer;
     path_buffer << "application-owner";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10652,6 +10657,7 @@ std::string MplsLsd::Rewrite::RewriteLabelRangeCnts::RewriteLabelRangeCnt::Rewri
 {
     std::ostringstream path_buffer;
     path_buffer << "label-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10749,6 +10755,7 @@ std::string MplsLsd::Rewrite::RewriteLabelRangeCnts::RewriteLabelRangeCnt::Assoc
 {
     std::ostringstream path_buffer;
     path_buffer << "associated-fpi";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11841,6 +11848,7 @@ std::string MplsLsd::Rewrite::RewriteLabelRangeCnts::RewriteLabelRangeCnt::Assoc
 {
     std::ostringstream path_buffer;
     path_buffer << "application-owner";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11973,6 +11981,7 @@ std::string MplsLsd::Rewrite::RewriteLabelRangeCnts::RewriteLabelRangeCnt::V4Rpf
 {
     std::ostringstream path_buffer;
     path_buffer << "v4-rpf";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12072,6 +12081,7 @@ std::string MplsLsd::Rewrite::RewriteLabelRangeCnts::RewriteLabelRangeCnt::V6Rpf
 {
     std::ostringstream path_buffer;
     path_buffer << "v6-rpf";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12180,6 +12190,7 @@ std::string MplsLsd::Rewrite::RewriteLabelRangeCnts::RewriteLabelRangeCnt::Mois:
 {
     std::ostringstream path_buffer;
     path_buffer << "mois";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12427,6 +12438,7 @@ std::string MplsLsd::Rewrite::RewriteLabelRangeCnts::RewriteLabelRangeCnt::Mois:
 {
     std::ostringstream path_buffer;
     path_buffer << "moi-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15352,6 +15364,7 @@ std::string MplsLsd::Rewrite::RewriteLabelRangeCnts::RewriteLabelRangeCnt::Mois:
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15440,6 +15453,7 @@ std::string MplsLsd::Rewrite::RewriteLabelRangeCnts::RewriteLabelRangeCnt::Mois:
 {
     std::ostringstream path_buffer;
     path_buffer << "label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16052,6 +16066,7 @@ std::string MplsLsd::Rewrite::RewriteLabelRangeCnts::RewriteLabelRangeCnt::Mois:
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16140,6 +16155,7 @@ std::string MplsLsd::Rewrite::RewriteLabelRangeCnts::RewriteLabelRangeCnt::Mois:
 {
     std::ostringstream path_buffer;
     path_buffer << "label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17166,6 +17182,7 @@ std::string MplsLsd::Rewrite::RewriteLabelRangeCnts::RewriteLabelRangeCnt::Mois:
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17254,6 +17271,7 @@ std::string MplsLsd::Rewrite::RewriteLabelRangeCnts::RewriteLabelRangeCnt::Mois:
 {
     std::ostringstream path_buffer;
     path_buffer << "label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17356,6 +17374,7 @@ std::string MplsLsd::Rewrite::RewriteLabelRangeCnts::RewriteLabelRangeCnt::Mois:
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18096,6 +18115,7 @@ std::string MplsLsd::Rewrite::RewriteLabelRangeCnts::RewriteLabelRangeCnt::Mois:
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18184,6 +18204,7 @@ std::string MplsLsd::Rewrite::RewriteLabelRangeCnts::RewriteLabelRangeCnt::Mois:
 {
     std::ostringstream path_buffer;
     path_buffer << "label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18286,6 +18307,7 @@ std::string MplsLsd::Rewrite::RewriteLabelRangeCnts::RewriteLabelRangeCnt::Mois:
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19973,6 +19995,7 @@ std::string MplsLsd::Rewrite::RewritePws::RewritePw::FpiKey::ApplicationOwner::g
 {
     std::ostringstream path_buffer;
     path_buffer << "application-owner";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

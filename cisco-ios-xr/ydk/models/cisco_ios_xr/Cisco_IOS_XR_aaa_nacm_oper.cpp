@@ -560,6 +560,7 @@ std::string AaaNacm::Users::User::GroupName::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "group-name";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -950,6 +951,7 @@ std::string AaaNacm::Rules::Rule::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rule";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1636,6 +1638,7 @@ std::string AaaNacm::Groups::Group::UserName::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "user-name";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1714,6 +1717,7 @@ std::string AaaNacm::Groups::Group::RuleName::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rule-name";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

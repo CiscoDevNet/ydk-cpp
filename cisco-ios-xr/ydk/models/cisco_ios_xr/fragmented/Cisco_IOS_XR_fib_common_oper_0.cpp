@@ -1554,6 +1554,7 @@ std::string Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntrie
 {
     std::ostringstream path_buffer;
     path_buffer << "fib-cofo-idb-table-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1951,6 +1952,7 @@ std::string Fib::Nodes::Node::Global::FibCofo::FibCofoIdb::FibCofoIdbTableEntrie
 {
     std::ostringstream path_buffer;
     path_buffer << "bundle-member-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2298,6 +2300,7 @@ std::string Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdEnt
 {
     std::ostringstream path_buffer;
     path_buffer << "fib-cofo-table-id-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2823,6 +2826,7 @@ std::string Fib::Nodes::Node::Global::FibCofo::FibCofoTableId::FibCofoTableIdSum
 {
     std::ostringstream path_buffer;
     path_buffer << "per-sdr-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3364,6 +3368,7 @@ std::string Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumber
 {
     std::ostringstream path_buffer;
     path_buffer << "array-number-of-retry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3456,6 +3461,7 @@ std::string Fib::Nodes::Node::Global::Summary::Total::TotalCounters::ArrayNumber
 {
     std::ostringstream path_buffer;
     path_buffer << "array-number-of-object";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4180,6 +4186,7 @@ std::string Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryC
 {
     std::ostringstream path_buffer;
     path_buffer << "array-number-of-retry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4272,6 +4279,7 @@ std::string Fib::Nodes::Node::Global::Summary::Protos::Proto::Summary_::SummaryC
 {
     std::ostringstream path_buffer;
     path_buffer << "array-number-of-object";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5561,6 +5569,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::IssuState::FisProtoState::get
 {
     std::ostringstream path_buffer;
     path_buffer << "fis-proto-state";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6123,6 +6132,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo:
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-hwrsrc-mode";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6207,6 +6217,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceDetailInfo:
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-shm-state";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6512,6 +6523,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIng
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-hwrsrc-mode";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6596,6 +6608,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareIng
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-shm-state";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6901,6 +6914,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgr
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-hwrsrc-mode";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6985,6 +6999,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceHardwareEgr
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-shm-state";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7290,6 +7305,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-hwrsrc-mode";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7374,6 +7390,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Resource::ResourceSummaryInfo
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-shm-state";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7711,6 +7728,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::get
 {
     std::ostringstream path_buffer;
     path_buffer << "fib-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9278,6 +9296,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::Pre
 {
     std::ostringstream path_buffer;
     path_buffer << "unicast-prefixe";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9370,6 +9389,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::Pre
 {
     std::ostringstream path_buffer;
     path_buffer << "broadcast-prefixe";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9462,6 +9482,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::FibSummaries::FibSummary::Pre
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-prefix";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9769,6 +9790,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::ExternalSummaryAll::SesaPlSum
 {
     std::ostringstream path_buffer;
     path_buffer << "sep-num-ecd-pl-per-interest";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12049,6 +12071,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwa
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13597,6 +13620,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwa
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15145,6 +15169,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwa
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16693,6 +16718,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwa
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17488,6 +17514,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwa
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-local-detail-hardware-egress";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18390,6 +18417,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwa
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19185,6 +19213,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwa
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-remote-detail-hardware-egress";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20087,6 +20116,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwa
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20863,6 +20893,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 {
     std::ostringstream path_buffer;
     path_buffer << "ip-prefix-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22763,6 +22794,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 {
     std::ostringstream path_buffer;
     path_buffer << "sanity-flag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22841,6 +22873,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-handle";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22919,6 +22952,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 {
     std::ostringstream path_buffer;
     path_buffer << "weights-of-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22997,6 +23031,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 {
     std::ostringstream path_buffer;
     path_buffer << "adjacency-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23075,6 +23110,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 {
     std::ostringstream path_buffer;
     path_buffer << "pbts-class-is-fallback-mapped";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23153,6 +23189,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 {
     std::ostringstream path_buffer;
     path_buffer << "pbts-fallback-to-drop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23231,6 +23268,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-is-forward-class";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23474,6 +23512,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 {
     std::ostringstream path_buffer;
     path_buffer << "fib-sh-tbl-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24332,6 +24371,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 {
     std::ostringstream path_buffer;
     path_buffer << "spd-ipencap";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24521,6 +24561,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 {
     std::ostringstream path_buffer;
     path_buffer << "ip-encap-hdr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24627,6 +24668,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24904,6 +24946,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 {
     std::ostringstream path_buffer;
     path_buffer << "recursive-lbl-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

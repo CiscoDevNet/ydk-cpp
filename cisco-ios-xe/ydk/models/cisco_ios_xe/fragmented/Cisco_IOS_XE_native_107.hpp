@@ -16,11 +16,11 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
-class Native::Interface::Tunnel::Cts::RoleBased::SgtMap : public ydk::Entity
+class Native::Interface::Tunnel::Ntp::BroadcastOption : public ydk::Entity
 {
     public:
-        SgtMap();
-        ~SgtMap();
+        BroadcastOption();
+        ~BroadcastOption();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -32,40 +32,18 @@ class Native::Interface::Tunnel::Cts::RoleBased::SgtMap : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf security_group; //type: string
-        ydk::YLeaf sgt; //type: uint16
+        class Broadcast; //type: Native::Interface::Tunnel::Ntp::BroadcastOption::Broadcast
 
-}; // Native::Interface::Tunnel::Cts::RoleBased::SgtMap
-
-
-class Native::Interface::Tunnel::AnalysisModule : public ydk::Entity
-{
-    public:
-        AnalysisModule();
-        ~AnalysisModule();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Monitoring; //type: Native::Interface::Tunnel::AnalysisModule::Monitoring
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::AnalysisModule::Monitoring> monitoring;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ntp::BroadcastOption::Broadcast> broadcast;
         
-}; // Native::Interface::Tunnel::AnalysisModule
+}; // Native::Interface::Tunnel::Ntp::BroadcastOption
 
 
-class Native::Interface::Tunnel::AnalysisModule::Monitoring : public ydk::Entity
+class Native::Interface::Tunnel::Ntp::BroadcastOption::Broadcast : public ydk::Entity
 {
     public:
-        Monitoring();
-        ~Monitoring();
+        Broadcast();
+        ~Broadcast();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -77,9 +55,30 @@ class Native::Interface::Tunnel::AnalysisModule::Monitoring : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf client; //type: empty
 
-}; // Native::Interface::Tunnel::AnalysisModule::Monitoring
+}; // Native::Interface::Tunnel::Ntp::BroadcastOption::Broadcast
+
+
+class Native::Interface::Tunnel::Utd : public ydk::Entity
+{
+    public:
+        Utd();
+        ~Utd();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf enable; //type: empty
+
+}; // Native::Interface::Tunnel::Utd
 
 
 class Native::Interface::VirtualTemplate : public ydk::Entity
@@ -161,20 +160,20 @@ class Native::Interface::VirtualTemplate : public ydk::Entity
         class Pppoe; //type: Native::Interface::VirtualTemplate::Pppoe
         class Service; //type: Native::Interface::VirtualTemplate::Service
         class Lacp; //type: Native::Interface::VirtualTemplate::Lacp
-        class ServicePolicy; //type: Native::Interface::VirtualTemplate::ServicePolicy
         class Snmp; //type: Native::Interface::VirtualTemplate::Snmp
         class Nhrp; //type: Native::Interface::VirtualTemplate::Nhrp
         class Tunnel; //type: Native::Interface::VirtualTemplate::Tunnel
-        class Crypto; //type: Native::Interface::VirtualTemplate::Crypto
+        class Mab; //type: Native::Interface::VirtualTemplate::Mab
+        class Ppp; //type: Native::Interface::VirtualTemplate::Ppp
         class EtAnalytics; //type: Native::Interface::VirtualTemplate::EtAnalytics
+        class ServicePolicy; //type: Native::Interface::VirtualTemplate::ServicePolicy
+        class Umbrella; //type: Native::Interface::VirtualTemplate::Umbrella
+        class Crypto; //type: Native::Interface::VirtualTemplate::Crypto
         class ZoneMember; //type: Native::Interface::VirtualTemplate::ZoneMember
-        class Utd; //type: Native::Interface::VirtualTemplate::Utd
+        class Cts; //type: Native::Interface::VirtualTemplate::Cts
         class Cdp; //type: Native::Interface::VirtualTemplate::Cdp
         class Ntp; //type: Native::Interface::VirtualTemplate::Ntp
-        class Mab; //type: Native::Interface::VirtualTemplate::Mab
-        class Umbrella; //type: Native::Interface::VirtualTemplate::Umbrella
-        class Ppp; //type: Native::Interface::VirtualTemplate::Ppp
-        class Cts; //type: Native::Interface::VirtualTemplate::Cts
+        class Utd; //type: Native::Interface::VirtualTemplate::Utd
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::SwitchportConf> switchport_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Switchport> switchport;
@@ -224,20 +223,20 @@ class Native::Interface::VirtualTemplate : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Pppoe> pppoe;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Service> service;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Lacp> lacp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::ServicePolicy> service_policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Snmp> snmp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Nhrp> nhrp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Tunnel> tunnel;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Crypto> crypto;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Mab> mab; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ppp> ppp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::EtAnalytics> et_analytics;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::ServicePolicy> service_policy;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Umbrella> umbrella;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Crypto> crypto;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::ZoneMember> zone_member;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Utd> utd;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Cts> cts;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Cdp> cdp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ntp> ntp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Mab> mab; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Umbrella> umbrella;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Ppp> ppp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Cts> cts;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::VirtualTemplate::Utd> utd;
                 class Type;
         class IfState;
         class ServiceInsertion;

@@ -3114,6 +3114,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Gl
 {
     std::ostringstream path_buffer;
     path_buffer << "pool-size";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3192,6 +3193,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Gl
 {
     std::ostringstream path_buffer;
     path_buffer << "pool-alloc-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3270,6 +3272,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Gl
 {
     std::ostringstream path_buffer;
     path_buffer << "pool-free-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3348,6 +3351,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Gl
 {
     std::ostringstream path_buffer;
     path_buffer << "msg-log-pool-size";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3426,6 +3430,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Gl
 {
     std::ostringstream path_buffer;
     path_buffer << "msg-log-pool-alloc-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3504,6 +3509,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Gl
 {
     std::ostringstream path_buffer;
     path_buffer << "msg-log-pool-free-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3582,6 +3588,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Gl
 {
     std::ostringstream path_buffer;
     path_buffer << "bmp-pool-size";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3660,6 +3667,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Gl
 {
     std::ostringstream path_buffer;
     path_buffer << "bmp-pool-alloc-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3738,6 +3746,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Gl
 {
     std::ostringstream path_buffer;
     path_buffer << "bmp-pool-free-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7760,6 +7769,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Pe
 {
     std::ostringstream path_buffer;
     path_buffer << "npl-priority-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7895,6 +7905,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Pe
 {
     std::ostringstream path_buffer;
     path_buffer << "num-sent";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7973,6 +7984,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Pe
 {
     std::ostringstream path_buffer;
     path_buffer << "num-recv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8060,6 +8072,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Pe
 {
     std::ostringstream path_buffer;
     path_buffer << "num-sent-drop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8144,6 +8157,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Pe
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-pl-send-drop-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8231,6 +8245,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Pe
 {
     std::ostringstream path_buffer;
     path_buffer << "num-recv-drop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8315,6 +8330,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Pe
 {
     std::ostringstream path_buffer;
     path_buffer << "nsr-pl-recv-drop-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8432,6 +8448,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Pe
 {
     std::ostringstream path_buffer;
     path_buffer << "npl-endpoint";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8626,6 +8643,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Pe
 {
     std::ostringstream path_buffer;
     path_buffer << "endpoint";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8704,6 +8722,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Pe
 {
     std::ostringstream path_buffer;
     path_buffer << "active-nsr-mode-enter-time";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8782,6 +8801,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Pe
 {
     std::ostringstream path_buffer;
     path_buffer << "standby-nsr-mode-enter-time";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8860,6 +8880,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Pe
 {
     std::ostringstream path_buffer;
     path_buffer << "active-nsrfo-time";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8946,6 +8967,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Pe
 {
     std::ostringstream path_buffer;
     path_buffer << "postit-count-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9812,6 +9834,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::ProcessInfo::Pe
 {
     std::ostringstream path_buffer;
     path_buffer << "issu-milestone";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16165,6 +16188,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Neighbors::Neig
 {
     std::ostringstream path_buffer;
     path_buffer << "last-notification-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16378,6 +16402,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Neighbors::Neig
 {
     std::ostringstream path_buffer;
     path_buffer << "last-notification-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20931,6 +20956,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Neighbors::Neig
 {
     std::ostringstream path_buffer;
     path_buffer << "af-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22693,6 +22719,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Neighbors::Neig
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22771,6 +22798,7 @@ std::string Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Neighbors::Neig
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-community-standby";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

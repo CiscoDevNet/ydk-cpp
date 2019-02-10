@@ -1037,6 +1037,7 @@ std::string Mld::Standby::Vrfs::Vrf::Summary::Interface::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2530,6 +2531,7 @@ std::string Mld::Standby::Vrfs::Vrf::DetailGroups::DetailGroup::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "detail-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3314,6 +3316,7 @@ std::string Mld::Standby::Vrfs::Vrf::DetailGroups::DetailGroup::Source::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3694,6 +3697,7 @@ std::string Mld::Standby::Vrfs::Vrf::NonActiveGroups::NonActiveGroups_::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "non-active-groups";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4130,6 +4134,7 @@ std::string Mld::Standby::Vrfs::Vrf::SsmMaps::SsmMap::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ssm-map";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4482,6 +4487,7 @@ std::string Mld::Standby::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "explicit-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5265,6 +5271,7 @@ std::string Mld::Standby::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "host";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5519,6 +5526,7 @@ std::string Mld::Standby::Vrfs::Vrf::ExplicitGroups::ExplicitGroup::Host::Source
 {
     std::ostringstream path_buffer;
     path_buffer << "source-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7108,6 +7116,7 @@ std::string Mld::Standby::Vrfs::Vrf::InterfaceUnicastQosAdjusts::InterfaceUnicas
 {
     std::ostringstream path_buffer;
     path_buffer << "update";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7558,6 +7567,7 @@ std::string Mld::Standby::Vrfs::Vrf::Ranges::Range::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9813,6 +9823,7 @@ std::string Mld::Standby::Vrfs::Vrf::Groups::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11947,6 +11958,7 @@ std::string Mld::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "ssm-map-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12334,6 +12346,7 @@ std::string Mld::Standby::Vrfs::Vrf::SsmMapDetails::SsmMapDetail::Sources::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "sources";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14484,6 +14497,7 @@ std::string Mld::Standby::Process::AmtGateways::AmtGateway::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "amt-gateway";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16373,6 +16387,7 @@ std::string Mld::Standby::DefaultContext::Summary::Interface::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17894,6 +17909,7 @@ std::string Mld::Standby::DefaultContext::DetailGroups::DetailGroup::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "detail-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18713,6 +18729,7 @@ std::string Mld::Standby::DefaultContext::DetailGroups::DetailGroup::Source::get
 {
     std::ostringstream path_buffer;
     path_buffer << "source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19114,6 +19131,7 @@ std::string Mld::Standby::DefaultContext::NonActiveGroups::NonActiveGroups_::get
 {
     std::ostringstream path_buffer;
     path_buffer << "non-active-groups";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19578,6 +19596,7 @@ std::string Mld::Standby::DefaultContext::SsmMaps::SsmMap::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "ssm-map";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19951,6 +19970,7 @@ std::string Mld::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "explicit-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20769,6 +20789,7 @@ std::string Mld::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::g
 {
     std::ostringstream path_buffer;
     path_buffer << "host";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21037,6 +21058,7 @@ std::string Mld::Standby::DefaultContext::ExplicitGroups::ExplicitGroup::Host::S
 {
     std::ostringstream path_buffer;
     path_buffer << "source-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22654,6 +22676,7 @@ std::string Mld::Standby::DefaultContext::InterfaceUnicastQosAdjusts::InterfaceU
 {
     std::ostringstream path_buffer;
     path_buffer << "update";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23118,6 +23141,7 @@ std::string Mld::Standby::DefaultContext::Ranges::Range::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25415,6 +25439,7 @@ std::string Mld::Standby::DefaultContext::Groups::Group::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

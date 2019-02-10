@@ -158,6 +158,7 @@ std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::OwnerInf
 {
     std::ostringstream path_buffer;
     path_buffer << "owner-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -309,6 +310,7 @@ std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Associat
 {
     std::ostringstream path_buffer;
     path_buffer << "association-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -586,6 +588,7 @@ std::string Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::Associat
 {
     std::ostringstream path_buffer;
     path_buffer << "owner-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -842,6 +845,7 @@ std::string Bfd::Ipv6MultiHopMultiPaths::Ipv6MultiHopMultiPath::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-multi-hop-multi-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1233,6 +1237,7 @@ std::string Bfd::Ipv4bfDoMplsteHeadCounters::Ipv4bfDoMplsteHeadPacketCounters::I
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4bf-do-mplste-head-packet-counter";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2757,6 +2762,7 @@ std::string Bfd::Ipv6MultiHopSessionBriefs::Ipv6MultiHopSessionBrief::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-multi-hop-session-brief";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3417,6 +3423,7 @@ std::string Bfd::SessionBriefs::SessionBrief::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "session-brief";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5709,6 +5716,7 @@ std::string Bfd::LabelSessionDetails::LabelSessionDetail::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "label-session-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8841,6 +8849,7 @@ std::string Bfd::LabelSessionDetails::LabelSessionDetail::OwnerInformation::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "owner-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8992,6 +9001,7 @@ std::string Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation
 {
     std::ostringstream path_buffer;
     path_buffer << "association-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9269,6 +9279,7 @@ std::string Bfd::LabelSessionDetails::LabelSessionDetail::AssociationInformation
 {
     std::ostringstream path_buffer;
     path_buffer << "owner-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9539,6 +9550,7 @@ std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-single-hop-session-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12671,6 +12683,7 @@ std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::OwnerI
 {
     std::ostringstream path_buffer;
     path_buffer << "owner-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12822,6 +12835,7 @@ std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::Associ
 {
     std::ostringstream path_buffer;
     path_buffer << "association-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13099,6 +13113,7 @@ std::string Bfd::Ipv6SingleHopSessionDetails::Ipv6SingleHopSessionDetail::Associ
 {
     std::ostringstream path_buffer;
     path_buffer << "owner-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13441,6 +13456,7 @@ std::string Bfd::Ipv4MultiHopCounters::Ipv4MultiHopPacketCounters::Ipv4MultiHopP
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-multi-hop-packet-counter";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13755,6 +13771,7 @@ std::string Bfd::SessionDetails::SessionDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "session-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16887,6 +16904,7 @@ std::string Bfd::SessionDetails::SessionDetail::OwnerInformation::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "owner-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17038,6 +17056,7 @@ std::string Bfd::SessionDetails::SessionDetail::AssociationInformation::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "association-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17315,6 +17334,7 @@ std::string Bfd::SessionDetails::SessionDetail::AssociationInformation::OwnerInf
 {
     std::ostringstream path_buffer;
     path_buffer << "owner-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17568,6 +17588,7 @@ std::string Bfd::Ipv4SingleHopMultiPaths::Ipv4SingleHopMultiPath::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-single-hop-multi-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17867,6 +17888,7 @@ std::string Bfd::Ipv4SingleHopSessionBriefs::Ipv4SingleHopSessionBrief::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-single-hop-session-brief";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18603,6 +18625,7 @@ std::string Bfd::Ipv6MultiHopCounters::Ipv6MultiHopPacketCounters::Ipv6MultiHopP
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-multi-hop-packet-counter";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19336,6 +19359,7 @@ std::string Bfd::LabelCounters::LabelPacketCounters::LabelPacketCounter::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "label-packet-counter";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19661,6 +19685,7 @@ std::string Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDeta
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4bf-do-mplste-head-session-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

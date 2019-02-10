@@ -12,247 +12,219 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
-Native::Ip::Wccp::Vrf::WebCache::WebCache()
+Native::Ip::Http::Client::Client()
     :
-    group_address{YType::str, "group-address"},
-    group_list{YType::str, "group-list"},
-    mode{YType::enumeration, "mode"},
-    redirect_list{YType::str, "redirect-list"},
-    snmp_disabled{YType::empty, "snmp-disabled"}
+    secure_trustpoint{YType::str, "secure-trustpoint"},
+    source_interface{YType::str, "source-interface"}
         ,
-    password(std::make_shared<Native::Ip::Wccp::Vrf::WebCache::Password>())
+    proxy_server(std::make_shared<Native::Ip::Http::Client::ProxyServer>())
 {
-    password->parent = this;
+    proxy_server->parent = this;
 
-    yang_name = "web-cache"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "client"; yang_parent_name = "http"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Ip::Wccp::Vrf::WebCache::~WebCache()
+Native::Ip::Http::Client::~Client()
 {
 }
 
-bool Native::Ip::Wccp::Vrf::WebCache::has_data() const
+bool Native::Ip::Http::Client::has_data() const
 {
     if (is_presence_container) return true;
-    return group_address.is_set
-	|| group_list.is_set
-	|| mode.is_set
-	|| redirect_list.is_set
-	|| snmp_disabled.is_set
-	|| (password !=  nullptr && password->has_data());
+    return secure_trustpoint.is_set
+	|| source_interface.is_set
+	|| (proxy_server !=  nullptr && proxy_server->has_data());
 }
 
-bool Native::Ip::Wccp::Vrf::WebCache::has_operation() const
+bool Native::Ip::Http::Client::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(group_address.yfilter)
-	|| ydk::is_set(group_list.yfilter)
-	|| ydk::is_set(mode.yfilter)
-	|| ydk::is_set(redirect_list.yfilter)
-	|| ydk::is_set(snmp_disabled.yfilter)
-	|| (password !=  nullptr && password->has_operation());
+	|| ydk::is_set(secure_trustpoint.yfilter)
+	|| ydk::is_set(source_interface.yfilter)
+	|| (proxy_server !=  nullptr && proxy_server->has_operation());
 }
 
-std::string Native::Ip::Wccp::Vrf::WebCache::get_segment_path() const
+std::string Native::Ip::Http::Client::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "web-cache";
+    path_buffer << "Cisco-IOS-XE-native:native/ip/Cisco-IOS-XE-http:http/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Ip::Wccp::Vrf::WebCache::get_name_leaf_data() const
+std::string Native::Ip::Http::Client::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "client";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Ip::Http::Client::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (group_address.is_set || is_set(group_address.yfilter)) leaf_name_data.push_back(group_address.get_name_leafdata());
-    if (group_list.is_set || is_set(group_list.yfilter)) leaf_name_data.push_back(group_list.get_name_leafdata());
-    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
-    if (redirect_list.is_set || is_set(redirect_list.yfilter)) leaf_name_data.push_back(redirect_list.get_name_leafdata());
-    if (snmp_disabled.is_set || is_set(snmp_disabled.yfilter)) leaf_name_data.push_back(snmp_disabled.get_name_leafdata());
+    if (secure_trustpoint.is_set || is_set(secure_trustpoint.yfilter)) leaf_name_data.push_back(secure_trustpoint.get_name_leafdata());
+    if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> Native::Ip::Wccp::Vrf::WebCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ip::Http::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "password")
+    if(child_yang_name == "proxy-server")
     {
-        if(password == nullptr)
+        if(proxy_server == nullptr)
         {
-            password = std::make_shared<Native::Ip::Wccp::Vrf::WebCache::Password>();
+            proxy_server = std::make_shared<Native::Ip::Http::Client::ProxyServer>();
         }
-        return password;
+        return proxy_server;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ip::Wccp::Vrf::WebCache::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ip::Http::Client::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(password != nullptr)
+    if(proxy_server != nullptr)
     {
-        _children["password"] = password;
+        _children["proxy-server"] = proxy_server;
     }
 
     return _children;
 }
 
-void Native::Ip::Wccp::Vrf::WebCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Ip::Http::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "group-address")
+    if(value_path == "secure-trustpoint")
     {
-        group_address = value;
-        group_address.value_namespace = name_space;
-        group_address.value_namespace_prefix = name_space_prefix;
+        secure_trustpoint = value;
+        secure_trustpoint.value_namespace = name_space;
+        secure_trustpoint.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "group-list")
+    if(value_path == "source-interface")
     {
-        group_list = value;
-        group_list.value_namespace = name_space;
-        group_list.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mode")
-    {
-        mode = value;
-        mode.value_namespace = name_space;
-        mode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "redirect-list")
-    {
-        redirect_list = value;
-        redirect_list.value_namespace = name_space;
-        redirect_list.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "snmp-disabled")
-    {
-        snmp_disabled = value;
-        snmp_disabled.value_namespace = name_space;
-        snmp_disabled.value_namespace_prefix = name_space_prefix;
+        source_interface = value;
+        source_interface.value_namespace = name_space;
+        source_interface.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Ip::Wccp::Vrf::WebCache::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Ip::Http::Client::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "group-address")
+    if(value_path == "secure-trustpoint")
     {
-        group_address.yfilter = yfilter;
+        secure_trustpoint.yfilter = yfilter;
     }
-    if(value_path == "group-list")
+    if(value_path == "source-interface")
     {
-        group_list.yfilter = yfilter;
-    }
-    if(value_path == "mode")
-    {
-        mode.yfilter = yfilter;
-    }
-    if(value_path == "redirect-list")
-    {
-        redirect_list.yfilter = yfilter;
-    }
-    if(value_path == "snmp-disabled")
-    {
-        snmp_disabled.yfilter = yfilter;
+        source_interface.yfilter = yfilter;
     }
 }
 
-bool Native::Ip::Wccp::Vrf::WebCache::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Ip::Http::Client::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "password" || name == "group-address" || name == "group-list" || name == "mode" || name == "redirect-list" || name == "snmp-disabled")
+    if(name == "proxy-server" || name == "secure-trustpoint" || name == "source-interface")
         return true;
     return false;
 }
 
-Native::Ip::Wccp::Vrf::WebCache::Password::Password()
+Native::Ip::Http::Client::ProxyServer::ProxyServer()
     :
-    encryption{YType::enumeration, "encryption"},
-    clear_key{YType::str, "clear-key"}
+    proxy_server_name{YType::str, "proxy-server-name"},
+    proxy_port{YType::uint16, "proxy-port"}
 {
 
-    yang_name = "password"; yang_parent_name = "web-cache"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "proxy-server"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Native::Ip::Wccp::Vrf::WebCache::Password::~Password()
+Native::Ip::Http::Client::ProxyServer::~ProxyServer()
 {
 }
 
-bool Native::Ip::Wccp::Vrf::WebCache::Password::has_data() const
+bool Native::Ip::Http::Client::ProxyServer::has_data() const
 {
     if (is_presence_container) return true;
-    return encryption.is_set
-	|| clear_key.is_set;
+    return proxy_server_name.is_set
+	|| proxy_port.is_set;
 }
 
-bool Native::Ip::Wccp::Vrf::WebCache::Password::has_operation() const
+bool Native::Ip::Http::Client::ProxyServer::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(encryption.yfilter)
-	|| ydk::is_set(clear_key.yfilter);
+	|| ydk::is_set(proxy_server_name.yfilter)
+	|| ydk::is_set(proxy_port.yfilter);
 }
 
-std::string Native::Ip::Wccp::Vrf::WebCache::Password::get_segment_path() const
+std::string Native::Ip::Http::Client::ProxyServer::get_absolute_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "password";
+    path_buffer << "Cisco-IOS-XE-native:native/ip/Cisco-IOS-XE-http:http/client/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Ip::Wccp::Vrf::WebCache::Password::get_name_leaf_data() const
+std::string Native::Ip::Http::Client::ProxyServer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "proxy-server";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Ip::Http::Client::ProxyServer::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (encryption.is_set || is_set(encryption.yfilter)) leaf_name_data.push_back(encryption.get_name_leafdata());
-    if (clear_key.is_set || is_set(clear_key.yfilter)) leaf_name_data.push_back(clear_key.get_name_leafdata());
+    if (proxy_server_name.is_set || is_set(proxy_server_name.yfilter)) leaf_name_data.push_back(proxy_server_name.get_name_leafdata());
+    if (proxy_port.is_set || is_set(proxy_port.yfilter)) leaf_name_data.push_back(proxy_port.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> Native::Ip::Wccp::Vrf::WebCache::Password::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Ip::Http::Client::ProxyServer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ip::Wccp::Vrf::WebCache::Password::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ip::Http::Client::ProxyServer::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void Native::Ip::Wccp::Vrf::WebCache::Password::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Ip::Http::Client::ProxyServer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "encryption")
+    if(value_path == "proxy-server-name")
     {
-        encryption = value;
-        encryption.value_namespace = name_space;
-        encryption.value_namespace_prefix = name_space_prefix;
+        proxy_server_name = value;
+        proxy_server_name.value_namespace = name_space;
+        proxy_server_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "clear-key")
+    if(value_path == "proxy-port")
     {
-        clear_key = value;
-        clear_key.value_namespace = name_space;
-        clear_key.value_namespace_prefix = name_space_prefix;
+        proxy_port = value;
+        proxy_port.value_namespace = name_space;
+        proxy_port.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Ip::Wccp::Vrf::WebCache::Password::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Ip::Http::Client::ProxyServer::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "encryption")
+    if(value_path == "proxy-server-name")
     {
-        encryption.yfilter = yfilter;
+        proxy_server_name.yfilter = yfilter;
     }
-    if(value_path == "clear-key")
+    if(value_path == "proxy-port")
     {
-        clear_key.yfilter = yfilter;
+        proxy_port.yfilter = yfilter;
     }
 }
 
-bool Native::Ip::Wccp::Vrf::WebCache::Password::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Ip::Http::Client::ProxyServer::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "encryption" || name == "clear-key")
+    if(name == "proxy-server-name" || name == "proxy-port")
         return true;
     return false;
 }
@@ -1391,9 +1363,9 @@ Native::Ipv6::Ipv6()
     , spd(std::make_shared<Native::Ipv6::Spd>())
     , prefix_list(std::make_shared<Native::Ipv6::PrefixList>())
     , neighbor(this, {"address", "interface"})
-    , mld(std::make_shared<Native::Ipv6::Mld>())
     , multicast_routing(nullptr) // presence node
     , rip(std::make_shared<Native::Ipv6::Rip>())
+    , mld(std::make_shared<Native::Ipv6::Mld>())
 {
     source_guard->parent = this;
     destination_guard->parent = this;
@@ -1406,8 +1378,8 @@ Native::Ipv6::Ipv6()
     router->parent = this;
     spd->parent = this;
     prefix_list->parent = this;
-    mld->parent = this;
     rip->parent = this;
+    mld->parent = this;
 
     yang_name = "ipv6"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -1439,9 +1411,9 @@ bool Native::Ipv6::has_data() const
 	|| (router !=  nullptr && router->has_data())
 	|| (spd !=  nullptr && spd->has_data())
 	|| (prefix_list !=  nullptr && prefix_list->has_data())
-	|| (mld !=  nullptr && mld->has_data())
 	|| (multicast_routing !=  nullptr && multicast_routing->has_data())
-	|| (rip !=  nullptr && rip->has_data());
+	|| (rip !=  nullptr && rip->has_data())
+	|| (mld !=  nullptr && mld->has_data());
 }
 
 bool Native::Ipv6::has_operation() const
@@ -1467,9 +1439,9 @@ bool Native::Ipv6::has_operation() const
 	|| (router !=  nullptr && router->has_operation())
 	|| (spd !=  nullptr && spd->has_operation())
 	|| (prefix_list !=  nullptr && prefix_list->has_operation())
-	|| (mld !=  nullptr && mld->has_operation())
 	|| (multicast_routing !=  nullptr && multicast_routing->has_operation())
-	|| (rip !=  nullptr && rip->has_operation());
+	|| (rip !=  nullptr && rip->has_operation())
+	|| (mld !=  nullptr && mld->has_operation());
 }
 
 std::string Native::Ipv6::get_absolute_path() const
@@ -1616,15 +1588,6 @@ std::shared_ptr<ydk::Entity> Native::Ipv6::get_child_by_name(const std::string &
         return ent_;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-mld:mld")
-    {
-        if(mld == nullptr)
-        {
-            mld = std::make_shared<Native::Ipv6::Mld>();
-        }
-        return mld;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-multicast:multicast-routing")
     {
         if(multicast_routing == nullptr)
@@ -1641,6 +1604,15 @@ std::shared_ptr<ydk::Entity> Native::Ipv6::get_child_by_name(const std::string &
             rip = std::make_shared<Native::Ipv6::Rip>();
         }
         return rip;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-mld:mld")
+    {
+        if(mld == nullptr)
+        {
+            mld = std::make_shared<Native::Ipv6::Mld>();
+        }
+        return mld;
     }
 
     return nullptr;
@@ -1719,11 +1691,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ipv6::get_children()
             _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    if(mld != nullptr)
-    {
-        _children["Cisco-IOS-XE-mld:mld"] = mld;
-    }
-
     if(multicast_routing != nullptr)
     {
         _children["Cisco-IOS-XE-multicast:multicast-routing"] = multicast_routing;
@@ -1732,6 +1699,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ipv6::get_children()
     if(rip != nullptr)
     {
         _children["Cisco-IOS-XE-rip:rip"] = rip;
+    }
+
+    if(mld != nullptr)
+    {
+        _children["Cisco-IOS-XE-mld:mld"] = mld;
     }
 
     return _children;
@@ -1777,7 +1749,7 @@ void Native::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool Native::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "source-guard" || name == "destination-guard" || name == "dhcp" || name == "access-list" || name == "multicast" || name == "cef" || name == "nd" || name == "pim" || name == "route" || name == "router" || name == "spd" || name == "prefix-list" || name == "neighbor" || name == "mld" || name == "multicast-routing" || name == "rip" || name == "flowset" || name == "unicast-routing" || name == "source-route")
+    if(name == "source-guard" || name == "destination-guard" || name == "dhcp" || name == "access-list" || name == "multicast" || name == "cef" || name == "nd" || name == "pim" || name == "route" || name == "router" || name == "spd" || name == "prefix-list" || name == "neighbor" || name == "multicast-routing" || name == "rip" || name == "mld" || name == "flowset" || name == "unicast-routing" || name == "source-route")
         return true;
     return false;
 }
@@ -19496,12 +19468,6 @@ bool Native::Ipv6::Router::Rip::AddressFamily::Ipv6_::Vrf::Redistribute::IsoIgrp
         return true;
     return false;
 }
-
-const Enum::YLeaf Native::Ip::Wccp::Vrf::WebCache::Mode::closed {0, "closed"};
-const Enum::YLeaf Native::Ip::Wccp::Vrf::WebCache::Mode::open {1, "open"};
-
-const Enum::YLeaf Native::Ip::Wccp::Vrf::WebCache::Password::Encryption::Y_0 {0, "0"};
-const Enum::YLeaf Native::Ip::Wccp::Vrf::WebCache::Password::Encryption::Y_7 {1, "7"};
 
 const Enum::YLeaf Native::Mka::Policy::ConfidentialityOffset::Y_0 {0, "0"};
 const Enum::YLeaf Native::Mka::Policy::ConfidentialityOffset::Y_30 {1, "30"};

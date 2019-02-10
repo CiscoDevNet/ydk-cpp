@@ -83,6 +83,7 @@ class gNMISession : public Session {
     void print_paths(ydk::path::SchemaNode& sn) const;
 
     std::unique_ptr<gNMIClient> client;
+    std::shared_ptr<ModelProvider> model_provider;
     std::shared_ptr<RootSchemaNode> root_schema;
     std::vector<std::string> server_capabilities;
 };

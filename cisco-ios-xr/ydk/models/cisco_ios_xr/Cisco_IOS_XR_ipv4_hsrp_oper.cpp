@@ -2223,6 +2223,7 @@ std::string Hsrp::Ipv4::Groups::Group::GlobalAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "global-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2312,6 +2313,7 @@ std::string Hsrp::Ipv4::Groups::Group::StateChangeHistory::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "state-change-history";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3529,6 +3531,7 @@ std::string Hsrp::MgoSessions::MgoSession::Slave::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "slave";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5923,6 +5926,7 @@ std::string Hsrp::Ipv6::Groups::Group::GlobalAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "global-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6012,6 +6016,7 @@ std::string Hsrp::Ipv6::Groups::Group::StateChangeHistory::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "state-change-history";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6972,6 +6977,7 @@ std::string Hsrp::BfdSessions::BfdSession::Group::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
