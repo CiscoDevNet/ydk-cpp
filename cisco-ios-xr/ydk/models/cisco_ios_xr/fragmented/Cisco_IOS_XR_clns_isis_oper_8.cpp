@@ -42,6 +42,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 {
     std::ostringstream path_buffer;
     path_buffer << "underlying-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -151,6 +152,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 {
     std::ostringstream path_buffer;
     path_buffer << "per-area-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -437,6 +439,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 {
     std::ostringstream path_buffer;
     path_buffer << "per-topology-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1820,6 +1823,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-tie-breaker";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2103,6 +2107,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-tie-breaker";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2204,6 +2209,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 {
     std::ostringstream path_buffer;
     path_buffer << "manual-adj-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2331,6 +2337,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 {
     std::ostringstream path_buffer;
     path_buffer << "per-address-family-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3215,6 +3222,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 {
     std::ostringstream path_buffer;
     path_buffer << "forwarding-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3624,6 +3632,7 @@ std::string Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAnd
 {
     std::ostringstream path_buffer;
     path_buffer << "prefix";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4049,6 +4058,7 @@ std::string Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacenc
 {
     std::ostringstream path_buffer;
     path_buffer << "checkpoint-adjacency";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4260,6 +4270,7 @@ std::string Isis::Instances::Instance::CheckpointAdjacencies::CheckpointAdjacenc
 {
     std::ostringstream path_buffer;
     path_buffer << "checkpoint-adjacency-per-address-family-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6808,6 +6819,7 @@ std::string Isis::Instances::Instance::ErrorLog::LogEntry::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "log-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7867,6 +7879,7 @@ std::string Isis::Instances::Instance::InterfaceStatistics::InterfaceStatistic::
 {
     std::ostringstream path_buffer;
     path_buffer << "per-area-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9042,6 +9055,7 @@ std::string Isis::Instances::Instance::Protocol::ManualAreaAddress::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "manual-area-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9120,6 +9134,7 @@ std::string Isis::Instances::Instance::Protocol::ActiveAreaAddress::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "active-area-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9224,6 +9239,7 @@ std::string Isis::Instances::Instance::Protocol::PerTopoData::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "per-topo-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9583,6 +9599,7 @@ std::string Isis::Instances::Instance::Protocol::PerTopoData::RedistProtocolsLis
 {
     std::ostringstream path_buffer;
     path_buffer << "isis-sh-redist-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9865,6 +9882,7 @@ std::string Isis::Instances::Instance::Protocol::PerTopoData::PerAreaData::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "per-area-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10739,6 +10757,7 @@ std::string Isis::Instances::Instance::CheckpointLsps::CheckpointLsp::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "checkpoint-lsp";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11050,6 +11069,7 @@ std::string Isis::Instances::Instance::MeshGroups::MeshGroupConfiguredInterfaceL
 {
     std::ostringstream path_buffer;
     path_buffer << "isis-sh-mesh-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11628,6 +11648,7 @@ std::string Isis::Instances::Instance::NsrStatistics::IsisNsrStatsData::Peer::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "peer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11961,6 +11982,7 @@ std::string Isis::Instances::Instance::CheckpointTeTunnels::CheckpointTeTunnel::
 {
     std::ostringstream path_buffer;
     path_buffer << "checkpoint-te-tunnel";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

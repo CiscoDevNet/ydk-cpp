@@ -10861,9 +10861,9 @@ Native::Interface::Cellular::Cellular()
     , rcv_queue(std::make_shared<Native::Interface::Cellular::RcvQueue>())
     , peer(std::make_shared<Native::Interface::Cellular::Peer>())
     , pm_path(std::make_shared<Native::Interface::Cellular::PmPath>())
-    , service_policy(std::make_shared<Native::Interface::Cellular::ServicePolicy>())
     , dialer(std::make_shared<Native::Interface::Cellular::Dialer>())
     , async(std::make_shared<Native::Interface::Cellular::Async>())
+    , service_policy(std::make_shared<Native::Interface::Cellular::ServicePolicy>())
 {
     switchport_conf->parent = this;
     switchport->parent = this;
@@ -10900,9 +10900,9 @@ Native::Interface::Cellular::Cellular()
     rcv_queue->parent = this;
     peer->parent = this;
     pm_path->parent = this;
-    service_policy->parent = this;
     dialer->parent = this;
     async->parent = this;
+    service_policy->parent = this;
 
     yang_name = "Cellular"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -10968,9 +10968,9 @@ bool Native::Interface::Cellular::has_data() const
 	|| (rcv_queue !=  nullptr && rcv_queue->has_data())
 	|| (peer !=  nullptr && peer->has_data())
 	|| (pm_path !=  nullptr && pm_path->has_data())
-	|| (service_policy !=  nullptr && service_policy->has_data())
 	|| (dialer !=  nullptr && dialer->has_data())
-	|| (async !=  nullptr && async->has_data());
+	|| (async !=  nullptr && async->has_data())
+	|| (service_policy !=  nullptr && service_policy->has_data());
 }
 
 bool Native::Interface::Cellular::has_operation() const
@@ -11030,9 +11030,9 @@ bool Native::Interface::Cellular::has_operation() const
 	|| (rcv_queue !=  nullptr && rcv_queue->has_operation())
 	|| (peer !=  nullptr && peer->has_operation())
 	|| (pm_path !=  nullptr && pm_path->has_operation())
-	|| (service_policy !=  nullptr && service_policy->has_operation())
 	|| (dialer !=  nullptr && dialer->has_operation())
-	|| (async !=  nullptr && async->has_operation());
+	|| (async !=  nullptr && async->has_operation())
+	|| (service_policy !=  nullptr && service_policy->has_operation());
 }
 
 std::string Native::Interface::Cellular::get_absolute_path() const
@@ -11406,15 +11406,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::Cellular::get_child_by_name(cons
         return pm_path;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
-    {
-        if(service_policy == nullptr)
-        {
-            service_policy = std::make_shared<Native::Interface::Cellular::ServicePolicy>();
-        }
-        return service_policy;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-cellular:dialer")
     {
         if(dialer == nullptr)
@@ -11431,6 +11422,15 @@ std::shared_ptr<ydk::Entity> Native::Interface::Cellular::get_child_by_name(cons
             async = std::make_shared<Native::Interface::Cellular::Async>();
         }
         return async;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
+    {
+        if(service_policy == nullptr)
+        {
+            service_policy = std::make_shared<Native::Interface::Cellular::ServicePolicy>();
+        }
+        return service_policy;
     }
 
     return nullptr;
@@ -11629,11 +11629,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Cellular:
         _children["pm-path"] = pm_path;
     }
 
-    if(service_policy != nullptr)
-    {
-        _children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
-    }
-
     if(dialer != nullptr)
     {
         _children["Cisco-IOS-XE-cellular:dialer"] = dialer;
@@ -11642,6 +11637,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Cellular:
     if(async != nullptr)
     {
         _children["Cisco-IOS-XE-cellular:async"] = async;
+    }
+
+    if(service_policy != nullptr)
+    {
+        _children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
     }
 
     return _children;
@@ -11787,7 +11787,7 @@ void Native::Interface::Cellular::set_filter(const std::string & value_path, YFi
 
 bool Native::Interface::Cellular::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "service-policy" || name == "dialer" || name == "async" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "dialer-group" || name == "pulse-time")
+    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "dialer" || name == "async" || name == "service-policy" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "dialer-group" || name == "pulse-time")
         return true;
     return false;
 }

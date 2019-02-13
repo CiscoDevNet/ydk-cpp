@@ -463,6 +463,7 @@ std::string L3vpn::InvalidVrfs::InvalidVrf::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -562,6 +563,7 @@ std::string L3vpn::InvalidVrfs::InvalidVrf::Af::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "af";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -699,6 +701,7 @@ std::string L3vpn::InvalidVrfs::InvalidVrf::Af::RouteTarget::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "route-target";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1109,6 +1112,7 @@ std::string L3vpn::Vrfs::Vrf::Interface::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1208,6 +1212,7 @@ std::string L3vpn::Vrfs::Vrf::Af::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "af";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1345,6 +1350,7 @@ std::string L3vpn::Vrfs::Vrf::Af::RouteTarget::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "route-target";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -8918,6 +8918,7 @@ std::string Subscriber::Session::Nodes::Node::Sessions::Session_::Accounting::Ac
 {
     std::ostringstream path_buffer;
     path_buffer << "accounting-session";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10116,6 +10117,7 @@ std::string Subscriber::Session::Nodes::Node::Sessions::Session_::SessionChangeO
 {
     std::ostringstream path_buffer;
     path_buffer << "session-change-of-authorization";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

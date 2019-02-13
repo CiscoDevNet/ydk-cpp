@@ -1668,6 +1668,7 @@ std::string GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId:
 {
     std::ostringstream path_buffer;
     path_buffer << "si-arr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3133,6 +3134,7 @@ std::string GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId:
 {
     std::ostringstream path_buffer;
     path_buffer << "si-arr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4707,6 +4709,7 @@ std::string GlobalServiceFunctionChaining::ServiceFunctionPath::PathIds::PathId:
 {
     std::ostringstream path_buffer;
     path_buffer << "si-arr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6384,6 +6387,7 @@ std::string GlobalServiceFunctionChaining::ServiceFunction::SfNames::SfName::SiA
 {
     std::ostringstream path_buffer;
     path_buffer << "si-arr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8079,6 +8083,7 @@ std::string GlobalServiceFunctionChaining::ServiceFunctionForwarder::SffNames::S
 {
     std::ostringstream path_buffer;
     path_buffer << "si-arr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9710,6 +9715,7 @@ std::string GlobalServiceFunctionChaining::ServiceFunctionForwarder::Local::Erro
 {
     std::ostringstream path_buffer;
     path_buffer << "si-arr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

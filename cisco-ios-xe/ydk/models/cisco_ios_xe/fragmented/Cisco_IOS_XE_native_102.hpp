@@ -2347,23 +2347,23 @@ class Native::Interface::Tunnel : public ydk::Entity
         class Peer; //type: Native::Interface::Tunnel::Peer
         class PmPath; //type: Native::Interface::Tunnel::PmPath
         class Qos; //type: Native::Interface::Tunnel::Qos
-        class ServicePolicy; //type: Native::Interface::Tunnel::ServicePolicy
         class Snmp; //type: Native::Interface::Tunnel::Snmp
         class Nhrp; //type: Native::Interface::Tunnel::Nhrp
         class Tunnel_; //type: Native::Interface::Tunnel::Tunnel_
-        class Crypto; //type: Native::Interface::Tunnel::Crypto
         class EtAnalytics; //type: Native::Interface::Tunnel::EtAnalytics
-        class ZoneMember; //type: Native::Interface::Tunnel::ZoneMember
-        class Utd; //type: Native::Interface::Tunnel::Utd
+        class ServicePolicy; //type: Native::Interface::Tunnel::ServicePolicy
+        class Ospfv3; //type: Native::Interface::Tunnel::Ospfv3
+        class Performance; //type: Native::Interface::Tunnel::Performance
         class Lisp; //type: Native::Interface::Tunnel::Lisp
+        class Umbrella; //type: Native::Interface::Tunnel::Umbrella
+        class Crypto; //type: Native::Interface::Tunnel::Crypto
+        class ZoneMember; //type: Native::Interface::Tunnel::ZoneMember
+        class AnalysisModule; //type: Native::Interface::Tunnel::AnalysisModule
+        class Cts; //type: Native::Interface::Tunnel::Cts
+        class Udld; //type: Native::Interface::Tunnel::Udld
         class Cdp; //type: Native::Interface::Tunnel::Cdp
         class Ntp; //type: Native::Interface::Tunnel::Ntp
-        class Performance; //type: Native::Interface::Tunnel::Performance
-        class Umbrella; //type: Native::Interface::Tunnel::Umbrella
-        class Ospfv3; //type: Native::Interface::Tunnel::Ospfv3
-        class Udld; //type: Native::Interface::Tunnel::Udld
-        class Cts; //type: Native::Interface::Tunnel::Cts
-        class AnalysisModule; //type: Native::Interface::Tunnel::AnalysisModule
+        class Utd; //type: Native::Interface::Tunnel::Utd
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::SwitchportConf> switchport_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Switchport> switchport;
@@ -2403,23 +2403,23 @@ class Native::Interface::Tunnel : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Peer> peer;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::PmPath> pm_path;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Qos> qos;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::ServicePolicy> service_policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Snmp> snmp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Nhrp> nhrp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Tunnel_> tunnel;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Crypto> crypto;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::EtAnalytics> et_analytics;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::ZoneMember> zone_member;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Utd> utd;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::ServicePolicy> service_policy;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3> ospfv3;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Performance> performance;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Lisp> lisp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Umbrella> umbrella;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Crypto> crypto;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::ZoneMember> zone_member;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::AnalysisModule> analysis_module;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cts> cts;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Udld> udld;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cdp> cdp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ntp> ntp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Performance> performance;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Umbrella> umbrella;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Ospfv3> ospfv3;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Udld> udld;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Cts> cts;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::AnalysisModule> analysis_module;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Tunnel::Utd> utd;
                 class IfState;
         class ServiceInsertion;
         class Nat66;

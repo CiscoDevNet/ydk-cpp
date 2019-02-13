@@ -683,6 +683,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::LocRib::Routes::Route::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1898,6 +1899,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibI
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2868,6 +2870,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibI
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3838,6 +3841,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibO
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4808,6 +4812,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv4Unicast::Neighbors::Neighbor::AdjRibO
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5878,6 +5883,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::LocRib::Routes::Route::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7093,6 +7099,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibI
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8063,6 +8070,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibI
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9033,6 +9041,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibO
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10003,6 +10012,7 @@ std::string BgpRib::AfiSafis::AfiSafi::Ipv6Unicast::Neighbors::Neighbor::AdjRibO
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -1818,6 +1818,7 @@ std::string SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDeta
 {
     std::ostringstream path_buffer;
     path_buffer << "session-detailed-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1946,6 +1947,7 @@ std::string SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSync
 {
     std::ostringstream path_buffer;
     path_buffer << "session-sync-error-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3113,6 +3115,7 @@ std::string SessionRedundancyAgent::Nodes::Node::Memory::MemoryInfo::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "memory-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3266,6 +3269,7 @@ std::string SessionRedundancyAgent::Nodes::Node::Memory::EdmMemoryInfo::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "edm-memory-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3386,6 +3390,7 @@ std::string SessionRedundancyAgent::Nodes::Node::Memory::StringMemoryInfo::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "string-memory-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4247,6 +4252,7 @@ std::string SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::ClientSessio
 {
     std::ostringstream path_buffer;
     path_buffer << "client-session-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4345,6 +4351,7 @@ std::string SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::g
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4456,6 +4463,7 @@ std::string SessionRedundancyAgent::Nodes::Node::GroupIds::GroupId::Pool::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "pool";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5244,6 +5252,7 @@ std::string SessionRedundancyAgent::Nodes::Node::Interfaces::Interface::ClientSt
 {
     std::ostringstream path_buffer;
     path_buffer << "client-status";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6372,6 +6381,7 @@ std::string SessionRedundancyAgent::Nodes::Node::StatsGlobal::ClientStatus::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "client-status";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6528,6 +6538,7 @@ std::string SessionRedundancyAgent::Nodes::Node::StatsGlobal::OpaqueMemoryStatus
 {
     std::ostringstream path_buffer;
     path_buffer << "opaque-memory-status";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6713,6 +6724,7 @@ std::string SessionRedundancyAgent::Nodes::Node::StatsGlobal::TxListOverTcpStatu
 {
     std::ostringstream path_buffer;
     path_buffer << "tx-list-over-tcp-status";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

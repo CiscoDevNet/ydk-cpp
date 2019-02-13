@@ -5,7 +5,7 @@ project(ydk_ietf VERSION 0.1.5 LANGUAGES C CXX)
 # CPack Dynamic Settings
 set (CPACK_PACKAGE_NAME "libydk-ietf")
 set (CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
-set (CPACK_PACKAGE_RELEASE "1")
+set (CPACK_PACKAGE_RELEASE "2")
 set (CPACK_PACKAGE_DESCRIPTION_SUMMARY "YDK Bundle Library")
 # set (CPACK_PACKAGE_DESCRIPTION_SUMMARY ${YDK_DESCRIPTION})
 
@@ -130,7 +130,7 @@ set(libydk_ietf_src ydk/models/ietf/generated_entity_lookup.cpp ydk/models/ietf/
 
 set(libydk_ietf_headers ydk/models/ietf/bundle_info.hpp ydk/models/ietf/iana_if_type.hpp ydk/models/ietf/ietf_diffserv_action.hpp ydk/models/ietf/ietf_diffserv_classifier.hpp ydk/models/ietf/ietf_diffserv_policy.hpp ydk/models/ietf/ietf_diffserv_target.hpp ydk/models/ietf/ietf_event_notifications.hpp ydk/models/ietf/ietf_inet_types.hpp ydk/models/ietf/ietf_interfaces.hpp ydk/models/ietf/ietf_ip.hpp ydk/models/ietf/ietf_ipv4_unicast_routing.hpp ydk/models/ietf/ietf_ipv6_unicast_routing.hpp ydk/models/ietf/ietf_key_chain.hpp ydk/models/ietf/ietf_netconf.hpp ydk/models/ietf/ietf_netconf_acm.hpp ydk/models/ietf/ietf_netconf_monitoring.hpp ydk/models/ietf/ietf_netconf_with_defaults.hpp ydk/models/ietf/ietf_ospf.hpp ydk/models/ietf/ietf_restconf_monitoring.hpp ydk/models/ietf/ietf_routing.hpp ydk/models/ietf/ietf_syslog_types.hpp ydk/models/ietf/ietf_yang_library.hpp ydk/models/ietf/ietf_yang_push.hpp ydk/models/ietf/ietf_yang_smiv2.hpp ydk/models/ietf/policy_types.hpp)
 
-set(libydk_ietf_yang ietf-diffserv-policy.yang ietf-event-notifications.yang ietf-netconf-acm.yang ietf-ipv6-unicast-routing.yang ietf-inet-types.yang iana-if-type.yang ydk@2016-02-26.yang ietf-netconf.yang iana-crypt-hash.yang ietf-interfaces-ext.yang ietf-yang-push.yang ietf-routing.yang ietf-yang-types.yang ietf-ipv4-unicast-routing.yang ietf-diffserv-action.yang ietf-key-chain.yang ietf-ip.yang ietf-yang-smiv2.yang ietf-netconf-notifications.yang ietf-syslog-types.yang ietf-ospf.yang ietf-restconf-monitoring.yang ietf-diffserv-classifier.yang policy-types.yang ietf-interfaces.yang ietf-diffserv-target.yang ietf-netconf-with-defaults.yang ietf-yang-library.yang ietf-netconf-monitoring.yang)
+set(libydk_ietf_yang ietf-key-chain.yang ietf-yang-smiv2.yang ietf-ip.yang ietf-syslog-types.yang ietf-inet-types.yang ietf-routing.yang ydk@2016-02-26.yang ietf-restconf-monitoring.yang ietf-ospf.yang ietf-netconf-acm.yang ietf-interfaces-ext.yang ietf-diffserv-policy.yang iana-crypt-hash.yang ietf-yang-types.yang ietf-diffserv-target.yang iana-if-type.yang ietf-interfaces.yang ietf-netconf-monitoring.yang policy-types.yang ietf-ipv6-unicast-routing.yang ietf-netconf-with-defaults.yang ietf-yang-library.yang ietf-netconf.yang ietf-diffserv-classifier.yang ietf-diffserv-action.yang ietf-netconf-notifications.yang ietf-ipv4-unicast-routing.yang ietf-yang-push.yang ietf-event-notifications.yang)
 
 set (libydk_yang_dir ${CMAKE_CURRENT_BINARY_DIR}/ietf\@0.1.5)
 

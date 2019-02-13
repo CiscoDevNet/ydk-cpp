@@ -1704,6 +1704,7 @@ std::string Ntp::Racks::Rack::Slots::Slot::Instances::Instance::Associations::Pe
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-summary-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2214,6 +2215,7 @@ std::string Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDeta
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-detail-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3762,6 +3764,7 @@ std::string Ntp::Racks::Rack::Slots::Slot::Instances::Instance::AssociationsDeta
 {
     std::ostringstream path_buffer;
     path_buffer << "filter-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -867,6 +867,7 @@ std::string HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrI
 {
     std::ostringstream path_buffer;
     path_buffer << "otdr-event";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1037,6 +1038,7 @@ std::string HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrS
 {
     std::ostringstream path_buffer;
     path_buffer << "otdr-scan";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1185,6 +1187,7 @@ std::string HwModule::OtdrDetails::OtdrDetail::DataTypeDetail::Identifier::OtdrS
 {
     std::ostringstream path_buffer;
     path_buffer << "otdr-status";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1913,6 +1916,7 @@ std::string HwModule::Otdrs::Otdr::DataType::OtdrItem::OtdrEvent::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "otdr-event";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2083,6 +2087,7 @@ std::string HwModule::Otdrs::Otdr::DataType::OtdrScan::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "otdr-scan";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2231,6 +2236,7 @@ std::string HwModule::Otdrs::Otdr::DataType::OtdrStatus::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "otdr-status";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -620,6 +620,7 @@ std::string Alarms::Detail::DetailSystem::Conditions::AlarmInfo::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "alarm-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1306,6 +1307,7 @@ std::string Alarms::Detail::DetailSystem::Active::AlarmInfo::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "alarm-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1992,6 +1994,7 @@ std::string Alarms::Detail::DetailSystem::History::AlarmInfo::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "alarm-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2671,6 +2674,7 @@ std::string Alarms::Detail::DetailSystem::Suppressed::SuppressedInfo::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "suppressed-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3482,6 +3486,7 @@ std::string Alarms::Detail::DetailSystem::Clients::ClientInfo::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "client-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4265,6 +4270,7 @@ std::string Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Conditi
 {
     std::ostringstream path_buffer;
     path_buffer << "alarm-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4923,6 +4929,7 @@ std::string Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Active:
 {
     std::ostringstream path_buffer;
     path_buffer << "alarm-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5581,6 +5588,7 @@ std::string Alarms::Detail::DetailCard::DetailLocations::DetailLocation::History
 {
     std::ostringstream path_buffer;
     path_buffer << "alarm-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6232,6 +6240,7 @@ std::string Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Suppres
 {
     std::ostringstream path_buffer;
     path_buffer << "suppressed-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7015,6 +7024,7 @@ std::string Alarms::Detail::DetailCard::DetailLocations::DetailLocation::Clients
 {
     std::ostringstream path_buffer;
     path_buffer << "client-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7827,6 +7837,7 @@ std::string Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Conditions:
 {
     std::ostringstream path_buffer;
     path_buffer << "alarm-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8096,6 +8107,7 @@ std::string Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Active::Ala
 {
     std::ostringstream path_buffer;
     path_buffer << "alarm-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8365,6 +8377,7 @@ std::string Alarms::Brief::BriefCard::BriefLocations::BriefLocation::History::Al
 {
     std::ostringstream path_buffer;
     path_buffer << "alarm-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8634,6 +8647,7 @@ std::string Alarms::Brief::BriefCard::BriefLocations::BriefLocation::Suppressed:
 {
     std::ostringstream path_buffer;
     path_buffer << "suppressed-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9060,6 +9074,7 @@ std::string Alarms::Brief::BriefSystem::Conditions::AlarmInfo::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "alarm-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9343,6 +9358,7 @@ std::string Alarms::Brief::BriefSystem::Active::AlarmInfo::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "alarm-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9626,6 +9642,7 @@ std::string Alarms::Brief::BriefSystem::History::AlarmInfo::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "alarm-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9909,6 +9926,7 @@ std::string Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "suppressed-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -1303,6 +1303,7 @@ std::string Ppp::Nodes::Node::Statistics::NcpStatisticsArray::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "ncp-statistics-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2376,6 +2377,7 @@ std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::MpInfo::MpMemberInf
 {
     std::ostringstream path_buffer;
     path_buffer << "mp-member-info-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2747,6 +2749,7 @@ std::string Ppp::Nodes::Node::NodeInterfaces::NodeInterface::NcpInfoArray::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "ncp-info-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5246,6 +5249,7 @@ std::string Ppp::Nodes::Node::NodeInterfaceStatistics::NodeInterfaceStatistic::N
 {
     std::ostringstream path_buffer;
     path_buffer << "ncp-statistics-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7285,6 +7289,7 @@ std::string Ppp::Nodes::Node::Summary::FsmStates::NcpfsmStatesArray::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "ncpfsm-states-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -375,6 +375,7 @@ std::string Igmp::Active::DefaultContext::Ranges::Range::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2672,6 +2673,7 @@ std::string Igmp::Active::DefaultContext::Groups::Group::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4869,6 +4871,7 @@ std::string Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "ssm-map-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5277,6 +5280,7 @@ std::string Igmp::Active::DefaultContext::SsmMapDetails::SsmMapDetail::Sources::
 {
     std::ostringstream path_buffer;
     path_buffer << "sources";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

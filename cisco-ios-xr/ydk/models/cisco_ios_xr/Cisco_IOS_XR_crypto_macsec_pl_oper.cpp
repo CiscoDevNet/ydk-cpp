@@ -2217,6 +2217,7 @@ std::string MacsecPlatform::Nodes::Node::Interfaces::Interface::HwStatistics::Ex
 {
     std::ostringstream path_buffer;
     path_buffer << "rx-sa-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6252,6 +6253,7 @@ std::string MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext
 {
     std::ostringstream path_buffer;
     path_buffer << "rx-sa";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11197,6 +11199,7 @@ std::string MacsecPlatform::Nodes::Node::Interfaces::Interface::SwStatistics::Ex
 {
     std::ostringstream path_buffer;
     path_buffer << "rx-sa-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

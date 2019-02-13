@@ -1034,6 +1034,7 @@ std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsic
 {
     std::ostringstream path_buffer;
     path_buffer << "rx-link";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2423,6 +2424,7 @@ std::string Fia::Nodes::Node::RxLinkInformation::LinkOptions::LinkOption::RxAsic
 {
     std::ostringstream path_buffer;
     path_buffer << "hist";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3405,6 +3407,7 @@ std::string Fia::Nodes::Node::DriverInformation::DeviceInfo::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "device-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3854,6 +3857,7 @@ std::string Fia::Nodes::Node::DriverInformation::CardInfo::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "card-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4253,6 +4257,7 @@ std::string Fia::Nodes::Node::DriverInformation::CardInfo::OirCircularBuffer::Fi
 {
     std::ostringstream path_buffer;
     path_buffer << "fia-oir-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5210,6 +5215,7 @@ std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOp
 {
     std::ostringstream path_buffer;
     path_buffer << "tx-link";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6379,6 +6385,7 @@ std::string Fia::Nodes::Node::TxLinkInformation::TxStatusOptionTable::TxStatusOp
 {
     std::ostringstream path_buffer;
     path_buffer << "hist";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8309,6 +8316,7 @@ std::string Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::DeviceInfo::
 {
     std::ostringstream path_buffer;
     path_buffer << "device-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8758,6 +8766,7 @@ std::string Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "card-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9157,6 +9166,7 @@ std::string Fia::Nodes::Node::OirHistory::Flags::Flag::Slots::Slot::CardInfo::Oi
 {
     std::ostringstream path_buffer;
     path_buffer << "fia-oir-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9949,6 +9959,7 @@ std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::Statistic
 {
     std::ostringstream path_buffer;
     path_buffer << "block-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10061,6 +10072,7 @@ std::string Fia::Nodes::Node::AsicStatistics::StatisticsAsicInstances::Statistic
 {
     std::ostringstream path_buffer;
     path_buffer << "field-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

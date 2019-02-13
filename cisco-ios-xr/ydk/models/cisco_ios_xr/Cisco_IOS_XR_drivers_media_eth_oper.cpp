@@ -2679,6 +2679,7 @@ std::string EthernetInterface::Interfaces::Interface::PhyInfo::PhyDetails::Lane:
 {
     std::ostringstream path_buffer;
     path_buffer << "lane";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3030,6 +3031,7 @@ std::string EthernetInterface::Interfaces::Interface::PhyInfo::ExtendedLoopback:
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-loopback";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5118,6 +5120,7 @@ std::string EthernetInterface::Interfaces::Interface::MacInfo::MulticastMacFilte
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-mac-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -164,3 +164,58 @@ TEST_CASE( "decode_multiple_json" )
     auto json_str = s.encode(*dn, EncodingFormat::JSON, true);
     REQUIRE(json_str == json_int_payload + json_bgp_payload);
 }
+
+TEST_CASE("test_no_key_list_path") {
+    std::string searchdir{TEST_HOME};
+    mock::MockSession sp{searchdir, test_openconfig};
+    auto & schema = sp.get_root_schema();
+    ydk::path::Codec codec{};
+
+    auto & runner = schema.create_datanode("ydktest-sanity:runner", "");
+    runner.create_datanode("no-key-list[1]/test", "t1");
+    runner.create_datanode("no-key-list[2]/test", "t2");
+
+    auto xml = codec.encode(runner, ydk::EncodingFormat::XML, true);
+    auto expected = R"(<runner xmlns="http://cisco.com/ns/yang/ydktest-sanity">
+  <no-key-list>
+    <test>t1</test>
+  </no-key-list>
+  <no-key-list>
+    <test>t2</test>
+  </no-key-list>
+</runner>
+)";
+    REQUIRE(xml== expected);
+
+    auto dn = codec.decode(schema, xml, ydk::EncodingFormat::XML);
+    REQUIRE(dn != nullptr);
+    auto real_dn = dn->get_children()[0];
+    REQUIRE(real_dn != nullptr);
+
+    auto xml_rt = codec.encode(*real_dn, ydk::EncodingFormat::XML, true);
+    REQUIRE(xml == xml_rt);
+}
+
+std::string value_error_json = R"({
+  "ydktest-sanity:runner": {
+    "ytypes": {
+      "built-in-t": {
+        "identity-llist": [
+          "ydktest-sanity:child-identity",
+          "ydktest-sanity:child-child-identity"
+        ]
+      }
+    }
+  }
+}
+)";
+
+TEST_CASE("value_error")
+{
+    ydk::path::Codec s{};
+    std::string searchdir{TEST_HOME};
+    mock::MockSession sp{searchdir, test_openconfig};
+    auto & schema = sp.get_root_schema();
+
+    CHECK_NOTHROW(s.decode(schema, value_error_json, EncodingFormat::JSON));
+}

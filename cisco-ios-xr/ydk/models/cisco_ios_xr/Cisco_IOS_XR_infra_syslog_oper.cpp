@@ -1436,6 +1436,7 @@ std::string Syslog::LoggingFiles::FileLogDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "file-log-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1641,6 +1642,7 @@ std::string Syslog::AnRemoteServers::AnRemoteLogServer::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "an-remote-log-server";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2982,6 +2984,7 @@ std::string Syslog::LoggingStatistics::RemoteLoggingStat::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-logging-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3081,6 +3084,7 @@ std::string Syslog::LoggingStatistics::TlsRemoteLoggingStat::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "tls-remote-logging-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3180,6 +3184,7 @@ std::string Syslog::LoggingStatistics::FileLoggingStat::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "file-logging-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

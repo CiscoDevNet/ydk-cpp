@@ -107,10 +107,76 @@ string entity_vector_to_string(vector<Entity*> & entity_list)
     return buf;
 }
 
+static shared_ptr<Entity>
+find_child_entity(shared_ptr<Entity> parent_entity, Entity & filter_entity)
+{
+    auto filter_absolute_path = filter_entity.get_absolute_path();
+    auto parent_absolute_path = parent_entity->get_absolute_path();
+
+    if (filter_absolute_path == parent_entity->get_absolute_path()) {
+        YLOG_DEBUG("find_child_entity: Filter matches with parent entity, returning");
+        return parent_entity;
+    }
+    YLOG_DEBUG("find_child_entity: Searching for filter entity '{}' under parent entity '{}'", filter_absolute_path, parent_absolute_path);
+
+	// Traverse parent_entity tree for search of matching filter entity
+	auto const & children = parent_entity->get_children();
+    if (children.empty()) {
+        YLOG_DEBUG("Children map is empty");
+        return nullptr;
+    }
+    auto filter_segment_path = filter_entity.get_segment_path();
+    auto it = children.find(filter_segment_path);
+    if (it != children.end()) {
+    	YLOG_DEBUG("Got child with matching segment path; absolute path is '{}'", it->second->get_absolute_path());
+        if (it->second->get_absolute_path() == filter_absolute_path)
+            return it->second;
+    }
+    YLOG_DEBUG("No matching child found");
+    for (auto it = children.begin(); it != children.end(); ++it) {
+        auto ch = find_child_entity(it->second, filter_entity);
+        if (ch != nullptr)
+            return ch;
+    }
+    return nullptr;
+}
+
+static shared_ptr<Entity>
+get_child_entity_from_top(shared_ptr<Entity> top_entity, Entity & filter_entity)
+{
+	shared_ptr<Entity> child_entity;
+	if (filter_entity.is_top_level_class) {
+        if (filter_entity.get_absolute_path() == top_entity->get_absolute_path()) {
+        	return top_entity;
+        }
+        else {
+            YLOG_ERROR("get_child_entity_from_top: The filter '{}' points to a different top-entity", filter_entity.get_absolute_path());
+        }
+    }
+    else {
+        YLOG_DEBUG("Searching for child entity matching non-top level filter '{}'", filter_entity.get_absolute_path());
+        child_entity = find_child_entity(top_entity, filter_entity);
+        if (child_entity != nullptr) {
+        	YLOG_DEBUG("Found matching child entity '{}'", child_entity->get_absolute_path());
+            child_entity->parent = nullptr;
+        }
+        else {
+        	YLOG_DEBUG("Matching child entity was not found");
+        }
+    }
+	return child_entity;
+}
+
 shared_ptr<Entity> get_top_entity_from_filter(Entity & filter)
 {
-    if(filter.parent == nullptr)
-        return filter.clone_ptr();
+    if (filter.parent == nullptr) {
+    	if (filter.is_top_level_class)
+            return filter.clone_ptr();
+    	else {
+    		YLOG_ERROR("get_top_entity_from_filter: Could not traverse from filter '{}' up to top-entity", filter.get_absolute_path());
+    	    return nullptr;
+    	}
+    }
 
     return get_top_entity_from_filter(*(filter.parent));
 }
@@ -119,9 +185,14 @@ shared_ptr<Entity> read_datanode(Entity & filter, shared_ptr<path::DataNode> rea
 {
     if (read_data_node == nullptr)
         return {};
+
     shared_ptr<Entity> top_entity = get_top_entity_from_filter(filter);
+    if (top_entity == nullptr)
+        return {};
+
     get_entity_from_data_node(read_data_node.get(), top_entity);
-    return top_entity;
+
+    return get_child_entity_from_top(top_entity, filter);
 }
 
 string get_data_payload(Entity & entity, const ServiceProvider & provider)
@@ -194,7 +265,7 @@ execute_rpc(ydk::ServiceProvider & provider, vector<Entity*> & filter_list,
     string xml_payload = "";
     for (Entity* entity : filter_list)
     {
-        if (data_tag == "filter" && provider.get_encoding() == EncodingFormat::XML) {
+        if (data_tag == "filter" && provider.get_encoding() == EncodingFormat::XML && entity->is_top_level_class) {
             xml_payload += get_xml_subtree_filter_payload(*entity, provider);
         }
         else {
@@ -221,8 +292,16 @@ execute_rpc(ydk::ServiceProvider & provider, vector<Entity*> & filter_list,
 
     // Build resulting list of entities
     for (Entity* entity : filter_list) {
-        string internal_key = entity->get_segment_path();
-        shared_ptr<path::DataNode> datanode = path_to_datanode[internal_key];
+        string internal_key = entity->get_absolute_path();
+        if (internal_key.empty())
+        	internal_key = entity->get_segment_path();
+        shared_ptr<path::DataNode> datanode;
+        for (auto dn_entry : path_to_datanode) {
+            if (internal_key.find(dn_entry.first) == 0) {
+            	datanode = dn_entry.second;
+            	break;
+            }
+        }
         if (!datanode) {
             YLOG_DEBUG("Searching for datanode using entity yang name '{}'", entity->yang_name);
             path_to_datanode.erase(internal_key);

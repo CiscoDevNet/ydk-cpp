@@ -6640,22 +6640,22 @@ Native::Ip::Ip()
     , tftp(std::make_shared<Native::Ip::Tftp>())
     , access_list(std::make_shared<Native::Ip::AccessList>())
     , device(std::make_shared<Native::Ip::Device>())
-    , igmp(std::make_shared<Native::Ip::Igmp>())
-    , radius(std::make_shared<Native::Ip::Radius>())
-    , tacacs(std::make_shared<Native::Ip::Tacacs>())
-    , nbar(std::make_shared<Native::Ip::Nbar>())
     , msdp(std::make_shared<Native::Ip::Msdp>())
     , mcr_conf(std::make_shared<Native::Ip::McrConf>())
     , multicast_routing(nullptr) // presence node
     , mroute(std::make_shared<Native::Ip::Mroute>())
-    , rsvp(std::make_shared<Native::Ip::Rsvp>())
-    , http(std::make_shared<Native::Ip::Http>())
-    , nat(std::make_shared<Native::Ip::Nat>())
-    , icmp(std::make_shared<Native::Ip::Icmp>())
+    , igmp(std::make_shared<Native::Ip::Igmp>())
     , community_list(std::make_shared<Native::Ip::CommunityList>())
     , extcommunity_list(std::make_shared<Native::Ip::ExtcommunityList>())
+    , icmp(std::make_shared<Native::Ip::Icmp>())
+    , nat(std::make_shared<Native::Ip::Nat>())
+    , nbar(std::make_shared<Native::Ip::Nbar>())
     , sla(std::make_shared<Native::Ip::Sla>())
+    , rsvp(std::make_shared<Native::Ip::Rsvp>())
     , wccp(std::make_shared<Native::Ip::Wccp>())
+    , radius(std::make_shared<Native::Ip::Radius>())
+    , tacacs(std::make_shared<Native::Ip::Tacacs>())
+    , http(std::make_shared<Native::Ip::Http>())
 {
     ospf->parent = this;
     admission->parent = this;
@@ -6688,21 +6688,21 @@ Native::Ip::Ip()
     tftp->parent = this;
     access_list->parent = this;
     device->parent = this;
-    igmp->parent = this;
-    radius->parent = this;
-    tacacs->parent = this;
-    nbar->parent = this;
     msdp->parent = this;
     mcr_conf->parent = this;
     mroute->parent = this;
-    rsvp->parent = this;
-    http->parent = this;
-    nat->parent = this;
-    icmp->parent = this;
+    igmp->parent = this;
     community_list->parent = this;
     extcommunity_list->parent = this;
+    icmp->parent = this;
+    nat->parent = this;
+    nbar->parent = this;
     sla->parent = this;
+    rsvp->parent = this;
     wccp->parent = this;
+    radius->parent = this;
+    tacacs->parent = this;
+    http->parent = this;
 
     yang_name = "ip"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -6760,22 +6760,22 @@ bool Native::Ip::has_data() const
 	|| (tftp !=  nullptr && tftp->has_data())
 	|| (access_list !=  nullptr && access_list->has_data())
 	|| (device !=  nullptr && device->has_data())
-	|| (igmp !=  nullptr && igmp->has_data())
-	|| (radius !=  nullptr && radius->has_data())
-	|| (tacacs !=  nullptr && tacacs->has_data())
-	|| (nbar !=  nullptr && nbar->has_data())
 	|| (msdp !=  nullptr && msdp->has_data())
 	|| (mcr_conf !=  nullptr && mcr_conf->has_data())
 	|| (multicast_routing !=  nullptr && multicast_routing->has_data())
 	|| (mroute !=  nullptr && mroute->has_data())
-	|| (rsvp !=  nullptr && rsvp->has_data())
-	|| (http !=  nullptr && http->has_data())
-	|| (nat !=  nullptr && nat->has_data())
-	|| (icmp !=  nullptr && icmp->has_data())
+	|| (igmp !=  nullptr && igmp->has_data())
 	|| (community_list !=  nullptr && community_list->has_data())
 	|| (extcommunity_list !=  nullptr && extcommunity_list->has_data())
+	|| (icmp !=  nullptr && icmp->has_data())
+	|| (nat !=  nullptr && nat->has_data())
+	|| (nbar !=  nullptr && nbar->has_data())
 	|| (sla !=  nullptr && sla->has_data())
-	|| (wccp !=  nullptr && wccp->has_data());
+	|| (rsvp !=  nullptr && rsvp->has_data())
+	|| (wccp !=  nullptr && wccp->has_data())
+	|| (radius !=  nullptr && radius->has_data())
+	|| (tacacs !=  nullptr && tacacs->has_data())
+	|| (http !=  nullptr && http->has_data());
 }
 
 bool Native::Ip::has_operation() const
@@ -6827,22 +6827,22 @@ bool Native::Ip::has_operation() const
 	|| (tftp !=  nullptr && tftp->has_operation())
 	|| (access_list !=  nullptr && access_list->has_operation())
 	|| (device !=  nullptr && device->has_operation())
-	|| (igmp !=  nullptr && igmp->has_operation())
-	|| (radius !=  nullptr && radius->has_operation())
-	|| (tacacs !=  nullptr && tacacs->has_operation())
-	|| (nbar !=  nullptr && nbar->has_operation())
 	|| (msdp !=  nullptr && msdp->has_operation())
 	|| (mcr_conf !=  nullptr && mcr_conf->has_operation())
 	|| (multicast_routing !=  nullptr && multicast_routing->has_operation())
 	|| (mroute !=  nullptr && mroute->has_operation())
-	|| (rsvp !=  nullptr && rsvp->has_operation())
-	|| (http !=  nullptr && http->has_operation())
-	|| (nat !=  nullptr && nat->has_operation())
-	|| (icmp !=  nullptr && icmp->has_operation())
+	|| (igmp !=  nullptr && igmp->has_operation())
 	|| (community_list !=  nullptr && community_list->has_operation())
 	|| (extcommunity_list !=  nullptr && extcommunity_list->has_operation())
+	|| (icmp !=  nullptr && icmp->has_operation())
+	|| (nat !=  nullptr && nat->has_operation())
+	|| (nbar !=  nullptr && nbar->has_operation())
 	|| (sla !=  nullptr && sla->has_operation())
-	|| (wccp !=  nullptr && wccp->has_operation());
+	|| (rsvp !=  nullptr && rsvp->has_operation())
+	|| (wccp !=  nullptr && wccp->has_operation())
+	|| (radius !=  nullptr && radius->has_operation())
+	|| (tacacs !=  nullptr && tacacs->has_operation())
+	|| (http !=  nullptr && http->has_operation());
 }
 
 std::string Native::Ip::get_absolute_path() const
@@ -7199,42 +7199,6 @@ std::shared_ptr<ydk::Entity> Native::Ip::get_child_by_name(const std::string & c
         return device;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-igmp:igmp")
-    {
-        if(igmp == nullptr)
-        {
-            igmp = std::make_shared<Native::Ip::Igmp>();
-        }
-        return igmp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-aaa:radius")
-    {
-        if(radius == nullptr)
-        {
-            radius = std::make_shared<Native::Ip::Radius>();
-        }
-        return radius;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-aaa:tacacs")
-    {
-        if(tacacs == nullptr)
-        {
-            tacacs = std::make_shared<Native::Ip::Tacacs>();
-        }
-        return tacacs;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-nbar:nbar")
-    {
-        if(nbar == nullptr)
-        {
-            nbar = std::make_shared<Native::Ip::Nbar>();
-        }
-        return nbar;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-multicast:msdp")
     {
         if(msdp == nullptr)
@@ -7271,40 +7235,13 @@ std::shared_ptr<ydk::Entity> Native::Ip::get_child_by_name(const std::string & c
         return mroute;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-rsvp:rsvp")
+    if(child_yang_name == "Cisco-IOS-XE-igmp:igmp")
     {
-        if(rsvp == nullptr)
+        if(igmp == nullptr)
         {
-            rsvp = std::make_shared<Native::Ip::Rsvp>();
+            igmp = std::make_shared<Native::Ip::Igmp>();
         }
-        return rsvp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-http:http")
-    {
-        if(http == nullptr)
-        {
-            http = std::make_shared<Native::Ip::Http>();
-        }
-        return http;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-nat:nat")
-    {
-        if(nat == nullptr)
-        {
-            nat = std::make_shared<Native::Ip::Nat>();
-        }
-        return nat;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-icmp:icmp")
-    {
-        if(icmp == nullptr)
-        {
-            icmp = std::make_shared<Native::Ip::Icmp>();
-        }
-        return icmp;
+        return igmp;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-bgp:community-list")
@@ -7325,6 +7262,33 @@ std::shared_ptr<ydk::Entity> Native::Ip::get_child_by_name(const std::string & c
         return extcommunity_list;
     }
 
+    if(child_yang_name == "Cisco-IOS-XE-icmp:icmp")
+    {
+        if(icmp == nullptr)
+        {
+            icmp = std::make_shared<Native::Ip::Icmp>();
+        }
+        return icmp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-nat:nat")
+    {
+        if(nat == nullptr)
+        {
+            nat = std::make_shared<Native::Ip::Nat>();
+        }
+        return nat;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-nbar:nbar")
+    {
+        if(nbar == nullptr)
+        {
+            nbar = std::make_shared<Native::Ip::Nbar>();
+        }
+        return nbar;
+    }
+
     if(child_yang_name == "Cisco-IOS-XE-sla:sla")
     {
         if(sla == nullptr)
@@ -7334,6 +7298,15 @@ std::shared_ptr<ydk::Entity> Native::Ip::get_child_by_name(const std::string & c
         return sla;
     }
 
+    if(child_yang_name == "Cisco-IOS-XE-rsvp:rsvp")
+    {
+        if(rsvp == nullptr)
+        {
+            rsvp = std::make_shared<Native::Ip::Rsvp>();
+        }
+        return rsvp;
+    }
+
     if(child_yang_name == "Cisco-IOS-XE-wccp:wccp")
     {
         if(wccp == nullptr)
@@ -7341,6 +7314,33 @@ std::shared_ptr<ydk::Entity> Native::Ip::get_child_by_name(const std::string & c
             wccp = std::make_shared<Native::Ip::Wccp>();
         }
         return wccp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-aaa:radius")
+    {
+        if(radius == nullptr)
+        {
+            radius = std::make_shared<Native::Ip::Radius>();
+        }
+        return radius;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-aaa:tacacs")
+    {
+        if(tacacs == nullptr)
+        {
+            tacacs = std::make_shared<Native::Ip::Tacacs>();
+        }
+        return tacacs;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-http:http")
+    {
+        if(http == nullptr)
+        {
+            http = std::make_shared<Native::Ip::Http>();
+        }
+        return http;
     }
 
     return nullptr;
@@ -7534,26 +7534,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ip::get_children() c
         _children["device"] = device;
     }
 
-    if(igmp != nullptr)
-    {
-        _children["Cisco-IOS-XE-igmp:igmp"] = igmp;
-    }
-
-    if(radius != nullptr)
-    {
-        _children["Cisco-IOS-XE-aaa:radius"] = radius;
-    }
-
-    if(tacacs != nullptr)
-    {
-        _children["Cisco-IOS-XE-aaa:tacacs"] = tacacs;
-    }
-
-    if(nbar != nullptr)
-    {
-        _children["Cisco-IOS-XE-nbar:nbar"] = nbar;
-    }
-
     if(msdp != nullptr)
     {
         _children["Cisco-IOS-XE-multicast:msdp"] = msdp;
@@ -7574,24 +7554,9 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ip::get_children() c
         _children["Cisco-IOS-XE-multicast:mroute"] = mroute;
     }
 
-    if(rsvp != nullptr)
+    if(igmp != nullptr)
     {
-        _children["Cisco-IOS-XE-rsvp:rsvp"] = rsvp;
-    }
-
-    if(http != nullptr)
-    {
-        _children["Cisco-IOS-XE-http:http"] = http;
-    }
-
-    if(nat != nullptr)
-    {
-        _children["Cisco-IOS-XE-nat:nat"] = nat;
-    }
-
-    if(icmp != nullptr)
-    {
-        _children["Cisco-IOS-XE-icmp:icmp"] = icmp;
+        _children["Cisco-IOS-XE-igmp:igmp"] = igmp;
     }
 
     if(community_list != nullptr)
@@ -7604,14 +7569,49 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ip::get_children() c
         _children["Cisco-IOS-XE-bgp:extcommunity-list"] = extcommunity_list;
     }
 
+    if(icmp != nullptr)
+    {
+        _children["Cisco-IOS-XE-icmp:icmp"] = icmp;
+    }
+
+    if(nat != nullptr)
+    {
+        _children["Cisco-IOS-XE-nat:nat"] = nat;
+    }
+
+    if(nbar != nullptr)
+    {
+        _children["Cisco-IOS-XE-nbar:nbar"] = nbar;
+    }
+
     if(sla != nullptr)
     {
         _children["Cisco-IOS-XE-sla:sla"] = sla;
     }
 
+    if(rsvp != nullptr)
+    {
+        _children["Cisco-IOS-XE-rsvp:rsvp"] = rsvp;
+    }
+
     if(wccp != nullptr)
     {
         _children["Cisco-IOS-XE-wccp:wccp"] = wccp;
+    }
+
+    if(radius != nullptr)
+    {
+        _children["Cisco-IOS-XE-aaa:radius"] = radius;
+    }
+
+    if(tacacs != nullptr)
+    {
+        _children["Cisco-IOS-XE-aaa:tacacs"] = tacacs;
+    }
+
+    if(http != nullptr)
+    {
+        _children["Cisco-IOS-XE-http:http"] = http;
     }
 
     return _children;
@@ -7687,7 +7687,7 @@ void Native::Ip::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool Native::Ip::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ospf" || name == "admission" || name == "arp" || name == "domain-list" || name == "finger" || name == "rcmd" || name == "bgp-community" || name == "vrf" || name == "as-path" || name == "local" || name == "cef" || name == "domain" || name == "domain-lookup-conf" || name == "domain-lookup" || name == "dns" || name == "dhcp" || name == "forward-protocol" || name == "gratuitous-arps-conf" || name == "ftp" || name == "telnet" || name == "host" || name == "multicast" || name == "name-server" || name == "pim" || name == "prefix-list" || name == "route" || name == "routing" || name == "explicit-path" || name == "scp" || name == "spd" || name == "bootp" || name == "ssh" || name == "tcp" || name == "tftp" || name == "access-list" || name == "device" || name == "igmp" || name == "radius" || name == "tacacs" || name == "nbar" || name == "msdp" || name == "mcr-conf" || name == "multicast-routing" || name == "mroute" || name == "rsvp" || name == "http" || name == "nat" || name == "icmp" || name == "community-list" || name == "extcommunity-list" || name == "sla" || name == "wccp" || name == "subnet-zero" || name == "host-routing" || name == "classless" || name == "domain-name" || name == "default-gateway" || name == "source-route")
+    if(name == "ospf" || name == "admission" || name == "arp" || name == "domain-list" || name == "finger" || name == "rcmd" || name == "bgp-community" || name == "vrf" || name == "as-path" || name == "local" || name == "cef" || name == "domain" || name == "domain-lookup-conf" || name == "domain-lookup" || name == "dns" || name == "dhcp" || name == "forward-protocol" || name == "gratuitous-arps-conf" || name == "ftp" || name == "telnet" || name == "host" || name == "multicast" || name == "name-server" || name == "pim" || name == "prefix-list" || name == "route" || name == "routing" || name == "explicit-path" || name == "scp" || name == "spd" || name == "bootp" || name == "ssh" || name == "tcp" || name == "tftp" || name == "access-list" || name == "device" || name == "msdp" || name == "mcr-conf" || name == "multicast-routing" || name == "mroute" || name == "igmp" || name == "community-list" || name == "extcommunity-list" || name == "icmp" || name == "nat" || name == "nbar" || name == "sla" || name == "rsvp" || name == "wccp" || name == "radius" || name == "tacacs" || name == "http" || name == "subnet-zero" || name == "host-routing" || name == "classless" || name == "domain-name" || name == "default-gateway" || name == "source-route")
         return true;
     return false;
 }

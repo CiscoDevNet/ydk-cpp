@@ -9439,6 +9439,176 @@ bool Native::Ipv6::Neighbor::has_leaf_or_child_of_name(const std::string & name)
     return false;
 }
 
+Native::Ipv6::MulticastRouting::MulticastRouting()
+    :
+    vrf{YType::str, "vrf"}
+{
+
+    yang_name = "multicast-routing"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
+}
+
+Native::Ipv6::MulticastRouting::~MulticastRouting()
+{
+}
+
+bool Native::Ipv6::MulticastRouting::has_data() const
+{
+    if (is_presence_container) return true;
+    return vrf.is_set;
+}
+
+bool Native::Ipv6::MulticastRouting::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vrf.yfilter);
+}
+
+std::string Native::Ipv6::MulticastRouting::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/ipv6/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Ipv6::MulticastRouting::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-multicast:multicast-routing";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Ipv6::MulticastRouting::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Ipv6::MulticastRouting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ipv6::MulticastRouting::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Ipv6::MulticastRouting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vrf")
+    {
+        vrf = value;
+        vrf.value_namespace = name_space;
+        vrf.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Ipv6::MulticastRouting::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf")
+    {
+        vrf.yfilter = yfilter;
+    }
+}
+
+bool Native::Ipv6::MulticastRouting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf")
+        return true;
+    return false;
+}
+
+Native::Ipv6::Rip::Rip()
+    :
+    vrf_mode{YType::enumeration, "vrf-mode"}
+{
+
+    yang_name = "rip"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Ipv6::Rip::~Rip()
+{
+}
+
+bool Native::Ipv6::Rip::has_data() const
+{
+    if (is_presence_container) return true;
+    return vrf_mode.is_set;
+}
+
+bool Native::Ipv6::Rip::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vrf_mode.yfilter);
+}
+
+std::string Native::Ipv6::Rip::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/ipv6/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Ipv6::Rip::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-rip:rip";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Ipv6::Rip::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vrf_mode.is_set || is_set(vrf_mode.yfilter)) leaf_name_data.push_back(vrf_mode.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Ipv6::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ipv6::Rip::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Ipv6::Rip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vrf-mode")
+    {
+        vrf_mode = value;
+        vrf_mode.value_namespace = name_space;
+        vrf_mode.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Ipv6::Rip::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vrf-mode")
+    {
+        vrf_mode.yfilter = yfilter;
+    }
+}
+
+bool Native::Ipv6::Rip::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vrf-mode")
+        return true;
+    return false;
+}
+
 Native::Ipv6::Mld::Mld()
     :
     snooping_conf(std::make_shared<Native::Ipv6::Mld::SnoopingConf>())
@@ -9933,176 +10103,6 @@ void Native::Ipv6::Mld::SsmMap::Static::set_filter(const std::string & value_pat
 bool Native::Ipv6::Mld::SsmMap::Static::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "acl" || name == "source-ip")
-        return true;
-    return false;
-}
-
-Native::Ipv6::MulticastRouting::MulticastRouting()
-    :
-    vrf{YType::str, "vrf"}
-{
-
-    yang_name = "multicast-routing"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
-}
-
-Native::Ipv6::MulticastRouting::~MulticastRouting()
-{
-}
-
-bool Native::Ipv6::MulticastRouting::has_data() const
-{
-    if (is_presence_container) return true;
-    return vrf.is_set;
-}
-
-bool Native::Ipv6::MulticastRouting::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(vrf.yfilter);
-}
-
-std::string Native::Ipv6::MulticastRouting::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/ipv6/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Ipv6::MulticastRouting::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-multicast:multicast-routing";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Ipv6::MulticastRouting::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (vrf.is_set || is_set(vrf.yfilter)) leaf_name_data.push_back(vrf.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Ipv6::MulticastRouting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ipv6::MulticastRouting::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Ipv6::MulticastRouting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "vrf")
-    {
-        vrf = value;
-        vrf.value_namespace = name_space;
-        vrf.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Ipv6::MulticastRouting::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "vrf")
-    {
-        vrf.yfilter = yfilter;
-    }
-}
-
-bool Native::Ipv6::MulticastRouting::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vrf")
-        return true;
-    return false;
-}
-
-Native::Ipv6::Rip::Rip()
-    :
-    vrf_mode{YType::enumeration, "vrf-mode"}
-{
-
-    yang_name = "rip"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Ipv6::Rip::~Rip()
-{
-}
-
-bool Native::Ipv6::Rip::has_data() const
-{
-    if (is_presence_container) return true;
-    return vrf_mode.is_set;
-}
-
-bool Native::Ipv6::Rip::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(vrf_mode.yfilter);
-}
-
-std::string Native::Ipv6::Rip::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/ipv6/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Ipv6::Rip::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-rip:rip";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Ipv6::Rip::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (vrf_mode.is_set || is_set(vrf_mode.yfilter)) leaf_name_data.push_back(vrf_mode.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Ipv6::Rip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Ipv6::Rip::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Ipv6::Rip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "vrf-mode")
-    {
-        vrf_mode = value;
-        vrf_mode.value_namespace = name_space;
-        vrf_mode.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Ipv6::Rip::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "vrf-mode")
-    {
-        vrf_mode.yfilter = yfilter;
-    }
-}
-
-bool Native::Ipv6::Rip::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vrf-mode")
         return true;
     return false;
 }

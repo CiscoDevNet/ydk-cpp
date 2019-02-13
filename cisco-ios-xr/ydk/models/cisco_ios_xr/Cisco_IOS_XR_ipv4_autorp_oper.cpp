@@ -602,6 +602,7 @@ std::string AutoRp::Standby::CandidateRp::Rps::Rp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rp";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1273,6 +1274,7 @@ std::string AutoRp::Standby::MappingAgent::RpAddresses::RpAddress::Range::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1968,6 +1970,7 @@ std::string AutoRp::Active::CandidateRp::Rps::Rp::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rp";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2639,6 +2642,7 @@ std::string AutoRp::Active::MappingAgent::RpAddresses::RpAddress::Range::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

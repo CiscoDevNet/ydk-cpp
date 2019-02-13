@@ -3736,20 +3736,20 @@ class Native::Router : public ydk::Entity
         class Isis; //type: Native::Router::Isis
         class IsisContainer; //type: Native::Router::IsisContainer
         class Ospf; //type: Native::Router::Ospf
-        class Lisp; //type: Native::Router::Lisp
-        class LispList; //type: Native::Router::LispList
         class Ospfv3; //type: Native::Router::Ospfv3
         class Bgp; //type: Native::Router::Bgp
+        class Lisp; //type: Native::Router::Lisp
+        class LispList; //type: Native::Router::LispList
         class Eigrp; //type: Native::Router::Eigrp
         class Rip; //type: Native::Router::Rip
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis> isis; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::IsisContainer> isis_container;
         ydk::YList ospf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp> lisp; // presence node
-        ydk::YList lisp_list;
         ydk::YList ospfv3;
         ydk::YList bgp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp> lisp; // presence node
+        ydk::YList lisp_list;
         ydk::YList eigrp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip> rip; // presence node
         

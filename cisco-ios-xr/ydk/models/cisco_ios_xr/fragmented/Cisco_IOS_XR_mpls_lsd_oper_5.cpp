@@ -4119,6 +4119,7 @@ std::string MplsLsd::Rewrite::RewritePws::RewritePw::RewriteId::RewriteId_::Loca
 {
     std::ostringstream path_buffer;
     path_buffer << "label-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4209,6 +4210,7 @@ std::string MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "associated-fpi";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5238,6 +5240,7 @@ std::string MplsLsd::Rewrite::RewritePws::RewritePw::AssociatedFpi::ApplicationO
 {
     std::ostringstream path_buffer;
     path_buffer << "application-owner";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5363,6 +5366,7 @@ std::string MplsLsd::Rewrite::RewritePws::RewritePw::V4Rpf::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "v4-rpf";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5455,6 +5459,7 @@ std::string MplsLsd::Rewrite::RewritePws::RewritePw::V6Rpf::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "v6-rpf";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5556,6 +5561,7 @@ std::string MplsLsd::Rewrite::RewritePws::RewritePw::Mois::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "mois";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5789,6 +5795,7 @@ std::string MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "moi-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8609,6 +8616,7 @@ std::string MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8690,6 +8698,7 @@ std::string MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv
 {
     std::ostringstream path_buffer;
     path_buffer << "label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9274,6 +9283,7 @@ std::string MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9355,6 +9365,7 @@ std::string MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::Stackv
 {
     std::ostringstream path_buffer;
     path_buffer << "label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10332,6 +10343,7 @@ std::string MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhSta
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10413,6 +10425,7 @@ std::string MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhSta
 {
     std::ostringstream path_buffer;
     path_buffer << "label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10508,6 +10521,7 @@ std::string MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhSta
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11213,6 +11227,7 @@ std::string MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhSta
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11294,6 +11309,7 @@ std::string MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhSta
 {
     std::ostringstream path_buffer;
     path_buffer << "label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11389,6 +11405,7 @@ std::string MplsLsd::Rewrite::RewritePws::RewritePw::Mois::MoiArray::Moi::NnhSta
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11774,6 +11791,7 @@ std::string MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "rewrite-ipv4";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13180,6 +13198,7 @@ std::string MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::FpiKey::ApplicationOwne
 {
     std::ostringstream path_buffer;
     path_buffer << "application-owner";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17701,6 +17720,7 @@ std::string MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::RewriteId::RewriteId_::
 {
     std::ostringstream path_buffer;
     path_buffer << "label-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17798,6 +17818,7 @@ std::string MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "associated-fpi";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18890,6 +18911,7 @@ std::string MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::AssociatedFpi::Applicat
 {
     std::ostringstream path_buffer;
     path_buffer << "application-owner";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19022,6 +19044,7 @@ std::string MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::V4Rpf::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "v4-rpf";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19121,6 +19144,7 @@ std::string MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::V6Rpf::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "v6-rpf";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19229,6 +19253,7 @@ std::string MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "mois";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19476,6 +19501,7 @@ std::string MplsLsd::Rewrite::RewriteIpv4s::RewriteIpv4::Mois::MoiArray::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "moi-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -570,6 +570,7 @@ std::string Grid::Nodes::Node::ClientXr::Client::ClientData::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "client-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -849,6 +850,7 @@ std::string Grid::Nodes::Node::Clients::Client::ClientData::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "client-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

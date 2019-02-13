@@ -603,6 +603,7 @@ std::string Rip::Vrfs::Vrf::Routes::Route::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -859,6 +860,7 @@ std::string Rip::Vrfs::Vrf::Routes::Route::Paths::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "paths";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2223,6 +2225,7 @@ std::string Rip::Vrfs::Vrf::Interfaces::Interface::RipSummary::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2346,6 +2349,7 @@ std::string Rip::Vrfs::Vrf::Interfaces::Interface::RipPeer::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-peer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2834,6 +2838,7 @@ std::string Rip::Vrfs::Vrf::Global::InterfaceSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3331,6 +3336,7 @@ std::string Rip::Protocol::Process::VrfSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrf-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3849,6 +3855,7 @@ std::string Rip::Protocol::DefaultVrf::Routes::Route::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4112,6 +4119,7 @@ std::string Rip::Protocol::DefaultVrf::Routes::Route::Paths::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "paths";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5504,6 +5512,7 @@ std::string Rip::Protocol::DefaultVrf::Interfaces::Interface::RipSummary::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5627,6 +5636,7 @@ std::string Rip::Protocol::DefaultVrf::Interfaces::Interface::RipPeer::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-peer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6136,6 +6146,7 @@ std::string Rip::Protocol::DefaultVrf::Global::InterfaceSummary::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6621,6 +6632,7 @@ std::string Rip::DefaultVrf::Routes::Route::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6884,6 +6896,7 @@ std::string Rip::DefaultVrf::Routes::Route::Paths::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "paths";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8276,6 +8289,7 @@ std::string Rip::DefaultVrf::Interfaces::Interface::RipSummary::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8399,6 +8413,7 @@ std::string Rip::DefaultVrf::Interfaces::Interface::RipPeer::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "rip-peer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8908,6 +8923,7 @@ std::string Rip::DefaultVrf::Global::InterfaceSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -31,6 +31,7 @@
 #include <vector>
 #include <map>
 #include "path_api.hpp"
+#include "filters.hpp"
 
 namespace ydk {
 
@@ -40,5 +41,6 @@ path::DataNode& get_data_node_from_entity(Entity & entity, path::RootSchemaNode 
 
 void get_entity_from_data_node(path::DataNode * node, std::shared_ptr<Entity> entity);
 
+YFilter get_data_node_yfilter(path::DataNode * node);
 }
 #endif /* _WALKER_HPP_ */

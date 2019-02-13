@@ -22257,6 +22257,7 @@ std::string Subscriber::Session::Nodes::Node::Ipv4AddressVrfSummaries::Ipv4Addre
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-address-vrf-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

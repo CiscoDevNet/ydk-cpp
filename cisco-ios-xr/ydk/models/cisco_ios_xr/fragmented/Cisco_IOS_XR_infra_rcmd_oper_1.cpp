@@ -55,6 +55,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summa
 {
     std::ostringstream path_buffer;
     path_buffer << "trigger-lsa";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -232,6 +233,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summa
 {
     std::ostringstream path_buffer;
     path_buffer << "time-line";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -427,6 +429,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summa
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-ip";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -533,6 +536,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summa
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-mpls";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -648,6 +652,7 @@ std::string Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::Summa
 {
     std::ostringstream path_buffer;
     path_buffer << "lsa-processed";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1517,6 +1522,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOff
 {
     std::ostringstream path_buffer;
     path_buffer << "path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1660,6 +1666,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOff
 {
     std::ostringstream path_buffer;
     path_buffer << "lfa-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1808,6 +1815,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOff
 {
     std::ostringstream path_buffer;
     path_buffer << "trigger-lsa";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1985,6 +1993,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOff
 {
     std::ostringstream path_buffer;
     path_buffer << "time-line";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2180,6 +2189,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOff
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-ip";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2286,6 +2296,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOff
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-mpls";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2401,6 +2412,7 @@ std::string Rcmd::Ospf::Instances::Instance::PrefixEventOfflines::PrefixEventOff
 {
     std::ostringstream path_buffer;
     path_buffer << "lsa-processed";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3440,6 +3452,7 @@ std::string Rcmd::Server::Normal::ProtocolConfig::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-config";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3548,6 +3561,7 @@ std::string Rcmd::Server::Normal::ProtocolConfig::Priority::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "priority";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3670,6 +3684,7 @@ std::string Rcmd::Server::Normal::ServerDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "server-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3792,6 +3807,7 @@ std::string Rcmd::Server::Normal::ServerDetail::TraceInformation::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "trace-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4414,6 +4430,7 @@ std::string Rcmd::Server::Detail::ProtocolConfig::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-config";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4522,6 +4539,7 @@ std::string Rcmd::Server::Detail::ProtocolConfig::Priority::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "priority";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4644,6 +4662,7 @@ std::string Rcmd::Server::Detail::ServerDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "server-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4766,6 +4785,7 @@ std::string Rcmd::Server::Detail::ServerDetail::TraceInformation::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "trace-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5017,6 +5037,7 @@ std::string Rcmd::Node::NodeInformation::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "node-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6040,6 +6061,7 @@ std::string Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSumm
 {
     std::ostringstream path_buffer;
     path_buffer << "ipfrr-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6219,6 +6241,7 @@ std::string Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSumm
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-node";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6361,6 +6384,7 @@ std::string Rcmd::Isis::Instances::Instance::IpfrrEventSummaries::IpfrrEventSumm
 {
     std::ostringstream path_buffer;
     path_buffer << "primary-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7441,6 +7465,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Spf
 {
     std::ostringstream path_buffer;
     path_buffer << "priority-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7986,6 +8011,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Spf
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8254,6 +8280,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Tri
 {
     std::ostringstream path_buffer;
     path_buffer << "trigger-lsp";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8399,6 +8426,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Pri
 {
     std::ostringstream path_buffer;
     path_buffer << "priority";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9103,6 +9131,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Pri
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9265,6 +9294,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Pri
 {
     std::ostringstream path_buffer;
     path_buffer << "convergence-timeline";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10334,6 +10364,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Pri
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-ip";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10551,6 +10582,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Pri
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-mpls";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10763,6 +10795,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Pri
 {
     std::ostringstream path_buffer;
     path_buffer << "leaf-networks-added";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10855,6 +10888,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Pri
 {
     std::ostringstream path_buffer;
     path_buffer << "leaf-networks-deleted";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10953,6 +10987,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Lsp
 {
     std::ostringstream path_buffer;
     path_buffer << "lsp-processed";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11082,6 +11117,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunSummaries::SpfRunSummary::Lsp
 {
     std::ostringstream path_buffer;
     path_buffer << "lsp-regenerated";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11630,6 +11666,7 @@ std::string Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffli
 {
     std::ostringstream path_buffer;
     path_buffer << "ipfrr-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11809,6 +11846,7 @@ std::string Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffli
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-node";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11951,6 +11989,7 @@ std::string Rcmd::Isis::Instances::Instance::IpfrrEventOfflines::IpfrrEventOffli
 {
     std::ostringstream path_buffer;
     path_buffer << "primary-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12649,6 +12688,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfS
 {
     std::ostringstream path_buffer;
     path_buffer << "priority-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13194,6 +13234,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::SpfS
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13462,6 +13503,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Trig
 {
     std::ostringstream path_buffer;
     path_buffer << "trigger-lsp";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13607,6 +13649,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prio
 {
     std::ostringstream path_buffer;
     path_buffer << "priority";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14311,6 +14354,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prio
 {
     std::ostringstream path_buffer;
     path_buffer << "frr-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14473,6 +14517,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prio
 {
     std::ostringstream path_buffer;
     path_buffer << "convergence-timeline";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15542,6 +15587,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prio
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-ip";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15759,6 +15805,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prio
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-mpls";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15971,6 +16018,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prio
 {
     std::ostringstream path_buffer;
     path_buffer << "leaf-networks-added";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16063,6 +16111,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::Prio
 {
     std::ostringstream path_buffer;
     path_buffer << "leaf-networks-deleted";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16161,6 +16210,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspP
 {
     std::ostringstream path_buffer;
     path_buffer << "lsp-processed";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16290,6 +16340,7 @@ std::string Rcmd::Isis::Instances::Instance::SpfRunOfflines::SpfRunOffline::LspR
 {
     std::ostringstream path_buffer;
     path_buffer << "lsp-regenerated";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17170,6 +17221,7 @@ std::string Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 {
     std::ostringstream path_buffer;
     path_buffer << "path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17313,6 +17365,7 @@ std::string Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 {
     std::ostringstream path_buffer;
     path_buffer << "lfa-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17461,6 +17514,7 @@ std::string Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 {
     std::ostringstream path_buffer;
     path_buffer << "trigger-lsa";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17638,6 +17692,7 @@ std::string Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 {
     std::ostringstream path_buffer;
     path_buffer << "time-line";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17833,6 +17888,7 @@ std::string Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-ip";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17939,6 +17995,7 @@ std::string Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-mpls";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18054,6 +18111,7 @@ std::string Rcmd::Isis::Instances::Instance::PrefixEventSummaries::PrefixEventSu
 {
     std::ostringstream path_buffer;
     path_buffer << "lsa-processed";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18923,6 +18981,7 @@ std::string Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOff
 {
     std::ostringstream path_buffer;
     path_buffer << "path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19066,6 +19125,7 @@ std::string Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOff
 {
     std::ostringstream path_buffer;
     path_buffer << "lfa-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19214,6 +19274,7 @@ std::string Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOff
 {
     std::ostringstream path_buffer;
     path_buffer << "trigger-lsa";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19391,6 +19452,7 @@ std::string Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOff
 {
     std::ostringstream path_buffer;
     path_buffer << "time-line";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19586,6 +19648,7 @@ std::string Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOff
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-ip";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19692,6 +19755,7 @@ std::string Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOff
 {
     std::ostringstream path_buffer;
     path_buffer << "lc-mpls";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19807,6 +19871,7 @@ std::string Rcmd::Isis::Instances::Instance::PrefixEventOfflines::PrefixEventOff
 {
     std::ostringstream path_buffer;
     path_buffer << "lsa-processed";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20391,6 +20456,7 @@ std::string Rcmd::Memory::MemoryInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "memory-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20551,6 +20617,7 @@ std::string Rcmd::Memory::EdmMemoryInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "edm-memory-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20678,6 +20745,7 @@ std::string Rcmd::Memory::StringMemoryInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "string-memory-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21571,6 +21639,7 @@ std::string Rcmd::Ldp::RemoteLfaS::RemoteLfa::SessionStatistic::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "session-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21742,6 +21811,7 @@ std::string Rcmd::Ldp::RemoteLfaS::RemoteLfa::RemoteNode::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-node";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21928,6 +21998,7 @@ std::string Rcmd::Ldp::RemoteLfaS::RemoteLfa::Logs::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "logs";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22412,6 +22483,7 @@ std::string Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::SessionStatistic::g
 {
     std::ostringstream path_buffer;
     path_buffer << "session-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -2466,6 +2466,7 @@ std::string Dot1x::Nodes::Node::Statistics::IfStats::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "if-stats";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4174,6 +4175,7 @@ std::string Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::AuthI
 {
     std::ostringstream path_buffer;
     path_buffer << "client";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4451,6 +4453,7 @@ std::string Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo::SuppI
 {
     std::ostringstream path_buffer;
     path_buffer << "client";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

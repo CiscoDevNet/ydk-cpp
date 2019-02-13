@@ -563,6 +563,7 @@ std::string Ocni::Vrfipv4::NetworkInstances::NetworkInstance::Protocols::Protoco
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1989,6 +1990,7 @@ std::string Ocni::Vrfipv6::NetworkInstances::NetworkInstance::Protocols::Protoco
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

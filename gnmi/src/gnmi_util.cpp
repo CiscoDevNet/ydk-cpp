@@ -27,6 +27,7 @@
 #include <ydk/errors.hpp>
 #include <ydk/logger.hpp>
 #include <ydk/entity_util.hpp>
+#include <ydk/common_utilities.hpp>
 
 #include "gnmi_util.hpp"
 
@@ -152,9 +153,6 @@ static void parse_entity(Entity & entity, gnmi::Path* path)
             }
             if (is_key && leaf_data.is_set) {
                 keys[name_value.first] = leaf_data.value;
-
-                // Add surrounding quotes for YDK to work with XR gNMI server
-                // keys[name_value.first] = "\"" + leaf_data.value + "\"";
             }
             else if (leaf_data.yfilter != YFilter::not_set) {
                 leafs[name_value.first] = to_string(leaf_data.yfilter);
@@ -212,23 +210,6 @@ static void parse_entity_children(Entity & entity, gnmi::Path* path)
     }
 }
 
-void parse_entity_prefix(Entity& entity, gnmi::Path* path)
-{
-    // Add origin and first container to the path
-    EntityPath root_path = get_entity_path(entity, nullptr);
-    auto s = root_path.path;
-    parse_prefix_to_path(s, path);
-}
-
-void parse_entity_to_path(Entity& entity, gnmi::Path* path)
-{
-    // Add origin and first container to the path
-    parse_entity_prefix(entity, path);
-
-    // Add children path
-    parse_entity_children(entity, path);
-}
-
 static void add_path_elem(gnmi::Path* path, string s)
 {
     map<string,string> keys{};
@@ -245,10 +226,6 @@ static void add_path_elem(gnmi::Path* path, string s)
             string key_value = key_path.substr(equal_pos+2, close_bracket_pos-equal_pos-3);
             keys[key_name] = key_value;
 
-            // Add surrounding quotes for YDK to work with XR gNMI server.
-            // This could be an issue with other gNMI servers
-            // keys[key_name] = "\""+key_value+"\"";
-
             if (close_bracket_pos == key_path.length()-1)
                 break;
             else
@@ -263,6 +240,38 @@ static void add_path_elem(gnmi::Path* path, string s)
         YLOG_DEBUG("gnmi_util::add_path_elem: Adding key value: '{}:{}'", key.first, key.second);
         (*key_map)[key.first] = key.second;
     }
+}
+
+namespace path {
+vector<string> segmentalize(const string& path);
+}
+
+void parse_entity_prefix(Entity& entity, gnmi::Path* path)
+{
+    // Add origin and first container to the path
+    EntityPath root_path = get_entity_path(entity, nullptr);
+    auto full_path = root_path.path;
+    vector<string> segments = ydk::path::segmentalize(full_path);
+    YLOG_DEBUG("parse_entity_prefix: Entity path: '{}'", full_path);
+    parse_prefix_to_path(segments[0], path);
+    auto segment_path = entity.get_segment_path();
+    for (size_t i=1; i < segments.size(); i++) {
+        if (segments[i] == segment_path)
+            break;
+        add_path_elem(path, segments[i]);
+    }
+}
+
+void parse_entity_to_path(Entity& entity, gnmi::Path* path)
+{
+    // Add origin and first container to the path
+    parse_entity_prefix(entity, path);
+
+    // Add children path
+    if (entity.is_top_level_class)
+        parse_entity_children(entity, path);
+    else
+        parse_entity(entity, path);
 }
 
 void parse_prefix_to_path(const string& prefix, gnmi::Path* path)
@@ -285,8 +294,6 @@ void parse_prefix_to_path(const string& prefix, gnmi::Path* path)
 }
 
 namespace path {
-
-vector<string> segmentalize(const string& path);
 
 static path::DataNode* get_last_datanode(DataNode* dn)
 {
@@ -317,10 +324,6 @@ void parse_datanode_to_path(DataNode* dn, gnmi::Path* path)
     std::vector<std::string> segments = path::segmentalize(full_path);
 
     YLOG_DEBUG("parse_datanode_to_path: Data node path: '{}'", full_path);
-    int count = 0;
-    for (auto segment : segments) {
-        YLOG_DEBUG("parse_datanode_to_path: Segment {}: '{}'", count++, segment);
-    }
 
     // Add origin and first container to the path
     auto s = segments[1];

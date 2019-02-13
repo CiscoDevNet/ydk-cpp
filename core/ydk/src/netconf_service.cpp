@@ -41,6 +41,7 @@ static shared_ptr<path::Rpc> get_rpc_instance(NetconfServiceProvider& provider, 
 static void create_input_leaf(path::DataNode & input_datanode, DataStore datastore, string && datastore_string, string & url);
 static void create_input_leaf(path::DataNode & input_datanode, DataStore datastore, string && datastore_string);
 static string datastore_to_string(DataStore datastore);
+static Entity * get_top_entity(Entity * entity);
 
 NetconfService::NetconfService()
 {
@@ -147,7 +148,10 @@ bool NetconfService::copy_config(NetconfServiceProvider& provider, DataStore tar
 {
     YLOG_INFO("Executing 'copy-config' RPC from [{}] to {}", source.get_segment_path(), datastore_to_string(target));
 
-    std::string entity_string = get_data_payload(source, provider);
+    auto top_entity = get_top_entity(&source);
+    std::string entity_string = (source.ignore_validation && top_entity->is_top_level_class) ?
+         get_xml_subtree_filter_payload(*top_entity, provider) :
+         get_data_payload(source, provider);
 
     return copy_payload(provider, target, entity_string);
 }
@@ -158,7 +162,10 @@ bool NetconfService::copy_config(NetconfServiceProvider& provider, DataStore tar
 
     string payload = "";
     for (auto entity : source_list) {
-        payload += get_data_payload(*entity, provider);
+        auto top_entity = get_top_entity(entity);
+        payload += (entity->ignore_validation && top_entity->is_top_level_class) ?
+            get_xml_subtree_filter_payload(*top_entity, provider) :
+            get_data_payload(*entity, provider);
     }
 
     return copy_payload(provider, target, payload);
@@ -229,7 +236,10 @@ bool NetconfService::edit_config(NetconfServiceProvider& provider, DataStore tar
 {
     YLOG_INFO("Executing 'edit-config' RPC on [{}]", config.get_segment_path());
 
-    std::string payload = get_data_payload(config, provider);
+    auto top_entity = get_top_entity(&config);
+    std::string payload = (config.ignore_validation && top_entity->is_top_level_class) ?
+            get_xml_subtree_filter_payload(*top_entity, provider) :
+            get_data_payload(config, provider);
 
     return edit_payload(provider, target, payload, default_operation, test_option, error_option);
 }
@@ -241,7 +251,10 @@ bool NetconfService::edit_config(NetconfServiceProvider& provider, DataStore tar
 
     string payload = "";
     for (auto entity : config_list) {
-        payload += get_xml_subtree_filter_payload(*entity, provider);
+        auto top_entity = get_top_entity(entity);
+        payload += (entity->ignore_validation && top_entity->is_top_level_class) ?
+                get_xml_subtree_filter_payload(*top_entity, provider) :
+                get_data_payload(*entity, provider);
     }
 
     return edit_payload(provider, target, payload, default_operation, test_option, error_option);
@@ -256,7 +269,10 @@ get_from_list(NetconfServiceProvider& provider, DataStore source, vector<Entity*
     // Build filter
     string filter_string = "";
     for (auto entity : filter_list) {
-        filter_string += get_xml_subtree_filter_payload(*entity, provider);
+        auto top_entity = get_top_entity(entity);
+        filter_string += (top_entity->is_top_level_class) ?
+            get_xml_subtree_filter_payload(*top_entity, provider) :
+            get_data_payload(*entity, provider);
     }
 
     // Source options: candidate | running | startup
@@ -327,8 +343,10 @@ get_entity(NetconfServiceProvider& provider, DataStore source, Entity& filter, c
         create_input_leaf(rpc->get_input_node(), source, "source");
     }
 
-    // filter
-    std::string filter_string  = get_xml_subtree_filter_payload(filter, provider);
+    auto top_entity = get_top_entity(&filter);
+    string filter_string = (top_entity->is_top_level_class) ?
+        get_xml_subtree_filter_payload(*top_entity, provider) :
+        get_data_payload(filter, provider);
     rpc->get_input_node().create_datanode("filter", filter_string);
 
     shared_ptr<path::DataNode> result_datanode = (*rpc)(provider.get_session());
@@ -483,6 +501,18 @@ static string datastore_to_string(DataStore datastore)
         default:
             return "na";
     }
+}
+
+static Entity * get_top_entity(Entity * entity)
+{
+	Entity * top_entity = entity;
+    while (top_entity->parent && !top_entity->is_top_level_class) {
+        top_entity = top_entity->parent;
+    }
+    if (entity->ignore_validation && !top_entity->is_top_level_class) {
+        YLOG_WARN("get_top_entity: Validation cannot be disable on non-top-level entity '{}'", entity->yang_name);
+    }
+    return top_entity;
 }
 
 }

@@ -52,6 +52,7 @@ std::string BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGrou
 {
     std::ostringstream path_buffer;
     path_buffer << "events-item";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -160,6 +161,7 @@ std::string BundleInformation::EventsMbr::EventsMbrIccpGroups::EventsMbrIccpGrou
 {
     std::ostringstream path_buffer;
     path_buffer << "items";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7839,6 +7841,7 @@ std::string BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpG
 {
     std::ostringstream path_buffer;
     path_buffer << "items";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8298,6 +8301,7 @@ std::string BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpG
 {
     std::ostringstream path_buffer;
     path_buffer << "node-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8724,6 +8728,7 @@ std::string BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpG
 {
     std::ostringstream path_buffer;
     path_buffer << "member-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9122,6 +9127,7 @@ std::string BundleInformation::MlacpMemberCounters::IccpGroups::IccpGroup::IccpG
 {
     std::ostringstream path_buffer;
     path_buffer << "member-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9836,6 +9842,7 @@ std::string BundleInformation::MlacpMemberCounters::Members::Member::MemberItem:
 {
     std::ostringstream path_buffer;
     path_buffer << "items";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10295,6 +10302,7 @@ std::string BundleInformation::MlacpMemberCounters::Members::Member::MemberItem:
 {
     std::ostringstream path_buffer;
     path_buffer << "node-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10721,6 +10729,7 @@ std::string BundleInformation::MlacpMemberCounters::Members::Member::MemberItem:
 {
     std::ostringstream path_buffer;
     path_buffer << "member-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11119,6 +11128,7 @@ std::string BundleInformation::MlacpMemberCounters::Members::Member::MemberItem:
 {
     std::ostringstream path_buffer;
     path_buffer << "member-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12199,6 +12209,7 @@ std::string BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem:
 {
     std::ostringstream path_buffer;
     path_buffer << "node-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12625,6 +12636,7 @@ std::string BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem:
 {
     std::ostringstream path_buffer;
     path_buffer << "member-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13023,6 +13035,7 @@ std::string BundleInformation::MlacpMemberCounters::Bundles::Bundle::BundleItem:
 {
     std::ostringstream path_buffer;
     path_buffer << "member-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13737,6 +13750,7 @@ std::string BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items
 {
     std::ostringstream path_buffer;
     path_buffer << "items";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14196,6 +14210,7 @@ std::string BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items
 {
     std::ostringstream path_buffer;
     path_buffer << "node-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14622,6 +14637,7 @@ std::string BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items
 {
     std::ostringstream path_buffer;
     path_buffer << "member-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15020,6 +15036,7 @@ std::string BundleInformation::MlacpMemberCounters::Nodes::Node::NodeItem::Items
 {
     std::ostringstream path_buffer;
     path_buffer << "member-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17007,6 +17024,7 @@ std::string Bundles::Bundles_::Bundle::Data::BfdConfig::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "bfd-config";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20175,6 +20193,7 @@ std::string BundlesAdjacency::Nodes::Node::Brief::BundleData::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "bundle-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20308,6 +20327,7 @@ std::string BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "sub-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

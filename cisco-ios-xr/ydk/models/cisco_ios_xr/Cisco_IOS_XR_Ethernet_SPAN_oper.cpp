@@ -3122,6 +3122,7 @@ std::string SpanMonitorSession::Nodes::Node::HardwareSessions::HardwareSession::
 {
     std::ostringstream path_buffer;
     path_buffer << "hardware-session";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4445,6 +4446,7 @@ std::string SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::
 {
     std::ostringstream path_buffer;
     path_buffer << "attachment";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -1532,6 +1532,82 @@ class Native::Interface::TenGigabitEthernet::Ip::Verify::Unicast::Source : publi
 }; // Native::Interface::TenGigabitEthernet::Ip::Verify::Unicast::Source
 
 
+class Native::Interface::TenGigabitEthernet::Ip::Flow : public ydk::Entity
+{
+    public:
+        Flow();
+        ~Flow();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ingress; //type: empty
+        ydk::YLeaf egress; //type: empty
+        class Monitor; //type: Native::Interface::TenGigabitEthernet::Ip::Flow::Monitor
+
+        ydk::YList monitor;
+        
+}; // Native::Interface::TenGigabitEthernet::Ip::Flow
+
+
+class Native::Interface::TenGigabitEthernet::Ip::Flow::Monitor : public ydk::Entity
+{
+    public:
+        Monitor();
+        ~Monitor();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf input; //type: empty
+        ydk::YLeaf output; //type: empty
+        ydk::YLeaf multicast; //type: empty
+        ydk::YLeaf unicast; //type: empty
+        class Sampler; //type: Native::Interface::TenGigabitEthernet::Ip::Flow::Monitor::Sampler
+
+        ydk::YList sampler;
+        
+}; // Native::Interface::TenGigabitEthernet::Ip::Flow::Monitor
+
+
+class Native::Interface::TenGigabitEthernet::Ip::Flow::Monitor::Sampler : public ydk::Entity
+{
+    public:
+        Sampler();
+        ~Sampler();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf direction; //type: Direction
+        ydk::YLeaf name; //type: string
+        class Direction;
+
+}; // Native::Interface::TenGigabitEthernet::Ip::Flow::Monitor::Sampler
+
+
 class Native::Interface::TenGigabitEthernet::Ip::Igmp : public ydk::Entity
 {
     public:
@@ -1649,127 +1725,6 @@ class Native::Interface::TenGigabitEthernet::Ip::Igmp::JoinGroup : public ydk::E
         ydk::YLeaf source; //type: string
 
 }; // Native::Interface::TenGigabitEthernet::Ip::Igmp::JoinGroup
-
-
-class Native::Interface::TenGigabitEthernet::Ip::Flow : public ydk::Entity
-{
-    public:
-        Flow();
-        ~Flow();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ingress; //type: empty
-        ydk::YLeaf egress; //type: empty
-        class Monitor; //type: Native::Interface::TenGigabitEthernet::Ip::Flow::Monitor
-
-        ydk::YList monitor;
-        
-}; // Native::Interface::TenGigabitEthernet::Ip::Flow
-
-
-class Native::Interface::TenGigabitEthernet::Ip::Flow::Monitor : public ydk::Entity
-{
-    public:
-        Monitor();
-        ~Monitor();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf input; //type: empty
-        ydk::YLeaf output; //type: empty
-        ydk::YLeaf multicast; //type: empty
-        ydk::YLeaf unicast; //type: empty
-        class Sampler; //type: Native::Interface::TenGigabitEthernet::Ip::Flow::Monitor::Sampler
-
-        ydk::YList sampler;
-        
-}; // Native::Interface::TenGigabitEthernet::Ip::Flow::Monitor
-
-
-class Native::Interface::TenGigabitEthernet::Ip::Flow::Monitor::Sampler : public ydk::Entity
-{
-    public:
-        Sampler();
-        ~Sampler();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf direction; //type: Direction
-        ydk::YLeaf name; //type: string
-        class Direction;
-
-}; // Native::Interface::TenGigabitEthernet::Ip::Flow::Monitor::Sampler
-
-
-class Native::Interface::TenGigabitEthernet::Ip::Nbar : public ydk::Entity
-{
-    public:
-        Nbar();
-        ~Nbar();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ProtocolDiscovery; //type: Native::Interface::TenGigabitEthernet::Ip::Nbar::ProtocolDiscovery
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Nbar::ProtocolDiscovery> protocol_discovery; // presence node
-        
-}; // Native::Interface::TenGigabitEthernet::Ip::Nbar
-
-
-class Native::Interface::TenGigabitEthernet::Ip::Nbar::ProtocolDiscovery : public ydk::Entity
-{
-    public:
-        ProtocolDiscovery();
-        ~ProtocolDiscovery();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ipv4_ipv6; //type: Ipv4Ipv6
-        class Ipv4Ipv6;
-
-}; // Native::Interface::TenGigabitEthernet::Ip::Nbar::ProtocolDiscovery
 
 
 class Native::Interface::TenGigabitEthernet::Ip::Ospf : public ydk::Entity
@@ -2275,6 +2230,75 @@ class Native::Interface::TenGigabitEthernet::Ip::Lisp : public ydk::Entity
 }; // Native::Interface::TenGigabitEthernet::Ip::Lisp
 
 
+class Native::Interface::TenGigabitEthernet::Ip::Nat : public ydk::Entity
+{
+    public:
+        Nat();
+        ~Nat();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf allow_static_host; //type: empty
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf inside; //type: empty
+        ydk::YLeaf outside; //type: empty
+
+}; // Native::Interface::TenGigabitEthernet::Ip::Nat
+
+
+class Native::Interface::TenGigabitEthernet::Ip::Nbar : public ydk::Entity
+{
+    public:
+        Nbar();
+        ~Nbar();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ProtocolDiscovery; //type: Native::Interface::TenGigabitEthernet::Ip::Nbar::ProtocolDiscovery
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ip::Nbar::ProtocolDiscovery> protocol_discovery; // presence node
+        
+}; // Native::Interface::TenGigabitEthernet::Ip::Nbar
+
+
+class Native::Interface::TenGigabitEthernet::Ip::Nbar::ProtocolDiscovery : public ydk::Entity
+{
+    public:
+        ProtocolDiscovery();
+        ~ProtocolDiscovery();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ipv4_ipv6; //type: Ipv4Ipv6
+        class Ipv4Ipv6;
+
+}; // Native::Interface::TenGigabitEthernet::Ip::Nbar::ProtocolDiscovery
+
+
 class Native::Interface::TenGigabitEthernet::Ip::Rsvp : public ydk::Entity
 {
     public:
@@ -2660,30 +2684,6 @@ class Native::Interface::TenGigabitEthernet::Ip::Rsvp::Tos : public ydk::Entity
 }; // Native::Interface::TenGigabitEthernet::Ip::Rsvp::Tos
 
 
-class Native::Interface::TenGigabitEthernet::Ip::Nat : public ydk::Entity
-{
-    public:
-        Nat();
-        ~Nat();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf allow_static_host; //type: empty
-        ydk::YLeaf enable; //type: empty
-        ydk::YLeaf inside; //type: empty
-        ydk::YLeaf outside; //type: empty
-
-}; // Native::Interface::TenGigabitEthernet::Ip::Nat
-
-
 class Native::Interface::TenGigabitEthernet::Ip::Wccp : public ydk::Entity
 {
     public:
@@ -2998,11 +2998,11 @@ class Native::Interface::TenGigabitEthernet::Ipv6 : public ydk::Entity
         class Tcp; //type: Native::Interface::TenGigabitEthernet::Ipv6::Tcp
         class TrafficFilter; //type: Native::Interface::TenGigabitEthernet::Ipv6::TrafficFilter
         class Flow; //type: Native::Interface::TenGigabitEthernet::Ipv6::Flow
-        class Crypto; //type: Native::Interface::TenGigabitEthernet::Ipv6::Crypto
-        class Ospf; //type: Native::Interface::TenGigabitEthernet::Ipv6::Ospf
         class NoPim; //type: Native::Interface::TenGigabitEthernet::Ipv6::NoPim
         class Pim; //type: Native::Interface::TenGigabitEthernet::Ipv6::Pim
+        class Ospf; //type: Native::Interface::TenGigabitEthernet::Ipv6::Ospf
         class Rip; //type: Native::Interface::TenGigabitEthernet::Ipv6::Rip
+        class Crypto; //type: Native::Interface::TenGigabitEthernet::Ipv6::Crypto
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ipv6::DestinationGuard> destination_guard; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ipv6::SourceGuard> source_guard; // presence node
@@ -3012,11 +3012,11 @@ class Native::Interface::TenGigabitEthernet::Ipv6 : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ipv6::Tcp> tcp;
         ydk::YList traffic_filter;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ipv6::Flow> flow;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ipv6::Crypto> crypto;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ipv6::Ospf> ospf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ipv6::NoPim> no_pim;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ipv6::Pim> pim;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ipv6::Ospf> ospf;
         ydk::YList rip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ipv6::Crypto> crypto;
         
 }; // Native::Interface::TenGigabitEthernet::Ipv6
 
@@ -3528,11 +3528,11 @@ class Native::Interface::TenGigabitEthernet::Ipv6::Flow::Monitor::Sampler : publ
 }; // Native::Interface::TenGigabitEthernet::Ipv6::Flow::Monitor::Sampler
 
 
-class Native::Interface::TenGigabitEthernet::Ipv6::Crypto : public ydk::Entity
+class Native::Interface::TenGigabitEthernet::Ipv6::NoPim : public ydk::Entity
 {
     public:
-        Crypto();
-        ~Crypto();
+        NoPim();
+        ~NoPim();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3544,16 +3544,16 @@ class Native::Interface::TenGigabitEthernet::Ipv6::Crypto : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf map; //type: string
+        ydk::YLeaf pim; //type: boolean
 
-}; // Native::Interface::TenGigabitEthernet::Ipv6::Crypto
+}; // Native::Interface::TenGigabitEthernet::Ipv6::NoPim
 
 
-class Native::Interface::TenGigabitEthernet::Ipv6::Ospf : public ydk::Entity
+class Native::Interface::TenGigabitEthernet::Ipv6::Pim : public ydk::Entity
 {
     public:
-        Ospf();
-        ~Ospf();
+        Pim();
+        ~Pim();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3565,37 +3565,13 @@ class Native::Interface::TenGigabitEthernet::Ipv6::Ospf : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf cost; //type: uint16
-        ydk::YLeaf dead_interval; //type: uint16
-        ydk::YLeaf hello_interval; //type: uint32
-        ydk::YLeaf priority; //type: uint8
-        ydk::YLeaf retransmit_interval; //type: uint32
-        ydk::YLeaf transmit_delay; //type: uint32
-        class Process; //type: Native::Interface::TenGigabitEthernet::Ipv6::Ospf::Process
-        class Authentication; //type: Native::Interface::TenGigabitEthernet::Ipv6::Ospf::Authentication
-        class Bfd; //type: Native::Interface::TenGigabitEthernet::Ipv6::Ospf::Bfd
-        class DatabaseFilter; //type: Native::Interface::TenGigabitEthernet::Ipv6::Ospf::DatabaseFilter
-        class DemandCircuit; //type: Native::Interface::TenGigabitEthernet::Ipv6::Ospf::DemandCircuit
-        class Encryption; //type: Native::Interface::TenGigabitEthernet::Ipv6::Ospf::Encryption
-        class FloodReduction; //type: Native::Interface::TenGigabitEthernet::Ipv6::Ospf::FloodReduction
-        class MtuIgnore; //type: Native::Interface::TenGigabitEthernet::Ipv6::Ospf::MtuIgnore
-        class Neighbor; //type: Native::Interface::TenGigabitEthernet::Ipv6::Ospf::Neighbor
-        class Network; //type: Native::Interface::TenGigabitEthernet::Ipv6::Ospf::Network
-        class Shutdown; //type: Native::Interface::TenGigabitEthernet::Ipv6::Ospf::Shutdown
+        ydk::YLeaf bfd; //type: empty
+        ydk::YLeaf dr_priority; //type: uint32
+        class Bsr; //type: Native::Interface::TenGigabitEthernet::Ipv6::Pim::Bsr
 
-        ydk::YList process;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ipv6::Ospf::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ipv6::Ospf::Bfd> bfd; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ipv6::Ospf::DatabaseFilter> database_filter;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ipv6::Ospf::DemandCircuit> demand_circuit; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ipv6::Ospf::Encryption> encryption;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ipv6::Ospf::FloodReduction> flood_reduction; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ipv6::Ospf::MtuIgnore> mtu_ignore; // presence node
-        ydk::YList neighbor;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ipv6::Ospf::Network> network;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ipv6::Ospf::Shutdown> shutdown; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TenGigabitEthernet::Ipv6::Pim::Bsr> bsr;
         
-}; // Native::Interface::TenGigabitEthernet::Ipv6::Ospf
+}; // Native::Interface::TenGigabitEthernet::Ipv6::Pim
 
 class Native::Interface::TenGigabitEthernet::Ip::Pim::PimMode : public ydk::Enum
 {
@@ -3632,6 +3608,14 @@ class Native::Interface::TenGigabitEthernet::Ip::Verify::Unicast::Source::Reacha
 
 };
 
+class Native::Interface::TenGigabitEthernet::Ip::Flow::Monitor::Sampler::Direction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf input;
+        static const ydk::Enum::YLeaf output;
+
+};
+
 class Native::Interface::TenGigabitEthernet::Ip::Igmp::StaticGroup::Groups::Name : public ydk::Enum
 {
     public:
@@ -3646,11 +3630,13 @@ class Native::Interface::TenGigabitEthernet::Ip::Igmp::StaticGroup::Groups::Sour
 
 };
 
-class Native::Interface::TenGigabitEthernet::Ip::Flow::Monitor::Sampler::Direction : public ydk::Enum
+class Native::Interface::TenGigabitEthernet::Ip::Ospf::Network : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf input;
-        static const ydk::Enum::YLeaf output;
+        static const ydk::Enum::YLeaf broadcast;
+        static const ydk::Enum::YLeaf non_broadcast;
+        static const ydk::Enum::YLeaf point_to_multipoint;
+        static const ydk::Enum::YLeaf point_to_point;
 
 };
 
@@ -3659,16 +3645,6 @@ class Native::Interface::TenGigabitEthernet::Ip::Nbar::ProtocolDiscovery::Ipv4Ip
     public:
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
-
-};
-
-class Native::Interface::TenGigabitEthernet::Ip::Ospf::Network : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf broadcast;
-        static const ydk::Enum::YLeaf non_broadcast;
-        static const ydk::Enum::YLeaf point_to_multipoint;
-        static const ydk::Enum::YLeaf point_to_point;
 
 };
 

@@ -3653,6 +3653,7 @@ std::string PerformanceManagementHistory::Global::Periodic::EthernetHistory::Eth
 {
     std::ostringstream path_buffer;
     path_buffer << "bip";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3773,6 +3774,7 @@ std::string PerformanceManagementHistory::Global::Periodic::EthernetHistory::Eth
 {
     std::ostringstream path_buffer;
     path_buffer << "frm-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16883,6 +16885,7 @@ std::string PerformanceManagementHistory::Global::Periodic::EthernetHistory::Eth
 {
     std::ostringstream path_buffer;
     path_buffer << "bip";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17003,6 +17006,7 @@ std::string PerformanceManagementHistory::Global::Periodic::EthernetHistory::Eth
 {
     std::ostringstream path_buffer;
     path_buffer << "frm-err";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

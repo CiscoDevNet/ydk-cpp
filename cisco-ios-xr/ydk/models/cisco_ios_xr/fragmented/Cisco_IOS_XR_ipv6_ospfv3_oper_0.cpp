@@ -1117,6 +1117,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::SummaryPrefixes::SummaryPrefi
 {
     std::ostringstream path_buffer;
     path_buffer << "summary-prefix";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1458,6 +1459,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::BorderRouters::BorderRouter::
 {
     std::ostringstream path_buffer;
     path_buffer << "border-router-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3081,6 +3083,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::AreaInformations::AreaInforma
 {
     std::ostringstream path_buffer;
     path_buffer << "area-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3413,6 +3416,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 {
     std::ostringstream path_buffer;
     path_buffer << "lsa";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5454,6 +5458,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 {
     std::ostringstream path_buffer;
     path_buffer << "link";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9742,6 +9747,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 {
     std::ostringstream path_buffer;
     path_buffer << "prefix";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10567,6 +10573,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaTable::Lsa:
 {
     std::ostringstream path_buffer;
     path_buffer << "prefix";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14282,6 +14289,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 {
     std::ostringstream path_buffer;
     path_buffer << "lsa";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16323,6 +16331,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 {
     std::ostringstream path_buffer;
     path_buffer << "link";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20611,6 +20620,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 {
     std::ostringstream path_buffer;
     path_buffer << "prefix";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21436,6 +21446,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::DatabaseTable::LsaInternalTab
 {
     std::ostringstream path_buffer;
     path_buffer << "prefix";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -26258,6 +26269,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::InterfaceProcessTable::Interf
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -26500,6 +26512,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::Redistributions::Redistributi
 {
     std::ostringstream path_buffer;
     path_buffer << "redistribution";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -26793,6 +26806,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "external-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -27220,6 +27234,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "route-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -27552,6 +27567,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::ExternalRoutes::ExternalRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -27753,6 +27769,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Requ
 {
     std::ostringstream path_buffer;
     path_buffer << "request";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -27926,6 +27943,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::RequestListProcessTable::Requ
 {
     std::ostringstream path_buffer;
     path_buffer << "request";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -29275,6 +29293,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood:
 {
     std::ostringstream path_buffer;
     path_buffer << "link-flood";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -29409,6 +29428,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood:
 {
     std::ostringstream path_buffer;
     path_buffer << "area-flood";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -29543,6 +29563,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::FloodListProcessTable::Flood:
 {
     std::ostringstream path_buffer;
     path_buffer << "as-flood";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -30356,6 +30377,7 @@ std::string Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetailTa
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -700,6 +700,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::get
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1573,6 +1574,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1850,6 +1852,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::Ext
 {
     std::ostringstream path_buffer;
     path_buffer << "ext-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1941,6 +1944,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::LocRib::Routes::Route::Ext
 {
     std::ostringstream path_buffer;
     path_buffer << "unknown-attributes";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2784,6 +2788,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3615,6 +3620,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3878,6 +3884,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "ext-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3962,6 +3969,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "unknown-attributes";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4525,6 +4533,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5356,6 +5365,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5619,6 +5629,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "ext-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5703,6 +5714,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "unknown-attributes";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6266,6 +6278,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7097,6 +7110,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7360,6 +7374,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "ext-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7444,6 +7459,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "unknown-attributes";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8007,6 +8023,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8838,6 +8855,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9101,6 +9119,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "ext-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9185,6 +9204,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv4Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "unknown-attributes";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9876,6 +9896,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::get
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10749,6 +10770,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11026,6 +11048,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::Ext
 {
     std::ostringstream path_buffer;
     path_buffer << "ext-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11117,6 +11140,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::LocRib::Routes::Route::Ext
 {
     std::ostringstream path_buffer;
     path_buffer << "unknown-attributes";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11960,6 +11984,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12791,6 +12816,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13054,6 +13080,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "ext-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13138,6 +13165,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "unknown-attributes";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13701,6 +13729,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14532,6 +14561,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14795,6 +14825,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "ext-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14879,6 +14910,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "unknown-attributes";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15442,6 +15474,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16273,6 +16306,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16536,6 +16570,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "ext-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16620,6 +16655,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "unknown-attributes";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17183,6 +17219,7 @@ std::string OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenC
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

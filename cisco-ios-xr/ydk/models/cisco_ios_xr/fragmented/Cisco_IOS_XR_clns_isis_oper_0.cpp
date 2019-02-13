@@ -763,6 +763,7 @@ std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1472,6 +1473,7 @@ std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Is
 {
     std::ostringstream path_buffer;
     path_buffer << "interfaces-afi-safi";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4142,6 +4144,7 @@ std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Is
 {
     std::ostringstream path_buffer;
     path_buffer << "levels-afi-safi";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7572,6 +7575,7 @@ std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Is
 {
     std::ostringstream path_buffer;
     path_buffer << "afi-safi";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13408,6 +13412,7 @@ std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Is
 {
     std::ostringstream path_buffer;
     path_buffer << "srgb-descriptor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13772,6 +13777,7 @@ std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Is
 {
     std::ostringstream path_buffer;
     path_buffer << "mt-ipv4-reachability-prefixe";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

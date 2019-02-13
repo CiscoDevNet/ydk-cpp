@@ -4173,6 +4173,7 @@ std::string Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdRefe
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-dhcpv6d-proxy-iid-reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4355,6 +4356,7 @@ std::string Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-dhcpv6d-proxy-vrf-reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4526,6 +4528,7 @@ std::string Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceRefere
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-dhcpv6d-proxy-interface-reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5028,6 +5031,7 @@ std::string Dhcpv6::Nodes::Node::Proxy::Statistics::Ipv6Dhcpv6dProxyStat::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-dhcpv6d-proxy-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6019,6 +6023,7 @@ std::string Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhc
 {
     std::ostringstream path_buffer;
     path_buffer << "bag-dhcpv6d-ia-id-pd-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6257,6 +6262,7 @@ std::string Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhc
 {
     std::ostringstream path_buffer;
     path_buffer << "bag-dhcpv6d-addr-attrb";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9135,6 +9141,7 @@ std::string Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDh
 {
     std::ostringstream path_buffer;
     path_buffer << "bag-dhcpv6d-ia-id-pd-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9373,6 +9380,7 @@ std::string Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDh
 {
     std::ostringstream path_buffer;
     path_buffer << "bag-dhcpv6d-addr-attrb";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12494,6 +12502,7 @@ std::string Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceRefer
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-dhcpv6d-server-interface-reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13488,6 +13497,7 @@ std::string Dhcpv6::Nodes::Node::Server::Statistics::Ipv6Dhcpv6dServerStat::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-dhcpv6d-server-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14502,6 +14512,7 @@ std::string Dhcpv6::Nodes::Node::Relay::Statistics::Ipv6Dhcpv6dRelayStat::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-dhcpv6d-relay-stat";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

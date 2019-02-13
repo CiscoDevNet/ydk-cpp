@@ -58,6 +58,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 {
     std::ostringstream path_buffer;
     path_buffer << "igp-label-stack-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -175,6 +176,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 {
     std::ostringstream path_buffer;
     path_buffer << "lstack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -258,6 +260,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixDetails::I
 {
     std::ostringstream path_buffer;
     path_buffer << "extension-object";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -812,6 +815,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhIn
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-local-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1714,6 +1718,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhIn
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3398,6 +3403,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhIn
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4946,6 +4952,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhIn
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6494,6 +6501,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhIn
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8042,6 +8050,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhIn
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8837,6 +8846,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhIn
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-remote-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9739,6 +9749,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhIn
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11965,6 +11976,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::PrefixMas
 {
     std::ostringstream path_buffer;
     path_buffer << "unicast-prefixe";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12057,6 +12069,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::PrefixMas
 {
     std::ostringstream path_buffer;
     path_buffer << "broadcast-prefixe";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12149,6 +12162,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::Summary::PrefixMas
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-prefix";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13535,6 +13549,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::In
 {
     std::ostringstream path_buffer;
     path_buffer << "evt-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13674,6 +13689,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::In
 {
     std::ostringstream path_buffer;
     path_buffer << "evt-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13883,6 +13899,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::In
 {
     std::ostringstream path_buffer;
     path_buffer << "evt-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14022,6 +14039,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::InterfaceInfos::In
 {
     std::ostringstream path_buffer;
     path_buffer << "evt-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14333,6 +14351,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 {
     std::ostringstream path_buffer;
     path_buffer << "ip-prefix-brief";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16233,6 +16252,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 {
     std::ostringstream path_buffer;
     path_buffer << "sanity-flag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16311,6 +16331,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-handle";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16389,6 +16410,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 {
     std::ostringstream path_buffer;
     path_buffer << "weights-of-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16467,6 +16489,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 {
     std::ostringstream path_buffer;
     path_buffer << "adjacency-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16545,6 +16568,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 {
     std::ostringstream path_buffer;
     path_buffer << "pbts-class-is-fallback-mapped";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16623,6 +16647,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 {
     std::ostringstream path_buffer;
     path_buffer << "pbts-fallback-to-drop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16701,6 +16726,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 {
     std::ostringstream path_buffer;
     path_buffer << "tunnel-is-forward-class";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16944,6 +16970,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 {
     std::ostringstream path_buffer;
     path_buffer << "fib-sh-tbl-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17802,6 +17829,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 {
     std::ostringstream path_buffer;
     path_buffer << "spd-ipencap";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17991,6 +18019,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 {
     std::ostringstream path_buffer;
     path_buffer << "ip-encap-hdr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18097,6 +18126,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18374,6 +18404,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 {
     std::ostringstream path_buffer;
     path_buffer << "recursive-lbl-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18470,6 +18501,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 {
     std::ostringstream path_buffer;
     path_buffer << "igp-label-stack-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18587,6 +18619,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 {
     std::ostringstream path_buffer;
     path_buffer << "lstack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18670,6 +18703,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::Ip
 {
     std::ostringstream path_buffer;
     path_buffer << "extension-object";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19224,6 +19258,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwa
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-remote-detail-hardware-ingress";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20126,6 +20161,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwa
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20921,6 +20957,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwa
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-local-detail-hardware-ingress";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21823,6 +21860,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwa
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23507,6 +23545,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwa
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25055,6 +25094,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwa
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -26603,6 +26643,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwa
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -28151,6 +28192,7 @@ std::string Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwa
 {
     std::ostringstream path_buffer;
     path_buffer << "nh-info-extension-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

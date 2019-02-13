@@ -12,6 +12,755 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
+Native::Interface::TwentyFiveGigE::Power::Inline::FourPair::FourPair()
+    :
+    forced{YType::empty, "forced"}
+{
+
+    yang_name = "four-pair"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwentyFiveGigE::Power::Inline::FourPair::~FourPair()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Power::Inline::FourPair::has_data() const
+{
+    if (is_presence_container) return true;
+    return forced.is_set;
+}
+
+bool Native::Interface::TwentyFiveGigE::Power::Inline::FourPair::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(forced.yfilter);
+}
+
+std::string Native::Interface::TwentyFiveGigE::Power::Inline::FourPair::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "four-pair";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Power::Inline::FourPair::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (forced.is_set || is_set(forced.yfilter)) leaf_name_data.push_back(forced.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Power::Inline::FourPair::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Power::Inline::FourPair::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::Power::Inline::FourPair::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "forced")
+    {
+        forced = value;
+        forced.value_namespace = name_space;
+        forced.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TwentyFiveGigE::Power::Inline::FourPair::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "forced")
+    {
+        forced.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TwentyFiveGigE::Power::Inline::FourPair::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "forced")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::Power::Inline::Police::Police()
+    :
+    action(std::make_shared<Native::Interface::TwentyFiveGigE::Power::Inline::Police::Action>())
+{
+    action->parent = this;
+
+    yang_name = "police"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::TwentyFiveGigE::Power::Inline::Police::~Police()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Power::Inline::Police::has_data() const
+{
+    if (is_presence_container) return true;
+    return (action !=  nullptr && action->has_data());
+}
+
+bool Native::Interface::TwentyFiveGigE::Power::Inline::Police::has_operation() const
+{
+    return is_set(yfilter)
+	|| (action !=  nullptr && action->has_operation());
+}
+
+std::string Native::Interface::TwentyFiveGigE::Power::Inline::Police::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "police";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Power::Inline::Police::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Power::Inline::Police::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "action")
+    {
+        if(action == nullptr)
+        {
+            action = std::make_shared<Native::Interface::TwentyFiveGigE::Power::Inline::Police::Action>();
+        }
+        return action;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Power::Inline::Police::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(action != nullptr)
+    {
+        _children["action"] = action;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::Power::Inline::Police::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TwentyFiveGigE::Power::Inline::Police::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Power::Inline::Police::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::Power::Inline::Police::Action::Action()
+    :
+    errdisable{YType::empty, "errdisable"},
+    log{YType::empty, "log"}
+{
+
+    yang_name = "action"; yang_parent_name = "police"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwentyFiveGigE::Power::Inline::Police::Action::~Action()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Power::Inline::Police::Action::has_data() const
+{
+    if (is_presence_container) return true;
+    return errdisable.is_set
+	|| log.is_set;
+}
+
+bool Native::Interface::TwentyFiveGigE::Power::Inline::Police::Action::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(errdisable.yfilter)
+	|| ydk::is_set(log.yfilter);
+}
+
+std::string Native::Interface::TwentyFiveGigE::Power::Inline::Police::Action::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "action";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Power::Inline::Police::Action::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (errdisable.is_set || is_set(errdisable.yfilter)) leaf_name_data.push_back(errdisable.get_name_leafdata());
+    if (log.is_set || is_set(log.yfilter)) leaf_name_data.push_back(log.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Power::Inline::Police::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Power::Inline::Police::Action::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::Power::Inline::Police::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "errdisable")
+    {
+        errdisable = value;
+        errdisable.value_namespace = name_space;
+        errdisable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "log")
+    {
+        log = value;
+        log.value_namespace = name_space;
+        log.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TwentyFiveGigE::Power::Inline::Police::Action::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "errdisable")
+    {
+        errdisable.yfilter = yfilter;
+    }
+    if(value_path == "log")
+    {
+        log.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TwentyFiveGigE::Power::Inline::Police::Action::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "errdisable" || name == "log")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::Power::Inline::Port::Port()
+    :
+    poe_ha{YType::empty, "poe-ha"},
+    perpetual_poe_ha{YType::empty, "perpetual-poe-ha"},
+    two_event{YType::empty, "two-event"}
+{
+
+    yang_name = "port"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwentyFiveGigE::Power::Inline::Port::~Port()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Power::Inline::Port::has_data() const
+{
+    if (is_presence_container) return true;
+    return poe_ha.is_set
+	|| perpetual_poe_ha.is_set
+	|| two_event.is_set;
+}
+
+bool Native::Interface::TwentyFiveGigE::Power::Inline::Port::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(poe_ha.yfilter)
+	|| ydk::is_set(perpetual_poe_ha.yfilter)
+	|| ydk::is_set(two_event.yfilter);
+}
+
+std::string Native::Interface::TwentyFiveGigE::Power::Inline::Port::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "port";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Power::Inline::Port::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (poe_ha.is_set || is_set(poe_ha.yfilter)) leaf_name_data.push_back(poe_ha.get_name_leafdata());
+    if (perpetual_poe_ha.is_set || is_set(perpetual_poe_ha.yfilter)) leaf_name_data.push_back(perpetual_poe_ha.get_name_leafdata());
+    if (two_event.is_set || is_set(two_event.yfilter)) leaf_name_data.push_back(two_event.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Power::Inline::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Power::Inline::Port::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::Power::Inline::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "poe-ha")
+    {
+        poe_ha = value;
+        poe_ha.value_namespace = name_space;
+        poe_ha.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "perpetual-poe-ha")
+    {
+        perpetual_poe_ha = value;
+        perpetual_poe_ha.value_namespace = name_space;
+        perpetual_poe_ha.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "two-event")
+    {
+        two_event = value;
+        two_event.value_namespace = name_space;
+        two_event.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TwentyFiveGigE::Power::Inline::Port::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "poe-ha")
+    {
+        poe_ha.yfilter = yfilter;
+    }
+    if(value_path == "perpetual-poe-ha")
+    {
+        perpetual_poe_ha.yfilter = yfilter;
+    }
+    if(value_path == "two-event")
+    {
+        two_event.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TwentyFiveGigE::Power::Inline::Port::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "poe-ha" || name == "perpetual-poe-ha" || name == "two-event")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::Power::Inline::Static::Static()
+    :
+    max{YType::int32, "max"}
+{
+
+    yang_name = "static"; yang_parent_name = "inline"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::TwentyFiveGigE::Power::Inline::Static::~Static()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Power::Inline::Static::has_data() const
+{
+    if (is_presence_container) return true;
+    return max.is_set;
+}
+
+bool Native::Interface::TwentyFiveGigE::Power::Inline::Static::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max.yfilter);
+}
+
+std::string Native::Interface::TwentyFiveGigE::Power::Inline::Static::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "static";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Power::Inline::Static::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max.is_set || is_set(max.yfilter)) leaf_name_data.push_back(max.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Power::Inline::Static::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Power::Inline::Static::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::Power::Inline::Static::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max")
+    {
+        max = value;
+        max.value_namespace = name_space;
+        max.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TwentyFiveGigE::Power::Inline::Static::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max")
+    {
+        max.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TwentyFiveGigE::Power::Inline::Static::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::CarrierDelay::CarrierDelay()
+    :
+    seconds{YType::uint8, "seconds"},
+    msec{YType::uint16, "msec"}
+        ,
+    down(std::make_shared<Native::Interface::TwentyFiveGigE::CarrierDelay::Down>())
+    , up(std::make_shared<Native::Interface::TwentyFiveGigE::CarrierDelay::Up>())
+{
+    down->parent = this;
+    up->parent = this;
+
+    yang_name = "carrier-delay"; yang_parent_name = "TwentyFiveGigE"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwentyFiveGigE::CarrierDelay::~CarrierDelay()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::CarrierDelay::has_data() const
+{
+    if (is_presence_container) return true;
+    return seconds.is_set
+	|| msec.is_set
+	|| (down !=  nullptr && down->has_data())
+	|| (up !=  nullptr && up->has_data());
+}
+
+bool Native::Interface::TwentyFiveGigE::CarrierDelay::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(seconds.yfilter)
+	|| ydk::is_set(msec.yfilter)
+	|| (down !=  nullptr && down->has_operation())
+	|| (up !=  nullptr && up->has_operation());
+}
+
+std::string Native::Interface::TwentyFiveGigE::CarrierDelay::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-ethernet:carrier-delay";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::CarrierDelay::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (msec.is_set || is_set(msec.yfilter)) leaf_name_data.push_back(msec.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::CarrierDelay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "down")
+    {
+        if(down == nullptr)
+        {
+            down = std::make_shared<Native::Interface::TwentyFiveGigE::CarrierDelay::Down>();
+        }
+        return down;
+    }
+
+    if(child_yang_name == "up")
+    {
+        if(up == nullptr)
+        {
+            up = std::make_shared<Native::Interface::TwentyFiveGigE::CarrierDelay::Up>();
+        }
+        return up;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::CarrierDelay::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(down != nullptr)
+    {
+        _children["down"] = down;
+    }
+
+    if(up != nullptr)
+    {
+        _children["up"] = up;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::CarrierDelay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "seconds")
+    {
+        seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "msec")
+    {
+        msec = value;
+        msec.value_namespace = name_space;
+        msec.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TwentyFiveGigE::CarrierDelay::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+    if(value_path == "msec")
+    {
+        msec.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TwentyFiveGigE::CarrierDelay::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "down" || name == "up" || name == "seconds" || name == "msec")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::CarrierDelay::Down::Down()
+    :
+    seconds{YType::uint8, "seconds"},
+    msec{YType::uint16, "msec"}
+{
+
+    yang_name = "down"; yang_parent_name = "carrier-delay"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwentyFiveGigE::CarrierDelay::Down::~Down()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::CarrierDelay::Down::has_data() const
+{
+    if (is_presence_container) return true;
+    return seconds.is_set
+	|| msec.is_set;
+}
+
+bool Native::Interface::TwentyFiveGigE::CarrierDelay::Down::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(seconds.yfilter)
+	|| ydk::is_set(msec.yfilter);
+}
+
+std::string Native::Interface::TwentyFiveGigE::CarrierDelay::Down::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "down";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::CarrierDelay::Down::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (msec.is_set || is_set(msec.yfilter)) leaf_name_data.push_back(msec.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::CarrierDelay::Down::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::CarrierDelay::Down::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::CarrierDelay::Down::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "seconds")
+    {
+        seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "msec")
+    {
+        msec = value;
+        msec.value_namespace = name_space;
+        msec.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TwentyFiveGigE::CarrierDelay::Down::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+    if(value_path == "msec")
+    {
+        msec.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TwentyFiveGigE::CarrierDelay::Down::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "seconds" || name == "msec")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::CarrierDelay::Up::Up()
+    :
+    seconds{YType::uint8, "seconds"},
+    msec{YType::uint16, "msec"}
+{
+
+    yang_name = "up"; yang_parent_name = "carrier-delay"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwentyFiveGigE::CarrierDelay::Up::~Up()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::CarrierDelay::Up::has_data() const
+{
+    if (is_presence_container) return true;
+    return seconds.is_set
+	|| msec.is_set;
+}
+
+bool Native::Interface::TwentyFiveGigE::CarrierDelay::Up::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(seconds.yfilter)
+	|| ydk::is_set(msec.yfilter);
+}
+
+std::string Native::Interface::TwentyFiveGigE::CarrierDelay::Up::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "up";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::CarrierDelay::Up::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (seconds.is_set || is_set(seconds.yfilter)) leaf_name_data.push_back(seconds.get_name_leafdata());
+    if (msec.is_set || is_set(msec.yfilter)) leaf_name_data.push_back(msec.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::CarrierDelay::Up::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::CarrierDelay::Up::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::CarrierDelay::Up::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "seconds")
+    {
+        seconds = value;
+        seconds.value_namespace = name_space;
+        seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "msec")
+    {
+        msec = value;
+        msec.value_namespace = name_space;
+        msec.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TwentyFiveGigE::CarrierDelay::Up::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "seconds")
+    {
+        seconds.yfilter = yfilter;
+    }
+    if(value_path == "msec")
+    {
+        msec.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TwentyFiveGigE::CarrierDelay::Up::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "seconds" || name == "msec")
+        return true;
+    return false;
+}
+
 Native::Interface::TwentyFiveGigE::ChannelGroup::ChannelGroup()
     :
     number{YType::uint16, "number"},
@@ -12250,172 +12999,328 @@ bool Native::Interface::TwentyFiveGigE::CiscoIOSXEEthernetMacsecOption::Macsec::
     return false;
 }
 
-Native::Interface::TwentyFiveGigE::ServicePolicy::ServicePolicy()
+Native::Interface::TwentyFiveGigE::Snmp::Snmp()
     :
-    history{YType::empty, "history"},
-    input{YType::str, "input"},
-    output{YType::str, "output"}
+    ifindex(std::make_shared<Native::Interface::TwentyFiveGigE::Snmp::Ifindex>())
+    , trap(std::make_shared<Native::Interface::TwentyFiveGigE::Snmp::Trap>())
+{
+    ifindex->parent = this;
+    trap->parent = this;
+
+    yang_name = "snmp"; yang_parent_name = "TwentyFiveGigE"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwentyFiveGigE::Snmp::~Snmp()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Snmp::has_data() const
+{
+    if (is_presence_container) return true;
+    return (ifindex !=  nullptr && ifindex->has_data())
+	|| (trap !=  nullptr && trap->has_data());
+}
+
+bool Native::Interface::TwentyFiveGigE::Snmp::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ifindex !=  nullptr && ifindex->has_operation())
+	|| (trap !=  nullptr && trap->has_operation());
+}
+
+std::string Native::Interface::TwentyFiveGigE::Snmp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-snmp:snmp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Snmp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Snmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ifindex")
+    {
+        if(ifindex == nullptr)
+        {
+            ifindex = std::make_shared<Native::Interface::TwentyFiveGigE::Snmp::Ifindex>();
+        }
+        return ifindex;
+    }
+
+    if(child_yang_name == "trap")
+    {
+        if(trap == nullptr)
+        {
+            trap = std::make_shared<Native::Interface::TwentyFiveGigE::Snmp::Trap>();
+        }
+        return trap;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Snmp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(ifindex != nullptr)
+    {
+        _children["ifindex"] = ifindex;
+    }
+
+    if(trap != nullptr)
+    {
+        _children["trap"] = trap;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::Snmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TwentyFiveGigE::Snmp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Snmp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ifindex" || name == "trap")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::Snmp::Ifindex::Ifindex()
+    :
+    persist{YType::empty, "persist"},
+    clear{YType::boolean, "clear"}
+{
+
+    yang_name = "ifindex"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwentyFiveGigE::Snmp::Ifindex::~Ifindex()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Snmp::Ifindex::has_data() const
+{
+    if (is_presence_container) return true;
+    return persist.is_set
+	|| clear.is_set;
+}
+
+bool Native::Interface::TwentyFiveGigE::Snmp::Ifindex::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(persist.yfilter)
+	|| ydk::is_set(clear.yfilter);
+}
+
+std::string Native::Interface::TwentyFiveGigE::Snmp::Ifindex::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ifindex";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Snmp::Ifindex::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (persist.is_set || is_set(persist.yfilter)) leaf_name_data.push_back(persist.get_name_leafdata());
+    if (clear.is_set || is_set(clear.yfilter)) leaf_name_data.push_back(clear.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Snmp::Ifindex::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Snmp::Ifindex::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::Snmp::Ifindex::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "persist")
+    {
+        persist = value;
+        persist.value_namespace = name_space;
+        persist.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "clear")
+    {
+        clear = value;
+        clear.value_namespace = name_space;
+        clear.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TwentyFiveGigE::Snmp::Ifindex::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "persist")
+    {
+        persist.yfilter = yfilter;
+    }
+    if(value_path == "clear")
+    {
+        clear.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TwentyFiveGigE::Snmp::Ifindex::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "persist" || name == "clear")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::Snmp::Trap::Trap()
+    :
+    link_status{YType::boolean, "link-status"}
         ,
-    type(std::make_shared<Native::Interface::TwentyFiveGigE::ServicePolicy::Type>())
+    link_status_capas(std::make_shared<Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas>())
 {
-    type->parent = this;
+    link_status_capas->parent = this;
 
-    yang_name = "service-policy"; yang_parent_name = "TwentyFiveGigE"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "trap"; yang_parent_name = "snmp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::TwentyFiveGigE::ServicePolicy::~ServicePolicy()
+Native::Interface::TwentyFiveGigE::Snmp::Trap::~Trap()
 {
 }
 
-bool Native::Interface::TwentyFiveGigE::ServicePolicy::has_data() const
+bool Native::Interface::TwentyFiveGigE::Snmp::Trap::has_data() const
 {
     if (is_presence_container) return true;
-    return history.is_set
-	|| input.is_set
-	|| output.is_set
-	|| (type !=  nullptr && type->has_data());
+    return link_status.is_set
+	|| (link_status_capas !=  nullptr && link_status_capas->has_data());
 }
 
-bool Native::Interface::TwentyFiveGigE::ServicePolicy::has_operation() const
+bool Native::Interface::TwentyFiveGigE::Snmp::Trap::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(history.yfilter)
-	|| ydk::is_set(input.yfilter)
-	|| ydk::is_set(output.yfilter)
-	|| (type !=  nullptr && type->has_operation());
+	|| ydk::is_set(link_status.yfilter)
+	|| (link_status_capas !=  nullptr && link_status_capas->has_operation());
 }
 
-std::string Native::Interface::TwentyFiveGigE::ServicePolicy::get_segment_path() const
+std::string Native::Interface::TwentyFiveGigE::Snmp::Trap::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-policy:service-policy";
+    path_buffer << "trap";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::ServicePolicy::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Snmp::Trap::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (history.is_set || is_set(history.yfilter)) leaf_name_data.push_back(history.get_name_leafdata());
-    if (input.is_set || is_set(input.yfilter)) leaf_name_data.push_back(input.get_name_leafdata());
-    if (output.is_set || is_set(output.yfilter)) leaf_name_data.push_back(output.get_name_leafdata());
+    if (link_status.is_set || is_set(link_status.yfilter)) leaf_name_data.push_back(link_status.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Snmp::Trap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "type")
+    if(child_yang_name == "link-status-capas")
     {
-        if(type == nullptr)
+        if(link_status_capas == nullptr)
         {
-            type = std::make_shared<Native::Interface::TwentyFiveGigE::ServicePolicy::Type>();
+            link_status_capas = std::make_shared<Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas>();
         }
-        return type;
+        return link_status_capas;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::ServicePolicy::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Snmp::Trap::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(type != nullptr)
+    if(link_status_capas != nullptr)
     {
-        _children["type"] = type;
+        _children["link-status-capas"] = link_status_capas;
     }
 
     return _children;
 }
 
-void Native::Interface::TwentyFiveGigE::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::TwentyFiveGigE::Snmp::Trap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "history")
+    if(value_path == "link-status")
     {
-        history = value;
-        history.value_namespace = name_space;
-        history.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "input")
-    {
-        input = value;
-        input.value_namespace = name_space;
-        input.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "output")
-    {
-        output = value;
-        output.value_namespace = name_space;
-        output.value_namespace_prefix = name_space_prefix;
+        link_status = value;
+        link_status.value_namespace = name_space;
+        link_status.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Interface::TwentyFiveGigE::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::TwentyFiveGigE::Snmp::Trap::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "history")
+    if(value_path == "link-status")
     {
-        history.yfilter = yfilter;
-    }
-    if(value_path == "input")
-    {
-        input.yfilter = yfilter;
-    }
-    if(value_path == "output")
-    {
-        output.yfilter = yfilter;
+        link_status.yfilter = yfilter;
     }
 }
 
-bool Native::Interface::TwentyFiveGigE::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::TwentyFiveGigE::Snmp::Trap::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "type" || name == "history" || name == "input" || name == "output")
+    if(name == "link-status-capas" || name == "link-status")
         return true;
     return false;
 }
 
-Native::Interface::TwentyFiveGigE::ServicePolicy::Type::Type()
+Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatusCapas()
     :
-    control(std::make_shared<Native::Interface::TwentyFiveGigE::ServicePolicy::Type::Control>())
-    , performance_monitor(std::make_shared<Native::Interface::TwentyFiveGigE::ServicePolicy::Type::PerformanceMonitor>())
-    , service_chain(std::make_shared<Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain>())
+    link_status(std::make_shared<Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus>())
 {
-    control->parent = this;
-    performance_monitor->parent = this;
-    service_chain->parent = this;
+    link_status->parent = this;
 
-    yang_name = "type"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "link-status-capas"; yang_parent_name = "trap"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::TwentyFiveGigE::ServicePolicy::Type::~Type()
+Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::~LinkStatusCapas()
 {
 }
 
-bool Native::Interface::TwentyFiveGigE::ServicePolicy::Type::has_data() const
+bool Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::has_data() const
 {
     if (is_presence_container) return true;
-    return (control !=  nullptr && control->has_data())
-	|| (performance_monitor !=  nullptr && performance_monitor->has_data())
-	|| (service_chain !=  nullptr && service_chain->has_data());
+    return (link_status !=  nullptr && link_status->has_data());
 }
 
-bool Native::Interface::TwentyFiveGigE::ServicePolicy::Type::has_operation() const
+bool Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::has_operation() const
 {
     return is_set(yfilter)
-	|| (control !=  nullptr && control->has_operation())
-	|| (performance_monitor !=  nullptr && performance_monitor->has_operation())
-	|| (service_chain !=  nullptr && service_chain->has_operation());
+	|| (link_status !=  nullptr && link_status->has_operation());
 }
 
-std::string Native::Interface::TwentyFiveGigE::ServicePolicy::Type::get_segment_path() const
+std::string Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "type";
+    path_buffer << "link-status-capas";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::ServicePolicy::Type::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -12424,2513 +13329,1573 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE
 
 }
 
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::ServicePolicy::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "control")
+    if(child_yang_name == "link-status")
     {
-        if(control == nullptr)
+        if(link_status == nullptr)
         {
-            control = std::make_shared<Native::Interface::TwentyFiveGigE::ServicePolicy::Type::Control>();
+            link_status = std::make_shared<Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus>();
         }
-        return control;
+        return link_status;
     }
 
-    if(child_yang_name == "performance-monitor")
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(link_status != nullptr)
     {
-        if(performance_monitor == nullptr)
+        _children["link-status"] = link_status;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-status")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::LinkStatus()
+    :
+    permit(std::make_shared<Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit>())
+{
+    permit->parent = this;
+
+    yang_name = "link-status"; yang_parent_name = "link-status-capas"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::~LinkStatus()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::has_data() const
+{
+    if (is_presence_container) return true;
+    return (permit !=  nullptr && permit->has_data());
+}
+
+bool Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::has_operation() const
+{
+    return is_set(yfilter)
+	|| (permit !=  nullptr && permit->has_operation());
+}
+
+std::string Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "link-status";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "permit")
+    {
+        if(permit == nullptr)
         {
-            performance_monitor = std::make_shared<Native::Interface::TwentyFiveGigE::ServicePolicy::Type::PerformanceMonitor>();
+            permit = std::make_shared<Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit>();
         }
-        return performance_monitor;
-    }
-
-    if(child_yang_name == "service-chain")
-    {
-        if(service_chain == nullptr)
-        {
-            service_chain = std::make_shared<Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain>();
-        }
-        return service_chain;
+        return permit;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::ServicePolicy::Type::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(control != nullptr)
+    if(permit != nullptr)
     {
-        _children["control"] = control;
-    }
-
-    if(performance_monitor != nullptr)
-    {
-        _children["performance-monitor"] = performance_monitor;
-    }
-
-    if(service_chain != nullptr)
-    {
-        _children["service-chain"] = service_chain;
+        _children["permit"] = permit;
     }
 
     return _children;
 }
 
-void Native::Interface::TwentyFiveGigE::ServicePolicy::Type::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::TwentyFiveGigE::ServicePolicy::Type::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::TwentyFiveGigE::ServicePolicy::Type::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "control" || name == "performance-monitor" || name == "service-chain")
+    if(name == "permit")
         return true;
     return false;
 }
 
-Native::Interface::TwentyFiveGigE::ServicePolicy::Type::Control::Control()
+Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::Permit()
     :
-    subscriber{YType::str, "subscriber"}
+    duplicates{YType::empty, "duplicates"}
 {
 
-    yang_name = "control"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "permit"; yang_parent_name = "link-status"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::TwentyFiveGigE::ServicePolicy::Type::Control::~Control()
+Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::~Permit()
 {
 }
 
-bool Native::Interface::TwentyFiveGigE::ServicePolicy::Type::Control::has_data() const
+bool Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::has_data() const
 {
     if (is_presence_container) return true;
-    return subscriber.is_set;
+    return duplicates.is_set;
 }
 
-bool Native::Interface::TwentyFiveGigE::ServicePolicy::Type::Control::has_operation() const
+bool Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(subscriber.yfilter);
+	|| ydk::is_set(duplicates.yfilter);
 }
 
-std::string Native::Interface::TwentyFiveGigE::ServicePolicy::Type::Control::get_segment_path() const
+std::string Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "control";
+    path_buffer << "permit";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::ServicePolicy::Type::Control::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (subscriber.is_set || is_set(subscriber.yfilter)) leaf_name_data.push_back(subscriber.get_name_leafdata());
+    if (duplicates.is_set || is_set(duplicates.yfilter)) leaf_name_data.push_back(duplicates.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::ServicePolicy::Type::Control::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::ServicePolicy::Type::Control::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void Native::Interface::TwentyFiveGigE::ServicePolicy::Type::Control::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "subscriber")
+    if(value_path == "duplicates")
     {
-        subscriber = value;
-        subscriber.value_namespace = name_space;
-        subscriber.value_namespace_prefix = name_space_prefix;
+        duplicates = value;
+        duplicates.value_namespace = name_space;
+        duplicates.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Interface::TwentyFiveGigE::ServicePolicy::Type::Control::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "subscriber")
+    if(value_path == "duplicates")
     {
-        subscriber.yfilter = yfilter;
+        duplicates.yfilter = yfilter;
     }
 }
 
-bool Native::Interface::TwentyFiveGigE::ServicePolicy::Type::Control::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::TwentyFiveGigE::Snmp::Trap::LinkStatusCapas::LinkStatus::Permit::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "subscriber")
+    if(name == "duplicates")
         return true;
     return false;
 }
 
-Native::Interface::TwentyFiveGigE::ServicePolicy::Type::PerformanceMonitor::PerformanceMonitor()
+Native::Interface::TwentyFiveGigE::Authentication::Authentication()
     :
-    direction{YType::enumeration, "direction"},
-    name{YType::str, "name"}
-{
-
-    yang_name = "performance-monitor"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwentyFiveGigE::ServicePolicy::Type::PerformanceMonitor::~PerformanceMonitor()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::ServicePolicy::Type::PerformanceMonitor::has_data() const
-{
-    if (is_presence_container) return true;
-    return direction.is_set
-	|| name.is_set;
-}
-
-bool Native::Interface::TwentyFiveGigE::ServicePolicy::Type::PerformanceMonitor::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(direction.yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string Native::Interface::TwentyFiveGigE::ServicePolicy::Type::PerformanceMonitor::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "performance-monitor";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::ServicePolicy::Type::PerformanceMonitor::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::ServicePolicy::Type::PerformanceMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::ServicePolicy::Type::PerformanceMonitor::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::ServicePolicy::Type::PerformanceMonitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "direction")
-    {
-        direction = value;
-        direction.value_namespace = name_space;
-        direction.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TwentyFiveGigE::ServicePolicy::Type::PerformanceMonitor::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "direction")
-    {
-        direction.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TwentyFiveGigE::ServicePolicy::Type::PerformanceMonitor::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "direction" || name == "name")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::ServiceChain()
-    :
-    input(std::make_shared<Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Input>())
-    , output(std::make_shared<Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Output>())
-{
-    input->parent = this;
-    output->parent = this;
-
-    yang_name = "service-chain"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::~ServiceChain()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::has_data() const
-{
-    if (is_presence_container) return true;
-    return (input !=  nullptr && input->has_data())
-	|| (output !=  nullptr && output->has_data());
-}
-
-bool Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::has_operation() const
-{
-    return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation())
-	|| (output !=  nullptr && output->has_operation());
-}
-
-std::string Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "service-chain";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "input")
-    {
-        if(input == nullptr)
-        {
-            input = std::make_shared<Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Input>();
-        }
-        return input;
-    }
-
-    if(child_yang_name == "output")
-    {
-        if(output == nullptr)
-        {
-            output = std::make_shared<Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Output>();
-        }
-        return output;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(input != nullptr)
-    {
-        _children["input"] = input;
-    }
-
-    if(output != nullptr)
-    {
-        _children["output"] = output;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input" || name == "output")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Input::Input()
-    :
-    name{YType::str, "name"}
-{
-
-    yang_name = "input"; yang_parent_name = "service-chain"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Input::~Input()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Input::has_data() const
-{
-    if (is_presence_container) return true;
-    return name.is_set;
-}
-
-bool Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Input::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Input::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "input";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Input::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Input::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Input::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Input::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Output::Output()
-    :
-    name{YType::str, "name"}
-{
-
-    yang_name = "output"; yang_parent_name = "service-chain"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Output::~Output()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Output::has_data() const
-{
-    if (is_presence_container) return true;
-    return name.is_set;
-}
-
-bool Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Output::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Output::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "output";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Output::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Output::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Output::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TwentyFiveGigE::ServicePolicy::Type::ServiceChain::Output::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::Auto::Auto()
-    :
-    qos(std::make_shared<Native::Interface::TwentyFiveGigE::Auto::Qos>())
-{
-    qos->parent = this;
-
-    yang_name = "auto"; yang_parent_name = "TwentyFiveGigE"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwentyFiveGigE::Auto::~Auto()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Auto::has_data() const
-{
-    if (is_presence_container) return true;
-    return (qos !=  nullptr && qos->has_data());
-}
-
-bool Native::Interface::TwentyFiveGigE::Auto::has_operation() const
-{
-    return is_set(yfilter)
-	|| (qos !=  nullptr && qos->has_operation());
-}
-
-std::string Native::Interface::TwentyFiveGigE::Auto::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:auto";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Auto::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "qos")
-    {
-        if(qos == nullptr)
-        {
-            qos = std::make_shared<Native::Interface::TwentyFiveGigE::Auto::Qos>();
-        }
-        return qos;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Auto::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(qos != nullptr)
-    {
-        _children["qos"] = qos;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::Auto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TwentyFiveGigE::Auto::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Auto::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "qos")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::Auto::Qos::Qos()
-    :
-    classify(nullptr) // presence node
-    , trust(nullptr) // presence node
-    , video(std::make_shared<Native::Interface::TwentyFiveGigE::Auto::Qos::Video>())
-    , voip(nullptr) // presence node
-{
-    video->parent = this;
-
-    yang_name = "qos"; yang_parent_name = "auto"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwentyFiveGigE::Auto::Qos::~Qos()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Auto::Qos::has_data() const
-{
-    if (is_presence_container) return true;
-    return (classify !=  nullptr && classify->has_data())
-	|| (trust !=  nullptr && trust->has_data())
-	|| (video !=  nullptr && video->has_data())
-	|| (voip !=  nullptr && voip->has_data());
-}
-
-bool Native::Interface::TwentyFiveGigE::Auto::Qos::has_operation() const
-{
-    return is_set(yfilter)
-	|| (classify !=  nullptr && classify->has_operation())
-	|| (trust !=  nullptr && trust->has_operation())
-	|| (video !=  nullptr && video->has_operation())
-	|| (voip !=  nullptr && voip->has_operation());
-}
-
-std::string Native::Interface::TwentyFiveGigE::Auto::Qos::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "qos";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Auto::Qos::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Auto::Qos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "classify")
-    {
-        if(classify == nullptr)
-        {
-            classify = std::make_shared<Native::Interface::TwentyFiveGigE::Auto::Qos::Classify>();
-        }
-        return classify;
-    }
-
-    if(child_yang_name == "trust")
-    {
-        if(trust == nullptr)
-        {
-            trust = std::make_shared<Native::Interface::TwentyFiveGigE::Auto::Qos::Trust>();
-        }
-        return trust;
-    }
-
-    if(child_yang_name == "video")
-    {
-        if(video == nullptr)
-        {
-            video = std::make_shared<Native::Interface::TwentyFiveGigE::Auto::Qos::Video>();
-        }
-        return video;
-    }
-
-    if(child_yang_name == "voip")
-    {
-        if(voip == nullptr)
-        {
-            voip = std::make_shared<Native::Interface::TwentyFiveGigE::Auto::Qos::Voip>();
-        }
-        return voip;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Auto::Qos::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(classify != nullptr)
-    {
-        _children["classify"] = classify;
-    }
-
-    if(trust != nullptr)
-    {
-        _children["trust"] = trust;
-    }
-
-    if(video != nullptr)
-    {
-        _children["video"] = video;
-    }
-
-    if(voip != nullptr)
-    {
-        _children["voip"] = voip;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::Auto::Qos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TwentyFiveGigE::Auto::Qos::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Auto::Qos::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "classify" || name == "trust" || name == "video" || name == "voip")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::Auto::Qos::Classify::Classify()
-    :
-    police{YType::empty, "police"}
-{
-
-    yang_name = "classify"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::TwentyFiveGigE::Auto::Qos::Classify::~Classify()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Auto::Qos::Classify::has_data() const
-{
-    if (is_presence_container) return true;
-    return police.is_set;
-}
-
-bool Native::Interface::TwentyFiveGigE::Auto::Qos::Classify::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(police.yfilter);
-}
-
-std::string Native::Interface::TwentyFiveGigE::Auto::Qos::Classify::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "classify";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Auto::Qos::Classify::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (police.is_set || is_set(police.yfilter)) leaf_name_data.push_back(police.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Auto::Qos::Classify::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Auto::Qos::Classify::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::Auto::Qos::Classify::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "police")
-    {
-        police = value;
-        police.value_namespace = name_space;
-        police.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TwentyFiveGigE::Auto::Qos::Classify::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "police")
-    {
-        police.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TwentyFiveGigE::Auto::Qos::Classify::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "police")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::Auto::Qos::Trust::Trust()
-    :
-    cos{YType::empty, "cos"},
-    dscp{YType::empty, "dscp"}
-{
-
-    yang_name = "trust"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::TwentyFiveGigE::Auto::Qos::Trust::~Trust()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Auto::Qos::Trust::has_data() const
-{
-    if (is_presence_container) return true;
-    return cos.is_set
-	|| dscp.is_set;
-}
-
-bool Native::Interface::TwentyFiveGigE::Auto::Qos::Trust::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cos.yfilter)
-	|| ydk::is_set(dscp.yfilter);
-}
-
-std::string Native::Interface::TwentyFiveGigE::Auto::Qos::Trust::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "trust";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Auto::Qos::Trust::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cos.is_set || is_set(cos.yfilter)) leaf_name_data.push_back(cos.get_name_leafdata());
-    if (dscp.is_set || is_set(dscp.yfilter)) leaf_name_data.push_back(dscp.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Auto::Qos::Trust::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Auto::Qos::Trust::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::Auto::Qos::Trust::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cos")
-    {
-        cos = value;
-        cos.value_namespace = name_space;
-        cos.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dscp")
-    {
-        dscp = value;
-        dscp.value_namespace = name_space;
-        dscp.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TwentyFiveGigE::Auto::Qos::Trust::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cos")
-    {
-        cos.yfilter = yfilter;
-    }
-    if(value_path == "dscp")
-    {
-        dscp.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TwentyFiveGigE::Auto::Qos::Trust::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cos" || name == "dscp")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::Auto::Qos::Video::Video()
-    :
-    cts{YType::empty, "cts"},
-    ip_camera{YType::empty, "ip-camera"},
-    media_player{YType::empty, "media-player"}
-{
-
-    yang_name = "video"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwentyFiveGigE::Auto::Qos::Video::~Video()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Auto::Qos::Video::has_data() const
-{
-    if (is_presence_container) return true;
-    return cts.is_set
-	|| ip_camera.is_set
-	|| media_player.is_set;
-}
-
-bool Native::Interface::TwentyFiveGigE::Auto::Qos::Video::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cts.yfilter)
-	|| ydk::is_set(ip_camera.yfilter)
-	|| ydk::is_set(media_player.yfilter);
-}
-
-std::string Native::Interface::TwentyFiveGigE::Auto::Qos::Video::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "video";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Auto::Qos::Video::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cts.is_set || is_set(cts.yfilter)) leaf_name_data.push_back(cts.get_name_leafdata());
-    if (ip_camera.is_set || is_set(ip_camera.yfilter)) leaf_name_data.push_back(ip_camera.get_name_leafdata());
-    if (media_player.is_set || is_set(media_player.yfilter)) leaf_name_data.push_back(media_player.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Auto::Qos::Video::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Auto::Qos::Video::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::Auto::Qos::Video::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cts")
-    {
-        cts = value;
-        cts.value_namespace = name_space;
-        cts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ip-camera")
-    {
-        ip_camera = value;
-        ip_camera.value_namespace = name_space;
-        ip_camera.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "media-player")
-    {
-        media_player = value;
-        media_player.value_namespace = name_space;
-        media_player.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TwentyFiveGigE::Auto::Qos::Video::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cts")
-    {
-        cts.yfilter = yfilter;
-    }
-    if(value_path == "ip-camera")
-    {
-        ip_camera.yfilter = yfilter;
-    }
-    if(value_path == "media-player")
-    {
-        media_player.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TwentyFiveGigE::Auto::Qos::Video::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cts" || name == "ip-camera" || name == "media-player")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::Auto::Qos::Voip::Voip()
-    :
-    cisco_phone{YType::empty, "cisco-phone"},
-    cisco_softphone{YType::empty, "cisco-softphone"},
-    trust{YType::empty, "trust"}
-{
-
-    yang_name = "voip"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::TwentyFiveGigE::Auto::Qos::Voip::~Voip()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Auto::Qos::Voip::has_data() const
-{
-    if (is_presence_container) return true;
-    return cisco_phone.is_set
-	|| cisco_softphone.is_set
-	|| trust.is_set;
-}
-
-bool Native::Interface::TwentyFiveGigE::Auto::Qos::Voip::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cisco_phone.yfilter)
-	|| ydk::is_set(cisco_softphone.yfilter)
-	|| ydk::is_set(trust.yfilter);
-}
-
-std::string Native::Interface::TwentyFiveGigE::Auto::Qos::Voip::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "voip";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Auto::Qos::Voip::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cisco_phone.is_set || is_set(cisco_phone.yfilter)) leaf_name_data.push_back(cisco_phone.get_name_leafdata());
-    if (cisco_softphone.is_set || is_set(cisco_softphone.yfilter)) leaf_name_data.push_back(cisco_softphone.get_name_leafdata());
-    if (trust.is_set || is_set(trust.yfilter)) leaf_name_data.push_back(trust.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Auto::Qos::Voip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Auto::Qos::Voip::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::Auto::Qos::Voip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cisco-phone")
-    {
-        cisco_phone = value;
-        cisco_phone.value_namespace = name_space;
-        cisco_phone.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cisco-softphone")
-    {
-        cisco_softphone = value;
-        cisco_softphone.value_namespace = name_space;
-        cisco_softphone.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "trust")
-    {
-        trust = value;
-        trust.value_namespace = name_space;
-        trust.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TwentyFiveGigE::Auto::Qos::Voip::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cisco-phone")
-    {
-        cisco_phone.yfilter = yfilter;
-    }
-    if(value_path == "cisco-softphone")
-    {
-        cisco_softphone.yfilter = yfilter;
-    }
-    if(value_path == "trust")
-    {
-        trust.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TwentyFiveGigE::Auto::Qos::Voip::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cisco-phone" || name == "cisco-softphone" || name == "trust")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::Datalink::Datalink()
-    :
-    flow(std::make_shared<Native::Interface::TwentyFiveGigE::Datalink::Flow>())
-{
-    flow->parent = this;
-
-    yang_name = "datalink"; yang_parent_name = "TwentyFiveGigE"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwentyFiveGigE::Datalink::~Datalink()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Datalink::has_data() const
-{
-    if (is_presence_container) return true;
-    return (flow !=  nullptr && flow->has_data());
-}
-
-bool Native::Interface::TwentyFiveGigE::Datalink::has_operation() const
-{
-    return is_set(yfilter)
-	|| (flow !=  nullptr && flow->has_operation());
-}
-
-std::string Native::Interface::TwentyFiveGigE::Datalink::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:datalink";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Datalink::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Datalink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "flow")
-    {
-        if(flow == nullptr)
-        {
-            flow = std::make_shared<Native::Interface::TwentyFiveGigE::Datalink::Flow>();
-        }
-        return flow;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Datalink::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(flow != nullptr)
-    {
-        _children["flow"] = flow;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::Datalink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TwentyFiveGigE::Datalink::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Datalink::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "flow")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::Datalink::Flow::Flow()
-    :
-    monitor(nullptr) // presence node
-{
-
-    yang_name = "flow"; yang_parent_name = "datalink"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwentyFiveGigE::Datalink::Flow::~Flow()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Datalink::Flow::has_data() const
-{
-    if (is_presence_container) return true;
-    return (monitor !=  nullptr && monitor->has_data());
-}
-
-bool Native::Interface::TwentyFiveGigE::Datalink::Flow::has_operation() const
-{
-    return is_set(yfilter)
-	|| (monitor !=  nullptr && monitor->has_operation());
-}
-
-std::string Native::Interface::TwentyFiveGigE::Datalink::Flow::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "flow";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Datalink::Flow::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Datalink::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "monitor")
-    {
-        if(monitor == nullptr)
-        {
-            monitor = std::make_shared<Native::Interface::TwentyFiveGigE::Datalink::Flow::Monitor>();
-        }
-        return monitor;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Datalink::Flow::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(monitor != nullptr)
-    {
-        _children["monitor"] = monitor;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::Datalink::Flow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TwentyFiveGigE::Datalink::Flow::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Datalink::Flow::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "monitor")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::Datalink::Flow::Monitor::Monitor()
-    :
-    user_defined_flow{YType::str, "User-defined-flow"},
-    input_output{YType::enumeration, "input-output"}
-{
-
-    yang_name = "monitor"; yang_parent_name = "flow"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::TwentyFiveGigE::Datalink::Flow::Monitor::~Monitor()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Datalink::Flow::Monitor::has_data() const
-{
-    if (is_presence_container) return true;
-    return user_defined_flow.is_set
-	|| input_output.is_set;
-}
-
-bool Native::Interface::TwentyFiveGigE::Datalink::Flow::Monitor::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(user_defined_flow.yfilter)
-	|| ydk::is_set(input_output.yfilter);
-}
-
-std::string Native::Interface::TwentyFiveGigE::Datalink::Flow::Monitor::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "monitor";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Datalink::Flow::Monitor::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (user_defined_flow.is_set || is_set(user_defined_flow.yfilter)) leaf_name_data.push_back(user_defined_flow.get_name_leafdata());
-    if (input_output.is_set || is_set(input_output.yfilter)) leaf_name_data.push_back(input_output.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Datalink::Flow::Monitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Datalink::Flow::Monitor::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::Datalink::Flow::Monitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "User-defined-flow")
-    {
-        user_defined_flow = value;
-        user_defined_flow.value_namespace = name_space;
-        user_defined_flow.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "input-output")
-    {
-        input_output = value;
-        input_output.value_namespace = name_space;
-        input_output.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TwentyFiveGigE::Datalink::Flow::Monitor::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "User-defined-flow")
-    {
-        user_defined_flow.yfilter = yfilter;
-    }
-    if(value_path == "input-output")
-    {
-        input_output.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TwentyFiveGigE::Datalink::Flow::Monitor::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "User-defined-flow" || name == "input-output")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::Energywise::Energywise()
-    :
-    activitycheck{YType::empty, "activitycheck"}
+    control_direction{YType::enumeration, "control-direction"},
+    fallback{YType::str, "fallback"},
+    host_mode{YType::enumeration, "host-mode"},
+    open{YType::empty, "open"},
+    port_control{YType::enumeration, "port-control"},
+    periodic{YType::empty, "periodic"},
+    violation{YType::enumeration, "violation"}
         ,
-    level(this, {"range"})
+    event(std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event>())
+    , order(std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Order>())
+    , priority(std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Priority>())
+    , timer(std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Timer>())
 {
+    event->parent = this;
+    order->parent = this;
+    priority->parent = this;
+    timer->parent = this;
 
-    yang_name = "energywise"; yang_parent_name = "TwentyFiveGigE"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+    yang_name = "authentication"; yang_parent_name = "TwentyFiveGigE"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::TwentyFiveGigE::Energywise::~Energywise()
+Native::Interface::TwentyFiveGigE::Authentication::~Authentication()
 {
 }
 
-bool Native::Interface::TwentyFiveGigE::Energywise::has_data() const
+bool Native::Interface::TwentyFiveGigE::Authentication::has_data() const
 {
     if (is_presence_container) return true;
-    for (std::size_t index=0; index<level.len(); index++)
-    {
-        if(level[index]->has_data())
-            return true;
-    }
-    return activitycheck.is_set;
+    return control_direction.is_set
+	|| fallback.is_set
+	|| host_mode.is_set
+	|| open.is_set
+	|| port_control.is_set
+	|| periodic.is_set
+	|| violation.is_set
+	|| (event !=  nullptr && event->has_data())
+	|| (order !=  nullptr && order->has_data())
+	|| (priority !=  nullptr && priority->has_data())
+	|| (timer !=  nullptr && timer->has_data());
 }
 
-bool Native::Interface::TwentyFiveGigE::Energywise::has_operation() const
+bool Native::Interface::TwentyFiveGigE::Authentication::has_operation() const
 {
-    for (std::size_t index=0; index<level.len(); index++)
-    {
-        if(level[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(activitycheck.yfilter);
+	|| ydk::is_set(control_direction.yfilter)
+	|| ydk::is_set(fallback.yfilter)
+	|| ydk::is_set(host_mode.yfilter)
+	|| ydk::is_set(open.yfilter)
+	|| ydk::is_set(port_control.yfilter)
+	|| ydk::is_set(periodic.yfilter)
+	|| ydk::is_set(violation.yfilter)
+	|| (event !=  nullptr && event->has_operation())
+	|| (order !=  nullptr && order->has_operation())
+	|| (priority !=  nullptr && priority->has_operation())
+	|| (timer !=  nullptr && timer->has_operation());
 }
 
-std::string Native::Interface::TwentyFiveGigE::Energywise::get_segment_path() const
+std::string Native::Interface::TwentyFiveGigE::Authentication::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:energywise";
+    path_buffer << "Cisco-IOS-XE-sanet:authentication";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Energywise::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Authentication::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (activitycheck.is_set || is_set(activitycheck.yfilter)) leaf_name_data.push_back(activitycheck.get_name_leafdata());
+    if (control_direction.is_set || is_set(control_direction.yfilter)) leaf_name_data.push_back(control_direction.get_name_leafdata());
+    if (fallback.is_set || is_set(fallback.yfilter)) leaf_name_data.push_back(fallback.get_name_leafdata());
+    if (host_mode.is_set || is_set(host_mode.yfilter)) leaf_name_data.push_back(host_mode.get_name_leafdata());
+    if (open.is_set || is_set(open.yfilter)) leaf_name_data.push_back(open.get_name_leafdata());
+    if (port_control.is_set || is_set(port_control.yfilter)) leaf_name_data.push_back(port_control.get_name_leafdata());
+    if (periodic.is_set || is_set(periodic.yfilter)) leaf_name_data.push_back(periodic.get_name_leafdata());
+    if (violation.is_set || is_set(violation.yfilter)) leaf_name_data.push_back(violation.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Energywise::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "level")
+    if(child_yang_name == "event")
     {
-        auto ent_ = std::make_shared<Native::Interface::TwentyFiveGigE::Energywise::Level>();
-        ent_->parent = this;
-        level.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Energywise::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : level.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::Energywise::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "activitycheck")
-    {
-        activitycheck = value;
-        activitycheck.value_namespace = name_space;
-        activitycheck.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TwentyFiveGigE::Energywise::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "activitycheck")
-    {
-        activitycheck.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TwentyFiveGigE::Energywise::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level" || name == "activitycheck")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::Energywise::Level::Level()
-    :
-    range{YType::uint8, "range"}
-        ,
-    recurrence(std::make_shared<Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence>())
-{
-    recurrence->parent = this;
-
-    yang_name = "level"; yang_parent_name = "energywise"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwentyFiveGigE::Energywise::Level::~Level()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Energywise::Level::has_data() const
-{
-    if (is_presence_container) return true;
-    return range.is_set
-	|| (recurrence !=  nullptr && recurrence->has_data());
-}
-
-bool Native::Interface::TwentyFiveGigE::Energywise::Level::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(range.yfilter)
-	|| (recurrence !=  nullptr && recurrence->has_operation());
-}
-
-std::string Native::Interface::TwentyFiveGigE::Energywise::Level::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "level";
-    ADD_KEY_TOKEN(range, "range");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Energywise::Level::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (range.is_set || is_set(range.yfilter)) leaf_name_data.push_back(range.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Energywise::Level::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "recurrence")
-    {
-        if(recurrence == nullptr)
+        if(event == nullptr)
         {
-            recurrence = std::make_shared<Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence>();
+            event = std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event>();
         }
-        return recurrence;
+        return event;
     }
 
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Energywise::Level::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(recurrence != nullptr)
+    if(child_yang_name == "order")
     {
-        _children["recurrence"] = recurrence;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::Energywise::Level::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "range")
-    {
-        range = value;
-        range.value_namespace = name_space;
-        range.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TwentyFiveGigE::Energywise::Level::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "range")
-    {
-        range.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TwentyFiveGigE::Energywise::Level::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "recurrence" || name == "range")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Recurrence()
-    :
-    importance(this, {"range"})
-{
-
-    yang_name = "recurrence"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::~Recurrence()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<importance.len(); index++)
-    {
-        if(importance[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::has_operation() const
-{
-    for (std::size_t index=0; index<importance.len(); index++)
-    {
-        if(importance[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "recurrence";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "importance")
-    {
-        auto ent_ = std::make_shared<Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance>();
-        ent_->parent = this;
-        importance.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : importance.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "importance")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::Importance()
-    :
-    range{YType::uint16, "range"}
-        ,
-    at(std::make_shared<Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::At>())
-{
-    at->parent = this;
-
-    yang_name = "importance"; yang_parent_name = "recurrence"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::~Importance()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::has_data() const
-{
-    if (is_presence_container) return true;
-    return range.is_set
-	|| (at !=  nullptr && at->has_data());
-}
-
-bool Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(range.yfilter)
-	|| (at !=  nullptr && at->has_operation());
-}
-
-std::string Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "importance";
-    ADD_KEY_TOKEN(range, "range");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (range.is_set || is_set(range.yfilter)) leaf_name_data.push_back(range.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "at")
-    {
-        if(at == nullptr)
+        if(order == nullptr)
         {
-            at = std::make_shared<Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::At>();
+            order = std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Order>();
         }
-        return at;
+        return order;
     }
 
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(at != nullptr)
+    if(child_yang_name == "priority")
     {
-        _children["at"] = at;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "range")
-    {
-        range = value;
-        range.value_namespace = name_space;
-        range.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "range")
-    {
-        range.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "at" || name == "range")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::At::At()
-    :
-    minute{YType::str, "minute"},
-    hour{YType::str, "hour"},
-    day{YType::str, "day"},
-    month{YType::str, "month"},
-    weekday{YType::str, "weekday"}
-{
-
-    yang_name = "at"; yang_parent_name = "importance"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::At::~At()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::At::has_data() const
-{
-    if (is_presence_container) return true;
-    return minute.is_set
-	|| hour.is_set
-	|| day.is_set
-	|| month.is_set
-	|| weekday.is_set;
-}
-
-bool Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::At::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(minute.yfilter)
-	|| ydk::is_set(hour.yfilter)
-	|| ydk::is_set(day.yfilter)
-	|| ydk::is_set(month.yfilter)
-	|| ydk::is_set(weekday.yfilter);
-}
-
-std::string Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::At::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "at";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::At::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (minute.is_set || is_set(minute.yfilter)) leaf_name_data.push_back(minute.get_name_leafdata());
-    if (hour.is_set || is_set(hour.yfilter)) leaf_name_data.push_back(hour.get_name_leafdata());
-    if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
-    if (month.is_set || is_set(month.yfilter)) leaf_name_data.push_back(month.get_name_leafdata());
-    if (weekday.is_set || is_set(weekday.yfilter)) leaf_name_data.push_back(weekday.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::At::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::At::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::At::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "minute")
-    {
-        minute = value;
-        minute.value_namespace = name_space;
-        minute.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hour")
-    {
-        hour = value;
-        hour.value_namespace = name_space;
-        hour.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "day")
-    {
-        day = value;
-        day.value_namespace = name_space;
-        day.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "month")
-    {
-        month = value;
-        month.value_namespace = name_space;
-        month.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "weekday")
-    {
-        weekday = value;
-        weekday.value_namespace = name_space;
-        weekday.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::At::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "minute")
-    {
-        minute.yfilter = yfilter;
-    }
-    if(value_path == "hour")
-    {
-        hour.yfilter = yfilter;
-    }
-    if(value_path == "day")
-    {
-        day.yfilter = yfilter;
-    }
-    if(value_path == "month")
-    {
-        month.yfilter = yfilter;
-    }
-    if(value_path == "weekday")
-    {
-        weekday.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TwentyFiveGigE::Energywise::Level::Recurrence::Importance::At::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "minute" || name == "hour" || name == "day" || name == "month" || name == "weekday")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::Location::Location()
-    :
-    civic_location_id(std::make_shared<Native::Interface::TwentyFiveGigE::Location::CivicLocationId>())
-{
-    civic_location_id->parent = this;
-
-    yang_name = "location"; yang_parent_name = "TwentyFiveGigE"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwentyFiveGigE::Location::~Location()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Location::has_data() const
-{
-    if (is_presence_container) return true;
-    return (civic_location_id !=  nullptr && civic_location_id->has_data());
-}
-
-bool Native::Interface::TwentyFiveGigE::Location::has_operation() const
-{
-    return is_set(yfilter)
-	|| (civic_location_id !=  nullptr && civic_location_id->has_operation());
-}
-
-std::string Native::Interface::TwentyFiveGigE::Location::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:location";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Location::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "civic-location-id")
-    {
-        if(civic_location_id == nullptr)
+        if(priority == nullptr)
         {
-            civic_location_id = std::make_shared<Native::Interface::TwentyFiveGigE::Location::CivicLocationId>();
+            priority = std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Priority>();
         }
-        return civic_location_id;
+        return priority;
     }
 
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Location::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(civic_location_id != nullptr)
+    if(child_yang_name == "timer")
     {
-        _children["civic-location-id"] = civic_location_id;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TwentyFiveGigE::Location::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Location::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "civic-location-id")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::Location::CivicLocationId::CivicLocationId()
-    :
-    location_identifier{YType::str, "location-identifier"}
-        ,
-    host(nullptr) // presence node
-    , none(nullptr) // presence node
-{
-
-    yang_name = "civic-location-id"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwentyFiveGigE::Location::CivicLocationId::~CivicLocationId()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Location::CivicLocationId::has_data() const
-{
-    if (is_presence_container) return true;
-    return location_identifier.is_set
-	|| (host !=  nullptr && host->has_data())
-	|| (none !=  nullptr && none->has_data());
-}
-
-bool Native::Interface::TwentyFiveGigE::Location::CivicLocationId::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(location_identifier.yfilter)
-	|| (host !=  nullptr && host->has_operation())
-	|| (none !=  nullptr && none->has_operation());
-}
-
-std::string Native::Interface::TwentyFiveGigE::Location::CivicLocationId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "civic-location-id";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Location::CivicLocationId::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (location_identifier.is_set || is_set(location_identifier.yfilter)) leaf_name_data.push_back(location_identifier.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Location::CivicLocationId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "host")
-    {
-        if(host == nullptr)
+        if(timer == nullptr)
         {
-            host = std::make_shared<Native::Interface::TwentyFiveGigE::Location::CivicLocationId::Host>();
+            timer = std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Timer>();
         }
-        return host;
+        return timer;
     }
 
-    if(child_yang_name == "none")
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Authentication::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(event != nullptr)
     {
-        if(none == nullptr)
+        _children["event"] = event;
+    }
+
+    if(order != nullptr)
+    {
+        _children["order"] = order;
+    }
+
+    if(priority != nullptr)
+    {
+        _children["priority"] = priority;
+    }
+
+    if(timer != nullptr)
+    {
+        _children["timer"] = timer;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "control-direction")
+    {
+        control_direction = value;
+        control_direction.value_namespace = name_space;
+        control_direction.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fallback")
+    {
+        fallback = value;
+        fallback.value_namespace = name_space;
+        fallback.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "host-mode")
+    {
+        host_mode = value;
+        host_mode.value_namespace = name_space;
+        host_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "open")
+    {
+        open = value;
+        open.value_namespace = name_space;
+        open.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port-control")
+    {
+        port_control = value;
+        port_control.value_namespace = name_space;
+        port_control.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "periodic")
+    {
+        periodic = value;
+        periodic.value_namespace = name_space;
+        periodic.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "violation")
+    {
+        violation = value;
+        violation.value_namespace = name_space;
+        violation.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "control-direction")
+    {
+        control_direction.yfilter = yfilter;
+    }
+    if(value_path == "fallback")
+    {
+        fallback.yfilter = yfilter;
+    }
+    if(value_path == "host-mode")
+    {
+        host_mode.yfilter = yfilter;
+    }
+    if(value_path == "open")
+    {
+        open.yfilter = yfilter;
+    }
+    if(value_path == "port-control")
+    {
+        port_control.yfilter = yfilter;
+    }
+    if(value_path == "periodic")
+    {
+        periodic.yfilter = yfilter;
+    }
+    if(value_path == "violation")
+    {
+        violation.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "event" || name == "order" || name == "priority" || name == "timer" || name == "control-direction" || name == "fallback" || name == "host-mode" || name == "open" || name == "port-control" || name == "periodic" || name == "violation")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::Event()
+    :
+    server(std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::Server>())
+    , fail(std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::Fail>())
+    , no_response(std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse>())
+{
+    server->parent = this;
+    fail->parent = this;
+    no_response->parent = this;
+
+    yang_name = "event"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::~Event()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::has_data() const
+{
+    if (is_presence_container) return true;
+    return (server !=  nullptr && server->has_data())
+	|| (fail !=  nullptr && fail->has_data())
+	|| (no_response !=  nullptr && no_response->has_data());
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::has_operation() const
+{
+    return is_set(yfilter)
+	|| (server !=  nullptr && server->has_operation())
+	|| (fail !=  nullptr && fail->has_operation())
+	|| (no_response !=  nullptr && no_response->has_operation());
+}
+
+std::string Native::Interface::TwentyFiveGigE::Authentication::Event::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "event";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Authentication::Event::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Authentication::Event::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "server")
+    {
+        if(server == nullptr)
         {
-            none = std::make_shared<Native::Interface::TwentyFiveGigE::Location::CivicLocationId::None>();
+            server = std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::Server>();
         }
-        return none;
+        return server;
     }
 
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Location::CivicLocationId::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(host != nullptr)
+    if(child_yang_name == "fail")
     {
-        _children["host"] = host;
-    }
-
-    if(none != nullptr)
-    {
-        _children["none"] = none;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::Location::CivicLocationId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "location-identifier")
-    {
-        location_identifier = value;
-        location_identifier.value_namespace = name_space;
-        location_identifier.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TwentyFiveGigE::Location::CivicLocationId::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "location-identifier")
-    {
-        location_identifier.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TwentyFiveGigE::Location::CivicLocationId::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "host" || name == "none" || name == "location-identifier")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::Location::CivicLocationId::Host::Host()
-    :
-    port_location{YType::str, "port-location"}
-{
-
-    yang_name = "host"; yang_parent_name = "civic-location-id"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::TwentyFiveGigE::Location::CivicLocationId::Host::~Host()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Location::CivicLocationId::Host::has_data() const
-{
-    if (is_presence_container) return true;
-    return port_location.is_set;
-}
-
-bool Native::Interface::TwentyFiveGigE::Location::CivicLocationId::Host::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(port_location.yfilter);
-}
-
-std::string Native::Interface::TwentyFiveGigE::Location::CivicLocationId::Host::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "host";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Location::CivicLocationId::Host::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (port_location.is_set || is_set(port_location.yfilter)) leaf_name_data.push_back(port_location.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Location::CivicLocationId::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Location::CivicLocationId::Host::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::Location::CivicLocationId::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "port-location")
-    {
-        port_location = value;
-        port_location.value_namespace = name_space;
-        port_location.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TwentyFiveGigE::Location::CivicLocationId::Host::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "port-location")
-    {
-        port_location.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TwentyFiveGigE::Location::CivicLocationId::Host::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "port-location")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::Location::CivicLocationId::None::None()
-    :
-    port_location{YType::str, "port-location"}
-{
-
-    yang_name = "none"; yang_parent_name = "civic-location-id"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::TwentyFiveGigE::Location::CivicLocationId::None::~None()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Location::CivicLocationId::None::has_data() const
-{
-    if (is_presence_container) return true;
-    return port_location.is_set;
-}
-
-bool Native::Interface::TwentyFiveGigE::Location::CivicLocationId::None::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(port_location.yfilter);
-}
-
-std::string Native::Interface::TwentyFiveGigE::Location::CivicLocationId::None::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "none";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Location::CivicLocationId::None::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (port_location.is_set || is_set(port_location.yfilter)) leaf_name_data.push_back(port_location.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Location::CivicLocationId::None::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Location::CivicLocationId::None::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::Location::CivicLocationId::None::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "port-location")
-    {
-        port_location = value;
-        port_location.value_namespace = name_space;
-        port_location.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TwentyFiveGigE::Location::CivicLocationId::None::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "port-location")
-    {
-        port_location.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TwentyFiveGigE::Location::CivicLocationId::None::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "port-location")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::Mac::Mac()
-    :
-    access_group(this, {"direction"})
-{
-
-    yang_name = "mac"; yang_parent_name = "TwentyFiveGigE"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwentyFiveGigE::Mac::~Mac()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Mac::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<access_group.len(); index++)
-    {
-        if(access_group[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::Interface::TwentyFiveGigE::Mac::has_operation() const
-{
-    for (std::size_t index=0; index<access_group.len(); index++)
-    {
-        if(access_group[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::Interface::TwentyFiveGigE::Mac::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:mac";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Mac::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "access-group")
-    {
-        auto ent_ = std::make_shared<Native::Interface::TwentyFiveGigE::Mac::AccessGroup>();
-        ent_->parent = this;
-        access_group.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Mac::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : access_group.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TwentyFiveGigE::Mac::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Mac::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "access-group")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::Mac::AccessGroup::AccessGroup()
-    :
-    direction{YType::enumeration, "direction"},
-    acl_name{YType::str, "acl-name"}
-{
-
-    yang_name = "access-group"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwentyFiveGigE::Mac::AccessGroup::~AccessGroup()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Mac::AccessGroup::has_data() const
-{
-    if (is_presence_container) return true;
-    return direction.is_set
-	|| acl_name.is_set;
-}
-
-bool Native::Interface::TwentyFiveGigE::Mac::AccessGroup::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(direction.yfilter)
-	|| ydk::is_set(acl_name.yfilter);
-}
-
-std::string Native::Interface::TwentyFiveGigE::Mac::AccessGroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "access-group";
-    ADD_KEY_TOKEN(direction, "direction");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Mac::AccessGroup::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (acl_name.is_set || is_set(acl_name.yfilter)) leaf_name_data.push_back(acl_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Mac::AccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Mac::AccessGroup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TwentyFiveGigE::Mac::AccessGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "direction")
-    {
-        direction = value;
-        direction.value_namespace = name_space;
-        direction.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acl-name")
-    {
-        acl_name = value;
-        acl_name.value_namespace = name_space;
-        acl_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TwentyFiveGigE::Mac::AccessGroup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "direction")
-    {
-        direction.yfilter = yfilter;
-    }
-    if(value_path == "acl-name")
-    {
-        acl_name.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TwentyFiveGigE::Mac::AccessGroup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "direction" || name == "acl-name")
-        return true;
-    return false;
-}
-
-Native::Interface::TwentyFiveGigE::Macro::Macro()
-    :
-    description{YType::str, "description"}
-        ,
-    auto_(std::make_shared<Native::Interface::TwentyFiveGigE::Macro::Auto>())
-{
-    auto_->parent = this;
-
-    yang_name = "macro"; yang_parent_name = "TwentyFiveGigE"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TwentyFiveGigE::Macro::~Macro()
-{
-}
-
-bool Native::Interface::TwentyFiveGigE::Macro::has_data() const
-{
-    if (is_presence_container) return true;
-    return description.is_set
-	|| (auto_ !=  nullptr && auto_->has_data());
-}
-
-bool Native::Interface::TwentyFiveGigE::Macro::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| (auto_ !=  nullptr && auto_->has_operation());
-}
-
-std::string Native::Interface::TwentyFiveGigE::Macro::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:macro";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Macro::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Macro::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "auto")
-    {
-        if(auto_ == nullptr)
+        if(fail == nullptr)
         {
-            auto_ = std::make_shared<Native::Interface::TwentyFiveGigE::Macro::Auto>();
+            fail = std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::Fail>();
         }
-        return auto_;
+        return fail;
+    }
+
+    if(child_yang_name == "no-response")
+    {
+        if(no_response == nullptr)
+        {
+            no_response = std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse>();
+        }
+        return no_response;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Macro::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Authentication::Event::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(auto_ != nullptr)
+    if(server != nullptr)
     {
-        _children["auto"] = auto_;
+        _children["server"] = server;
+    }
+
+    if(fail != nullptr)
+    {
+        _children["fail"] = fail;
+    }
+
+    if(no_response != nullptr)
+    {
+        _children["no-response"] = no_response;
     }
 
     return _children;
 }
 
-void Native::Interface::TwentyFiveGigE::Macro::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::TwentyFiveGigE::Authentication::Event::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "description")
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "server" || name == "fail" || name == "no-response")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Server()
+    :
+    alive(std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive>())
+    , dead(std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead>())
+{
+    alive->parent = this;
+    dead->parent = this;
+
+    yang_name = "server"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::Server::~Server()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Server::has_data() const
+{
+    if (is_presence_container) return true;
+    return (alive !=  nullptr && alive->has_data())
+	|| (dead !=  nullptr && dead->has_data());
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Server::has_operation() const
+{
+    return is_set(yfilter)
+	|| (alive !=  nullptr && alive->has_operation())
+	|| (dead !=  nullptr && dead->has_operation());
+}
+
+std::string Native::Interface::TwentyFiveGigE::Authentication::Event::Server::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "server";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Authentication::Event::Server::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Authentication::Event::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "alive")
     {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
+        if(alive == nullptr)
+        {
+            alive = std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive>();
+        }
+        return alive;
+    }
+
+    if(child_yang_name == "dead")
+    {
+        if(dead == nullptr)
+        {
+            dead = std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead>();
+        }
+        return dead;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Authentication::Event::Server::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(alive != nullptr)
+    {
+        _children["alive"] = alive;
+    }
+
+    if(dead != nullptr)
+    {
+        _children["dead"] = dead;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::Server::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Server::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "alive" || name == "dead")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::Alive()
+    :
+    action(std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::Action>())
+{
+    action->parent = this;
+
+    yang_name = "alive"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::~Alive()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::has_data() const
+{
+    if (is_presence_container) return true;
+    return (action !=  nullptr && action->has_data());
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::has_operation() const
+{
+    return is_set(yfilter)
+	|| (action !=  nullptr && action->has_operation());
+}
+
+std::string Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "alive";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "action")
+    {
+        if(action == nullptr)
+        {
+            action = std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::Action>();
+        }
+        return action;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(action != nullptr)
+    {
+        _children["action"] = action;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::Action::Action()
+    :
+    reinitialize{YType::empty, "reinitialize"}
+{
+
+    yang_name = "action"; yang_parent_name = "alive"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::Action::~Action()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::Action::has_data() const
+{
+    if (is_presence_container) return true;
+    return reinitialize.is_set;
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::Action::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(reinitialize.yfilter);
+}
+
+std::string Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::Action::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "action";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::Action::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (reinitialize.is_set || is_set(reinitialize.yfilter)) leaf_name_data.push_back(reinitialize.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::Action::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "reinitialize")
+    {
+        reinitialize = value;
+        reinitialize.value_namespace = name_space;
+        reinitialize.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Interface::TwentyFiveGigE::Macro::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::Action::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "description")
+    if(value_path == "reinitialize")
     {
-        description.yfilter = yfilter;
+        reinitialize.yfilter = yfilter;
     }
 }
 
-bool Native::Interface::TwentyFiveGigE::Macro::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Alive::Action::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "auto" || name == "description")
+    if(name == "reinitialize")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Dead()
+    :
+    action(std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action>())
+{
+    action->parent = this;
+
+    yang_name = "dead"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::~Dead()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::has_data() const
+{
+    if (is_presence_container) return true;
+    return (action !=  nullptr && action->has_data());
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::has_operation() const
+{
+    return is_set(yfilter)
+	|| (action !=  nullptr && action->has_operation());
+}
+
+std::string Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dead";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "action")
+    {
+        if(action == nullptr)
+        {
+            action = std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action>();
+        }
+        return action;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(action != nullptr)
+    {
+        _children["action"] = action;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Action()
+    :
+    authorize(nullptr) // presence node
+    , reinitialize(std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Reinitialize>())
+{
+    reinitialize->parent = this;
+
+    yang_name = "action"; yang_parent_name = "dead"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::~Action()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::has_data() const
+{
+    if (is_presence_container) return true;
+    return (authorize !=  nullptr && authorize->has_data())
+	|| (reinitialize !=  nullptr && reinitialize->has_data());
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::has_operation() const
+{
+    return is_set(yfilter)
+	|| (authorize !=  nullptr && authorize->has_operation())
+	|| (reinitialize !=  nullptr && reinitialize->has_operation());
+}
+
+std::string Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "action";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "authorize")
+    {
+        if(authorize == nullptr)
+        {
+            authorize = std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Authorize>();
+        }
+        return authorize;
+    }
+
+    if(child_yang_name == "reinitialize")
+    {
+        if(reinitialize == nullptr)
+        {
+            reinitialize = std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Reinitialize>();
+        }
+        return reinitialize;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(authorize != nullptr)
+    {
+        _children["authorize"] = authorize;
+    }
+
+    if(reinitialize != nullptr)
+    {
+        _children["reinitialize"] = reinitialize;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authorize" || name == "reinitialize")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Authorize::Authorize()
+    :
+    vlan{YType::uint16, "vlan"},
+    voice{YType::empty, "voice"}
+{
+
+    yang_name = "authorize"; yang_parent_name = "action"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Authorize::~Authorize()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Authorize::has_data() const
+{
+    if (is_presence_container) return true;
+    return vlan.is_set
+	|| voice.is_set;
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Authorize::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vlan.yfilter)
+	|| ydk::is_set(voice.yfilter);
+}
+
+std::string Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Authorize::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "authorize";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Authorize::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vlan.is_set || is_set(vlan.yfilter)) leaf_name_data.push_back(vlan.get_name_leafdata());
+    if (voice.is_set || is_set(voice.yfilter)) leaf_name_data.push_back(voice.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Authorize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Authorize::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Authorize::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vlan")
+    {
+        vlan = value;
+        vlan.value_namespace = name_space;
+        vlan.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "voice")
+    {
+        voice = value;
+        voice.value_namespace = name_space;
+        voice.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Authorize::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vlan")
+    {
+        vlan.yfilter = yfilter;
+    }
+    if(value_path == "voice")
+    {
+        voice.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Authorize::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vlan" || name == "voice")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Reinitialize::Reinitialize()
+    :
+    vlan{YType::uint16, "vlan"}
+{
+
+    yang_name = "reinitialize"; yang_parent_name = "action"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Reinitialize::~Reinitialize()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Reinitialize::has_data() const
+{
+    if (is_presence_container) return true;
+    return vlan.is_set;
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Reinitialize::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vlan.yfilter);
+}
+
+std::string Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Reinitialize::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "reinitialize";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Reinitialize::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vlan.is_set || is_set(vlan.yfilter)) leaf_name_data.push_back(vlan.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Reinitialize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Reinitialize::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Reinitialize::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vlan")
+    {
+        vlan = value;
+        vlan.value_namespace = name_space;
+        vlan.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Reinitialize::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vlan")
+    {
+        vlan.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Server::Dead::Action::Reinitialize::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vlan")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Fail()
+    :
+    action(std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action>())
+{
+    action->parent = this;
+
+    yang_name = "fail"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::~Fail()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::has_data() const
+{
+    if (is_presence_container) return true;
+    return (action !=  nullptr && action->has_data());
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::has_operation() const
+{
+    return is_set(yfilter)
+	|| (action !=  nullptr && action->has_operation());
+}
+
+std::string Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "fail";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "action")
+    {
+        if(action == nullptr)
+        {
+            action = std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action>();
+        }
+        return action;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(action != nullptr)
+    {
+        _children["action"] = action;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::Action()
+    :
+    authorize(std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::Authorize>())
+{
+    authorize->parent = this;
+
+    yang_name = "action"; yang_parent_name = "fail"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::~Action()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::has_data() const
+{
+    if (is_presence_container) return true;
+    return (authorize !=  nullptr && authorize->has_data());
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::has_operation() const
+{
+    return is_set(yfilter)
+	|| (authorize !=  nullptr && authorize->has_operation());
+}
+
+std::string Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "action";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "authorize")
+    {
+        if(authorize == nullptr)
+        {
+            authorize = std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::Authorize>();
+        }
+        return authorize;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(authorize != nullptr)
+    {
+        _children["authorize"] = authorize;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authorize")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::Authorize::Authorize()
+    :
+    vlan{YType::uint16, "vlan"}
+{
+
+    yang_name = "authorize"; yang_parent_name = "action"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::Authorize::~Authorize()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::Authorize::has_data() const
+{
+    if (is_presence_container) return true;
+    return vlan.is_set;
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::Authorize::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vlan.yfilter);
+}
+
+std::string Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::Authorize::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "authorize";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::Authorize::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vlan.is_set || is_set(vlan.yfilter)) leaf_name_data.push_back(vlan.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::Authorize::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::Authorize::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::Authorize::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vlan")
+    {
+        vlan = value;
+        vlan.value_namespace = name_space;
+        vlan.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::Authorize::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vlan")
+    {
+        vlan.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::Fail::Action::Authorize::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vlan")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::NoResponse()
+    :
+    action(std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::Action>())
+{
+    action->parent = this;
+
+    yang_name = "no-response"; yang_parent_name = "event"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::~NoResponse()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::has_data() const
+{
+    if (is_presence_container) return true;
+    return (action !=  nullptr && action->has_data());
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::has_operation() const
+{
+    return is_set(yfilter)
+	|| (action !=  nullptr && action->has_operation());
+}
+
+std::string Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "no-response";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "action")
+    {
+        if(action == nullptr)
+        {
+            action = std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::Action>();
+        }
+        return action;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(action != nullptr)
+    {
+        _children["action"] = action;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action")
+        return true;
+    return false;
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::Action::Action()
+    :
+    authorize(std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::Action::Authorize>())
+{
+    authorize->parent = this;
+
+    yang_name = "action"; yang_parent_name = "no-response"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::Action::~Action()
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::Action::has_data() const
+{
+    if (is_presence_container) return true;
+    return (authorize !=  nullptr && authorize->has_data());
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::Action::has_operation() const
+{
+    return is_set(yfilter)
+	|| (authorize !=  nullptr && authorize->has_operation());
+}
+
+std::string Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::Action::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "action";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::Action::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "authorize")
+    {
+        if(authorize == nullptr)
+        {
+            authorize = std::make_shared<Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::Action::Authorize>();
+        }
+        return authorize;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::Action::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(authorize != nullptr)
+    {
+        _children["authorize"] = authorize;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::Action::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TwentyFiveGigE::Authentication::Event::NoResponse::Action::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "authorize")
         return true;
     return false;
 }
@@ -15098,14 +15063,22 @@ const Enum::YLeaf Native::Interface::TwentyFiveGigE::Lacp::Rate::normal {1, "nor
 
 const Enum::YLeaf Native::Interface::TwentyFiveGigE::CiscoIOSXEEthernetMacsecOption::Macsec::Dot1qInClear::Y_1 {0, "1"};
 
-const Enum::YLeaf Native::Interface::TwentyFiveGigE::ServicePolicy::Type::PerformanceMonitor::Direction::input {0, "input"};
-const Enum::YLeaf Native::Interface::TwentyFiveGigE::ServicePolicy::Type::PerformanceMonitor::Direction::output {1, "output"};
+const Enum::YLeaf Native::Interface::TwentyFiveGigE::Authentication::ControlDirection::both {0, "both"};
+const Enum::YLeaf Native::Interface::TwentyFiveGigE::Authentication::ControlDirection::in {1, "in"};
 
-const Enum::YLeaf Native::Interface::TwentyFiveGigE::Datalink::Flow::Monitor::InputOutput::input {0, "input"};
-const Enum::YLeaf Native::Interface::TwentyFiveGigE::Datalink::Flow::Monitor::InputOutput::output {1, "output"};
+const Enum::YLeaf Native::Interface::TwentyFiveGigE::Authentication::HostMode::multi_auth {0, "multi-auth"};
+const Enum::YLeaf Native::Interface::TwentyFiveGigE::Authentication::HostMode::multi_domain {1, "multi-domain"};
+const Enum::YLeaf Native::Interface::TwentyFiveGigE::Authentication::HostMode::multi_host {2, "multi-host"};
+const Enum::YLeaf Native::Interface::TwentyFiveGigE::Authentication::HostMode::single_host {3, "single-host"};
 
-const Enum::YLeaf Native::Interface::TwentyFiveGigE::Mac::AccessGroup::Direction::in {0, "in"};
-const Enum::YLeaf Native::Interface::TwentyFiveGigE::Mac::AccessGroup::Direction::out {1, "out"};
+const Enum::YLeaf Native::Interface::TwentyFiveGigE::Authentication::PortControl::auto_ {0, "auto"};
+const Enum::YLeaf Native::Interface::TwentyFiveGigE::Authentication::PortControl::force_authorized {1, "force-authorized"};
+const Enum::YLeaf Native::Interface::TwentyFiveGigE::Authentication::PortControl::force_unauthorized {2, "force-unauthorized"};
+
+const Enum::YLeaf Native::Interface::TwentyFiveGigE::Authentication::Violation::protect {0, "protect"};
+const Enum::YLeaf Native::Interface::TwentyFiveGigE::Authentication::Violation::replace {1, "replace"};
+const Enum::YLeaf Native::Interface::TwentyFiveGigE::Authentication::Violation::restrict {2, "restrict"};
+const Enum::YLeaf Native::Interface::TwentyFiveGigE::Authentication::Violation::shutdown {3, "shutdown"};
 
 
 }

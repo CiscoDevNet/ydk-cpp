@@ -43,6 +43,7 @@ std::string L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessPws::Bridg
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -367,6 +368,7 @@ std::string L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessPws::Bridg
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -941,6 +943,7 @@ std::string L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessPws::Bridg
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1306,6 +1309,7 @@ std::string L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessPws::Bridg
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5511,6 +5515,7 @@ std::string L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeAccessPws::Bridg
 {
     std::ostringstream path_buffer;
     path_buffer << "static-mac";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11614,6 +11619,7 @@ std::string L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::PbbP
 {
     std::ostringstream path_buffer;
     path_buffer << "bmac-mapping";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21273,6 +21279,7 @@ std::string L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniP
 {
     std::ostringstream path_buffer;
     path_buffer << "static-mac";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

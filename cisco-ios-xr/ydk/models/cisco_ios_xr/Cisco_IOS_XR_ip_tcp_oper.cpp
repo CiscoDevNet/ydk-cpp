@@ -1847,6 +1847,7 @@ std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats
 {
     std::ostringstream path_buffer;
     path_buffer << "data-write-success-num";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1925,6 +1926,7 @@ std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats
 {
     std::ostringstream path_buffer;
     path_buffer << "data-read-success-num";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2003,6 +2005,7 @@ std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats
 {
     std::ostringstream path_buffer;
     path_buffer << "data-write-error-num";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2081,6 +2084,7 @@ std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats
 {
     std::ostringstream path_buffer;
     path_buffer << "data-read-error-num";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2159,6 +2163,7 @@ std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats
 {
     std::ostringstream path_buffer;
     path_buffer << "control-write-success-num";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2237,6 +2242,7 @@ std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats
 {
     std::ostringstream path_buffer;
     path_buffer << "control-read-success-num";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2315,6 +2321,7 @@ std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats
 {
     std::ostringstream path_buffer;
     path_buffer << "control-write-error-num";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2393,6 +2400,7 @@ std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats
 {
     std::ostringstream path_buffer;
     path_buffer << "control-read-error-num";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2471,6 +2479,7 @@ std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats
 {
     std::ostringstream path_buffer;
     path_buffer << "data-write-byte";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2549,6 +2558,7 @@ std::string TcpConnection::Nodes::Node::Statistics::Pcbs::Pcb::AsyncSessionStats
 {
     std::ostringstream path_buffer;
     path_buffer << "data-read-byte";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3980,6 +3990,7 @@ std::string TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket::
 {
     std::ostringstream path_buffer;
     path_buffer << "iqs-total-ingpacket";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4058,6 +4069,7 @@ std::string TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket::g
 {
     std::ostringstream path_buffer;
     path_buffer << "iqs-total-egpacket";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5459,6 +5471,7 @@ std::string TcpConnection::Nodes::Node::ExtendedInformation::DisplayTypes::Displ
 {
     std::ostringstream path_buffer;
     path_buffer << "filter";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9251,6 +9264,7 @@ std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::F
 {
     std::ostringstream path_buffer;
     path_buffer << "fib-pd-ctx";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9329,6 +9343,7 @@ std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::F
 {
     std::ostringstream path_buffer;
     path_buffer << "fib-label-output";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9416,6 +9431,7 @@ std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::T
 {
     std::ostringstream path_buffer;
     path_buffer << "timer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9530,6 +9546,7 @@ std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::S
 {
     std::ostringstream path_buffer;
     path_buffer << "sack-blk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9628,6 +9645,7 @@ std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::S
 {
     std::ostringstream path_buffer;
     path_buffer << "send-sack-hole";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10122,6 +10140,7 @@ std::string TcpConnection::Nodes::Node::Keychains::Keychain::Keys::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "keys";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10327,6 +10346,7 @@ std::string TcpConnection::Nodes::Node::Keychains::Keychain::Keys::InvalidatedKe
 {
     std::ostringstream path_buffer;
     path_buffer << "invalidated-key";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10405,6 +10425,7 @@ std::string TcpConnection::Nodes::Node::Keychains::Keychain::ActiveKey::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "active-key";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10495,6 +10516,7 @@ std::string TcpConnection::Nodes::Node::Keychains::Keychain::SendId::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "send-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10590,6 +10612,7 @@ std::string TcpConnection::Nodes::Node::Keychains::Keychain::SendId::Keys::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "keys";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10680,6 +10703,7 @@ std::string TcpConnection::Nodes::Node::Keychains::Keychain::ReceiveId::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "receive-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10775,6 +10799,7 @@ std::string TcpConnection::Nodes::Node::Keychains::Keychain::ReceiveId::Keys::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "keys";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12915,6 +12940,7 @@ std::string TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::LocalAddr
 {
     std::ostringstream path_buffer;
     path_buffer << "local-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12993,6 +13019,7 @@ std::string TcpNsr::Nodes::Node::Session::BriefSessions::BriefSession::ForeignAd
 {
     std::ostringstream path_buffer;
     path_buffer << "foreign-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14292,6 +14319,7 @@ std::string TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::LocalAd
 {
     std::ostringstream path_buffer;
     path_buffer << "local-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14370,6 +14398,7 @@ std::string TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::Foreign
 {
     std::ostringstream path_buffer;
     path_buffer << "foreign-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14454,6 +14483,7 @@ std::string TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::PacketH
 {
     std::ostringstream path_buffer;
     path_buffer << "packet-hold-queue";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14560,6 +14590,7 @@ std::string TcpNsr::Nodes::Node::Session::DetailSessions::DetailSession::Interna
 {
     std::ostringstream path_buffer;
     path_buffer << "internal-ack-hold-queue";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18602,6 +18633,7 @@ std::string TcpNsr::Nodes::Node::Statistics::Summary::NotificationStatistic::get
 {
     std::ostringstream path_buffer;
     path_buffer << "notification-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19049,6 +19081,7 @@ std::string TcpNsr::Nodes::Node::Statistics::StatisticClients::StatisticClient::
 {
     std::ostringstream path_buffer;
     path_buffer << "notification-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

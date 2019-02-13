@@ -170,9 +170,15 @@ class Native : public ydk::Entity
         class Process; //type: Native::Process
         class Exception; //type: Native::Exception
         class Iox; //type: Native::Iox
-        class NamedOrderingRouteMap; //type: Native::NamedOrderingRouteMap
+        class Power; //type: Native::Power
+        class Vpdn; //type: Native::Vpdn
         class Esmc; //type: Native::Esmc
-        class Cef; //type: Native::Cef
+        class AccessSession; //type: Native::AccessSession
+        class Authentication; //type: Native::Authentication
+        class Dialer; //type: Native::Dialer
+        class DialerList; //type: Native::DialerList
+        class Vstack; //type: Native::Vstack
+        class EtAnalytics; //type: Native::EtAnalytics
         class Arp; //type: Native::Arp
         class NetworkPolicy; //type: Native::NetworkPolicy
         class Energywise; //type: Native::Energywise
@@ -186,31 +192,25 @@ class Native : public ydk::Entity
         class HwSwitch; //type: Native::HwSwitch
         class Feature; //type: Native::Feature
         class Openflow; //type: Native::Openflow
-        class EtAnalytics; //type: Native::EtAnalytics
-        class Dialer; //type: Native::Dialer
-        class DialerList; //type: Native::DialerList
+        class BbaGroup; //type: Native::BbaGroup
+        class MaintenanceTemplate; //type: Native::MaintenanceTemplate
+        class Cef; //type: Native::Cef
+        class Nat66; //type: Native::Nat66
+        class Shell; //type: Native::Shell
+        class Voice; //type: Native::Voice
+        class VoiceCard; //type: Native::VoiceCard
+        class ServiceRouting; //type: Native::ServiceRouting
+        class Lldp; //type: Native::Lldp
+        class ServiceList; //type: Native::ServiceList
+        class Diagnostic; //type: Native::Diagnostic
+        class PmAgent; //type: Native::PmAgent
+        class NamedOrderingRouteMap; //type: Native::NamedOrderingRouteMap
+        class FabricGroup; //type: Native::FabricGroup
+        class DeviceSensor; //type: Native::DeviceSensor
+        class Coap; //type: Native::Coap
         class Utd; //type: Native::Utd
         class UtdSt; //type: Native::UtdSt
         class UtdMt; //type: Native::UtdMt
-        class FabricGroup; //type: Native::FabricGroup
-        class Coap; //type: Native::Coap
-        class Voice; //type: Native::Voice
-        class VoiceCard; //type: Native::VoiceCard
-        class Power; //type: Native::Power
-        class DeviceSensor; //type: Native::DeviceSensor
-        class ServiceList; //type: Native::ServiceList
-        class AccessSession; //type: Native::AccessSession
-        class Authentication; //type: Native::Authentication
-        class ServiceRouting; //type: Native::ServiceRouting
-        class MaintenanceTemplate; //type: Native::MaintenanceTemplate
-        class Lldp; //type: Native::Lldp
-        class Diagnostic; //type: Native::Diagnostic
-        class Nat66; //type: Native::Nat66
-        class BbaGroup; //type: Native::BbaGroup
-        class Shell; //type: Native::Shell
-        class Vstack; //type: Native::Vstack
-        class PmAgent; //type: Native::PmAgent
-        class Vpdn; //type: Native::Vpdn
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Default> default_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Bfd> bfd;
@@ -342,9 +342,15 @@ class Native : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Process> process;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Exception> exception;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Iox> iox; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::NamedOrderingRouteMap> named_ordering_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Power> power;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vpdn> vpdn;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Esmc> esmc;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cef> cef;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::AccessSession> access_session;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Dialer> dialer;
+        ydk::YList dialer_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vstack> vstack;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::EtAnalytics> et_analytics; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Arp> arp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::NetworkPolicy> network_policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Energywise> energywise;
@@ -358,31 +364,25 @@ class Native : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::HwSwitch> hw_switch;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Feature> feature;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Openflow> openflow;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::EtAnalytics> et_analytics; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Dialer> dialer;
-        ydk::YList dialer_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BbaGroup> bba_group;
+        ydk::YList maintenance_template;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Cef> cef;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Nat66> nat66;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Shell> shell;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Voice> voice;
+        ydk::YList voice_card;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceRouting> service_routing;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Lldp> lldp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceList> service_list;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic> diagnostic;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent> pm_agent; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::NamedOrderingRouteMap> named_ordering_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::FabricGroup> fabric_group;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::DeviceSensor> device_sensor;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Coap> coap;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Utd> utd; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::UtdSt> utd_st;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::UtdMt> utd_mt;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::FabricGroup> fabric_group;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Coap> coap;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Voice> voice;
-        ydk::YList voice_card;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Power> power;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::DeviceSensor> device_sensor;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceList> service_list;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::AccessSession> access_session;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceRouting> service_routing;
-        ydk::YList maintenance_template;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Lldp> lldp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic> diagnostic;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Nat66> nat66;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::BbaGroup> bba_group;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Shell> shell;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vstack> vstack;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent> pm_agent; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Vpdn> vpdn;
         
 }; // Native
 

@@ -1966,6 +1966,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 {
     std::ostringstream path_buffer;
     path_buffer << "inbound";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2044,6 +2045,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 {
     std::ostringstream path_buffer;
     path_buffer << "outbound";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2122,6 +2124,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 {
     std::ostringstream path_buffer;
     path_buffer << "common";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2293,6 +2296,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 {
     std::ostringstream path_buffer;
     path_buffer << "address-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3113,6 +3117,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3197,6 +3202,7 @@ std::string Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail:
 {
     std::ostringstream path_buffer;
     path_buffer << "secondary-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6678,6 +6684,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Inb
 {
     std::ostringstream path_buffer;
     path_buffer << "inbound";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6756,6 +6763,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Out
 {
     std::ostringstream path_buffer;
     path_buffer << "outbound";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6834,6 +6842,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl::Com
 {
     std::ostringstream path_buffer;
     path_buffer << "common";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7005,6 +7014,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::HelperAddress
 {
     std::ostringstream path_buffer;
     path_buffer << "address-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7825,6 +7835,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MulticastGrou
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7909,6 +7920,7 @@ std::string Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::SecondaryAddr
 {
     std::ostringstream path_buffer;
     path_buffer << "secondary-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

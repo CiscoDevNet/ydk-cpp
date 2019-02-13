@@ -2299,6 +2299,7 @@ std::string MplsTeStandby::Nsr::Status::SyncStatusInformation::SlaveSyncInformat
 {
     std::ostringstream path_buffer;
     path_buffer << "vif-pending";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2401,6 +2402,7 @@ std::string MplsTeStandby::Nsr::Status::SyncStatusInformation::SlaveSyncInformat
 {
     std::ostringstream path_buffer;
     path_buffer << "s2l-pending";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3862,6 +3864,7 @@ std::string MplsTeStandby::Nsr::Detail::SyncStatusInformation::SlaveSyncInformat
 {
     std::ostringstream path_buffer;
     path_buffer << "vif-pending";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3964,6 +3967,7 @@ std::string MplsTeStandby::Nsr::Detail::SyncStatusInformation::SlaveSyncInformat
 {
     std::ostringstream path_buffer;
     path_buffer << "s2l-pending";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5323,6 +5327,7 @@ std::string MplsTeStandby::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::E
 {
     std::ostringstream path_buffer;
     path_buffer << "explicit-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5588,6 +5593,7 @@ std::string MplsTeStandby::AutoTunnelServices::SrPolicyEntries::SrPolicyEntry::E
 {
     std::ostringstream path_buffer;
     path_buffer << "hops";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5816,6 +5822,7 @@ std::string MplsTeStandby::AffinityMap::AffinityMapArray::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "affinity-map-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5951,6 +5958,7 @@ std::string MplsTeStandby::AffinityMap::AffinityMapArray::AffinityExtendedValue:
 {
     std::ostringstream path_buffer;
     path_buffer << "affinity-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6577,6 +6585,7 @@ std::string MplsTeStandby::TopologyBriefs::TopologyBrief::TopologyNodeLink::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "topology-node-link";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7360,6 +7369,7 @@ std::string MplsTeStandby::TopologyBriefs::TopologyBrief::TopologyNodeLink::Topo
 {
     std::ostringstream path_buffer;
     path_buffer << "topology-link-prestandard-bandwidth-allocated";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7438,6 +7448,7 @@ std::string MplsTeStandby::TopologyBriefs::TopologyBrief::TopologyNodeLink::Topo
 {
     std::ostringstream path_buffer;
     path_buffer << "topology-link-prestandard-bandwidth-available-global";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7516,6 +7527,7 @@ std::string MplsTeStandby::TopologyBriefs::TopologyBrief::TopologyNodeLink::Topo
 {
     std::ostringstream path_buffer;
     path_buffer << "topology-link-prestandard-bandwidth-available-subpool";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7854,6 +7866,7 @@ std::string MplsTeStandby::TopologyBriefs::TopologyBrief::TopologyNodeLink::Topo
 {
     std::ostringstream path_buffer;
     path_buffer << "topo-link-std-bw-allocated";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7932,6 +7945,7 @@ std::string MplsTeStandby::TopologyBriefs::TopologyBrief::TopologyNodeLink::Topo
 {
     std::ostringstream path_buffer;
     path_buffer << "topo-link-std-bw-available";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8131,6 +8145,7 @@ std::string MplsTeStandby::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduL
 {
     std::ostringstream path_buffer;
     path_buffer << "max-lsp-bandwidth";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8244,6 +8259,7 @@ std::string MplsTeStandby::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduL
 {
     std::ostringstream path_buffer;
     path_buffer << "odu-capability";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8957,6 +8973,7 @@ std::string MplsTeStandby::TopologyBriefs::TopologyBrief::TopologyNodeLink::Topo
 {
     std::ostringstream path_buffer;
     path_buffer << "topology-link-extended-affinity-bit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9038,6 +9055,7 @@ std::string MplsTeStandby::TopologyBriefs::TopologyBrief::TopologyNodeLink::Shar
 {
     std::ostringstream path_buffer;
     path_buffer << "shared-risk-link-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9157,6 +9175,7 @@ std::string MplsTeStandby::TopologyBriefs::TopologyBrief::TopologyNodeLink::Adja
 {
     std::ostringstream path_buffer;
     path_buffer << "adjacency-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

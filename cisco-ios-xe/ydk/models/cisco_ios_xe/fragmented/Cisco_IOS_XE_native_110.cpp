@@ -13,38 +13,39 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
-Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::NoEncap()
+Native::Interface::VirtualTemplate::Ntp::BroadcastOption::BroadcastOption()
     :
-    gmac(nullptr) // presence node
+    broadcast(std::make_shared<Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast>())
 {
+    broadcast->parent = this;
 
-    yang_name = "no-encap"; yang_parent_name = "mode-list"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+    yang_name = "broadcast-option"; yang_parent_name = "ntp"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::~NoEncap()
+Native::Interface::VirtualTemplate::Ntp::BroadcastOption::~BroadcastOption()
 {
 }
 
-bool Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::has_data() const
+bool Native::Interface::VirtualTemplate::Ntp::BroadcastOption::has_data() const
 {
     if (is_presence_container) return true;
-    return (gmac !=  nullptr && gmac->has_data());
+    return (broadcast !=  nullptr && broadcast->has_data());
 }
 
-bool Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::has_operation() const
+bool Native::Interface::VirtualTemplate::Ntp::BroadcastOption::has_operation() const
 {
     return is_set(yfilter)
-	|| (gmac !=  nullptr && gmac->has_operation());
+	|| (broadcast !=  nullptr && broadcast->has_operation());
 }
 
-std::string Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::get_segment_path() const
+std::string Native::Interface::VirtualTemplate::Ntp::BroadcastOption::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "no-encap";
+    path_buffer << "broadcast-option";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Ntp::BroadcastOption::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -53,199 +54,199 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplat
 
 }
 
-std::shared_ptr<ydk::Entity> Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::VirtualTemplate::Ntp::BroadcastOption::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "gmac")
+    if(child_yang_name == "broadcast")
     {
-        if(gmac == nullptr)
+        if(broadcast == nullptr)
         {
-            gmac = std::make_shared<Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac>();
+            broadcast = std::make_shared<Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast>();
         }
-        return gmac;
+        return broadcast;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::VirtualTemplate::Ntp::BroadcastOption::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(gmac != nullptr)
+    if(broadcast != nullptr)
     {
-        _children["gmac"] = gmac;
+        _children["broadcast"] = broadcast;
     }
 
     return _children;
 }
 
-void Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::VirtualTemplate::Ntp::BroadcastOption::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::VirtualTemplate::Ntp::BroadcastOption::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::VirtualTemplate::Ntp::BroadcastOption::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "gmac")
+    if(name == "broadcast")
         return true;
     return false;
 }
 
-Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::Gmac()
+Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast::Broadcast()
     :
-    gcm_encrypt{YType::empty, "gcm-encrypt"}
+    client{YType::empty, "client"}
 {
 
-    yang_name = "gmac"; yang_parent_name = "no-encap"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+    yang_name = "broadcast"; yang_parent_name = "broadcast-option"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::~Gmac()
+Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast::~Broadcast()
 {
 }
 
-bool Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::has_data() const
+bool Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast::has_data() const
 {
     if (is_presence_container) return true;
-    return gcm_encrypt.is_set;
+    return client.is_set;
 }
 
-bool Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::has_operation() const
+bool Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(gcm_encrypt.yfilter);
+	|| ydk::is_set(client.yfilter);
 }
 
-std::string Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::get_segment_path() const
+std::string Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "gmac";
+    path_buffer << "broadcast";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (gcm_encrypt.is_set || is_set(gcm_encrypt.yfilter)) leaf_name_data.push_back(gcm_encrypt.get_name_leafdata());
+    if (client.is_set || is_set(client.yfilter)) leaf_name_data.push_back(client.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "gcm-encrypt")
+    if(value_path == "client")
     {
-        gcm_encrypt = value;
-        gcm_encrypt.value_namespace = name_space;
-        gcm_encrypt.value_namespace_prefix = name_space_prefix;
+        client = value;
+        client.value_namespace = name_space;
+        client.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "gcm-encrypt")
+    if(value_path == "client")
     {
-        gcm_encrypt.yfilter = yfilter;
+        client.yfilter = yfilter;
     }
 }
 
-bool Native::Interface::VirtualTemplate::Cts::Manual::Sap::Pmk::ModeList::NoEncap::Gmac::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::VirtualTemplate::Ntp::BroadcastOption::Broadcast::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "gcm-encrypt")
+    if(name == "client")
         return true;
     return false;
 }
 
-Native::Interface::VirtualTemplate::Cts::Manual::Propagate::Propagate()
+Native::Interface::VirtualTemplate::Utd::Utd()
     :
-    sgt{YType::boolean, "sgt"}
+    enable{YType::empty, "enable"}
 {
 
-    yang_name = "propagate"; yang_parent_name = "manual"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "utd"; yang_parent_name = "Virtual-Template"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::VirtualTemplate::Cts::Manual::Propagate::~Propagate()
+Native::Interface::VirtualTemplate::Utd::~Utd()
 {
 }
 
-bool Native::Interface::VirtualTemplate::Cts::Manual::Propagate::has_data() const
+bool Native::Interface::VirtualTemplate::Utd::has_data() const
 {
     if (is_presence_container) return true;
-    return sgt.is_set;
+    return enable.is_set;
 }
 
-bool Native::Interface::VirtualTemplate::Cts::Manual::Propagate::has_operation() const
+bool Native::Interface::VirtualTemplate::Utd::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(sgt.yfilter);
+	|| ydk::is_set(enable.yfilter);
 }
 
-std::string Native::Interface::VirtualTemplate::Cts::Manual::Propagate::get_segment_path() const
+std::string Native::Interface::VirtualTemplate::Utd::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "propagate";
+    path_buffer << "Cisco-IOS-XE-utd:utd";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Cts::Manual::Propagate::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::VirtualTemplate::Utd::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (sgt.is_set || is_set(sgt.yfilter)) leaf_name_data.push_back(sgt.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> Native::Interface::VirtualTemplate::Cts::Manual::Propagate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::VirtualTemplate::Utd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::VirtualTemplate::Cts::Manual::Propagate::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::VirtualTemplate::Utd::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void Native::Interface::VirtualTemplate::Cts::Manual::Propagate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::VirtualTemplate::Utd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "sgt")
+    if(value_path == "enable")
     {
-        sgt = value;
-        sgt.value_namespace = name_space;
-        sgt.value_namespace_prefix = name_space_prefix;
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Interface::VirtualTemplate::Cts::Manual::Propagate::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::VirtualTemplate::Utd::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "sgt")
+    if(value_path == "enable")
     {
-        sgt.yfilter = yfilter;
+        enable.yfilter = yfilter;
     }
 }
 
-bool Native::Interface::VirtualTemplate::Cts::Manual::Propagate::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::VirtualTemplate::Utd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sgt")
+    if(name == "enable")
         return true;
     return false;
 }
@@ -314,9 +315,9 @@ Native::Interface::VirtualPortGroup::VirtualPortGroup()
     , pppoe(std::make_shared<Native::Interface::VirtualPortGroup::Pppoe>())
     , service(std::make_shared<Native::Interface::VirtualPortGroup::Service>())
     , lacp(std::make_shared<Native::Interface::VirtualPortGroup::Lacp>())
-    , service_policy(std::make_shared<Native::Interface::VirtualPortGroup::ServicePolicy>())
     , snmp(std::make_shared<Native::Interface::VirtualPortGroup::Snmp>())
     , mab(nullptr) // presence node
+    , service_policy(std::make_shared<Native::Interface::VirtualPortGroup::ServicePolicy>())
     , cts(std::make_shared<Native::Interface::VirtualPortGroup::Cts>())
 {
     switchport_conf->parent = this;
@@ -365,8 +366,8 @@ Native::Interface::VirtualPortGroup::VirtualPortGroup()
     pppoe->parent = this;
     service->parent = this;
     lacp->parent = this;
-    service_policy->parent = this;
     snmp->parent = this;
+    service_policy->parent = this;
     cts->parent = this;
 
     yang_name = "VirtualPortGroup"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
@@ -444,9 +445,9 @@ bool Native::Interface::VirtualPortGroup::has_data() const
 	|| (pppoe !=  nullptr && pppoe->has_data())
 	|| (service !=  nullptr && service->has_data())
 	|| (lacp !=  nullptr && lacp->has_data())
-	|| (service_policy !=  nullptr && service_policy->has_data())
 	|| (snmp !=  nullptr && snmp->has_data())
 	|| (mab !=  nullptr && mab->has_data())
+	|| (service_policy !=  nullptr && service_policy->has_data())
 	|| (cts !=  nullptr && cts->has_data());
 }
 
@@ -518,9 +519,9 @@ bool Native::Interface::VirtualPortGroup::has_operation() const
 	|| (pppoe !=  nullptr && pppoe->has_operation())
 	|| (service !=  nullptr && service->has_operation())
 	|| (lacp !=  nullptr && lacp->has_operation())
-	|| (service_policy !=  nullptr && service_policy->has_operation())
 	|| (snmp !=  nullptr && snmp->has_operation())
 	|| (mab !=  nullptr && mab->has_operation())
+	|| (service_policy !=  nullptr && service_policy->has_operation())
 	|| (cts !=  nullptr && cts->has_operation());
 }
 
@@ -994,15 +995,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::VirtualPortGroup::get_child_by_n
         return lacp;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
-    {
-        if(service_policy == nullptr)
-        {
-            service_policy = std::make_shared<Native::Interface::VirtualPortGroup::ServicePolicy>();
-        }
-        return service_policy;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-snmp:snmp")
     {
         if(snmp == nullptr)
@@ -1019,6 +1011,15 @@ std::shared_ptr<ydk::Entity> Native::Interface::VirtualPortGroup::get_child_by_n
             mab = std::make_shared<Native::Interface::VirtualPortGroup::Mab>();
         }
         return mab;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
+    {
+        if(service_policy == nullptr)
+        {
+            service_policy = std::make_shared<Native::Interface::VirtualPortGroup::ServicePolicy>();
+        }
+        return service_policy;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-cts:cts")
@@ -1281,11 +1282,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::VirtualPo
         _children["Cisco-IOS-XE-ethernet:lacp"] = lacp;
     }
 
-    if(service_policy != nullptr)
-    {
-        _children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
-    }
-
     if(snmp != nullptr)
     {
         _children["Cisco-IOS-XE-snmp:snmp"] = snmp;
@@ -1294,6 +1290,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::VirtualPo
     if(mab != nullptr)
     {
         _children["Cisco-IOS-XE-sanet:mab"] = mab;
+    }
+
+    if(service_policy != nullptr)
+    {
+        _children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
     }
 
     if(cts != nullptr)
@@ -1444,7 +1445,7 @@ void Native::Interface::VirtualPortGroup::set_filter(const std::string & value_p
 
 bool Native::Interface::VirtualPortGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "carrier-delay" || name == "channel-group" || name == "ethernet" || name == "eapol" || name == "synchronous" || name == "speed" || name == "negotiation" || name == "plim" || name == "pppoe" || name == "service" || name == "lacp" || name == "service-policy" || name == "snmp" || name == "mab" || name == "cts" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "channel-protocol" || name == "duplex")
+    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "carrier-delay" || name == "channel-group" || name == "ethernet" || name == "eapol" || name == "synchronous" || name == "speed" || name == "negotiation" || name == "plim" || name == "pppoe" || name == "service" || name == "lacp" || name == "snmp" || name == "mab" || name == "service-policy" || name == "cts" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "channel-protocol" || name == "duplex")
         return true;
     return false;
 }

@@ -355,6 +355,7 @@ std::string Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDeta
 {
     std::ostringstream path_buffer;
     path_buffer << "owner-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -506,6 +507,7 @@ std::string Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDeta
 {
     std::ostringstream path_buffer;
     path_buffer << "association-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -783,6 +785,7 @@ std::string Bfd::Ipv4bfDoMplsteHeadSessionDetails::Ipv4bfDoMplsteHeadSessionDeta
 {
     std::ostringstream path_buffer;
     path_buffer << "owner-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1030,6 +1033,7 @@ std::string Bfd::RelationBriefs::RelationBrief::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "relation-brief";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1157,6 +1161,7 @@ std::string Bfd::RelationBriefs::RelationBrief::LinkInformation::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "link-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1638,6 +1643,7 @@ std::string Bfd::Ipv4bfDoMplsteHeadMultiPaths::Ipv4bfDoMplsteHeadMultiPath::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4bf-do-mplste-head-multi-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2064,6 +2070,7 @@ std::string Bfd::RelationDetails::RelationDetail::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "relation-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2222,6 +2229,7 @@ std::string Bfd::RelationDetails::RelationDetail::LinkInformation::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "link-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2351,6 +2359,7 @@ std::string Bfd::RelationDetails::RelationDetail::AssociationInformation::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "association-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2628,6 +2637,7 @@ std::string Bfd::RelationDetails::RelationDetail::AssociationInformation::OwnerI
 {
     std::ostringstream path_buffer;
     path_buffer << "owner-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2997,6 +3007,7 @@ std::string Bfd::Ipv4bfDoMplsteTailCounters::Ipv4bfDoMplsteTailPacketCounters::I
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4bf-do-mplste-tail-packet-counter";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3395,6 +3406,7 @@ std::string Bfd::Ipv6SingleHopSessionBriefs::Ipv6SingleHopSessionBrief::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-single-hop-session-brief";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4072,6 +4084,7 @@ std::string Bfd::Ipv4bfDoMplsteTailMultiPaths::Ipv4bfDoMplsteTailMultiPath::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4bf-do-mplste-tail-multi-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4482,6 +4495,7 @@ std::string Bfd::Ipv4MultiHopMultiPaths::Ipv4MultiHopMultiPath::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-multi-hop-multi-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

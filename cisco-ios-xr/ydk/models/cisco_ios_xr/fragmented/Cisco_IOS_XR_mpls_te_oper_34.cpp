@@ -47,6 +47,7 @@ std::string MplsTe::AffinityMap::AffinityMapArray::AffinityExtendedValue::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "affinity-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -673,6 +674,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "topology-node-link";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1456,6 +1458,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLin
 {
     std::ostringstream path_buffer;
     path_buffer << "topology-link-prestandard-bandwidth-allocated";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1534,6 +1537,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLin
 {
     std::ostringstream path_buffer;
     path_buffer << "topology-link-prestandard-bandwidth-available-global";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1612,6 +1616,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLin
 {
     std::ostringstream path_buffer;
     path_buffer << "topology-link-prestandard-bandwidth-available-subpool";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1950,6 +1955,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLin
 {
     std::ostringstream path_buffer;
     path_buffer << "topo-link-std-bw-allocated";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2028,6 +2034,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLin
 {
     std::ostringstream path_buffer;
     path_buffer << "topo-link-std-bw-available";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2227,6 +2234,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapa
 {
     std::ostringstream path_buffer;
     path_buffer << "max-lsp-bandwidth";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2340,6 +2348,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::OduLinkCapa
 {
     std::ostringstream path_buffer;
     path_buffer << "odu-capability";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3053,6 +3062,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::TopologyLin
 {
     std::ostringstream path_buffer;
     path_buffer << "topology-link-extended-affinity-bit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3134,6 +3144,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::SharedRiskL
 {
     std::ostringstream path_buffer;
     path_buffer << "shared-risk-link-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3253,6 +3264,7 @@ std::string MplsTe::TopologyBriefs::TopologyBrief::TopologyNodeLink::AdjacencySi
 {
     std::ostringstream path_buffer;
     path_buffer << "adjacency-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3988,6 +4000,7 @@ std::string MplsLcacStandby::Neighbors::Neighbor::Neighbor_::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4795,6 +4808,7 @@ std::string MplsLcacStandby::PreemptionEvents::PreemptionEvent::Lsp::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "lsp";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5192,6 +5206,7 @@ std::string MplsLcacStandby::Advertisements::AdvertizedAreas::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "advertized-areas";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5445,6 +5460,7 @@ std::string MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "flooded-link";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5993,6 +6009,7 @@ std::string MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink::OduLi
 {
     std::ostringstream path_buffer;
     path_buffer << "max-lsp-bandwidth";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6113,6 +6130,7 @@ std::string MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink::OduLi
 {
     std::ostringstream path_buffer;
     path_buffer << "odu-capability";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6656,6 +6674,7 @@ std::string MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink::Exten
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-affinity-attribute-flag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6744,6 +6763,7 @@ std::string MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink::Share
 {
     std::ostringstream path_buffer;
     path_buffer << "shared-risk-link-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6846,6 +6866,7 @@ std::string MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink::Recei
 {
     std::ostringstream path_buffer;
     path_buffer << "receiving-reservable-bandwidth";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6959,6 +6980,7 @@ std::string MplsLcacStandby::Advertisements::AdvertizedAreas::FloodedLink::Trans
 {
     std::ostringstream path_buffer;
     path_buffer << "transmitting-reservable-bandwidth";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10882,6 +10904,7 @@ std::string MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::Band
 {
     std::ostringstream path_buffer;
     path_buffer << "shared-risk-link-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10977,6 +11000,7 @@ std::string MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::Band
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-switching-capability-descriptor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11077,6 +11101,7 @@ std::string MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::Band
 {
     std::ostringstream path_buffer;
     path_buffer << "flooded-areas";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11330,6 +11355,7 @@ std::string MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::Band
 {
     std::ostringstream path_buffer;
     path_buffer << "bandwidth-pool0";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11464,6 +11490,7 @@ std::string MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::Band
 {
     std::ostringstream path_buffer;
     path_buffer << "bandwidth-pool1";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11761,6 +11788,7 @@ std::string MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::Band
 {
     std::ostringstream path_buffer;
     path_buffer << "bandwidth-pool0";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11895,6 +11923,7 @@ std::string MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::Band
 {
     std::ostringstream path_buffer;
     path_buffer << "bandwidth-pool1";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12017,6 +12046,7 @@ std::string MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::Band
 {
     std::ostringstream path_buffer;
     path_buffer << "flooding-up-threshold";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12095,6 +12125,7 @@ std::string MplsLcacStandby::BandwidthAllocation::BandwidthAllocationLinks::Band
 {
     std::ostringstream path_buffer;
     path_buffer << "flooding-down-threshold";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12636,6 +12667,7 @@ std::string MplsLcacStandby::BfdNeighbors::BfdNeighbor::Neighbor::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13689,6 +13721,7 @@ std::string MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthA
 {
     std::ostringstream path_buffer;
     path_buffer << "rsvp-te-active-interval-sample";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13851,6 +13884,7 @@ std::string MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthA
 {
     std::ostringstream path_buffer;
     path_buffer << "rsvp-te-previous-interval-sample";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14122,6 +14156,7 @@ std::string MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthA
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-active-interval-sample";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14228,6 +14263,7 @@ std::string MplsLcacStandby::BandwidthAccount::BandwidthAccountLinks::BandwidthA
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-previous-interval-sample";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14702,6 +14738,7 @@ std::string MplsLcacStandby::LinkSummary::AreasSummary::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "areas-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16249,6 +16286,7 @@ std::string MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::SharedRis
 {
     std::ostringstream path_buffer;
     path_buffer << "shared-risk-link-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16344,6 +16382,7 @@ std::string MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::Interface
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-switching-capability-descriptor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16444,6 +16483,7 @@ std::string MplsLcacStandby::LinkInformation::Links::Link::LinkCommon::FloodedAr
 {
     std::ostringstream path_buffer;
     path_buffer << "flooded-areas";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17321,6 +17361,7 @@ std::string MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::Rsv
 {
     std::ostringstream path_buffer;
     path_buffer << "rsvp-te-active-interval-sample";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17441,6 +17482,7 @@ std::string MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::Rsv
 {
     std::ostringstream path_buffer;
     path_buffer << "rsvp-te-previous-interval-sample";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17676,6 +17718,7 @@ std::string MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrB
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-active-interval-sample";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17768,6 +17811,7 @@ std::string MplsLcacStandby::LinkInformation::Links::Link::BandwidthAccount::SrB
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-previous-interval-sample";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18010,6 +18054,7 @@ std::string MplsLcacStandby::LinkInformation::Links::Link::HwOor::HwOOrLinkStati
 {
     std::ostringstream path_buffer;
     path_buffer << "hw-o-or-link-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18154,6 +18199,7 @@ std::string MplsLcacStandby::LinkInformation::Links::Link::LinkExtendedAttribute
 {
     std::ostringstream path_buffer;
     path_buffer << "link-extended-attribute";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18232,6 +18278,7 @@ std::string MplsLcacStandby::LinkInformation::Links::Link::LinkForwadRefValue::g
 {
     std::ostringstream path_buffer;
     path_buffer << "link-forwad-ref-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18331,6 +18378,7 @@ std::string MplsLcacStandby::LinkInformation::Links::Link::AffinityMap::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "affinity-map";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18459,6 +18507,7 @@ std::string MplsLcacStandby::LinkInformation::Links::Link::AffinityMap::Affinity
 {
     std::ostringstream path_buffer;
     path_buffer << "affinity-extended-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18549,6 +18598,7 @@ std::string MplsLcacStandby::LinkInformation::Links::Link::Areas::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "areas";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18677,6 +18727,7 @@ std::string MplsLcacStandby::LinkInformation::Links::Link::Lockout::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "lockout";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20259,6 +20310,7 @@ std::string MplsLcacStandby::SoftPreemptions::SoftPreemption::CurrentSoftPreempt
 {
     std::ostringstream path_buffer;
     path_buffer << "current-soft-preemption-lsp";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21005,6 +21057,7 @@ std::string MplsLcac::Neighbors::Neighbor::Neighbor_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21812,6 +21865,7 @@ std::string MplsLcac::PreemptionEvents::PreemptionEvent::Lsp::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "lsp";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22209,6 +22263,7 @@ std::string MplsLcac::Advertisements::AdvertizedAreas::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "advertized-areas";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22462,6 +22517,7 @@ std::string MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "flooded-link";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23010,6 +23066,7 @@ std::string MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapab
 {
     std::ostringstream path_buffer;
     path_buffer << "max-lsp-bandwidth";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23130,6 +23187,7 @@ std::string MplsLcac::Advertisements::AdvertizedAreas::FloodedLink::OduLinkCapab
 {
     std::ostringstream path_buffer;
     path_buffer << "odu-capability";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

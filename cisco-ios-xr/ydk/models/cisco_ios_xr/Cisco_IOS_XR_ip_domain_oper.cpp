@@ -528,6 +528,7 @@ std::string IpDomain::Vrfs::Vrf::Server::ServerAddress::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "server-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -968,6 +969,7 @@ std::string IpDomain::Vrfs::Vrf::Hosts::Host::HostAddress::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "host-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

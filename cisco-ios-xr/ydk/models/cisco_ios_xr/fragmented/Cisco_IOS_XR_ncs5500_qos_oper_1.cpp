@@ -64,6 +64,7 @@ std::string PlatformQos::Nodes::Node::QosInterfaces::QosInterface::Output::QosCl
 {
     std::ostringstream path_buffer;
     path_buffer << "wred";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -324,6 +325,7 @@ std::string PlatformQos::Nodes::Node::QosInterfaces::QosInterface::Output::QosCl
 {
     std::ostringstream path_buffer;
     path_buffer << "dnx-qosea-show-red-match-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2926,6 +2928,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSin
 {
     std::ostringstream path_buffer;
     path_buffer << "mark";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3125,6 +3128,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSin
 {
     std::ostringstream path_buffer;
     path_buffer << "mark";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3324,6 +3328,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSin
 {
     std::ostringstream path_buffer;
     path_buffer << "mark";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3416,6 +3421,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSin
 {
     std::ostringstream path_buffer;
     path_buffer << "ip-mark";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3508,6 +3514,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSin
 {
     std::ostringstream path_buffer;
     path_buffer << "common-mark";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3600,6 +3607,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSin
 {
     std::ostringstream path_buffer;
     path_buffer << "mpls-mark";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3714,6 +3722,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSin
 {
     std::ostringstream path_buffer;
     path_buffer << "wred";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3974,6 +3983,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSin
 {
     std::ostringstream path_buffer;
     path_buffer << "dnx-qosea-show-red-match-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5732,6 +5742,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSin
 {
     std::ostringstream path_buffer;
     path_buffer << "mark";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5931,6 +5942,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSin
 {
     std::ostringstream path_buffer;
     path_buffer << "mark";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6130,6 +6142,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSin
 {
     std::ostringstream path_buffer;
     path_buffer << "mark";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6222,6 +6235,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSin
 {
     std::ostringstream path_buffer;
     path_buffer << "ip-mark";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6314,6 +6328,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSin
 {
     std::ostringstream path_buffer;
     path_buffer << "common-mark";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6406,6 +6421,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSin
 {
     std::ostringstream path_buffer;
     path_buffer << "mpls-mark";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6520,6 +6536,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSin
 {
     std::ostringstream path_buffer;
     path_buffer << "wred";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6780,6 +6797,7 @@ std::string PlatformQos::Nodes::Node::BundleInterfaceSingles::BundleInterfaceSin
 {
     std::ostringstream path_buffer;
     path_buffer << "dnx-qosea-show-red-match-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7359,6 +7377,7 @@ std::string PlatformQos::Nodes::Node::RemoteInterfaces::RemoteInterface::RemoteC
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-class";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7521,6 +7540,7 @@ std::string PlatformQos::Nodes::Node::RemoteInterfaces::RemoteInterface::RemoteC
 {
     std::ostringstream path_buffer;
     path_buffer << "wred";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7627,6 +7647,7 @@ std::string PlatformQos::Nodes::Node::RemoteInterfaces::RemoteInterface::RemoteC
 {
     std::ostringstream path_buffer;
     path_buffer << "hw-wred";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

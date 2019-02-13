@@ -535,6 +535,7 @@ std::string SoftwareInstall::Superseded::SupersededPackageInfo::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "superseded-package-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -779,6 +780,7 @@ std::string SoftwareInstall::CommittedSummary::CommittedPackageInfo::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "committed-package-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1034,6 +1036,7 @@ std::string SoftwareInstall::ActiveSummary::ActivePackageInfo::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "active-package-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1471,6 +1474,7 @@ std::string SoftwareInstall::Prepare::Rpm::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rpm";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1556,6 +1560,7 @@ std::string SoftwareInstall::Prepare::Package::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "package";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1756,6 +1761,7 @@ std::string SoftwareInstall::Active::ActivePackageInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "active-package-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2081,6 +2087,7 @@ std::string SoftwareInstall::Version::Package::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "package";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2850,6 +2857,7 @@ std::string SoftwareInstall::Issu::Inventory::Invinfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "invinfo";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3094,6 +3102,7 @@ std::string SoftwareInstall::Committed::CommittedPackageInfo::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "committed-package-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

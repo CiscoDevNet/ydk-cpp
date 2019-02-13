@@ -1138,6 +1138,7 @@ std::string MplsLsdNodes::MplsLsdNode::LabelSummary::OwnerCount::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "owner-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5529,6 +5530,7 @@ std::string MplsLsdNodes::MplsLsdNode::Labels::Label::ApplicationOwner::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "application-owner";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6409,6 +6411,7 @@ std::string MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelMidpoints::TunnelMidpo
 {
     std::ostringstream path_buffer;
     path_buffer << "out-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7117,6 +7120,7 @@ std::string MplsLsdNodes::MplsLsdNode::FrrDatabase::TunnelHeads::TunnelHead::Out
 {
     std::ostringstream path_buffer;
     path_buffer << "out-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8154,6 +8158,7 @@ std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabelRangeCnts::RewriteLa
 {
     std::ostringstream path_buffer;
     path_buffer << "rewrite-label-range-cnt";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9468,6 +9473,7 @@ std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabelRangeCnts::RewriteLa
 {
     std::ostringstream path_buffer;
     path_buffer << "application-owner";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13751,6 +13757,7 @@ std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabelRangeCnts::RewriteLa
 {
     std::ostringstream path_buffer;
     path_buffer << "label-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13841,6 +13848,7 @@ std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabelRangeCnts::RewriteLa
 {
     std::ostringstream path_buffer;
     path_buffer << "associated-fpi";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14870,6 +14878,7 @@ std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabelRangeCnts::RewriteLa
 {
     std::ostringstream path_buffer;
     path_buffer << "application-owner";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14995,6 +15004,7 @@ std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabelRangeCnts::RewriteLa
 {
     std::ostringstream path_buffer;
     path_buffer << "v4-rpf";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15087,6 +15097,7 @@ std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabelRangeCnts::RewriteLa
 {
     std::ostringstream path_buffer;
     path_buffer << "v6-rpf";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15188,6 +15199,7 @@ std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabelRangeCnts::RewriteLa
 {
     std::ostringstream path_buffer;
     path_buffer << "mois";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15421,6 +15433,7 @@ std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabelRangeCnts::RewriteLa
 {
     std::ostringstream path_buffer;
     path_buffer << "moi-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18241,6 +18254,7 @@ std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabelRangeCnts::RewriteLa
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18322,6 +18336,7 @@ std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabelRangeCnts::RewriteLa
 {
     std::ostringstream path_buffer;
     path_buffer << "label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18906,6 +18921,7 @@ std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabelRangeCnts::RewriteLa
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18987,6 +19003,7 @@ std::string MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabelRangeCnts::RewriteLa
 {
     std::ostringstream path_buffer;
     path_buffer << "label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

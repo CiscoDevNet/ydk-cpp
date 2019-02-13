@@ -787,6 +787,7 @@ std::string Suppression::RuleDetails::RuleDetail::Codes::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "codes";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1409,6 +1410,7 @@ std::string Correlator::Rules::Rule::Codes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "codes";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2483,6 +2485,7 @@ std::string Correlator::RuleSetDetails::RuleSetDetail::Rules::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "rules";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3081,6 +3084,7 @@ std::string Correlator::RuleDetails::RuleDetail::Codes::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "codes";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

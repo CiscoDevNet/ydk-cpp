@@ -2012,6 +2012,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::NeighborRanges
 {
     std::ostringstream path_buffer;
     path_buffer << "af-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3136,6 +3137,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::NeighborRanges
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3214,6 +3216,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::NeighborRanges
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-community-standby";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3308,6 +3311,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::NeighborRanges
 {
     std::ostringstream path_buffer;
     path_buffer << "instance";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4488,6 +4492,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::MessageLogs::M
 {
     std::ostringstream path_buffer;
     path_buffer << "message-log";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4616,6 +4621,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::MessageLogs::M
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-message";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4839,6 +4845,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::Vrfs::Vrf::MessageLogs::M
 {
     std::ostringstream path_buffer;
     path_buffer << "logged-message-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6364,6 +6371,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Rpki
 {
     std::ostringstream path_buffer;
     path_buffer << "refresh-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6624,6 +6632,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Poli
 {
     std::ostringstream path_buffer;
     path_buffer << "policy";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16115,6 +16124,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Poli
 {
     std::ostringstream path_buffer;
     path_buffer << "rcvd-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16193,6 +16203,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Poli
 {
     std::ostringstream path_buffer;
     path_buffer << "l2vpn-circuit-status-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16271,6 +16282,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Poli
 {
     std::ostringstream path_buffer;
     path_buffer << "mvpn-pmsi-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16349,6 +16361,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Poli
 {
     std::ostringstream path_buffer;
     path_buffer << "extended-community";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16438,6 +16451,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Poli
 {
     std::ostringstream path_buffer;
     path_buffer << "local-peers-advertised-to";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17320,6 +17334,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Poli
 {
     std::ostringstream path_buffer;
     path_buffer << "pe-peers-advertised-to";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18202,6 +18217,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Poli
 {
     std::ostringstream path_buffer;
     path_buffer << "best-path-orr-bitfield";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19084,6 +19100,7 @@ std::string Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Poli
 {
     std::ostringstream path_buffer;
     path_buffer << "add-path-orr-bitfield";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -3616,6 +3616,7 @@ std::string UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb::Common:
 {
     std::ostringstream path_buffer;
     path_buffer << "filter";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

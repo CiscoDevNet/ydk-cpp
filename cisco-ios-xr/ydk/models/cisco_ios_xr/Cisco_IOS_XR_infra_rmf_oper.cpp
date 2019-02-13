@@ -583,6 +583,7 @@ std::string Redundancy::Nodes::Node::Redundancy_::Groupinfo::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "groupinfo";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -836,6 +837,7 @@ std::string Redundancy::Summary::RedPair::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "red-pair";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -980,6 +982,7 @@ std::string Redundancy::Summary::RedPair::Groupinfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "groupinfo";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

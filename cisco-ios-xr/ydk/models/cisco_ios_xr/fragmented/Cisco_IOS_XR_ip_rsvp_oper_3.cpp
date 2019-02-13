@@ -1561,6 +1561,7 @@ std::string Rsvp::InterfaceNeighborBriefs::InterfaceNeighborBrief::InterfaceNeig
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-neighbor-list-compact";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2849,6 +2850,7 @@ std::string Rsvp::SessionBriefs::SessionBrief::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "session-brief";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3993,6 +3995,7 @@ std::string Rsvp::PsbDetaileds::PsbDetailed::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "psb-detailed";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7903,6 +7906,7 @@ std::string Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalDownstreamLa
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8192,6 +8196,7 @@ std::string Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingDownstrea
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8481,6 +8486,7 @@ std::string Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericMergePointLabel::
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8770,6 +8776,7 @@ std::string Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericOutgoingUpstreamL
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9059,6 +9066,7 @@ std::string Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericLocalUpstreamLabe
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9348,6 +9356,7 @@ std::string Rsvp::PsbDetaileds::PsbDetailed::LabelInfo::GenericRecoveryLabel::Ge
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9541,6 +9550,7 @@ std::string Rsvp::PsbDetaileds::PsbDetailed::Pfc::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "pfc";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9903,6 +9913,7 @@ std::string Rsvp::PsbDetaileds::PsbDetailed::InEro::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "in-ero";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10265,6 +10276,7 @@ std::string Rsvp::PsbDetaileds::PsbDetailed::OutEro::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "out-ero";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11880,6 +11892,7 @@ std::string Rsvp::ControllerDetaileds::ControllerDetailed::NeighborArray::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12114,6 +12127,7 @@ std::string Rsvp::ControllerDetaileds::ControllerDetailed::NeighborArray::Neighb
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-message-id";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12753,6 +12767,7 @@ std::string Rsvp::RsbDetaileds::RsbDetailed::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rsb-detailed";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16271,6 +16286,7 @@ std::string Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalDownstreamLa
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16560,6 +16576,7 @@ std::string Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingDownstrea
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16849,6 +16866,7 @@ std::string Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericMergePointLabel::
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17138,6 +17156,7 @@ std::string Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericOutgoingUpstreamL
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17427,6 +17446,7 @@ std::string Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericLocalUpstreamLabe
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17716,6 +17736,7 @@ std::string Rsvp::RsbDetaileds::RsbDetailed::LabelInfo::GenericRecoveryLabel::Ge
 {
     std::ostringstream path_buffer;
     path_buffer << "value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

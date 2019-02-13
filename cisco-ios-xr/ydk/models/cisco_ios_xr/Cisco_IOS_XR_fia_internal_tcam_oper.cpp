@@ -563,6 +563,7 @@ std::string Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "npu-tcam";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -685,6 +686,7 @@ std::string Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBa
 {
     std::ostringstream path_buffer;
     path_buffer << "tcam-bank";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -841,6 +843,7 @@ std::string Controller::Dpa::Nodes::Node::ExternalTcamResources::NpuTcam::TcamBa
 {
     std::ostringstream path_buffer;
     path_buffer << "bank-db";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1046,6 +1049,7 @@ std::string Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "npu-tcam";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1168,6 +1172,7 @@ std::string Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBa
 {
     std::ostringstream path_buffer;
     path_buffer << "tcam-bank";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1324,6 +1329,7 @@ std::string Controller::Dpa::Nodes::Node::InternalTcamResources::NpuTcam::TcamBa
 {
     std::ostringstream path_buffer;
     path_buffer << "bank-db";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

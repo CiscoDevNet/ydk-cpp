@@ -2498,6 +2498,7 @@ std::string L2vpnv2::Standby::FlexibleXconnectServices::FlexibleXconnectService:
 {
     std::ostringstream path_buffer;
     path_buffer << "pseudowire";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6290,6 +6291,7 @@ std::string L2vpnv2::Standby::FlexibleXconnectServices::FlexibleXconnectService:
 {
     std::ostringstream path_buffer;
     path_buffer << "rewrite-tag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6371,6 +6373,7 @@ std::string L2vpnv2::Standby::FlexibleXconnectServices::FlexibleXconnectService:
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7236,6 +7239,7 @@ std::string L2vpnv2::Standby::FlexibleXconnectServices::FlexibleXconnectService:
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7560,6 +7564,7 @@ std::string L2vpnv2::Standby::FlexibleXconnectServices::FlexibleXconnectService:
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8248,6 +8253,7 @@ std::string L2vpnv2::Standby::FlexibleXconnectServices::FlexibleXconnectService:
 {
     std::ostringstream path_buffer;
     path_buffer << "rewrite-tag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8329,6 +8335,7 @@ std::string L2vpnv2::Standby::FlexibleXconnectServices::FlexibleXconnectService:
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9194,6 +9201,7 @@ std::string L2vpnv2::Standby::FlexibleXconnectServices::FlexibleXconnectService:
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9518,6 +9526,7 @@ std::string L2vpnv2::Standby::FlexibleXconnectServices::FlexibleXconnectService:
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10092,6 +10101,7 @@ std::string L2vpnv2::Standby::FlexibleXconnectServices::FlexibleXconnectService:
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10457,6 +10467,7 @@ std::string L2vpnv2::Standby::FlexibleXconnectServices::FlexibleXconnectService:
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13718,6 +13729,7 @@ std::string L2vpnv2::Standby::XconnectBrief::EncapsulationReportMatrix::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "encapsulation-report-matrix";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13818,6 +13830,7 @@ std::string L2vpnv2::Standby::XconnectBrief::EncapsulationReportMatrix::Ac1::get
 {
     std::ostringstream path_buffer;
     path_buffer << "ac1";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13949,6 +13962,7 @@ std::string L2vpnv2::Standby::XconnectBrief::EncapsulationReportMatrix::Ac1::Ac2
 {
     std::ostringstream path_buffer;
     path_buffer << "ac2";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14107,6 +14121,7 @@ std::string L2vpnv2::Standby::XconnectBrief::EncapsulationReportMatrix::Ac1::Ac2
 {
     std::ostringstream path_buffer;
     path_buffer << "up-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14192,6 +14207,7 @@ std::string L2vpnv2::Standby::XconnectBrief::EncapsulationReportMatrix::Ac1::Ac2
 {
     std::ostringstream path_buffer;
     path_buffer << "down-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14277,6 +14293,7 @@ std::string L2vpnv2::Standby::XconnectBrief::EncapsulationReportMatrix::Ac1::Ac2
 {
     std::ostringstream path_buffer;
     path_buffer << "unresolved-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14402,6 +14419,7 @@ std::string L2vpnv2::Standby::XconnectBrief::EncapsulationTotal::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "encapsulation-total";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14560,6 +14578,7 @@ std::string L2vpnv2::Standby::XconnectBrief::EncapsulationTotal::UpCount::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "up-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14645,6 +14664,7 @@ std::string L2vpnv2::Standby::XconnectBrief::EncapsulationTotal::DownCount::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "down-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14730,6 +14750,7 @@ std::string L2vpnv2::Standby::XconnectBrief::EncapsulationTotal::UnresolvedCount
 {
     std::ostringstream path_buffer;
     path_buffer << "unresolved-count";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15576,6 +15597,7 @@ std::string L2vpnv2::Active::Discoveries::Discovery::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "discovery";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16067,6 +16089,7 @@ std::string L2vpnv2::Active::Discoveries::Discovery::SignallingInfo::BgpSigInfo:
 {
     std::ostringstream path_buffer;
     path_buffer << "edge";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16210,6 +16233,7 @@ std::string L2vpnv2::Active::Discoveries::Discovery::SignallingInfo::BgpSigInfo:
 {
     std::ostringstream path_buffer;
     path_buffer << "label-block";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16378,6 +16402,7 @@ std::string L2vpnv2::Active::Discoveries::Discovery::SignallingInfo::BgpSigInfo:
 {
     std::ostringstream path_buffer;
     path_buffer << "status-vector";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16478,6 +16503,7 @@ std::string L2vpnv2::Active::Discoveries::Discovery::SignallingInfo::BgpSigInfo:
 {
     std::ostringstream path_buffer;
     path_buffer << "redge";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16621,6 +16647,7 @@ std::string L2vpnv2::Active::Discoveries::Discovery::SignallingInfo::BgpSigInfo:
 {
     std::ostringstream path_buffer;
     path_buffer << "label-block";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16789,6 +16816,7 @@ std::string L2vpnv2::Active::Discoveries::Discovery::SignallingInfo::BgpSigInfo:
 {
     std::ostringstream path_buffer;
     path_buffer << "status-vector";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17466,6 +17494,7 @@ std::string L2vpnv2::Active::Discoveries::Discovery::SignallingInfo::LdpSigInfo:
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-nlri";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19362,6 +19391,7 @@ std::string L2vpnv2::Active::IccpSm::IccpGroups::IccpGroup::IccpGroupInfo::Ports
 {
     std::ostringstream path_buffer;
     path_buffer << "ports";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

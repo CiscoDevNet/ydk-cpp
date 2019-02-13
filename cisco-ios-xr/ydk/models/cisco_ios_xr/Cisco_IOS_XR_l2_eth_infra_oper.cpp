@@ -547,6 +547,7 @@ std::string MacAccounting::Interfaces::Interface::IngressStatistic::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "ingress-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -653,6 +654,7 @@ std::string MacAccounting::Interfaces::Interface::EgressStatistic::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "egress-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2388,6 +2390,7 @@ std::string Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::Loc
 {
     std::ostringstream path_buffer;
     path_buffer << "local-traffic-tag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2492,6 +2495,7 @@ std::string Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::Tag
 {
     std::ostringstream path_buffer;
     path_buffer << "tags-to-match";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2601,6 +2605,7 @@ std::string Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::Tag
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2693,6 +2698,7 @@ std::string Vlan::Nodes::Node::Trunks::Trunk::VlanSwitched::TrunkVlanRanges::Pus
 {
     std::ostringstream path_buffer;
     path_buffer << "pushe";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3699,6 +3705,7 @@ std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Serv
 {
     std::ostringstream path_buffer;
     path_buffer << "local-traffic-tag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3803,6 +3810,7 @@ std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Serv
 {
     std::ostringstream path_buffer;
     path_buffer << "tags-to-match";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3912,6 +3920,7 @@ std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Serv
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4004,6 +4013,7 @@ std::string Vlan::Nodes::Node::Interfaces::Interface::EncapsulationDetails::Serv
 {
     std::ostringstream path_buffer;
     path_buffer << "pushe";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4307,6 +4317,7 @@ std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "tag-allocation";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5129,6 +5140,7 @@ std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetai
 {
     std::ostringstream path_buffer;
     path_buffer << "local-traffic-tag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5233,6 +5245,7 @@ std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetai
 {
     std::ostringstream path_buffer;
     path_buffer << "tags-to-match";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5342,6 +5355,7 @@ std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetai
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5434,6 +5448,7 @@ std::string Vlan::Nodes::Node::TagAllocations::TagAllocation::EncapsulationDetai
 {
     std::ostringstream path_buffer;
     path_buffer << "pushe";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6131,6 +6146,7 @@ std::string EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFil
 {
     std::ostringstream path_buffer;
     path_buffer << "unicast-filter";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

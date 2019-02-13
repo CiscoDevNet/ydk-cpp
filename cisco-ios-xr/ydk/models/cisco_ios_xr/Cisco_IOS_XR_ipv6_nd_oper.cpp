@@ -2928,6 +2928,7 @@ std::string Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::G
 {
     std::ostringstream path_buffer;
     path_buffer << "global-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3031,6 +3032,7 @@ std::string Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::M
 {
     std::ostringstream path_buffer;
     path_buffer << "member-node";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3959,6 +3961,7 @@ std::string Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::V
 {
     std::ostringstream path_buffer;
     path_buffer << "vr-global-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4411,6 +4414,7 @@ std::string Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "ra";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4910,6 +4914,7 @@ std::string Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::Rou
 {
     std::ostringstream path_buffer;
     path_buffer << "prefix-q";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -130,7 +130,7 @@ set(libydk_cisco_nx_os_src ydk/models/cisco_nx_os/generated_entity_lookup.cpp yd
 
 set(libydk_cisco_nx_os_headers ydk/models/cisco_nx_os/bundle_info.hpp ydk/models/cisco_nx_os/Cisco_NX_OS_device.hpp)
 
-set(libydk_cisco_nx_os_yang Cisco-NX-OS-device.yang ydk@2016-02-26.yang ietf-diffserv-policy.yang ietf-event-notifications.yang ietf-netconf-acm.yang ietf-ipv6-unicast-routing.yang ietf-inet-types.yang iana-if-type.yang ietf-netconf.yang iana-crypt-hash.yang ietf-interfaces-ext.yang ietf-yang-push.yang ietf-routing.yang ietf-yang-types.yang ietf-ipv4-unicast-routing.yang ietf-diffserv-action.yang ietf-key-chain.yang ietf-ip.yang ietf-yang-smiv2.yang ietf-netconf-notifications.yang ietf-syslog-types.yang ietf-ospf.yang ietf-restconf-monitoring.yang ietf-diffserv-classifier.yang policy-types.yang ietf-interfaces.yang ietf-diffserv-target.yang ietf-netconf-with-defaults.yang ietf-yang-library.yang ietf-netconf-monitoring.yang)
+set(libydk_cisco_nx_os_yang ietf-key-chain.yang ietf-yang-smiv2.yang ietf-ip.yang ietf-syslog-types.yang ietf-inet-types.yang ietf-routing.yang ietf-restconf-monitoring.yang ietf-ospf.yang ietf-netconf-acm.yang ietf-interfaces-ext.yang ietf-diffserv-policy.yang iana-crypt-hash.yang ietf-yang-types.yang ietf-diffserv-target.yang iana-if-type.yang ietf-interfaces.yang ietf-netconf-monitoring.yang policy-types.yang ietf-ipv6-unicast-routing.yang ietf-netconf-with-defaults.yang ietf-yang-library.yang ietf-netconf.yang ietf-diffserv-classifier.yang ietf-diffserv-action.yang ietf-netconf-notifications.yang ietf-ipv4-unicast-routing.yang ietf-yang-push.yang ietf-event-notifications.yang ydk@2016-02-26.yang Cisco-NX-OS-device.yang)
 
 set (libydk_yang_dir ${CMAKE_CURRENT_BINARY_DIR}/cisco_nx_os\@9.2.2)
 

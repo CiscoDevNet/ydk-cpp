@@ -632,6 +632,7 @@ std::string Vlans::Vlan::Members::Member::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "member";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

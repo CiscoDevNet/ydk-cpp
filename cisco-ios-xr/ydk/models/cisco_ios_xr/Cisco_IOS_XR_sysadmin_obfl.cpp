@@ -595,6 +595,7 @@ std::string Obfl::ObflMgr::Trace::Location::AllOptions::TraceBlocks::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "trace-blocks";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1104,6 +1105,7 @@ std::string Obfl::ObflShow::Trace::Location::AllOptions::TraceBlocks::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "trace-blocks";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

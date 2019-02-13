@@ -5721,9 +5721,9 @@ Native::Interface::Ethernet::Ethernet()
     , peer(std::make_shared<Native::Interface::Ethernet::Peer>())
     , pm_path(std::make_shared<Native::Interface::Ethernet::PmPath>())
     , et_analytics(std::make_shared<Native::Interface::Ethernet::EtAnalytics>())
+    , umbrella(std::make_shared<Native::Interface::Ethernet::Umbrella>())
     , zone_member(std::make_shared<Native::Interface::Ethernet::ZoneMember>())
     , utd(std::make_shared<Native::Interface::Ethernet::Utd>())
-    , umbrella(std::make_shared<Native::Interface::Ethernet::Umbrella>())
 {
     switchport_conf->parent = this;
     switchport->parent = this;
@@ -5761,9 +5761,9 @@ Native::Interface::Ethernet::Ethernet()
     peer->parent = this;
     pm_path->parent = this;
     et_analytics->parent = this;
+    umbrella->parent = this;
     zone_member->parent = this;
     utd->parent = this;
-    umbrella->parent = this;
 
     yang_name = "Ethernet"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -5828,9 +5828,9 @@ bool Native::Interface::Ethernet::has_data() const
 	|| (peer !=  nullptr && peer->has_data())
 	|| (pm_path !=  nullptr && pm_path->has_data())
 	|| (et_analytics !=  nullptr && et_analytics->has_data())
+	|| (umbrella !=  nullptr && umbrella->has_data())
 	|| (zone_member !=  nullptr && zone_member->has_data())
-	|| (utd !=  nullptr && utd->has_data())
-	|| (umbrella !=  nullptr && umbrella->has_data());
+	|| (utd !=  nullptr && utd->has_data());
 }
 
 bool Native::Interface::Ethernet::has_operation() const
@@ -5889,9 +5889,9 @@ bool Native::Interface::Ethernet::has_operation() const
 	|| (peer !=  nullptr && peer->has_operation())
 	|| (pm_path !=  nullptr && pm_path->has_operation())
 	|| (et_analytics !=  nullptr && et_analytics->has_operation())
+	|| (umbrella !=  nullptr && umbrella->has_operation())
 	|| (zone_member !=  nullptr && zone_member->has_operation())
-	|| (utd !=  nullptr && utd->has_operation())
-	|| (umbrella !=  nullptr && umbrella->has_operation());
+	|| (utd !=  nullptr && utd->has_operation());
 }
 
 std::string Native::Interface::Ethernet::get_absolute_path() const
@@ -6272,6 +6272,15 @@ std::shared_ptr<ydk::Entity> Native::Interface::Ethernet::get_child_by_name(cons
         return et_analytics;
     }
 
+    if(child_yang_name == "Cisco-IOS-XE-umbrella:umbrella")
+    {
+        if(umbrella == nullptr)
+        {
+            umbrella = std::make_shared<Native::Interface::Ethernet::Umbrella>();
+        }
+        return umbrella;
+    }
+
     if(child_yang_name == "Cisco-IOS-XE-zone:zone-member")
     {
         if(zone_member == nullptr)
@@ -6288,15 +6297,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::Ethernet::get_child_by_name(cons
             utd = std::make_shared<Native::Interface::Ethernet::Utd>();
         }
         return utd;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-umbrella:umbrella")
-    {
-        if(umbrella == nullptr)
-        {
-            umbrella = std::make_shared<Native::Interface::Ethernet::Umbrella>();
-        }
-        return umbrella;
     }
 
     return nullptr;
@@ -6500,6 +6500,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Ethernet:
         _children["Cisco-IOS-XE-eta:et-analytics"] = et_analytics;
     }
 
+    if(umbrella != nullptr)
+    {
+        _children["Cisco-IOS-XE-umbrella:umbrella"] = umbrella;
+    }
+
     if(zone_member != nullptr)
     {
         _children["Cisco-IOS-XE-zone:zone-member"] = zone_member;
@@ -6508,11 +6513,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Ethernet:
     if(utd != nullptr)
     {
         _children["Cisco-IOS-XE-utd:utd"] = utd;
-    }
-
-    if(umbrella != nullptr)
-    {
-        _children["Cisco-IOS-XE-umbrella:umbrella"] = umbrella;
     }
 
     return _children;
@@ -6638,7 +6638,7 @@ void Native::Interface::Ethernet::set_filter(const std::string & value_path, YFi
 
 bool Native::Interface::Ethernet::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "et-analytics" || name == "zone-member" || name == "utd" || name == "umbrella" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion")
+    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "et-analytics" || name == "umbrella" || name == "zone-member" || name == "utd" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion")
         return true;
     return false;
 }

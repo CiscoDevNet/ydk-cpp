@@ -941,6 +941,7 @@ std::string Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignM
 {
     std::ostringstream path_buffer;
     path_buffer << "foreign-clock";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3768,6 +3769,7 @@ std::string Ptp::Nodes::Node::NodeInterfaces::NodeInterface::IngressConversion::
 {
     std::ostringstream path_buffer;
     path_buffer << "class-mapping";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4023,6 +4025,7 @@ std::string Ptp::Nodes::Node::NodeInterfaces::NodeInterface::EgressConversion::C
 {
     std::ostringstream path_buffer;
     path_buffer << "class-mapping";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4138,6 +4141,7 @@ std::string Ptp::Nodes::Node::NodeInterfaces::NodeInterface::MasterTable::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "master-table";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4848,6 +4852,7 @@ std::string Ptp::Nodes::Node::NodeInterfaceUnicastPeers::NodeInterfaceUnicastPee
 {
     std::ostringstream path_buffer;
     path_buffer << "peers";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8120,6 +8125,7 @@ std::string Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::
 {
     std::ostringstream path_buffer;
     path_buffer << "foreign-clock";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10056,6 +10062,7 @@ std::string Ptp::InterfaceInterops::InterfaceInterop::IngressInterop::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "ingress-interop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12426,6 +12433,7 @@ std::string Ptp::InterfacePacketCounters::InterfacePacketCounter::PeerCounter::g
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-counter";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15380,6 +15388,7 @@ std::string Ptp::Interfaces::Interface::IngressConversion::ClassMapping::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "class-mapping";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15635,6 +15644,7 @@ std::string Ptp::Interfaces::Interface::EgressConversion::ClassMapping::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "class-mapping";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15750,6 +15760,7 @@ std::string Ptp::Interfaces::Interface::MasterTable::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "master-table";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19349,6 +19360,7 @@ std::string Ptp::InterfaceUnicastPeers::InterfaceUnicastPeer::Peers::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "peers";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21019,6 +21031,7 @@ std::string Ptp::UtcOffsetInfo::ConfiguredLeapSecond::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "configured-leap-second";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

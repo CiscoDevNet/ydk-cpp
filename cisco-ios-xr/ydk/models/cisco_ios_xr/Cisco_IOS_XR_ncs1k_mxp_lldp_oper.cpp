@@ -620,6 +620,7 @@ std::string LldpSnoopData::EthernetControllerNames::EthernetControllerName::Netw
 {
     std::ostringstream path_buffer;
     path_buffer << "lldp-addr-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

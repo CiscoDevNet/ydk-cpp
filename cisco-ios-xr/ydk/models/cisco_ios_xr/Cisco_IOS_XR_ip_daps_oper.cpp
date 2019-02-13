@@ -2067,6 +2067,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::Ad
 {
     std::ostringstream path_buffer;
     path_buffer << "address-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2576,6 +2577,7 @@ std::string AddressPoolService::Nodes::Node::Pools::Pool::AllocatedAddresses::In
 {
     std::ostringstream path_buffer;
     path_buffer << "in-use-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3787,6 +3789,7 @@ std::string AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv4::Pools::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "pools";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4207,6 +4210,7 @@ std::string AddressPoolService::Nodes::Node::Vrfs::Vrf::Ipv6::Pools::get_segment
 {
     std::ostringstream path_buffer;
     path_buffer << "pools";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

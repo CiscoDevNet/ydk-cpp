@@ -646,6 +646,7 @@ std::string Pcc::Plsps::Plsp::EventHistory::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "event-history";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -828,6 +829,7 @@ std::string Pcc::Plsps::Plsp::Path::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1307,6 +1309,7 @@ std::string Pcc::Plsps::Plsp::Path::EroHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ero-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1745,6 +1748,7 @@ std::string Pcc::Plsps::Plsp::Path::RroHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "rro-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5082,6 +5086,7 @@ std::string Xtc::Policies::Policy::Paths::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "paths";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5670,6 +5675,7 @@ std::string Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint:
 {
     std::ostringstream path_buffer;
     path_buffer << "affinity-constraint";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5776,6 +5782,7 @@ std::string Xtc::Policies::Policy::Paths::SrPathConstraints::AffinityConstraint:
 {
     std::ostringstream path_buffer;
     path_buffer << "color";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5870,6 +5877,7 @@ std::string Xtc::Policies::Policy::Paths::Hops::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "hops";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7336,6 +7344,7 @@ std::string Xtc::Forwarding::PolicyForwardings::PolicyForwarding::Paths::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "paths";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8177,6 +8186,7 @@ std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "paths";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8765,6 +8775,7 @@ std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstra
 {
     std::ostringstream path_buffer;
     path_buffer << "affinity-constraint";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8871,6 +8882,7 @@ std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::SrPathConstra
 {
     std::ostringstream path_buffer;
     path_buffer << "color";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8965,6 +8977,7 @@ std::string Xtc::Controller::PolicyRequests::PolicyRequest::Paths::Hops::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "hops";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10040,6 +10053,7 @@ std::string Xtc::TopologyNodes::TopologyNode::NodeProtocolIdentifier::IgpInforma
 {
     std::ostringstream path_buffer;
     path_buffer << "igp-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10538,6 +10552,7 @@ std::string Xtc::TopologyNodes::TopologyNode::PrefixSid::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "prefix-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10808,6 +10823,7 @@ std::string Xtc::TopologyNodes::TopologyNode::Ipv4Link::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-link";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11667,6 +11683,7 @@ std::string Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdenti
 {
     std::ostringstream path_buffer;
     path_buffer << "igp-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12165,6 +12182,7 @@ std::string Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "adjacency-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12420,6 +12438,7 @@ std::string Xtc::TopologyNodes::TopologyNode::Ipv6Link::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-link";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13258,6 +13277,7 @@ std::string Xtc::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtocolIdenti
 {
     std::ostringstream path_buffer;
     path_buffer << "igp-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13756,6 +13776,7 @@ std::string Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "adjacency-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14391,6 +14412,7 @@ std::string Xtc::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInformation
 {
     std::ostringstream path_buffer;
     path_buffer << "igp-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14879,6 +14901,7 @@ std::string Xtc::PrefixInfos::PrefixInfo::Address::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

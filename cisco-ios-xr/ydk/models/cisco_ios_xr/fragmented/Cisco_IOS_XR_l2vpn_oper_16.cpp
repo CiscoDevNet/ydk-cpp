@@ -1294,6 +1294,7 @@ std::string L2vpnv2::Active::Nsr::XidInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "xid-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1405,6 +1406,7 @@ std::string L2vpnv2::Active::Nsr::ReportCard::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "report-card";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1675,6 +1677,7 @@ std::string L2vpnv2::Active::PreferredPaths::PreferredPath::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "preferred-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1855,6 +1858,7 @@ std::string L2vpnv2::Active::PreferredPaths::PreferredPath::VirtualCircuit::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "virtual-circuit";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2727,6 +2731,7 @@ std::string L2vpnv2::Active::PseudowireHeadend::DetailInterfaces::DetailInterfac
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4884,6 +4889,7 @@ std::string L2vpnv2::Active::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "xconnect-mp2mp-ce2ce";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6346,6 +6352,7 @@ std::string L2vpnv2::Active::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::At
 {
     std::ostringstream path_buffer;
     path_buffer << "rewrite-tag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6434,6 +6441,7 @@ std::string L2vpnv2::Active::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::At
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7348,6 +7356,7 @@ std::string L2vpnv2::Active::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::At
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7693,6 +7702,7 @@ std::string L2vpnv2::Active::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::At
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14979,6 +14989,7 @@ std::string L2vpnv2::Active::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::Ps
 {
     std::ostringstream path_buffer;
     path_buffer << "rewrite-tag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15067,6 +15078,7 @@ std::string L2vpnv2::Active::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::Ps
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15981,6 +15993,7 @@ std::string L2vpnv2::Active::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::Ps
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16326,6 +16339,7 @@ std::string L2vpnv2::Active::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::Ps
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17049,6 +17063,7 @@ std::string L2vpnv2::Active::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::Ps
 {
     std::ostringstream path_buffer;
     path_buffer << "rewrite-tag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17137,6 +17152,7 @@ std::string L2vpnv2::Active::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::Ps
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18051,6 +18067,7 @@ std::string L2vpnv2::Active::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::Ps
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18396,6 +18413,7 @@ std::string L2vpnv2::Active::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::Ps
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19005,6 +19023,7 @@ std::string L2vpnv2::Active::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::Ps
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19391,6 +19410,7 @@ std::string L2vpnv2::Active::XconnectMp2mpCe2ces::XconnectMp2mpCe2ce::Backup::Ps
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

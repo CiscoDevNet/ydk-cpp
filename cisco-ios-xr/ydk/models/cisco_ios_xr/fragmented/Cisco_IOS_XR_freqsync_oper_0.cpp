@@ -1147,6 +1147,7 @@ std::string FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSel
 {
     std::ostringstream path_buffer;
     path_buffer << "selection-point";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1464,6 +1465,7 @@ std::string FrequencySynchronization::GlobalNodes::GlobalNode::ClockInterfaceSel
 {
     std::ostringstream path_buffer;
     path_buffer << "forward-trace";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2704,6 +2706,7 @@ std::string FrequencySynchronization::GlobalNodes::GlobalNode::TimeOfDayBackTrac
 {
     std::ostringstream path_buffer;
     path_buffer << "selection-point";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2898,6 +2901,7 @@ std::string FrequencySynchronization::GlobalNodes::GlobalNode::NtpSelectionForwa
 {
     std::ostringstream path_buffer;
     path_buffer << "forward-trace";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3705,6 +3709,7 @@ std::string FrequencySynchronization::GlobalNodes::GlobalNode::PtpSelectionForwa
 {
     std::ostringstream path_buffer;
     path_buffer << "forward-trace";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4735,6 +4740,7 @@ std::string FrequencySynchronization::GlobalInterfaces::GlobalInterface::Interfa
 {
     std::ostringstream path_buffer;
     path_buffer << "forward-trace";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5975,6 +5981,7 @@ std::string FrequencySynchronization::GlobalInterfaces::GlobalInterface::Interfa
 {
     std::ostringstream path_buffer;
     path_buffer << "selection-point";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6221,6 +6228,7 @@ std::string FrequencySynchronization::Summary::FrequencySummary::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "frequency-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6779,6 +6787,7 @@ std::string FrequencySynchronization::Summary::TimeOfDaySummary::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "time-of-day-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9804,6 +9813,7 @@ std::string FrequencySynchronization::InterfaceDatas::InterfaceData::SpaSelectio
 {
     std::ostringstream path_buffer;
     path_buffer << "spa-selection-point";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9896,6 +9906,7 @@ std::string FrequencySynchronization::InterfaceDatas::InterfaceData::NodeSelecti
 {
     std::ostringstream path_buffer;
     path_buffer << "node-selection-point";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10648,6 +10659,7 @@ std::string FrequencySynchronization::Nodes::Node::NtpData::SpaSelectionPoint::g
 {
     std::ostringstream path_buffer;
     path_buffer << "spa-selection-point";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10740,6 +10752,7 @@ std::string FrequencySynchronization::Nodes::Node::NtpData::NodeSelectionPoint::
 {
     std::ostringstream path_buffer;
     path_buffer << "node-selection-point";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11348,6 +11361,7 @@ std::string FrequencySynchronization::Nodes::Node::SelectionPointDatas::Selectio
 {
     std::ostringstream path_buffer;
     path_buffer << "spa-selection-point";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11440,6 +11454,7 @@ std::string FrequencySynchronization::Nodes::Node::SelectionPointDatas::Selectio
 {
     std::ostringstream path_buffer;
     path_buffer << "node-selection-point";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11532,6 +11547,7 @@ std::string FrequencySynchronization::Nodes::Node::SelectionPointDatas::Selectio
 {
     std::ostringstream path_buffer;
     path_buffer << "chassis-selection-point";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11624,6 +11640,7 @@ std::string FrequencySynchronization::Nodes::Node::SelectionPointDatas::Selectio
 {
     std::ostringstream path_buffer;
     path_buffer << "router-selection-point";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12040,6 +12057,7 @@ std::string FrequencySynchronization::Nodes::Node::ConfigurationErrors::ErrorSou
 {
     std::ostringstream path_buffer;
     path_buffer << "error-source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13756,6 +13774,7 @@ std::string FrequencySynchronization::Nodes::Node::PtpData::SpaSelectionPoint::g
 {
     std::ostringstream path_buffer;
     path_buffer << "spa-selection-point";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13848,6 +13867,7 @@ std::string FrequencySynchronization::Nodes::Node::PtpData::NodeSelectionPoint::
 {
     std::ostringstream path_buffer;
     path_buffer << "node-selection-point";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16216,6 +16236,7 @@ std::string FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedC
 {
     std::ostringstream path_buffer;
     path_buffer << "spa-selection-point";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16308,6 +16329,7 @@ std::string FrequencySynchronization::Nodes::Node::DetailedClockDatas::DetailedC
 {
     std::ostringstream path_buffer;
     path_buffer << "node-selection-point";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18444,6 +18466,7 @@ std::string FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::SpaSel
 {
     std::ostringstream path_buffer;
     path_buffer << "spa-selection-point";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18536,6 +18559,7 @@ std::string FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::NodeSe
 {
     std::ostringstream path_buffer;
     path_buffer << "node-selection-point";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18780,6 +18804,7 @@ std::string FrequencySynchronization::Nodes::Node::SelectionPointInputs::Selecti
 {
     std::ostringstream path_buffer;
     path_buffer << "selection-point-input";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -88,9 +88,9 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6 : public ydk::Entity
         class Nd; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::Nd
         class Tcp; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::Tcp
         class TrafficFilter; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::TrafficFilter
-        class Crypto; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::Crypto
         class NoPim; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::NoPim
         class Pim; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::Pim
+        class Crypto; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::Crypto
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::DestinationGuard> destination_guard; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::SourceGuard> source_guard; // presence node
@@ -99,9 +99,9 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6 : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::Nd> nd;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::Tcp> tcp;
         ydk::YList traffic_filter;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::Crypto> crypto;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::NoPim> no_pim;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::Pim> pim;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::Crypto> crypto;
         
 }; // Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6
 
@@ -442,27 +442,6 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::TrafficFilter : public 
 }; // Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::TrafficFilter
 
 
-class Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::Crypto : public ydk::Entity
-{
-    public:
-        Crypto();
-        ~Crypto();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf map; //type: string
-
-}; // Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::Crypto
-
-
 class Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::NoPim : public ydk::Entity
 {
     public:
@@ -528,6 +507,27 @@ class Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::Pim::Bsr : public ydk::
         ydk::YLeaf border; //type: empty
 
 }; // Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::Pim::Bsr
+
+
+class Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::Crypto : public ydk::Entity
+{
+    public:
+        Crypto();
+        ~Crypto();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf map; //type: string
+
+}; // Native::Interface::Vlan::CiscoIOSXEInterfacesIpv6::Crypto
 
 
 class Native::Interface::Vlan::CiscoIOSXEInterfacesLogging : public ydk::Entity

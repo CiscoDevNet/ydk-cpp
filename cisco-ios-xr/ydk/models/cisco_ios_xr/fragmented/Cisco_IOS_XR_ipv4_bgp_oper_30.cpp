@@ -433,6 +433,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1332,6 +1333,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 {
     std::ostringstream path_buffer;
     path_buffer << "update-generation-sub-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4462,6 +4464,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop-af";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6790,6 +6793,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop-metrice";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6868,6 +6872,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop-refcount";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6952,6 +6957,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop-gateway-internal-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7113,6 +7119,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop-gateway-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8224,6 +8231,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 {
     std::ostringstream path_buffer;
     path_buffer << "nexthop-route-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8981,6 +8989,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::NextH
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9984,6 +9993,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::RtSet
 {
     std::ostringstream path_buffer;
     path_buffer << "rt-set";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10200,6 +10210,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPa
 {
     std::ostringstream path_buffer;
     path_buffer << "bmp-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11483,6 +11494,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPa
 {
     std::ostringstream path_buffer;
     path_buffer << "bmp-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12404,6 +12416,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::BmpPa
 {
     std::ostringstream path_buffer;
     path_buffer << "received-label";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14533,6 +14546,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Updat
 {
     std::ostringstream path_buffer;
     path_buffer << "update-generation-filter-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15061,6 +15075,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Netwo
 {
     std::ostringstream path_buffer;
     path_buffer << "network";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16740,6 +16755,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Netwo
 {
     std::ostringstream path_buffer;
     path_buffer << "local-peers-advertised-to";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17622,6 +17638,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Netwo
 {
     std::ostringstream path_buffer;
     path_buffer << "pe-peers-advertised-to";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18504,6 +18521,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Netwo
 {
     std::ostringstream path_buffer;
     path_buffer << "best-path-orr-bitfield";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19386,6 +19404,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Netwo
 {
     std::ostringstream path_buffer;
     path_buffer << "add-path-orr-bitfield";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20306,6 +20325,7 @@ std::string Bgp::Instances::Instance::InstanceActive::DefaultVrf::Afs::Af::Netwo
 {
     std::ostringstream path_buffer;
     path_buffer << "local-process-instance-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

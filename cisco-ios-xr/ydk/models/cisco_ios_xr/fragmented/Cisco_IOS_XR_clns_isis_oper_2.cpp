@@ -4287,6 +4287,7 @@ std::string OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Is
 {
     std::ostringstream path_buffer;
     path_buffer << "mt-ipv6-reachability-prefixe";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7332,6 +7333,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7593,6 +7595,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborActiveAreaAd
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-active-area-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7680,6 +7683,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::TopologiesSupported:
 {
     std::ostringstream path_buffer;
     path_buffer << "topologies-supported";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7800,6 +7804,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-per-address-family-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8369,6 +8374,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8596,6 +8602,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8938,6 +8945,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9165,6 +9173,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9243,6 +9252,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9321,6 +9331,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "underlying-adjacency-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9402,6 +9413,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "underlying-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9990,6 +10002,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10217,6 +10230,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10559,6 +10573,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10786,6 +10801,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11223,6 +11239,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11671,6 +11688,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "backup-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11760,6 +11778,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11838,6 +11857,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "underlying-adjacency-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11919,6 +11939,7 @@ std::string Isis::Instances::Instance::Neighbors::Neighbor::NeighborPerAddressFa
 {
     std::ostringstream path_buffer;
     path_buffer << "underlying-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13587,6 +13608,7 @@ std::string Isis::Instances::Instance::StatisticsGlobal::PerAreaData::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "per-area-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13793,6 +13815,7 @@ std::string Isis::Instances::Instance::StatisticsGlobal::PerAreaData::PerTopolog
 {
     std::ostringstream path_buffer;
     path_buffer << "per-topology-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14562,6 +14585,7 @@ std::string Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "log-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14894,6 +14918,7 @@ std::string Isis::Instances::Instance::Levels::Level::AdjacencyLog::LogEntry::Ad
 {
     std::ostringstream path_buffer;
     path_buffer << "adjacency-per-topology-change";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15609,6 +15634,7 @@ std::string Isis::Instances::Instance::Levels::Level::LspTableSummary::Fragment0
 {
     std::ostringstream path_buffer;
     path_buffer << "per-topology-counter";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16590,6 +16616,7 @@ std::string Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "adjacency";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

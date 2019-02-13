@@ -475,6 +475,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::MulticastStaticRoutes::MulticastStaticR
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-static-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1001,6 +1002,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::Neighbors::Neighbor::get_segment_path()
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1278,6 +1280,7 @@ std::string Ipv6Pim::Standby::Vrfs::Vrf::Neighbors::Neighbor::NeighborAddressXr:
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-address-xr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2983,6 +2986,7 @@ std::string Ipv6Pim::Active::DefaultContext::GlobalInterfaces::GlobalInterface::
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3862,6 +3866,7 @@ std::string Ipv6Pim::Active::DefaultContext::IfrsInterfaces::IfrsInterface::Inte
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4085,6 +4090,7 @@ std::string Ipv6Pim::Active::DefaultContext::Safs::Saf::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "saf";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4350,6 +4356,7 @@ std::string Ipv6Pim::Active::DefaultContext::Safs::Saf::RpfHashSourceGroups::Rpf
 {
     std::ostringstream path_buffer;
     path_buffer << "rpf-hash-source-group";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4876,6 +4883,7 @@ std::string Ipv6Pim::Active::DefaultContext::Safs::Saf::RpfHashSources::RpfHashS
 {
     std::ostringstream path_buffer;
     path_buffer << "rpf-hash-source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5674,6 +5682,7 @@ std::string Ipv6Pim::Active::DefaultContext::Safs::Saf::Rpfs::Rpf::RpfPath::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "rpf-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7222,6 +7231,7 @@ std::string Ipv6Pim::Active::DefaultContext::MibDatabases::MibDatabase::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "mib-database";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8162,6 +8172,7 @@ std::string Ipv6Pim::Active::DefaultContext::NeighborOldFormats::NeighborOldForm
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-old-format";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8446,6 +8457,7 @@ std::string Ipv6Pim::Active::DefaultContext::NeighborOldFormats::NeighborOldForm
 {
     std::ostringstream path_buffer;
     path_buffer << "neighbor-address-xr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8784,6 +8796,7 @@ std::string Ipv6Pim::Active::DefaultContext::Ranges::Range::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9199,6 +9212,7 @@ std::string Ipv6Pim::Active::DefaultContext::Ranges::Range::GroupRange::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "group-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10332,6 +10346,7 @@ std::string Ipv6Pim::Active::DefaultContext::InterfaceOldFormats::InterfaceOldFo
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11024,6 +11039,7 @@ std::string Ipv6Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRp
 {
     std::ostringstream path_buffer;
     path_buffer << "pim-bsr-crp-bag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11706,6 +11722,7 @@ std::string Ipv6Pim::Active::DefaultContext::Bsr::CandidateRps::CandidateRp::Crp
 {
     std::ostringstream path_buffer;
     path_buffer << "crp-access";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12784,6 +12801,7 @@ std::string Ipv6Pim::Active::DefaultContext::RoutePolicy::RoutePolicyTests::Rout
 {
     std::ostringstream path_buffer;
     path_buffer << "route-policy-test";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14336,6 +14354,7 @@ std::string Ipv6Pim::Active::DefaultContext::Interfaces::Interface::InterfaceAdd
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15266,6 +15285,7 @@ std::string Ipv6Pim::Active::DefaultContext::BidirDfStates::BidirDfState::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "bidir-df-state";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15867,6 +15887,7 @@ std::string Ipv6Pim::Active::DefaultContext::Topologies::Topology::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "topology";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17687,6 +17708,7 @@ std::string Ipv6Pim::Active::DefaultContext::Topologies::Topology::OutgoingInter
 {
     std::ostringstream path_buffer;
     path_buffer << "outgoing-interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18321,6 +18343,7 @@ std::string Ipv6Pim::Active::DefaultContext::BgpAfs::BgpAf::get_segment_path() c
 {
     std::ostringstream path_buffer;
     path_buffer << "bgp-af";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19303,6 +19326,7 @@ std::string Ipv6Pim::Active::DefaultContext::GroupMapSources::GroupMapSource::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "group-map-source";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21096,6 +21120,7 @@ std::string Ipv6Pim::Active::DefaultContext::TrafficCounters::PacketQueue::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "packet-queue";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21596,6 +21621,7 @@ std::string Ipv6Pim::Active::DefaultContext::GroupMapRpfs::GroupMapRpf::get_segm
 {
     std::ostringstream path_buffer;
     path_buffer << "group-map-rpf";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23719,6 +23745,7 @@ std::string Ipv6Pim::Active::DefaultContext::Gre::GreNextHops::GreNextHop::GrePa
 {
     std::ostringstream path_buffer;
     path_buffer << "gre-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24218,6 +24245,7 @@ std::string Ipv6Pim::Active::DefaultContext::BidirDfWinners::BidirDfWinner::get_
 {
     std::ostringstream path_buffer;
     path_buffer << "bidir-df-winner";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24770,6 +24798,7 @@ std::string Ipv6Pim::Active::DefaultContext::TableContexts::TableContext::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "table-context";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

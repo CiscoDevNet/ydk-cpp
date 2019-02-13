@@ -2301,6 +2301,7 @@ std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Output::Details::
 {
     std::ostringstream path_buffer;
     path_buffer << "qos-show-ea-pclass-st";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4515,6 +4516,7 @@ std::string PlatformQosEa::Nodes::Node::Interfaces::Interface::Input::Details::S
 {
     std::ostringstream path_buffer;
     path_buffer << "qos-show-ea-pclass-st";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -1212,26 +1212,26 @@ Mib::Mib()
     sensor_mib_cache{YType::empty, "Cisco-IOS-XR-snmp-ciscosensormib-cfg:sensor-mib-cache"}
         ,
     cb_qosmib(std::make_shared<Mib::CbQosmib>())
-    , subscriber(std::make_shared<Mib::Subscriber>())
-    , interface_mib(std::make_shared<Mib::InterfaceMib>())
-    , entity_mib(std::make_shared<Mib::EntityMib>())
     , notification_log_mib(std::make_shared<Mib::NotificationLogMib>())
+    , entity_mib(std::make_shared<Mib::EntityMib>())
+    , subscriber(std::make_shared<Mib::Subscriber>())
     , mpls_te_mib(std::make_shared<Mib::MplsTeMib>())
     , mpls_p2mp_mib(std::make_shared<Mib::MplsP2mpMib>())
     , mpls_te_ext_std_mib(std::make_shared<Mib::MplsTeExtStdMib>())
     , mpls_te_ext_mib(std::make_shared<Mib::MplsTeExtMib>())
     , mpls_frr_mib(std::make_shared<Mib::MplsFrrMib>())
+    , interface_mib(std::make_shared<Mib::InterfaceMib>())
 {
     cb_qosmib->parent = this;
-    subscriber->parent = this;
-    interface_mib->parent = this;
-    entity_mib->parent = this;
     notification_log_mib->parent = this;
+    entity_mib->parent = this;
+    subscriber->parent = this;
     mpls_te_mib->parent = this;
     mpls_p2mp_mib->parent = this;
     mpls_te_ext_std_mib->parent = this;
     mpls_te_ext_mib->parent = this;
     mpls_frr_mib->parent = this;
+    interface_mib->parent = this;
 
     yang_name = "mib"; yang_parent_name = "Cisco-IOS-XR-snmp-agent-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
@@ -1245,15 +1245,15 @@ bool Mib::has_data() const
     if (is_presence_container) return true;
     return sensor_mib_cache.is_set
 	|| (cb_qosmib !=  nullptr && cb_qosmib->has_data())
-	|| (subscriber !=  nullptr && subscriber->has_data())
-	|| (interface_mib !=  nullptr && interface_mib->has_data())
-	|| (entity_mib !=  nullptr && entity_mib->has_data())
 	|| (notification_log_mib !=  nullptr && notification_log_mib->has_data())
+	|| (entity_mib !=  nullptr && entity_mib->has_data())
+	|| (subscriber !=  nullptr && subscriber->has_data())
 	|| (mpls_te_mib !=  nullptr && mpls_te_mib->has_data())
 	|| (mpls_p2mp_mib !=  nullptr && mpls_p2mp_mib->has_data())
 	|| (mpls_te_ext_std_mib !=  nullptr && mpls_te_ext_std_mib->has_data())
 	|| (mpls_te_ext_mib !=  nullptr && mpls_te_ext_mib->has_data())
-	|| (mpls_frr_mib !=  nullptr && mpls_frr_mib->has_data());
+	|| (mpls_frr_mib !=  nullptr && mpls_frr_mib->has_data())
+	|| (interface_mib !=  nullptr && interface_mib->has_data());
 }
 
 bool Mib::has_operation() const
@@ -1261,15 +1261,15 @@ bool Mib::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(sensor_mib_cache.yfilter)
 	|| (cb_qosmib !=  nullptr && cb_qosmib->has_operation())
-	|| (subscriber !=  nullptr && subscriber->has_operation())
-	|| (interface_mib !=  nullptr && interface_mib->has_operation())
-	|| (entity_mib !=  nullptr && entity_mib->has_operation())
 	|| (notification_log_mib !=  nullptr && notification_log_mib->has_operation())
+	|| (entity_mib !=  nullptr && entity_mib->has_operation())
+	|| (subscriber !=  nullptr && subscriber->has_operation())
 	|| (mpls_te_mib !=  nullptr && mpls_te_mib->has_operation())
 	|| (mpls_p2mp_mib !=  nullptr && mpls_p2mp_mib->has_operation())
 	|| (mpls_te_ext_std_mib !=  nullptr && mpls_te_ext_std_mib->has_operation())
 	|| (mpls_te_ext_mib !=  nullptr && mpls_te_ext_mib->has_operation())
-	|| (mpls_frr_mib !=  nullptr && mpls_frr_mib->has_operation());
+	|| (mpls_frr_mib !=  nullptr && mpls_frr_mib->has_operation())
+	|| (interface_mib !=  nullptr && interface_mib->has_operation());
 }
 
 std::string Mib::get_segment_path() const
@@ -1300,22 +1300,13 @@ std::shared_ptr<ydk::Entity> Mib::get_child_by_name(const std::string & child_ya
         return cb_qosmib;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber")
+    if(child_yang_name == "Cisco-IOS-XR-infra-notification-log-mib-cfg:notification-log-mib")
     {
-        if(subscriber == nullptr)
+        if(notification_log_mib == nullptr)
         {
-            subscriber = std::make_shared<Mib::Subscriber>();
+            notification_log_mib = std::make_shared<Mib::NotificationLogMib>();
         }
-        return subscriber;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-snmp-ifmib-cfg:interface-mib")
-    {
-        if(interface_mib == nullptr)
-        {
-            interface_mib = std::make_shared<Mib::InterfaceMib>();
-        }
-        return interface_mib;
+        return notification_log_mib;
     }
 
     if(child_yang_name == "Cisco-IOS-XR-snmp-entitymib-cfg:entity-mib")
@@ -1327,13 +1318,13 @@ std::shared_ptr<ydk::Entity> Mib::get_child_by_name(const std::string & child_ya
         return entity_mib;
     }
 
-    if(child_yang_name == "Cisco-IOS-XR-infra-notification-log-mib-cfg:notification-log-mib")
+    if(child_yang_name == "Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber")
     {
-        if(notification_log_mib == nullptr)
+        if(subscriber == nullptr)
         {
-            notification_log_mib = std::make_shared<Mib::NotificationLogMib>();
+            subscriber = std::make_shared<Mib::Subscriber>();
         }
-        return notification_log_mib;
+        return subscriber;
     }
 
     if(child_yang_name == "Cisco-IOS-XR-mpls-te-cfg:mpls-te-mib")
@@ -1381,6 +1372,15 @@ std::shared_ptr<ydk::Entity> Mib::get_child_by_name(const std::string & child_ya
         return mpls_frr_mib;
     }
 
+    if(child_yang_name == "Cisco-IOS-XR-snmp-ifmib-cfg:interface-mib")
+    {
+        if(interface_mib == nullptr)
+        {
+            interface_mib = std::make_shared<Mib::InterfaceMib>();
+        }
+        return interface_mib;
+    }
+
     return nullptr;
 }
 
@@ -1393,14 +1393,9 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::get_children() const
         _children["Cisco-IOS-XR-qos-mibs-cfg:cb-qosmib"] = cb_qosmib;
     }
 
-    if(subscriber != nullptr)
+    if(notification_log_mib != nullptr)
     {
-        _children["Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber"] = subscriber;
-    }
-
-    if(interface_mib != nullptr)
-    {
-        _children["Cisco-IOS-XR-snmp-ifmib-cfg:interface-mib"] = interface_mib;
+        _children["Cisco-IOS-XR-infra-notification-log-mib-cfg:notification-log-mib"] = notification_log_mib;
     }
 
     if(entity_mib != nullptr)
@@ -1408,9 +1403,9 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::get_children() const
         _children["Cisco-IOS-XR-snmp-entitymib-cfg:entity-mib"] = entity_mib;
     }
 
-    if(notification_log_mib != nullptr)
+    if(subscriber != nullptr)
     {
-        _children["Cisco-IOS-XR-infra-notification-log-mib-cfg:notification-log-mib"] = notification_log_mib;
+        _children["Cisco-IOS-XR-subscriber-session-mon-mibs-cfg:subscriber"] = subscriber;
     }
 
     if(mpls_te_mib != nullptr)
@@ -1436,6 +1431,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::get_children() const
     if(mpls_frr_mib != nullptr)
     {
         _children["Cisco-IOS-XR-mpls-te-cfg:mpls-frr-mib"] = mpls_frr_mib;
+    }
+
+    if(interface_mib != nullptr)
+    {
+        _children["Cisco-IOS-XR-snmp-ifmib-cfg:interface-mib"] = interface_mib;
     }
 
     return _children;
@@ -1486,7 +1486,7 @@ std::map<std::pair<std::string, std::string>, std::string> Mib::get_namespace_id
 
 bool Mib::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cb-qosmib" || name == "subscriber" || name == "interface-mib" || name == "entity-mib" || name == "notification-log-mib" || name == "mpls-te-mib" || name == "mpls-p2mp-mib" || name == "mpls-te-ext-std-mib" || name == "mpls-te-ext-mib" || name == "mpls-frr-mib" || name == "sensor-mib-cache")
+    if(name == "cb-qosmib" || name == "notification-log-mib" || name == "entity-mib" || name == "subscriber" || name == "mpls-te-mib" || name == "mpls-p2mp-mib" || name == "mpls-te-ext-std-mib" || name == "mpls-te-ext-mib" || name == "mpls-frr-mib" || name == "interface-mib" || name == "sensor-mib-cache")
         return true;
     return false;
 }
@@ -1718,6 +1718,232 @@ void Mib::CbQosmib::Cache::set_filter(const std::string & value_path, YFilter yf
 bool Mib::CbQosmib::Cache::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "enable" || name == "refresh-time" || name == "service-policy-count")
+        return true;
+    return false;
+}
+
+Mib::NotificationLogMib::NotificationLogMib()
+    :
+    global_age_out{YType::uint32, "global-age-out"},
+    disable{YType::empty, "disable"},
+    default_{YType::empty, "default"},
+    global_size{YType::uint32, "global-size"},
+    default_size{YType::uint32, "default-size"}
+{
+
+    yang_name = "notification-log-mib"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Mib::NotificationLogMib::~NotificationLogMib()
+{
+}
+
+bool Mib::NotificationLogMib::has_data() const
+{
+    if (is_presence_container) return true;
+    return global_age_out.is_set
+	|| disable.is_set
+	|| default_.is_set
+	|| global_size.is_set
+	|| default_size.is_set;
+}
+
+bool Mib::NotificationLogMib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(global_age_out.yfilter)
+	|| ydk::is_set(disable.yfilter)
+	|| ydk::is_set(default_.yfilter)
+	|| ydk::is_set(global_size.yfilter)
+	|| ydk::is_set(default_size.yfilter);
+}
+
+std::string Mib::NotificationLogMib::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::NotificationLogMib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-notification-log-mib-cfg:notification-log-mib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::NotificationLogMib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (global_age_out.is_set || is_set(global_age_out.yfilter)) leaf_name_data.push_back(global_age_out.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+    if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
+    if (global_size.is_set || is_set(global_size.yfilter)) leaf_name_data.push_back(global_size.get_name_leafdata());
+    if (default_size.is_set || is_set(default_size.yfilter)) leaf_name_data.push_back(default_size.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Mib::NotificationLogMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::NotificationLogMib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Mib::NotificationLogMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "global-age-out")
+    {
+        global_age_out = value;
+        global_age_out.value_namespace = name_space;
+        global_age_out.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "default")
+    {
+        default_ = value;
+        default_.value_namespace = name_space;
+        default_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "global-size")
+    {
+        global_size = value;
+        global_size.value_namespace = name_space;
+        global_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "default-size")
+    {
+        default_size = value;
+        default_size.value_namespace = name_space;
+        default_size.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::NotificationLogMib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "global-age-out")
+    {
+        global_age_out.yfilter = yfilter;
+    }
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+    if(value_path == "default")
+    {
+        default_.yfilter = yfilter;
+    }
+    if(value_path == "global-size")
+    {
+        global_size.yfilter = yfilter;
+    }
+    if(value_path == "default-size")
+    {
+        default_size.yfilter = yfilter;
+    }
+}
+
+bool Mib::NotificationLogMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "global-age-out" || name == "disable" || name == "default" || name == "global-size" || name == "default-size")
+        return true;
+    return false;
+}
+
+Mib::EntityMib::EntityMib()
+    :
+    entity_index_persistence{YType::empty, "entity-index-persistence"}
+{
+
+    yang_name = "entity-mib"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Mib::EntityMib::~EntityMib()
+{
+}
+
+bool Mib::EntityMib::has_data() const
+{
+    if (is_presence_container) return true;
+    return entity_index_persistence.is_set;
+}
+
+bool Mib::EntityMib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entity_index_persistence.yfilter);
+}
+
+std::string Mib::EntityMib::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::EntityMib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-entitymib-cfg:entity-mib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::EntityMib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entity_index_persistence.is_set || is_set(entity_index_persistence.yfilter)) leaf_name_data.push_back(entity_index_persistence.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Mib::EntityMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::EntityMib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Mib::EntityMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entity-index-persistence")
+    {
+        entity_index_persistence = value;
+        entity_index_persistence.value_namespace = name_space;
+        entity_index_persistence.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::EntityMib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entity-index-persistence")
+    {
+        entity_index_persistence.yfilter = yfilter;
+    }
+}
+
+bool Mib::EntityMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entity-index-persistence")
         return true;
     return false;
 }
@@ -4737,6 +4963,445 @@ bool Mib::Subscriber::Threshold::Rising::Nodes::Node::has_leaf_or_child_of_name(
     return false;
 }
 
+Mib::MplsTeMib::MplsTeMib()
+    :
+    cache_garbage_collect_timer{YType::uint32, "cache-garbage-collect-timer"},
+    cache_timer{YType::uint32, "cache-timer"}
+{
+
+    yang_name = "mpls-te-mib"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Mib::MplsTeMib::~MplsTeMib()
+{
+}
+
+bool Mib::MplsTeMib::has_data() const
+{
+    if (is_presence_container) return true;
+    return cache_garbage_collect_timer.is_set
+	|| cache_timer.is_set;
+}
+
+bool Mib::MplsTeMib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cache_garbage_collect_timer.yfilter)
+	|| ydk::is_set(cache_timer.yfilter);
+}
+
+std::string Mib::MplsTeMib::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::MplsTeMib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te-mib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::MplsTeMib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cache_garbage_collect_timer.is_set || is_set(cache_garbage_collect_timer.yfilter)) leaf_name_data.push_back(cache_garbage_collect_timer.get_name_leafdata());
+    if (cache_timer.is_set || is_set(cache_timer.yfilter)) leaf_name_data.push_back(cache_timer.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Mib::MplsTeMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::MplsTeMib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Mib::MplsTeMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cache-garbage-collect-timer")
+    {
+        cache_garbage_collect_timer = value;
+        cache_garbage_collect_timer.value_namespace = name_space;
+        cache_garbage_collect_timer.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cache-timer")
+    {
+        cache_timer = value;
+        cache_timer.value_namespace = name_space;
+        cache_timer.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::MplsTeMib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cache-garbage-collect-timer")
+    {
+        cache_garbage_collect_timer.yfilter = yfilter;
+    }
+    if(value_path == "cache-timer")
+    {
+        cache_timer.yfilter = yfilter;
+    }
+}
+
+bool Mib::MplsTeMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cache-garbage-collect-timer" || name == "cache-timer")
+        return true;
+    return false;
+}
+
+Mib::MplsP2mpMib::MplsP2mpMib()
+    :
+    cache_timer{YType::uint32, "cache-timer"}
+{
+
+    yang_name = "mpls-p2mp-mib"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Mib::MplsP2mpMib::~MplsP2mpMib()
+{
+}
+
+bool Mib::MplsP2mpMib::has_data() const
+{
+    if (is_presence_container) return true;
+    return cache_timer.is_set;
+}
+
+bool Mib::MplsP2mpMib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cache_timer.yfilter);
+}
+
+std::string Mib::MplsP2mpMib::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::MplsP2mpMib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-p2mp-mib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::MplsP2mpMib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cache_timer.is_set || is_set(cache_timer.yfilter)) leaf_name_data.push_back(cache_timer.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Mib::MplsP2mpMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::MplsP2mpMib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Mib::MplsP2mpMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cache-timer")
+    {
+        cache_timer = value;
+        cache_timer.value_namespace = name_space;
+        cache_timer.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::MplsP2mpMib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cache-timer")
+    {
+        cache_timer.yfilter = yfilter;
+    }
+}
+
+bool Mib::MplsP2mpMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cache-timer")
+        return true;
+    return false;
+}
+
+Mib::MplsTeExtStdMib::MplsTeExtStdMib()
+    :
+    cache_timer{YType::uint32, "cache-timer"}
+{
+
+    yang_name = "mpls-te-ext-std-mib"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Mib::MplsTeExtStdMib::~MplsTeExtStdMib()
+{
+}
+
+bool Mib::MplsTeExtStdMib::has_data() const
+{
+    if (is_presence_container) return true;
+    return cache_timer.is_set;
+}
+
+bool Mib::MplsTeExtStdMib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cache_timer.yfilter);
+}
+
+std::string Mib::MplsTeExtStdMib::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::MplsTeExtStdMib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te-ext-std-mib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::MplsTeExtStdMib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cache_timer.is_set || is_set(cache_timer.yfilter)) leaf_name_data.push_back(cache_timer.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Mib::MplsTeExtStdMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::MplsTeExtStdMib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Mib::MplsTeExtStdMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cache-timer")
+    {
+        cache_timer = value;
+        cache_timer.value_namespace = name_space;
+        cache_timer.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::MplsTeExtStdMib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cache-timer")
+    {
+        cache_timer.yfilter = yfilter;
+    }
+}
+
+bool Mib::MplsTeExtStdMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cache-timer")
+        return true;
+    return false;
+}
+
+Mib::MplsTeExtMib::MplsTeExtMib()
+    :
+    cache_timer{YType::uint32, "cache-timer"}
+{
+
+    yang_name = "mpls-te-ext-mib"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Mib::MplsTeExtMib::~MplsTeExtMib()
+{
+}
+
+bool Mib::MplsTeExtMib::has_data() const
+{
+    if (is_presence_container) return true;
+    return cache_timer.is_set;
+}
+
+bool Mib::MplsTeExtMib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cache_timer.yfilter);
+}
+
+std::string Mib::MplsTeExtMib::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::MplsTeExtMib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te-ext-mib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::MplsTeExtMib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cache_timer.is_set || is_set(cache_timer.yfilter)) leaf_name_data.push_back(cache_timer.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Mib::MplsTeExtMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::MplsTeExtMib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Mib::MplsTeExtMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cache-timer")
+    {
+        cache_timer = value;
+        cache_timer.value_namespace = name_space;
+        cache_timer.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::MplsTeExtMib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cache-timer")
+    {
+        cache_timer.yfilter = yfilter;
+    }
+}
+
+bool Mib::MplsTeExtMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cache-timer")
+        return true;
+    return false;
+}
+
+Mib::MplsFrrMib::MplsFrrMib()
+    :
+    cache_timer{YType::uint32, "cache-timer"}
+{
+
+    yang_name = "mpls-frr-mib"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Mib::MplsFrrMib::~MplsFrrMib()
+{
+}
+
+bool Mib::MplsFrrMib::has_data() const
+{
+    if (is_presence_container) return true;
+    return cache_timer.is_set;
+}
+
+bool Mib::MplsFrrMib::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cache_timer.yfilter);
+}
+
+std::string Mib::MplsFrrMib::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Mib::MplsFrrMib::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-frr-mib";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Mib::MplsFrrMib::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cache_timer.is_set || is_set(cache_timer.yfilter)) leaf_name_data.push_back(cache_timer.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Mib::MplsFrrMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::MplsFrrMib::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Mib::MplsFrrMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cache-timer")
+    {
+        cache_timer = value;
+        cache_timer.value_namespace = name_space;
+        cache_timer.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Mib::MplsFrrMib::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cache-timer")
+    {
+        cache_timer.yfilter = yfilter;
+    }
+}
+
+bool Mib::MplsFrrMib::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cache-timer")
+        return true;
+    return false;
+}
+
 Mib::InterfaceMib::InterfaceMib()
     :
     internal_cache{YType::uint32, "internal-cache"},
@@ -5525,671 +6190,6 @@ void Mib::InterfaceMib::Subsets::Subset::LinkUpDown::set_filter(const std::strin
 bool Mib::InterfaceMib::Subsets::Subset::LinkUpDown::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "enable" || name == "regular-expression")
-        return true;
-    return false;
-}
-
-Mib::EntityMib::EntityMib()
-    :
-    entity_index_persistence{YType::empty, "entity-index-persistence"}
-{
-
-    yang_name = "entity-mib"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Mib::EntityMib::~EntityMib()
-{
-}
-
-bool Mib::EntityMib::has_data() const
-{
-    if (is_presence_container) return true;
-    return entity_index_persistence.is_set;
-}
-
-bool Mib::EntityMib::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entity_index_persistence.yfilter);
-}
-
-std::string Mib::EntityMib::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Mib::EntityMib::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-entitymib-cfg:entity-mib";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Mib::EntityMib::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entity_index_persistence.is_set || is_set(entity_index_persistence.yfilter)) leaf_name_data.push_back(entity_index_persistence.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Mib::EntityMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::EntityMib::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Mib::EntityMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entity-index-persistence")
-    {
-        entity_index_persistence = value;
-        entity_index_persistence.value_namespace = name_space;
-        entity_index_persistence.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Mib::EntityMib::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entity-index-persistence")
-    {
-        entity_index_persistence.yfilter = yfilter;
-    }
-}
-
-bool Mib::EntityMib::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entity-index-persistence")
-        return true;
-    return false;
-}
-
-Mib::NotificationLogMib::NotificationLogMib()
-    :
-    global_age_out{YType::uint32, "global-age-out"},
-    disable{YType::empty, "disable"},
-    default_{YType::empty, "default"},
-    global_size{YType::uint32, "global-size"},
-    default_size{YType::uint32, "default-size"}
-{
-
-    yang_name = "notification-log-mib"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Mib::NotificationLogMib::~NotificationLogMib()
-{
-}
-
-bool Mib::NotificationLogMib::has_data() const
-{
-    if (is_presence_container) return true;
-    return global_age_out.is_set
-	|| disable.is_set
-	|| default_.is_set
-	|| global_size.is_set
-	|| default_size.is_set;
-}
-
-bool Mib::NotificationLogMib::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(global_age_out.yfilter)
-	|| ydk::is_set(disable.yfilter)
-	|| ydk::is_set(default_.yfilter)
-	|| ydk::is_set(global_size.yfilter)
-	|| ydk::is_set(default_size.yfilter);
-}
-
-std::string Mib::NotificationLogMib::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Mib::NotificationLogMib::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-notification-log-mib-cfg:notification-log-mib";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Mib::NotificationLogMib::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (global_age_out.is_set || is_set(global_age_out.yfilter)) leaf_name_data.push_back(global_age_out.get_name_leafdata());
-    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
-    if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
-    if (global_size.is_set || is_set(global_size.yfilter)) leaf_name_data.push_back(global_size.get_name_leafdata());
-    if (default_size.is_set || is_set(default_size.yfilter)) leaf_name_data.push_back(default_size.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Mib::NotificationLogMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::NotificationLogMib::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Mib::NotificationLogMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "global-age-out")
-    {
-        global_age_out = value;
-        global_age_out.value_namespace = name_space;
-        global_age_out.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disable")
-    {
-        disable = value;
-        disable.value_namespace = name_space;
-        disable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "default")
-    {
-        default_ = value;
-        default_.value_namespace = name_space;
-        default_.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "global-size")
-    {
-        global_size = value;
-        global_size.value_namespace = name_space;
-        global_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "default-size")
-    {
-        default_size = value;
-        default_size.value_namespace = name_space;
-        default_size.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Mib::NotificationLogMib::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "global-age-out")
-    {
-        global_age_out.yfilter = yfilter;
-    }
-    if(value_path == "disable")
-    {
-        disable.yfilter = yfilter;
-    }
-    if(value_path == "default")
-    {
-        default_.yfilter = yfilter;
-    }
-    if(value_path == "global-size")
-    {
-        global_size.yfilter = yfilter;
-    }
-    if(value_path == "default-size")
-    {
-        default_size.yfilter = yfilter;
-    }
-}
-
-bool Mib::NotificationLogMib::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "global-age-out" || name == "disable" || name == "default" || name == "global-size" || name == "default-size")
-        return true;
-    return false;
-}
-
-Mib::MplsTeMib::MplsTeMib()
-    :
-    cache_garbage_collect_timer{YType::uint32, "cache-garbage-collect-timer"},
-    cache_timer{YType::uint32, "cache-timer"}
-{
-
-    yang_name = "mpls-te-mib"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Mib::MplsTeMib::~MplsTeMib()
-{
-}
-
-bool Mib::MplsTeMib::has_data() const
-{
-    if (is_presence_container) return true;
-    return cache_garbage_collect_timer.is_set
-	|| cache_timer.is_set;
-}
-
-bool Mib::MplsTeMib::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cache_garbage_collect_timer.yfilter)
-	|| ydk::is_set(cache_timer.yfilter);
-}
-
-std::string Mib::MplsTeMib::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Mib::MplsTeMib::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te-mib";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Mib::MplsTeMib::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cache_garbage_collect_timer.is_set || is_set(cache_garbage_collect_timer.yfilter)) leaf_name_data.push_back(cache_garbage_collect_timer.get_name_leafdata());
-    if (cache_timer.is_set || is_set(cache_timer.yfilter)) leaf_name_data.push_back(cache_timer.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Mib::MplsTeMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::MplsTeMib::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Mib::MplsTeMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cache-garbage-collect-timer")
-    {
-        cache_garbage_collect_timer = value;
-        cache_garbage_collect_timer.value_namespace = name_space;
-        cache_garbage_collect_timer.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cache-timer")
-    {
-        cache_timer = value;
-        cache_timer.value_namespace = name_space;
-        cache_timer.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Mib::MplsTeMib::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cache-garbage-collect-timer")
-    {
-        cache_garbage_collect_timer.yfilter = yfilter;
-    }
-    if(value_path == "cache-timer")
-    {
-        cache_timer.yfilter = yfilter;
-    }
-}
-
-bool Mib::MplsTeMib::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cache-garbage-collect-timer" || name == "cache-timer")
-        return true;
-    return false;
-}
-
-Mib::MplsP2mpMib::MplsP2mpMib()
-    :
-    cache_timer{YType::uint32, "cache-timer"}
-{
-
-    yang_name = "mpls-p2mp-mib"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Mib::MplsP2mpMib::~MplsP2mpMib()
-{
-}
-
-bool Mib::MplsP2mpMib::has_data() const
-{
-    if (is_presence_container) return true;
-    return cache_timer.is_set;
-}
-
-bool Mib::MplsP2mpMib::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cache_timer.yfilter);
-}
-
-std::string Mib::MplsP2mpMib::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Mib::MplsP2mpMib::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-p2mp-mib";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Mib::MplsP2mpMib::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cache_timer.is_set || is_set(cache_timer.yfilter)) leaf_name_data.push_back(cache_timer.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Mib::MplsP2mpMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::MplsP2mpMib::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Mib::MplsP2mpMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cache-timer")
-    {
-        cache_timer = value;
-        cache_timer.value_namespace = name_space;
-        cache_timer.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Mib::MplsP2mpMib::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cache-timer")
-    {
-        cache_timer.yfilter = yfilter;
-    }
-}
-
-bool Mib::MplsP2mpMib::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cache-timer")
-        return true;
-    return false;
-}
-
-Mib::MplsTeExtStdMib::MplsTeExtStdMib()
-    :
-    cache_timer{YType::uint32, "cache-timer"}
-{
-
-    yang_name = "mpls-te-ext-std-mib"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Mib::MplsTeExtStdMib::~MplsTeExtStdMib()
-{
-}
-
-bool Mib::MplsTeExtStdMib::has_data() const
-{
-    if (is_presence_container) return true;
-    return cache_timer.is_set;
-}
-
-bool Mib::MplsTeExtStdMib::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cache_timer.yfilter);
-}
-
-std::string Mib::MplsTeExtStdMib::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Mib::MplsTeExtStdMib::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te-ext-std-mib";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Mib::MplsTeExtStdMib::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cache_timer.is_set || is_set(cache_timer.yfilter)) leaf_name_data.push_back(cache_timer.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Mib::MplsTeExtStdMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::MplsTeExtStdMib::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Mib::MplsTeExtStdMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cache-timer")
-    {
-        cache_timer = value;
-        cache_timer.value_namespace = name_space;
-        cache_timer.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Mib::MplsTeExtStdMib::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cache-timer")
-    {
-        cache_timer.yfilter = yfilter;
-    }
-}
-
-bool Mib::MplsTeExtStdMib::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cache-timer")
-        return true;
-    return false;
-}
-
-Mib::MplsTeExtMib::MplsTeExtMib()
-    :
-    cache_timer{YType::uint32, "cache-timer"}
-{
-
-    yang_name = "mpls-te-ext-mib"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Mib::MplsTeExtMib::~MplsTeExtMib()
-{
-}
-
-bool Mib::MplsTeExtMib::has_data() const
-{
-    if (is_presence_container) return true;
-    return cache_timer.is_set;
-}
-
-bool Mib::MplsTeExtMib::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cache_timer.yfilter);
-}
-
-std::string Mib::MplsTeExtMib::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Mib::MplsTeExtMib::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-te-ext-mib";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Mib::MplsTeExtMib::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cache_timer.is_set || is_set(cache_timer.yfilter)) leaf_name_data.push_back(cache_timer.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Mib::MplsTeExtMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::MplsTeExtMib::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Mib::MplsTeExtMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cache-timer")
-    {
-        cache_timer = value;
-        cache_timer.value_namespace = name_space;
-        cache_timer.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Mib::MplsTeExtMib::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cache-timer")
-    {
-        cache_timer.yfilter = yfilter;
-    }
-}
-
-bool Mib::MplsTeExtMib::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cache-timer")
-        return true;
-    return false;
-}
-
-Mib::MplsFrrMib::MplsFrrMib()
-    :
-    cache_timer{YType::uint32, "cache-timer"}
-{
-
-    yang_name = "mpls-frr-mib"; yang_parent_name = "mib"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Mib::MplsFrrMib::~MplsFrrMib()
-{
-}
-
-bool Mib::MplsFrrMib::has_data() const
-{
-    if (is_presence_container) return true;
-    return cache_timer.is_set;
-}
-
-bool Mib::MplsFrrMib::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cache_timer.yfilter);
-}
-
-std::string Mib::MplsFrrMib::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-snmp-agent-cfg:mib/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Mib::MplsFrrMib::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mpls-frr-mib";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Mib::MplsFrrMib::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cache_timer.is_set || is_set(cache_timer.yfilter)) leaf_name_data.push_back(cache_timer.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Mib::MplsFrrMib::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Mib::MplsFrrMib::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Mib::MplsFrrMib::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cache-timer")
-    {
-        cache_timer = value;
-        cache_timer.value_namespace = name_space;
-        cache_timer.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Mib::MplsFrrMib::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cache-timer")
-    {
-        cache_timer.yfilter = yfilter;
-    }
-}
-
-bool Mib::MplsFrrMib::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cache-timer")
         return true;
     return false;
 }

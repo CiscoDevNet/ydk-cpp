@@ -361,6 +361,7 @@ std::string RoutingPolicyShadow::Sets::Esi::Sets_::Set::UsedBy::Reference::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -611,6 +612,7 @@ std::string RoutingPolicyShadow::Sets::Esi::Sets_::Set::Attached::Binding::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "binding";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1627,6 +1629,7 @@ std::string RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::U
 {
     std::ostringstream path_buffer;
     path_buffer << "reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1877,6 +1880,7 @@ std::string RoutingPolicyShadow::Sets::ExtendedCommunityBandwidth::Sets_::Set::A
 {
     std::ostringstream path_buffer;
     path_buffer << "binding";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2817,6 +2821,7 @@ std::string RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::UsedBy::
 {
     std::ostringstream path_buffer;
     path_buffer << "reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3067,6 +3072,7 @@ std::string RoutingPolicyShadow::Sets::ExtendedCommunityRt::Sets_::Set::Attached
 {
     std::ostringstream path_buffer;
     path_buffer << "binding";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4101,6 +4107,7 @@ std::string RoutingPolicyShadow::Sets::Rd::Sets_::Set::UsedBy::Reference::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4351,6 +4358,7 @@ std::string RoutingPolicyShadow::Sets::Rd::Sets_::Set::Attached::Binding::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "binding";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5385,6 +5393,7 @@ std::string RoutingPolicyShadow::Sets::Mac::Sets_::Set::UsedBy::Reference::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5635,6 +5644,7 @@ std::string RoutingPolicyShadow::Sets::Mac::Sets_::Set::Attached::Binding::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "binding";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6669,6 +6679,7 @@ std::string RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::UsedBy
 {
     std::ostringstream path_buffer;
     path_buffer << "reference";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6919,6 +6930,7 @@ std::string RoutingPolicyShadow::Sets::ExtendedCommunityCost::Sets_::Set::Attach
 {
     std::ostringstream path_buffer;
     path_buffer << "binding";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

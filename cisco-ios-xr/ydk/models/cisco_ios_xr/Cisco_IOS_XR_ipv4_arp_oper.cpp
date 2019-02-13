@@ -1006,6 +1006,7 @@ std::string ArpGmp::Vrfs::Vrf::Routes::Route::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1245,6 +1246,7 @@ std::string ArpGmp::Vrfs::Vrf::InterfaceConfiguredIps::InterfaceConfiguredIp::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-configured-ip";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2006,6 +2008,7 @@ std::string Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "arp-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3323,6 +3326,7 @@ std::string Arp::Nodes::Node::ResolutionHistoryClient::ArpEntry::get_segment_pat
 {
     std::ostringstream path_buffer;
     path_buffer << "arp-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

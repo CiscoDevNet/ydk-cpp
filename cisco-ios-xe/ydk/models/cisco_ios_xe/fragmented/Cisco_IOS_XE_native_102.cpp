@@ -9635,23 +9635,23 @@ Native::Interface::Tunnel::Tunnel()
     , peer(std::make_shared<Native::Interface::Tunnel::Peer>())
     , pm_path(std::make_shared<Native::Interface::Tunnel::PmPath>())
     , qos(std::make_shared<Native::Interface::Tunnel::Qos>())
-    , service_policy(std::make_shared<Native::Interface::Tunnel::ServicePolicy>())
     , snmp(std::make_shared<Native::Interface::Tunnel::Snmp>())
     , nhrp(std::make_shared<Native::Interface::Tunnel::Nhrp>())
     , tunnel(std::make_shared<Native::Interface::Tunnel::Tunnel_>())
-    , crypto(std::make_shared<Native::Interface::Tunnel::Crypto>())
     , et_analytics(std::make_shared<Native::Interface::Tunnel::EtAnalytics>())
-    , zone_member(std::make_shared<Native::Interface::Tunnel::ZoneMember>())
-    , utd(std::make_shared<Native::Interface::Tunnel::Utd>())
+    , service_policy(std::make_shared<Native::Interface::Tunnel::ServicePolicy>())
+    , ospfv3(std::make_shared<Native::Interface::Tunnel::Ospfv3>())
+    , performance(std::make_shared<Native::Interface::Tunnel::Performance>())
     , lisp(std::make_shared<Native::Interface::Tunnel::Lisp>())
+    , umbrella(std::make_shared<Native::Interface::Tunnel::Umbrella>())
+    , crypto(std::make_shared<Native::Interface::Tunnel::Crypto>())
+    , zone_member(std::make_shared<Native::Interface::Tunnel::ZoneMember>())
+    , analysis_module(std::make_shared<Native::Interface::Tunnel::AnalysisModule>())
+    , cts(std::make_shared<Native::Interface::Tunnel::Cts>())
+    , udld(std::make_shared<Native::Interface::Tunnel::Udld>())
     , cdp(std::make_shared<Native::Interface::Tunnel::Cdp>())
     , ntp(std::make_shared<Native::Interface::Tunnel::Ntp>())
-    , performance(std::make_shared<Native::Interface::Tunnel::Performance>())
-    , umbrella(std::make_shared<Native::Interface::Tunnel::Umbrella>())
-    , ospfv3(std::make_shared<Native::Interface::Tunnel::Ospfv3>())
-    , udld(std::make_shared<Native::Interface::Tunnel::Udld>())
-    , cts(std::make_shared<Native::Interface::Tunnel::Cts>())
-    , analysis_module(std::make_shared<Native::Interface::Tunnel::AnalysisModule>())
+    , utd(std::make_shared<Native::Interface::Tunnel::Utd>())
 {
     switchport_conf->parent = this;
     switchport->parent = this;
@@ -9689,23 +9689,23 @@ Native::Interface::Tunnel::Tunnel()
     peer->parent = this;
     pm_path->parent = this;
     qos->parent = this;
-    service_policy->parent = this;
     snmp->parent = this;
     nhrp->parent = this;
     tunnel->parent = this;
-    crypto->parent = this;
     et_analytics->parent = this;
-    zone_member->parent = this;
-    utd->parent = this;
+    service_policy->parent = this;
+    ospfv3->parent = this;
+    performance->parent = this;
     lisp->parent = this;
+    umbrella->parent = this;
+    crypto->parent = this;
+    zone_member->parent = this;
+    analysis_module->parent = this;
+    cts->parent = this;
+    udld->parent = this;
     cdp->parent = this;
     ntp->parent = this;
-    performance->parent = this;
-    umbrella->parent = this;
-    ospfv3->parent = this;
-    udld->parent = this;
-    cts->parent = this;
-    analysis_module->parent = this;
+    utd->parent = this;
 
     yang_name = "Tunnel"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -9771,23 +9771,23 @@ bool Native::Interface::Tunnel::has_data() const
 	|| (peer !=  nullptr && peer->has_data())
 	|| (pm_path !=  nullptr && pm_path->has_data())
 	|| (qos !=  nullptr && qos->has_data())
-	|| (service_policy !=  nullptr && service_policy->has_data())
 	|| (snmp !=  nullptr && snmp->has_data())
 	|| (nhrp !=  nullptr && nhrp->has_data())
 	|| (tunnel !=  nullptr && tunnel->has_data())
-	|| (crypto !=  nullptr && crypto->has_data())
 	|| (et_analytics !=  nullptr && et_analytics->has_data())
-	|| (zone_member !=  nullptr && zone_member->has_data())
-	|| (utd !=  nullptr && utd->has_data())
+	|| (service_policy !=  nullptr && service_policy->has_data())
+	|| (ospfv3 !=  nullptr && ospfv3->has_data())
+	|| (performance !=  nullptr && performance->has_data())
 	|| (lisp !=  nullptr && lisp->has_data())
+	|| (umbrella !=  nullptr && umbrella->has_data())
+	|| (crypto !=  nullptr && crypto->has_data())
+	|| (zone_member !=  nullptr && zone_member->has_data())
+	|| (analysis_module !=  nullptr && analysis_module->has_data())
+	|| (cts !=  nullptr && cts->has_data())
+	|| (udld !=  nullptr && udld->has_data())
 	|| (cdp !=  nullptr && cdp->has_data())
 	|| (ntp !=  nullptr && ntp->has_data())
-	|| (performance !=  nullptr && performance->has_data())
-	|| (umbrella !=  nullptr && umbrella->has_data())
-	|| (ospfv3 !=  nullptr && ospfv3->has_data())
-	|| (udld !=  nullptr && udld->has_data())
-	|| (cts !=  nullptr && cts->has_data())
-	|| (analysis_module !=  nullptr && analysis_module->has_data());
+	|| (utd !=  nullptr && utd->has_data());
 }
 
 bool Native::Interface::Tunnel::has_operation() const
@@ -9847,23 +9847,23 @@ bool Native::Interface::Tunnel::has_operation() const
 	|| (peer !=  nullptr && peer->has_operation())
 	|| (pm_path !=  nullptr && pm_path->has_operation())
 	|| (qos !=  nullptr && qos->has_operation())
-	|| (service_policy !=  nullptr && service_policy->has_operation())
 	|| (snmp !=  nullptr && snmp->has_operation())
 	|| (nhrp !=  nullptr && nhrp->has_operation())
 	|| (tunnel !=  nullptr && tunnel->has_operation())
-	|| (crypto !=  nullptr && crypto->has_operation())
 	|| (et_analytics !=  nullptr && et_analytics->has_operation())
-	|| (zone_member !=  nullptr && zone_member->has_operation())
-	|| (utd !=  nullptr && utd->has_operation())
+	|| (service_policy !=  nullptr && service_policy->has_operation())
+	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
+	|| (performance !=  nullptr && performance->has_operation())
 	|| (lisp !=  nullptr && lisp->has_operation())
+	|| (umbrella !=  nullptr && umbrella->has_operation())
+	|| (crypto !=  nullptr && crypto->has_operation())
+	|| (zone_member !=  nullptr && zone_member->has_operation())
+	|| (analysis_module !=  nullptr && analysis_module->has_operation())
+	|| (cts !=  nullptr && cts->has_operation())
+	|| (udld !=  nullptr && udld->has_operation())
 	|| (cdp !=  nullptr && cdp->has_operation())
 	|| (ntp !=  nullptr && ntp->has_operation())
-	|| (performance !=  nullptr && performance->has_operation())
-	|| (umbrella !=  nullptr && umbrella->has_operation())
-	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
-	|| (udld !=  nullptr && udld->has_operation())
-	|| (cts !=  nullptr && cts->has_operation())
-	|| (analysis_module !=  nullptr && analysis_module->has_operation());
+	|| (utd !=  nullptr && utd->has_operation());
 }
 
 std::string Native::Interface::Tunnel::get_absolute_path() const
@@ -10245,15 +10245,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::Tunnel::get_child_by_name(const 
         return qos;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
-    {
-        if(service_policy == nullptr)
-        {
-            service_policy = std::make_shared<Native::Interface::Tunnel::ServicePolicy>();
-        }
-        return service_policy;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-snmp:snmp")
     {
         if(snmp == nullptr)
@@ -10281,15 +10272,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::Tunnel::get_child_by_name(const 
         return tunnel;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-crypto:crypto")
-    {
-        if(crypto == nullptr)
-        {
-            crypto = std::make_shared<Native::Interface::Tunnel::Crypto>();
-        }
-        return crypto;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-eta:et-analytics")
     {
         if(et_analytics == nullptr)
@@ -10297,6 +10279,60 @@ std::shared_ptr<ydk::Entity> Native::Interface::Tunnel::get_child_by_name(const 
             et_analytics = std::make_shared<Native::Interface::Tunnel::EtAnalytics>();
         }
         return et_analytics;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
+    {
+        if(service_policy == nullptr)
+        {
+            service_policy = std::make_shared<Native::Interface::Tunnel::ServicePolicy>();
+        }
+        return service_policy;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-ospfv3:ospfv3")
+    {
+        if(ospfv3 == nullptr)
+        {
+            ospfv3 = std::make_shared<Native::Interface::Tunnel::Ospfv3>();
+        }
+        return ospfv3;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-ezpm:performance")
+    {
+        if(performance == nullptr)
+        {
+            performance = std::make_shared<Native::Interface::Tunnel::Performance>();
+        }
+        return performance;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-lisp:lisp")
+    {
+        if(lisp == nullptr)
+        {
+            lisp = std::make_shared<Native::Interface::Tunnel::Lisp>();
+        }
+        return lisp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-umbrella:umbrella")
+    {
+        if(umbrella == nullptr)
+        {
+            umbrella = std::make_shared<Native::Interface::Tunnel::Umbrella>();
+        }
+        return umbrella;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-crypto:crypto")
+    {
+        if(crypto == nullptr)
+        {
+            crypto = std::make_shared<Native::Interface::Tunnel::Crypto>();
+        }
+        return crypto;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-zone:zone-member")
@@ -10308,22 +10344,31 @@ std::shared_ptr<ydk::Entity> Native::Interface::Tunnel::get_child_by_name(const 
         return zone_member;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-utd:utd")
+    if(child_yang_name == "Cisco-IOS-XE-nam:analysis-module")
     {
-        if(utd == nullptr)
+        if(analysis_module == nullptr)
         {
-            utd = std::make_shared<Native::Interface::Tunnel::Utd>();
+            analysis_module = std::make_shared<Native::Interface::Tunnel::AnalysisModule>();
         }
-        return utd;
+        return analysis_module;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-lisp:lisp")
+    if(child_yang_name == "Cisco-IOS-XE-cts:cts")
     {
-        if(lisp == nullptr)
+        if(cts == nullptr)
         {
-            lisp = std::make_shared<Native::Interface::Tunnel::Lisp>();
+            cts = std::make_shared<Native::Interface::Tunnel::Cts>();
         }
-        return lisp;
+        return cts;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-udld:udld")
+    {
+        if(udld == nullptr)
+        {
+            udld = std::make_shared<Native::Interface::Tunnel::Udld>();
+        }
+        return udld;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-cdp:cdp")
@@ -10344,58 +10389,13 @@ std::shared_ptr<ydk::Entity> Native::Interface::Tunnel::get_child_by_name(const 
         return ntp;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-ezpm:performance")
+    if(child_yang_name == "Cisco-IOS-XE-utd:utd")
     {
-        if(performance == nullptr)
+        if(utd == nullptr)
         {
-            performance = std::make_shared<Native::Interface::Tunnel::Performance>();
+            utd = std::make_shared<Native::Interface::Tunnel::Utd>();
         }
-        return performance;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-umbrella:umbrella")
-    {
-        if(umbrella == nullptr)
-        {
-            umbrella = std::make_shared<Native::Interface::Tunnel::Umbrella>();
-        }
-        return umbrella;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-ospfv3:ospfv3")
-    {
-        if(ospfv3 == nullptr)
-        {
-            ospfv3 = std::make_shared<Native::Interface::Tunnel::Ospfv3>();
-        }
-        return ospfv3;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-udld:udld")
-    {
-        if(udld == nullptr)
-        {
-            udld = std::make_shared<Native::Interface::Tunnel::Udld>();
-        }
-        return udld;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-cts:cts")
-    {
-        if(cts == nullptr)
-        {
-            cts = std::make_shared<Native::Interface::Tunnel::Cts>();
-        }
-        return cts;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-nam:analysis-module")
-    {
-        if(analysis_module == nullptr)
-        {
-            analysis_module = std::make_shared<Native::Interface::Tunnel::AnalysisModule>();
-        }
-        return analysis_module;
+        return utd;
     }
 
     return nullptr;
@@ -10599,11 +10599,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Tunnel::g
         _children["qos"] = qos;
     }
 
-    if(service_policy != nullptr)
-    {
-        _children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
-    }
-
     if(snmp != nullptr)
     {
         _children["Cisco-IOS-XE-snmp:snmp"] = snmp;
@@ -10619,14 +10614,39 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Tunnel::g
         _children["Cisco-IOS-XE-tunnel:tunnel"] = tunnel;
     }
 
-    if(crypto != nullptr)
-    {
-        _children["Cisco-IOS-XE-crypto:crypto"] = crypto;
-    }
-
     if(et_analytics != nullptr)
     {
         _children["Cisco-IOS-XE-eta:et-analytics"] = et_analytics;
+    }
+
+    if(service_policy != nullptr)
+    {
+        _children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
+    }
+
+    if(ospfv3 != nullptr)
+    {
+        _children["Cisco-IOS-XE-ospfv3:ospfv3"] = ospfv3;
+    }
+
+    if(performance != nullptr)
+    {
+        _children["Cisco-IOS-XE-ezpm:performance"] = performance;
+    }
+
+    if(lisp != nullptr)
+    {
+        _children["Cisco-IOS-XE-lisp:lisp"] = lisp;
+    }
+
+    if(umbrella != nullptr)
+    {
+        _children["Cisco-IOS-XE-umbrella:umbrella"] = umbrella;
+    }
+
+    if(crypto != nullptr)
+    {
+        _children["Cisco-IOS-XE-crypto:crypto"] = crypto;
     }
 
     if(zone_member != nullptr)
@@ -10634,14 +10654,19 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Tunnel::g
         _children["Cisco-IOS-XE-zone:zone-member"] = zone_member;
     }
 
-    if(utd != nullptr)
+    if(analysis_module != nullptr)
     {
-        _children["Cisco-IOS-XE-utd:utd"] = utd;
+        _children["Cisco-IOS-XE-nam:analysis-module"] = analysis_module;
     }
 
-    if(lisp != nullptr)
+    if(cts != nullptr)
     {
-        _children["Cisco-IOS-XE-lisp:lisp"] = lisp;
+        _children["Cisco-IOS-XE-cts:cts"] = cts;
+    }
+
+    if(udld != nullptr)
+    {
+        _children["Cisco-IOS-XE-udld:udld"] = udld;
     }
 
     if(cdp != nullptr)
@@ -10654,34 +10679,9 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Tunnel::g
         _children["Cisco-IOS-XE-ntp:ntp"] = ntp;
     }
 
-    if(performance != nullptr)
+    if(utd != nullptr)
     {
-        _children["Cisco-IOS-XE-ezpm:performance"] = performance;
-    }
-
-    if(umbrella != nullptr)
-    {
-        _children["Cisco-IOS-XE-umbrella:umbrella"] = umbrella;
-    }
-
-    if(ospfv3 != nullptr)
-    {
-        _children["Cisco-IOS-XE-ospfv3:ospfv3"] = ospfv3;
-    }
-
-    if(udld != nullptr)
-    {
-        _children["Cisco-IOS-XE-udld:udld"] = udld;
-    }
-
-    if(cts != nullptr)
-    {
-        _children["Cisco-IOS-XE-cts:cts"] = cts;
-    }
-
-    if(analysis_module != nullptr)
-    {
-        _children["Cisco-IOS-XE-nam:analysis-module"] = analysis_module;
+        _children["Cisco-IOS-XE-utd:utd"] = utd;
     }
 
     return _children;
@@ -10817,7 +10817,7 @@ void Native::Interface::Tunnel::set_filter(const std::string & value_path, YFilt
 
 bool Native::Interface::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "qos" || name == "service-policy" || name == "snmp" || name == "nhrp" || name == "tunnel" || name == "crypto" || name == "et-analytics" || name == "zone-member" || name == "utd" || name == "lisp" || name == "cdp" || name == "ntp" || name == "performance" || name == "umbrella" || name == "ospfv3" || name == "udld" || name == "cts" || name == "analysis-module" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "nat66")
+    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "qos" || name == "snmp" || name == "nhrp" || name == "tunnel" || name == "et-analytics" || name == "service-policy" || name == "ospfv3" || name == "performance" || name == "lisp" || name == "umbrella" || name == "crypto" || name == "zone-member" || name == "analysis-module" || name == "cts" || name == "udld" || name == "cdp" || name == "ntp" || name == "utd" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "nat66")
         return true;
     return false;
 }

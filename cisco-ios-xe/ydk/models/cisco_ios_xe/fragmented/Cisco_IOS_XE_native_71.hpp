@@ -2663,13 +2663,13 @@ class Native::Interface::HundredGigE::Ip : public ydk::Entity
         class Dhcp; //type: Native::Interface::HundredGigE::Ip::Dhcp
         class SummaryAddress; //type: Native::Interface::HundredGigE::Ip::SummaryAddress
         class Verify; //type: Native::Interface::HundredGigE::Ip::Verify
-        class Igmp; //type: Native::Interface::HundredGigE::Ip::Igmp
         class Flow; //type: Native::Interface::HundredGigE::Ip::Flow
-        class Nbar; //type: Native::Interface::HundredGigE::Ip::Nbar
+        class Igmp; //type: Native::Interface::HundredGigE::Ip::Igmp
         class Ospf; //type: Native::Interface::HundredGigE::Ip::Ospf
         class Lisp; //type: Native::Interface::HundredGigE::Ip::Lisp
-        class Rsvp; //type: Native::Interface::HundredGigE::Ip::Rsvp
         class Nat; //type: Native::Interface::HundredGigE::Ip::Nat
+        class Nbar; //type: Native::Interface::HundredGigE::Ip::Nbar
+        class Rsvp; //type: Native::Interface::HundredGigE::Ip::Rsvp
         class Wccp; //type: Native::Interface::HundredGigE::Ip::Wccp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::HundredGigE::Ip::AccessGroup> access_group;
@@ -2693,13 +2693,13 @@ class Native::Interface::HundredGigE::Ip : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::HundredGigE::Ip::Dhcp> dhcp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::HundredGigE::Ip::SummaryAddress> summary_address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::HundredGigE::Ip::Verify> verify;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::HundredGigE::Ip::Igmp> igmp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::HundredGigE::Ip::Flow> flow;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::HundredGigE::Ip::Nbar> nbar;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::HundredGigE::Ip::Igmp> igmp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::HundredGigE::Ip::Ospf> ospf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::HundredGigE::Ip::Lisp> lisp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::HundredGigE::Ip::Rsvp> rsvp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::HundredGigE::Ip::Nat> nat;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::HundredGigE::Ip::Nbar> nbar;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::HundredGigE::Ip::Rsvp> rsvp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::HundredGigE::Ip::Wccp> wccp;
         
 }; // Native::Interface::HundredGigE::Ip

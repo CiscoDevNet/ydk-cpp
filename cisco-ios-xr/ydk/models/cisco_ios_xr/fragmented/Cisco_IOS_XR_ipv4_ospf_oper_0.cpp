@@ -2013,6 +2013,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::InterfaceVrfInformation::ShamLi
 {
     std::ostringstream path_buffer;
     path_buffer << "sham-link-md-key";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2377,6 +2378,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AreaFloo
 {
     std::ostringstream path_buffer;
     path_buffer << "area-flood";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2525,6 +2527,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AsFlood:
 {
     std::ostringstream path_buffer;
     path_buffer << "as-flood";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3097,6 +3100,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolic
 {
     std::ostringstream path_buffer;
     path_buffer << "sr-policy";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3812,6 +3816,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "mpls-te-link";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4268,6 +4273,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "bw-per-priority";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4439,6 +4445,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "bw-per-priority";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4758,6 +4765,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "maximum-lsp-bw-per-priority";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4943,6 +4951,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "ext-admin-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5036,6 +5045,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "mplste-link-opt-tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5159,6 +5169,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "mplste-link-opt-tlv-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5414,6 +5425,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "mplste-link-bc-bandwidth";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5613,6 +5625,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "mplste-link-srlg-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6166,6 +6179,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "arr-bw-sub-tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6768,6 +6782,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "unres-oduj-prio";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7258,6 +7273,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "unres-lspbw";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7336,6 +7352,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "max-lspbw";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7414,6 +7431,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "max-lspbw";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7591,6 +7609,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "mpls-te-fragment";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7805,6 +7824,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "mpls-te-link";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8261,6 +8281,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "bw-per-priority";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8432,6 +8453,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "bw-per-priority";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8751,6 +8773,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "maximum-lsp-bw-per-priority";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8936,6 +8959,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "ext-admin-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9029,6 +9053,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "mplste-link-opt-tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9152,6 +9177,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "mplste-link-opt-tlv-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9407,6 +9433,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "mplste-link-bc-bandwidth";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9606,6 +9633,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "mplste-link-srlg-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10159,6 +10187,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "arr-bw-sub-tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10761,6 +10790,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "unres-oduj-prio";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11251,6 +11281,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "unres-lspbw";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11329,6 +11360,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "max-lspbw";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11407,6 +11439,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeLinks::MplsTeLink
 {
     std::ostringstream path_buffer;
     path_buffer << "max-lspbw";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11990,6 +12023,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "mpls-te-link";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12446,6 +12480,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "bw-per-priority";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12617,6 +12652,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "bw-per-priority";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12936,6 +12972,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "maximum-lsp-bw-per-priority";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13121,6 +13158,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "ext-admin-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13214,6 +13252,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "mplste-link-opt-tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13337,6 +13376,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "mplste-link-opt-tlv-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13592,6 +13632,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "mplste-link-bc-bandwidth";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13791,6 +13832,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "mplste-link-srlg-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14344,6 +14386,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "arr-bw-sub-tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14946,6 +14989,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "unres-oduj-prio";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15436,6 +15480,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "unres-lspbw";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15514,6 +15559,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "max-lspbw";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15592,6 +15638,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "max-lspbw";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15769,6 +15816,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "mpls-te-fragment";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15983,6 +16031,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "mpls-te-link";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16439,6 +16488,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "bw-per-priority";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16610,6 +16660,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "bw-per-priority";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16929,6 +16980,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "maximum-lsp-bw-per-priority";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17114,6 +17166,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "ext-admin-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17207,6 +17260,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "mplste-link-opt-tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17330,6 +17384,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "mplste-link-opt-tlv-value";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17585,6 +17640,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "mplste-link-bc-bandwidth";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17784,6 +17840,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "mplste-link-srlg-data";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18337,6 +18394,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "arr-bw-sub-tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18939,6 +18997,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "unres-oduj-prio";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19429,6 +19488,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "unres-lspbw";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19507,6 +19567,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "max-lspbw";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19585,6 +19646,7 @@ std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTe
 {
     std::ostringstream path_buffer;
     path_buffer << "max-lspbw";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

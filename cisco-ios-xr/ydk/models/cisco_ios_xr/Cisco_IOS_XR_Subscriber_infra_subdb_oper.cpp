@@ -801,6 +801,7 @@ std::string SubscriberDatabase::Nodes::Node::Association::Labels::Label::Templat
 {
     std::ostringstream path_buffer;
     path_buffer << "associated-template";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

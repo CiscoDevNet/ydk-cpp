@@ -40,6 +40,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -127,6 +128,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -435,6 +437,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "dest-q-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1155,6 +1158,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1790,6 +1794,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1868,6 +1873,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1955,6 +1961,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2263,6 +2270,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "dest-backup-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2983,6 +2991,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3618,6 +3627,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3696,6 +3706,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3783,6 +3794,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4798,6 +4810,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5433,6 +5446,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5511,6 +5525,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5598,6 +5613,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5823,6 +5839,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "opaque";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6691,6 +6708,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7411,6 +7429,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8046,6 +8065,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8124,6 +8144,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8211,6 +8232,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8919,6 +8941,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9639,6 +9662,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10274,6 +10298,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10352,6 +10377,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10439,6 +10465,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11147,6 +11174,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11867,6 +11895,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12502,6 +12531,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12580,6 +12610,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12667,6 +12698,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13375,6 +13407,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14095,6 +14128,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14730,6 +14764,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14808,6 +14843,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14895,6 +14931,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15603,6 +15640,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16323,6 +16361,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16958,6 +16997,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17036,6 +17076,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17123,6 +17164,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17858,6 +17900,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18578,6 +18621,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19213,6 +19257,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19291,6 +19336,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -19378,6 +19424,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20086,6 +20133,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -20806,6 +20854,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21441,6 +21490,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21519,6 +21569,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21606,6 +21657,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -22314,6 +22366,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23034,6 +23087,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23669,6 +23723,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23747,6 +23802,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -23834,6 +23890,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -24569,6 +24626,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25289,6 +25347,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -25924,6 +25983,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -26002,6 +26062,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -26089,6 +26150,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -26797,6 +26859,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -27517,6 +27580,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -28152,6 +28216,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -28230,6 +28295,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -28317,6 +28383,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -29025,6 +29092,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -29745,6 +29813,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -30380,6 +30449,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -30458,6 +30528,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -30545,6 +30616,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -31280,6 +31352,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -32000,6 +32073,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-rib-edm-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -32635,6 +32709,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-backup-addr";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -32713,6 +32788,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "labelstk";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -32800,6 +32876,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "next-next-hop";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -33544,6 +33621,7 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

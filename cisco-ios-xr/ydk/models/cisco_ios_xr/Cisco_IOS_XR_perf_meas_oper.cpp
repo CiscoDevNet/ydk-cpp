@@ -2068,6 +2068,7 @@ std::string PerformanceMeasurement::Nodes::Node::Interfaces::InterfaceDetails::I
 {
     std::ostringstream path_buffer;
     path_buffer << "delay-measurement-session";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3793,6 +3794,7 @@ std::string PerformanceMeasurement::Nodes::Node::Interfaces::InterfaceDetails::I
 {
     std::ostringstream path_buffer;
     path_buffer << "probe-history";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4698,6 +4700,7 @@ std::string PerformanceMeasurement::Nodes::Node::Interfaces::InterfaceDelay::Int
 {
     std::ostringstream path_buffer;
     path_buffer << "history";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5169,6 +5172,7 @@ std::string PerformanceMeasurement::Nodes::Node::Interfaces::InterfaceDelay::Int
 {
     std::ostringstream path_buffer;
     path_buffer << "history";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

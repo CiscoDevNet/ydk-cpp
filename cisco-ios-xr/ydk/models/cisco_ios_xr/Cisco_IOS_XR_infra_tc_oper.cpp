@@ -829,6 +829,7 @@ std::string TrafficCollector::Summary::VrfStatistic::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "vrf-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1211,6 +1212,7 @@ std::string TrafficCollector::Summary::CollectionMessageStatistic::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "collection-message-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1366,6 +1368,7 @@ std::string TrafficCollector::Summary::CheckpointMessageStatistic::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "checkpoint-message-statistic";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2102,6 +2105,7 @@ std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes:
 {
     std::ostringstream path_buffer;
     path_buffer << "prefix";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2407,6 +2411,7 @@ std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes:
 {
     std::ostringstream path_buffer;
     path_buffer << "count-history";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2662,6 +2667,7 @@ std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Prefixes:
 {
     std::ostringstream path_buffer;
     path_buffer << "count-history";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3164,6 +3170,7 @@ std::string TrafficCollector::VrfTable::DefaultVrf::Afs::Af::Counters::Tunnels::
 {
     std::ostringstream path_buffer;
     path_buffer << "count-history";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3711,6 +3718,7 @@ std::string TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "prefix";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4016,6 +4024,7 @@ std::string TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::BaseCounterSt
 {
     std::ostringstream path_buffer;
     path_buffer << "count-history";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4271,6 +4280,7 @@ std::string TrafficCollector::Afs::Af::Counters::Prefixes::Prefix::TrafficMatrix
 {
     std::ostringstream path_buffer;
     path_buffer << "count-history";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4773,6 +4783,7 @@ std::string TrafficCollector::Afs::Af::Counters::Tunnels::Tunnel::BaseCounterSta
 {
     std::ostringstream path_buffer;
     path_buffer << "count-history";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

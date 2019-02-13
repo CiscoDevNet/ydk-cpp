@@ -613,6 +613,7 @@ std::string Cdp::Nodes::Node::Neighbors::Details::Detail::get_segment_path() con
 {
     std::ostringstream path_buffer;
     path_buffer << "detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -742,6 +743,7 @@ std::string Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "cdp-neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1165,6 +1167,7 @@ std::string Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::
 {
     std::ostringstream path_buffer;
     path_buffer << "cdp-addr-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1445,6 +1448,7 @@ std::string Cdp::Nodes::Node::Neighbors::Details::Detail::CdpNeighbor::Detail_::
 {
     std::ostringstream path_buffer;
     path_buffer << "cdp-prot-hello-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1747,6 +1751,7 @@ std::string Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::get_segme
 {
     std::ostringstream path_buffer;
     path_buffer << "cdp-neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2170,6 +2175,7 @@ std::string Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::N
 {
     std::ostringstream path_buffer;
     path_buffer << "cdp-addr-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2450,6 +2456,7 @@ std::string Cdp::Nodes::Node::Neighbors::Devices::Device::CdpNeighbor::Detail::P
 {
     std::ostringstream path_buffer;
     path_buffer << "cdp-prot-hello-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2636,6 +2643,7 @@ std::string Cdp::Nodes::Node::Neighbors::Summaries::Summary::get_segment_path() 
 {
     std::ostringstream path_buffer;
     path_buffer << "summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2765,6 +2773,7 @@ std::string Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::get_se
 {
     std::ostringstream path_buffer;
     path_buffer << "cdp-neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3188,6 +3197,7 @@ std::string Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail
 {
     std::ostringstream path_buffer;
     path_buffer << "cdp-addr-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3468,6 +3478,7 @@ std::string Cdp::Nodes::Node::Neighbors::Summaries::Summary::CdpNeighbor::Detail
 {
     std::ostringstream path_buffer;
     path_buffer << "cdp-prot-hello-entry";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

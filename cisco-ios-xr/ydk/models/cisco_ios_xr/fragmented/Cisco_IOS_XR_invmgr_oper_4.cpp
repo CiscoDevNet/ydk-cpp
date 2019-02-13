@@ -662,6 +662,7 @@ std::string Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5226,6 +5227,7 @@ std::string Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9790,6 +9792,7 @@ std::string Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Attributes::E
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14354,6 +14357,7 @@ std::string Inventory::Racks::Rack::Powershelf::Slot::Attributes::EnvSensorInfoX
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -21408,6 +21412,7 @@ std::string Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi
 {
     std::ostringstream path_buffer;
     path_buffer << "threshold-array";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

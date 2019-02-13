@@ -5562,6 +5562,7 @@ std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::LocalInte
 {
     std::ostringstream path_buffer;
     path_buffer << "rewrite-tag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5643,6 +5644,7 @@ std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::LocalInte
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6508,6 +6510,7 @@ std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::LocalInte
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6832,6 +6835,7 @@ std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::LocalInte
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7520,6 +7524,7 @@ std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::RemoteInt
 {
     std::ostringstream path_buffer;
     path_buffer << "rewrite-tag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7601,6 +7606,7 @@ std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::RemoteInt
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8466,6 +8472,7 @@ std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::RemoteInt
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8790,6 +8797,7 @@ std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::RemoteInt
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9364,6 +9372,7 @@ std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::LocalSign
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9729,6 +9738,7 @@ std::string L2vpnv2::Standby::Xconnects::Xconnect::Backup::PseudoWire::RemoteSig
 {
     std::ostringstream path_buffer;
     path_buffer << "tlv";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13917,6 +13927,7 @@ std::string L2vpnv2::Standby::Xconnects::Xconnect::Segment1::AttachmentCircuit::
 {
     std::ostringstream path_buffer;
     path_buffer << "rewrite-tag";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13998,6 +14009,7 @@ std::string L2vpnv2::Standby::Xconnects::Xconnect::Segment1::AttachmentCircuit::
 {
     std::ostringstream path_buffer;
     path_buffer << "vlan-range";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14863,6 +14875,7 @@ std::string L2vpnv2::Standby::Xconnects::Xconnect::Segment1::AttachmentCircuit::
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15187,6 +15200,7 @@ std::string L2vpnv2::Standby::Xconnects::Xconnect::Segment1::AttachmentCircuit::
 {
     std::ostringstream path_buffer;
     path_buffer << "interface";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

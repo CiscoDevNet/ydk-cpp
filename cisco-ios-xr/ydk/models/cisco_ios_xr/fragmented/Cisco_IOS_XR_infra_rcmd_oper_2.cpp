@@ -66,6 +66,7 @@ std::string Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::RemoteNode::get_seg
 {
     std::ostringstream path_buffer;
     path_buffer << "remote-node";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -252,6 +253,7 @@ std::string Rcmd::Ldp::RemoteLfaSummaries::RemoteLfaSummary::Logs::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "logs";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -969,6 +971,7 @@ std::string Rcmd::Process::Isis::Process_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "process";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1121,6 +1124,7 @@ std::string Rcmd::Process::Isis::Process_::InstanceName::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "instance-name";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1358,6 +1362,7 @@ std::string Rcmd::Process::Isis::Process_::InstanceName::Instance::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "instance";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1690,6 +1695,7 @@ std::string Rcmd::Process::Ospf::Process_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "process";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1842,6 +1848,7 @@ std::string Rcmd::Process::Ospf::Process_::InstanceName::get_segment_path() cons
 {
     std::ostringstream path_buffer;
     path_buffer << "instance-name";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2079,6 +2086,7 @@ std::string Rcmd::Process::Ospf::Process_::InstanceName::Instance::get_segment_p
 {
     std::ostringstream path_buffer;
     path_buffer << "instance";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2411,6 +2419,7 @@ std::string Rcmd::Process::Ldp::Process_::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "process";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2563,6 +2572,7 @@ std::string Rcmd::Process::Ldp::Process_::InstanceName::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "instance-name";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2800,6 +2810,7 @@ std::string Rcmd::Process::Ldp::Process_::InstanceName::Instance::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "instance";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

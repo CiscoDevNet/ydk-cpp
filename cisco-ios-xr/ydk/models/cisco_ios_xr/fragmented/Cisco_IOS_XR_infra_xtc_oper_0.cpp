@@ -593,6 +593,7 @@ std::string PceLspData::TunnelInfos::TunnelInfo::BriefLspInformation::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "brief-lsp-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1247,6 +1248,7 @@ std::string PceLspData::LspSummary::PeerLsPsInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "peer-ls-ps-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2124,6 +2126,7 @@ std::string PceLspData::TunnelDetailInfos::TunnelDetailInfo::PrivateLspInformati
 {
     std::ostringstream path_buffer;
     path_buffer << "event-buffer";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2295,6 +2298,7 @@ std::string PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformatio
 {
     std::ostringstream path_buffer;
     path_buffer << "detail-lsp-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3225,6 +3229,7 @@ std::string PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformatio
 {
     std::ostringstream path_buffer;
     path_buffer << "reported-rsvp-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3315,6 +3320,7 @@ std::string PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformatio
 {
     std::ostringstream path_buffer;
     path_buffer << "reported-sr-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3644,6 +3650,7 @@ std::string PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformatio
 {
     std::ostringstream path_buffer;
     path_buffer << "computed-rsvp-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3734,6 +3741,7 @@ std::string PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformatio
 {
     std::ostringstream path_buffer;
     path_buffer << "computed-sr-path";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5061,6 +5069,7 @@ std::string PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformatio
 {
     std::ostringstream path_buffer;
     path_buffer << "rro";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8510,6 +8519,7 @@ std::string PceTopology::TopologyNodes::TopologyNode::NodeProtocolIdentifier::Ig
 {
     std::ostringstream path_buffer;
     path_buffer << "igp-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9133,6 +9143,7 @@ std::string PceTopology::TopologyNodes::TopologyNode::NodeProtocolIdentifier::Sr
 {
     std::ostringstream path_buffer;
     path_buffer << "srgb-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -9776,6 +9787,7 @@ std::string PceTopology::TopologyNodes::TopologyNode::Prefixe::get_segment_path(
 {
     std::ostringstream path_buffer;
     path_buffer << "prefixe";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10757,6 +10769,7 @@ std::string PceTopology::TopologyNodes::TopologyNode::Ipv4Link::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv4-link";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -11783,6 +11796,7 @@ std::string PceTopology::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtoc
 {
     std::ostringstream path_buffer;
     path_buffer << "igp-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12406,6 +12420,7 @@ std::string PceTopology::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtoc
 {
     std::ostringstream path_buffer;
     path_buffer << "srgb-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13144,6 +13159,7 @@ std::string PceTopology::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "adjacency-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -13454,6 +13470,7 @@ std::string PceTopology::TopologyNodes::TopologyNode::Ipv6Link::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-link";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -14445,6 +14462,7 @@ std::string PceTopology::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtoc
 {
     std::ostringstream path_buffer;
     path_buffer << "igp-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15068,6 +15086,7 @@ std::string PceTopology::TopologyNodes::TopologyNode::Ipv6Link::RemoteNodeProtoc
 {
     std::ostringstream path_buffer;
     path_buffer << "srgb-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15728,6 +15747,7 @@ std::string PceTopology::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "adjacency-sid";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -16446,6 +16466,7 @@ std::string PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::IgpInf
 {
     std::ostringstream path_buffer;
     path_buffer << "igp-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17069,6 +17090,7 @@ std::string PceTopology::PrefixInfos::PrefixInfo::NodeProtocolIdentifier::SrgbIn
 {
     std::ostringstream path_buffer;
     path_buffer << "srgb-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -17704,6 +17726,7 @@ std::string PceTopology::PrefixInfos::PrefixInfo::Address::get_segment_path() co
 {
     std::ostringstream path_buffer;
     path_buffer << "address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -18860,6 +18883,7 @@ std::string Pce::AssociationInfos::AssociationInfo::AssociationLsp::get_segment_
 {
     std::ostringstream path_buffer;
     path_buffer << "association-lsp";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

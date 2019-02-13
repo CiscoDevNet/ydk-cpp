@@ -1281,6 +1281,9 @@ class Native::Interface::PortChannel : public ydk::Entity
         class Service; //type: Native::Interface::PortChannel::Service
         class Lacp; //type: Native::Interface::PortChannel::Lacp
         class Mlacp; //type: Native::Interface::PortChannel::Mlacp
+        class Snmp; //type: Native::Interface::PortChannel::Snmp
+        class Authentication; //type: Native::Interface::PortChannel::Authentication
+        class Mab; //type: Native::Interface::PortChannel::Mab
         class ServicePolicy; //type: Native::Interface::PortChannel::ServicePolicy
         class Auto; //type: Native::Interface::PortChannel::Auto
         class Datalink; //type: Native::Interface::PortChannel::Datalink
@@ -1294,19 +1297,16 @@ class Native::Interface::PortChannel : public ydk::Entity
         class Switch; //type: Native::Interface::PortChannel::Switch
         class SrrQueue; //type: Native::Interface::PortChannel::SrrQueue
         class MacsecOption; //type: Native::Interface::PortChannel::MacsecOption
-        class Snmp; //type: Native::Interface::PortChannel::Snmp
-        class Crypto; //type: Native::Interface::PortChannel::Crypto
+        class Ospfv3; //type: Native::Interface::PortChannel::Ospfv3
+        class Lisp; //type: Native::Interface::PortChannel::Lisp
+        class SpanningTree; //type: Native::Interface::PortChannel::SpanningTree
         class Xconnect; //type: Native::Interface::PortChannel::Xconnect
         class Evpn; //type: Native::Interface::PortChannel::Evpn
-        class Mvrp; //type: Native::Interface::PortChannel::Mvrp
-        class Lisp; //type: Native::Interface::PortChannel::Lisp
-        class Authentication; //type: Native::Interface::PortChannel::Authentication
-        class Mab; //type: Native::Interface::PortChannel::Mab
         class Dot1x; //type: Native::Interface::PortChannel::Dot1x
-        class SpanningTree; //type: Native::Interface::PortChannel::SpanningTree
-        class Ospfv3; //type: Native::Interface::PortChannel::Ospfv3
-        class Cts; //type: Native::Interface::PortChannel::Cts
+        class Crypto; //type: Native::Interface::PortChannel::Crypto
         class AnalysisModule; //type: Native::Interface::PortChannel::AnalysisModule
+        class Cts; //type: Native::Interface::PortChannel::Cts
+        class Mvrp; //type: Native::Interface::PortChannel::Mvrp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::PortChannel_> port_channel;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::SwitchportConf> switchport_conf;
@@ -1358,6 +1358,9 @@ class Native::Interface::PortChannel : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Service> service;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Lacp> lacp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Mlacp> mlacp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Snmp> snmp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Mab> mab; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::ServicePolicy> service_policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Auto> auto_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Datalink> datalink;
@@ -1371,19 +1374,16 @@ class Native::Interface::PortChannel : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Switch> switch_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::SrrQueue> srr_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::MacsecOption> macsec_option;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Snmp> snmp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Crypto> crypto;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3> ospfv3;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Lisp> lisp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::SpanningTree> spanning_tree;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Xconnect> xconnect;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Evpn> evpn;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Mvrp> mvrp; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Lisp> lisp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Mab> mab; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Dot1x> dot1x;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::SpanningTree> spanning_tree;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3> ospfv3;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Cts> cts;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Crypto> crypto;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::AnalysisModule> analysis_module;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Cts> cts;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Mvrp> mvrp; // presence node
                 class PcSpeed;
         class IfState;
         class ServiceInsertion;
@@ -3628,13 +3628,13 @@ class Native::Interface::PortChannel::Ip : public ydk::Entity
         class Dhcp; //type: Native::Interface::PortChannel::Ip::Dhcp
         class SummaryAddress; //type: Native::Interface::PortChannel::Ip::SummaryAddress
         class Verify; //type: Native::Interface::PortChannel::Ip::Verify
-        class Igmp; //type: Native::Interface::PortChannel::Ip::Igmp
         class Flow; //type: Native::Interface::PortChannel::Ip::Flow
-        class Nbar; //type: Native::Interface::PortChannel::Ip::Nbar
+        class Igmp; //type: Native::Interface::PortChannel::Ip::Igmp
         class Ospf; //type: Native::Interface::PortChannel::Ip::Ospf
         class Lisp; //type: Native::Interface::PortChannel::Ip::Lisp
-        class Rsvp; //type: Native::Interface::PortChannel::Ip::Rsvp
         class Nat; //type: Native::Interface::PortChannel::Ip::Nat
+        class Nbar; //type: Native::Interface::PortChannel::Ip::Nbar
+        class Rsvp; //type: Native::Interface::PortChannel::Ip::Rsvp
         class Wccp; //type: Native::Interface::PortChannel::Ip::Wccp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ip::AccessGroup> access_group;
@@ -3658,13 +3658,13 @@ class Native::Interface::PortChannel::Ip : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ip::Dhcp> dhcp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ip::SummaryAddress> summary_address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ip::Verify> verify;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ip::Igmp> igmp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ip::Flow> flow;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ip::Nbar> nbar;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ip::Igmp> igmp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ip::Ospf> ospf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ip::Lisp> lisp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ip::Rsvp> rsvp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ip::Nat> nat;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ip::Nbar> nbar;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ip::Rsvp> rsvp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ip::Wccp> wccp;
         
 }; // Native::Interface::PortChannel::Ip

@@ -259,6 +259,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibBridgeDomains::L2fibBridgeDomain:
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-bridge-domain";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1653,6 +1654,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibBridgeDomains::L2fibBridgeDomain:
 {
     std::ostringstream path_buffer;
     path_buffer << "feature";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2980,6 +2982,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMstpSummaries::L2fibMstpSummary::
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-mstp-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3605,6 +3608,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibmacHardwareEgresses::L2fibmacHard
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fibmac-hardware-egress";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5176,6 +5180,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibxConL2tpv2s::L2fibxConL2tpv2::get
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fibx-con-l2tpv2";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -12138,6 +12143,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibxConL2tpv2s::L2fibxConL2tpv2::Seg
 {
     std::ostringstream path_buffer;
     path_buffer << "feature";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -15565,6 +15571,7 @@ std::string L2vpnForwarding::Nodes::Node::L2fibMrouteIpv6s::L2fibMrouteIpv6::get
 {
     std::ostringstream path_buffer;
     path_buffer << "l2fib-mroute-ipv6";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

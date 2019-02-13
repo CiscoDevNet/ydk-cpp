@@ -13067,6 +13067,84 @@ bool Native::Interface::LISP::PmPath::has_leaf_or_child_of_name(const std::strin
     return false;
 }
 
+Native::Interface::LISP::EtAnalytics::EtAnalytics()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "et-analytics"; yang_parent_name = "LISP"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::LISP::EtAnalytics::~EtAnalytics()
+{
+}
+
+bool Native::Interface::LISP::EtAnalytics::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set;
+}
+
+bool Native::Interface::LISP::EtAnalytics::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string Native::Interface::LISP::EtAnalytics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-eta:et-analytics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::EtAnalytics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::LISP::EtAnalytics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::EtAnalytics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::LISP::EtAnalytics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::LISP::EtAnalytics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::LISP::EtAnalytics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
 Native::Interface::LISP::ServicePolicy::ServicePolicy()
     :
     history{YType::empty, "history"},
@@ -13736,80 +13814,94 @@ bool Native::Interface::LISP::ServicePolicy::Type::ServiceChain::Output::has_lea
     return false;
 }
 
-Native::Interface::LISP::EtAnalytics::EtAnalytics()
+Native::Interface::LISP::Umbrella::Umbrella()
     :
-    enable{YType::empty, "enable"}
+    out{YType::empty, "out"},
+    in{YType::str, "in"}
 {
 
-    yang_name = "et-analytics"; yang_parent_name = "LISP"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "umbrella"; yang_parent_name = "LISP"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-Native::Interface::LISP::EtAnalytics::~EtAnalytics()
+Native::Interface::LISP::Umbrella::~Umbrella()
 {
 }
 
-bool Native::Interface::LISP::EtAnalytics::has_data() const
+bool Native::Interface::LISP::Umbrella::has_data() const
 {
     if (is_presence_container) return true;
-    return enable.is_set;
+    return out.is_set
+	|| in.is_set;
 }
 
-bool Native::Interface::LISP::EtAnalytics::has_operation() const
+bool Native::Interface::LISP::Umbrella::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
+	|| ydk::is_set(out.yfilter)
+	|| ydk::is_set(in.yfilter);
 }
 
-std::string Native::Interface::LISP::EtAnalytics::get_segment_path() const
+std::string Native::Interface::LISP::Umbrella::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-eta:et-analytics";
+    path_buffer << "Cisco-IOS-XE-umbrella:umbrella";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::EtAnalytics::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Umbrella::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (out.is_set || is_set(out.yfilter)) leaf_name_data.push_back(out.get_name_leafdata());
+    if (in.is_set || is_set(in.yfilter)) leaf_name_data.push_back(in.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::EtAnalytics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Native::Interface::LISP::Umbrella::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::EtAnalytics::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Umbrella::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void Native::Interface::LISP::EtAnalytics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Native::Interface::LISP::Umbrella::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "enable")
+    if(value_path == "out")
     {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
+        out = value;
+        out.value_namespace = name_space;
+        out.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in")
+    {
+        in = value;
+        in.value_namespace = name_space;
+        in.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void Native::Interface::LISP::EtAnalytics::set_filter(const std::string & value_path, YFilter yfilter)
+void Native::Interface::LISP::Umbrella::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "enable")
+    if(value_path == "out")
     {
-        enable.yfilter = yfilter;
+        out.yfilter = yfilter;
+    }
+    if(value_path == "in")
+    {
+        in.yfilter = yfilter;
     }
 }
 
-bool Native::Interface::LISP::EtAnalytics::has_leaf_or_child_of_name(const std::string & name) const
+bool Native::Interface::LISP::Umbrella::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "enable")
+    if(name == "out" || name == "in")
         return true;
     return false;
 }
@@ -13966,98 +14058,6 @@ void Native::Interface::LISP::Utd::set_filter(const std::string & value_path, YF
 bool Native::Interface::LISP::Utd::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "enable")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Umbrella::Umbrella()
-    :
-    out{YType::empty, "out"},
-    in{YType::str, "in"}
-{
-
-    yang_name = "umbrella"; yang_parent_name = "LISP"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Umbrella::~Umbrella()
-{
-}
-
-bool Native::Interface::LISP::Umbrella::has_data() const
-{
-    if (is_presence_container) return true;
-    return out.is_set
-	|| in.is_set;
-}
-
-bool Native::Interface::LISP::Umbrella::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(out.yfilter)
-	|| ydk::is_set(in.yfilter);
-}
-
-std::string Native::Interface::LISP::Umbrella::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-umbrella:umbrella";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Umbrella::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (out.is_set || is_set(out.yfilter)) leaf_name_data.push_back(out.get_name_leafdata());
-    if (in.is_set || is_set(in.yfilter)) leaf_name_data.push_back(in.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Umbrella::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Umbrella::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Umbrella::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "out")
-    {
-        out = value;
-        out.value_namespace = name_space;
-        out.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "in")
-    {
-        in = value;
-        in.value_namespace = name_space;
-        in.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Umbrella::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "out")
-    {
-        out.yfilter = yfilter;
-    }
-    if(value_path == "in")
-    {
-        in.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Umbrella::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "out" || name == "in")
         return true;
     return false;
 }

@@ -1739,6 +1739,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::Forwarding
 {
     std::ostringstream path_buffer;
     path_buffer << "forwarding-detail";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2486,6 +2487,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::Forwarding
 {
     std::ostringstream path_buffer;
     path_buffer << "label-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3020,6 +3022,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::ForwardingDetails::Forwarding
 {
     std::ostringstream path_buffer;
     path_buffer << "label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3363,6 +3366,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::Informations::Information::ge
 {
     std::ostringstream path_buffer;
     path_buffer << "information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4110,6 +4114,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::Informations::Information::La
 {
     std::ostringstream path_buffer;
     path_buffer << "label-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -4644,6 +4649,7 @@ std::string MplsForwarding::Nodes::Node::LabelFib::Informations::Information::La
 {
     std::ostringstream path_buffer;
     path_buffer << "label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6542,6 +6548,7 @@ std::string MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTu
 {
     std::ostringstream path_buffer;
     path_buffer << "label-information";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -7076,6 +7083,7 @@ std::string MplsForwarding::Nodes::Node::Tunnel::ForwardingTunnels::ForwardingTu
 {
     std::ostringstream path_buffer;
     path_buffer << "label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -8730,6 +8738,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelMidpoints::Frrd
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-leg";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -10049,6 +10058,7 @@ std::string MplsForwarding::Nodes::Node::FrrDatabase::FrrdbTunnelHeads::FrrdbTun
 {
     std::ostringstream path_buffer;
     path_buffer << "multicast-leg";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

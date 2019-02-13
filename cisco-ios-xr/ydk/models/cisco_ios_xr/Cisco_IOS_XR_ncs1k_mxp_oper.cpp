@@ -520,6 +520,7 @@ std::string HwModule::SliceIds::SliceId::ClientPort::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "client-port";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -632,6 +633,7 @@ std::string HwModule::SliceIds::SliceId::ClientPort::TrunkPort::get_segment_path
 {
     std::ostringstream path_buffer;
     path_buffer << "trunk-port";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -875,6 +877,7 @@ std::string HwModule::SliceAll::SliceInfo::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "slice-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1080,6 +1083,7 @@ std::string HwModule::SliceAll::SliceInfo::ClientPort::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "client-port";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -1199,6 +1203,7 @@ std::string HwModule::SliceAll::SliceInfo::ClientPort::TrunkPort::get_segment_pa
 {
     std::ostringstream path_buffer;
     path_buffer << "trunk-port";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

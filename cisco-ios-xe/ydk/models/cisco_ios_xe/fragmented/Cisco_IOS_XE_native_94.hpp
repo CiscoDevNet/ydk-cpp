@@ -3089,6 +3089,52 @@ class Native::Interface::Cellular::PmPath : public ydk::Entity
 }; // Native::Interface::Cellular::PmPath
 
 
+class Native::Interface::Cellular::Dialer : public ydk::Entity
+{
+    public:
+        Dialer();
+        ~Dialer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf in_band; //type: empty
+        ydk::YLeaf idle_timeout; //type: uint32
+        ydk::YLeaf string; //type: string
+        ydk::YLeaf watch_group; //type: uint32
+
+}; // Native::Interface::Cellular::Dialer
+
+
+class Native::Interface::Cellular::Async : public ydk::Entity
+{
+    public:
+        Async();
+        ~Async();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mode; //type: Mode
+        class Mode;
+
+}; // Native::Interface::Cellular::Async
+
+
 class Native::Interface::Cellular::ServicePolicy : public ydk::Entity
 {
     public:
@@ -3253,52 +3299,6 @@ class Native::Interface::Cellular::ServicePolicy::Type::ServiceChain::Output : p
 }; // Native::Interface::Cellular::ServicePolicy::Type::ServiceChain::Output
 
 
-class Native::Interface::Cellular::Dialer : public ydk::Entity
-{
-    public:
-        Dialer();
-        ~Dialer();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf in_band; //type: empty
-        ydk::YLeaf idle_timeout; //type: uint32
-        ydk::YLeaf string; //type: string
-        ydk::YLeaf watch_group; //type: uint32
-
-}; // Native::Interface::Cellular::Dialer
-
-
-class Native::Interface::Cellular::Async : public ydk::Entity
-{
-    public:
-        Async();
-        ~Async();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf mode; //type: Mode
-        class Mode;
-
-}; // Native::Interface::Cellular::Async
-
-
 class Native::Interface::Vlan : public ydk::Entity
 {
     public:
@@ -3386,15 +3386,14 @@ class Native::Interface::Vlan : public ydk::Entity
         class Plim; //type: Native::Interface::Vlan::Plim
         class Pppoe; //type: Native::Interface::Vlan::Pppoe
         class Service; //type: Native::Interface::Vlan::Service
-        class ServicePolicy; //type: Native::Interface::Vlan::ServicePolicy
-        class Crypto; //type: Native::Interface::Vlan::Crypto
         class EtAnalytics; //type: Native::Interface::Vlan::EtAnalytics
-        class ZoneMember; //type: Native::Interface::Vlan::ZoneMember
-        class Utd; //type: Native::Interface::Vlan::Utd
+        class ServicePolicy; //type: Native::Interface::Vlan::ServicePolicy
         class Lisp; //type: Native::Interface::Vlan::Lisp
-        class Ntp; //type: Native::Interface::Vlan::Ntp
         class SpanningTree; //type: Native::Interface::Vlan::SpanningTree
         class Umbrella; //type: Native::Interface::Vlan::Umbrella
+        class Crypto; //type: Native::Interface::Vlan::Crypto
+        class ZoneMember; //type: Native::Interface::Vlan::ZoneMember
+        class Vrrp; //type: Native::Interface::Vlan::Vrrp
         class PrivateVlan; //type: Native::Interface::Vlan::PrivateVlan
         class ServiceRouting; //type: Native::Interface::Vlan::ServiceRouting
         class Glbp; //type: Native::Interface::Vlan::Glbp
@@ -3435,8 +3434,9 @@ class Native::Interface::Vlan : public ydk::Entity
         class CiscoIOSXEInterfacesRcvQueue_; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesRcvQueue_
         class CiscoIOSXEInterfacesPeer_; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesPeer_
         class CiscoIOSXEInterfacesPmPath_; //type: Native::Interface::Vlan::CiscoIOSXEInterfacesPmPath_
-        class Vrrp; //type: Native::Interface::Vlan::Vrrp
         class Cts; //type: Native::Interface::Vlan::Cts
+        class Ntp; //type: Native::Interface::Vlan::Ntp
+        class Utd; //type: Native::Interface::Vlan::Utd
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesSwitchportConf> cisco_ios_xe_interfaces_switchport_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesSwitchport> cisco_ios_xe_interfaces_switchport;
@@ -3485,15 +3485,14 @@ class Native::Interface::Vlan : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Plim> plim;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Pppoe> pppoe;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Service> service;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::ServicePolicy> service_policy;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Crypto> crypto;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::EtAnalytics> et_analytics;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::ZoneMember> zone_member;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Utd> utd;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::ServicePolicy> service_policy;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Lisp> lisp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Ntp> ntp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::SpanningTree> spanning_tree;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Umbrella> umbrella;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Crypto> crypto;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::ZoneMember> zone_member;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Vrrp> vrrp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::PrivateVlan> private_vlan;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::ServiceRouting> service_routing;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Glbp> glbp;
@@ -3534,8 +3533,9 @@ class Native::Interface::Vlan : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesRcvQueue_> cisco_ios_xe_interfaces_rcv_queue_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesPeer_> cisco_ios_xe_interfaces_peer_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::CiscoIOSXEInterfacesPmPath_> cisco_ios_xe_interfaces_pm_path_;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Vrrp> vrrp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Cts> cts;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Ntp> ntp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Vlan::Utd> utd;
                 class IfState;
         class ServiceInsertion;
         class ChannelProtocol;
@@ -3879,18 +3879,18 @@ class Native::Interface::Cellular::Trust::Device : public ydk::Enum
 
 };
 
+class Native::Interface::Cellular::Async::Mode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf interactive;
+
+};
+
 class Native::Interface::Cellular::ServicePolicy::Type::PerformanceMonitor::Direction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf input;
         static const ydk::Enum::YLeaf output;
-
-};
-
-class Native::Interface::Cellular::Async::Mode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf interactive;
 
 };
 

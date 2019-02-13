@@ -577,6 +577,7 @@ std::string Vmm::VmManager::Trace::Location::AllOptions::TraceBlocks::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "trace-blocks";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

@@ -2856,6 +2856,7 @@ std::string Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::g
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-operational-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -2934,6 +2935,7 @@ std::string Vrrp::Ipv6::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-configured-down-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3027,6 +3029,7 @@ std::string Vrrp::Ipv6::VirtualRouters::VirtualRouter::TrackItemInfo::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "track-item-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -3171,6 +3174,7 @@ std::string Vrrp::Ipv6::VirtualRouters::VirtualRouter::StateChangeHistory::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "state-change-history";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5830,6 +5834,7 @@ std::string Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6OperationalAddress::g
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-operational-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -5908,6 +5913,7 @@ std::string Vrrp::Ipv4::VirtualRouters::VirtualRouter::Ipv6ConfiguredDownAddress
 {
     std::ostringstream path_buffer;
     path_buffer << "ipv6-configured-down-address";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6001,6 +6007,7 @@ std::string Vrrp::Ipv4::VirtualRouters::VirtualRouter::TrackItemInfo::get_segmen
 {
     std::ostringstream path_buffer;
     path_buffer << "track-item-info";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6145,6 +6152,7 @@ std::string Vrrp::Ipv4::VirtualRouters::VirtualRouter::StateChangeHistory::get_s
 {
     std::ostringstream path_buffer;
     path_buffer << "state-change-history";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 
@@ -6639,6 +6647,7 @@ std::string Vrrp::MgoSessions::MgoSession::Slave::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "slave";
+    path_buffer << "[" << get_ylist_key() << "]";
     return path_buffer.str();
 }
 

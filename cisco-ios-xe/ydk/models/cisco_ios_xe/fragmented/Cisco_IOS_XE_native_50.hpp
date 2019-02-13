@@ -2420,13 +2420,13 @@ class Native::Interface::FiveGigabitEthernet::Ip : public ydk::Entity
         class Dhcp; //type: Native::Interface::FiveGigabitEthernet::Ip::Dhcp
         class SummaryAddress; //type: Native::Interface::FiveGigabitEthernet::Ip::SummaryAddress
         class Verify; //type: Native::Interface::FiveGigabitEthernet::Ip::Verify
-        class Igmp; //type: Native::Interface::FiveGigabitEthernet::Ip::Igmp
         class Flow; //type: Native::Interface::FiveGigabitEthernet::Ip::Flow
-        class Nbar; //type: Native::Interface::FiveGigabitEthernet::Ip::Nbar
+        class Igmp; //type: Native::Interface::FiveGigabitEthernet::Ip::Igmp
         class Ospf; //type: Native::Interface::FiveGigabitEthernet::Ip::Ospf
         class Lisp; //type: Native::Interface::FiveGigabitEthernet::Ip::Lisp
-        class Rsvp; //type: Native::Interface::FiveGigabitEthernet::Ip::Rsvp
         class Nat; //type: Native::Interface::FiveGigabitEthernet::Ip::Nat
+        class Nbar; //type: Native::Interface::FiveGigabitEthernet::Ip::Nbar
+        class Rsvp; //type: Native::Interface::FiveGigabitEthernet::Ip::Rsvp
         class Wccp; //type: Native::Interface::FiveGigabitEthernet::Ip::Wccp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ip::AccessGroup> access_group;
@@ -2450,13 +2450,13 @@ class Native::Interface::FiveGigabitEthernet::Ip : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ip::Dhcp> dhcp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ip::SummaryAddress> summary_address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ip::Verify> verify;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ip::Igmp> igmp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ip::Flow> flow;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ip::Nbar> nbar;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ip::Igmp> igmp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ip::Ospf> ospf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ip::Lisp> lisp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ip::Rsvp> rsvp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ip::Nat> nat;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ip::Nbar> nbar;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ip::Rsvp> rsvp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FiveGigabitEthernet::Ip::Wccp> wccp;
         
 }; // Native::Interface::FiveGigabitEthernet::Ip
