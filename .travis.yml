@@ -3,7 +3,7 @@ sudo: required
 matrix:
     include:
         - os: linux
-          dist: bionic
+          dist: xenial
           language: python
           python: 3.6
         - os: osx
@@ -18,7 +18,7 @@ before_install:
 
 script:
     - cd core/ydk
-    - mkdir -p build && cd build && cmake .. && make &> /dev/null sudo make install && make test
+    - mkdir -p build && cd build && cmake .. && make &> /dev/null && sudo make install && make test
 
     - cd ../../../ietf
     - mkdir -p build && cd build && cmake .. && make &> /dev/null && sudo make install
