@@ -18,13 +18,13 @@ before_install:
 
 script:
     - cd core/ydk
-    - mkdir -p build && cd build && cmake .. && sudo make install test > /dev/null
+    - mkdir -p build && cd build && cmake .. && make &> /dev/null sudo make install && make test
 
     - cd ../../../ietf
-    - mkdir -p build && cd build && cmake .. && sudo make install > /dev/null
+    - mkdir -p build && cd build && cmake .. && make &> /dev/null && sudo make install
 
     - cd ../../openconfig
-    - mkdir -p build && cd build && cmake .. && sudo make install > /dev/null
+    - mkdir -p build && cd build && cmake .. && make &> /dev/null && sudo make install
 
     - cd ../../cisco-nx-os
-    - mkdir -p build && cd build && cmake .. && sudo make install > /dev/null
+    - mkdir -p build && cd build && cmake .. && make &> /dev/null && sudo make install
