@@ -26,5 +26,5 @@ script:
     - cd ../../openconfig
     - mkdir -p build && cd build && cmake .. && make &> /dev/null && sudo make install
 
-    - cd ../../cisco-nx-os
-    - mkdir -p build && cd build && cmake .. && make &> /dev/null && sudo make install
+#   - cd ../../cisco-nx-os
+#   - mkdir -p build && cd build && cmake .. && make &> /dev/null && sudo make install
