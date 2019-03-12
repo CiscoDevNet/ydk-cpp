@@ -131,7 +131,10 @@ NetconfServiceProvider::execute_operation(const string & operation, Entity & ent
 {
     NetconfService ns;
     if (operation == "create" || operation == "update" || operation == "delete") {
-        entity.yfilter = (operation == "delete") ? YFilter::delete_ : YFilter::merge;
+        YFilter original_yfilter = entity.yfilter;
+        if (original_yfilter == YFilter::not_set) {
+            entity.yfilter = (operation == "delete") ? YFilter::delete_ : YFilter::merge;
+        }
         DataStore target = (is_candidate_supported(session.get_capabilities())) ?
                            DataStore::candidate : DataStore::running;
         if (ns.edit_config(*this, target, entity)) {
@@ -142,6 +145,7 @@ NetconfServiceProvider::execute_operation(const string & operation, Entity & ent
             YLOG_ERROR("NetconfServiceProvider::execute_operation: Operation '{}' failed; discarding changes.", operation);
             throw(YServiceProviderError("NetconfServiceProvider: Operation failed"));
         }
+        entity.yfilter = original_yfilter;
     }
     else if (operation == "read") {
         if (params["mode"] == "config")
@@ -162,8 +166,14 @@ NetconfServiceProvider::execute_operation(const string & operation, vector<Entit
     vector<shared_ptr<Entity>> result;
     NetconfService ns;
     if (operation == "create" || operation == "update" || operation == "delete") {
-        for (auto entity : entity_list)
-            entity->yfilter = (operation == "delete") ? YFilter::delete_ : YFilter::merge;
+        YFilter original_yfilters[entity_list.size()];
+        size_t item = 0;
+        for (auto entity : entity_list) {
+            original_yfilters[item++] = entity->yfilter;
+            if (entity->yfilter == YFilter::not_set) {
+                entity->yfilter = (operation == "delete") ? YFilter::delete_ : YFilter::merge;
+            }
+        }
         DataStore target = (is_candidate_supported(session.get_capabilities())) ?
                            DataStore::candidate : DataStore::running;
         if (ns.edit_config(*this, target, entity_list)) {
@@ -171,6 +181,11 @@ NetconfServiceProvider::execute_operation(const string & operation, vector<Entit
         }
         else {
             ns.discard_changes(*this);
+        }
+        // Restore original yfilter setting
+        item = 0;
+        for (auto entity : entity_list) {
+            entity->yfilter = original_yfilters[item++];
         }
     }
     else if (operation == "read") {

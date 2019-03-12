@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0.0)
 cmake_policy(SET CMP0048 NEW)
-project(ydk VERSION 0.8.1 LANGUAGES C CXX)
+project(ydk VERSION 0.8.2 LANGUAGES C CXX)
 
 set(YDK_DESCRIPTION "YANG Development Kit Library. The library for  YDK API.")
 
@@ -64,7 +64,7 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
         # <foo>_<VersionNumber>-<DebianRevisionNumber>_<DebianArchitecture>.deb
         # libydk_0.6.0-0.1.alpha_amd64.deb   // Debian
         set (CPACK_PACKAGE_FILE_NAME
-            "${CPACK_PACKAGE_NAME}_${CPACK_PACKAGE_VERSION}-${CPACK_PACKAGE_RELEASE}_${CPACK_DEBIAN_PACKAGE_ARCHITECTURE}")
+            "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${CPACK_PACKAGE_RELEASE}.${CPACK_DEBIAN_PACKAGE_ARCHITECTURE}")
 
     # Linux Fedora
     elseif(${LSB_RELEASE_ID_SHORT} MATCHES "CentOS")
@@ -159,9 +159,11 @@ set(libydk_src
     src/opendaylight_provider.cpp
     src/restconf_client.cpp
     src/restconf_provider.cpp
+    src/restconf_session.cpp
     src/validation_service.cpp
     src/value.cpp
     src/value_list.cpp
+    src/json_subtree_codec.cpp
     src/xml_subtree_codec.cpp
     src/xml_util.cpp
     src/ydk_operation.cpp
@@ -173,7 +175,6 @@ set(libydk_src
     src/netconf_model_provider.cpp
     src/path/path.cpp
     src/path/repository.cpp
-    src/path/restconf_session.cpp
     src/path/root_data_node.cpp
     src/path/root_schema_node.cpp
     src/path/rpc.cpp
@@ -221,6 +222,7 @@ set(libydk_install_headers
     src/restconf_provider.hpp
     src/service_provider.hpp
     src/types.hpp
+    src/json_subtree_codec.hpp
     src/xml_subtree_codec.hpp
     src/xml_util.hpp
     src/validation_service.hpp

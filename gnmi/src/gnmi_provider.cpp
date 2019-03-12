@@ -77,7 +77,9 @@ namespace ydk
     {
         gNMIService gs;
         if (operation == "create" || operation == "update" || operation == "delete") {
-            entity.yfilter = (operation == "delete") ? YFilter::delete_ : YFilter::update;
+            if (entity.yfilter == YFilter::not_set) {
+                entity.yfilter = (operation == "delete") ? YFilter::delete_ : YFilter::update;
+            }
             gs.set(*this, entity);
         }
         else if (operation == "read") {
@@ -100,7 +102,9 @@ namespace ydk
         gNMIService gs;
         if (operation == "create" || operation == "update" || operation == "delete") {
             for (auto entity : entity_list)
-                entity->yfilter = (operation == "delete") ? YFilter::delete_ : YFilter::update;
+                if (entity->yfilter == YFilter::not_set) {
+                    entity->yfilter = (operation == "delete") ? YFilter::delete_ : YFilter::update;
+                }
             gs.set(*this, entity_list);
         }
         else if (operation == "read") {

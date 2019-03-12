@@ -26,6 +26,7 @@
 #include "common_utilities.hpp"
 #include "entity_data_node_walker.hpp"
 #include "xml_subtree_codec.hpp"
+#include "json_subtree_codec.hpp"
 #include "path/path_private.hpp"
 
 using namespace std;
@@ -141,7 +142,7 @@ find_child_entity(shared_ptr<Entity> parent_entity, Entity & filter_entity)
     return nullptr;
 }
 
-static shared_ptr<Entity>
+shared_ptr<Entity>
 get_child_entity_from_top(shared_ptr<Entity> top_entity, Entity & filter_entity)
 {
 	shared_ptr<Entity> child_entity;
@@ -215,6 +216,25 @@ string get_xml_subtree_filter_payload(Entity & entity, const ServiceProvider & p
     XmlSubtreeCodec xml_subtree_codec{};
     YLOG_DEBUG("Encoding the subtree filter request using XML subtree codec");
     return xml_subtree_codec.encode(entity, provider.get_session().get_root_schema());
+}
+
+string get_json_subtree_filter_payload(Entity & entity, const ServiceProvider & provider, bool pretty)
+{
+    JsonSubtreeCodec json_subtree_codec{};
+    YLOG_DEBUG("Encoding the subtree filter request using JSON subtree codec");
+    return json_subtree_codec.encode(entity, provider.get_session().get_root_schema(), pretty);
+}
+
+Entity * get_top_entity(Entity * entity)
+{
+	Entity * top_entity = entity;
+    while (top_entity->parent && !top_entity->is_top_level_class) {
+        top_entity = top_entity->parent;
+    }
+    if (entity->ignore_validation && !top_entity->is_top_level_class) {
+        YLOG_WARN("get_top_entity: Validation cannot be disabled on non-top-level entity '{}'", entity->yang_name);
+    }
+    return top_entity;
 }
 
 vector<string> get_union(vector<string> & v1, vector<string> & v2)

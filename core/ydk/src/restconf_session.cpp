@@ -27,13 +27,12 @@
 
 #include <libyang/libyang.h>
 
-#include "../entity_data_node_walker.hpp"
-#include "../errors.hpp"
-#include "../ietf_parser.hpp"
-#include "../restconf_client.hpp"
-#include "../types.hpp"
-#include "../logger.hpp"
-
+#include "entity_data_node_walker.hpp"
+#include "errors.hpp"
+#include "ietf_parser.hpp"
+#include "restconf_client.hpp"
+#include "types.hpp"
+#include "logger.hpp"
 
 using namespace std;
 
@@ -200,7 +199,7 @@ std::shared_ptr<path::DataNode> RestconfSession::handle_crud_edit(path::Rpc& rpc
     auto datanode = codec_service.decode(*root_schema, header_data, encoding);
     string url = config_url_root + get_module_url_path(datanode->get_children()[0]->get_schema_node().get_path());
 
-    YLOG_INFO("Performing {} on URL {}. Payload: {}", operation, url, header_data);
+    YLOG_INFO("Performing {} on URL {}. Payload:\n{}", operation, url, header_data);
     client->execute(operation, url, header_data);
 
     return nullptr;

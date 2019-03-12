@@ -181,10 +181,10 @@ ydk::path::SchemaNodeImpl::get_root() const noexcept
 
 void
 ydk::path::SchemaNodeImpl::populate_new_schemas_from_path(const string& path) {
-    YLOG_DEBUG("Looking to populate schemas for {}", path);
+    YLOG_DEBUG("Looking to populate schemas for '{}'", path);
     auto snode = const_cast<SchemaNode*>(&get_root());
     auto rsnode = reinterpret_cast<RootSchemaNodeImpl*>(snode);
-    YLOG_DEBUG("Ready to populate schemas for {}", path);
+    //YLOG_DEBUG("Ready to populate schemas for {}", path);
     rsnode->populate_new_schemas_from_path(path);
 }
 

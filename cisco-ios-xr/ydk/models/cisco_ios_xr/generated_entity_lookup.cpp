@@ -1347,14 +1347,14 @@ void cisco_ios_xr_augment_lookup_tables()
 
 
 std::map<std::pair<std::string, std::string>, std::string> cisco_ios_xr_namespace_identity_lookup {
-    { {"Host-address-base", "http://cisco.com/ns/yang/Cisco-IOS-XR-ip-domain-oper"},  "Cisco-IOS-XR-ip-domain-oper"},
     { {"ipv6", "http://cisco.com/ns/yang/Cisco-IOS-XR-ip-domain-oper"},  "Cisco-IOS-XR-ip-domain-oper"},
+    { {"Host-address-base", "http://cisco.com/ns/yang/Cisco-IOS-XR-ip-domain-oper"},  "Cisco-IOS-XR-ip-domain-oper"},
     { {"ipv4", "http://cisco.com/ns/yang/Cisco-IOS-XR-ip-domain-oper"},  "Cisco-IOS-XR-ip-domain-oper"},
-    { {"ipv4", "http://cisco.com/ns/yang/Cisco-IOS-XR-lib-mpp-oper"},  "Cisco-IOS-XR-lib-mpp-oper"},
     { {"ipv6", "http://cisco.com/ns/yang/Cisco-IOS-XR-lib-mpp-oper"},  "Cisco-IOS-XR-lib-mpp-oper"},
+    { {"ipv4", "http://cisco.com/ns/yang/Cisco-IOS-XR-lib-mpp-oper"},  "Cisco-IOS-XR-lib-mpp-oper"},
     { {"Mpp-af-id-base", "http://cisco.com/ns/yang/Cisco-IOS-XR-lib-mpp-oper"},  "Cisco-IOS-XR-lib-mpp-oper"},
-    { {"ipv4", "http://cisco.com/ns/yang/Cisco-IOS-XR-tty-management-oper"},  "Cisco-IOS-XR-tty-management-oper"},
     { {"Host-af-id-base", "http://cisco.com/ns/yang/Cisco-IOS-XR-tty-management-oper"},  "Cisco-IOS-XR-tty-management-oper"},
+    { {"ipv4", "http://cisco.com/ns/yang/Cisco-IOS-XR-tty-management-oper"},  "Cisco-IOS-XR-tty-management-oper"},
     { {"ipv6", "http://cisco.com/ns/yang/Cisco-IOS-XR-tty-management-oper"},  "Cisco-IOS-XR-tty-management-oper"},
 };
 

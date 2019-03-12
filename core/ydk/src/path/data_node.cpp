@@ -136,14 +136,16 @@ ydk::path::DataNodeImpl::create_datanode(const std::string& path, const std::str
         }
 
         if(v != value){
-            YLOG_DEBUG("Replacing 'value' with '{}'", v);
+            YLOG_DEBUG("Replacing value '{}' with '{}'", value, v);
         }
     }
 
-    YLOG_DEBUG("Populating schemas for {}", path);
+    YLOG_DEBUG("Populating schemas for path '{}'", path);
     populate_new_schemas_from_path(path);
-    YLOG_DEBUG("Populating schemas for {}", v);
-    populate_new_schemas_from_path(v);
+    if (!v.empty()) {
+        YLOG_DEBUG("Populating schemas for value '{}'", v);
+        populate_new_schemas_from_path(v);
+    }
     return create_helper(path, v);
 }
 

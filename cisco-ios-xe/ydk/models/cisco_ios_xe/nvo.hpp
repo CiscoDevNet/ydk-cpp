@@ -94,8 +94,8 @@ class NvoInstances::NvoInstance::VirtualNetwork : public ydk::Entity
         ydk::YLeaf vni_start; //type: uint32
         ydk::YLeaf vni_end; //type: uint32
         ydk::YLeaf bgp; //type: empty
-        ydk::YLeaf suppress_arp; //type: empty
         ydk::YLeaf end_host_discovery; //type: EndHostDiscovery
+        ydk::YLeaf suppress_arp; //type: empty
         //type: string (refers to ietf::ietf_routing::Routing::RoutingInstance::name)
         ydk::YLeaf routing_instance;
         class Multicast; //type: NvoInstances::NvoInstance::VirtualNetwork::Multicast
