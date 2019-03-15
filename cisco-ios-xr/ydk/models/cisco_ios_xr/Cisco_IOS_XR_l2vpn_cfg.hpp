@@ -8886,6 +8886,7 @@ class Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery : public ydk:
 
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf table_policy; //type: string
+        ydk::YLeaf implicit_import_disable; //type: empty
         class EvpnRouteDistinguisher; //type: Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteDistinguisher
         class EvpnRouteTargets; //type: Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets
 
@@ -9487,6 +9488,7 @@ class Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscover
 
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf table_policy; //type: string
+        ydk::YLeaf implicit_import_disable; //type: empty
         class EvpnRouteDistinguisher; //type: Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteDistinguisher
         class EvpnRouteTargets; //type: Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets
 

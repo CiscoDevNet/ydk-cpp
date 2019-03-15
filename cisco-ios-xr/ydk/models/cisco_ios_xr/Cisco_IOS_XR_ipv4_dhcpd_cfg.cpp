@@ -2602,6 +2602,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Server()
     , requested_ip_address(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::RequestedIpAddress>())
     , aaa_server(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::AaaServer>())
     , default_routers(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DefaultRouters>())
+    , delete_binding_on_discover(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DeleteBindingOnDiscover>())
     , net_bios_name_servers(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::NetBiosNameServers>())
     , match(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match>())
     , broadcast_flag(std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::BroadcastFlag>())
@@ -2619,6 +2620,7 @@ Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Server()
     requested_ip_address->parent = this;
     aaa_server->parent = this;
     default_routers->parent = this;
+    delete_binding_on_discover->parent = this;
     net_bios_name_servers->parent = this;
     match->parent = this;
     broadcast_flag->parent = this;
@@ -2655,6 +2657,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::has_data() const
 	|| (requested_ip_address !=  nullptr && requested_ip_address->has_data())
 	|| (aaa_server !=  nullptr && aaa_server->has_data())
 	|| (default_routers !=  nullptr && default_routers->has_data())
+	|| (delete_binding_on_discover !=  nullptr && delete_binding_on_discover->has_data())
 	|| (net_bios_name_servers !=  nullptr && net_bios_name_servers->has_data())
 	|| (match !=  nullptr && match->has_data())
 	|| (broadcast_flag !=  nullptr && broadcast_flag->has_data())
@@ -2685,6 +2688,7 @@ bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::has_operation() const
 	|| (requested_ip_address !=  nullptr && requested_ip_address->has_operation())
 	|| (aaa_server !=  nullptr && aaa_server->has_operation())
 	|| (default_routers !=  nullptr && default_routers->has_operation())
+	|| (delete_binding_on_discover !=  nullptr && delete_binding_on_discover->has_operation())
 	|| (net_bios_name_servers !=  nullptr && net_bios_name_servers->has_operation())
 	|| (match !=  nullptr && match->has_operation())
 	|| (broadcast_flag !=  nullptr && broadcast_flag->has_operation())
@@ -2768,6 +2772,15 @@ std::shared_ptr<ydk::Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::
             default_routers = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DefaultRouters>();
         }
         return default_routers;
+    }
+
+    if(child_yang_name == "delete-binding-on-discover")
+    {
+        if(delete_binding_on_discover == nullptr)
+        {
+            delete_binding_on_discover = std::make_shared<Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DeleteBindingOnDiscover>();
+        }
+        return delete_binding_on_discover;
     }
 
     if(child_yang_name == "net-bios-name-servers")
@@ -2899,6 +2912,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Dhcpd::Profiles::Profile
     if(default_routers != nullptr)
     {
         _children["default-routers"] = default_routers;
+    }
+
+    if(delete_binding_on_discover != nullptr)
+    {
+        _children["delete-binding-on-discover"] = delete_binding_on_discover;
     }
 
     if(net_bios_name_servers != nullptr)
@@ -3059,7 +3077,7 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::set_filter(const std::st
 
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "server-id-check" || name == "lease-limit" || name == "requested-ip-address" || name == "aaa-server" || name == "default-routers" || name == "net-bios-name-servers" || name == "match" || name == "broadcast-flag" || name == "session" || name == "classes" || name == "relay" || name == "lease" || name == "netbios-node-type" || name == "dns-servers" || name == "dhcp-to-aaa" || name == "option-codes" || name == "server-allow-move" || name == "enable" || name == "subnet-mask" || name == "pool" || name == "domain-name" || name == "secure-arp" || name == "arp-instal-skip-stdalone" || name == "boot-filename" || name == "next-server")
+    if(name == "server-id-check" || name == "lease-limit" || name == "requested-ip-address" || name == "aaa-server" || name == "default-routers" || name == "delete-binding-on-discover" || name == "net-bios-name-servers" || name == "match" || name == "broadcast-flag" || name == "session" || name == "classes" || name == "relay" || name == "lease" || name == "netbios-node-type" || name == "dns-servers" || name == "dhcp-to-aaa" || name == "option-codes" || name == "server-allow-move" || name == "enable" || name == "subnet-mask" || name == "pool" || name == "domain-name" || name == "secure-arp" || name == "arp-instal-skip-stdalone" || name == "boot-filename" || name == "next-server")
         return true;
     return false;
 }
@@ -3555,6 +3573,84 @@ void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DefaultRouters::set_filt
 bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DefaultRouters::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "default-router")
+        return true;
+    return false;
+}
+
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DeleteBindingOnDiscover::DeleteBindingOnDiscover()
+    :
+    disable{YType::empty, "disable"}
+{
+
+    yang_name = "delete-binding-on-discover"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DeleteBindingOnDiscover::~DeleteBindingOnDiscover()
+{
+}
+
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DeleteBindingOnDiscover::has_data() const
+{
+    if (is_presence_container) return true;
+    return disable.is_set;
+}
+
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DeleteBindingOnDiscover::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter);
+}
+
+std::string Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DeleteBindingOnDiscover::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "delete-binding-on-discover";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DeleteBindingOnDiscover::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DeleteBindingOnDiscover::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DeleteBindingOnDiscover::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DeleteBindingOnDiscover::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DeleteBindingOnDiscover::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DeleteBindingOnDiscover::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable")
         return true;
     return false;
 }
@@ -13822,7 +13918,9 @@ const Enum::YLeaf Ipv4dhcpdBroadcastFlagPolicy::check {1, "check"};
 const Enum::YLeaf Ipv4dhcpdBroadcastFlagPolicy::unicast_always {2, "unicast-always"};
 
 const Enum::YLeaf Ipv4dhcpdFmt::no_format {0, "no-format"};
-const Enum::YLeaf Ipv4dhcpdFmt::format {1, "format"};
+const Enum::YLeaf Ipv4dhcpdFmt::hex {1, "hex"};
+const Enum::YLeaf Ipv4dhcpdFmt::ascii {2, "ascii"};
+const Enum::YLeaf Ipv4dhcpdFmt::extended {3, "extended"};
 
 const Enum::YLeaf Ipv4dhcpdRelayInfoOptionvpnMode::rfc {0, "rfc"};
 const Enum::YLeaf Ipv4dhcpdRelayInfoOptionvpnMode::cisco {1, "cisco"};

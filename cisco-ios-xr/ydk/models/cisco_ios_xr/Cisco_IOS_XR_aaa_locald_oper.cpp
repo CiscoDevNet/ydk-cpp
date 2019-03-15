@@ -8338,6 +8338,7 @@ Aaa::Diameter::Peers::Peers()
     conn_retry_timer{YType::uint32, "conn-retry-timer"},
     watchdog_timer{YType::uint32, "watchdog-timer"},
     transaction_timer{YType::uint32, "transaction-timer"},
+    peer_num{YType::uint32, "peer-num"},
     trans_total{YType::uint32, "trans-total"},
     trans_max{YType::uint32, "trans-max"}
         ,
@@ -8366,6 +8367,7 @@ bool Aaa::Diameter::Peers::has_data() const
 	|| conn_retry_timer.is_set
 	|| watchdog_timer.is_set
 	|| transaction_timer.is_set
+	|| peer_num.is_set
 	|| trans_total.is_set
 	|| trans_max.is_set;
 }
@@ -8385,6 +8387,7 @@ bool Aaa::Diameter::Peers::has_operation() const
 	|| ydk::is_set(conn_retry_timer.yfilter)
 	|| ydk::is_set(watchdog_timer.yfilter)
 	|| ydk::is_set(transaction_timer.yfilter)
+	|| ydk::is_set(peer_num.yfilter)
 	|| ydk::is_set(trans_total.yfilter)
 	|| ydk::is_set(trans_max.yfilter);
 }
@@ -8414,6 +8417,7 @@ std::vector<std::pair<std::string, LeafData> > Aaa::Diameter::Peers::get_name_le
     if (conn_retry_timer.is_set || is_set(conn_retry_timer.yfilter)) leaf_name_data.push_back(conn_retry_timer.get_name_leafdata());
     if (watchdog_timer.is_set || is_set(watchdog_timer.yfilter)) leaf_name_data.push_back(watchdog_timer.get_name_leafdata());
     if (transaction_timer.is_set || is_set(transaction_timer.yfilter)) leaf_name_data.push_back(transaction_timer.get_name_leafdata());
+    if (peer_num.is_set || is_set(peer_num.yfilter)) leaf_name_data.push_back(peer_num.get_name_leafdata());
     if (trans_total.is_set || is_set(trans_total.yfilter)) leaf_name_data.push_back(trans_total.get_name_leafdata());
     if (trans_max.is_set || is_set(trans_max.yfilter)) leaf_name_data.push_back(trans_max.get_name_leafdata());
 
@@ -8494,6 +8498,12 @@ void Aaa::Diameter::Peers::set_value(const std::string & value_path, const std::
         transaction_timer.value_namespace = name_space;
         transaction_timer.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "peer-num")
+    {
+        peer_num = value;
+        peer_num.value_namespace = name_space;
+        peer_num.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "trans-total")
     {
         trans_total = value;
@@ -8538,6 +8548,10 @@ void Aaa::Diameter::Peers::set_filter(const std::string & value_path, YFilter yf
     {
         transaction_timer.yfilter = yfilter;
     }
+    if(value_path == "peer-num")
+    {
+        peer_num.yfilter = yfilter;
+    }
     if(value_path == "trans-total")
     {
         trans_total.yfilter = yfilter;
@@ -8550,7 +8564,7 @@ void Aaa::Diameter::Peers::set_filter(const std::string & value_path, YFilter yf
 
 bool Aaa::Diameter::Peers::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "peer" || name == "origin-host" || name == "origin-realm" || name == "source-interface" || name == "tls-trustpoint" || name == "conn-retry-timer" || name == "watchdog-timer" || name == "transaction-timer" || name == "trans-total" || name == "trans-max")
+    if(name == "peer" || name == "origin-host" || name == "origin-realm" || name == "source-interface" || name == "tls-trustpoint" || name == "conn-retry-timer" || name == "watchdog-timer" || name == "transaction-timer" || name == "peer-num" || name == "trans-total" || name == "trans-max")
         return true;
     return false;
 }

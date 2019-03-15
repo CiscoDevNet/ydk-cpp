@@ -550,6 +550,7 @@ SdrInventory::Racks::Rack::Slot::Card::Attributes::Attributes()
     card_type{YType::uint32, "card-type"},
     card_type_string{YType::str, "card-type-string"},
     node_name_string{YType::str, "node-name-string"},
+    card_valid{YType::uint32, "card-valid"},
     pi_slot_number{YType::uint32, "pi-slot-number"},
     shutdown{YType::uint32, "shutdown"},
     ctype{YType::uint32, "ctype"},
@@ -576,6 +577,7 @@ bool SdrInventory::Racks::Rack::Slot::Card::Attributes::has_data() const
 	|| card_type.is_set
 	|| card_type_string.is_set
 	|| node_name_string.is_set
+	|| card_valid.is_set
 	|| pi_slot_number.is_set
 	|| shutdown.is_set
 	|| ctype.is_set
@@ -595,6 +597,7 @@ bool SdrInventory::Racks::Rack::Slot::Card::Attributes::has_operation() const
 	|| ydk::is_set(card_type.yfilter)
 	|| ydk::is_set(card_type_string.yfilter)
 	|| ydk::is_set(node_name_string.yfilter)
+	|| ydk::is_set(card_valid.yfilter)
 	|| ydk::is_set(pi_slot_number.yfilter)
 	|| ydk::is_set(shutdown.yfilter)
 	|| ydk::is_set(ctype.yfilter)
@@ -622,6 +625,7 @@ std::vector<std::pair<std::string, LeafData> > SdrInventory::Racks::Rack::Slot::
     if (card_type.is_set || is_set(card_type.yfilter)) leaf_name_data.push_back(card_type.get_name_leafdata());
     if (card_type_string.is_set || is_set(card_type_string.yfilter)) leaf_name_data.push_back(card_type_string.get_name_leafdata());
     if (node_name_string.is_set || is_set(node_name_string.yfilter)) leaf_name_data.push_back(node_name_string.get_name_leafdata());
+    if (card_valid.is_set || is_set(card_valid.yfilter)) leaf_name_data.push_back(card_valid.get_name_leafdata());
     if (pi_slot_number.is_set || is_set(pi_slot_number.yfilter)) leaf_name_data.push_back(pi_slot_number.get_name_leafdata());
     if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
     if (ctype.is_set || is_set(ctype.yfilter)) leaf_name_data.push_back(ctype.get_name_leafdata());
@@ -700,6 +704,12 @@ void SdrInventory::Racks::Rack::Slot::Card::Attributes::set_value(const std::str
         node_name_string.value_namespace = name_space;
         node_name_string.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "card-valid")
+    {
+        card_valid = value;
+        card_valid.value_namespace = name_space;
+        card_valid.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "pi-slot-number")
     {
         pi_slot_number = value;
@@ -770,6 +780,10 @@ void SdrInventory::Racks::Rack::Slot::Card::Attributes::set_filter(const std::st
     {
         node_name_string.yfilter = yfilter;
     }
+    if(value_path == "card-valid")
+    {
+        card_valid.yfilter = yfilter;
+    }
     if(value_path == "pi-slot-number")
     {
         pi_slot_number.yfilter = yfilter;
@@ -794,7 +808,7 @@ void SdrInventory::Racks::Rack::Slot::Card::Attributes::set_filter(const std::st
 
 bool SdrInventory::Racks::Rack::Slot::Card::Attributes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "config-state-string" || name == "power" || name == "config-state" || name == "card-state" || name == "vm-state" || name == "card-admin-state" || name == "card-type" || name == "card-type-string" || name == "node-name-string" || name == "pi-slot-number" || name == "shutdown" || name == "ctype" || name == "card-state-string" || name == "monitor")
+    if(name == "config-state-string" || name == "power" || name == "config-state" || name == "card-state" || name == "vm-state" || name == "card-admin-state" || name == "card-type" || name == "card-type-string" || name == "node-name-string" || name == "card-valid" || name == "pi-slot-number" || name == "shutdown" || name == "ctype" || name == "card-state-string" || name == "monitor")
         return true;
     return false;
 }

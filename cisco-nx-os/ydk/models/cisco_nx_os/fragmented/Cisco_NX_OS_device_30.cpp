@@ -12,6 +12,99 @@ using namespace ydk;
 namespace cisco_nx_os {
 namespace Cisco_NX_OS_device {
 
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::RsclassMapToPolicyMapItems()
+    :
+    rsclassmaptopolicymap_list(this, {"tdn"})
+{
+
+    yang_name = "rsclassMapToPolicyMap-items"; yang_parent_name = "CMapInst-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::~RsclassMapToPolicyMapItems()
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rsclassmaptopolicymap_list.len(); index++)
+    {
+        if(rsclassmaptopolicymap_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::has_operation() const
+{
+    for (std::size_t index=0; index<rsclassmaptopolicymap_list.len(); index++)
+    {
+        if(rsclassmaptopolicymap_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rsclassMapToPolicyMap-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "RsClassMapToPolicyMap-list")
+    {
+        auto ent_ = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::RsClassMapToPolicyMapList>();
+        ent_->parent = this;
+        rsclassmaptopolicymap_list.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rsclassmaptopolicymap_list.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "RsClassMapToPolicyMap-list")
+        return true;
+    return false;
+}
+
 System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::RsclassMapToPolicyMapItems::RsClassMapToPolicyMapList::RsClassMapToPolicyMapList()
     :
     tdn{YType::str, "tDn"},
@@ -18676,106 +18769,6 @@ void System::NpvItems::InstItems::set_filter(const std::string & value_path, YFi
 bool System::NpvItems::InstItems::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "srvif-items" || name == "extif-items" || name == "name" || name == "adminSt" || name == "ctrl")
-        return true;
-    return false;
-}
-
-System::NpvItems::InstItems::SrvifItems::SrvifItems()
-    :
-    srvif_list(this, {"id"})
-{
-
-    yang_name = "srvif-items"; yang_parent_name = "inst-items"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-System::NpvItems::InstItems::SrvifItems::~SrvifItems()
-{
-}
-
-bool System::NpvItems::InstItems::SrvifItems::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<srvif_list.len(); index++)
-    {
-        if(srvif_list[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool System::NpvItems::InstItems::SrvifItems::has_operation() const
-{
-    for (std::size_t index=0; index<srvif_list.len(); index++)
-    {
-        if(srvif_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string System::NpvItems::InstItems::SrvifItems::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-NX-OS-device:System/npv-items/inst-items/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string System::NpvItems::InstItems::SrvifItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "srvif-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::NpvItems::InstItems::SrvifItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::NpvItems::InstItems::SrvifItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "SrvIf-list")
-    {
-        auto ent_ = std::make_shared<System::NpvItems::InstItems::SrvifItems::SrvIfList>();
-        ent_->parent = this;
-        srvif_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::NpvItems::InstItems::SrvifItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : srvif_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void System::NpvItems::InstItems::SrvifItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void System::NpvItems::InstItems::SrvifItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool System::NpvItems::InstItems::SrvifItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "SrvIf-list")
         return true;
     return false;
 }

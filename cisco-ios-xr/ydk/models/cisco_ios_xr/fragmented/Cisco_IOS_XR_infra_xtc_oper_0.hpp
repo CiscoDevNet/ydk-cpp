@@ -142,6 +142,8 @@ class PceLspData::TunnelInfos::TunnelInfo::BriefLspInformation : public ydk::Ent
         ydk::YLeaf operational_state; //type: PcepLspState
         ydk::YLeaf administrative_state; //type: LspState
         ydk::YLeaf msd; //type: uint32
+        ydk::YLeaf absolute_margin; //type: uint32
+        ydk::YLeaf relative_margin; //type: uint32
         class SourceAddress; //type: PceLspData::TunnelInfos::TunnelInfo::BriefLspInformation::SourceAddress
         class DestinationAddress; //type: PceLspData::TunnelInfos::TunnelInfo::BriefLspInformation::DestinationAddress
 
@@ -521,6 +523,8 @@ class PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::Bri
         ydk::YLeaf operational_state; //type: PcepLspState
         ydk::YLeaf administrative_state; //type: LspState
         ydk::YLeaf msd; //type: uint32
+        ydk::YLeaf absolute_margin; //type: uint32
+        ydk::YLeaf relative_margin; //type: uint32
         class SourceAddress; //type: PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::BriefLspInformation::SourceAddress
         class DestinationAddress; //type: PceLspData::TunnelDetailInfos::TunnelDetailInfo::DetailLspInformation::BriefLspInformation::DestinationAddress
 
@@ -3658,6 +3662,7 @@ class Pce : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
+        class CspfSrMpls; //type: Pce::CspfSrMpls
         class VerificationEvents; //type: Pce::VerificationEvents
         class AssociationInfos; //type: Pce::AssociationInfos
         class Cspf; //type: Pce::Cspf
@@ -3670,6 +3675,7 @@ class Pce : public ydk::Entity
         class PeerInfos; //type: Pce::PeerInfos
         class TunnelDetailInfos; //type: Pce::TunnelDetailInfos
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::CspfSrMpls> cspf_sr_mpls;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::VerificationEvents> verification_events;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::AssociationInfos> association_infos;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::Cspf> cspf;
@@ -3685,11 +3691,11 @@ class Pce : public ydk::Entity
 }; // Pce
 
 
-class Pce::VerificationEvents : public ydk::Entity
+class Pce::CspfSrMpls : public ydk::Entity
 {
     public:
-        VerificationEvents();
-        ~VerificationEvents();
+        CspfSrMpls();
+        ~CspfSrMpls();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3702,18 +3708,18 @@ class Pce::VerificationEvents : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class VerificationEvent; //type: Pce::VerificationEvents::VerificationEvent
+        class CspfSrMplsPaths; //type: Pce::CspfSrMpls::CspfSrMplsPaths
 
-        ydk::YList verification_event;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::CspfSrMpls::CspfSrMplsPaths> cspf_sr_mpls_paths;
         
-}; // Pce::VerificationEvents
+}; // Pce::CspfSrMpls
 
 
-class Pce::VerificationEvents::VerificationEvent : public ydk::Entity
+class Pce::CspfSrMpls::CspfSrMplsPaths : public ydk::Entity
 {
     public:
-        VerificationEvent();
-        ~VerificationEvent();
+        CspfSrMplsPaths();
+        ~CspfSrMplsPaths();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3726,43 +3732,18 @@ class Pce::VerificationEvents::VerificationEvent : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf event_idx; //type: uint32
-        ydk::YLeaf event_id; //type: uint32
-        ydk::YLeaf event_message; //type: string
-        ydk::YLeaf time_stamp; //type: uint32
+        class CspfSrMplsPath; //type: Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath
 
-}; // Pce::VerificationEvents::VerificationEvent
-
-
-class Pce::AssociationInfos : public ydk::Entity
-{
-    public:
-        AssociationInfos();
-        ~AssociationInfos();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class AssociationInfo; //type: Pce::AssociationInfos::AssociationInfo
-
-        ydk::YList association_info;
+        ydk::YList cspf_sr_mpls_path;
         
-}; // Pce::AssociationInfos
+}; // Pce::CspfSrMpls::CspfSrMplsPaths
 
 
-class Pce::AssociationInfos::AssociationInfo : public ydk::Entity
+class Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath : public ydk::Entity
 {
     public:
-        AssociationInfo();
-        ~AssociationInfo();
+        CspfSrMplsPath();
+        ~CspfSrMplsPath();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3775,28 +3756,36 @@ class Pce::AssociationInfos::AssociationInfo : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf group_id; //type: uint32
-        ydk::YLeaf type; //type: PceAsso
-        ydk::YLeaf sub_id; //type: string
-        ydk::YLeaf association_type; //type: uint32
-        ydk::YLeaf association_id; //type: uint32
-        ydk::YLeaf strict; //type: boolean
-        ydk::YLeaf status; //type: uint32
-        ydk::YLeaf headends_swapped; //type: uint32
-        class AssociationSource; //type: Pce::AssociationInfos::AssociationInfo::AssociationSource
-        class AssociationLsp; //type: Pce::AssociationInfos::AssociationInfo::AssociationLsp
+        ydk::YLeaf af; //type: uint32
+        ydk::YLeaf source1; //type: string
+        ydk::YLeaf destination1; //type: string
+        ydk::YLeaf metric_type; //type: uint32
+        ydk::YLeaf source2; //type: string
+        ydk::YLeaf destination2; //type: string
+        ydk::YLeaf disjoint_level; //type: uint32
+        ydk::YLeaf disjoint_strict; //type: uint32
+        ydk::YLeaf shortest_path; //type: uint32
+        ydk::YLeaf msd1; //type: uint32
+        ydk::YLeaf msd2; //type: uint32
+        ydk::YLeaf relative_margin; //type: uint32
+        ydk::YLeaf absolute_margin; //type: uint32
+        ydk::YLeaf affinity_include_all; //type: uint32
+        ydk::YLeaf affinity_include_any; //type: uint32
+        ydk::YLeaf affinity_exclude_any; //type: uint32
+        ydk::YLeaf cspf_result; //type: PceCspfRc
+        ydk::YLeaf iterations_done; //type: uint32
+        class OutputPath; //type: Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::AssociationInfos::AssociationInfo::AssociationSource> association_source;
-        ydk::YList association_lsp;
+        ydk::YList output_path;
         
-}; // Pce::AssociationInfos::AssociationInfo
+}; // Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath
 
 
-class Pce::AssociationInfos::AssociationInfo::AssociationSource : public ydk::Entity
+class Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath : public ydk::Entity
 {
     public:
-        AssociationSource();
-        ~AssociationSource();
+        OutputPath();
+        ~OutputPath();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3807,19 +3796,49 @@ class Pce::AssociationInfos::AssociationInfo::AssociationSource : public ydk::En
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf cost; //type: uint64
+        class Source; //type: Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Source
+        class Destination; //type: Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Destination
+        class Hops; //type: Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Source> source;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Destination> destination;
+        ydk::YList hops;
+        
+}; // Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath
+
+
+class Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Source : public ydk::Entity
+{
+    public:
+        Source();
+        ~Source();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf af_name; //type: PceAfId
         ydk::YLeaf ipv4; //type: string
         ydk::YLeaf ipv6; //type: string
 
-}; // Pce::AssociationInfos::AssociationInfo::AssociationSource
+}; // Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Source
 
 
-class Pce::AssociationInfos::AssociationInfo::AssociationLsp : public ydk::Entity
+class Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Destination : public ydk::Entity
 {
     public:
-        AssociationLsp();
-        ~AssociationLsp();
+        Destination();
+        ~Destination();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3830,40 +3849,41 @@ class Pce::AssociationInfos::AssociationInfo::AssociationLsp : public ydk::Entit
         void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf tunnel_id; //type: uint32
-        ydk::YLeaf lspid; //type: uint32
-        ydk::YLeaf tunnel_name; //type: string
-        ydk::YLeaf pce_based; //type: boolean
-        ydk::YLeaf plsp_id; //type: uint32
-        class PccAddress; //type: Pce::AssociationInfos::AssociationInfo::AssociationLsp::PccAddress
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::AssociationInfos::AssociationInfo::AssociationLsp::PccAddress> pcc_address;
-        
-}; // Pce::AssociationInfos::AssociationInfo::AssociationLsp
-
-
-class Pce::AssociationInfos::AssociationInfo::AssociationLsp::PccAddress : public ydk::Entity
-{
-    public:
-        PccAddress();
-        ~PccAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
         ydk::YLeaf af_name; //type: PceAfId
         ydk::YLeaf ipv4; //type: string
         ydk::YLeaf ipv6; //type: string
 
-}; // Pce::AssociationInfos::AssociationInfo::AssociationLsp::PccAddress
+}; // Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Destination
+
+
+class Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops : public ydk::Entity
+{
+    public:
+        Hops();
+        ~Hops();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf sid_type; //type: PceSrSid
+        ydk::YLeaf mpls_label; //type: uint32
+        class LocalAddr; //type: Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::LocalAddr
+        class RemoteAddr; //type: Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::RemoteAddr
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::LocalAddr> local_addr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::RemoteAddr> remote_addr;
+        
+}; // Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops
 
 class LspState : public ydk::Enum
 {

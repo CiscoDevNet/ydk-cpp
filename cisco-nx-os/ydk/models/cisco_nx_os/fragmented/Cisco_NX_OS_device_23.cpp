@@ -12,6 +12,99 @@ using namespace ydk;
 namespace cisco_nx_os {
 namespace Cisco_NX_OS_device {
 
+System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::MemberItems()
+    :
+    vlanmemberentry_list(this, {"vlan"})
+{
+
+    yang_name = "member-items"; yang_parent_name = "vlanMemberTable-items"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::~MemberItems()
+{
+}
+
+bool System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlanmemberentry_list.len(); index++)
+    {
+        if(vlanmemberentry_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::has_operation() const
+{
+    for (std::size_t index=0; index<vlanmemberentry_list.len(); index++)
+    {
+        if(vlanmemberentry_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "member-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "VlanMemberEntry-list")
+    {
+        auto ent_ = std::make_shared<System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::VlanMemberEntryList>();
+        ent_->parent = this;
+        vlanmemberentry_list.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vlanmemberentry_list.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "VlanMemberEntry-list")
+        return true;
+    return false;
+}
+
 System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::VlanMemberEntryList::VlanMemberEntryList()
     :
     vlan{YType::str, "vlan"}
@@ -6025,6 +6118,7 @@ System::VpcDomTableItems::VpcDomItems::VpcDomEntryList::VpcDomEntryList()
     keepalivedestip{YType::str, "keepaliveDestIp"},
     keepalivesrcip{YType::str, "keepaliveSrcIp"},
     virtualip{YType::str, "virtualIp"},
+    peerip{YType::str, "peerIp"},
     keepalivests{YType::enumeration, "keepaliveSts"},
     peerlinksts{YType::enumeration, "peerLinkSts"},
     vpcrole{YType::enumeration, "vpcRole"},
@@ -6050,6 +6144,7 @@ bool System::VpcDomTableItems::VpcDomItems::VpcDomEntryList::has_data() const
 	|| keepalivedestip.is_set
 	|| keepalivesrcip.is_set
 	|| virtualip.is_set
+	|| peerip.is_set
 	|| keepalivests.is_set
 	|| peerlinksts.is_set
 	|| vpcrole.is_set
@@ -6066,6 +6161,7 @@ bool System::VpcDomTableItems::VpcDomItems::VpcDomEntryList::has_operation() con
 	|| ydk::is_set(keepalivedestip.yfilter)
 	|| ydk::is_set(keepalivesrcip.yfilter)
 	|| ydk::is_set(virtualip.yfilter)
+	|| ydk::is_set(peerip.yfilter)
 	|| ydk::is_set(keepalivests.yfilter)
 	|| ydk::is_set(peerlinksts.yfilter)
 	|| ydk::is_set(vpcrole.yfilter)
@@ -6098,6 +6194,7 @@ std::vector<std::pair<std::string, LeafData> > System::VpcDomTableItems::VpcDomI
     if (keepalivedestip.is_set || is_set(keepalivedestip.yfilter)) leaf_name_data.push_back(keepalivedestip.get_name_leafdata());
     if (keepalivesrcip.is_set || is_set(keepalivesrcip.yfilter)) leaf_name_data.push_back(keepalivesrcip.get_name_leafdata());
     if (virtualip.is_set || is_set(virtualip.yfilter)) leaf_name_data.push_back(virtualip.get_name_leafdata());
+    if (peerip.is_set || is_set(peerip.yfilter)) leaf_name_data.push_back(peerip.get_name_leafdata());
     if (keepalivests.is_set || is_set(keepalivests.yfilter)) leaf_name_data.push_back(keepalivests.get_name_leafdata());
     if (peerlinksts.is_set || is_set(peerlinksts.yfilter)) leaf_name_data.push_back(peerlinksts.get_name_leafdata());
     if (vpcrole.is_set || is_set(vpcrole.yfilter)) leaf_name_data.push_back(vpcrole.get_name_leafdata());
@@ -6161,6 +6258,12 @@ void System::VpcDomTableItems::VpcDomItems::VpcDomEntryList::set_value(const std
         virtualip.value_namespace = name_space;
         virtualip.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "peerIp")
+    {
+        peerip = value;
+        peerip.value_namespace = name_space;
+        peerip.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "keepaliveSts")
     {
         keepalivests = value;
@@ -6217,6 +6320,10 @@ void System::VpcDomTableItems::VpcDomItems::VpcDomEntryList::set_filter(const st
     {
         virtualip.yfilter = yfilter;
     }
+    if(value_path == "peerIp")
+    {
+        peerip.yfilter = yfilter;
+    }
     if(value_path == "keepaliveSts")
     {
         keepalivests.yfilter = yfilter;
@@ -6245,7 +6352,7 @@ void System::VpcDomTableItems::VpcDomItems::VpcDomEntryList::set_filter(const st
 
 bool System::VpcDomTableItems::VpcDomItems::VpcDomEntryList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "vpcTable-items" || name == "domainId" || name == "keepaliveDestIp" || name == "keepaliveSrcIp" || name == "virtualIp" || name == "keepaliveSts" || name == "peerLinkSts" || name == "vpcRole" || name == "peerGW" || name == "dualActive" || name == "peerLinkIf")
+    if(name == "vpcTable-items" || name == "domainId" || name == "keepaliveDestIp" || name == "keepaliveSrcIp" || name == "virtualIp" || name == "peerIp" || name == "keepaliveSts" || name == "peerLinkSts" || name == "vpcRole" || name == "peerGW" || name == "dualActive" || name == "peerLinkIf")
         return true;
     return false;
 }
@@ -17969,129 +18076,6 @@ void System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::set_filte
 bool System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "If-list")
-        return true;
-    return false;
-}
-
-System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::IfList()
-    :
-    name{YType::str, "name"}
-        ,
-    acl_items(std::make_shared<System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::AclItems_>())
-    , portacl_items(std::make_shared<System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::PortaclItems>())
-{
-    acl_items->parent = this;
-    portacl_items->parent = this;
-
-    yang_name = "If-list"; yang_parent_name = "intf-items"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::~IfList()
-{
-}
-
-bool System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::has_data() const
-{
-    if (is_presence_container) return true;
-    return name.is_set
-	|| (acl_items !=  nullptr && acl_items->has_data())
-	|| (portacl_items !=  nullptr && portacl_items->has_data());
-}
-
-bool System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| (acl_items !=  nullptr && acl_items->has_operation())
-	|| (portacl_items !=  nullptr && portacl_items->has_operation());
-}
-
-std::string System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-NX-OS-device:System/acl-items/ipv6-items/policy-items/egress-items/intf-items/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "If-list";
-    ADD_KEY_TOKEN(name, "name");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "acl-items")
-    {
-        if(acl_items == nullptr)
-        {
-            acl_items = std::make_shared<System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::AclItems_>();
-        }
-        return acl_items;
-    }
-
-    if(child_yang_name == "portacl-items")
-    {
-        if(portacl_items == nullptr)
-        {
-            portacl_items = std::make_shared<System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::PortaclItems>();
-        }
-        return portacl_items;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(acl_items != nullptr)
-    {
-        _children["acl-items"] = acl_items;
-    }
-
-    if(portacl_items != nullptr)
-    {
-        _children["portacl-items"] = portacl_items;
-    }
-
-    return _children;
-}
-
-void System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "acl-items" || name == "portacl-items" || name == "name")
         return true;
     return false;
 }

@@ -14,8 +14,10 @@ namespace Cisco_IOS_XR_spirit_install_act {
 InstallAdd::InstallAdd()
     :
     input(std::make_shared<InstallAdd::Input>())
+    , output(std::make_shared<InstallAdd::Output>())
 {
     input->parent = this;
+    output->parent = this;
 
     yang_name = "install-add"; yang_parent_name = "Cisco-IOS-XR-spirit-install-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
@@ -27,13 +29,15 @@ InstallAdd::~InstallAdd()
 bool InstallAdd::has_data() const
 {
     if (is_presence_container) return true;
-    return (input !=  nullptr && input->has_data());
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
 }
 
 bool InstallAdd::has_operation() const
 {
     return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation());
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
 }
 
 std::string InstallAdd::get_segment_path() const
@@ -63,6 +67,15 @@ std::shared_ptr<ydk::Entity> InstallAdd::get_child_by_name(const std::string & c
         return input;
     }
 
+    if(child_yang_name == "output")
+    {
+        if(output == nullptr)
+        {
+            output = std::make_shared<InstallAdd::Output>();
+        }
+        return output;
+    }
+
     return nullptr;
 }
 
@@ -73,6 +86,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> InstallAdd::get_children() c
     if(input != nullptr)
     {
         _children["input"] = input;
+    }
+
+    if(output != nullptr)
+    {
+        _children["output"] = output;
     }
 
     return _children;
@@ -113,7 +131,7 @@ std::map<std::pair<std::string, std::string>, std::string> InstallAdd::get_names
 
 bool InstallAdd::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "input")
+    if(name == "input" || name == "output")
         return true;
     return false;
 }
@@ -225,11 +243,112 @@ bool InstallAdd::Input::has_leaf_or_child_of_name(const std::string & name) cons
     return false;
 }
 
+InstallAdd::Output::Output()
+    :
+    op_id{YType::str, "op-id"},
+    error{YType::str, "Error"}
+{
+
+    yang_name = "output"; yang_parent_name = "install-add"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+InstallAdd::Output::~Output()
+{
+}
+
+bool InstallAdd::Output::has_data() const
+{
+    if (is_presence_container) return true;
+    return op_id.is_set
+	|| error.is_set;
+}
+
+bool InstallAdd::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(op_id.yfilter)
+	|| ydk::is_set(error.yfilter);
+}
+
+std::string InstallAdd::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-spirit-install-act:install-add/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string InstallAdd::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallAdd::Output::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (op_id.is_set || is_set(op_id.yfilter)) leaf_name_data.push_back(op_id.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InstallAdd::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InstallAdd::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InstallAdd::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "op-id")
+    {
+        op_id = value;
+        op_id.value_namespace = name_space;
+        op_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InstallAdd::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "op-id")
+    {
+        op_id.yfilter = yfilter;
+    }
+    if(value_path == "Error")
+    {
+        error.yfilter = yfilter;
+    }
+}
+
+bool InstallAdd::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "op-id" || name == "Error")
+        return true;
+    return false;
+}
+
 InstallCommit::InstallCommit()
     :
     input(std::make_shared<InstallCommit::Input>())
+    , output(std::make_shared<InstallCommit::Output>())
 {
     input->parent = this;
+    output->parent = this;
 
     yang_name = "install-commit"; yang_parent_name = "Cisco-IOS-XR-spirit-install-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
@@ -241,13 +360,15 @@ InstallCommit::~InstallCommit()
 bool InstallCommit::has_data() const
 {
     if (is_presence_container) return true;
-    return (input !=  nullptr && input->has_data());
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
 }
 
 bool InstallCommit::has_operation() const
 {
     return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation());
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
 }
 
 std::string InstallCommit::get_segment_path() const
@@ -277,6 +398,15 @@ std::shared_ptr<ydk::Entity> InstallCommit::get_child_by_name(const std::string 
         return input;
     }
 
+    if(child_yang_name == "output")
+    {
+        if(output == nullptr)
+        {
+            output = std::make_shared<InstallCommit::Output>();
+        }
+        return output;
+    }
+
     return nullptr;
 }
 
@@ -287,6 +417,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> InstallCommit::get_children(
     if(input != nullptr)
     {
         _children["input"] = input;
+    }
+
+    if(output != nullptr)
+    {
+        _children["output"] = output;
     }
 
     return _children;
@@ -327,7 +462,7 @@ std::map<std::pair<std::string, std::string>, std::string> InstallCommit::get_na
 
 bool InstallCommit::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "input")
+    if(name == "input" || name == "output")
         return true;
     return false;
 }
@@ -417,11 +552,112 @@ bool InstallCommit::Input::has_leaf_or_child_of_name(const std::string & name) c
     return false;
 }
 
+InstallCommit::Output::Output()
+    :
+    op_id{YType::str, "op-id"},
+    error{YType::str, "Error"}
+{
+
+    yang_name = "output"; yang_parent_name = "install-commit"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+InstallCommit::Output::~Output()
+{
+}
+
+bool InstallCommit::Output::has_data() const
+{
+    if (is_presence_container) return true;
+    return op_id.is_set
+	|| error.is_set;
+}
+
+bool InstallCommit::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(op_id.yfilter)
+	|| ydk::is_set(error.yfilter);
+}
+
+std::string InstallCommit::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-spirit-install-act:install-commit/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string InstallCommit::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallCommit::Output::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (op_id.is_set || is_set(op_id.yfilter)) leaf_name_data.push_back(op_id.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InstallCommit::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InstallCommit::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InstallCommit::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "op-id")
+    {
+        op_id = value;
+        op_id.value_namespace = name_space;
+        op_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InstallCommit::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "op-id")
+    {
+        op_id.yfilter = yfilter;
+    }
+    if(value_path == "Error")
+    {
+        error.yfilter = yfilter;
+    }
+}
+
+bool InstallCommit::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "op-id" || name == "Error")
+        return true;
+    return false;
+}
+
 InstallRemove::InstallRemove()
     :
     input(std::make_shared<InstallRemove::Input>())
+    , output(std::make_shared<InstallRemove::Output>())
 {
     input->parent = this;
+    output->parent = this;
 
     yang_name = "install-remove"; yang_parent_name = "Cisco-IOS-XR-spirit-install-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
@@ -433,13 +669,15 @@ InstallRemove::~InstallRemove()
 bool InstallRemove::has_data() const
 {
     if (is_presence_container) return true;
-    return (input !=  nullptr && input->has_data());
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
 }
 
 bool InstallRemove::has_operation() const
 {
     return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation());
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
 }
 
 std::string InstallRemove::get_segment_path() const
@@ -469,6 +707,15 @@ std::shared_ptr<ydk::Entity> InstallRemove::get_child_by_name(const std::string 
         return input;
     }
 
+    if(child_yang_name == "output")
+    {
+        if(output == nullptr)
+        {
+            output = std::make_shared<InstallRemove::Output>();
+        }
+        return output;
+    }
+
     return nullptr;
 }
 
@@ -479,6 +726,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> InstallRemove::get_children(
     if(input != nullptr)
     {
         _children["input"] = input;
+    }
+
+    if(output != nullptr)
+    {
+        _children["output"] = output;
     }
 
     return _children;
@@ -519,7 +771,7 @@ std::map<std::pair<std::string, std::string>, std::string> InstallRemove::get_na
 
 bool InstallRemove::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "input")
+    if(name == "input" || name == "output")
         return true;
     return false;
 }
@@ -848,11 +1100,112 @@ bool InstallRemove::Input::Ids::has_leaf_or_child_of_name(const std::string & na
     return false;
 }
 
+InstallRemove::Output::Output()
+    :
+    op_id{YType::str, "op-id"},
+    error{YType::str, "Error"}
+{
+
+    yang_name = "output"; yang_parent_name = "install-remove"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+InstallRemove::Output::~Output()
+{
+}
+
+bool InstallRemove::Output::has_data() const
+{
+    if (is_presence_container) return true;
+    return op_id.is_set
+	|| error.is_set;
+}
+
+bool InstallRemove::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(op_id.yfilter)
+	|| ydk::is_set(error.yfilter);
+}
+
+std::string InstallRemove::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-spirit-install-act:install-remove/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string InstallRemove::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallRemove::Output::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (op_id.is_set || is_set(op_id.yfilter)) leaf_name_data.push_back(op_id.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InstallRemove::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InstallRemove::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InstallRemove::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "op-id")
+    {
+        op_id = value;
+        op_id.value_namespace = name_space;
+        op_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InstallRemove::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "op-id")
+    {
+        op_id.yfilter = yfilter;
+    }
+    if(value_path == "Error")
+    {
+        error.yfilter = yfilter;
+    }
+}
+
+bool InstallRemove::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "op-id" || name == "Error")
+        return true;
+    return false;
+}
+
 InstallPrepare::InstallPrepare()
     :
     input(std::make_shared<InstallPrepare::Input>())
+    , output(std::make_shared<InstallPrepare::Output>())
 {
     input->parent = this;
+    output->parent = this;
 
     yang_name = "install-prepare"; yang_parent_name = "Cisco-IOS-XR-spirit-install-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
@@ -864,13 +1217,15 @@ InstallPrepare::~InstallPrepare()
 bool InstallPrepare::has_data() const
 {
     if (is_presence_container) return true;
-    return (input !=  nullptr && input->has_data());
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
 }
 
 bool InstallPrepare::has_operation() const
 {
     return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation());
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
 }
 
 std::string InstallPrepare::get_segment_path() const
@@ -900,6 +1255,15 @@ std::shared_ptr<ydk::Entity> InstallPrepare::get_child_by_name(const std::string
         return input;
     }
 
+    if(child_yang_name == "output")
+    {
+        if(output == nullptr)
+        {
+            output = std::make_shared<InstallPrepare::Output>();
+        }
+        return output;
+    }
+
     return nullptr;
 }
 
@@ -910,6 +1274,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> InstallPrepare::get_children
     if(input != nullptr)
     {
         _children["input"] = input;
+    }
+
+    if(output != nullptr)
+    {
+        _children["output"] = output;
     }
 
     return _children;
@@ -950,7 +1319,7 @@ std::map<std::pair<std::string, std::string>, std::string> InstallPrepare::get_n
 
 bool InstallPrepare::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "input")
+    if(name == "input" || name == "output")
         return true;
     return false;
 }
@@ -1399,11 +1768,112 @@ bool InstallPrepare::Input::PrepareForce::has_leaf_or_child_of_name(const std::s
     return false;
 }
 
+InstallPrepare::Output::Output()
+    :
+    op_id{YType::str, "op-id"},
+    error{YType::str, "Error"}
+{
+
+    yang_name = "output"; yang_parent_name = "install-prepare"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+InstallPrepare::Output::~Output()
+{
+}
+
+bool InstallPrepare::Output::has_data() const
+{
+    if (is_presence_container) return true;
+    return op_id.is_set
+	|| error.is_set;
+}
+
+bool InstallPrepare::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(op_id.yfilter)
+	|| ydk::is_set(error.yfilter);
+}
+
+std::string InstallPrepare::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-spirit-install-act:install-prepare/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string InstallPrepare::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallPrepare::Output::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (op_id.is_set || is_set(op_id.yfilter)) leaf_name_data.push_back(op_id.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InstallPrepare::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InstallPrepare::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InstallPrepare::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "op-id")
+    {
+        op_id = value;
+        op_id.value_namespace = name_space;
+        op_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InstallPrepare::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "op-id")
+    {
+        op_id.yfilter = yfilter;
+    }
+    if(value_path == "Error")
+    {
+        error.yfilter = yfilter;
+    }
+}
+
+bool InstallPrepare::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "op-id" || name == "Error")
+        return true;
+    return false;
+}
+
 InstallActivate::InstallActivate()
     :
     input(std::make_shared<InstallActivate::Input>())
+    , output(std::make_shared<InstallActivate::Output>())
 {
     input->parent = this;
+    output->parent = this;
 
     yang_name = "install-activate"; yang_parent_name = "Cisco-IOS-XR-spirit-install-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
@@ -1415,13 +1885,15 @@ InstallActivate::~InstallActivate()
 bool InstallActivate::has_data() const
 {
     if (is_presence_container) return true;
-    return (input !=  nullptr && input->has_data());
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
 }
 
 bool InstallActivate::has_operation() const
 {
     return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation());
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
 }
 
 std::string InstallActivate::get_segment_path() const
@@ -1451,6 +1923,15 @@ std::shared_ptr<ydk::Entity> InstallActivate::get_child_by_name(const std::strin
         return input;
     }
 
+    if(child_yang_name == "output")
+    {
+        if(output == nullptr)
+        {
+            output = std::make_shared<InstallActivate::Output>();
+        }
+        return output;
+    }
+
     return nullptr;
 }
 
@@ -1461,6 +1942,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> InstallActivate::get_childre
     if(input != nullptr)
     {
         _children["input"] = input;
+    }
+
+    if(output != nullptr)
+    {
+        _children["output"] = output;
     }
 
     return _children;
@@ -1501,7 +1987,7 @@ std::map<std::pair<std::string, std::string>, std::string> InstallActivate::get_
 
 bool InstallActivate::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "input")
+    if(name == "input" || name == "output")
         return true;
     return false;
 }
@@ -3120,11 +3606,112 @@ bool InstallActivate::Input::Ids::has_leaf_or_child_of_name(const std::string & 
     return false;
 }
 
+InstallActivate::Output::Output()
+    :
+    op_id{YType::str, "op-id"},
+    error{YType::str, "Error"}
+{
+
+    yang_name = "output"; yang_parent_name = "install-activate"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+InstallActivate::Output::~Output()
+{
+}
+
+bool InstallActivate::Output::has_data() const
+{
+    if (is_presence_container) return true;
+    return op_id.is_set
+	|| error.is_set;
+}
+
+bool InstallActivate::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(op_id.yfilter)
+	|| ydk::is_set(error.yfilter);
+}
+
+std::string InstallActivate::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-spirit-install-act:install-activate/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string InstallActivate::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallActivate::Output::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (op_id.is_set || is_set(op_id.yfilter)) leaf_name_data.push_back(op_id.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InstallActivate::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InstallActivate::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InstallActivate::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "op-id")
+    {
+        op_id = value;
+        op_id.value_namespace = name_space;
+        op_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InstallActivate::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "op-id")
+    {
+        op_id.yfilter = yfilter;
+    }
+    if(value_path == "Error")
+    {
+        error.yfilter = yfilter;
+    }
+}
+
+bool InstallActivate::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "op-id" || name == "Error")
+        return true;
+    return false;
+}
+
 InstallDeactivate::InstallDeactivate()
     :
     input(std::make_shared<InstallDeactivate::Input>())
+    , output(std::make_shared<InstallDeactivate::Output>())
 {
     input->parent = this;
+    output->parent = this;
 
     yang_name = "install-deactivate"; yang_parent_name = "Cisco-IOS-XR-spirit-install-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
@@ -3136,13 +3723,15 @@ InstallDeactivate::~InstallDeactivate()
 bool InstallDeactivate::has_data() const
 {
     if (is_presence_container) return true;
-    return (input !=  nullptr && input->has_data());
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
 }
 
 bool InstallDeactivate::has_operation() const
 {
     return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation());
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
 }
 
 std::string InstallDeactivate::get_segment_path() const
@@ -3172,6 +3761,15 @@ std::shared_ptr<ydk::Entity> InstallDeactivate::get_child_by_name(const std::str
         return input;
     }
 
+    if(child_yang_name == "output")
+    {
+        if(output == nullptr)
+        {
+            output = std::make_shared<InstallDeactivate::Output>();
+        }
+        return output;
+    }
+
     return nullptr;
 }
 
@@ -3182,6 +3780,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> InstallDeactivate::get_child
     if(input != nullptr)
     {
         _children["input"] = input;
+    }
+
+    if(output != nullptr)
+    {
+        _children["output"] = output;
     }
 
     return _children;
@@ -3222,7 +3825,7 @@ std::map<std::pair<std::string, std::string>, std::string> InstallDeactivate::ge
 
 bool InstallDeactivate::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "input")
+    if(name == "input" || name == "output")
         return true;
     return false;
 }
@@ -3671,11 +4274,112 @@ bool InstallDeactivate::Input::Ids::has_leaf_or_child_of_name(const std::string 
     return false;
 }
 
+InstallDeactivate::Output::Output()
+    :
+    op_id{YType::str, "op-id"},
+    error{YType::str, "Error"}
+{
+
+    yang_name = "output"; yang_parent_name = "install-deactivate"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+InstallDeactivate::Output::~Output()
+{
+}
+
+bool InstallDeactivate::Output::has_data() const
+{
+    if (is_presence_container) return true;
+    return op_id.is_set
+	|| error.is_set;
+}
+
+bool InstallDeactivate::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(op_id.yfilter)
+	|| ydk::is_set(error.yfilter);
+}
+
+std::string InstallDeactivate::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-spirit-install-act:install-deactivate/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string InstallDeactivate::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallDeactivate::Output::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (op_id.is_set || is_set(op_id.yfilter)) leaf_name_data.push_back(op_id.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InstallDeactivate::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InstallDeactivate::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InstallDeactivate::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "op-id")
+    {
+        op_id = value;
+        op_id.value_namespace = name_space;
+        op_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InstallDeactivate::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "op-id")
+    {
+        op_id.yfilter = yfilter;
+    }
+    if(value_path == "Error")
+    {
+        error.yfilter = yfilter;
+    }
+}
+
+bool InstallDeactivate::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "op-id" || name == "Error")
+        return true;
+    return false;
+}
+
 InstallExtract::InstallExtract()
     :
     input(std::make_shared<InstallExtract::Input>())
+    , output(std::make_shared<InstallExtract::Output>())
 {
     input->parent = this;
+    output->parent = this;
 
     yang_name = "install-extract"; yang_parent_name = "Cisco-IOS-XR-spirit-install-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
@@ -3687,13 +4391,15 @@ InstallExtract::~InstallExtract()
 bool InstallExtract::has_data() const
 {
     if (is_presence_container) return true;
-    return (input !=  nullptr && input->has_data());
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
 }
 
 bool InstallExtract::has_operation() const
 {
     return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation());
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
 }
 
 std::string InstallExtract::get_segment_path() const
@@ -3723,6 +4429,15 @@ std::shared_ptr<ydk::Entity> InstallExtract::get_child_by_name(const std::string
         return input;
     }
 
+    if(child_yang_name == "output")
+    {
+        if(output == nullptr)
+        {
+            output = std::make_shared<InstallExtract::Output>();
+        }
+        return output;
+    }
+
     return nullptr;
 }
 
@@ -3733,6 +4448,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> InstallExtract::get_children
     if(input != nullptr)
     {
         _children["input"] = input;
+    }
+
+    if(output != nullptr)
+    {
+        _children["output"] = output;
     }
 
     return _children;
@@ -3773,7 +4493,7 @@ std::map<std::pair<std::string, std::string>, std::string> InstallExtract::get_n
 
 bool InstallExtract::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "input")
+    if(name == "input" || name == "output")
         return true;
     return false;
 }
@@ -3961,11 +4681,112 @@ bool InstallExtract::Input::Packages::has_leaf_or_child_of_name(const std::strin
     return false;
 }
 
+InstallExtract::Output::Output()
+    :
+    op_id{YType::str, "op-id"},
+    error{YType::str, "Error"}
+{
+
+    yang_name = "output"; yang_parent_name = "install-extract"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+InstallExtract::Output::~Output()
+{
+}
+
+bool InstallExtract::Output::has_data() const
+{
+    if (is_presence_container) return true;
+    return op_id.is_set
+	|| error.is_set;
+}
+
+bool InstallExtract::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(op_id.yfilter)
+	|| ydk::is_set(error.yfilter);
+}
+
+std::string InstallExtract::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-spirit-install-act:install-extract/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string InstallExtract::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallExtract::Output::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (op_id.is_set || is_set(op_id.yfilter)) leaf_name_data.push_back(op_id.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InstallExtract::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InstallExtract::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InstallExtract::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "op-id")
+    {
+        op_id = value;
+        op_id.value_namespace = name_space;
+        op_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InstallExtract::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "op-id")
+    {
+        op_id.yfilter = yfilter;
+    }
+    if(value_path == "Error")
+    {
+        error.yfilter = yfilter;
+    }
+}
+
+bool InstallExtract::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "op-id" || name == "Error")
+        return true;
+    return false;
+}
+
 InstallVerify::InstallVerify()
     :
     input(std::make_shared<InstallVerify::Input>())
+    , output(std::make_shared<InstallVerify::Output>())
 {
     input->parent = this;
+    output->parent = this;
 
     yang_name = "install-verify"; yang_parent_name = "Cisco-IOS-XR-spirit-install-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
@@ -3977,13 +4798,15 @@ InstallVerify::~InstallVerify()
 bool InstallVerify::has_data() const
 {
     if (is_presence_container) return true;
-    return (input !=  nullptr && input->has_data());
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
 }
 
 bool InstallVerify::has_operation() const
 {
     return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation());
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
 }
 
 std::string InstallVerify::get_segment_path() const
@@ -4013,6 +4836,15 @@ std::shared_ptr<ydk::Entity> InstallVerify::get_child_by_name(const std::string 
         return input;
     }
 
+    if(child_yang_name == "output")
+    {
+        if(output == nullptr)
+        {
+            output = std::make_shared<InstallVerify::Output>();
+        }
+        return output;
+    }
+
     return nullptr;
 }
 
@@ -4023,6 +4855,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> InstallVerify::get_children(
     if(input != nullptr)
     {
         _children["input"] = input;
+    }
+
+    if(output != nullptr)
+    {
+        _children["output"] = output;
     }
 
     return _children;
@@ -4063,7 +4900,7 @@ std::map<std::pair<std::string, std::string>, std::string> InstallVerify::get_na
 
 bool InstallVerify::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "input")
+    if(name == "input" || name == "output")
         return true;
     return false;
 }
@@ -4162,11 +4999,112 @@ bool InstallVerify::Input::has_leaf_or_child_of_name(const std::string & name) c
     return false;
 }
 
+InstallVerify::Output::Output()
+    :
+    op_id{YType::str, "op-id"},
+    error{YType::str, "Error"}
+{
+
+    yang_name = "output"; yang_parent_name = "install-verify"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+InstallVerify::Output::~Output()
+{
+}
+
+bool InstallVerify::Output::has_data() const
+{
+    if (is_presence_container) return true;
+    return op_id.is_set
+	|| error.is_set;
+}
+
+bool InstallVerify::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(op_id.yfilter)
+	|| ydk::is_set(error.yfilter);
+}
+
+std::string InstallVerify::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-spirit-install-act:install-verify/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string InstallVerify::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallVerify::Output::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (op_id.is_set || is_set(op_id.yfilter)) leaf_name_data.push_back(op_id.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InstallVerify::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InstallVerify::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InstallVerify::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "op-id")
+    {
+        op_id = value;
+        op_id.value_namespace = name_space;
+        op_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InstallVerify::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "op-id")
+    {
+        op_id.yfilter = yfilter;
+    }
+    if(value_path == "Error")
+    {
+        error.yfilter = yfilter;
+    }
+}
+
+bool InstallVerify::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "op-id" || name == "Error")
+        return true;
+    return false;
+}
+
 InstallUpdate::InstallUpdate()
     :
     input(std::make_shared<InstallUpdate::Input>())
+    , output(std::make_shared<InstallUpdate::Output>())
 {
     input->parent = this;
+    output->parent = this;
 
     yang_name = "install-update"; yang_parent_name = "Cisco-IOS-XR-spirit-install-act"; is_top_level_class = true; has_list_ancestor = false; 
 }
@@ -4178,13 +5116,15 @@ InstallUpdate::~InstallUpdate()
 bool InstallUpdate::has_data() const
 {
     if (is_presence_container) return true;
-    return (input !=  nullptr && input->has_data());
+    return (input !=  nullptr && input->has_data())
+	|| (output !=  nullptr && output->has_data());
 }
 
 bool InstallUpdate::has_operation() const
 {
     return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation());
+	|| (input !=  nullptr && input->has_operation())
+	|| (output !=  nullptr && output->has_operation());
 }
 
 std::string InstallUpdate::get_segment_path() const
@@ -4214,6 +5154,15 @@ std::shared_ptr<ydk::Entity> InstallUpdate::get_child_by_name(const std::string 
         return input;
     }
 
+    if(child_yang_name == "output")
+    {
+        if(output == nullptr)
+        {
+            output = std::make_shared<InstallUpdate::Output>();
+        }
+        return output;
+    }
+
     return nullptr;
 }
 
@@ -4224,6 +5173,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> InstallUpdate::get_children(
     if(input != nullptr)
     {
         _children["input"] = input;
+    }
+
+    if(output != nullptr)
+    {
+        _children["output"] = output;
     }
 
     return _children;
@@ -4264,7 +5218,7 @@ std::map<std::pair<std::string, std::string>, std::string> InstallUpdate::get_na
 
 bool InstallUpdate::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "input")
+    if(name == "input" || name == "output")
         return true;
     return false;
 }
@@ -5498,6 +6452,105 @@ void InstallUpdate::Input::ReplaceCommitForce::set_filter(const std::string & va
 bool InstallUpdate::Input::ReplaceCommitForce::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "packagepath" || name == "packagename")
+        return true;
+    return false;
+}
+
+InstallUpdate::Output::Output()
+    :
+    op_id{YType::str, "op-id"},
+    error{YType::str, "Error"}
+{
+
+    yang_name = "output"; yang_parent_name = "install-update"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+InstallUpdate::Output::~Output()
+{
+}
+
+bool InstallUpdate::Output::has_data() const
+{
+    if (is_presence_container) return true;
+    return op_id.is_set
+	|| error.is_set;
+}
+
+bool InstallUpdate::Output::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(op_id.yfilter)
+	|| ydk::is_set(error.yfilter);
+}
+
+std::string InstallUpdate::Output::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-spirit-install-act:install-update/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string InstallUpdate::Output::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "output";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InstallUpdate::Output::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (op_id.is_set || is_set(op_id.yfilter)) leaf_name_data.push_back(op_id.get_name_leafdata());
+    if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InstallUpdate::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InstallUpdate::Output::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InstallUpdate::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "op-id")
+    {
+        op_id = value;
+        op_id.value_namespace = name_space;
+        op_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Error")
+    {
+        error = value;
+        error.value_namespace = name_space;
+        error.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InstallUpdate::Output::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "op-id")
+    {
+        op_id.yfilter = yfilter;
+    }
+    if(value_path == "Error")
+    {
+        error.yfilter = yfilter;
+    }
+}
+
+bool InstallUpdate::Output::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "op-id" || name == "Error")
         return true;
     return false;
 }

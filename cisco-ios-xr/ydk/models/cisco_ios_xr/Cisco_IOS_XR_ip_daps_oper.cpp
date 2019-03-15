@@ -684,7 +684,6 @@ AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::Addre
     start_address{YType::str, "start-address"},
     pool_name{YType::str, "pool-name"},
     vrf_name{YType::str, "vrf-name"},
-    pool_scope{YType::str, "pool-scope"},
     allocated_addresses{YType::uint32, "allocated-addresses"},
     free_addresses{YType::uint32, "free-addresses"},
     excluded_addresses{YType::uint32, "excluded-addresses"},
@@ -712,7 +711,6 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::
     return start_address.is_set
 	|| pool_name.is_set
 	|| vrf_name.is_set
-	|| pool_scope.is_set
 	|| allocated_addresses.is_set
 	|| free_addresses.is_set
 	|| excluded_addresses.is_set
@@ -729,7 +727,6 @@ bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::
 	|| ydk::is_set(start_address.yfilter)
 	|| ydk::is_set(pool_name.yfilter)
 	|| ydk::is_set(vrf_name.yfilter)
-	|| ydk::is_set(pool_scope.yfilter)
 	|| ydk::is_set(allocated_addresses.yfilter)
 	|| ydk::is_set(free_addresses.yfilter)
 	|| ydk::is_set(excluded_addresses.yfilter)
@@ -755,7 +752,6 @@ std::vector<std::pair<std::string, LeafData> > AddressPoolService::Nodes::Node::
     if (start_address.is_set || is_set(start_address.yfilter)) leaf_name_data.push_back(start_address.get_name_leafdata());
     if (pool_name.is_set || is_set(pool_name.yfilter)) leaf_name_data.push_back(pool_name.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-    if (pool_scope.is_set || is_set(pool_scope.yfilter)) leaf_name_data.push_back(pool_scope.get_name_leafdata());
     if (allocated_addresses.is_set || is_set(allocated_addresses.yfilter)) leaf_name_data.push_back(allocated_addresses.get_name_leafdata());
     if (free_addresses.is_set || is_set(free_addresses.yfilter)) leaf_name_data.push_back(free_addresses.get_name_leafdata());
     if (excluded_addresses.is_set || is_set(excluded_addresses.yfilter)) leaf_name_data.push_back(excluded_addresses.get_name_leafdata());
@@ -840,12 +836,6 @@ void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::
         vrf_name.value_namespace = name_space;
         vrf_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "pool-scope")
-    {
-        pool_scope = value;
-        pool_scope.value_namespace = name_space;
-        pool_scope.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "allocated-addresses")
     {
         allocated_addresses = value;
@@ -892,10 +882,6 @@ void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::
     {
         vrf_name.yfilter = yfilter;
     }
-    if(value_path == "pool-scope")
-    {
-        pool_scope.yfilter = yfilter;
-    }
     if(value_path == "allocated-addresses")
     {
         allocated_addresses.yfilter = yfilter;
@@ -920,7 +906,7 @@ void AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::
 
 bool AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "start-address-xr" || name == "end-address" || name == "default-router" || name == "start-address" || name == "pool-name" || name == "vrf-name" || name == "pool-scope" || name == "allocated-addresses" || name == "free-addresses" || name == "excluded-addresses" || name == "network-blocked-status" || name == "network-blocked-status-trp")
+    if(name == "start-address-xr" || name == "end-address" || name == "default-router" || name == "start-address" || name == "pool-name" || name == "vrf-name" || name == "allocated-addresses" || name == "free-addresses" || name == "excluded-addresses" || name == "network-blocked-status" || name == "network-blocked-status-trp")
         return true;
     return false;
 }

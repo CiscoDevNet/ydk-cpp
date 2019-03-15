@@ -14,6 +14,29 @@ namespace cisco_nx_os {
 namespace Cisco_NX_OS_device {
 
 
+class System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems : public ydk::Entity
+{
+    public:
+        MemberItems();
+        ~MemberItems();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class VlanMemberEntryList; //type: System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::VlanMemberEntryList
+
+        ydk::YList vlanmemberentry_list;
+        
+}; // System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems
+
+
 class System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::VlanMemberEntryList : public ydk::Entity
 {
     public:
@@ -1336,6 +1359,7 @@ class System::VpcDomTableItems::VpcDomItems::VpcDomEntryList : public ydk::Entit
         ydk::YLeaf keepalivedestip; //type: string
         ydk::YLeaf keepalivesrcip; //type: string
         ydk::YLeaf virtualip; //type: string
+        ydk::YLeaf peerip; //type: string
         ydk::YLeaf keepalivests; //type: AggregateVpcKeepaliveStatus
         ydk::YLeaf peerlinksts; //type: AggregateVpcPeerLinkStatus
         ydk::YLeaf vpcrole; //type: VpcRole
@@ -3802,33 +3826,6 @@ class System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems : public 
         ydk::YList if_list;
         
 }; // System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems
-
-
-class System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList : public ydk::Entity
-{
-    public:
-        IfList();
-        ~IfList();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf name; //type: string
-        class AclItems_; //type: System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::AclItems_
-        class PortaclItems; //type: System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::PortaclItems
-
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::AclItems_> acl_items;
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::PortaclItems> portacl_items;
-        
-}; // System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList
 
 
 }

@@ -311,56 +311,10 @@ class ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThresholdUpValues; //type: ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_cfg::ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues> threshold_up_values;
-        
-}; // ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits
-
-
-class ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues : public ydk::Entity
-{
-    public:
-        ThresholdUpValues();
-        ~ThresholdUpValues();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ThresholdUpValue; //type: ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue
-
-        ydk::YList threshold_up_value;
-        
-}; // ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues
-
-
-class ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue : public ydk::Entity
-{
-    public:
-        ThresholdUpValue();
-        ~ThresholdUpValue();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
         ydk::YLeaf up; //type: uint32
-        ydk::YLeaf threshold_down; //type: uint32
+        ydk::YLeaf down; //type: uint32
 
-}; // ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue
+}; // ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits
 
 
 class ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentageObject : public ydk::Entity
@@ -447,56 +401,10 @@ class ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdL
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ThresholdUpValues; //type: ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_manageability_object_tracking_cfg::ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues> threshold_up_values;
-        
-}; // ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits
-
-
-class ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues : public ydk::Entity
-{
-    public:
-        ThresholdUpValues();
-        ~ThresholdUpValues();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ThresholdUpValue; //type: ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue
-
-        ydk::YList threshold_up_value;
-        
-}; // ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues
-
-
-class ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue : public ydk::Entity
-{
-    public:
-        ThresholdUpValue();
-        ~ThresholdUpValue();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
         ydk::YLeaf up; //type: uint32
-        ydk::YLeaf threshold_down; //type: uint32
+        ydk::YLeaf down; //type: uint32
 
-}; // ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue
+}; // ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits
 
 
 class ObjectTrackings::ObjectTracking::TypeList::ThresholdWeightObject : public ydk::Entity

@@ -5,7 +5,6 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_lib_mpp_cfg_0.hpp"
-#include "Cisco_IOS_XR_lib_mpp_cfg_2.hpp"
 #include "Cisco_IOS_XR_lib_mpp_cfg_1.hpp"
 
 using namespace ydk;
@@ -124,11 +123,9 @@ ControlPlane::ManagementPlaneProtection::ManagementPlaneProtection()
     :
     outband(std::make_shared<ControlPlane::ManagementPlaneProtection::Outband>())
     , inband(std::make_shared<ControlPlane::ManagementPlaneProtection::Inband>())
-    , tpa(std::make_shared<ControlPlane::ManagementPlaneProtection::Tpa>())
 {
     outband->parent = this;
     inband->parent = this;
-    tpa->parent = this;
 
     yang_name = "management-plane-protection"; yang_parent_name = "control-plane"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -141,16 +138,14 @@ bool ControlPlane::ManagementPlaneProtection::has_data() const
 {
     if (is_presence_container) return true;
     return (outband !=  nullptr && outband->has_data())
-	|| (inband !=  nullptr && inband->has_data())
-	|| (tpa !=  nullptr && tpa->has_data());
+	|| (inband !=  nullptr && inband->has_data());
 }
 
 bool ControlPlane::ManagementPlaneProtection::has_operation() const
 {
     return is_set(yfilter)
 	|| (outband !=  nullptr && outband->has_operation())
-	|| (inband !=  nullptr && inband->has_operation())
-	|| (tpa !=  nullptr && tpa->has_operation());
+	|| (inband !=  nullptr && inband->has_operation());
 }
 
 std::string ControlPlane::ManagementPlaneProtection::get_absolute_path() const
@@ -196,15 +191,6 @@ std::shared_ptr<ydk::Entity> ControlPlane::ManagementPlaneProtection::get_child_
         return inband;
     }
 
-    if(child_yang_name == "tpa")
-    {
-        if(tpa == nullptr)
-        {
-            tpa = std::make_shared<ControlPlane::ManagementPlaneProtection::Tpa>();
-        }
-        return tpa;
-    }
-
     return nullptr;
 }
 
@@ -222,11 +208,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> ControlPlane::ManagementPlan
         _children["inband"] = inband;
     }
 
-    if(tpa != nullptr)
-    {
-        _children["tpa"] = tpa;
-    }
-
     return _children;
 }
 
@@ -240,7 +221,7 @@ void ControlPlane::ManagementPlaneProtection::set_filter(const std::string & val
 
 bool ControlPlane::ManagementPlaneProtection::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "outband" || name == "inband" || name == "tpa")
+    if(name == "outband" || name == "inband")
         return true;
     return false;
 }

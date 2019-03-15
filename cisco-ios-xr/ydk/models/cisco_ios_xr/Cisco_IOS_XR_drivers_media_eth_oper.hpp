@@ -1564,6 +1564,7 @@ class EthernetMedia : public ydk::Enum
         static const ydk::Enum::YLeaf ethernet_25gbase_cu3m;
         static const ydk::Enum::YLeaf ethernet_25gbase_cu5m;
         static const ydk::Enum::YLeaf ethernet_100gbase_sm_sr;
+        static const ydk::Enum::YLeaf ethernet_100gbase_sr_bd;
         static const ydk::Enum::YLeaf ethernet_base_max;
 
 };

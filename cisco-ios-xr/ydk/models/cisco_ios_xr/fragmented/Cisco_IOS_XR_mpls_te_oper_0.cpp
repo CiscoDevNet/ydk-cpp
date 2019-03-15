@@ -24602,7 +24602,8 @@ const Enum::YLeaf MplsTeP2mpTimer::fib_next_hop_register_retry {25, "fib-next-ho
 const Enum::YLeaf MplsTeP2mpTimer::tun_backend_scan_retry {26, "tun-backend-scan-retry"};
 const Enum::YLeaf MplsTeP2mpTimer::tunnel_checkpoint_list_service {27, "tunnel-checkpoint-list-service"};
 const Enum::YLeaf MplsTeP2mpTimer::tunnel_service_binding_sid_allocation_retry {28, "tunnel-service-binding-sid-allocation-retry"};
-const Enum::YLeaf MplsTeP2mpTimer::timer_not_used {29, "timer-not-used"};
+const Enum::YLeaf MplsTeP2mpTimer::im_sync_delay {29, "im-sync-delay"};
+const Enum::YLeaf MplsTeP2mpTimer::timer_not_used {30, "timer-not-used"};
 
 const Enum::YLeaf PceState::tcp_close {0, "tcp-close"};
 const Enum::YLeaf PceState::tcp_listen {1, "tcp-listen"};

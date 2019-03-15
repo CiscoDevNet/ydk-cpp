@@ -51,7 +51,7 @@ class Pce : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::PccAddresses> pcc_addresses;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::Logging> logging;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::Backoff> backoff; // presence node
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::Rest> rest; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::Rest> rest;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::StateSyncs> state_syncs;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::SegmentRouting> segment_routing;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::Timers> timers; // presence node
@@ -1342,6 +1342,8 @@ class PceMetric : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf igp;
         static const ydk::Enum::YLeaf te;
+        static const ydk::Enum::YLeaf hopcount;
+        static const ydk::Enum::YLeaf latency;
 
 };
 

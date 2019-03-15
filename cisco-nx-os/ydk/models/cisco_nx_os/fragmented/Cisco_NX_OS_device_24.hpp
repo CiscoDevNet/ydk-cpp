@@ -14,6 +14,33 @@ namespace cisco_nx_os {
 namespace Cisco_NX_OS_device {
 
 
+class System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList : public ydk::Entity
+{
+    public:
+        IfList();
+        ~IfList();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf name; //type: string
+        class AclItems_; //type: System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::AclItems_
+        class PortaclItems; //type: System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::PortaclItems
+
+        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::AclItems_> acl_items;
+        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::PortaclItems> portacl_items;
+        
+}; // System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList
+
+
 class System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::AclItems_ : public ydk::Entity
 {
     public:
@@ -2713,6 +2740,7 @@ class System::HwtelemetryItems::InbandtelemetryItems::InstItems::InstList : publ
         std::string get_absolute_path() const override;
 
         ydk::YLeaf mode; //type: InbandTelemetryModeT
+        ydk::YLeaf profile; //type: InbandTelemetryProfile
         ydk::YLeaf name; //type: string
         ydk::YLeaf adminst; //type: NwAdminSt_
         ydk::YLeaf ctrl; //type: string
@@ -3886,29 +3914,6 @@ class System::HwtelemetryItems::NetflowItems::InstItems::InstList::ProfItems::Pr
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::HwtelemetryItems::NetflowItems::InstItems::InstList::ProfItems::ProfileList::RcvwindowszbinItems> rcvwindowszbin_items;
         
 }; // System::HwtelemetryItems::NetflowItems::InstItems::InstList::ProfItems::ProfileList
-
-
-class System::HwtelemetryItems::NetflowItems::InstItems::InstList::ProfItems::ProfileList::PayloadlenbinItems : public ydk::Entity
-{
-    public:
-        PayloadlenbinItems();
-        ~PayloadlenbinItems();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class PayloadLenBinList; //type: System::HwtelemetryItems::NetflowItems::InstItems::InstList::ProfItems::ProfileList::PayloadlenbinItems::PayloadLenBinList
-
-        ydk::YList payloadlenbin_list;
-        
-}; // System::HwtelemetryItems::NetflowItems::InstItems::InstList::ProfItems::ProfileList::PayloadlenbinItems
 
 
 }

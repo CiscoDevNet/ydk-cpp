@@ -116,7 +116,9 @@ class L2vpnForwarding::Nodes::Node : public ydk::Entity
         class L2fibNvePeers; //type: L2vpnForwarding::Nodes::Node::L2fibNvePeers
         class L2fibMmrps; //type: L2vpnForwarding::Nodes::Node::L2fibMmrps
         class L2fibEvpnIp6macs; //type: L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs
+        class L2fibPwheMainPortHardwareEgresses; //type: L2vpnForwarding::Nodes::Node::L2fibPwheMainPortHardwareEgresses
         class L2fibDhcpBindingSummaries; //type: L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries
+        class L2fibPwheMainPortHardwareIngresses; //type: L2vpnForwarding::Nodes::Node::L2fibPwheMainPortHardwareIngresses
         class L2fibEvpnInclMCasts; //type: L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibxConLocals> l2fibx_con_locals;
@@ -155,7 +157,9 @@ class L2vpnForwarding::Nodes::Node : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibNvePeers> l2fib_nve_peers;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibMmrps> l2fib_mmrps;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibEvpnIp6macs> l2fib_evpn_ip6macs;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibPwheMainPortHardwareEgresses> l2fib_pwhe_main_port_hardware_egresses;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibDhcpBindingSummaries> l2fib_dhcp_binding_summaries;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibPwheMainPortHardwareIngresses> l2fib_pwhe_main_port_hardware_ingresses;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnForwarding::Nodes::Node::L2fibEvpnInclMCasts> l2fib_evpn_incl_m_casts;
         
 }; // L2vpnForwarding::Nodes::Node

@@ -16545,6 +16545,7 @@ System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyContList:
     sendcomstd{YType::enumeration, "sendComStd"},
     sendcomext{YType::enumeration, "sendComExt"},
     advlocallblrt{YType::enumeration, "advLocalLblRt"},
+    nhselfall{YType::boolean, "nhSelfAll"},
     inheritcontpeerpolicyctrl{YType::str, "inheritContPeerPolicyCtrl"}
         ,
     maxpfxp_items(std::make_shared<System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyContList::MaxpfxpItems>())
@@ -16587,6 +16588,7 @@ bool System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCont
 	|| sendcomstd.is_set
 	|| sendcomext.is_set
 	|| advlocallblrt.is_set
+	|| nhselfall.is_set
 	|| inheritcontpeerpolicyctrl.is_set
 	|| (maxpfxp_items !=  nullptr && maxpfxp_items->has_data())
 	|| (advtmap_items !=  nullptr && advtmap_items->has_data())
@@ -16615,6 +16617,7 @@ bool System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCont
 	|| ydk::is_set(sendcomstd.yfilter)
 	|| ydk::is_set(sendcomext.yfilter)
 	|| ydk::is_set(advlocallblrt.yfilter)
+	|| ydk::is_set(nhselfall.yfilter)
 	|| ydk::is_set(inheritcontpeerpolicyctrl.yfilter)
 	|| (maxpfxp_items !=  nullptr && maxpfxp_items->has_operation())
 	|| (advtmap_items !=  nullptr && advtmap_items->has_operation())
@@ -16652,6 +16655,7 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
     if (sendcomstd.is_set || is_set(sendcomstd.yfilter)) leaf_name_data.push_back(sendcomstd.get_name_leafdata());
     if (sendcomext.is_set || is_set(sendcomext.yfilter)) leaf_name_data.push_back(sendcomext.get_name_leafdata());
     if (advlocallblrt.is_set || is_set(advlocallblrt.yfilter)) leaf_name_data.push_back(advlocallblrt.get_name_leafdata());
+    if (nhselfall.is_set || is_set(nhselfall.yfilter)) leaf_name_data.push_back(nhselfall.get_name_leafdata());
     if (inheritcontpeerpolicyctrl.is_set || is_set(inheritcontpeerpolicyctrl.yfilter)) leaf_name_data.push_back(inheritcontpeerpolicyctrl.get_name_leafdata());
 
     return leaf_name_data;
@@ -16852,6 +16856,12 @@ void System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCont
         advlocallblrt.value_namespace = name_space;
         advlocallblrt.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "nhSelfAll")
+    {
+        nhselfall = value;
+        nhselfall.value_namespace = name_space;
+        nhselfall.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "inheritContPeerPolicyCtrl")
     {
         inheritcontpeerpolicyctrl = value;
@@ -16926,6 +16936,10 @@ void System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCont
     {
         advlocallblrt.yfilter = yfilter;
     }
+    if(value_path == "nhSelfAll")
+    {
+        nhselfall.yfilter = yfilter;
+    }
     if(value_path == "inheritContPeerPolicyCtrl")
     {
         inheritcontpeerpolicyctrl.yfilter = yfilter;
@@ -16934,7 +16948,7 @@ void System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCont
 
 bool System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyContList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "maxpfxp-items" || name == "advtmap-items" || name == "rtctrl-items" || name == "pfxctrl-items" || name == "fltrctrl-items" || name == "pol-items" || name == "name" || name == "ctrl" || name == "allowedSelfAsCnt" || name == "softReconfigBackup" || name == "advIntvl" || name == "defOrg" || name == "defOrgRtMap" || name == "capAddlPaths" || name == "unSupprMap" || name == "asOverride" || name == "nhThirdparty" || name == "wght" || name == "soo" || name == "sendComStd" || name == "sendComExt" || name == "advLocalLblRt" || name == "inheritContPeerPolicyCtrl")
+    if(name == "maxpfxp-items" || name == "advtmap-items" || name == "rtctrl-items" || name == "pfxctrl-items" || name == "fltrctrl-items" || name == "pol-items" || name == "name" || name == "ctrl" || name == "allowedSelfAsCnt" || name == "softReconfigBackup" || name == "advIntvl" || name == "defOrg" || name == "defOrgRtMap" || name == "capAddlPaths" || name == "unSupprMap" || name == "asOverride" || name == "nhThirdparty" || name == "wght" || name == "soo" || name == "sendComStd" || name == "sendComExt" || name == "advLocalLblRt" || name == "nhSelfAll" || name == "inheritContPeerPolicyCtrl")
         return true;
     return false;
 }

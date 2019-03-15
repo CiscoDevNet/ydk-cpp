@@ -144,12 +144,14 @@ class Dhcpv6::Nodes::Node::Proxy : public ydk::Entity
 
         class Vrfs; //type: Dhcpv6::Nodes::Node::Proxy::Vrfs
         class Profiles; //type: Dhcpv6::Nodes::Node::Proxy::Profiles
+        class DisconnectHistories; //type: Dhcpv6::Nodes::Node::Proxy::DisconnectHistories
         class Interfaces; //type: Dhcpv6::Nodes::Node::Proxy::Interfaces
         class Statistics; //type: Dhcpv6::Nodes::Node::Proxy::Statistics
         class Binding; //type: Dhcpv6::Nodes::Node::Proxy::Binding
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Vrfs> vrfs;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles> profiles;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::DisconnectHistories> disconnect_histories;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Interfaces> interfaces;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Statistics> statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Binding> binding;
@@ -963,6 +965,58 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6dProxyInterfaceReference
 
 
+class Dhcpv6::Nodes::Node::Proxy::DisconnectHistories : public ydk::Entity
+{
+    public:
+        DisconnectHistories();
+        ~DisconnectHistories();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class DisconnectHistory; //type: Dhcpv6::Nodes::Node::Proxy::DisconnectHistories::DisconnectHistory
+
+        ydk::YList disconnect_history;
+        
+}; // Dhcpv6::Nodes::Node::Proxy::DisconnectHistories
+
+
+class Dhcpv6::Nodes::Node::Proxy::DisconnectHistories::DisconnectHistory : public ydk::Entity
+{
+    public:
+        DisconnectHistory();
+        ~DisconnectHistory();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf index_; //type: string
+        ydk::YLeaf session_start_time_epoch; //type: uint64
+        ydk::YLeaf session_end_time_epoch; //type: uint64
+        ydk::YLeaf disc_reason; //type: string
+        ydk::YLeaf sub_label; //type: uint32
+        ydk::YLeaf duid; //type: string
+        ydk::YLeaf ia_type; //type: string
+        ydk::YLeaf ia_id; //type: uint32
+        ydk::YLeaf mac_address; //type: string
+
+}; // Dhcpv6::Nodes::Node::Proxy::DisconnectHistories::DisconnectHistory
+
+
 class Dhcpv6::Nodes::Node::Proxy::Interfaces : public ydk::Entity
 {
     public:
@@ -1511,6 +1565,7 @@ class Dhcpv6::Nodes::Node::Server : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        class DisconnectHistories; //type: Dhcpv6::Nodes::Node::Server::DisconnectHistories
         class Binding; //type: Dhcpv6::Nodes::Node::Server::Binding
         class Vrfs; //type: Dhcpv6::Nodes::Node::Server::Vrfs
         class Profiles; //type: Dhcpv6::Nodes::Node::Server::Profiles
@@ -1518,6 +1573,7 @@ class Dhcpv6::Nodes::Node::Server : public ydk::Entity
         class Statistics; //type: Dhcpv6::Nodes::Node::Server::Statistics
         class BindingOptions; //type: Dhcpv6::Nodes::Node::Server::BindingOptions
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::DisconnectHistories> disconnect_histories;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Binding> binding;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Vrfs> vrfs;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Profiles> profiles;
@@ -1526,6 +1582,58 @@ class Dhcpv6::Nodes::Node::Server : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::BindingOptions> binding_options;
         
 }; // Dhcpv6::Nodes::Node::Server
+
+
+class Dhcpv6::Nodes::Node::Server::DisconnectHistories : public ydk::Entity
+{
+    public:
+        DisconnectHistories();
+        ~DisconnectHistories();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class DisconnectHistory; //type: Dhcpv6::Nodes::Node::Server::DisconnectHistories::DisconnectHistory
+
+        ydk::YList disconnect_history;
+        
+}; // Dhcpv6::Nodes::Node::Server::DisconnectHistories
+
+
+class Dhcpv6::Nodes::Node::Server::DisconnectHistories::DisconnectHistory : public ydk::Entity
+{
+    public:
+        DisconnectHistory();
+        ~DisconnectHistory();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf index_; //type: string
+        ydk::YLeaf session_start_time_epoch; //type: uint64
+        ydk::YLeaf session_end_time_epoch; //type: uint64
+        ydk::YLeaf disc_reason; //type: string
+        ydk::YLeaf sub_label; //type: uint32
+        ydk::YLeaf duid; //type: string
+        ydk::YLeaf ia_type; //type: string
+        ydk::YLeaf ia_id; //type: uint32
+        ydk::YLeaf mac_address; //type: string
+
+}; // Dhcpv6::Nodes::Node::Server::DisconnectHistories::DisconnectHistory
 
 
 class Dhcpv6::Nodes::Node::Server::Binding : public ydk::Entity

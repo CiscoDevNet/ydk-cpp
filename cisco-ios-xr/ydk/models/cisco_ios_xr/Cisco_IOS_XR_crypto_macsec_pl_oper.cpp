@@ -5823,7 +5823,8 @@ MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::T
     out_octets_encrypted_protected1{YType::uint8, "out-octets-encrypted-protected1"},
     initial_pkt_number{YType::uint8, "initial-pkt-number"},
     current_pkt_number{YType::uint64, "current-pkt-number"},
-    max_pkt_number{YType::uint64, "max-pkt-number"}
+    max_pkt_number{YType::uint64, "max-pkt-number"},
+    conf_offset{YType::uint16, "conf-offset"}
         ,
     xform_params(std::make_shared<MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::TxSa::XformParams>())
 {
@@ -5848,6 +5849,7 @@ bool MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200
 	|| initial_pkt_number.is_set
 	|| current_pkt_number.is_set
 	|| max_pkt_number.is_set
+	|| conf_offset.is_set
 	|| (xform_params !=  nullptr && xform_params->has_data());
 }
 
@@ -5863,6 +5865,7 @@ bool MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200
 	|| ydk::is_set(initial_pkt_number.yfilter)
 	|| ydk::is_set(current_pkt_number.yfilter)
 	|| ydk::is_set(max_pkt_number.yfilter)
+	|| ydk::is_set(conf_offset.yfilter)
 	|| (xform_params !=  nullptr && xform_params->has_operation());
 }
 
@@ -5886,6 +5889,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
     if (initial_pkt_number.is_set || is_set(initial_pkt_number.yfilter)) leaf_name_data.push_back(initial_pkt_number.get_name_leafdata());
     if (current_pkt_number.is_set || is_set(current_pkt_number.yfilter)) leaf_name_data.push_back(current_pkt_number.get_name_leafdata());
     if (max_pkt_number.is_set || is_set(max_pkt_number.yfilter)) leaf_name_data.push_back(max_pkt_number.get_name_leafdata());
+    if (conf_offset.is_set || is_set(conf_offset.yfilter)) leaf_name_data.push_back(conf_offset.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -5973,6 +5977,12 @@ void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200
         max_pkt_number.value_namespace = name_space;
         max_pkt_number.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "conf-offset")
+    {
+        conf_offset = value;
+        conf_offset.value_namespace = name_space;
+        conf_offset.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::TxSa::set_filter(const std::string & value_path, YFilter yfilter)
@@ -6013,11 +6023,15 @@ void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200
     {
         max_pkt_number.yfilter = yfilter;
     }
+    if(value_path == "conf-offset")
+    {
+        conf_offset.yfilter = yfilter;
+    }
 }
 
 bool MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::TxSa::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "xform-params" || name == "is-valid" || name == "sa-id" || name == "sc-no" || name == "out-pkts-too-long" || name == "out-pkts-encrypted-protected" || name == "out-octets-encrypted-protected1" || name == "initial-pkt-number" || name == "current-pkt-number" || name == "max-pkt-number")
+    if(name == "xform-params" || name == "is-valid" || name == "sa-id" || name == "sc-no" || name == "out-pkts-too-long" || name == "out-pkts-encrypted-protected" || name == "out-octets-encrypted-protected1" || name == "initial-pkt-number" || name == "current-pkt-number" || name == "max-pkt-number" || name == "conf-offset")
         return true;
     return false;
 }
@@ -6198,7 +6212,8 @@ MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::R
     in_pkts_not_using_sa{YType::uint8, "in-pkts-not-using-sa"},
     in_pkts_unused_sa{YType::uint8, "in-pkts-unused-sa"},
     in_octets_decrypted_validated1{YType::uint8, "in-octets-decrypted-validated1"},
-    in_octets_validated{YType::uint8, "in-octets-validated"}
+    in_octets_validated{YType::uint8, "in-octets-validated"},
+    conf_offset{YType::uint16, "conf-offset"}
         ,
     xform_params(std::make_shared<MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::RxSa::XformParams>())
 {
@@ -6227,6 +6242,7 @@ bool MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200
 	|| in_pkts_unused_sa.is_set
 	|| in_octets_decrypted_validated1.is_set
 	|| in_octets_validated.is_set
+	|| conf_offset.is_set
 	|| (xform_params !=  nullptr && xform_params->has_data());
 }
 
@@ -6246,6 +6262,7 @@ bool MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200
 	|| ydk::is_set(in_pkts_unused_sa.yfilter)
 	|| ydk::is_set(in_octets_decrypted_validated1.yfilter)
 	|| ydk::is_set(in_octets_validated.yfilter)
+	|| ydk::is_set(conf_offset.yfilter)
 	|| (xform_params !=  nullptr && xform_params->has_operation());
 }
 
@@ -6274,6 +6291,7 @@ std::vector<std::pair<std::string, LeafData> > MacsecPlatform::Nodes::Node::Inte
     if (in_pkts_unused_sa.is_set || is_set(in_pkts_unused_sa.yfilter)) leaf_name_data.push_back(in_pkts_unused_sa.get_name_leafdata());
     if (in_octets_decrypted_validated1.is_set || is_set(in_octets_decrypted_validated1.yfilter)) leaf_name_data.push_back(in_octets_decrypted_validated1.get_name_leafdata());
     if (in_octets_validated.is_set || is_set(in_octets_validated.yfilter)) leaf_name_data.push_back(in_octets_validated.get_name_leafdata());
+    if (conf_offset.is_set || is_set(conf_offset.yfilter)) leaf_name_data.push_back(conf_offset.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -6385,6 +6403,12 @@ void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200
         in_octets_validated.value_namespace = name_space;
         in_octets_validated.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "conf-offset")
+    {
+        conf_offset = value;
+        conf_offset.value_namespace = name_space;
+        conf_offset.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::RxSa::set_filter(const std::string & value_path, YFilter yfilter)
@@ -6441,11 +6465,15 @@ void MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200
     {
         in_octets_validated.yfilter = yfilter;
     }
+    if(value_path == "conf-offset")
+    {
+        conf_offset.yfilter = yfilter;
+    }
 }
 
 bool MacsecPlatform::Nodes::Node::Interfaces::Interface::HwSas::HwSa::Ext::Es200Sa::RxSa::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "xform-params" || name == "is-valid" || name == "sa-id" || name == "sc-no" || name == "in-pkts-unchecked" || name == "in-pkts-delayed" || name == "in-pkts-late" || name == "in-pkts-ok" || name == "in-pkts-invalid" || name == "in-pkts-not-valid" || name == "in-pkts-not-using-sa" || name == "in-pkts-unused-sa" || name == "in-octets-decrypted-validated1" || name == "in-octets-validated")
+    if(name == "xform-params" || name == "is-valid" || name == "sa-id" || name == "sc-no" || name == "in-pkts-unchecked" || name == "in-pkts-delayed" || name == "in-pkts-late" || name == "in-pkts-ok" || name == "in-pkts-invalid" || name == "in-pkts-not-valid" || name == "in-pkts-not-using-sa" || name == "in-pkts-unused-sa" || name == "in-octets-decrypted-validated1" || name == "in-octets-validated" || name == "conf-offset")
         return true;
     return false;
 }

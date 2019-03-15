@@ -1187,6 +1187,7 @@ System::SyslogItems::SyslogItems()
     , level_items(std::make_shared<System::SyslogItems::LevelItems>())
     , monitor_items(std::make_shared<System::SyslogItems::MonitorItems>())
     , console_items(std::make_shared<System::SyslogItems::ConsoleItems>())
+    , originid_items(std::make_shared<System::SyslogItems::OriginidItems>())
     , rdst_items(std::make_shared<System::SyslogItems::RdstItems>())
     , source_items(std::make_shared<System::SyslogItems::SourceItems>())
     , file_items(std::make_shared<System::SyslogItems::FileItems>())
@@ -1196,6 +1197,7 @@ System::SyslogItems::SyslogItems()
     level_items->parent = this;
     monitor_items->parent = this;
     console_items->parent = this;
+    originid_items->parent = this;
     rdst_items->parent = this;
     source_items->parent = this;
     file_items->parent = this;
@@ -1215,6 +1217,7 @@ bool System::SyslogItems::has_data() const
 	|| (level_items !=  nullptr && level_items->has_data())
 	|| (monitor_items !=  nullptr && monitor_items->has_data())
 	|| (console_items !=  nullptr && console_items->has_data())
+	|| (originid_items !=  nullptr && originid_items->has_data())
 	|| (rdst_items !=  nullptr && rdst_items->has_data())
 	|| (source_items !=  nullptr && source_items->has_data())
 	|| (file_items !=  nullptr && file_items->has_data())
@@ -1228,6 +1231,7 @@ bool System::SyslogItems::has_operation() const
 	|| (level_items !=  nullptr && level_items->has_operation())
 	|| (monitor_items !=  nullptr && monitor_items->has_operation())
 	|| (console_items !=  nullptr && console_items->has_operation())
+	|| (originid_items !=  nullptr && originid_items->has_operation())
 	|| (rdst_items !=  nullptr && rdst_items->has_operation())
 	|| (source_items !=  nullptr && source_items->has_operation())
 	|| (file_items !=  nullptr && file_items->has_operation())
@@ -1295,6 +1299,15 @@ std::shared_ptr<ydk::Entity> System::SyslogItems::get_child_by_name(const std::s
         return console_items;
     }
 
+    if(child_yang_name == "originid-items")
+    {
+        if(originid_items == nullptr)
+        {
+            originid_items = std::make_shared<System::SyslogItems::OriginidItems>();
+        }
+        return originid_items;
+    }
+
     if(child_yang_name == "rdst-items")
     {
         if(rdst_items == nullptr)
@@ -1358,6 +1371,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> System::SyslogItems::get_chi
         _children["console-items"] = console_items;
     }
 
+    if(originid_items != nullptr)
+    {
+        _children["originid-items"] = originid_items;
+    }
+
     if(rdst_items != nullptr)
     {
         _children["rdst-items"] = rdst_items;
@@ -1391,7 +1409,7 @@ void System::SyslogItems::set_filter(const std::string & value_path, YFilter yfi
 
 bool System::SyslogItems::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "timestamp-items" || name == "level-items" || name == "monitor-items" || name == "console-items" || name == "rdst-items" || name == "source-items" || name == "file-items" || name == "inst-items")
+    if(name == "timestamp-items" || name == "level-items" || name == "monitor-items" || name == "console-items" || name == "originid-items" || name == "rdst-items" || name == "source-items" || name == "file-items" || name == "inst-items")
         return true;
     return false;
 }
@@ -1875,6 +1893,105 @@ void System::SyslogItems::ConsoleItems::set_filter(const std::string & value_pat
 bool System::SyslogItems::ConsoleItems::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "adminState" || name == "severity")
+        return true;
+    return false;
+}
+
+System::SyslogItems::OriginidItems::OriginidItems()
+    :
+    idtype{YType::enumeration, "idtype"},
+    idvalue{YType::str, "idvalue"}
+{
+
+    yang_name = "originid-items"; yang_parent_name = "syslog-items"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+System::SyslogItems::OriginidItems::~OriginidItems()
+{
+}
+
+bool System::SyslogItems::OriginidItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return idtype.is_set
+	|| idvalue.is_set;
+}
+
+bool System::SyslogItems::OriginidItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(idtype.yfilter)
+	|| ydk::is_set(idvalue.yfilter);
+}
+
+std::string System::SyslogItems::OriginidItems::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:System/syslog-items/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string System::SyslogItems::OriginidItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "originid-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::SyslogItems::OriginidItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (idtype.is_set || is_set(idtype.yfilter)) leaf_name_data.push_back(idtype.get_name_leafdata());
+    if (idvalue.is_set || is_set(idvalue.yfilter)) leaf_name_data.push_back(idvalue.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::SyslogItems::OriginidItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::SyslogItems::OriginidItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::SyslogItems::OriginidItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "idtype")
+    {
+        idtype = value;
+        idtype.value_namespace = name_space;
+        idtype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "idvalue")
+    {
+        idvalue = value;
+        idvalue.value_namespace = name_space;
+        idvalue.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::SyslogItems::OriginidItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "idtype")
+    {
+        idtype.yfilter = yfilter;
+    }
+    if(value_path == "idvalue")
+    {
+        idvalue.yfilter = yfilter;
+    }
+}
+
+bool System::SyslogItems::OriginidItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "idtype" || name == "idvalue")
         return true;
     return false;
 }
@@ -7863,7 +7980,9 @@ System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaList::
     ucastcost{YType::uint16, "ucastCost"},
     mcastcost{YType::uint16, "mcastCost"},
     tag{YType::uint32, "tag"},
-    dist{YType::uint8, "dist"}
+    dist{YType::uint8, "dist"},
+    sgmntrtgmplssid{YType::uint32, "sgmntRtgMplsSid"},
+    sgmntrtgmplsinlabel{YType::uint32, "sgmntRtgMplsInLabel"}
         ,
     ucnh_items(std::make_shared<System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaList::DbItems::DbList::RtItems::RouteList::UcnhItems>())
     , mcnh_items(std::make_shared<System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaList::DbItems::DbList::RtItems::RouteList::McnhItems>())
@@ -7890,6 +8009,8 @@ bool System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaL
 	|| mcastcost.is_set
 	|| tag.is_set
 	|| dist.is_set
+	|| sgmntrtgmplssid.is_set
+	|| sgmntrtgmplsinlabel.is_set
 	|| (ucnh_items !=  nullptr && ucnh_items->has_data())
 	|| (mcnh_items !=  nullptr && mcnh_items->has_data());
 }
@@ -7906,6 +8027,8 @@ bool System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaL
 	|| ydk::is_set(mcastcost.yfilter)
 	|| ydk::is_set(tag.yfilter)
 	|| ydk::is_set(dist.yfilter)
+	|| ydk::is_set(sgmntrtgmplssid.yfilter)
+	|| ydk::is_set(sgmntrtgmplsinlabel.yfilter)
 	|| (ucnh_items !=  nullptr && ucnh_items->has_operation())
 	|| (mcnh_items !=  nullptr && mcnh_items->has_operation());
 }
@@ -7931,6 +8054,8 @@ std::vector<std::pair<std::string, LeafData> > System::OspfItems::InstItems::Ins
     if (mcastcost.is_set || is_set(mcastcost.yfilter)) leaf_name_data.push_back(mcastcost.get_name_leafdata());
     if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
     if (dist.is_set || is_set(dist.yfilter)) leaf_name_data.push_back(dist.get_name_leafdata());
+    if (sgmntrtgmplssid.is_set || is_set(sgmntrtgmplssid.yfilter)) leaf_name_data.push_back(sgmntrtgmplssid.get_name_leafdata());
+    if (sgmntrtgmplsinlabel.is_set || is_set(sgmntrtgmplsinlabel.yfilter)) leaf_name_data.push_back(sgmntrtgmplsinlabel.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -8032,6 +8157,18 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaL
         dist.value_namespace = name_space;
         dist.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "sgmntRtgMplsSid")
+    {
+        sgmntrtgmplssid = value;
+        sgmntrtgmplssid.value_namespace = name_space;
+        sgmntrtgmplssid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sgmntRtgMplsInLabel")
+    {
+        sgmntrtgmplsinlabel = value;
+        sgmntrtgmplsinlabel.value_namespace = name_space;
+        sgmntrtgmplsinlabel.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaList::DbItems::DbList::RtItems::RouteList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -8072,11 +8209,19 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaL
     {
         dist.yfilter = yfilter;
     }
+    if(value_path == "sgmntRtgMplsSid")
+    {
+        sgmntrtgmplssid.yfilter = yfilter;
+    }
+    if(value_path == "sgmntRtgMplsInLabel")
+    {
+        sgmntrtgmplsinlabel.yfilter = yfilter;
+    }
 }
 
 bool System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaList::DbItems::DbList::RtItems::RouteList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ucnh-items" || name == "mcnh-items" || name == "pfx" || name == "name" || name == "pathT" || name == "area" || name == "flags" || name == "ucastCost" || name == "mcastCost" || name == "tag" || name == "dist")
+    if(name == "ucnh-items" || name == "mcnh-items" || name == "pfx" || name == "name" || name == "pathT" || name == "area" || name == "flags" || name == "ucastCost" || name == "mcastCost" || name == "tag" || name == "dist" || name == "sgmntRtgMplsSid" || name == "sgmntRtgMplsInLabel")
         return true;
     return false;
 }
@@ -8179,7 +8324,8 @@ System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaList::
     if_{YType::str, "if"},
     addr{YType::str, "addr"},
     name{YType::str, "name"},
-    flags{YType::str, "flags"}
+    flags{YType::str, "flags"},
+    sgmntrtgmplsoutlabel{YType::uint32, "sgmntRtgMplsOutLabel"}
 {
 
     yang_name = "UcNexthop-list"; yang_parent_name = "ucnh-items"; is_top_level_class = false; has_list_ancestor = true; 
@@ -8195,7 +8341,8 @@ bool System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaL
     return if_.is_set
 	|| addr.is_set
 	|| name.is_set
-	|| flags.is_set;
+	|| flags.is_set
+	|| sgmntrtgmplsoutlabel.is_set;
 }
 
 bool System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaList::DbItems::DbList::RtItems::RouteList::UcnhItems::UcNexthopList::has_operation() const
@@ -8204,7 +8351,8 @@ bool System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaL
 	|| ydk::is_set(if_.yfilter)
 	|| ydk::is_set(addr.yfilter)
 	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(flags.yfilter);
+	|| ydk::is_set(flags.yfilter)
+	|| ydk::is_set(sgmntrtgmplsoutlabel.yfilter);
 }
 
 std::string System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaList::DbItems::DbList::RtItems::RouteList::UcnhItems::UcNexthopList::get_segment_path() const
@@ -8224,6 +8372,7 @@ std::vector<std::pair<std::string, LeafData> > System::OspfItems::InstItems::Ins
     if (addr.is_set || is_set(addr.yfilter)) leaf_name_data.push_back(addr.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
+    if (sgmntrtgmplsoutlabel.is_set || is_set(sgmntrtgmplsoutlabel.yfilter)) leaf_name_data.push_back(sgmntrtgmplsoutlabel.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -8267,6 +8416,12 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaL
         flags.value_namespace = name_space;
         flags.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "sgmntRtgMplsOutLabel")
+    {
+        sgmntrtgmplsoutlabel = value;
+        sgmntrtgmplsoutlabel.value_namespace = name_space;
+        sgmntrtgmplsoutlabel.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaList::DbItems::DbList::RtItems::RouteList::UcnhItems::UcNexthopList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -8287,11 +8442,15 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaL
     {
         flags.yfilter = yfilter;
     }
+    if(value_path == "sgmntRtgMplsOutLabel")
+    {
+        sgmntrtgmplsoutlabel.yfilter = yfilter;
+    }
 }
 
 bool System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaList::DbItems::DbList::RtItems::RouteList::UcnhItems::UcNexthopList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "if" || name == "addr" || name == "name" || name == "flags")
+    if(name == "if" || name == "addr" || name == "name" || name == "flags" || name == "sgmntRtgMplsOutLabel")
         return true;
     return false;
 }
@@ -8394,7 +8553,8 @@ System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaList::
     if_{YType::str, "if"},
     addr{YType::str, "addr"},
     name{YType::str, "name"},
-    flags{YType::str, "flags"}
+    flags{YType::str, "flags"},
+    sgmntrtgmplsoutlabel{YType::uint32, "sgmntRtgMplsOutLabel"}
 {
 
     yang_name = "McNexthop-list"; yang_parent_name = "mcnh-items"; is_top_level_class = false; has_list_ancestor = true; 
@@ -8410,7 +8570,8 @@ bool System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaL
     return if_.is_set
 	|| addr.is_set
 	|| name.is_set
-	|| flags.is_set;
+	|| flags.is_set
+	|| sgmntrtgmplsoutlabel.is_set;
 }
 
 bool System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaList::DbItems::DbList::RtItems::RouteList::McnhItems::McNexthopList::has_operation() const
@@ -8419,7 +8580,8 @@ bool System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaL
 	|| ydk::is_set(if_.yfilter)
 	|| ydk::is_set(addr.yfilter)
 	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(flags.yfilter);
+	|| ydk::is_set(flags.yfilter)
+	|| ydk::is_set(sgmntrtgmplsoutlabel.yfilter);
 }
 
 std::string System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaList::DbItems::DbList::RtItems::RouteList::McnhItems::McNexthopList::get_segment_path() const
@@ -8439,6 +8601,7 @@ std::vector<std::pair<std::string, LeafData> > System::OspfItems::InstItems::Ins
     if (addr.is_set || is_set(addr.yfilter)) leaf_name_data.push_back(addr.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
+    if (sgmntrtgmplsoutlabel.is_set || is_set(sgmntrtgmplsoutlabel.yfilter)) leaf_name_data.push_back(sgmntrtgmplsoutlabel.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -8482,6 +8645,12 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaL
         flags.value_namespace = name_space;
         flags.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "sgmntRtgMplsOutLabel")
+    {
+        sgmntrtgmplsoutlabel = value;
+        sgmntrtgmplsoutlabel.value_namespace = name_space;
+        sgmntrtgmplsoutlabel.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaList::DbItems::DbList::RtItems::RouteList::McnhItems::McNexthopList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -8502,11 +8671,15 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaL
     {
         flags.yfilter = yfilter;
     }
+    if(value_path == "sgmntRtgMplsOutLabel")
+    {
+        sgmntrtgmplsoutlabel.yfilter = yfilter;
+    }
 }
 
 bool System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaList::DbItems::DbList::RtItems::RouteList::McnhItems::McNexthopList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "if" || name == "addr" || name == "name" || name == "flags")
+    if(name == "if" || name == "addr" || name == "name" || name == "flags" || name == "sgmntRtgMplsOutLabel")
         return true;
     return false;
 }
@@ -11497,7 +11670,9 @@ System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList::RtIt
     ucastcost{YType::uint16, "ucastCost"},
     mcastcost{YType::uint16, "mcastCost"},
     tag{YType::uint32, "tag"},
-    dist{YType::uint8, "dist"}
+    dist{YType::uint8, "dist"},
+    sgmntrtgmplssid{YType::uint32, "sgmntRtgMplsSid"},
+    sgmntrtgmplsinlabel{YType::uint32, "sgmntRtgMplsInLabel"}
         ,
     ucnh_items(std::make_shared<System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList::RtItems::RouteList::UcnhItems>())
     , mcnh_items(std::make_shared<System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList::RtItems::RouteList::McnhItems>())
@@ -11524,6 +11699,8 @@ bool System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList:
 	|| mcastcost.is_set
 	|| tag.is_set
 	|| dist.is_set
+	|| sgmntrtgmplssid.is_set
+	|| sgmntrtgmplsinlabel.is_set
 	|| (ucnh_items !=  nullptr && ucnh_items->has_data())
 	|| (mcnh_items !=  nullptr && mcnh_items->has_data());
 }
@@ -11540,6 +11717,8 @@ bool System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList:
 	|| ydk::is_set(mcastcost.yfilter)
 	|| ydk::is_set(tag.yfilter)
 	|| ydk::is_set(dist.yfilter)
+	|| ydk::is_set(sgmntrtgmplssid.yfilter)
+	|| ydk::is_set(sgmntrtgmplsinlabel.yfilter)
 	|| (ucnh_items !=  nullptr && ucnh_items->has_operation())
 	|| (mcnh_items !=  nullptr && mcnh_items->has_operation());
 }
@@ -11565,6 +11744,8 @@ std::vector<std::pair<std::string, LeafData> > System::OspfItems::InstItems::Ins
     if (mcastcost.is_set || is_set(mcastcost.yfilter)) leaf_name_data.push_back(mcastcost.get_name_leafdata());
     if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
     if (dist.is_set || is_set(dist.yfilter)) leaf_name_data.push_back(dist.get_name_leafdata());
+    if (sgmntrtgmplssid.is_set || is_set(sgmntrtgmplssid.yfilter)) leaf_name_data.push_back(sgmntrtgmplssid.get_name_leafdata());
+    if (sgmntrtgmplsinlabel.is_set || is_set(sgmntrtgmplsinlabel.yfilter)) leaf_name_data.push_back(sgmntrtgmplsinlabel.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -11666,6 +11847,18 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList:
         dist.value_namespace = name_space;
         dist.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "sgmntRtgMplsSid")
+    {
+        sgmntrtgmplssid = value;
+        sgmntrtgmplssid.value_namespace = name_space;
+        sgmntrtgmplssid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sgmntRtgMplsInLabel")
+    {
+        sgmntrtgmplsinlabel = value;
+        sgmntrtgmplsinlabel.value_namespace = name_space;
+        sgmntrtgmplsinlabel.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList::RtItems::RouteList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -11706,11 +11899,19 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList:
     {
         dist.yfilter = yfilter;
     }
+    if(value_path == "sgmntRtgMplsSid")
+    {
+        sgmntrtgmplssid.yfilter = yfilter;
+    }
+    if(value_path == "sgmntRtgMplsInLabel")
+    {
+        sgmntrtgmplsinlabel.yfilter = yfilter;
+    }
 }
 
 bool System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList::RtItems::RouteList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ucnh-items" || name == "mcnh-items" || name == "pfx" || name == "name" || name == "pathT" || name == "area" || name == "flags" || name == "ucastCost" || name == "mcastCost" || name == "tag" || name == "dist")
+    if(name == "ucnh-items" || name == "mcnh-items" || name == "pfx" || name == "name" || name == "pathT" || name == "area" || name == "flags" || name == "ucastCost" || name == "mcastCost" || name == "tag" || name == "dist" || name == "sgmntRtgMplsSid" || name == "sgmntRtgMplsInLabel")
         return true;
     return false;
 }
@@ -11813,7 +12014,8 @@ System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList::RtIt
     if_{YType::str, "if"},
     addr{YType::str, "addr"},
     name{YType::str, "name"},
-    flags{YType::str, "flags"}
+    flags{YType::str, "flags"},
+    sgmntrtgmplsoutlabel{YType::uint32, "sgmntRtgMplsOutLabel"}
 {
 
     yang_name = "UcNexthop-list"; yang_parent_name = "ucnh-items"; is_top_level_class = false; has_list_ancestor = true; 
@@ -11829,7 +12031,8 @@ bool System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList:
     return if_.is_set
 	|| addr.is_set
 	|| name.is_set
-	|| flags.is_set;
+	|| flags.is_set
+	|| sgmntrtgmplsoutlabel.is_set;
 }
 
 bool System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList::RtItems::RouteList::UcnhItems::UcNexthopList::has_operation() const
@@ -11838,7 +12041,8 @@ bool System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList:
 	|| ydk::is_set(if_.yfilter)
 	|| ydk::is_set(addr.yfilter)
 	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(flags.yfilter);
+	|| ydk::is_set(flags.yfilter)
+	|| ydk::is_set(sgmntrtgmplsoutlabel.yfilter);
 }
 
 std::string System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList::RtItems::RouteList::UcnhItems::UcNexthopList::get_segment_path() const
@@ -11858,6 +12062,7 @@ std::vector<std::pair<std::string, LeafData> > System::OspfItems::InstItems::Ins
     if (addr.is_set || is_set(addr.yfilter)) leaf_name_data.push_back(addr.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
+    if (sgmntrtgmplsoutlabel.is_set || is_set(sgmntrtgmplsoutlabel.yfilter)) leaf_name_data.push_back(sgmntrtgmplsoutlabel.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -11901,6 +12106,12 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList:
         flags.value_namespace = name_space;
         flags.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "sgmntRtgMplsOutLabel")
+    {
+        sgmntrtgmplsoutlabel = value;
+        sgmntrtgmplsoutlabel.value_namespace = name_space;
+        sgmntrtgmplsoutlabel.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList::RtItems::RouteList::UcnhItems::UcNexthopList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -11921,11 +12132,15 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList:
     {
         flags.yfilter = yfilter;
     }
+    if(value_path == "sgmntRtgMplsOutLabel")
+    {
+        sgmntrtgmplsoutlabel.yfilter = yfilter;
+    }
 }
 
 bool System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList::RtItems::RouteList::UcnhItems::UcNexthopList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "if" || name == "addr" || name == "name" || name == "flags")
+    if(name == "if" || name == "addr" || name == "name" || name == "flags" || name == "sgmntRtgMplsOutLabel")
         return true;
     return false;
 }
@@ -12028,7 +12243,8 @@ System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList::RtIt
     if_{YType::str, "if"},
     addr{YType::str, "addr"},
     name{YType::str, "name"},
-    flags{YType::str, "flags"}
+    flags{YType::str, "flags"},
+    sgmntrtgmplsoutlabel{YType::uint32, "sgmntRtgMplsOutLabel"}
 {
 
     yang_name = "McNexthop-list"; yang_parent_name = "mcnh-items"; is_top_level_class = false; has_list_ancestor = true; 
@@ -12044,7 +12260,8 @@ bool System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList:
     return if_.is_set
 	|| addr.is_set
 	|| name.is_set
-	|| flags.is_set;
+	|| flags.is_set
+	|| sgmntrtgmplsoutlabel.is_set;
 }
 
 bool System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList::RtItems::RouteList::McnhItems::McNexthopList::has_operation() const
@@ -12053,7 +12270,8 @@ bool System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList:
 	|| ydk::is_set(if_.yfilter)
 	|| ydk::is_set(addr.yfilter)
 	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(flags.yfilter);
+	|| ydk::is_set(flags.yfilter)
+	|| ydk::is_set(sgmntrtgmplsoutlabel.yfilter);
 }
 
 std::string System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList::RtItems::RouteList::McnhItems::McNexthopList::get_segment_path() const
@@ -12073,6 +12291,7 @@ std::vector<std::pair<std::string, LeafData> > System::OspfItems::InstItems::Ins
     if (addr.is_set || is_set(addr.yfilter)) leaf_name_data.push_back(addr.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
+    if (sgmntrtgmplsoutlabel.is_set || is_set(sgmntrtgmplsoutlabel.yfilter)) leaf_name_data.push_back(sgmntrtgmplsoutlabel.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -12116,6 +12335,12 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList:
         flags.value_namespace = name_space;
         flags.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "sgmntRtgMplsOutLabel")
+    {
+        sgmntrtgmplsoutlabel = value;
+        sgmntrtgmplsoutlabel.value_namespace = name_space;
+        sgmntrtgmplsoutlabel.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList::RtItems::RouteList::McnhItems::McNexthopList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -12136,11 +12361,15 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList:
     {
         flags.yfilter = yfilter;
     }
+    if(value_path == "sgmntRtgMplsOutLabel")
+    {
+        sgmntrtgmplsoutlabel.yfilter = yfilter;
+    }
 }
 
 bool System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList::RtItems::RouteList::McnhItems::McNexthopList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "if" || name == "addr" || name == "name" || name == "flags")
+    if(name == "if" || name == "addr" || name == "name" || name == "flags" || name == "sgmntRtgMplsOutLabel")
         return true;
     return false;
 }
@@ -12999,6 +13228,7 @@ System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList::IfLi
     xmitdelay{YType::uint16, "xmitDelay"},
     area{YType::str, "area"},
     advertisesecondaries{YType::boolean, "advertiseSecondaries"},
+    nodeflag{YType::enumeration, "nodeFlag"},
     operst{YType::enumeration, "operSt"},
     failstqual{YType::str, "failStQual"},
     type{YType::enumeration, "type"},
@@ -13012,6 +13242,7 @@ System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList::IfLi
     opercost{YType::uint16, "operCost"},
     operdeadintvl{YType::uint32, "operDeadIntvl"},
     opersidindex{YType::int32, "operSidIndex"},
+    explicitnull{YType::enumeration, "explicitNull"},
     hellointvl{YType::uint16, "helloIntvl"},
     deadintvl{YType::uint32, "deadIntvl"},
     rexmitintvl{YType::uint16, "rexmitIntvl"}
@@ -13061,6 +13292,7 @@ bool System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList:
 	|| xmitdelay.is_set
 	|| area.is_set
 	|| advertisesecondaries.is_set
+	|| nodeflag.is_set
 	|| operst.is_set
 	|| failstqual.is_set
 	|| type.is_set
@@ -13074,6 +13306,7 @@ bool System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList:
 	|| opercost.is_set
 	|| operdeadintvl.is_set
 	|| opersidindex.is_set
+	|| explicitnull.is_set
 	|| hellointvl.is_set
 	|| deadintvl.is_set
 	|| rexmitintvl.is_set
@@ -13105,6 +13338,7 @@ bool System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList:
 	|| ydk::is_set(xmitdelay.yfilter)
 	|| ydk::is_set(area.yfilter)
 	|| ydk::is_set(advertisesecondaries.yfilter)
+	|| ydk::is_set(nodeflag.yfilter)
 	|| ydk::is_set(operst.yfilter)
 	|| ydk::is_set(failstqual.yfilter)
 	|| ydk::is_set(type.yfilter)
@@ -13118,6 +13352,7 @@ bool System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList:
 	|| ydk::is_set(opercost.yfilter)
 	|| ydk::is_set(operdeadintvl.yfilter)
 	|| ydk::is_set(opersidindex.yfilter)
+	|| ydk::is_set(explicitnull.yfilter)
 	|| ydk::is_set(hellointvl.yfilter)
 	|| ydk::is_set(deadintvl.yfilter)
 	|| ydk::is_set(rexmitintvl.yfilter)
@@ -13158,6 +13393,7 @@ std::vector<std::pair<std::string, LeafData> > System::OspfItems::InstItems::Ins
     if (xmitdelay.is_set || is_set(xmitdelay.yfilter)) leaf_name_data.push_back(xmitdelay.get_name_leafdata());
     if (area.is_set || is_set(area.yfilter)) leaf_name_data.push_back(area.get_name_leafdata());
     if (advertisesecondaries.is_set || is_set(advertisesecondaries.yfilter)) leaf_name_data.push_back(advertisesecondaries.get_name_leafdata());
+    if (nodeflag.is_set || is_set(nodeflag.yfilter)) leaf_name_data.push_back(nodeflag.get_name_leafdata());
     if (operst.is_set || is_set(operst.yfilter)) leaf_name_data.push_back(operst.get_name_leafdata());
     if (failstqual.is_set || is_set(failstqual.yfilter)) leaf_name_data.push_back(failstqual.get_name_leafdata());
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
@@ -13171,6 +13407,7 @@ std::vector<std::pair<std::string, LeafData> > System::OspfItems::InstItems::Ins
     if (opercost.is_set || is_set(opercost.yfilter)) leaf_name_data.push_back(opercost.get_name_leafdata());
     if (operdeadintvl.is_set || is_set(operdeadintvl.yfilter)) leaf_name_data.push_back(operdeadintvl.get_name_leafdata());
     if (opersidindex.is_set || is_set(opersidindex.yfilter)) leaf_name_data.push_back(opersidindex.get_name_leafdata());
+    if (explicitnull.is_set || is_set(explicitnull.yfilter)) leaf_name_data.push_back(explicitnull.get_name_leafdata());
     if (hellointvl.is_set || is_set(hellointvl.yfilter)) leaf_name_data.push_back(hellointvl.get_name_leafdata());
     if (deadintvl.is_set || is_set(deadintvl.yfilter)) leaf_name_data.push_back(deadintvl.get_name_leafdata());
     if (rexmitintvl.is_set || is_set(rexmitintvl.yfilter)) leaf_name_data.push_back(rexmitintvl.get_name_leafdata());
@@ -13411,6 +13648,12 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList:
         advertisesecondaries.value_namespace = name_space;
         advertisesecondaries.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "nodeFlag")
+    {
+        nodeflag = value;
+        nodeflag.value_namespace = name_space;
+        nodeflag.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "operSt")
     {
         operst = value;
@@ -13489,6 +13732,12 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList:
         opersidindex.value_namespace = name_space;
         opersidindex.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "explicitNull")
+    {
+        explicitnull = value;
+        explicitnull.value_namespace = name_space;
+        explicitnull.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "helloIntvl")
     {
         hellointvl = value;
@@ -13563,6 +13812,10 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList:
     {
         advertisesecondaries.yfilter = yfilter;
     }
+    if(value_path == "nodeFlag")
+    {
+        nodeflag.yfilter = yfilter;
+    }
     if(value_path == "operSt")
     {
         operst.yfilter = yfilter;
@@ -13615,6 +13868,10 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList:
     {
         opersidindex.yfilter = yfilter;
     }
+    if(value_path == "explicitNull")
+    {
+        explicitnull.yfilter = yfilter;
+    }
     if(value_path == "helloIntvl")
     {
         hellointvl.yfilter = yfilter;
@@ -13631,7 +13888,7 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList:
 
 bool System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "adj-items" || name == "auth-items" || name == "authnew-items" || name == "db-items" || name == "ifstats-items" || name == "multiarea-items" || name == "trstats-items" || name == "rtospfIfDefToOspfIf-items" || name == "rtvrfMbr-items" || name == "rtnwPathToIf-items" || name == "id" || name == "name" || name == "descr" || name == "adminSt" || name == "ctrl" || name == "passiveCtrl" || name == "bfdCtrl" || name == "nwT" || name == "prio" || name == "cost" || name == "xmitDelay" || name == "area" || name == "advertiseSecondaries" || name == "operSt" || name == "failStQual" || name == "type" || name == "flags" || name == "addr" || name == "dr" || name == "bdr" || name == "drId" || name == "bdrId" || name == "lsaCksumSum" || name == "operCost" || name == "operDeadIntvl" || name == "operSidIndex" || name == "helloIntvl" || name == "deadIntvl" || name == "rexmitIntvl")
+    if(name == "adj-items" || name == "auth-items" || name == "authnew-items" || name == "db-items" || name == "ifstats-items" || name == "multiarea-items" || name == "trstats-items" || name == "rtospfIfDefToOspfIf-items" || name == "rtvrfMbr-items" || name == "rtnwPathToIf-items" || name == "id" || name == "name" || name == "descr" || name == "adminSt" || name == "ctrl" || name == "passiveCtrl" || name == "bfdCtrl" || name == "nwT" || name == "prio" || name == "cost" || name == "xmitDelay" || name == "area" || name == "advertiseSecondaries" || name == "nodeFlag" || name == "operSt" || name == "failStQual" || name == "type" || name == "flags" || name == "addr" || name == "dr" || name == "bdr" || name == "drId" || name == "bdrId" || name == "lsaCksumSum" || name == "operCost" || name == "operDeadIntvl" || name == "operSidIndex" || name == "explicitNull" || name == "helloIntvl" || name == "deadIntvl" || name == "rexmitIntvl")
         return true;
     return false;
 }
@@ -15245,7 +15502,9 @@ System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList::DbIt
     ucastcost{YType::uint16, "ucastCost"},
     mcastcost{YType::uint16, "mcastCost"},
     tag{YType::uint32, "tag"},
-    dist{YType::uint8, "dist"}
+    dist{YType::uint8, "dist"},
+    sgmntrtgmplssid{YType::uint32, "sgmntRtgMplsSid"},
+    sgmntrtgmplsinlabel{YType::uint32, "sgmntRtgMplsInLabel"}
         ,
     ucnh_items(std::make_shared<System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList::DbItems::DbList::RtItems::RouteList::UcnhItems>())
     , mcnh_items(std::make_shared<System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList::DbItems::DbList::RtItems::RouteList::McnhItems>())
@@ -15272,6 +15531,8 @@ bool System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList:
 	|| mcastcost.is_set
 	|| tag.is_set
 	|| dist.is_set
+	|| sgmntrtgmplssid.is_set
+	|| sgmntrtgmplsinlabel.is_set
 	|| (ucnh_items !=  nullptr && ucnh_items->has_data())
 	|| (mcnh_items !=  nullptr && mcnh_items->has_data());
 }
@@ -15288,6 +15549,8 @@ bool System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList:
 	|| ydk::is_set(mcastcost.yfilter)
 	|| ydk::is_set(tag.yfilter)
 	|| ydk::is_set(dist.yfilter)
+	|| ydk::is_set(sgmntrtgmplssid.yfilter)
+	|| ydk::is_set(sgmntrtgmplsinlabel.yfilter)
 	|| (ucnh_items !=  nullptr && ucnh_items->has_operation())
 	|| (mcnh_items !=  nullptr && mcnh_items->has_operation());
 }
@@ -15313,6 +15576,8 @@ std::vector<std::pair<std::string, LeafData> > System::OspfItems::InstItems::Ins
     if (mcastcost.is_set || is_set(mcastcost.yfilter)) leaf_name_data.push_back(mcastcost.get_name_leafdata());
     if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
     if (dist.is_set || is_set(dist.yfilter)) leaf_name_data.push_back(dist.get_name_leafdata());
+    if (sgmntrtgmplssid.is_set || is_set(sgmntrtgmplssid.yfilter)) leaf_name_data.push_back(sgmntrtgmplssid.get_name_leafdata());
+    if (sgmntrtgmplsinlabel.is_set || is_set(sgmntrtgmplsinlabel.yfilter)) leaf_name_data.push_back(sgmntrtgmplsinlabel.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -15414,6 +15679,18 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList:
         dist.value_namespace = name_space;
         dist.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "sgmntRtgMplsSid")
+    {
+        sgmntrtgmplssid = value;
+        sgmntrtgmplssid.value_namespace = name_space;
+        sgmntrtgmplssid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sgmntRtgMplsInLabel")
+    {
+        sgmntrtgmplsinlabel = value;
+        sgmntrtgmplsinlabel.value_namespace = name_space;
+        sgmntrtgmplsinlabel.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList::DbItems::DbList::RtItems::RouteList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -15454,11 +15731,19 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList:
     {
         dist.yfilter = yfilter;
     }
+    if(value_path == "sgmntRtgMplsSid")
+    {
+        sgmntrtgmplssid.yfilter = yfilter;
+    }
+    if(value_path == "sgmntRtgMplsInLabel")
+    {
+        sgmntrtgmplsinlabel.yfilter = yfilter;
+    }
 }
 
 bool System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList::DbItems::DbList::RtItems::RouteList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ucnh-items" || name == "mcnh-items" || name == "pfx" || name == "name" || name == "pathT" || name == "area" || name == "flags" || name == "ucastCost" || name == "mcastCost" || name == "tag" || name == "dist")
+    if(name == "ucnh-items" || name == "mcnh-items" || name == "pfx" || name == "name" || name == "pathT" || name == "area" || name == "flags" || name == "ucastCost" || name == "mcastCost" || name == "tag" || name == "dist" || name == "sgmntRtgMplsSid" || name == "sgmntRtgMplsInLabel")
         return true;
     return false;
 }
@@ -15561,7 +15846,8 @@ System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList::DbIt
     if_{YType::str, "if"},
     addr{YType::str, "addr"},
     name{YType::str, "name"},
-    flags{YType::str, "flags"}
+    flags{YType::str, "flags"},
+    sgmntrtgmplsoutlabel{YType::uint32, "sgmntRtgMplsOutLabel"}
 {
 
     yang_name = "UcNexthop-list"; yang_parent_name = "ucnh-items"; is_top_level_class = false; has_list_ancestor = true; 
@@ -15577,7 +15863,8 @@ bool System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList:
     return if_.is_set
 	|| addr.is_set
 	|| name.is_set
-	|| flags.is_set;
+	|| flags.is_set
+	|| sgmntrtgmplsoutlabel.is_set;
 }
 
 bool System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList::DbItems::DbList::RtItems::RouteList::UcnhItems::UcNexthopList::has_operation() const
@@ -15586,7 +15873,8 @@ bool System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList:
 	|| ydk::is_set(if_.yfilter)
 	|| ydk::is_set(addr.yfilter)
 	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(flags.yfilter);
+	|| ydk::is_set(flags.yfilter)
+	|| ydk::is_set(sgmntrtgmplsoutlabel.yfilter);
 }
 
 std::string System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList::DbItems::DbList::RtItems::RouteList::UcnhItems::UcNexthopList::get_segment_path() const
@@ -15606,6 +15894,7 @@ std::vector<std::pair<std::string, LeafData> > System::OspfItems::InstItems::Ins
     if (addr.is_set || is_set(addr.yfilter)) leaf_name_data.push_back(addr.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
+    if (sgmntrtgmplsoutlabel.is_set || is_set(sgmntrtgmplsoutlabel.yfilter)) leaf_name_data.push_back(sgmntrtgmplsoutlabel.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -15649,6 +15938,12 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList:
         flags.value_namespace = name_space;
         flags.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "sgmntRtgMplsOutLabel")
+    {
+        sgmntrtgmplsoutlabel = value;
+        sgmntrtgmplsoutlabel.value_namespace = name_space;
+        sgmntrtgmplsoutlabel.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList::DbItems::DbList::RtItems::RouteList::UcnhItems::UcNexthopList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -15669,11 +15964,15 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList:
     {
         flags.yfilter = yfilter;
     }
+    if(value_path == "sgmntRtgMplsOutLabel")
+    {
+        sgmntrtgmplsoutlabel.yfilter = yfilter;
+    }
 }
 
 bool System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList::DbItems::DbList::RtItems::RouteList::UcnhItems::UcNexthopList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "if" || name == "addr" || name == "name" || name == "flags")
+    if(name == "if" || name == "addr" || name == "name" || name == "flags" || name == "sgmntRtgMplsOutLabel")
         return true;
     return false;
 }
@@ -15776,7 +16075,8 @@ System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList::DbIt
     if_{YType::str, "if"},
     addr{YType::str, "addr"},
     name{YType::str, "name"},
-    flags{YType::str, "flags"}
+    flags{YType::str, "flags"},
+    sgmntrtgmplsoutlabel{YType::uint32, "sgmntRtgMplsOutLabel"}
 {
 
     yang_name = "McNexthop-list"; yang_parent_name = "mcnh-items"; is_top_level_class = false; has_list_ancestor = true; 
@@ -15792,7 +16092,8 @@ bool System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList:
     return if_.is_set
 	|| addr.is_set
 	|| name.is_set
-	|| flags.is_set;
+	|| flags.is_set
+	|| sgmntrtgmplsoutlabel.is_set;
 }
 
 bool System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList::DbItems::DbList::RtItems::RouteList::McnhItems::McNexthopList::has_operation() const
@@ -15801,7 +16102,8 @@ bool System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList:
 	|| ydk::is_set(if_.yfilter)
 	|| ydk::is_set(addr.yfilter)
 	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(flags.yfilter);
+	|| ydk::is_set(flags.yfilter)
+	|| ydk::is_set(sgmntrtgmplsoutlabel.yfilter);
 }
 
 std::string System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList::DbItems::DbList::RtItems::RouteList::McnhItems::McNexthopList::get_segment_path() const
@@ -15821,6 +16123,7 @@ std::vector<std::pair<std::string, LeafData> > System::OspfItems::InstItems::Ins
     if (addr.is_set || is_set(addr.yfilter)) leaf_name_data.push_back(addr.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
+    if (sgmntrtgmplsoutlabel.is_set || is_set(sgmntrtgmplsoutlabel.yfilter)) leaf_name_data.push_back(sgmntrtgmplsoutlabel.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -15864,6 +16167,12 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList:
         flags.value_namespace = name_space;
         flags.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "sgmntRtgMplsOutLabel")
+    {
+        sgmntrtgmplsoutlabel = value;
+        sgmntrtgmplsoutlabel.value_namespace = name_space;
+        sgmntrtgmplsoutlabel.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList::DbItems::DbList::RtItems::RouteList::McnhItems::McNexthopList::set_filter(const std::string & value_path, YFilter yfilter)
@@ -15884,11 +16193,15 @@ void System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList:
     {
         flags.yfilter = yfilter;
     }
+    if(value_path == "sgmntRtgMplsOutLabel")
+    {
+        sgmntrtgmplsoutlabel.yfilter = yfilter;
+    }
 }
 
 bool System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList::DbItems::DbList::RtItems::RouteList::McnhItems::McNexthopList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "if" || name == "addr" || name == "name" || name == "flags")
+    if(name == "if" || name == "addr" || name == "name" || name == "flags" || name == "sgmntRtgMplsOutLabel")
         return true;
     return false;
 }
@@ -22861,106 +23174,6 @@ void System::UserextItems::LdapextItems::set_filter(const std::string & value_pa
 bool System::UserextItems::LdapextItems::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ldapprovidergroup-items" || name == "ldapprovider-items" || name == "rtfabricResLdapEp-items" || name == "attribute" || name == "basedn" || name == "filter" || name == "name" || name == "ownerKey" || name == "ownerTag" || name == "descr" || name == "timeout" || name == "retries" || name == "srcIf")
-        return true;
-    return false;
-}
-
-System::UserextItems::LdapextItems::LdapprovidergroupItems::LdapprovidergroupItems()
-    :
-    ldapprovidergroup_list(this, {"name"})
-{
-
-    yang_name = "ldapprovidergroup-items"; yang_parent_name = "ldapext-items"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-System::UserextItems::LdapextItems::LdapprovidergroupItems::~LdapprovidergroupItems()
-{
-}
-
-bool System::UserextItems::LdapextItems::LdapprovidergroupItems::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<ldapprovidergroup_list.len(); index++)
-    {
-        if(ldapprovidergroup_list[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool System::UserextItems::LdapextItems::LdapprovidergroupItems::has_operation() const
-{
-    for (std::size_t index=0; index<ldapprovidergroup_list.len(); index++)
-    {
-        if(ldapprovidergroup_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string System::UserextItems::LdapextItems::LdapprovidergroupItems::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-NX-OS-device:System/userext-items/ldapext-items/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string System::UserextItems::LdapextItems::LdapprovidergroupItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ldapprovidergroup-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::UserextItems::LdapextItems::LdapprovidergroupItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::UserextItems::LdapextItems::LdapprovidergroupItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "LdapProviderGroup-list")
-    {
-        auto ent_ = std::make_shared<System::UserextItems::LdapextItems::LdapprovidergroupItems::LdapProviderGroupList>();
-        ent_->parent = this;
-        ldapprovidergroup_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::UserextItems::LdapextItems::LdapprovidergroupItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : ldapprovidergroup_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void System::UserextItems::LdapextItems::LdapprovidergroupItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void System::UserextItems::LdapextItems::LdapprovidergroupItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool System::UserextItems::LdapextItems::LdapprovidergroupItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "LdapProviderGroup-list")
         return true;
     return false;
 }

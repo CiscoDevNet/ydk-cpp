@@ -17249,6 +17249,8 @@ Aaa::Diameter::Diams::Diam::DiamAttrDefs::DiamAttrDef::DiamAttrValue::DiamAttrVa
     type_ulong{YType::uint32, "type-ulong"},
     type_identity{YType::str, "type-identity"},
     data_type{YType::uint32, "data-type"},
+    type_ulonglong{YType::uint32, "type-ulonglong"},
+    type_utc{YType::uint32, "type-utc"},
     mandatory{YType::uint32, "mandatory"}
 {
 
@@ -17271,6 +17273,8 @@ bool Aaa::Diameter::Diams::Diam::DiamAttrDefs::DiamAttrDef::DiamAttrValue::has_d
 	|| type_ulong.is_set
 	|| type_identity.is_set
 	|| data_type.is_set
+	|| type_ulonglong.is_set
+	|| type_utc.is_set
 	|| mandatory.is_set;
 }
 
@@ -17286,6 +17290,8 @@ bool Aaa::Diameter::Diams::Diam::DiamAttrDefs::DiamAttrDef::DiamAttrValue::has_o
 	|| ydk::is_set(type_ulong.yfilter)
 	|| ydk::is_set(type_identity.yfilter)
 	|| ydk::is_set(data_type.yfilter)
+	|| ydk::is_set(type_ulonglong.yfilter)
+	|| ydk::is_set(type_utc.yfilter)
 	|| ydk::is_set(mandatory.yfilter);
 }
 
@@ -17309,6 +17315,8 @@ std::vector<std::pair<std::string, LeafData> > Aaa::Diameter::Diams::Diam::DiamA
     if (type_ulong.is_set || is_set(type_ulong.yfilter)) leaf_name_data.push_back(type_ulong.get_name_leafdata());
     if (type_identity.is_set || is_set(type_identity.yfilter)) leaf_name_data.push_back(type_identity.get_name_leafdata());
     if (data_type.is_set || is_set(data_type.yfilter)) leaf_name_data.push_back(data_type.get_name_leafdata());
+    if (type_ulonglong.is_set || is_set(type_ulonglong.yfilter)) leaf_name_data.push_back(type_ulonglong.get_name_leafdata());
+    if (type_utc.is_set || is_set(type_utc.yfilter)) leaf_name_data.push_back(type_utc.get_name_leafdata());
     if (mandatory.is_set || is_set(mandatory.yfilter)) leaf_name_data.push_back(mandatory.get_name_leafdata());
 
     return leaf_name_data;
@@ -17383,6 +17391,18 @@ void Aaa::Diameter::Diams::Diam::DiamAttrDefs::DiamAttrDef::DiamAttrValue::set_v
         data_type.value_namespace = name_space;
         data_type.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "type-ulonglong")
+    {
+        type_ulonglong = value;
+        type_ulonglong.value_namespace = name_space;
+        type_ulonglong.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "type-utc")
+    {
+        type_utc = value;
+        type_utc.value_namespace = name_space;
+        type_utc.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "mandatory")
     {
         mandatory = value;
@@ -17429,6 +17449,14 @@ void Aaa::Diameter::Diams::Diam::DiamAttrDefs::DiamAttrDef::DiamAttrValue::set_f
     {
         data_type.yfilter = yfilter;
     }
+    if(value_path == "type-ulonglong")
+    {
+        type_ulonglong.yfilter = yfilter;
+    }
+    if(value_path == "type-utc")
+    {
+        type_utc.yfilter = yfilter;
+    }
     if(value_path == "mandatory")
     {
         mandatory.yfilter = yfilter;
@@ -17437,7 +17465,7 @@ void Aaa::Diameter::Diams::Diam::DiamAttrDefs::DiamAttrDef::DiamAttrValue::set_f
 
 bool Aaa::Diameter::Diams::Diam::DiamAttrDefs::DiamAttrDef::DiamAttrValue::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "type-string" || name == "type-ipv4-address" || name == "type-binary" || name == "type-boolean" || name == "type-enum" || name == "type-grouped" || name == "type-ulong" || name == "type-identity" || name == "data-type" || name == "mandatory")
+    if(name == "type-string" || name == "type-ipv4-address" || name == "type-binary" || name == "type-boolean" || name == "type-enum" || name == "type-grouped" || name == "type-ulong" || name == "type-identity" || name == "data-type" || name == "type-ulonglong" || name == "type-utc" || name == "mandatory")
         return true;
     return false;
 }

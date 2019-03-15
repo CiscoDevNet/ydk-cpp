@@ -65,22 +65,24 @@ class HwModuleProfileConfig::Profile : public ydk::Entity
 
         class TcamTable; //type: HwModuleProfileConfig::Profile::TcamTable
         class Netflow; //type: HwModuleProfileConfig::Profile::Netflow
-        class Flowspecs; //type: HwModuleProfileConfig::Profile::Flowspecs
+        class FlowspecTable; //type: HwModuleProfileConfig::Profile::FlowspecTable
         class SegmentRoutings; //type: HwModuleProfileConfig::Profile::SegmentRoutings
         class LoadBalance; //type: HwModuleProfileConfig::Profile::LoadBalance
         class Stats; //type: HwModuleProfileConfig::Profile::Stats
         class ProfileAcl; //type: HwModuleProfileConfig::Profile::ProfileAcl
+        class SrPolicies; //type: HwModuleProfileConfig::Profile::SrPolicies
         class BundleScale; //type: HwModuleProfileConfig::Profile::BundleScale
         class ProfileTcam; //type: HwModuleProfileConfig::Profile::ProfileTcam
         class Qos; //type: HwModuleProfileConfig::Profile::Qos
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::TcamTable> tcam_table;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::Netflow> netflow;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::Flowspecs> flowspecs;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::FlowspecTable> flowspec_table;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::SegmentRoutings> segment_routings;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::LoadBalance> load_balance;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::Stats> stats;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::ProfileAcl> profile_acl;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::SrPolicies> sr_policies;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::BundleScale> bundle_scale;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::ProfileTcam> profile_tcam;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::Qos> qos;
@@ -449,7 +451,31 @@ class HwModuleProfileConfig::Profile::Netflow::LocationAll : public ydk::Entity
 }; // HwModuleProfileConfig::Profile::Netflow::LocationAll
 
 
-class HwModuleProfileConfig::Profile::Flowspecs : public ydk::Entity
+class HwModuleProfileConfig::Profile::FlowspecTable : public ydk::Entity
+{
+    public:
+        FlowspecTable();
+        ~FlowspecTable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Flowspecs; //type: HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fia_hw_profile_cfg::HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs> flowspecs;
+        
+}; // HwModuleProfileConfig::Profile::FlowspecTable
+
+
+class HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs : public ydk::Entity
 {
     public:
         Flowspecs();
@@ -466,14 +492,14 @@ class HwModuleProfileConfig::Profile::Flowspecs : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Flowspec; //type: HwModuleProfileConfig::Profile::Flowspecs::Flowspec
+        class Flowspec; //type: HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::Flowspec
 
         ydk::YList flowspec;
         
-}; // HwModuleProfileConfig::Profile::Flowspecs
+}; // HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs
 
 
-class HwModuleProfileConfig::Profile::Flowspecs::Flowspec : public ydk::Entity
+class HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::Flowspec : public ydk::Entity
 {
     public:
         Flowspec();
@@ -490,12 +516,11 @@ class HwModuleProfileConfig::Profile::Flowspecs::Flowspec : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf v6_enable; //type: string
         ydk::YLeaf location_string; //type: string
         ydk::YLeaf location_id; //type: uint32
         ydk::YLeaf enable_val; //type: uint32
 
-}; // HwModuleProfileConfig::Profile::Flowspecs::Flowspec
+}; // HwModuleProfileConfig::Profile::FlowspecTable::Flowspecs::Flowspec
 
 
 class HwModuleProfileConfig::Profile::SegmentRoutings : public ydk::Entity
@@ -658,6 +683,53 @@ class HwModuleProfileConfig::Profile::ProfileAcl : public ydk::Entity
         ydk::YLeaf egress; //type: boolean
 
 }; // HwModuleProfileConfig::Profile::ProfileAcl
+
+
+class HwModuleProfileConfig::Profile::SrPolicies : public ydk::Entity
+{
+    public:
+        SrPolicies();
+        ~SrPolicies();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class SrPolicy; //type: HwModuleProfileConfig::Profile::SrPolicies::SrPolicy
+
+        ydk::YList sr_policy;
+        
+}; // HwModuleProfileConfig::Profile::SrPolicies
+
+
+class HwModuleProfileConfig::Profile::SrPolicies::SrPolicy : public ydk::Entity
+{
+    public:
+        SrPolicy();
+        ~SrPolicy();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf null_label_autopush; //type: string
+        ydk::YLeaf enable_val; //type: uint32
+
+}; // HwModuleProfileConfig::Profile::SrPolicies::SrPolicy
 
 
 class HwModuleProfileConfig::Profile::BundleScale : public ydk::Entity

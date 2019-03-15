@@ -788,10 +788,8 @@ class L2rib::EviChildTables::MacipDetails::MacipDetail : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf evi; //type: uint32
-        ydk::YLeaf tag_id; //type: uint32
         ydk::YLeaf mac_addr; //type: string
         ydk::YLeaf ip_addr; //type: string
-        ydk::YLeaf admin_dist; //type: uint32
         ydk::YLeaf prod_id; //type: uint32
         ydk::YLeaf sequence_number; //type: uint32
         ydk::YLeaf flags; //type: string
@@ -1056,10 +1054,8 @@ class L2rib::EviChildTables::MacIps::MacIp : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf evi; //type: uint32
-        ydk::YLeaf tag_id; //type: uint32
         ydk::YLeaf mac_addr; //type: string
         ydk::YLeaf ip_addr; //type: string
-        ydk::YLeaf admin_dist; //type: uint32
         ydk::YLeaf prod_id; //type: uint32
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf ip_address; //type: string
@@ -1196,9 +1192,7 @@ class L2rib::EviChildTables::Macs::Mac : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf evi; //type: uint32
-        ydk::YLeaf tag_id; //type: uint32
         ydk::YLeaf mac_addr; //type: string
-        ydk::YLeaf admin_dist; //type: uint32
         ydk::YLeaf prod_id; //type: uint32
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf admin_distance; //type: uint8
@@ -2102,9 +2096,7 @@ class L2rib::EviChildTables::MacDetails::MacDetail : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf evi; //type: uint32
-        ydk::YLeaf tag_id; //type: uint32
         ydk::YLeaf mac_addr; //type: string
-        ydk::YLeaf admin_dist; //type: uint32
         ydk::YLeaf prod_id; //type: uint32
         ydk::YLeaf sequence_number; //type: uint32
         ydk::YLeaf flags; //type: string

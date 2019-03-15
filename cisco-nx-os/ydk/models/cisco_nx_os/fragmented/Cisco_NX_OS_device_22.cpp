@@ -12,6 +12,106 @@ using namespace ydk;
 namespace cisco_nx_os {
 namespace Cisco_NX_OS_device {
 
+System::UserextItems::LdapextItems::LdapprovidergroupItems::LdapprovidergroupItems()
+    :
+    ldapprovidergroup_list(this, {"name"})
+{
+
+    yang_name = "ldapprovidergroup-items"; yang_parent_name = "ldapext-items"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+System::UserextItems::LdapextItems::LdapprovidergroupItems::~LdapprovidergroupItems()
+{
+}
+
+bool System::UserextItems::LdapextItems::LdapprovidergroupItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<ldapprovidergroup_list.len(); index++)
+    {
+        if(ldapprovidergroup_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::UserextItems::LdapextItems::LdapprovidergroupItems::has_operation() const
+{
+    for (std::size_t index=0; index<ldapprovidergroup_list.len(); index++)
+    {
+        if(ldapprovidergroup_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::UserextItems::LdapextItems::LdapprovidergroupItems::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:System/userext-items/ldapext-items/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string System::UserextItems::LdapextItems::LdapprovidergroupItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ldapprovidergroup-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::UserextItems::LdapextItems::LdapprovidergroupItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::UserextItems::LdapextItems::LdapprovidergroupItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "LdapProviderGroup-list")
+    {
+        auto ent_ = std::make_shared<System::UserextItems::LdapextItems::LdapprovidergroupItems::LdapProviderGroupList>();
+        ent_->parent = this;
+        ldapprovidergroup_list.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::UserextItems::LdapextItems::LdapprovidergroupItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : ldapprovidergroup_list.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void System::UserextItems::LdapextItems::LdapprovidergroupItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::UserextItems::LdapextItems::LdapprovidergroupItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::UserextItems::LdapextItems::LdapprovidergroupItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "LdapProviderGroup-list")
+        return true;
+    return false;
+}
+
 System::UserextItems::LdapextItems::LdapprovidergroupItems::LdapProviderGroupList::LdapProviderGroupList()
     :
     name{YType::str, "name"},
@@ -22242,99 +22342,6 @@ void System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::set
 bool System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "member-items" || name == "rsvlanMemberAtt-items")
-        return true;
-    return false;
-}
-
-System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::MemberItems()
-    :
-    vlanmemberentry_list(this, {"vlan"})
-{
-
-    yang_name = "member-items"; yang_parent_name = "vlanMemberTable-items"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::~MemberItems()
-{
-}
-
-bool System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<vlanmemberentry_list.len(); index++)
-    {
-        if(vlanmemberentry_list[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::has_operation() const
-{
-    for (std::size_t index=0; index<vlanmemberentry_list.len(); index++)
-    {
-        if(vlanmemberentry_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "member-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "VlanMemberEntry-list")
-    {
-        auto ent_ = std::make_shared<System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::VlanMemberEntryList>();
-        ent_->parent = this;
-        vlanmemberentry_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : vlanmemberentry_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool System::IntfTableItems::IntfItems::IntfEntryList::VlanMemberTableItems::MemberItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "VlanMemberEntry-list")
         return true;
     return false;
 }

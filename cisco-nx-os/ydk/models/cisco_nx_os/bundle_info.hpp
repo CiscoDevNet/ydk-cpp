@@ -27,7 +27,7 @@
 
 namespace ydk
 {
-#define ydk_cisco_nx_os_models_path "/usr/local/share/cisco_nx_os@9.2.2"
+#define ydk_cisco_nx_os_models_path "/usr/local/share/cisco_nx_os@9.2.3"
 }
 
 #endif /* _BUNDLE_INFO_HPP_ */

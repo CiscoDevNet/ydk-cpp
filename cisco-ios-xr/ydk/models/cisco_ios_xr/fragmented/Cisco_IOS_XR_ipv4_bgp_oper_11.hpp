@@ -1806,6 +1806,7 @@ class Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::Configuration
         ydk::YLeaf entity_type; //type: BgpEntity
         ydk::YLeaf neighbor_address; //type: string
         ydk::YLeaf entity_name; //type: string
+        ydk::YLeaf length; //type: uint32
         ydk::YLeaf group_name; //type: string
         ydk::YLeaf configuration_type; //type: BgpEntities
         ydk::YLeaf address_family_identifier; //type: uint8
@@ -2365,6 +2366,7 @@ class Bgp::ConfigInstances::ConfigInstance::ConfigVrfs::ConfigVrf::Configuration
         ydk::YLeaf entity_type; //type: BgpEntity
         ydk::YLeaf neighbor_address; //type: string
         ydk::YLeaf entity_name; //type: string
+        ydk::YLeaf length; //type: uint32
         ydk::YLeaf group_name; //type: string
         ydk::YLeaf configuration_type; //type: BgpEntities
         ydk::YLeaf address_family_identifier; //type: uint8

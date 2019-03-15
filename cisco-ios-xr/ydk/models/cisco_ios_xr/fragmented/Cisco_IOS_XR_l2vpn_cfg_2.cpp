@@ -6328,7 +6328,8 @@ bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EviLoadBalancing::has_leaf_or_child_of
 Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnEviBgpAutoDiscovery()
     :
     enable{YType::empty, "enable"},
-    table_policy{YType::str, "table-policy"}
+    table_policy{YType::str, "table-policy"},
+    implicit_import_disable{YType::empty, "implicit-import-disable"}
         ,
     evpn_route_distinguisher(std::make_shared<Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteDistinguisher>())
     , evpn_route_targets(std::make_shared<Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::EvpnRouteTargets>())
@@ -6348,6 +6349,7 @@ bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::has_data() co
     if (is_presence_container) return true;
     return enable.is_set
 	|| table_policy.is_set
+	|| implicit_import_disable.is_set
 	|| (evpn_route_distinguisher !=  nullptr && evpn_route_distinguisher->has_data())
 	|| (evpn_route_targets !=  nullptr && evpn_route_targets->has_data());
 }
@@ -6357,6 +6359,7 @@ bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::has_operation
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(table_policy.yfilter)
+	|| ydk::is_set(implicit_import_disable.yfilter)
 	|| (evpn_route_distinguisher !=  nullptr && evpn_route_distinguisher->has_operation())
 	|| (evpn_route_targets !=  nullptr && evpn_route_targets->has_operation());
 }
@@ -6374,6 +6377,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnEvis::EvpnE
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (table_policy.is_set || is_set(table_policy.yfilter)) leaf_name_data.push_back(table_policy.get_name_leafdata());
+    if (implicit_import_disable.is_set || is_set(implicit_import_disable.yfilter)) leaf_name_data.push_back(implicit_import_disable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -6433,6 +6437,12 @@ void Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::set_value(con
         table_policy.value_namespace = name_space;
         table_policy.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "implicit-import-disable")
+    {
+        implicit_import_disable = value;
+        implicit_import_disable.value_namespace = name_space;
+        implicit_import_disable.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::set_filter(const std::string & value_path, YFilter yfilter)
@@ -6445,11 +6455,15 @@ void Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::set_filter(co
     {
         table_policy.yfilter = yfilter;
     }
+    if(value_path == "implicit-import-disable")
+    {
+        implicit_import_disable.yfilter = yfilter;
+    }
 }
 
 bool Evpn::EvpnTables::EvpnEvis::EvpnEvi::EvpnEviBgpAutoDiscovery::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "evpn-route-distinguisher" || name == "evpn-route-targets" || name == "enable" || name == "table-policy")
+    if(name == "evpn-route-distinguisher" || name == "evpn-route-targets" || name == "enable" || name == "table-policy" || name == "implicit-import-disable")
         return true;
     return false;
 }
@@ -9227,7 +9241,8 @@ bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::has_leaf_or_child_of_name(co
 Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnInstanceBgpAutoDiscovery()
     :
     enable{YType::empty, "enable"},
-    table_policy{YType::str, "table-policy"}
+    table_policy{YType::str, "table-policy"},
+    implicit_import_disable{YType::empty, "implicit-import-disable"}
         ,
     evpn_route_distinguisher(std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteDistinguisher>())
     , evpn_route_targets(std::make_shared<Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets>())
@@ -9247,6 +9262,7 @@ bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery
     if (is_presence_container) return true;
     return enable.is_set
 	|| table_policy.is_set
+	|| implicit_import_disable.is_set
 	|| (evpn_route_distinguisher !=  nullptr && evpn_route_distinguisher->has_data())
 	|| (evpn_route_targets !=  nullptr && evpn_route_targets->has_data());
 }
@@ -9256,6 +9272,7 @@ bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery
     return is_set(yfilter)
 	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(table_policy.yfilter)
+	|| ydk::is_set(implicit_import_disable.yfilter)
 	|| (evpn_route_distinguisher !=  nullptr && evpn_route_distinguisher->has_operation())
 	|| (evpn_route_targets !=  nullptr && evpn_route_targets->has_operation());
 }
@@ -9273,6 +9290,7 @@ std::vector<std::pair<std::string, LeafData> > Evpn::EvpnTables::EvpnInstances::
 
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (table_policy.is_set || is_set(table_policy.yfilter)) leaf_name_data.push_back(table_policy.get_name_leafdata());
+    if (implicit_import_disable.is_set || is_set(implicit_import_disable.yfilter)) leaf_name_data.push_back(implicit_import_disable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -9332,6 +9350,12 @@ void Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery
         table_policy.value_namespace = name_space;
         table_policy.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "implicit-import-disable")
+    {
+        implicit_import_disable = value;
+        implicit_import_disable.value_namespace = name_space;
+        implicit_import_disable.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::set_filter(const std::string & value_path, YFilter yfilter)
@@ -9344,11 +9368,15 @@ void Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery
     {
         table_policy.yfilter = yfilter;
     }
+    if(value_path == "implicit-import-disable")
+    {
+        implicit_import_disable.yfilter = yfilter;
+    }
 }
 
 bool Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "evpn-route-distinguisher" || name == "evpn-route-targets" || name == "enable" || name == "table-policy")
+    if(name == "evpn-route-distinguisher" || name == "evpn-route-targets" || name == "enable" || name == "table-policy" || name == "implicit-import-disable")
         return true;
     return false;
 }

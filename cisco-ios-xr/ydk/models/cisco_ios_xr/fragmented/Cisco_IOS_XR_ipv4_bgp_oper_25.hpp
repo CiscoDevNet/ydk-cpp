@@ -3693,6 +3693,7 @@ class Bgp::Instances::Instance::InstanceActive::Vrfs::Vrf::Neighbors::Neighbor::
         ydk::YLeaf sent_community_to_neighbor; //type: boolean
         ydk::YLeaf sent_gshut_community_to_neighbor; //type: boolean
         ydk::YLeaf sent_extended_community_to_neighbor; //type: boolean
+        ydk::YLeaf default_originate_vpn_index; //type: uint32
         ydk::YLeaf neighbor_default_originate; //type: boolean
         ydk::YLeaf is_orf_sent; //type: boolean
         ydk::YLeaf is_update_deferred; //type: boolean

@@ -615,6 +615,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server : public ydk::Entity
         class RequestedIpAddress; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::RequestedIpAddress
         class AaaServer; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::AaaServer
         class DefaultRouters; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DefaultRouters
+        class DeleteBindingOnDiscover; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DeleteBindingOnDiscover
         class NetBiosNameServers; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::NetBiosNameServers
         class Match; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match
         class BroadcastFlag; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::BroadcastFlag
@@ -632,6 +633,7 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::RequestedIpAddress> requested_ip_address;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::AaaServer> aaa_server;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DefaultRouters> default_routers;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DeleteBindingOnDiscover> delete_binding_on_discover;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::NetBiosNameServers> net_bios_name_servers;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::Match> match;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::BroadcastFlag> broadcast_flag;
@@ -774,6 +776,27 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DefaultRouters : public
         ydk::YLeafList default_router; //type: list of  string
 
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DefaultRouters
+
+
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DeleteBindingOnDiscover : public ydk::Entity
+{
+    public:
+        DeleteBindingOnDiscover();
+        ~DeleteBindingOnDiscover();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf disable; //type: empty
+
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::DeleteBindingOnDiscover
 
 
 class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server::NetBiosNameServers : public ydk::Entity
@@ -3066,7 +3089,9 @@ class Ipv4dhcpdFmt : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf no_format;
-        static const ydk::Enum::YLeaf format;
+        static const ydk::Enum::YLeaf hex;
+        static const ydk::Enum::YLeaf ascii;
+        static const ydk::Enum::YLeaf extended;
 
 };
 

@@ -2630,6 +2630,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::has_leaf_or_child_of_name(const
 Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::SegmentRouting()
     :
     bundle_member_adj_sid{YType::empty, "bundle-member-adj-sid"},
+    labeled_only{YType::empty, "labeled-only"},
     mpls{YType::enumeration, "mpls"},
     srv6{YType::empty, "srv6"}
         ,
@@ -2648,6 +2649,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::has_data() cons
 {
     if (is_presence_container) return true;
     return bundle_member_adj_sid.is_set
+	|| labeled_only.is_set
 	|| mpls.is_set
 	|| srv6.is_set
 	|| (prefix_sid_map !=  nullptr && prefix_sid_map->has_data());
@@ -2657,6 +2659,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::has_operation()
 {
     return is_set(yfilter)
 	|| ydk::is_set(bundle_member_adj_sid.yfilter)
+	|| ydk::is_set(labeled_only.yfilter)
 	|| ydk::is_set(mpls.yfilter)
 	|| ydk::is_set(srv6.yfilter)
 	|| (prefix_sid_map !=  nullptr && prefix_sid_map->has_operation());
@@ -2674,6 +2677,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::A
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bundle_member_adj_sid.is_set || is_set(bundle_member_adj_sid.yfilter)) leaf_name_data.push_back(bundle_member_adj_sid.get_name_leafdata());
+    if (labeled_only.is_set || is_set(labeled_only.yfilter)) leaf_name_data.push_back(labeled_only.get_name_leafdata());
     if (mpls.is_set || is_set(mpls.yfilter)) leaf_name_data.push_back(mpls.get_name_leafdata());
     if (srv6.is_set || is_set(srv6.yfilter)) leaf_name_data.push_back(srv6.get_name_leafdata());
 
@@ -2715,6 +2719,12 @@ void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::set_value(const
         bundle_member_adj_sid.value_namespace = name_space;
         bundle_member_adj_sid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "labeled-only")
+    {
+        labeled_only = value;
+        labeled_only.value_namespace = name_space;
+        labeled_only.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "mpls")
     {
         mpls = value;
@@ -2735,6 +2745,10 @@ void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::set_filter(cons
     {
         bundle_member_adj_sid.yfilter = yfilter;
     }
+    if(value_path == "labeled-only")
+    {
+        labeled_only.yfilter = yfilter;
+    }
     if(value_path == "mpls")
     {
         mpls.yfilter = yfilter;
@@ -2747,7 +2761,7 @@ void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::set_filter(cons
 
 bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "prefix-sid-map" || name == "bundle-member-adj-sid" || name == "mpls" || name == "srv6")
+    if(name == "prefix-sid-map" || name == "bundle-member-adj-sid" || name == "labeled-only" || name == "mpls" || name == "srv6")
         return true;
     return false;
 }
@@ -3686,10 +3700,8 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLi
     :
     level{YType::enumeration, "level"}
         ,
-    priority_limit_data(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData>())
-    , frr_type(this, {"frr_type"})
+    frr_type(this, {"frr_type"})
 {
-    priority_limit_data->parent = this;
 
     yang_name = "priority-limit"; yang_parent_name = "priority-limits"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -3706,8 +3718,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::Prior
         if(frr_type[index]->has_data())
             return true;
     }
-    return level.is_set
-	|| (priority_limit_data !=  nullptr && priority_limit_data->has_data());
+    return level.is_set;
 }
 
 bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::has_operation() const
@@ -3718,8 +3729,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::Prior
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| (priority_limit_data !=  nullptr && priority_limit_data->has_operation());
+	|| ydk::is_set(level.yfilter);
 }
 
 std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::get_segment_path() const
@@ -3742,15 +3752,6 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::A
 
 std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "priority-limit-data")
-    {
-        if(priority_limit_data == nullptr)
-        {
-            priority_limit_data = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData>();
-        }
-        return priority_limit_data;
-    }
-
     if(child_yang_name == "frr-type")
     {
         auto ent_ = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::FrrType>();
@@ -3766,11 +3767,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::A
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(priority_limit_data != nullptr)
-    {
-        _children["priority-limit-data"] = priority_limit_data;
-    }
-
     count_ = 0;
     for (auto ent_ : frr_type.entities())
     {
@@ -3803,85 +3799,7 @@ void Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::Prior
 
 bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "priority-limit-data" || name == "frr-type" || name == "level")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData::PriorityLimitData()
-    :
-    priority{YType::enumeration, "priority"}
-{
-
-    yang_name = "priority-limit-data"; yang_parent_name = "priority-limit"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData::~PriorityLimitData()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData::has_data() const
-{
-    if (is_presence_container) return true;
-    return priority.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(priority.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "priority-limit-data";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "priority")
-    {
-        priority = value;
-        priority.value_namespace = name_space;
-        priority.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "priority")
-    {
-        priority.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "priority")
+    if(name == "frr-type" || name == "level")
         return true;
     return false;
 }
@@ -9902,6 +9820,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::has_leaf_or_child_of_name
 Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::SegmentRouting()
     :
     bundle_member_adj_sid{YType::empty, "bundle-member-adj-sid"},
+    labeled_only{YType::empty, "labeled-only"},
     mpls{YType::enumeration, "mpls"},
     srv6{YType::empty, "srv6"}
         ,
@@ -9920,6 +9839,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::has_data(
 {
     if (is_presence_container) return true;
     return bundle_member_adj_sid.is_set
+	|| labeled_only.is_set
 	|| mpls.is_set
 	|| srv6.is_set
 	|| (prefix_sid_map !=  nullptr && prefix_sid_map->has_data());
@@ -9929,6 +9849,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::has_opera
 {
     return is_set(yfilter)
 	|| ydk::is_set(bundle_member_adj_sid.yfilter)
+	|| ydk::is_set(labeled_only.yfilter)
 	|| ydk::is_set(mpls.yfilter)
 	|| ydk::is_set(srv6.yfilter)
 	|| (prefix_sid_map !=  nullptr && prefix_sid_map->has_operation());
@@ -9946,6 +9867,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::A
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (bundle_member_adj_sid.is_set || is_set(bundle_member_adj_sid.yfilter)) leaf_name_data.push_back(bundle_member_adj_sid.get_name_leafdata());
+    if (labeled_only.is_set || is_set(labeled_only.yfilter)) leaf_name_data.push_back(labeled_only.get_name_leafdata());
     if (mpls.is_set || is_set(mpls.yfilter)) leaf_name_data.push_back(mpls.get_name_leafdata());
     if (srv6.is_set || is_set(srv6.yfilter)) leaf_name_data.push_back(srv6.get_name_leafdata());
 
@@ -9987,6 +9909,12 @@ void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::set_value
         bundle_member_adj_sid.value_namespace = name_space;
         bundle_member_adj_sid.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "labeled-only")
+    {
+        labeled_only = value;
+        labeled_only.value_namespace = name_space;
+        labeled_only.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "mpls")
     {
         mpls = value;
@@ -10007,6 +9935,10 @@ void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::set_filte
     {
         bundle_member_adj_sid.yfilter = yfilter;
     }
+    if(value_path == "labeled-only")
+    {
+        labeled_only.yfilter = yfilter;
+    }
     if(value_path == "mpls")
     {
         mpls.yfilter = yfilter;
@@ -10019,7 +9951,7 @@ void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::set_filte
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "prefix-sid-map" || name == "bundle-member-adj-sid" || name == "mpls" || name == "srv6")
+    if(name == "prefix-sid-map" || name == "bundle-member-adj-sid" || name == "labeled-only" || name == "mpls" || name == "srv6")
         return true;
     return false;
 }
@@ -10958,10 +10890,8 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::Prio
     :
     level{YType::enumeration, "level"}
         ,
-    priority_limit_data(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData>())
-    , frr_type(this, {"frr_type"})
+    frr_type(this, {"frr_type"})
 {
-    priority_limit_data->parent = this;
 
     yang_name = "priority-limit"; yang_parent_name = "priority-limits"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -10978,8 +10908,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits:
         if(frr_type[index]->has_data())
             return true;
     }
-    return level.is_set
-	|| (priority_limit_data !=  nullptr && priority_limit_data->has_data());
+    return level.is_set;
 }
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::has_operation() const
@@ -10990,8 +10919,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits:
             return true;
     }
     return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| (priority_limit_data !=  nullptr && priority_limit_data->has_operation());
+	|| ydk::is_set(level.yfilter);
 }
 
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::get_segment_path() const
@@ -11014,15 +10942,6 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::A
 
 std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "priority-limit-data")
-    {
-        if(priority_limit_data == nullptr)
-        {
-            priority_limit_data = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData>();
-        }
-        return priority_limit_data;
-    }
-
     if(child_yang_name == "frr-type")
     {
         auto ent_ = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::FrrType>();
@@ -11038,11 +10957,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::A
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(priority_limit_data != nullptr)
-    {
-        _children["priority-limit-data"] = priority_limit_data;
-    }
-
     count_ = 0;
     for (auto ent_ : frr_type.entities())
     {
@@ -11075,85 +10989,7 @@ void Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits:
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "priority-limit-data" || name == "frr-type" || name == "level")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData::PriorityLimitData()
-    :
-    priority{YType::enumeration, "priority"}
-{
-
-    yang_name = "priority-limit-data"; yang_parent_name = "priority-limit"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData::~PriorityLimitData()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData::has_data() const
-{
-    if (is_presence_container) return true;
-    return priority.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(priority.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "priority-limit-data";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "priority")
-    {
-        priority = value;
-        priority.value_namespace = name_space;
-        priority.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "priority")
-    {
-        priority.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::PriorityLimitData::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "priority")
+    if(name == "frr-type" || name == "level")
         return true;
     return false;
 }
@@ -16895,7 +16731,8 @@ Isis::Instances::Instance::FlexAlgos::FlexAlgo::FlexAlgo()
     flex_algo{YType::uint32, "flex-algo"},
     running{YType::empty, "running"},
     metric_type{YType::uint32, "metric-type"},
-    priority{YType::uint32, "priority"}
+    priority{YType::uint32, "priority"},
+    advertise_definition{YType::boolean, "advertise-definition"}
         ,
     affinity_exclude_anies(std::make_shared<Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies>())
 {
@@ -16915,6 +16752,7 @@ bool Isis::Instances::Instance::FlexAlgos::FlexAlgo::has_data() const
 	|| running.is_set
 	|| metric_type.is_set
 	|| priority.is_set
+	|| advertise_definition.is_set
 	|| (affinity_exclude_anies !=  nullptr && affinity_exclude_anies->has_data());
 }
 
@@ -16925,6 +16763,7 @@ bool Isis::Instances::Instance::FlexAlgos::FlexAlgo::has_operation() const
 	|| ydk::is_set(running.yfilter)
 	|| ydk::is_set(metric_type.yfilter)
 	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(advertise_definition.yfilter)
 	|| (affinity_exclude_anies !=  nullptr && affinity_exclude_anies->has_operation());
 }
 
@@ -16944,6 +16783,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::FlexAl
     if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
     if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
     if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (advertise_definition.is_set || is_set(advertise_definition.yfilter)) leaf_name_data.push_back(advertise_definition.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -17001,6 +16841,12 @@ void Isis::Instances::Instance::FlexAlgos::FlexAlgo::set_value(const std::string
         priority.value_namespace = name_space;
         priority.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "advertise-definition")
+    {
+        advertise_definition = value;
+        advertise_definition.value_namespace = name_space;
+        advertise_definition.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Isis::Instances::Instance::FlexAlgos::FlexAlgo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -17021,11 +16867,15 @@ void Isis::Instances::Instance::FlexAlgos::FlexAlgo::set_filter(const std::strin
     {
         priority.yfilter = yfilter;
     }
+    if(value_path == "advertise-definition")
+    {
+        advertise_definition.yfilter = yfilter;
+    }
 }
 
 bool Isis::Instances::Instance::FlexAlgos::FlexAlgo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "affinity-exclude-anies" || name == "flex-algo" || name == "running" || name == "metric-type" || name == "priority")
+    if(name == "affinity-exclude-anies" || name == "flex-algo" || name == "running" || name == "metric-type" || name == "priority" || name == "advertise-definition")
         return true;
     return false;
 }
@@ -17113,6 +16963,192 @@ void Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::set_f
 bool Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "affinity-exclude-any")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::AffinityMappings::AffinityMappings()
+    :
+    affinity_mapping(this, {"affinity_name"})
+{
+
+    yang_name = "affinity-mappings"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::AffinityMappings::~AffinityMappings()
+{
+}
+
+bool Isis::Instances::Instance::AffinityMappings::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<affinity_mapping.len(); index++)
+    {
+        if(affinity_mapping[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::AffinityMappings::has_operation() const
+{
+    for (std::size_t index=0; index<affinity_mapping.len(); index++)
+    {
+        if(affinity_mapping[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::AffinityMappings::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "affinity-mappings";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::AffinityMappings::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::AffinityMappings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "affinity-mapping")
+    {
+        auto ent_ = std::make_shared<Isis::Instances::Instance::AffinityMappings::AffinityMapping>();
+        ent_->parent = this;
+        affinity_mapping.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::AffinityMappings::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : affinity_mapping.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Isis::Instances::Instance::AffinityMappings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::AffinityMappings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::AffinityMappings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "affinity-mapping")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::AffinityMappings::AffinityMapping::AffinityMapping()
+    :
+    affinity_name{YType::str, "affinity-name"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "affinity-mapping"; yang_parent_name = "affinity-mappings"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::AffinityMappings::AffinityMapping::~AffinityMapping()
+{
+}
+
+bool Isis::Instances::Instance::AffinityMappings::AffinityMapping::has_data() const
+{
+    if (is_presence_container) return true;
+    return affinity_name.is_set
+	|| value_.is_set;
+}
+
+bool Isis::Instances::Instance::AffinityMappings::AffinityMapping::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(affinity_name.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string Isis::Instances::Instance::AffinityMappings::AffinityMapping::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "affinity-mapping";
+    ADD_KEY_TOKEN(affinity_name, "affinity-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::AffinityMappings::AffinityMapping::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (affinity_name.is_set || is_set(affinity_name.yfilter)) leaf_name_data.push_back(affinity_name.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::AffinityMappings::AffinityMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::AffinityMappings::AffinityMapping::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Isis::Instances::Instance::AffinityMappings::AffinityMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "affinity-name")
+    {
+        affinity_name = value;
+        affinity_name.value_namespace = name_space;
+        affinity_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::AffinityMappings::AffinityMapping::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "affinity-name")
+    {
+        affinity_name.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::AffinityMappings::AffinityMapping::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "affinity-name" || name == "value")
         return true;
     return false;
 }

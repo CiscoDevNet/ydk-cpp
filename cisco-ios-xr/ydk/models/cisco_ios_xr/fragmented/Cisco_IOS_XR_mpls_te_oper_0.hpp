@@ -4954,6 +4954,7 @@ class MplsTeP2mpTimer : public ydk::Enum
         static const ydk::Enum::YLeaf tun_backend_scan_retry;
         static const ydk::Enum::YLeaf tunnel_checkpoint_list_service;
         static const ydk::Enum::YLeaf tunnel_service_binding_sid_allocation_retry;
+        static const ydk::Enum::YLeaf im_sync_delay;
         static const ydk::Enum::YLeaf timer_not_used;
 
 };

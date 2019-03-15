@@ -14,6 +14,39 @@ namespace cisco_nx_os {
 namespace Cisco_NX_OS_device {
 
 
+class System::SisfItems::RaguardItems::InstRaGuardList : public ydk::Entity
+{
+    public:
+        InstRaGuardList();
+        ~InstRaGuardList();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf policyname; //type: string
+        ydk::YLeaf devicerole; //type: SisfRaGuardDeviceRole
+        ydk::YLeaf trustedportenabled; //type: boolean
+        ydk::YLeaf routerpreferencemaximum; //type: SisfRaGuardRouterPreferenceMaximum
+        ydk::YLeaf hoplimitmax; //type: uint16
+        ydk::YLeaf hoplimitmin; //type: uint16
+        ydk::YLeaf managedconfig; //type: SisfRaGuardManagedConfig
+        ydk::YLeaf otherconfig; //type: SisfRaGuardOtherConfig
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf adminst; //type: NwAdminSt_
+        ydk::YLeaf ctrl; //type: string
+        ydk::YLeaf opererr; //type: string
+
+}; // System::SisfItems::RaguardItems::InstRaGuardList
+
+
 class System::SisfItems::FhsifItems : public ydk::Entity
 {
     public:
@@ -3728,33 +3761,6 @@ class System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::Pol
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::OutItems> out_items;
         
 }; // System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems
-
-
-class System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems : public ydk::Entity
-{
-    public:
-        InItems();
-        ~InItems();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class IntfItems; //type: System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::IntfItems
-        class SysItems; //type: System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::SysItems
-        class PmapItems; //type: System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::PmapItems
-
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::IntfItems> intf_items;
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::SysItems> sys_items;
-        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::PmapItems> pmap_items;
-        
-}; // System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems
 
 
 }

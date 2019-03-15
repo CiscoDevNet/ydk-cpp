@@ -17,6 +17,8 @@ const Enum::YLeaf XtcMetricValue::absolute {2, "absolute"};
 const Enum::YLeaf XtcPathHop::mpls {1, "mpls"};
 const Enum::YLeaf XtcPathHop::srv6 {2, "srv6"};
 
+const Enum::YLeaf XtcBindingSidDynamicRule::disable {1, "disable"};
+
 const Enum::YLeaf XtcAffinityRule::affinity_include_all {0, "affinity-include-all"};
 const Enum::YLeaf XtcAffinityRule::affinity_exclude_any {1, "affinity-exclude-any"};
 const Enum::YLeaf XtcAffinityRule::affinity_include_any {2, "affinity-include-any"};
@@ -50,7 +52,8 @@ const Enum::YLeaf XtcPath::dynamic {2, "dynamic"};
 
 const Enum::YLeaf XtcMetric::igp {1, "igp"};
 const Enum::YLeaf XtcMetric::te {2, "te"};
-const Enum::YLeaf XtcMetric::latency {3, "latency"};
+const Enum::YLeaf XtcMetric::hopcount {3, "hopcount"};
+const Enum::YLeaf XtcMetric::latency {12, "latency"};
 
 const Enum::YLeaf XtcAddressFamily::af_type_ipv4 {1, "af-type-ipv4"};
 const Enum::YLeaf XtcAddressFamily::xtc_af_type_ipv6 {2, "xtc-af-type-ipv6"};

@@ -258,8 +258,8 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Connec
         ydk::YLeaf redistribute_route; //type: boolean
         ydk::YLeaf isis_route_type; //type: Ospfv3isisRoute
         ydk::YLeaf eigrp_route_type; //type: Ospfv3EigrpRoute
-        ydk::YLeaf preserve_med; //type: empty
-        ydk::YLeaf preserve_med_info; //type: empty
+        ydk::YLeaf preserve_med; //type: boolean
+        ydk::YLeaf bgp_preserve_default_info; //type: boolean
         ydk::YLeaf use_rib_metric; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::ConnectedOrStaticOrSubscriberOrMobile
@@ -293,8 +293,8 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp : 
         ydk::YLeaf redistribute_route; //type: boolean
         ydk::YLeaf isis_route_type; //type: Ospfv3isisRoute
         ydk::YLeaf eigrp_route_type; //type: Ospfv3EigrpRoute
-        ydk::YLeaf preserve_med; //type: empty
-        ydk::YLeaf preserve_med_info; //type: empty
+        ydk::YLeaf preserve_med; //type: boolean
+        ydk::YLeaf bgp_preserve_default_info; //type: boolean
         ydk::YLeaf use_rib_metric; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Bgp
@@ -327,8 +327,8 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3
         ydk::YLeaf redistribute_route; //type: boolean
         ydk::YLeaf isis_route_type; //type: Ospfv3isisRoute
         ydk::YLeaf eigrp_route_type; //type: Ospfv3EigrpRoute
-        ydk::YLeaf preserve_med; //type: empty
-        ydk::YLeaf preserve_med_info; //type: empty
+        ydk::YLeaf preserve_med; //type: boolean
+        ydk::YLeaf bgp_preserve_default_info; //type: boolean
         ydk::YLeaf use_rib_metric; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Ospfv3OrIsisOrApplication
@@ -361,8 +361,8 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp 
         ydk::YLeaf redistribute_route; //type: boolean
         ydk::YLeaf isis_route_type; //type: Ospfv3isisRoute
         ydk::YLeaf eigrp_route_type; //type: Ospfv3EigrpRoute
-        ydk::YLeaf preserve_med; //type: empty
-        ydk::YLeaf preserve_med_info; //type: empty
+        ydk::YLeaf preserve_med; //type: boolean
+        ydk::YLeaf bgp_preserve_default_info; //type: boolean
         ydk::YLeaf use_rib_metric; //type: boolean
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Redistributes::Redistribute::Eigrp

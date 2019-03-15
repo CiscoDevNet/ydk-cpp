@@ -8113,6 +8113,26 @@ bool Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief::has_leaf_or_child_of_
     return false;
 }
 
+const Enum::YLeaf ImStateEnum::im_state_not_ready {0, "im-state-not-ready"};
+const Enum::YLeaf ImStateEnum::im_state_admin_down {1, "im-state-admin-down"};
+const Enum::YLeaf ImStateEnum::im_state_down {2, "im-state-down"};
+const Enum::YLeaf ImStateEnum::im_state_up {3, "im-state-up"};
+const Enum::YLeaf ImStateEnum::im_state_shutdown {4, "im-state-shutdown"};
+const Enum::YLeaf ImStateEnum::im_state_err_disable {5, "im-state-err-disable"};
+const Enum::YLeaf ImStateEnum::im_state_down_immediate {6, "im-state-down-immediate"};
+const Enum::YLeaf ImStateEnum::im_state_down_immediate_admin {7, "im-state-down-immediate-admin"};
+const Enum::YLeaf ImStateEnum::im_state_down_graceful {8, "im-state-down-graceful"};
+const Enum::YLeaf ImStateEnum::im_state_begin_shutdown {9, "im-state-begin-shutdown"};
+const Enum::YLeaf ImStateEnum::im_state_end_shutdown {10, "im-state-end-shutdown"};
+const Enum::YLeaf ImStateEnum::im_state_begin_error_disable {11, "im-state-begin-error-disable"};
+const Enum::YLeaf ImStateEnum::im_state_end_error_disable {12, "im-state-end-error-disable"};
+const Enum::YLeaf ImStateEnum::im_state_begin_down_graceful {13, "im-state-begin-down-graceful"};
+const Enum::YLeaf ImStateEnum::im_state_reset {14, "im-state-reset"};
+const Enum::YLeaf ImStateEnum::im_state_operational {15, "im-state-operational"};
+const Enum::YLeaf ImStateEnum::im_state_not_operational {16, "im-state-not-operational"};
+const Enum::YLeaf ImStateEnum::im_state_unknown {17, "im-state-unknown"};
+const Enum::YLeaf ImStateEnum::im_state_last {18, "im-state-last"};
+
 const Enum::YLeaf Ipv4MaOperConfig::ipv4_ma_oper_client_none {0, "ipv4-ma-oper-client-none"};
 const Enum::YLeaf Ipv4MaOperConfig::ipv4_ma_oper_non_oc_client {1, "ipv4-ma-oper-non-oc-client"};
 const Enum::YLeaf Ipv4MaOperConfig::ipv4_ma_oper_oc_client {2, "ipv4-ma-oper-oc-client"};

@@ -1252,9 +1252,11 @@ class Alarms::Brief : public ydk::Entity
 
         class BriefCard; //type: Alarms::Brief::BriefCard
         class BriefSystem; //type: Alarms::Brief::BriefSystem
+        class AlarmId; //type: Alarms::Brief::AlarmId
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefCard> brief_card;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefSystem> brief_system;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::AlarmId> alarm_id;
         
 }; // Alarms::Brief
 
@@ -1782,6 +1784,107 @@ class Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo : public ydk::Entit
         ydk::YLeaf description; //type: string
 
 }; // Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo
+
+
+class Alarms::Brief::AlarmId : public ydk::Entity
+{
+    public:
+        AlarmId();
+        ~AlarmId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class ActiveAlarms; //type: Alarms::Brief::AlarmId::ActiveAlarms
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::AlarmId::ActiveAlarms> active_alarms;
+        
+}; // Alarms::Brief::AlarmId
+
+
+class Alarms::Brief::AlarmId::ActiveAlarms : public ydk::Entity
+{
+    public:
+        ActiveAlarms();
+        ~ActiveAlarms();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class ActiveAlarm; //type: Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm
+
+        ydk::YList active_alarm;
+        
+}; // Alarms::Brief::AlarmId::ActiveAlarms
+
+
+class Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm : public ydk::Entity
+{
+    public:
+        ActiveAlarm();
+        ~ActiveAlarm();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf aid; //type: string
+        class Alarm; //type: Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::Alarm
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::Alarm> alarm;
+        
+}; // Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm
+
+
+class Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::Alarm : public ydk::Entity
+{
+    public:
+        Alarm();
+        ~Alarm();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf severity; //type: AlarmSeverity
+        ydk::YLeaf group; //type: AlarmGroups
+        ydk::YLeaf set_time; //type: string
+        ydk::YLeaf set_timestamp; //type: uint64
+        ydk::YLeaf clear_time; //type: string
+        ydk::YLeaf clear_timestamp; //type: uint64
+        ydk::YLeaf description; //type: string
+
+}; // Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::Alarm
 
 class TimingBucket : public ydk::Enum
 {

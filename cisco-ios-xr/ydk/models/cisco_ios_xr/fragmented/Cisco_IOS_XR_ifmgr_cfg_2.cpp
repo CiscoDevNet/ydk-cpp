@@ -12,6 +12,2992 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ifmgr_cfg {
 
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15Ocn()
+    :
+    oc_minute15_ocn_reports(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports>())
+    , oc_minute15_ocn_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds>())
+{
+    oc_minute15_ocn_reports->parent = this;
+    oc_minute15_ocn_thresholds->parent = this;
+
+    yang_name = "oc-minute15-ocn"; yang_parent_name = "oc-minute15"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::~OcMinute15Ocn()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::has_data() const
+{
+    if (is_presence_container) return true;
+    return (oc_minute15_ocn_reports !=  nullptr && oc_minute15_ocn_reports->has_data())
+	|| (oc_minute15_ocn_thresholds !=  nullptr && oc_minute15_ocn_thresholds->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::has_operation() const
+{
+    return is_set(yfilter)
+	|| (oc_minute15_ocn_reports !=  nullptr && oc_minute15_ocn_reports->has_operation())
+	|| (oc_minute15_ocn_thresholds !=  nullptr && oc_minute15_ocn_thresholds->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "oc-minute15-ocn";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "oc-minute15-ocn-reports")
+    {
+        if(oc_minute15_ocn_reports == nullptr)
+        {
+            oc_minute15_ocn_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports>();
+        }
+        return oc_minute15_ocn_reports;
+    }
+
+    if(child_yang_name == "oc-minute15-ocn-thresholds")
+    {
+        if(oc_minute15_ocn_thresholds == nullptr)
+        {
+            oc_minute15_ocn_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds>();
+        }
+        return oc_minute15_ocn_thresholds;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(oc_minute15_ocn_reports != nullptr)
+    {
+        _children["oc-minute15-ocn-reports"] = oc_minute15_ocn_reports;
+    }
+
+    if(oc_minute15_ocn_thresholds != nullptr)
+    {
+        _children["oc-minute15-ocn-thresholds"] = oc_minute15_ocn_thresholds;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "oc-minute15-ocn-reports" || name == "oc-minute15-ocn-thresholds")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::OcMinute15OcnReports()
+    :
+    oc_minute15_ocn_report(this, {"ocn_report"})
+{
+
+    yang_name = "oc-minute15-ocn-reports"; yang_parent_name = "oc-minute15-ocn"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::~OcMinute15OcnReports()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<oc_minute15_ocn_report.len(); index++)
+    {
+        if(oc_minute15_ocn_report[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::has_operation() const
+{
+    for (std::size_t index=0; index<oc_minute15_ocn_report.len(); index++)
+    {
+        if(oc_minute15_ocn_report[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "oc-minute15-ocn-reports";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "oc-minute15-ocn-report")
+    {
+        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::OcMinute15OcnReport>();
+        ent_->parent = this;
+        oc_minute15_ocn_report.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : oc_minute15_ocn_report.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "oc-minute15-ocn-report")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::OcMinute15OcnReport::OcMinute15OcnReport()
+    :
+    ocn_report{YType::enumeration, "ocn-report"},
+    enable{YType::enumeration, "enable"}
+{
+
+    yang_name = "oc-minute15-ocn-report"; yang_parent_name = "oc-minute15-ocn-reports"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::OcMinute15OcnReport::~OcMinute15OcnReport()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::OcMinute15OcnReport::has_data() const
+{
+    if (is_presence_container) return true;
+    return ocn_report.is_set
+	|| enable.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::OcMinute15OcnReport::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ocn_report.yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::OcMinute15OcnReport::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "oc-minute15-ocn-report";
+    ADD_KEY_TOKEN(ocn_report, "ocn-report");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::OcMinute15OcnReport::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ocn_report.is_set || is_set(ocn_report.yfilter)) leaf_name_data.push_back(ocn_report.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::OcMinute15OcnReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::OcMinute15OcnReport::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::OcMinute15OcnReport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ocn-report")
+    {
+        ocn_report = value;
+        ocn_report.value_namespace = name_space;
+        ocn_report.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::OcMinute15OcnReport::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ocn-report")
+    {
+        ocn_report.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnReports::OcMinute15OcnReport::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ocn-report" || name == "enable")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::OcMinute15OcnThresholds()
+    :
+    oc_minute15_ocn_threshold(this, {"ocn_threshold"})
+{
+
+    yang_name = "oc-minute15-ocn-thresholds"; yang_parent_name = "oc-minute15-ocn"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::~OcMinute15OcnThresholds()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<oc_minute15_ocn_threshold.len(); index++)
+    {
+        if(oc_minute15_ocn_threshold[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::has_operation() const
+{
+    for (std::size_t index=0; index<oc_minute15_ocn_threshold.len(); index++)
+    {
+        if(oc_minute15_ocn_threshold[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "oc-minute15-ocn-thresholds";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "oc-minute15-ocn-threshold")
+    {
+        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::OcMinute15OcnThreshold>();
+        ent_->parent = this;
+        oc_minute15_ocn_threshold.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : oc_minute15_ocn_threshold.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "oc-minute15-ocn-threshold")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::OcMinute15OcnThreshold::OcMinute15OcnThreshold()
+    :
+    ocn_threshold{YType::enumeration, "ocn-threshold"},
+    ocn_threshold_value{YType::uint32, "ocn-threshold-value"}
+{
+
+    yang_name = "oc-minute15-ocn-threshold"; yang_parent_name = "oc-minute15-ocn-thresholds"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::OcMinute15OcnThreshold::~OcMinute15OcnThreshold()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::OcMinute15OcnThreshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return ocn_threshold.is_set
+	|| ocn_threshold_value.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::OcMinute15OcnThreshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ocn_threshold.yfilter)
+	|| ydk::is_set(ocn_threshold_value.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::OcMinute15OcnThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "oc-minute15-ocn-threshold";
+    ADD_KEY_TOKEN(ocn_threshold, "ocn-threshold");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::OcMinute15OcnThreshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ocn_threshold.is_set || is_set(ocn_threshold.yfilter)) leaf_name_data.push_back(ocn_threshold.get_name_leafdata());
+    if (ocn_threshold_value.is_set || is_set(ocn_threshold_value.yfilter)) leaf_name_data.push_back(ocn_threshold_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::OcMinute15OcnThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::OcMinute15OcnThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::OcMinute15OcnThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ocn-threshold")
+    {
+        ocn_threshold = value;
+        ocn_threshold.value_namespace = name_space;
+        ocn_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ocn-threshold-value")
+    {
+        ocn_threshold_value = value;
+        ocn_threshold_value.value_namespace = name_space;
+        ocn_threshold_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::OcMinute15OcnThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ocn-threshold")
+    {
+        ocn_threshold.yfilter = yfilter;
+    }
+    if(value_path == "ocn-threshold-value")
+    {
+        ocn_threshold_value.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn::OcMinute15OcnThresholds::OcMinute15OcnThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ocn-threshold" || name == "ocn-threshold-value")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::EthernetSecond30()
+    :
+    second30_ether(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether>())
+{
+    second30_ether->parent = this;
+
+    yang_name = "ethernet-second30"; yang_parent_name = "performance-management"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::~EthernetSecond30()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::has_data() const
+{
+    if (is_presence_container) return true;
+    return (second30_ether !=  nullptr && second30_ether->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::has_operation() const
+{
+    return is_set(yfilter)
+	|| (second30_ether !=  nullptr && second30_ether->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ethernet-second30";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "second30-ether")
+    {
+        if(second30_ether == nullptr)
+        {
+            second30_ether = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether>();
+        }
+        return second30_ether;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(second30_ether != nullptr)
+    {
+        _children["second30-ether"] = second30_ether;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second30-ether")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30Ether()
+    :
+    second30_ether_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds>())
+    , second30_ether_reports(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports>())
+{
+    second30_ether_thresholds->parent = this;
+    second30_ether_reports->parent = this;
+
+    yang_name = "second30-ether"; yang_parent_name = "ethernet-second30"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::~Second30Ether()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::has_data() const
+{
+    if (is_presence_container) return true;
+    return (second30_ether_thresholds !=  nullptr && second30_ether_thresholds->has_data())
+	|| (second30_ether_reports !=  nullptr && second30_ether_reports->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::has_operation() const
+{
+    return is_set(yfilter)
+	|| (second30_ether_thresholds !=  nullptr && second30_ether_thresholds->has_operation())
+	|| (second30_ether_reports !=  nullptr && second30_ether_reports->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "second30-ether";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "second30-ether-thresholds")
+    {
+        if(second30_ether_thresholds == nullptr)
+        {
+            second30_ether_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds>();
+        }
+        return second30_ether_thresholds;
+    }
+
+    if(child_yang_name == "second30-ether-reports")
+    {
+        if(second30_ether_reports == nullptr)
+        {
+            second30_ether_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports>();
+        }
+        return second30_ether_reports;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(second30_ether_thresholds != nullptr)
+    {
+        _children["second30-ether-thresholds"] = second30_ether_thresholds;
+    }
+
+    if(second30_ether_reports != nullptr)
+    {
+        _children["second30-ether-reports"] = second30_ether_reports;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second30-ether-thresholds" || name == "second30-ether-reports")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::Second30EtherThresholds()
+    :
+    second30_ether_threshold(this, {"ether_threshold"})
+{
+
+    yang_name = "second30-ether-thresholds"; yang_parent_name = "second30-ether"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::~Second30EtherThresholds()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<second30_ether_threshold.len(); index++)
+    {
+        if(second30_ether_threshold[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::has_operation() const
+{
+    for (std::size_t index=0; index<second30_ether_threshold.len(); index++)
+    {
+        if(second30_ether_threshold[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "second30-ether-thresholds";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "second30-ether-threshold")
+    {
+        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::Second30EtherThreshold>();
+        ent_->parent = this;
+        second30_ether_threshold.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : second30_ether_threshold.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second30-ether-threshold")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::Second30EtherThreshold::Second30EtherThreshold()
+    :
+    ether_threshold{YType::enumeration, "ether-threshold"},
+    ether_threshold_value{YType::uint32, "ether-threshold-value"}
+{
+
+    yang_name = "second30-ether-threshold"; yang_parent_name = "second30-ether-thresholds"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::Second30EtherThreshold::~Second30EtherThreshold()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::Second30EtherThreshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return ether_threshold.is_set
+	|| ether_threshold_value.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::Second30EtherThreshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ether_threshold.yfilter)
+	|| ydk::is_set(ether_threshold_value.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::Second30EtherThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "second30-ether-threshold";
+    ADD_KEY_TOKEN(ether_threshold, "ether-threshold");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::Second30EtherThreshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ether_threshold.is_set || is_set(ether_threshold.yfilter)) leaf_name_data.push_back(ether_threshold.get_name_leafdata());
+    if (ether_threshold_value.is_set || is_set(ether_threshold_value.yfilter)) leaf_name_data.push_back(ether_threshold_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::Second30EtherThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::Second30EtherThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::Second30EtherThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ether-threshold")
+    {
+        ether_threshold = value;
+        ether_threshold.value_namespace = name_space;
+        ether_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ether-threshold-value")
+    {
+        ether_threshold_value = value;
+        ether_threshold_value.value_namespace = name_space;
+        ether_threshold_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::Second30EtherThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ether-threshold")
+    {
+        ether_threshold.yfilter = yfilter;
+    }
+    if(value_path == "ether-threshold-value")
+    {
+        ether_threshold_value.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherThresholds::Second30EtherThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ether-threshold" || name == "ether-threshold-value")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::Second30EtherReports()
+    :
+    second30_ether_report(this, {"ether_report"})
+{
+
+    yang_name = "second30-ether-reports"; yang_parent_name = "second30-ether"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::~Second30EtherReports()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<second30_ether_report.len(); index++)
+    {
+        if(second30_ether_report[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::has_operation() const
+{
+    for (std::size_t index=0; index<second30_ether_report.len(); index++)
+    {
+        if(second30_ether_report[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "second30-ether-reports";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "second30-ether-report")
+    {
+        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::Second30EtherReport>();
+        ent_->parent = this;
+        second30_ether_report.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : second30_ether_report.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "second30-ether-report")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::Second30EtherReport::Second30EtherReport()
+    :
+    ether_report{YType::enumeration, "ether-report"}
+{
+
+    yang_name = "second30-ether-report"; yang_parent_name = "second30-ether-reports"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::Second30EtherReport::~Second30EtherReport()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::Second30EtherReport::has_data() const
+{
+    if (is_presence_container) return true;
+    return ether_report.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::Second30EtherReport::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ether_report.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::Second30EtherReport::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "second30-ether-report";
+    ADD_KEY_TOKEN(ether_report, "ether-report");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::Second30EtherReport::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ether_report.is_set || is_set(ether_report.yfilter)) leaf_name_data.push_back(ether_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::Second30EtherReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::Second30EtherReport::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::Second30EtherReport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ether-report")
+    {
+        ether_report = value;
+        ether_report.value_namespace = name_space;
+        ether_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::Second30EtherReport::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ether-report")
+    {
+        ether_report.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetSecond30::Second30Ether::Second30EtherReports::Second30EtherReport::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ether-report")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24Path()
+    :
+    hour24otn_path(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath>())
+{
+    hour24otn_path->parent = this;
+
+    yang_name = "hour24-path"; yang_parent_name = "performance-management"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::~Hour24Path()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::has_data() const
+{
+    if (is_presence_container) return true;
+    return (hour24otn_path !=  nullptr && hour24otn_path->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::has_operation() const
+{
+    return is_set(yfilter)
+	|| (hour24otn_path !=  nullptr && hour24otn_path->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hour24-path";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hour24otn-path")
+    {
+        if(hour24otn_path == nullptr)
+        {
+            hour24otn_path = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath>();
+        }
+        return hour24otn_path;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(hour24otn_path != nullptr)
+    {
+        _children["hour24otn-path"] = hour24otn_path;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hour24otn-path")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPath()
+    :
+    hour24otn_path_reports(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports>())
+    , hour24otn_path_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds>())
+{
+    hour24otn_path_reports->parent = this;
+    hour24otn_path_thresholds->parent = this;
+
+    yang_name = "hour24otn-path"; yang_parent_name = "hour24-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::~Hour24otnPath()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::has_data() const
+{
+    if (is_presence_container) return true;
+    return (hour24otn_path_reports !=  nullptr && hour24otn_path_reports->has_data())
+	|| (hour24otn_path_thresholds !=  nullptr && hour24otn_path_thresholds->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::has_operation() const
+{
+    return is_set(yfilter)
+	|| (hour24otn_path_reports !=  nullptr && hour24otn_path_reports->has_operation())
+	|| (hour24otn_path_thresholds !=  nullptr && hour24otn_path_thresholds->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hour24otn-path";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hour24otn-path-reports")
+    {
+        if(hour24otn_path_reports == nullptr)
+        {
+            hour24otn_path_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports>();
+        }
+        return hour24otn_path_reports;
+    }
+
+    if(child_yang_name == "hour24otn-path-thresholds")
+    {
+        if(hour24otn_path_thresholds == nullptr)
+        {
+            hour24otn_path_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds>();
+        }
+        return hour24otn_path_thresholds;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(hour24otn_path_reports != nullptr)
+    {
+        _children["hour24otn-path-reports"] = hour24otn_path_reports;
+    }
+
+    if(hour24otn_path_thresholds != nullptr)
+    {
+        _children["hour24otn-path-thresholds"] = hour24otn_path_thresholds;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hour24otn-path-reports" || name == "hour24otn-path-thresholds")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::Hour24otnPathReports()
+    :
+    hour24otn_path_report(this, {"otn_report"})
+{
+
+    yang_name = "hour24otn-path-reports"; yang_parent_name = "hour24otn-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::~Hour24otnPathReports()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hour24otn_path_report.len(); index++)
+    {
+        if(hour24otn_path_report[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::has_operation() const
+{
+    for (std::size_t index=0; index<hour24otn_path_report.len(); index++)
+    {
+        if(hour24otn_path_report[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hour24otn-path-reports";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hour24otn-path-report")
+    {
+        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::Hour24otnPathReport>();
+        ent_->parent = this;
+        hour24otn_path_report.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : hour24otn_path_report.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hour24otn-path-report")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::Hour24otnPathReport::Hour24otnPathReport()
+    :
+    otn_report{YType::enumeration, "otn-report"},
+    enable{YType::enumeration, "enable"}
+{
+
+    yang_name = "hour24otn-path-report"; yang_parent_name = "hour24otn-path-reports"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::Hour24otnPathReport::~Hour24otnPathReport()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::Hour24otnPathReport::has_data() const
+{
+    if (is_presence_container) return true;
+    return otn_report.is_set
+	|| enable.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::Hour24otnPathReport::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(otn_report.yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::Hour24otnPathReport::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hour24otn-path-report";
+    ADD_KEY_TOKEN(otn_report, "otn-report");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::Hour24otnPathReport::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (otn_report.is_set || is_set(otn_report.yfilter)) leaf_name_data.push_back(otn_report.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::Hour24otnPathReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::Hour24otnPathReport::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::Hour24otnPathReport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "otn-report")
+    {
+        otn_report = value;
+        otn_report.value_namespace = name_space;
+        otn_report.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::Hour24otnPathReport::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "otn-report")
+    {
+        otn_report.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathReports::Hour24otnPathReport::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otn-report" || name == "enable")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::Hour24otnPathThresholds()
+    :
+    hour24otn_path_threshold(this, {"otn_threshold"})
+{
+
+    yang_name = "hour24otn-path-thresholds"; yang_parent_name = "hour24otn-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::~Hour24otnPathThresholds()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<hour24otn_path_threshold.len(); index++)
+    {
+        if(hour24otn_path_threshold[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::has_operation() const
+{
+    for (std::size_t index=0; index<hour24otn_path_threshold.len(); index++)
+    {
+        if(hour24otn_path_threshold[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hour24otn-path-thresholds";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hour24otn-path-threshold")
+    {
+        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::Hour24otnPathThreshold>();
+        ent_->parent = this;
+        hour24otn_path_threshold.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : hour24otn_path_threshold.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hour24otn-path-threshold")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::Hour24otnPathThreshold::Hour24otnPathThreshold()
+    :
+    otn_threshold{YType::enumeration, "otn-threshold"},
+    otn_threshold_value{YType::uint32, "otn-threshold-value"}
+{
+
+    yang_name = "hour24otn-path-threshold"; yang_parent_name = "hour24otn-path-thresholds"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::Hour24otnPathThreshold::~Hour24otnPathThreshold()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::Hour24otnPathThreshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return otn_threshold.is_set
+	|| otn_threshold_value.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::Hour24otnPathThreshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(otn_threshold.yfilter)
+	|| ydk::is_set(otn_threshold_value.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::Hour24otnPathThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hour24otn-path-threshold";
+    ADD_KEY_TOKEN(otn_threshold, "otn-threshold");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::Hour24otnPathThreshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (otn_threshold.is_set || is_set(otn_threshold.yfilter)) leaf_name_data.push_back(otn_threshold.get_name_leafdata());
+    if (otn_threshold_value.is_set || is_set(otn_threshold_value.yfilter)) leaf_name_data.push_back(otn_threshold_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::Hour24otnPathThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::Hour24otnPathThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::Hour24otnPathThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "otn-threshold")
+    {
+        otn_threshold = value;
+        otn_threshold.value_namespace = name_space;
+        otn_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "otn-threshold-value")
+    {
+        otn_threshold_value = value;
+        otn_threshold_value.value_namespace = name_space;
+        otn_threshold_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::Hour24otnPathThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "otn-threshold")
+    {
+        otn_threshold.yfilter = yfilter;
+    }
+    if(value_path == "otn-threshold-value")
+    {
+        otn_threshold_value.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24Path::Hour24otnPath::Hour24otnPathThresholds::Hour24otnPathThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "otn-threshold" || name == "otn-threshold-value")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15()
+    :
+    minute15_optics(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics>())
+    , minute15secyif(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif>())
+    , minute15secyrx(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx>())
+    , minute15pcs(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15pcs>())
+    , minute15fec(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15fec>())
+    , minute15secytx(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secytx>())
+    , minute15otn(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15otn>())
+{
+    minute15_optics->parent = this;
+    minute15secyif->parent = this;
+    minute15secyrx->parent = this;
+    minute15pcs->parent = this;
+    minute15fec->parent = this;
+    minute15secytx->parent = this;
+    minute15otn->parent = this;
+
+    yang_name = "minute15"; yang_parent_name = "performance-management"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::~Minute15()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::has_data() const
+{
+    if (is_presence_container) return true;
+    return (minute15_optics !=  nullptr && minute15_optics->has_data())
+	|| (minute15secyif !=  nullptr && minute15secyif->has_data())
+	|| (minute15secyrx !=  nullptr && minute15secyrx->has_data())
+	|| (minute15pcs !=  nullptr && minute15pcs->has_data())
+	|| (minute15fec !=  nullptr && minute15fec->has_data())
+	|| (minute15secytx !=  nullptr && minute15secytx->has_data())
+	|| (minute15otn !=  nullptr && minute15otn->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::has_operation() const
+{
+    return is_set(yfilter)
+	|| (minute15_optics !=  nullptr && minute15_optics->has_operation())
+	|| (minute15secyif !=  nullptr && minute15secyif->has_operation())
+	|| (minute15secyrx !=  nullptr && minute15secyrx->has_operation())
+	|| (minute15pcs !=  nullptr && minute15pcs->has_operation())
+	|| (minute15fec !=  nullptr && minute15fec->has_operation())
+	|| (minute15secytx !=  nullptr && minute15secytx->has_operation())
+	|| (minute15otn !=  nullptr && minute15otn->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "minute15";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "minute15-optics")
+    {
+        if(minute15_optics == nullptr)
+        {
+            minute15_optics = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics>();
+        }
+        return minute15_optics;
+    }
+
+    if(child_yang_name == "minute15secyif")
+    {
+        if(minute15secyif == nullptr)
+        {
+            minute15secyif = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif>();
+        }
+        return minute15secyif;
+    }
+
+    if(child_yang_name == "minute15secyrx")
+    {
+        if(minute15secyrx == nullptr)
+        {
+            minute15secyrx = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx>();
+        }
+        return minute15secyrx;
+    }
+
+    if(child_yang_name == "minute15pcs")
+    {
+        if(minute15pcs == nullptr)
+        {
+            minute15pcs = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15pcs>();
+        }
+        return minute15pcs;
+    }
+
+    if(child_yang_name == "minute15fec")
+    {
+        if(minute15fec == nullptr)
+        {
+            minute15fec = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15fec>();
+        }
+        return minute15fec;
+    }
+
+    if(child_yang_name == "minute15secytx")
+    {
+        if(minute15secytx == nullptr)
+        {
+            minute15secytx = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secytx>();
+        }
+        return minute15secytx;
+    }
+
+    if(child_yang_name == "minute15otn")
+    {
+        if(minute15otn == nullptr)
+        {
+            minute15otn = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15otn>();
+        }
+        return minute15otn;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(minute15_optics != nullptr)
+    {
+        _children["minute15-optics"] = minute15_optics;
+    }
+
+    if(minute15secyif != nullptr)
+    {
+        _children["minute15secyif"] = minute15secyif;
+    }
+
+    if(minute15secyrx != nullptr)
+    {
+        _children["minute15secyrx"] = minute15secyrx;
+    }
+
+    if(minute15pcs != nullptr)
+    {
+        _children["minute15pcs"] = minute15pcs;
+    }
+
+    if(minute15fec != nullptr)
+    {
+        _children["minute15fec"] = minute15fec;
+    }
+
+    if(minute15secytx != nullptr)
+    {
+        _children["minute15secytx"] = minute15secytx;
+    }
+
+    if(minute15otn != nullptr)
+    {
+        _children["minute15otn"] = minute15otn;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minute15-optics" || name == "minute15secyif" || name == "minute15secyrx" || name == "minute15pcs" || name == "minute15fec" || name == "minute15secytx" || name == "minute15otn")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15Optics()
+    :
+    minute15_optics_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds>())
+    , minute15_optics_reports(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports>())
+{
+    minute15_optics_thresholds->parent = this;
+    minute15_optics_reports->parent = this;
+
+    yang_name = "minute15-optics"; yang_parent_name = "minute15"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::~Minute15Optics()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::has_data() const
+{
+    if (is_presence_container) return true;
+    return (minute15_optics_thresholds !=  nullptr && minute15_optics_thresholds->has_data())
+	|| (minute15_optics_reports !=  nullptr && minute15_optics_reports->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::has_operation() const
+{
+    return is_set(yfilter)
+	|| (minute15_optics_thresholds !=  nullptr && minute15_optics_thresholds->has_operation())
+	|| (minute15_optics_reports !=  nullptr && minute15_optics_reports->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "minute15-optics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "minute15-optics-thresholds")
+    {
+        if(minute15_optics_thresholds == nullptr)
+        {
+            minute15_optics_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds>();
+        }
+        return minute15_optics_thresholds;
+    }
+
+    if(child_yang_name == "minute15-optics-reports")
+    {
+        if(minute15_optics_reports == nullptr)
+        {
+            minute15_optics_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports>();
+        }
+        return minute15_optics_reports;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(minute15_optics_thresholds != nullptr)
+    {
+        _children["minute15-optics-thresholds"] = minute15_optics_thresholds;
+    }
+
+    if(minute15_optics_reports != nullptr)
+    {
+        _children["minute15-optics-reports"] = minute15_optics_reports;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minute15-optics-thresholds" || name == "minute15-optics-reports")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::Minute15OpticsThresholds()
+    :
+    minute15_optics_threshold(this, {"optics_threshold"})
+{
+
+    yang_name = "minute15-optics-thresholds"; yang_parent_name = "minute15-optics"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::~Minute15OpticsThresholds()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<minute15_optics_threshold.len(); index++)
+    {
+        if(minute15_optics_threshold[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::has_operation() const
+{
+    for (std::size_t index=0; index<minute15_optics_threshold.len(); index++)
+    {
+        if(minute15_optics_threshold[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "minute15-optics-thresholds";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "minute15-optics-threshold")
+    {
+        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::Minute15OpticsThreshold>();
+        ent_->parent = this;
+        minute15_optics_threshold.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : minute15_optics_threshold.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minute15-optics-threshold")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::Minute15OpticsThreshold::Minute15OpticsThreshold()
+    :
+    optics_threshold{YType::enumeration, "optics-threshold"},
+    optics_threshold_value{YType::int32, "optics-threshold-value"},
+    dbm{YType::uint32, "dbm"}
+{
+
+    yang_name = "minute15-optics-threshold"; yang_parent_name = "minute15-optics-thresholds"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::Minute15OpticsThreshold::~Minute15OpticsThreshold()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::Minute15OpticsThreshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return optics_threshold.is_set
+	|| optics_threshold_value.is_set
+	|| dbm.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::Minute15OpticsThreshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(optics_threshold.yfilter)
+	|| ydk::is_set(optics_threshold_value.yfilter)
+	|| ydk::is_set(dbm.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::Minute15OpticsThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "minute15-optics-threshold";
+    ADD_KEY_TOKEN(optics_threshold, "optics-threshold");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::Minute15OpticsThreshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (optics_threshold.is_set || is_set(optics_threshold.yfilter)) leaf_name_data.push_back(optics_threshold.get_name_leafdata());
+    if (optics_threshold_value.is_set || is_set(optics_threshold_value.yfilter)) leaf_name_data.push_back(optics_threshold_value.get_name_leafdata());
+    if (dbm.is_set || is_set(dbm.yfilter)) leaf_name_data.push_back(dbm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::Minute15OpticsThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::Minute15OpticsThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::Minute15OpticsThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "optics-threshold")
+    {
+        optics_threshold = value;
+        optics_threshold.value_namespace = name_space;
+        optics_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-threshold-value")
+    {
+        optics_threshold_value = value;
+        optics_threshold_value.value_namespace = name_space;
+        optics_threshold_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dbm")
+    {
+        dbm = value;
+        dbm.value_namespace = name_space;
+        dbm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::Minute15OpticsThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "optics-threshold")
+    {
+        optics_threshold.yfilter = yfilter;
+    }
+    if(value_path == "optics-threshold-value")
+    {
+        optics_threshold_value.yfilter = yfilter;
+    }
+    if(value_path == "dbm")
+    {
+        dbm.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsThresholds::Minute15OpticsThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-threshold" || name == "optics-threshold-value" || name == "dbm")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::Minute15OpticsReports()
+    :
+    minute15_optics_report(this, {"optics_report"})
+{
+
+    yang_name = "minute15-optics-reports"; yang_parent_name = "minute15-optics"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::~Minute15OpticsReports()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<minute15_optics_report.len(); index++)
+    {
+        if(minute15_optics_report[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::has_operation() const
+{
+    for (std::size_t index=0; index<minute15_optics_report.len(); index++)
+    {
+        if(minute15_optics_report[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "minute15-optics-reports";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "minute15-optics-report")
+    {
+        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::Minute15OpticsReport>();
+        ent_->parent = this;
+        minute15_optics_report.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : minute15_optics_report.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minute15-optics-report")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::Minute15OpticsReport::Minute15OpticsReport()
+    :
+    optics_report{YType::enumeration, "optics-report"}
+{
+
+    yang_name = "minute15-optics-report"; yang_parent_name = "minute15-optics-reports"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::Minute15OpticsReport::~Minute15OpticsReport()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::Minute15OpticsReport::has_data() const
+{
+    if (is_presence_container) return true;
+    return optics_report.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::Minute15OpticsReport::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(optics_report.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::Minute15OpticsReport::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "minute15-optics-report";
+    ADD_KEY_TOKEN(optics_report, "optics-report");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::Minute15OpticsReport::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (optics_report.is_set || is_set(optics_report.yfilter)) leaf_name_data.push_back(optics_report.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::Minute15OpticsReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::Minute15OpticsReport::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::Minute15OpticsReport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "optics-report")
+    {
+        optics_report = value;
+        optics_report.value_namespace = name_space;
+        optics_report.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::Minute15OpticsReport::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "optics-report")
+    {
+        optics_report.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15Optics::Minute15OpticsReports::Minute15OpticsReport::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-report")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyif()
+    :
+    minute15secyif_reports(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports>())
+    , minute15secyif_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds>())
+{
+    minute15secyif_reports->parent = this;
+    minute15secyif_thresholds->parent = this;
+
+    yang_name = "minute15secyif"; yang_parent_name = "minute15"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::~Minute15secyif()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::has_data() const
+{
+    if (is_presence_container) return true;
+    return (minute15secyif_reports !=  nullptr && minute15secyif_reports->has_data())
+	|| (minute15secyif_thresholds !=  nullptr && minute15secyif_thresholds->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::has_operation() const
+{
+    return is_set(yfilter)
+	|| (minute15secyif_reports !=  nullptr && minute15secyif_reports->has_operation())
+	|| (minute15secyif_thresholds !=  nullptr && minute15secyif_thresholds->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "minute15secyif";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "minute15secyif-reports")
+    {
+        if(minute15secyif_reports == nullptr)
+        {
+            minute15secyif_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports>();
+        }
+        return minute15secyif_reports;
+    }
+
+    if(child_yang_name == "minute15secyif-thresholds")
+    {
+        if(minute15secyif_thresholds == nullptr)
+        {
+            minute15secyif_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds>();
+        }
+        return minute15secyif_thresholds;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(minute15secyif_reports != nullptr)
+    {
+        _children["minute15secyif-reports"] = minute15secyif_reports;
+    }
+
+    if(minute15secyif_thresholds != nullptr)
+    {
+        _children["minute15secyif-thresholds"] = minute15secyif_thresholds;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minute15secyif-reports" || name == "minute15secyif-thresholds")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::Minute15secyifReports()
+    :
+    minute15secyif_report(this, {"secyif_report"})
+{
+
+    yang_name = "minute15secyif-reports"; yang_parent_name = "minute15secyif"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::~Minute15secyifReports()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<minute15secyif_report.len(); index++)
+    {
+        if(minute15secyif_report[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::has_operation() const
+{
+    for (std::size_t index=0; index<minute15secyif_report.len(); index++)
+    {
+        if(minute15secyif_report[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "minute15secyif-reports";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "minute15secyif-report")
+    {
+        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::Minute15secyifReport>();
+        ent_->parent = this;
+        minute15secyif_report.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : minute15secyif_report.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minute15secyif-report")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::Minute15secyifReport::Minute15secyifReport()
+    :
+    secyif_report{YType::enumeration, "secyif-report"},
+    enable{YType::enumeration, "enable"}
+{
+
+    yang_name = "minute15secyif-report"; yang_parent_name = "minute15secyif-reports"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::Minute15secyifReport::~Minute15secyifReport()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::Minute15secyifReport::has_data() const
+{
+    if (is_presence_container) return true;
+    return secyif_report.is_set
+	|| enable.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::Minute15secyifReport::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(secyif_report.yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::Minute15secyifReport::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "minute15secyif-report";
+    ADD_KEY_TOKEN(secyif_report, "secyif-report");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::Minute15secyifReport::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (secyif_report.is_set || is_set(secyif_report.yfilter)) leaf_name_data.push_back(secyif_report.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::Minute15secyifReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::Minute15secyifReport::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::Minute15secyifReport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "secyif-report")
+    {
+        secyif_report = value;
+        secyif_report.value_namespace = name_space;
+        secyif_report.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::Minute15secyifReport::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "secyif-report")
+    {
+        secyif_report.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifReports::Minute15secyifReport::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "secyif-report" || name == "enable")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::Minute15secyifThresholds()
+    :
+    minute15secyif_threshold(this, {"secyif_threshold"})
+{
+
+    yang_name = "minute15secyif-thresholds"; yang_parent_name = "minute15secyif"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::~Minute15secyifThresholds()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<minute15secyif_threshold.len(); index++)
+    {
+        if(minute15secyif_threshold[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::has_operation() const
+{
+    for (std::size_t index=0; index<minute15secyif_threshold.len(); index++)
+    {
+        if(minute15secyif_threshold[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "minute15secyif-thresholds";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "minute15secyif-threshold")
+    {
+        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::Minute15secyifThreshold>();
+        ent_->parent = this;
+        minute15secyif_threshold.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : minute15secyif_threshold.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minute15secyif-threshold")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::Minute15secyifThreshold::Minute15secyifThreshold()
+    :
+    secyif_threshold{YType::enumeration, "secyif-threshold"},
+    secyif_threshold_value{YType::uint32, "secyif-threshold-value"}
+{
+
+    yang_name = "minute15secyif-threshold"; yang_parent_name = "minute15secyif-thresholds"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::Minute15secyifThreshold::~Minute15secyifThreshold()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::Minute15secyifThreshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return secyif_threshold.is_set
+	|| secyif_threshold_value.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::Minute15secyifThreshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(secyif_threshold.yfilter)
+	|| ydk::is_set(secyif_threshold_value.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::Minute15secyifThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "minute15secyif-threshold";
+    ADD_KEY_TOKEN(secyif_threshold, "secyif-threshold");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::Minute15secyifThreshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (secyif_threshold.is_set || is_set(secyif_threshold.yfilter)) leaf_name_data.push_back(secyif_threshold.get_name_leafdata());
+    if (secyif_threshold_value.is_set || is_set(secyif_threshold_value.yfilter)) leaf_name_data.push_back(secyif_threshold_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::Minute15secyifThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::Minute15secyifThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::Minute15secyifThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "secyif-threshold")
+    {
+        secyif_threshold = value;
+        secyif_threshold.value_namespace = name_space;
+        secyif_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "secyif-threshold-value")
+    {
+        secyif_threshold_value = value;
+        secyif_threshold_value.value_namespace = name_space;
+        secyif_threshold_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::Minute15secyifThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "secyif-threshold")
+    {
+        secyif_threshold.yfilter = yfilter;
+    }
+    if(value_path == "secyif-threshold-value")
+    {
+        secyif_threshold_value.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyif::Minute15secyifThresholds::Minute15secyifThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "secyif-threshold" || name == "secyif-threshold-value")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrx()
+    :
+    minute15secyrx_reports(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports>())
+    , minute15secyrx_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxThresholds>())
+{
+    minute15secyrx_reports->parent = this;
+    minute15secyrx_thresholds->parent = this;
+
+    yang_name = "minute15secyrx"; yang_parent_name = "minute15"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::~Minute15secyrx()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::has_data() const
+{
+    if (is_presence_container) return true;
+    return (minute15secyrx_reports !=  nullptr && minute15secyrx_reports->has_data())
+	|| (minute15secyrx_thresholds !=  nullptr && minute15secyrx_thresholds->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::has_operation() const
+{
+    return is_set(yfilter)
+	|| (minute15secyrx_reports !=  nullptr && minute15secyrx_reports->has_operation())
+	|| (minute15secyrx_thresholds !=  nullptr && minute15secyrx_thresholds->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "minute15secyrx";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "minute15secyrx-reports")
+    {
+        if(minute15secyrx_reports == nullptr)
+        {
+            minute15secyrx_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports>();
+        }
+        return minute15secyrx_reports;
+    }
+
+    if(child_yang_name == "minute15secyrx-thresholds")
+    {
+        if(minute15secyrx_thresholds == nullptr)
+        {
+            minute15secyrx_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxThresholds>();
+        }
+        return minute15secyrx_thresholds;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(minute15secyrx_reports != nullptr)
+    {
+        _children["minute15secyrx-reports"] = minute15secyrx_reports;
+    }
+
+    if(minute15secyrx_thresholds != nullptr)
+    {
+        _children["minute15secyrx-thresholds"] = minute15secyrx_thresholds;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minute15secyrx-reports" || name == "minute15secyrx-thresholds")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::Minute15secyrxReports()
+    :
+    minute15secyrx_report(this, {"secyrx_report"})
+{
+
+    yang_name = "minute15secyrx-reports"; yang_parent_name = "minute15secyrx"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::~Minute15secyrxReports()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<minute15secyrx_report.len(); index++)
+    {
+        if(minute15secyrx_report[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::has_operation() const
+{
+    for (std::size_t index=0; index<minute15secyrx_report.len(); index++)
+    {
+        if(minute15secyrx_report[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "minute15secyrx-reports";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "minute15secyrx-report")
+    {
+        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::Minute15secyrxReport>();
+        ent_->parent = this;
+        minute15secyrx_report.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : minute15secyrx_report.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "minute15secyrx-report")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::Minute15secyrxReport::Minute15secyrxReport()
+    :
+    secyrx_report{YType::enumeration, "secyrx-report"},
+    enable{YType::enumeration, "enable"}
+{
+
+    yang_name = "minute15secyrx-report"; yang_parent_name = "minute15secyrx-reports"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::Minute15secyrxReport::~Minute15secyrxReport()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::Minute15secyrxReport::has_data() const
+{
+    if (is_presence_container) return true;
+    return secyrx_report.is_set
+	|| enable.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::Minute15secyrxReport::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(secyrx_report.yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::Minute15secyrxReport::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "minute15secyrx-report";
+    ADD_KEY_TOKEN(secyrx_report, "secyrx-report");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::Minute15secyrxReport::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (secyrx_report.is_set || is_set(secyrx_report.yfilter)) leaf_name_data.push_back(secyrx_report.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::Minute15secyrxReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::Minute15secyrxReport::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::Minute15secyrxReport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "secyrx-report")
+    {
+        secyrx_report = value;
+        secyrx_report.value_namespace = name_space;
+        secyrx_report.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::Minute15secyrxReport::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "secyrx-report")
+    {
+        secyrx_report.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxReports::Minute15secyrxReport::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "secyrx-report" || name == "enable")
+        return true;
+    return false;
+}
+
 InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15secyrx::Minute15secyrxThresholds::Minute15secyrxThresholds()
     :
     minute15secyrx_threshold(this, {"secyrx_threshold"})
@@ -2082,2837 +5068,6 @@ void InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Min
 bool InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15::Minute15otn::Minute15otnReports::Minute15otnReport::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "otn-report" || name == "enable")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Pbr::Pbr()
-    :
-    service_policy_in{YType::str, "service-policy-in"}
-        ,
-    service_policy(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy>())
-{
-    service_policy->parent = this;
-
-    yang_name = "pbr"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Pbr::~Pbr()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Pbr::has_data() const
-{
-    if (is_presence_container) return true;
-    return service_policy_in.is_set
-	|| (service_policy !=  nullptr && service_policy->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Pbr::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(service_policy_in.yfilter)
-	|| (service_policy !=  nullptr && service_policy->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Pbr::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-pbr-cfg:pbr";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Pbr::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (service_policy_in.is_set || is_set(service_policy_in.yfilter)) leaf_name_data.push_back(service_policy_in.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Pbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "service-policy")
-    {
-        if(service_policy == nullptr)
-        {
-            service_policy = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy>();
-        }
-        return service_policy;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Pbr::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(service_policy != nullptr)
-    {
-        _children["service-policy"] = service_policy;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Pbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "service-policy-in")
-    {
-        service_policy_in = value;
-        service_policy_in.value_namespace = name_space;
-        service_policy_in.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Pbr::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "service-policy-in")
-    {
-        service_policy_in.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Pbr::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "service-policy" || name == "service-policy-in")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::ServicePolicy()
-    :
-    input{YType::str, "input"}
-{
-
-    yang_name = "service-policy"; yang_parent_name = "pbr"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::~ServicePolicy()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::has_data() const
-{
-    if (is_presence_container) return true;
-    return input.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(input.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "service-policy";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (input.is_set || is_set(input.yfilter)) leaf_name_data.push_back(input.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "input")
-    {
-        input = value;
-        input.value_namespace = name_space;
-        input.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "input")
-    {
-        input.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelIp::TunnelIp()
-    :
-    allow_key{YType::empty, "allow-key"},
-    ttl{YType::uint32, "ttl"},
-    tunnel_vrf{YType::str, "tunnel-vrf"},
-    tos{YType::uint32, "tos"},
-    disable{YType::uint32, "disable"}
-        ,
-    mode(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode>())
-    , source(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source>())
-    , key(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key>())
-    , keepalive(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive>())
-    , bfd(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd>())
-    , destination(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination>())
-{
-    mode->parent = this;
-    source->parent = this;
-    key->parent = this;
-    keepalive->parent = this;
-    bfd->parent = this;
-    destination->parent = this;
-
-    yang_name = "tunnel-ip"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelIp::~TunnelIp()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::has_data() const
-{
-    if (is_presence_container) return true;
-    return allow_key.is_set
-	|| ttl.is_set
-	|| tunnel_vrf.is_set
-	|| tos.is_set
-	|| disable.is_set
-	|| (mode !=  nullptr && mode->has_data())
-	|| (source !=  nullptr && source->has_data())
-	|| (key !=  nullptr && key->has_data())
-	|| (keepalive !=  nullptr && keepalive->has_data())
-	|| (bfd !=  nullptr && bfd->has_data())
-	|| (destination !=  nullptr && destination->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(allow_key.yfilter)
-	|| ydk::is_set(ttl.yfilter)
-	|| ydk::is_set(tunnel_vrf.yfilter)
-	|| ydk::is_set(tos.yfilter)
-	|| ydk::is_set(disable.yfilter)
-	|| (mode !=  nullptr && mode->has_operation())
-	|| (source !=  nullptr && source->has_operation())
-	|| (key !=  nullptr && key->has_operation())
-	|| (keepalive !=  nullptr && keepalive->has_operation())
-	|| (bfd !=  nullptr && bfd->has_operation())
-	|| (destination !=  nullptr && destination->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelIp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-tunnel-gre-cfg:tunnel-ip";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelIp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (allow_key.is_set || is_set(allow_key.yfilter)) leaf_name_data.push_back(allow_key.get_name_leafdata());
-    if (ttl.is_set || is_set(ttl.yfilter)) leaf_name_data.push_back(ttl.get_name_leafdata());
-    if (tunnel_vrf.is_set || is_set(tunnel_vrf.yfilter)) leaf_name_data.push_back(tunnel_vrf.get_name_leafdata());
-    if (tos.is_set || is_set(tos.yfilter)) leaf_name_data.push_back(tos.get_name_leafdata());
-    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mode")
-    {
-        if(mode == nullptr)
-        {
-            mode = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode>();
-        }
-        return mode;
-    }
-
-    if(child_yang_name == "source")
-    {
-        if(source == nullptr)
-        {
-            source = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source>();
-        }
-        return source;
-    }
-
-    if(child_yang_name == "key")
-    {
-        if(key == nullptr)
-        {
-            key = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key>();
-        }
-        return key;
-    }
-
-    if(child_yang_name == "keepalive")
-    {
-        if(keepalive == nullptr)
-        {
-            keepalive = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive>();
-        }
-        return keepalive;
-    }
-
-    if(child_yang_name == "bfd")
-    {
-        if(bfd == nullptr)
-        {
-            bfd = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd>();
-        }
-        return bfd;
-    }
-
-    if(child_yang_name == "destination")
-    {
-        if(destination == nullptr)
-        {
-            destination = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination>();
-        }
-        return destination;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(mode != nullptr)
-    {
-        _children["mode"] = mode;
-    }
-
-    if(source != nullptr)
-    {
-        _children["source"] = source;
-    }
-
-    if(key != nullptr)
-    {
-        _children["key"] = key;
-    }
-
-    if(keepalive != nullptr)
-    {
-        _children["keepalive"] = keepalive;
-    }
-
-    if(bfd != nullptr)
-    {
-        _children["bfd"] = bfd;
-    }
-
-    if(destination != nullptr)
-    {
-        _children["destination"] = destination;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "allow-key")
-    {
-        allow_key = value;
-        allow_key.value_namespace = name_space;
-        allow_key.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ttl")
-    {
-        ttl = value;
-        ttl.value_namespace = name_space;
-        ttl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tunnel-vrf")
-    {
-        tunnel_vrf = value;
-        tunnel_vrf.value_namespace = name_space;
-        tunnel_vrf.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tos")
-    {
-        tos = value;
-        tos.value_namespace = name_space;
-        tos.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "disable")
-    {
-        disable = value;
-        disable.value_namespace = name_space;
-        disable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "allow-key")
-    {
-        allow_key.yfilter = yfilter;
-    }
-    if(value_path == "ttl")
-    {
-        ttl.yfilter = yfilter;
-    }
-    if(value_path == "tunnel-vrf")
-    {
-        tunnel_vrf.yfilter = yfilter;
-    }
-    if(value_path == "tos")
-    {
-        tos.yfilter = yfilter;
-    }
-    if(value_path == "disable")
-    {
-        disable.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mode" || name == "source" || name == "key" || name == "keepalive" || name == "bfd" || name == "destination" || name == "allow-key" || name == "ttl" || name == "tunnel-vrf" || name == "tos" || name == "disable")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::Mode()
-    :
-    value_{YType::uint32, "value"},
-    mode_direction{YType::enumeration, "mode-direction"}
-{
-
-    yang_name = "mode"; yang_parent_name = "tunnel-ip"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::~Mode()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::has_data() const
-{
-    if (is_presence_container) return true;
-    return value_.is_set
-	|| mode_direction.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(value_.yfilter)
-	|| ydk::is_set(mode_direction.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mode";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-    if (mode_direction.is_set || is_set(mode_direction.yfilter)) leaf_name_data.push_back(mode_direction.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mode-direction")
-    {
-        mode_direction = value;
-        mode_direction.value_namespace = name_space;
-        mode_direction.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-    if(value_path == "mode-direction")
-    {
-        mode_direction.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "value" || name == "mode-direction")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::Source()
-    :
-    type{YType::uint32, "type"},
-    address{YType::str, "address"},
-    interface_name{YType::str, "interface-name"},
-    ipv6_address{YType::str, "ipv6-address"}
-{
-
-    yang_name = "source"; yang_parent_name = "tunnel-ip"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::~Source()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::has_data() const
-{
-    if (is_presence_container) return true;
-    return type.is_set
-	|| address.is_set
-	|| interface_name.is_set
-	|| ipv6_address.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(type.yfilter)
-	|| ydk::is_set(address.yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| ydk::is_set(ipv6_address.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "source";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "address")
-    {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address = value;
-        ipv6_address.value_namespace = name_space;
-        ipv6_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-    if(value_path == "address")
-    {
-        address.yfilter = yfilter;
-    }
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "type" || name == "address" || name == "interface-name" || name == "ipv6-address")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::Key()
-    :
-    entropy{YType::empty, "entropy"},
-    value_{YType::uint32, "value"}
-{
-
-    yang_name = "key"; yang_parent_name = "tunnel-ip"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::~Key()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::has_data() const
-{
-    if (is_presence_container) return true;
-    return entropy.is_set
-	|| value_.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entropy.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "key";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entropy.is_set || is_set(entropy.yfilter)) leaf_name_data.push_back(entropy.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entropy")
-    {
-        entropy = value;
-        entropy.value_namespace = name_space;
-        entropy.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entropy")
-    {
-        entropy.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entropy" || name == "value")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::Keepalive()
-    :
-    keep_alive_period{YType::uint32, "keep-alive-period"},
-    keep_alive_retries{YType::uint32, "keep-alive-retries"}
-{
-
-    yang_name = "keepalive"; yang_parent_name = "tunnel-ip"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::~Keepalive()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::has_data() const
-{
-    if (is_presence_container) return true;
-    return keep_alive_period.is_set
-	|| keep_alive_retries.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(keep_alive_period.yfilter)
-	|| ydk::is_set(keep_alive_retries.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "keepalive";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (keep_alive_period.is_set || is_set(keep_alive_period.yfilter)) leaf_name_data.push_back(keep_alive_period.get_name_leafdata());
-    if (keep_alive_retries.is_set || is_set(keep_alive_retries.yfilter)) leaf_name_data.push_back(keep_alive_retries.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "keep-alive-period")
-    {
-        keep_alive_period = value;
-        keep_alive_period.value_namespace = name_space;
-        keep_alive_period.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "keep-alive-retries")
-    {
-        keep_alive_retries = value;
-        keep_alive_retries.value_namespace = name_space;
-        keep_alive_retries.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "keep-alive-period")
-    {
-        keep_alive_period.yfilter = yfilter;
-    }
-    if(value_path == "keep-alive-retries")
-    {
-        keep_alive_retries.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "keep-alive-period" || name == "keep-alive-retries")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Bfd()
-    :
-    minimum_interval{YType::uint32, "minimum-interval"},
-    keepalive_period{YType::uint32, "keepalive-period"},
-    retry{YType::uint32, "retry"},
-    multiplier{YType::uint32, "multiplier"}
-        ,
-    destination(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination>())
-{
-    destination->parent = this;
-
-    yang_name = "bfd"; yang_parent_name = "tunnel-ip"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::~Bfd()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::has_data() const
-{
-    if (is_presence_container) return true;
-    return minimum_interval.is_set
-	|| keepalive_period.is_set
-	|| retry.is_set
-	|| multiplier.is_set
-	|| (destination !=  nullptr && destination->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(minimum_interval.yfilter)
-	|| ydk::is_set(keepalive_period.yfilter)
-	|| ydk::is_set(retry.yfilter)
-	|| ydk::is_set(multiplier.yfilter)
-	|| (destination !=  nullptr && destination->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bfd";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (minimum_interval.is_set || is_set(minimum_interval.yfilter)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
-    if (keepalive_period.is_set || is_set(keepalive_period.yfilter)) leaf_name_data.push_back(keepalive_period.get_name_leafdata());
-    if (retry.is_set || is_set(retry.yfilter)) leaf_name_data.push_back(retry.get_name_leafdata());
-    if (multiplier.is_set || is_set(multiplier.yfilter)) leaf_name_data.push_back(multiplier.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "destination")
-    {
-        if(destination == nullptr)
-        {
-            destination = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination>();
-        }
-        return destination;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(destination != nullptr)
-    {
-        _children["destination"] = destination;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "minimum-interval")
-    {
-        minimum_interval = value;
-        minimum_interval.value_namespace = name_space;
-        minimum_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "keepalive-period")
-    {
-        keepalive_period = value;
-        keepalive_period.value_namespace = name_space;
-        keepalive_period.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "retry")
-    {
-        retry = value;
-        retry.value_namespace = name_space;
-        retry.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "multiplier")
-    {
-        multiplier = value;
-        multiplier.value_namespace = name_space;
-        multiplier.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "minimum-interval")
-    {
-        minimum_interval.yfilter = yfilter;
-    }
-    if(value_path == "keepalive-period")
-    {
-        keepalive_period.yfilter = yfilter;
-    }
-    if(value_path == "retry")
-    {
-        retry.yfilter = yfilter;
-    }
-    if(value_path == "multiplier")
-    {
-        multiplier.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "destination" || name == "minimum-interval" || name == "keepalive-period" || name == "retry" || name == "multiplier")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination::Destination()
-    :
-    type{YType::uint32, "type"},
-    address{YType::str, "address"},
-    ipv6_address{YType::str, "ipv6-address"}
-{
-
-    yang_name = "destination"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination::~Destination()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination::has_data() const
-{
-    if (is_presence_container) return true;
-    return type.is_set
-	|| address.is_set
-	|| ipv6_address.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(type.yfilter)
-	|| ydk::is_set(address.yfilter)
-	|| ydk::is_set(ipv6_address.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "destination";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "address")
-    {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address = value;
-        ipv6_address.value_namespace = name_space;
-        ipv6_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-    if(value_path == "address")
-    {
-        address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "type" || name == "address" || name == "ipv6-address")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::Destination()
-    :
-    type{YType::uint32, "type"},
-    address{YType::str, "address"},
-    ipv6_address{YType::str, "ipv6-address"},
-    address_mask{YType::str, "address-mask"},
-    prefix_list_name{YType::str, "prefix-list-name"}
-{
-
-    yang_name = "destination"; yang_parent_name = "tunnel-ip"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::~Destination()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::has_data() const
-{
-    if (is_presence_container) return true;
-    return type.is_set
-	|| address.is_set
-	|| ipv6_address.is_set
-	|| address_mask.is_set
-	|| prefix_list_name.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(type.yfilter)
-	|| ydk::is_set(address.yfilter)
-	|| ydk::is_set(ipv6_address.yfilter)
-	|| ydk::is_set(address_mask.yfilter)
-	|| ydk::is_set(prefix_list_name.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "destination";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-    if (address_mask.is_set || is_set(address_mask.yfilter)) leaf_name_data.push_back(address_mask.get_name_leafdata());
-    if (prefix_list_name.is_set || is_set(prefix_list_name.yfilter)) leaf_name_data.push_back(prefix_list_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "address")
-    {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address = value;
-        ipv6_address.value_namespace = name_space;
-        ipv6_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "address-mask")
-    {
-        address_mask = value;
-        address_mask.value_namespace = name_space;
-        address_mask.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-list-name")
-    {
-        prefix_list_name = value;
-        prefix_list_name.value_namespace = name_space;
-        prefix_list_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-    if(value_path == "address")
-    {
-        address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address.yfilter = yfilter;
-    }
-    if(value_path == "address-mask")
-    {
-        address_mask.yfilter = yfilter;
-    }
-    if(value_path == "prefix-list-name")
-    {
-        prefix_list_name.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "type" || name == "address" || name == "ipv6-address" || name == "address-mask" || name == "prefix-list-name")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Optics::Optics()
-    :
-    optics_transmit_power{YType::int32, "optics-transmit-power"},
-    optics_ots_channel_power_max_delta{YType::int32, "optics-ots-channel-power-max-delta"},
-    optics_loopback{YType::enumeration, "optics-loopback"},
-    optics_ots_osri{YType::boolean, "optics-ots-osri"},
-    optics_ots_amplifier_gain_degrade_high_threshold{YType::uint32, "optics-ots-amplifier-gain-degrade-high-threshold"},
-    optics_ots_rx_voa_attenuation{YType::uint32, "optics-ots-rx-voa-attenuation"},
-    optics_fec{YType::enumeration, "optics-fec"},
-    optics_dgd_high_threshold{YType::uint32, "optics-dgd-high-threshold"},
-    optics_ots_amplifier_channel_power{YType::int32, "optics-ots-amplifier-channel-power"},
-    optics_ots_amplifier_control_mode{YType::enumeration, "optics-ots-amplifier-control-mode"},
-    optics_ots_amplifier_gain{YType::uint32, "optics-ots-amplifier-gain"},
-    optics_ots_amplifier_gain_range{YType::enumeration, "optics-ots-amplifier-gain-range"},
-    optics_ots_safety_control_mode{YType::enumeration, "optics-ots-safety-control-mode"},
-    optics_cd_min{YType::int32, "optics-cd-min"},
-    optics_ots_tx_voa_attenuation{YType::uint32, "optics-ots-tx-voa-attenuation"},
-    optics_ots_amplifier_tilt{YType::int32, "optics-ots-amplifier-tilt"},
-    optics_transmit_shutdown{YType::boolean, "optics-transmit-shutdown"},
-    optics_baud_rate{YType::str, "optics-baud-rate"},
-    optics_performance_monitoring{YType::boolean, "optics-performance-monitoring"},
-    optics_cd_max{YType::int32, "optics-cd-max"},
-    optics_bits_per_symbol{YType::str, "optics-bits-per-symbol"},
-    optics_lbc_high_threshold{YType::uint32, "optics-lbc-high-threshold"},
-    optics_cd_high_threshold{YType::int32, "optics-cd-high-threshold"},
-    optics_osnr_low_threshold{YType::uint32, "optics-osnr-low-threshold"},
-    optics_ots_amplifier_gain_degrade_low_threshold{YType::uint32, "optics-ots-amplifier-gain-degrade-low-threshold"},
-    optics_cd_low_threshold{YType::int32, "optics-cd-low-threshold"},
-    breakout{YType::str, "Cisco-IOS-XR-optics-driver-cfg:breakout"}
-        ,
-    rx_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds>())
-    , optics_network_srlgs(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs>())
-    , optics_dwdm_carrier(nullptr) // presence node
-    , optics_lanes(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes>())
-    , tx_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds>())
-{
-    rx_thresholds->parent = this;
-    optics_network_srlgs->parent = this;
-    optics_lanes->parent = this;
-    tx_thresholds->parent = this;
-
-    yang_name = "optics"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Optics::~Optics()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::has_data() const
-{
-    if (is_presence_container) return true;
-    return optics_transmit_power.is_set
-	|| optics_ots_channel_power_max_delta.is_set
-	|| optics_loopback.is_set
-	|| optics_ots_osri.is_set
-	|| optics_ots_amplifier_gain_degrade_high_threshold.is_set
-	|| optics_ots_rx_voa_attenuation.is_set
-	|| optics_fec.is_set
-	|| optics_dgd_high_threshold.is_set
-	|| optics_ots_amplifier_channel_power.is_set
-	|| optics_ots_amplifier_control_mode.is_set
-	|| optics_ots_amplifier_gain.is_set
-	|| optics_ots_amplifier_gain_range.is_set
-	|| optics_ots_safety_control_mode.is_set
-	|| optics_cd_min.is_set
-	|| optics_ots_tx_voa_attenuation.is_set
-	|| optics_ots_amplifier_tilt.is_set
-	|| optics_transmit_shutdown.is_set
-	|| optics_baud_rate.is_set
-	|| optics_performance_monitoring.is_set
-	|| optics_cd_max.is_set
-	|| optics_bits_per_symbol.is_set
-	|| optics_lbc_high_threshold.is_set
-	|| optics_cd_high_threshold.is_set
-	|| optics_osnr_low_threshold.is_set
-	|| optics_ots_amplifier_gain_degrade_low_threshold.is_set
-	|| optics_cd_low_threshold.is_set
-	|| breakout.is_set
-	|| (rx_thresholds !=  nullptr && rx_thresholds->has_data())
-	|| (optics_network_srlgs !=  nullptr && optics_network_srlgs->has_data())
-	|| (optics_dwdm_carrier !=  nullptr && optics_dwdm_carrier->has_data())
-	|| (optics_lanes !=  nullptr && optics_lanes->has_data())
-	|| (tx_thresholds !=  nullptr && tx_thresholds->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(optics_transmit_power.yfilter)
-	|| ydk::is_set(optics_ots_channel_power_max_delta.yfilter)
-	|| ydk::is_set(optics_loopback.yfilter)
-	|| ydk::is_set(optics_ots_osri.yfilter)
-	|| ydk::is_set(optics_ots_amplifier_gain_degrade_high_threshold.yfilter)
-	|| ydk::is_set(optics_ots_rx_voa_attenuation.yfilter)
-	|| ydk::is_set(optics_fec.yfilter)
-	|| ydk::is_set(optics_dgd_high_threshold.yfilter)
-	|| ydk::is_set(optics_ots_amplifier_channel_power.yfilter)
-	|| ydk::is_set(optics_ots_amplifier_control_mode.yfilter)
-	|| ydk::is_set(optics_ots_amplifier_gain.yfilter)
-	|| ydk::is_set(optics_ots_amplifier_gain_range.yfilter)
-	|| ydk::is_set(optics_ots_safety_control_mode.yfilter)
-	|| ydk::is_set(optics_cd_min.yfilter)
-	|| ydk::is_set(optics_ots_tx_voa_attenuation.yfilter)
-	|| ydk::is_set(optics_ots_amplifier_tilt.yfilter)
-	|| ydk::is_set(optics_transmit_shutdown.yfilter)
-	|| ydk::is_set(optics_baud_rate.yfilter)
-	|| ydk::is_set(optics_performance_monitoring.yfilter)
-	|| ydk::is_set(optics_cd_max.yfilter)
-	|| ydk::is_set(optics_bits_per_symbol.yfilter)
-	|| ydk::is_set(optics_lbc_high_threshold.yfilter)
-	|| ydk::is_set(optics_cd_high_threshold.yfilter)
-	|| ydk::is_set(optics_osnr_low_threshold.yfilter)
-	|| ydk::is_set(optics_ots_amplifier_gain_degrade_low_threshold.yfilter)
-	|| ydk::is_set(optics_cd_low_threshold.yfilter)
-	|| ydk::is_set(breakout.yfilter)
-	|| (rx_thresholds !=  nullptr && rx_thresholds->has_operation())
-	|| (optics_network_srlgs !=  nullptr && optics_network_srlgs->has_operation())
-	|| (optics_dwdm_carrier !=  nullptr && optics_dwdm_carrier->has_operation())
-	|| (optics_lanes !=  nullptr && optics_lanes->has_operation())
-	|| (tx_thresholds !=  nullptr && tx_thresholds->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Optics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-controller-optics-cfg:optics";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Optics::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (optics_transmit_power.is_set || is_set(optics_transmit_power.yfilter)) leaf_name_data.push_back(optics_transmit_power.get_name_leafdata());
-    if (optics_ots_channel_power_max_delta.is_set || is_set(optics_ots_channel_power_max_delta.yfilter)) leaf_name_data.push_back(optics_ots_channel_power_max_delta.get_name_leafdata());
-    if (optics_loopback.is_set || is_set(optics_loopback.yfilter)) leaf_name_data.push_back(optics_loopback.get_name_leafdata());
-    if (optics_ots_osri.is_set || is_set(optics_ots_osri.yfilter)) leaf_name_data.push_back(optics_ots_osri.get_name_leafdata());
-    if (optics_ots_amplifier_gain_degrade_high_threshold.is_set || is_set(optics_ots_amplifier_gain_degrade_high_threshold.yfilter)) leaf_name_data.push_back(optics_ots_amplifier_gain_degrade_high_threshold.get_name_leafdata());
-    if (optics_ots_rx_voa_attenuation.is_set || is_set(optics_ots_rx_voa_attenuation.yfilter)) leaf_name_data.push_back(optics_ots_rx_voa_attenuation.get_name_leafdata());
-    if (optics_fec.is_set || is_set(optics_fec.yfilter)) leaf_name_data.push_back(optics_fec.get_name_leafdata());
-    if (optics_dgd_high_threshold.is_set || is_set(optics_dgd_high_threshold.yfilter)) leaf_name_data.push_back(optics_dgd_high_threshold.get_name_leafdata());
-    if (optics_ots_amplifier_channel_power.is_set || is_set(optics_ots_amplifier_channel_power.yfilter)) leaf_name_data.push_back(optics_ots_amplifier_channel_power.get_name_leafdata());
-    if (optics_ots_amplifier_control_mode.is_set || is_set(optics_ots_amplifier_control_mode.yfilter)) leaf_name_data.push_back(optics_ots_amplifier_control_mode.get_name_leafdata());
-    if (optics_ots_amplifier_gain.is_set || is_set(optics_ots_amplifier_gain.yfilter)) leaf_name_data.push_back(optics_ots_amplifier_gain.get_name_leafdata());
-    if (optics_ots_amplifier_gain_range.is_set || is_set(optics_ots_amplifier_gain_range.yfilter)) leaf_name_data.push_back(optics_ots_amplifier_gain_range.get_name_leafdata());
-    if (optics_ots_safety_control_mode.is_set || is_set(optics_ots_safety_control_mode.yfilter)) leaf_name_data.push_back(optics_ots_safety_control_mode.get_name_leafdata());
-    if (optics_cd_min.is_set || is_set(optics_cd_min.yfilter)) leaf_name_data.push_back(optics_cd_min.get_name_leafdata());
-    if (optics_ots_tx_voa_attenuation.is_set || is_set(optics_ots_tx_voa_attenuation.yfilter)) leaf_name_data.push_back(optics_ots_tx_voa_attenuation.get_name_leafdata());
-    if (optics_ots_amplifier_tilt.is_set || is_set(optics_ots_amplifier_tilt.yfilter)) leaf_name_data.push_back(optics_ots_amplifier_tilt.get_name_leafdata());
-    if (optics_transmit_shutdown.is_set || is_set(optics_transmit_shutdown.yfilter)) leaf_name_data.push_back(optics_transmit_shutdown.get_name_leafdata());
-    if (optics_baud_rate.is_set || is_set(optics_baud_rate.yfilter)) leaf_name_data.push_back(optics_baud_rate.get_name_leafdata());
-    if (optics_performance_monitoring.is_set || is_set(optics_performance_monitoring.yfilter)) leaf_name_data.push_back(optics_performance_monitoring.get_name_leafdata());
-    if (optics_cd_max.is_set || is_set(optics_cd_max.yfilter)) leaf_name_data.push_back(optics_cd_max.get_name_leafdata());
-    if (optics_bits_per_symbol.is_set || is_set(optics_bits_per_symbol.yfilter)) leaf_name_data.push_back(optics_bits_per_symbol.get_name_leafdata());
-    if (optics_lbc_high_threshold.is_set || is_set(optics_lbc_high_threshold.yfilter)) leaf_name_data.push_back(optics_lbc_high_threshold.get_name_leafdata());
-    if (optics_cd_high_threshold.is_set || is_set(optics_cd_high_threshold.yfilter)) leaf_name_data.push_back(optics_cd_high_threshold.get_name_leafdata());
-    if (optics_osnr_low_threshold.is_set || is_set(optics_osnr_low_threshold.yfilter)) leaf_name_data.push_back(optics_osnr_low_threshold.get_name_leafdata());
-    if (optics_ots_amplifier_gain_degrade_low_threshold.is_set || is_set(optics_ots_amplifier_gain_degrade_low_threshold.yfilter)) leaf_name_data.push_back(optics_ots_amplifier_gain_degrade_low_threshold.get_name_leafdata());
-    if (optics_cd_low_threshold.is_set || is_set(optics_cd_low_threshold.yfilter)) leaf_name_data.push_back(optics_cd_low_threshold.get_name_leafdata());
-    if (breakout.is_set || is_set(breakout.yfilter)) leaf_name_data.push_back(breakout.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Optics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rx-thresholds")
-    {
-        if(rx_thresholds == nullptr)
-        {
-            rx_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds>();
-        }
-        return rx_thresholds;
-    }
-
-    if(child_yang_name == "optics-network-srlgs")
-    {
-        if(optics_network_srlgs == nullptr)
-        {
-            optics_network_srlgs = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs>();
-        }
-        return optics_network_srlgs;
-    }
-
-    if(child_yang_name == "optics-dwdm-carrier")
-    {
-        if(optics_dwdm_carrier == nullptr)
-        {
-            optics_dwdm_carrier = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier>();
-        }
-        return optics_dwdm_carrier;
-    }
-
-    if(child_yang_name == "optics-lanes")
-    {
-        if(optics_lanes == nullptr)
-        {
-            optics_lanes = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes>();
-        }
-        return optics_lanes;
-    }
-
-    if(child_yang_name == "tx-thresholds")
-    {
-        if(tx_thresholds == nullptr)
-        {
-            tx_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds>();
-        }
-        return tx_thresholds;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(rx_thresholds != nullptr)
-    {
-        _children["rx-thresholds"] = rx_thresholds;
-    }
-
-    if(optics_network_srlgs != nullptr)
-    {
-        _children["optics-network-srlgs"] = optics_network_srlgs;
-    }
-
-    if(optics_dwdm_carrier != nullptr)
-    {
-        _children["optics-dwdm-carrier"] = optics_dwdm_carrier;
-    }
-
-    if(optics_lanes != nullptr)
-    {
-        _children["optics-lanes"] = optics_lanes;
-    }
-
-    if(tx_thresholds != nullptr)
-    {
-        _children["tx-thresholds"] = tx_thresholds;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Optics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "optics-transmit-power")
-    {
-        optics_transmit_power = value;
-        optics_transmit_power.value_namespace = name_space;
-        optics_transmit_power.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-ots-channel-power-max-delta")
-    {
-        optics_ots_channel_power_max_delta = value;
-        optics_ots_channel_power_max_delta.value_namespace = name_space;
-        optics_ots_channel_power_max_delta.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-loopback")
-    {
-        optics_loopback = value;
-        optics_loopback.value_namespace = name_space;
-        optics_loopback.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-ots-osri")
-    {
-        optics_ots_osri = value;
-        optics_ots_osri.value_namespace = name_space;
-        optics_ots_osri.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-ots-amplifier-gain-degrade-high-threshold")
-    {
-        optics_ots_amplifier_gain_degrade_high_threshold = value;
-        optics_ots_amplifier_gain_degrade_high_threshold.value_namespace = name_space;
-        optics_ots_amplifier_gain_degrade_high_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-ots-rx-voa-attenuation")
-    {
-        optics_ots_rx_voa_attenuation = value;
-        optics_ots_rx_voa_attenuation.value_namespace = name_space;
-        optics_ots_rx_voa_attenuation.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-fec")
-    {
-        optics_fec = value;
-        optics_fec.value_namespace = name_space;
-        optics_fec.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-dgd-high-threshold")
-    {
-        optics_dgd_high_threshold = value;
-        optics_dgd_high_threshold.value_namespace = name_space;
-        optics_dgd_high_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-ots-amplifier-channel-power")
-    {
-        optics_ots_amplifier_channel_power = value;
-        optics_ots_amplifier_channel_power.value_namespace = name_space;
-        optics_ots_amplifier_channel_power.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-ots-amplifier-control-mode")
-    {
-        optics_ots_amplifier_control_mode = value;
-        optics_ots_amplifier_control_mode.value_namespace = name_space;
-        optics_ots_amplifier_control_mode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-ots-amplifier-gain")
-    {
-        optics_ots_amplifier_gain = value;
-        optics_ots_amplifier_gain.value_namespace = name_space;
-        optics_ots_amplifier_gain.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-ots-amplifier-gain-range")
-    {
-        optics_ots_amplifier_gain_range = value;
-        optics_ots_amplifier_gain_range.value_namespace = name_space;
-        optics_ots_amplifier_gain_range.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-ots-safety-control-mode")
-    {
-        optics_ots_safety_control_mode = value;
-        optics_ots_safety_control_mode.value_namespace = name_space;
-        optics_ots_safety_control_mode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-cd-min")
-    {
-        optics_cd_min = value;
-        optics_cd_min.value_namespace = name_space;
-        optics_cd_min.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-ots-tx-voa-attenuation")
-    {
-        optics_ots_tx_voa_attenuation = value;
-        optics_ots_tx_voa_attenuation.value_namespace = name_space;
-        optics_ots_tx_voa_attenuation.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-ots-amplifier-tilt")
-    {
-        optics_ots_amplifier_tilt = value;
-        optics_ots_amplifier_tilt.value_namespace = name_space;
-        optics_ots_amplifier_tilt.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-transmit-shutdown")
-    {
-        optics_transmit_shutdown = value;
-        optics_transmit_shutdown.value_namespace = name_space;
-        optics_transmit_shutdown.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-baud-rate")
-    {
-        optics_baud_rate = value;
-        optics_baud_rate.value_namespace = name_space;
-        optics_baud_rate.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-performance-monitoring")
-    {
-        optics_performance_monitoring = value;
-        optics_performance_monitoring.value_namespace = name_space;
-        optics_performance_monitoring.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-cd-max")
-    {
-        optics_cd_max = value;
-        optics_cd_max.value_namespace = name_space;
-        optics_cd_max.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-bits-per-symbol")
-    {
-        optics_bits_per_symbol = value;
-        optics_bits_per_symbol.value_namespace = name_space;
-        optics_bits_per_symbol.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-lbc-high-threshold")
-    {
-        optics_lbc_high_threshold = value;
-        optics_lbc_high_threshold.value_namespace = name_space;
-        optics_lbc_high_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-cd-high-threshold")
-    {
-        optics_cd_high_threshold = value;
-        optics_cd_high_threshold.value_namespace = name_space;
-        optics_cd_high_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-osnr-low-threshold")
-    {
-        optics_osnr_low_threshold = value;
-        optics_osnr_low_threshold.value_namespace = name_space;
-        optics_osnr_low_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-ots-amplifier-gain-degrade-low-threshold")
-    {
-        optics_ots_amplifier_gain_degrade_low_threshold = value;
-        optics_ots_amplifier_gain_degrade_low_threshold.value_namespace = name_space;
-        optics_ots_amplifier_gain_degrade_low_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "optics-cd-low-threshold")
-    {
-        optics_cd_low_threshold = value;
-        optics_cd_low_threshold.value_namespace = name_space;
-        optics_cd_low_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "Cisco-IOS-XR-optics-driver-cfg:breakout")
-    {
-        breakout = value;
-        breakout.value_namespace = name_space;
-        breakout.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Optics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "optics-transmit-power")
-    {
-        optics_transmit_power.yfilter = yfilter;
-    }
-    if(value_path == "optics-ots-channel-power-max-delta")
-    {
-        optics_ots_channel_power_max_delta.yfilter = yfilter;
-    }
-    if(value_path == "optics-loopback")
-    {
-        optics_loopback.yfilter = yfilter;
-    }
-    if(value_path == "optics-ots-osri")
-    {
-        optics_ots_osri.yfilter = yfilter;
-    }
-    if(value_path == "optics-ots-amplifier-gain-degrade-high-threshold")
-    {
-        optics_ots_amplifier_gain_degrade_high_threshold.yfilter = yfilter;
-    }
-    if(value_path == "optics-ots-rx-voa-attenuation")
-    {
-        optics_ots_rx_voa_attenuation.yfilter = yfilter;
-    }
-    if(value_path == "optics-fec")
-    {
-        optics_fec.yfilter = yfilter;
-    }
-    if(value_path == "optics-dgd-high-threshold")
-    {
-        optics_dgd_high_threshold.yfilter = yfilter;
-    }
-    if(value_path == "optics-ots-amplifier-channel-power")
-    {
-        optics_ots_amplifier_channel_power.yfilter = yfilter;
-    }
-    if(value_path == "optics-ots-amplifier-control-mode")
-    {
-        optics_ots_amplifier_control_mode.yfilter = yfilter;
-    }
-    if(value_path == "optics-ots-amplifier-gain")
-    {
-        optics_ots_amplifier_gain.yfilter = yfilter;
-    }
-    if(value_path == "optics-ots-amplifier-gain-range")
-    {
-        optics_ots_amplifier_gain_range.yfilter = yfilter;
-    }
-    if(value_path == "optics-ots-safety-control-mode")
-    {
-        optics_ots_safety_control_mode.yfilter = yfilter;
-    }
-    if(value_path == "optics-cd-min")
-    {
-        optics_cd_min.yfilter = yfilter;
-    }
-    if(value_path == "optics-ots-tx-voa-attenuation")
-    {
-        optics_ots_tx_voa_attenuation.yfilter = yfilter;
-    }
-    if(value_path == "optics-ots-amplifier-tilt")
-    {
-        optics_ots_amplifier_tilt.yfilter = yfilter;
-    }
-    if(value_path == "optics-transmit-shutdown")
-    {
-        optics_transmit_shutdown.yfilter = yfilter;
-    }
-    if(value_path == "optics-baud-rate")
-    {
-        optics_baud_rate.yfilter = yfilter;
-    }
-    if(value_path == "optics-performance-monitoring")
-    {
-        optics_performance_monitoring.yfilter = yfilter;
-    }
-    if(value_path == "optics-cd-max")
-    {
-        optics_cd_max.yfilter = yfilter;
-    }
-    if(value_path == "optics-bits-per-symbol")
-    {
-        optics_bits_per_symbol.yfilter = yfilter;
-    }
-    if(value_path == "optics-lbc-high-threshold")
-    {
-        optics_lbc_high_threshold.yfilter = yfilter;
-    }
-    if(value_path == "optics-cd-high-threshold")
-    {
-        optics_cd_high_threshold.yfilter = yfilter;
-    }
-    if(value_path == "optics-osnr-low-threshold")
-    {
-        optics_osnr_low_threshold.yfilter = yfilter;
-    }
-    if(value_path == "optics-ots-amplifier-gain-degrade-low-threshold")
-    {
-        optics_ots_amplifier_gain_degrade_low_threshold.yfilter = yfilter;
-    }
-    if(value_path == "optics-cd-low-threshold")
-    {
-        optics_cd_low_threshold.yfilter = yfilter;
-    }
-    if(value_path == "breakout")
-    {
-        breakout.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rx-thresholds" || name == "optics-network-srlgs" || name == "optics-dwdm-carrier" || name == "optics-lanes" || name == "tx-thresholds" || name == "optics-transmit-power" || name == "optics-ots-channel-power-max-delta" || name == "optics-loopback" || name == "optics-ots-osri" || name == "optics-ots-amplifier-gain-degrade-high-threshold" || name == "optics-ots-rx-voa-attenuation" || name == "optics-fec" || name == "optics-dgd-high-threshold" || name == "optics-ots-amplifier-channel-power" || name == "optics-ots-amplifier-control-mode" || name == "optics-ots-amplifier-gain" || name == "optics-ots-amplifier-gain-range" || name == "optics-ots-safety-control-mode" || name == "optics-cd-min" || name == "optics-ots-tx-voa-attenuation" || name == "optics-ots-amplifier-tilt" || name == "optics-transmit-shutdown" || name == "optics-baud-rate" || name == "optics-performance-monitoring" || name == "optics-cd-max" || name == "optics-bits-per-symbol" || name == "optics-lbc-high-threshold" || name == "optics-cd-high-threshold" || name == "optics-osnr-low-threshold" || name == "optics-ots-amplifier-gain-degrade-low-threshold" || name == "optics-cd-low-threshold" || name == "breakout")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThresholds()
-    :
-    rx_threshold(this, {"rx_threshold_type"})
-{
-
-    yang_name = "rx-thresholds"; yang_parent_name = "optics"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::~RxThresholds()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<rx_threshold.len(); index++)
-    {
-        if(rx_threshold[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::has_operation() const
-{
-    for (std::size_t index=0; index<rx_threshold.len(); index++)
-    {
-        if(rx_threshold[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rx-thresholds";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rx-threshold")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold>();
-        ent_->parent = this;
-        rx_threshold.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : rx_threshold.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rx-threshold")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::RxThreshold()
-    :
-    rx_threshold_type{YType::enumeration, "rx-threshold-type"},
-    rx_threshold{YType::int32, "rx-threshold"}
-{
-
-    yang_name = "rx-threshold"; yang_parent_name = "rx-thresholds"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::~RxThreshold()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::has_data() const
-{
-    if (is_presence_container) return true;
-    return rx_threshold_type.is_set
-	|| rx_threshold.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(rx_threshold_type.yfilter)
-	|| ydk::is_set(rx_threshold.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rx-threshold";
-    ADD_KEY_TOKEN(rx_threshold_type, "rx-threshold-type");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (rx_threshold_type.is_set || is_set(rx_threshold_type.yfilter)) leaf_name_data.push_back(rx_threshold_type.get_name_leafdata());
-    if (rx_threshold.is_set || is_set(rx_threshold.yfilter)) leaf_name_data.push_back(rx_threshold.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "rx-threshold-type")
-    {
-        rx_threshold_type = value;
-        rx_threshold_type.value_namespace = name_space;
-        rx_threshold_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-threshold")
-    {
-        rx_threshold = value;
-        rx_threshold.value_namespace = name_space;
-        rx_threshold.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "rx-threshold-type")
-    {
-        rx_threshold_type.yfilter = yfilter;
-    }
-    if(value_path == "rx-threshold")
-    {
-        rx_threshold.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rx-threshold-type" || name == "rx-threshold")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlgs()
-    :
-    optics_network_srlg(this, {"set_id"})
-{
-
-    yang_name = "optics-network-srlgs"; yang_parent_name = "optics"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::~OpticsNetworkSrlgs()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<optics_network_srlg.len(); index++)
-    {
-        if(optics_network_srlg[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::has_operation() const
-{
-    for (std::size_t index=0; index<optics_network_srlg.len(); index++)
-    {
-        if(optics_network_srlg[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "optics-network-srlgs";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "optics-network-srlg")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg>();
-        ent_->parent = this;
-        optics_network_srlg.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : optics_network_srlg.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "optics-network-srlg")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::OpticsNetworkSrlg()
-    :
-    set_id{YType::uint32, "set-id"},
-    srlg1{YType::uint32, "srlg1"},
-    srlg2{YType::uint32, "srlg2"},
-    srlg3{YType::uint32, "srlg3"},
-    srlg4{YType::uint32, "srlg4"},
-    srlg5{YType::uint32, "srlg5"},
-    srlg6{YType::uint32, "srlg6"}
-{
-
-    yang_name = "optics-network-srlg"; yang_parent_name = "optics-network-srlgs"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::~OpticsNetworkSrlg()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::has_data() const
-{
-    if (is_presence_container) return true;
-    return set_id.is_set
-	|| srlg1.is_set
-	|| srlg2.is_set
-	|| srlg3.is_set
-	|| srlg4.is_set
-	|| srlg5.is_set
-	|| srlg6.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(set_id.yfilter)
-	|| ydk::is_set(srlg1.yfilter)
-	|| ydk::is_set(srlg2.yfilter)
-	|| ydk::is_set(srlg3.yfilter)
-	|| ydk::is_set(srlg4.yfilter)
-	|| ydk::is_set(srlg5.yfilter)
-	|| ydk::is_set(srlg6.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "optics-network-srlg";
-    ADD_KEY_TOKEN(set_id, "set-id");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (set_id.is_set || is_set(set_id.yfilter)) leaf_name_data.push_back(set_id.get_name_leafdata());
-    if (srlg1.is_set || is_set(srlg1.yfilter)) leaf_name_data.push_back(srlg1.get_name_leafdata());
-    if (srlg2.is_set || is_set(srlg2.yfilter)) leaf_name_data.push_back(srlg2.get_name_leafdata());
-    if (srlg3.is_set || is_set(srlg3.yfilter)) leaf_name_data.push_back(srlg3.get_name_leafdata());
-    if (srlg4.is_set || is_set(srlg4.yfilter)) leaf_name_data.push_back(srlg4.get_name_leafdata());
-    if (srlg5.is_set || is_set(srlg5.yfilter)) leaf_name_data.push_back(srlg5.get_name_leafdata());
-    if (srlg6.is_set || is_set(srlg6.yfilter)) leaf_name_data.push_back(srlg6.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "set-id")
-    {
-        set_id = value;
-        set_id.value_namespace = name_space;
-        set_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "srlg1")
-    {
-        srlg1 = value;
-        srlg1.value_namespace = name_space;
-        srlg1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "srlg2")
-    {
-        srlg2 = value;
-        srlg2.value_namespace = name_space;
-        srlg2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "srlg3")
-    {
-        srlg3 = value;
-        srlg3.value_namespace = name_space;
-        srlg3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "srlg4")
-    {
-        srlg4 = value;
-        srlg4.value_namespace = name_space;
-        srlg4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "srlg5")
-    {
-        srlg5 = value;
-        srlg5.value_namespace = name_space;
-        srlg5.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "srlg6")
-    {
-        srlg6 = value;
-        srlg6.value_namespace = name_space;
-        srlg6.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "set-id")
-    {
-        set_id.yfilter = yfilter;
-    }
-    if(value_path == "srlg1")
-    {
-        srlg1.yfilter = yfilter;
-    }
-    if(value_path == "srlg2")
-    {
-        srlg2.yfilter = yfilter;
-    }
-    if(value_path == "srlg3")
-    {
-        srlg3.yfilter = yfilter;
-    }
-    if(value_path == "srlg4")
-    {
-        srlg4.yfilter = yfilter;
-    }
-    if(value_path == "srlg5")
-    {
-        srlg5.yfilter = yfilter;
-    }
-    if(value_path == "srlg6")
-    {
-        srlg6.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "set-id" || name == "srlg1" || name == "srlg2" || name == "srlg3" || name == "srlg4" || name == "srlg5" || name == "srlg6")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::OpticsDwdmCarrier()
-    :
-    grid_type{YType::enumeration, "grid-type"},
-    param_type{YType::enumeration, "param-type"},
-    param_value{YType::uint32, "param-value"}
-{
-
-    yang_name = "optics-dwdm-carrier"; yang_parent_name = "optics"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::~OpticsDwdmCarrier()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::has_data() const
-{
-    if (is_presence_container) return true;
-    return grid_type.is_set
-	|| param_type.is_set
-	|| param_value.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(grid_type.yfilter)
-	|| ydk::is_set(param_type.yfilter)
-	|| ydk::is_set(param_value.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "optics-dwdm-carrier";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (grid_type.is_set || is_set(grid_type.yfilter)) leaf_name_data.push_back(grid_type.get_name_leafdata());
-    if (param_type.is_set || is_set(param_type.yfilter)) leaf_name_data.push_back(param_type.get_name_leafdata());
-    if (param_value.is_set || is_set(param_value.yfilter)) leaf_name_data.push_back(param_value.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "grid-type")
-    {
-        grid_type = value;
-        grid_type.value_namespace = name_space;
-        grid_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "param-type")
-    {
-        param_type = value;
-        param_type.value_namespace = name_space;
-        param_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "param-value")
-    {
-        param_value = value;
-        param_value.value_namespace = name_space;
-        param_value.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "grid-type")
-    {
-        grid_type.yfilter = yfilter;
-    }
-    if(value_path == "param-type")
-    {
-        param_type.yfilter = yfilter;
-    }
-    if(value_path == "param-value")
-    {
-        param_value.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "grid-type" || name == "param-type" || name == "param-value")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLanes()
-    :
-    optics_lane(this, {"index_"})
-{
-
-    yang_name = "optics-lanes"; yang_parent_name = "optics"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::~OpticsLanes()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<optics_lane.len(); index++)
-    {
-        if(optics_lane[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::has_operation() const
-{
-    for (std::size_t index=0; index<optics_lane.len(); index++)
-    {
-        if(optics_lane[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "optics-lanes";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "optics-lane")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane>();
-        ent_->parent = this;
-        optics_lane.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : optics_lane.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "optics-lane")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::OpticsLane()
-    :
-    index_{YType::uint32, "index"},
-    description{YType::str, "description"}
-{
-
-    yang_name = "optics-lane"; yang_parent_name = "optics-lanes"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::~OpticsLane()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::has_data() const
-{
-    if (is_presence_container) return true;
-    return index_.is_set
-	|| description.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(index_.yfilter)
-	|| ydk::is_set(description.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "optics-lane";
-    ADD_KEY_TOKEN(index_, "index");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "index")
-    {
-        index_ = value;
-        index_.value_namespace = name_space;
-        index_.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "description")
-    {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "index")
-    {
-        index_.yfilter = yfilter;
-    }
-    if(value_path == "description")
-    {
-        description.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "index" || name == "description")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThresholds()
-    :
-    tx_threshold(this, {"tx_threshold_type"})
-{
-
-    yang_name = "tx-thresholds"; yang_parent_name = "optics"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::~TxThresholds()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<tx_threshold.len(); index++)
-    {
-        if(tx_threshold[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::has_operation() const
-{
-    for (std::size_t index=0; index<tx_threshold.len(); index++)
-    {
-        if(tx_threshold[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tx-thresholds";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tx-threshold")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold>();
-        ent_->parent = this;
-        tx_threshold.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : tx_threshold.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tx-threshold")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::TxThreshold()
-    :
-    tx_threshold_type{YType::enumeration, "tx-threshold-type"},
-    tx_threshold{YType::int32, "tx-threshold"}
-{
-
-    yang_name = "tx-threshold"; yang_parent_name = "tx-thresholds"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::~TxThreshold()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::has_data() const
-{
-    if (is_presence_container) return true;
-    return tx_threshold_type.is_set
-	|| tx_threshold.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(tx_threshold_type.yfilter)
-	|| ydk::is_set(tx_threshold.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tx-threshold";
-    ADD_KEY_TOKEN(tx_threshold_type, "tx-threshold-type");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (tx_threshold_type.is_set || is_set(tx_threshold_type.yfilter)) leaf_name_data.push_back(tx_threshold_type.get_name_leafdata());
-    if (tx_threshold.is_set || is_set(tx_threshold.yfilter)) leaf_name_data.push_back(tx_threshold.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "tx-threshold-type")
-    {
-        tx_threshold_type = value;
-        tx_threshold_type.value_namespace = name_space;
-        tx_threshold_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tx-threshold")
-    {
-        tx_threshold = value;
-        tx_threshold.value_namespace = name_space;
-        tx_threshold.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "tx-threshold-type")
-    {
-        tx_threshold_type.yfilter = yfilter;
-    }
-    if(value_path == "tx-threshold")
-    {
-        tx_threshold.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tx-threshold-type" || name == "tx-threshold")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopbacks()
-    :
-    loopback(this, {"level"})
-{
-
-    yang_name = "loopbacks"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Loopbacks::~Loopbacks()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Loopbacks::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<loopback.len(); index++)
-    {
-        if(loopback[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Loopbacks::has_operation() const
-{
-    for (std::size_t index=0; index<loopback.len(); index++)
-    {
-        if(loopback[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Loopbacks::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-drivers-icpe-ethernet-cfg:loopbacks";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Loopbacks::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Loopbacks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "loopback")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback>();
-        ent_->parent = this;
-        loopback.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Loopbacks::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : loopback.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Loopbacks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Loopbacks::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Loopbacks::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "loopback")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::Loopback()
-    :
-    level{YType::uint32, "level"},
-    loopback{YType::enumeration, "loopback"}
-{
-
-    yang_name = "loopback"; yang_parent_name = "loopbacks"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::~Loopback()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::has_data() const
-{
-    if (is_presence_container) return true;
-    return level.is_set
-	|| loopback.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(loopback.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "loopback";
-    ADD_KEY_TOKEN(level, "level");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (loopback.is_set || is_set(loopback.yfilter)) leaf_name_data.push_back(loopback.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "loopback")
-    {
-        loopback = value;
-        loopback.value_namespace = name_space;
-        loopback.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "loopback")
-    {
-        loopback.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level" || name == "loopback")
         return true;
     return false;
 }
@@ -7941,6 +8096,3122 @@ void InterfaceConfigurations::InterfaceConfiguration::Ptp::DelayRequestMinimumIn
 bool InterfaceConfigurations::InterfaceConfiguration::Ptp::DelayRequestMinimumInterval::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "time-type" || name == "time-period")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::EthernetControl::EthernetControl()
+    :
+    transport_mode{YType::enumeration, "transport-mode"},
+    small_frame_padding{YType::empty, "small-frame-padding"}
+        ,
+    transceiver(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver>())
+{
+    transceiver->parent = this;
+
+    yang_name = "ethernet-control"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::EthernetControl::~EthernetControl()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::EthernetControl::has_data() const
+{
+    if (is_presence_container) return true;
+    return transport_mode.is_set
+	|| small_frame_padding.is_set
+	|| (transceiver !=  nullptr && transceiver->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::EthernetControl::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(transport_mode.yfilter)
+	|| ydk::is_set(small_frame_padding.yfilter)
+	|| (transceiver !=  nullptr && transceiver->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::EthernetControl::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-asr9k-lc-ethctrl-cfg:ethernet-control";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::EthernetControl::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (transport_mode.is_set || is_set(transport_mode.yfilter)) leaf_name_data.push_back(transport_mode.get_name_leafdata());
+    if (small_frame_padding.is_set || is_set(small_frame_padding.yfilter)) leaf_name_data.push_back(small_frame_padding.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::EthernetControl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "transceiver")
+    {
+        if(transceiver == nullptr)
+        {
+            transceiver = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver>();
+        }
+        return transceiver;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::EthernetControl::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(transceiver != nullptr)
+    {
+        _children["transceiver"] = transceiver;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::EthernetControl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "transport-mode")
+    {
+        transport_mode = value;
+        transport_mode.value_namespace = name_space;
+        transport_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "small-frame-padding")
+    {
+        small_frame_padding = value;
+        small_frame_padding.value_namespace = name_space;
+        small_frame_padding.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::EthernetControl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "transport-mode")
+    {
+        transport_mode.yfilter = yfilter;
+    }
+    if(value_path == "small-frame-padding")
+    {
+        small_frame_padding.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::EthernetControl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "transceiver" || name == "transport-mode" || name == "small-frame-padding")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::Transceiver()
+    :
+    permit(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::Permit>())
+{
+    permit->parent = this;
+
+    yang_name = "transceiver"; yang_parent_name = "ethernet-control"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::~Transceiver()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::has_data() const
+{
+    if (is_presence_container) return true;
+    return (permit !=  nullptr && permit->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::has_operation() const
+{
+    return is_set(yfilter)
+	|| (permit !=  nullptr && permit->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "transceiver";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "permit")
+    {
+        if(permit == nullptr)
+        {
+            permit = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::Permit>();
+        }
+        return permit;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(permit != nullptr)
+    {
+        _children["permit"] = permit;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "permit")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::Permit::Permit()
+    :
+    type{YType::enumeration, "type"},
+    pid{YType::enumeration, "pid"}
+{
+
+    yang_name = "permit"; yang_parent_name = "transceiver"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::Permit::~Permit()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::Permit::has_data() const
+{
+    if (is_presence_container) return true;
+    return type.is_set
+	|| pid.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::Permit::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(pid.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::Permit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "permit";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::Permit::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (pid.is_set || is_set(pid.yfilter)) leaf_name_data.push_back(pid.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::Permit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::Permit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::Permit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pid")
+    {
+        pid = value;
+        pid.value_namespace = name_space;
+        pid.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::Permit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "pid")
+    {
+        pid.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::EthernetControl::Transceiver::Permit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "type" || name == "pid")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Pbr::Pbr()
+    :
+    service_policy_in{YType::str, "service-policy-in"}
+        ,
+    service_policy(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy>())
+{
+    service_policy->parent = this;
+
+    yang_name = "pbr"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Pbr::~Pbr()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Pbr::has_data() const
+{
+    if (is_presence_container) return true;
+    return service_policy_in.is_set
+	|| (service_policy !=  nullptr && service_policy->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Pbr::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(service_policy_in.yfilter)
+	|| (service_policy !=  nullptr && service_policy->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Pbr::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-pbr-cfg:pbr";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Pbr::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (service_policy_in.is_set || is_set(service_policy_in.yfilter)) leaf_name_data.push_back(service_policy_in.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Pbr::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "service-policy")
+    {
+        if(service_policy == nullptr)
+        {
+            service_policy = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy>();
+        }
+        return service_policy;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Pbr::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(service_policy != nullptr)
+    {
+        _children["service-policy"] = service_policy;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Pbr::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "service-policy-in")
+    {
+        service_policy_in = value;
+        service_policy_in.value_namespace = name_space;
+        service_policy_in.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Pbr::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "service-policy-in")
+    {
+        service_policy_in.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Pbr::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "service-policy" || name == "service-policy-in")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::ServicePolicy()
+    :
+    input{YType::str, "input"}
+{
+
+    yang_name = "service-policy"; yang_parent_name = "pbr"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::~ServicePolicy()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::has_data() const
+{
+    if (is_presence_container) return true;
+    return input.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(input.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "service-policy";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (input.is_set || is_set(input.yfilter)) leaf_name_data.push_back(input.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "input")
+    {
+        input = value;
+        input.value_namespace = name_space;
+        input.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "input")
+    {
+        input.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Pbr::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelIp::TunnelIp()
+    :
+    allow_key{YType::empty, "allow-key"},
+    ttl{YType::uint32, "ttl"},
+    tunnel_vrf{YType::str, "tunnel-vrf"},
+    tos{YType::uint32, "tos"},
+    disable{YType::uint32, "disable"}
+        ,
+    mode(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode>())
+    , source(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source>())
+    , key(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key>())
+    , keepalive(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive>())
+    , bfd(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd>())
+    , destination(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination>())
+{
+    mode->parent = this;
+    source->parent = this;
+    key->parent = this;
+    keepalive->parent = this;
+    bfd->parent = this;
+    destination->parent = this;
+
+    yang_name = "tunnel-ip"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelIp::~TunnelIp()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::has_data() const
+{
+    if (is_presence_container) return true;
+    return allow_key.is_set
+	|| ttl.is_set
+	|| tunnel_vrf.is_set
+	|| tos.is_set
+	|| disable.is_set
+	|| (mode !=  nullptr && mode->has_data())
+	|| (source !=  nullptr && source->has_data())
+	|| (key !=  nullptr && key->has_data())
+	|| (keepalive !=  nullptr && keepalive->has_data())
+	|| (bfd !=  nullptr && bfd->has_data())
+	|| (destination !=  nullptr && destination->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(allow_key.yfilter)
+	|| ydk::is_set(ttl.yfilter)
+	|| ydk::is_set(tunnel_vrf.yfilter)
+	|| ydk::is_set(tos.yfilter)
+	|| ydk::is_set(disable.yfilter)
+	|| (mode !=  nullptr && mode->has_operation())
+	|| (source !=  nullptr && source->has_operation())
+	|| (key !=  nullptr && key->has_operation())
+	|| (keepalive !=  nullptr && keepalive->has_operation())
+	|| (bfd !=  nullptr && bfd->has_operation())
+	|| (destination !=  nullptr && destination->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelIp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-tunnel-gre-cfg:tunnel-ip";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelIp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (allow_key.is_set || is_set(allow_key.yfilter)) leaf_name_data.push_back(allow_key.get_name_leafdata());
+    if (ttl.is_set || is_set(ttl.yfilter)) leaf_name_data.push_back(ttl.get_name_leafdata());
+    if (tunnel_vrf.is_set || is_set(tunnel_vrf.yfilter)) leaf_name_data.push_back(tunnel_vrf.get_name_leafdata());
+    if (tos.is_set || is_set(tos.yfilter)) leaf_name_data.push_back(tos.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mode")
+    {
+        if(mode == nullptr)
+        {
+            mode = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode>();
+        }
+        return mode;
+    }
+
+    if(child_yang_name == "source")
+    {
+        if(source == nullptr)
+        {
+            source = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source>();
+        }
+        return source;
+    }
+
+    if(child_yang_name == "key")
+    {
+        if(key == nullptr)
+        {
+            key = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key>();
+        }
+        return key;
+    }
+
+    if(child_yang_name == "keepalive")
+    {
+        if(keepalive == nullptr)
+        {
+            keepalive = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive>();
+        }
+        return keepalive;
+    }
+
+    if(child_yang_name == "bfd")
+    {
+        if(bfd == nullptr)
+        {
+            bfd = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd>();
+        }
+        return bfd;
+    }
+
+    if(child_yang_name == "destination")
+    {
+        if(destination == nullptr)
+        {
+            destination = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination>();
+        }
+        return destination;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(mode != nullptr)
+    {
+        _children["mode"] = mode;
+    }
+
+    if(source != nullptr)
+    {
+        _children["source"] = source;
+    }
+
+    if(key != nullptr)
+    {
+        _children["key"] = key;
+    }
+
+    if(keepalive != nullptr)
+    {
+        _children["keepalive"] = keepalive;
+    }
+
+    if(bfd != nullptr)
+    {
+        _children["bfd"] = bfd;
+    }
+
+    if(destination != nullptr)
+    {
+        _children["destination"] = destination;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "allow-key")
+    {
+        allow_key = value;
+        allow_key.value_namespace = name_space;
+        allow_key.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ttl")
+    {
+        ttl = value;
+        ttl.value_namespace = name_space;
+        ttl.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tunnel-vrf")
+    {
+        tunnel_vrf = value;
+        tunnel_vrf.value_namespace = name_space;
+        tunnel_vrf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tos")
+    {
+        tos = value;
+        tos.value_namespace = name_space;
+        tos.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allow-key")
+    {
+        allow_key.yfilter = yfilter;
+    }
+    if(value_path == "ttl")
+    {
+        ttl.yfilter = yfilter;
+    }
+    if(value_path == "tunnel-vrf")
+    {
+        tunnel_vrf.yfilter = yfilter;
+    }
+    if(value_path == "tos")
+    {
+        tos.yfilter = yfilter;
+    }
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mode" || name == "source" || name == "key" || name == "keepalive" || name == "bfd" || name == "destination" || name == "allow-key" || name == "ttl" || name == "tunnel-vrf" || name == "tos" || name == "disable")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::Mode()
+    :
+    value_{YType::uint32, "value"},
+    mode_direction{YType::enumeration, "mode-direction"}
+{
+
+    yang_name = "mode"; yang_parent_name = "tunnel-ip"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::~Mode()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::has_data() const
+{
+    if (is_presence_container) return true;
+    return value_.is_set
+	|| mode_direction.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(value_.yfilter)
+	|| ydk::is_set(mode_direction.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mode";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (mode_direction.is_set || is_set(mode_direction.yfilter)) leaf_name_data.push_back(mode_direction.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mode-direction")
+    {
+        mode_direction = value;
+        mode_direction.value_namespace = name_space;
+        mode_direction.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+    if(value_path == "mode-direction")
+    {
+        mode_direction.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Mode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "value" || name == "mode-direction")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::Source()
+    :
+    type{YType::uint32, "type"},
+    address{YType::str, "address"},
+    interface_name{YType::str, "interface-name"},
+    ipv6_address{YType::str, "ipv6-address"}
+{
+
+    yang_name = "source"; yang_parent_name = "tunnel-ip"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::~Source()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::has_data() const
+{
+    if (is_presence_container) return true;
+    return type.is_set
+	|| address.is_set
+	|| interface_name.is_set
+	|| ipv6_address.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "source";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "address")
+    {
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Source::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "type" || name == "address" || name == "interface-name" || name == "ipv6-address")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::Key()
+    :
+    entropy{YType::empty, "entropy"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "key"; yang_parent_name = "tunnel-ip"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::~Key()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::has_data() const
+{
+    if (is_presence_container) return true;
+    return entropy.is_set
+	|| value_.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entropy.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "key";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entropy.is_set || is_set(entropy.yfilter)) leaf_name_data.push_back(entropy.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entropy")
+    {
+        entropy = value;
+        entropy.value_namespace = name_space;
+        entropy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entropy")
+    {
+        entropy.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Key::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entropy" || name == "value")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::Keepalive()
+    :
+    keep_alive_period{YType::uint32, "keep-alive-period"},
+    keep_alive_retries{YType::uint32, "keep-alive-retries"}
+{
+
+    yang_name = "keepalive"; yang_parent_name = "tunnel-ip"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::~Keepalive()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::has_data() const
+{
+    if (is_presence_container) return true;
+    return keep_alive_period.is_set
+	|| keep_alive_retries.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(keep_alive_period.yfilter)
+	|| ydk::is_set(keep_alive_retries.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "keepalive";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (keep_alive_period.is_set || is_set(keep_alive_period.yfilter)) leaf_name_data.push_back(keep_alive_period.get_name_leafdata());
+    if (keep_alive_retries.is_set || is_set(keep_alive_retries.yfilter)) leaf_name_data.push_back(keep_alive_retries.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "keep-alive-period")
+    {
+        keep_alive_period = value;
+        keep_alive_period.value_namespace = name_space;
+        keep_alive_period.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "keep-alive-retries")
+    {
+        keep_alive_retries = value;
+        keep_alive_retries.value_namespace = name_space;
+        keep_alive_retries.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "keep-alive-period")
+    {
+        keep_alive_period.yfilter = yfilter;
+    }
+    if(value_path == "keep-alive-retries")
+    {
+        keep_alive_retries.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Keepalive::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "keep-alive-period" || name == "keep-alive-retries")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Bfd()
+    :
+    minimum_interval{YType::uint32, "minimum-interval"},
+    keepalive_period{YType::uint32, "keepalive-period"},
+    retry{YType::uint32, "retry"},
+    multiplier{YType::uint32, "multiplier"}
+        ,
+    destination(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination>())
+{
+    destination->parent = this;
+
+    yang_name = "bfd"; yang_parent_name = "tunnel-ip"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::~Bfd()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::has_data() const
+{
+    if (is_presence_container) return true;
+    return minimum_interval.is_set
+	|| keepalive_period.is_set
+	|| retry.is_set
+	|| multiplier.is_set
+	|| (destination !=  nullptr && destination->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(minimum_interval.yfilter)
+	|| ydk::is_set(keepalive_period.yfilter)
+	|| ydk::is_set(retry.yfilter)
+	|| ydk::is_set(multiplier.yfilter)
+	|| (destination !=  nullptr && destination->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bfd";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (minimum_interval.is_set || is_set(minimum_interval.yfilter)) leaf_name_data.push_back(minimum_interval.get_name_leafdata());
+    if (keepalive_period.is_set || is_set(keepalive_period.yfilter)) leaf_name_data.push_back(keepalive_period.get_name_leafdata());
+    if (retry.is_set || is_set(retry.yfilter)) leaf_name_data.push_back(retry.get_name_leafdata());
+    if (multiplier.is_set || is_set(multiplier.yfilter)) leaf_name_data.push_back(multiplier.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "destination")
+    {
+        if(destination == nullptr)
+        {
+            destination = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination>();
+        }
+        return destination;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(destination != nullptr)
+    {
+        _children["destination"] = destination;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "minimum-interval")
+    {
+        minimum_interval = value;
+        minimum_interval.value_namespace = name_space;
+        minimum_interval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "keepalive-period")
+    {
+        keepalive_period = value;
+        keepalive_period.value_namespace = name_space;
+        keepalive_period.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "retry")
+    {
+        retry = value;
+        retry.value_namespace = name_space;
+        retry.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "multiplier")
+    {
+        multiplier = value;
+        multiplier.value_namespace = name_space;
+        multiplier.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "minimum-interval")
+    {
+        minimum_interval.yfilter = yfilter;
+    }
+    if(value_path == "keepalive-period")
+    {
+        keepalive_period.yfilter = yfilter;
+    }
+    if(value_path == "retry")
+    {
+        retry.yfilter = yfilter;
+    }
+    if(value_path == "multiplier")
+    {
+        multiplier.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination" || name == "minimum-interval" || name == "keepalive-period" || name == "retry" || name == "multiplier")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination::Destination()
+    :
+    type{YType::uint32, "type"},
+    address{YType::str, "address"},
+    ipv6_address{YType::str, "ipv6-address"}
+{
+
+    yang_name = "destination"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination::~Destination()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination::has_data() const
+{
+    if (is_presence_container) return true;
+    return type.is_set
+	|| address.is_set
+	|| ipv6_address.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "destination";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "address")
+    {
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Bfd::Destination::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "type" || name == "address" || name == "ipv6-address")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::Destination()
+    :
+    type{YType::uint32, "type"},
+    address{YType::str, "address"},
+    ipv6_address{YType::str, "ipv6-address"},
+    address_mask{YType::str, "address-mask"},
+    prefix_list_name{YType::str, "prefix-list-name"}
+{
+
+    yang_name = "destination"; yang_parent_name = "tunnel-ip"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::~Destination()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::has_data() const
+{
+    if (is_presence_container) return true;
+    return type.is_set
+	|| address.is_set
+	|| ipv6_address.is_set
+	|| address_mask.is_set
+	|| prefix_list_name.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter)
+	|| ydk::is_set(address_mask.yfilter)
+	|| ydk::is_set(prefix_list_name.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "destination";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (address_mask.is_set || is_set(address_mask.yfilter)) leaf_name_data.push_back(address_mask.get_name_leafdata());
+    if (prefix_list_name.is_set || is_set(prefix_list_name.yfilter)) leaf_name_data.push_back(prefix_list_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "address")
+    {
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "address-mask")
+    {
+        address_mask = value;
+        address_mask.value_namespace = name_space;
+        address_mask.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-list-name")
+    {
+        prefix_list_name = value;
+        prefix_list_name.value_namespace = name_space;
+        prefix_list_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "address")
+    {
+        address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "address-mask")
+    {
+        address_mask.yfilter = yfilter;
+    }
+    if(value_path == "prefix-list-name")
+    {
+        prefix_list_name.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::TunnelIp::Destination::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "type" || name == "address" || name == "ipv6-address" || name == "address-mask" || name == "prefix-list-name")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Optics::Optics()
+    :
+    optics_transmit_power{YType::int32, "optics-transmit-power"},
+    optics_ots_channel_power_max_delta{YType::int32, "optics-ots-channel-power-max-delta"},
+    optics_loopback{YType::enumeration, "optics-loopback"},
+    optics_ots_osri{YType::boolean, "optics-ots-osri"},
+    optics_ots_amplifier_gain_degrade_high_threshold{YType::uint32, "optics-ots-amplifier-gain-degrade-high-threshold"},
+    optics_ots_rx_voa_attenuation{YType::uint32, "optics-ots-rx-voa-attenuation"},
+    optics_fec{YType::enumeration, "optics-fec"},
+    optics_dgd_high_threshold{YType::uint32, "optics-dgd-high-threshold"},
+    optics_ots_amplifier_channel_power{YType::int32, "optics-ots-amplifier-channel-power"},
+    optics_ots_amplifier_control_mode{YType::enumeration, "optics-ots-amplifier-control-mode"},
+    optics_ots_amplifier_gain{YType::uint32, "optics-ots-amplifier-gain"},
+    optics_ots_amplifier_gain_range{YType::enumeration, "optics-ots-amplifier-gain-range"},
+    optics_ots_safety_control_mode{YType::enumeration, "optics-ots-safety-control-mode"},
+    optics_cd_min{YType::int32, "optics-cd-min"},
+    optics_ots_tx_voa_attenuation{YType::uint32, "optics-ots-tx-voa-attenuation"},
+    optics_ots_amplifier_tilt{YType::int32, "optics-ots-amplifier-tilt"},
+    optics_transmit_shutdown{YType::boolean, "optics-transmit-shutdown"},
+    optics_baud_rate{YType::str, "optics-baud-rate"},
+    optics_performance_monitoring{YType::boolean, "optics-performance-monitoring"},
+    optics_cd_max{YType::int32, "optics-cd-max"},
+    optics_bits_per_symbol{YType::str, "optics-bits-per-symbol"},
+    optics_lbc_high_threshold{YType::uint32, "optics-lbc-high-threshold"},
+    optics_cd_high_threshold{YType::int32, "optics-cd-high-threshold"},
+    optics_osnr_low_threshold{YType::uint32, "optics-osnr-low-threshold"},
+    optics_ots_amplifier_gain_degrade_low_threshold{YType::uint32, "optics-ots-amplifier-gain-degrade-low-threshold"},
+    optics_cd_low_threshold{YType::int32, "optics-cd-low-threshold"},
+    breakout{YType::str, "Cisco-IOS-XR-optics-driver-cfg:breakout"}
+        ,
+    rx_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds>())
+    , optics_network_srlgs(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs>())
+    , optics_dwdm_carrier(nullptr) // presence node
+    , optics_lanes(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes>())
+    , tx_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds>())
+{
+    rx_thresholds->parent = this;
+    optics_network_srlgs->parent = this;
+    optics_lanes->parent = this;
+    tx_thresholds->parent = this;
+
+    yang_name = "optics"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Optics::~Optics()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::has_data() const
+{
+    if (is_presence_container) return true;
+    return optics_transmit_power.is_set
+	|| optics_ots_channel_power_max_delta.is_set
+	|| optics_loopback.is_set
+	|| optics_ots_osri.is_set
+	|| optics_ots_amplifier_gain_degrade_high_threshold.is_set
+	|| optics_ots_rx_voa_attenuation.is_set
+	|| optics_fec.is_set
+	|| optics_dgd_high_threshold.is_set
+	|| optics_ots_amplifier_channel_power.is_set
+	|| optics_ots_amplifier_control_mode.is_set
+	|| optics_ots_amplifier_gain.is_set
+	|| optics_ots_amplifier_gain_range.is_set
+	|| optics_ots_safety_control_mode.is_set
+	|| optics_cd_min.is_set
+	|| optics_ots_tx_voa_attenuation.is_set
+	|| optics_ots_amplifier_tilt.is_set
+	|| optics_transmit_shutdown.is_set
+	|| optics_baud_rate.is_set
+	|| optics_performance_monitoring.is_set
+	|| optics_cd_max.is_set
+	|| optics_bits_per_symbol.is_set
+	|| optics_lbc_high_threshold.is_set
+	|| optics_cd_high_threshold.is_set
+	|| optics_osnr_low_threshold.is_set
+	|| optics_ots_amplifier_gain_degrade_low_threshold.is_set
+	|| optics_cd_low_threshold.is_set
+	|| breakout.is_set
+	|| (rx_thresholds !=  nullptr && rx_thresholds->has_data())
+	|| (optics_network_srlgs !=  nullptr && optics_network_srlgs->has_data())
+	|| (optics_dwdm_carrier !=  nullptr && optics_dwdm_carrier->has_data())
+	|| (optics_lanes !=  nullptr && optics_lanes->has_data())
+	|| (tx_thresholds !=  nullptr && tx_thresholds->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(optics_transmit_power.yfilter)
+	|| ydk::is_set(optics_ots_channel_power_max_delta.yfilter)
+	|| ydk::is_set(optics_loopback.yfilter)
+	|| ydk::is_set(optics_ots_osri.yfilter)
+	|| ydk::is_set(optics_ots_amplifier_gain_degrade_high_threshold.yfilter)
+	|| ydk::is_set(optics_ots_rx_voa_attenuation.yfilter)
+	|| ydk::is_set(optics_fec.yfilter)
+	|| ydk::is_set(optics_dgd_high_threshold.yfilter)
+	|| ydk::is_set(optics_ots_amplifier_channel_power.yfilter)
+	|| ydk::is_set(optics_ots_amplifier_control_mode.yfilter)
+	|| ydk::is_set(optics_ots_amplifier_gain.yfilter)
+	|| ydk::is_set(optics_ots_amplifier_gain_range.yfilter)
+	|| ydk::is_set(optics_ots_safety_control_mode.yfilter)
+	|| ydk::is_set(optics_cd_min.yfilter)
+	|| ydk::is_set(optics_ots_tx_voa_attenuation.yfilter)
+	|| ydk::is_set(optics_ots_amplifier_tilt.yfilter)
+	|| ydk::is_set(optics_transmit_shutdown.yfilter)
+	|| ydk::is_set(optics_baud_rate.yfilter)
+	|| ydk::is_set(optics_performance_monitoring.yfilter)
+	|| ydk::is_set(optics_cd_max.yfilter)
+	|| ydk::is_set(optics_bits_per_symbol.yfilter)
+	|| ydk::is_set(optics_lbc_high_threshold.yfilter)
+	|| ydk::is_set(optics_cd_high_threshold.yfilter)
+	|| ydk::is_set(optics_osnr_low_threshold.yfilter)
+	|| ydk::is_set(optics_ots_amplifier_gain_degrade_low_threshold.yfilter)
+	|| ydk::is_set(optics_cd_low_threshold.yfilter)
+	|| ydk::is_set(breakout.yfilter)
+	|| (rx_thresholds !=  nullptr && rx_thresholds->has_operation())
+	|| (optics_network_srlgs !=  nullptr && optics_network_srlgs->has_operation())
+	|| (optics_dwdm_carrier !=  nullptr && optics_dwdm_carrier->has_operation())
+	|| (optics_lanes !=  nullptr && optics_lanes->has_operation())
+	|| (tx_thresholds !=  nullptr && tx_thresholds->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Optics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-controller-optics-cfg:optics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Optics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (optics_transmit_power.is_set || is_set(optics_transmit_power.yfilter)) leaf_name_data.push_back(optics_transmit_power.get_name_leafdata());
+    if (optics_ots_channel_power_max_delta.is_set || is_set(optics_ots_channel_power_max_delta.yfilter)) leaf_name_data.push_back(optics_ots_channel_power_max_delta.get_name_leafdata());
+    if (optics_loopback.is_set || is_set(optics_loopback.yfilter)) leaf_name_data.push_back(optics_loopback.get_name_leafdata());
+    if (optics_ots_osri.is_set || is_set(optics_ots_osri.yfilter)) leaf_name_data.push_back(optics_ots_osri.get_name_leafdata());
+    if (optics_ots_amplifier_gain_degrade_high_threshold.is_set || is_set(optics_ots_amplifier_gain_degrade_high_threshold.yfilter)) leaf_name_data.push_back(optics_ots_amplifier_gain_degrade_high_threshold.get_name_leafdata());
+    if (optics_ots_rx_voa_attenuation.is_set || is_set(optics_ots_rx_voa_attenuation.yfilter)) leaf_name_data.push_back(optics_ots_rx_voa_attenuation.get_name_leafdata());
+    if (optics_fec.is_set || is_set(optics_fec.yfilter)) leaf_name_data.push_back(optics_fec.get_name_leafdata());
+    if (optics_dgd_high_threshold.is_set || is_set(optics_dgd_high_threshold.yfilter)) leaf_name_data.push_back(optics_dgd_high_threshold.get_name_leafdata());
+    if (optics_ots_amplifier_channel_power.is_set || is_set(optics_ots_amplifier_channel_power.yfilter)) leaf_name_data.push_back(optics_ots_amplifier_channel_power.get_name_leafdata());
+    if (optics_ots_amplifier_control_mode.is_set || is_set(optics_ots_amplifier_control_mode.yfilter)) leaf_name_data.push_back(optics_ots_amplifier_control_mode.get_name_leafdata());
+    if (optics_ots_amplifier_gain.is_set || is_set(optics_ots_amplifier_gain.yfilter)) leaf_name_data.push_back(optics_ots_amplifier_gain.get_name_leafdata());
+    if (optics_ots_amplifier_gain_range.is_set || is_set(optics_ots_amplifier_gain_range.yfilter)) leaf_name_data.push_back(optics_ots_amplifier_gain_range.get_name_leafdata());
+    if (optics_ots_safety_control_mode.is_set || is_set(optics_ots_safety_control_mode.yfilter)) leaf_name_data.push_back(optics_ots_safety_control_mode.get_name_leafdata());
+    if (optics_cd_min.is_set || is_set(optics_cd_min.yfilter)) leaf_name_data.push_back(optics_cd_min.get_name_leafdata());
+    if (optics_ots_tx_voa_attenuation.is_set || is_set(optics_ots_tx_voa_attenuation.yfilter)) leaf_name_data.push_back(optics_ots_tx_voa_attenuation.get_name_leafdata());
+    if (optics_ots_amplifier_tilt.is_set || is_set(optics_ots_amplifier_tilt.yfilter)) leaf_name_data.push_back(optics_ots_amplifier_tilt.get_name_leafdata());
+    if (optics_transmit_shutdown.is_set || is_set(optics_transmit_shutdown.yfilter)) leaf_name_data.push_back(optics_transmit_shutdown.get_name_leafdata());
+    if (optics_baud_rate.is_set || is_set(optics_baud_rate.yfilter)) leaf_name_data.push_back(optics_baud_rate.get_name_leafdata());
+    if (optics_performance_monitoring.is_set || is_set(optics_performance_monitoring.yfilter)) leaf_name_data.push_back(optics_performance_monitoring.get_name_leafdata());
+    if (optics_cd_max.is_set || is_set(optics_cd_max.yfilter)) leaf_name_data.push_back(optics_cd_max.get_name_leafdata());
+    if (optics_bits_per_symbol.is_set || is_set(optics_bits_per_symbol.yfilter)) leaf_name_data.push_back(optics_bits_per_symbol.get_name_leafdata());
+    if (optics_lbc_high_threshold.is_set || is_set(optics_lbc_high_threshold.yfilter)) leaf_name_data.push_back(optics_lbc_high_threshold.get_name_leafdata());
+    if (optics_cd_high_threshold.is_set || is_set(optics_cd_high_threshold.yfilter)) leaf_name_data.push_back(optics_cd_high_threshold.get_name_leafdata());
+    if (optics_osnr_low_threshold.is_set || is_set(optics_osnr_low_threshold.yfilter)) leaf_name_data.push_back(optics_osnr_low_threshold.get_name_leafdata());
+    if (optics_ots_amplifier_gain_degrade_low_threshold.is_set || is_set(optics_ots_amplifier_gain_degrade_low_threshold.yfilter)) leaf_name_data.push_back(optics_ots_amplifier_gain_degrade_low_threshold.get_name_leafdata());
+    if (optics_cd_low_threshold.is_set || is_set(optics_cd_low_threshold.yfilter)) leaf_name_data.push_back(optics_cd_low_threshold.get_name_leafdata());
+    if (breakout.is_set || is_set(breakout.yfilter)) leaf_name_data.push_back(breakout.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Optics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rx-thresholds")
+    {
+        if(rx_thresholds == nullptr)
+        {
+            rx_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds>();
+        }
+        return rx_thresholds;
+    }
+
+    if(child_yang_name == "optics-network-srlgs")
+    {
+        if(optics_network_srlgs == nullptr)
+        {
+            optics_network_srlgs = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs>();
+        }
+        return optics_network_srlgs;
+    }
+
+    if(child_yang_name == "optics-dwdm-carrier")
+    {
+        if(optics_dwdm_carrier == nullptr)
+        {
+            optics_dwdm_carrier = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier>();
+        }
+        return optics_dwdm_carrier;
+    }
+
+    if(child_yang_name == "optics-lanes")
+    {
+        if(optics_lanes == nullptr)
+        {
+            optics_lanes = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes>();
+        }
+        return optics_lanes;
+    }
+
+    if(child_yang_name == "tx-thresholds")
+    {
+        if(tx_thresholds == nullptr)
+        {
+            tx_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds>();
+        }
+        return tx_thresholds;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(rx_thresholds != nullptr)
+    {
+        _children["rx-thresholds"] = rx_thresholds;
+    }
+
+    if(optics_network_srlgs != nullptr)
+    {
+        _children["optics-network-srlgs"] = optics_network_srlgs;
+    }
+
+    if(optics_dwdm_carrier != nullptr)
+    {
+        _children["optics-dwdm-carrier"] = optics_dwdm_carrier;
+    }
+
+    if(optics_lanes != nullptr)
+    {
+        _children["optics-lanes"] = optics_lanes;
+    }
+
+    if(tx_thresholds != nullptr)
+    {
+        _children["tx-thresholds"] = tx_thresholds;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Optics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "optics-transmit-power")
+    {
+        optics_transmit_power = value;
+        optics_transmit_power.value_namespace = name_space;
+        optics_transmit_power.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-ots-channel-power-max-delta")
+    {
+        optics_ots_channel_power_max_delta = value;
+        optics_ots_channel_power_max_delta.value_namespace = name_space;
+        optics_ots_channel_power_max_delta.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-loopback")
+    {
+        optics_loopback = value;
+        optics_loopback.value_namespace = name_space;
+        optics_loopback.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-ots-osri")
+    {
+        optics_ots_osri = value;
+        optics_ots_osri.value_namespace = name_space;
+        optics_ots_osri.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-ots-amplifier-gain-degrade-high-threshold")
+    {
+        optics_ots_amplifier_gain_degrade_high_threshold = value;
+        optics_ots_amplifier_gain_degrade_high_threshold.value_namespace = name_space;
+        optics_ots_amplifier_gain_degrade_high_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-ots-rx-voa-attenuation")
+    {
+        optics_ots_rx_voa_attenuation = value;
+        optics_ots_rx_voa_attenuation.value_namespace = name_space;
+        optics_ots_rx_voa_attenuation.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-fec")
+    {
+        optics_fec = value;
+        optics_fec.value_namespace = name_space;
+        optics_fec.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-dgd-high-threshold")
+    {
+        optics_dgd_high_threshold = value;
+        optics_dgd_high_threshold.value_namespace = name_space;
+        optics_dgd_high_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-ots-amplifier-channel-power")
+    {
+        optics_ots_amplifier_channel_power = value;
+        optics_ots_amplifier_channel_power.value_namespace = name_space;
+        optics_ots_amplifier_channel_power.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-ots-amplifier-control-mode")
+    {
+        optics_ots_amplifier_control_mode = value;
+        optics_ots_amplifier_control_mode.value_namespace = name_space;
+        optics_ots_amplifier_control_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-ots-amplifier-gain")
+    {
+        optics_ots_amplifier_gain = value;
+        optics_ots_amplifier_gain.value_namespace = name_space;
+        optics_ots_amplifier_gain.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-ots-amplifier-gain-range")
+    {
+        optics_ots_amplifier_gain_range = value;
+        optics_ots_amplifier_gain_range.value_namespace = name_space;
+        optics_ots_amplifier_gain_range.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-ots-safety-control-mode")
+    {
+        optics_ots_safety_control_mode = value;
+        optics_ots_safety_control_mode.value_namespace = name_space;
+        optics_ots_safety_control_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-cd-min")
+    {
+        optics_cd_min = value;
+        optics_cd_min.value_namespace = name_space;
+        optics_cd_min.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-ots-tx-voa-attenuation")
+    {
+        optics_ots_tx_voa_attenuation = value;
+        optics_ots_tx_voa_attenuation.value_namespace = name_space;
+        optics_ots_tx_voa_attenuation.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-ots-amplifier-tilt")
+    {
+        optics_ots_amplifier_tilt = value;
+        optics_ots_amplifier_tilt.value_namespace = name_space;
+        optics_ots_amplifier_tilt.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-transmit-shutdown")
+    {
+        optics_transmit_shutdown = value;
+        optics_transmit_shutdown.value_namespace = name_space;
+        optics_transmit_shutdown.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-baud-rate")
+    {
+        optics_baud_rate = value;
+        optics_baud_rate.value_namespace = name_space;
+        optics_baud_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-performance-monitoring")
+    {
+        optics_performance_monitoring = value;
+        optics_performance_monitoring.value_namespace = name_space;
+        optics_performance_monitoring.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-cd-max")
+    {
+        optics_cd_max = value;
+        optics_cd_max.value_namespace = name_space;
+        optics_cd_max.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-bits-per-symbol")
+    {
+        optics_bits_per_symbol = value;
+        optics_bits_per_symbol.value_namespace = name_space;
+        optics_bits_per_symbol.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-lbc-high-threshold")
+    {
+        optics_lbc_high_threshold = value;
+        optics_lbc_high_threshold.value_namespace = name_space;
+        optics_lbc_high_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-cd-high-threshold")
+    {
+        optics_cd_high_threshold = value;
+        optics_cd_high_threshold.value_namespace = name_space;
+        optics_cd_high_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-osnr-low-threshold")
+    {
+        optics_osnr_low_threshold = value;
+        optics_osnr_low_threshold.value_namespace = name_space;
+        optics_osnr_low_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-ots-amplifier-gain-degrade-low-threshold")
+    {
+        optics_ots_amplifier_gain_degrade_low_threshold = value;
+        optics_ots_amplifier_gain_degrade_low_threshold.value_namespace = name_space;
+        optics_ots_amplifier_gain_degrade_low_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "optics-cd-low-threshold")
+    {
+        optics_cd_low_threshold = value;
+        optics_cd_low_threshold.value_namespace = name_space;
+        optics_cd_low_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Cisco-IOS-XR-optics-driver-cfg:breakout")
+    {
+        breakout = value;
+        breakout.value_namespace = name_space;
+        breakout.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Optics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "optics-transmit-power")
+    {
+        optics_transmit_power.yfilter = yfilter;
+    }
+    if(value_path == "optics-ots-channel-power-max-delta")
+    {
+        optics_ots_channel_power_max_delta.yfilter = yfilter;
+    }
+    if(value_path == "optics-loopback")
+    {
+        optics_loopback.yfilter = yfilter;
+    }
+    if(value_path == "optics-ots-osri")
+    {
+        optics_ots_osri.yfilter = yfilter;
+    }
+    if(value_path == "optics-ots-amplifier-gain-degrade-high-threshold")
+    {
+        optics_ots_amplifier_gain_degrade_high_threshold.yfilter = yfilter;
+    }
+    if(value_path == "optics-ots-rx-voa-attenuation")
+    {
+        optics_ots_rx_voa_attenuation.yfilter = yfilter;
+    }
+    if(value_path == "optics-fec")
+    {
+        optics_fec.yfilter = yfilter;
+    }
+    if(value_path == "optics-dgd-high-threshold")
+    {
+        optics_dgd_high_threshold.yfilter = yfilter;
+    }
+    if(value_path == "optics-ots-amplifier-channel-power")
+    {
+        optics_ots_amplifier_channel_power.yfilter = yfilter;
+    }
+    if(value_path == "optics-ots-amplifier-control-mode")
+    {
+        optics_ots_amplifier_control_mode.yfilter = yfilter;
+    }
+    if(value_path == "optics-ots-amplifier-gain")
+    {
+        optics_ots_amplifier_gain.yfilter = yfilter;
+    }
+    if(value_path == "optics-ots-amplifier-gain-range")
+    {
+        optics_ots_amplifier_gain_range.yfilter = yfilter;
+    }
+    if(value_path == "optics-ots-safety-control-mode")
+    {
+        optics_ots_safety_control_mode.yfilter = yfilter;
+    }
+    if(value_path == "optics-cd-min")
+    {
+        optics_cd_min.yfilter = yfilter;
+    }
+    if(value_path == "optics-ots-tx-voa-attenuation")
+    {
+        optics_ots_tx_voa_attenuation.yfilter = yfilter;
+    }
+    if(value_path == "optics-ots-amplifier-tilt")
+    {
+        optics_ots_amplifier_tilt.yfilter = yfilter;
+    }
+    if(value_path == "optics-transmit-shutdown")
+    {
+        optics_transmit_shutdown.yfilter = yfilter;
+    }
+    if(value_path == "optics-baud-rate")
+    {
+        optics_baud_rate.yfilter = yfilter;
+    }
+    if(value_path == "optics-performance-monitoring")
+    {
+        optics_performance_monitoring.yfilter = yfilter;
+    }
+    if(value_path == "optics-cd-max")
+    {
+        optics_cd_max.yfilter = yfilter;
+    }
+    if(value_path == "optics-bits-per-symbol")
+    {
+        optics_bits_per_symbol.yfilter = yfilter;
+    }
+    if(value_path == "optics-lbc-high-threshold")
+    {
+        optics_lbc_high_threshold.yfilter = yfilter;
+    }
+    if(value_path == "optics-cd-high-threshold")
+    {
+        optics_cd_high_threshold.yfilter = yfilter;
+    }
+    if(value_path == "optics-osnr-low-threshold")
+    {
+        optics_osnr_low_threshold.yfilter = yfilter;
+    }
+    if(value_path == "optics-ots-amplifier-gain-degrade-low-threshold")
+    {
+        optics_ots_amplifier_gain_degrade_low_threshold.yfilter = yfilter;
+    }
+    if(value_path == "optics-cd-low-threshold")
+    {
+        optics_cd_low_threshold.yfilter = yfilter;
+    }
+    if(value_path == "breakout")
+    {
+        breakout.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rx-thresholds" || name == "optics-network-srlgs" || name == "optics-dwdm-carrier" || name == "optics-lanes" || name == "tx-thresholds" || name == "optics-transmit-power" || name == "optics-ots-channel-power-max-delta" || name == "optics-loopback" || name == "optics-ots-osri" || name == "optics-ots-amplifier-gain-degrade-high-threshold" || name == "optics-ots-rx-voa-attenuation" || name == "optics-fec" || name == "optics-dgd-high-threshold" || name == "optics-ots-amplifier-channel-power" || name == "optics-ots-amplifier-control-mode" || name == "optics-ots-amplifier-gain" || name == "optics-ots-amplifier-gain-range" || name == "optics-ots-safety-control-mode" || name == "optics-cd-min" || name == "optics-ots-tx-voa-attenuation" || name == "optics-ots-amplifier-tilt" || name == "optics-transmit-shutdown" || name == "optics-baud-rate" || name == "optics-performance-monitoring" || name == "optics-cd-max" || name == "optics-bits-per-symbol" || name == "optics-lbc-high-threshold" || name == "optics-cd-high-threshold" || name == "optics-osnr-low-threshold" || name == "optics-ots-amplifier-gain-degrade-low-threshold" || name == "optics-cd-low-threshold" || name == "breakout")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThresholds()
+    :
+    rx_threshold(this, {"rx_threshold_type"})
+{
+
+    yang_name = "rx-thresholds"; yang_parent_name = "optics"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::~RxThresholds()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<rx_threshold.len(); index++)
+    {
+        if(rx_threshold[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::has_operation() const
+{
+    for (std::size_t index=0; index<rx_threshold.len(); index++)
+    {
+        if(rx_threshold[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rx-thresholds";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "rx-threshold")
+    {
+        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold>();
+        ent_->parent = this;
+        rx_threshold.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : rx_threshold.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rx-threshold")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::RxThreshold()
+    :
+    rx_threshold_type{YType::enumeration, "rx-threshold-type"},
+    rx_threshold{YType::int32, "rx-threshold"}
+{
+
+    yang_name = "rx-threshold"; yang_parent_name = "rx-thresholds"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::~RxThreshold()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return rx_threshold_type.is_set
+	|| rx_threshold.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rx_threshold_type.yfilter)
+	|| ydk::is_set(rx_threshold.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rx-threshold";
+    ADD_KEY_TOKEN(rx_threshold_type, "rx-threshold-type");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rx_threshold_type.is_set || is_set(rx_threshold_type.yfilter)) leaf_name_data.push_back(rx_threshold_type.get_name_leafdata());
+    if (rx_threshold.is_set || is_set(rx_threshold.yfilter)) leaf_name_data.push_back(rx_threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rx-threshold-type")
+    {
+        rx_threshold_type = value;
+        rx_threshold_type.value_namespace = name_space;
+        rx_threshold_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-threshold")
+    {
+        rx_threshold = value;
+        rx_threshold.value_namespace = name_space;
+        rx_threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rx-threshold-type")
+    {
+        rx_threshold_type.yfilter = yfilter;
+    }
+    if(value_path == "rx-threshold")
+    {
+        rx_threshold.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::RxThresholds::RxThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rx-threshold-type" || name == "rx-threshold")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlgs()
+    :
+    optics_network_srlg(this, {"set_id"})
+{
+
+    yang_name = "optics-network-srlgs"; yang_parent_name = "optics"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::~OpticsNetworkSrlgs()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<optics_network_srlg.len(); index++)
+    {
+        if(optics_network_srlg[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::has_operation() const
+{
+    for (std::size_t index=0; index<optics_network_srlg.len(); index++)
+    {
+        if(optics_network_srlg[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "optics-network-srlgs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "optics-network-srlg")
+    {
+        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg>();
+        ent_->parent = this;
+        optics_network_srlg.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : optics_network_srlg.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-network-srlg")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::OpticsNetworkSrlg()
+    :
+    set_id{YType::uint32, "set-id"},
+    srlg1{YType::uint32, "srlg1"},
+    srlg2{YType::uint32, "srlg2"},
+    srlg3{YType::uint32, "srlg3"},
+    srlg4{YType::uint32, "srlg4"},
+    srlg5{YType::uint32, "srlg5"},
+    srlg6{YType::uint32, "srlg6"}
+{
+
+    yang_name = "optics-network-srlg"; yang_parent_name = "optics-network-srlgs"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::~OpticsNetworkSrlg()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::has_data() const
+{
+    if (is_presence_container) return true;
+    return set_id.is_set
+	|| srlg1.is_set
+	|| srlg2.is_set
+	|| srlg3.is_set
+	|| srlg4.is_set
+	|| srlg5.is_set
+	|| srlg6.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(set_id.yfilter)
+	|| ydk::is_set(srlg1.yfilter)
+	|| ydk::is_set(srlg2.yfilter)
+	|| ydk::is_set(srlg3.yfilter)
+	|| ydk::is_set(srlg4.yfilter)
+	|| ydk::is_set(srlg5.yfilter)
+	|| ydk::is_set(srlg6.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "optics-network-srlg";
+    ADD_KEY_TOKEN(set_id, "set-id");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (set_id.is_set || is_set(set_id.yfilter)) leaf_name_data.push_back(set_id.get_name_leafdata());
+    if (srlg1.is_set || is_set(srlg1.yfilter)) leaf_name_data.push_back(srlg1.get_name_leafdata());
+    if (srlg2.is_set || is_set(srlg2.yfilter)) leaf_name_data.push_back(srlg2.get_name_leafdata());
+    if (srlg3.is_set || is_set(srlg3.yfilter)) leaf_name_data.push_back(srlg3.get_name_leafdata());
+    if (srlg4.is_set || is_set(srlg4.yfilter)) leaf_name_data.push_back(srlg4.get_name_leafdata());
+    if (srlg5.is_set || is_set(srlg5.yfilter)) leaf_name_data.push_back(srlg5.get_name_leafdata());
+    if (srlg6.is_set || is_set(srlg6.yfilter)) leaf_name_data.push_back(srlg6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "set-id")
+    {
+        set_id = value;
+        set_id.value_namespace = name_space;
+        set_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srlg1")
+    {
+        srlg1 = value;
+        srlg1.value_namespace = name_space;
+        srlg1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srlg2")
+    {
+        srlg2 = value;
+        srlg2.value_namespace = name_space;
+        srlg2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srlg3")
+    {
+        srlg3 = value;
+        srlg3.value_namespace = name_space;
+        srlg3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srlg4")
+    {
+        srlg4 = value;
+        srlg4.value_namespace = name_space;
+        srlg4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srlg5")
+    {
+        srlg5 = value;
+        srlg5.value_namespace = name_space;
+        srlg5.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srlg6")
+    {
+        srlg6 = value;
+        srlg6.value_namespace = name_space;
+        srlg6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-id")
+    {
+        set_id.yfilter = yfilter;
+    }
+    if(value_path == "srlg1")
+    {
+        srlg1.yfilter = yfilter;
+    }
+    if(value_path == "srlg2")
+    {
+        srlg2.yfilter = yfilter;
+    }
+    if(value_path == "srlg3")
+    {
+        srlg3.yfilter = yfilter;
+    }
+    if(value_path == "srlg4")
+    {
+        srlg4.yfilter = yfilter;
+    }
+    if(value_path == "srlg5")
+    {
+        srlg5.yfilter = yfilter;
+    }
+    if(value_path == "srlg6")
+    {
+        srlg6.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsNetworkSrlgs::OpticsNetworkSrlg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-id" || name == "srlg1" || name == "srlg2" || name == "srlg3" || name == "srlg4" || name == "srlg5" || name == "srlg6")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::OpticsDwdmCarrier()
+    :
+    grid_type{YType::enumeration, "grid-type"},
+    param_type{YType::enumeration, "param-type"},
+    param_value{YType::uint32, "param-value"}
+{
+
+    yang_name = "optics-dwdm-carrier"; yang_parent_name = "optics"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::~OpticsDwdmCarrier()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::has_data() const
+{
+    if (is_presence_container) return true;
+    return grid_type.is_set
+	|| param_type.is_set
+	|| param_value.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(grid_type.yfilter)
+	|| ydk::is_set(param_type.yfilter)
+	|| ydk::is_set(param_value.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "optics-dwdm-carrier";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (grid_type.is_set || is_set(grid_type.yfilter)) leaf_name_data.push_back(grid_type.get_name_leafdata());
+    if (param_type.is_set || is_set(param_type.yfilter)) leaf_name_data.push_back(param_type.get_name_leafdata());
+    if (param_value.is_set || is_set(param_value.yfilter)) leaf_name_data.push_back(param_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "grid-type")
+    {
+        grid_type = value;
+        grid_type.value_namespace = name_space;
+        grid_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "param-type")
+    {
+        param_type = value;
+        param_type.value_namespace = name_space;
+        param_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "param-value")
+    {
+        param_value = value;
+        param_value.value_namespace = name_space;
+        param_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "grid-type")
+    {
+        grid_type.yfilter = yfilter;
+    }
+    if(value_path == "param-type")
+    {
+        param_type.yfilter = yfilter;
+    }
+    if(value_path == "param-value")
+    {
+        param_value.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsDwdmCarrier::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "grid-type" || name == "param-type" || name == "param-value")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLanes()
+    :
+    optics_lane(this, {"index_"})
+{
+
+    yang_name = "optics-lanes"; yang_parent_name = "optics"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::~OpticsLanes()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<optics_lane.len(); index++)
+    {
+        if(optics_lane[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::has_operation() const
+{
+    for (std::size_t index=0; index<optics_lane.len(); index++)
+    {
+        if(optics_lane[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "optics-lanes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "optics-lane")
+    {
+        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane>();
+        ent_->parent = this;
+        optics_lane.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : optics_lane.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "optics-lane")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::OpticsLane()
+    :
+    index_{YType::uint32, "index"},
+    description{YType::str, "description"}
+{
+
+    yang_name = "optics-lane"; yang_parent_name = "optics-lanes"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::~OpticsLane()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::has_data() const
+{
+    if (is_presence_container) return true;
+    return index_.is_set
+	|| description.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(description.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "optics-lane";
+    ADD_KEY_TOKEN(index_, "index");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "index")
+    {
+        index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::OpticsLanes::OpticsLane::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "index" || name == "description")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThresholds()
+    :
+    tx_threshold(this, {"tx_threshold_type"})
+{
+
+    yang_name = "tx-thresholds"; yang_parent_name = "optics"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::~TxThresholds()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tx_threshold.len(); index++)
+    {
+        if(tx_threshold[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::has_operation() const
+{
+    for (std::size_t index=0; index<tx_threshold.len(); index++)
+    {
+        if(tx_threshold[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tx-thresholds";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tx-threshold")
+    {
+        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold>();
+        ent_->parent = this;
+        tx_threshold.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tx_threshold.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tx-threshold")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::TxThreshold()
+    :
+    tx_threshold_type{YType::enumeration, "tx-threshold-type"},
+    tx_threshold{YType::int32, "tx-threshold"}
+{
+
+    yang_name = "tx-threshold"; yang_parent_name = "tx-thresholds"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::~TxThreshold()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return tx_threshold_type.is_set
+	|| tx_threshold.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tx_threshold_type.yfilter)
+	|| ydk::is_set(tx_threshold.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tx-threshold";
+    ADD_KEY_TOKEN(tx_threshold_type, "tx-threshold-type");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tx_threshold_type.is_set || is_set(tx_threshold_type.yfilter)) leaf_name_data.push_back(tx_threshold_type.get_name_leafdata());
+    if (tx_threshold.is_set || is_set(tx_threshold.yfilter)) leaf_name_data.push_back(tx_threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tx-threshold-type")
+    {
+        tx_threshold_type = value;
+        tx_threshold_type.value_namespace = name_space;
+        tx_threshold_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-threshold")
+    {
+        tx_threshold = value;
+        tx_threshold.value_namespace = name_space;
+        tx_threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tx-threshold-type")
+    {
+        tx_threshold_type.yfilter = yfilter;
+    }
+    if(value_path == "tx-threshold")
+    {
+        tx_threshold.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Optics::TxThresholds::TxThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tx-threshold-type" || name == "tx-threshold")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopbacks()
+    :
+    loopback(this, {"level"})
+{
+
+    yang_name = "loopbacks"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Loopbacks::~Loopbacks()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Loopbacks::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<loopback.len(); index++)
+    {
+        if(loopback[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Loopbacks::has_operation() const
+{
+    for (std::size_t index=0; index<loopback.len(); index++)
+    {
+        if(loopback[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Loopbacks::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-drivers-icpe-ethernet-cfg:loopbacks";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Loopbacks::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Loopbacks::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "loopback")
+    {
+        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback>();
+        ent_->parent = this;
+        loopback.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Loopbacks::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : loopback.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Loopbacks::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Loopbacks::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Loopbacks::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "loopback")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::Loopback()
+    :
+    level{YType::uint32, "level"},
+    loopback{YType::enumeration, "loopback"}
+{
+
+    yang_name = "loopback"; yang_parent_name = "loopbacks"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::~Loopback()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::has_data() const
+{
+    if (is_presence_container) return true;
+    return level.is_set
+	|| loopback.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(loopback.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "loopback";
+    ADD_KEY_TOKEN(level, "level");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (loopback.is_set || is_set(loopback.yfilter)) leaf_name_data.push_back(loopback.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "loopback")
+    {
+        loopback = value;
+        loopback.value_namespace = name_space;
+        loopback.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "loopback")
+    {
+        loopback.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Loopbacks::Loopback::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "loopback")
         return true;
     return false;
 }
@@ -13857,3737 +17128,6 @@ bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLin
         return true;
     return false;
 }
-
-InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::FrameSeconds()
-    :
-    window{YType::uint32, "window"}
-        ,
-    threshold(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold>())
-{
-    threshold->parent = this;
-
-    yang_name = "frame-seconds"; yang_parent_name = "link-monitoring"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::~FrameSeconds()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::has_data() const
-{
-    if (is_presence_container) return true;
-    return window.is_set
-	|| (threshold !=  nullptr && threshold->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(window.yfilter)
-	|| (threshold !=  nullptr && threshold->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "frame-seconds";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (window.is_set || is_set(window.yfilter)) leaf_name_data.push_back(window.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "threshold")
-    {
-        if(threshold == nullptr)
-        {
-            threshold = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold>();
-        }
-        return threshold;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(threshold != nullptr)
-    {
-        _children["threshold"] = threshold;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "window")
-    {
-        window = value;
-        window.value_namespace = name_space;
-        window.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "window")
-    {
-        window.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "threshold" || name == "window")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold::Threshold()
-    :
-    threshold_low{YType::uint32, "threshold-low"},
-    threshold_high{YType::uint32, "threshold-high"}
-{
-
-    yang_name = "threshold"; yang_parent_name = "frame-seconds"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold::~Threshold()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold::has_data() const
-{
-    if (is_presence_container) return true;
-    return threshold_low.is_set
-	|| threshold_high.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(threshold_low.yfilter)
-	|| ydk::is_set(threshold_high.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "threshold";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (threshold_low.is_set || is_set(threshold_low.yfilter)) leaf_name_data.push_back(threshold_low.get_name_leafdata());
-    if (threshold_high.is_set || is_set(threshold_high.yfilter)) leaf_name_data.push_back(threshold_high.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "threshold-low")
-    {
-        threshold_low = value;
-        threshold_low.value_namespace = name_space;
-        threshold_low.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold-high")
-    {
-        threshold_high = value;
-        threshold_high.value_namespace = name_space;
-        threshold_high.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "threshold-low")
-    {
-        threshold_low.yfilter = yfilter;
-    }
-    if(value_path == "threshold-high")
-    {
-        threshold_high.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "threshold-low" || name == "threshold-high")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Frame()
-    :
-    window{YType::uint32, "window"}
-        ,
-    threshold(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold>())
-{
-    threshold->parent = this;
-
-    yang_name = "frame"; yang_parent_name = "link-monitoring"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::~Frame()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::has_data() const
-{
-    if (is_presence_container) return true;
-    return window.is_set
-	|| (threshold !=  nullptr && threshold->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(window.yfilter)
-	|| (threshold !=  nullptr && threshold->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "frame";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (window.is_set || is_set(window.yfilter)) leaf_name_data.push_back(window.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "threshold")
-    {
-        if(threshold == nullptr)
-        {
-            threshold = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold>();
-        }
-        return threshold;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(threshold != nullptr)
-    {
-        _children["threshold"] = threshold;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "window")
-    {
-        window = value;
-        window.value_namespace = name_space;
-        window.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "window")
-    {
-        window.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "threshold" || name == "window")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold::Threshold()
-    :
-    threshold_low{YType::uint32, "threshold-low"},
-    threshold_high{YType::uint32, "threshold-high"},
-    multiplier_low{YType::enumeration, "multiplier-low"},
-    multiplier_high{YType::enumeration, "multiplier-high"}
-{
-
-    yang_name = "threshold"; yang_parent_name = "frame"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold::~Threshold()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold::has_data() const
-{
-    if (is_presence_container) return true;
-    return threshold_low.is_set
-	|| threshold_high.is_set
-	|| multiplier_low.is_set
-	|| multiplier_high.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(threshold_low.yfilter)
-	|| ydk::is_set(threshold_high.yfilter)
-	|| ydk::is_set(multiplier_low.yfilter)
-	|| ydk::is_set(multiplier_high.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "threshold";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (threshold_low.is_set || is_set(threshold_low.yfilter)) leaf_name_data.push_back(threshold_low.get_name_leafdata());
-    if (threshold_high.is_set || is_set(threshold_high.yfilter)) leaf_name_data.push_back(threshold_high.get_name_leafdata());
-    if (multiplier_low.is_set || is_set(multiplier_low.yfilter)) leaf_name_data.push_back(multiplier_low.get_name_leafdata());
-    if (multiplier_high.is_set || is_set(multiplier_high.yfilter)) leaf_name_data.push_back(multiplier_high.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "threshold-low")
-    {
-        threshold_low = value;
-        threshold_low.value_namespace = name_space;
-        threshold_low.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold-high")
-    {
-        threshold_high = value;
-        threshold_high.value_namespace = name_space;
-        threshold_high.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "multiplier-low")
-    {
-        multiplier_low = value;
-        multiplier_low.value_namespace = name_space;
-        multiplier_low.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "multiplier-high")
-    {
-        multiplier_high = value;
-        multiplier_high.value_namespace = name_space;
-        multiplier_high.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "threshold-low")
-    {
-        threshold_low.yfilter = yfilter;
-    }
-    if(value_path == "threshold-high")
-    {
-        threshold_high.yfilter = yfilter;
-    }
-    if(value_path == "multiplier-low")
-    {
-        multiplier_low.yfilter = yfilter;
-    }
-    if(value_path == "multiplier-high")
-    {
-        multiplier_high.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "threshold-low" || name == "threshold-high" || name == "multiplier-low" || name == "multiplier-high")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::CarrierDelay::CarrierDelay()
-    :
-    carrier_delay_up{YType::uint32, "carrier-delay-up"},
-    carrier_delay_down{YType::uint32, "carrier-delay-down"}
-{
-
-    yang_name = "carrier-delay"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::CarrierDelay::~CarrierDelay()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::CarrierDelay::has_data() const
-{
-    if (is_presence_container) return true;
-    return carrier_delay_up.is_set
-	|| carrier_delay_down.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::CarrierDelay::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(carrier_delay_up.yfilter)
-	|| ydk::is_set(carrier_delay_down.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::CarrierDelay::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2-eth-infra-cfg:carrier-delay";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::CarrierDelay::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (carrier_delay_up.is_set || is_set(carrier_delay_up.yfilter)) leaf_name_data.push_back(carrier_delay_up.get_name_leafdata());
-    if (carrier_delay_down.is_set || is_set(carrier_delay_down.yfilter)) leaf_name_data.push_back(carrier_delay_down.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::CarrierDelay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::CarrierDelay::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::CarrierDelay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "carrier-delay-up")
-    {
-        carrier_delay_up = value;
-        carrier_delay_up.value_namespace = name_space;
-        carrier_delay_up.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "carrier-delay-down")
-    {
-        carrier_delay_down = value;
-        carrier_delay_down.value_namespace = name_space;
-        carrier_delay_down.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::CarrierDelay::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "carrier-delay-up")
-    {
-        carrier_delay_up.yfilter = yfilter;
-    }
-    if(value_path == "carrier-delay-down")
-    {
-        carrier_delay_down.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::CarrierDelay::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "carrier-delay-up" || name == "carrier-delay-down")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanTrunkConfiguration()
-    :
-    tunneling_ethertype{YType::enumeration, "tunneling-ethertype"}
-        ,
-    native_vlan_identifier(nullptr) // presence node
-    , vlan_switched(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched>())
-{
-    vlan_switched->parent = this;
-
-    yang_name = "vlan-trunk-configuration"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::~VlanTrunkConfiguration()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::has_data() const
-{
-    if (is_presence_container) return true;
-    return tunneling_ethertype.is_set
-	|| (native_vlan_identifier !=  nullptr && native_vlan_identifier->has_data())
-	|| (vlan_switched !=  nullptr && vlan_switched->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(tunneling_ethertype.yfilter)
-	|| (native_vlan_identifier !=  nullptr && native_vlan_identifier->has_operation())
-	|| (vlan_switched !=  nullptr && vlan_switched->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-l2-eth-infra-cfg:vlan-trunk-configuration";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (tunneling_ethertype.is_set || is_set(tunneling_ethertype.yfilter)) leaf_name_data.push_back(tunneling_ethertype.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "native-vlan-identifier")
-    {
-        if(native_vlan_identifier == nullptr)
-        {
-            native_vlan_identifier = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier>();
-        }
-        return native_vlan_identifier;
-    }
-
-    if(child_yang_name == "vlan-switched")
-    {
-        if(vlan_switched == nullptr)
-        {
-            vlan_switched = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched>();
-        }
-        return vlan_switched;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(native_vlan_identifier != nullptr)
-    {
-        _children["native-vlan-identifier"] = native_vlan_identifier;
-    }
-
-    if(vlan_switched != nullptr)
-    {
-        _children["vlan-switched"] = vlan_switched;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "tunneling-ethertype")
-    {
-        tunneling_ethertype = value;
-        tunneling_ethertype.value_namespace = name_space;
-        tunneling_ethertype.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "tunneling-ethertype")
-    {
-        tunneling_ethertype.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "native-vlan-identifier" || name == "vlan-switched" || name == "tunneling-ethertype")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier::NativeVlanIdentifier()
-    :
-    vlan_type{YType::enumeration, "vlan-type"},
-    vlan_identifier{YType::uint32, "vlan-identifier"}
-{
-
-    yang_name = "native-vlan-identifier"; yang_parent_name = "vlan-trunk-configuration"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier::~NativeVlanIdentifier()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier::has_data() const
-{
-    if (is_presence_container) return true;
-    return vlan_type.is_set
-	|| vlan_identifier.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(vlan_type.yfilter)
-	|| ydk::is_set(vlan_identifier.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "native-vlan-identifier";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (vlan_type.is_set || is_set(vlan_type.yfilter)) leaf_name_data.push_back(vlan_type.get_name_leafdata());
-    if (vlan_identifier.is_set || is_set(vlan_identifier.yfilter)) leaf_name_data.push_back(vlan_identifier.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "vlan-type")
-    {
-        vlan_type = value;
-        vlan_type.value_namespace = name_space;
-        vlan_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vlan-identifier")
-    {
-        vlan_identifier = value;
-        vlan_identifier.value_namespace = name_space;
-        vlan_identifier.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "vlan-type")
-    {
-        vlan_type.yfilter = yfilter;
-    }
-    if(value_path == "vlan-identifier")
-    {
-        vlan_identifier.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vlan-type" || name == "vlan-identifier")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched::VlanSwitched()
-    :
-    mode{YType::enumeration, "mode"},
-    access_vlan{YType::uint32, "access-vlan"},
-    trunk_tag_type{YType::enumeration, "trunk-tag-type"},
-    trunk_vla_ns{YType::str, "trunk-vla-ns"}
-{
-
-    yang_name = "vlan-switched"; yang_parent_name = "vlan-trunk-configuration"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched::~VlanSwitched()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched::has_data() const
-{
-    if (is_presence_container) return true;
-    return mode.is_set
-	|| access_vlan.is_set
-	|| trunk_tag_type.is_set
-	|| trunk_vla_ns.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(mode.yfilter)
-	|| ydk::is_set(access_vlan.yfilter)
-	|| ydk::is_set(trunk_tag_type.yfilter)
-	|| ydk::is_set(trunk_vla_ns.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vlan-switched";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
-    if (access_vlan.is_set || is_set(access_vlan.yfilter)) leaf_name_data.push_back(access_vlan.get_name_leafdata());
-    if (trunk_tag_type.is_set || is_set(trunk_tag_type.yfilter)) leaf_name_data.push_back(trunk_tag_type.get_name_leafdata());
-    if (trunk_vla_ns.is_set || is_set(trunk_vla_ns.yfilter)) leaf_name_data.push_back(trunk_vla_ns.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "mode")
-    {
-        mode = value;
-        mode.value_namespace = name_space;
-        mode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "access-vlan")
-    {
-        access_vlan = value;
-        access_vlan.value_namespace = name_space;
-        access_vlan.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "trunk-tag-type")
-    {
-        trunk_tag_type = value;
-        trunk_tag_type.value_namespace = name_space;
-        trunk_tag_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "trunk-vla-ns")
-    {
-        trunk_vla_ns = value;
-        trunk_vla_ns.value_namespace = name_space;
-        trunk_vla_ns.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "mode")
-    {
-        mode.yfilter = yfilter;
-    }
-    if(value_path == "access-vlan")
-    {
-        access_vlan.yfilter = yfilter;
-    }
-    if(value_path == "trunk-tag-type")
-    {
-        trunk_tag_type.yfilter = yfilter;
-    }
-    if(value_path == "trunk-vla-ns")
-    {
-        trunk_vla_ns.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mode" || name == "access-vlan" || name == "trunk-tag-type" || name == "trunk-vla-ns")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::SsrpSession::SsrpSession()
-    :
-    group_id(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId>())
-{
-    group_id->parent = this;
-
-    yang_name = "ssrp-session"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::SsrpSession::~SsrpSession()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::SsrpSession::has_data() const
-{
-    if (is_presence_container) return true;
-    return (group_id !=  nullptr && group_id->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::SsrpSession::has_operation() const
-{
-    return is_set(yfilter)
-	|| (group_id !=  nullptr && group_id->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::SsrpSession::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ppp-ma-ssrp-cfg:ssrp-session";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::SsrpSession::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::SsrpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "group-id")
-    {
-        if(group_id == nullptr)
-        {
-            group_id = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId>();
-        }
-        return group_id;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::SsrpSession::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(group_id != nullptr)
-    {
-        _children["group-id"] = group_id;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::SsrpSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::SsrpSession::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::SsrpSession::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "group-id")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId::GroupId()
-    :
-    group{YType::uint32, "group"},
-    id{YType::uint32, "id"}
-{
-
-    yang_name = "group-id"; yang_parent_name = "ssrp-session"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId::~GroupId()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId::has_data() const
-{
-    if (is_presence_container) return true;
-    return group.is_set
-	|| id.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(group.yfilter)
-	|| ydk::is_set(id.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "group-id";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "group")
-    {
-        group = value;
-        group.value_namespace = name_space;
-        group.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "group")
-    {
-        group.yfilter = yfilter;
-    }
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "group" || name == "id")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Cdp::Cdp()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "cdp"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Cdp::~Cdp()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Cdp::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Cdp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Cdp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-cdp-cfg:cdp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Cdp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Cdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Cdp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Cdp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Cdp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Cdp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::NvSatelliteAccess()
-{
-
-    yang_name = "nv-satellite-access"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::~NvSatelliteAccess()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::has_data() const
-{
-    if (is_presence_container) return true;
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::has_operation() const
-{
-    return is_set(yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-icpe-infra-cfg:nv-satellite-access";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::has_leaf_or_child_of_name(const std::string & name) const
-{
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::NvSatelliteFabricLink()
-    :
-    satellite{YType::uint32, "satellite"},
-    minimum_required_links{YType::uint32, "minimum-required-links"}
-        ,
-    redundancy(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Redundancy>())
-    , remote_ports(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts>())
-    , ethernet_features(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures>())
-{
-    redundancy->parent = this;
-    remote_ports->parent = this;
-    ethernet_features->parent = this;
-
-    yang_name = "nv-satellite-fabric-link"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::~NvSatelliteFabricLink()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::has_data() const
-{
-    if (is_presence_container) return true;
-    return satellite.is_set
-	|| minimum_required_links.is_set
-	|| (redundancy !=  nullptr && redundancy->has_data())
-	|| (remote_ports !=  nullptr && remote_ports->has_data())
-	|| (ethernet_features !=  nullptr && ethernet_features->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(satellite.yfilter)
-	|| ydk::is_set(minimum_required_links.yfilter)
-	|| (redundancy !=  nullptr && redundancy->has_operation())
-	|| (remote_ports !=  nullptr && remote_ports->has_operation())
-	|| (ethernet_features !=  nullptr && ethernet_features->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-icpe-infra-cfg:nv-satellite-fabric-link";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (satellite.is_set || is_set(satellite.yfilter)) leaf_name_data.push_back(satellite.get_name_leafdata());
-    if (minimum_required_links.is_set || is_set(minimum_required_links.yfilter)) leaf_name_data.push_back(minimum_required_links.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "redundancy")
-    {
-        if(redundancy == nullptr)
-        {
-            redundancy = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Redundancy>();
-        }
-        return redundancy;
-    }
-
-    if(child_yang_name == "remote-ports")
-    {
-        if(remote_ports == nullptr)
-        {
-            remote_ports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts>();
-        }
-        return remote_ports;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XR-ethernet-cfm-sat-cfg:ethernet-features")
-    {
-        if(ethernet_features == nullptr)
-        {
-            ethernet_features = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures>();
-        }
-        return ethernet_features;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(redundancy != nullptr)
-    {
-        _children["redundancy"] = redundancy;
-    }
-
-    if(remote_ports != nullptr)
-    {
-        _children["remote-ports"] = remote_ports;
-    }
-
-    if(ethernet_features != nullptr)
-    {
-        _children["Cisco-IOS-XR-ethernet-cfm-sat-cfg:ethernet-features"] = ethernet_features;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "satellite")
-    {
-        satellite = value;
-        satellite.value_namespace = name_space;
-        satellite.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-required-links")
-    {
-        minimum_required_links = value;
-        minimum_required_links.value_namespace = name_space;
-        minimum_required_links.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "satellite")
-    {
-        satellite.yfilter = yfilter;
-    }
-    if(value_path == "minimum-required-links")
-    {
-        minimum_required_links.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "redundancy" || name == "remote-ports" || name == "ethernet-features" || name == "satellite" || name == "minimum-required-links")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Redundancy::Redundancy()
-    :
-    iccp_group{YType::uint32, "iccp-group"},
-    minimum_preferred_links{YType::uint32, "minimum-preferred-links"}
-{
-
-    yang_name = "redundancy"; yang_parent_name = "nv-satellite-fabric-link"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Redundancy::~Redundancy()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Redundancy::has_data() const
-{
-    if (is_presence_container) return true;
-    return iccp_group.is_set
-	|| minimum_preferred_links.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Redundancy::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(iccp_group.yfilter)
-	|| ydk::is_set(minimum_preferred_links.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Redundancy::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "redundancy";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Redundancy::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (iccp_group.is_set || is_set(iccp_group.yfilter)) leaf_name_data.push_back(iccp_group.get_name_leafdata());
-    if (minimum_preferred_links.is_set || is_set(minimum_preferred_links.yfilter)) leaf_name_data.push_back(minimum_preferred_links.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Redundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Redundancy::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Redundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "iccp-group")
-    {
-        iccp_group = value;
-        iccp_group.value_namespace = name_space;
-        iccp_group.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-preferred-links")
-    {
-        minimum_preferred_links = value;
-        minimum_preferred_links.value_namespace = name_space;
-        minimum_preferred_links.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Redundancy::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "iccp-group")
-    {
-        iccp_group.yfilter = yfilter;
-    }
-    if(value_path == "minimum-preferred-links")
-    {
-        minimum_preferred_links.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Redundancy::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "iccp-group" || name == "minimum-preferred-links")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePorts()
-    :
-    remote_port(this, {"port_type", "slot", "sub_slot"})
-{
-
-    yang_name = "remote-ports"; yang_parent_name = "nv-satellite-fabric-link"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::~RemotePorts()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<remote_port.len(); index++)
-    {
-        if(remote_port[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::has_operation() const
-{
-    for (std::size_t index=0; index<remote_port.len(); index++)
-    {
-        if(remote_port[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "remote-ports";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "remote-port")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort>();
-        ent_->parent = this;
-        remote_port.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : remote_port.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "remote-port")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort::RemotePort()
-    :
-    port_type{YType::str, "port-type"},
-    slot{YType::uint32, "slot"},
-    sub_slot{YType::uint32, "sub-slot"},
-    port_range{YType::str, "port-range"}
-{
-
-    yang_name = "remote-port"; yang_parent_name = "remote-ports"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort::~RemotePort()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort::has_data() const
-{
-    if (is_presence_container) return true;
-    return port_type.is_set
-	|| slot.is_set
-	|| sub_slot.is_set
-	|| port_range.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(port_type.yfilter)
-	|| ydk::is_set(slot.yfilter)
-	|| ydk::is_set(sub_slot.yfilter)
-	|| ydk::is_set(port_range.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "remote-port";
-    ADD_KEY_TOKEN(port_type, "port-type");
-    ADD_KEY_TOKEN(slot, "slot");
-    ADD_KEY_TOKEN(sub_slot, "sub-slot");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (port_type.is_set || is_set(port_type.yfilter)) leaf_name_data.push_back(port_type.get_name_leafdata());
-    if (slot.is_set || is_set(slot.yfilter)) leaf_name_data.push_back(slot.get_name_leafdata());
-    if (sub_slot.is_set || is_set(sub_slot.yfilter)) leaf_name_data.push_back(sub_slot.get_name_leafdata());
-    if (port_range.is_set || is_set(port_range.yfilter)) leaf_name_data.push_back(port_range.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "port-type")
-    {
-        port_type = value;
-        port_type.value_namespace = name_space;
-        port_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "slot")
-    {
-        slot = value;
-        slot.value_namespace = name_space;
-        slot.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sub-slot")
-    {
-        sub_slot = value;
-        sub_slot.value_namespace = name_space;
-        sub_slot.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port-range")
-    {
-        port_range = value;
-        port_range.value_namespace = name_space;
-        port_range.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "port-type")
-    {
-        port_type.yfilter = yfilter;
-    }
-    if(value_path == "slot")
-    {
-        slot.yfilter = yfilter;
-    }
-    if(value_path == "sub-slot")
-    {
-        sub_slot.yfilter = yfilter;
-    }
-    if(value_path == "port-range")
-    {
-        port_range.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "port-type" || name == "slot" || name == "sub-slot" || name == "port-range")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::EthernetFeatures()
-    :
-    cfm(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm>())
-{
-    cfm->parent = this;
-
-    yang_name = "ethernet-features"; yang_parent_name = "nv-satellite-fabric-link"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::~EthernetFeatures()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::has_data() const
-{
-    if (is_presence_container) return true;
-    return (cfm !=  nullptr && cfm->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::has_operation() const
-{
-    return is_set(yfilter)
-	|| (cfm !=  nullptr && cfm->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ethernet-cfm-sat-cfg:ethernet-features";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cfm")
-    {
-        if(cfm == nullptr)
-        {
-            cfm = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm>();
-        }
-        return cfm;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(cfm != nullptr)
-    {
-        _children["cfm"] = cfm;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cfm")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm::Cfm()
-    :
-    continuity_check_interval{YType::enumeration, "continuity-check-interval"},
-    level{YType::uint32, "level"},
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "cfm"; yang_parent_name = "ethernet-features"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm::~Cfm()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm::has_data() const
-{
-    if (is_presence_container) return true;
-    return continuity_check_interval.is_set
-	|| level.is_set
-	|| enable.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(continuity_check_interval.yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cfm";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (continuity_check_interval.is_set || is_set(continuity_check_interval.yfilter)) leaf_name_data.push_back(continuity_check_interval.get_name_leafdata());
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "continuity-check-interval")
-    {
-        continuity_check_interval = value;
-        continuity_check_interval.value_namespace = name_space;
-        continuity_check_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "continuity-check-interval")
-    {
-        continuity_check_interval.yfilter = yfilter;
-    }
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "continuity-check-interval" || name == "level" || name == "enable")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::NvSatelliteFabricNetwork()
-    :
-    enable{YType::empty, "enable"}
-        ,
-    satellites(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites>())
-    , redundancy(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy>())
-{
-    satellites->parent = this;
-    redundancy->parent = this;
-
-    yang_name = "nv-satellite-fabric-network"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::~NvSatelliteFabricNetwork()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set
-	|| (satellites !=  nullptr && satellites->has_data())
-	|| (redundancy !=  nullptr && redundancy->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| (satellites !=  nullptr && satellites->has_operation())
-	|| (redundancy !=  nullptr && redundancy->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-icpe-infra-cfg:nv-satellite-fabric-network";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "satellites")
-    {
-        if(satellites == nullptr)
-        {
-            satellites = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites>();
-        }
-        return satellites;
-    }
-
-    if(child_yang_name == "redundancy")
-    {
-        if(redundancy == nullptr)
-        {
-            redundancy = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy>();
-        }
-        return redundancy;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(satellites != nullptr)
-    {
-        _children["satellites"] = satellites;
-    }
-
-    if(redundancy != nullptr)
-    {
-        _children["redundancy"] = redundancy;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "satellites" || name == "redundancy" || name == "enable")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellites()
-    :
-    satellite(this, {"satellite_id"})
-{
-
-    yang_name = "satellites"; yang_parent_name = "nv-satellite-fabric-network"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::~Satellites()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<satellite.len(); index++)
-    {
-        if(satellite[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::has_operation() const
-{
-    for (std::size_t index=0; index<satellite.len(); index++)
-    {
-        if(satellite[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "satellites";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "satellite")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite>();
-        ent_->parent = this;
-        satellite.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : satellite.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "satellite")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::Satellite()
-    :
-    satellite_id{YType::uint32, "satellite-id"},
-    enable{YType::empty, "enable"}
-        ,
-    remote_ports(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts>())
-{
-    remote_ports->parent = this;
-
-    yang_name = "satellite"; yang_parent_name = "satellites"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::~Satellite()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::has_data() const
-{
-    if (is_presence_container) return true;
-    return satellite_id.is_set
-	|| enable.is_set
-	|| (remote_ports !=  nullptr && remote_ports->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(satellite_id.yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| (remote_ports !=  nullptr && remote_ports->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "satellite";
-    ADD_KEY_TOKEN(satellite_id, "satellite-id");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (satellite_id.is_set || is_set(satellite_id.yfilter)) leaf_name_data.push_back(satellite_id.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "remote-ports")
-    {
-        if(remote_ports == nullptr)
-        {
-            remote_ports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts>();
-        }
-        return remote_ports;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(remote_ports != nullptr)
-    {
-        _children["remote-ports"] = remote_ports;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "satellite-id")
-    {
-        satellite_id = value;
-        satellite_id.value_namespace = name_space;
-        satellite_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "satellite-id")
-    {
-        satellite_id.yfilter = yfilter;
-    }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "remote-ports" || name == "satellite-id" || name == "enable")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePorts()
-    :
-    remote_port(this, {"port_type", "slot", "sub_slot"})
-{
-
-    yang_name = "remote-ports"; yang_parent_name = "satellite"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::~RemotePorts()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<remote_port.len(); index++)
-    {
-        if(remote_port[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::has_operation() const
-{
-    for (std::size_t index=0; index<remote_port.len(); index++)
-    {
-        if(remote_port[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "remote-ports";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "remote-port")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort>();
-        ent_->parent = this;
-        remote_port.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : remote_port.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "remote-port")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort::RemotePort()
-    :
-    port_type{YType::str, "port-type"},
-    slot{YType::uint32, "slot"},
-    sub_slot{YType::uint32, "sub-slot"},
-    port_range{YType::str, "port-range"}
-{
-
-    yang_name = "remote-port"; yang_parent_name = "remote-ports"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort::~RemotePort()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort::has_data() const
-{
-    if (is_presence_container) return true;
-    return port_type.is_set
-	|| slot.is_set
-	|| sub_slot.is_set
-	|| port_range.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(port_type.yfilter)
-	|| ydk::is_set(slot.yfilter)
-	|| ydk::is_set(sub_slot.yfilter)
-	|| ydk::is_set(port_range.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "remote-port";
-    ADD_KEY_TOKEN(port_type, "port-type");
-    ADD_KEY_TOKEN(slot, "slot");
-    ADD_KEY_TOKEN(sub_slot, "sub-slot");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (port_type.is_set || is_set(port_type.yfilter)) leaf_name_data.push_back(port_type.get_name_leafdata());
-    if (slot.is_set || is_set(slot.yfilter)) leaf_name_data.push_back(slot.get_name_leafdata());
-    if (sub_slot.is_set || is_set(sub_slot.yfilter)) leaf_name_data.push_back(sub_slot.get_name_leafdata());
-    if (port_range.is_set || is_set(port_range.yfilter)) leaf_name_data.push_back(port_range.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "port-type")
-    {
-        port_type = value;
-        port_type.value_namespace = name_space;
-        port_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "slot")
-    {
-        slot = value;
-        slot.value_namespace = name_space;
-        slot.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sub-slot")
-    {
-        sub_slot = value;
-        sub_slot.value_namespace = name_space;
-        sub_slot.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port-range")
-    {
-        port_range = value;
-        port_range.value_namespace = name_space;
-        port_range.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "port-type")
-    {
-        port_type.yfilter = yfilter;
-    }
-    if(value_path == "slot")
-    {
-        slot.yfilter = yfilter;
-    }
-    if(value_path == "sub-slot")
-    {
-        sub_slot.yfilter = yfilter;
-    }
-    if(value_path == "port-range")
-    {
-        port_range.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "port-type" || name == "slot" || name == "sub-slot" || name == "port-range")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy::Redundancy()
-    :
-    iccp_group{YType::uint32, "iccp-group"},
-    minimum_preferred_links{YType::uint32, "minimum-preferred-links"}
-{
-
-    yang_name = "redundancy"; yang_parent_name = "nv-satellite-fabric-network"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy::~Redundancy()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy::has_data() const
-{
-    if (is_presence_container) return true;
-    return iccp_group.is_set
-	|| minimum_preferred_links.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(iccp_group.yfilter)
-	|| ydk::is_set(minimum_preferred_links.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "redundancy";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (iccp_group.is_set || is_set(iccp_group.yfilter)) leaf_name_data.push_back(iccp_group.get_name_leafdata());
-    if (minimum_preferred_links.is_set || is_set(minimum_preferred_links.yfilter)) leaf_name_data.push_back(minimum_preferred_links.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "iccp-group")
-    {
-        iccp_group = value;
-        iccp_group.value_namespace = name_space;
-        iccp_group.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "minimum-preferred-links")
-    {
-        minimum_preferred_links = value;
-        minimum_preferred_links.value_namespace = name_space;
-        minimum_preferred_links.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "iccp-group")
-    {
-        iccp_group.yfilter = yfilter;
-    }
-    if(value_path == "minimum-preferred-links")
-    {
-        minimum_preferred_links.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "iccp-group" || name == "minimum-preferred-links")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Dwdm::Dwdm()
-    :
-    enable_vtxp{YType::boolean, "enable-vtxp"},
-    network_port_id{YType::str, "network-port-id"},
-    transport_admin_state{YType::enumeration, "transport-admin-state"},
-    laser{YType::empty, "laser"},
-    transmit_power{YType::int32, "transmit-power"},
-    rx_threshold{YType::int32, "rx-threshold"},
-    network_connection_id{YType::str, "network-connection-id"},
-    loopback{YType::enumeration, "loopback"}
-        ,
-    network_srlgs(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs>())
-    , g709(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709>())
-    , wavelength(nullptr) // presence node
-{
-    network_srlgs->parent = this;
-    g709->parent = this;
-
-    yang_name = "dwdm"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Dwdm::~Dwdm()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable_vtxp.is_set
-	|| network_port_id.is_set
-	|| transport_admin_state.is_set
-	|| laser.is_set
-	|| transmit_power.is_set
-	|| rx_threshold.is_set
-	|| network_connection_id.is_set
-	|| loopback.is_set
-	|| (network_srlgs !=  nullptr && network_srlgs->has_data())
-	|| (g709 !=  nullptr && g709->has_data())
-	|| (wavelength !=  nullptr && wavelength->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable_vtxp.yfilter)
-	|| ydk::is_set(network_port_id.yfilter)
-	|| ydk::is_set(transport_admin_state.yfilter)
-	|| ydk::is_set(laser.yfilter)
-	|| ydk::is_set(transmit_power.yfilter)
-	|| ydk::is_set(rx_threshold.yfilter)
-	|| ydk::is_set(network_connection_id.yfilter)
-	|| ydk::is_set(loopback.yfilter)
-	|| (network_srlgs !=  nullptr && network_srlgs->has_operation())
-	|| (g709 !=  nullptr && g709->has_operation())
-	|| (wavelength !=  nullptr && wavelength->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Dwdm::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-dwdm-ui-cfg:dwdm";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Dwdm::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable_vtxp.is_set || is_set(enable_vtxp.yfilter)) leaf_name_data.push_back(enable_vtxp.get_name_leafdata());
-    if (network_port_id.is_set || is_set(network_port_id.yfilter)) leaf_name_data.push_back(network_port_id.get_name_leafdata());
-    if (transport_admin_state.is_set || is_set(transport_admin_state.yfilter)) leaf_name_data.push_back(transport_admin_state.get_name_leafdata());
-    if (laser.is_set || is_set(laser.yfilter)) leaf_name_data.push_back(laser.get_name_leafdata());
-    if (transmit_power.is_set || is_set(transmit_power.yfilter)) leaf_name_data.push_back(transmit_power.get_name_leafdata());
-    if (rx_threshold.is_set || is_set(rx_threshold.yfilter)) leaf_name_data.push_back(rx_threshold.get_name_leafdata());
-    if (network_connection_id.is_set || is_set(network_connection_id.yfilter)) leaf_name_data.push_back(network_connection_id.get_name_leafdata());
-    if (loopback.is_set || is_set(loopback.yfilter)) leaf_name_data.push_back(loopback.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "network-srlgs")
-    {
-        if(network_srlgs == nullptr)
-        {
-            network_srlgs = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs>();
-        }
-        return network_srlgs;
-    }
-
-    if(child_yang_name == "g709")
-    {
-        if(g709 == nullptr)
-        {
-            g709 = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709>();
-        }
-        return g709;
-    }
-
-    if(child_yang_name == "wavelength")
-    {
-        if(wavelength == nullptr)
-        {
-            wavelength = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::Wavelength>();
-        }
-        return wavelength;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(network_srlgs != nullptr)
-    {
-        _children["network-srlgs"] = network_srlgs;
-    }
-
-    if(g709 != nullptr)
-    {
-        _children["g709"] = g709;
-    }
-
-    if(wavelength != nullptr)
-    {
-        _children["wavelength"] = wavelength;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Dwdm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable-vtxp")
-    {
-        enable_vtxp = value;
-        enable_vtxp.value_namespace = name_space;
-        enable_vtxp.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "network-port-id")
-    {
-        network_port_id = value;
-        network_port_id.value_namespace = name_space;
-        network_port_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "transport-admin-state")
-    {
-        transport_admin_state = value;
-        transport_admin_state.value_namespace = name_space;
-        transport_admin_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "laser")
-    {
-        laser = value;
-        laser.value_namespace = name_space;
-        laser.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "transmit-power")
-    {
-        transmit_power = value;
-        transmit_power.value_namespace = name_space;
-        transmit_power.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rx-threshold")
-    {
-        rx_threshold = value;
-        rx_threshold.value_namespace = name_space;
-        rx_threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "network-connection-id")
-    {
-        network_connection_id = value;
-        network_connection_id.value_namespace = name_space;
-        network_connection_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "loopback")
-    {
-        loopback = value;
-        loopback.value_namespace = name_space;
-        loopback.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Dwdm::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable-vtxp")
-    {
-        enable_vtxp.yfilter = yfilter;
-    }
-    if(value_path == "network-port-id")
-    {
-        network_port_id.yfilter = yfilter;
-    }
-    if(value_path == "transport-admin-state")
-    {
-        transport_admin_state.yfilter = yfilter;
-    }
-    if(value_path == "laser")
-    {
-        laser.yfilter = yfilter;
-    }
-    if(value_path == "transmit-power")
-    {
-        transmit_power.yfilter = yfilter;
-    }
-    if(value_path == "rx-threshold")
-    {
-        rx_threshold.yfilter = yfilter;
-    }
-    if(value_path == "network-connection-id")
-    {
-        network_connection_id.yfilter = yfilter;
-    }
-    if(value_path == "loopback")
-    {
-        loopback.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "network-srlgs" || name == "g709" || name == "wavelength" || name == "enable-vtxp" || name == "network-port-id" || name == "transport-admin-state" || name == "laser" || name == "transmit-power" || name == "rx-threshold" || name == "network-connection-id" || name == "loopback")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlgs()
-    :
-    network_srlg(this, {"set_id"})
-{
-
-    yang_name = "network-srlgs"; yang_parent_name = "dwdm"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::~NetworkSrlgs()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<network_srlg.len(); index++)
-    {
-        if(network_srlg[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::has_operation() const
-{
-    for (std::size_t index=0; index<network_srlg.len(); index++)
-    {
-        if(network_srlg[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "network-srlgs";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "network-srlg")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg>();
-        ent_->parent = this;
-        network_srlg.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : network_srlg.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "network-srlg")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::NetworkSrlg()
-    :
-    set_id{YType::uint32, "set-id"},
-    srlg1{YType::uint32, "srlg1"},
-    srlg2{YType::uint32, "srlg2"},
-    srlg3{YType::uint32, "srlg3"},
-    srlg4{YType::uint32, "srlg4"},
-    srlg5{YType::uint32, "srlg5"},
-    srlg6{YType::uint32, "srlg6"}
-{
-
-    yang_name = "network-srlg"; yang_parent_name = "network-srlgs"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::~NetworkSrlg()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::has_data() const
-{
-    if (is_presence_container) return true;
-    return set_id.is_set
-	|| srlg1.is_set
-	|| srlg2.is_set
-	|| srlg3.is_set
-	|| srlg4.is_set
-	|| srlg5.is_set
-	|| srlg6.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(set_id.yfilter)
-	|| ydk::is_set(srlg1.yfilter)
-	|| ydk::is_set(srlg2.yfilter)
-	|| ydk::is_set(srlg3.yfilter)
-	|| ydk::is_set(srlg4.yfilter)
-	|| ydk::is_set(srlg5.yfilter)
-	|| ydk::is_set(srlg6.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "network-srlg";
-    ADD_KEY_TOKEN(set_id, "set-id");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (set_id.is_set || is_set(set_id.yfilter)) leaf_name_data.push_back(set_id.get_name_leafdata());
-    if (srlg1.is_set || is_set(srlg1.yfilter)) leaf_name_data.push_back(srlg1.get_name_leafdata());
-    if (srlg2.is_set || is_set(srlg2.yfilter)) leaf_name_data.push_back(srlg2.get_name_leafdata());
-    if (srlg3.is_set || is_set(srlg3.yfilter)) leaf_name_data.push_back(srlg3.get_name_leafdata());
-    if (srlg4.is_set || is_set(srlg4.yfilter)) leaf_name_data.push_back(srlg4.get_name_leafdata());
-    if (srlg5.is_set || is_set(srlg5.yfilter)) leaf_name_data.push_back(srlg5.get_name_leafdata());
-    if (srlg6.is_set || is_set(srlg6.yfilter)) leaf_name_data.push_back(srlg6.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "set-id")
-    {
-        set_id = value;
-        set_id.value_namespace = name_space;
-        set_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "srlg1")
-    {
-        srlg1 = value;
-        srlg1.value_namespace = name_space;
-        srlg1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "srlg2")
-    {
-        srlg2 = value;
-        srlg2.value_namespace = name_space;
-        srlg2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "srlg3")
-    {
-        srlg3 = value;
-        srlg3.value_namespace = name_space;
-        srlg3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "srlg4")
-    {
-        srlg4 = value;
-        srlg4.value_namespace = name_space;
-        srlg4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "srlg5")
-    {
-        srlg5 = value;
-        srlg5.value_namespace = name_space;
-        srlg5.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "srlg6")
-    {
-        srlg6 = value;
-        srlg6.value_namespace = name_space;
-        srlg6.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "set-id")
-    {
-        set_id.yfilter = yfilter;
-    }
-    if(value_path == "srlg1")
-    {
-        srlg1.yfilter = yfilter;
-    }
-    if(value_path == "srlg2")
-    {
-        srlg2.yfilter = yfilter;
-    }
-    if(value_path == "srlg3")
-    {
-        srlg3.yfilter = yfilter;
-    }
-    if(value_path == "srlg4")
-    {
-        srlg4.yfilter = yfilter;
-    }
-    if(value_path == "srlg5")
-    {
-        srlg5.yfilter = yfilter;
-    }
-    if(value_path == "srlg6")
-    {
-        srlg6.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "set-id" || name == "srlg1" || name == "srlg2" || name == "srlg3" || name == "srlg4" || name == "srlg5" || name == "srlg6")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::G709()
-    :
-    proactive{YType::enumeration, "proactive"},
-    bdi_to_gais{YType::empty, "bdi-to-gais"},
-    tim_to_gais{YType::empty, "tim-to-gais"},
-    proactive_logging_file{YType::str, "proactive-logging-file"},
-    tti_processing{YType::empty, "tti-processing"},
-    enable{YType::boolean, "enable"},
-    framing{YType::enumeration, "framing"}
-        ,
-    odu(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu>())
-    , otu(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu>())
-    , prbs(nullptr) // presence node
-    , fec(nullptr) // presence node
-{
-    odu->parent = this;
-    otu->parent = this;
-
-    yang_name = "g709"; yang_parent_name = "dwdm"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::~G709()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::has_data() const
-{
-    if (is_presence_container) return true;
-    return proactive.is_set
-	|| bdi_to_gais.is_set
-	|| tim_to_gais.is_set
-	|| proactive_logging_file.is_set
-	|| tti_processing.is_set
-	|| enable.is_set
-	|| framing.is_set
-	|| (odu !=  nullptr && odu->has_data())
-	|| (otu !=  nullptr && otu->has_data())
-	|| (prbs !=  nullptr && prbs->has_data())
-	|| (fec !=  nullptr && fec->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(proactive.yfilter)
-	|| ydk::is_set(bdi_to_gais.yfilter)
-	|| ydk::is_set(tim_to_gais.yfilter)
-	|| ydk::is_set(proactive_logging_file.yfilter)
-	|| ydk::is_set(tti_processing.yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(framing.yfilter)
-	|| (odu !=  nullptr && odu->has_operation())
-	|| (otu !=  nullptr && otu->has_operation())
-	|| (prbs !=  nullptr && prbs->has_operation())
-	|| (fec !=  nullptr && fec->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "g709";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (proactive.is_set || is_set(proactive.yfilter)) leaf_name_data.push_back(proactive.get_name_leafdata());
-    if (bdi_to_gais.is_set || is_set(bdi_to_gais.yfilter)) leaf_name_data.push_back(bdi_to_gais.get_name_leafdata());
-    if (tim_to_gais.is_set || is_set(tim_to_gais.yfilter)) leaf_name_data.push_back(tim_to_gais.get_name_leafdata());
-    if (proactive_logging_file.is_set || is_set(proactive_logging_file.yfilter)) leaf_name_data.push_back(proactive_logging_file.get_name_leafdata());
-    if (tti_processing.is_set || is_set(tti_processing.yfilter)) leaf_name_data.push_back(tti_processing.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (framing.is_set || is_set(framing.yfilter)) leaf_name_data.push_back(framing.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "odu")
-    {
-        if(odu == nullptr)
-        {
-            odu = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu>();
-        }
-        return odu;
-    }
-
-    if(child_yang_name == "otu")
-    {
-        if(otu == nullptr)
-        {
-            otu = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu>();
-        }
-        return otu;
-    }
-
-    if(child_yang_name == "prbs")
-    {
-        if(prbs == nullptr)
-        {
-            prbs = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Prbs>();
-        }
-        return prbs;
-    }
-
-    if(child_yang_name == "fec")
-    {
-        if(fec == nullptr)
-        {
-            fec = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Fec>();
-        }
-        return fec;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(odu != nullptr)
-    {
-        _children["odu"] = odu;
-    }
-
-    if(otu != nullptr)
-    {
-        _children["otu"] = otu;
-    }
-
-    if(prbs != nullptr)
-    {
-        _children["prbs"] = prbs;
-    }
-
-    if(fec != nullptr)
-    {
-        _children["fec"] = fec;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "proactive")
-    {
-        proactive = value;
-        proactive.value_namespace = name_space;
-        proactive.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bdi-to-gais")
-    {
-        bdi_to_gais = value;
-        bdi_to_gais.value_namespace = name_space;
-        bdi_to_gais.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tim-to-gais")
-    {
-        tim_to_gais = value;
-        tim_to_gais.value_namespace = name_space;
-        tim_to_gais.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "proactive-logging-file")
-    {
-        proactive_logging_file = value;
-        proactive_logging_file.value_namespace = name_space;
-        proactive_logging_file.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tti-processing")
-    {
-        tti_processing = value;
-        tti_processing.value_namespace = name_space;
-        tti_processing.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "framing")
-    {
-        framing = value;
-        framing.value_namespace = name_space;
-        framing.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "proactive")
-    {
-        proactive.yfilter = yfilter;
-    }
-    if(value_path == "bdi-to-gais")
-    {
-        bdi_to_gais.yfilter = yfilter;
-    }
-    if(value_path == "tim-to-gais")
-    {
-        tim_to_gais.yfilter = yfilter;
-    }
-    if(value_path == "proactive-logging-file")
-    {
-        proactive_logging_file.yfilter = yfilter;
-    }
-    if(value_path == "tti-processing")
-    {
-        tti_processing.yfilter = yfilter;
-    }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "framing")
-    {
-        framing.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "odu" || name == "otu" || name == "prbs" || name == "fec" || name == "proactive" || name == "bdi-to-gais" || name == "tim-to-gais" || name == "proactive-logging-file" || name == "tti-processing" || name == "enable" || name == "framing")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::Odu()
-    :
-    odu_reports(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports>())
-    , odu_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds>())
-    , odu_expected_tti(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti>())
-    , odu_tx_tti(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduTxTti>())
-{
-    odu_reports->parent = this;
-    odu_thresholds->parent = this;
-    odu_expected_tti->parent = this;
-    odu_tx_tti->parent = this;
-
-    yang_name = "odu"; yang_parent_name = "g709"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::~Odu()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::has_data() const
-{
-    if (is_presence_container) return true;
-    return (odu_reports !=  nullptr && odu_reports->has_data())
-	|| (odu_thresholds !=  nullptr && odu_thresholds->has_data())
-	|| (odu_expected_tti !=  nullptr && odu_expected_tti->has_data())
-	|| (odu_tx_tti !=  nullptr && odu_tx_tti->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::has_operation() const
-{
-    return is_set(yfilter)
-	|| (odu_reports !=  nullptr && odu_reports->has_operation())
-	|| (odu_thresholds !=  nullptr && odu_thresholds->has_operation())
-	|| (odu_expected_tti !=  nullptr && odu_expected_tti->has_operation())
-	|| (odu_tx_tti !=  nullptr && odu_tx_tti->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "odu";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "odu-reports")
-    {
-        if(odu_reports == nullptr)
-        {
-            odu_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports>();
-        }
-        return odu_reports;
-    }
-
-    if(child_yang_name == "odu-thresholds")
-    {
-        if(odu_thresholds == nullptr)
-        {
-            odu_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds>();
-        }
-        return odu_thresholds;
-    }
-
-    if(child_yang_name == "odu-expected-tti")
-    {
-        if(odu_expected_tti == nullptr)
-        {
-            odu_expected_tti = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti>();
-        }
-        return odu_expected_tti;
-    }
-
-    if(child_yang_name == "odu-tx-tti")
-    {
-        if(odu_tx_tti == nullptr)
-        {
-            odu_tx_tti = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduTxTti>();
-        }
-        return odu_tx_tti;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(odu_reports != nullptr)
-    {
-        _children["odu-reports"] = odu_reports;
-    }
-
-    if(odu_thresholds != nullptr)
-    {
-        _children["odu-thresholds"] = odu_thresholds;
-    }
-
-    if(odu_expected_tti != nullptr)
-    {
-        _children["odu-expected-tti"] = odu_expected_tti;
-    }
-
-    if(odu_tx_tti != nullptr)
-    {
-        _children["odu-tx-tti"] = odu_tx_tti;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "odu-reports" || name == "odu-thresholds" || name == "odu-expected-tti" || name == "odu-tx-tti")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReports()
-    :
-    odu_report(this, {"alarm"})
-{
-
-    yang_name = "odu-reports"; yang_parent_name = "odu"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::~OduReports()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<odu_report.len(); index++)
-    {
-        if(odu_report[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::has_operation() const
-{
-    for (std::size_t index=0; index<odu_report.len(); index++)
-    {
-        if(odu_report[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "odu-reports";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "odu-report")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport>();
-        ent_->parent = this;
-        odu_report.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : odu_report.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "odu-report")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport::OduReport()
-    :
-    alarm{YType::enumeration, "alarm"}
-{
-
-    yang_name = "odu-report"; yang_parent_name = "odu-reports"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport::~OduReport()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport::has_data() const
-{
-    if (is_presence_container) return true;
-    return alarm.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(alarm.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "odu-report";
-    ADD_KEY_TOKEN(alarm, "alarm");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (alarm.is_set || is_set(alarm.yfilter)) leaf_name_data.push_back(alarm.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "alarm")
-    {
-        alarm = value;
-        alarm.value_namespace = name_space;
-        alarm.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "alarm")
-    {
-        alarm.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "alarm")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThresholds()
-    :
-    odu_threshold(this, {"threshold"})
-{
-
-    yang_name = "odu-thresholds"; yang_parent_name = "odu"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::~OduThresholds()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<odu_threshold.len(); index++)
-    {
-        if(odu_threshold[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::has_operation() const
-{
-    for (std::size_t index=0; index<odu_threshold.len(); index++)
-    {
-        if(odu_threshold[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "odu-thresholds";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "odu-threshold")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold>();
-        ent_->parent = this;
-        odu_threshold.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : odu_threshold.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "odu-threshold")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold::OduThreshold()
-    :
-    threshold{YType::enumeration, "threshold"},
-    threshold_value{YType::uint32, "threshold-value"}
-{
-
-    yang_name = "odu-threshold"; yang_parent_name = "odu-thresholds"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold::~OduThreshold()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold::has_data() const
-{
-    if (is_presence_container) return true;
-    return threshold.is_set
-	|| threshold_value.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(threshold.yfilter)
-	|| ydk::is_set(threshold_value.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "odu-threshold";
-    ADD_KEY_TOKEN(threshold, "threshold");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-    if (threshold_value.is_set || is_set(threshold_value.yfilter)) leaf_name_data.push_back(threshold_value.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold-value")
-    {
-        threshold_value = value;
-        threshold_value.value_namespace = name_space;
-        threshold_value.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-    if(value_path == "threshold-value")
-    {
-        threshold_value.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "threshold" || name == "threshold-value")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti::OduExpectedTti()
-    :
-    string_type{YType::enumeration, "string-type"},
-    ascii_string{YType::str, "ascii-string"},
-    hex_string{YType::str, "hex-string"}
-{
-
-    yang_name = "odu-expected-tti"; yang_parent_name = "odu"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti::~OduExpectedTti()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti::has_data() const
-{
-    if (is_presence_container) return true;
-    return string_type.is_set
-	|| ascii_string.is_set
-	|| hex_string.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(string_type.yfilter)
-	|| ydk::is_set(ascii_string.yfilter)
-	|| ydk::is_set(hex_string.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "odu-expected-tti";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (string_type.is_set || is_set(string_type.yfilter)) leaf_name_data.push_back(string_type.get_name_leafdata());
-    if (ascii_string.is_set || is_set(ascii_string.yfilter)) leaf_name_data.push_back(ascii_string.get_name_leafdata());
-    if (hex_string.is_set || is_set(hex_string.yfilter)) leaf_name_data.push_back(hex_string.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "string-type")
-    {
-        string_type = value;
-        string_type.value_namespace = name_space;
-        string_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ascii-string")
-    {
-        ascii_string = value;
-        ascii_string.value_namespace = name_space;
-        ascii_string.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hex-string")
-    {
-        hex_string = value;
-        hex_string.value_namespace = name_space;
-        hex_string.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "string-type")
-    {
-        string_type.yfilter = yfilter;
-    }
-    if(value_path == "ascii-string")
-    {
-        ascii_string.yfilter = yfilter;
-    }
-    if(value_path == "hex-string")
-    {
-        hex_string.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "string-type" || name == "ascii-string" || name == "hex-string")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::TunnelingEthertype::Y_0x9100 {37120, "0x9100"};
-const Enum::YLeaf InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::TunnelingEthertype::Y_0x9200 {37376, "0x9200"};
 
 
 }

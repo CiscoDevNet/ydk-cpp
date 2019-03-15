@@ -609,6 +609,8 @@ class Ipsla::Responder::Ports::Port : public ydk::Entity
         ydk::YLeaf is_ipsla; //type: boolean
         ydk::YLeaf drop_counter; //type: uint32
         ydk::YLeaf socket; //type: int32
+        ydk::YLeaf local_ipv6_address; //type: string
+        ydk::YLeaf family; //type: int32
         class Sender; //type: Ipsla::Responder::Ports::Port::Sender
 
         ydk::YList sender;
@@ -632,9 +634,10 @@ class Ipsla::Responder::Ports::Port::Sender : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ip_address; //type: uint32
+        ydk::YLeaf ip_address; //type: string
         ydk::YLeaf port; //type: uint16
         ydk::YLeaf last_recv_time; //type: uint64
+        ydk::YLeaf ipv6_address; //type: string
 
 }; // Ipsla::Responder::Ports::Port::Sender
 

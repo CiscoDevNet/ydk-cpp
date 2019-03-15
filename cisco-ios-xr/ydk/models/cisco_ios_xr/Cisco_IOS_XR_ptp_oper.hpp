@@ -1175,6 +1175,9 @@ class Ptp::Nodes::Node::PacketCounters::DropReasons : public ydk::Entity
         ydk::YLeaf no_offload_session; //type: uint32
         ydk::YLeaf not_supported; //type: uint32
         ydk::YLeaf min_clock_class; //type: uint32
+        ydk::YLeaf bad_clock_class; //type: uint32
+        ydk::YLeaf steps_removed; //type: uint32
+        ydk::YLeaf reserved_clock_id; //type: uint32
         ydk::YLeaf g8265_1_incompatible; //type: uint32
         ydk::YLeaf g8275_1_incompatible; //type: uint32
         ydk::YLeaf g8275_2_incompatible; //type: uint32

@@ -20052,7 +20052,8 @@ const Enum::YLeaf MgmtLsdApp::mgmt_lsd_app_type_isis {15, "mgmt-lsd-app-type-isi
 const Enum::YLeaf MgmtLsdApp::mgmt_lsd_app_type_ospf {16, "mgmt-lsd-app-type-ospf"};
 const Enum::YLeaf MgmtLsdApp::mgmt_lsd_app_type_cgn {17, "mgmt-lsd-app-type-cgn"};
 const Enum::YLeaf MgmtLsdApp::mgmt_lsd_app_type_dmtc {18, "mgmt-lsd-app-type-dmtc"};
-const Enum::YLeaf MgmtLsdApp::mgmt_lsd_app_type_any {19, "mgmt-lsd-app-type-any"};
+const Enum::YLeaf MgmtLsdApp::mgmt_lsd_app_type_cofo_sync_lib {19, "mgmt-lsd-app-type-cofo-sync-lib"};
+const Enum::YLeaf MgmtLsdApp::mgmt_lsd_app_type_any {20, "mgmt-lsd-app-type-any"};
 
 const Enum::YLeaf MgmtLsdTeBinding::mgmt_lsd_ident_p2p_tun_id {0, "mgmt-lsd-ident-p2p-tun-id"};
 const Enum::YLeaf MgmtLsdTeBinding::mgmt_lsd_ident_p2p_grp_id {1, "mgmt-lsd-ident-p2p-grp-id"};

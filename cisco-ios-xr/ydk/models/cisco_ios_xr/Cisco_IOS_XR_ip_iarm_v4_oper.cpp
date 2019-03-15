@@ -596,7 +596,7 @@ Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::Network()
     :
     address{YType::str, "address"},
     prefix_length{YType::uint32, "prefix-length"},
-    handle{YType::str, "handle"},
+    interface{YType::str, "interface"},
     interface_name{YType::str, "interface-name"},
     referenced_interface{YType::str, "referenced-interface"},
     vrf_name{YType::str, "vrf-name"}
@@ -617,7 +617,7 @@ bool Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::has_data() const
     if (is_presence_container) return true;
     return address.is_set
 	|| prefix_length.is_set
-	|| handle.is_set
+	|| interface.is_set
 	|| interface_name.is_set
 	|| referenced_interface.is_set
 	|| vrf_name.is_set
@@ -629,7 +629,7 @@ bool Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(address.yfilter)
 	|| ydk::is_set(prefix_length.yfilter)
-	|| ydk::is_set(handle.yfilter)
+	|| ydk::is_set(interface.yfilter)
 	|| ydk::is_set(interface_name.yfilter)
 	|| ydk::is_set(referenced_interface.yfilter)
 	|| ydk::is_set(vrf_name.yfilter)
@@ -650,7 +650,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv4arm::Addresses::Vrfs::Vrf::Ne
 
     if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
     if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
-    if (handle.is_set || is_set(handle.yfilter)) leaf_name_data.push_back(handle.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
     if (referenced_interface.is_set || is_set(referenced_interface.yfilter)) leaf_name_data.push_back(referenced_interface.get_name_leafdata());
     if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
@@ -699,11 +699,11 @@ void Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::set_value(const std::stri
         prefix_length.value_namespace = name_space;
         prefix_length.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "handle")
+    if(value_path == "interface")
     {
-        handle = value;
-        handle.value_namespace = name_space;
-        handle.value_namespace_prefix = name_space_prefix;
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "interface-name")
     {
@@ -735,9 +735,9 @@ void Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::set_filter(const std::str
     {
         prefix_length.yfilter = yfilter;
     }
-    if(value_path == "handle")
+    if(value_path == "interface")
     {
-        handle.yfilter = yfilter;
+        interface.yfilter = yfilter;
     }
     if(value_path == "interface-name")
     {
@@ -755,7 +755,7 @@ void Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::set_filter(const std::str
 
 bool Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "address-xr" || name == "address" || name == "prefix-length" || name == "handle" || name == "interface-name" || name == "referenced-interface" || name == "vrf-name")
+    if(name == "address-xr" || name == "address" || name == "prefix-length" || name == "interface" || name == "interface-name" || name == "referenced-interface" || name == "vrf-name")
         return true;
     return false;
 }

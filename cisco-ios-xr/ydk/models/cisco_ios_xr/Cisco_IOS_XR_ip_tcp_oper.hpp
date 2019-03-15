@@ -643,6 +643,8 @@ class TcpConnection::Nodes::Node::Statistics::Summary : public ydk::Entity
         ydk::YLeaf iq_sock_aborts; //type: uint32
         ydk::YLeaf iq_ingress_drops; //type: uint32
         ydk::YLeaf total_i_qs; //type: uint32
+        ydk::YLeaf sockbuf_pak_res_cur; //type: uint32
+        ydk::YLeaf sockbuf_pak_res_max; //type: uint32
         class IqsTotalIngpacket; //type: TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalIngpacket
         class IqsTotalEgpacket; //type: TcpConnection::Nodes::Node::Statistics::Summary::IqsTotalEgpacket
 
@@ -1294,6 +1296,8 @@ class TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketO
         ydk::YLeaf out_of_band_inline; //type: boolean
         ydk::YLeaf reuse_port; //type: boolean
         ydk::YLeaf nonblocking_io; //type: boolean
+        ydk::YLeaf snd_buf_scaled; //type: boolean
+        ydk::YLeaf rcv_buf_scaled; //type: boolean
 
 }; // TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionFlags
 
@@ -1447,6 +1451,7 @@ class TcpConnection::Nodes::Node::DetailInformations::DetailInformation::Receive
         ydk::YLeaf connect_wakeup; //type: boolean
         ydk::YLeaf output_select; //type: boolean
         ydk::YLeaf out_of_band_select; //type: boolean
+        ydk::YLeaf packet_extended; //type: boolean
 
 }; // TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags
 
@@ -1479,6 +1484,7 @@ class TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBuf
         ydk::YLeaf connect_wakeup; //type: boolean
         ydk::YLeaf output_select; //type: boolean
         ydk::YLeaf out_of_band_select; //type: boolean
+        ydk::YLeaf packet_extended; //type: boolean
 
 }; // TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags
 

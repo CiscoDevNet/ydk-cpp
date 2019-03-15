@@ -12,6 +12,3871 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Rip::Authentication::Mode::Mode()
+    :
+    md5{YType::empty, "md5"},
+    text{YType::empty, "text"}
+{
+
+    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Rip::Authentication::Mode::~Mode()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Rip::Authentication::Mode::has_data() const
+{
+    if (is_presence_container) return true;
+    return md5.is_set
+	|| text.is_set;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Rip::Authentication::Mode::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(md5.yfilter)
+	|| ydk::is_set(text.yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Rip::Authentication::Mode::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mode";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Rip::Authentication::Mode::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (md5.is_set || is_set(md5.yfilter)) leaf_name_data.push_back(md5.get_name_leafdata());
+    if (text.is_set || is_set(text.yfilter)) leaf_name_data.push_back(text.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Rip::Authentication::Mode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Rip::Authentication::Mode::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Rip::Authentication::Mode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "md5")
+    {
+        md5 = value;
+        md5.value_namespace = name_space;
+        md5.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "text")
+    {
+        text = value;
+        text.value_namespace = name_space;
+        text.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Rip::Authentication::Mode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "md5")
+    {
+        md5.yfilter = yfilter;
+    }
+    if(value_path == "text")
+    {
+        text.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Rip::Authentication::Mode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "md5" || name == "text")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::RouteCacheConf::RouteCacheConf()
+    :
+    route_cache{YType::boolean, "route-cache"}
+{
+
+    yang_name = "route-cache-conf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::RouteCacheConf::~RouteCacheConf()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::RouteCacheConf::has_data() const
+{
+    if (is_presence_container) return true;
+    return route_cache.is_set;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::RouteCacheConf::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(route_cache.yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::RouteCacheConf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-cache-conf";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::RouteCacheConf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (route_cache.is_set || is_set(route_cache.yfilter)) leaf_name_data.push_back(route_cache.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::RouteCacheConf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::RouteCacheConf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::RouteCacheConf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "route-cache")
+    {
+        route_cache = value;
+        route_cache.value_namespace = name_space;
+        route_cache.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::RouteCacheConf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "route-cache")
+    {
+        route_cache.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::RouteCacheConf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route-cache")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::RouteCache::RouteCache()
+    :
+    cef{YType::boolean, "cef"},
+    flow{YType::boolean, "flow"},
+    policy{YType::boolean, "policy"},
+    same_interface{YType::boolean, "same-interface"}
+{
+
+    yang_name = "route-cache"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::RouteCache::~RouteCache()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::RouteCache::has_data() const
+{
+    if (is_presence_container) return true;
+    return cef.is_set
+	|| flow.is_set
+	|| policy.is_set
+	|| same_interface.is_set;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::RouteCache::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cef.yfilter)
+	|| ydk::is_set(flow.yfilter)
+	|| ydk::is_set(policy.yfilter)
+	|| ydk::is_set(same_interface.yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::RouteCache::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route-cache";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::RouteCache::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cef.is_set || is_set(cef.yfilter)) leaf_name_data.push_back(cef.get_name_leafdata());
+    if (flow.is_set || is_set(flow.yfilter)) leaf_name_data.push_back(flow.get_name_leafdata());
+    if (policy.is_set || is_set(policy.yfilter)) leaf_name_data.push_back(policy.get_name_leafdata());
+    if (same_interface.is_set || is_set(same_interface.yfilter)) leaf_name_data.push_back(same_interface.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::RouteCache::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::RouteCache::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::RouteCache::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cef")
+    {
+        cef = value;
+        cef.value_namespace = name_space;
+        cef.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flow")
+    {
+        flow = value;
+        flow.value_namespace = name_space;
+        flow.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "policy")
+    {
+        policy = value;
+        policy.value_namespace = name_space;
+        policy.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "same-interface")
+    {
+        same_interface = value;
+        same_interface.value_namespace = name_space;
+        same_interface.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::RouteCache::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cef")
+    {
+        cef.yfilter = yfilter;
+    }
+    if(value_path == "flow")
+    {
+        flow.yfilter = yfilter;
+    }
+    if(value_path == "policy")
+    {
+        policy.yfilter = yfilter;
+    }
+    if(value_path == "same-interface")
+    {
+        same_interface.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::RouteCache::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cef" || name == "flow" || name == "policy" || name == "same-interface")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::Router()
+    :
+    isis(nullptr) // presence node
+{
+
+    yang_name = "router"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::~Router()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::has_data() const
+{
+    if (is_presence_container) return true;
+    return (isis !=  nullptr && isis->has_data());
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::has_operation() const
+{
+    return is_set(yfilter)
+	|| (isis !=  nullptr && isis->has_operation());
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "router";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "isis")
+    {
+        if(isis == nullptr)
+        {
+            isis = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::Isis>();
+        }
+        return isis;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(isis != nullptr)
+    {
+        _children["isis"] = isis;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "isis")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::Isis::Isis()
+    :
+    tag{YType::str, "tag"}
+{
+
+    yang_name = "isis"; yang_parent_name = "router"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::Isis::~Isis()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::Isis::has_data() const
+{
+    if (is_presence_container) return true;
+    return tag.is_set;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::Isis::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tag.yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::Isis::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "isis";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::Isis::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::Isis::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tag")
+    {
+        tag = value;
+        tag.value_namespace = name_space;
+        tag.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::Isis::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tag")
+    {
+        tag.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Router::Isis::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tag")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Tcp::Tcp()
+    :
+    adjust_mss{YType::uint16, "adjust-mss"}
+{
+
+    yang_name = "tcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Tcp::~Tcp()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Tcp::has_data() const
+{
+    if (is_presence_container) return true;
+    return adjust_mss.is_set;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Tcp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(adjust_mss.yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Tcp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tcp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Tcp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (adjust_mss.is_set || is_set(adjust_mss.yfilter)) leaf_name_data.push_back(adjust_mss.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Tcp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Tcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "adjust-mss")
+    {
+        adjust_mss = value;
+        adjust_mss.value_namespace = name_space;
+        adjust_mss.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Tcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "adjust-mss")
+    {
+        adjust_mss.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Tcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adjust-mss")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::VirtualReassembly::VirtualReassembly()
+    :
+    max_reassemblies{YType::uint32, "max-reassemblies"},
+    max_fragments{YType::uint32, "max-fragments"},
+    timeout{YType::uint32, "timeout"},
+    drop_fragments{YType::empty, "drop-fragments"},
+    in{YType::empty, "in"}
+{
+
+    yang_name = "virtual-reassembly"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::VirtualReassembly::~VirtualReassembly()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::VirtualReassembly::has_data() const
+{
+    if (is_presence_container) return true;
+    return max_reassemblies.is_set
+	|| max_fragments.is_set
+	|| timeout.is_set
+	|| drop_fragments.is_set
+	|| in.is_set;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::VirtualReassembly::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_reassemblies.yfilter)
+	|| ydk::is_set(max_fragments.yfilter)
+	|| ydk::is_set(timeout.yfilter)
+	|| ydk::is_set(drop_fragments.yfilter)
+	|| ydk::is_set(in.yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::VirtualReassembly::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "virtual-reassembly";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::VirtualReassembly::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_reassemblies.is_set || is_set(max_reassemblies.yfilter)) leaf_name_data.push_back(max_reassemblies.get_name_leafdata());
+    if (max_fragments.is_set || is_set(max_fragments.yfilter)) leaf_name_data.push_back(max_fragments.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (drop_fragments.is_set || is_set(drop_fragments.yfilter)) leaf_name_data.push_back(drop_fragments.get_name_leafdata());
+    if (in.is_set || is_set(in.yfilter)) leaf_name_data.push_back(in.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::VirtualReassembly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::VirtualReassembly::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::VirtualReassembly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-reassemblies")
+    {
+        max_reassemblies = value;
+        max_reassemblies.value_namespace = name_space;
+        max_reassemblies.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-fragments")
+    {
+        max_fragments = value;
+        max_fragments.value_namespace = name_space;
+        max_fragments.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "drop-fragments")
+    {
+        drop_fragments = value;
+        drop_fragments.value_namespace = name_space;
+        drop_fragments.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "in")
+    {
+        in = value;
+        in.value_namespace = name_space;
+        in.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::VirtualReassembly::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-reassemblies")
+    {
+        max_reassemblies.yfilter = yfilter;
+    }
+    if(value_path == "max-fragments")
+    {
+        max_fragments.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+    if(value_path == "drop-fragments")
+    {
+        drop_fragments.yfilter = yfilter;
+    }
+    if(value_path == "in")
+    {
+        in.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::VirtualReassembly::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-reassemblies" || name == "max-fragments" || name == "timeout" || name == "drop-fragments" || name == "in")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Dhcp()
+    :
+    client(std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client>())
+    , relay(std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay>())
+    , snooping(std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping>())
+{
+    client->parent = this;
+    relay->parent = this;
+    snooping->parent = this;
+
+    yang_name = "dhcp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::~Dhcp()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::has_data() const
+{
+    if (is_presence_container) return true;
+    return (client !=  nullptr && client->has_data())
+	|| (relay !=  nullptr && relay->has_data())
+	|| (snooping !=  nullptr && snooping->has_data());
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::has_operation() const
+{
+    return is_set(yfilter)
+	|| (client !=  nullptr && client->has_operation())
+	|| (relay !=  nullptr && relay->has_operation())
+	|| (snooping !=  nullptr && snooping->has_operation());
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dhcp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "Cisco-IOS-XE-dhcp:client")
+    {
+        if(client == nullptr)
+        {
+            client = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client>();
+        }
+        return client;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-dhcp:relay")
+    {
+        if(relay == nullptr)
+        {
+            relay = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay>();
+        }
+        return relay;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-dhcp:snooping")
+    {
+        if(snooping == nullptr)
+        {
+            snooping = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping>();
+        }
+        return snooping;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(client != nullptr)
+    {
+        _children["Cisco-IOS-XE-dhcp:client"] = client;
+    }
+
+    if(relay != nullptr)
+    {
+        _children["Cisco-IOS-XE-dhcp:relay"] = relay;
+    }
+
+    if(snooping != nullptr)
+    {
+        _children["Cisco-IOS-XE-dhcp:snooping"] = snooping;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "client" || name == "relay" || name == "snooping")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Client()
+    :
+    hostname{YType::str, "hostname"}
+        ,
+    option(std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option>())
+    , request(std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Request>())
+    , route(std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Route>())
+{
+    option->parent = this;
+    request->parent = this;
+    route->parent = this;
+
+    yang_name = "client"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::~Client()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::has_data() const
+{
+    if (is_presence_container) return true;
+    return hostname.is_set
+	|| (option !=  nullptr && option->has_data())
+	|| (request !=  nullptr && request->has_data())
+	|| (route !=  nullptr && route->has_data());
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(hostname.yfilter)
+	|| (option !=  nullptr && option->has_operation())
+	|| (request !=  nullptr && request->has_operation())
+	|| (route !=  nullptr && route->has_operation());
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-dhcp:client";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (hostname.is_set || is_set(hostname.yfilter)) leaf_name_data.push_back(hostname.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "option")
+    {
+        if(option == nullptr)
+        {
+            option = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option>();
+        }
+        return option;
+    }
+
+    if(child_yang_name == "request")
+    {
+        if(request == nullptr)
+        {
+            request = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Request>();
+        }
+        return request;
+    }
+
+    if(child_yang_name == "route")
+    {
+        if(route == nullptr)
+        {
+            route = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Route>();
+        }
+        return route;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(option != nullptr)
+    {
+        _children["option"] = option;
+    }
+
+    if(request != nullptr)
+    {
+        _children["request"] = request;
+    }
+
+    if(route != nullptr)
+    {
+        _children["route"] = route;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "hostname")
+    {
+        hostname = value;
+        hostname.value_namespace = name_space;
+        hostname.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "hostname")
+    {
+        hostname.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "option" || name == "request" || name == "route" || name == "hostname")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::Option()
+    :
+    option_range(this, {"option_range"})
+{
+
+    yang_name = "option"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::~Option()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<option_range.len(); index++)
+    {
+        if(option_range[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::has_operation() const
+{
+    for (std::size_t index=0; index<option_range.len(); index++)
+    {
+        if(option_range[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "option";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "option-range")
+    {
+        auto ent_ = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::OptionRange>();
+        ent_->parent = this;
+        option_range.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : option_range.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "option-range")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::OptionRange::OptionRange()
+    :
+    option_range{YType::uint8, "option-range"},
+    ascii{YType::str, "ascii"},
+    hex{YType::str, "hex"},
+    ip{YType::str, "ip"}
+{
+
+    yang_name = "option-range"; yang_parent_name = "option"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::OptionRange::~OptionRange()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::OptionRange::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : ip.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return option_range.is_set
+	|| ascii.is_set
+	|| hex.is_set;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::OptionRange::has_operation() const
+{
+    for (auto const & leaf : ip.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(option_range.yfilter)
+	|| ydk::is_set(ascii.yfilter)
+	|| ydk::is_set(hex.yfilter)
+	|| ydk::is_set(ip.yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::OptionRange::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "option-range";
+    ADD_KEY_TOKEN(option_range, "option-range");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::OptionRange::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (option_range.is_set || is_set(option_range.yfilter)) leaf_name_data.push_back(option_range.get_name_leafdata());
+    if (ascii.is_set || is_set(ascii.yfilter)) leaf_name_data.push_back(ascii.get_name_leafdata());
+    if (hex.is_set || is_set(hex.yfilter)) leaf_name_data.push_back(hex.get_name_leafdata());
+
+    auto ip_name_datas = ip.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), ip_name_datas.begin(), ip_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::OptionRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::OptionRange::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::OptionRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "option-range")
+    {
+        option_range = value;
+        option_range.value_namespace = name_space;
+        option_range.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ascii")
+    {
+        ascii = value;
+        ascii.value_namespace = name_space;
+        ascii.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hex")
+    {
+        hex = value;
+        hex.value_namespace = name_space;
+        hex.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ip")
+    {
+        ip.append(value);
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::OptionRange::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "option-range")
+    {
+        option_range.yfilter = yfilter;
+    }
+    if(value_path == "ascii")
+    {
+        ascii.yfilter = yfilter;
+    }
+    if(value_path == "hex")
+    {
+        hex.yfilter = yfilter;
+    }
+    if(value_path == "ip")
+    {
+        ip.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Option::OptionRange::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "option-range" || name == "ascii" || name == "hex" || name == "ip")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Request::Request()
+    :
+    option{YType::uint8, "option"}
+{
+
+    yang_name = "request"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Request::~Request()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Request::has_data() const
+{
+    if (is_presence_container) return true;
+    return option.is_set;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Request::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(option.yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Request::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "request";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Request::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (option.is_set || is_set(option.yfilter)) leaf_name_data.push_back(option.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Request::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Request::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Request::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "option")
+    {
+        option = value;
+        option.value_namespace = name_space;
+        option.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Request::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "option")
+    {
+        option.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Request::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "option")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Route::Route()
+    :
+    distance{YType::uint8, "distance"},
+    track{YType::uint16, "track"}
+{
+
+    yang_name = "route"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Route::~Route()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Route::has_data() const
+{
+    if (is_presence_container) return true;
+    return distance.is_set
+	|| track.is_set;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Route::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(distance.yfilter)
+	|| ydk::is_set(track.yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Route::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Route::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (distance.is_set || is_set(distance.yfilter)) leaf_name_data.push_back(distance.get_name_leafdata());
+    if (track.is_set || is_set(track.yfilter)) leaf_name_data.push_back(track.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Route::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "distance")
+    {
+        distance = value;
+        distance.value_namespace = name_space;
+        distance.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "track")
+    {
+        track = value;
+        track.value_namespace = name_space;
+        track.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Route::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "distance")
+    {
+        distance.yfilter = yfilter;
+    }
+    if(value_path == "track")
+    {
+        track.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Client::Route::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "distance" || name == "track")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Relay()
+    :
+    source_interface{YType::str, "source-interface"}
+        ,
+    information(std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information>())
+{
+    information->parent = this;
+
+    yang_name = "relay"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::~Relay()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::has_data() const
+{
+    if (is_presence_container) return true;
+    return source_interface.is_set
+	|| (information !=  nullptr && information->has_data());
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(source_interface.yfilter)
+	|| (information !=  nullptr && information->has_operation());
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-dhcp:relay";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "information")
+    {
+        if(information == nullptr)
+        {
+            information = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information>();
+        }
+        return information;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(information != nullptr)
+    {
+        _children["information"] = information;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "source-interface")
+    {
+        source_interface = value;
+        source_interface.value_namespace = name_space;
+        source_interface.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "source-interface")
+    {
+        source_interface.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "information" || name == "source-interface")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::Information()
+    :
+    policy_action{YType::enumeration, "policy-action"},
+    trusted{YType::empty, "trusted"}
+        ,
+    check_reply(nullptr) // presence node
+    , option(std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::Option>())
+    , option_insert(nullptr) // presence node
+{
+    option->parent = this;
+
+    yang_name = "information"; yang_parent_name = "relay"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::~Information()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::has_data() const
+{
+    if (is_presence_container) return true;
+    return policy_action.is_set
+	|| trusted.is_set
+	|| (check_reply !=  nullptr && check_reply->has_data())
+	|| (option !=  nullptr && option->has_data())
+	|| (option_insert !=  nullptr && option_insert->has_data());
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(policy_action.yfilter)
+	|| ydk::is_set(trusted.yfilter)
+	|| (check_reply !=  nullptr && check_reply->has_operation())
+	|| (option !=  nullptr && option->has_operation())
+	|| (option_insert !=  nullptr && option_insert->has_operation());
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "information";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (policy_action.is_set || is_set(policy_action.yfilter)) leaf_name_data.push_back(policy_action.get_name_leafdata());
+    if (trusted.is_set || is_set(trusted.yfilter)) leaf_name_data.push_back(trusted.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "check-reply")
+    {
+        if(check_reply == nullptr)
+        {
+            check_reply = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::CheckReply>();
+        }
+        return check_reply;
+    }
+
+    if(child_yang_name == "option")
+    {
+        if(option == nullptr)
+        {
+            option = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::Option>();
+        }
+        return option;
+    }
+
+    if(child_yang_name == "option-insert")
+    {
+        if(option_insert == nullptr)
+        {
+            option_insert = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::OptionInsert>();
+        }
+        return option_insert;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(check_reply != nullptr)
+    {
+        _children["check-reply"] = check_reply;
+    }
+
+    if(option != nullptr)
+    {
+        _children["option"] = option;
+    }
+
+    if(option_insert != nullptr)
+    {
+        _children["option-insert"] = option_insert;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "policy-action")
+    {
+        policy_action = value;
+        policy_action.value_namespace = name_space;
+        policy_action.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "trusted")
+    {
+        trusted = value;
+        trusted.value_namespace = name_space;
+        trusted.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "policy-action")
+    {
+        policy_action.yfilter = yfilter;
+    }
+    if(value_path == "trusted")
+    {
+        trusted.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "check-reply" || name == "option" || name == "option-insert" || name == "policy-action" || name == "trusted")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::CheckReply::CheckReply()
+    :
+    none{YType::empty, "none"}
+{
+
+    yang_name = "check-reply"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::CheckReply::~CheckReply()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::CheckReply::has_data() const
+{
+    if (is_presence_container) return true;
+    return none.is_set;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::CheckReply::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(none.yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::CheckReply::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "check-reply";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::CheckReply::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::CheckReply::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::CheckReply::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::CheckReply::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "none")
+    {
+        none = value;
+        none.value_namespace = name_space;
+        none.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::CheckReply::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "none")
+    {
+        none.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::CheckReply::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "none")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::Option::Option()
+    :
+    subscriber_id{YType::str, "subscriber-id"}
+{
+
+    yang_name = "option"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::Option::~Option()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::Option::has_data() const
+{
+    if (is_presence_container) return true;
+    return subscriber_id.is_set;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::Option::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(subscriber_id.yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::Option::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "option";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::Option::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (subscriber_id.is_set || is_set(subscriber_id.yfilter)) leaf_name_data.push_back(subscriber_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::Option::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::Option::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::Option::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "subscriber-id")
+    {
+        subscriber_id = value;
+        subscriber_id.value_namespace = name_space;
+        subscriber_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::Option::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "subscriber-id")
+    {
+        subscriber_id.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::Option::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "subscriber-id")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::OptionInsert::OptionInsert()
+    :
+    none{YType::empty, "none"}
+{
+
+    yang_name = "option-insert"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::OptionInsert::~OptionInsert()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::OptionInsert::has_data() const
+{
+    if (is_presence_container) return true;
+    return none.is_set;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::OptionInsert::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(none.yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::OptionInsert::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "option-insert";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::OptionInsert::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::OptionInsert::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::OptionInsert::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::OptionInsert::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "none")
+    {
+        none = value;
+        none.value_namespace = name_space;
+        none.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::OptionInsert::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "none")
+    {
+        none.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::OptionInsert::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "none")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Snooping()
+    :
+    trust{YType::empty, "trust"}
+        ,
+    limit(std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Limit>())
+    , vlan(this, {"id"})
+{
+    limit->parent = this;
+
+    yang_name = "snooping"; yang_parent_name = "dhcp"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::~Snooping()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vlan.len(); index++)
+    {
+        if(vlan[index]->has_data())
+            return true;
+    }
+    return trust.is_set
+	|| (limit !=  nullptr && limit->has_data());
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::has_operation() const
+{
+    for (std::size_t index=0; index<vlan.len(); index++)
+    {
+        if(vlan[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(trust.yfilter)
+	|| (limit !=  nullptr && limit->has_operation());
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-dhcp:snooping";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (trust.is_set || is_set(trust.yfilter)) leaf_name_data.push_back(trust.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "limit")
+    {
+        if(limit == nullptr)
+        {
+            limit = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Limit>();
+        }
+        return limit;
+    }
+
+    if(child_yang_name == "vlan")
+    {
+        auto ent_ = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_>();
+        ent_->parent = this;
+        vlan.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(limit != nullptr)
+    {
+        _children["limit"] = limit;
+    }
+
+    count_ = 0;
+    for (auto ent_ : vlan.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "trust")
+    {
+        trust = value;
+        trust.value_namespace = name_space;
+        trust.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "trust")
+    {
+        trust.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "limit" || name == "vlan" || name == "trust")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Limit::Limit()
+    :
+    rate{YType::uint16, "rate"}
+{
+
+    yang_name = "limit"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Limit::~Limit()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Limit::has_data() const
+{
+    if (is_presence_container) return true;
+    return rate.is_set;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Limit::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rate.yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Limit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "limit";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Limit::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rate.is_set || is_set(rate.yfilter)) leaf_name_data.push_back(rate.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Limit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Limit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Limit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rate")
+    {
+        rate = value;
+        rate.value_namespace = name_space;
+        rate.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Limit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rate")
+    {
+        rate.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Limit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "rate")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Vlan_()
+    :
+    id{YType::uint16, "id"}
+        ,
+    information(std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information>())
+{
+    information->parent = this;
+
+    yang_name = "vlan"; yang_parent_name = "snooping"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::~Vlan_()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::has_data() const
+{
+    if (is_presence_container) return true;
+    return id.is_set
+	|| (information !=  nullptr && information->has_data());
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| (information !=  nullptr && information->has_operation());
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vlan";
+    ADD_KEY_TOKEN(id, "id");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "information")
+    {
+        if(information == nullptr)
+        {
+            information = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information>();
+        }
+        return information;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(information != nullptr)
+    {
+        _children["information"] = information;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "information" || name == "id")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Information()
+    :
+    option(std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option>())
+{
+    option->parent = this;
+
+    yang_name = "information"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::~Information()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::has_data() const
+{
+    if (is_presence_container) return true;
+    return (option !=  nullptr && option->has_data());
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::has_operation() const
+{
+    return is_set(yfilter)
+	|| (option !=  nullptr && option->has_operation());
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "information";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "option")
+    {
+        if(option == nullptr)
+        {
+            option = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option>();
+        }
+        return option;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(option != nullptr)
+    {
+        _children["option"] = option;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "option")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::Option()
+    :
+    format_type(std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType>())
+{
+    format_type->parent = this;
+
+    yang_name = "option"; yang_parent_name = "information"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::~Option()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::has_data() const
+{
+    if (is_presence_container) return true;
+    return (format_type !=  nullptr && format_type->has_data());
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::has_operation() const
+{
+    return is_set(yfilter)
+	|| (format_type !=  nullptr && format_type->has_operation());
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "option";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "format-type")
+    {
+        if(format_type == nullptr)
+        {
+            format_type = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType>();
+        }
+        return format_type;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(format_type != nullptr)
+    {
+        _children["format-type"] = format_type;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "format-type")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::FormatType()
+    :
+    circuit_id(std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::CircuitId>())
+{
+    circuit_id->parent = this;
+
+    yang_name = "format-type"; yang_parent_name = "option"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::~FormatType()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::has_data() const
+{
+    if (is_presence_container) return true;
+    return (circuit_id !=  nullptr && circuit_id->has_data());
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::has_operation() const
+{
+    return is_set(yfilter)
+	|| (circuit_id !=  nullptr && circuit_id->has_operation());
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "format-type";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "circuit-id")
+    {
+        if(circuit_id == nullptr)
+        {
+            circuit_id = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::CircuitId>();
+        }
+        return circuit_id;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(circuit_id != nullptr)
+    {
+        _children["circuit-id"] = circuit_id;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "circuit-id")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::CircuitId::CircuitId()
+    :
+    string{YType::str, "string"}
+{
+
+    yang_name = "circuit-id"; yang_parent_name = "format-type"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::CircuitId::~CircuitId()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::CircuitId::has_data() const
+{
+    if (is_presence_container) return true;
+    return string.is_set;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::CircuitId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(string.yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::CircuitId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "circuit-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::CircuitId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (string.is_set || is_set(string.yfilter)) leaf_name_data.push_back(string.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::CircuitId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::CircuitId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::CircuitId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "string")
+    {
+        string = value;
+        string.value_namespace = name_space;
+        string.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::CircuitId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "string")
+    {
+        string.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Snooping::Vlan_::Information::Option::FormatType::CircuitId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "string")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::SummaryAddress()
+    :
+    eigrp(this, {"id"})
+{
+
+    yang_name = "summary-address"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::~SummaryAddress()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<eigrp.len(); index++)
+    {
+        if(eigrp[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::has_operation() const
+{
+    for (std::size_t index=0; index<eigrp.len(); index++)
+    {
+        if(eigrp[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "summary-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "eigrp")
+    {
+        auto ent_ = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::Eigrp>();
+        ent_->parent = this;
+        eigrp.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : eigrp.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "eigrp")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::Eigrp::Eigrp()
+    :
+    id{YType::str, "id"},
+    ip{YType::str, "ip"},
+    mask{YType::str, "mask"},
+    metric{YType::uint32, "metric"}
+{
+
+    yang_name = "eigrp"; yang_parent_name = "summary-address"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::Eigrp::~Eigrp()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::Eigrp::has_data() const
+{
+    if (is_presence_container) return true;
+    return id.is_set
+	|| ip.is_set
+	|| mask.is_set
+	|| metric.is_set;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::Eigrp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(mask.yfilter)
+	|| ydk::is_set(metric.yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::Eigrp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "eigrp";
+    ADD_KEY_TOKEN(id, "id");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::Eigrp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (mask.is_set || is_set(mask.yfilter)) leaf_name_data.push_back(mask.get_name_leafdata());
+    if (metric.is_set || is_set(metric.yfilter)) leaf_name_data.push_back(metric.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::Eigrp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::Eigrp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::Eigrp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ip")
+    {
+        ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mask")
+    {
+        mask = value;
+        mask.value_namespace = name_space;
+        mask.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "metric")
+    {
+        metric = value;
+        metric.value_namespace = name_space;
+        metric.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::Eigrp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "ip")
+    {
+        ip.yfilter = yfilter;
+    }
+    if(value_path == "mask")
+    {
+        mask.yfilter = yfilter;
+    }
+    if(value_path == "metric")
+    {
+        metric.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::SummaryAddress::Eigrp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "id" || name == "ip" || name == "mask" || name == "metric")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Verify()
+    :
+    source(nullptr) // presence node
+    , unicast(std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast>())
+{
+    unicast->parent = this;
+
+    yang_name = "verify"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::~Verify()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::has_data() const
+{
+    if (is_presence_container) return true;
+    return (source !=  nullptr && source->has_data())
+	|| (unicast !=  nullptr && unicast->has_data());
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::has_operation() const
+{
+    return is_set(yfilter)
+	|| (source !=  nullptr && source->has_operation())
+	|| (unicast !=  nullptr && unicast->has_operation());
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "verify";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "source")
+    {
+        if(source == nullptr)
+        {
+            source = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source>();
+        }
+        return source;
+    }
+
+    if(child_yang_name == "unicast")
+    {
+        if(unicast == nullptr)
+        {
+            unicast = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast>();
+        }
+        return unicast;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(source != nullptr)
+    {
+        _children["source"] = source;
+    }
+
+    if(unicast != nullptr)
+    {
+        _children["unicast"] = unicast;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source" || name == "unicast")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Source()
+    :
+    vlan(std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_>())
+{
+    vlan->parent = this;
+
+    yang_name = "source"; yang_parent_name = "verify"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::~Source()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::has_data() const
+{
+    if (is_presence_container) return true;
+    return (vlan !=  nullptr && vlan->has_data());
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::has_operation() const
+{
+    return is_set(yfilter)
+	|| (vlan !=  nullptr && vlan->has_operation());
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "source";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "vlan")
+    {
+        if(vlan == nullptr)
+        {
+            vlan = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_>();
+        }
+        return vlan;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(vlan != nullptr)
+    {
+        _children["vlan"] = vlan;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vlan")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::Vlan_()
+    :
+    dhcp_snooping(nullptr) // presence node
+{
+
+    yang_name = "vlan"; yang_parent_name = "source"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::~Vlan_()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::has_data() const
+{
+    if (is_presence_container) return true;
+    return (dhcp_snooping !=  nullptr && dhcp_snooping->has_data());
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::has_operation() const
+{
+    return is_set(yfilter)
+	|| (dhcp_snooping !=  nullptr && dhcp_snooping->has_operation());
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vlan";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "dhcp-snooping")
+    {
+        if(dhcp_snooping == nullptr)
+        {
+            dhcp_snooping = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::DhcpSnooping>();
+        }
+        return dhcp_snooping;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(dhcp_snooping != nullptr)
+    {
+        _children["dhcp-snooping"] = dhcp_snooping;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dhcp-snooping")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::DhcpSnooping::DhcpSnooping()
+    :
+    port_security{YType::empty, "port-security"}
+{
+
+    yang_name = "dhcp-snooping"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::DhcpSnooping::~DhcpSnooping()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::DhcpSnooping::has_data() const
+{
+    if (is_presence_container) return true;
+    return port_security.is_set;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::DhcpSnooping::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(port_security.yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::DhcpSnooping::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dhcp-snooping";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::DhcpSnooping::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (port_security.is_set || is_set(port_security.yfilter)) leaf_name_data.push_back(port_security.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::DhcpSnooping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::DhcpSnooping::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::DhcpSnooping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "port-security")
+    {
+        port_security = value;
+        port_security.value_namespace = name_space;
+        port_security.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::DhcpSnooping::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "port-security")
+    {
+        port_security.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Source::Vlan_::DhcpSnooping::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "port-security")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::Unicast()
+    :
+    reverse_path(nullptr) // presence node
+    , source(std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::Source>())
+{
+    source->parent = this;
+
+    yang_name = "unicast"; yang_parent_name = "verify"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::~Unicast()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::has_data() const
+{
+    if (is_presence_container) return true;
+    return (reverse_path !=  nullptr && reverse_path->has_data())
+	|| (source !=  nullptr && source->has_data());
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::has_operation() const
+{
+    return is_set(yfilter)
+	|| (reverse_path !=  nullptr && reverse_path->has_operation())
+	|| (source !=  nullptr && source->has_operation());
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "unicast";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "reverse-path")
+    {
+        if(reverse_path == nullptr)
+        {
+            reverse_path = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::ReversePath>();
+        }
+        return reverse_path;
+    }
+
+    if(child_yang_name == "source")
+    {
+        if(source == nullptr)
+        {
+            source = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::Source>();
+        }
+        return source;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(reverse_path != nullptr)
+    {
+        _children["reverse-path"] = reverse_path;
+    }
+
+    if(source != nullptr)
+    {
+        _children["source"] = source;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reverse-path" || name == "source")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::ReversePath::ReversePath()
+{
+
+    yang_name = "reverse-path"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::ReversePath::~ReversePath()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::ReversePath::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::ReversePath::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::ReversePath::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "reverse-path";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::ReversePath::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::ReversePath::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::ReversePath::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::ReversePath::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::ReversePath::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::ReversePath::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::Source::Source()
+    :
+    reachable_via{YType::enumeration, "reachable-via"},
+    allow_self_ping{YType::empty, "allow-self-ping"},
+    allow_default{YType::empty, "allow-default"}
+{
+
+    yang_name = "source"; yang_parent_name = "unicast"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::Source::~Source()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::Source::has_data() const
+{
+    if (is_presence_container) return true;
+    return reachable_via.is_set
+	|| allow_self_ping.is_set
+	|| allow_default.is_set;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::Source::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(reachable_via.yfilter)
+	|| ydk::is_set(allow_self_ping.yfilter)
+	|| ydk::is_set(allow_default.yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::Source::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "source";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::Source::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (reachable_via.is_set || is_set(reachable_via.yfilter)) leaf_name_data.push_back(reachable_via.get_name_leafdata());
+    if (allow_self_ping.is_set || is_set(allow_self_ping.yfilter)) leaf_name_data.push_back(allow_self_ping.get_name_leafdata());
+    if (allow_default.is_set || is_set(allow_default.yfilter)) leaf_name_data.push_back(allow_default.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::Source::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "reachable-via")
+    {
+        reachable_via = value;
+        reachable_via.value_namespace = name_space;
+        reachable_via.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "allow-self-ping")
+    {
+        allow_self_ping = value;
+        allow_self_ping.value_namespace = name_space;
+        allow_self_ping.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "allow-default")
+    {
+        allow_default = value;
+        allow_default.value_namespace = name_space;
+        allow_default.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::Source::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "reachable-via")
+    {
+        reachable_via.yfilter = yfilter;
+    }
+    if(value_path == "allow-self-ping")
+    {
+        allow_self_ping.yfilter = yfilter;
+    }
+    if(value_path == "allow-default")
+    {
+        allow_default.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::Source::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "reachable-via" || name == "allow-self-ping" || name == "allow-default")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::Igmp()
+    :
+    version{YType::uint8, "version"}
+        ,
+    static_group(std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup>())
+    , join_group(this, {"ip_group_address"})
+{
+    static_group->parent = this;
+
+    yang_name = "igmp"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::~Igmp()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<join_group.len(); index++)
+    {
+        if(join_group[index]->has_data())
+            return true;
+    }
+    return version.is_set
+	|| (static_group !=  nullptr && static_group->has_data());
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::has_operation() const
+{
+    for (std::size_t index=0; index<join_group.len(); index++)
+    {
+        if(join_group[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| (static_group !=  nullptr && static_group->has_operation());
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-igmp:igmp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "static-group")
+    {
+        if(static_group == nullptr)
+        {
+            static_group = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup>();
+        }
+        return static_group;
+    }
+
+    if(child_yang_name == "join-group")
+    {
+        auto ent_ = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::JoinGroup>();
+        ent_->parent = this;
+        join_group.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(static_group != nullptr)
+    {
+        _children["static-group"] = static_group;
+    }
+
+    count_ = 0;
+    for (auto ent_ : join_group.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "version")
+    {
+        version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "static-group" || name == "join-group" || name == "version")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::StaticGroup()
+    :
+    groups(this, {"name"})
+    , class_map(this, {"id"})
+{
+
+    yang_name = "static-group"; yang_parent_name = "igmp"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::~StaticGroup()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<groups.len(); index++)
+    {
+        if(groups[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<class_map.len(); index++)
+    {
+        if(class_map[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::has_operation() const
+{
+    for (std::size_t index=0; index<groups.len(); index++)
+    {
+        if(groups[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<class_map.len(); index++)
+    {
+        if(class_map[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "static-group";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "groups")
+    {
+        auto ent_ = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::Groups>();
+        ent_->parent = this;
+        groups.append(ent_);
+        return ent_;
+    }
+
+    if(child_yang_name == "class-map")
+    {
+        auto ent_ = std::make_shared<Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::ClassMap>();
+        ent_->parent = this;
+        class_map.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : groups.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    count_ = 0;
+    for (auto ent_ : class_map.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "groups" || name == "class-map")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::Groups::Groups()
+    :
+    name{YType::str, "name"},
+    source{YType::str, "source"}
+{
+
+    yang_name = "groups"; yang_parent_name = "static-group"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::Groups::~Groups()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::Groups::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : source.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return name.is_set;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::Groups::has_operation() const
+{
+    for (auto const & leaf : source.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(source.yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::Groups::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "groups";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::Groups::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    auto source_name_datas = source.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), source_name_datas.begin(), source_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::Groups::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::Groups::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::Groups::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source")
+    {
+        source.append(value);
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::Groups::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::Groups::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "source")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::ClassMap::ClassMap()
+    :
+    id{YType::str, "id"}
+{
+
+    yang_name = "class-map"; yang_parent_name = "static-group"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::ClassMap::~ClassMap()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::ClassMap::has_data() const
+{
+    if (is_presence_container) return true;
+    return id.is_set;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::ClassMap::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::ClassMap::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "class-map";
+    ADD_KEY_TOKEN(id, "id");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::ClassMap::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::ClassMap::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::ClassMap::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::ClassMap::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::ClassMap::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::ClassMap::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "id")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::JoinGroup::JoinGroup()
+    :
+    ip_group_address{YType::str, "ip-group-address"},
+    source{YType::str, "source"}
+{
+
+    yang_name = "join-group"; yang_parent_name = "igmp"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::JoinGroup::~JoinGroup()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::JoinGroup::has_data() const
+{
+    if (is_presence_container) return true;
+    return ip_group_address.is_set
+	|| source.is_set;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::JoinGroup::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip_group_address.yfilter)
+	|| ydk::is_set(source.yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::JoinGroup::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "join-group";
+    ADD_KEY_TOKEN(ip_group_address, "ip-group-address");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::JoinGroup::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip_group_address.is_set || is_set(ip_group_address.yfilter)) leaf_name_data.push_back(ip_group_address.get_name_leafdata());
+    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::JoinGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::JoinGroup::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::JoinGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ip-group-address")
+    {
+        ip_group_address = value;
+        ip_group_address.value_namespace = name_space;
+        ip_group_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "source")
+    {
+        source = value;
+        source.value_namespace = name_space;
+        source.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::JoinGroup::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip-group-address")
+    {
+        ip_group_address.yfilter = yfilter;
+    }
+    if(value_path == "source")
+    {
+        source.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::JoinGroup::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip-group-address" || name == "source")
+        return true;
+    return false;
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Nat::Nat()
+    :
+    allow_static_host{YType::empty, "allow-static-host"},
+    enable{YType::empty, "enable"},
+    inside{YType::empty, "inside"},
+    outside{YType::empty, "outside"}
+{
+
+    yang_name = "nat"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Nat::~Nat()
+{
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Nat::has_data() const
+{
+    if (is_presence_container) return true;
+    return allow_static_host.is_set
+	|| enable.is_set
+	|| inside.is_set
+	|| outside.is_set;
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Nat::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(allow_static_host.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(inside.yfilter)
+	|| ydk::is_set(outside.yfilter);
+}
+
+std::string Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Nat::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-nat:nat";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Nat::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (allow_static_host.is_set || is_set(allow_static_host.yfilter)) leaf_name_data.push_back(allow_static_host.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (inside.is_set || is_set(inside.yfilter)) leaf_name_data.push_back(inside.get_name_leafdata());
+    if (outside.is_set || is_set(outside.yfilter)) leaf_name_data.push_back(outside.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Nat::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Nat::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Nat::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "allow-static-host")
+    {
+        allow_static_host = value;
+        allow_static_host.value_namespace = name_space;
+        allow_static_host.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "inside")
+    {
+        inside = value;
+        inside.value_namespace = name_space;
+        inside.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "outside")
+    {
+        outside = value;
+        outside.value_namespace = name_space;
+        outside.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Nat::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "allow-static-host")
+    {
+        allow_static_host.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "inside")
+    {
+        inside.yfilter = yfilter;
+    }
+    if(value_path == "outside")
+    {
+        outside.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Nat::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "allow-static-host" || name == "enable" || name == "inside" || name == "outside")
+        return true;
+    return false;
+}
+
 Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Nbar::Nbar()
     :
     protocol_discovery(nullptr) // presence node
@@ -11010,4146 +14875,17 @@ bool Native::Interface::Vlan::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshol
     return false;
 }
 
-Native::Interface::Vlan::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::High()
-    :
-    err_thresh{YType::uint16, "err-thresh"},
-    none{YType::empty, "none"}
-{
+const Enum::YLeaf Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::PolicyAction::drop {0, "drop"};
+const Enum::YLeaf Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::PolicyAction::encapsulate {1, "encapsulate"};
+const Enum::YLeaf Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::PolicyAction::keep {2, "keep"};
+const Enum::YLeaf Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Dhcp::Relay::Information::PolicyAction::replace {3, "replace"};
 
-    yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
-}
+const Enum::YLeaf Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::Source::ReachableVia::any {0, "any"};
+const Enum::YLeaf Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Verify::Unicast::Source::ReachableVia::rx {1, "rx"};
 
-Native::Interface::Vlan::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::~High()
-{
-}
+const Enum::YLeaf Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::Groups::Name::Y__STAR__ {0, "*"};
 
-bool Native::Interface::Vlan::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::has_data() const
-{
-    if (is_presence_container) return true;
-    return err_thresh.is_set
-	|| none.is_set;
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(err_thresh.yfilter)
-	|| ydk::is_set(none.yfilter);
-}
-
-std::string Native::Interface::Vlan::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "high";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (err_thresh.is_set || is_set(err_thresh.yfilter)) leaf_name_data.push_back(err_thresh.get_name_leafdata());
-    if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::Vlan::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "err-thresh")
-    {
-        err_thresh = value;
-        err_thresh.value_namespace = name_space;
-        err_thresh.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "none")
-    {
-        none = value;
-        none.value_namespace = name_space;
-        none.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Vlan::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "err-thresh")
-    {
-        err_thresh.yfilter = yfilter;
-    }
-    if(value_path == "none")
-    {
-        none.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "err-thresh" || name == "none")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::RemoteFailure()
-    :
-    critical_event(std::make_shared<Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent>())
-    , dying_gasp(std::make_shared<Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp>())
-    , link_fault(std::make_shared<Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault>())
-{
-    critical_event->parent = this;
-    dying_gasp->parent = this;
-    link_fault->parent = this;
-
-    yang_name = "remote-failure"; yang_parent_name = "oam"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::~RemoteFailure()
-{
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::has_data() const
-{
-    if (is_presence_container) return true;
-    return (critical_event !=  nullptr && critical_event->has_data())
-	|| (dying_gasp !=  nullptr && dying_gasp->has_data())
-	|| (link_fault !=  nullptr && link_fault->has_data());
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::has_operation() const
-{
-    return is_set(yfilter)
-	|| (critical_event !=  nullptr && critical_event->has_operation())
-	|| (dying_gasp !=  nullptr && dying_gasp->has_operation())
-	|| (link_fault !=  nullptr && link_fault->has_operation());
-}
-
-std::string Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "remote-failure";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "critical-event")
-    {
-        if(critical_event == nullptr)
-        {
-            critical_event = std::make_shared<Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent>();
-        }
-        return critical_event;
-    }
-
-    if(child_yang_name == "dying-gasp")
-    {
-        if(dying_gasp == nullptr)
-        {
-            dying_gasp = std::make_shared<Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp>();
-        }
-        return dying_gasp;
-    }
-
-    if(child_yang_name == "link-fault")
-    {
-        if(link_fault == nullptr)
-        {
-            link_fault = std::make_shared<Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault>();
-        }
-        return link_fault;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(critical_event != nullptr)
-    {
-        _children["critical-event"] = critical_event;
-    }
-
-    if(dying_gasp != nullptr)
-    {
-        _children["dying-gasp"] = dying_gasp;
-    }
-
-    if(link_fault != nullptr)
-    {
-        _children["link-fault"] = link_fault;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "critical-event" || name == "dying-gasp" || name == "link-fault")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::CriticalEvent()
-    :
-    action(std::make_shared<Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::Action>())
-{
-    action->parent = this;
-
-    yang_name = "critical-event"; yang_parent_name = "remote-failure"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::~CriticalEvent()
-{
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::has_data() const
-{
-    if (is_presence_container) return true;
-    return (action !=  nullptr && action->has_data());
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::has_operation() const
-{
-    return is_set(yfilter)
-	|| (action !=  nullptr && action->has_operation());
-}
-
-std::string Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "critical-event";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "action")
-    {
-        if(action == nullptr)
-        {
-            action = std::make_shared<Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::Action>();
-        }
-        return action;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(action != nullptr)
-    {
-        _children["action"] = action;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "action")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::Action()
-    :
-    error_disable_interface{YType::empty, "error-disable-interface"}
-{
-
-    yang_name = "action"; yang_parent_name = "critical-event"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::~Action()
-{
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::has_data() const
-{
-    if (is_presence_container) return true;
-    return error_disable_interface.is_set;
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(error_disable_interface.yfilter);
-}
-
-std::string Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "action";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (error_disable_interface.is_set || is_set(error_disable_interface.yfilter)) leaf_name_data.push_back(error_disable_interface.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "error-disable-interface")
-    {
-        error_disable_interface = value;
-        error_disable_interface.value_namespace = name_space;
-        error_disable_interface.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "error-disable-interface")
-    {
-        error_disable_interface.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "error-disable-interface")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::DyingGasp()
-    :
-    action(nullptr) // presence node
-{
-
-    yang_name = "dying-gasp"; yang_parent_name = "remote-failure"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::~DyingGasp()
-{
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::has_data() const
-{
-    if (is_presence_container) return true;
-    return (action !=  nullptr && action->has_data());
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::has_operation() const
-{
-    return is_set(yfilter)
-	|| (action !=  nullptr && action->has_operation());
-}
-
-std::string Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dying-gasp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "action")
-    {
-        if(action == nullptr)
-        {
-            action = std::make_shared<Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::Action>();
-        }
-        return action;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(action != nullptr)
-    {
-        _children["action"] = action;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "action")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::Action::Action()
-    :
-    error_disable_interface{YType::empty, "error-disable-interface"}
-{
-
-    yang_name = "action"; yang_parent_name = "dying-gasp"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::Action::~Action()
-{
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::Action::has_data() const
-{
-    if (is_presence_container) return true;
-    return error_disable_interface.is_set;
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::Action::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(error_disable_interface.yfilter);
-}
-
-std::string Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::Action::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "action";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::Action::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (error_disable_interface.is_set || is_set(error_disable_interface.yfilter)) leaf_name_data.push_back(error_disable_interface.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::Action::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "error-disable-interface")
-    {
-        error_disable_interface = value;
-        error_disable_interface.value_namespace = name_space;
-        error_disable_interface.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::Action::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "error-disable-interface")
-    {
-        error_disable_interface.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::DyingGasp::Action::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "error-disable-interface")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::LinkFault()
-    :
-    action(nullptr) // presence node
-{
-
-    yang_name = "link-fault"; yang_parent_name = "remote-failure"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::~LinkFault()
-{
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::has_data() const
-{
-    if (is_presence_container) return true;
-    return (action !=  nullptr && action->has_data());
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::has_operation() const
-{
-    return is_set(yfilter)
-	|| (action !=  nullptr && action->has_operation());
-}
-
-std::string Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "link-fault";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "action")
-    {
-        if(action == nullptr)
-        {
-            action = std::make_shared<Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::Action>();
-        }
-        return action;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(action != nullptr)
-    {
-        _children["action"] = action;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "action")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::Action::Action()
-    :
-    error_disable_interface{YType::empty, "error-disable-interface"}
-{
-
-    yang_name = "action"; yang_parent_name = "link-fault"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::Action::~Action()
-{
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::Action::has_data() const
-{
-    if (is_presence_container) return true;
-    return error_disable_interface.is_set;
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::Action::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(error_disable_interface.yfilter);
-}
-
-std::string Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::Action::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "action";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::Action::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (error_disable_interface.is_set || is_set(error_disable_interface.yfilter)) leaf_name_data.push_back(error_disable_interface.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::Action::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "error-disable-interface")
-    {
-        error_disable_interface = value;
-        error_disable_interface.value_namespace = name_space;
-        error_disable_interface.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::Action::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "error-disable-interface")
-    {
-        error_disable_interface.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteFailure::LinkFault::Action::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "error-disable-interface")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Ethernet::Oam::RemoteLoopback::RemoteLoopback()
-    :
-    supported{YType::empty, "supported"},
-    timeout{YType::uint8, "timeout"}
-{
-
-    yang_name = "remote-loopback"; yang_parent_name = "oam"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Ethernet::Oam::RemoteLoopback::~RemoteLoopback()
-{
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteLoopback::has_data() const
-{
-    if (is_presence_container) return true;
-    return supported.is_set
-	|| timeout.is_set;
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteLoopback::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(supported.yfilter)
-	|| ydk::is_set(timeout.yfilter);
-}
-
-std::string Native::Interface::Vlan::Ethernet::Oam::RemoteLoopback::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "remote-loopback";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Ethernet::Oam::RemoteLoopback::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (supported.is_set || is_set(supported.yfilter)) leaf_name_data.push_back(supported.get_name_leafdata());
-    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Ethernet::Oam::RemoteLoopback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Ethernet::Oam::RemoteLoopback::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::Vlan::Ethernet::Oam::RemoteLoopback::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "supported")
-    {
-        supported = value;
-        supported.value_namespace = name_space;
-        supported.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "timeout")
-    {
-        timeout = value;
-        timeout.value_namespace = name_space;
-        timeout.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Vlan::Ethernet::Oam::RemoteLoopback::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "supported")
-    {
-        supported.yfilter = yfilter;
-    }
-    if(value_path == "timeout")
-    {
-        timeout.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Ethernet::Oam::RemoteLoopback::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "supported" || name == "timeout")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Ethernet::Dot1ad::Dot1ad()
-    :
-    nni{YType::empty, "nni"}
-        ,
-    uni(std::make_shared<Native::Interface::Vlan::Ethernet::Dot1ad::Uni>())
-{
-    uni->parent = this;
-
-    yang_name = "dot1ad"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Ethernet::Dot1ad::~Dot1ad()
-{
-}
-
-bool Native::Interface::Vlan::Ethernet::Dot1ad::has_data() const
-{
-    if (is_presence_container) return true;
-    return nni.is_set
-	|| (uni !=  nullptr && uni->has_data());
-}
-
-bool Native::Interface::Vlan::Ethernet::Dot1ad::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nni.yfilter)
-	|| (uni !=  nullptr && uni->has_operation());
-}
-
-std::string Native::Interface::Vlan::Ethernet::Dot1ad::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dot1ad";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Ethernet::Dot1ad::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nni.is_set || is_set(nni.yfilter)) leaf_name_data.push_back(nni.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Ethernet::Dot1ad::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "uni")
-    {
-        if(uni == nullptr)
-        {
-            uni = std::make_shared<Native::Interface::Vlan::Ethernet::Dot1ad::Uni>();
-        }
-        return uni;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Ethernet::Dot1ad::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(uni != nullptr)
-    {
-        _children["uni"] = uni;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Vlan::Ethernet::Dot1ad::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nni")
-    {
-        nni = value;
-        nni.value_namespace = name_space;
-        nni.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Vlan::Ethernet::Dot1ad::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nni")
-    {
-        nni.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Ethernet::Dot1ad::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "uni" || name == "nni")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Ethernet::Dot1ad::Uni::Uni()
-    :
-    c_port{YType::empty, "c-port"},
-    s_port{YType::empty, "s-port"}
-{
-
-    yang_name = "uni"; yang_parent_name = "dot1ad"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Ethernet::Dot1ad::Uni::~Uni()
-{
-}
-
-bool Native::Interface::Vlan::Ethernet::Dot1ad::Uni::has_data() const
-{
-    if (is_presence_container) return true;
-    return c_port.is_set
-	|| s_port.is_set;
-}
-
-bool Native::Interface::Vlan::Ethernet::Dot1ad::Uni::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(c_port.yfilter)
-	|| ydk::is_set(s_port.yfilter);
-}
-
-std::string Native::Interface::Vlan::Ethernet::Dot1ad::Uni::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "uni";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Ethernet::Dot1ad::Uni::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (c_port.is_set || is_set(c_port.yfilter)) leaf_name_data.push_back(c_port.get_name_leafdata());
-    if (s_port.is_set || is_set(s_port.yfilter)) leaf_name_data.push_back(s_port.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Ethernet::Dot1ad::Uni::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Ethernet::Dot1ad::Uni::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::Vlan::Ethernet::Dot1ad::Uni::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "c-port")
-    {
-        c_port = value;
-        c_port.value_namespace = name_space;
-        c_port.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "s-port")
-    {
-        s_port = value;
-        s_port.value_namespace = name_space;
-        s_port.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Vlan::Ethernet::Dot1ad::Uni::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "c-port")
-    {
-        c_port.yfilter = yfilter;
-    }
-    if(value_path == "s-port")
-    {
-        s_port.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Ethernet::Dot1ad::Uni::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "c-port" || name == "s-port")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Eapol::Eapol()
-    :
-    destination_address(std::make_shared<Native::Interface::Vlan::Eapol::DestinationAddress>())
-{
-    destination_address->parent = this;
-
-    yang_name = "eapol"; yang_parent_name = "Vlan"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Eapol::~Eapol()
-{
-}
-
-bool Native::Interface::Vlan::Eapol::has_data() const
-{
-    if (is_presence_container) return true;
-    return (destination_address !=  nullptr && destination_address->has_data());
-}
-
-bool Native::Interface::Vlan::Eapol::has_operation() const
-{
-    return is_set(yfilter)
-	|| (destination_address !=  nullptr && destination_address->has_operation());
-}
-
-std::string Native::Interface::Vlan::Eapol::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-ethernet:eapol";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Eapol::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Eapol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "destination-address")
-    {
-        if(destination_address == nullptr)
-        {
-            destination_address = std::make_shared<Native::Interface::Vlan::Eapol::DestinationAddress>();
-        }
-        return destination_address;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Eapol::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(destination_address != nullptr)
-    {
-        _children["destination-address"] = destination_address;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Vlan::Eapol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Vlan::Eapol::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Vlan::Eapol::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "destination-address")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Eapol::DestinationAddress::DestinationAddress()
-    :
-    broadcast_address{YType::empty, "broadcast-address"}
-{
-
-    yang_name = "destination-address"; yang_parent_name = "eapol"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Eapol::DestinationAddress::~DestinationAddress()
-{
-}
-
-bool Native::Interface::Vlan::Eapol::DestinationAddress::has_data() const
-{
-    if (is_presence_container) return true;
-    return broadcast_address.is_set;
-}
-
-bool Native::Interface::Vlan::Eapol::DestinationAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(broadcast_address.yfilter);
-}
-
-std::string Native::Interface::Vlan::Eapol::DestinationAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "destination-address";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Eapol::DestinationAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (broadcast_address.is_set || is_set(broadcast_address.yfilter)) leaf_name_data.push_back(broadcast_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Eapol::DestinationAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Eapol::DestinationAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::Vlan::Eapol::DestinationAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "broadcast-address")
-    {
-        broadcast_address = value;
-        broadcast_address.value_namespace = name_space;
-        broadcast_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Vlan::Eapol::DestinationAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "broadcast-address")
-    {
-        broadcast_address.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Eapol::DestinationAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "broadcast-address")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Synchronous::Synchronous()
-    :
-    mode{YType::empty, "mode"}
-{
-
-    yang_name = "synchronous"; yang_parent_name = "Vlan"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Synchronous::~Synchronous()
-{
-}
-
-bool Native::Interface::Vlan::Synchronous::has_data() const
-{
-    if (is_presence_container) return true;
-    return mode.is_set;
-}
-
-bool Native::Interface::Vlan::Synchronous::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(mode.yfilter);
-}
-
-std::string Native::Interface::Vlan::Synchronous::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-ethernet:synchronous";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Synchronous::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Synchronous::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Synchronous::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::Vlan::Synchronous::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "mode")
-    {
-        mode = value;
-        mode.value_namespace = name_space;
-        mode.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Vlan::Synchronous::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "mode")
-    {
-        mode.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Synchronous::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mode")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Speed::Speed()
-    :
-    auto_{YType::empty, "auto"},
-    value_10{YType::empty, "value-10"},
-    value_100{YType::empty, "value-100"},
-    value_1000{YType::empty, "value-1000"},
-    value_10000{YType::empty, "value-10000"},
-    nonegotiate{YType::empty, "nonegotiate"}
-{
-
-    yang_name = "speed"; yang_parent_name = "Vlan"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Speed::~Speed()
-{
-}
-
-bool Native::Interface::Vlan::Speed::has_data() const
-{
-    if (is_presence_container) return true;
-    return auto_.is_set
-	|| value_10.is_set
-	|| value_100.is_set
-	|| value_1000.is_set
-	|| value_10000.is_set
-	|| nonegotiate.is_set;
-}
-
-bool Native::Interface::Vlan::Speed::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(auto_.yfilter)
-	|| ydk::is_set(value_10.yfilter)
-	|| ydk::is_set(value_100.yfilter)
-	|| ydk::is_set(value_1000.yfilter)
-	|| ydk::is_set(value_10000.yfilter)
-	|| ydk::is_set(nonegotiate.yfilter);
-}
-
-std::string Native::Interface::Vlan::Speed::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-ethernet:speed";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Speed::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (auto_.is_set || is_set(auto_.yfilter)) leaf_name_data.push_back(auto_.get_name_leafdata());
-    if (value_10.is_set || is_set(value_10.yfilter)) leaf_name_data.push_back(value_10.get_name_leafdata());
-    if (value_100.is_set || is_set(value_100.yfilter)) leaf_name_data.push_back(value_100.get_name_leafdata());
-    if (value_1000.is_set || is_set(value_1000.yfilter)) leaf_name_data.push_back(value_1000.get_name_leafdata());
-    if (value_10000.is_set || is_set(value_10000.yfilter)) leaf_name_data.push_back(value_10000.get_name_leafdata());
-    if (nonegotiate.is_set || is_set(nonegotiate.yfilter)) leaf_name_data.push_back(nonegotiate.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Speed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Speed::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::Vlan::Speed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "auto")
-    {
-        auto_ = value;
-        auto_.value_namespace = name_space;
-        auto_.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value-10")
-    {
-        value_10 = value;
-        value_10.value_namespace = name_space;
-        value_10.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value-100")
-    {
-        value_100 = value;
-        value_100.value_namespace = name_space;
-        value_100.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value-1000")
-    {
-        value_1000 = value;
-        value_1000.value_namespace = name_space;
-        value_1000.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value-10000")
-    {
-        value_10000 = value;
-        value_10000.value_namespace = name_space;
-        value_10000.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nonegotiate")
-    {
-        nonegotiate = value;
-        nonegotiate.value_namespace = name_space;
-        nonegotiate.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Vlan::Speed::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "auto")
-    {
-        auto_.yfilter = yfilter;
-    }
-    if(value_path == "value-10")
-    {
-        value_10.yfilter = yfilter;
-    }
-    if(value_path == "value-100")
-    {
-        value_100.yfilter = yfilter;
-    }
-    if(value_path == "value-1000")
-    {
-        value_1000.yfilter = yfilter;
-    }
-    if(value_path == "value-10000")
-    {
-        value_10000.yfilter = yfilter;
-    }
-    if(value_path == "nonegotiate")
-    {
-        nonegotiate.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Speed::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "auto" || name == "value-10" || name == "value-100" || name == "value-1000" || name == "value-10000" || name == "nonegotiate")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Negotiation::Negotiation()
-    :
-    auto_{YType::boolean, "auto"}
-{
-
-    yang_name = "negotiation"; yang_parent_name = "Vlan"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Negotiation::~Negotiation()
-{
-}
-
-bool Native::Interface::Vlan::Negotiation::has_data() const
-{
-    if (is_presence_container) return true;
-    return auto_.is_set;
-}
-
-bool Native::Interface::Vlan::Negotiation::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(auto_.yfilter);
-}
-
-std::string Native::Interface::Vlan::Negotiation::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-ethernet:negotiation";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Negotiation::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (auto_.is_set || is_set(auto_.yfilter)) leaf_name_data.push_back(auto_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Negotiation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Negotiation::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::Vlan::Negotiation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "auto")
-    {
-        auto_ = value;
-        auto_.value_namespace = name_space;
-        auto_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Vlan::Negotiation::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "auto")
-    {
-        auto_.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Negotiation::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "auto")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Plim::Plim()
-    :
-    ethernet(std::make_shared<Native::Interface::Vlan::Plim::Ethernet>())
-    , qos(std::make_shared<Native::Interface::Vlan::Plim::Qos>())
-{
-    ethernet->parent = this;
-    qos->parent = this;
-
-    yang_name = "plim"; yang_parent_name = "Vlan"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Plim::~Plim()
-{
-}
-
-bool Native::Interface::Vlan::Plim::has_data() const
-{
-    if (is_presence_container) return true;
-    return (ethernet !=  nullptr && ethernet->has_data())
-	|| (qos !=  nullptr && qos->has_data());
-}
-
-bool Native::Interface::Vlan::Plim::has_operation() const
-{
-    return is_set(yfilter)
-	|| (ethernet !=  nullptr && ethernet->has_operation())
-	|| (qos !=  nullptr && qos->has_operation());
-}
-
-std::string Native::Interface::Vlan::Plim::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-ethernet:plim";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Plim::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Plim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ethernet")
-    {
-        if(ethernet == nullptr)
-        {
-            ethernet = std::make_shared<Native::Interface::Vlan::Plim::Ethernet>();
-        }
-        return ethernet;
-    }
-
-    if(child_yang_name == "qos")
-    {
-        if(qos == nullptr)
-        {
-            qos = std::make_shared<Native::Interface::Vlan::Plim::Qos>();
-        }
-        return qos;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Plim::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(ethernet != nullptr)
-    {
-        _children["ethernet"] = ethernet;
-    }
-
-    if(qos != nullptr)
-    {
-        _children["qos"] = qos;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Vlan::Plim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Vlan::Plim::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Vlan::Plim::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ethernet" || name == "qos")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Plim::Ethernet::Ethernet()
-    :
-    vlan(std::make_shared<Native::Interface::Vlan::Plim::Ethernet::Vlan_>())
-{
-    vlan->parent = this;
-
-    yang_name = "ethernet"; yang_parent_name = "plim"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Plim::Ethernet::~Ethernet()
-{
-}
-
-bool Native::Interface::Vlan::Plim::Ethernet::has_data() const
-{
-    if (is_presence_container) return true;
-    return (vlan !=  nullptr && vlan->has_data());
-}
-
-bool Native::Interface::Vlan::Plim::Ethernet::has_operation() const
-{
-    return is_set(yfilter)
-	|| (vlan !=  nullptr && vlan->has_operation());
-}
-
-std::string Native::Interface::Vlan::Plim::Ethernet::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ethernet";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Plim::Ethernet::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Plim::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "vlan")
-    {
-        if(vlan == nullptr)
-        {
-            vlan = std::make_shared<Native::Interface::Vlan::Plim::Ethernet::Vlan_>();
-        }
-        return vlan;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Plim::Ethernet::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(vlan != nullptr)
-    {
-        _children["vlan"] = vlan;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Vlan::Plim::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Vlan::Plim::Ethernet::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Vlan::Plim::Ethernet::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vlan")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Plim::Ethernet::Vlan_::Vlan_()
-    :
-    filter(std::make_shared<Native::Interface::Vlan::Plim::Ethernet::Vlan_::Filter>())
-{
-    filter->parent = this;
-
-    yang_name = "vlan"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Plim::Ethernet::Vlan_::~Vlan_()
-{
-}
-
-bool Native::Interface::Vlan::Plim::Ethernet::Vlan_::has_data() const
-{
-    if (is_presence_container) return true;
-    return (filter !=  nullptr && filter->has_data());
-}
-
-bool Native::Interface::Vlan::Plim::Ethernet::Vlan_::has_operation() const
-{
-    return is_set(yfilter)
-	|| (filter !=  nullptr && filter->has_operation());
-}
-
-std::string Native::Interface::Vlan::Plim::Ethernet::Vlan_::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vlan";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Plim::Ethernet::Vlan_::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Plim::Ethernet::Vlan_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "filter")
-    {
-        if(filter == nullptr)
-        {
-            filter = std::make_shared<Native::Interface::Vlan::Plim::Ethernet::Vlan_::Filter>();
-        }
-        return filter;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Plim::Ethernet::Vlan_::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(filter != nullptr)
-    {
-        _children["filter"] = filter;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Vlan::Plim::Ethernet::Vlan_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Vlan::Plim::Ethernet::Vlan_::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Vlan::Plim::Ethernet::Vlan_::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "filter")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Plim::Ethernet::Vlan_::Filter::Filter()
-    :
-    disable{YType::empty, "disable"}
-{
-
-    yang_name = "filter"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Plim::Ethernet::Vlan_::Filter::~Filter()
-{
-}
-
-bool Native::Interface::Vlan::Plim::Ethernet::Vlan_::Filter::has_data() const
-{
-    if (is_presence_container) return true;
-    return disable.is_set;
-}
-
-bool Native::Interface::Vlan::Plim::Ethernet::Vlan_::Filter::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(disable.yfilter);
-}
-
-std::string Native::Interface::Vlan::Plim::Ethernet::Vlan_::Filter::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "filter";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Plim::Ethernet::Vlan_::Filter::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Plim::Ethernet::Vlan_::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Plim::Ethernet::Vlan_::Filter::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::Vlan::Plim::Ethernet::Vlan_::Filter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "disable")
-    {
-        disable = value;
-        disable.value_namespace = name_space;
-        disable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Vlan::Plim::Ethernet::Vlan_::Filter::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "disable")
-    {
-        disable.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Plim::Ethernet::Vlan_::Filter::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "disable")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Plim::Qos::Qos()
-    :
-    input(std::make_shared<Native::Interface::Vlan::Plim::Qos::Input>())
-{
-    input->parent = this;
-
-    yang_name = "qos"; yang_parent_name = "plim"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Plim::Qos::~Qos()
-{
-}
-
-bool Native::Interface::Vlan::Plim::Qos::has_data() const
-{
-    if (is_presence_container) return true;
-    return (input !=  nullptr && input->has_data());
-}
-
-bool Native::Interface::Vlan::Plim::Qos::has_operation() const
-{
-    return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation());
-}
-
-std::string Native::Interface::Vlan::Plim::Qos::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "qos";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Plim::Qos::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Plim::Qos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "input")
-    {
-        if(input == nullptr)
-        {
-            input = std::make_shared<Native::Interface::Vlan::Plim::Qos::Input>();
-        }
-        return input;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Plim::Qos::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(input != nullptr)
-    {
-        _children["input"] = input;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Vlan::Plim::Qos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Vlan::Plim::Qos::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Vlan::Plim::Qos::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Plim::Qos::Input::Input()
-    :
-    queue(std::make_shared<Native::Interface::Vlan::Plim::Qos::Input::Queue>())
-{
-    queue->parent = this;
-
-    yang_name = "input"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Plim::Qos::Input::~Input()
-{
-}
-
-bool Native::Interface::Vlan::Plim::Qos::Input::has_data() const
-{
-    if (is_presence_container) return true;
-    return (queue !=  nullptr && queue->has_data());
-}
-
-bool Native::Interface::Vlan::Plim::Qos::Input::has_operation() const
-{
-    return is_set(yfilter)
-	|| (queue !=  nullptr && queue->has_operation());
-}
-
-std::string Native::Interface::Vlan::Plim::Qos::Input::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "input";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Plim::Qos::Input::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Plim::Qos::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "queue")
-    {
-        if(queue == nullptr)
-        {
-            queue = std::make_shared<Native::Interface::Vlan::Plim::Qos::Input::Queue>();
-        }
-        return queue;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Plim::Qos::Input::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(queue != nullptr)
-    {
-        _children["queue"] = queue;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Vlan::Plim::Qos::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Vlan::Plim::Qos::Input::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Vlan::Plim::Qos::Input::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "queue")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Plim::Qos::Input::Queue::Queue()
-    :
-    zero(std::make_shared<Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero>())
-    , strict_priority(std::make_shared<Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority>())
-{
-    zero->parent = this;
-    strict_priority->parent = this;
-
-    yang_name = "queue"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Plim::Qos::Input::Queue::~Queue()
-{
-}
-
-bool Native::Interface::Vlan::Plim::Qos::Input::Queue::has_data() const
-{
-    if (is_presence_container) return true;
-    return (zero !=  nullptr && zero->has_data())
-	|| (strict_priority !=  nullptr && strict_priority->has_data());
-}
-
-bool Native::Interface::Vlan::Plim::Qos::Input::Queue::has_operation() const
-{
-    return is_set(yfilter)
-	|| (zero !=  nullptr && zero->has_operation())
-	|| (strict_priority !=  nullptr && strict_priority->has_operation());
-}
-
-std::string Native::Interface::Vlan::Plim::Qos::Input::Queue::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "queue";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Plim::Qos::Input::Queue::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Plim::Qos::Input::Queue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "zero")
-    {
-        if(zero == nullptr)
-        {
-            zero = std::make_shared<Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero>();
-        }
-        return zero;
-    }
-
-    if(child_yang_name == "strict-priority")
-    {
-        if(strict_priority == nullptr)
-        {
-            strict_priority = std::make_shared<Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority>();
-        }
-        return strict_priority;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Plim::Qos::Input::Queue::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(zero != nullptr)
-    {
-        _children["zero"] = zero;
-    }
-
-    if(strict_priority != nullptr)
-    {
-        _children["strict-priority"] = strict_priority;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Vlan::Plim::Qos::Input::Queue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Vlan::Plim::Qos::Input::Queue::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Vlan::Plim::Qos::Input::Queue::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "zero" || name == "strict-priority")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::Zero()
-    :
-    pause(std::make_shared<Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::Pause>())
-{
-    pause->parent = this;
-
-    yang_name = "zero"; yang_parent_name = "queue"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::~Zero()
-{
-}
-
-bool Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::has_data() const
-{
-    if (is_presence_container) return true;
-    return (pause !=  nullptr && pause->has_data());
-}
-
-bool Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::has_operation() const
-{
-    return is_set(yfilter)
-	|| (pause !=  nullptr && pause->has_operation());
-}
-
-std::string Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "zero";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "pause")
-    {
-        if(pause == nullptr)
-        {
-            pause = std::make_shared<Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::Pause>();
-        }
-        return pause;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(pause != nullptr)
-    {
-        _children["pause"] = pause;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "pause")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::Pause::Pause()
-    :
-    enable{YType::boolean, "enable"},
-    threshold{YType::uint8, "threshold"}
-{
-
-    yang_name = "pause"; yang_parent_name = "zero"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::Pause::~Pause()
-{
-}
-
-bool Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::Pause::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set
-	|| threshold.is_set;
-}
-
-bool Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::Pause::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(threshold.yfilter);
-}
-
-std::string Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::Pause::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pause";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::Pause::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::Pause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::Pause::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::Pause::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::Pause::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Plim::Qos::Input::Queue::Zero::Pause::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable" || name == "threshold")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::StrictPriority()
-    :
-    pause(std::make_shared<Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::Pause>())
-{
-    pause->parent = this;
-
-    yang_name = "strict-priority"; yang_parent_name = "queue"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::~StrictPriority()
-{
-}
-
-bool Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::has_data() const
-{
-    if (is_presence_container) return true;
-    return (pause !=  nullptr && pause->has_data());
-}
-
-bool Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::has_operation() const
-{
-    return is_set(yfilter)
-	|| (pause !=  nullptr && pause->has_operation());
-}
-
-std::string Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "strict-priority";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "pause")
-    {
-        if(pause == nullptr)
-        {
-            pause = std::make_shared<Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::Pause>();
-        }
-        return pause;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(pause != nullptr)
-    {
-        _children["pause"] = pause;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "pause")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::Pause::Pause()
-    :
-    enable{YType::boolean, "enable"},
-    threshold{YType::uint8, "threshold"}
-{
-
-    yang_name = "pause"; yang_parent_name = "strict-priority"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::Pause::~Pause()
-{
-}
-
-bool Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::Pause::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set
-	|| threshold.is_set;
-}
-
-bool Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::Pause::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(threshold.yfilter);
-}
-
-std::string Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::Pause::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pause";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::Pause::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::Pause::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::Pause::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::Pause::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "threshold")
-    {
-        threshold = value;
-        threshold.value_namespace = name_space;
-        threshold.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::Pause::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "threshold")
-    {
-        threshold.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Plim::Qos::Input::Queue::StrictPriority::Pause::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable" || name == "threshold")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Pppoe::Pppoe()
-    :
-    max_sessions{YType::uint16, "max-sessions"}
-        ,
-    enable(nullptr) // presence node
-{
-
-    yang_name = "pppoe"; yang_parent_name = "Vlan"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Pppoe::~Pppoe()
-{
-}
-
-bool Native::Interface::Vlan::Pppoe::has_data() const
-{
-    if (is_presence_container) return true;
-    return max_sessions.is_set
-	|| (enable !=  nullptr && enable->has_data());
-}
-
-bool Native::Interface::Vlan::Pppoe::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(max_sessions.yfilter)
-	|| (enable !=  nullptr && enable->has_operation());
-}
-
-std::string Native::Interface::Vlan::Pppoe::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-ethernet:pppoe";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Pppoe::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (max_sessions.is_set || is_set(max_sessions.yfilter)) leaf_name_data.push_back(max_sessions.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Pppoe::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "enable")
-    {
-        if(enable == nullptr)
-        {
-            enable = std::make_shared<Native::Interface::Vlan::Pppoe::Enable>();
-        }
-        return enable;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Pppoe::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(enable != nullptr)
-    {
-        _children["enable"] = enable;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Vlan::Pppoe::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "max-sessions")
-    {
-        max_sessions = value;
-        max_sessions.value_namespace = name_space;
-        max_sessions.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Vlan::Pppoe::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "max-sessions")
-    {
-        max_sessions.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Pppoe::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable" || name == "max-sessions")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Pppoe::Enable::Enable()
-    :
-    group{YType::str, "group"}
-{
-
-    yang_name = "enable"; yang_parent_name = "pppoe"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::Vlan::Pppoe::Enable::~Enable()
-{
-}
-
-bool Native::Interface::Vlan::Pppoe::Enable::has_data() const
-{
-    if (is_presence_container) return true;
-    return group.is_set;
-}
-
-bool Native::Interface::Vlan::Pppoe::Enable::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(group.yfilter);
-}
-
-std::string Native::Interface::Vlan::Pppoe::Enable::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "enable";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Pppoe::Enable::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Pppoe::Enable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Pppoe::Enable::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::Vlan::Pppoe::Enable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "group")
-    {
-        group = value;
-        group.value_namespace = name_space;
-        group.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Vlan::Pppoe::Enable::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "group")
-    {
-        group.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Pppoe::Enable::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "group")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Service::Service()
-    :
-    instance(this, {"id"})
-{
-
-    yang_name = "service"; yang_parent_name = "Vlan"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Service::~Service()
-{
-}
-
-bool Native::Interface::Vlan::Service::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<instance.len(); index++)
-    {
-        if(instance[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::Interface::Vlan::Service::has_operation() const
-{
-    for (std::size_t index=0; index<instance.len(); index++)
-    {
-        if(instance[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::Interface::Vlan::Service::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-ethernet:service";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Service::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Service::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "instance")
-    {
-        auto ent_ = std::make_shared<Native::Interface::Vlan::Service::Instance>();
-        ent_->parent = this;
-        instance.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Service::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : instance.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Vlan::Service::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Vlan::Service::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Vlan::Service::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "instance")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Service::Instance::Instance()
-    :
-    id{YType::uint32, "id"},
-    trunk{YType::empty, "trunk"},
-    gigabitethernet{YType::empty, "GigabitEthernet"},
-    ethernet{YType::empty, "ethernet"},
-    ethernet_evc_name{YType::str, "ethernet-evc-name"},
-    description{YType::str, "description"},
-    evc_name{YType::str, "evc-name"},
-    group{YType::uint32, "group"},
-    shutdown{YType::empty, "shutdown"}
-        ,
-    encapsulation(std::make_shared<Native::Interface::Vlan::Service::Instance::Encapsulation>())
-    , ip(std::make_shared<Native::Interface::Vlan::Service::Instance::Ip>())
-    , ipv6(std::make_shared<Native::Interface::Vlan::Service::Instance::Ipv6>())
-    , rewrite(std::make_shared<Native::Interface::Vlan::Service::Instance::Rewrite>())
-    , errdisable(std::make_shared<Native::Interface::Vlan::Service::Instance::Errdisable>())
-    , ethernet_container(std::make_shared<Native::Interface::Vlan::Service::Instance::EthernetContainer>())
-    , snmp(std::make_shared<Native::Interface::Vlan::Service::Instance::Snmp>())
-    , bridge_domain(std::make_shared<Native::Interface::Vlan::Service::Instance::BridgeDomain>())
-    , mac(std::make_shared<Native::Interface::Vlan::Service::Instance::Mac>())
-    , service_policy(std::make_shared<Native::Interface::Vlan::Service::Instance::ServicePolicy>())
-    , cfm(std::make_shared<Native::Interface::Vlan::Service::Instance::Cfm>())
-    , l2protocol(std::make_shared<Native::Interface::Vlan::Service::Instance::L2protocol>())
-{
-    encapsulation->parent = this;
-    ip->parent = this;
-    ipv6->parent = this;
-    rewrite->parent = this;
-    errdisable->parent = this;
-    ethernet_container->parent = this;
-    snmp->parent = this;
-    bridge_domain->parent = this;
-    mac->parent = this;
-    service_policy->parent = this;
-    cfm->parent = this;
-    l2protocol->parent = this;
-
-    yang_name = "instance"; yang_parent_name = "service"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Service::Instance::~Instance()
-{
-}
-
-bool Native::Interface::Vlan::Service::Instance::has_data() const
-{
-    if (is_presence_container) return true;
-    return id.is_set
-	|| trunk.is_set
-	|| gigabitethernet.is_set
-	|| ethernet.is_set
-	|| ethernet_evc_name.is_set
-	|| description.is_set
-	|| evc_name.is_set
-	|| group.is_set
-	|| shutdown.is_set
-	|| (encapsulation !=  nullptr && encapsulation->has_data())
-	|| (ip !=  nullptr && ip->has_data())
-	|| (ipv6 !=  nullptr && ipv6->has_data())
-	|| (rewrite !=  nullptr && rewrite->has_data())
-	|| (errdisable !=  nullptr && errdisable->has_data())
-	|| (ethernet_container !=  nullptr && ethernet_container->has_data())
-	|| (snmp !=  nullptr && snmp->has_data())
-	|| (bridge_domain !=  nullptr && bridge_domain->has_data())
-	|| (mac !=  nullptr && mac->has_data())
-	|| (service_policy !=  nullptr && service_policy->has_data())
-	|| (cfm !=  nullptr && cfm->has_data())
-	|| (l2protocol !=  nullptr && l2protocol->has_data());
-}
-
-bool Native::Interface::Vlan::Service::Instance::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(trunk.yfilter)
-	|| ydk::is_set(gigabitethernet.yfilter)
-	|| ydk::is_set(ethernet.yfilter)
-	|| ydk::is_set(ethernet_evc_name.yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| ydk::is_set(evc_name.yfilter)
-	|| ydk::is_set(group.yfilter)
-	|| ydk::is_set(shutdown.yfilter)
-	|| (encapsulation !=  nullptr && encapsulation->has_operation())
-	|| (ip !=  nullptr && ip->has_operation())
-	|| (ipv6 !=  nullptr && ipv6->has_operation())
-	|| (rewrite !=  nullptr && rewrite->has_operation())
-	|| (errdisable !=  nullptr && errdisable->has_operation())
-	|| (ethernet_container !=  nullptr && ethernet_container->has_operation())
-	|| (snmp !=  nullptr && snmp->has_operation())
-	|| (bridge_domain !=  nullptr && bridge_domain->has_operation())
-	|| (mac !=  nullptr && mac->has_operation())
-	|| (service_policy !=  nullptr && service_policy->has_operation())
-	|| (cfm !=  nullptr && cfm->has_operation())
-	|| (l2protocol !=  nullptr && l2protocol->has_operation());
-}
-
-std::string Native::Interface::Vlan::Service::Instance::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "instance";
-    ADD_KEY_TOKEN(id, "id");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Service::Instance::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-    if (trunk.is_set || is_set(trunk.yfilter)) leaf_name_data.push_back(trunk.get_name_leafdata());
-    if (gigabitethernet.is_set || is_set(gigabitethernet.yfilter)) leaf_name_data.push_back(gigabitethernet.get_name_leafdata());
-    if (ethernet.is_set || is_set(ethernet.yfilter)) leaf_name_data.push_back(ethernet.get_name_leafdata());
-    if (ethernet_evc_name.is_set || is_set(ethernet_evc_name.yfilter)) leaf_name_data.push_back(ethernet_evc_name.get_name_leafdata());
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-    if (evc_name.is_set || is_set(evc_name.yfilter)) leaf_name_data.push_back(evc_name.get_name_leafdata());
-    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
-    if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Service::Instance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "encapsulation")
-    {
-        if(encapsulation == nullptr)
-        {
-            encapsulation = std::make_shared<Native::Interface::Vlan::Service::Instance::Encapsulation>();
-        }
-        return encapsulation;
-    }
-
-    if(child_yang_name == "ip")
-    {
-        if(ip == nullptr)
-        {
-            ip = std::make_shared<Native::Interface::Vlan::Service::Instance::Ip>();
-        }
-        return ip;
-    }
-
-    if(child_yang_name == "ipv6")
-    {
-        if(ipv6 == nullptr)
-        {
-            ipv6 = std::make_shared<Native::Interface::Vlan::Service::Instance::Ipv6>();
-        }
-        return ipv6;
-    }
-
-    if(child_yang_name == "rewrite")
-    {
-        if(rewrite == nullptr)
-        {
-            rewrite = std::make_shared<Native::Interface::Vlan::Service::Instance::Rewrite>();
-        }
-        return rewrite;
-    }
-
-    if(child_yang_name == "errdisable")
-    {
-        if(errdisable == nullptr)
-        {
-            errdisable = std::make_shared<Native::Interface::Vlan::Service::Instance::Errdisable>();
-        }
-        return errdisable;
-    }
-
-    if(child_yang_name == "ethernet-container")
-    {
-        if(ethernet_container == nullptr)
-        {
-            ethernet_container = std::make_shared<Native::Interface::Vlan::Service::Instance::EthernetContainer>();
-        }
-        return ethernet_container;
-    }
-
-    if(child_yang_name == "snmp")
-    {
-        if(snmp == nullptr)
-        {
-            snmp = std::make_shared<Native::Interface::Vlan::Service::Instance::Snmp>();
-        }
-        return snmp;
-    }
-
-    if(child_yang_name == "bridge-domain")
-    {
-        if(bridge_domain == nullptr)
-        {
-            bridge_domain = std::make_shared<Native::Interface::Vlan::Service::Instance::BridgeDomain>();
-        }
-        return bridge_domain;
-    }
-
-    if(child_yang_name == "mac")
-    {
-        if(mac == nullptr)
-        {
-            mac = std::make_shared<Native::Interface::Vlan::Service::Instance::Mac>();
-        }
-        return mac;
-    }
-
-    if(child_yang_name == "service-policy")
-    {
-        if(service_policy == nullptr)
-        {
-            service_policy = std::make_shared<Native::Interface::Vlan::Service::Instance::ServicePolicy>();
-        }
-        return service_policy;
-    }
-
-    if(child_yang_name == "cfm")
-    {
-        if(cfm == nullptr)
-        {
-            cfm = std::make_shared<Native::Interface::Vlan::Service::Instance::Cfm>();
-        }
-        return cfm;
-    }
-
-    if(child_yang_name == "l2protocol")
-    {
-        if(l2protocol == nullptr)
-        {
-            l2protocol = std::make_shared<Native::Interface::Vlan::Service::Instance::L2protocol>();
-        }
-        return l2protocol;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Service::Instance::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(encapsulation != nullptr)
-    {
-        _children["encapsulation"] = encapsulation;
-    }
-
-    if(ip != nullptr)
-    {
-        _children["ip"] = ip;
-    }
-
-    if(ipv6 != nullptr)
-    {
-        _children["ipv6"] = ipv6;
-    }
-
-    if(rewrite != nullptr)
-    {
-        _children["rewrite"] = rewrite;
-    }
-
-    if(errdisable != nullptr)
-    {
-        _children["errdisable"] = errdisable;
-    }
-
-    if(ethernet_container != nullptr)
-    {
-        _children["ethernet-container"] = ethernet_container;
-    }
-
-    if(snmp != nullptr)
-    {
-        _children["snmp"] = snmp;
-    }
-
-    if(bridge_domain != nullptr)
-    {
-        _children["bridge-domain"] = bridge_domain;
-    }
-
-    if(mac != nullptr)
-    {
-        _children["mac"] = mac;
-    }
-
-    if(service_policy != nullptr)
-    {
-        _children["service-policy"] = service_policy;
-    }
-
-    if(cfm != nullptr)
-    {
-        _children["cfm"] = cfm;
-    }
-
-    if(l2protocol != nullptr)
-    {
-        _children["l2protocol"] = l2protocol;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Vlan::Service::Instance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "trunk")
-    {
-        trunk = value;
-        trunk.value_namespace = name_space;
-        trunk.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "GigabitEthernet")
-    {
-        gigabitethernet = value;
-        gigabitethernet.value_namespace = name_space;
-        gigabitethernet.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ethernet")
-    {
-        ethernet = value;
-        ethernet.value_namespace = name_space;
-        ethernet.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ethernet-evc-name")
-    {
-        ethernet_evc_name = value;
-        ethernet_evc_name.value_namespace = name_space;
-        ethernet_evc_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "description")
-    {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "evc-name")
-    {
-        evc_name = value;
-        evc_name.value_namespace = name_space;
-        evc_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "group")
-    {
-        group = value;
-        group.value_namespace = name_space;
-        group.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "shutdown")
-    {
-        shutdown = value;
-        shutdown.value_namespace = name_space;
-        shutdown.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Vlan::Service::Instance::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "trunk")
-    {
-        trunk.yfilter = yfilter;
-    }
-    if(value_path == "GigabitEthernet")
-    {
-        gigabitethernet.yfilter = yfilter;
-    }
-    if(value_path == "ethernet")
-    {
-        ethernet.yfilter = yfilter;
-    }
-    if(value_path == "ethernet-evc-name")
-    {
-        ethernet_evc_name.yfilter = yfilter;
-    }
-    if(value_path == "description")
-    {
-        description.yfilter = yfilter;
-    }
-    if(value_path == "evc-name")
-    {
-        evc_name.yfilter = yfilter;
-    }
-    if(value_path == "group")
-    {
-        group.yfilter = yfilter;
-    }
-    if(value_path == "shutdown")
-    {
-        shutdown.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Service::Instance::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "encapsulation" || name == "ip" || name == "ipv6" || name == "rewrite" || name == "errdisable" || name == "ethernet-container" || name == "snmp" || name == "bridge-domain" || name == "mac" || name == "service-policy" || name == "cfm" || name == "l2protocol" || name == "id" || name == "trunk" || name == "GigabitEthernet" || name == "ethernet" || name == "ethernet-evc-name" || name == "description" || name == "evc-name" || name == "group" || name == "shutdown")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Service::Instance::Encapsulation::Encapsulation()
-    :
-    default_{YType::empty, "default"}
-        ,
-    dot1ad(std::make_shared<Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad>())
-    , dot1q(std::make_shared<Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q>())
-    , priority_tagged(nullptr) // presence node
-    , untagged(nullptr) // presence node
-{
-    dot1ad->parent = this;
-    dot1q->parent = this;
-
-    yang_name = "encapsulation"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Service::Instance::Encapsulation::~Encapsulation()
-{
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::has_data() const
-{
-    if (is_presence_container) return true;
-    return default_.is_set
-	|| (dot1ad !=  nullptr && dot1ad->has_data())
-	|| (dot1q !=  nullptr && dot1q->has_data())
-	|| (priority_tagged !=  nullptr && priority_tagged->has_data())
-	|| (untagged !=  nullptr && untagged->has_data());
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(default_.yfilter)
-	|| (dot1ad !=  nullptr && dot1ad->has_operation())
-	|| (dot1q !=  nullptr && dot1q->has_operation())
-	|| (priority_tagged !=  nullptr && priority_tagged->has_operation())
-	|| (untagged !=  nullptr && untagged->has_operation());
-}
-
-std::string Native::Interface::Vlan::Service::Instance::Encapsulation::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "encapsulation";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Service::Instance::Encapsulation::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Service::Instance::Encapsulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "dot1ad")
-    {
-        if(dot1ad == nullptr)
-        {
-            dot1ad = std::make_shared<Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad>();
-        }
-        return dot1ad;
-    }
-
-    if(child_yang_name == "dot1q")
-    {
-        if(dot1q == nullptr)
-        {
-            dot1q = std::make_shared<Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q>();
-        }
-        return dot1q;
-    }
-
-    if(child_yang_name == "priority-tagged")
-    {
-        if(priority_tagged == nullptr)
-        {
-            priority_tagged = std::make_shared<Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged>();
-        }
-        return priority_tagged;
-    }
-
-    if(child_yang_name == "untagged")
-    {
-        if(untagged == nullptr)
-        {
-            untagged = std::make_shared<Native::Interface::Vlan::Service::Instance::Encapsulation::Untagged>();
-        }
-        return untagged;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Service::Instance::Encapsulation::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(dot1ad != nullptr)
-    {
-        _children["dot1ad"] = dot1ad;
-    }
-
-    if(dot1q != nullptr)
-    {
-        _children["dot1q"] = dot1q;
-    }
-
-    if(priority_tagged != nullptr)
-    {
-        _children["priority-tagged"] = priority_tagged;
-    }
-
-    if(untagged != nullptr)
-    {
-        _children["untagged"] = untagged;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Vlan::Service::Instance::Encapsulation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "default")
-    {
-        default_ = value;
-        default_.value_namespace = name_space;
-        default_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Vlan::Service::Instance::Encapsulation::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "default")
-    {
-        default_.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dot1ad" || name == "dot1q" || name == "priority-tagged" || name == "untagged" || name == "default")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::Dot1ad()
-    :
-    id{YType::str, "id"},
-    cos{YType::uint8, "cos"},
-    dot1q{YType::str, "dot1q"},
-    etype{YType::enumeration, "etype"},
-    exact{YType::empty, "exact"}
-        ,
-    cos2(std::make_shared<Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::Cos2>())
-{
-    cos2->parent = this;
-
-    yang_name = "dot1ad"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::~Dot1ad()
-{
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::has_data() const
-{
-    if (is_presence_container) return true;
-    for (auto const & leaf : id.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : cos.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : dot1q.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : etype.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return exact.is_set
-	|| (cos2 !=  nullptr && cos2->has_data());
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::has_operation() const
-{
-    for (auto const & leaf : id.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : cos.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : dot1q.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : etype.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(cos.yfilter)
-	|| ydk::is_set(dot1q.yfilter)
-	|| ydk::is_set(etype.yfilter)
-	|| ydk::is_set(exact.yfilter)
-	|| (cos2 !=  nullptr && cos2->has_operation());
-}
-
-std::string Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dot1ad";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (exact.is_set || is_set(exact.yfilter)) leaf_name_data.push_back(exact.get_name_leafdata());
-
-    auto id_name_datas = id.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), id_name_datas.begin(), id_name_datas.end());
-    auto cos_name_datas = cos.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), cos_name_datas.begin(), cos_name_datas.end());
-    auto dot1q_name_datas = dot1q.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), dot1q_name_datas.begin(), dot1q_name_datas.end());
-    auto etype_name_datas = etype.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), etype_name_datas.begin(), etype_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cos2")
-    {
-        if(cos2 == nullptr)
-        {
-            cos2 = std::make_shared<Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::Cos2>();
-        }
-        return cos2;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(cos2 != nullptr)
-    {
-        _children["cos2"] = cos2;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id.append(value);
-    }
-    if(value_path == "cos")
-    {
-        cos.append(value);
-    }
-    if(value_path == "dot1q")
-    {
-        dot1q.append(value);
-    }
-    if(value_path == "etype")
-    {
-        etype.append(value);
-    }
-    if(value_path == "exact")
-    {
-        exact = value;
-        exact.value_namespace = name_space;
-        exact.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "cos")
-    {
-        cos.yfilter = yfilter;
-    }
-    if(value_path == "dot1q")
-    {
-        dot1q.yfilter = yfilter;
-    }
-    if(value_path == "etype")
-    {
-        etype.yfilter = yfilter;
-    }
-    if(value_path == "exact")
-    {
-        exact.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cos2" || name == "id" || name == "cos" || name == "dot1q" || name == "etype" || name == "exact")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::Cos2::Cos2()
-    :
-    cos{YType::uint8, "cos"}
-{
-
-    yang_name = "cos2"; yang_parent_name = "dot1ad"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::Cos2::~Cos2()
-{
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::Cos2::has_data() const
-{
-    if (is_presence_container) return true;
-    for (auto const & leaf : cos.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::Cos2::has_operation() const
-{
-    for (auto const & leaf : cos.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(cos.yfilter);
-}
-
-std::string Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::Cos2::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cos2";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::Cos2::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto cos_name_datas = cos.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), cos_name_datas.begin(), cos_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::Cos2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::Cos2::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::Cos2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cos")
-    {
-        cos.append(value);
-    }
-}
-
-void Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::Cos2::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cos")
-    {
-        cos.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::Cos2::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cos")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::Dot1q()
-    :
-    id{YType::str, "id"},
-    cos{YType::uint8, "cos"},
-    second_dot1q{YType::str, "second-dot1q"},
-    etype{YType::enumeration, "etype"},
-    exact{YType::empty, "exact"},
-    vlan_type{YType::enumeration, "vlan-type"}
-        ,
-    cos2(std::make_shared<Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::Cos2>())
-{
-    cos2->parent = this;
-
-    yang_name = "dot1q"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::~Dot1q()
-{
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::has_data() const
-{
-    if (is_presence_container) return true;
-    for (auto const & leaf : id.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : cos.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : second_dot1q.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : etype.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return exact.is_set
-	|| vlan_type.is_set
-	|| (cos2 !=  nullptr && cos2->has_data());
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::has_operation() const
-{
-    for (auto const & leaf : id.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : cos.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : second_dot1q.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : etype.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| ydk::is_set(cos.yfilter)
-	|| ydk::is_set(second_dot1q.yfilter)
-	|| ydk::is_set(etype.yfilter)
-	|| ydk::is_set(exact.yfilter)
-	|| ydk::is_set(vlan_type.yfilter)
-	|| (cos2 !=  nullptr && cos2->has_operation());
-}
-
-std::string Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dot1q";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (exact.is_set || is_set(exact.yfilter)) leaf_name_data.push_back(exact.get_name_leafdata());
-    if (vlan_type.is_set || is_set(vlan_type.yfilter)) leaf_name_data.push_back(vlan_type.get_name_leafdata());
-
-    auto id_name_datas = id.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), id_name_datas.begin(), id_name_datas.end());
-    auto cos_name_datas = cos.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), cos_name_datas.begin(), cos_name_datas.end());
-    auto second_dot1q_name_datas = second_dot1q.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), second_dot1q_name_datas.begin(), second_dot1q_name_datas.end());
-    auto etype_name_datas = etype.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), etype_name_datas.begin(), etype_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cos2")
-    {
-        if(cos2 == nullptr)
-        {
-            cos2 = std::make_shared<Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::Cos2>();
-        }
-        return cos2;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(cos2 != nullptr)
-    {
-        _children["cos2"] = cos2;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id.append(value);
-    }
-    if(value_path == "cos")
-    {
-        cos.append(value);
-    }
-    if(value_path == "second-dot1q")
-    {
-        second_dot1q.append(value);
-    }
-    if(value_path == "etype")
-    {
-        etype.append(value);
-    }
-    if(value_path == "exact")
-    {
-        exact = value;
-        exact.value_namespace = name_space;
-        exact.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vlan-type")
-    {
-        vlan_type = value;
-        vlan_type.value_namespace = name_space;
-        vlan_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-    if(value_path == "cos")
-    {
-        cos.yfilter = yfilter;
-    }
-    if(value_path == "second-dot1q")
-    {
-        second_dot1q.yfilter = yfilter;
-    }
-    if(value_path == "etype")
-    {
-        etype.yfilter = yfilter;
-    }
-    if(value_path == "exact")
-    {
-        exact.yfilter = yfilter;
-    }
-    if(value_path == "vlan-type")
-    {
-        vlan_type.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cos2" || name == "id" || name == "cos" || name == "second-dot1q" || name == "etype" || name == "exact" || name == "vlan-type")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::Cos2::Cos2()
-    :
-    cos{YType::uint8, "cos"}
-{
-
-    yang_name = "cos2"; yang_parent_name = "dot1q"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::Cos2::~Cos2()
-{
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::Cos2::has_data() const
-{
-    if (is_presence_container) return true;
-    for (auto const & leaf : cos.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::Cos2::has_operation() const
-{
-    for (auto const & leaf : cos.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(cos.yfilter);
-}
-
-std::string Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::Cos2::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cos2";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::Cos2::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto cos_name_datas = cos.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), cos_name_datas.begin(), cos_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::Cos2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::Cos2::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::Cos2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cos")
-    {
-        cos.append(value);
-    }
-}
-
-void Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::Cos2::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cos")
-    {
-        cos.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::Cos2::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cos")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::PriorityTagged()
-    :
-    etype{YType::enumeration, "etype"}
-        ,
-    cos_container(std::make_shared<Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::CosContainer>())
-{
-    cos_container->parent = this;
-
-    yang_name = "priority-tagged"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::~PriorityTagged()
-{
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::has_data() const
-{
-    if (is_presence_container) return true;
-    for (auto const & leaf : etype.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return (cos_container !=  nullptr && cos_container->has_data());
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::has_operation() const
-{
-    for (auto const & leaf : etype.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(etype.yfilter)
-	|| (cos_container !=  nullptr && cos_container->has_operation());
-}
-
-std::string Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "priority-tagged";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto etype_name_datas = etype.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), etype_name_datas.begin(), etype_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "cos-container")
-    {
-        if(cos_container == nullptr)
-        {
-            cos_container = std::make_shared<Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::CosContainer>();
-        }
-        return cos_container;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(cos_container != nullptr)
-    {
-        _children["cos-container"] = cos_container;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "etype")
-    {
-        etype.append(value);
-    }
-}
-
-void Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "etype")
-    {
-        etype.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cos-container" || name == "etype")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::CosContainer::CosContainer()
-    :
-    cos{YType::uint8, "cos"}
-{
-
-    yang_name = "cos-container"; yang_parent_name = "priority-tagged"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::CosContainer::~CosContainer()
-{
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::CosContainer::has_data() const
-{
-    if (is_presence_container) return true;
-    for (auto const & leaf : cos.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::CosContainer::has_operation() const
-{
-    for (auto const & leaf : cos.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(cos.yfilter);
-}
-
-std::string Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::CosContainer::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cos-container";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::CosContainer::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto cos_name_datas = cos.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), cos_name_datas.begin(), cos_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::CosContainer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::CosContainer::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::CosContainer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cos")
-    {
-        cos.append(value);
-    }
-}
-
-void Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::CosContainer::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cos")
-    {
-        cos.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::CosContainer::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cos")
-        return true;
-    return false;
-}
-
-Native::Interface::Vlan::Service::Instance::Encapsulation::Untagged::Untagged()
-{
-
-    yang_name = "untagged"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::Vlan::Service::Instance::Encapsulation::Untagged::~Untagged()
-{
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::Untagged::has_data() const
-{
-    if (is_presence_container) return true;
-    return false;
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::Untagged::has_operation() const
-{
-    return is_set(yfilter);
-}
-
-std::string Native::Interface::Vlan::Service::Instance::Encapsulation::Untagged::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "untagged";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Service::Instance::Encapsulation::Untagged::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Service::Instance::Encapsulation::Untagged::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Service::Instance::Encapsulation::Untagged::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::Vlan::Service::Instance::Encapsulation::Untagged::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Vlan::Service::Instance::Encapsulation::Untagged::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Vlan::Service::Instance::Encapsulation::Untagged::has_leaf_or_child_of_name(const std::string & name) const
-{
-    return false;
-}
-
-Native::Interface::Vlan::Service::Instance::Ip::Ip()
-    :
-    acl(std::make_shared<Native::Interface::Vlan::Service::Instance::Ip::Acl>())
-    , dhcp(std::make_shared<Native::Interface::Vlan::Service::Instance::Ip::Dhcp>())
-    , verify(std::make_shared<Native::Interface::Vlan::Service::Instance::Ip::Verify>())
-{
-    acl->parent = this;
-    dhcp->parent = this;
-    verify->parent = this;
-
-    yang_name = "ip"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vlan::Service::Instance::Ip::~Ip()
-{
-}
-
-bool Native::Interface::Vlan::Service::Instance::Ip::has_data() const
-{
-    if (is_presence_container) return true;
-    return (acl !=  nullptr && acl->has_data())
-	|| (dhcp !=  nullptr && dhcp->has_data())
-	|| (verify !=  nullptr && verify->has_data());
-}
-
-bool Native::Interface::Vlan::Service::Instance::Ip::has_operation() const
-{
-    return is_set(yfilter)
-	|| (acl !=  nullptr && acl->has_operation())
-	|| (dhcp !=  nullptr && dhcp->has_operation())
-	|| (verify !=  nullptr && verify->has_operation());
-}
-
-std::string Native::Interface::Vlan::Service::Instance::Ip::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ip";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vlan::Service::Instance::Ip::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vlan::Service::Instance::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "acl")
-    {
-        if(acl == nullptr)
-        {
-            acl = std::make_shared<Native::Interface::Vlan::Service::Instance::Ip::Acl>();
-        }
-        return acl;
-    }
-
-    if(child_yang_name == "dhcp")
-    {
-        if(dhcp == nullptr)
-        {
-            dhcp = std::make_shared<Native::Interface::Vlan::Service::Instance::Ip::Dhcp>();
-        }
-        return dhcp;
-    }
-
-    if(child_yang_name == "verify")
-    {
-        if(verify == nullptr)
-        {
-            verify = std::make_shared<Native::Interface::Vlan::Service::Instance::Ip::Verify>();
-        }
-        return verify;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vlan::Service::Instance::Ip::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(acl != nullptr)
-    {
-        _children["acl"] = acl;
-    }
-
-    if(dhcp != nullptr)
-    {
-        _children["dhcp"] = dhcp;
-    }
-
-    if(verify != nullptr)
-    {
-        _children["verify"] = verify;
-    }
-
-    return _children;
-}
-
-void Native::Interface::Vlan::Service::Instance::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::Vlan::Service::Instance::Ip::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::Vlan::Service::Instance::Ip::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "acl" || name == "dhcp" || name == "verify")
-        return true;
-    return false;
-}
+const Enum::YLeaf Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Igmp::StaticGroup::Groups::Source::ssm_map {0, "ssm-map"};
 
 const Enum::YLeaf Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Nbar::ProtocolDiscovery::Ipv4Ipv6::ipv4 {0, "ipv4"};
 const Enum::YLeaf Native::Interface::Vlan::CiscoIOSXEInterfacesIp::Nbar::ProtocolDiscovery::Ipv4Ipv6::ipv6 {1, "ipv6"};
@@ -15188,38 +14924,6 @@ const Enum::YLeaf Native::Interface::Vlan::ChannelGroup::Mode::passive {4, "pass
 
 const Enum::YLeaf Native::Interface::Vlan::Ethernet::Oam::Mode::active {0, "active"};
 const Enum::YLeaf Native::Interface::Vlan::Ethernet::Oam::Mode::passive {1, "passive"};
-
-const Enum::YLeaf Native::Interface::Vlan::Pppoe::Enable::Group::global {0, "global"};
-
-const Enum::YLeaf Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::Id::any {0, "any"};
-
-const Enum::YLeaf Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::Dot1q::any {0, "any"};
-
-const Enum::YLeaf Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::Etype::ipv4 {0, "ipv4"};
-const Enum::YLeaf Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::Etype::ipv6 {1, "ipv6"};
-const Enum::YLeaf Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::Etype::pppoe_all {2, "pppoe-all"};
-const Enum::YLeaf Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::Etype::pppoe_discovery {3, "pppoe-discovery"};
-const Enum::YLeaf Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1ad::Etype::pppoe_session {4, "pppoe-session"};
-
-const Enum::YLeaf Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::Id::any {0, "any"};
-
-const Enum::YLeaf Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::SecondDot1q::any {0, "any"};
-
-const Enum::YLeaf Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::Etype::ipv4 {0, "ipv4"};
-const Enum::YLeaf Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::Etype::ipv6 {1, "ipv6"};
-const Enum::YLeaf Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::Etype::pppoe_all {2, "pppoe-all"};
-const Enum::YLeaf Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::Etype::pppoe_discovery {3, "pppoe-discovery"};
-const Enum::YLeaf Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::Etype::pppoe_session {4, "pppoe-session"};
-
-const Enum::YLeaf Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::VlanType::Y_0x88A8 {0, "0x88A8"};
-const Enum::YLeaf Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::VlanType::Y_0x9100 {1, "0x9100"};
-const Enum::YLeaf Native::Interface::Vlan::Service::Instance::Encapsulation::Dot1q::VlanType::Y_0x9200 {2, "0x9200"};
-
-const Enum::YLeaf Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::Etype::ipv4 {0, "ipv4"};
-const Enum::YLeaf Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::Etype::ipv6 {1, "ipv6"};
-const Enum::YLeaf Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::Etype::pppoe_all {2, "pppoe-all"};
-const Enum::YLeaf Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::Etype::pppoe_discovery {3, "pppoe-discovery"};
-const Enum::YLeaf Native::Interface::Vlan::Service::Instance::Encapsulation::PriorityTagged::Etype::pppoe_session {4, "pppoe-session"};
 
 
 }

@@ -92,6 +92,8 @@ class DynamicTemplate::Ppps::Ppp : public ydk::Entity
         class Dhcpv6; //type: DynamicTemplate::Ppps::Ppp::Dhcpv6
         class Ipv6Neighbor; //type: DynamicTemplate::Ppps::Ppp::Ipv6Neighbor
         class Accounting; //type: DynamicTemplate::Ppps::Ppp::Accounting
+        class SpanMonitorSessions; //type: DynamicTemplate::Ppps::Ppp::SpanMonitorSessions
+        class Qos; //type: DynamicTemplate::Ppps::Ppp::Qos
         class Ipv4PacketFilter; //type: DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter
         class Ipv6PacketFilter; //type: DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter
         class Ipv6Network; //type: DynamicTemplate::Ppps::Ppp::Ipv6Network
@@ -104,6 +106,8 @@ class DynamicTemplate::Ppps::Ppp : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Dhcpv6> dhcpv6;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Ipv6Neighbor> ipv6_neighbor;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Accounting> accounting;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::SpanMonitorSessions> span_monitor_sessions;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Qos> qos;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter> ipv4_packet_filter;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Ipv6PacketFilter> ipv6_packet_filter;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Ipv6Network> ipv6_network;
@@ -483,6 +487,249 @@ class DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting : public ydk::En
         ydk::YLeaf accounting_interim_interval; //type: uint32
 
 }; // DynamicTemplate::Ppps::Ppp::Accounting::ServiceAccounting
+
+
+class DynamicTemplate::Ppps::Ppp::SpanMonitorSessions : public ydk::Entity
+{
+    public:
+        SpanMonitorSessions();
+        ~SpanMonitorSessions();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SpanMonitorSession; //type: DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession
+
+        ydk::YList span_monitor_session;
+        
+}; // DynamicTemplate::Ppps::Ppp::SpanMonitorSessions
+
+
+class DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession : public ydk::Entity
+{
+    public:
+        SpanMonitorSession();
+        ~SpanMonitorSession();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf session_class; //type: SpanSessionClass
+        ydk::YLeaf mirror_first; //type: uint32
+        ydk::YLeaf mirror_interval; //type: SpanMirrorInterval
+        class Attachment; //type: DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Attachment
+        class Acl; //type: DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Acl
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Attachment> attachment; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Acl> acl; // presence node
+        
+}; // DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession
+
+
+class DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Attachment : public ydk::Entity
+{
+    public:
+        Attachment();
+        ~Attachment();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf session_name; //type: string
+        ydk::YLeaf direction; //type: SpanTrafficDirection
+        ydk::YLeaf port_level_enable; //type: empty
+
+}; // DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Attachment
+
+
+class DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Acl : public ydk::Entity
+{
+    public:
+        Acl();
+        ~Acl();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf acl_enable; //type: empty
+        ydk::YLeaf acl_name; //type: string
+
+}; // DynamicTemplate::Ppps::Ppp::SpanMonitorSessions::SpanMonitorSession::Acl
+
+
+class DynamicTemplate::Ppps::Ppp::Qos : public ydk::Entity
+{
+    public:
+        Qos();
+        ~Qos();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ServicePolicy; //type: DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy
+        class Account; //type: DynamicTemplate::Ppps::Ppp::Qos::Account
+        class Output; //type: DynamicTemplate::Ppps::Ppp::Qos::Output
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy> service_policy;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Qos::Account> account;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Qos::Output> output;
+        
+}; // DynamicTemplate::Ppps::Ppp::Qos
+
+
+class DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy : public ydk::Entity
+{
+    public:
+        ServicePolicy();
+        ~ServicePolicy();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Input; //type: DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Input
+        class Output; //type: DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Output
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Input> input; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Output> output; // presence node
+        
+}; // DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy
+
+
+class DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Input : public ydk::Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf spi_name; //type: string
+        ydk::YLeaf merge; //type: boolean
+        ydk::YLeaf merge_id; //type: uint32
+        ydk::YLeaf account_stats; //type: boolean
+
+}; // DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Input
+
+
+class DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Output : public ydk::Entity
+{
+    public:
+        Output();
+        ~Output();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf spi_name; //type: string
+        ydk::YLeaf merge; //type: boolean
+        ydk::YLeaf merge_id; //type: uint32
+        ydk::YLeaf account_stats; //type: boolean
+
+}; // DynamicTemplate::Ppps::Ppp::Qos::ServicePolicy::Output
+
+
+class DynamicTemplate::Ppps::Ppp::Qos::Account : public ydk::Entity
+{
+    public:
+        Account();
+        ~Account();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf aal; //type: Qosl2DataLink
+        ydk::YLeaf encapsulation; //type: Qosl2Encap
+        ydk::YLeaf atm_cell_tax; //type: empty
+        ydk::YLeaf user_defined; //type: int32
+
+}; // DynamicTemplate::Ppps::Ppp::Qos::Account
+
+
+class DynamicTemplate::Ppps::Ppp::Qos::Output : public ydk::Entity
+{
+    public:
+        Output();
+        ~Output();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf minimum_bandwidth; //type: uint32
+
+}; // DynamicTemplate::Ppps::Ppp::Qos::Output
 
 
 class DynamicTemplate::Ppps::Ppp::Ipv4PacketFilter : public ydk::Entity
@@ -1190,6 +1437,8 @@ class DynamicTemplate::IpSubscribers::IpSubscriber : public ydk::Entity
         class Dhcpv6; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6
         class Ipv6Neighbor; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor
         class Accounting; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Accounting
+        class SpanMonitorSessions; //type: DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions
+        class Qos; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Qos
         class Dhcpd; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd
         class Ipv4PacketFilter; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter
         class Ipv6PacketFilter; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter
@@ -1201,6 +1450,8 @@ class DynamicTemplate::IpSubscribers::IpSubscriber : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpv6> dhcpv6;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6Neighbor> ipv6_neighbor;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Accounting> accounting;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions> span_monitor_sessions;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Qos> qos;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd> dhcpd;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Ipv4PacketFilter> ipv4_packet_filter;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Ipv6PacketFilter> ipv6_packet_filter;
@@ -1559,6 +1810,249 @@ class DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout : pu
         ydk::YLeaf direction; //type: string
 
 }; // DynamicTemplate::IpSubscribers::IpSubscriber::Accounting::IdleTimeout
+
+
+class DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions : public ydk::Entity
+{
+    public:
+        SpanMonitorSessions();
+        ~SpanMonitorSessions();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SpanMonitorSession; //type: DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession
+
+        ydk::YList span_monitor_session;
+        
+}; // DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions
+
+
+class DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession : public ydk::Entity
+{
+    public:
+        SpanMonitorSession();
+        ~SpanMonitorSession();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf session_class; //type: SpanSessionClass
+        ydk::YLeaf mirror_first; //type: uint32
+        ydk::YLeaf mirror_interval; //type: SpanMirrorInterval
+        class Attachment; //type: DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Attachment
+        class Acl; //type: DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Acl
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Attachment> attachment; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Acl> acl; // presence node
+        
+}; // DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession
+
+
+class DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Attachment : public ydk::Entity
+{
+    public:
+        Attachment();
+        ~Attachment();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf session_name; //type: string
+        ydk::YLeaf direction; //type: SpanTrafficDirection
+        ydk::YLeaf port_level_enable; //type: empty
+
+}; // DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Attachment
+
+
+class DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Acl : public ydk::Entity
+{
+    public:
+        Acl();
+        ~Acl();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf acl_enable; //type: empty
+        ydk::YLeaf acl_name; //type: string
+
+}; // DynamicTemplate::IpSubscribers::IpSubscriber::SpanMonitorSessions::SpanMonitorSession::Acl
+
+
+class DynamicTemplate::IpSubscribers::IpSubscriber::Qos : public ydk::Entity
+{
+    public:
+        Qos();
+        ~Qos();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ServicePolicy; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy
+        class Account; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Account
+        class Output; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Output
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy> service_policy;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Account> account;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Output> output;
+        
+}; // DynamicTemplate::IpSubscribers::IpSubscriber::Qos
+
+
+class DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy : public ydk::Entity
+{
+    public:
+        ServicePolicy();
+        ~ServicePolicy();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Input; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Input
+        class Output; //type: DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Output
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Input> input; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Output> output; // presence node
+        
+}; // DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy
+
+
+class DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Input : public ydk::Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf spi_name; //type: string
+        ydk::YLeaf merge; //type: boolean
+        ydk::YLeaf merge_id; //type: uint32
+        ydk::YLeaf account_stats; //type: boolean
+
+}; // DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Input
+
+
+class DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Output : public ydk::Entity
+{
+    public:
+        Output();
+        ~Output();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf spi_name; //type: string
+        ydk::YLeaf merge; //type: boolean
+        ydk::YLeaf merge_id; //type: uint32
+        ydk::YLeaf account_stats; //type: boolean
+
+}; // DynamicTemplate::IpSubscribers::IpSubscriber::Qos::ServicePolicy::Output
+
+
+class DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Account : public ydk::Entity
+{
+    public:
+        Account();
+        ~Account();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf aal; //type: Qosl2DataLink
+        ydk::YLeaf encapsulation; //type: Qosl2Encap
+        ydk::YLeaf atm_cell_tax; //type: empty
+        ydk::YLeaf user_defined; //type: int32
+
+}; // DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Account
+
+
+class DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Output : public ydk::Entity
+{
+    public:
+        Output();
+        ~Output();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf minimum_bandwidth; //type: uint32
+
+}; // DynamicTemplate::IpSubscribers::IpSubscriber::Qos::Output
 
 
 class DynamicTemplate::IpSubscribers::IpSubscriber::Dhcpd : public ydk::Entity
@@ -1921,6 +2415,8 @@ class DynamicTemplate::SubscriberServices::SubscriberService : public ydk::Entit
         class Ipv4Network; //type: DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network
         class Ipv6Neighbor; //type: DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor
         class Accounting; //type: DynamicTemplate::SubscriberServices::SubscriberService::Accounting
+        class SpanMonitorSessions; //type: DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions
+        class Qos; //type: DynamicTemplate::SubscriberServices::SubscriberService::Qos
         class Ipv4PacketFilter; //type: DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter
         class Ipv6PacketFilter; //type: DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter
         class Ipv6Network; //type: DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network
@@ -1929,6 +2425,8 @@ class DynamicTemplate::SubscriberServices::SubscriberService : public ydk::Entit
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Ipv4Network> ipv4_network;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Neighbor> ipv6_neighbor;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Accounting> accounting;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions> span_monitor_sessions;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Qos> qos;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter> ipv4_packet_filter;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Ipv6PacketFilter> ipv6_packet_filter;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Ipv6Network> ipv6_network;
@@ -2232,6 +2730,249 @@ class DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTi
         ydk::YLeaf direction; //type: string
 
 }; // DynamicTemplate::SubscriberServices::SubscriberService::Accounting::IdleTimeout
+
+
+class DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions : public ydk::Entity
+{
+    public:
+        SpanMonitorSessions();
+        ~SpanMonitorSessions();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SpanMonitorSession; //type: DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession
+
+        ydk::YList span_monitor_session;
+        
+}; // DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions
+
+
+class DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession : public ydk::Entity
+{
+    public:
+        SpanMonitorSession();
+        ~SpanMonitorSession();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf session_class; //type: SpanSessionClass
+        ydk::YLeaf mirror_first; //type: uint32
+        ydk::YLeaf mirror_interval; //type: SpanMirrorInterval
+        class Attachment; //type: DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Attachment
+        class Acl; //type: DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Acl
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Attachment> attachment; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Acl> acl; // presence node
+        
+}; // DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession
+
+
+class DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Attachment : public ydk::Entity
+{
+    public:
+        Attachment();
+        ~Attachment();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf session_name; //type: string
+        ydk::YLeaf direction; //type: SpanTrafficDirection
+        ydk::YLeaf port_level_enable; //type: empty
+
+}; // DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Attachment
+
+
+class DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Acl : public ydk::Entity
+{
+    public:
+        Acl();
+        ~Acl();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf acl_enable; //type: empty
+        ydk::YLeaf acl_name; //type: string
+
+}; // DynamicTemplate::SubscriberServices::SubscriberService::SpanMonitorSessions::SpanMonitorSession::Acl
+
+
+class DynamicTemplate::SubscriberServices::SubscriberService::Qos : public ydk::Entity
+{
+    public:
+        Qos();
+        ~Qos();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ServicePolicy; //type: DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy
+        class Account; //type: DynamicTemplate::SubscriberServices::SubscriberService::Qos::Account
+        class Output; //type: DynamicTemplate::SubscriberServices::SubscriberService::Qos::Output
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy> service_policy;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Qos::Account> account;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Qos::Output> output;
+        
+}; // DynamicTemplate::SubscriberServices::SubscriberService::Qos
+
+
+class DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy : public ydk::Entity
+{
+    public:
+        ServicePolicy();
+        ~ServicePolicy();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Input; //type: DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Input
+        class Output; //type: DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Output
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Input> input; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_infra_tmplmgr_cfg::DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Output> output; // presence node
+        
+}; // DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy
+
+
+class DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Input : public ydk::Entity
+{
+    public:
+        Input();
+        ~Input();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf spi_name; //type: string
+        ydk::YLeaf merge; //type: boolean
+        ydk::YLeaf merge_id; //type: uint32
+        ydk::YLeaf account_stats; //type: boolean
+
+}; // DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Input
+
+
+class DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Output : public ydk::Entity
+{
+    public:
+        Output();
+        ~Output();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf spi_name; //type: string
+        ydk::YLeaf merge; //type: boolean
+        ydk::YLeaf merge_id; //type: uint32
+        ydk::YLeaf account_stats; //type: boolean
+
+}; // DynamicTemplate::SubscriberServices::SubscriberService::Qos::ServicePolicy::Output
+
+
+class DynamicTemplate::SubscriberServices::SubscriberService::Qos::Account : public ydk::Entity
+{
+    public:
+        Account();
+        ~Account();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf aal; //type: Qosl2DataLink
+        ydk::YLeaf encapsulation; //type: Qosl2Encap
+        ydk::YLeaf atm_cell_tax; //type: empty
+        ydk::YLeaf user_defined; //type: int32
+
+}; // DynamicTemplate::SubscriberServices::SubscriberService::Qos::Account
+
+
+class DynamicTemplate::SubscriberServices::SubscriberService::Qos::Output : public ydk::Entity
+{
+    public:
+        Output();
+        ~Output();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf minimum_bandwidth; //type: uint32
+
+}; // DynamicTemplate::SubscriberServices::SubscriberService::Qos::Output
 
 
 class DynamicTemplate::SubscriberServices::SubscriberService::Ipv4PacketFilter : public ydk::Entity

@@ -3370,6 +3370,7 @@ class EthernetPmd : public ydk::Enum
         static const ydk::Enum::YLeaf optics_eth_100gbase_cr4;
         static const ydk::Enum::YLeaf optics_eth_100gbase_al;
         static const ydk::Enum::YLeaf optics_eth_100gbase_pl;
+        static const ydk::Enum::YLeaf optics_eth_100gbase_srbd;
         static const ydk::Enum::YLeaf optics_eth_undefined;
 
 };
@@ -3561,6 +3562,7 @@ class OpticsPhy : public ydk::Enum
         static const ydk::Enum::YLeaf ten_gig_emrdwdm;
         static const ydk::Enum::YLeaf ten_gig_e_edge_performance;
         static const ydk::Enum::YLeaf one_gig_csfp;
+        static const ydk::Enum::YLeaf short_reach_bd;
 
 };
 

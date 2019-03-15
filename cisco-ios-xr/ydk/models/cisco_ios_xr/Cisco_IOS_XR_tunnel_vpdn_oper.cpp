@@ -901,11 +901,11 @@ bool Vpdn::Sessions::Session::L2tp::has_leaf_or_child_of_name(const std::string 
 
 Vpdn::Sessions::Session::Subscriber::Subscriber()
     :
-    nas_port_type{YType::enumeration, "nas-port-type"},
+    nas_port_id_val{YType::str, "nas-port-id-val"},
+    nas_port_type{YType::str, "nas-port-type"},
     physical_channel_id{YType::uint32, "physical-channel-id"},
     receive_connect_speed{YType::uint64, "receive-connect-speed"},
-    transmit_connect_speed{YType::uint64, "transmit-connect-speed"},
-    nas_port{YType::uint8, "nas-port"}
+    transmit_connect_speed{YType::uint64, "transmit-connect-speed"}
 {
 
     yang_name = "subscriber"; yang_parent_name = "session"; is_top_level_class = false; has_list_ancestor = true; 
@@ -918,12 +918,8 @@ Vpdn::Sessions::Session::Subscriber::~Subscriber()
 bool Vpdn::Sessions::Session::Subscriber::has_data() const
 {
     if (is_presence_container) return true;
-    for (auto const & leaf : nas_port.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return nas_port_type.is_set
+    return nas_port_id_val.is_set
+	|| nas_port_type.is_set
 	|| physical_channel_id.is_set
 	|| receive_connect_speed.is_set
 	|| transmit_connect_speed.is_set;
@@ -931,17 +927,12 @@ bool Vpdn::Sessions::Session::Subscriber::has_data() const
 
 bool Vpdn::Sessions::Session::Subscriber::has_operation() const
 {
-    for (auto const & leaf : nas_port.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
     return is_set(yfilter)
+	|| ydk::is_set(nas_port_id_val.yfilter)
 	|| ydk::is_set(nas_port_type.yfilter)
 	|| ydk::is_set(physical_channel_id.yfilter)
 	|| ydk::is_set(receive_connect_speed.yfilter)
-	|| ydk::is_set(transmit_connect_speed.yfilter)
-	|| ydk::is_set(nas_port.yfilter);
+	|| ydk::is_set(transmit_connect_speed.yfilter);
 }
 
 std::string Vpdn::Sessions::Session::Subscriber::get_segment_path() const
@@ -955,13 +946,12 @@ std::vector<std::pair<std::string, LeafData> > Vpdn::Sessions::Session::Subscrib
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (nas_port_id_val.is_set || is_set(nas_port_id_val.yfilter)) leaf_name_data.push_back(nas_port_id_val.get_name_leafdata());
     if (nas_port_type.is_set || is_set(nas_port_type.yfilter)) leaf_name_data.push_back(nas_port_type.get_name_leafdata());
     if (physical_channel_id.is_set || is_set(physical_channel_id.yfilter)) leaf_name_data.push_back(physical_channel_id.get_name_leafdata());
     if (receive_connect_speed.is_set || is_set(receive_connect_speed.yfilter)) leaf_name_data.push_back(receive_connect_speed.get_name_leafdata());
     if (transmit_connect_speed.is_set || is_set(transmit_connect_speed.yfilter)) leaf_name_data.push_back(transmit_connect_speed.get_name_leafdata());
 
-    auto nas_port_name_datas = nas_port.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), nas_port_name_datas.begin(), nas_port_name_datas.end());
     return leaf_name_data;
 
 }
@@ -980,6 +970,12 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Vpdn::Sessions::Session::Sub
 
 void Vpdn::Sessions::Session::Subscriber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "nas-port-id-val")
+    {
+        nas_port_id_val = value;
+        nas_port_id_val.value_namespace = name_space;
+        nas_port_id_val.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "nas-port-type")
     {
         nas_port_type = value;
@@ -1004,14 +1000,14 @@ void Vpdn::Sessions::Session::Subscriber::set_value(const std::string & value_pa
         transmit_connect_speed.value_namespace = name_space;
         transmit_connect_speed.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "nas-port")
-    {
-        nas_port.append(value);
-    }
 }
 
 void Vpdn::Sessions::Session::Subscriber::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "nas-port-id-val")
+    {
+        nas_port_id_val.yfilter = yfilter;
+    }
     if(value_path == "nas-port-type")
     {
         nas_port_type.yfilter = yfilter;
@@ -1028,15 +1024,11 @@ void Vpdn::Sessions::Session::Subscriber::set_filter(const std::string & value_p
     {
         transmit_connect_speed.yfilter = yfilter;
     }
-    if(value_path == "nas-port")
-    {
-        nas_port.yfilter = yfilter;
-    }
 }
 
 bool Vpdn::Sessions::Session::Subscriber::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "nas-port-type" || name == "physical-channel-id" || name == "receive-connect-speed" || name == "transmit-connect-speed" || name == "nas-port")
+    if(name == "nas-port-id-val" || name == "nas-port-type" || name == "physical-channel-id" || name == "receive-connect-speed" || name == "transmit-connect-speed")
         return true;
     return false;
 }
@@ -3375,45 +3367,15 @@ const Enum::YLeaf VpdnFailcode::security {16, "security"};
 const Enum::YLeaf VpdnFailcode::tunnel_in_resync {17, "tunnel-in-resync"};
 const Enum::YLeaf VpdnFailcode::call_prarmeters {18, "call-prarmeters"};
 
-const Enum::YLeaf VpdnNasPort::none {0, "none"};
-const Enum::YLeaf VpdnNasPort::primary {1, "primary"};
-const Enum::YLeaf VpdnNasPort::bri {2, "bri"};
-const Enum::YLeaf VpdnNasPort::serial {3, "serial"};
-const Enum::YLeaf VpdnNasPort::asynchronous {4, "asynchronous"};
-const Enum::YLeaf VpdnNasPort::vty {5, "vty"};
-const Enum::YLeaf VpdnNasPort::atm {6, "atm"};
-const Enum::YLeaf VpdnNasPort::ethernet {7, "ethernet"};
-const Enum::YLeaf VpdnNasPort::ppp_atm {8, "ppp-atm"};
-const Enum::YLeaf VpdnNasPort::pppoe_over_atm {9, "pppoe-over-atm"};
-const Enum::YLeaf VpdnNasPort::pppoe_over_ethernet {10, "pppoe-over-ethernet"};
-const Enum::YLeaf VpdnNasPort::pppoe_over_vlan {11, "pppoe-over-vlan"};
-const Enum::YLeaf VpdnNasPort::pppoe_over_q_in_q {12, "pppoe-over-q-in-q"};
-const Enum::YLeaf VpdnNasPort::v120 {13, "v120"};
-const Enum::YLeaf VpdnNasPort::v110 {14, "v110"};
-const Enum::YLeaf VpdnNasPort::piafs {15, "piafs"};
-const Enum::YLeaf VpdnNasPort::x75 {16, "x75"};
-const Enum::YLeaf VpdnNasPort::ip_sec {17, "ip-sec"};
-const Enum::YLeaf VpdnNasPort::other {18, "other"};
-const Enum::YLeaf VpdnNasPort::virtual_pppoe_over_ethernet {19, "virtual-pppoe-over-ethernet"};
-const Enum::YLeaf VpdnNasPort::virtual_pppoe_over_vlan {20, "virtual-pppoe-over-vlan"};
-const Enum::YLeaf VpdnNasPort::virtual_pppoe_over_q_in_q {21, "virtual-pppoe-over-q-in-q"};
-const Enum::YLeaf VpdnNasPort::ipo_e_over_ethernet {22, "ipo-e-over-ethernet"};
-const Enum::YLeaf VpdnNasPort::ipo_e_over_vlan {23, "ipo-e-over-vlan"};
-const Enum::YLeaf VpdnNasPort::ipo_e_over_q_in_q {24, "ipo-e-over-q-in-q"};
-const Enum::YLeaf VpdnNasPort::virtual_i_po_e_over_ethernet {25, "virtual-i-po-e-over-ethernet"};
-const Enum::YLeaf VpdnNasPort::virtual_i_po_e_over_vlan {26, "virtual-i-po-e-over-vlan"};
-const Enum::YLeaf VpdnNasPort::virtual_i_po_e_over_q_in_q {27, "virtual-i-po-e-over-q-in-q"};
-const Enum::YLeaf VpdnNasPort::unknown {28, "unknown"};
-
-const Enum::YLeaf TosMode::default_ {0, "default"};
-const Enum::YLeaf TosMode::set {1, "set"};
-const Enum::YLeaf TosMode::reflect {2, "reflect"};
-
 const Enum::YLeaf LsgStatus::none {0, "none"};
 const Enum::YLeaf LsgStatus::active {1, "active"};
 const Enum::YLeaf LsgStatus::down {2, "down"};
 const Enum::YLeaf LsgStatus::testable {3, "testable"};
 const Enum::YLeaf LsgStatus::testing {4, "testing"};
+
+const Enum::YLeaf TosMode::default_ {0, "default"};
+const Enum::YLeaf TosMode::set {1, "set"};
+const Enum::YLeaf TosMode::reflect {2, "reflect"};
 
 
 }

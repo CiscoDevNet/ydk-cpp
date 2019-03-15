@@ -23430,6 +23430,9 @@ const Enum::YLeaf MribMultipathMode::legacy {5, "legacy"};
 const Enum::YLeaf MribMultipathMode::resilient {6, "resilient"};
 const Enum::YLeaf MribMultipathMode::s_g_hash_next_hop {7, "s-g-hash-next-hop"};
 
+const Enum::YLeaf BfdAuthInterop::enable {1, "enable"};
+const Enum::YLeaf BfdAuthInterop::disable {0, "disable"};
+
 const Enum::YLeaf IgmpsnoopEhType::igmp_snoop_internal {0, "igmp-snoop-internal"};
 const Enum::YLeaf IgmpsnoopEhType::mfdm {1, "mfdm"};
 const Enum::YLeaf IgmpsnoopEhType::mfdm_sum {2, "mfdm-sum"};
@@ -23971,6 +23974,11 @@ const Enum::YLeaf IpUrpfT::disabled {0, "disabled"};
 const Enum::YLeaf IpUrpfT::strict {1, "strict"};
 const Enum::YLeaf IpUrpfT::loose {2, "loose"};
 const Enum::YLeaf IpUrpfT::loose_allow_default {3, "loose-allow-default"};
+
+const Enum::YLeaf NbmNbmOifOrigin::UNDEFINED {0, "UNDEFINED"};
+const Enum::YLeaf NbmNbmOifOrigin::PROTOCOL {1, "PROTOCOL"};
+const Enum::YLeaf NbmNbmOifOrigin::API {2, "API"};
+const Enum::YLeaf NbmNbmOifOrigin::API_PROTOCOL {3, "API_PROTOCOL"};
 
 const Enum::YLeaf OspfAlways::no {0, "no"};
 const Enum::YLeaf OspfAlways::yes {1, "yes"};
@@ -24547,6 +24555,7 @@ const Enum::YLeaf SegrtSRGBOperSt::cleanup_failed {5, "cleanup-failed"};
 const Enum::YLeaf UdldPortEnable::port_enabled {0, "port-enabled"};
 const Enum::YLeaf UdldPortEnable::port_fiber_disabled {1, "port-fiber-disabled"};
 const Enum::YLeaf UdldPortEnable::port_default {2, "port-default"};
+const Enum::YLeaf UdldPortEnable::port_default_disable {3, "port-default-disable"};
 
 const Enum::YLeaf AnalyticsModeT::analytics {0, "analytics"};
 const Enum::YLeaf AnalyticsModeT::netflow {1, "netflow"};
@@ -25210,6 +25219,20 @@ const Enum::YLeaf ArpSuppressArpMode::l2suppressarp {1, "l2suppressarp"};
 const Enum::YLeaf ArpSuppressArpMode::l2l3suppressarp {2, "l2l3suppressarp"};
 const Enum::YLeaf ArpSuppressArpMode::invalid {3, "invalid"};
 
+const Enum::YLeaf EqptcapXcvrT::unspecified {0, "unspecified"};
+const Enum::YLeaf EqptcapXcvrT::gbic {1, "gbic"};
+const Enum::YLeaf EqptcapXcvrT::solder {2, "solder"};
+const Enum::YLeaf EqptcapXcvrT::sfp {3, "sfp"};
+const Enum::YLeaf EqptcapXcvrT::xbi {4, "xbi"};
+const Enum::YLeaf EqptcapXcvrT::xenpak {5, "xenpak"};
+const Enum::YLeaf EqptcapXcvrT::xfp {6, "xfp"};
+const Enum::YLeaf EqptcapXcvrT::xff {7, "xff"};
+const Enum::YLeaf EqptcapXcvrT::xfp_e {8, "xfp-e"};
+const Enum::YLeaf EqptcapXcvrT::xpak {9, "xpak"};
+const Enum::YLeaf EqptcapXcvrT::x2 {10, "x2"};
+const Enum::YLeaf EqptcapXcvrT::dwdm_sfp {11, "dwdm-sfp"};
+const Enum::YLeaf EqptcapXcvrT::qsfp {12, "qsfp"};
+
 const Enum::YLeaf L1DceMode::core {1, "core"};
 const Enum::YLeaf L1DceMode::edge {2, "edge"};
 const Enum::YLeaf L1DceMode::auto_ {3, "auto"};
@@ -25447,6 +25470,10 @@ const Enum::YLeaf IsisOperSt::failed {3, "failed"};
 const Enum::YLeaf NbmNbmRcvOwner::IGMP {0, "IGMP"};
 const Enum::YLeaf NbmNbmRcvOwner::STATIC {1, "STATIC"};
 const Enum::YLeaf NbmNbmRcvOwner::PIM {2, "PIM"};
+const Enum::YLeaf NbmNbmRcvOwner::NBM_STATIC {4, "NBM-STATIC"};
+
+const Enum::YLeaf NbmNbmFlowPolicerEn::DISABLED {0, "DISABLED"};
+const Enum::YLeaf NbmNbmFlowPolicerEn::ENABLED {1, "ENABLED"};
 
 const Enum::YLeaf TrackIntfProtocolType::none {0, "none"};
 const Enum::YLeaf TrackIntfProtocolType::ipv4_routing {1, "ipv4-routing"};
@@ -26140,6 +26167,9 @@ const Enum::YLeaf McpOperSt::init {0, "init"};
 const Enum::YLeaf McpOperSt::up {1, "up"};
 const Enum::YLeaf McpOperSt::down {3, "down"};
 
+const Enum::YLeaf OspfFlagStatus::set {0, "set"};
+const Enum::YLeaf OspfFlagStatus::clear {1, "clear"};
+
 const Enum::YLeaf RtdmcAdjOperSt::up {0, "up"};
 const Enum::YLeaf RtdmcAdjOperSt::inactive {1, "inactive"};
 
@@ -26388,10 +26418,6 @@ const Enum::YLeaf StpPortState::learning {2, "learning"};
 const Enum::YLeaf StpPortState::forwarding {3, "forwarding"};
 const Enum::YLeaf StpPortState::disabled {4, "disabled"};
 
-const Enum::YLeaf CfsIpDistMode::none {0, "none"};
-const Enum::YLeaf CfsIpDistMode::ipv4 {1, "ipv4"};
-const Enum::YLeaf CfsIpDistMode::ipv6 {2, "ipv6"};
-
 const Enum::YLeaf BgpLsProtoId::none {0, "none"};
 const Enum::YLeaf BgpLsProtoId::isis_l1 {1, "isis-l1"};
 const Enum::YLeaf BgpLsProtoId::isis_l2 {2, "isis-l2"};
@@ -26466,20 +26492,6 @@ const Enum::YLeaf AggregateResourceStatus::vnidCreationReceived {7, "vnidCreatio
 const Enum::YLeaf AggregateResourceStatus::myTEPIPPublished {101, "myTEPIPPublished"};
 const Enum::YLeaf AggregateResourceStatus::controllerIntfNotCarved {201, "controllerIntfNotCarved"};
 const Enum::YLeaf AggregateResourceStatus::controllerIntfCarved {202, "controllerIntfCarved"};
-
-const Enum::YLeaf EqptcapXcvrT::unspecified {0, "unspecified"};
-const Enum::YLeaf EqptcapXcvrT::gbic {1, "gbic"};
-const Enum::YLeaf EqptcapXcvrT::solder {2, "solder"};
-const Enum::YLeaf EqptcapXcvrT::sfp {3, "sfp"};
-const Enum::YLeaf EqptcapXcvrT::xbi {4, "xbi"};
-const Enum::YLeaf EqptcapXcvrT::xenpak {5, "xenpak"};
-const Enum::YLeaf EqptcapXcvrT::xfp {6, "xfp"};
-const Enum::YLeaf EqptcapXcvrT::xff {7, "xff"};
-const Enum::YLeaf EqptcapXcvrT::xfp_e {8, "xfp-e"};
-const Enum::YLeaf EqptcapXcvrT::xpak {9, "xpak"};
-const Enum::YLeaf EqptcapXcvrT::x2 {10, "x2"};
-const Enum::YLeaf EqptcapXcvrT::dwdm_sfp {11, "dwdm-sfp"};
-const Enum::YLeaf EqptcapXcvrT::qsfp {12, "qsfp"};
 
 const Enum::YLeaf ImBreakoutMapT::no_breakout {0, "no-breakout"};
 const Enum::YLeaf ImBreakoutMapT::Y_10g_4x {5, "10g-4x"};
@@ -27017,6 +27029,7 @@ const Enum::YLeaf NbmNbmFaultType::FLOWLIMITREACHED {10, "FLOWLIMITREACHED"};
 const Enum::YLeaf NbmNbmFaultType::EXTFLOWLIMITREACHED {11, "EXTFLOWLIMITREACHED"};
 const Enum::YLeaf NbmNbmFaultType::EXTPOLICYDENIED {12, "EXTPOLICYDENIED"};
 const Enum::YLeaf NbmNbmFaultType::EXTPOLICERUNAVAIL {13, "EXTPOLICERUNAVAIL"};
+const Enum::YLeaf NbmNbmFaultType::BADIFSTATE {14, "BADIFSTATE"};
 
 const Enum::YLeaf StpBpdufilter::default_ {0, "default"};
 const Enum::YLeaf StpBpdufilter::enable {1, "enable"};
@@ -27288,6 +27301,11 @@ const Enum::YLeaf L1OperStQual_::vdc_mode {253, "vdc-mode"};
 const Enum::YLeaf L1OperStQual_::enm_pin_fail_link_down {254, "enm-pin-fail-link-down"};
 const Enum::YLeaf L1OperStQual_::inactive_m1_port_fpath_access_vlan {255, "inactive-m1-port-fpath-access-vlan"};
 
+const Enum::YLeaf SyslogOriginIdType::unknown {0, "unknown"};
+const Enum::YLeaf SyslogOriginIdType::hostname {1, "hostname"};
+const Enum::YLeaf SyslogOriginIdType::ip {2, "ip"};
+const Enum::YLeaf SyslogOriginIdType::string {3, "string"};
+
 const Enum::YLeaf RtmapMatchT::reg_community {1, "reg-community"};
 const Enum::YLeaf RtmapMatchT::ext_community {2, "ext-community"};
 const Enum::YLeaf RtmapMatchT::rt_dst {3, "rt-dst"};
@@ -27407,6 +27425,9 @@ const Enum::YLeaf TrackListObj::weight {4, "weight"};
 const Enum::YLeaf NvoVniStateT::Up {1, "Up"};
 const Enum::YLeaf NvoVniStateT::Down {2, "Down"};
 
+const Enum::YLeaf InbandTelemetryProfile::endpoint {0, "endpoint"};
+const Enum::YLeaf InbandTelemetryProfile::transit {1, "transit"};
+
 const Enum::YLeaf UdldPktDirection::send {0, "send"};
 const Enum::YLeaf UdldPktDirection::recv {1, "recv"};
 
@@ -27456,6 +27477,9 @@ const Enum::YLeaf L2Mode::TNP {4, "TNP"};
 const Enum::YLeaf SisfNonGlobalTracking::default_ {0, "default"};
 const Enum::YLeaf SisfNonGlobalTracking::disable {1, "disable"};
 const Enum::YLeaf SisfNonGlobalTracking::enable {2, "enable"};
+
+const Enum::YLeaf OspfActive::no {0, "no"};
+const Enum::YLeaf OspfActive::yes {1, "yes"};
 
 const Enum::YLeaf SviOperSt::unknown {0, "unknown"};
 const Enum::YLeaf SviOperSt::up {1, "up"};
@@ -27819,6 +27843,7 @@ const Enum::YLeaf NdAdjOperSt::normal {2, "normal"};
 
 const Enum::YLeaf NbmNbmNoYes::NO {0, "NO"};
 const Enum::YLeaf NbmNbmNoYes::YES {1, "YES"};
+const Enum::YLeaf NbmNbmNoYes::NA {2, "NA"};
 
 const Enum::YLeaf BfdAuthT::none {0, "none"};
 const Enum::YLeaf BfdAuthT::sha1 {4, "sha1"};

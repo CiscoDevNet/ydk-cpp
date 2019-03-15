@@ -33,18 +33,20 @@ class Aaa : public ydk::Entity
 
         class Authentication; //type: Aaa::Authentication
         class Authorization; //type: Aaa::Authorization
+        class TailfAaaAccounting; //type: Aaa::TailfAaaAccounting
         class Ios; //type: Aaa::Ios
         class DisasterRecovery; //type: Aaa::DisasterRecovery
         class PrivilegedAccess; //type: Aaa::PrivilegedAccess
-        class Accounting; //type: Aaa::Accounting
+        class CiscoIOSXRSysadminAaaAaaShowAccounting; //type: Aaa::CiscoIOSXRSysadminAaaAaaShowAccounting
         class UserGroup; //type: Aaa::UserGroup
 
         std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authentication> authentication;
         std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authorization> authorization;
+        std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::TailfAaaAccounting> tailf_aaa_accounting;
         std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Ios> ios; // presence node
         std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::DisasterRecovery> disaster_recovery;
         std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::PrivilegedAccess> privileged_access;
-        std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Accounting> accounting;
+        std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::CiscoIOSXRSysadminAaaAaaShowAccounting> cisco_ios_xr_sysadmin_aaa_aaa_show_accounting_;
         std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::UserGroup> user_group;
         
 }; // Aaa
@@ -69,9 +71,11 @@ class Aaa::Authentication : public ydk::Entity
 
         class Users; //type: Aaa::Authentication::Users
         class Groups; //type: Aaa::Authentication::Groups
+        class Login; //type: Aaa::Authentication::Login
 
         std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authentication::Users> users;
         std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authentication::Groups> groups;
+        std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authentication::Login> login;
         
 }; // Aaa::Authentication
 
@@ -118,8 +122,8 @@ class Aaa::Authentication::Users::User : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        ydk::YLeaf uid; //type: int32
-        ydk::YLeaf gid; //type: int32
+        ydk::YLeaf uid; //type: uint32
+        ydk::YLeaf gid; //type: uint32
         ydk::YLeaf password; //type: string
         ydk::YLeaf ssh_keydir; //type: string
         ydk::YLeaf homedir; //type: string
@@ -169,10 +173,56 @@ class Aaa::Authentication::Groups::Group : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        ydk::YLeaf gid; //type: int32
+        ydk::YLeaf gid; //type: uint32
         ydk::YLeaf users; //type: string
 
 }; // Aaa::Authentication::Groups::Group
+
+
+class Aaa::Authentication::Login : public ydk::Entity
+{
+    public:
+        Login();
+        ~Login();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Group; //type: Aaa::Authentication::Login::Group
+
+        std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authentication::Login::Group> group;
+        
+}; // Aaa::Authentication::Login
+
+
+class Aaa::Authentication::Login::Group : public ydk::Entity
+{
+    public:
+        Group();
+        ~Group();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf tacacs; //type: empty
+
+}; // Aaa::Authentication::Login::Group
 
 
 class Aaa::Authorization : public ydk::Entity
@@ -194,9 +244,11 @@ class Aaa::Authorization : public ydk::Entity
 
         class Cmdrules; //type: Aaa::Authorization::Cmdrules
         class Datarules; //type: Aaa::Authorization::Datarules
+        class Commands; //type: Aaa::Authorization::Commands
 
         std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authorization::Cmdrules> cmdrules;
         std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authorization::Datarules> datarules;
+        std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authorization::Commands> commands;
         
 }; // Aaa::Authorization
 
@@ -302,6 +354,123 @@ class Aaa::Authorization::Datarules::Datarule : public ydk::Entity
         ydk::YLeaf action; //type: Action
 
 }; // Aaa::Authorization::Datarules::Datarule
+
+
+class Aaa::Authorization::Commands : public ydk::Entity
+{
+    public:
+        Commands();
+        ~Commands();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Group; //type: Aaa::Authorization::Commands::Group
+
+        std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::Authorization::Commands::Group> group;
+        
+}; // Aaa::Authorization::Commands
+
+
+class Aaa::Authorization::Commands::Group : public ydk::Entity
+{
+    public:
+        Group();
+        ~Group();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf tacacs; //type: empty
+        ydk::YLeaf none; //type: empty
+
+}; // Aaa::Authorization::Commands::Group
+
+
+class Aaa::TailfAaaAccounting : public ydk::Entity
+{
+    public:
+        TailfAaaAccounting();
+        ~TailfAaaAccounting();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Commands; //type: Aaa::TailfAaaAccounting::Commands
+
+        std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::TailfAaaAccounting::Commands> commands;
+        
+}; // Aaa::TailfAaaAccounting
+
+
+class Aaa::TailfAaaAccounting::Commands : public ydk::Entity
+{
+    public:
+        Commands();
+        ~Commands();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Group; //type: Aaa::TailfAaaAccounting::Commands::Group
+
+        std::shared_ptr<cisco_ios_xr::tailf_aaa::Aaa::TailfAaaAccounting::Commands::Group> group;
+        
+}; // Aaa::TailfAaaAccounting::Commands
+
+
+class Aaa::TailfAaaAccounting::Commands::Group : public ydk::Entity
+{
+    public:
+        Group();
+        ~Group();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf tacacs; //type: empty
+
+}; // Aaa::TailfAaaAccounting::Commands::Group
 
 
 class Aaa::Ios : public ydk::Entity
@@ -474,11 +643,11 @@ class Aaa::PrivilegedAccess : public ydk::Entity
 }; // Aaa::PrivilegedAccess
 
 
-class Aaa::Accounting : public ydk::Entity
+class Aaa::CiscoIOSXRSysadminAaaAaaShowAccounting : public ydk::Entity
 {
     public:
-        Accounting();
-        ~Accounting();
+        CiscoIOSXRSysadminAaaAaaShowAccounting();
+        ~CiscoIOSXRSysadminAaaAaaShowAccounting();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -493,7 +662,7 @@ class Aaa::Accounting : public ydk::Entity
 
         ydk::YLeaf log_data; //type: string
 
-}; // Aaa::Accounting
+}; // Aaa::CiscoIOSXRSysadminAaaAaaShowAccounting
 
 
 class Aaa::UserGroup : public ydk::Entity

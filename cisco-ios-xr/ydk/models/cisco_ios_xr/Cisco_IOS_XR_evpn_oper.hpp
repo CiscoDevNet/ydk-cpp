@@ -1050,6 +1050,8 @@ class Evpn::Nodes::Node::EviDetail::Elements::Element : public ydk::Entity
         ydk::YLeaf reoriginate_disabled; //type: boolean
         ydk::YLeaf stitching; //type: boolean
         ydk::YLeaf multicast_source_connected; //type: boolean
+        ydk::YLeaf bgp_implicit_import_disabled; //type: boolean
+        ydk::YLeaf vrf_name; //type: string
         class EvpnInstance; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::EvpnInstance
         class FlowLabel; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::FlowLabel
         class RdAuto; //type: Evpn::Nodes::Node::EviDetail::Elements::Element::RdAuto
@@ -3914,6 +3916,8 @@ class Evpn::Active::EviDetail::Elements::Element : public ydk::Entity
         ydk::YLeaf reoriginate_disabled; //type: boolean
         ydk::YLeaf stitching; //type: boolean
         ydk::YLeaf multicast_source_connected; //type: boolean
+        ydk::YLeaf bgp_implicit_import_disabled; //type: boolean
+        ydk::YLeaf vrf_name; //type: string
         class EvpnInstance; //type: Evpn::Active::EviDetail::Elements::Element::EvpnInstance
         class FlowLabel; //type: Evpn::Active::EviDetail::Elements::Element::FlowLabel
         class RdAuto; //type: Evpn::Active::EviDetail::Elements::Element::RdAuto
@@ -6847,6 +6851,8 @@ class Evpn::Standby::EviDetail::Elements::Element : public ydk::Entity
         ydk::YLeaf reoriginate_disabled; //type: boolean
         ydk::YLeaf stitching; //type: boolean
         ydk::YLeaf multicast_source_connected; //type: boolean
+        ydk::YLeaf bgp_implicit_import_disabled; //type: boolean
+        ydk::YLeaf vrf_name; //type: string
         class EvpnInstance; //type: Evpn::Standby::EviDetail::Elements::Element::EvpnInstance
         class FlowLabel; //type: Evpn::Standby::EviDetail::Elements::Element::FlowLabel
         class RdAuto; //type: Evpn::Standby::EviDetail::Elements::Element::RdAuto

@@ -12,6 +12,98 @@ using namespace ydk;
 namespace cisco_nx_os {
 namespace Cisco_NX_OS_device {
 
+System::IpqosItems::QueuingItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems::MtuItems()
+    :
+    value_{YType::uint16, "value"},
+    configstatus{YType::uint32, "configStatus"}
+{
+
+    yang_name = "mtu-items"; yang_parent_name = "MatchCMap-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::IpqosItems::QueuingItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems::~MtuItems()
+{
+}
+
+bool System::IpqosItems::QueuingItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return value_.is_set
+	|| configstatus.is_set;
+}
+
+bool System::IpqosItems::QueuingItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(value_.yfilter)
+	|| ydk::is_set(configstatus.yfilter);
+}
+
+std::string System::IpqosItems::QueuingItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mtu-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::IpqosItems::QueuingItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+    if (configstatus.is_set || is_set(configstatus.yfilter)) leaf_name_data.push_back(configstatus.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::IpqosItems::QueuingItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::IpqosItems::QueuingItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::IpqosItems::QueuingItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus = value;
+        configstatus.value_namespace = name_space;
+        configstatus.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::IpqosItems::QueuingItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+    if(value_path == "configStatus")
+    {
+        configstatus.yfilter = yfilter;
+    }
+}
+
+bool System::IpqosItems::QueuingItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::MtuItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "value" || name == "configStatus")
+        return true;
+    return false;
+}
+
 System::IpqosItems::QueuingItems::PItems::NameItems::PMapInstList::CmapItems::MatchCMapList::SetPrecedenceItems::SetPrecedenceItems()
     :
     val{YType::enumeration, "val"},
@@ -18672,99 +18764,6 @@ void System::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::CosItems::s
 bool System::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::CosItems::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "Cos-list")
-        return true;
-    return false;
-}
-
-System::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::CosItems::CosList::CosList()
-    :
-    val{YType::uint8, "val"},
-    configstatus{YType::uint32, "configStatus"}
-{
-
-    yang_name = "Cos-list"; yang_parent_name = "cos-items"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::CosItems::CosList::~CosList()
-{
-}
-
-bool System::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::CosItems::CosList::has_data() const
-{
-    if (is_presence_container) return true;
-    return val.is_set
-	|| configstatus.is_set;
-}
-
-bool System::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::CosItems::CosList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(val.yfilter)
-	|| ydk::is_set(configstatus.yfilter);
-}
-
-std::string System::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::CosItems::CosList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cos-list";
-    ADD_KEY_TOKEN(val, "val");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::CosItems::CosList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (val.is_set || is_set(val.yfilter)) leaf_name_data.push_back(val.get_name_leafdata());
-    if (configstatus.is_set || is_set(configstatus.yfilter)) leaf_name_data.push_back(configstatus.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::CosItems::CosList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::CosItems::CosList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void System::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::CosItems::CosList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "val")
-    {
-        val = value;
-        val.value_namespace = name_space;
-        val.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configStatus")
-    {
-        configstatus = value;
-        configstatus.value_namespace = name_space;
-        configstatus.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::CosItems::CosList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "val")
-    {
-        val.yfilter = yfilter;
-    }
-    if(value_path == "configStatus")
-    {
-        configstatus.yfilter = yfilter;
-    }
-}
-
-bool System::IpqosItems::DfltItems::CItems::NameItems::CMapInstList::CosItems::CosList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "val" || name == "configStatus")
         return true;
     return false;
 }

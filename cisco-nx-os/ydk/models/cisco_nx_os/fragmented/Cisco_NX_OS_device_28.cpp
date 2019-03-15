@@ -13,6 +13,246 @@ using namespace ydk;
 namespace cisco_nx_os {
 namespace Cisco_NX_OS_device {
 
+System::SisfItems::RaguardItems::InstRaGuardList::InstRaGuardList()
+    :
+    policyname{YType::str, "policyName"},
+    devicerole{YType::enumeration, "deviceRole"},
+    trustedportenabled{YType::boolean, "trustedPortEnabled"},
+    routerpreferencemaximum{YType::enumeration, "routerPreferenceMaximum"},
+    hoplimitmax{YType::uint16, "hopLimitMax"},
+    hoplimitmin{YType::uint16, "hopLimitMin"},
+    managedconfig{YType::enumeration, "managedConfig"},
+    otherconfig{YType::enumeration, "otherConfig"},
+    name{YType::str, "name"},
+    adminst{YType::enumeration, "adminSt"},
+    ctrl{YType::str, "ctrl"},
+    opererr{YType::str, "operErr"}
+{
+
+    yang_name = "InstRaGuard-list"; yang_parent_name = "raguard-items"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+System::SisfItems::RaguardItems::InstRaGuardList::~InstRaGuardList()
+{
+}
+
+bool System::SisfItems::RaguardItems::InstRaGuardList::has_data() const
+{
+    if (is_presence_container) return true;
+    return policyname.is_set
+	|| devicerole.is_set
+	|| trustedportenabled.is_set
+	|| routerpreferencemaximum.is_set
+	|| hoplimitmax.is_set
+	|| hoplimitmin.is_set
+	|| managedconfig.is_set
+	|| otherconfig.is_set
+	|| name.is_set
+	|| adminst.is_set
+	|| ctrl.is_set
+	|| opererr.is_set;
+}
+
+bool System::SisfItems::RaguardItems::InstRaGuardList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(policyname.yfilter)
+	|| ydk::is_set(devicerole.yfilter)
+	|| ydk::is_set(trustedportenabled.yfilter)
+	|| ydk::is_set(routerpreferencemaximum.yfilter)
+	|| ydk::is_set(hoplimitmax.yfilter)
+	|| ydk::is_set(hoplimitmin.yfilter)
+	|| ydk::is_set(managedconfig.yfilter)
+	|| ydk::is_set(otherconfig.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(adminst.yfilter)
+	|| ydk::is_set(ctrl.yfilter)
+	|| ydk::is_set(opererr.yfilter);
+}
+
+std::string System::SisfItems::RaguardItems::InstRaGuardList::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:System/sisf-items/raguard-items/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string System::SisfItems::RaguardItems::InstRaGuardList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "InstRaGuard-list";
+    ADD_KEY_TOKEN(policyname, "policyName");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::SisfItems::RaguardItems::InstRaGuardList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (policyname.is_set || is_set(policyname.yfilter)) leaf_name_data.push_back(policyname.get_name_leafdata());
+    if (devicerole.is_set || is_set(devicerole.yfilter)) leaf_name_data.push_back(devicerole.get_name_leafdata());
+    if (trustedportenabled.is_set || is_set(trustedportenabled.yfilter)) leaf_name_data.push_back(trustedportenabled.get_name_leafdata());
+    if (routerpreferencemaximum.is_set || is_set(routerpreferencemaximum.yfilter)) leaf_name_data.push_back(routerpreferencemaximum.get_name_leafdata());
+    if (hoplimitmax.is_set || is_set(hoplimitmax.yfilter)) leaf_name_data.push_back(hoplimitmax.get_name_leafdata());
+    if (hoplimitmin.is_set || is_set(hoplimitmin.yfilter)) leaf_name_data.push_back(hoplimitmin.get_name_leafdata());
+    if (managedconfig.is_set || is_set(managedconfig.yfilter)) leaf_name_data.push_back(managedconfig.get_name_leafdata());
+    if (otherconfig.is_set || is_set(otherconfig.yfilter)) leaf_name_data.push_back(otherconfig.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (adminst.is_set || is_set(adminst.yfilter)) leaf_name_data.push_back(adminst.get_name_leafdata());
+    if (ctrl.is_set || is_set(ctrl.yfilter)) leaf_name_data.push_back(ctrl.get_name_leafdata());
+    if (opererr.is_set || is_set(opererr.yfilter)) leaf_name_data.push_back(opererr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::SisfItems::RaguardItems::InstRaGuardList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::SisfItems::RaguardItems::InstRaGuardList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::SisfItems::RaguardItems::InstRaGuardList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "policyName")
+    {
+        policyname = value;
+        policyname.value_namespace = name_space;
+        policyname.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "deviceRole")
+    {
+        devicerole = value;
+        devicerole.value_namespace = name_space;
+        devicerole.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "trustedPortEnabled")
+    {
+        trustedportenabled = value;
+        trustedportenabled.value_namespace = name_space;
+        trustedportenabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "routerPreferenceMaximum")
+    {
+        routerpreferencemaximum = value;
+        routerpreferencemaximum.value_namespace = name_space;
+        routerpreferencemaximum.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hopLimitMax")
+    {
+        hoplimitmax = value;
+        hoplimitmax.value_namespace = name_space;
+        hoplimitmax.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hopLimitMin")
+    {
+        hoplimitmin = value;
+        hoplimitmin.value_namespace = name_space;
+        hoplimitmin.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "managedConfig")
+    {
+        managedconfig = value;
+        managedconfig.value_namespace = name_space;
+        managedconfig.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "otherConfig")
+    {
+        otherconfig = value;
+        otherconfig.value_namespace = name_space;
+        otherconfig.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adminSt")
+    {
+        adminst = value;
+        adminst.value_namespace = name_space;
+        adminst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ctrl")
+    {
+        ctrl = value;
+        ctrl.value_namespace = name_space;
+        ctrl.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "operErr")
+    {
+        opererr = value;
+        opererr.value_namespace = name_space;
+        opererr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::SisfItems::RaguardItems::InstRaGuardList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "policyName")
+    {
+        policyname.yfilter = yfilter;
+    }
+    if(value_path == "deviceRole")
+    {
+        devicerole.yfilter = yfilter;
+    }
+    if(value_path == "trustedPortEnabled")
+    {
+        trustedportenabled.yfilter = yfilter;
+    }
+    if(value_path == "routerPreferenceMaximum")
+    {
+        routerpreferencemaximum.yfilter = yfilter;
+    }
+    if(value_path == "hopLimitMax")
+    {
+        hoplimitmax.yfilter = yfilter;
+    }
+    if(value_path == "hopLimitMin")
+    {
+        hoplimitmin.yfilter = yfilter;
+    }
+    if(value_path == "managedConfig")
+    {
+        managedconfig.yfilter = yfilter;
+    }
+    if(value_path == "otherConfig")
+    {
+        otherconfig.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "adminSt")
+    {
+        adminst.yfilter = yfilter;
+    }
+    if(value_path == "ctrl")
+    {
+        ctrl.yfilter = yfilter;
+    }
+    if(value_path == "operErr")
+    {
+        opererr.yfilter = yfilter;
+    }
+}
+
+bool System::SisfItems::RaguardItems::InstRaGuardList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "policyName" || name == "deviceRole" || name == "trustedPortEnabled" || name == "routerPreferenceMaximum" || name == "hopLimitMax" || name == "hopLimitMin" || name == "managedConfig" || name == "otherConfig" || name == "name" || name == "adminSt" || name == "ctrl" || name == "operErr")
+        return true;
+    return false;
+}
+
 System::SisfItems::FhsifItems::FhsifItems()
     :
     fhsif_list(this, {"id"})
@@ -17534,124 +17774,6 @@ void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::Poli
 bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "in-items" || name == "out-items")
-        return true;
-    return false;
-}
-
-System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::InItems()
-    :
-    intf_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::IntfItems>())
-    , sys_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::SysItems>())
-    , pmap_items(std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::PmapItems>())
-{
-    intf_items->parent = this;
-    sys_items->parent = this;
-    pmap_items->parent = this;
-
-    yang_name = "in-items"; yang_parent_name = "policy-items"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::~InItems()
-{
-}
-
-bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::has_data() const
-{
-    if (is_presence_container) return true;
-    return (intf_items !=  nullptr && intf_items->has_data())
-	|| (sys_items !=  nullptr && sys_items->has_data())
-	|| (pmap_items !=  nullptr && pmap_items->has_data());
-}
-
-bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::has_operation() const
-{
-    return is_set(yfilter)
-	|| (intf_items !=  nullptr && intf_items->has_operation())
-	|| (sys_items !=  nullptr && sys_items->has_operation())
-	|| (pmap_items !=  nullptr && pmap_items->has_operation());
-}
-
-std::string System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "in-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "intf-items")
-    {
-        if(intf_items == nullptr)
-        {
-            intf_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::IntfItems>();
-        }
-        return intf_items;
-    }
-
-    if(child_yang_name == "sys-items")
-    {
-        if(sys_items == nullptr)
-        {
-            sys_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::SysItems>();
-        }
-        return sys_items;
-    }
-
-    if(child_yang_name == "pmap-items")
-    {
-        if(pmap_items == nullptr)
-        {
-            pmap_items = std::make_shared<System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::PmapItems>();
-        }
-        return pmap_items;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(intf_items != nullptr)
-    {
-        _children["intf-items"] = intf_items;
-    }
-
-    if(sys_items != nullptr)
-    {
-        _children["sys-items"] = sys_items;
-    }
-
-    if(pmap_items != nullptr)
-    {
-        _children["pmap-items"] = pmap_items;
-    }
-
-    return _children;
-}
-
-void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool System::BdItems::VlanconfigItems::VlanConfigList::IpqosItems::NwItems::PolicyItems::InItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "intf-items" || name == "sys-items" || name == "pmap-items")
         return true;
     return false;
 }

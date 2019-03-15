@@ -398,6 +398,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLoca
 
         ydk::YLeaf nh_info_replicated_type; //type: uint8
         ydk::YLeaf nh_info_replicated_nh_id; //type: uint32
+        ydk::YLeaf nh_info_replicated_encap_id; //type: uint64
         ydk::YLeaf nh_info_replicated_interface; //type: string
 
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoLocalDetails::NhInfoLocalDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr
@@ -670,6 +671,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoSpec
 
         ydk::YLeaf nh_info_replicated_type; //type: uint8
         ydk::YLeaf nh_info_replicated_nh_id; //type: uint32
+        ydk::YLeaf nh_info_replicated_encap_id; //type: uint64
         ydk::YLeaf nh_info_replicated_interface; //type: string
 
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoSpecialDetail::NhInfoSpecialPuntDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr
@@ -913,6 +915,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoSpec
 
         ydk::YLeaf nh_info_replicated_type; //type: uint8
         ydk::YLeaf nh_info_replicated_nh_id; //type: uint32
+        ydk::YLeaf nh_info_replicated_encap_id; //type: uint64
         ydk::YLeaf nh_info_replicated_interface; //type: string
 
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoSpecialDetail::NhInfoSpecialDropDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr
@@ -1156,6 +1159,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoSpec
 
         ydk::YLeaf nh_info_replicated_type; //type: uint8
         ydk::YLeaf nh_info_replicated_nh_id; //type: uint32
+        ydk::YLeaf nh_info_replicated_encap_id; //type: uint64
         ydk::YLeaf nh_info_replicated_interface; //type: string
 
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoSpecialDetail::NhInfoSpecialNullDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr
@@ -1399,6 +1403,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoSpec
 
         ydk::YLeaf nh_info_replicated_type; //type: uint8
         ydk::YLeaf nh_info_replicated_nh_id; //type: uint32
+        ydk::YLeaf nh_info_replicated_encap_id; //type: uint64
         ydk::YLeaf nh_info_replicated_interface; //type: string
 
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoSpecialDetail::NhInfoSpecialDiscardDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr
@@ -1669,6 +1674,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoRemo
 
         ydk::YLeaf nh_info_replicated_type; //type: uint8
         ydk::YLeaf nh_info_replicated_nh_id; //type: uint32
+        ydk::YLeaf nh_info_replicated_encap_id; //type: uint64
         ydk::YLeaf nh_info_replicated_interface; //type: string
 
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetail::NhInfoRemoteDetails::NhInfoRemoteDetail::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr
@@ -2367,6 +2373,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefix
         ydk::YLeaf l2_subscriber_ip_protocol; //type: uint32
         ydk::YLeaf l2tpv3_cookie_length_bits; //type: uint32
         ydk::YLeaf route_for_external_reach_linecard_flag; //type: boolean
+        ydk::YLeaf route_source_not_preferred; //type: boolean
         ydk::YLeaf route_is_sr_flag; //type: boolean
         class DetailFibEntryInformation; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::DetailFibEntryInformation
         class FibEntryPath; //type: Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::IpPrefixBriefs::IpPrefixBrief::FibEntryPath
@@ -3306,6 +3313,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareIngr
 
         ydk::YLeaf nh_info_replicated_type; //type: uint8
         ydk::YLeaf nh_info_replicated_nh_id; //type: uint32
+        ydk::YLeaf nh_info_replicated_encap_id; //type: uint64
         ydk::YLeaf nh_info_replicated_interface; //type: string
 
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareIngress::NhInfoRemoteDetailHardwareIngresses::NhInfoRemoteDetailHardwareIngress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr
@@ -3576,6 +3584,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareIngr
 
         ydk::YLeaf nh_info_replicated_type; //type: uint8
         ydk::YLeaf nh_info_replicated_nh_id; //type: uint32
+        ydk::YLeaf nh_info_replicated_encap_id; //type: uint64
         ydk::YLeaf nh_info_replicated_interface; //type: string
 
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareIngress::NhInfoLocalDetailHardwareIngresses::NhInfoLocalDetailHardwareIngress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr
@@ -3848,6 +3857,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareIngr
 
         ydk::YLeaf nh_info_replicated_type; //type: uint8
         ydk::YLeaf nh_info_replicated_nh_id; //type: uint32
+        ydk::YLeaf nh_info_replicated_encap_id; //type: uint64
         ydk::YLeaf nh_info_replicated_interface; //type: string
 
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareIngress::NhInfoSpecialDetailHardwareIngress::NhInfoSpecialPuntDetailHardwareIngress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr
@@ -4091,6 +4101,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareIngr
 
         ydk::YLeaf nh_info_replicated_type; //type: uint8
         ydk::YLeaf nh_info_replicated_nh_id; //type: uint32
+        ydk::YLeaf nh_info_replicated_encap_id; //type: uint64
         ydk::YLeaf nh_info_replicated_interface; //type: string
 
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareIngress::NhInfoSpecialDetailHardwareIngress::NhInfoSpecialNullDetailHardwareIngress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr
@@ -4334,6 +4345,7 @@ class Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareIngr
 
         ydk::YLeaf nh_info_replicated_type; //type: uint8
         ydk::YLeaf nh_info_replicated_nh_id; //type: uint32
+        ydk::YLeaf nh_info_replicated_encap_id; //type: uint64
         ydk::YLeaf nh_info_replicated_interface; //type: string
 
 }; // Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareIngress::NhInfoSpecialDetailHardwareIngress::NhInfoSpecialDropDetailHardwareIngress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr

@@ -891,10 +891,6 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::PwgInfo
@@ -1664,10 +1660,6 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::PwgInfo
@@ -2437,10 +2429,6 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::PwgInfo
@@ -3210,10 +3198,6 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::PwgInfo
@@ -3983,10 +3967,6 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::PwgInfo
@@ -4756,10 +4736,6 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Attributes::PwgInfo
@@ -5529,10 +5505,6 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Attributes::PwgInfo
@@ -6302,10 +6274,6 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes::PwgInfo
@@ -7075,10 +7043,6 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes::PwgInfo
@@ -7848,10 +7812,6 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes::PwgInfo
@@ -8621,10 +8581,6 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Attributes : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Attributes::PwgInfo
@@ -9394,10 +9350,6 @@ class Inventory::Racks::Rack::Entity::Slot::Attributes : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Attributes::PwgInfo
@@ -10753,10 +10705,6 @@ class Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::PwgInfo
@@ -11526,10 +11474,6 @@ class Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::PwgInfo
@@ -12299,10 +12243,6 @@ class Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::PwgInfo
@@ -13072,10 +13012,6 @@ class Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::PwgInfo
@@ -13845,10 +13781,6 @@ class Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::PwgInfo
@@ -14618,10 +14550,6 @@ class Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Attributes::PwgInfo
@@ -15391,10 +15319,6 @@ class Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Attributes::PwgInfo
@@ -16164,10 +16088,6 @@ class Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes::PwgInfo
@@ -16937,10 +16857,6 @@ class Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes::PwgInfo
@@ -17710,10 +17626,6 @@ class Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attrib
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes::PwgInfo
@@ -18483,10 +18395,6 @@ class Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Attributes : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Tsi1s::Tsi1::Attributes::PwgInfo
@@ -19256,10 +19164,6 @@ class Inventory::Racks::Rack::Powershelf::Slot::Attributes : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Powershelf::Slot::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Powershelf::Slot::Attributes::PwgInfo
@@ -20615,10 +20519,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Ts
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::PwgInfo
@@ -21388,10 +21288,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Ts
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::PwgInfo
@@ -22161,10 +22057,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Ts
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::PwgInfo
@@ -22934,10 +22826,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Ts
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::PwgInfo
@@ -23707,10 +23595,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Ts
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::PwgInfo
@@ -24480,10 +24364,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Ts
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Attributes::PwgInfo
@@ -25253,10 +25133,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Ts
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Attributes::PwgInfo
@@ -26026,10 +25902,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Ts
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes::PwgInfo
@@ -26799,10 +26671,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Ts
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes::PwgInfo
@@ -27572,10 +27440,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attribute
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes::PwgInfo
@@ -28345,10 +28209,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Attributes : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Attributes::PwgInfo
@@ -29118,10 +28978,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Attributes : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Attributes::PwgInfo
@@ -29891,10 +29747,6 @@ class Inventory::Racks::Rack::Attributes : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Attributes::PwgInfo

@@ -242,7 +242,7 @@ HwModule::SliceIds::SliceId::SliceId()
     slice_id{YType::uint32, "slice-id"},
     client_rate{YType::enumeration, "client-rate"},
     trunk_rate{YType::enumeration, "trunk-rate"},
-    hardware_status{YType::enumeration, "hardware-status"},
+    status{YType::enumeration, "status"},
     dp_fpga_fw_type{YType::str, "dp-fpga-fw-type"},
     dp_fpga_fw_ver{YType::str, "dp-fpga-fw-ver"},
     need_upg{YType::uint32, "need-upg"},
@@ -271,7 +271,7 @@ bool HwModule::SliceIds::SliceId::has_data() const
 	|| slice_id.is_set
 	|| client_rate.is_set
 	|| trunk_rate.is_set
-	|| hardware_status.is_set
+	|| status.is_set
 	|| dp_fpga_fw_type.is_set
 	|| dp_fpga_fw_ver.is_set
 	|| need_upg.is_set
@@ -291,7 +291,7 @@ bool HwModule::SliceIds::SliceId::has_operation() const
 	|| ydk::is_set(slice_id.yfilter)
 	|| ydk::is_set(client_rate.yfilter)
 	|| ydk::is_set(trunk_rate.yfilter)
-	|| ydk::is_set(hardware_status.yfilter)
+	|| ydk::is_set(status.yfilter)
 	|| ydk::is_set(dp_fpga_fw_type.yfilter)
 	|| ydk::is_set(dp_fpga_fw_ver.yfilter)
 	|| ydk::is_set(need_upg.yfilter)
@@ -322,7 +322,7 @@ std::vector<std::pair<std::string, LeafData> > HwModule::SliceIds::SliceId::get_
     if (slice_id.is_set || is_set(slice_id.yfilter)) leaf_name_data.push_back(slice_id.get_name_leafdata());
     if (client_rate.is_set || is_set(client_rate.yfilter)) leaf_name_data.push_back(client_rate.get_name_leafdata());
     if (trunk_rate.is_set || is_set(trunk_rate.yfilter)) leaf_name_data.push_back(trunk_rate.get_name_leafdata());
-    if (hardware_status.is_set || is_set(hardware_status.yfilter)) leaf_name_data.push_back(hardware_status.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
     if (dp_fpga_fw_type.is_set || is_set(dp_fpga_fw_type.yfilter)) leaf_name_data.push_back(dp_fpga_fw_type.get_name_leafdata());
     if (dp_fpga_fw_ver.is_set || is_set(dp_fpga_fw_ver.yfilter)) leaf_name_data.push_back(dp_fpga_fw_ver.get_name_leafdata());
     if (need_upg.is_set || is_set(need_upg.yfilter)) leaf_name_data.push_back(need_upg.get_name_leafdata());
@@ -388,11 +388,11 @@ void HwModule::SliceIds::SliceId::set_value(const std::string & value_path, cons
         trunk_rate.value_namespace = name_space;
         trunk_rate.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "hardware-status")
+    if(value_path == "status")
     {
-        hardware_status = value;
-        hardware_status.value_namespace = name_space;
-        hardware_status.value_namespace_prefix = name_space_prefix;
+        status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dp-fpga-fw-type")
     {
@@ -444,9 +444,9 @@ void HwModule::SliceIds::SliceId::set_filter(const std::string & value_path, YFi
     {
         trunk_rate.yfilter = yfilter;
     }
-    if(value_path == "hardware-status")
+    if(value_path == "status")
     {
-        hardware_status.yfilter = yfilter;
+        status.yfilter = yfilter;
     }
     if(value_path == "dp-fpga-fw-type")
     {
@@ -472,7 +472,7 @@ void HwModule::SliceIds::SliceId::set_filter(const std::string & value_path, YFi
 
 bool HwModule::SliceIds::SliceId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "client-port" || name == "slice-num" || name == "slice-id" || name == "client-rate" || name == "trunk-rate" || name == "hardware-status" || name == "dp-fpga-fw-type" || name == "dp-fpga-fw-ver" || name == "need-upg" || name == "encryption-supported" || name == "lldp-drop-status")
+    if(name == "client-port" || name == "slice-num" || name == "slice-id" || name == "client-rate" || name == "trunk-rate" || name == "status" || name == "dp-fpga-fw-type" || name == "dp-fpga-fw-ver" || name == "need-upg" || name == "encryption-supported" || name == "lldp-drop-status")
         return true;
     return false;
 }
@@ -811,7 +811,7 @@ HwModule::SliceAll::SliceInfo::SliceInfo()
     slice_id{YType::uint32, "slice-id"},
     client_rate{YType::enumeration, "client-rate"},
     trunk_rate{YType::enumeration, "trunk-rate"},
-    hardware_status{YType::enumeration, "hardware-status"},
+    status{YType::enumeration, "status"},
     dp_fpga_fw_type{YType::str, "dp-fpga-fw-type"},
     dp_fpga_fw_ver{YType::str, "dp-fpga-fw-ver"},
     need_upg{YType::uint32, "need-upg"},
@@ -839,7 +839,7 @@ bool HwModule::SliceAll::SliceInfo::has_data() const
     return slice_id.is_set
 	|| client_rate.is_set
 	|| trunk_rate.is_set
-	|| hardware_status.is_set
+	|| status.is_set
 	|| dp_fpga_fw_type.is_set
 	|| dp_fpga_fw_ver.is_set
 	|| need_upg.is_set
@@ -858,7 +858,7 @@ bool HwModule::SliceAll::SliceInfo::has_operation() const
 	|| ydk::is_set(slice_id.yfilter)
 	|| ydk::is_set(client_rate.yfilter)
 	|| ydk::is_set(trunk_rate.yfilter)
-	|| ydk::is_set(hardware_status.yfilter)
+	|| ydk::is_set(status.yfilter)
 	|| ydk::is_set(dp_fpga_fw_type.yfilter)
 	|| ydk::is_set(dp_fpga_fw_ver.yfilter)
 	|| ydk::is_set(need_upg.yfilter)
@@ -888,7 +888,7 @@ std::vector<std::pair<std::string, LeafData> > HwModule::SliceAll::SliceInfo::ge
     if (slice_id.is_set || is_set(slice_id.yfilter)) leaf_name_data.push_back(slice_id.get_name_leafdata());
     if (client_rate.is_set || is_set(client_rate.yfilter)) leaf_name_data.push_back(client_rate.get_name_leafdata());
     if (trunk_rate.is_set || is_set(trunk_rate.yfilter)) leaf_name_data.push_back(trunk_rate.get_name_leafdata());
-    if (hardware_status.is_set || is_set(hardware_status.yfilter)) leaf_name_data.push_back(hardware_status.get_name_leafdata());
+    if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
     if (dp_fpga_fw_type.is_set || is_set(dp_fpga_fw_type.yfilter)) leaf_name_data.push_back(dp_fpga_fw_type.get_name_leafdata());
     if (dp_fpga_fw_ver.is_set || is_set(dp_fpga_fw_ver.yfilter)) leaf_name_data.push_back(dp_fpga_fw_ver.get_name_leafdata());
     if (need_upg.is_set || is_set(need_upg.yfilter)) leaf_name_data.push_back(need_upg.get_name_leafdata());
@@ -948,11 +948,11 @@ void HwModule::SliceAll::SliceInfo::set_value(const std::string & value_path, co
         trunk_rate.value_namespace = name_space;
         trunk_rate.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "hardware-status")
+    if(value_path == "status")
     {
-        hardware_status = value;
-        hardware_status.value_namespace = name_space;
-        hardware_status.value_namespace_prefix = name_space_prefix;
+        status = value;
+        status.value_namespace = name_space;
+        status.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "dp-fpga-fw-type")
     {
@@ -1000,9 +1000,9 @@ void HwModule::SliceAll::SliceInfo::set_filter(const std::string & value_path, Y
     {
         trunk_rate.yfilter = yfilter;
     }
-    if(value_path == "hardware-status")
+    if(value_path == "status")
     {
-        hardware_status.yfilter = yfilter;
+        status.yfilter = yfilter;
     }
     if(value_path == "dp-fpga-fw-type")
     {
@@ -1028,7 +1028,7 @@ void HwModule::SliceAll::SliceInfo::set_filter(const std::string & value_path, Y
 
 bool HwModule::SliceAll::SliceInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "client-port" || name == "slice-id" || name == "client-rate" || name == "trunk-rate" || name == "hardware-status" || name == "dp-fpga-fw-type" || name == "dp-fpga-fw-ver" || name == "need-upg" || name == "encryption-supported" || name == "lldp-drop-status")
+    if(name == "client-port" || name == "slice-id" || name == "client-rate" || name == "trunk-rate" || name == "status" || name == "dp-fpga-fw-type" || name == "dp-fpga-fw-ver" || name == "need-upg" || name == "encryption-supported" || name == "lldp-drop-status")
         return true;
     return false;
 }

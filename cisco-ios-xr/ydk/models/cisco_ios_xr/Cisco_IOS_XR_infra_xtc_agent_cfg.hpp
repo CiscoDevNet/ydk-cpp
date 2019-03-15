@@ -26,6 +26,13 @@ class XtcPathHop : public ydk::Enum
 
 };
 
+class XtcBindingSidDynamicRule : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disable;
+
+};
+
 class XtcAffinityRule : public ydk::Enum
 {
     public:
@@ -107,6 +114,7 @@ class XtcMetric : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf igp;
         static const ydk::Enum::YLeaf te;
+        static const ydk::Enum::YLeaf hopcount;
         static const ydk::Enum::YLeaf latency;
 
 };

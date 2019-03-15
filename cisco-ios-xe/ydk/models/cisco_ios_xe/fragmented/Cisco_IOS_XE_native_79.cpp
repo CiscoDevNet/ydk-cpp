@@ -5,12 +5,5098 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_79.hpp"
+#include "Cisco_IOS_XE_native_81.hpp"
 #include "Cisco_IOS_XE_native_80.hpp"
 
 using namespace ydk;
 
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Manet::Peering::Cost::Cost()
+    :
+    percent{YType::uint8, "percent"},
+    threshold{YType::uint32, "threshold"}
+{
+
+    yang_name = "cost"; yang_parent_name = "peering"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Manet::Peering::Cost::~Cost()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Manet::Peering::Cost::has_data() const
+{
+    if (is_presence_container) return true;
+    return percent.is_set
+	|| threshold.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Manet::Peering::Cost::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(threshold.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Manet::Peering::Cost::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cost";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Manet::Peering::Cost::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Manet::Peering::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Manet::Peering::Cost::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Manet::Peering::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "percent")
+    {
+        percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Manet::Peering::Cost::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Manet::Peering::Cost::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "percent" || name == "threshold")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::MtuIgnore::MtuIgnore()
+    :
+    disable{YType::empty, "disable"}
+{
+
+    yang_name = "mtu-ignore"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::MtuIgnore::~MtuIgnore()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::MtuIgnore::has_data() const
+{
+    if (is_presence_container) return true;
+    return disable.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::MtuIgnore::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::MtuIgnore::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mtu-ignore";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::MtuIgnore::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::MtuIgnore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::MtuIgnore::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::MtuIgnore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::MtuIgnore::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::MtuIgnore::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::MultiArea::MultiArea()
+    :
+    id{YType::str, "id"},
+    cost{YType::uint32, "cost"},
+    disable{YType::empty, "disable"}
+{
+
+    yang_name = "multi-area"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::MultiArea::~MultiArea()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::MultiArea::has_data() const
+{
+    if (is_presence_container) return true;
+    return id.is_set
+	|| cost.is_set
+	|| disable.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::MultiArea::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(cost.yfilter)
+	|| ydk::is_set(disable.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::MultiArea::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "multi-area";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::MultiArea::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (cost.is_set || is_set(cost.yfilter)) leaf_name_data.push_back(cost.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::MultiArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::MultiArea::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::MultiArea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cost")
+    {
+        cost = value;
+        cost.value_namespace = name_space;
+        cost.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::MultiArea::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "cost")
+    {
+        cost.yfilter = yfilter;
+    }
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::MultiArea::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "id" || name == "cost" || name == "disable")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::Neighbor()
+    :
+    id{YType::str, "id"},
+    cost{YType::uint16, "cost"},
+    poll_interval{YType::uint32, "poll-interval"},
+    priority{YType::uint8, "priority"}
+        ,
+    database_filter(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::DatabaseFilter>())
+{
+    database_filter->parent = this;
+
+    yang_name = "neighbor"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::~Neighbor()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::has_data() const
+{
+    if (is_presence_container) return true;
+    return id.is_set
+	|| cost.is_set
+	|| poll_interval.is_set
+	|| priority.is_set
+	|| (database_filter !=  nullptr && database_filter->has_data());
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(cost.yfilter)
+	|| ydk::is_set(poll_interval.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| (database_filter !=  nullptr && database_filter->has_operation());
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(id, "id");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (cost.is_set || is_set(cost.yfilter)) leaf_name_data.push_back(cost.get_name_leafdata());
+    if (poll_interval.is_set || is_set(poll_interval.yfilter)) leaf_name_data.push_back(poll_interval.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "database-filter")
+    {
+        if(database_filter == nullptr)
+        {
+            database_filter = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::DatabaseFilter>();
+        }
+        return database_filter;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(database_filter != nullptr)
+    {
+        _children["database-filter"] = database_filter;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cost")
+    {
+        cost = value;
+        cost.value_namespace = name_space;
+        cost.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "poll-interval")
+    {
+        poll_interval = value;
+        poll_interval.value_namespace = name_space;
+        poll_interval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "cost")
+    {
+        cost.yfilter = yfilter;
+    }
+    if(value_path == "poll-interval")
+    {
+        poll_interval.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "database-filter" || name == "id" || name == "cost" || name == "poll-interval" || name == "priority")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::DatabaseFilter::DatabaseFilter()
+    :
+    all{YType::enumeration, "all"}
+{
+
+    yang_name = "database-filter"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::DatabaseFilter::~DatabaseFilter()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::DatabaseFilter::has_data() const
+{
+    if (is_presence_container) return true;
+    return all.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::DatabaseFilter::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(all.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::DatabaseFilter::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "database-filter";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::DatabaseFilter::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (all.is_set || is_set(all.yfilter)) leaf_name_data.push_back(all.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::DatabaseFilter::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "all")
+    {
+        all = value;
+        all.value_namespace = name_space;
+        all.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::DatabaseFilter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "all")
+    {
+        all.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::DatabaseFilter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "all")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Network::Network()
+    :
+    broadcast{YType::empty, "broadcast"},
+    manet{YType::empty, "manet"},
+    non_broadcast{YType::empty, "non-broadcast"},
+    point_to_point{YType::empty, "point-to-point"}
+        ,
+    point_to_multipoint(nullptr) // presence node
+{
+
+    yang_name = "network"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Network::~Network()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Network::has_data() const
+{
+    if (is_presence_container) return true;
+    return broadcast.is_set
+	|| manet.is_set
+	|| non_broadcast.is_set
+	|| point_to_point.is_set
+	|| (point_to_multipoint !=  nullptr && point_to_multipoint->has_data());
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Network::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(broadcast.yfilter)
+	|| ydk::is_set(manet.yfilter)
+	|| ydk::is_set(non_broadcast.yfilter)
+	|| ydk::is_set(point_to_point.yfilter)
+	|| (point_to_multipoint !=  nullptr && point_to_multipoint->has_operation());
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Network::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "network";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Network::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (broadcast.is_set || is_set(broadcast.yfilter)) leaf_name_data.push_back(broadcast.get_name_leafdata());
+    if (manet.is_set || is_set(manet.yfilter)) leaf_name_data.push_back(manet.get_name_leafdata());
+    if (non_broadcast.is_set || is_set(non_broadcast.yfilter)) leaf_name_data.push_back(non_broadcast.get_name_leafdata());
+    if (point_to_point.is_set || is_set(point_to_point.yfilter)) leaf_name_data.push_back(point_to_point.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "point-to-multipoint")
+    {
+        if(point_to_multipoint == nullptr)
+        {
+            point_to_multipoint = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Network::PointToMultipoint>();
+        }
+        return point_to_multipoint;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Network::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(point_to_multipoint != nullptr)
+    {
+        _children["point-to-multipoint"] = point_to_multipoint;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "broadcast")
+    {
+        broadcast = value;
+        broadcast.value_namespace = name_space;
+        broadcast.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "manet")
+    {
+        manet = value;
+        manet.value_namespace = name_space;
+        manet.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "non-broadcast")
+    {
+        non_broadcast = value;
+        non_broadcast.value_namespace = name_space;
+        non_broadcast.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "point-to-point")
+    {
+        point_to_point = value;
+        point_to_point.value_namespace = name_space;
+        point_to_point.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Network::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "broadcast")
+    {
+        broadcast.yfilter = yfilter;
+    }
+    if(value_path == "manet")
+    {
+        manet.yfilter = yfilter;
+    }
+    if(value_path == "non-broadcast")
+    {
+        non_broadcast.yfilter = yfilter;
+    }
+    if(value_path == "point-to-point")
+    {
+        point_to_point.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Network::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "point-to-multipoint" || name == "broadcast" || name == "manet" || name == "non-broadcast" || name == "point-to-point")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Network::PointToMultipoint::PointToMultipoint()
+    :
+    non_broadcast{YType::empty, "non-broadcast"}
+{
+
+    yang_name = "point-to-multipoint"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Network::PointToMultipoint::~PointToMultipoint()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Network::PointToMultipoint::has_data() const
+{
+    if (is_presence_container) return true;
+    return non_broadcast.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Network::PointToMultipoint::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(non_broadcast.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Network::PointToMultipoint::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "point-to-multipoint";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Network::PointToMultipoint::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (non_broadcast.is_set || is_set(non_broadcast.yfilter)) leaf_name_data.push_back(non_broadcast.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Network::PointToMultipoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Network::PointToMultipoint::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Network::PointToMultipoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "non-broadcast")
+    {
+        non_broadcast = value;
+        non_broadcast.value_namespace = name_space;
+        non_broadcast.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Network::PointToMultipoint::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "non-broadcast")
+    {
+        non_broadcast.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Network::PointToMultipoint::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "non-broadcast")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::PrefixSuppression::PrefixSuppression()
+    :
+    disable{YType::empty, "disable"}
+{
+
+    yang_name = "prefix-suppression"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::PrefixSuppression::~PrefixSuppression()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::PrefixSuppression::has_data() const
+{
+    if (is_presence_container) return true;
+    return disable.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::PrefixSuppression::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::PrefixSuppression::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix-suppression";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::PrefixSuppression::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::PrefixSuppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::PrefixSuppression::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::PrefixSuppression::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::PrefixSuppression::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::PrefixSuppression::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Shutdown::Shutdown()
+    :
+    disable{YType::empty, "disable"}
+{
+
+    yang_name = "shutdown"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Shutdown::~Shutdown()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Shutdown::has_data() const
+{
+    if (is_presence_container) return true;
+    return disable.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Shutdown::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Shutdown::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "shutdown";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Shutdown::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Shutdown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Shutdown::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Shutdown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Shutdown::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Shutdown::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Ipv4()
+    :
+    dead_interval{YType::uint16, "dead-interval"},
+    hello_interval{YType::uint32, "hello-interval"},
+    priority{YType::uint8, "priority"},
+    retransmit_interval{YType::uint32, "retransmit-interval"},
+    transmit_delay{YType::uint32, "transmit-delay"}
+        ,
+    area(this, {"id"})
+    , authentication(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Authentication>())
+    , bfd(nullptr) // presence node
+    , cost(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost>())
+    , database_filter(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DatabaseFilter>())
+    , demand_circuit(nullptr) // presence node
+    , flood_reduction(nullptr) // presence node
+    , manet(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet>())
+    , mtu_ignore(nullptr) // presence node
+    , multi_area(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MultiArea>())
+    , neighbor(this, {"id"})
+    , network(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network>())
+    , prefix_suppression(nullptr) // presence node
+    , shutdown(nullptr) // presence node
+{
+    authentication->parent = this;
+    cost->parent = this;
+    database_filter->parent = this;
+    manet->parent = this;
+    multi_area->parent = this;
+    network->parent = this;
+
+    yang_name = "ipv4"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::~Ipv4()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<area.len(); index++)
+    {
+        if(area[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<neighbor.len(); index++)
+    {
+        if(neighbor[index]->has_data())
+            return true;
+    }
+    return dead_interval.is_set
+	|| hello_interval.is_set
+	|| priority.is_set
+	|| retransmit_interval.is_set
+	|| transmit_delay.is_set
+	|| (authentication !=  nullptr && authentication->has_data())
+	|| (bfd !=  nullptr && bfd->has_data())
+	|| (cost !=  nullptr && cost->has_data())
+	|| (database_filter !=  nullptr && database_filter->has_data())
+	|| (demand_circuit !=  nullptr && demand_circuit->has_data())
+	|| (flood_reduction !=  nullptr && flood_reduction->has_data())
+	|| (manet !=  nullptr && manet->has_data())
+	|| (mtu_ignore !=  nullptr && mtu_ignore->has_data())
+	|| (multi_area !=  nullptr && multi_area->has_data())
+	|| (network !=  nullptr && network->has_data())
+	|| (prefix_suppression !=  nullptr && prefix_suppression->has_data())
+	|| (shutdown !=  nullptr && shutdown->has_data());
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::has_operation() const
+{
+    for (std::size_t index=0; index<area.len(); index++)
+    {
+        if(area[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<neighbor.len(); index++)
+    {
+        if(neighbor[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(dead_interval.yfilter)
+	|| ydk::is_set(hello_interval.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(retransmit_interval.yfilter)
+	|| ydk::is_set(transmit_delay.yfilter)
+	|| (authentication !=  nullptr && authentication->has_operation())
+	|| (bfd !=  nullptr && bfd->has_operation())
+	|| (cost !=  nullptr && cost->has_operation())
+	|| (database_filter !=  nullptr && database_filter->has_operation())
+	|| (demand_circuit !=  nullptr && demand_circuit->has_operation())
+	|| (flood_reduction !=  nullptr && flood_reduction->has_operation())
+	|| (manet !=  nullptr && manet->has_operation())
+	|| (mtu_ignore !=  nullptr && mtu_ignore->has_operation())
+	|| (multi_area !=  nullptr && multi_area->has_operation())
+	|| (network !=  nullptr && network->has_operation())
+	|| (prefix_suppression !=  nullptr && prefix_suppression->has_operation())
+	|| (shutdown !=  nullptr && shutdown->has_operation());
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dead_interval.is_set || is_set(dead_interval.yfilter)) leaf_name_data.push_back(dead_interval.get_name_leafdata());
+    if (hello_interval.is_set || is_set(hello_interval.yfilter)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (retransmit_interval.is_set || is_set(retransmit_interval.yfilter)) leaf_name_data.push_back(retransmit_interval.get_name_leafdata());
+    if (transmit_delay.is_set || is_set(transmit_delay.yfilter)) leaf_name_data.push_back(transmit_delay.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "area")
+    {
+        auto ent_ = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Area>();
+        ent_->parent = this;
+        area.append(ent_);
+        return ent_;
+    }
+
+    if(child_yang_name == "authentication")
+    {
+        if(authentication == nullptr)
+        {
+            authentication = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Authentication>();
+        }
+        return authentication;
+    }
+
+    if(child_yang_name == "bfd")
+    {
+        if(bfd == nullptr)
+        {
+            bfd = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Bfd>();
+        }
+        return bfd;
+    }
+
+    if(child_yang_name == "cost")
+    {
+        if(cost == nullptr)
+        {
+            cost = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost>();
+        }
+        return cost;
+    }
+
+    if(child_yang_name == "database-filter")
+    {
+        if(database_filter == nullptr)
+        {
+            database_filter = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DatabaseFilter>();
+        }
+        return database_filter;
+    }
+
+    if(child_yang_name == "demand-circuit")
+    {
+        if(demand_circuit == nullptr)
+        {
+            demand_circuit = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DemandCircuit>();
+        }
+        return demand_circuit;
+    }
+
+    if(child_yang_name == "flood-reduction")
+    {
+        if(flood_reduction == nullptr)
+        {
+            flood_reduction = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::FloodReduction>();
+        }
+        return flood_reduction;
+    }
+
+    if(child_yang_name == "manet")
+    {
+        if(manet == nullptr)
+        {
+            manet = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet>();
+        }
+        return manet;
+    }
+
+    if(child_yang_name == "mtu-ignore")
+    {
+        if(mtu_ignore == nullptr)
+        {
+            mtu_ignore = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MtuIgnore>();
+        }
+        return mtu_ignore;
+    }
+
+    if(child_yang_name == "multi-area")
+    {
+        if(multi_area == nullptr)
+        {
+            multi_area = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MultiArea>();
+        }
+        return multi_area;
+    }
+
+    if(child_yang_name == "neighbor")
+    {
+        auto ent_ = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor>();
+        ent_->parent = this;
+        neighbor.append(ent_);
+        return ent_;
+    }
+
+    if(child_yang_name == "network")
+    {
+        if(network == nullptr)
+        {
+            network = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network>();
+        }
+        return network;
+    }
+
+    if(child_yang_name == "prefix-suppression")
+    {
+        if(prefix_suppression == nullptr)
+        {
+            prefix_suppression = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::PrefixSuppression>();
+        }
+        return prefix_suppression;
+    }
+
+    if(child_yang_name == "shutdown")
+    {
+        if(shutdown == nullptr)
+        {
+            shutdown = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Shutdown>();
+        }
+        return shutdown;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : area.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    if(authentication != nullptr)
+    {
+        _children["authentication"] = authentication;
+    }
+
+    if(bfd != nullptr)
+    {
+        _children["bfd"] = bfd;
+    }
+
+    if(cost != nullptr)
+    {
+        _children["cost"] = cost;
+    }
+
+    if(database_filter != nullptr)
+    {
+        _children["database-filter"] = database_filter;
+    }
+
+    if(demand_circuit != nullptr)
+    {
+        _children["demand-circuit"] = demand_circuit;
+    }
+
+    if(flood_reduction != nullptr)
+    {
+        _children["flood-reduction"] = flood_reduction;
+    }
+
+    if(manet != nullptr)
+    {
+        _children["manet"] = manet;
+    }
+
+    if(mtu_ignore != nullptr)
+    {
+        _children["mtu-ignore"] = mtu_ignore;
+    }
+
+    if(multi_area != nullptr)
+    {
+        _children["multi-area"] = multi_area;
+    }
+
+    count_ = 0;
+    for (auto ent_ : neighbor.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    if(network != nullptr)
+    {
+        _children["network"] = network;
+    }
+
+    if(prefix_suppression != nullptr)
+    {
+        _children["prefix-suppression"] = prefix_suppression;
+    }
+
+    if(shutdown != nullptr)
+    {
+        _children["shutdown"] = shutdown;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dead-interval")
+    {
+        dead_interval = value;
+        dead_interval.value_namespace = name_space;
+        dead_interval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hello-interval")
+    {
+        hello_interval = value;
+        hello_interval.value_namespace = name_space;
+        hello_interval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "retransmit-interval")
+    {
+        retransmit_interval = value;
+        retransmit_interval.value_namespace = name_space;
+        retransmit_interval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "transmit-delay")
+    {
+        transmit_delay = value;
+        transmit_delay.value_namespace = name_space;
+        transmit_delay.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dead-interval")
+    {
+        dead_interval.yfilter = yfilter;
+    }
+    if(value_path == "hello-interval")
+    {
+        hello_interval.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "retransmit-interval")
+    {
+        retransmit_interval.yfilter = yfilter;
+    }
+    if(value_path == "transmit-delay")
+    {
+        transmit_delay.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "area" || name == "authentication" || name == "bfd" || name == "cost" || name == "database-filter" || name == "demand-circuit" || name == "flood-reduction" || name == "manet" || name == "mtu-ignore" || name == "multi-area" || name == "neighbor" || name == "network" || name == "prefix-suppression" || name == "shutdown" || name == "dead-interval" || name == "hello-interval" || name == "priority" || name == "retransmit-interval" || name == "transmit-delay")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Area::Area()
+    :
+    id{YType::str, "id"},
+    instance{YType::uint8, "instance"}
+{
+
+    yang_name = "area"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Area::~Area()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Area::has_data() const
+{
+    if (is_presence_container) return true;
+    return id.is_set
+	|| instance.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Area::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(instance.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Area::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "area";
+    ADD_KEY_TOKEN(id, "id");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Area::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Area::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Area::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Area::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "instance")
+    {
+        instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Area::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Area::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "id" || name == "instance")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Authentication::Authentication()
+    :
+    key_chain{YType::str, "key-chain"},
+    null{YType::empty, "null"}
+{
+
+    yang_name = "authentication"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Authentication::~Authentication()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Authentication::has_data() const
+{
+    if (is_presence_container) return true;
+    return key_chain.is_set
+	|| null.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Authentication::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(key_chain.yfilter)
+	|| ydk::is_set(null.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Authentication::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "authentication";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Authentication::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (key_chain.is_set || is_set(key_chain.yfilter)) leaf_name_data.push_back(key_chain.get_name_leafdata());
+    if (null.is_set || is_set(null.yfilter)) leaf_name_data.push_back(null.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Authentication::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "key-chain")
+    {
+        key_chain = value;
+        key_chain.value_namespace = name_space;
+        key_chain.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "null")
+    {
+        null = value;
+        null.value_namespace = name_space;
+        null.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "key-chain")
+    {
+        key_chain.yfilter = yfilter;
+    }
+    if(value_path == "null")
+    {
+        null.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "key-chain" || name == "null")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Bfd::Bfd()
+    :
+    disable{YType::empty, "disable"}
+{
+
+    yang_name = "bfd"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Bfd::~Bfd()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Bfd::has_data() const
+{
+    if (is_presence_container) return true;
+    return disable.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Bfd::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Bfd::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bfd";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Bfd::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Bfd::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Bfd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Cost()
+    :
+    value_{YType::uint32, "value"}
+        ,
+    dynamic(nullptr) // presence node
+{
+
+    yang_name = "cost"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::~Cost()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::has_data() const
+{
+    if (is_presence_container) return true;
+    return value_.is_set
+	|| (dynamic !=  nullptr && dynamic->has_data());
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(value_.yfilter)
+	|| (dynamic !=  nullptr && dynamic->has_operation());
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cost";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "dynamic")
+    {
+        if(dynamic == nullptr)
+        {
+            dynamic = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic>();
+        }
+        return dynamic;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(dynamic != nullptr)
+    {
+        _children["dynamic"] = dynamic;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dynamic" || name == "value")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Dynamic()
+    :
+    default_{YType::uint32, "default"}
+        ,
+    hysteresis(nullptr) // presence node
+    , weight(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight>())
+{
+    weight->parent = this;
+
+    yang_name = "dynamic"; yang_parent_name = "cost"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::~Dynamic()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::has_data() const
+{
+    if (is_presence_container) return true;
+    return default_.is_set
+	|| (hysteresis !=  nullptr && hysteresis->has_data())
+	|| (weight !=  nullptr && weight->has_data());
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(default_.yfilter)
+	|| (hysteresis !=  nullptr && hysteresis->has_operation())
+	|| (weight !=  nullptr && weight->has_operation());
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dynamic";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hysteresis")
+    {
+        if(hysteresis == nullptr)
+        {
+            hysteresis = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis>();
+        }
+        return hysteresis;
+    }
+
+    if(child_yang_name == "weight")
+    {
+        if(weight == nullptr)
+        {
+            weight = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight>();
+        }
+        return weight;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(hysteresis != nullptr)
+    {
+        _children["hysteresis"] = hysteresis;
+    }
+
+    if(weight != nullptr)
+    {
+        _children["weight"] = weight;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "default")
+    {
+        default_ = value;
+        default_.value_namespace = name_space;
+        default_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "default")
+    {
+        default_.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hysteresis" || name == "weight" || name == "default")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::Hysteresis()
+    :
+    percent{YType::uint8, "percent"},
+    threshold{YType::uint32, "threshold"}
+{
+
+    yang_name = "hysteresis"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::~Hysteresis()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::has_data() const
+{
+    if (is_presence_container) return true;
+    return percent.is_set
+	|| threshold.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(threshold.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hysteresis";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "percent")
+    {
+        percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Hysteresis::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "percent" || name == "threshold")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Weight()
+    :
+    l2_factor(nullptr) // presence node
+    , latency(nullptr) // presence node
+    , resources(nullptr) // presence node
+    , throughput(nullptr) // presence node
+{
+
+    yang_name = "weight"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::~Weight()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::has_data() const
+{
+    if (is_presence_container) return true;
+    return (l2_factor !=  nullptr && l2_factor->has_data())
+	|| (latency !=  nullptr && latency->has_data())
+	|| (resources !=  nullptr && resources->has_data())
+	|| (throughput !=  nullptr && throughput->has_data());
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::has_operation() const
+{
+    return is_set(yfilter)
+	|| (l2_factor !=  nullptr && l2_factor->has_operation())
+	|| (latency !=  nullptr && latency->has_operation())
+	|| (resources !=  nullptr && resources->has_operation())
+	|| (throughput !=  nullptr && throughput->has_operation());
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "weight";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "L2-factor")
+    {
+        if(l2_factor == nullptr)
+        {
+            l2_factor = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor>();
+        }
+        return l2_factor;
+    }
+
+    if(child_yang_name == "latency")
+    {
+        if(latency == nullptr)
+        {
+            latency = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency>();
+        }
+        return latency;
+    }
+
+    if(child_yang_name == "resources")
+    {
+        if(resources == nullptr)
+        {
+            resources = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources>();
+        }
+        return resources;
+    }
+
+    if(child_yang_name == "throughput")
+    {
+        if(throughput == nullptr)
+        {
+            throughput = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput>();
+        }
+        return throughput;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(l2_factor != nullptr)
+    {
+        _children["L2-factor"] = l2_factor;
+    }
+
+    if(latency != nullptr)
+    {
+        _children["latency"] = latency;
+    }
+
+    if(resources != nullptr)
+    {
+        _children["resources"] = resources;
+    }
+
+    if(throughput != nullptr)
+    {
+        _children["throughput"] = throughput;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "L2-factor" || name == "latency" || name == "resources" || name == "throughput")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::L2Factor()
+    :
+    value_{YType::uint8, "value"}
+{
+
+    yang_name = "L2-factor"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::~L2Factor()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::has_data() const
+{
+    if (is_presence_container) return true;
+    return value_.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "L2-factor";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::L2Factor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "value")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::Latency()
+    :
+    value_{YType::uint8, "value"}
+{
+
+    yang_name = "latency"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::~Latency()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::has_data() const
+{
+    if (is_presence_container) return true;
+    return value_.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "latency";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Latency::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "value")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::Resources()
+    :
+    value_{YType::uint8, "value"}
+{
+
+    yang_name = "resources"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::~Resources()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::has_data() const
+{
+    if (is_presence_container) return true;
+    return value_.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "resources";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Resources::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "value")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::Throughput()
+    :
+    value_{YType::uint8, "value"}
+{
+
+    yang_name = "throughput"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::~Throughput()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::has_data() const
+{
+    if (is_presence_container) return true;
+    return value_.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "throughput";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Cost::Dynamic::Weight::Throughput::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "value")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DatabaseFilter::DatabaseFilter()
+    :
+    all{YType::enumeration, "all"},
+    disable{YType::empty, "disable"}
+{
+
+    yang_name = "database-filter"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DatabaseFilter::~DatabaseFilter()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DatabaseFilter::has_data() const
+{
+    if (is_presence_container) return true;
+    return all.is_set
+	|| disable.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DatabaseFilter::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(all.yfilter)
+	|| ydk::is_set(disable.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DatabaseFilter::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "database-filter";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DatabaseFilter::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (all.is_set || is_set(all.yfilter)) leaf_name_data.push_back(all.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DatabaseFilter::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "all")
+    {
+        all = value;
+        all.value_namespace = name_space;
+        all.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DatabaseFilter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "all")
+    {
+        all.yfilter = yfilter;
+    }
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DatabaseFilter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "all" || name == "disable")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DemandCircuit::DemandCircuit()
+    :
+    disable{YType::empty, "disable"},
+    ignore{YType::empty, "ignore"}
+{
+
+    yang_name = "demand-circuit"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DemandCircuit::~DemandCircuit()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DemandCircuit::has_data() const
+{
+    if (is_presence_container) return true;
+    return disable.is_set
+	|| ignore.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DemandCircuit::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter)
+	|| ydk::is_set(ignore.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DemandCircuit::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "demand-circuit";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DemandCircuit::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+    if (ignore.is_set || is_set(ignore.yfilter)) leaf_name_data.push_back(ignore.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DemandCircuit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DemandCircuit::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DemandCircuit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ignore")
+    {
+        ignore = value;
+        ignore.value_namespace = name_space;
+        ignore.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DemandCircuit::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+    if(value_path == "ignore")
+    {
+        ignore.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DemandCircuit::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable" || name == "ignore")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::FloodReduction::FloodReduction()
+    :
+    disable{YType::empty, "disable"}
+{
+
+    yang_name = "flood-reduction"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::FloodReduction::~FloodReduction()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::FloodReduction::has_data() const
+{
+    if (is_presence_container) return true;
+    return disable.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::FloodReduction::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::FloodReduction::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "flood-reduction";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::FloodReduction::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::FloodReduction::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::FloodReduction::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::FloodReduction::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::FloodReduction::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::FloodReduction::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Manet()
+    :
+    peering(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering>())
+{
+    peering->parent = this;
+
+    yang_name = "manet"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::~Manet()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::has_data() const
+{
+    if (is_presence_container) return true;
+    return (peering !=  nullptr && peering->has_data());
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::has_operation() const
+{
+    return is_set(yfilter)
+	|| (peering !=  nullptr && peering->has_operation());
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "manet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "peering")
+    {
+        if(peering == nullptr)
+        {
+            peering = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering>();
+        }
+        return peering;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(peering != nullptr)
+    {
+        _children["peering"] = peering;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "peering")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::Peering()
+    :
+    link_metrics{YType::uint32, "link-metrics"}
+        ,
+    cost(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost>())
+{
+    cost->parent = this;
+
+    yang_name = "peering"; yang_parent_name = "manet"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::~Peering()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::has_data() const
+{
+    if (is_presence_container) return true;
+    return link_metrics.is_set
+	|| (cost !=  nullptr && cost->has_data());
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(link_metrics.yfilter)
+	|| (cost !=  nullptr && cost->has_operation());
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "peering";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (link_metrics.is_set || is_set(link_metrics.yfilter)) leaf_name_data.push_back(link_metrics.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "cost")
+    {
+        if(cost == nullptr)
+        {
+            cost = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost>();
+        }
+        return cost;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(cost != nullptr)
+    {
+        _children["cost"] = cost;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "link-metrics")
+    {
+        link_metrics = value;
+        link_metrics.value_namespace = name_space;
+        link_metrics.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "link-metrics")
+    {
+        link_metrics.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cost" || name == "link-metrics")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::Cost()
+    :
+    percent{YType::uint8, "percent"},
+    threshold{YType::uint32, "threshold"}
+{
+
+    yang_name = "cost"; yang_parent_name = "peering"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::~Cost()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::has_data() const
+{
+    if (is_presence_container) return true;
+    return percent.is_set
+	|| threshold.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(threshold.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cost";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "percent")
+    {
+        percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Manet::Peering::Cost::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "percent" || name == "threshold")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MtuIgnore::MtuIgnore()
+    :
+    disable{YType::empty, "disable"}
+{
+
+    yang_name = "mtu-ignore"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MtuIgnore::~MtuIgnore()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MtuIgnore::has_data() const
+{
+    if (is_presence_container) return true;
+    return disable.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MtuIgnore::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MtuIgnore::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mtu-ignore";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MtuIgnore::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MtuIgnore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MtuIgnore::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MtuIgnore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MtuIgnore::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MtuIgnore::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MultiArea::MultiArea()
+    :
+    id{YType::str, "id"},
+    cost{YType::uint32, "cost"},
+    disable{YType::empty, "disable"}
+{
+
+    yang_name = "multi-area"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MultiArea::~MultiArea()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MultiArea::has_data() const
+{
+    if (is_presence_container) return true;
+    return id.is_set
+	|| cost.is_set
+	|| disable.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MultiArea::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(cost.yfilter)
+	|| ydk::is_set(disable.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MultiArea::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "multi-area";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MultiArea::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (cost.is_set || is_set(cost.yfilter)) leaf_name_data.push_back(cost.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MultiArea::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MultiArea::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MultiArea::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cost")
+    {
+        cost = value;
+        cost.value_namespace = name_space;
+        cost.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MultiArea::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "cost")
+    {
+        cost.yfilter = yfilter;
+    }
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::MultiArea::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "id" || name == "cost" || name == "disable")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::Neighbor()
+    :
+    id{YType::str, "id"},
+    cost{YType::uint16, "cost"},
+    poll_interval{YType::uint32, "poll-interval"},
+    priority{YType::uint8, "priority"}
+        ,
+    database_filter(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter>())
+{
+    database_filter->parent = this;
+
+    yang_name = "neighbor"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::~Neighbor()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::has_data() const
+{
+    if (is_presence_container) return true;
+    return id.is_set
+	|| cost.is_set
+	|| poll_interval.is_set
+	|| priority.is_set
+	|| (database_filter !=  nullptr && database_filter->has_data());
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(cost.yfilter)
+	|| ydk::is_set(poll_interval.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| (database_filter !=  nullptr && database_filter->has_operation());
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "neighbor";
+    ADD_KEY_TOKEN(id, "id");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (cost.is_set || is_set(cost.yfilter)) leaf_name_data.push_back(cost.get_name_leafdata());
+    if (poll_interval.is_set || is_set(poll_interval.yfilter)) leaf_name_data.push_back(poll_interval.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "database-filter")
+    {
+        if(database_filter == nullptr)
+        {
+            database_filter = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter>();
+        }
+        return database_filter;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(database_filter != nullptr)
+    {
+        _children["database-filter"] = database_filter;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cost")
+    {
+        cost = value;
+        cost.value_namespace = name_space;
+        cost.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "poll-interval")
+    {
+        poll_interval = value;
+        poll_interval.value_namespace = name_space;
+        poll_interval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "cost")
+    {
+        cost.yfilter = yfilter;
+    }
+    if(value_path == "poll-interval")
+    {
+        poll_interval.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "database-filter" || name == "id" || name == "cost" || name == "poll-interval" || name == "priority")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::DatabaseFilter()
+    :
+    all{YType::enumeration, "all"}
+{
+
+    yang_name = "database-filter"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::~DatabaseFilter()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::has_data() const
+{
+    if (is_presence_container) return true;
+    return all.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(all.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "database-filter";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (all.is_set || is_set(all.yfilter)) leaf_name_data.push_back(all.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "all")
+    {
+        all = value;
+        all.value_namespace = name_space;
+        all.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "all")
+    {
+        all.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "all")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::Network()
+    :
+    broadcast{YType::empty, "broadcast"},
+    manet{YType::empty, "manet"},
+    non_broadcast{YType::empty, "non-broadcast"},
+    point_to_point{YType::empty, "point-to-point"}
+        ,
+    point_to_multipoint(nullptr) // presence node
+{
+
+    yang_name = "network"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::~Network()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::has_data() const
+{
+    if (is_presence_container) return true;
+    return broadcast.is_set
+	|| manet.is_set
+	|| non_broadcast.is_set
+	|| point_to_point.is_set
+	|| (point_to_multipoint !=  nullptr && point_to_multipoint->has_data());
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(broadcast.yfilter)
+	|| ydk::is_set(manet.yfilter)
+	|| ydk::is_set(non_broadcast.yfilter)
+	|| ydk::is_set(point_to_point.yfilter)
+	|| (point_to_multipoint !=  nullptr && point_to_multipoint->has_operation());
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "network";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (broadcast.is_set || is_set(broadcast.yfilter)) leaf_name_data.push_back(broadcast.get_name_leafdata());
+    if (manet.is_set || is_set(manet.yfilter)) leaf_name_data.push_back(manet.get_name_leafdata());
+    if (non_broadcast.is_set || is_set(non_broadcast.yfilter)) leaf_name_data.push_back(non_broadcast.get_name_leafdata());
+    if (point_to_point.is_set || is_set(point_to_point.yfilter)) leaf_name_data.push_back(point_to_point.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "point-to-multipoint")
+    {
+        if(point_to_multipoint == nullptr)
+        {
+            point_to_multipoint = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint>();
+        }
+        return point_to_multipoint;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(point_to_multipoint != nullptr)
+    {
+        _children["point-to-multipoint"] = point_to_multipoint;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "broadcast")
+    {
+        broadcast = value;
+        broadcast.value_namespace = name_space;
+        broadcast.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "manet")
+    {
+        manet = value;
+        manet.value_namespace = name_space;
+        manet.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "non-broadcast")
+    {
+        non_broadcast = value;
+        non_broadcast.value_namespace = name_space;
+        non_broadcast.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "point-to-point")
+    {
+        point_to_point = value;
+        point_to_point.value_namespace = name_space;
+        point_to_point.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "broadcast")
+    {
+        broadcast.yfilter = yfilter;
+    }
+    if(value_path == "manet")
+    {
+        manet.yfilter = yfilter;
+    }
+    if(value_path == "non-broadcast")
+    {
+        non_broadcast.yfilter = yfilter;
+    }
+    if(value_path == "point-to-point")
+    {
+        point_to_point.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "point-to-multipoint" || name == "broadcast" || name == "manet" || name == "non-broadcast" || name == "point-to-point")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::PointToMultipoint()
+    :
+    non_broadcast{YType::empty, "non-broadcast"}
+{
+
+    yang_name = "point-to-multipoint"; yang_parent_name = "network"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::~PointToMultipoint()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::has_data() const
+{
+    if (is_presence_container) return true;
+    return non_broadcast.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(non_broadcast.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "point-to-multipoint";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (non_broadcast.is_set || is_set(non_broadcast.yfilter)) leaf_name_data.push_back(non_broadcast.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "non-broadcast")
+    {
+        non_broadcast = value;
+        non_broadcast.value_namespace = name_space;
+        non_broadcast.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "non-broadcast")
+    {
+        non_broadcast.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Network::PointToMultipoint::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "non-broadcast")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::PrefixSuppression::PrefixSuppression()
+    :
+    disable{YType::empty, "disable"}
+{
+
+    yang_name = "prefix-suppression"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::PrefixSuppression::~PrefixSuppression()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::PrefixSuppression::has_data() const
+{
+    if (is_presence_container) return true;
+    return disable.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::PrefixSuppression::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::PrefixSuppression::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix-suppression";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::PrefixSuppression::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::PrefixSuppression::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::PrefixSuppression::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::PrefixSuppression::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::PrefixSuppression::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::PrefixSuppression::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Shutdown::Shutdown()
+    :
+    disable{YType::empty, "disable"}
+{
+
+    yang_name = "shutdown"; yang_parent_name = "ipv4"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Shutdown::~Shutdown()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Shutdown::has_data() const
+{
+    if (is_presence_container) return true;
+    return disable.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Shutdown::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Shutdown::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "shutdown";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Shutdown::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Shutdown::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Shutdown::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Shutdown::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Shutdown::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Shutdown::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Ipv6()
+    :
+    dead_interval{YType::uint16, "dead-interval"},
+    hello_interval{YType::uint32, "hello-interval"},
+    priority{YType::uint8, "priority"},
+    retransmit_interval{YType::uint32, "retransmit-interval"},
+    transmit_delay{YType::uint32, "transmit-delay"}
+        ,
+    area(this, {"id"})
+    , authentication(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Authentication>())
+    , bfd(nullptr) // presence node
+    , cost(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost>())
+    , database_filter(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DatabaseFilter>())
+    , demand_circuit(nullptr) // presence node
+    , flood_reduction(nullptr) // presence node
+    , manet(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet>())
+    , mtu_ignore(nullptr) // presence node
+    , multi_area(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::MultiArea>())
+    , neighbor(this, {"id"})
+    , network(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Network>())
+    , prefix_suppression(nullptr) // presence node
+    , shutdown(nullptr) // presence node
+{
+    authentication->parent = this;
+    cost->parent = this;
+    database_filter->parent = this;
+    manet->parent = this;
+    multi_area->parent = this;
+    network->parent = this;
+
+    yang_name = "ipv6"; yang_parent_name = "process-id"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::~Ipv6()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<area.len(); index++)
+    {
+        if(area[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<neighbor.len(); index++)
+    {
+        if(neighbor[index]->has_data())
+            return true;
+    }
+    return dead_interval.is_set
+	|| hello_interval.is_set
+	|| priority.is_set
+	|| retransmit_interval.is_set
+	|| transmit_delay.is_set
+	|| (authentication !=  nullptr && authentication->has_data())
+	|| (bfd !=  nullptr && bfd->has_data())
+	|| (cost !=  nullptr && cost->has_data())
+	|| (database_filter !=  nullptr && database_filter->has_data())
+	|| (demand_circuit !=  nullptr && demand_circuit->has_data())
+	|| (flood_reduction !=  nullptr && flood_reduction->has_data())
+	|| (manet !=  nullptr && manet->has_data())
+	|| (mtu_ignore !=  nullptr && mtu_ignore->has_data())
+	|| (multi_area !=  nullptr && multi_area->has_data())
+	|| (network !=  nullptr && network->has_data())
+	|| (prefix_suppression !=  nullptr && prefix_suppression->has_data())
+	|| (shutdown !=  nullptr && shutdown->has_data());
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::has_operation() const
+{
+    for (std::size_t index=0; index<area.len(); index++)
+    {
+        if(area[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<neighbor.len(); index++)
+    {
+        if(neighbor[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(dead_interval.yfilter)
+	|| ydk::is_set(hello_interval.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(retransmit_interval.yfilter)
+	|| ydk::is_set(transmit_delay.yfilter)
+	|| (authentication !=  nullptr && authentication->has_operation())
+	|| (bfd !=  nullptr && bfd->has_operation())
+	|| (cost !=  nullptr && cost->has_operation())
+	|| (database_filter !=  nullptr && database_filter->has_operation())
+	|| (demand_circuit !=  nullptr && demand_circuit->has_operation())
+	|| (flood_reduction !=  nullptr && flood_reduction->has_operation())
+	|| (manet !=  nullptr && manet->has_operation())
+	|| (mtu_ignore !=  nullptr && mtu_ignore->has_operation())
+	|| (multi_area !=  nullptr && multi_area->has_operation())
+	|| (network !=  nullptr && network->has_operation())
+	|| (prefix_suppression !=  nullptr && prefix_suppression->has_operation())
+	|| (shutdown !=  nullptr && shutdown->has_operation());
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dead_interval.is_set || is_set(dead_interval.yfilter)) leaf_name_data.push_back(dead_interval.get_name_leafdata());
+    if (hello_interval.is_set || is_set(hello_interval.yfilter)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (retransmit_interval.is_set || is_set(retransmit_interval.yfilter)) leaf_name_data.push_back(retransmit_interval.get_name_leafdata());
+    if (transmit_delay.is_set || is_set(transmit_delay.yfilter)) leaf_name_data.push_back(transmit_delay.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "area")
+    {
+        auto ent_ = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Area>();
+        ent_->parent = this;
+        area.append(ent_);
+        return ent_;
+    }
+
+    if(child_yang_name == "authentication")
+    {
+        if(authentication == nullptr)
+        {
+            authentication = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Authentication>();
+        }
+        return authentication;
+    }
+
+    if(child_yang_name == "bfd")
+    {
+        if(bfd == nullptr)
+        {
+            bfd = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Bfd>();
+        }
+        return bfd;
+    }
+
+    if(child_yang_name == "cost")
+    {
+        if(cost == nullptr)
+        {
+            cost = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost>();
+        }
+        return cost;
+    }
+
+    if(child_yang_name == "database-filter")
+    {
+        if(database_filter == nullptr)
+        {
+            database_filter = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DatabaseFilter>();
+        }
+        return database_filter;
+    }
+
+    if(child_yang_name == "demand-circuit")
+    {
+        if(demand_circuit == nullptr)
+        {
+            demand_circuit = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DemandCircuit>();
+        }
+        return demand_circuit;
+    }
+
+    if(child_yang_name == "flood-reduction")
+    {
+        if(flood_reduction == nullptr)
+        {
+            flood_reduction = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::FloodReduction>();
+        }
+        return flood_reduction;
+    }
+
+    if(child_yang_name == "manet")
+    {
+        if(manet == nullptr)
+        {
+            manet = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Manet>();
+        }
+        return manet;
+    }
+
+    if(child_yang_name == "mtu-ignore")
+    {
+        if(mtu_ignore == nullptr)
+        {
+            mtu_ignore = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::MtuIgnore>();
+        }
+        return mtu_ignore;
+    }
+
+    if(child_yang_name == "multi-area")
+    {
+        if(multi_area == nullptr)
+        {
+            multi_area = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::MultiArea>();
+        }
+        return multi_area;
+    }
+
+    if(child_yang_name == "neighbor")
+    {
+        auto ent_ = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Neighbor>();
+        ent_->parent = this;
+        neighbor.append(ent_);
+        return ent_;
+    }
+
+    if(child_yang_name == "network")
+    {
+        if(network == nullptr)
+        {
+            network = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Network>();
+        }
+        return network;
+    }
+
+    if(child_yang_name == "prefix-suppression")
+    {
+        if(prefix_suppression == nullptr)
+        {
+            prefix_suppression = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::PrefixSuppression>();
+        }
+        return prefix_suppression;
+    }
+
+    if(child_yang_name == "shutdown")
+    {
+        if(shutdown == nullptr)
+        {
+            shutdown = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Shutdown>();
+        }
+        return shutdown;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : area.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    if(authentication != nullptr)
+    {
+        _children["authentication"] = authentication;
+    }
+
+    if(bfd != nullptr)
+    {
+        _children["bfd"] = bfd;
+    }
+
+    if(cost != nullptr)
+    {
+        _children["cost"] = cost;
+    }
+
+    if(database_filter != nullptr)
+    {
+        _children["database-filter"] = database_filter;
+    }
+
+    if(demand_circuit != nullptr)
+    {
+        _children["demand-circuit"] = demand_circuit;
+    }
+
+    if(flood_reduction != nullptr)
+    {
+        _children["flood-reduction"] = flood_reduction;
+    }
+
+    if(manet != nullptr)
+    {
+        _children["manet"] = manet;
+    }
+
+    if(mtu_ignore != nullptr)
+    {
+        _children["mtu-ignore"] = mtu_ignore;
+    }
+
+    if(multi_area != nullptr)
+    {
+        _children["multi-area"] = multi_area;
+    }
+
+    count_ = 0;
+    for (auto ent_ : neighbor.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    if(network != nullptr)
+    {
+        _children["network"] = network;
+    }
+
+    if(prefix_suppression != nullptr)
+    {
+        _children["prefix-suppression"] = prefix_suppression;
+    }
+
+    if(shutdown != nullptr)
+    {
+        _children["shutdown"] = shutdown;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dead-interval")
+    {
+        dead_interval = value;
+        dead_interval.value_namespace = name_space;
+        dead_interval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hello-interval")
+    {
+        hello_interval = value;
+        hello_interval.value_namespace = name_space;
+        hello_interval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "retransmit-interval")
+    {
+        retransmit_interval = value;
+        retransmit_interval.value_namespace = name_space;
+        retransmit_interval.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "transmit-delay")
+    {
+        transmit_delay = value;
+        transmit_delay.value_namespace = name_space;
+        transmit_delay.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dead-interval")
+    {
+        dead_interval.yfilter = yfilter;
+    }
+    if(value_path == "hello-interval")
+    {
+        hello_interval.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "retransmit-interval")
+    {
+        retransmit_interval.yfilter = yfilter;
+    }
+    if(value_path == "transmit-delay")
+    {
+        transmit_delay.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "area" || name == "authentication" || name == "bfd" || name == "cost" || name == "database-filter" || name == "demand-circuit" || name == "flood-reduction" || name == "manet" || name == "mtu-ignore" || name == "multi-area" || name == "neighbor" || name == "network" || name == "prefix-suppression" || name == "shutdown" || name == "dead-interval" || name == "hello-interval" || name == "priority" || name == "retransmit-interval" || name == "transmit-delay")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Area::Area()
+    :
+    id{YType::str, "id"},
+    instance{YType::uint8, "instance"}
+{
+
+    yang_name = "area"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Area::~Area()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Area::has_data() const
+{
+    if (is_presence_container) return true;
+    return id.is_set
+	|| instance.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Area::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(id.yfilter)
+	|| ydk::is_set(instance.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Area::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "area";
+    ADD_KEY_TOKEN(id, "id");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Area::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+    if (instance.is_set || is_set(instance.yfilter)) leaf_name_data.push_back(instance.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Area::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Area::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Area::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "instance")
+    {
+        instance = value;
+        instance.value_namespace = name_space;
+        instance.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Area::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+    if(value_path == "instance")
+    {
+        instance.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Area::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "id" || name == "instance")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Authentication::Authentication()
+    :
+    key_chain{YType::str, "key-chain"},
+    null{YType::empty, "null"}
+{
+
+    yang_name = "authentication"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Authentication::~Authentication()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Authentication::has_data() const
+{
+    if (is_presence_container) return true;
+    return key_chain.is_set
+	|| null.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Authentication::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(key_chain.yfilter)
+	|| ydk::is_set(null.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Authentication::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "authentication";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Authentication::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (key_chain.is_set || is_set(key_chain.yfilter)) leaf_name_data.push_back(key_chain.get_name_leafdata());
+    if (null.is_set || is_set(null.yfilter)) leaf_name_data.push_back(null.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Authentication::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "key-chain")
+    {
+        key_chain = value;
+        key_chain.value_namespace = name_space;
+        key_chain.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "null")
+    {
+        null = value;
+        null.value_namespace = name_space;
+        null.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "key-chain")
+    {
+        key_chain.yfilter = yfilter;
+    }
+    if(value_path == "null")
+    {
+        null.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Authentication::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "key-chain" || name == "null")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Bfd::Bfd()
+    :
+    disable{YType::empty, "disable"}
+{
+
+    yang_name = "bfd"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Bfd::~Bfd()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Bfd::has_data() const
+{
+    if (is_presence_container) return true;
+    return disable.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Bfd::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Bfd::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "bfd";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Bfd::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Bfd::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Bfd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Cost()
+    :
+    value_{YType::uint32, "value"}
+        ,
+    dynamic(nullptr) // presence node
+{
+
+    yang_name = "cost"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::~Cost()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::has_data() const
+{
+    if (is_presence_container) return true;
+    return value_.is_set
+	|| (dynamic !=  nullptr && dynamic->has_data());
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(value_.yfilter)
+	|| (dynamic !=  nullptr && dynamic->has_operation());
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cost";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "dynamic")
+    {
+        if(dynamic == nullptr)
+        {
+            dynamic = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic>();
+        }
+        return dynamic;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(dynamic != nullptr)
+    {
+        _children["dynamic"] = dynamic;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dynamic" || name == "value")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Dynamic()
+    :
+    default_{YType::uint32, "default"}
+        ,
+    hysteresis(nullptr) // presence node
+    , weight(std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight>())
+{
+    weight->parent = this;
+
+    yang_name = "dynamic"; yang_parent_name = "cost"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::~Dynamic()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::has_data() const
+{
+    if (is_presence_container) return true;
+    return default_.is_set
+	|| (hysteresis !=  nullptr && hysteresis->has_data())
+	|| (weight !=  nullptr && weight->has_data());
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(default_.yfilter)
+	|| (hysteresis !=  nullptr && hysteresis->has_operation())
+	|| (weight !=  nullptr && weight->has_operation());
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dynamic";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "hysteresis")
+    {
+        if(hysteresis == nullptr)
+        {
+            hysteresis = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis>();
+        }
+        return hysteresis;
+    }
+
+    if(child_yang_name == "weight")
+    {
+        if(weight == nullptr)
+        {
+            weight = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight>();
+        }
+        return weight;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(hysteresis != nullptr)
+    {
+        _children["hysteresis"] = hysteresis;
+    }
+
+    if(weight != nullptr)
+    {
+        _children["weight"] = weight;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "default")
+    {
+        default_ = value;
+        default_.value_namespace = name_space;
+        default_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "default")
+    {
+        default_.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "hysteresis" || name == "weight" || name == "default")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::Hysteresis()
+    :
+    percent{YType::uint8, "percent"},
+    threshold{YType::uint32, "threshold"}
+{
+
+    yang_name = "hysteresis"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::~Hysteresis()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::has_data() const
+{
+    if (is_presence_container) return true;
+    return percent.is_set
+	|| threshold.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(percent.yfilter)
+	|| ydk::is_set(threshold.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "hysteresis";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (percent.is_set || is_set(percent.yfilter)) leaf_name_data.push_back(percent.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "percent")
+    {
+        percent = value;
+        percent.value_namespace = name_space;
+        percent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "percent")
+    {
+        percent.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Hysteresis::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "percent" || name == "threshold")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Weight()
+    :
+    l2_factor(nullptr) // presence node
+    , latency(nullptr) // presence node
+    , resources(nullptr) // presence node
+    , throughput(nullptr) // presence node
+{
+
+    yang_name = "weight"; yang_parent_name = "dynamic"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::~Weight()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::has_data() const
+{
+    if (is_presence_container) return true;
+    return (l2_factor !=  nullptr && l2_factor->has_data())
+	|| (latency !=  nullptr && latency->has_data())
+	|| (resources !=  nullptr && resources->has_data())
+	|| (throughput !=  nullptr && throughput->has_data());
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::has_operation() const
+{
+    return is_set(yfilter)
+	|| (l2_factor !=  nullptr && l2_factor->has_operation())
+	|| (latency !=  nullptr && latency->has_operation())
+	|| (resources !=  nullptr && resources->has_operation())
+	|| (throughput !=  nullptr && throughput->has_operation());
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "weight";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "L2-factor")
+    {
+        if(l2_factor == nullptr)
+        {
+            l2_factor = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor>();
+        }
+        return l2_factor;
+    }
+
+    if(child_yang_name == "latency")
+    {
+        if(latency == nullptr)
+        {
+            latency = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency>();
+        }
+        return latency;
+    }
+
+    if(child_yang_name == "resources")
+    {
+        if(resources == nullptr)
+        {
+            resources = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources>();
+        }
+        return resources;
+    }
+
+    if(child_yang_name == "throughput")
+    {
+        if(throughput == nullptr)
+        {
+            throughput = std::make_shared<Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput>();
+        }
+        return throughput;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(l2_factor != nullptr)
+    {
+        _children["L2-factor"] = l2_factor;
+    }
+
+    if(latency != nullptr)
+    {
+        _children["latency"] = latency;
+    }
+
+    if(resources != nullptr)
+    {
+        _children["resources"] = resources;
+    }
+
+    if(throughput != nullptr)
+    {
+        _children["throughput"] = throughput;
+    }
+
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "L2-factor" || name == "latency" || name == "resources" || name == "throughput")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::L2Factor()
+    :
+    value_{YType::uint8, "value"}
+{
+
+    yang_name = "L2-factor"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::~L2Factor()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::has_data() const
+{
+    if (is_presence_container) return true;
+    return value_.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "L2-factor";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::L2Factor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "value")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::Latency()
+    :
+    value_{YType::uint8, "value"}
+{
+
+    yang_name = "latency"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::~Latency()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::has_data() const
+{
+    if (is_presence_container) return true;
+    return value_.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "latency";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Latency::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "value")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::Resources()
+    :
+    value_{YType::uint8, "value"}
+{
+
+    yang_name = "resources"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::~Resources()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::has_data() const
+{
+    if (is_presence_container) return true;
+    return value_.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "resources";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Resources::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "value")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::Throughput()
+    :
+    value_{YType::uint8, "value"}
+{
+
+    yang_name = "throughput"; yang_parent_name = "weight"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::~Throughput()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::has_data() const
+{
+    if (is_presence_container) return true;
+    return value_.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "throughput";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Cost::Dynamic::Weight::Throughput::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "value")
+        return true;
+    return false;
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DatabaseFilter::DatabaseFilter()
+    :
+    all{YType::enumeration, "all"},
+    disable{YType::empty, "disable"}
+{
+
+    yang_name = "database-filter"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DatabaseFilter::~DatabaseFilter()
+{
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DatabaseFilter::has_data() const
+{
+    if (is_presence_container) return true;
+    return all.is_set
+	|| disable.is_set;
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DatabaseFilter::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(all.yfilter)
+	|| ydk::is_set(disable.yfilter);
+}
+
+std::string Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DatabaseFilter::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "database-filter";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DatabaseFilter::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (all.is_set || is_set(all.yfilter)) leaf_name_data.push_back(all.get_name_leafdata());
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DatabaseFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DatabaseFilter::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DatabaseFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "all")
+    {
+        all = value;
+        all.value_namespace = name_space;
+        all.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DatabaseFilter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "all")
+    {
+        all.yfilter = yfilter;
+    }
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DatabaseFilter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "all" || name == "disable")
+        return true;
+    return false;
+}
 
 Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DemandCircuit::DemandCircuit()
     :
@@ -10853,4753 +15939,13 @@ bool Native::Interface::LISP::Encapsulation::has_leaf_or_child_of_name(const std
     return false;
 }
 
-Native::Interface::LISP::Encapsulation::Dot1Q::Dot1Q()
-    :
-    vlan_id{YType::uint16, "vlan-id"},
-    native{YType::empty, "native"}
-{
+const Enum::YLeaf Native::Interface::Loopback::Ospfv3::ProcessId::Neighbor::DatabaseFilter::All::out {0, "out"};
 
-    yang_name = "dot1Q"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
-}
+const Enum::YLeaf Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::DatabaseFilter::All::out {0, "out"};
 
-Native::Interface::LISP::Encapsulation::Dot1Q::~Dot1Q()
-{
-}
+const Enum::YLeaf Native::Interface::Loopback::Ospfv3::ProcessId::Ipv4::Neighbor::DatabaseFilter::All::out {0, "out"};
 
-bool Native::Interface::LISP::Encapsulation::Dot1Q::has_data() const
-{
-    if (is_presence_container) return true;
-    return vlan_id.is_set
-	|| native.is_set;
-}
-
-bool Native::Interface::LISP::Encapsulation::Dot1Q::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(vlan_id.yfilter)
-	|| ydk::is_set(native.yfilter);
-}
-
-std::string Native::Interface::LISP::Encapsulation::Dot1Q::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dot1Q";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Encapsulation::Dot1Q::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
-    if (native.is_set || is_set(native.yfilter)) leaf_name_data.push_back(native.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Encapsulation::Dot1Q::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Encapsulation::Dot1Q::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Encapsulation::Dot1Q::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "vlan-id")
-    {
-        vlan_id = value;
-        vlan_id.value_namespace = name_space;
-        vlan_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "native")
-    {
-        native = value;
-        native.value_namespace = name_space;
-        native.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Encapsulation::Dot1Q::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "vlan-id")
-    {
-        vlan_id.yfilter = yfilter;
-    }
-    if(value_path == "native")
-    {
-        native.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Encapsulation::Dot1Q::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vlan-id" || name == "native")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Encapsulation::Isl::Isl()
-    :
-    vlan_id{YType::uint16, "vlan-id"}
-{
-
-    yang_name = "isl"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Encapsulation::Isl::~Isl()
-{
-}
-
-bool Native::Interface::LISP::Encapsulation::Isl::has_data() const
-{
-    if (is_presence_container) return true;
-    return vlan_id.is_set;
-}
-
-bool Native::Interface::LISP::Encapsulation::Isl::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(vlan_id.yfilter);
-}
-
-std::string Native::Interface::LISP::Encapsulation::Isl::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "isl";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Encapsulation::Isl::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (vlan_id.is_set || is_set(vlan_id.yfilter)) leaf_name_data.push_back(vlan_id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Encapsulation::Isl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Encapsulation::Isl::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Encapsulation::Isl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "vlan-id")
-    {
-        vlan_id = value;
-        vlan_id.value_namespace = name_space;
-        vlan_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Encapsulation::Isl::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "vlan-id")
-    {
-        vlan_id.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Encapsulation::Isl::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vlan-id")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Encapsulation::Ppp::Ppp()
-{
-
-    yang_name = "ppp"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::LISP::Encapsulation::Ppp::~Ppp()
-{
-}
-
-bool Native::Interface::LISP::Encapsulation::Ppp::has_data() const
-{
-    if (is_presence_container) return true;
-    return false;
-}
-
-bool Native::Interface::LISP::Encapsulation::Ppp::has_operation() const
-{
-    return is_set(yfilter);
-}
-
-std::string Native::Interface::LISP::Encapsulation::Ppp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ppp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Encapsulation::Ppp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Encapsulation::Ppp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Encapsulation::Ppp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Encapsulation::Ppp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::LISP::Encapsulation::Ppp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::LISP::Encapsulation::Ppp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    return false;
-}
-
-Native::Interface::LISP::Encapsulation::Slip::Slip()
-{
-
-    yang_name = "slip"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::LISP::Encapsulation::Slip::~Slip()
-{
-}
-
-bool Native::Interface::LISP::Encapsulation::Slip::has_data() const
-{
-    if (is_presence_container) return true;
-    return false;
-}
-
-bool Native::Interface::LISP::Encapsulation::Slip::has_operation() const
-{
-    return is_set(yfilter);
-}
-
-std::string Native::Interface::LISP::Encapsulation::Slip::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "slip";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Encapsulation::Slip::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Encapsulation::Slip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Encapsulation::Slip::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Encapsulation::Slip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::LISP::Encapsulation::Slip::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::LISP::Encapsulation::Slip::has_leaf_or_child_of_name(const std::string & name) const
-{
-    return false;
-}
-
-Native::Interface::LISP::Encapsulation::FrameRelay::FrameRelay()
-    :
-    ietf{YType::empty, "ietf"}
-{
-
-    yang_name = "frame-relay"; yang_parent_name = "encapsulation"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::LISP::Encapsulation::FrameRelay::~FrameRelay()
-{
-}
-
-bool Native::Interface::LISP::Encapsulation::FrameRelay::has_data() const
-{
-    if (is_presence_container) return true;
-    return ietf.is_set;
-}
-
-bool Native::Interface::LISP::Encapsulation::FrameRelay::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ietf.yfilter);
-}
-
-std::string Native::Interface::LISP::Encapsulation::FrameRelay::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "frame-relay";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Encapsulation::FrameRelay::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ietf.is_set || is_set(ietf.yfilter)) leaf_name_data.push_back(ietf.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Encapsulation::FrameRelay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Encapsulation::FrameRelay::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Encapsulation::FrameRelay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ietf")
-    {
-        ietf = value;
-        ietf.value_namespace = name_space;
-        ietf.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Encapsulation::FrameRelay::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ietf")
-    {
-        ietf.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Encapsulation::FrameRelay::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ietf")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::FairQueueConf::FairQueueConf()
-    :
-    fair_queue{YType::boolean, "fair-queue"}
-{
-
-    yang_name = "fair-queue-conf"; yang_parent_name = "LISP"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::FairQueueConf::~FairQueueConf()
-{
-}
-
-bool Native::Interface::LISP::FairQueueConf::has_data() const
-{
-    if (is_presence_container) return true;
-    return fair_queue.is_set;
-}
-
-bool Native::Interface::LISP::FairQueueConf::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(fair_queue.yfilter);
-}
-
-std::string Native::Interface::LISP::FairQueueConf::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fair-queue-conf";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::FairQueueConf::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (fair_queue.is_set || is_set(fair_queue.yfilter)) leaf_name_data.push_back(fair_queue.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::FairQueueConf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::FairQueueConf::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::FairQueueConf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "fair-queue")
-    {
-        fair_queue = value;
-        fair_queue.value_namespace = name_space;
-        fair_queue.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::FairQueueConf::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "fair-queue")
-    {
-        fair_queue.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::FairQueueConf::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "fair-queue")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::FairQueue::FairQueue()
-    :
-    incomplete{YType::empty, "incomplete"}
-{
-
-    yang_name = "fair-queue"; yang_parent_name = "LISP"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::FairQueue::~FairQueue()
-{
-}
-
-bool Native::Interface::LISP::FairQueue::has_data() const
-{
-    if (is_presence_container) return true;
-    return incomplete.is_set;
-}
-
-bool Native::Interface::LISP::FairQueue::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(incomplete.yfilter);
-}
-
-std::string Native::Interface::LISP::FairQueue::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fair-queue";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::FairQueue::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (incomplete.is_set || is_set(incomplete.yfilter)) leaf_name_data.push_back(incomplete.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::FairQueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::FairQueue::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::FairQueue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "incomplete")
-    {
-        incomplete = value;
-        incomplete.value_namespace = name_space;
-        incomplete.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::FairQueue::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "incomplete")
-    {
-        incomplete.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::FairQueue::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "incomplete")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Flowcontrol::Flowcontrol()
-    :
-    receive{YType::enumeration, "receive"},
-    send{YType::enumeration, "send"}
-{
-
-    yang_name = "flowcontrol"; yang_parent_name = "LISP"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Flowcontrol::~Flowcontrol()
-{
-}
-
-bool Native::Interface::LISP::Flowcontrol::has_data() const
-{
-    if (is_presence_container) return true;
-    return receive.is_set
-	|| send.is_set;
-}
-
-bool Native::Interface::LISP::Flowcontrol::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(receive.yfilter)
-	|| ydk::is_set(send.yfilter);
-}
-
-std::string Native::Interface::LISP::Flowcontrol::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "flowcontrol";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Flowcontrol::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (receive.is_set || is_set(receive.yfilter)) leaf_name_data.push_back(receive.get_name_leafdata());
-    if (send.is_set || is_set(send.yfilter)) leaf_name_data.push_back(send.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Flowcontrol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Flowcontrol::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Flowcontrol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "receive")
-    {
-        receive = value;
-        receive.value_namespace = name_space;
-        receive.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "send")
-    {
-        send = value;
-        send.value_namespace = name_space;
-        send.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Flowcontrol::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "receive")
-    {
-        receive.yfilter = yfilter;
-    }
-    if(value_path == "send")
-    {
-        send.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Flowcontrol::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "receive" || name == "send")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::Isis()
-    :
-    lsp_interval{YType::uint32, "Cisco-IOS-XE-isis:lsp-interval"},
-    mesh_group{YType::str, "Cisco-IOS-XE-isis:mesh-group"},
-    network{YType::enumeration, "Cisco-IOS-XE-isis:network"},
-    protocol{YType::enumeration, "Cisco-IOS-XE-isis:protocol"},
-    retransmit_interval{YType::uint16, "Cisco-IOS-XE-isis:retransmit-interval"},
-    retransmit_throttle_interval{YType::uint16, "Cisco-IOS-XE-isis:retransmit-throttle-interval"},
-    tag{YType::uint32, "Cisco-IOS-XE-isis:tag"}
-        ,
-    adjacency_filter(std::make_shared<Native::Interface::LISP::Isis::AdjacencyFilter>())
-    , advertise(std::make_shared<Native::Interface::LISP::Isis::Advertise>())
-    , authentication(std::make_shared<Native::Interface::LISP::Isis::Authentication>())
-    , circuit_type(nullptr) // presence node
-    , csnp_interval(std::make_shared<Native::Interface::LISP::Isis::CsnpInterval>())
-    , hello(std::make_shared<Native::Interface::LISP::Isis::Hello>())
-    , hello_interval(std::make_shared<Native::Interface::LISP::Isis::HelloInterval>())
-    , hello_multiplier(std::make_shared<Native::Interface::LISP::Isis::HelloMultiplier>())
-    , ipv6(std::make_shared<Native::Interface::LISP::Isis::Ipv6>())
-    , metric(std::make_shared<Native::Interface::LISP::Isis::Metric>())
-    , password(std::make_shared<Native::Interface::LISP::Isis::Password>())
-    , priority(std::make_shared<Native::Interface::LISP::Isis::Priority>())
-    , bfd(nullptr) // presence node
-    , three_way_handshake(nullptr) // presence node
-{
-    adjacency_filter->parent = this;
-    advertise->parent = this;
-    authentication->parent = this;
-    csnp_interval->parent = this;
-    hello->parent = this;
-    hello_interval->parent = this;
-    hello_multiplier->parent = this;
-    ipv6->parent = this;
-    metric->parent = this;
-    password->parent = this;
-    priority->parent = this;
-
-    yang_name = "isis"; yang_parent_name = "LISP"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::~Isis()
-{
-}
-
-bool Native::Interface::LISP::Isis::has_data() const
-{
-    if (is_presence_container) return true;
-    return lsp_interval.is_set
-	|| mesh_group.is_set
-	|| network.is_set
-	|| protocol.is_set
-	|| retransmit_interval.is_set
-	|| retransmit_throttle_interval.is_set
-	|| tag.is_set
-	|| (adjacency_filter !=  nullptr && adjacency_filter->has_data())
-	|| (advertise !=  nullptr && advertise->has_data())
-	|| (authentication !=  nullptr && authentication->has_data())
-	|| (circuit_type !=  nullptr && circuit_type->has_data())
-	|| (csnp_interval !=  nullptr && csnp_interval->has_data())
-	|| (hello !=  nullptr && hello->has_data())
-	|| (hello_interval !=  nullptr && hello_interval->has_data())
-	|| (hello_multiplier !=  nullptr && hello_multiplier->has_data())
-	|| (ipv6 !=  nullptr && ipv6->has_data())
-	|| (metric !=  nullptr && metric->has_data())
-	|| (password !=  nullptr && password->has_data())
-	|| (priority !=  nullptr && priority->has_data())
-	|| (bfd !=  nullptr && bfd->has_data())
-	|| (three_way_handshake !=  nullptr && three_way_handshake->has_data());
-}
-
-bool Native::Interface::LISP::Isis::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(lsp_interval.yfilter)
-	|| ydk::is_set(mesh_group.yfilter)
-	|| ydk::is_set(network.yfilter)
-	|| ydk::is_set(protocol.yfilter)
-	|| ydk::is_set(retransmit_interval.yfilter)
-	|| ydk::is_set(retransmit_throttle_interval.yfilter)
-	|| ydk::is_set(tag.yfilter)
-	|| (adjacency_filter !=  nullptr && adjacency_filter->has_operation())
-	|| (advertise !=  nullptr && advertise->has_operation())
-	|| (authentication !=  nullptr && authentication->has_operation())
-	|| (circuit_type !=  nullptr && circuit_type->has_operation())
-	|| (csnp_interval !=  nullptr && csnp_interval->has_operation())
-	|| (hello !=  nullptr && hello->has_operation())
-	|| (hello_interval !=  nullptr && hello_interval->has_operation())
-	|| (hello_multiplier !=  nullptr && hello_multiplier->has_operation())
-	|| (ipv6 !=  nullptr && ipv6->has_operation())
-	|| (metric !=  nullptr && metric->has_operation())
-	|| (password !=  nullptr && password->has_operation())
-	|| (priority !=  nullptr && priority->has_operation())
-	|| (bfd !=  nullptr && bfd->has_operation())
-	|| (three_way_handshake !=  nullptr && three_way_handshake->has_operation());
-}
-
-std::string Native::Interface::LISP::Isis::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "isis";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (lsp_interval.is_set || is_set(lsp_interval.yfilter)) leaf_name_data.push_back(lsp_interval.get_name_leafdata());
-    if (mesh_group.is_set || is_set(mesh_group.yfilter)) leaf_name_data.push_back(mesh_group.get_name_leafdata());
-    if (network.is_set || is_set(network.yfilter)) leaf_name_data.push_back(network.get_name_leafdata());
-    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
-    if (retransmit_interval.is_set || is_set(retransmit_interval.yfilter)) leaf_name_data.push_back(retransmit_interval.get_name_leafdata());
-    if (retransmit_throttle_interval.is_set || is_set(retransmit_throttle_interval.yfilter)) leaf_name_data.push_back(retransmit_throttle_interval.get_name_leafdata());
-    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "Cisco-IOS-XE-isis:adjacency-filter")
-    {
-        if(adjacency_filter == nullptr)
-        {
-            adjacency_filter = std::make_shared<Native::Interface::LISP::Isis::AdjacencyFilter>();
-        }
-        return adjacency_filter;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-isis:advertise")
-    {
-        if(advertise == nullptr)
-        {
-            advertise = std::make_shared<Native::Interface::LISP::Isis::Advertise>();
-        }
-        return advertise;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-isis:authentication")
-    {
-        if(authentication == nullptr)
-        {
-            authentication = std::make_shared<Native::Interface::LISP::Isis::Authentication>();
-        }
-        return authentication;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-isis:circuit-type")
-    {
-        if(circuit_type == nullptr)
-        {
-            circuit_type = std::make_shared<Native::Interface::LISP::Isis::CircuitType>();
-        }
-        return circuit_type;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-isis:csnp-interval")
-    {
-        if(csnp_interval == nullptr)
-        {
-            csnp_interval = std::make_shared<Native::Interface::LISP::Isis::CsnpInterval>();
-        }
-        return csnp_interval;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-isis:hello")
-    {
-        if(hello == nullptr)
-        {
-            hello = std::make_shared<Native::Interface::LISP::Isis::Hello>();
-        }
-        return hello;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-isis:hello-interval")
-    {
-        if(hello_interval == nullptr)
-        {
-            hello_interval = std::make_shared<Native::Interface::LISP::Isis::HelloInterval>();
-        }
-        return hello_interval;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-isis:hello-multiplier")
-    {
-        if(hello_multiplier == nullptr)
-        {
-            hello_multiplier = std::make_shared<Native::Interface::LISP::Isis::HelloMultiplier>();
-        }
-        return hello_multiplier;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-isis:ipv6")
-    {
-        if(ipv6 == nullptr)
-        {
-            ipv6 = std::make_shared<Native::Interface::LISP::Isis::Ipv6>();
-        }
-        return ipv6;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-isis:metric")
-    {
-        if(metric == nullptr)
-        {
-            metric = std::make_shared<Native::Interface::LISP::Isis::Metric>();
-        }
-        return metric;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-isis:password")
-    {
-        if(password == nullptr)
-        {
-            password = std::make_shared<Native::Interface::LISP::Isis::Password>();
-        }
-        return password;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-isis:priority")
-    {
-        if(priority == nullptr)
-        {
-            priority = std::make_shared<Native::Interface::LISP::Isis::Priority>();
-        }
-        return priority;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-isis:bfd")
-    {
-        if(bfd == nullptr)
-        {
-            bfd = std::make_shared<Native::Interface::LISP::Isis::Bfd>();
-        }
-        return bfd;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-isis:three-way-handshake")
-    {
-        if(three_way_handshake == nullptr)
-        {
-            three_way_handshake = std::make_shared<Native::Interface::LISP::Isis::ThreeWayHandshake>();
-        }
-        return three_way_handshake;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(adjacency_filter != nullptr)
-    {
-        _children["Cisco-IOS-XE-isis:adjacency-filter"] = adjacency_filter;
-    }
-
-    if(advertise != nullptr)
-    {
-        _children["Cisco-IOS-XE-isis:advertise"] = advertise;
-    }
-
-    if(authentication != nullptr)
-    {
-        _children["Cisco-IOS-XE-isis:authentication"] = authentication;
-    }
-
-    if(circuit_type != nullptr)
-    {
-        _children["Cisco-IOS-XE-isis:circuit-type"] = circuit_type;
-    }
-
-    if(csnp_interval != nullptr)
-    {
-        _children["Cisco-IOS-XE-isis:csnp-interval"] = csnp_interval;
-    }
-
-    if(hello != nullptr)
-    {
-        _children["Cisco-IOS-XE-isis:hello"] = hello;
-    }
-
-    if(hello_interval != nullptr)
-    {
-        _children["Cisco-IOS-XE-isis:hello-interval"] = hello_interval;
-    }
-
-    if(hello_multiplier != nullptr)
-    {
-        _children["Cisco-IOS-XE-isis:hello-multiplier"] = hello_multiplier;
-    }
-
-    if(ipv6 != nullptr)
-    {
-        _children["Cisco-IOS-XE-isis:ipv6"] = ipv6;
-    }
-
-    if(metric != nullptr)
-    {
-        _children["Cisco-IOS-XE-isis:metric"] = metric;
-    }
-
-    if(password != nullptr)
-    {
-        _children["Cisco-IOS-XE-isis:password"] = password;
-    }
-
-    if(priority != nullptr)
-    {
-        _children["Cisco-IOS-XE-isis:priority"] = priority;
-    }
-
-    if(bfd != nullptr)
-    {
-        _children["Cisco-IOS-XE-isis:bfd"] = bfd;
-    }
-
-    if(three_way_handshake != nullptr)
-    {
-        _children["Cisco-IOS-XE-isis:three-way-handshake"] = three_way_handshake;
-    }
-
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "Cisco-IOS-XE-isis:lsp-interval")
-    {
-        lsp_interval = value;
-        lsp_interval.value_namespace = name_space;
-        lsp_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "Cisco-IOS-XE-isis:mesh-group")
-    {
-        mesh_group = value;
-        mesh_group.value_namespace = name_space;
-        mesh_group.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "Cisco-IOS-XE-isis:network")
-    {
-        network = value;
-        network.value_namespace = name_space;
-        network.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "Cisco-IOS-XE-isis:protocol")
-    {
-        protocol = value;
-        protocol.value_namespace = name_space;
-        protocol.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "Cisco-IOS-XE-isis:retransmit-interval")
-    {
-        retransmit_interval = value;
-        retransmit_interval.value_namespace = name_space;
-        retransmit_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "Cisco-IOS-XE-isis:retransmit-throttle-interval")
-    {
-        retransmit_throttle_interval = value;
-        retransmit_throttle_interval.value_namespace = name_space;
-        retransmit_throttle_interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "Cisco-IOS-XE-isis:tag")
-    {
-        tag = value;
-        tag.value_namespace = name_space;
-        tag.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "lsp-interval")
-    {
-        lsp_interval.yfilter = yfilter;
-    }
-    if(value_path == "mesh-group")
-    {
-        mesh_group.yfilter = yfilter;
-    }
-    if(value_path == "network")
-    {
-        network.yfilter = yfilter;
-    }
-    if(value_path == "protocol")
-    {
-        protocol.yfilter = yfilter;
-    }
-    if(value_path == "retransmit-interval")
-    {
-        retransmit_interval.yfilter = yfilter;
-    }
-    if(value_path == "retransmit-throttle-interval")
-    {
-        retransmit_throttle_interval.yfilter = yfilter;
-    }
-    if(value_path == "tag")
-    {
-        tag.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "adjacency-filter" || name == "advertise" || name == "authentication" || name == "circuit-type" || name == "csnp-interval" || name == "hello" || name == "hello-interval" || name == "hello-multiplier" || name == "ipv6" || name == "metric" || name == "password" || name == "priority" || name == "bfd" || name == "three-way-handshake" || name == "lsp-interval" || name == "mesh-group" || name == "network" || name == "protocol" || name == "retransmit-interval" || name == "retransmit-throttle-interval" || name == "tag")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::AdjacencyFilter::AdjacencyFilter()
-    :
-    name{YType::str, "name"},
-    match_all{YType::empty, "match-all"}
-{
-
-    yang_name = "adjacency-filter"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::AdjacencyFilter::~AdjacencyFilter()
-{
-}
-
-bool Native::Interface::LISP::Isis::AdjacencyFilter::has_data() const
-{
-    if (is_presence_container) return true;
-    return name.is_set
-	|| match_all.is_set;
-}
-
-bool Native::Interface::LISP::Isis::AdjacencyFilter::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(match_all.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::AdjacencyFilter::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-isis:adjacency-filter";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::AdjacencyFilter::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (match_all.is_set || is_set(match_all.yfilter)) leaf_name_data.push_back(match_all.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::AdjacencyFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::AdjacencyFilter::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::AdjacencyFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "match-all")
-    {
-        match_all = value;
-        match_all.value_namespace = name_space;
-        match_all.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::AdjacencyFilter::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "match-all")
-    {
-        match_all.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::AdjacencyFilter::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name" || name == "match-all")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::Advertise::Advertise()
-    :
-    prefix{YType::empty, "prefix"}
-{
-
-    yang_name = "advertise"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::Advertise::~Advertise()
-{
-}
-
-bool Native::Interface::LISP::Isis::Advertise::has_data() const
-{
-    if (is_presence_container) return true;
-    return prefix.is_set;
-}
-
-bool Native::Interface::LISP::Isis::Advertise::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(prefix.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::Advertise::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-isis:advertise";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::Advertise::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::Advertise::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::Advertise::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::Advertise::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "prefix")
-    {
-        prefix = value;
-        prefix.value_namespace = name_space;
-        prefix.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::Advertise::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "prefix")
-    {
-        prefix.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::Advertise::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "prefix")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::Authentication::Authentication()
-    :
-    mode(std::make_shared<Native::Interface::LISP::Isis::Authentication::Mode>())
-    , key_chain(std::make_shared<Native::Interface::LISP::Isis::Authentication::KeyChain>())
-    , send_only(nullptr) // presence node
-{
-    mode->parent = this;
-    key_chain->parent = this;
-
-    yang_name = "authentication"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::Authentication::~Authentication()
-{
-}
-
-bool Native::Interface::LISP::Isis::Authentication::has_data() const
-{
-    if (is_presence_container) return true;
-    return (mode !=  nullptr && mode->has_data())
-	|| (key_chain !=  nullptr && key_chain->has_data())
-	|| (send_only !=  nullptr && send_only->has_data());
-}
-
-bool Native::Interface::LISP::Isis::Authentication::has_operation() const
-{
-    return is_set(yfilter)
-	|| (mode !=  nullptr && mode->has_operation())
-	|| (key_chain !=  nullptr && key_chain->has_operation())
-	|| (send_only !=  nullptr && send_only->has_operation());
-}
-
-std::string Native::Interface::LISP::Isis::Authentication::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-isis:authentication";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::Authentication::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mode")
-    {
-        if(mode == nullptr)
-        {
-            mode = std::make_shared<Native::Interface::LISP::Isis::Authentication::Mode>();
-        }
-        return mode;
-    }
-
-    if(child_yang_name == "key-chain")
-    {
-        if(key_chain == nullptr)
-        {
-            key_chain = std::make_shared<Native::Interface::LISP::Isis::Authentication::KeyChain>();
-        }
-        return key_chain;
-    }
-
-    if(child_yang_name == "send-only")
-    {
-        if(send_only == nullptr)
-        {
-            send_only = std::make_shared<Native::Interface::LISP::Isis::Authentication::SendOnly>();
-        }
-        return send_only;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::Authentication::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(mode != nullptr)
-    {
-        _children["mode"] = mode;
-    }
-
-    if(key_chain != nullptr)
-    {
-        _children["key-chain"] = key_chain;
-    }
-
-    if(send_only != nullptr)
-    {
-        _children["send-only"] = send_only;
-    }
-
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::LISP::Isis::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::LISP::Isis::Authentication::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mode" || name == "key-chain" || name == "send-only")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::Authentication::Mode::Mode()
-    :
-    md5(nullptr) // presence node
-    , text(nullptr) // presence node
-{
-
-    yang_name = "mode"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::Authentication::Mode::~Mode()
-{
-}
-
-bool Native::Interface::LISP::Isis::Authentication::Mode::has_data() const
-{
-    if (is_presence_container) return true;
-    return (md5 !=  nullptr && md5->has_data())
-	|| (text !=  nullptr && text->has_data());
-}
-
-bool Native::Interface::LISP::Isis::Authentication::Mode::has_operation() const
-{
-    return is_set(yfilter)
-	|| (md5 !=  nullptr && md5->has_operation())
-	|| (text !=  nullptr && text->has_operation());
-}
-
-std::string Native::Interface::LISP::Isis::Authentication::Mode::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mode";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::Authentication::Mode::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::Authentication::Mode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "md5")
-    {
-        if(md5 == nullptr)
-        {
-            md5 = std::make_shared<Native::Interface::LISP::Isis::Authentication::Mode::Md5>();
-        }
-        return md5;
-    }
-
-    if(child_yang_name == "text")
-    {
-        if(text == nullptr)
-        {
-            text = std::make_shared<Native::Interface::LISP::Isis::Authentication::Mode::Text>();
-        }
-        return text;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::Authentication::Mode::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(md5 != nullptr)
-    {
-        _children["md5"] = md5;
-    }
-
-    if(text != nullptr)
-    {
-        _children["text"] = text;
-    }
-
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::Authentication::Mode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::LISP::Isis::Authentication::Mode::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::LISP::Isis::Authentication::Mode::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "md5" || name == "text")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::Authentication::Mode::Md5::Md5()
-    :
-    levels{YType::enumeration, "levels"}
-{
-
-    yang_name = "md5"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::LISP::Isis::Authentication::Mode::Md5::~Md5()
-{
-}
-
-bool Native::Interface::LISP::Isis::Authentication::Mode::Md5::has_data() const
-{
-    if (is_presence_container) return true;
-    return levels.is_set;
-}
-
-bool Native::Interface::LISP::Isis::Authentication::Mode::Md5::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(levels.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::Authentication::Mode::Md5::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "md5";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::Authentication::Mode::Md5::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (levels.is_set || is_set(levels.yfilter)) leaf_name_data.push_back(levels.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::Authentication::Mode::Md5::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::Authentication::Mode::Md5::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::Authentication::Mode::Md5::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "levels")
-    {
-        levels = value;
-        levels.value_namespace = name_space;
-        levels.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::Authentication::Mode::Md5::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "levels")
-    {
-        levels.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::Authentication::Mode::Md5::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "levels")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::Authentication::Mode::Text::Text()
-    :
-    levels{YType::enumeration, "levels"}
-{
-
-    yang_name = "text"; yang_parent_name = "mode"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::LISP::Isis::Authentication::Mode::Text::~Text()
-{
-}
-
-bool Native::Interface::LISP::Isis::Authentication::Mode::Text::has_data() const
-{
-    if (is_presence_container) return true;
-    return levels.is_set;
-}
-
-bool Native::Interface::LISP::Isis::Authentication::Mode::Text::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(levels.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::Authentication::Mode::Text::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "text";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::Authentication::Mode::Text::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (levels.is_set || is_set(levels.yfilter)) leaf_name_data.push_back(levels.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::Authentication::Mode::Text::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::Authentication::Mode::Text::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::Authentication::Mode::Text::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "levels")
-    {
-        levels = value;
-        levels.value_namespace = name_space;
-        levels.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::Authentication::Mode::Text::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "levels")
-    {
-        levels.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::Authentication::Mode::Text::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "levels")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::Authentication::KeyChain::KeyChain()
-    :
-    name{YType::str, "name"}
-        ,
-    key_chain_list(this, {"levels"})
-{
-
-    yang_name = "key-chain"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::Authentication::KeyChain::~KeyChain()
-{
-}
-
-bool Native::Interface::LISP::Isis::Authentication::KeyChain::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<key_chain_list.len(); index++)
-    {
-        if(key_chain_list[index]->has_data())
-            return true;
-    }
-    return name.is_set;
-}
-
-bool Native::Interface::LISP::Isis::Authentication::KeyChain::has_operation() const
-{
-    for (std::size_t index=0; index<key_chain_list.len(); index++)
-    {
-        if(key_chain_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::Authentication::KeyChain::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "key-chain";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::Authentication::KeyChain::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::Authentication::KeyChain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "key-chain-list")
-    {
-        auto ent_ = std::make_shared<Native::Interface::LISP::Isis::Authentication::KeyChain::KeyChainList>();
-        ent_->parent = this;
-        key_chain_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::Authentication::KeyChain::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : key_chain_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::Authentication::KeyChain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::Authentication::KeyChain::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::Authentication::KeyChain::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "key-chain-list" || name == "name")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::Authentication::KeyChain::KeyChainList::KeyChainList()
-    :
-    levels{YType::enumeration, "levels"},
-    name{YType::str, "name"}
-{
-
-    yang_name = "key-chain-list"; yang_parent_name = "key-chain"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::Authentication::KeyChain::KeyChainList::~KeyChainList()
-{
-}
-
-bool Native::Interface::LISP::Isis::Authentication::KeyChain::KeyChainList::has_data() const
-{
-    if (is_presence_container) return true;
-    return levels.is_set
-	|| name.is_set;
-}
-
-bool Native::Interface::LISP::Isis::Authentication::KeyChain::KeyChainList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(levels.yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::Authentication::KeyChain::KeyChainList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "key-chain-list";
-    ADD_KEY_TOKEN(levels, "levels");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::Authentication::KeyChain::KeyChainList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (levels.is_set || is_set(levels.yfilter)) leaf_name_data.push_back(levels.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::Authentication::KeyChain::KeyChainList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::Authentication::KeyChain::KeyChainList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::Authentication::KeyChain::KeyChainList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "levels")
-    {
-        levels = value;
-        levels.value_namespace = name_space;
-        levels.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::Authentication::KeyChain::KeyChainList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "levels")
-    {
-        levels.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::Authentication::KeyChain::KeyChainList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "levels" || name == "name")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::Authentication::SendOnly::SendOnly()
-    :
-    levels{YType::enumeration, "levels"}
-{
-
-    yang_name = "send-only"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::LISP::Isis::Authentication::SendOnly::~SendOnly()
-{
-}
-
-bool Native::Interface::LISP::Isis::Authentication::SendOnly::has_data() const
-{
-    if (is_presence_container) return true;
-    return levels.is_set;
-}
-
-bool Native::Interface::LISP::Isis::Authentication::SendOnly::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(levels.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::Authentication::SendOnly::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "send-only";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::Authentication::SendOnly::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (levels.is_set || is_set(levels.yfilter)) leaf_name_data.push_back(levels.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::Authentication::SendOnly::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::Authentication::SendOnly::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::Authentication::SendOnly::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "levels")
-    {
-        levels = value;
-        levels.value_namespace = name_space;
-        levels.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::Authentication::SendOnly::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "levels")
-    {
-        levels.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::Authentication::SendOnly::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "levels")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::CircuitType::CircuitType()
-    :
-    levels{YType::enumeration, "levels"}
-{
-
-    yang_name = "circuit-type"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::LISP::Isis::CircuitType::~CircuitType()
-{
-}
-
-bool Native::Interface::LISP::Isis::CircuitType::has_data() const
-{
-    if (is_presence_container) return true;
-    return levels.is_set;
-}
-
-bool Native::Interface::LISP::Isis::CircuitType::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(levels.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::CircuitType::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-isis:circuit-type";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::CircuitType::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (levels.is_set || is_set(levels.yfilter)) leaf_name_data.push_back(levels.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::CircuitType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::CircuitType::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::CircuitType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "levels")
-    {
-        levels = value;
-        levels.value_namespace = name_space;
-        levels.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::CircuitType::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "levels")
-    {
-        levels.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::CircuitType::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "levels")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::CsnpInterval::CsnpInterval()
-    :
-    value_{YType::uint16, "value"}
-        ,
-    csnp_interval_list(this, {"levels"})
-{
-
-    yang_name = "csnp-interval"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::CsnpInterval::~CsnpInterval()
-{
-}
-
-bool Native::Interface::LISP::Isis::CsnpInterval::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<csnp_interval_list.len(); index++)
-    {
-        if(csnp_interval_list[index]->has_data())
-            return true;
-    }
-    return value_.is_set;
-}
-
-bool Native::Interface::LISP::Isis::CsnpInterval::has_operation() const
-{
-    for (std::size_t index=0; index<csnp_interval_list.len(); index++)
-    {
-        if(csnp_interval_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::CsnpInterval::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-isis:csnp-interval";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::CsnpInterval::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::CsnpInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "csnp-interval-list")
-    {
-        auto ent_ = std::make_shared<Native::Interface::LISP::Isis::CsnpInterval::CsnpIntervalList>();
-        ent_->parent = this;
-        csnp_interval_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::CsnpInterval::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : csnp_interval_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::CsnpInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::CsnpInterval::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::CsnpInterval::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "csnp-interval-list" || name == "value")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::CsnpInterval::CsnpIntervalList::CsnpIntervalList()
-    :
-    levels{YType::enumeration, "levels"},
-    value_{YType::uint16, "value"}
-{
-
-    yang_name = "csnp-interval-list"; yang_parent_name = "csnp-interval"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::CsnpInterval::CsnpIntervalList::~CsnpIntervalList()
-{
-}
-
-bool Native::Interface::LISP::Isis::CsnpInterval::CsnpIntervalList::has_data() const
-{
-    if (is_presence_container) return true;
-    return levels.is_set
-	|| value_.is_set;
-}
-
-bool Native::Interface::LISP::Isis::CsnpInterval::CsnpIntervalList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(levels.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::CsnpInterval::CsnpIntervalList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "csnp-interval-list";
-    ADD_KEY_TOKEN(levels, "levels");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::CsnpInterval::CsnpIntervalList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (levels.is_set || is_set(levels.yfilter)) leaf_name_data.push_back(levels.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::CsnpInterval::CsnpIntervalList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::CsnpInterval::CsnpIntervalList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::CsnpInterval::CsnpIntervalList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "levels")
-    {
-        levels = value;
-        levels.value_namespace = name_space;
-        levels.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::CsnpInterval::CsnpIntervalList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "levels")
-    {
-        levels.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::CsnpInterval::CsnpIntervalList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "levels" || name == "value")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::Hello::Hello()
-    :
-    padding(nullptr) // presence node
-{
-
-    yang_name = "hello"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::Hello::~Hello()
-{
-}
-
-bool Native::Interface::LISP::Isis::Hello::has_data() const
-{
-    if (is_presence_container) return true;
-    return (padding !=  nullptr && padding->has_data());
-}
-
-bool Native::Interface::LISP::Isis::Hello::has_operation() const
-{
-    return is_set(yfilter)
-	|| (padding !=  nullptr && padding->has_operation());
-}
-
-std::string Native::Interface::LISP::Isis::Hello::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-isis:hello";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::Hello::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::Hello::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "padding")
-    {
-        if(padding == nullptr)
-        {
-            padding = std::make_shared<Native::Interface::LISP::Isis::Hello::Padding>();
-        }
-        return padding;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::Hello::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(padding != nullptr)
-    {
-        _children["padding"] = padding;
-    }
-
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::Hello::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::LISP::Isis::Hello::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::LISP::Isis::Hello::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "padding")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::Hello::Padding::Padding()
-    :
-    always{YType::empty, "always"}
-{
-
-    yang_name = "padding"; yang_parent_name = "hello"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::LISP::Isis::Hello::Padding::~Padding()
-{
-}
-
-bool Native::Interface::LISP::Isis::Hello::Padding::has_data() const
-{
-    if (is_presence_container) return true;
-    return always.is_set;
-}
-
-bool Native::Interface::LISP::Isis::Hello::Padding::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(always.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::Hello::Padding::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "padding";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::Hello::Padding::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (always.is_set || is_set(always.yfilter)) leaf_name_data.push_back(always.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::Hello::Padding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::Hello::Padding::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::Hello::Padding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "always")
-    {
-        always = value;
-        always.value_namespace = name_space;
-        always.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::Hello::Padding::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "always")
-    {
-        always.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::Hello::Padding::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "always")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::HelloInterval::HelloInterval()
-    :
-    value_{YType::str, "value"}
-        ,
-    hello_interval_list(this, {"levels"})
-{
-
-    yang_name = "hello-interval"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::HelloInterval::~HelloInterval()
-{
-}
-
-bool Native::Interface::LISP::Isis::HelloInterval::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<hello_interval_list.len(); index++)
-    {
-        if(hello_interval_list[index]->has_data())
-            return true;
-    }
-    return value_.is_set;
-}
-
-bool Native::Interface::LISP::Isis::HelloInterval::has_operation() const
-{
-    for (std::size_t index=0; index<hello_interval_list.len(); index++)
-    {
-        if(hello_interval_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::HelloInterval::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-isis:hello-interval";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::HelloInterval::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::HelloInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "hello-interval-list")
-    {
-        auto ent_ = std::make_shared<Native::Interface::LISP::Isis::HelloInterval::HelloIntervalList>();
-        ent_->parent = this;
-        hello_interval_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::HelloInterval::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : hello_interval_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::HelloInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::HelloInterval::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::HelloInterval::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "hello-interval-list" || name == "value")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::HelloInterval::HelloIntervalList::HelloIntervalList()
-    :
-    levels{YType::enumeration, "levels"},
-    value_{YType::str, "value"}
-{
-
-    yang_name = "hello-interval-list"; yang_parent_name = "hello-interval"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::HelloInterval::HelloIntervalList::~HelloIntervalList()
-{
-}
-
-bool Native::Interface::LISP::Isis::HelloInterval::HelloIntervalList::has_data() const
-{
-    if (is_presence_container) return true;
-    return levels.is_set
-	|| value_.is_set;
-}
-
-bool Native::Interface::LISP::Isis::HelloInterval::HelloIntervalList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(levels.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::HelloInterval::HelloIntervalList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hello-interval-list";
-    ADD_KEY_TOKEN(levels, "levels");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::HelloInterval::HelloIntervalList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (levels.is_set || is_set(levels.yfilter)) leaf_name_data.push_back(levels.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::HelloInterval::HelloIntervalList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::HelloInterval::HelloIntervalList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::HelloInterval::HelloIntervalList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "levels")
-    {
-        levels = value;
-        levels.value_namespace = name_space;
-        levels.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::HelloInterval::HelloIntervalList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "levels")
-    {
-        levels.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::HelloInterval::HelloIntervalList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "levels" || name == "value")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::HelloMultiplier::HelloMultiplier()
-    :
-    value_{YType::uint16, "value"}
-        ,
-    hello_multiplier_list(this, {"levels"})
-{
-
-    yang_name = "hello-multiplier"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::HelloMultiplier::~HelloMultiplier()
-{
-}
-
-bool Native::Interface::LISP::Isis::HelloMultiplier::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<hello_multiplier_list.len(); index++)
-    {
-        if(hello_multiplier_list[index]->has_data())
-            return true;
-    }
-    return value_.is_set;
-}
-
-bool Native::Interface::LISP::Isis::HelloMultiplier::has_operation() const
-{
-    for (std::size_t index=0; index<hello_multiplier_list.len(); index++)
-    {
-        if(hello_multiplier_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::HelloMultiplier::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-isis:hello-multiplier";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::HelloMultiplier::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::HelloMultiplier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "hello-multiplier-list")
-    {
-        auto ent_ = std::make_shared<Native::Interface::LISP::Isis::HelloMultiplier::HelloMultiplierList>();
-        ent_->parent = this;
-        hello_multiplier_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::HelloMultiplier::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : hello_multiplier_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::HelloMultiplier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::HelloMultiplier::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::HelloMultiplier::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "hello-multiplier-list" || name == "value")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::HelloMultiplier::HelloMultiplierList::HelloMultiplierList()
-    :
-    levels{YType::enumeration, "levels"},
-    value_{YType::uint16, "value"}
-{
-
-    yang_name = "hello-multiplier-list"; yang_parent_name = "hello-multiplier"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::HelloMultiplier::HelloMultiplierList::~HelloMultiplierList()
-{
-}
-
-bool Native::Interface::LISP::Isis::HelloMultiplier::HelloMultiplierList::has_data() const
-{
-    if (is_presence_container) return true;
-    return levels.is_set
-	|| value_.is_set;
-}
-
-bool Native::Interface::LISP::Isis::HelloMultiplier::HelloMultiplierList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(levels.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::HelloMultiplier::HelloMultiplierList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hello-multiplier-list";
-    ADD_KEY_TOKEN(levels, "levels");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::HelloMultiplier::HelloMultiplierList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (levels.is_set || is_set(levels.yfilter)) leaf_name_data.push_back(levels.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::HelloMultiplier::HelloMultiplierList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::HelloMultiplier::HelloMultiplierList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::HelloMultiplier::HelloMultiplierList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "levels")
-    {
-        levels = value;
-        levels.value_namespace = name_space;
-        levels.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::HelloMultiplier::HelloMultiplierList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "levels")
-    {
-        levels.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::HelloMultiplier::HelloMultiplierList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "levels" || name == "value")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::Ipv6::Ipv6()
-    :
-    tag{YType::uint32, "tag"}
-        ,
-    metric(std::make_shared<Native::Interface::LISP::Isis::Ipv6::Metric>())
-    , bfd(nullptr) // presence node
-{
-    metric->parent = this;
-
-    yang_name = "ipv6"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::Ipv6::~Ipv6()
-{
-}
-
-bool Native::Interface::LISP::Isis::Ipv6::has_data() const
-{
-    if (is_presence_container) return true;
-    return tag.is_set
-	|| (metric !=  nullptr && metric->has_data())
-	|| (bfd !=  nullptr && bfd->has_data());
-}
-
-bool Native::Interface::LISP::Isis::Ipv6::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(tag.yfilter)
-	|| (metric !=  nullptr && metric->has_operation())
-	|| (bfd !=  nullptr && bfd->has_operation());
-}
-
-std::string Native::Interface::LISP::Isis::Ipv6::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-isis:ipv6";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::Ipv6::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (tag.is_set || is_set(tag.yfilter)) leaf_name_data.push_back(tag.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "metric")
-    {
-        if(metric == nullptr)
-        {
-            metric = std::make_shared<Native::Interface::LISP::Isis::Ipv6::Metric>();
-        }
-        return metric;
-    }
-
-    if(child_yang_name == "bfd")
-    {
-        if(bfd == nullptr)
-        {
-            bfd = std::make_shared<Native::Interface::LISP::Isis::Ipv6::Bfd>();
-        }
-        return bfd;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::Ipv6::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(metric != nullptr)
-    {
-        _children["metric"] = metric;
-    }
-
-    if(bfd != nullptr)
-    {
-        _children["bfd"] = bfd;
-    }
-
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "tag")
-    {
-        tag = value;
-        tag.value_namespace = name_space;
-        tag.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "tag")
-    {
-        tag.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "metric" || name == "bfd" || name == "tag")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::Ipv6::Metric::Metric()
-    :
-    value_{YType::str, "value"}
-        ,
-    metric_list(this, {"levels"})
-{
-
-    yang_name = "metric"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::Ipv6::Metric::~Metric()
-{
-}
-
-bool Native::Interface::LISP::Isis::Ipv6::Metric::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<metric_list.len(); index++)
-    {
-        if(metric_list[index]->has_data())
-            return true;
-    }
-    return value_.is_set;
-}
-
-bool Native::Interface::LISP::Isis::Ipv6::Metric::has_operation() const
-{
-    for (std::size_t index=0; index<metric_list.len(); index++)
-    {
-        if(metric_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::Ipv6::Metric::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "metric";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::Ipv6::Metric::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::Ipv6::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "metric-list")
-    {
-        auto ent_ = std::make_shared<Native::Interface::LISP::Isis::Ipv6::Metric::MetricList>();
-        ent_->parent = this;
-        metric_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::Ipv6::Metric::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : metric_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::Ipv6::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::Ipv6::Metric::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::Ipv6::Metric::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "metric-list" || name == "value")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::Ipv6::Metric::MetricList::MetricList()
-    :
-    levels{YType::enumeration, "levels"},
-    value_{YType::str, "value"}
-{
-
-    yang_name = "metric-list"; yang_parent_name = "metric"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::Ipv6::Metric::MetricList::~MetricList()
-{
-}
-
-bool Native::Interface::LISP::Isis::Ipv6::Metric::MetricList::has_data() const
-{
-    if (is_presence_container) return true;
-    return levels.is_set
-	|| value_.is_set;
-}
-
-bool Native::Interface::LISP::Isis::Ipv6::Metric::MetricList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(levels.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::Ipv6::Metric::MetricList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "metric-list";
-    ADD_KEY_TOKEN(levels, "levels");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::Ipv6::Metric::MetricList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (levels.is_set || is_set(levels.yfilter)) leaf_name_data.push_back(levels.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::Ipv6::Metric::MetricList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::Ipv6::Metric::MetricList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::Ipv6::Metric::MetricList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "levels")
-    {
-        levels = value;
-        levels.value_namespace = name_space;
-        levels.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::Ipv6::Metric::MetricList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "levels")
-    {
-        levels.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::Ipv6::Metric::MetricList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "levels" || name == "value")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::Ipv6::Bfd::Bfd()
-    :
-    disable{YType::empty, "disable"}
-{
-
-    yang_name = "bfd"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::LISP::Isis::Ipv6::Bfd::~Bfd()
-{
-}
-
-bool Native::Interface::LISP::Isis::Ipv6::Bfd::has_data() const
-{
-    if (is_presence_container) return true;
-    return disable.is_set;
-}
-
-bool Native::Interface::LISP::Isis::Ipv6::Bfd::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(disable.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::Ipv6::Bfd::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bfd";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::Ipv6::Bfd::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::Ipv6::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::Ipv6::Bfd::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::Ipv6::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "disable")
-    {
-        disable = value;
-        disable.value_namespace = name_space;
-        disable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::Ipv6::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "disable")
-    {
-        disable.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::Ipv6::Bfd::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "disable")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::Metric::Metric()
-    :
-    value_{YType::str, "value"}
-        ,
-    metric_list(this, {"levels"})
-{
-
-    yang_name = "metric"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::Metric::~Metric()
-{
-}
-
-bool Native::Interface::LISP::Isis::Metric::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<metric_list.len(); index++)
-    {
-        if(metric_list[index]->has_data())
-            return true;
-    }
-    return value_.is_set;
-}
-
-bool Native::Interface::LISP::Isis::Metric::has_operation() const
-{
-    for (std::size_t index=0; index<metric_list.len(); index++)
-    {
-        if(metric_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::Metric::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-isis:metric";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::Metric::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "metric-list")
-    {
-        auto ent_ = std::make_shared<Native::Interface::LISP::Isis::Metric::MetricList>();
-        ent_->parent = this;
-        metric_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::Metric::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : metric_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::Metric::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::Metric::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "metric-list" || name == "value")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::Metric::MetricList::MetricList()
-    :
-    levels{YType::enumeration, "levels"},
-    value_{YType::str, "value"}
-{
-
-    yang_name = "metric-list"; yang_parent_name = "metric"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::Metric::MetricList::~MetricList()
-{
-}
-
-bool Native::Interface::LISP::Isis::Metric::MetricList::has_data() const
-{
-    if (is_presence_container) return true;
-    return levels.is_set
-	|| value_.is_set;
-}
-
-bool Native::Interface::LISP::Isis::Metric::MetricList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(levels.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::Metric::MetricList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "metric-list";
-    ADD_KEY_TOKEN(levels, "levels");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::Metric::MetricList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (levels.is_set || is_set(levels.yfilter)) leaf_name_data.push_back(levels.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::Metric::MetricList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::Metric::MetricList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::Metric::MetricList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "levels")
-    {
-        levels = value;
-        levels.value_namespace = name_space;
-        levels.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::Metric::MetricList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "levels")
-    {
-        levels.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::Metric::MetricList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "levels" || name == "value")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::Password::Password()
-    :
-    password{YType::str, "password"}
-        ,
-    password_list(this, {"levels"})
-{
-
-    yang_name = "password"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::Password::~Password()
-{
-}
-
-bool Native::Interface::LISP::Isis::Password::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<password_list.len(); index++)
-    {
-        if(password_list[index]->has_data())
-            return true;
-    }
-    return password.is_set;
-}
-
-bool Native::Interface::LISP::Isis::Password::has_operation() const
-{
-    for (std::size_t index=0; index<password_list.len(); index++)
-    {
-        if(password_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(password.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::Password::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-isis:password";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::Password::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::Password::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "password-list")
-    {
-        auto ent_ = std::make_shared<Native::Interface::LISP::Isis::Password::PasswordList>();
-        ent_->parent = this;
-        password_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::Password::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : password_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::Password::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "password")
-    {
-        password = value;
-        password.value_namespace = name_space;
-        password.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::Password::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "password")
-    {
-        password.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::Password::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "password-list" || name == "password")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::Password::PasswordList::PasswordList()
-    :
-    levels{YType::enumeration, "levels"},
-    password{YType::str, "password"}
-{
-
-    yang_name = "password-list"; yang_parent_name = "password"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::Password::PasswordList::~PasswordList()
-{
-}
-
-bool Native::Interface::LISP::Isis::Password::PasswordList::has_data() const
-{
-    if (is_presence_container) return true;
-    return levels.is_set
-	|| password.is_set;
-}
-
-bool Native::Interface::LISP::Isis::Password::PasswordList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(levels.yfilter)
-	|| ydk::is_set(password.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::Password::PasswordList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "password-list";
-    ADD_KEY_TOKEN(levels, "levels");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::Password::PasswordList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (levels.is_set || is_set(levels.yfilter)) leaf_name_data.push_back(levels.get_name_leafdata());
-    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::Password::PasswordList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::Password::PasswordList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::Password::PasswordList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "levels")
-    {
-        levels = value;
-        levels.value_namespace = name_space;
-        levels.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "password")
-    {
-        password = value;
-        password.value_namespace = name_space;
-        password.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::Password::PasswordList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "levels")
-    {
-        levels.yfilter = yfilter;
-    }
-    if(value_path == "password")
-    {
-        password.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::Password::PasswordList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "levels" || name == "password")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::Priority::Priority()
-    :
-    value_{YType::uint8, "value"}
-        ,
-    priority_list(this, {"levels"})
-{
-
-    yang_name = "priority"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::Priority::~Priority()
-{
-}
-
-bool Native::Interface::LISP::Isis::Priority::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<priority_list.len(); index++)
-    {
-        if(priority_list[index]->has_data())
-            return true;
-    }
-    return value_.is_set;
-}
-
-bool Native::Interface::LISP::Isis::Priority::has_operation() const
-{
-    for (std::size_t index=0; index<priority_list.len(); index++)
-    {
-        if(priority_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::Priority::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-isis:priority";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::Priority::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::Priority::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "priority-list")
-    {
-        auto ent_ = std::make_shared<Native::Interface::LISP::Isis::Priority::PriorityList>();
-        ent_->parent = this;
-        priority_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::Priority::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : priority_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::Priority::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::Priority::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::Priority::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "priority-list" || name == "value")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::Priority::PriorityList::PriorityList()
-    :
-    levels{YType::enumeration, "levels"},
-    value_{YType::uint8, "value"}
-{
-
-    yang_name = "priority-list"; yang_parent_name = "priority"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Isis::Priority::PriorityList::~PriorityList()
-{
-}
-
-bool Native::Interface::LISP::Isis::Priority::PriorityList::has_data() const
-{
-    if (is_presence_container) return true;
-    return levels.is_set
-	|| value_.is_set;
-}
-
-bool Native::Interface::LISP::Isis::Priority::PriorityList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(levels.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::Priority::PriorityList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "priority-list";
-    ADD_KEY_TOKEN(levels, "levels");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::Priority::PriorityList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (levels.is_set || is_set(levels.yfilter)) leaf_name_data.push_back(levels.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::Priority::PriorityList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::Priority::PriorityList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::Priority::PriorityList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "levels")
-    {
-        levels = value;
-        levels.value_namespace = name_space;
-        levels.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::Priority::PriorityList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "levels")
-    {
-        levels.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::Priority::PriorityList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "levels" || name == "value")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::Bfd::Bfd()
-    :
-    disable{YType::empty, "disable"}
-{
-
-    yang_name = "bfd"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::LISP::Isis::Bfd::~Bfd()
-{
-}
-
-bool Native::Interface::LISP::Isis::Bfd::has_data() const
-{
-    if (is_presence_container) return true;
-    return disable.is_set;
-}
-
-bool Native::Interface::LISP::Isis::Bfd::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(disable.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::Bfd::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-isis:bfd";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::Bfd::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::Bfd::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "disable")
-    {
-        disable = value;
-        disable.value_namespace = name_space;
-        disable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "disable")
-    {
-        disable.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::Bfd::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "disable")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Isis::ThreeWayHandshake::ThreeWayHandshake()
-    :
-    implementor{YType::enumeration, "implementor"}
-{
-
-    yang_name = "three-way-handshake"; yang_parent_name = "isis"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::LISP::Isis::ThreeWayHandshake::~ThreeWayHandshake()
-{
-}
-
-bool Native::Interface::LISP::Isis::ThreeWayHandshake::has_data() const
-{
-    if (is_presence_container) return true;
-    return implementor.is_set;
-}
-
-bool Native::Interface::LISP::Isis::ThreeWayHandshake::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(implementor.yfilter);
-}
-
-std::string Native::Interface::LISP::Isis::ThreeWayHandshake::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-isis:three-way-handshake";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Isis::ThreeWayHandshake::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (implementor.is_set || is_set(implementor.yfilter)) leaf_name_data.push_back(implementor.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Isis::ThreeWayHandshake::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Isis::ThreeWayHandshake::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Isis::ThreeWayHandshake::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "implementor")
-    {
-        implementor = value;
-        implementor.value_namespace = name_space;
-        implementor.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Isis::ThreeWayHandshake::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "implementor")
-    {
-        implementor.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Isis::ThreeWayHandshake::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "implementor")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::KeepaliveSettings::KeepaliveSettings()
-    :
-    keepalive(nullptr) // presence node
-{
-
-    yang_name = "keepalive-settings"; yang_parent_name = "LISP"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::KeepaliveSettings::~KeepaliveSettings()
-{
-}
-
-bool Native::Interface::LISP::KeepaliveSettings::has_data() const
-{
-    if (is_presence_container) return true;
-    return (keepalive !=  nullptr && keepalive->has_data());
-}
-
-bool Native::Interface::LISP::KeepaliveSettings::has_operation() const
-{
-    return is_set(yfilter)
-	|| (keepalive !=  nullptr && keepalive->has_operation());
-}
-
-std::string Native::Interface::LISP::KeepaliveSettings::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "keepalive-settings";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::KeepaliveSettings::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::KeepaliveSettings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "keepalive")
-    {
-        if(keepalive == nullptr)
-        {
-            keepalive = std::make_shared<Native::Interface::LISP::KeepaliveSettings::Keepalive>();
-        }
-        return keepalive;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::KeepaliveSettings::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(keepalive != nullptr)
-    {
-        _children["keepalive"] = keepalive;
-    }
-
-    return _children;
-}
-
-void Native::Interface::LISP::KeepaliveSettings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::LISP::KeepaliveSettings::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::LISP::KeepaliveSettings::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "keepalive")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::KeepaliveSettings::Keepalive::Keepalive()
-    :
-    period{YType::uint16, "period"},
-    retries{YType::uint8, "retries"}
-{
-
-    yang_name = "keepalive"; yang_parent_name = "keepalive-settings"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::LISP::KeepaliveSettings::Keepalive::~Keepalive()
-{
-}
-
-bool Native::Interface::LISP::KeepaliveSettings::Keepalive::has_data() const
-{
-    if (is_presence_container) return true;
-    return period.is_set
-	|| retries.is_set;
-}
-
-bool Native::Interface::LISP::KeepaliveSettings::Keepalive::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(period.yfilter)
-	|| ydk::is_set(retries.yfilter);
-}
-
-std::string Native::Interface::LISP::KeepaliveSettings::Keepalive::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "keepalive";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::KeepaliveSettings::Keepalive::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (period.is_set || is_set(period.yfilter)) leaf_name_data.push_back(period.get_name_leafdata());
-    if (retries.is_set || is_set(retries.yfilter)) leaf_name_data.push_back(retries.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::KeepaliveSettings::Keepalive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::KeepaliveSettings::Keepalive::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::KeepaliveSettings::Keepalive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "period")
-    {
-        period = value;
-        period.value_namespace = name_space;
-        period.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "retries")
-    {
-        retries = value;
-        retries.value_namespace = name_space;
-        retries.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::KeepaliveSettings::Keepalive::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "period")
-    {
-        period.yfilter = yfilter;
-    }
-    if(value_path == "retries")
-    {
-        retries.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::KeepaliveSettings::Keepalive::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "period" || name == "retries")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Bfd::Bfd()
-{
-
-    yang_name = "bfd"; yang_parent_name = "LISP"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Bfd::~Bfd()
-{
-}
-
-bool Native::Interface::LISP::Bfd::has_data() const
-{
-    if (is_presence_container) return true;
-    return false;
-}
-
-bool Native::Interface::LISP::Bfd::has_operation() const
-{
-    return is_set(yfilter);
-}
-
-std::string Native::Interface::LISP::Bfd::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bfd";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Bfd::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Bfd::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::LISP::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::LISP::Bfd::has_leaf_or_child_of_name(const std::string & name) const
-{
-    return false;
-}
-
-Native::Interface::LISP::Bandwidth::Bandwidth()
-    :
-    qos_reference{YType::uint32, "qos-reference"},
-    kilobits{YType::uint32, "kilobits"}
-        ,
-    receive(std::make_shared<Native::Interface::LISP::Bandwidth::Receive>())
-    , inherit(nullptr) // presence node
-{
-    receive->parent = this;
-
-    yang_name = "bandwidth"; yang_parent_name = "LISP"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Bandwidth::~Bandwidth()
-{
-}
-
-bool Native::Interface::LISP::Bandwidth::has_data() const
-{
-    if (is_presence_container) return true;
-    return qos_reference.is_set
-	|| kilobits.is_set
-	|| (receive !=  nullptr && receive->has_data())
-	|| (inherit !=  nullptr && inherit->has_data());
-}
-
-bool Native::Interface::LISP::Bandwidth::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(qos_reference.yfilter)
-	|| ydk::is_set(kilobits.yfilter)
-	|| (receive !=  nullptr && receive->has_operation())
-	|| (inherit !=  nullptr && inherit->has_operation());
-}
-
-std::string Native::Interface::LISP::Bandwidth::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bandwidth";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Bandwidth::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (qos_reference.is_set || is_set(qos_reference.yfilter)) leaf_name_data.push_back(qos_reference.get_name_leafdata());
-    if (kilobits.is_set || is_set(kilobits.yfilter)) leaf_name_data.push_back(kilobits.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Bandwidth::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "receive")
-    {
-        if(receive == nullptr)
-        {
-            receive = std::make_shared<Native::Interface::LISP::Bandwidth::Receive>();
-        }
-        return receive;
-    }
-
-    if(child_yang_name == "inherit")
-    {
-        if(inherit == nullptr)
-        {
-            inherit = std::make_shared<Native::Interface::LISP::Bandwidth::Inherit>();
-        }
-        return inherit;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Bandwidth::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(receive != nullptr)
-    {
-        _children["receive"] = receive;
-    }
-
-    if(inherit != nullptr)
-    {
-        _children["inherit"] = inherit;
-    }
-
-    return _children;
-}
-
-void Native::Interface::LISP::Bandwidth::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "qos-reference")
-    {
-        qos_reference = value;
-        qos_reference.value_namespace = name_space;
-        qos_reference.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "kilobits")
-    {
-        kilobits = value;
-        kilobits.value_namespace = name_space;
-        kilobits.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Bandwidth::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "qos-reference")
-    {
-        qos_reference.yfilter = yfilter;
-    }
-    if(value_path == "kilobits")
-    {
-        kilobits.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Bandwidth::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "receive" || name == "inherit" || name == "qos-reference" || name == "kilobits")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Bandwidth::Receive::Receive()
-    :
-    inherit{YType::empty, "inherit"},
-    kilobits{YType::uint32, "kilobits"}
-{
-
-    yang_name = "receive"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Bandwidth::Receive::~Receive()
-{
-}
-
-bool Native::Interface::LISP::Bandwidth::Receive::has_data() const
-{
-    if (is_presence_container) return true;
-    return inherit.is_set
-	|| kilobits.is_set;
-}
-
-bool Native::Interface::LISP::Bandwidth::Receive::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(inherit.yfilter)
-	|| ydk::is_set(kilobits.yfilter);
-}
-
-std::string Native::Interface::LISP::Bandwidth::Receive::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "receive";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Bandwidth::Receive::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (inherit.is_set || is_set(inherit.yfilter)) leaf_name_data.push_back(inherit.get_name_leafdata());
-    if (kilobits.is_set || is_set(kilobits.yfilter)) leaf_name_data.push_back(kilobits.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Bandwidth::Receive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Bandwidth::Receive::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Bandwidth::Receive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "inherit")
-    {
-        inherit = value;
-        inherit.value_namespace = name_space;
-        inherit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "kilobits")
-    {
-        kilobits = value;
-        kilobits.value_namespace = name_space;
-        kilobits.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Bandwidth::Receive::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "inherit")
-    {
-        inherit.yfilter = yfilter;
-    }
-    if(value_path == "kilobits")
-    {
-        kilobits.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Bandwidth::Receive::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "inherit" || name == "kilobits")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Bandwidth::Inherit::Inherit()
-    :
-    kilobits{YType::uint32, "kilobits"}
-{
-
-    yang_name = "inherit"; yang_parent_name = "bandwidth"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::LISP::Bandwidth::Inherit::~Inherit()
-{
-}
-
-bool Native::Interface::LISP::Bandwidth::Inherit::has_data() const
-{
-    if (is_presence_container) return true;
-    return kilobits.is_set;
-}
-
-bool Native::Interface::LISP::Bandwidth::Inherit::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(kilobits.yfilter);
-}
-
-std::string Native::Interface::LISP::Bandwidth::Inherit::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "inherit";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Bandwidth::Inherit::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (kilobits.is_set || is_set(kilobits.yfilter)) leaf_name_data.push_back(kilobits.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Bandwidth::Inherit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Bandwidth::Inherit::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Bandwidth::Inherit::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "kilobits")
-    {
-        kilobits = value;
-        kilobits.value_namespace = name_space;
-        kilobits.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Bandwidth::Inherit::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "kilobits")
-    {
-        kilobits.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Bandwidth::Inherit::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "kilobits")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Dampening::Dampening()
-    :
-    dampening_time{YType::uint16, "dampening-time"},
-    start_reusing_time{YType::uint16, "start-reusing-time"},
-    start_supressing_time{YType::uint16, "start-supressing-time"},
-    maximum_supressing_time{YType::uint16, "maximum-supressing-time"}
-        ,
-    restart(std::make_shared<Native::Interface::LISP::Dampening::Restart>())
-{
-    restart->parent = this;
-
-    yang_name = "dampening"; yang_parent_name = "LISP"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Dampening::~Dampening()
-{
-}
-
-bool Native::Interface::LISP::Dampening::has_data() const
-{
-    if (is_presence_container) return true;
-    return dampening_time.is_set
-	|| start_reusing_time.is_set
-	|| start_supressing_time.is_set
-	|| maximum_supressing_time.is_set
-	|| (restart !=  nullptr && restart->has_data());
-}
-
-bool Native::Interface::LISP::Dampening::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dampening_time.yfilter)
-	|| ydk::is_set(start_reusing_time.yfilter)
-	|| ydk::is_set(start_supressing_time.yfilter)
-	|| ydk::is_set(maximum_supressing_time.yfilter)
-	|| (restart !=  nullptr && restart->has_operation());
-}
-
-std::string Native::Interface::LISP::Dampening::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dampening";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Dampening::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dampening_time.is_set || is_set(dampening_time.yfilter)) leaf_name_data.push_back(dampening_time.get_name_leafdata());
-    if (start_reusing_time.is_set || is_set(start_reusing_time.yfilter)) leaf_name_data.push_back(start_reusing_time.get_name_leafdata());
-    if (start_supressing_time.is_set || is_set(start_supressing_time.yfilter)) leaf_name_data.push_back(start_supressing_time.get_name_leafdata());
-    if (maximum_supressing_time.is_set || is_set(maximum_supressing_time.yfilter)) leaf_name_data.push_back(maximum_supressing_time.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Dampening::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "restart")
-    {
-        if(restart == nullptr)
-        {
-            restart = std::make_shared<Native::Interface::LISP::Dampening::Restart>();
-        }
-        return restart;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Dampening::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(restart != nullptr)
-    {
-        _children["restart"] = restart;
-    }
-
-    return _children;
-}
-
-void Native::Interface::LISP::Dampening::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dampening-time")
-    {
-        dampening_time = value;
-        dampening_time.value_namespace = name_space;
-        dampening_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start-reusing-time")
-    {
-        start_reusing_time = value;
-        start_reusing_time.value_namespace = name_space;
-        start_reusing_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "start-supressing-time")
-    {
-        start_supressing_time = value;
-        start_supressing_time.value_namespace = name_space;
-        start_supressing_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "maximum-supressing-time")
-    {
-        maximum_supressing_time = value;
-        maximum_supressing_time.value_namespace = name_space;
-        maximum_supressing_time.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Dampening::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dampening-time")
-    {
-        dampening_time.yfilter = yfilter;
-    }
-    if(value_path == "start-reusing-time")
-    {
-        start_reusing_time.yfilter = yfilter;
-    }
-    if(value_path == "start-supressing-time")
-    {
-        start_supressing_time.yfilter = yfilter;
-    }
-    if(value_path == "maximum-supressing-time")
-    {
-        maximum_supressing_time.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Dampening::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "restart" || name == "dampening-time" || name == "start-reusing-time" || name == "start-supressing-time" || name == "maximum-supressing-time")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Dampening::Restart::Restart()
-    :
-    restart{YType::empty, "restart"},
-    restart_penalty{YType::uint16, "restart-penalty"}
-{
-
-    yang_name = "restart"; yang_parent_name = "dampening"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Dampening::Restart::~Restart()
-{
-}
-
-bool Native::Interface::LISP::Dampening::Restart::has_data() const
-{
-    if (is_presence_container) return true;
-    return restart.is_set
-	|| restart_penalty.is_set;
-}
-
-bool Native::Interface::LISP::Dampening::Restart::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(restart.yfilter)
-	|| ydk::is_set(restart_penalty.yfilter);
-}
-
-std::string Native::Interface::LISP::Dampening::Restart::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "restart";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Dampening::Restart::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (restart.is_set || is_set(restart.yfilter)) leaf_name_data.push_back(restart.get_name_leafdata());
-    if (restart_penalty.is_set || is_set(restart_penalty.yfilter)) leaf_name_data.push_back(restart_penalty.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Dampening::Restart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Dampening::Restart::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Dampening::Restart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "restart")
-    {
-        restart = value;
-        restart.value_namespace = name_space;
-        restart.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "restart-penalty")
-    {
-        restart_penalty = value;
-        restart_penalty.value_namespace = name_space;
-        restart_penalty.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Dampening::Restart::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "restart")
-    {
-        restart.yfilter = yfilter;
-    }
-    if(value_path == "restart-penalty")
-    {
-        restart_penalty.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Dampening::Restart::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "restart" || name == "restart-penalty")
-        return true;
-    return false;
-}
-
-Native::Interface::LISP::Domain::Domain()
-    :
-    name{YType::str, "name"},
-    path{YType::str, "path"},
-    internet_bound{YType::empty, "internet-bound"},
-    path_id{YType::uint8, "path-id"},
-    path_last_resort{YType::empty, "path-last-resort"},
-    zero_sla{YType::empty, "zero-sla"}
-{
-
-    yang_name = "domain"; yang_parent_name = "LISP"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::LISP::Domain::~Domain()
-{
-}
-
-bool Native::Interface::LISP::Domain::has_data() const
-{
-    if (is_presence_container) return true;
-    return name.is_set
-	|| path.is_set
-	|| internet_bound.is_set
-	|| path_id.is_set
-	|| path_last_resort.is_set
-	|| zero_sla.is_set;
-}
-
-bool Native::Interface::LISP::Domain::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(path.yfilter)
-	|| ydk::is_set(internet_bound.yfilter)
-	|| ydk::is_set(path_id.yfilter)
-	|| ydk::is_set(path_last_resort.yfilter)
-	|| ydk::is_set(zero_sla.yfilter);
-}
-
-std::string Native::Interface::LISP::Domain::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "domain";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::LISP::Domain::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (path.is_set || is_set(path.yfilter)) leaf_name_data.push_back(path.get_name_leafdata());
-    if (internet_bound.is_set || is_set(internet_bound.yfilter)) leaf_name_data.push_back(internet_bound.get_name_leafdata());
-    if (path_id.is_set || is_set(path_id.yfilter)) leaf_name_data.push_back(path_id.get_name_leafdata());
-    if (path_last_resort.is_set || is_set(path_last_resort.yfilter)) leaf_name_data.push_back(path_last_resort.get_name_leafdata());
-    if (zero_sla.is_set || is_set(zero_sla.yfilter)) leaf_name_data.push_back(zero_sla.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::LISP::Domain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::LISP::Domain::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::LISP::Domain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "path")
-    {
-        path = value;
-        path.value_namespace = name_space;
-        path.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "internet-bound")
-    {
-        internet_bound = value;
-        internet_bound.value_namespace = name_space;
-        internet_bound.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "path-id")
-    {
-        path_id = value;
-        path_id.value_namespace = name_space;
-        path_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "path-last-resort")
-    {
-        path_last_resort = value;
-        path_last_resort.value_namespace = name_space;
-        path_last_resort.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "zero-sla")
-    {
-        zero_sla = value;
-        zero_sla.value_namespace = name_space;
-        zero_sla.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::LISP::Domain::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "path")
-    {
-        path.yfilter = yfilter;
-    }
-    if(value_path == "internet-bound")
-    {
-        internet_bound.yfilter = yfilter;
-    }
-    if(value_path == "path-id")
-    {
-        path_id.yfilter = yfilter;
-    }
-    if(value_path == "path-last-resort")
-    {
-        path_last_resort.yfilter = yfilter;
-    }
-    if(value_path == "zero-sla")
-    {
-        zero_sla.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::LISP::Domain::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name" || name == "path" || name == "internet-bound" || name == "path-id" || name == "path-last-resort" || name == "zero-sla")
-        return true;
-    return false;
-}
+const Enum::YLeaf Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::DatabaseFilter::All::out {0, "out"};
 
 const Enum::YLeaf Native::Interface::Loopback::Ospfv3::ProcessId::Ipv6::Neighbor::DatabaseFilter::All::out {0, "out"};
 
@@ -15643,60 +15989,6 @@ const Enum::YLeaf Native::Interface::LISP::Backup::Delay::SecondaryDisable::neve
 const Enum::YLeaf Native::Interface::LISP::Backup::Load::Kickin::never {0, "never"};
 
 const Enum::YLeaf Native::Interface::LISP::Backup::Load::Kickout::never {0, "never"};
-
-const Enum::YLeaf Native::Interface::LISP::Flowcontrol::Receive::desired {0, "desired"};
-const Enum::YLeaf Native::Interface::LISP::Flowcontrol::Receive::off {1, "off"};
-const Enum::YLeaf Native::Interface::LISP::Flowcontrol::Receive::on {2, "on"};
-
-const Enum::YLeaf Native::Interface::LISP::Flowcontrol::Send::desired {0, "desired"};
-const Enum::YLeaf Native::Interface::LISP::Flowcontrol::Send::off {1, "off"};
-const Enum::YLeaf Native::Interface::LISP::Flowcontrol::Send::on {2, "on"};
-
-const Enum::YLeaf Native::Interface::LISP::Isis::MeshGroup::blocked {0, "blocked"};
-
-const Enum::YLeaf Native::Interface::LISP::Isis::Network::point_to_point {0, "point-to-point"};
-
-const Enum::YLeaf Native::Interface::LISP::Isis::Protocol::shutdown {0, "shutdown"};
-
-const Enum::YLeaf Native::Interface::LISP::Isis::CircuitType::Levels::level_1 {0, "level-1"};
-const Enum::YLeaf Native::Interface::LISP::Isis::CircuitType::Levels::level_1_2 {1, "level-1-2"};
-const Enum::YLeaf Native::Interface::LISP::Isis::CircuitType::Levels::level_2_only {2, "level-2-only"};
-
-const Enum::YLeaf Native::Interface::LISP::Isis::CsnpInterval::CsnpIntervalList::Levels::level_1 {0, "level-1"};
-const Enum::YLeaf Native::Interface::LISP::Isis::CsnpInterval::CsnpIntervalList::Levels::level_2 {1, "level-2"};
-
-const Enum::YLeaf Native::Interface::LISP::Isis::HelloInterval::Value_::minimal {0, "minimal"};
-
-const Enum::YLeaf Native::Interface::LISP::Isis::HelloInterval::HelloIntervalList::Levels::level_1 {0, "level-1"};
-const Enum::YLeaf Native::Interface::LISP::Isis::HelloInterval::HelloIntervalList::Levels::level_2 {1, "level-2"};
-
-const Enum::YLeaf Native::Interface::LISP::Isis::HelloInterval::HelloIntervalList::Value_::minimal {0, "minimal"};
-
-const Enum::YLeaf Native::Interface::LISP::Isis::HelloMultiplier::HelloMultiplierList::Levels::level_1 {0, "level-1"};
-const Enum::YLeaf Native::Interface::LISP::Isis::HelloMultiplier::HelloMultiplierList::Levels::level_2 {1, "level-2"};
-
-const Enum::YLeaf Native::Interface::LISP::Isis::Ipv6::Metric::Value_::maximum {0, "maximum"};
-
-const Enum::YLeaf Native::Interface::LISP::Isis::Ipv6::Metric::MetricList::Levels::level_1 {0, "level-1"};
-const Enum::YLeaf Native::Interface::LISP::Isis::Ipv6::Metric::MetricList::Levels::level_2 {1, "level-2"};
-
-const Enum::YLeaf Native::Interface::LISP::Isis::Ipv6::Metric::MetricList::Value_::maximum {0, "maximum"};
-
-const Enum::YLeaf Native::Interface::LISP::Isis::Metric::Value_::maximum {0, "maximum"};
-
-const Enum::YLeaf Native::Interface::LISP::Isis::Metric::MetricList::Levels::level_1 {0, "level-1"};
-const Enum::YLeaf Native::Interface::LISP::Isis::Metric::MetricList::Levels::level_2 {1, "level-2"};
-
-const Enum::YLeaf Native::Interface::LISP::Isis::Metric::MetricList::Value_::maximum {0, "maximum"};
-
-const Enum::YLeaf Native::Interface::LISP::Isis::Password::PasswordList::Levels::level_1 {0, "level-1"};
-const Enum::YLeaf Native::Interface::LISP::Isis::Password::PasswordList::Levels::level_2 {1, "level-2"};
-
-const Enum::YLeaf Native::Interface::LISP::Isis::Priority::PriorityList::Levels::level_1 {0, "level-1"};
-const Enum::YLeaf Native::Interface::LISP::Isis::Priority::PriorityList::Levels::level_2 {1, "level-2"};
-
-const Enum::YLeaf Native::Interface::LISP::Isis::ThreeWayHandshake::Implementor::cisco {0, "cisco"};
-const Enum::YLeaf Native::Interface::LISP::Isis::ThreeWayHandshake::Implementor::ietf {1, "ietf"};
 
 
 }

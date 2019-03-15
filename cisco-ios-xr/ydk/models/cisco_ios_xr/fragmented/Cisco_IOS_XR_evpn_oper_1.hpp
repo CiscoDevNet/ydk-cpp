@@ -2852,6 +2852,8 @@ class Evpn::Standby::EviDetail::Elements::Element : public ydk::Entity
         ydk::YLeaf reoriginate_disabled; //type: boolean
         ydk::YLeaf stitching; //type: boolean
         ydk::YLeaf multicast_source_connected; //type: boolean
+        ydk::YLeaf bgp_implicit_import_disabled; //type: boolean
+        ydk::YLeaf vrf_name; //type: string
         class EvpnInstance; //type: Evpn::Standby::EviDetail::Elements::Element::EvpnInstance
         class FlowLabel; //type: Evpn::Standby::EviDetail::Elements::Element::FlowLabel
         class RdAuto; //type: Evpn::Standby::EviDetail::Elements::Element::RdAuto

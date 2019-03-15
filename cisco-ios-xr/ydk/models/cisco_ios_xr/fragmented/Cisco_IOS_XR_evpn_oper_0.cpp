@@ -5257,7 +5257,9 @@ Evpn::Nodes::Node::EviDetail::Elements::Element::Element()
     unknown_unicast_flooding_disabled{YType::boolean, "unknown-unicast-flooding-disabled"},
     reoriginate_disabled{YType::boolean, "reoriginate-disabled"},
     stitching{YType::boolean, "stitching"},
-    multicast_source_connected{YType::boolean, "multicast-source-connected"}
+    multicast_source_connected{YType::boolean, "multicast-source-connected"},
+    bgp_implicit_import_disabled{YType::boolean, "bgp-implicit-import-disabled"},
+    vrf_name{YType::str, "vrf-name"}
         ,
     evpn_instance(std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::EvpnInstance>())
     , flow_label(std::make_shared<Evpn::Nodes::Node::EviDetail::Elements::Element::FlowLabel>())
@@ -5302,6 +5304,8 @@ bool Evpn::Nodes::Node::EviDetail::Elements::Element::has_data() const
 	|| reoriginate_disabled.is_set
 	|| stitching.is_set
 	|| multicast_source_connected.is_set
+	|| bgp_implicit_import_disabled.is_set
+	|| vrf_name.is_set
 	|| (evpn_instance !=  nullptr && evpn_instance->has_data())
 	|| (flow_label !=  nullptr && flow_label->has_data())
 	|| (rd_auto !=  nullptr && rd_auto->has_data())
@@ -5333,6 +5337,8 @@ bool Evpn::Nodes::Node::EviDetail::Elements::Element::has_operation() const
 	|| ydk::is_set(reoriginate_disabled.yfilter)
 	|| ydk::is_set(stitching.yfilter)
 	|| ydk::is_set(multicast_source_connected.yfilter)
+	|| ydk::is_set(bgp_implicit_import_disabled.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (evpn_instance !=  nullptr && evpn_instance->has_operation())
 	|| (flow_label !=  nullptr && flow_label->has_operation())
 	|| (rd_auto !=  nullptr && rd_auto->has_operation())
@@ -5373,6 +5379,8 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Nodes::Node::EviDetail::Ele
     if (reoriginate_disabled.is_set || is_set(reoriginate_disabled.yfilter)) leaf_name_data.push_back(reoriginate_disabled.get_name_leafdata());
     if (stitching.is_set || is_set(stitching.yfilter)) leaf_name_data.push_back(stitching.get_name_leafdata());
     if (multicast_source_connected.is_set || is_set(multicast_source_connected.yfilter)) leaf_name_data.push_back(multicast_source_connected.get_name_leafdata());
+    if (bgp_implicit_import_disabled.is_set || is_set(bgp_implicit_import_disabled.yfilter)) leaf_name_data.push_back(bgp_implicit_import_disabled.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -5588,6 +5596,18 @@ void Evpn::Nodes::Node::EviDetail::Elements::Element::set_value(const std::strin
         multicast_source_connected.value_namespace = name_space;
         multicast_source_connected.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "bgp-implicit-import-disabled")
+    {
+        bgp_implicit_import_disabled = value;
+        bgp_implicit_import_disabled.value_namespace = name_space;
+        bgp_implicit_import_disabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Evpn::Nodes::Node::EviDetail::Elements::Element::set_filter(const std::string & value_path, YFilter yfilter)
@@ -5676,11 +5696,19 @@ void Evpn::Nodes::Node::EviDetail::Elements::Element::set_filter(const std::stri
     {
         multicast_source_connected.yfilter = yfilter;
     }
+    if(value_path == "bgp-implicit-import-disabled")
+    {
+        bgp_implicit_import_disabled.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
 }
 
 bool Evpn::Nodes::Node::EviDetail::Elements::Element::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "evpn-instance" || name == "flow-label" || name == "rd-auto" || name == "rd-configured" || name == "rt-auto" || name == "evi" || name == "encapsulation" || name == "evi-xr" || name == "encapsulation-xr" || name == "bd-name" || name == "type" || name == "description" || name == "unicast-label" || name == "multicast-label" || name == "cw-disable" || name == "table-policy-name" || name == "forward-class" || name == "rt-import-block-set" || name == "rt-export-block-set" || name == "advertise-mac" || name == "advertise-bvi-mac" || name == "aliasing-disabled" || name == "unknown-unicast-flooding-disabled" || name == "reoriginate-disabled" || name == "stitching" || name == "multicast-source-connected")
+    if(name == "evpn-instance" || name == "flow-label" || name == "rd-auto" || name == "rd-configured" || name == "rt-auto" || name == "evi" || name == "encapsulation" || name == "evi-xr" || name == "encapsulation-xr" || name == "bd-name" || name == "type" || name == "description" || name == "unicast-label" || name == "multicast-label" || name == "cw-disable" || name == "table-policy-name" || name == "forward-class" || name == "rt-import-block-set" || name == "rt-export-block-set" || name == "advertise-mac" || name == "advertise-bvi-mac" || name == "aliasing-disabled" || name == "unknown-unicast-flooding-disabled" || name == "reoriginate-disabled" || name == "stitching" || name == "multicast-source-connected" || name == "bgp-implicit-import-disabled" || name == "vrf-name")
         return true;
     return false;
 }
@@ -20634,7 +20662,9 @@ Evpn::Active::EviDetail::Elements::Element::Element()
     unknown_unicast_flooding_disabled{YType::boolean, "unknown-unicast-flooding-disabled"},
     reoriginate_disabled{YType::boolean, "reoriginate-disabled"},
     stitching{YType::boolean, "stitching"},
-    multicast_source_connected{YType::boolean, "multicast-source-connected"}
+    multicast_source_connected{YType::boolean, "multicast-source-connected"},
+    bgp_implicit_import_disabled{YType::boolean, "bgp-implicit-import-disabled"},
+    vrf_name{YType::str, "vrf-name"}
         ,
     evpn_instance(std::make_shared<Evpn::Active::EviDetail::Elements::Element::EvpnInstance>())
     , flow_label(std::make_shared<Evpn::Active::EviDetail::Elements::Element::FlowLabel>())
@@ -20679,6 +20709,8 @@ bool Evpn::Active::EviDetail::Elements::Element::has_data() const
 	|| reoriginate_disabled.is_set
 	|| stitching.is_set
 	|| multicast_source_connected.is_set
+	|| bgp_implicit_import_disabled.is_set
+	|| vrf_name.is_set
 	|| (evpn_instance !=  nullptr && evpn_instance->has_data())
 	|| (flow_label !=  nullptr && flow_label->has_data())
 	|| (rd_auto !=  nullptr && rd_auto->has_data())
@@ -20710,6 +20742,8 @@ bool Evpn::Active::EviDetail::Elements::Element::has_operation() const
 	|| ydk::is_set(reoriginate_disabled.yfilter)
 	|| ydk::is_set(stitching.yfilter)
 	|| ydk::is_set(multicast_source_connected.yfilter)
+	|| ydk::is_set(bgp_implicit_import_disabled.yfilter)
+	|| ydk::is_set(vrf_name.yfilter)
 	|| (evpn_instance !=  nullptr && evpn_instance->has_operation())
 	|| (flow_label !=  nullptr && flow_label->has_operation())
 	|| (rd_auto !=  nullptr && rd_auto->has_operation())
@@ -20757,6 +20791,8 @@ std::vector<std::pair<std::string, LeafData> > Evpn::Active::EviDetail::Elements
     if (reoriginate_disabled.is_set || is_set(reoriginate_disabled.yfilter)) leaf_name_data.push_back(reoriginate_disabled.get_name_leafdata());
     if (stitching.is_set || is_set(stitching.yfilter)) leaf_name_data.push_back(stitching.get_name_leafdata());
     if (multicast_source_connected.is_set || is_set(multicast_source_connected.yfilter)) leaf_name_data.push_back(multicast_source_connected.get_name_leafdata());
+    if (bgp_implicit_import_disabled.is_set || is_set(bgp_implicit_import_disabled.yfilter)) leaf_name_data.push_back(bgp_implicit_import_disabled.get_name_leafdata());
+    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -20972,6 +21008,18 @@ void Evpn::Active::EviDetail::Elements::Element::set_value(const std::string & v
         multicast_source_connected.value_namespace = name_space;
         multicast_source_connected.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "bgp-implicit-import-disabled")
+    {
+        bgp_implicit_import_disabled = value;
+        bgp_implicit_import_disabled.value_namespace = name_space;
+        bgp_implicit_import_disabled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name = value;
+        vrf_name.value_namespace = name_space;
+        vrf_name.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Evpn::Active::EviDetail::Elements::Element::set_filter(const std::string & value_path, YFilter yfilter)
@@ -21060,11 +21108,19 @@ void Evpn::Active::EviDetail::Elements::Element::set_filter(const std::string & 
     {
         multicast_source_connected.yfilter = yfilter;
     }
+    if(value_path == "bgp-implicit-import-disabled")
+    {
+        bgp_implicit_import_disabled.yfilter = yfilter;
+    }
+    if(value_path == "vrf-name")
+    {
+        vrf_name.yfilter = yfilter;
+    }
 }
 
 bool Evpn::Active::EviDetail::Elements::Element::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "evpn-instance" || name == "flow-label" || name == "rd-auto" || name == "rd-configured" || name == "rt-auto" || name == "evi" || name == "encapsulation" || name == "evi-xr" || name == "encapsulation-xr" || name == "bd-name" || name == "type" || name == "description" || name == "unicast-label" || name == "multicast-label" || name == "cw-disable" || name == "table-policy-name" || name == "forward-class" || name == "rt-import-block-set" || name == "rt-export-block-set" || name == "advertise-mac" || name == "advertise-bvi-mac" || name == "aliasing-disabled" || name == "unknown-unicast-flooding-disabled" || name == "reoriginate-disabled" || name == "stitching" || name == "multicast-source-connected")
+    if(name == "evpn-instance" || name == "flow-label" || name == "rd-auto" || name == "rd-configured" || name == "rt-auto" || name == "evi" || name == "encapsulation" || name == "evi-xr" || name == "encapsulation-xr" || name == "bd-name" || name == "type" || name == "description" || name == "unicast-label" || name == "multicast-label" || name == "cw-disable" || name == "table-policy-name" || name == "forward-class" || name == "rt-import-block-set" || name == "rt-export-block-set" || name == "advertise-mac" || name == "advertise-bvi-mac" || name == "aliasing-disabled" || name == "unknown-unicast-flooding-disabled" || name == "reoriginate-disabled" || name == "stitching" || name == "multicast-source-connected" || name == "bgp-implicit-import-disabled" || name == "vrf-name")
         return true;
     return false;
 }

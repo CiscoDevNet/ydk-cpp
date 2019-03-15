@@ -8777,6 +8777,7 @@ class Isis::Instances::Instance : public ydk::Entity
         class Srms; //type: Isis::Instances::Instance::Srms
         class ErrorLog; //type: Isis::Instances::Instance::ErrorLog
         class CheckpointInterfaces; //type: Isis::Instances::Instance::CheckpointInterfaces
+        class SrLabels; //type: Isis::Instances::Instance::SrLabels
         class InterfaceStatistics; //type: Isis::Instances::Instance::InterfaceStatistics
         class Protocol; //type: Isis::Instances::Instance::Protocol
         class NeighborSummaries; //type: Isis::Instances::Instance::NeighborSummaries
@@ -8797,6 +8798,7 @@ class Isis::Instances::Instance : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Srms> srms;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::ErrorLog> error_log;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::CheckpointInterfaces> checkpoint_interfaces;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::SrLabels> sr_labels;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::InterfaceStatistics> interface_statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Protocol> protocol;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::NeighborSummaries> neighbor_summaries;
@@ -12617,6 +12619,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf priority; //type: IsisPrefixPriority
+        ydk::YLeaf local_label; //type: uint32
         class Primary; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary
         class Backup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup
 
@@ -12692,6 +12695,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::Nnh
@@ -12744,6 +12748,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
 
@@ -12876,6 +12881,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup> frr_backup;
@@ -12924,6 +12930,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -13006,6 +13013,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::Nnh
@@ -13058,6 +13066,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
 
@@ -13190,6 +13199,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::Nnh
@@ -13242,6 +13252,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
 
@@ -13374,6 +13385,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::Nnh
@@ -13426,6 +13438,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
 
@@ -13750,6 +13763,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::Nnh
@@ -13802,6 +13816,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
 
@@ -13934,6 +13949,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup> frr_backup;
@@ -13982,6 +13998,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -14064,6 +14081,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::Nnh
@@ -14116,6 +14134,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
 
@@ -14248,6 +14267,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::Nnh
@@ -14300,6 +14320,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
 
@@ -14432,6 +14453,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::Nnh
@@ -14484,6 +14506,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6FlexRouteTables::Ipv6FlexRouteTable::Ipv6FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
 
@@ -16876,6 +16899,7 @@ class Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyL
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::Nnh
@@ -16928,6 +16952,7 @@ class Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyL
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::BackupRepair
 
@@ -17060,6 +17085,7 @@ class Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyL
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::Nnh
@@ -17112,6 +17138,7 @@ class Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyL
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv4LinkTopologies::Ipv4LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::BackupRepair
 
@@ -17491,6 +17518,7 @@ class Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyL
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::Nnh
@@ -17543,6 +17571,7 @@ class Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyL
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::Paths::FrrBackup::BackupRepair
 
@@ -17675,6 +17704,7 @@ class Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyL
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::Nnh
@@ -17727,6 +17757,7 @@ class Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyL
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::TopologyLevels::TopologyLevel::Ipv6LinkTopologies::Ipv6LinkTopology::ReachabilityStatus::ReachableDetails::MulticastPath::FrrBackup::BackupRepair
 
@@ -18162,6 +18193,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf priority; //type: IsisPrefixPriority
+        ydk::YLeaf local_label; //type: uint32
         class Primary; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary
         class Backup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup
 
@@ -18237,6 +18269,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::Nnh
@@ -18289,6 +18322,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
 
@@ -18421,6 +18455,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup> frr_backup;
@@ -18469,6 +18504,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -18551,6 +18587,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::Nnh
@@ -18603,6 +18640,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
 
@@ -18735,6 +18773,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::Nnh
@@ -18787,6 +18826,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
 
@@ -18919,6 +18959,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::Nnh
@@ -18971,6 +19012,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
 
@@ -19295,6 +19337,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::Nnh
@@ -19347,6 +19390,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
 
@@ -19479,6 +19523,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup> frr_backup;
@@ -19527,6 +19572,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -19609,6 +19655,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::Nnh
@@ -19661,6 +19708,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
 
@@ -19793,6 +19841,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::Nnh
@@ -19845,6 +19894,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
 
@@ -19977,6 +20027,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::Nnh
@@ -20029,6 +20080,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::Na
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6Routes::Ipv6Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
 
@@ -20677,6 +20729,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf priority; //type: IsisPrefixPriority
+        ydk::YLeaf local_label; //type: uint32
         class Primary; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary
         class Backup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup
 
@@ -20752,6 +20805,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::Paths::Nnh
@@ -20804,6 +20858,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
 
@@ -20936,6 +20991,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup> frr_backup;
@@ -20984,6 +21040,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -21066,6 +21123,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::Nnh
@@ -21118,6 +21176,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
 
@@ -21250,6 +21309,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::SrtePath::Nnh
@@ -21302,6 +21362,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
 
@@ -21434,6 +21495,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::Nnh
@@ -21486,6 +21548,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
 
@@ -21810,6 +21873,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::Paths::Nnh
@@ -21862,6 +21926,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
 
@@ -21994,6 +22059,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup> frr_backup;
@@ -22042,6 +22108,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -22124,6 +22191,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::Nnh
@@ -22176,6 +22244,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
 
@@ -22308,6 +22377,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::SrtePath::Nnh
@@ -22360,6 +22430,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
 
@@ -22492,6 +22563,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::Nnh
@@ -22544,6 +22616,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBa
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv6frrBackups::Ipv6frrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
 
@@ -23192,6 +23265,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf priority; //type: IsisPrefixPriority
+        ydk::YLeaf local_label; //type: uint32
         class Primary; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary
         class Backup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup
 
@@ -23267,6 +23341,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::Paths::Nnh
@@ -23319,6 +23394,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
 
@@ -23451,6 +23527,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup> frr_backup;
@@ -23499,6 +23576,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -23581,6 +23659,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::Nnh
@@ -23633,6 +23712,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
 
@@ -23765,6 +23845,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::SrtePath::Nnh
@@ -23817,6 +23898,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
 
@@ -23949,6 +24031,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::Nnh
@@ -24001,6 +24084,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
 
@@ -24325,6 +24409,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::Paths::Nnh
@@ -24377,6 +24462,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
 
@@ -24509,6 +24595,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup> frr_backup;
@@ -24557,6 +24644,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -24639,6 +24727,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::Nnh
@@ -24691,6 +24780,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
 
@@ -24823,6 +24913,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::SrtePath::Nnh
@@ -24875,6 +24966,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
 
@@ -25007,6 +25099,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::Nnh
@@ -25059,6 +25152,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBa
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4frrBackups::Ipv4frrBackup::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
 
@@ -25731,6 +25825,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf priority; //type: IsisPrefixPriority
+        ydk::YLeaf local_label; //type: uint32
         class Primary; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary
         class Backup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup
 
@@ -25806,6 +25901,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::Nnh
@@ -25858,6 +25954,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
 
@@ -25990,6 +26087,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup> frr_backup;
@@ -26038,6 +26136,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -26120,6 +26219,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::Nnh
@@ -26172,6 +26272,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
 
@@ -26304,6 +26405,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::Nnh
@@ -26356,6 +26458,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
 
@@ -26488,6 +26591,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::Nnh
@@ -26540,6 +26644,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
 
@@ -26864,6 +26969,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::Nnh
@@ -26916,6 +27022,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
 
@@ -27048,6 +27155,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup> frr_backup;
@@ -27096,6 +27204,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -27178,6 +27287,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::Nnh
@@ -27230,6 +27340,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
 
@@ -27362,6 +27473,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::Nnh
@@ -27414,6 +27526,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
 
@@ -27546,6 +27659,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::Nnh
@@ -27598,6 +27712,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4FlexRouteTables::Ipv4FlexRouteTable::Ipv4FlexRoute::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
 
@@ -28246,6 +28361,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf priority; //type: IsisPrefixPriority
+        ydk::YLeaf local_label; //type: uint32
         class Primary; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary
         class Backup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup
 
@@ -28321,6 +28437,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::Nnh
@@ -28373,6 +28490,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::Paths::FrrBackup::BackupRepair
 
@@ -28505,6 +28623,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup> frr_backup;
@@ -28553,6 +28672,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -28635,6 +28755,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::Nnh
@@ -28687,6 +28808,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::MulticastPath::FrrBackup::BackupRepair
 
@@ -28819,6 +28941,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::Nnh
@@ -28871,6 +28994,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::SrtePath::FrrBackup::BackupRepair
 
@@ -29003,6 +29127,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::Nnh
@@ -29055,6 +29180,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Primary::ExplicitPath::FrrBackup::BackupRepair
 
@@ -29379,6 +29505,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::Nnh
@@ -29431,6 +29558,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::Paths::FrrBackup::BackupRepair
 
@@ -29563,6 +29691,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup> frr_backup;
@@ -29611,6 +29740,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::UcmpNextHop::FrrBackup::BackupRepair
 
@@ -29693,6 +29823,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::Nnh
@@ -29745,6 +29876,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::MulticastPath::FrrBackup::BackupRepair
 
@@ -29877,6 +30009,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::Nnh
@@ -29929,6 +30062,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::SrtePath::FrrBackup::BackupRepair
 
@@ -30061,6 +30195,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf weight; //type: uint32
         ydk::YLeaf is_te_tunnel_interface; //type: boolean
         ydk::YLeaf is_sr_exclude_tunnel_interface; //type: boolean
+        ydk::YLeaf outgoing_label; //type: uint32
         class FrrBackup; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup
         class UloopExplicit; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::UloopExplicit
         class Nnh; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::Nnh
@@ -30113,6 +30248,7 @@ class Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::Na
         ydk::YLeaf is_strict_spflfa; //type: boolean
         ydk::YLeaf is_tunnel_requested; //type: boolean
         ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf outgoing_label; //type: uint32
         class SegmentRoutingSidValueEntry; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::SegmentRoutingSidValueEntry
         class BackupRepair; //type: Isis::Instances::Instance::Topologies::Topology::Ipv4Routes::Ipv4Route::NativeStatus::NativeDetails::Backup::ExplicitPath::FrrBackup::BackupRepair
 
@@ -32107,6 +32243,7 @@ class Isis::Instances::Instance::Interfaces::Interface::InterfaceStatusAndData::
         ydk::YLeaf max_label_supported; //type: uint8
         ydk::YLeaf max_bkp_label_supported; //type: uint8
         ydk::YLeaf max_srte_label_supported; //type: uint8
+        ydk::YLeaf max_srat_label_supported; //type: uint8
         ydk::YLeaf level1ldp_sync_enabled; //type: boolean
         ydk::YLeaf level2ldp_sync_enabled; //type: boolean
         ydk::YLeaf ldp_sync_status; //type: boolean
@@ -33424,6 +33561,131 @@ class Isis::Instances::Instance::CheckpointInterfaces::CheckpointInterface : pub
 }; // Isis::Instances::Instance::CheckpointInterfaces::CheckpointInterface
 
 
+class Isis::Instances::Instance::SrLabels : public ydk::Entity
+{
+    public:
+        SrLabels();
+        ~SrLabels();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SrLabel; //type: Isis::Instances::Instance::SrLabels::SrLabel
+
+        ydk::YList sr_label;
+        
+}; // Isis::Instances::Instance::SrLabels
+
+
+class Isis::Instances::Instance::SrLabels::SrLabel : public ydk::Entity
+{
+    public:
+        SrLabel();
+        ~SrLabel();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf label; //type: uint32
+        ydk::YLeaf label_type; //type: IsisEdmLabelTypeEnum
+        ydk::YLeaf label_flags; //type: uint8
+        ydk::YLeaf label_refcount; //type: uint8
+        ydk::YLeaf label_value; //type: uint32
+        ydk::YLeaf label_interface; //type: string
+        ydk::YLeaf label_ifh; //type: string
+        ydk::YLeaf label_table_id; //type: uint32
+        ydk::YLeaf label_af_id; //type: IsisAfId
+        class LabelPrefix; //type: Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix> label_prefix;
+        
+}; // Isis::Instances::Instance::SrLabels::SrLabel
+
+
+class Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix : public ydk::Entity
+{
+    public:
+        LabelPrefix();
+        ~LabelPrefix();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf af_name; //type: IsisAfId
+        class Ipv4; //type: Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv4
+        class Ipv6; //type: Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv6
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv4> ipv4;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv6> ipv6;
+        
+}; // Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix
+
+
+class Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv4 : public ydk::Entity
+{
+    public:
+        Ipv4();
+        ~Ipv4();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+
+}; // Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv4
+
+
+class Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv6 : public ydk::Entity
+{
+    public:
+        Ipv6();
+        ~Ipv6();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_length; //type: uint8
+
+}; // Isis::Instances::Instance::SrLabels::SrLabel::LabelPrefix::Ipv6
+
+
 class Isis::Instances::Instance::InterfaceStatistics : public ydk::Entity
 {
     public:
@@ -34649,45 +34911,6 @@ class IsisIfTopoAdvPrefixDisabledReason : public ydk::Enum
 
 };
 
-class IsisLspTrigger : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_lsp_trig_config;
-        static const ydk::Enum::YLeaf isis_lsp_trig_newadj;
-        static const ydk::Enum::YLeaf isis_lsp_trig_deladj;
-        static const ydk::Enum::YLeaf isis_lsp_trig_dr_change;
-        static const ydk::Enum::YLeaf isis_lsp_trig_area_set;
-        static const ydk::Enum::YLeaf isis_lsp_trig_attach;
-        static const ydk::Enum::YLeaf isis_lsp_trig_hippity;
-        static const ydk::Enum::YLeaf isis_lsp_trig_regen;
-        static const ydk::Enum::YLeaf isis_lsp_trig_ip_if_up;
-        static const ydk::Enum::YLeaf isis_lsp_trig_ip_if_down;
-        static const ydk::Enum::YLeaf isis_lsp_trig_ip_inter_area;
-        static const ydk::Enum::YLeaf isis_lsp_trig_ip_external;
-        static const ydk::Enum::YLeaf isis_lsp_trig_ip_external_full;
-        static const ydk::Enum::YLeaf isis_lsp_trig_ip_def_orig;
-        static const ydk::Enum::YLeaf isis_lsp_trig_ip_addr_chg;
-        static const ydk::Enum::YLeaf isis_lsp_trig_te_info;
-        static const ydk::Enum::YLeaf isis_lsp_trig_te_pce_info;
-        static const ydk::Enum::YLeaf isis_lsp_trig_te_fa_info;
-        static const ydk::Enum::YLeaf isis_lsp_trig_nsr_fo;
-        static const ydk::Enum::YLeaf isis_lsp_trig_pn_cancel;
-        static const ydk::Enum::YLeaf isis_lsp_trig_lkgp;
-        static const ydk::Enum::YLeaf isis_lsp_trig_pp;
-        static const ydk::Enum::YLeaf isis_lsp_trig_config_force_send;
-        static const ydk::Enum::YLeaf isis_lsp_trig_config_force_init;
-        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_add;
-        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_delete;
-        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_change;
-        static const ydk::Enum::YLeaf isis_lsp_trig_msd;
-        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_wait_timer;
-        static const ydk::Enum::YLeaf isis_lsp_trig_direct_gen;
-        static const ydk::Enum::YLeaf isis_lsp_trig_flex_algo_enable_disable;
-        static const ydk::Enum::YLeaf isis_lsp_trig_pm_delay_loss;
-        static const ydk::Enum::YLeaf isis_lsp_trig_pm_bw_util;
-
-};
-
 class IsisAdjState : public ydk::Enum
 {
     public:
@@ -34774,6 +34997,15 @@ class IsisIfAdjFormDisabledReason : public ydk::Enum
 
 };
 
+class IsisEdmLabelTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_edm_label_alloc_prefix_sid;
+        static const ydk::Enum::YLeaf isis_edm_label_alloc_local_sid;
+        static const ydk::Enum::YLeaf isis_edm_label_alloc_max;
+
+};
+
 class OpenconfigIsisLspIsisMetricFlagsEnum : public ydk::Enum
 {
     public:
@@ -34829,15 +35061,6 @@ class OpenconfigIsisLspStateFlagsEnum : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf numbered;
-
-};
-
-class IsisIfAfPrefixUnknownReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_adv_suppressed;
-        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_global_addr_reg_error;
-        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_internal_error;
 
 };
 
@@ -35045,6 +35268,15 @@ class OpenconfigIsisTypesLevelTypeEnum : public ydk::Enum
 
 };
 
+class IsisIfAfPrefixUnknownReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_adv_suppressed;
+        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_global_addr_reg_error;
+        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_internal_error;
+
+};
+
 class IsisSpfClass : public ydk::Enum
 {
     public:
@@ -35123,6 +35355,45 @@ class IsisReachable : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf isis_unreachable;
         static const ydk::Enum::YLeaf isis_reachable;
+
+};
+
+class IsisLspTrigger : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_lsp_trig_config;
+        static const ydk::Enum::YLeaf isis_lsp_trig_newadj;
+        static const ydk::Enum::YLeaf isis_lsp_trig_deladj;
+        static const ydk::Enum::YLeaf isis_lsp_trig_dr_change;
+        static const ydk::Enum::YLeaf isis_lsp_trig_area_set;
+        static const ydk::Enum::YLeaf isis_lsp_trig_attach;
+        static const ydk::Enum::YLeaf isis_lsp_trig_hippity;
+        static const ydk::Enum::YLeaf isis_lsp_trig_regen;
+        static const ydk::Enum::YLeaf isis_lsp_trig_ip_if_up;
+        static const ydk::Enum::YLeaf isis_lsp_trig_ip_if_down;
+        static const ydk::Enum::YLeaf isis_lsp_trig_ip_inter_area;
+        static const ydk::Enum::YLeaf isis_lsp_trig_ip_external;
+        static const ydk::Enum::YLeaf isis_lsp_trig_ip_external_full;
+        static const ydk::Enum::YLeaf isis_lsp_trig_ip_def_orig;
+        static const ydk::Enum::YLeaf isis_lsp_trig_ip_addr_chg;
+        static const ydk::Enum::YLeaf isis_lsp_trig_te_info;
+        static const ydk::Enum::YLeaf isis_lsp_trig_te_pce_info;
+        static const ydk::Enum::YLeaf isis_lsp_trig_te_fa_info;
+        static const ydk::Enum::YLeaf isis_lsp_trig_nsr_fo;
+        static const ydk::Enum::YLeaf isis_lsp_trig_pn_cancel;
+        static const ydk::Enum::YLeaf isis_lsp_trig_lkgp;
+        static const ydk::Enum::YLeaf isis_lsp_trig_pp;
+        static const ydk::Enum::YLeaf isis_lsp_trig_config_force_send;
+        static const ydk::Enum::YLeaf isis_lsp_trig_config_force_init;
+        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_add;
+        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_delete;
+        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_change;
+        static const ydk::Enum::YLeaf isis_lsp_trig_msd;
+        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_wait_timer;
+        static const ydk::Enum::YLeaf isis_lsp_trig_direct_gen;
+        static const ydk::Enum::YLeaf isis_lsp_trig_flex_algo_enable_disable;
+        static const ydk::Enum::YLeaf isis_lsp_trig_pm_delay_loss;
+        static const ydk::Enum::YLeaf isis_lsp_trig_pm_bw_util;
 
 };
 

@@ -2248,6 +2248,9 @@ class System::VpcItems::InstItems::DomItems : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf id; //type: uint16
+        ydk::YLeaf peerip; //type: string
+        ydk::YLeaf virtualip; //type: string
+        ydk::YLeaf dscp; //type: uint16
         ydk::YLeaf sysprio; //type: uint16
         ydk::YLeaf sysmac; //type: string
         ydk::YLeaf roleprio; //type: uint16

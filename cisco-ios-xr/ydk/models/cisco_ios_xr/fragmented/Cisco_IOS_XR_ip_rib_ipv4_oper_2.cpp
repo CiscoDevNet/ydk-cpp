@@ -214,7 +214,7 @@ bool Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNa
 
 Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestQRoutes::DestQRoutes()
     :
-    dest_q_route(this, {})
+    dest_q_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "dest-q-routes"; yang_parent_name = "destination-kw"; is_top_level_class = false; has_list_ancestor = true; 
@@ -437,7 +437,8 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "dest-q-route";
-    path_buffer << "[" << get_ylist_key() << "]";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -2047,7 +2048,7 @@ bool Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNa
 
 Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::DestinationKw::DestBackupRoutes::DestBackupRoutes()
     :
-    dest_backup_route(this, {})
+    dest_backup_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "dest-backup-routes"; yang_parent_name = "destination-kw"; is_top_level_class = false; has_list_ancestor = true; 
@@ -2270,7 +2271,8 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "dest-backup-route";
-    path_buffer << "[" << get_ylist_key() << "]";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -6485,7 +6487,7 @@ bool Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNa
 
 Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Mobile::NonAs::ProtocolRoutes::ProtocolRoutes()
     :
-    protocol_route(this, {})
+    protocol_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "protocol-routes"; yang_parent_name = "non-as"; is_top_level_class = false; has_list_ancestor = true; 
@@ -6708,7 +6710,8 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
-    path_buffer << "[" << get_ylist_key() << "]";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -8718,7 +8721,7 @@ bool Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNa
 
 Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Subscriber::NonAs::ProtocolRoutes::ProtocolRoutes()
     :
-    protocol_route(this, {})
+    protocol_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "protocol-routes"; yang_parent_name = "non-as"; is_top_level_class = false; has_list_ancestor = true; 
@@ -8941,7 +8944,8 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
-    path_buffer << "[" << get_ylist_key() << "]";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -10951,7 +10955,7 @@ bool Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNa
 
 Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Connected::NonAs::ProtocolRoutes::ProtocolRoutes()
     :
-    protocol_route(this, {})
+    protocol_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "protocol-routes"; yang_parent_name = "non-as"; is_top_level_class = false; has_list_ancestor = true; 
@@ -11174,7 +11178,8 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
-    path_buffer << "[" << get_ylist_key() << "]";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -13184,7 +13189,7 @@ bool Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNa
 
 Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Dagr::NonAs::ProtocolRoutes::ProtocolRoutes()
     :
-    protocol_route(this, {})
+    protocol_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "protocol-routes"; yang_parent_name = "non-as"; is_top_level_class = false; has_list_ancestor = true; 
@@ -13407,7 +13412,8 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
-    path_buffer << "[" << get_ylist_key() << "]";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -15417,7 +15423,7 @@ bool Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNa
 
 Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rip::NonAs::ProtocolRoutes::ProtocolRoutes()
     :
-    protocol_route(this, {})
+    protocol_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "protocol-routes"; yang_parent_name = "non-as"; is_top_level_class = false; has_list_ancestor = true; 
@@ -15640,7 +15646,8 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
-    path_buffer << "[" << get_ylist_key() << "]";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -17677,7 +17684,7 @@ bool Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNa
 
 Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Ospf::As::ProtocolRoutes::ProtocolRoutes()
     :
-    protocol_route(this, {})
+    protocol_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "protocol-routes"; yang_parent_name = "as"; is_top_level_class = false; has_list_ancestor = true; 
@@ -17900,7 +17907,8 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
-    path_buffer << "[" << get_ylist_key() << "]";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -19910,7 +19918,7 @@ bool Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNa
 
 Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Srv6Local::NonAs::ProtocolRoutes::ProtocolRoutes()
     :
-    protocol_route(this, {})
+    protocol_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "protocol-routes"; yang_parent_name = "non-as"; is_top_level_class = false; has_list_ancestor = true; 
@@ -20133,7 +20141,8 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
-    path_buffer << "[" << get_ylist_key() << "]";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -22143,7 +22152,7 @@ bool Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNa
 
 Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Static::NonAs::ProtocolRoutes::ProtocolRoutes()
     :
-    protocol_route(this, {})
+    protocol_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "protocol-routes"; yang_parent_name = "non-as"; is_top_level_class = false; has_list_ancestor = true; 
@@ -22366,7 +22375,8 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
-    path_buffer << "[" << get_ylist_key() << "]";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -24403,7 +24413,7 @@ bool Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNa
 
 Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Rpl::As::ProtocolRoutes::ProtocolRoutes()
     :
-    protocol_route(this, {})
+    protocol_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "protocol-routes"; yang_parent_name = "as"; is_top_level_class = false; has_list_ancestor = true; 
@@ -24626,7 +24636,8 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
-    path_buffer << "[" << get_ylist_key() << "]";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -26636,7 +26647,7 @@ bool Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNa
 
 Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Application::NonAs::ProtocolRoutes::ProtocolRoutes()
     :
-    protocol_route(this, {})
+    protocol_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "protocol-routes"; yang_parent_name = "non-as"; is_top_level_class = false; has_list_ancestor = true; 
@@ -26859,7 +26870,8 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
-    path_buffer << "[" << get_ylist_key() << "]";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -28869,7 +28881,7 @@ bool Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNa
 
 Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::TeClient::NonAs::ProtocolRoutes::ProtocolRoutes()
     :
-    protocol_route(this, {})
+    protocol_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "protocol-routes"; yang_parent_name = "non-as"; is_top_level_class = false; has_list_ancestor = true; 
@@ -29092,7 +29104,8 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
-    path_buffer << "[" << get_ylist_key() << "]";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -31129,7 +31142,7 @@ bool Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNa
 
 Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Eigrp::As::ProtocolRoutes::ProtocolRoutes()
     :
-    protocol_route(this, {})
+    protocol_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "protocol-routes"; yang_parent_name = "as"; is_top_level_class = false; has_list_ancestor = true; 
@@ -31352,7 +31365,8 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
-    path_buffer << "[" << get_ylist_key() << "]";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 
@@ -33398,7 +33412,7 @@ bool Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableNa
 
 Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRouteTableName::Protocol::Local::Smiap::ProtocolRoutes::ProtocolRoutes()
     :
-    protocol_route(this, {})
+    protocol_route(this, {"address", "prefix_length"})
 {
 
     yang_name = "protocol-routes"; yang_parent_name = "smiap"; is_top_level_class = false; has_list_ancestor = true; 
@@ -33621,7 +33635,8 @@ std::string Rib::Vrfs::Vrf::Afs::Af::Safs::Saf::IpRibRouteTableNames::IpRibRoute
 {
     std::ostringstream path_buffer;
     path_buffer << "protocol-route";
-    path_buffer << "[" << get_ylist_key() << "]";
+    ADD_KEY_TOKEN(address, "address");
+    ADD_KEY_TOKEN(prefix_length, "prefix-length");
     return path_buffer.str();
 }
 

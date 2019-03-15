@@ -180,11 +180,11 @@ class Vpdn::Sessions::Session::Subscriber : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf nas_port_type; //type: VpdnNasPort
+        ydk::YLeaf nas_port_id_val; //type: string
+        ydk::YLeaf nas_port_type; //type: string
         ydk::YLeaf physical_channel_id; //type: uint32
         ydk::YLeaf receive_connect_speed; //type: uint64
         ydk::YLeaf transmit_connect_speed; //type: uint64
-        ydk::YLeafList nas_port; //type: list of  uint8
 
 }; // Vpdn::Sessions::Session::Subscriber
 
@@ -593,38 +593,14 @@ class VpdnFailcode : public ydk::Enum
 
 };
 
-class VpdnNasPort : public ydk::Enum
+class LsgStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf primary;
-        static const ydk::Enum::YLeaf bri;
-        static const ydk::Enum::YLeaf serial;
-        static const ydk::Enum::YLeaf asynchronous;
-        static const ydk::Enum::YLeaf vty;
-        static const ydk::Enum::YLeaf atm;
-        static const ydk::Enum::YLeaf ethernet;
-        static const ydk::Enum::YLeaf ppp_atm;
-        static const ydk::Enum::YLeaf pppoe_over_atm;
-        static const ydk::Enum::YLeaf pppoe_over_ethernet;
-        static const ydk::Enum::YLeaf pppoe_over_vlan;
-        static const ydk::Enum::YLeaf pppoe_over_q_in_q;
-        static const ydk::Enum::YLeaf v120;
-        static const ydk::Enum::YLeaf v110;
-        static const ydk::Enum::YLeaf piafs;
-        static const ydk::Enum::YLeaf x75;
-        static const ydk::Enum::YLeaf ip_sec;
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf virtual_pppoe_over_ethernet;
-        static const ydk::Enum::YLeaf virtual_pppoe_over_vlan;
-        static const ydk::Enum::YLeaf virtual_pppoe_over_q_in_q;
-        static const ydk::Enum::YLeaf ipo_e_over_ethernet;
-        static const ydk::Enum::YLeaf ipo_e_over_vlan;
-        static const ydk::Enum::YLeaf ipo_e_over_q_in_q;
-        static const ydk::Enum::YLeaf virtual_i_po_e_over_ethernet;
-        static const ydk::Enum::YLeaf virtual_i_po_e_over_vlan;
-        static const ydk::Enum::YLeaf virtual_i_po_e_over_q_in_q;
-        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf testable;
+        static const ydk::Enum::YLeaf testing;
 
 };
 
@@ -634,17 +610,6 @@ class TosMode : public ydk::Enum
         static const ydk::Enum::YLeaf default_;
         static const ydk::Enum::YLeaf set;
         static const ydk::Enum::YLeaf reflect;
-
-};
-
-class LsgStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf testable;
-        static const ydk::Enum::YLeaf testing;
 
 };
 

@@ -3138,12 +3138,14 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Proxy()
     , vrfs(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs>())
     , profiles(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Profiles>())
     , statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Statistics>())
+    , disconnect_histories(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories>())
     , binding(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Binding>())
 {
     statistics_info->parent = this;
     vrfs->parent = this;
     profiles->parent = this;
     statistics->parent = this;
+    disconnect_histories->parent = this;
     binding->parent = this;
 
     yang_name = "proxy"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
@@ -3160,6 +3162,7 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::has_data() const
 	|| (vrfs !=  nullptr && vrfs->has_data())
 	|| (profiles !=  nullptr && profiles->has_data())
 	|| (statistics !=  nullptr && statistics->has_data())
+	|| (disconnect_histories !=  nullptr && disconnect_histories->has_data())
 	|| (binding !=  nullptr && binding->has_data());
 }
 
@@ -3170,6 +3173,7 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::has_operation() const
 	|| (vrfs !=  nullptr && vrfs->has_operation())
 	|| (profiles !=  nullptr && profiles->has_operation())
 	|| (statistics !=  nullptr && statistics->has_operation())
+	|| (disconnect_histories !=  nullptr && disconnect_histories->has_operation())
 	|| (binding !=  nullptr && binding->has_operation());
 }
 
@@ -3227,6 +3231,15 @@ std::shared_ptr<ydk::Entity> Ipv4Dhcpd::Nodes::Node::Proxy::get_child_by_name(co
         return statistics;
     }
 
+    if(child_yang_name == "disconnect-histories")
+    {
+        if(disconnect_histories == nullptr)
+        {
+            disconnect_histories = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories>();
+        }
+        return disconnect_histories;
+    }
+
     if(child_yang_name == "binding")
     {
         if(binding == nullptr)
@@ -3263,6 +3276,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Dhcpd::Nodes::Node::Prox
         _children["statistics"] = statistics;
     }
 
+    if(disconnect_histories != nullptr)
+    {
+        _children["disconnect-histories"] = disconnect_histories;
+    }
+
     if(binding != nullptr)
     {
         _children["binding"] = binding;
@@ -3281,7 +3299,7 @@ void Ipv4Dhcpd::Nodes::Node::Proxy::set_filter(const std::string & value_path, Y
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "statistics-info" || name == "vrfs" || name == "profiles" || name == "statistics" || name == "binding")
+    if(name == "statistics-info" || name == "vrfs" || name == "profiles" || name == "statistics" || name == "disconnect-histories" || name == "binding")
         return true;
     return false;
 }
@@ -6439,6 +6457,248 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::Statistics_:
     return false;
 }
 
+Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::DisconnectHistories()
+    :
+    disconnect_history(this, {"index_"})
+{
+
+    yang_name = "disconnect-histories"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::~DisconnectHistories()
+{
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<disconnect_history.len(); index++)
+    {
+        if(disconnect_history[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::has_operation() const
+{
+    for (std::size_t index=0; index<disconnect_history.len(); index++)
+    {
+        if(disconnect_history[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "disconnect-histories";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "disconnect-history")
+    {
+        auto ent_ = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::DisconnectHistory>();
+        ent_->parent = this;
+        disconnect_history.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : disconnect_history.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disconnect-history")
+        return true;
+    return false;
+}
+
+Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::DisconnectHistory::DisconnectHistory()
+    :
+    index_{YType::str, "index"},
+    session_start_time_epoch{YType::uint64, "session-start-time-epoch"},
+    session_end_time_epoch{YType::uint64, "session-end-time-epoch"},
+    disc_reason{YType::str, "disc-reason"},
+    sub_label{YType::uint32, "sub-label"},
+    mac_address{YType::str, "mac-address"}
+{
+
+    yang_name = "disconnect-history"; yang_parent_name = "disconnect-histories"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::DisconnectHistory::~DisconnectHistory()
+{
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::DisconnectHistory::has_data() const
+{
+    if (is_presence_container) return true;
+    return index_.is_set
+	|| session_start_time_epoch.is_set
+	|| session_end_time_epoch.is_set
+	|| disc_reason.is_set
+	|| sub_label.is_set
+	|| mac_address.is_set;
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::DisconnectHistory::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(session_start_time_epoch.yfilter)
+	|| ydk::is_set(session_end_time_epoch.yfilter)
+	|| ydk::is_set(disc_reason.yfilter)
+	|| ydk::is_set(sub_label.yfilter)
+	|| ydk::is_set(mac_address.yfilter);
+}
+
+std::string Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::DisconnectHistory::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "disconnect-history";
+    ADD_KEY_TOKEN(index_, "index");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::DisconnectHistory::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (session_start_time_epoch.is_set || is_set(session_start_time_epoch.yfilter)) leaf_name_data.push_back(session_start_time_epoch.get_name_leafdata());
+    if (session_end_time_epoch.is_set || is_set(session_end_time_epoch.yfilter)) leaf_name_data.push_back(session_end_time_epoch.get_name_leafdata());
+    if (disc_reason.is_set || is_set(disc_reason.yfilter)) leaf_name_data.push_back(disc_reason.get_name_leafdata());
+    if (sub_label.is_set || is_set(sub_label.yfilter)) leaf_name_data.push_back(sub_label.get_name_leafdata());
+    if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::DisconnectHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::DisconnectHistory::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::DisconnectHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "index")
+    {
+        index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-start-time-epoch")
+    {
+        session_start_time_epoch = value;
+        session_start_time_epoch.value_namespace = name_space;
+        session_start_time_epoch.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-end-time-epoch")
+    {
+        session_end_time_epoch = value;
+        session_end_time_epoch.value_namespace = name_space;
+        session_end_time_epoch.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disc-reason")
+    {
+        disc_reason = value;
+        disc_reason.value_namespace = name_space;
+        disc_reason.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sub-label")
+    {
+        sub_label = value;
+        sub_label.value_namespace = name_space;
+        sub_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mac-address")
+    {
+        mac_address = value;
+        mac_address.value_namespace = name_space;
+        mac_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::DisconnectHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "session-start-time-epoch")
+    {
+        session_start_time_epoch.yfilter = yfilter;
+    }
+    if(value_path == "session-end-time-epoch")
+    {
+        session_end_time_epoch.yfilter = yfilter;
+    }
+    if(value_path == "disc-reason")
+    {
+        disc_reason.yfilter = yfilter;
+    }
+    if(value_path == "sub-label")
+    {
+        sub_label.yfilter = yfilter;
+    }
+    if(value_path == "mac-address")
+    {
+        mac_address.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::DisconnectHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "index" || name == "session-start-time-epoch" || name == "session-end-time-epoch" || name == "disc-reason" || name == "sub-label" || name == "mac-address")
+        return true;
+    return false;
+}
+
 Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Binding()
     :
     clients(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients>())
@@ -6666,7 +6926,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::Client()
     is_mbl_subscriber{YType::boolean, "is-mbl-subscriber"},
     param_request{YType::str, "param-request"},
     param_response{YType::str, "param-response"},
-    session_start_time{YType::uint64, "session-start-time"},
+    session_start_time_epoch{YType::uint64, "session-start-time-epoch"},
     srg_state{YType::uint32, "srg-state"},
     event_history{YType::uint32, "event-history"}
 {
@@ -6718,7 +6978,7 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::has_data() const
 	|| is_mbl_subscriber.is_set
 	|| param_request.is_set
 	|| param_response.is_set
-	|| session_start_time.is_set
+	|| session_start_time_epoch.is_set
 	|| srg_state.is_set;
 }
 
@@ -6762,7 +7022,7 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::has_operation() co
 	|| ydk::is_set(is_mbl_subscriber.yfilter)
 	|| ydk::is_set(param_request.yfilter)
 	|| ydk::is_set(param_response.yfilter)
-	|| ydk::is_set(session_start_time.yfilter)
+	|| ydk::is_set(session_start_time_epoch.yfilter)
 	|| ydk::is_set(srg_state.yfilter)
 	|| ydk::is_set(event_history.yfilter);
 }
@@ -6811,7 +7071,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Nodes::Node::Proxy::Bi
     if (is_mbl_subscriber.is_set || is_set(is_mbl_subscriber.yfilter)) leaf_name_data.push_back(is_mbl_subscriber.get_name_leafdata());
     if (param_request.is_set || is_set(param_request.yfilter)) leaf_name_data.push_back(param_request.get_name_leafdata());
     if (param_response.is_set || is_set(param_response.yfilter)) leaf_name_data.push_back(param_response.get_name_leafdata());
-    if (session_start_time.is_set || is_set(session_start_time.yfilter)) leaf_name_data.push_back(session_start_time.get_name_leafdata());
+    if (session_start_time_epoch.is_set || is_set(session_start_time_epoch.yfilter)) leaf_name_data.push_back(session_start_time_epoch.get_name_leafdata());
     if (srg_state.is_set || is_set(srg_state.yfilter)) leaf_name_data.push_back(srg_state.get_name_leafdata());
 
     auto event_history_name_datas = event_history.get_name_leafdata();
@@ -7026,11 +7286,11 @@ void Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::set_value(const st
         param_response.value_namespace = name_space;
         param_response.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "session-start-time")
+    if(value_path == "session-start-time-epoch")
     {
-        session_start_time = value;
-        session_start_time.value_namespace = name_space;
-        session_start_time.value_namespace_prefix = name_space_prefix;
+        session_start_time_epoch = value;
+        session_start_time_epoch.value_namespace = name_space;
+        session_start_time_epoch.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srg-state")
     {
@@ -7174,9 +7434,9 @@ void Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::set_filter(const s
     {
         param_response.yfilter = yfilter;
     }
-    if(value_path == "session-start-time")
+    if(value_path == "session-start-time-epoch")
     {
-        session_start_time.yfilter = yfilter;
+        session_start_time_epoch.yfilter = yfilter;
     }
     if(value_path == "srg-state")
     {
@@ -7190,7 +7450,7 @@ void Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::set_filter(const s
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "client-id" || name == "client-id-xr" || name == "mac-address" || name == "vrf-name" || name == "server-vrf-name" || name == "ip-address" || name == "client-gi-addr" || name == "to-server-gi-addr" || name == "server-ip-address" || name == "reply-server-ip-address" || name == "lease-time" || name == "remaining-lease-time" || name == "state" || name == "interface-name" || name == "access-vrf-name" || name == "proxy-binding-outer-tag" || name == "proxy-binding-inner-tag" || name == "profile-name" || name == "is-nak-next-renew" || name == "subscriber-label" || name == "old-subscriber-label" || name == "subscriber-interface-name" || name == "rx-circuit-id" || name == "tx-circuit-id" || name == "rx-remote-id" || name == "tx-remote-id" || name == "rx-vsiso" || name == "tx-vsiso" || name == "is-auth-received" || name == "is-mbl-subscriber" || name == "param-request" || name == "param-response" || name == "session-start-time" || name == "srg-state" || name == "event-history")
+    if(name == "client-id" || name == "client-id-xr" || name == "mac-address" || name == "vrf-name" || name == "server-vrf-name" || name == "ip-address" || name == "client-gi-addr" || name == "to-server-gi-addr" || name == "server-ip-address" || name == "reply-server-ip-address" || name == "lease-time" || name == "remaining-lease-time" || name == "state" || name == "interface-name" || name == "access-vrf-name" || name == "proxy-binding-outer-tag" || name == "proxy-binding-inner-tag" || name == "profile-name" || name == "is-nak-next-renew" || name == "subscriber-label" || name == "old-subscriber-label" || name == "subscriber-interface-name" || name == "rx-circuit-id" || name == "tx-circuit-id" || name == "rx-remote-id" || name == "tx-remote-id" || name == "rx-vsiso" || name == "tx-vsiso" || name == "is-auth-received" || name == "is-mbl-subscriber" || name == "param-request" || name == "param-response" || name == "session-start-time-epoch" || name == "srg-state" || name == "event-history")
         return true;
     return false;
 }
@@ -11455,12 +11715,14 @@ Ipv4Dhcpd::Nodes::Node::Server::Server()
     profiles(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Profiles>())
     , statistics(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Statistics>())
     , binding(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Binding>())
+    , disconnect_histories(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories>())
     , statistics_info(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::StatisticsInfo>())
     , vrfs(std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::Vrfs>())
 {
     profiles->parent = this;
     statistics->parent = this;
     binding->parent = this;
+    disconnect_histories->parent = this;
     statistics_info->parent = this;
     vrfs->parent = this;
 
@@ -11477,6 +11739,7 @@ bool Ipv4Dhcpd::Nodes::Node::Server::has_data() const
     return (profiles !=  nullptr && profiles->has_data())
 	|| (statistics !=  nullptr && statistics->has_data())
 	|| (binding !=  nullptr && binding->has_data())
+	|| (disconnect_histories !=  nullptr && disconnect_histories->has_data())
 	|| (statistics_info !=  nullptr && statistics_info->has_data())
 	|| (vrfs !=  nullptr && vrfs->has_data());
 }
@@ -11487,6 +11750,7 @@ bool Ipv4Dhcpd::Nodes::Node::Server::has_operation() const
 	|| (profiles !=  nullptr && profiles->has_operation())
 	|| (statistics !=  nullptr && statistics->has_operation())
 	|| (binding !=  nullptr && binding->has_operation())
+	|| (disconnect_histories !=  nullptr && disconnect_histories->has_operation())
 	|| (statistics_info !=  nullptr && statistics_info->has_operation())
 	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
@@ -11536,6 +11800,15 @@ std::shared_ptr<ydk::Entity> Ipv4Dhcpd::Nodes::Node::Server::get_child_by_name(c
         return binding;
     }
 
+    if(child_yang_name == "disconnect-histories")
+    {
+        if(disconnect_histories == nullptr)
+        {
+            disconnect_histories = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories>();
+        }
+        return disconnect_histories;
+    }
+
     if(child_yang_name == "statistics-info")
     {
         if(statistics_info == nullptr)
@@ -11576,6 +11849,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Dhcpd::Nodes::Node::Serv
         _children["binding"] = binding;
     }
 
+    if(disconnect_histories != nullptr)
+    {
+        _children["disconnect-histories"] = disconnect_histories;
+    }
+
     if(statistics_info != nullptr)
     {
         _children["statistics-info"] = statistics_info;
@@ -11599,7 +11877,7 @@ void Ipv4Dhcpd::Nodes::Node::Server::set_filter(const std::string & value_path, 
 
 bool Ipv4Dhcpd::Nodes::Node::Server::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "profiles" || name == "statistics" || name == "binding" || name == "statistics-info" || name == "vrfs")
+    if(name == "profiles" || name == "statistics" || name == "binding" || name == "disconnect-histories" || name == "statistics-info" || name == "vrfs")
         return true;
     return false;
 }
@@ -13026,7 +13304,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::Client()
     is_mbl_subscriber{YType::boolean, "is-mbl-subscriber"},
     param_request{YType::str, "param-request"},
     param_response{YType::str, "param-response"},
-    session_start_time{YType::uint64, "session-start-time"},
+    session_start_time_epoch{YType::uint64, "session-start-time-epoch"},
     srg_state{YType::uint32, "srg-state"},
     event_history{YType::uint32, "event-history"}
 {
@@ -13078,7 +13356,7 @@ bool Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::has_data() const
 	|| is_mbl_subscriber.is_set
 	|| param_request.is_set
 	|| param_response.is_set
-	|| session_start_time.is_set
+	|| session_start_time_epoch.is_set
 	|| srg_state.is_set;
 }
 
@@ -13122,7 +13400,7 @@ bool Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::has_operation() c
 	|| ydk::is_set(is_mbl_subscriber.yfilter)
 	|| ydk::is_set(param_request.yfilter)
 	|| ydk::is_set(param_response.yfilter)
-	|| ydk::is_set(session_start_time.yfilter)
+	|| ydk::is_set(session_start_time_epoch.yfilter)
 	|| ydk::is_set(srg_state.yfilter)
 	|| ydk::is_set(event_history.yfilter);
 }
@@ -13171,7 +13449,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Nodes::Node::Server::B
     if (is_mbl_subscriber.is_set || is_set(is_mbl_subscriber.yfilter)) leaf_name_data.push_back(is_mbl_subscriber.get_name_leafdata());
     if (param_request.is_set || is_set(param_request.yfilter)) leaf_name_data.push_back(param_request.get_name_leafdata());
     if (param_response.is_set || is_set(param_response.yfilter)) leaf_name_data.push_back(param_response.get_name_leafdata());
-    if (session_start_time.is_set || is_set(session_start_time.yfilter)) leaf_name_data.push_back(session_start_time.get_name_leafdata());
+    if (session_start_time_epoch.is_set || is_set(session_start_time_epoch.yfilter)) leaf_name_data.push_back(session_start_time_epoch.get_name_leafdata());
     if (srg_state.is_set || is_set(srg_state.yfilter)) leaf_name_data.push_back(srg_state.get_name_leafdata());
 
     auto event_history_name_datas = event_history.get_name_leafdata();
@@ -13386,11 +13664,11 @@ void Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::set_value(const s
         param_response.value_namespace = name_space;
         param_response.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "session-start-time")
+    if(value_path == "session-start-time-epoch")
     {
-        session_start_time = value;
-        session_start_time.value_namespace = name_space;
-        session_start_time.value_namespace_prefix = name_space_prefix;
+        session_start_time_epoch = value;
+        session_start_time_epoch.value_namespace = name_space;
+        session_start_time_epoch.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "srg-state")
     {
@@ -13534,9 +13812,9 @@ void Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::set_filter(const 
     {
         param_response.yfilter = yfilter;
     }
-    if(value_path == "session-start-time")
+    if(value_path == "session-start-time-epoch")
     {
-        session_start_time.yfilter = yfilter;
+        session_start_time_epoch.yfilter = yfilter;
     }
     if(value_path == "srg-state")
     {
@@ -13550,7 +13828,249 @@ void Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::set_filter(const 
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "client-id" || name == "client-id-xr" || name == "mac-address" || name == "vrf-name" || name == "server-vrf-name" || name == "ip-address" || name == "client-gi-addr" || name == "to-server-gi-addr" || name == "server-ip-address" || name == "reply-server-ip-address" || name == "lease-time" || name == "remaining-lease-time" || name == "state" || name == "interface-name" || name == "access-vrf-name" || name == "proxy-binding-outer-tag" || name == "proxy-binding-inner-tag" || name == "profile-name" || name == "is-nak-next-renew" || name == "subscriber-label" || name == "old-subscriber-label" || name == "subscriber-interface-name" || name == "rx-circuit-id" || name == "tx-circuit-id" || name == "rx-remote-id" || name == "tx-remote-id" || name == "rx-vsiso" || name == "tx-vsiso" || name == "is-auth-received" || name == "is-mbl-subscriber" || name == "param-request" || name == "param-response" || name == "session-start-time" || name == "srg-state" || name == "event-history")
+    if(name == "client-id" || name == "client-id-xr" || name == "mac-address" || name == "vrf-name" || name == "server-vrf-name" || name == "ip-address" || name == "client-gi-addr" || name == "to-server-gi-addr" || name == "server-ip-address" || name == "reply-server-ip-address" || name == "lease-time" || name == "remaining-lease-time" || name == "state" || name == "interface-name" || name == "access-vrf-name" || name == "proxy-binding-outer-tag" || name == "proxy-binding-inner-tag" || name == "profile-name" || name == "is-nak-next-renew" || name == "subscriber-label" || name == "old-subscriber-label" || name == "subscriber-interface-name" || name == "rx-circuit-id" || name == "tx-circuit-id" || name == "rx-remote-id" || name == "tx-remote-id" || name == "rx-vsiso" || name == "tx-vsiso" || name == "is-auth-received" || name == "is-mbl-subscriber" || name == "param-request" || name == "param-response" || name == "session-start-time-epoch" || name == "srg-state" || name == "event-history")
+        return true;
+    return false;
+}
+
+Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::DisconnectHistories()
+    :
+    disconnect_history(this, {"index_"})
+{
+
+    yang_name = "disconnect-histories"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::~DisconnectHistories()
+{
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<disconnect_history.len(); index++)
+    {
+        if(disconnect_history[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::has_operation() const
+{
+    for (std::size_t index=0; index<disconnect_history.len(); index++)
+    {
+        if(disconnect_history[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "disconnect-histories";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "disconnect-history")
+    {
+        auto ent_ = std::make_shared<Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::DisconnectHistory>();
+        ent_->parent = this;
+        disconnect_history.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : disconnect_history.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disconnect-history")
+        return true;
+    return false;
+}
+
+Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::DisconnectHistory::DisconnectHistory()
+    :
+    index_{YType::str, "index"},
+    session_start_time_epoch{YType::uint64, "session-start-time-epoch"},
+    session_end_time_epoch{YType::uint64, "session-end-time-epoch"},
+    disc_reason{YType::str, "disc-reason"},
+    sub_label{YType::uint32, "sub-label"},
+    mac_address{YType::str, "mac-address"}
+{
+
+    yang_name = "disconnect-history"; yang_parent_name = "disconnect-histories"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::DisconnectHistory::~DisconnectHistory()
+{
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::DisconnectHistory::has_data() const
+{
+    if (is_presence_container) return true;
+    return index_.is_set
+	|| session_start_time_epoch.is_set
+	|| session_end_time_epoch.is_set
+	|| disc_reason.is_set
+	|| sub_label.is_set
+	|| mac_address.is_set;
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::DisconnectHistory::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(session_start_time_epoch.yfilter)
+	|| ydk::is_set(session_end_time_epoch.yfilter)
+	|| ydk::is_set(disc_reason.yfilter)
+	|| ydk::is_set(sub_label.yfilter)
+	|| ydk::is_set(mac_address.yfilter);
+}
+
+std::string Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::DisconnectHistory::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "disconnect-history";
+    ADD_KEY_TOKEN(index_, "index");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::DisconnectHistory::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (session_start_time_epoch.is_set || is_set(session_start_time_epoch.yfilter)) leaf_name_data.push_back(session_start_time_epoch.get_name_leafdata());
+    if (session_end_time_epoch.is_set || is_set(session_end_time_epoch.yfilter)) leaf_name_data.push_back(session_end_time_epoch.get_name_leafdata());
+    if (disc_reason.is_set || is_set(disc_reason.yfilter)) leaf_name_data.push_back(disc_reason.get_name_leafdata());
+    if (sub_label.is_set || is_set(sub_label.yfilter)) leaf_name_data.push_back(sub_label.get_name_leafdata());
+    if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::DisconnectHistory::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::DisconnectHistory::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::DisconnectHistory::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "index")
+    {
+        index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-start-time-epoch")
+    {
+        session_start_time_epoch = value;
+        session_start_time_epoch.value_namespace = name_space;
+        session_start_time_epoch.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-end-time-epoch")
+    {
+        session_end_time_epoch = value;
+        session_end_time_epoch.value_namespace = name_space;
+        session_end_time_epoch.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disc-reason")
+    {
+        disc_reason = value;
+        disc_reason.value_namespace = name_space;
+        disc_reason.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sub-label")
+    {
+        sub_label = value;
+        sub_label.value_namespace = name_space;
+        sub_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mac-address")
+    {
+        mac_address = value;
+        mac_address.value_namespace = name_space;
+        mac_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::DisconnectHistory::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "session-start-time-epoch")
+    {
+        session_start_time_epoch.yfilter = yfilter;
+    }
+    if(value_path == "session-end-time-epoch")
+    {
+        session_end_time_epoch.yfilter = yfilter;
+    }
+    if(value_path == "disc-reason")
+    {
+        disc_reason.yfilter = yfilter;
+    }
+    if(value_path == "sub-label")
+    {
+        sub_label.yfilter = yfilter;
+    }
+    if(value_path == "mac-address")
+    {
+        mac_address.yfilter = yfilter;
+    }
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::DisconnectHistory::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "index" || name == "session-start-time-epoch" || name == "session-end-time-epoch" || name == "disc-reason" || name == "sub-label" || name == "mac-address")
         return true;
     return false;
 }

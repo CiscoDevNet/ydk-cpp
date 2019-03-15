@@ -161,7 +161,7 @@ class Ipv4arm::Addresses::Vrfs::Vrf::Networks::Network : public ydk::Entity
 
         ydk::YLeaf address; //type: string
         ydk::YLeaf prefix_length; //type: uint32
-        ydk::YLeaf handle; //type: string
+        ydk::YLeaf interface; //type: string
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf referenced_interface; //type: string
         ydk::YLeaf vrf_name; //type: string

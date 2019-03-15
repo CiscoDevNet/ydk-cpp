@@ -6,32 +6,34 @@
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_0.hpp"
 #include "Cisco_IOS_XE_native_229.hpp"
+#include "Cisco_IOS_XE_native_223.hpp"
 #include "Cisco_IOS_XE_native_12.hpp"
-#include "Cisco_IOS_XE_native_2.hpp"
 #include "Cisco_IOS_XE_native_129.hpp"
 #include "Cisco_IOS_XE_native_222.hpp"
-#include "Cisco_IOS_XE_native_116.hpp"
-#include "Cisco_IOS_XE_native_221.hpp"
-#include "Cisco_IOS_XE_native_1.hpp"
-#include "Cisco_IOS_XE_native_225.hpp"
-#include "Cisco_IOS_XE_native_123.hpp"
+#include "Cisco_IOS_XE_native_2.hpp"
 #include "Cisco_IOS_XE_native_7.hpp"
+#include "Cisco_IOS_XE_native_226.hpp"
+#include "Cisco_IOS_XE_native_1.hpp"
+#include "Cisco_IOS_XE_native_123.hpp"
+#include "Cisco_IOS_XE_native_20.hpp"
 #include "Cisco_IOS_XE_native_121.hpp"
+#include "Cisco_IOS_XE_native_133.hpp"
 #include "Cisco_IOS_XE_native_122.hpp"
-#include "Cisco_IOS_XE_native_228.hpp"
 #include "Cisco_IOS_XE_native_230.hpp"
 #include "Cisco_IOS_XE_native_13.hpp"
+#include "Cisco_IOS_XE_native_14.hpp"
 #include "Cisco_IOS_XE_native_115.hpp"
 #include "Cisco_IOS_XE_native_220.hpp"
-#include "Cisco_IOS_XE_native_131.hpp"
 #include "Cisco_IOS_XE_native_219.hpp"
+#include "Cisco_IOS_XE_native_231.hpp"
 #include "Cisco_IOS_XE_native_124.hpp"
 #include "Cisco_IOS_XE_native_117.hpp"
+#include "Cisco_IOS_XE_native_221.hpp"
 #include "Cisco_IOS_XE_native_130.hpp"
-#include "Cisco_IOS_XE_native_19.hpp"
 #include "Cisco_IOS_XE_native_132.hpp"
 #include "Cisco_IOS_XE_native_120.hpp"
-#include "Cisco_IOS_XE_native_218.hpp"
+#include "Cisco_IOS_XE_native_131.hpp"
+#include "Cisco_IOS_XE_native_118.hpp"
 
 using namespace ydk;
 
@@ -164,7 +166,7 @@ Native::Native()
     , transceiver(std::make_shared<Native::Transceiver>())
     , service_insertion(std::make_shared<Native::ServiceInsertion>())
     , udld(std::make_shared<Native::Udld>())
-    , qos(nullptr) // presence node
+    , qos(std::make_shared<Native::Qos>())
     , time_range(this, {"word"})
     , device_tracking(std::make_shared<Native::DeviceTracking>())
     , fhrp(std::make_shared<Native::Fhrp>())
@@ -214,6 +216,7 @@ Native::Native()
     , diagnostic(std::make_shared<Native::Diagnostic>())
     , pm_agent(nullptr) // presence node
     , named_ordering_route_map(std::make_shared<Native::NamedOrderingRouteMap>())
+    , pnp(std::make_shared<Native::Pnp>())
     , fabric_group(std::make_shared<Native::FabricGroup>())
     , device_sensor(std::make_shared<Native::DeviceSensor>())
     , coap(std::make_shared<Native::Coap>())
@@ -321,6 +324,7 @@ Native::Native()
     transceiver->parent = this;
     service_insertion->parent = this;
     udld->parent = this;
+    qos->parent = this;
     device_tracking->parent = this;
     fhrp->parent = this;
     metadata->parent = this;
@@ -360,6 +364,7 @@ Native::Native()
     service_list->parent = this;
     diagnostic->parent = this;
     named_ordering_route_map->parent = this;
+    pnp->parent = this;
     fabric_group->parent = this;
     device_sensor->parent = this;
     coap->parent = this;
@@ -617,6 +622,7 @@ bool Native::has_data() const
 	|| (diagnostic !=  nullptr && diagnostic->has_data())
 	|| (pm_agent !=  nullptr && pm_agent->has_data())
 	|| (named_ordering_route_map !=  nullptr && named_ordering_route_map->has_data())
+	|| (pnp !=  nullptr && pnp->has_data())
 	|| (fabric_group !=  nullptr && fabric_group->has_data())
 	|| (device_sensor !=  nullptr && device_sensor->has_data())
 	|| (coap !=  nullptr && coap->has_data())
@@ -869,6 +875,7 @@ bool Native::has_operation() const
 	|| (diagnostic !=  nullptr && diagnostic->has_operation())
 	|| (pm_agent !=  nullptr && pm_agent->has_operation())
 	|| (named_ordering_route_map !=  nullptr && named_ordering_route_map->has_operation())
+	|| (pnp !=  nullptr && pnp->has_operation())
 	|| (fabric_group !=  nullptr && fabric_group->has_operation())
 	|| (device_sensor !=  nullptr && device_sensor->has_operation())
 	|| (coap !=  nullptr && coap->has_operation())
@@ -2371,6 +2378,15 @@ std::shared_ptr<ydk::Entity> Native::get_child_by_name(const std::string & child
         return named_ordering_route_map;
     }
 
+    if(child_yang_name == "Cisco-IOS-XE-pnp:pnp")
+    {
+        if(pnp == nullptr)
+        {
+            pnp = std::make_shared<Native::Pnp>();
+        }
+        return pnp;
+    }
+
     if(child_yang_name == "Cisco-IOS-XE-iwanfabric:fabric-group")
     {
         if(fabric_group == nullptr)
@@ -3325,6 +3341,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::get_children() const
         _children["Cisco-IOS-XE-route-map:named-ordering-route-map"] = named_ordering_route_map;
     }
 
+    if(pnp != nullptr)
+    {
+        _children["Cisco-IOS-XE-pnp:pnp"] = pnp;
+    }
+
     if(fabric_group != nullptr)
     {
         _children["Cisco-IOS-XE-iwanfabric:fabric-group"] = fabric_group;
@@ -3473,7 +3494,7 @@ std::map<std::pair<std::string, std::string>, std::string> Native::get_namespace
 
 bool Native::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "default" || name == "bfd" || name == "stackwise-virtual" || name == "boot" || name == "banner" || name == "memory" || name == "location" || name == "call-home" || name == "hw-module" || name == "cisp" || name == "module" || name == "domain" || name == "parser" || name == "service" || name == "platform" || name == "enable" || name == "password" || name == "eap" || name == "archive" || name == "username" || name == "card" || name == "controller" || name == "vrf" || name == "rmon" || name == "sampler" || name == "flow" || name == "ip" || name == "mka" || name == "macro" || name == "ipv6" || name == "vlan" || name == "mvrp" || name == "avb" || name == "ptp" || name == "cdp" || name == "avc" || name == "policy" || name == "interface" || name == "route-map" || name == "route-tag" || name == "table-map" || name == "sdm" || name == "mls" || name == "object-group" || name == "pseudowire-class" || name == "control-plane" || name == "control-plane-host" || name == "clock" || name == "logging" || name == "aaa" || name == "privilege" || name == "login" || name == "multilink" || name == "mac-address-table" || name == "redundancy" || name == "scheduler" || name == "epm" || name == "spanning-tree" || name == "subscriber" || name == "track" || name == "dot1x" || name == "mab" || name == "fallback" || name == "parameter-map" || name == "ppp" || name == "mac" || name == "tacacs" || name == "tacacs-server" || name == "software" || name == "upgrade" || name == "vtp" || name == "xconnect" || name == "fabric" || name == "port-channel" || name == "key" || name == "l2" || name == "system" || name == "errdisable" || name == "identity" || name == "monitor" || name == "tftp-server" || name == "radius-server" || name == "radius" || name == "zone" || name == "zone-pair" || name == "alarm-contact" || name == "ethernet" || name == "bridge-domain" || name == "crypto" || name == "cts" || name == "bfd-template" || name == "pfr" || name == "pfr-map" || name == "facility-alarm" || name == "setup" || name == "tod-clock" || name == "network-clock" || name == "l2vpn" || name == "l2vpn-config" || name == "l3vpn" || name == "mpls" || name == "router" || name == "service-chain" || name == "performance" || name == "otv" || name == "remote-management" || name == "virtual-service" || name == "snmp" || name == "snmp-server" || name == "segment-routing" || name == "license" || name == "memory-size" || name == "transceiver" || name == "service-insertion" || name == "udld" || name == "qos" || name == "time-range" || name == "device-tracking" || name == "fhrp" || name == "metadata" || name == "profile" || name == "alias" || name == "line" || name == "ntp" || name == "wsma" || name == "event" || name == "template" || name == "process" || name == "exception" || name == "iox" || name == "power" || name == "vpdn" || name == "esmc" || name == "access-session" || name == "authentication" || name == "dialer" || name == "dialer-list" || name == "vstack" || name == "et-analytics" || name == "arp" || name == "network-policy" || name == "energywise" || name == "service-template" || name == "switch" || name == "switch-virtual" || name == "device" || name == "stack-mac" || name == "l2protocol-tunnel" || name == "rep" || name == "hw-switch" || name == "feature" || name == "openflow" || name == "bba-group" || name == "maintenance-template" || name == "cef" || name == "nat66" || name == "shell" || name == "voice" || name == "voice-card" || name == "service-routing" || name == "lldp" || name == "service-list" || name == "diagnostic" || name == "pm-agent" || name == "named-ordering-route-map" || name == "fabric-group" || name == "device-sensor" || name == "coap" || name == "utd" || name == "utd-st" || name == "utd-mt" || name == "version" || name == "boot-start-marker" || name == "boot-end-marker" || name == "captive-portal-bypass" || name == "hostname" || name == "aqm-register-fnf" || name == "config-register" || name == "disable-eadi")
+    if(name == "default" || name == "bfd" || name == "stackwise-virtual" || name == "boot" || name == "banner" || name == "memory" || name == "location" || name == "call-home" || name == "hw-module" || name == "cisp" || name == "module" || name == "domain" || name == "parser" || name == "service" || name == "platform" || name == "enable" || name == "password" || name == "eap" || name == "archive" || name == "username" || name == "card" || name == "controller" || name == "vrf" || name == "rmon" || name == "sampler" || name == "flow" || name == "ip" || name == "mka" || name == "macro" || name == "ipv6" || name == "vlan" || name == "mvrp" || name == "avb" || name == "ptp" || name == "cdp" || name == "avc" || name == "policy" || name == "interface" || name == "route-map" || name == "route-tag" || name == "table-map" || name == "sdm" || name == "mls" || name == "object-group" || name == "pseudowire-class" || name == "control-plane" || name == "control-plane-host" || name == "clock" || name == "logging" || name == "aaa" || name == "privilege" || name == "login" || name == "multilink" || name == "mac-address-table" || name == "redundancy" || name == "scheduler" || name == "epm" || name == "spanning-tree" || name == "subscriber" || name == "track" || name == "dot1x" || name == "mab" || name == "fallback" || name == "parameter-map" || name == "ppp" || name == "mac" || name == "tacacs" || name == "tacacs-server" || name == "software" || name == "upgrade" || name == "vtp" || name == "xconnect" || name == "fabric" || name == "port-channel" || name == "key" || name == "l2" || name == "system" || name == "errdisable" || name == "identity" || name == "monitor" || name == "tftp-server" || name == "radius-server" || name == "radius" || name == "zone" || name == "zone-pair" || name == "alarm-contact" || name == "ethernet" || name == "bridge-domain" || name == "crypto" || name == "cts" || name == "bfd-template" || name == "pfr" || name == "pfr-map" || name == "facility-alarm" || name == "setup" || name == "tod-clock" || name == "network-clock" || name == "l2vpn" || name == "l2vpn-config" || name == "l3vpn" || name == "mpls" || name == "router" || name == "service-chain" || name == "performance" || name == "otv" || name == "remote-management" || name == "virtual-service" || name == "snmp" || name == "snmp-server" || name == "segment-routing" || name == "license" || name == "memory-size" || name == "transceiver" || name == "service-insertion" || name == "udld" || name == "qos" || name == "time-range" || name == "device-tracking" || name == "fhrp" || name == "metadata" || name == "profile" || name == "alias" || name == "line" || name == "ntp" || name == "wsma" || name == "event" || name == "template" || name == "process" || name == "exception" || name == "iox" || name == "power" || name == "vpdn" || name == "esmc" || name == "access-session" || name == "authentication" || name == "dialer" || name == "dialer-list" || name == "vstack" || name == "et-analytics" || name == "arp" || name == "network-policy" || name == "energywise" || name == "service-template" || name == "switch" || name == "switch-virtual" || name == "device" || name == "stack-mac" || name == "l2protocol-tunnel" || name == "rep" || name == "hw-switch" || name == "feature" || name == "openflow" || name == "bba-group" || name == "maintenance-template" || name == "cef" || name == "nat66" || name == "shell" || name == "voice" || name == "voice-card" || name == "service-routing" || name == "lldp" || name == "service-list" || name == "diagnostic" || name == "pm-agent" || name == "named-ordering-route-map" || name == "pnp" || name == "fabric-group" || name == "device-sensor" || name == "coap" || name == "utd" || name == "utd-st" || name == "utd-mt" || name == "version" || name == "boot-start-marker" || name == "boot-end-marker" || name == "captive-portal-bypass" || name == "hostname" || name == "aqm-register-fnf" || name == "config-register" || name == "disable-eadi")
         return true;
     return false;
 }
@@ -8782,10 +8803,12 @@ Native::CallHome::CallHome()
     contact_email_addr{YType::str, "Cisco-IOS-XE-call-home:contact-email-addr"}
         ,
     source_interface(std::make_shared<Native::CallHome::SourceInterface>())
+    , http(std::make_shared<Native::CallHome::Http>())
     , http_proxy(std::make_shared<Native::CallHome::HttpProxy>())
     , profile(this, {"profile_name"})
 {
     source_interface->parent = this;
+    http->parent = this;
     http_proxy->parent = this;
 
     yang_name = "call-home"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
@@ -8805,6 +8828,7 @@ bool Native::CallHome::has_data() const
     }
     return contact_email_addr.is_set
 	|| (source_interface !=  nullptr && source_interface->has_data())
+	|| (http !=  nullptr && http->has_data())
 	|| (http_proxy !=  nullptr && http_proxy->has_data());
 }
 
@@ -8818,6 +8842,7 @@ bool Native::CallHome::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(contact_email_addr.yfilter)
 	|| (source_interface !=  nullptr && source_interface->has_operation())
+	|| (http !=  nullptr && http->has_operation())
 	|| (http_proxy !=  nullptr && http_proxy->has_operation());
 }
 
@@ -8856,6 +8881,15 @@ std::shared_ptr<ydk::Entity> Native::CallHome::get_child_by_name(const std::stri
         return source_interface;
     }
 
+    if(child_yang_name == "Cisco-IOS-XE-call-home:http")
+    {
+        if(http == nullptr)
+        {
+            http = std::make_shared<Native::CallHome::Http>();
+        }
+        return http;
+    }
+
     if(child_yang_name == "Cisco-IOS-XE-call-home:http-proxy")
     {
         if(http_proxy == nullptr)
@@ -8883,6 +8917,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::CallHome::get_childr
     if(source_interface != nullptr)
     {
         _children["Cisco-IOS-XE-call-home:source-interface"] = source_interface;
+    }
+
+    if(http != nullptr)
+    {
+        _children["Cisco-IOS-XE-call-home:http"] = http;
     }
 
     if(http_proxy != nullptr)
@@ -8922,7 +8961,7 @@ void Native::CallHome::set_filter(const std::string & value_path, YFilter yfilte
 
 bool Native::CallHome::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "source-interface" || name == "http-proxy" || name == "profile" || name == "contact-email-addr")
+    if(name == "source-interface" || name == "http" || name == "http-proxy" || name == "profile" || name == "contact-email-addr")
         return true;
     return false;
 }
@@ -9873,6 +9912,180 @@ bool Native::CallHome::SourceInterface::PortChannelSubinterface::has_leaf_or_chi
     return false;
 }
 
+Native::CallHome::Http::Http()
+    :
+    secure(std::make_shared<Native::CallHome::Http::Secure>())
+{
+    secure->parent = this;
+
+    yang_name = "http"; yang_parent_name = "call-home"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::CallHome::Http::~Http()
+{
+}
+
+bool Native::CallHome::Http::has_data() const
+{
+    if (is_presence_container) return true;
+    return (secure !=  nullptr && secure->has_data());
+}
+
+bool Native::CallHome::Http::has_operation() const
+{
+    return is_set(yfilter)
+	|| (secure !=  nullptr && secure->has_operation());
+}
+
+std::string Native::CallHome::Http::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/call-home/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::CallHome::Http::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-call-home:http";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::CallHome::Http::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::CallHome::Http::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "secure")
+    {
+        if(secure == nullptr)
+        {
+            secure = std::make_shared<Native::CallHome::Http::Secure>();
+        }
+        return secure;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::CallHome::Http::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(secure != nullptr)
+    {
+        _children["secure"] = secure;
+    }
+
+    return _children;
+}
+
+void Native::CallHome::Http::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::CallHome::Http::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::CallHome::Http::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "secure")
+        return true;
+    return false;
+}
+
+Native::CallHome::Http::Secure::Secure()
+    :
+    server_identity_check{YType::boolean, "server-identity-check"}
+{
+
+    yang_name = "secure"; yang_parent_name = "http"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::CallHome::Http::Secure::~Secure()
+{
+}
+
+bool Native::CallHome::Http::Secure::has_data() const
+{
+    if (is_presence_container) return true;
+    return server_identity_check.is_set;
+}
+
+bool Native::CallHome::Http::Secure::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(server_identity_check.yfilter);
+}
+
+std::string Native::CallHome::Http::Secure::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/call-home/Cisco-IOS-XE-call-home:http/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::CallHome::Http::Secure::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "secure";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::CallHome::Http::Secure::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (server_identity_check.is_set || is_set(server_identity_check.yfilter)) leaf_name_data.push_back(server_identity_check.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::CallHome::Http::Secure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::CallHome::Http::Secure::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::CallHome::Http::Secure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "server-identity-check")
+    {
+        server_identity_check = value;
+        server_identity_check.value_namespace = name_space;
+        server_identity_check.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::CallHome::Http::Secure::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "server-identity-check")
+    {
+        server_identity_check.yfilter = yfilter;
+    }
+}
+
+bool Native::CallHome::Http::Secure::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "server-identity-check")
+        return true;
+    return false;
+}
+
 Native::CallHome::HttpProxy::HttpProxy()
     :
     proxy_servers(this, {"proxy_server"})
@@ -10076,7 +10289,8 @@ bool Native::CallHome::HttpProxy::ProxyServers::has_leaf_or_child_of_name(const 
 Native::CallHome::Profile::Profile()
     :
     profile_name{YType::str, "profile-name"},
-    active{YType::boolean, "active"}
+    active{YType::boolean, "active"},
+    anonymous_reporting_only{YType::empty, "anonymous-reporting-only"}
         ,
     destination(std::make_shared<Native::CallHome::Profile::Destination>())
     , subscribe_to_alert_group(std::make_shared<Native::CallHome::Profile::SubscribeToAlertGroup>())
@@ -10096,6 +10310,7 @@ bool Native::CallHome::Profile::has_data() const
     if (is_presence_container) return true;
     return profile_name.is_set
 	|| active.is_set
+	|| anonymous_reporting_only.is_set
 	|| (destination !=  nullptr && destination->has_data())
 	|| (subscribe_to_alert_group !=  nullptr && subscribe_to_alert_group->has_data());
 }
@@ -10105,6 +10320,7 @@ bool Native::CallHome::Profile::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(profile_name.yfilter)
 	|| ydk::is_set(active.yfilter)
+	|| ydk::is_set(anonymous_reporting_only.yfilter)
 	|| (destination !=  nullptr && destination->has_operation())
 	|| (subscribe_to_alert_group !=  nullptr && subscribe_to_alert_group->has_operation());
 }
@@ -10130,6 +10346,7 @@ std::vector<std::pair<std::string, LeafData> > Native::CallHome::Profile::get_na
 
     if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
     if (active.is_set || is_set(active.yfilter)) leaf_name_data.push_back(active.get_name_leafdata());
+    if (anonymous_reporting_only.is_set || is_set(anonymous_reporting_only.yfilter)) leaf_name_data.push_back(anonymous_reporting_only.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -10189,6 +10406,12 @@ void Native::CallHome::Profile::set_value(const std::string & value_path, const 
         active.value_namespace = name_space;
         active.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "anonymous-reporting-only")
+    {
+        anonymous_reporting_only = value;
+        anonymous_reporting_only.value_namespace = name_space;
+        anonymous_reporting_only.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Native::CallHome::Profile::set_filter(const std::string & value_path, YFilter yfilter)
@@ -10201,11 +10424,15 @@ void Native::CallHome::Profile::set_filter(const std::string & value_path, YFilt
     {
         active.yfilter = yfilter;
     }
+    if(value_path == "anonymous-reporting-only")
+    {
+        anonymous_reporting_only.yfilter = yfilter;
+    }
 }
 
 bool Native::CallHome::Profile::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "destination" || name == "subscribe-to-alert-group" || name == "profile-name" || name == "active")
+    if(name == "destination" || name == "subscribe-to-alert-group" || name == "profile-name" || name == "active" || name == "anonymous-reporting-only")
         return true;
     return false;
 }
@@ -19586,204 +19813,6 @@ void Native::Service::Timestamps::Debug::Datetime::Localtime::set_filter(const s
 bool Native::Service::Timestamps::Debug::Datetime::Localtime::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "msec" || name == "show-timezone" || name == "year")
-        return true;
-    return false;
-}
-
-Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::Msec()
-    :
-    show_timezone{YType::empty, "show-timezone"},
-    year{YType::empty, "year"}
-{
-
-    yang_name = "msec"; yang_parent_name = "localtime"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
-}
-
-Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::~Msec()
-{
-}
-
-bool Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::has_data() const
-{
-    if (is_presence_container) return true;
-    return show_timezone.is_set
-	|| year.is_set;
-}
-
-bool Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(show_timezone.yfilter)
-	|| ydk::is_set(year.yfilter);
-}
-
-std::string Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/service/timestamps/debug/datetime/localtime/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "msec";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (show_timezone.is_set || is_set(show_timezone.yfilter)) leaf_name_data.push_back(show_timezone.get_name_leafdata());
-    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "show-timezone")
-    {
-        show_timezone = value;
-        show_timezone.value_namespace = name_space;
-        show_timezone.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "year")
-    {
-        year = value;
-        year.value_namespace = name_space;
-        year.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "show-timezone")
-    {
-        show_timezone.yfilter = yfilter;
-    }
-    if(value_path == "year")
-    {
-        year.yfilter = yfilter;
-    }
-}
-
-bool Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "show-timezone" || name == "year")
-        return true;
-    return false;
-}
-
-Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::ShowTimezone()
-    :
-    msec{YType::empty, "msec"},
-    year{YType::empty, "year"}
-{
-
-    yang_name = "show-timezone"; yang_parent_name = "localtime"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
-}
-
-Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::~ShowTimezone()
-{
-}
-
-bool Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::has_data() const
-{
-    if (is_presence_container) return true;
-    return msec.is_set
-	|| year.is_set;
-}
-
-bool Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(msec.yfilter)
-	|| ydk::is_set(year.yfilter);
-}
-
-std::string Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/service/timestamps/debug/datetime/localtime/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "show-timezone";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (msec.is_set || is_set(msec.yfilter)) leaf_name_data.push_back(msec.get_name_leafdata());
-    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "msec")
-    {
-        msec = value;
-        msec.value_namespace = name_space;
-        msec.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "year")
-    {
-        year = value;
-        year.value_namespace = name_space;
-        year.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "msec")
-    {
-        msec.yfilter = yfilter;
-    }
-    if(value_path == "year")
-    {
-        year.yfilter = yfilter;
-    }
-}
-
-bool Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "msec" || name == "year")
         return true;
     return false;
 }

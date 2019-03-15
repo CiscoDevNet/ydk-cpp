@@ -12,6 +12,448 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_l2vpn_oper {
 
+L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::StaticMac::StaticMac()
+    :
+    mac{YType::str, "mac"},
+    pbb_bmac{YType::str, "pbb-bmac"},
+    nh_addr{YType::str, "nh-addr"}
+{
+
+    yang_name = "static-mac"; yang_parent_name = "vni-parameters"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::StaticMac::~StaticMac()
+{
+}
+
+bool L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::StaticMac::has_data() const
+{
+    if (is_presence_container) return true;
+    return mac.is_set
+	|| pbb_bmac.is_set
+	|| nh_addr.is_set;
+}
+
+bool L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::StaticMac::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mac.yfilter)
+	|| ydk::is_set(pbb_bmac.yfilter)
+	|| ydk::is_set(nh_addr.yfilter);
+}
+
+std::string L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::StaticMac::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "static-mac";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::StaticMac::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mac.is_set || is_set(mac.yfilter)) leaf_name_data.push_back(mac.get_name_leafdata());
+    if (pbb_bmac.is_set || is_set(pbb_bmac.yfilter)) leaf_name_data.push_back(pbb_bmac.get_name_leafdata());
+    if (nh_addr.is_set || is_set(nh_addr.yfilter)) leaf_name_data.push_back(nh_addr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::StaticMac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::StaticMac::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::StaticMac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mac")
+    {
+        mac = value;
+        mac.value_namespace = name_space;
+        mac.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pbb-bmac")
+    {
+        pbb_bmac = value;
+        pbb_bmac.value_namespace = name_space;
+        pbb_bmac.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nh-addr")
+    {
+        nh_addr = value;
+        nh_addr.value_namespace = name_space;
+        nh_addr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::StaticMac::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mac")
+    {
+        mac.yfilter = yfilter;
+    }
+    if(value_path == "pbb-bmac")
+    {
+        pbb_bmac.yfilter = yfilter;
+    }
+    if(value_path == "nh-addr")
+    {
+        nh_addr.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::VniParameters::StaticMac::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mac" || name == "pbb-bmac" || name == "nh-addr")
+        return true;
+    return false;
+}
+
+L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Rd()
+    :
+    rd{YType::enumeration, "rd"}
+        ,
+    auto_(std::make_shared<L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto>())
+    , two_byte_as(std::make_shared<L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::TwoByteAs>())
+    , four_byte_as(std::make_shared<L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::FourByteAs>())
+    , v4_addr(std::make_shared<L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::V4Addr>())
+{
+    auto_->parent = this;
+    two_byte_as->parent = this;
+    four_byte_as->parent = this;
+    v4_addr->parent = this;
+
+    yang_name = "rd"; yang_parent_name = "bridge-domain-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::~Rd()
+{
+}
+
+bool L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::has_data() const
+{
+    if (is_presence_container) return true;
+    return rd.is_set
+	|| (auto_ !=  nullptr && auto_->has_data())
+	|| (two_byte_as !=  nullptr && two_byte_as->has_data())
+	|| (four_byte_as !=  nullptr && four_byte_as->has_data())
+	|| (v4_addr !=  nullptr && v4_addr->has_data());
+}
+
+bool L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(rd.yfilter)
+	|| (auto_ !=  nullptr && auto_->has_operation())
+	|| (two_byte_as !=  nullptr && two_byte_as->has_operation())
+	|| (four_byte_as !=  nullptr && four_byte_as->has_operation())
+	|| (v4_addr !=  nullptr && v4_addr->has_operation());
+}
+
+std::string L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rd";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (rd.is_set || is_set(rd.yfilter)) leaf_name_data.push_back(rd.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "auto")
+    {
+        if(auto_ == nullptr)
+        {
+            auto_ = std::make_shared<L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto>();
+        }
+        return auto_;
+    }
+
+    if(child_yang_name == "two-byte-as")
+    {
+        if(two_byte_as == nullptr)
+        {
+            two_byte_as = std::make_shared<L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::TwoByteAs>();
+        }
+        return two_byte_as;
+    }
+
+    if(child_yang_name == "four-byte-as")
+    {
+        if(four_byte_as == nullptr)
+        {
+            four_byte_as = std::make_shared<L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::FourByteAs>();
+        }
+        return four_byte_as;
+    }
+
+    if(child_yang_name == "v4-addr")
+    {
+        if(v4_addr == nullptr)
+        {
+            v4_addr = std::make_shared<L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::V4Addr>();
+        }
+        return v4_addr;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(auto_ != nullptr)
+    {
+        _children["auto"] = auto_;
+    }
+
+    if(two_byte_as != nullptr)
+    {
+        _children["two-byte-as"] = two_byte_as;
+    }
+
+    if(four_byte_as != nullptr)
+    {
+        _children["four-byte-as"] = four_byte_as;
+    }
+
+    if(v4_addr != nullptr)
+    {
+        _children["v4-addr"] = v4_addr;
+    }
+
+    return _children;
+}
+
+void L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "rd")
+    {
+        rd = value;
+        rd.value_namespace = name_space;
+        rd.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "rd")
+    {
+        rd.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auto" || name == "two-byte-as" || name == "four-byte-as" || name == "v4-addr" || name == "rd")
+        return true;
+    return false;
+}
+
+L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto::Auto()
+    :
+    router_id{YType::str, "router-id"},
+    auto_index{YType::uint16, "auto-index"}
+{
+
+    yang_name = "auto"; yang_parent_name = "rd"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto::~Auto()
+{
+}
+
+bool L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto::has_data() const
+{
+    if (is_presence_container) return true;
+    return router_id.is_set
+	|| auto_index.is_set;
+}
+
+bool L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(router_id.yfilter)
+	|| ydk::is_set(auto_index.yfilter);
+}
+
+std::string L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "auto";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (router_id.is_set || is_set(router_id.yfilter)) leaf_name_data.push_back(router_id.get_name_leafdata());
+    if (auto_index.is_set || is_set(auto_index.yfilter)) leaf_name_data.push_back(auto_index.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "router-id")
+    {
+        router_id = value;
+        router_id.value_namespace = name_space;
+        router_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "auto-index")
+    {
+        auto_index = value;
+        auto_index.value_namespace = name_space;
+        auto_index.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "router-id")
+    {
+        router_id.yfilter = yfilter;
+    }
+    if(value_path == "auto-index")
+    {
+        auto_index.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::Auto::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "router-id" || name == "auto-index")
+        return true;
+    return false;
+}
+
+L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::TwoByteAs::TwoByteAs()
+    :
+    two_byte_as{YType::uint16, "two-byte-as"},
+    four_byte_index{YType::uint32, "four-byte-index"}
+{
+
+    yang_name = "two-byte-as"; yang_parent_name = "rd"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::TwoByteAs::~TwoByteAs()
+{
+}
+
+bool L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::TwoByteAs::has_data() const
+{
+    if (is_presence_container) return true;
+    return two_byte_as.is_set
+	|| four_byte_index.is_set;
+}
+
+bool L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::TwoByteAs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(two_byte_as.yfilter)
+	|| ydk::is_set(four_byte_index.yfilter);
+}
+
+std::string L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::TwoByteAs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "two-byte-as";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::TwoByteAs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (two_byte_as.is_set || is_set(two_byte_as.yfilter)) leaf_name_data.push_back(two_byte_as.get_name_leafdata());
+    if (four_byte_index.is_set || is_set(four_byte_index.yfilter)) leaf_name_data.push_back(four_byte_index.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::TwoByteAs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::TwoByteAs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::TwoByteAs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "two-byte-as")
+    {
+        two_byte_as = value;
+        two_byte_as.value_namespace = name_space;
+        two_byte_as.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "four-byte-index")
+    {
+        four_byte_index = value;
+        four_byte_index.value_namespace = name_space;
+        four_byte_index.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::TwoByteAs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "two-byte-as")
+    {
+        two_byte_as.yfilter = yfilter;
+    }
+    if(value_path == "four-byte-index")
+    {
+        four_byte_index.yfilter = yfilter;
+    }
+}
+
+bool L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::TwoByteAs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "two-byte-as" || name == "four-byte-index")
+        return true;
+    return false;
+}
+
 L2vpnv2::Active::BridgeDomains::BridgeDomain::BridgeDomainInfo::Rd::FourByteAs::FourByteAs()
     :
     four_byte_as{YType::uint32, "four-byte-as"},
@@ -19356,800 +19798,6 @@ void L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::Flexibl
 bool L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::RemoteAgi::V4Addr::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv4-address" || name == "two-byte-index")
-        return true;
-    return false;
-}
-
-L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::MultiSegmentPseudowireStats()
-    :
-    received_packets{YType::uint64, "received-packets"},
-    received_bytes{YType::uint64, "received-bytes"}
-{
-
-    yang_name = "multi-segment-pseudowire-stats"; yang_parent_name = "atom"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::~MultiSegmentPseudowireStats()
-{
-}
-
-bool L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::has_data() const
-{
-    if (is_presence_container) return true;
-    return received_packets.is_set
-	|| received_bytes.is_set;
-}
-
-bool L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(received_packets.yfilter)
-	|| ydk::is_set(received_bytes.yfilter);
-}
-
-std::string L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "multi-segment-pseudowire-stats";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (received_packets.is_set || is_set(received_packets.yfilter)) leaf_name_data.push_back(received_packets.get_name_leafdata());
-    if (received_bytes.is_set || is_set(received_bytes.yfilter)) leaf_name_data.push_back(received_bytes.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "received-packets")
-    {
-        received_packets = value;
-        received_packets.value_namespace = name_space;
-        received_packets.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "received-bytes")
-    {
-        received_bytes = value;
-        received_bytes.value_namespace = name_space;
-        received_bytes.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "received-packets")
-    {
-        received_packets.yfilter = yfilter;
-    }
-    if(value_path == "received-bytes")
-    {
-        received_bytes.yfilter = yfilter;
-    }
-}
-
-bool L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::Atom::MultiSegmentPseudowireStats::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "received-packets" || name == "received-bytes")
-        return true;
-    return false;
-}
-
-L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::L2tpv3::L2tpv3()
-    :
-    l2tp_class_name{YType::str, "l2tp-class-name"},
-    ipv4_source_address{YType::str, "ipv4-source-address"},
-    ipv6_source_address{YType::str, "ipv6-source-address"},
-    path_mtu_enabled{YType::boolean, "path-mtu-enabled"},
-    path_mtu_max_value{YType::uint16, "path-mtu-max-value"},
-    dont_fragment_bit{YType::boolean, "dont-fragment-bit"},
-    tos_mode{YType::enumeration, "tos-mode"},
-    tos{YType::uint8, "tos"},
-    ttl{YType::uint8, "ttl"},
-    local_session_id{YType::uint32, "local-session-id"},
-    remote_session_id{YType::uint32, "remote-session-id"},
-    local_cookie_size{YType::uint8, "local-cookie-size"},
-    remote_cookie_size{YType::uint8, "remote-cookie-size"},
-    local_cookie_low_value{YType::uint32, "local-cookie-low-value"},
-    remote_cookie_low_value{YType::uint32, "remote-cookie-low-value"},
-    local_cookie_high_value{YType::uint32, "local-cookie-high-value"},
-    remote_cookie_high_value{YType::uint32, "remote-cookie-high-value"},
-    remote_circuit_status_up{YType::boolean, "remote-circuit-status-up"},
-    tunnel_state{YType::enumeration, "tunnel-state"},
-    local_secondary_cookie_size{YType::uint8, "local-secondary-cookie-size"},
-    local_secondary_cookie_low_value{YType::uint32, "local-secondary-cookie-low-value"},
-    local_secondary_cookie_high_value{YType::uint32, "local-secondary-cookie-high-value"}
-{
-
-    yang_name = "l2tpv3"; yang_parent_name = "encapsulation-info"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::L2tpv3::~L2tpv3()
-{
-}
-
-bool L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::L2tpv3::has_data() const
-{
-    if (is_presence_container) return true;
-    return l2tp_class_name.is_set
-	|| ipv4_source_address.is_set
-	|| ipv6_source_address.is_set
-	|| path_mtu_enabled.is_set
-	|| path_mtu_max_value.is_set
-	|| dont_fragment_bit.is_set
-	|| tos_mode.is_set
-	|| tos.is_set
-	|| ttl.is_set
-	|| local_session_id.is_set
-	|| remote_session_id.is_set
-	|| local_cookie_size.is_set
-	|| remote_cookie_size.is_set
-	|| local_cookie_low_value.is_set
-	|| remote_cookie_low_value.is_set
-	|| local_cookie_high_value.is_set
-	|| remote_cookie_high_value.is_set
-	|| remote_circuit_status_up.is_set
-	|| tunnel_state.is_set
-	|| local_secondary_cookie_size.is_set
-	|| local_secondary_cookie_low_value.is_set
-	|| local_secondary_cookie_high_value.is_set;
-}
-
-bool L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::L2tpv3::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(l2tp_class_name.yfilter)
-	|| ydk::is_set(ipv4_source_address.yfilter)
-	|| ydk::is_set(ipv6_source_address.yfilter)
-	|| ydk::is_set(path_mtu_enabled.yfilter)
-	|| ydk::is_set(path_mtu_max_value.yfilter)
-	|| ydk::is_set(dont_fragment_bit.yfilter)
-	|| ydk::is_set(tos_mode.yfilter)
-	|| ydk::is_set(tos.yfilter)
-	|| ydk::is_set(ttl.yfilter)
-	|| ydk::is_set(local_session_id.yfilter)
-	|| ydk::is_set(remote_session_id.yfilter)
-	|| ydk::is_set(local_cookie_size.yfilter)
-	|| ydk::is_set(remote_cookie_size.yfilter)
-	|| ydk::is_set(local_cookie_low_value.yfilter)
-	|| ydk::is_set(remote_cookie_low_value.yfilter)
-	|| ydk::is_set(local_cookie_high_value.yfilter)
-	|| ydk::is_set(remote_cookie_high_value.yfilter)
-	|| ydk::is_set(remote_circuit_status_up.yfilter)
-	|| ydk::is_set(tunnel_state.yfilter)
-	|| ydk::is_set(local_secondary_cookie_size.yfilter)
-	|| ydk::is_set(local_secondary_cookie_low_value.yfilter)
-	|| ydk::is_set(local_secondary_cookie_high_value.yfilter);
-}
-
-std::string L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::L2tpv3::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "l2tpv3";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::L2tpv3::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (l2tp_class_name.is_set || is_set(l2tp_class_name.yfilter)) leaf_name_data.push_back(l2tp_class_name.get_name_leafdata());
-    if (ipv4_source_address.is_set || is_set(ipv4_source_address.yfilter)) leaf_name_data.push_back(ipv4_source_address.get_name_leafdata());
-    if (ipv6_source_address.is_set || is_set(ipv6_source_address.yfilter)) leaf_name_data.push_back(ipv6_source_address.get_name_leafdata());
-    if (path_mtu_enabled.is_set || is_set(path_mtu_enabled.yfilter)) leaf_name_data.push_back(path_mtu_enabled.get_name_leafdata());
-    if (path_mtu_max_value.is_set || is_set(path_mtu_max_value.yfilter)) leaf_name_data.push_back(path_mtu_max_value.get_name_leafdata());
-    if (dont_fragment_bit.is_set || is_set(dont_fragment_bit.yfilter)) leaf_name_data.push_back(dont_fragment_bit.get_name_leafdata());
-    if (tos_mode.is_set || is_set(tos_mode.yfilter)) leaf_name_data.push_back(tos_mode.get_name_leafdata());
-    if (tos.is_set || is_set(tos.yfilter)) leaf_name_data.push_back(tos.get_name_leafdata());
-    if (ttl.is_set || is_set(ttl.yfilter)) leaf_name_data.push_back(ttl.get_name_leafdata());
-    if (local_session_id.is_set || is_set(local_session_id.yfilter)) leaf_name_data.push_back(local_session_id.get_name_leafdata());
-    if (remote_session_id.is_set || is_set(remote_session_id.yfilter)) leaf_name_data.push_back(remote_session_id.get_name_leafdata());
-    if (local_cookie_size.is_set || is_set(local_cookie_size.yfilter)) leaf_name_data.push_back(local_cookie_size.get_name_leafdata());
-    if (remote_cookie_size.is_set || is_set(remote_cookie_size.yfilter)) leaf_name_data.push_back(remote_cookie_size.get_name_leafdata());
-    if (local_cookie_low_value.is_set || is_set(local_cookie_low_value.yfilter)) leaf_name_data.push_back(local_cookie_low_value.get_name_leafdata());
-    if (remote_cookie_low_value.is_set || is_set(remote_cookie_low_value.yfilter)) leaf_name_data.push_back(remote_cookie_low_value.get_name_leafdata());
-    if (local_cookie_high_value.is_set || is_set(local_cookie_high_value.yfilter)) leaf_name_data.push_back(local_cookie_high_value.get_name_leafdata());
-    if (remote_cookie_high_value.is_set || is_set(remote_cookie_high_value.yfilter)) leaf_name_data.push_back(remote_cookie_high_value.get_name_leafdata());
-    if (remote_circuit_status_up.is_set || is_set(remote_circuit_status_up.yfilter)) leaf_name_data.push_back(remote_circuit_status_up.get_name_leafdata());
-    if (tunnel_state.is_set || is_set(tunnel_state.yfilter)) leaf_name_data.push_back(tunnel_state.get_name_leafdata());
-    if (local_secondary_cookie_size.is_set || is_set(local_secondary_cookie_size.yfilter)) leaf_name_data.push_back(local_secondary_cookie_size.get_name_leafdata());
-    if (local_secondary_cookie_low_value.is_set || is_set(local_secondary_cookie_low_value.yfilter)) leaf_name_data.push_back(local_secondary_cookie_low_value.get_name_leafdata());
-    if (local_secondary_cookie_high_value.is_set || is_set(local_secondary_cookie_high_value.yfilter)) leaf_name_data.push_back(local_secondary_cookie_high_value.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::L2tpv3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::L2tpv3::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::L2tpv3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "l2tp-class-name")
-    {
-        l2tp_class_name = value;
-        l2tp_class_name.value_namespace = name_space;
-        l2tp_class_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-source-address")
-    {
-        ipv4_source_address = value;
-        ipv4_source_address.value_namespace = name_space;
-        ipv4_source_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-source-address")
-    {
-        ipv6_source_address = value;
-        ipv6_source_address.value_namespace = name_space;
-        ipv6_source_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "path-mtu-enabled")
-    {
-        path_mtu_enabled = value;
-        path_mtu_enabled.value_namespace = name_space;
-        path_mtu_enabled.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "path-mtu-max-value")
-    {
-        path_mtu_max_value = value;
-        path_mtu_max_value.value_namespace = name_space;
-        path_mtu_max_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dont-fragment-bit")
-    {
-        dont_fragment_bit = value;
-        dont_fragment_bit.value_namespace = name_space;
-        dont_fragment_bit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tos-mode")
-    {
-        tos_mode = value;
-        tos_mode.value_namespace = name_space;
-        tos_mode.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tos")
-    {
-        tos = value;
-        tos.value_namespace = name_space;
-        tos.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ttl")
-    {
-        ttl = value;
-        ttl.value_namespace = name_space;
-        ttl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-session-id")
-    {
-        local_session_id = value;
-        local_session_id.value_namespace = name_space;
-        local_session_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-session-id")
-    {
-        remote_session_id = value;
-        remote_session_id.value_namespace = name_space;
-        remote_session_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-cookie-size")
-    {
-        local_cookie_size = value;
-        local_cookie_size.value_namespace = name_space;
-        local_cookie_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-cookie-size")
-    {
-        remote_cookie_size = value;
-        remote_cookie_size.value_namespace = name_space;
-        remote_cookie_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-cookie-low-value")
-    {
-        local_cookie_low_value = value;
-        local_cookie_low_value.value_namespace = name_space;
-        local_cookie_low_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-cookie-low-value")
-    {
-        remote_cookie_low_value = value;
-        remote_cookie_low_value.value_namespace = name_space;
-        remote_cookie_low_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-cookie-high-value")
-    {
-        local_cookie_high_value = value;
-        local_cookie_high_value.value_namespace = name_space;
-        local_cookie_high_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-cookie-high-value")
-    {
-        remote_cookie_high_value = value;
-        remote_cookie_high_value.value_namespace = name_space;
-        remote_cookie_high_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "remote-circuit-status-up")
-    {
-        remote_circuit_status_up = value;
-        remote_circuit_status_up.value_namespace = name_space;
-        remote_circuit_status_up.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tunnel-state")
-    {
-        tunnel_state = value;
-        tunnel_state.value_namespace = name_space;
-        tunnel_state.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-secondary-cookie-size")
-    {
-        local_secondary_cookie_size = value;
-        local_secondary_cookie_size.value_namespace = name_space;
-        local_secondary_cookie_size.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-secondary-cookie-low-value")
-    {
-        local_secondary_cookie_low_value = value;
-        local_secondary_cookie_low_value.value_namespace = name_space;
-        local_secondary_cookie_low_value.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "local-secondary-cookie-high-value")
-    {
-        local_secondary_cookie_high_value = value;
-        local_secondary_cookie_high_value.value_namespace = name_space;
-        local_secondary_cookie_high_value.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::L2tpv3::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "l2tp-class-name")
-    {
-        l2tp_class_name.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-source-address")
-    {
-        ipv4_source_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-source-address")
-    {
-        ipv6_source_address.yfilter = yfilter;
-    }
-    if(value_path == "path-mtu-enabled")
-    {
-        path_mtu_enabled.yfilter = yfilter;
-    }
-    if(value_path == "path-mtu-max-value")
-    {
-        path_mtu_max_value.yfilter = yfilter;
-    }
-    if(value_path == "dont-fragment-bit")
-    {
-        dont_fragment_bit.yfilter = yfilter;
-    }
-    if(value_path == "tos-mode")
-    {
-        tos_mode.yfilter = yfilter;
-    }
-    if(value_path == "tos")
-    {
-        tos.yfilter = yfilter;
-    }
-    if(value_path == "ttl")
-    {
-        ttl.yfilter = yfilter;
-    }
-    if(value_path == "local-session-id")
-    {
-        local_session_id.yfilter = yfilter;
-    }
-    if(value_path == "remote-session-id")
-    {
-        remote_session_id.yfilter = yfilter;
-    }
-    if(value_path == "local-cookie-size")
-    {
-        local_cookie_size.yfilter = yfilter;
-    }
-    if(value_path == "remote-cookie-size")
-    {
-        remote_cookie_size.yfilter = yfilter;
-    }
-    if(value_path == "local-cookie-low-value")
-    {
-        local_cookie_low_value.yfilter = yfilter;
-    }
-    if(value_path == "remote-cookie-low-value")
-    {
-        remote_cookie_low_value.yfilter = yfilter;
-    }
-    if(value_path == "local-cookie-high-value")
-    {
-        local_cookie_high_value.yfilter = yfilter;
-    }
-    if(value_path == "remote-cookie-high-value")
-    {
-        remote_cookie_high_value.yfilter = yfilter;
-    }
-    if(value_path == "remote-circuit-status-up")
-    {
-        remote_circuit_status_up.yfilter = yfilter;
-    }
-    if(value_path == "tunnel-state")
-    {
-        tunnel_state.yfilter = yfilter;
-    }
-    if(value_path == "local-secondary-cookie-size")
-    {
-        local_secondary_cookie_size.yfilter = yfilter;
-    }
-    if(value_path == "local-secondary-cookie-low-value")
-    {
-        local_secondary_cookie_low_value.yfilter = yfilter;
-    }
-    if(value_path == "local-secondary-cookie-high-value")
-    {
-        local_secondary_cookie_high_value.yfilter = yfilter;
-    }
-}
-
-bool L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::EncapsulationInfo::L2tpv3::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "l2tp-class-name" || name == "ipv4-source-address" || name == "ipv6-source-address" || name == "path-mtu-enabled" || name == "path-mtu-max-value" || name == "dont-fragment-bit" || name == "tos-mode" || name == "tos" || name == "ttl" || name == "local-session-id" || name == "remote-session-id" || name == "local-cookie-size" || name == "remote-cookie-size" || name == "local-cookie-low-value" || name == "remote-cookie-low-value" || name == "local-cookie-high-value" || name == "remote-cookie-high-value" || name == "remote-circuit-status-up" || name == "tunnel-state" || name == "local-secondary-cookie-size" || name == "local-secondary-cookie-low-value" || name == "local-secondary-cookie-high-value")
-        return true;
-    return false;
-}
-
-L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::LocalInterface()
-    :
-    name{YType::str, "name"},
-    mtu{YType::uint32, "mtu"},
-    payload_bytes{YType::uint16, "payload-bytes"}
-        ,
-    parameters(std::make_shared<L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters>())
-{
-    parameters->parent = this;
-
-    yang_name = "local-interface"; yang_parent_name = "pseudowire"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::~LocalInterface()
-{
-}
-
-bool L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::has_data() const
-{
-    if (is_presence_container) return true;
-    return name.is_set
-	|| mtu.is_set
-	|| payload_bytes.is_set
-	|| (parameters !=  nullptr && parameters->has_data());
-}
-
-bool L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(mtu.yfilter)
-	|| ydk::is_set(payload_bytes.yfilter)
-	|| (parameters !=  nullptr && parameters->has_operation());
-}
-
-std::string L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "local-interface";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (payload_bytes.is_set || is_set(payload_bytes.yfilter)) leaf_name_data.push_back(payload_bytes.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "parameters")
-    {
-        if(parameters == nullptr)
-        {
-            parameters = std::make_shared<L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters>();
-        }
-        return parameters;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(parameters != nullptr)
-    {
-        _children["parameters"] = parameters;
-    }
-
-    return _children;
-}
-
-void L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mtu")
-    {
-        mtu = value;
-        mtu.value_namespace = name_space;
-        mtu.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "payload-bytes")
-    {
-        payload_bytes = value;
-        payload_bytes.value_namespace = name_space;
-        payload_bytes.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "mtu")
-    {
-        mtu.yfilter = yfilter;
-    }
-    if(value_path == "payload-bytes")
-    {
-        payload_bytes.yfilter = yfilter;
-    }
-}
-
-bool L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "parameters" || name == "name" || name == "mtu" || name == "payload-bytes")
-        return true;
-    return false;
-}
-
-L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Parameters()
-    :
-    type{YType::enumeration, "type"}
-        ,
-    ethernet(std::make_shared<L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Ethernet>())
-    , vlan(std::make_shared<L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Vlan>())
-    , tdm(std::make_shared<L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Tdm>())
-    , atm(std::make_shared<L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Atm>())
-    , fr(std::make_shared<L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Fr>())
-    , pseudowire_ether(std::make_shared<L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::PseudowireEther>())
-    , pseudowire_iw(std::make_shared<L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::PseudowireIw>())
-{
-    ethernet->parent = this;
-    vlan->parent = this;
-    tdm->parent = this;
-    atm->parent = this;
-    fr->parent = this;
-    pseudowire_ether->parent = this;
-    pseudowire_iw->parent = this;
-
-    yang_name = "parameters"; yang_parent_name = "local-interface"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::~Parameters()
-{
-}
-
-bool L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::has_data() const
-{
-    if (is_presence_container) return true;
-    return type.is_set
-	|| (ethernet !=  nullptr && ethernet->has_data())
-	|| (vlan !=  nullptr && vlan->has_data())
-	|| (tdm !=  nullptr && tdm->has_data())
-	|| (atm !=  nullptr && atm->has_data())
-	|| (fr !=  nullptr && fr->has_data())
-	|| (pseudowire_ether !=  nullptr && pseudowire_ether->has_data())
-	|| (pseudowire_iw !=  nullptr && pseudowire_iw->has_data());
-}
-
-bool L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(type.yfilter)
-	|| (ethernet !=  nullptr && ethernet->has_operation())
-	|| (vlan !=  nullptr && vlan->has_operation())
-	|| (tdm !=  nullptr && tdm->has_operation())
-	|| (atm !=  nullptr && atm->has_operation())
-	|| (fr !=  nullptr && fr->has_operation())
-	|| (pseudowire_ether !=  nullptr && pseudowire_ether->has_operation())
-	|| (pseudowire_iw !=  nullptr && pseudowire_iw->has_operation());
-}
-
-std::string L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "parameters";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "ethernet")
-    {
-        if(ethernet == nullptr)
-        {
-            ethernet = std::make_shared<L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Ethernet>();
-        }
-        return ethernet;
-    }
-
-    if(child_yang_name == "vlan")
-    {
-        if(vlan == nullptr)
-        {
-            vlan = std::make_shared<L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Vlan>();
-        }
-        return vlan;
-    }
-
-    if(child_yang_name == "tdm")
-    {
-        if(tdm == nullptr)
-        {
-            tdm = std::make_shared<L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Tdm>();
-        }
-        return tdm;
-    }
-
-    if(child_yang_name == "atm")
-    {
-        if(atm == nullptr)
-        {
-            atm = std::make_shared<L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Atm>();
-        }
-        return atm;
-    }
-
-    if(child_yang_name == "fr")
-    {
-        if(fr == nullptr)
-        {
-            fr = std::make_shared<L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::Fr>();
-        }
-        return fr;
-    }
-
-    if(child_yang_name == "pseudowire-ether")
-    {
-        if(pseudowire_ether == nullptr)
-        {
-            pseudowire_ether = std::make_shared<L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::PseudowireEther>();
-        }
-        return pseudowire_ether;
-    }
-
-    if(child_yang_name == "pseudowire-iw")
-    {
-        if(pseudowire_iw == nullptr)
-        {
-            pseudowire_iw = std::make_shared<L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::PseudowireIw>();
-        }
-        return pseudowire_iw;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(ethernet != nullptr)
-    {
-        _children["ethernet"] = ethernet;
-    }
-
-    if(vlan != nullptr)
-    {
-        _children["vlan"] = vlan;
-    }
-
-    if(tdm != nullptr)
-    {
-        _children["tdm"] = tdm;
-    }
-
-    if(atm != nullptr)
-    {
-        _children["atm"] = atm;
-    }
-
-    if(fr != nullptr)
-    {
-        _children["fr"] = fr;
-    }
-
-    if(pseudowire_ether != nullptr)
-    {
-        _children["pseudowire-ether"] = pseudowire_ether;
-    }
-
-    if(pseudowire_iw != nullptr)
-    {
-        _children["pseudowire-iw"] = pseudowire_iw;
-    }
-
-    return _children;
-}
-
-void L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool L2vpnv2::Active::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceInfo::Pseudowire::LocalInterface::Parameters::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ethernet" || name == "vlan" || name == "tdm" || name == "atm" || name == "fr" || name == "pseudowire-ether" || name == "pseudowire-iw" || name == "type")
         return true;
     return false;
 }

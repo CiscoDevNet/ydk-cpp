@@ -2698,7 +2698,9 @@ TcpConnection::Nodes::Node::Statistics::Summary::Summary()
     iq_sock_retries{YType::uint32, "iq-sock-retries"},
     iq_sock_aborts{YType::uint32, "iq-sock-aborts"},
     iq_ingress_drops{YType::uint32, "iq-ingress-drops"},
-    total_i_qs{YType::uint32, "total-i-qs"}
+    total_i_qs{YType::uint32, "total-i-qs"},
+    sockbuf_pak_res_cur{YType::uint32, "sockbuf-pak-res-cur"},
+    sockbuf_pak_res_max{YType::uint32, "sockbuf-pak-res-max"}
         ,
     iqs_total_ingpacket(this, {})
     , iqs_total_egpacket(this, {})
@@ -2811,7 +2813,9 @@ bool TcpConnection::Nodes::Node::Statistics::Summary::has_data() const
 	|| iq_sock_retries.is_set
 	|| iq_sock_aborts.is_set
 	|| iq_ingress_drops.is_set
-	|| total_i_qs.is_set;
+	|| total_i_qs.is_set
+	|| sockbuf_pak_res_cur.is_set
+	|| sockbuf_pak_res_max.is_set;
 }
 
 bool TcpConnection::Nodes::Node::Statistics::Summary::has_operation() const
@@ -2914,7 +2918,9 @@ bool TcpConnection::Nodes::Node::Statistics::Summary::has_operation() const
 	|| ydk::is_set(iq_sock_retries.yfilter)
 	|| ydk::is_set(iq_sock_aborts.yfilter)
 	|| ydk::is_set(iq_ingress_drops.yfilter)
-	|| ydk::is_set(total_i_qs.yfilter);
+	|| ydk::is_set(total_i_qs.yfilter)
+	|| ydk::is_set(sockbuf_pak_res_cur.yfilter)
+	|| ydk::is_set(sockbuf_pak_res_max.yfilter);
 }
 
 std::string TcpConnection::Nodes::Node::Statistics::Summary::get_segment_path() const
@@ -3016,6 +3022,8 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Stati
     if (iq_sock_aborts.is_set || is_set(iq_sock_aborts.yfilter)) leaf_name_data.push_back(iq_sock_aborts.get_name_leafdata());
     if (iq_ingress_drops.is_set || is_set(iq_ingress_drops.yfilter)) leaf_name_data.push_back(iq_ingress_drops.get_name_leafdata());
     if (total_i_qs.is_set || is_set(total_i_qs.yfilter)) leaf_name_data.push_back(total_i_qs.get_name_leafdata());
+    if (sockbuf_pak_res_cur.is_set || is_set(sockbuf_pak_res_cur.yfilter)) leaf_name_data.push_back(sockbuf_pak_res_cur.get_name_leafdata());
+    if (sockbuf_pak_res_max.is_set || is_set(sockbuf_pak_res_max.yfilter)) leaf_name_data.push_back(sockbuf_pak_res_max.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3597,6 +3605,18 @@ void TcpConnection::Nodes::Node::Statistics::Summary::set_value(const std::strin
         total_i_qs.value_namespace = name_space;
         total_i_qs.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "sockbuf-pak-res-cur")
+    {
+        sockbuf_pak_res_cur = value;
+        sockbuf_pak_res_cur.value_namespace = name_space;
+        sockbuf_pak_res_cur.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sockbuf-pak-res-max")
+    {
+        sockbuf_pak_res_max = value;
+        sockbuf_pak_res_max.value_namespace = name_space;
+        sockbuf_pak_res_max.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void TcpConnection::Nodes::Node::Statistics::Summary::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3953,11 +3973,19 @@ void TcpConnection::Nodes::Node::Statistics::Summary::set_filter(const std::stri
     {
         total_i_qs.yfilter = yfilter;
     }
+    if(value_path == "sockbuf-pak-res-cur")
+    {
+        sockbuf_pak_res_cur.yfilter = yfilter;
+    }
+    if(value_path == "sockbuf-pak-res-max")
+    {
+        sockbuf_pak_res_max.yfilter = yfilter;
+    }
 }
 
 bool TcpConnection::Nodes::Node::Statistics::Summary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "iqs-total-ingpacket" || name == "iqs-total-egpacket" || name == "syn-cache-count" || name == "num-open-sockets" || name == "total-pakets-sent" || name == "send-packets-dropped" || name == "send-auth-packets-dropped" || name == "data-pakets-sent" || name == "data-bytes-sent" || name == "packets-retransmitted" || name == "bytes-retransmitted" || name == "ack-only-packets-sent" || name == "delay-ack-packets-sent" || name == "urgent-only-packets-sent" || name == "window-probe-packets-sent" || name == "window-update-packets-sent" || name == "control-packets-sent" || name == "rst-packets-sent" || name == "total-packets-received" || name == "received-packets-dropped" || name == "synacl-match-pkts-dropped" || name == "received-packets-dropped-stale-c-hdr" || name == "received-auth-packets-dropped" || name == "ack-packets-received" || name == "ackbytes-received" || name == "duplicated-ack-packets-received" || name == "ack-packets-for-unsent-received" || name == "data-packets-received-in-sequence" || name == "data-bytes-received-in-sequence" || name == "duplicate-packets-received" || name == "duplicate-bytes-received" || name == "partial-duplicate-ack-received" || name == "partial-duplicate-bytes-received" || name == "out-of-order-packets-received" || name == "out-of-order-bytes-received" || name == "after-window-packets-received" || name == "after-window-bytes-received" || name == "window-probe-packets-received" || name == "window-update-packets-received" || name == "packets-received-after-close-packet" || name == "bad-checksum-packets-received" || name == "too-short-packets-received" || name == "malformed-packets-received" || name == "no-port-packets-received" || name == "connections-requested" || name == "connections-accepted" || name == "connections-established" || name == "connections-forcibly-closed" || name == "connections-closed" || name == "connections-dropped" || name == "embryonic-connection-dropped" || name == "connections-failed" || name == "established-connections-reset" || name == "retransmit-timeouts" || name == "retransmit-dropped" || name == "keep-alive-timeouts" || name == "keep-alive-dropped" || name == "keep-alive-probes" || name == "paws-dropped" || name == "persist-dropped" || name == "try-lock-dropped" || name == "connection-rate-limited" || name == "syn-cache-added" || name == "syn-cache-completed" || name == "syn-cache-timed-out" || name == "syn-cache-overflow" || name == "syn-cache-reset" || name == "syn-cache-unreach" || name == "syn-cache-bucket-oflow" || name == "syn-cache-aborted" || name == "syn-cache-duplicate-sy-ns" || name == "syn-cache-dropped" || name == "pulse-errors" || name == "socket-layer-packets" || name == "reassembly-packets" || name == "recovered-packets" || name == "packet-failures" || name == "mss-up" || name == "mss-down" || name == "truncated-write-iov" || name == "no-throttle" || name == "low-water-mark-throttle" || name == "high-water-mark-throttle" || name == "stalled-timer-tickle-count" || name == "stalled-timer-tickle-time" || name == "iq-sock-writes" || name == "iq-sock-retries" || name == "iq-sock-aborts" || name == "iq-ingress-drops" || name == "total-i-qs")
+    if(name == "iqs-total-ingpacket" || name == "iqs-total-egpacket" || name == "syn-cache-count" || name == "num-open-sockets" || name == "total-pakets-sent" || name == "send-packets-dropped" || name == "send-auth-packets-dropped" || name == "data-pakets-sent" || name == "data-bytes-sent" || name == "packets-retransmitted" || name == "bytes-retransmitted" || name == "ack-only-packets-sent" || name == "delay-ack-packets-sent" || name == "urgent-only-packets-sent" || name == "window-probe-packets-sent" || name == "window-update-packets-sent" || name == "control-packets-sent" || name == "rst-packets-sent" || name == "total-packets-received" || name == "received-packets-dropped" || name == "synacl-match-pkts-dropped" || name == "received-packets-dropped-stale-c-hdr" || name == "received-auth-packets-dropped" || name == "ack-packets-received" || name == "ackbytes-received" || name == "duplicated-ack-packets-received" || name == "ack-packets-for-unsent-received" || name == "data-packets-received-in-sequence" || name == "data-bytes-received-in-sequence" || name == "duplicate-packets-received" || name == "duplicate-bytes-received" || name == "partial-duplicate-ack-received" || name == "partial-duplicate-bytes-received" || name == "out-of-order-packets-received" || name == "out-of-order-bytes-received" || name == "after-window-packets-received" || name == "after-window-bytes-received" || name == "window-probe-packets-received" || name == "window-update-packets-received" || name == "packets-received-after-close-packet" || name == "bad-checksum-packets-received" || name == "too-short-packets-received" || name == "malformed-packets-received" || name == "no-port-packets-received" || name == "connections-requested" || name == "connections-accepted" || name == "connections-established" || name == "connections-forcibly-closed" || name == "connections-closed" || name == "connections-dropped" || name == "embryonic-connection-dropped" || name == "connections-failed" || name == "established-connections-reset" || name == "retransmit-timeouts" || name == "retransmit-dropped" || name == "keep-alive-timeouts" || name == "keep-alive-dropped" || name == "keep-alive-probes" || name == "paws-dropped" || name == "persist-dropped" || name == "try-lock-dropped" || name == "connection-rate-limited" || name == "syn-cache-added" || name == "syn-cache-completed" || name == "syn-cache-timed-out" || name == "syn-cache-overflow" || name == "syn-cache-reset" || name == "syn-cache-unreach" || name == "syn-cache-bucket-oflow" || name == "syn-cache-aborted" || name == "syn-cache-duplicate-sy-ns" || name == "syn-cache-dropped" || name == "pulse-errors" || name == "socket-layer-packets" || name == "reassembly-packets" || name == "recovered-packets" || name == "packet-failures" || name == "mss-up" || name == "mss-down" || name == "truncated-write-iov" || name == "no-throttle" || name == "low-water-mark-throttle" || name == "high-water-mark-throttle" || name == "stalled-timer-tickle-count" || name == "stalled-timer-tickle-time" || name == "iq-sock-writes" || name == "iq-sock-retries" || name == "iq-sock-aborts" || name == "iq-ingress-drops" || name == "total-i-qs" || name == "sockbuf-pak-res-cur" || name == "sockbuf-pak-res-max")
         return true;
     return false;
 }
@@ -7736,7 +7764,9 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionF
     linger{YType::boolean, "linger"},
     out_of_band_inline{YType::boolean, "out-of-band-inline"},
     reuse_port{YType::boolean, "reuse-port"},
-    nonblocking_io{YType::boolean, "nonblocking-io"}
+    nonblocking_io{YType::boolean, "nonblocking-io"},
+    snd_buf_scaled{YType::boolean, "snd-buf-scaled"},
+    rcv_buf_scaled{YType::boolean, "rcv-buf-scaled"}
 {
 
     yang_name = "socket-option-flags"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true; 
@@ -7759,7 +7789,9 @@ bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOp
 	|| linger.is_set
 	|| out_of_band_inline.is_set
 	|| reuse_port.is_set
-	|| nonblocking_io.is_set;
+	|| nonblocking_io.is_set
+	|| snd_buf_scaled.is_set
+	|| rcv_buf_scaled.is_set;
 }
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionFlags::has_operation() const
@@ -7775,7 +7807,9 @@ bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOp
 	|| ydk::is_set(linger.yfilter)
 	|| ydk::is_set(out_of_band_inline.yfilter)
 	|| ydk::is_set(reuse_port.yfilter)
-	|| ydk::is_set(nonblocking_io.yfilter);
+	|| ydk::is_set(nonblocking_io.yfilter)
+	|| ydk::is_set(snd_buf_scaled.yfilter)
+	|| ydk::is_set(rcv_buf_scaled.yfilter);
 }
 
 std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionFlags::get_segment_path() const
@@ -7800,6 +7834,8 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Detai
     if (out_of_band_inline.is_set || is_set(out_of_band_inline.yfilter)) leaf_name_data.push_back(out_of_band_inline.get_name_leafdata());
     if (reuse_port.is_set || is_set(reuse_port.yfilter)) leaf_name_data.push_back(reuse_port.get_name_leafdata());
     if (nonblocking_io.is_set || is_set(nonblocking_io.yfilter)) leaf_name_data.push_back(nonblocking_io.get_name_leafdata());
+    if (snd_buf_scaled.is_set || is_set(snd_buf_scaled.yfilter)) leaf_name_data.push_back(snd_buf_scaled.get_name_leafdata());
+    if (rcv_buf_scaled.is_set || is_set(rcv_buf_scaled.yfilter)) leaf_name_data.push_back(rcv_buf_scaled.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -7885,6 +7921,18 @@ void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOp
         nonblocking_io.value_namespace = name_space;
         nonblocking_io.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "snd-buf-scaled")
+    {
+        snd_buf_scaled = value;
+        snd_buf_scaled.value_namespace = name_space;
+        snd_buf_scaled.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rcv-buf-scaled")
+    {
+        rcv_buf_scaled = value;
+        rcv_buf_scaled.value_namespace = name_space;
+        rcv_buf_scaled.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionFlags::set_filter(const std::string & value_path, YFilter yfilter)
@@ -7933,11 +7981,19 @@ void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOp
     {
         nonblocking_io.yfilter = yfilter;
     }
+    if(value_path == "snd-buf-scaled")
+    {
+        snd_buf_scaled.yfilter = yfilter;
+    }
+    if(value_path == "rcv-buf-scaled")
+    {
+        rcv_buf_scaled.yfilter = yfilter;
+    }
 }
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SocketOptionFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "debug" || name == "accept-connection" || name == "reuse-address" || name == "keep-alive" || name == "dont-route" || name == "broadcast" || name == "use-loopback" || name == "linger" || name == "out-of-band-inline" || name == "reuse-port" || name == "nonblocking-io")
+    if(name == "debug" || name == "accept-connection" || name == "reuse-address" || name == "keep-alive" || name == "dont-route" || name == "broadcast" || name == "use-loopback" || name == "linger" || name == "out-of-band-inline" || name == "reuse-port" || name == "nonblocking-io" || name == "snd-buf-scaled" || name == "rcv-buf-scaled")
         return true;
     return false;
 }
@@ -8785,7 +8841,8 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufSta
     wakeup{YType::boolean, "wakeup"},
     connect_wakeup{YType::boolean, "connect-wakeup"},
     output_select{YType::boolean, "output-select"},
-    out_of_band_select{YType::boolean, "out-of-band-select"}
+    out_of_band_select{YType::boolean, "out-of-band-select"},
+    packet_extended{YType::boolean, "packet-extended"}
 {
 
     yang_name = "receive-buf-state-flags"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true; 
@@ -8809,7 +8866,8 @@ bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveB
 	|| wakeup.is_set
 	|| connect_wakeup.is_set
 	|| output_select.is_set
-	|| out_of_band_select.is_set;
+	|| out_of_band_select.is_set
+	|| packet_extended.is_set;
 }
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags::has_operation() const
@@ -8826,7 +8884,8 @@ bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveB
 	|| ydk::is_set(wakeup.yfilter)
 	|| ydk::is_set(connect_wakeup.yfilter)
 	|| ydk::is_set(output_select.yfilter)
-	|| ydk::is_set(out_of_band_select.yfilter);
+	|| ydk::is_set(out_of_band_select.yfilter)
+	|| ydk::is_set(packet_extended.yfilter);
 }
 
 std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags::get_segment_path() const
@@ -8852,6 +8911,7 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Detai
     if (connect_wakeup.is_set || is_set(connect_wakeup.yfilter)) leaf_name_data.push_back(connect_wakeup.get_name_leafdata());
     if (output_select.is_set || is_set(output_select.yfilter)) leaf_name_data.push_back(output_select.get_name_leafdata());
     if (out_of_band_select.is_set || is_set(out_of_band_select.yfilter)) leaf_name_data.push_back(out_of_band_select.get_name_leafdata());
+    if (packet_extended.is_set || is_set(packet_extended.yfilter)) leaf_name_data.push_back(packet_extended.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -8943,6 +9003,12 @@ void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveB
         out_of_band_select.value_namespace = name_space;
         out_of_band_select.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "packet-extended")
+    {
+        packet_extended = value;
+        packet_extended.value_namespace = name_space;
+        packet_extended.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags::set_filter(const std::string & value_path, YFilter yfilter)
@@ -8995,11 +9061,15 @@ void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveB
     {
         out_of_band_select.yfilter = yfilter;
     }
+    if(value_path == "packet-extended")
+    {
+        packet_extended.yfilter = yfilter;
+    }
 }
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::ReceiveBufStateFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "locked" || name == "waiting-for-lock" || name == "waiting-for-data" || name == "input-select" || name == "async-io" || name == "not-interruptible" || name == "io-timer-set" || name == "delayed-wakeup" || name == "wakeup" || name == "connect-wakeup" || name == "output-select" || name == "out-of-band-select")
+    if(name == "locked" || name == "waiting-for-lock" || name == "waiting-for-data" || name == "input-select" || name == "async-io" || name == "not-interruptible" || name == "io-timer-set" || name == "delayed-wakeup" || name == "wakeup" || name == "connect-wakeup" || name == "output-select" || name == "out-of-band-select" || name == "packet-extended")
         return true;
     return false;
 }
@@ -9017,7 +9087,8 @@ TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateF
     wakeup{YType::boolean, "wakeup"},
     connect_wakeup{YType::boolean, "connect-wakeup"},
     output_select{YType::boolean, "output-select"},
-    out_of_band_select{YType::boolean, "out-of-band-select"}
+    out_of_band_select{YType::boolean, "out-of-band-select"},
+    packet_extended{YType::boolean, "packet-extended"}
 {
 
     yang_name = "send-buf-state-flags"; yang_parent_name = "detail-information"; is_top_level_class = false; has_list_ancestor = true; 
@@ -9041,7 +9112,8 @@ bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufS
 	|| wakeup.is_set
 	|| connect_wakeup.is_set
 	|| output_select.is_set
-	|| out_of_band_select.is_set;
+	|| out_of_band_select.is_set
+	|| packet_extended.is_set;
 }
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags::has_operation() const
@@ -9058,7 +9130,8 @@ bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufS
 	|| ydk::is_set(wakeup.yfilter)
 	|| ydk::is_set(connect_wakeup.yfilter)
 	|| ydk::is_set(output_select.yfilter)
-	|| ydk::is_set(out_of_band_select.yfilter);
+	|| ydk::is_set(out_of_band_select.yfilter)
+	|| ydk::is_set(packet_extended.yfilter);
 }
 
 std::string TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags::get_segment_path() const
@@ -9084,6 +9157,7 @@ std::vector<std::pair<std::string, LeafData> > TcpConnection::Nodes::Node::Detai
     if (connect_wakeup.is_set || is_set(connect_wakeup.yfilter)) leaf_name_data.push_back(connect_wakeup.get_name_leafdata());
     if (output_select.is_set || is_set(output_select.yfilter)) leaf_name_data.push_back(output_select.get_name_leafdata());
     if (out_of_band_select.is_set || is_set(out_of_band_select.yfilter)) leaf_name_data.push_back(out_of_band_select.get_name_leafdata());
+    if (packet_extended.is_set || is_set(packet_extended.yfilter)) leaf_name_data.push_back(packet_extended.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -9175,6 +9249,12 @@ void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufS
         out_of_band_select.value_namespace = name_space;
         out_of_band_select.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "packet-extended")
+    {
+        packet_extended = value;
+        packet_extended.value_namespace = name_space;
+        packet_extended.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags::set_filter(const std::string & value_path, YFilter yfilter)
@@ -9227,11 +9307,15 @@ void TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufS
     {
         out_of_band_select.yfilter = yfilter;
     }
+    if(value_path == "packet-extended")
+    {
+        packet_extended.yfilter = yfilter;
+    }
 }
 
 bool TcpConnection::Nodes::Node::DetailInformations::DetailInformation::SendBufStateFlags::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "locked" || name == "waiting-for-lock" || name == "waiting-for-data" || name == "input-select" || name == "async-io" || name == "not-interruptible" || name == "io-timer-set" || name == "delayed-wakeup" || name == "wakeup" || name == "connect-wakeup" || name == "output-select" || name == "out-of-band-select")
+    if(name == "locked" || name == "waiting-for-lock" || name == "waiting-for-data" || name == "input-select" || name == "async-io" || name == "not-interruptible" || name == "io-timer-set" || name == "delayed-wakeup" || name == "wakeup" || name == "connect-wakeup" || name == "output-select" || name == "out-of-band-select" || name == "packet-extended")
         return true;
     return false;
 }
