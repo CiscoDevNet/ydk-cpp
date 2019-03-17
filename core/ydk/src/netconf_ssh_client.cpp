@@ -196,15 +196,20 @@ StringVec NetconfSSHClient::get_capabilities()
 
 void NetconfSSHClient::clb_print(NC_VERB_LEVEL level, const char* msg)
 {
+    string message = msg;
+    auto xml_start_pos = message.find("<?");
+    if (xml_start_pos != string::npos) {
+        message = message.insert(xml_start_pos, "\n");
+    }
     switch (level)
     {
     case NC_VERB_ERROR:
-         YLOG_ERROR("Connection error occurred: {}", msg);
+         YLOG_ERROR("Connection error occurred: {}", message);
         break;
     case NC_VERB_WARNING:
     case NC_VERB_VERBOSE:
     case NC_VERB_DEBUG:
-        YLOG_DEBUG("Trace: {}", msg);
+        YLOG_DEBUG("Trace: {}", message);
         break;
     }
 }

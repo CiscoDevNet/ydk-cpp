@@ -32,6 +32,7 @@ class Lldp : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         ydk::YLeaf holdtime; //type: uint32
+        ydk::YLeaf enable_priority_addr; //type: boolean
         ydk::YLeaf extended_show_width; //type: boolean
         ydk::YLeaf enable_subintf; //type: boolean
         ydk::YLeaf enable_mgmtintf; //type: boolean

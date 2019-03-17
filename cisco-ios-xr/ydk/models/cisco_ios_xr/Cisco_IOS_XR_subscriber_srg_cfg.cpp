@@ -19,6 +19,7 @@ SubscriberRedundancy::SubscriberRedundancy()
     source_interface{YType::str, "source-interface"},
     slave_mode{YType::enumeration, "slave-mode"},
     hold_timer{YType::uint32, "hold-timer"},
+    sync_timer{YType::uint32, "sync-timer"},
     redundancy_disable{YType::empty, "redundancy-disable"}
         ,
     groups(std::make_shared<SubscriberRedundancy::Groups>())
@@ -43,6 +44,7 @@ bool SubscriberRedundancy::has_data() const
 	|| source_interface.is_set
 	|| slave_mode.is_set
 	|| hold_timer.is_set
+	|| sync_timer.is_set
 	|| redundancy_disable.is_set
 	|| (groups !=  nullptr && groups->has_data())
 	|| (revertive_timer !=  nullptr && revertive_timer->has_data());
@@ -57,6 +59,7 @@ bool SubscriberRedundancy::has_operation() const
 	|| ydk::is_set(source_interface.yfilter)
 	|| ydk::is_set(slave_mode.yfilter)
 	|| ydk::is_set(hold_timer.yfilter)
+	|| ydk::is_set(sync_timer.yfilter)
 	|| ydk::is_set(redundancy_disable.yfilter)
 	|| (groups !=  nullptr && groups->has_operation())
 	|| (revertive_timer !=  nullptr && revertive_timer->has_operation());
@@ -79,6 +82,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriberRedundancy::get_name_le
     if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
     if (slave_mode.is_set || is_set(slave_mode.yfilter)) leaf_name_data.push_back(slave_mode.get_name_leafdata());
     if (hold_timer.is_set || is_set(hold_timer.yfilter)) leaf_name_data.push_back(hold_timer.get_name_leafdata());
+    if (sync_timer.is_set || is_set(sync_timer.yfilter)) leaf_name_data.push_back(sync_timer.get_name_leafdata());
     if (redundancy_disable.is_set || is_set(redundancy_disable.yfilter)) leaf_name_data.push_back(redundancy_disable.get_name_leafdata());
 
     return leaf_name_data;
@@ -163,6 +167,12 @@ void SubscriberRedundancy::set_value(const std::string & value_path, const std::
         hold_timer.value_namespace = name_space;
         hold_timer.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "sync-timer")
+    {
+        sync_timer = value;
+        sync_timer.value_namespace = name_space;
+        sync_timer.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "redundancy-disable")
     {
         redundancy_disable = value;
@@ -197,6 +207,10 @@ void SubscriberRedundancy::set_filter(const std::string & value_path, YFilter yf
     {
         hold_timer.yfilter = yfilter;
     }
+    if(value_path == "sync-timer")
+    {
+        sync_timer.yfilter = yfilter;
+    }
     if(value_path == "redundancy-disable")
     {
         redundancy_disable.yfilter = yfilter;
@@ -230,7 +244,7 @@ std::map<std::pair<std::string, std::string>, std::string> SubscriberRedundancy:
 
 bool SubscriberRedundancy::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "groups" || name == "revertive-timer" || name == "enable" || name == "virtual-mac-prefix" || name == "preferred-role" || name == "source-interface" || name == "slave-mode" || name == "hold-timer" || name == "redundancy-disable")
+    if(name == "groups" || name == "revertive-timer" || name == "enable" || name == "virtual-mac-prefix" || name == "preferred-role" || name == "source-interface" || name == "slave-mode" || name == "hold-timer" || name == "sync-timer" || name == "redundancy-disable")
         return true;
     return false;
 }

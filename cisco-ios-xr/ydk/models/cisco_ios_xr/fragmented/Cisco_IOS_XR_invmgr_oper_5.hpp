@@ -261,10 +261,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Ts
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::PwgInfo
@@ -1034,10 +1030,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Ts
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::PwgInfo
@@ -1807,10 +1799,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Ts
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::PwgInfo
@@ -2580,10 +2568,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Ts
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::PwgInfo
@@ -3353,10 +3337,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Ts
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Attributes::PwgInfo
@@ -4126,10 +4106,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Ts
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Attributes::PwgInfo

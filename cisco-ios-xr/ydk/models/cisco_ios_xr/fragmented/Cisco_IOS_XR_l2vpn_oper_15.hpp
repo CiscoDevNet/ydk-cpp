@@ -8,10 +8,98 @@
 #include <ydk/errors.hpp>
 
 #include "Cisco_IOS_XR_l2vpn_oper_14.hpp"
-#include "Cisco_IOS_XR_l2vpn_oper_3.hpp"
+#include "Cisco_IOS_XR_l2vpn_oper_4.hpp"
 
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_l2vpn_oper {
+
+
+class L2vpnv2::Standby::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop : public ydk::Entity
+{
+    public:
+        ImpositionMtuDrop();
+        ~ImpositionMtuDrop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packet_counts; //type: uint64
+        ydk::YLeaf byte_counts; //type: uint64
+
+}; // L2vpnv2::Standby::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::ImpositionMtuDrop
+
+
+class L2vpnv2::Standby::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop : public ydk::Entity
+{
+    public:
+        ImpostionTailDrop();
+        ~ImpostionTailDrop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packet_counts; //type: uint64
+        ydk::YLeaf byte_counts; //type: uint64
+
+}; // L2vpnv2::Standby::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::ImpostionTailDrop
+
+
+class L2vpnv2::Standby::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop : public ydk::Entity
+{
+    public:
+        L2fsbiDrop();
+        ~L2fsbiDrop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packet_counts; //type: uint64
+        ydk::YLeaf byte_counts; //type: uint64
+
+}; // L2vpnv2::Standby::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::L2fsbiDrop
+
+
+class L2vpnv2::Standby::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::Multicast : public ydk::Entity
+{
+    public:
+        Multicast();
+        ~Multicast();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf packet_counts; //type: uint64
+        ydk::YLeaf byte_counts; //type: uint64
+
+}; // L2vpnv2::Standby::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::Multicast
 
 
 class L2vpnv2::Standby::FlexibleXconnectServices::FlexibleXconnectService::FlexibleXconnectServiceAcs::FlexibleXconnectServiceAc::AttachmentCircuit::Statistics::ImpostionStats::Broadcast : public ydk::Entity
@@ -3845,135 +3933,6 @@ class L2vpnv2::Active::IccpSm::IccpGroups::IccpGroup::IccpPorts : public ydk::En
         ydk::YList iccp_port;
         
 }; // L2vpnv2::Active::IccpSm::IccpGroups::IccpGroup::IccpPorts
-
-
-class L2vpnv2::Active::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort : public ydk::Entity
-{
-    public:
-        IccpPort();
-        ~IccpPort();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf interface; //type: string
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf mac_flush_tcn; //type: boolean
-        class LocalPort; //type: L2vpnv2::Active::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort::LocalPort
-        class RemotePort; //type: L2vpnv2::Active::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort::RemotePort
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort::LocalPort> local_port;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Active::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort::RemotePort> remote_port;
-        
-}; // L2vpnv2::Active::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort
-
-
-class L2vpnv2::Active::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort::LocalPort : public ydk::Entity
-{
-    public:
-        LocalPort();
-        ~LocalPort();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf port_state; //type: IccpSmPortState
-        ydk::YLeaf port_fail_code; //type: uint8
-        ydk::YLeaf fsm_state; //type: uint8
-        ydk::YLeaf vlan_state; //type: uint8
-        ydk::YLeaf vlan_vector; //type: string
-        ydk::YLeaf reversion_time; //type: uint32
-        ydk::YLeaf reversion_time_remaining; //type: uint32
-
-}; // L2vpnv2::Active::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort::LocalPort
-
-
-class L2vpnv2::Active::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort::RemotePort : public ydk::Entity
-{
-    public:
-        RemotePort();
-        ~RemotePort();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf port_state; //type: IccpSmPortState
-        ydk::YLeaf port_fail_code; //type: uint8
-        ydk::YLeaf fsm_state; //type: uint8
-        ydk::YLeaf vlan_state; //type: uint8
-        ydk::YLeaf vlan_vector; //type: string
-        ydk::YLeaf reversion_time; //type: uint32
-        ydk::YLeaf reversion_time_remaining; //type: uint32
-
-}; // L2vpnv2::Active::IccpSm::IccpGroups::IccpGroup::IccpPorts::IccpPort::RemotePort
-
-
-class L2vpnv2::Active::BridgeSummary : public ydk::Entity
-{
-    public:
-        BridgeSummary();
-        ~BridgeSummary();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf number_groups; //type: uint32
-        ydk::YLeaf number_vlan_switches; //type: uint32
-        ydk::YLeaf number_bridge_domains; //type: uint32
-        ydk::YLeaf number_bridge_domains_up; //type: uint32
-        ydk::YLeaf number_bridge_domains_shut; //type: uint32
-        ydk::YLeaf number_default_bridge_doamins; //type: uint32
-        ydk::YLeaf number_pbb_edge; //type: uint32
-        ydk::YLeaf number_pbb_core; //type: uint32
-        ydk::YLeaf number_p2mp; //type: uint32
-        ydk::YLeaf number_p2mp_up; //type: uint32
-        ydk::YLeaf number_p2mp_down; //type: uint32
-        ydk::YLeaf number_a_cs; //type: uint32
-        ydk::YLeaf number_a_cs_up; //type: uint32
-        ydk::YLeaf number_a_cs_down; //type: uint32
-        ydk::YLeaf number_pseudowires; //type: uint32
-        ydk::YLeaf number_p_ws_up; //type: uint32
-        ydk::YLeaf number_p_ws_down; //type: uint32
-        ydk::YLeaf standby_pseudowires; //type: uint32
-        ydk::YLeaf num_vn_is; //type: uint32
-        ydk::YLeaf num_vn_is_up; //type: uint32
-        ydk::YLeaf num_vn_is_down; //type: uint32
-        ydk::YLeaf num_vn_is_unresolved; //type: uint32
-        ydk::YLeaf out_of_memory_state; //type: uint32
-        ydk::YLeaf partially_programmed_bridges; //type: uint32
-        ydk::YLeaf partially_programmed_pseudowires; //type: uint32
-        ydk::YLeaf partially_programmed_a_cs; //type: uint32
-
-}; // L2vpnv2::Active::BridgeSummary
 
 
 }

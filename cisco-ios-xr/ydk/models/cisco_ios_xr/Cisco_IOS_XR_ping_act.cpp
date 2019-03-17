@@ -138,12 +138,10 @@ bool Ping::has_leaf_or_child_of_name(const std::string & name) const
 
 Ping::Input::Input()
     :
-    destination(std::make_shared<Ping::Input::Destination>())
+    destination(nullptr) // presence node
     , ipv4(this, {"destination"})
-    , ipv6(std::make_shared<Ping::Input::Ipv6>())
+    , ipv6(nullptr) // presence node
 {
-    destination->parent = this;
-    ipv6->parent = this;
 
     yang_name = "input"; yang_parent_name = "ping"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -290,7 +288,7 @@ Ping::Input::Destination::Destination()
     outgoing_interface{YType::str, "outgoing-interface"}
 {
 
-    yang_name = "destination"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "destination"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Ping::Input::Destination::~Destination()
@@ -822,7 +820,7 @@ Ping::Input::Ipv6::Ipv6()
     outgoing_interface{YType::str, "outgoing-interface"}
 {
 
-    yang_name = "ipv6"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "ipv6"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Ping::Input::Ipv6::~Ipv6()
@@ -1137,9 +1135,8 @@ bool Ping::Output::has_leaf_or_child_of_name(const std::string & name) const
 Ping::Output::PingResponse::PingResponse()
     :
     ipv4(this, {"destination"})
-    , ipv6(std::make_shared<Ping::Output::PingResponse::Ipv6>())
+    , ipv6(nullptr) // presence node
 {
-    ipv6->parent = this;
 
     yang_name = "ping-response"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -1994,7 +1991,7 @@ Ping::Output::PingResponse::Ipv6::Ipv6()
 {
     replies->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "ping-response"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "ipv6"; yang_parent_name = "ping-response"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Ping::Output::PingResponse::Ipv6::~Ipv6()

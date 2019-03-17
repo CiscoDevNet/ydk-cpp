@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0.0)
 cmake_policy(SET CMP0048 NEW)
-project(ydk_cisco_nx_os VERSION 9.2.2 LANGUAGES C CXX)
+project(ydk_cisco_nx_os VERSION 9.2.3 LANGUAGES C CXX)
 
 # CPack Dynamic Settings
 set (CPACK_PACKAGE_NAME "libydk-cisco-nx-os")
@@ -64,7 +64,7 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
         # <foo>_<VersionNumber>-<DebianRevisionNumber>_<DebianArchitecture>.deb
         # libydk_0.6.0-0.1.alpha_amd64.deb   // Debian
         set (CPACK_PACKAGE_FILE_NAME 
-            "${CPACK_PACKAGE_NAME}_${CPACK_PACKAGE_VERSION}-${CPACK_PACKAGE_RELEASE}_${CPACK_DEBIAN_PACKAGE_ARCHITECTURE}")
+            "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${CPACK_PACKAGE_RELEASE}.${CPACK_DEBIAN_PACKAGE_ARCHITECTURE}")
 
     # Linux Fedora
     elseif(${LSB_RELEASE_ID_SHORT} MATCHES "CentOS")
@@ -97,7 +97,7 @@ include(CPack)
 # include custom Modules
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMakeModules/")
 
-set(YDK_YANG_ARCHIVE cisco_nx_os\@9.2.2)
+set(YDK_YANG_ARCHIVE cisco_nx_os\@9.2.3)
 
 if(NOT LIB_INSTALL_DIR)
     set(LIB_INSTALL_DIR lib)
@@ -108,7 +108,7 @@ if(NOT INCLUDE_INSTALL_DIR)
 endif()
 
 if(NOT YANG_INSTALL_DIR)
-    set(YANG_INSTALL_DIR share/cisco_nx_os\@9.2.2)
+    set(YANG_INSTALL_DIR share/cisco_nx_os\@9.2.3)
 endif()
 
 # set default build type if not specified by user
@@ -132,7 +132,7 @@ set(libydk_cisco_nx_os_headers ydk/models/cisco_nx_os/bundle_info.hpp ydk/models
 
 set(libydk_cisco_nx_os_yang ietf-key-chain.yang ietf-yang-smiv2.yang ietf-ip.yang ietf-syslog-types.yang ietf-inet-types.yang ietf-routing.yang ietf-restconf-monitoring.yang ietf-ospf.yang ietf-netconf-acm.yang ietf-interfaces-ext.yang ietf-diffserv-policy.yang iana-crypt-hash.yang ietf-yang-types.yang ietf-diffserv-target.yang iana-if-type.yang ietf-interfaces.yang ietf-netconf-monitoring.yang policy-types.yang ietf-ipv6-unicast-routing.yang ietf-netconf-with-defaults.yang ietf-yang-library.yang ietf-netconf.yang ietf-diffserv-classifier.yang ietf-diffserv-action.yang ietf-netconf-notifications.yang ietf-ipv4-unicast-routing.yang ietf-yang-push.yang ietf-event-notifications.yang ydk@2016-02-26.yang Cisco-NX-OS-device.yang)
 
-set (libydk_yang_dir ${CMAKE_CURRENT_BINARY_DIR}/cisco_nx_os\@9.2.2)
+set (libydk_yang_dir ${CMAKE_CURRENT_BINARY_DIR}/cisco_nx_os\@9.2.3)
 
 list(APPEND libydk_YANG_FILES "")
 foreach(yang_file IN LISTS libydk_cisco_nx_os_yang)

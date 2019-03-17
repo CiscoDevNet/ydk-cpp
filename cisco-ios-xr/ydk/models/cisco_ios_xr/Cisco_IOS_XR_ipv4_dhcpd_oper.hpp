@@ -579,12 +579,14 @@ class Ipv4Dhcpd::Nodes::Node::Proxy : public ydk::Entity
         class Vrfs; //type: Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs
         class Profiles; //type: Ipv4Dhcpd::Nodes::Node::Proxy::Profiles
         class Statistics; //type: Ipv4Dhcpd::Nodes::Node::Proxy::Statistics
+        class DisconnectHistories; //type: Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories
         class Binding; //type: Ipv4Dhcpd::Nodes::Node::Proxy::Binding
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Proxy::StatisticsInfo> statistics_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Proxy::Vrfs> vrfs;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Proxy::Profiles> profiles;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Proxy::Statistics> statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories> disconnect_histories;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Proxy::Binding> binding;
         
 }; // Ipv4Dhcpd::Nodes::Node::Proxy
@@ -1251,6 +1253,55 @@ class Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::Statistics_
 }; // Ipv4Dhcpd::Nodes::Node::Proxy::Statistics::Ipv4DhcpdProxyStat::Statistics_
 
 
+class Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories : public ydk::Entity
+{
+    public:
+        DisconnectHistories();
+        ~DisconnectHistories();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class DisconnectHistory; //type: Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::DisconnectHistory
+
+        ydk::YList disconnect_history;
+        
+}; // Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories
+
+
+class Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::DisconnectHistory : public ydk::Entity
+{
+    public:
+        DisconnectHistory();
+        ~DisconnectHistory();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf index_; //type: string
+        ydk::YLeaf session_start_time_epoch; //type: uint64
+        ydk::YLeaf session_end_time_epoch; //type: uint64
+        ydk::YLeaf disc_reason; //type: string
+        ydk::YLeaf sub_label; //type: uint32
+        ydk::YLeaf mac_address; //type: string
+
+}; // Ipv4Dhcpd::Nodes::Node::Proxy::DisconnectHistories::DisconnectHistory
+
+
 class Ipv4Dhcpd::Nodes::Node::Proxy::Binding : public ydk::Entity
 {
     public:
@@ -1347,7 +1398,7 @@ class Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client : public ydk::Enti
         ydk::YLeaf is_mbl_subscriber; //type: boolean
         ydk::YLeaf param_request; //type: string
         ydk::YLeaf param_response; //type: string
-        ydk::YLeaf session_start_time; //type: uint64
+        ydk::YLeaf session_start_time_epoch; //type: uint64
         ydk::YLeaf srg_state; //type: uint32
         ydk::YLeafList event_history; //type: list of  uint32
 
@@ -2197,12 +2248,14 @@ class Ipv4Dhcpd::Nodes::Node::Server : public ydk::Entity
         class Profiles; //type: Ipv4Dhcpd::Nodes::Node::Server::Profiles
         class Statistics; //type: Ipv4Dhcpd::Nodes::Node::Server::Statistics
         class Binding; //type: Ipv4Dhcpd::Nodes::Node::Server::Binding
+        class DisconnectHistories; //type: Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories
         class StatisticsInfo; //type: Ipv4Dhcpd::Nodes::Node::Server::StatisticsInfo
         class Vrfs; //type: Ipv4Dhcpd::Nodes::Node::Server::Vrfs
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Server::Profiles> profiles;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Server::Statistics> statistics;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Server::Binding> binding;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories> disconnect_histories;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Server::StatisticsInfo> statistics_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_oper::Ipv4Dhcpd::Nodes::Node::Server::Vrfs> vrfs;
         
@@ -2484,11 +2537,60 @@ class Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client : public ydk::Ent
         ydk::YLeaf is_mbl_subscriber; //type: boolean
         ydk::YLeaf param_request; //type: string
         ydk::YLeaf param_response; //type: string
-        ydk::YLeaf session_start_time; //type: uint64
+        ydk::YLeaf session_start_time_epoch; //type: uint64
         ydk::YLeaf srg_state; //type: uint32
         ydk::YLeafList event_history; //type: list of  uint32
 
 }; // Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client
+
+
+class Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories : public ydk::Entity
+{
+    public:
+        DisconnectHistories();
+        ~DisconnectHistories();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class DisconnectHistory; //type: Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::DisconnectHistory
+
+        ydk::YList disconnect_history;
+        
+}; // Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories
+
+
+class Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::DisconnectHistory : public ydk::Entity
+{
+    public:
+        DisconnectHistory();
+        ~DisconnectHistory();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf index_; //type: string
+        ydk::YLeaf session_start_time_epoch; //type: uint64
+        ydk::YLeaf session_end_time_epoch; //type: uint64
+        ydk::YLeaf disc_reason; //type: string
+        ydk::YLeaf sub_label; //type: uint32
+        ydk::YLeaf mac_address; //type: string
+
+}; // Ipv4Dhcpd::Nodes::Node::Server::DisconnectHistories::DisconnectHistory
 
 
 class Ipv4Dhcpd::Nodes::Node::Server::StatisticsInfo : public ydk::Entity

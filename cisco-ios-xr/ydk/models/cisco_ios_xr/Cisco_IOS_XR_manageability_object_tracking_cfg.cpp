@@ -1330,9 +1330,9 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::has_leaf_or_chi
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdLimits()
     :
-    threshold_up_values(std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues>())
+    up{YType::uint32, "up"},
+    down{YType::uint32, "down"}
 {
-    threshold_up_values->parent = this;
 
     yang_name = "threshold-limits"; yang_parent_name = "threshold-weight"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -1344,13 +1344,15 @@ ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::~Th
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::has_data() const
 {
     if (is_presence_container) return true;
-    return (threshold_up_values !=  nullptr && threshold_up_values->has_data());
+    return up.is_set
+	|| down.is_set;
 }
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::has_operation() const
 {
     return is_set(yfilter)
-	|| (threshold_up_values !=  nullptr && threshold_up_values->has_operation());
+	|| ydk::is_set(up.yfilter)
+	|| ydk::is_set(down.yfilter);
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::get_segment_path() const
@@ -1364,6 +1366,8 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1371,15 +1375,6 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "threshold-up-values")
-    {
-        if(threshold_up_values == nullptr)
-        {
-            threshold_up_values = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues>();
-        }
-        return threshold_up_values;
-    }
-
     return nullptr;
 }
 
@@ -1387,181 +1382,10 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTrack
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(threshold_up_values != nullptr)
-    {
-        _children["threshold-up-values"] = threshold_up_values;
-    }
-
     return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "threshold-up-values")
-        return true;
-    return false;
-}
-
-ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValues()
-    :
-    threshold_up_value(this, {"up"})
-{
-
-    yang_name = "threshold-up-values"; yang_parent_name = "threshold-limits"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::~ThresholdUpValues()
-{
-}
-
-bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<threshold_up_value.len(); index++)
-    {
-        if(threshold_up_value[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::has_operation() const
-{
-    for (std::size_t index=0; index<threshold_up_value.len(); index++)
-    {
-        if(threshold_up_value[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "threshold-up-values";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "threshold-up-value")
-    {
-        auto ent_ = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue>();
-        ent_->parent = this;
-        threshold_up_value.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : threshold_up_value.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "threshold-up-value")
-        return true;
-    return false;
-}
-
-ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::ThresholdUpValue()
-    :
-    up{YType::uint32, "up"},
-    threshold_down{YType::uint32, "threshold-down"}
-{
-
-    yang_name = "threshold-up-value"; yang_parent_name = "threshold-up-values"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::~ThresholdUpValue()
-{
-}
-
-bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::has_data() const
-{
-    if (is_presence_container) return true;
-    return up.is_set
-	|| threshold_down.is_set;
-}
-
-bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(up.yfilter)
-	|| ydk::is_set(threshold_down.yfilter);
-}
-
-std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "threshold-up-value";
-    ADD_KEY_TOKEN(up, "up");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
-    if (threshold_down.is_set || is_set(threshold_down.yfilter)) leaf_name_data.push_back(threshold_down.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "up")
     {
@@ -1569,29 +1393,29 @@ void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits
         up.value_namespace = name_space;
         up.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "threshold-down")
+    if(value_path == "down")
     {
-        threshold_down = value;
-        threshold_down.value_namespace = name_space;
-        threshold_down.value_namespace_prefix = name_space_prefix;
+        down = value;
+        down.value_namespace = name_space;
+        down.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::set_filter(const std::string & value_path, YFilter yfilter)
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "up")
     {
         up.yfilter = yfilter;
     }
-    if(value_path == "threshold-down")
+    if(value_path == "down")
     {
-        threshold_down.yfilter = yfilter;
+        down.yfilter = yfilter;
     }
 }
 
-bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::has_leaf_or_child_of_name(const std::string & name) const
+bool ObjectTrackings::ObjectTracking::TypeList::ThresholdWeight::ThresholdLimits::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "up" || name == "threshold-down")
+    if(name == "up" || name == "down")
         return true;
     return false;
 }
@@ -1866,9 +1690,9 @@ bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::has_leaf_or
 
 ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdLimits()
     :
-    threshold_up_values(std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues>())
+    up{YType::uint32, "up"},
+    down{YType::uint32, "down"}
 {
-    threshold_up_values->parent = this;
 
     yang_name = "threshold-limits"; yang_parent_name = "threshold-percentage"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -1880,13 +1704,15 @@ ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits:
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::has_data() const
 {
     if (is_presence_container) return true;
-    return (threshold_up_values !=  nullptr && threshold_up_values->has_data());
+    return up.is_set
+	|| down.is_set;
 }
 
 bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::has_operation() const
 {
     return is_set(yfilter)
-	|| (threshold_up_values !=  nullptr && threshold_up_values->has_operation());
+	|| ydk::is_set(up.yfilter)
+	|| ydk::is_set(down.yfilter);
 }
 
 std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::get_segment_path() const
@@ -1900,6 +1726,8 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
+    if (down.is_set || is_set(down.yfilter)) leaf_name_data.push_back(down.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1907,15 +1735,6 @@ std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::
 
 std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "threshold-up-values")
-    {
-        if(threshold_up_values == nullptr)
-        {
-            threshold_up_values = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues>();
-        }
-        return threshold_up_values;
-    }
-
     return nullptr;
 }
 
@@ -1923,181 +1742,10 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTrack
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(threshold_up_values != nullptr)
-    {
-        _children["threshold-up-values"] = threshold_up_values;
-    }
-
     return _children;
 }
 
 void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "threshold-up-values")
-        return true;
-    return false;
-}
-
-ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValues()
-    :
-    threshold_up_value(this, {"up"})
-{
-
-    yang_name = "threshold-up-values"; yang_parent_name = "threshold-limits"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::~ThresholdUpValues()
-{
-}
-
-bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<threshold_up_value.len(); index++)
-    {
-        if(threshold_up_value[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::has_operation() const
-{
-    for (std::size_t index=0; index<threshold_up_value.len(); index++)
-    {
-        if(threshold_up_value[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "threshold-up-values";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "threshold-up-value")
-    {
-        auto ent_ = std::make_shared<ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue>();
-        ent_->parent = this;
-        threshold_up_value.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : threshold_up_value.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "threshold-up-value")
-        return true;
-    return false;
-}
-
-ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::ThresholdUpValue()
-    :
-    up{YType::uint32, "up"},
-    threshold_down{YType::uint32, "threshold-down"}
-{
-
-    yang_name = "threshold-up-value"; yang_parent_name = "threshold-up-values"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::~ThresholdUpValue()
-{
-}
-
-bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::has_data() const
-{
-    if (is_presence_container) return true;
-    return up.is_set
-	|| threshold_down.is_set;
-}
-
-bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(up.yfilter)
-	|| ydk::is_set(threshold_down.yfilter);
-}
-
-std::string ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "threshold-up-value";
-    ADD_KEY_TOKEN(up, "up");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (up.is_set || is_set(up.yfilter)) leaf_name_data.push_back(up.get_name_leafdata());
-    if (threshold_down.is_set || is_set(threshold_down.yfilter)) leaf_name_data.push_back(threshold_down.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "up")
     {
@@ -2105,29 +1753,29 @@ void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLi
         up.value_namespace = name_space;
         up.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "threshold-down")
+    if(value_path == "down")
     {
-        threshold_down = value;
-        threshold_down.value_namespace = name_space;
-        threshold_down.value_namespace_prefix = name_space_prefix;
+        down = value;
+        down.value_namespace = name_space;
+        down.value_namespace_prefix = name_space_prefix;
     }
 }
 
-void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::set_filter(const std::string & value_path, YFilter yfilter)
+void ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "up")
     {
         up.yfilter = yfilter;
     }
-    if(value_path == "threshold-down")
+    if(value_path == "down")
     {
-        threshold_down.yfilter = yfilter;
+        down.yfilter = yfilter;
     }
 }
 
-bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::ThresholdUpValues::ThresholdUpValue::has_leaf_or_child_of_name(const std::string & name) const
+bool ObjectTrackings::ObjectTracking::TypeList::ThresholdPercentage::ThresholdLimits::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "up" || name == "threshold-down")
+    if(name == "up" || name == "down")
         return true;
     return false;
 }

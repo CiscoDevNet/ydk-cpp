@@ -72,8 +72,8 @@ const string PROTOCOL_SSH = "ssh";
 const string PROTOCOL_TCP = "tcp";
 
 static bool is_netconf_get_rpc(path::Rpc & rpc);
-static shared_ptr<path::DataNode> handle_netconf_get_output(const string & reply, path::RootSchemaNode & root_schema);
-
+static shared_ptr<path::DataNode> netconf_output_to_datanode(const string & data, path::RootSchemaNode & root_schema);
+static string get_netconf_output(const string & reply);
 
 NetconfSession::NetconfSession(path::Repository & repo,
                                const string& address,
@@ -258,7 +258,9 @@ shared_ptr<path::DataNode> NetconfSession::handle_crud_read(path::Rpc& ydk_rpc) 
 
     string netconf_payload = get_netconf_payload(input, "filter", filter_value);
 
-    return handle_netconf_get_output(execute_payload(netconf_payload), *root_schema);
+    auto data = get_netconf_output(execute_payload(netconf_payload));
+    if (data.empty()) return nullptr;
+    return netconf_output_to_datanode(data, *root_schema);
 }
 
 shared_ptr<path::DataNode> NetconfSession::handle_crud_edit(path::Rpc& ydk_rpc, path::Annotation annotation) const
@@ -293,13 +295,38 @@ shared_ptr<path::DataNode> NetconfSession::handle_netconf_operation(path::Rpc& y
 
     if (is_netconf_get_rpc(ydk_rpc))
     {
-        return handle_netconf_get_output(reply, *root_schema);
+        auto data = get_netconf_output(reply);
+        if (!data.empty())
+            return netconf_output_to_datanode(data, *root_schema);
     }
     else if (ydk_rpc.has_output_node())
     {
         return handle_rpc_output(reply, *root_schema, ydk_rpc.get_input_node().get_path());
     }
     return nullptr;
+}
+
+std::string NetconfSession::execute_netconf_operation(path::Rpc& ydk_rpc) const
+{
+    path::Codec codec_service{};
+    auto netconf_payload = codec_service.encode(ydk_rpc.get_input_node(), EncodingFormat::XML, true);
+    string payload{"<rpc xmlns=\"urn:ietf:params:xml:ns:netconf:base:1.0\">"};
+    netconf_payload = payload + netconf_payload + "</rpc>";
+
+    log_rpc_request(netconf_payload);
+
+    string reply = execute_payload(netconf_payload);
+    check_rpc_reply_for_error(reply);
+
+    if (is_netconf_get_rpc(ydk_rpc))
+    {
+        return get_netconf_output(reply);
+    }
+    else if (ydk_rpc.has_output_node())
+    {
+        handle_rpc_output(reply, *root_schema, ydk_rpc.get_input_node().get_path());
+    }
+    return {};
 }
 
 shared_ptr<path::DataNode> NetconfSession::invoke(path::DataNode& datanode) const
@@ -553,14 +580,13 @@ static bool is_netconf_get_rpc(path::Rpc & rpc)
             or rpc.get_schema_node().get_path() == "/ietf-netconf:get-config");
 }
 
-static shared_ptr<path::DataNode> handle_netconf_get_output(const string & reply, path::RootSchemaNode & root_schema)
+static std::string get_netconf_output(const string & reply)
 {
-    path::Codec codec_service{};
     auto empty_data = reply.find("<data/>");
     if(empty_data != string::npos)
     {
         YLOG_INFO( "Found empty data tag");
-        return nullptr;
+        return {};
     }
 
     auto data_start = reply.find("<data>");
@@ -577,8 +603,12 @@ static shared_ptr<path::DataNode> handle_netconf_get_output(const string & reply
         throw(YError{"No end data tag found"});
     }
 
-    string data = reply.substr(data_start, data_end-data_start);
+    return reply.substr(data_start, data_end-data_start);
+}
 
+static shared_ptr<path::DataNode> netconf_output_to_datanode(const string & data, path::RootSchemaNode & root_schema)
+{
+    path::Codec codec_service{};
     auto datanode = shared_ptr<path::DataNode>(codec_service.decode(root_schema, data, EncodingFormat::XML));
 
     if(!datanode){

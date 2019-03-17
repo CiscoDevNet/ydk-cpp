@@ -3436,7 +3436,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Neighbors::Neighbor : pu
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf neighbor_address; //type: string
         ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf neighbor_address_xr; //type: string
+        ydk::YLeaf neighbor_ip_address; //type: string
         ydk::YLeaf neighbor_interface_name; //type: string
         ydk::YLeaf neighbor_dr_priority; //type: uint8
         ydk::YLeaf neighbor_state; //type: NeighborState
@@ -3954,7 +3954,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::Neighbo
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf neighbor_address_xr; //type: string
+        ydk::YLeaf neighbor_ip_address; //type: string
         ydk::YLeaf neighbor_interface_name; //type: string
         ydk::YLeaf neighbor_dr_priority; //type: uint8
         ydk::YLeaf neighbor_state; //type: NeighborState

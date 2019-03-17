@@ -37,6 +37,7 @@
 #include "errors.hpp"
 #include "types.hpp"
 #include "validation_service.hpp"
+#include "path_api.hpp"
 
 namespace ydk {
 
@@ -1082,8 +1083,9 @@ public:
     std::shared_ptr<DataNode> invoke(Rpc& rpc) const;
     std::shared_ptr<DataNode> invoke(DataNode& rpc) const;
     std::vector<std::string> get_capabilities() const;
+    std::string execute_netconf_operation(Rpc& netconf_rpc) const;
 
-private:
+  private:
     std::vector<std::string> get_yang_1_1_capabilities() const;
     std::shared_ptr<DataNode> handle_crud_edit(
         Rpc& rpc, Annotation ann) const;
@@ -1103,7 +1105,7 @@ private:
                            int timeout);
     void initialize_repo(Repository& repo, bool on_demand);
     std::string execute_payload(const std::string & payload) const;
-private:
+
     std::shared_ptr<NetconfClient> client;
     std::shared_ptr<ModelProvider> model_provider;
     std::shared_ptr<RootSchemaNode> root_schema;

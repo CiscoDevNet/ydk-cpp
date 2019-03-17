@@ -90,18 +90,18 @@ class ShowFpd::Locations::Location : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf location_name; //type: string
-        class Details; //type: ShowFpd::Locations::Location::Details
+        class Fpds; //type: ShowFpd::Locations::Location::Fpds
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_show_fpd_loc_ng_oper::ShowFpd::Locations::Location::Details> details;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_show_fpd_loc_ng_oper::ShowFpd::Locations::Location::Fpds> fpds;
         
 }; // ShowFpd::Locations::Location
 
 
-class ShowFpd::Locations::Location::Details : public ydk::Entity
+class ShowFpd::Locations::Location::Fpds : public ydk::Entity
 {
     public:
-        Details();
-        ~Details();
+        Fpds();
+        ~Fpds();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -113,18 +113,18 @@ class ShowFpd::Locations::Location::Details : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Detail; //type: ShowFpd::Locations::Location::Details::Detail
+        class Fpd; //type: ShowFpd::Locations::Location::Fpds::Fpd
 
-        ydk::YList detail;
+        ydk::YList fpd;
         
-}; // ShowFpd::Locations::Location::Details
+}; // ShowFpd::Locations::Location::Fpds
 
 
-class ShowFpd::Locations::Location::Details::Detail : public ydk::Entity
+class ShowFpd::Locations::Location::Fpds::Fpd : public ydk::Entity
 {
     public:
-        Detail();
-        ~Detail();
+        Fpd();
+        ~Fpd();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -138,14 +138,14 @@ class ShowFpd::Locations::Location::Details::Detail : public ydk::Entity
 
         ydk::YLeaf fpd_name; //type: string
         ydk::YLeaf upgrade_status; //type: string
-        class FpdInfoDetaile; //type: ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile
+        class FpdInfoDetaile; //type: ShowFpd::Locations::Location::Fpds::Fpd::FpdInfoDetaile
 
         ydk::YList fpd_info_detaile;
         
-}; // ShowFpd::Locations::Location::Details::Detail
+}; // ShowFpd::Locations::Location::Fpds::Fpd
 
 
-class ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile : public ydk::Entity
+class ShowFpd::Locations::Location::Fpds::Fpd::FpdInfoDetaile : public ydk::Entity
 {
     public:
         FpdInfoDetaile();
@@ -170,7 +170,7 @@ class ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile : public ydk
         ydk::YLeaf running_version; //type: string
         ydk::YLeaf programd_version; //type: string
 
-}; // ShowFpd::Locations::Location::Details::Detail::FpdInfoDetaile
+}; // ShowFpd::Locations::Location::Fpds::Fpd::FpdInfoDetaile
 
 
 class ShowFpd::HwModuleFpd : public ydk::Entity

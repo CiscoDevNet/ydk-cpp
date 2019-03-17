@@ -281,6 +281,7 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfPr
 
         ydk::YLeaf table_is_active; //type: boolean
         ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf def_orig_enabled; //type: boolean
         ydk::YLeaf table_version; //type: uint32
         ydk::YLeaf rd_version; //type: uint32
         ydk::YLeaf rib_version; //type: uint32
@@ -1120,6 +1121,7 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Advertised
         ydk::YLeaf is_tunnel_up; //type: boolean
         ydk::YLeaf is_tunnel_info_stale; //type: boolean
         ydk::YLeaf is_tunnel_registered; //type: boolean
+        ydk::YLeaf is_bgp_te_registered; //type: boolean
         ydk::YLeaf tunnel_v6_required; //type: boolean
         ydk::YLeaf tunnel_v6_enabled; //type: boolean
         ydk::YLeaf tunnel_notif_first_rcvd; //type: boolean
@@ -1130,6 +1132,7 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Advertised
         ydk::YLeaf tunnel_color; //type: uint32
         ydk::YLeaf is_tunnel_color_only; //type: boolean
         ydk::YLeaf tunnel_endpoint_afi; //type: BgpAfi
+        ydk::YLeaf flags; //type: uint32
 
 }; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NhTunnel
 

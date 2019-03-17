@@ -1432,6 +1432,7 @@ class Aaa::Diameter::Peers : public ydk::Entity
         ydk::YLeaf conn_retry_timer; //type: uint32
         ydk::YLeaf watchdog_timer; //type: uint32
         ydk::YLeaf transaction_timer; //type: uint32
+        ydk::YLeaf peer_num; //type: uint32
         ydk::YLeaf trans_total; //type: uint32
         ydk::YLeaf trans_max; //type: uint32
         class Peer; //type: Aaa::Diameter::Peers::Peer

@@ -15,17 +15,19 @@ Aaa::Aaa()
     :
     authentication(std::make_shared<Aaa::Authentication>())
     , authorization(std::make_shared<Aaa::Authorization>())
+    , tailf_aaa_accounting(std::make_shared<Aaa::TailfAaaAccounting>())
     , ios(nullptr) // presence node
     , disaster_recovery(std::make_shared<Aaa::DisasterRecovery>())
     , privileged_access(std::make_shared<Aaa::PrivilegedAccess>())
-    , accounting(std::make_shared<Aaa::Accounting>())
+    , cisco_ios_xr_sysadmin_aaa_aaa_show_accounting_(std::make_shared<Aaa::CiscoIOSXRSysadminAaaAaaShowAccounting>())
     , user_group(std::make_shared<Aaa::UserGroup>())
 {
     authentication->parent = this;
     authorization->parent = this;
+    tailf_aaa_accounting->parent = this;
     disaster_recovery->parent = this;
     privileged_access->parent = this;
-    accounting->parent = this;
+    cisco_ios_xr_sysadmin_aaa_aaa_show_accounting_->parent = this;
     user_group->parent = this;
 
     yang_name = "aaa"; yang_parent_name = "tailf-aaa"; is_top_level_class = true; has_list_ancestor = false; 
@@ -40,10 +42,11 @@ bool Aaa::has_data() const
     if (is_presence_container) return true;
     return (authentication !=  nullptr && authentication->has_data())
 	|| (authorization !=  nullptr && authorization->has_data())
+	|| (tailf_aaa_accounting !=  nullptr && tailf_aaa_accounting->has_data())
 	|| (ios !=  nullptr && ios->has_data())
 	|| (disaster_recovery !=  nullptr && disaster_recovery->has_data())
 	|| (privileged_access !=  nullptr && privileged_access->has_data())
-	|| (accounting !=  nullptr && accounting->has_data())
+	|| (cisco_ios_xr_sysadmin_aaa_aaa_show_accounting_ !=  nullptr && cisco_ios_xr_sysadmin_aaa_aaa_show_accounting_->has_data())
 	|| (user_group !=  nullptr && user_group->has_data());
 }
 
@@ -52,10 +55,11 @@ bool Aaa::has_operation() const
     return is_set(yfilter)
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (authorization !=  nullptr && authorization->has_operation())
+	|| (tailf_aaa_accounting !=  nullptr && tailf_aaa_accounting->has_operation())
 	|| (ios !=  nullptr && ios->has_operation())
 	|| (disaster_recovery !=  nullptr && disaster_recovery->has_operation())
 	|| (privileged_access !=  nullptr && privileged_access->has_operation())
-	|| (accounting !=  nullptr && accounting->has_operation())
+	|| (cisco_ios_xr_sysadmin_aaa_aaa_show_accounting_ !=  nullptr && cisco_ios_xr_sysadmin_aaa_aaa_show_accounting_->has_operation())
 	|| (user_group !=  nullptr && user_group->has_operation());
 }
 
@@ -95,6 +99,15 @@ std::shared_ptr<ydk::Entity> Aaa::get_child_by_name(const std::string & child_ya
         return authorization;
     }
 
+    if(child_yang_name == "accounting")
+    {
+        if(tailf_aaa_accounting == nullptr)
+        {
+            tailf_aaa_accounting = std::make_shared<Aaa::TailfAaaAccounting>();
+        }
+        return tailf_aaa_accounting;
+    }
+
     if(child_yang_name == "ios")
     {
         if(ios == nullptr)
@@ -124,11 +137,11 @@ std::shared_ptr<ydk::Entity> Aaa::get_child_by_name(const std::string & child_ya
 
     if(child_yang_name == "Cisco-IOS-XR-sysadmin-aaa-aaa-show:accounting")
     {
-        if(accounting == nullptr)
+        if(cisco_ios_xr_sysadmin_aaa_aaa_show_accounting_ == nullptr)
         {
-            accounting = std::make_shared<Aaa::Accounting>();
+            cisco_ios_xr_sysadmin_aaa_aaa_show_accounting_ = std::make_shared<Aaa::CiscoIOSXRSysadminAaaAaaShowAccounting>();
         }
-        return accounting;
+        return cisco_ios_xr_sysadmin_aaa_aaa_show_accounting_;
     }
 
     if(child_yang_name == "Cisco-IOS-XR-sysadmin-aaa-aaa-show:user-group")
@@ -157,6 +170,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::get_children() const
         _children["authorization"] = authorization;
     }
 
+    if(tailf_aaa_accounting != nullptr)
+    {
+        _children["accounting"] = tailf_aaa_accounting;
+    }
+
     if(ios != nullptr)
     {
         _children["ios"] = ios;
@@ -172,9 +190,9 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::get_children() const
         _children["Cisco-IOS-XR-sysadmin-aaa-aaa-show:privileged-access"] = privileged_access;
     }
 
-    if(accounting != nullptr)
+    if(cisco_ios_xr_sysadmin_aaa_aaa_show_accounting_ != nullptr)
     {
-        _children["Cisco-IOS-XR-sysadmin-aaa-aaa-show:accounting"] = accounting;
+        _children["Cisco-IOS-XR-sysadmin-aaa-aaa-show:accounting"] = cisco_ios_xr_sysadmin_aaa_aaa_show_accounting_;
     }
 
     if(user_group != nullptr)
@@ -220,7 +238,7 @@ std::map<std::pair<std::string, std::string>, std::string> Aaa::get_namespace_id
 
 bool Aaa::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "authentication" || name == "authorization" || name == "ios" || name == "disaster-recovery" || name == "privileged-access" || name == "accounting" || name == "user-group")
+    if(name == "authentication" || name == "authorization" || name == "accounting" || name == "ios" || name == "disaster-recovery" || name == "privileged-access" || name == "accounting" || name == "user-group")
         return true;
     return false;
 }
@@ -229,9 +247,11 @@ Aaa::Authentication::Authentication()
     :
     users(std::make_shared<Aaa::Authentication::Users>())
     , groups(std::make_shared<Aaa::Authentication::Groups>())
+    , login(std::make_shared<Aaa::Authentication::Login>())
 {
     users->parent = this;
     groups->parent = this;
+    login->parent = this;
 
     yang_name = "authentication"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -244,14 +264,16 @@ bool Aaa::Authentication::has_data() const
 {
     if (is_presence_container) return true;
     return (users !=  nullptr && users->has_data())
-	|| (groups !=  nullptr && groups->has_data());
+	|| (groups !=  nullptr && groups->has_data())
+	|| (login !=  nullptr && login->has_data());
 }
 
 bool Aaa::Authentication::has_operation() const
 {
     return is_set(yfilter)
 	|| (users !=  nullptr && users->has_operation())
-	|| (groups !=  nullptr && groups->has_operation());
+	|| (groups !=  nullptr && groups->has_operation())
+	|| (login !=  nullptr && login->has_operation());
 }
 
 std::string Aaa::Authentication::get_absolute_path() const
@@ -297,6 +319,15 @@ std::shared_ptr<ydk::Entity> Aaa::Authentication::get_child_by_name(const std::s
         return groups;
     }
 
+    if(child_yang_name == "login")
+    {
+        if(login == nullptr)
+        {
+            login = std::make_shared<Aaa::Authentication::Login>();
+        }
+        return login;
+    }
+
     return nullptr;
 }
 
@@ -314,6 +345,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Authentication::get_chi
         _children["groups"] = groups;
     }
 
+    if(login != nullptr)
+    {
+        _children["login"] = login;
+    }
+
     return _children;
 }
 
@@ -327,7 +363,7 @@ void Aaa::Authentication::set_filter(const std::string & value_path, YFilter yfi
 
 bool Aaa::Authentication::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "users" || name == "groups")
+    if(name == "users" || name == "groups" || name == "login")
         return true;
     return false;
 }
@@ -435,8 +471,8 @@ bool Aaa::Authentication::Users::has_leaf_or_child_of_name(const std::string & n
 Aaa::Authentication::Users::User::User()
     :
     name{YType::str, "name"},
-    uid{YType::int32, "uid"},
-    gid{YType::int32, "gid"},
+    uid{YType::uint32, "uid"},
+    gid{YType::uint32, "gid"},
     password{YType::str, "password"},
     ssh_keydir{YType::str, "ssh_keydir"},
     homedir{YType::str, "homedir"}
@@ -691,7 +727,7 @@ bool Aaa::Authentication::Groups::has_leaf_or_child_of_name(const std::string & 
 Aaa::Authentication::Groups::Group::Group()
     :
     name{YType::str, "name"},
-    gid{YType::int32, "gid"},
+    gid{YType::uint32, "gid"},
     users{YType::str, "users"}
 {
 
@@ -802,13 +838,189 @@ bool Aaa::Authentication::Groups::Group::has_leaf_or_child_of_name(const std::st
     return false;
 }
 
+Aaa::Authentication::Login::Login()
+    :
+    group(std::make_shared<Aaa::Authentication::Login::Group>())
+{
+    group->parent = this;
+
+    yang_name = "login"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Aaa::Authentication::Login::~Login()
+{
+}
+
+bool Aaa::Authentication::Login::has_data() const
+{
+    if (is_presence_container) return true;
+    return (group !=  nullptr && group->has_data());
+}
+
+bool Aaa::Authentication::Login::has_operation() const
+{
+    return is_set(yfilter)
+	|| (group !=  nullptr && group->has_operation());
+}
+
+std::string Aaa::Authentication::Login::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-aaa:aaa/authentication/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Authentication::Login::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "login";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Authentication::Login::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Aaa::Authentication::Login::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "group")
+    {
+        if(group == nullptr)
+        {
+            group = std::make_shared<Aaa::Authentication::Login::Group>();
+        }
+        return group;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Authentication::Login::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(group != nullptr)
+    {
+        _children["group"] = group;
+    }
+
+    return _children;
+}
+
+void Aaa::Authentication::Login::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::Authentication::Login::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Authentication::Login::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group")
+        return true;
+    return false;
+}
+
+Aaa::Authentication::Login::Group::Group()
+    :
+    tacacs{YType::empty, "tacacs"}
+{
+
+    yang_name = "group"; yang_parent_name = "login"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Aaa::Authentication::Login::Group::~Group()
+{
+}
+
+bool Aaa::Authentication::Login::Group::has_data() const
+{
+    if (is_presence_container) return true;
+    return tacacs.is_set;
+}
+
+bool Aaa::Authentication::Login::Group::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tacacs.yfilter);
+}
+
+std::string Aaa::Authentication::Login::Group::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-aaa:aaa/authentication/login/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Authentication::Login::Group::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "group";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Authentication::Login::Group::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tacacs.is_set || is_set(tacacs.yfilter)) leaf_name_data.push_back(tacacs.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Aaa::Authentication::Login::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Authentication::Login::Group::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Aaa::Authentication::Login::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tacacs")
+    {
+        tacacs = value;
+        tacacs.value_namespace = name_space;
+        tacacs.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Authentication::Login::Group::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tacacs")
+    {
+        tacacs.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Authentication::Login::Group::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tacacs")
+        return true;
+    return false;
+}
+
 Aaa::Authorization::Authorization()
     :
     cmdrules(std::make_shared<Aaa::Authorization::Cmdrules>())
     , datarules(std::make_shared<Aaa::Authorization::Datarules>())
+    , commands(std::make_shared<Aaa::Authorization::Commands>())
 {
     cmdrules->parent = this;
     datarules->parent = this;
+    commands->parent = this;
 
     yang_name = "authorization"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -821,14 +1033,16 @@ bool Aaa::Authorization::has_data() const
 {
     if (is_presence_container) return true;
     return (cmdrules !=  nullptr && cmdrules->has_data())
-	|| (datarules !=  nullptr && datarules->has_data());
+	|| (datarules !=  nullptr && datarules->has_data())
+	|| (commands !=  nullptr && commands->has_data());
 }
 
 bool Aaa::Authorization::has_operation() const
 {
     return is_set(yfilter)
 	|| (cmdrules !=  nullptr && cmdrules->has_operation())
-	|| (datarules !=  nullptr && datarules->has_operation());
+	|| (datarules !=  nullptr && datarules->has_operation())
+	|| (commands !=  nullptr && commands->has_operation());
 }
 
 std::string Aaa::Authorization::get_absolute_path() const
@@ -874,6 +1088,15 @@ std::shared_ptr<ydk::Entity> Aaa::Authorization::get_child_by_name(const std::st
         return datarules;
     }
 
+    if(child_yang_name == "commands")
+    {
+        if(commands == nullptr)
+        {
+            commands = std::make_shared<Aaa::Authorization::Commands>();
+        }
+        return commands;
+    }
+
     return nullptr;
 }
 
@@ -891,6 +1114,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Authorization::get_chil
         _children["datarules"] = datarules;
     }
 
+    if(commands != nullptr)
+    {
+        _children["commands"] = commands;
+    }
+
     return _children;
 }
 
@@ -904,7 +1132,7 @@ void Aaa::Authorization::set_filter(const std::string & value_path, YFilter yfil
 
 bool Aaa::Authorization::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "cmdrules" || name == "datarules")
+    if(name == "cmdrules" || name == "datarules" || name == "commands")
         return true;
     return false;
 }
@@ -1431,6 +1659,457 @@ void Aaa::Authorization::Datarules::Datarule::set_filter(const std::string & val
 bool Aaa::Authorization::Datarules::Datarule::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "index" || name == "namespace" || name == "context" || name == "keypath" || name == "group" || name == "ops" || name == "action")
+        return true;
+    return false;
+}
+
+Aaa::Authorization::Commands::Commands()
+    :
+    group(std::make_shared<Aaa::Authorization::Commands::Group>())
+{
+    group->parent = this;
+
+    yang_name = "commands"; yang_parent_name = "authorization"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Aaa::Authorization::Commands::~Commands()
+{
+}
+
+bool Aaa::Authorization::Commands::has_data() const
+{
+    if (is_presence_container) return true;
+    return (group !=  nullptr && group->has_data());
+}
+
+bool Aaa::Authorization::Commands::has_operation() const
+{
+    return is_set(yfilter)
+	|| (group !=  nullptr && group->has_operation());
+}
+
+std::string Aaa::Authorization::Commands::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-aaa:aaa/authorization/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Authorization::Commands::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "commands";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Authorization::Commands::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Aaa::Authorization::Commands::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "group")
+    {
+        if(group == nullptr)
+        {
+            group = std::make_shared<Aaa::Authorization::Commands::Group>();
+        }
+        return group;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Authorization::Commands::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(group != nullptr)
+    {
+        _children["group"] = group;
+    }
+
+    return _children;
+}
+
+void Aaa::Authorization::Commands::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::Authorization::Commands::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::Authorization::Commands::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group")
+        return true;
+    return false;
+}
+
+Aaa::Authorization::Commands::Group::Group()
+    :
+    tacacs{YType::empty, "tacacs"},
+    none{YType::empty, "none"}
+{
+
+    yang_name = "group"; yang_parent_name = "commands"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Aaa::Authorization::Commands::Group::~Group()
+{
+}
+
+bool Aaa::Authorization::Commands::Group::has_data() const
+{
+    if (is_presence_container) return true;
+    return tacacs.is_set
+	|| none.is_set;
+}
+
+bool Aaa::Authorization::Commands::Group::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tacacs.yfilter)
+	|| ydk::is_set(none.yfilter);
+}
+
+std::string Aaa::Authorization::Commands::Group::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-aaa:aaa/authorization/commands/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::Authorization::Commands::Group::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "group";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::Authorization::Commands::Group::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tacacs.is_set || is_set(tacacs.yfilter)) leaf_name_data.push_back(tacacs.get_name_leafdata());
+    if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Aaa::Authorization::Commands::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Authorization::Commands::Group::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Aaa::Authorization::Commands::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tacacs")
+    {
+        tacacs = value;
+        tacacs.value_namespace = name_space;
+        tacacs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "none")
+    {
+        none = value;
+        none.value_namespace = name_space;
+        none.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::Authorization::Commands::Group::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tacacs")
+    {
+        tacacs.yfilter = yfilter;
+    }
+    if(value_path == "none")
+    {
+        none.yfilter = yfilter;
+    }
+}
+
+bool Aaa::Authorization::Commands::Group::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tacacs" || name == "none")
+        return true;
+    return false;
+}
+
+Aaa::TailfAaaAccounting::TailfAaaAccounting()
+    :
+    commands(std::make_shared<Aaa::TailfAaaAccounting::Commands>())
+{
+    commands->parent = this;
+
+    yang_name = "accounting"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Aaa::TailfAaaAccounting::~TailfAaaAccounting()
+{
+}
+
+bool Aaa::TailfAaaAccounting::has_data() const
+{
+    if (is_presence_container) return true;
+    return (commands !=  nullptr && commands->has_data());
+}
+
+bool Aaa::TailfAaaAccounting::has_operation() const
+{
+    return is_set(yfilter)
+	|| (commands !=  nullptr && commands->has_operation());
+}
+
+std::string Aaa::TailfAaaAccounting::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-aaa:aaa/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::TailfAaaAccounting::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "accounting";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::TailfAaaAccounting::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Aaa::TailfAaaAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "commands")
+    {
+        if(commands == nullptr)
+        {
+            commands = std::make_shared<Aaa::TailfAaaAccounting::Commands>();
+        }
+        return commands;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::TailfAaaAccounting::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(commands != nullptr)
+    {
+        _children["commands"] = commands;
+    }
+
+    return _children;
+}
+
+void Aaa::TailfAaaAccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::TailfAaaAccounting::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::TailfAaaAccounting::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "commands")
+        return true;
+    return false;
+}
+
+Aaa::TailfAaaAccounting::Commands::Commands()
+    :
+    group(std::make_shared<Aaa::TailfAaaAccounting::Commands::Group>())
+{
+    group->parent = this;
+
+    yang_name = "commands"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Aaa::TailfAaaAccounting::Commands::~Commands()
+{
+}
+
+bool Aaa::TailfAaaAccounting::Commands::has_data() const
+{
+    if (is_presence_container) return true;
+    return (group !=  nullptr && group->has_data());
+}
+
+bool Aaa::TailfAaaAccounting::Commands::has_operation() const
+{
+    return is_set(yfilter)
+	|| (group !=  nullptr && group->has_operation());
+}
+
+std::string Aaa::TailfAaaAccounting::Commands::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-aaa:aaa/accounting/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::TailfAaaAccounting::Commands::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "commands";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::TailfAaaAccounting::Commands::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Aaa::TailfAaaAccounting::Commands::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "group")
+    {
+        if(group == nullptr)
+        {
+            group = std::make_shared<Aaa::TailfAaaAccounting::Commands::Group>();
+        }
+        return group;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::TailfAaaAccounting::Commands::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(group != nullptr)
+    {
+        _children["group"] = group;
+    }
+
+    return _children;
+}
+
+void Aaa::TailfAaaAccounting::Commands::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Aaa::TailfAaaAccounting::Commands::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Aaa::TailfAaaAccounting::Commands::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group")
+        return true;
+    return false;
+}
+
+Aaa::TailfAaaAccounting::Commands::Group::Group()
+    :
+    tacacs{YType::empty, "tacacs"}
+{
+
+    yang_name = "group"; yang_parent_name = "commands"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Aaa::TailfAaaAccounting::Commands::Group::~Group()
+{
+}
+
+bool Aaa::TailfAaaAccounting::Commands::Group::has_data() const
+{
+    if (is_presence_container) return true;
+    return tacacs.is_set;
+}
+
+bool Aaa::TailfAaaAccounting::Commands::Group::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tacacs.yfilter);
+}
+
+std::string Aaa::TailfAaaAccounting::Commands::Group::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-aaa:aaa/accounting/commands/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Aaa::TailfAaaAccounting::Commands::Group::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "group";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Aaa::TailfAaaAccounting::Commands::Group::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tacacs.is_set || is_set(tacacs.yfilter)) leaf_name_data.push_back(tacacs.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Aaa::TailfAaaAccounting::Commands::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::TailfAaaAccounting::Commands::Group::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Aaa::TailfAaaAccounting::Commands::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tacacs")
+    {
+        tacacs = value;
+        tacacs.value_namespace = name_space;
+        tacacs.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Aaa::TailfAaaAccounting::Commands::Group::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tacacs")
+    {
+        tacacs.yfilter = yfilter;
+    }
+}
+
+bool Aaa::TailfAaaAccounting::Commands::Group::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tacacs")
         return true;
     return false;
 }
@@ -2219,7 +2898,7 @@ bool Aaa::PrivilegedAccess::has_leaf_or_child_of_name(const std::string & name) 
     return false;
 }
 
-Aaa::Accounting::Accounting()
+Aaa::CiscoIOSXRSysadminAaaAaaShowAccounting::CiscoIOSXRSysadminAaaAaaShowAccounting()
     :
     log_data{YType::str, "log-data"}
 {
@@ -2227,37 +2906,37 @@ Aaa::Accounting::Accounting()
     yang_name = "accounting"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
 }
 
-Aaa::Accounting::~Accounting()
+Aaa::CiscoIOSXRSysadminAaaAaaShowAccounting::~CiscoIOSXRSysadminAaaAaaShowAccounting()
 {
 }
 
-bool Aaa::Accounting::has_data() const
+bool Aaa::CiscoIOSXRSysadminAaaAaaShowAccounting::has_data() const
 {
     if (is_presence_container) return true;
     return log_data.is_set;
 }
 
-bool Aaa::Accounting::has_operation() const
+bool Aaa::CiscoIOSXRSysadminAaaAaaShowAccounting::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(log_data.yfilter);
 }
 
-std::string Aaa::Accounting::get_absolute_path() const
+std::string Aaa::CiscoIOSXRSysadminAaaAaaShowAccounting::get_absolute_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "tailf-aaa:aaa/" << get_segment_path();
     return path_buffer.str();
 }
 
-std::string Aaa::Accounting::get_segment_path() const
+std::string Aaa::CiscoIOSXRSysadminAaaAaaShowAccounting::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "Cisco-IOS-XR-sysadmin-aaa-aaa-show:accounting";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > Aaa::Accounting::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > Aaa::CiscoIOSXRSysadminAaaAaaShowAccounting::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -2267,19 +2946,19 @@ std::vector<std::pair<std::string, LeafData> > Aaa::Accounting::get_name_leaf_da
 
 }
 
-std::shared_ptr<ydk::Entity> Aaa::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> Aaa::CiscoIOSXRSysadminAaaAaaShowAccounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::Accounting::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> Aaa::CiscoIOSXRSysadminAaaAaaShowAccounting::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void Aaa::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void Aaa::CiscoIOSXRSysadminAaaAaaShowAccounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "log-data")
     {
@@ -2289,7 +2968,7 @@ void Aaa::Accounting::set_value(const std::string & value_path, const std::strin
     }
 }
 
-void Aaa::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
+void Aaa::CiscoIOSXRSysadminAaaAaaShowAccounting::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "log-data")
     {
@@ -2297,7 +2976,7 @@ void Aaa::Accounting::set_filter(const std::string & value_path, YFilter yfilter
     }
 }
 
-bool Aaa::Accounting::has_leaf_or_child_of_name(const std::string & name) const
+bool Aaa::CiscoIOSXRSysadminAaaAaaShowAccounting::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "log-data")
         return true;

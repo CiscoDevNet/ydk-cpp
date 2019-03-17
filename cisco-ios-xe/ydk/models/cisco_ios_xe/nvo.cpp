@@ -287,8 +287,8 @@ NvoInstances::NvoInstance::VirtualNetwork::VirtualNetwork()
     vni_start{YType::uint32, "vni-start"},
     vni_end{YType::uint32, "vni-end"},
     bgp{YType::empty, "bgp"},
-    suppress_arp{YType::empty, "suppress-arp"},
     end_host_discovery{YType::enumeration, "end-host-discovery"},
+    suppress_arp{YType::empty, "suppress-arp"},
     routing_instance{YType::str, "routing-instance"}
         ,
     multicast(std::make_shared<NvoInstances::NvoInstance::VirtualNetwork::Multicast>())
@@ -314,8 +314,8 @@ bool NvoInstances::NvoInstance::VirtualNetwork::has_data() const
     return vni_start.is_set
 	|| vni_end.is_set
 	|| bgp.is_set
-	|| suppress_arp.is_set
 	|| end_host_discovery.is_set
+	|| suppress_arp.is_set
 	|| routing_instance.is_set
 	|| (multicast !=  nullptr && multicast->has_data());
 }
@@ -331,8 +331,8 @@ bool NvoInstances::NvoInstance::VirtualNetwork::has_operation() const
 	|| ydk::is_set(vni_start.yfilter)
 	|| ydk::is_set(vni_end.yfilter)
 	|| ydk::is_set(bgp.yfilter)
-	|| ydk::is_set(suppress_arp.yfilter)
 	|| ydk::is_set(end_host_discovery.yfilter)
+	|| ydk::is_set(suppress_arp.yfilter)
 	|| ydk::is_set(routing_instance.yfilter)
 	|| (multicast !=  nullptr && multicast->has_operation());
 }
@@ -353,8 +353,8 @@ std::vector<std::pair<std::string, LeafData> > NvoInstances::NvoInstance::Virtua
     if (vni_start.is_set || is_set(vni_start.yfilter)) leaf_name_data.push_back(vni_start.get_name_leafdata());
     if (vni_end.is_set || is_set(vni_end.yfilter)) leaf_name_data.push_back(vni_end.get_name_leafdata());
     if (bgp.is_set || is_set(bgp.yfilter)) leaf_name_data.push_back(bgp.get_name_leafdata());
-    if (suppress_arp.is_set || is_set(suppress_arp.yfilter)) leaf_name_data.push_back(suppress_arp.get_name_leafdata());
     if (end_host_discovery.is_set || is_set(end_host_discovery.yfilter)) leaf_name_data.push_back(end_host_discovery.get_name_leafdata());
+    if (suppress_arp.is_set || is_set(suppress_arp.yfilter)) leaf_name_data.push_back(suppress_arp.get_name_leafdata());
     if (routing_instance.is_set || is_set(routing_instance.yfilter)) leaf_name_data.push_back(routing_instance.get_name_leafdata());
 
     return leaf_name_data;
@@ -424,17 +424,17 @@ void NvoInstances::NvoInstance::VirtualNetwork::set_value(const std::string & va
         bgp.value_namespace = name_space;
         bgp.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "suppress-arp")
-    {
-        suppress_arp = value;
-        suppress_arp.value_namespace = name_space;
-        suppress_arp.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "end-host-discovery")
     {
         end_host_discovery = value;
         end_host_discovery.value_namespace = name_space;
         end_host_discovery.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "suppress-arp")
+    {
+        suppress_arp = value;
+        suppress_arp.value_namespace = name_space;
+        suppress_arp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "routing-instance")
     {
@@ -458,13 +458,13 @@ void NvoInstances::NvoInstance::VirtualNetwork::set_filter(const std::string & v
     {
         bgp.yfilter = yfilter;
     }
-    if(value_path == "suppress-arp")
-    {
-        suppress_arp.yfilter = yfilter;
-    }
     if(value_path == "end-host-discovery")
     {
         end_host_discovery.yfilter = yfilter;
+    }
+    if(value_path == "suppress-arp")
+    {
+        suppress_arp.yfilter = yfilter;
     }
     if(value_path == "routing-instance")
     {
@@ -474,7 +474,7 @@ void NvoInstances::NvoInstance::VirtualNetwork::set_filter(const std::string & v
 
 bool NvoInstances::NvoInstance::VirtualNetwork::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "multicast" || name == "peers" || name == "vni-start" || name == "vni-end" || name == "bgp" || name == "suppress-arp" || name == "end-host-discovery" || name == "routing-instance")
+    if(name == "multicast" || name == "peers" || name == "vni-start" || name == "vni-end" || name == "bgp" || name == "end-host-discovery" || name == "suppress-arp" || name == "routing-instance")
         return true;
     return false;
 }

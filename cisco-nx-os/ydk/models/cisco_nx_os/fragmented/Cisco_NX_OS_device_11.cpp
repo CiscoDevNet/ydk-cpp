@@ -15137,6 +15137,7 @@ System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList::AfI
     rewritertasn{YType::enumeration, "rewriteRtAsn"},
     advgwip{YType::enumeration, "advGwIp"},
     advlocallblrt{YType::enumeration, "advLocalLblRt"},
+    nhselfall{YType::boolean, "nhSelfAll"},
     inheritcontpeerpolicyctrl{YType::str, "inheritContPeerPolicyCtrl"},
     name{YType::str, "name"}
         ,
@@ -15203,6 +15204,7 @@ bool System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList
 	|| rewritertasn.is_set
 	|| advgwip.is_set
 	|| advlocallblrt.is_set
+	|| nhselfall.is_set
 	|| inheritcontpeerpolicyctrl.is_set
 	|| name.is_set
 	|| (maxpfxp_items !=  nullptr && maxpfxp_items->has_data())
@@ -15245,6 +15247,7 @@ bool System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList
 	|| ydk::is_set(rewritertasn.yfilter)
 	|| ydk::is_set(advgwip.yfilter)
 	|| ydk::is_set(advlocallblrt.yfilter)
+	|| ydk::is_set(nhselfall.yfilter)
 	|| ydk::is_set(inheritcontpeerpolicyctrl.yfilter)
 	|| ydk::is_set(name.yfilter)
 	|| (maxpfxp_items !=  nullptr && maxpfxp_items->has_operation())
@@ -15296,6 +15299,7 @@ std::vector<std::pair<std::string, LeafData> > System::BgpItems::InstItems::DomI
     if (rewritertasn.is_set || is_set(rewritertasn.yfilter)) leaf_name_data.push_back(rewritertasn.get_name_leafdata());
     if (advgwip.is_set || is_set(advgwip.yfilter)) leaf_name_data.push_back(advgwip.get_name_leafdata());
     if (advlocallblrt.is_set || is_set(advlocallblrt.yfilter)) leaf_name_data.push_back(advlocallblrt.get_name_leafdata());
+    if (nhselfall.is_set || is_set(nhselfall.yfilter)) leaf_name_data.push_back(nhselfall.get_name_leafdata());
     if (inheritcontpeerpolicyctrl.is_set || is_set(inheritcontpeerpolicyctrl.yfilter)) leaf_name_data.push_back(inheritcontpeerpolicyctrl.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
 
@@ -15655,6 +15659,12 @@ void System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList
         advlocallblrt.value_namespace = name_space;
         advlocallblrt.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "nhSelfAll")
+    {
+        nhselfall = value;
+        nhselfall.value_namespace = name_space;
+        nhselfall.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "inheritContPeerPolicyCtrl")
     {
         inheritcontpeerpolicyctrl = value;
@@ -15747,6 +15757,10 @@ void System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList
     {
         advlocallblrt.yfilter = yfilter;
     }
+    if(value_path == "nhSelfAll")
+    {
+        nhselfall.yfilter = yfilter;
+    }
     if(value_path == "inheritContPeerPolicyCtrl")
     {
         inheritcontpeerpolicyctrl.yfilter = yfilter;
@@ -15759,7 +15773,7 @@ void System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList
 
 bool System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList::AfItems::PeerAfList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "maxpfxp-items" || name == "advtmap-items" || name == "rt-items" || name == "vpnrt-items" || name == "lblrt-items" || name == "lsrt-items" || name == "evpnrt-items" || name == "mvpnrt-items" || name == "advtdrt-items" || name == "rcvdrt-items" || name == "damppathsrt-items" || name == "rtctrl-items" || name == "defrtleak-items" || name == "pfxctrl-items" || name == "fltrctrl-items" || name == "pol-items" || name == "type" || name == "ctrl" || name == "allowedSelfAsCnt" || name == "softReconfigBackup" || name == "advIntvl" || name == "defOrg" || name == "defOrgRtMap" || name == "capAddlPaths" || name == "unSupprMap" || name == "asOverride" || name == "nhThirdparty" || name == "wght" || name == "soo" || name == "sendComStd" || name == "sendComExt" || name == "encapMpls" || name == "rewriteRtAsn" || name == "advGwIp" || name == "advLocalLblRt" || name == "inheritContPeerPolicyCtrl" || name == "name")
+    if(name == "maxpfxp-items" || name == "advtmap-items" || name == "rt-items" || name == "vpnrt-items" || name == "lblrt-items" || name == "lsrt-items" || name == "evpnrt-items" || name == "mvpnrt-items" || name == "advtdrt-items" || name == "rcvdrt-items" || name == "damppathsrt-items" || name == "rtctrl-items" || name == "defrtleak-items" || name == "pfxctrl-items" || name == "fltrctrl-items" || name == "pol-items" || name == "type" || name == "ctrl" || name == "allowedSelfAsCnt" || name == "softReconfigBackup" || name == "advIntvl" || name == "defOrg" || name == "defOrgRtMap" || name == "capAddlPaths" || name == "unSupprMap" || name == "asOverride" || name == "nhThirdparty" || name == "wght" || name == "soo" || name == "sendComStd" || name == "sendComExt" || name == "encapMpls" || name == "rewriteRtAsn" || name == "advGwIp" || name == "advLocalLblRt" || name == "nhSelfAll" || name == "inheritContPeerPolicyCtrl" || name == "name")
         return true;
     return false;
 }

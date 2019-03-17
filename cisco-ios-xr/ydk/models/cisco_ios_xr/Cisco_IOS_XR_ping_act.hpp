@@ -61,9 +61,9 @@ class Ping::Input : public ydk::Entity
         class Ipv4; //type: Ping::Input::Ipv4
         class Ipv6; //type: Ping::Input::Ipv6
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Input::Destination> destination;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Input::Destination> destination; // presence node
         ydk::YList ipv4;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Input::Ipv6> ipv6;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Input::Ipv6> ipv6; // presence node
         
 }; // Ping::Input
 
@@ -216,7 +216,7 @@ class Ping::Output::PingResponse : public ydk::Entity
         class Ipv6; //type: Ping::Output::PingResponse::Ipv6
 
         ydk::YList ipv4;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv6> ipv6;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ping_act::Ping::Output::PingResponse::Ipv6> ipv6; // presence node
         
 }; // Ping::Output::PingResponse
 

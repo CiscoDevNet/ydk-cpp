@@ -205,6 +205,7 @@ class Native : public ydk::Entity
         class Diagnostic; //type: Native::Diagnostic
         class PmAgent; //type: Native::PmAgent
         class NamedOrderingRouteMap; //type: Native::NamedOrderingRouteMap
+        class Pnp; //type: Native::Pnp
         class FabricGroup; //type: Native::FabricGroup
         class DeviceSensor; //type: Native::DeviceSensor
         class Coap; //type: Native::Coap
@@ -327,7 +328,7 @@ class Native : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Transceiver> transceiver;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::ServiceInsertion> service_insertion;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Udld> udld;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Qos> qos; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Qos> qos;
         ydk::YList time_range;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::DeviceTracking> device_tracking;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Fhrp> fhrp;
@@ -377,6 +378,7 @@ class Native : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Diagnostic> diagnostic;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::PmAgent> pm_agent; // presence node
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::NamedOrderingRouteMap> named_ordering_route_map;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Pnp> pnp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::FabricGroup> fabric_group;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::DeviceSensor> device_sensor;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Coap> coap;
@@ -1664,10 +1666,12 @@ class Native::CallHome : public ydk::Entity
 
         ydk::YLeaf contact_email_addr; //type: string
         class SourceInterface; //type: Native::CallHome::SourceInterface
+        class Http; //type: Native::CallHome::Http
         class HttpProxy; //type: Native::CallHome::HttpProxy
         class Profile; //type: Native::CallHome::Profile
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CallHome::SourceInterface> source_interface;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CallHome::Http> http;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CallHome::HttpProxy> http_proxy;
         ydk::YList profile;
         
@@ -1825,6 +1829,52 @@ class Native::CallHome::SourceInterface::PortChannelSubinterface : public ydk::E
 }; // Native::CallHome::SourceInterface::PortChannelSubinterface
 
 
+class Native::CallHome::Http : public ydk::Entity
+{
+    public:
+        Http();
+        ~Http();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Secure; //type: Native::CallHome::Http::Secure
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::CallHome::Http::Secure> secure;
+        
+}; // Native::CallHome::Http
+
+
+class Native::CallHome::Http::Secure : public ydk::Entity
+{
+    public:
+        Secure();
+        ~Secure();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf server_identity_check; //type: boolean
+
+}; // Native::CallHome::Http::Secure
+
+
 class Native::CallHome::HttpProxy : public ydk::Entity
 {
     public:
@@ -1891,6 +1941,7 @@ class Native::CallHome::Profile : public ydk::Entity
 
         ydk::YLeaf profile_name; //type: string
         ydk::YLeaf active; //type: boolean
+        ydk::YLeaf anonymous_reporting_only; //type: empty
         class Destination; //type: Native::CallHome::Profile::Destination
         class SubscribeToAlertGroup; //type: Native::CallHome::Profile::SubscribeToAlertGroup
 
@@ -4014,52 +4065,6 @@ class Native::Service::Timestamps::Debug::Datetime::Localtime : public ydk::Enti
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Service::Timestamps::Debug::Datetime::Localtime::Year> year; // presence node
         
 }; // Native::Service::Timestamps::Debug::Datetime::Localtime
-
-
-class Native::Service::Timestamps::Debug::Datetime::Localtime::Msec : public ydk::Entity
-{
-    public:
-        Msec();
-        ~Msec();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf show_timezone; //type: empty
-        ydk::YLeaf year; //type: empty
-
-}; // Native::Service::Timestamps::Debug::Datetime::Localtime::Msec
-
-
-class Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone : public ydk::Entity
-{
-    public:
-        ShowTimezone();
-        ~ShowTimezone();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf msec; //type: empty
-        ydk::YLeaf year; //type: empty
-
-}; // Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone
 
 class MonitorEventType : public ydk::Enum
 {

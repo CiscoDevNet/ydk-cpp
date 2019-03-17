@@ -61,9 +61,9 @@ class Traceroute::Input : public ydk::Entity
         class Ipv4; //type: Traceroute::Input::Ipv4
         class Ipv6; //type: Traceroute::Input::Ipv6
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traceroute_act::Traceroute::Input::Destination> destination;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traceroute_act::Traceroute::Input::Ipv4> ipv4;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traceroute_act::Traceroute::Input::Ipv6> ipv6;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traceroute_act::Traceroute::Input::Destination> destination; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traceroute_act::Traceroute::Input::Ipv4> ipv4; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traceroute_act::Traceroute::Input::Ipv6> ipv6; // presence node
         
 }; // Traceroute::Input
 
@@ -209,8 +209,8 @@ class Traceroute::Output::TracerouteResponse : public ydk::Entity
         class Ipv4; //type: Traceroute::Output::TracerouteResponse::Ipv4
         class Ipv6; //type: Traceroute::Output::TracerouteResponse::Ipv6
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traceroute_act::Traceroute::Output::TracerouteResponse::Ipv4> ipv4;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traceroute_act::Traceroute::Output::TracerouteResponse::Ipv6> ipv6;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traceroute_act::Traceroute::Output::TracerouteResponse::Ipv4> ipv4; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traceroute_act::Traceroute::Output::TracerouteResponse::Ipv6> ipv6; // presence node
         
 }; // Traceroute::Output::TracerouteResponse
 

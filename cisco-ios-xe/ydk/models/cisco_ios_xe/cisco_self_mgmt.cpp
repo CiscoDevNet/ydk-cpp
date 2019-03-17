@@ -128,6 +128,7 @@ NetconfYang::CiscoIa::CiscoIa()
     post_sync_acl_process{YType::boolean, "post-sync-acl-process"},
     config_change_delay{YType::int16, "config-change-delay"},
     process_missing_prc{YType::boolean, "process-missing-prc"},
+    missing_prc_method{YType::enumeration, "missing-prc-method"},
     snmp_community_string{YType::str, "snmp-community-string"},
     preserve_paths_enabled{YType::boolean, "preserve-paths-enabled"},
     nes_ttynum{YType::int16, "nes-ttynum"},
@@ -137,14 +138,18 @@ NetconfYang::CiscoIa::CiscoIa()
     , preserve_ned_path(this, {"xpath"})
     , parser_msg_ignore(this, {"message"})
     , conf_parser_msg_ignore(this, {"message"})
+    , parser_msg_error(this, {"message"})
+    , conf_parser_msg_error(this, {"message"})
     , full_sync_cli(this, {"command"})
     , conf_full_sync_cli(this, {"command"})
     , logging(std::make_shared<NetconfYang::CiscoIa::Logging>())
     , blocking(std::make_shared<NetconfYang::CiscoIa::Blocking>())
+    , pivot_commands(std::make_shared<NetconfYang::CiscoIa::PivotCommands>())
 {
     snmp_trap_control->parent = this;
     logging->parent = this;
     blocking->parent = this;
+    pivot_commands->parent = this;
 
     yang_name = "cisco-ia"; yang_parent_name = "netconf-yang"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -171,6 +176,16 @@ bool NetconfYang::CiscoIa::has_data() const
         if(conf_parser_msg_ignore[index]->has_data())
             return true;
     }
+    for (std::size_t index=0; index<parser_msg_error.len(); index++)
+    {
+        if(parser_msg_error[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<conf_parser_msg_error.len(); index++)
+    {
+        if(conf_parser_msg_error[index]->has_data())
+            return true;
+    }
     for (std::size_t index=0; index<full_sync_cli.len(); index++)
     {
         if(full_sync_cli[index]->has_data())
@@ -189,13 +204,15 @@ bool NetconfYang::CiscoIa::has_data() const
 	|| post_sync_acl_process.is_set
 	|| config_change_delay.is_set
 	|| process_missing_prc.is_set
+	|| missing_prc_method.is_set
 	|| snmp_community_string.is_set
 	|| preserve_paths_enabled.is_set
 	|| nes_ttynum.is_set
 	|| restored.is_set
 	|| (snmp_trap_control !=  nullptr && snmp_trap_control->has_data())
 	|| (logging !=  nullptr && logging->has_data())
-	|| (blocking !=  nullptr && blocking->has_data());
+	|| (blocking !=  nullptr && blocking->has_data())
+	|| (pivot_commands !=  nullptr && pivot_commands->has_data());
 }
 
 bool NetconfYang::CiscoIa::has_operation() const
@@ -213,6 +230,16 @@ bool NetconfYang::CiscoIa::has_operation() const
     for (std::size_t index=0; index<conf_parser_msg_ignore.len(); index++)
     {
         if(conf_parser_msg_ignore[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<parser_msg_error.len(); index++)
+    {
+        if(parser_msg_error[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<conf_parser_msg_error.len(); index++)
+    {
+        if(conf_parser_msg_error[index]->has_operation())
             return true;
     }
     for (std::size_t index=0; index<full_sync_cli.len(); index++)
@@ -234,13 +261,15 @@ bool NetconfYang::CiscoIa::has_operation() const
 	|| ydk::is_set(post_sync_acl_process.yfilter)
 	|| ydk::is_set(config_change_delay.yfilter)
 	|| ydk::is_set(process_missing_prc.yfilter)
+	|| ydk::is_set(missing_prc_method.yfilter)
 	|| ydk::is_set(snmp_community_string.yfilter)
 	|| ydk::is_set(preserve_paths_enabled.yfilter)
 	|| ydk::is_set(nes_ttynum.yfilter)
 	|| ydk::is_set(restored.yfilter)
 	|| (snmp_trap_control !=  nullptr && snmp_trap_control->has_operation())
 	|| (logging !=  nullptr && logging->has_operation())
-	|| (blocking !=  nullptr && blocking->has_operation());
+	|| (blocking !=  nullptr && blocking->has_operation())
+	|| (pivot_commands !=  nullptr && pivot_commands->has_operation());
 }
 
 std::string NetconfYang::CiscoIa::get_absolute_path() const
@@ -269,6 +298,7 @@ std::vector<std::pair<std::string, LeafData> > NetconfYang::CiscoIa::get_name_le
     if (post_sync_acl_process.is_set || is_set(post_sync_acl_process.yfilter)) leaf_name_data.push_back(post_sync_acl_process.get_name_leafdata());
     if (config_change_delay.is_set || is_set(config_change_delay.yfilter)) leaf_name_data.push_back(config_change_delay.get_name_leafdata());
     if (process_missing_prc.is_set || is_set(process_missing_prc.yfilter)) leaf_name_data.push_back(process_missing_prc.get_name_leafdata());
+    if (missing_prc_method.is_set || is_set(missing_prc_method.yfilter)) leaf_name_data.push_back(missing_prc_method.get_name_leafdata());
     if (snmp_community_string.is_set || is_set(snmp_community_string.yfilter)) leaf_name_data.push_back(snmp_community_string.get_name_leafdata());
     if (preserve_paths_enabled.is_set || is_set(preserve_paths_enabled.yfilter)) leaf_name_data.push_back(preserve_paths_enabled.get_name_leafdata());
     if (nes_ttynum.is_set || is_set(nes_ttynum.yfilter)) leaf_name_data.push_back(nes_ttynum.get_name_leafdata());
@@ -313,6 +343,22 @@ std::shared_ptr<ydk::Entity> NetconfYang::CiscoIa::get_child_by_name(const std::
         return ent_;
     }
 
+    if(child_yang_name == "parser-msg-error")
+    {
+        auto ent_ = std::make_shared<NetconfYang::CiscoIa::ParserMsgError>();
+        ent_->parent = this;
+        parser_msg_error.append(ent_);
+        return ent_;
+    }
+
+    if(child_yang_name == "conf-parser-msg-error")
+    {
+        auto ent_ = std::make_shared<NetconfYang::CiscoIa::ConfParserMsgError>();
+        ent_->parent = this;
+        conf_parser_msg_error.append(ent_);
+        return ent_;
+    }
+
     if(child_yang_name == "full-sync-cli")
     {
         auto ent_ = std::make_shared<NetconfYang::CiscoIa::FullSyncCli>();
@@ -345,6 +391,15 @@ std::shared_ptr<ydk::Entity> NetconfYang::CiscoIa::get_child_by_name(const std::
             blocking = std::make_shared<NetconfYang::CiscoIa::Blocking>();
         }
         return blocking;
+    }
+
+    if(child_yang_name == "pivot-commands")
+    {
+        if(pivot_commands == nullptr)
+        {
+            pivot_commands = std::make_shared<NetconfYang::CiscoIa::PivotCommands>();
+        }
+        return pivot_commands;
     }
 
     return nullptr;
@@ -387,6 +442,24 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfYang::CiscoIa::get_ch
     }
 
     count_ = 0;
+    for (auto ent_ : parser_msg_error.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    count_ = 0;
+    for (auto ent_ : conf_parser_msg_error.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    count_ = 0;
     for (auto ent_ : full_sync_cli.entities())
     {
         if(_children.find(ent_->get_segment_path()) == _children.end())
@@ -412,6 +485,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfYang::CiscoIa::get_ch
     if(blocking != nullptr)
     {
         _children["blocking"] = blocking;
+    }
+
+    if(pivot_commands != nullptr)
+    {
+        _children["pivot-commands"] = pivot_commands;
     }
 
     return _children;
@@ -466,6 +544,12 @@ void NetconfYang::CiscoIa::set_value(const std::string & value_path, const std::
         process_missing_prc = value;
         process_missing_prc.value_namespace = name_space;
         process_missing_prc.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "missing-prc-method")
+    {
+        missing_prc_method = value;
+        missing_prc_method.value_namespace = name_space;
+        missing_prc_method.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "snmp-community-string")
     {
@@ -527,6 +611,10 @@ void NetconfYang::CiscoIa::set_filter(const std::string & value_path, YFilter yf
     {
         process_missing_prc.yfilter = yfilter;
     }
+    if(value_path == "missing-prc-method")
+    {
+        missing_prc_method.yfilter = yfilter;
+    }
     if(value_path == "snmp-community-string")
     {
         snmp_community_string.yfilter = yfilter;
@@ -547,7 +635,7 @@ void NetconfYang::CiscoIa::set_filter(const std::string & value_path, YFilter yf
 
 bool NetconfYang::CiscoIa::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "snmp-trap-control" || name == "preserve-ned-path" || name == "parser-msg-ignore" || name == "conf-parser-msg-ignore" || name == "full-sync-cli" || name == "conf-full-sync-cli" || name == "logging" || name == "blocking" || name == "auto-sync" || name == "init-sync" || name == "intelligent-sync" || name == "message-diag-level" || name == "max-diag-messages-saved" || name == "post-sync-acl-process" || name == "config-change-delay" || name == "process-missing-prc" || name == "snmp-community-string" || name == "preserve-paths-enabled" || name == "nes-ttynum" || name == "restored")
+    if(name == "snmp-trap-control" || name == "preserve-ned-path" || name == "parser-msg-ignore" || name == "conf-parser-msg-ignore" || name == "parser-msg-error" || name == "conf-parser-msg-error" || name == "full-sync-cli" || name == "conf-full-sync-cli" || name == "logging" || name == "blocking" || name == "pivot-commands" || name == "auto-sync" || name == "init-sync" || name == "intelligent-sync" || name == "message-diag-level" || name == "max-diag-messages-saved" || name == "post-sync-acl-process" || name == "config-change-delay" || name == "process-missing-prc" || name == "missing-prc-method" || name == "snmp-community-string" || name == "preserve-paths-enabled" || name == "nes-ttynum" || name == "restored")
         return true;
     return false;
 }
@@ -1032,6 +1120,178 @@ void NetconfYang::CiscoIa::ConfParserMsgIgnore::set_filter(const std::string & v
 }
 
 bool NetconfYang::CiscoIa::ConfParserMsgIgnore::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "message")
+        return true;
+    return false;
+}
+
+NetconfYang::CiscoIa::ParserMsgError::ParserMsgError()
+    :
+    message{YType::str, "message"}
+{
+
+    yang_name = "parser-msg-error"; yang_parent_name = "cisco-ia"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+NetconfYang::CiscoIa::ParserMsgError::~ParserMsgError()
+{
+}
+
+bool NetconfYang::CiscoIa::ParserMsgError::has_data() const
+{
+    if (is_presence_container) return true;
+    return message.is_set;
+}
+
+bool NetconfYang::CiscoIa::ParserMsgError::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(message.yfilter);
+}
+
+std::string NetconfYang::CiscoIa::ParserMsgError::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NetconfYang::CiscoIa::ParserMsgError::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "parser-msg-error";
+    ADD_KEY_TOKEN(message, "message");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetconfYang::CiscoIa::ParserMsgError::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (message.is_set || is_set(message.yfilter)) leaf_name_data.push_back(message.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> NetconfYang::CiscoIa::ParserMsgError::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfYang::CiscoIa::ParserMsgError::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void NetconfYang::CiscoIa::ParserMsgError::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "message")
+    {
+        message = value;
+        message.value_namespace = name_space;
+        message.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetconfYang::CiscoIa::ParserMsgError::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "message")
+    {
+        message.yfilter = yfilter;
+    }
+}
+
+bool NetconfYang::CiscoIa::ParserMsgError::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "message")
+        return true;
+    return false;
+}
+
+NetconfYang::CiscoIa::ConfParserMsgError::ConfParserMsgError()
+    :
+    message{YType::str, "message"}
+{
+
+    yang_name = "conf-parser-msg-error"; yang_parent_name = "cisco-ia"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+NetconfYang::CiscoIa::ConfParserMsgError::~ConfParserMsgError()
+{
+}
+
+bool NetconfYang::CiscoIa::ConfParserMsgError::has_data() const
+{
+    if (is_presence_container) return true;
+    return message.is_set;
+}
+
+bool NetconfYang::CiscoIa::ConfParserMsgError::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(message.yfilter);
+}
+
+std::string NetconfYang::CiscoIa::ConfParserMsgError::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NetconfYang::CiscoIa::ConfParserMsgError::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "conf-parser-msg-error";
+    ADD_KEY_TOKEN(message, "message");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetconfYang::CiscoIa::ConfParserMsgError::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (message.is_set || is_set(message.yfilter)) leaf_name_data.push_back(message.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> NetconfYang::CiscoIa::ConfParserMsgError::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfYang::CiscoIa::ConfParserMsgError::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void NetconfYang::CiscoIa::ConfParserMsgError::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "message")
+    {
+        message = value;
+        message.value_namespace = name_space;
+        message.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetconfYang::CiscoIa::ConfParserMsgError::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "message")
+    {
+        message.yfilter = yfilter;
+    }
+}
+
+bool NetconfYang::CiscoIa::ConfParserMsgError::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "message")
         return true;
@@ -1689,6 +1949,302 @@ void NetconfYang::CiscoIa::Blocking::ConfdCfgCommand::set_filter(const std::stri
 bool NetconfYang::CiscoIa::Blocking::ConfdCfgCommand::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "command")
+        return true;
+    return false;
+}
+
+NetconfYang::CiscoIa::PivotCommands::PivotCommands()
+    :
+    pivot_command(this, {"command"})
+{
+
+    yang_name = "pivot-commands"; yang_parent_name = "cisco-ia"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+NetconfYang::CiscoIa::PivotCommands::~PivotCommands()
+{
+}
+
+bool NetconfYang::CiscoIa::PivotCommands::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pivot_command.len(); index++)
+    {
+        if(pivot_command[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool NetconfYang::CiscoIa::PivotCommands::has_operation() const
+{
+    for (std::size_t index=0; index<pivot_command.len(); index++)
+    {
+        if(pivot_command[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string NetconfYang::CiscoIa::PivotCommands::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NetconfYang::CiscoIa::PivotCommands::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pivot-commands";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetconfYang::CiscoIa::PivotCommands::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> NetconfYang::CiscoIa::PivotCommands::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pivot-command")
+    {
+        auto ent_ = std::make_shared<NetconfYang::CiscoIa::PivotCommands::PivotCommand>();
+        ent_->parent = this;
+        pivot_command.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfYang::CiscoIa::PivotCommands::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pivot_command.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void NetconfYang::CiscoIa::PivotCommands::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void NetconfYang::CiscoIa::PivotCommands::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool NetconfYang::CiscoIa::PivotCommands::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pivot-command")
+        return true;
+    return false;
+}
+
+NetconfYang::CiscoIa::PivotCommands::PivotCommand::PivotCommand()
+    :
+    command{YType::str, "command"}
+        ,
+    retry(nullptr) // presence node
+{
+
+    yang_name = "pivot-command"; yang_parent_name = "pivot-commands"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+NetconfYang::CiscoIa::PivotCommands::PivotCommand::~PivotCommand()
+{
+}
+
+bool NetconfYang::CiscoIa::PivotCommands::PivotCommand::has_data() const
+{
+    if (is_presence_container) return true;
+    return command.is_set
+	|| (retry !=  nullptr && retry->has_data());
+}
+
+bool NetconfYang::CiscoIa::PivotCommands::PivotCommand::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(command.yfilter)
+	|| (retry !=  nullptr && retry->has_operation());
+}
+
+std::string NetconfYang::CiscoIa::PivotCommands::PivotCommand::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cisco-self-mgmt:netconf-yang/cisco-ia:cisco-ia/pivot-commands/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string NetconfYang::CiscoIa::PivotCommands::PivotCommand::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pivot-command";
+    ADD_KEY_TOKEN(command, "command");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetconfYang::CiscoIa::PivotCommands::PivotCommand::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (command.is_set || is_set(command.yfilter)) leaf_name_data.push_back(command.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> NetconfYang::CiscoIa::PivotCommands::PivotCommand::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "retry")
+    {
+        if(retry == nullptr)
+        {
+            retry = std::make_shared<NetconfYang::CiscoIa::PivotCommands::PivotCommand::Retry>();
+        }
+        return retry;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfYang::CiscoIa::PivotCommands::PivotCommand::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(retry != nullptr)
+    {
+        _children["retry"] = retry;
+    }
+
+    return _children;
+}
+
+void NetconfYang::CiscoIa::PivotCommands::PivotCommand::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "command")
+    {
+        command = value;
+        command.value_namespace = name_space;
+        command.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetconfYang::CiscoIa::PivotCommands::PivotCommand::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "command")
+    {
+        command.yfilter = yfilter;
+    }
+}
+
+bool NetconfYang::CiscoIa::PivotCommands::PivotCommand::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "retry" || name == "command")
+        return true;
+    return false;
+}
+
+NetconfYang::CiscoIa::PivotCommands::PivotCommand::Retry::Retry()
+    :
+    min_retry_time{YType::uint16, "min-retry-time"},
+    max_retry_time{YType::uint16, "max-retry-time"}
+{
+
+    yang_name = "retry"; yang_parent_name = "pivot-command"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+NetconfYang::CiscoIa::PivotCommands::PivotCommand::Retry::~Retry()
+{
+}
+
+bool NetconfYang::CiscoIa::PivotCommands::PivotCommand::Retry::has_data() const
+{
+    if (is_presence_container) return true;
+    return min_retry_time.is_set
+	|| max_retry_time.is_set;
+}
+
+bool NetconfYang::CiscoIa::PivotCommands::PivotCommand::Retry::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(min_retry_time.yfilter)
+	|| ydk::is_set(max_retry_time.yfilter);
+}
+
+std::string NetconfYang::CiscoIa::PivotCommands::PivotCommand::Retry::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "retry";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > NetconfYang::CiscoIa::PivotCommands::PivotCommand::Retry::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (min_retry_time.is_set || is_set(min_retry_time.yfilter)) leaf_name_data.push_back(min_retry_time.get_name_leafdata());
+    if (max_retry_time.is_set || is_set(max_retry_time.yfilter)) leaf_name_data.push_back(max_retry_time.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> NetconfYang::CiscoIa::PivotCommands::PivotCommand::Retry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> NetconfYang::CiscoIa::PivotCommands::PivotCommand::Retry::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void NetconfYang::CiscoIa::PivotCommands::PivotCommand::Retry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "min-retry-time")
+    {
+        min_retry_time = value;
+        min_retry_time.value_namespace = name_space;
+        min_retry_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-retry-time")
+    {
+        max_retry_time = value;
+        max_retry_time.value_namespace = name_space;
+        max_retry_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void NetconfYang::CiscoIa::PivotCommands::PivotCommand::Retry::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "min-retry-time")
+    {
+        min_retry_time.yfilter = yfilter;
+    }
+    if(value_path == "max-retry-time")
+    {
+        max_retry_time.yfilter = yfilter;
+    }
+}
+
+bool NetconfYang::CiscoIa::PivotCommands::PivotCommand::Retry::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "min-retry-time" || name == "max-retry-time")
         return true;
     return false;
 }

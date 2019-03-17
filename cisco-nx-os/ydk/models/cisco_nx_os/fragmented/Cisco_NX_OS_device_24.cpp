@@ -12,6 +12,129 @@ using namespace ydk;
 namespace cisco_nx_os {
 namespace Cisco_NX_OS_device {
 
+System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::IfList()
+    :
+    name{YType::str, "name"}
+        ,
+    acl_items(std::make_shared<System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::AclItems_>())
+    , portacl_items(std::make_shared<System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::PortaclItems>())
+{
+    acl_items->parent = this;
+    portacl_items->parent = this;
+
+    yang_name = "If-list"; yang_parent_name = "intf-items"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::~IfList()
+{
+}
+
+bool System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| (acl_items !=  nullptr && acl_items->has_data())
+	|| (portacl_items !=  nullptr && portacl_items->has_data());
+}
+
+bool System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| (acl_items !=  nullptr && acl_items->has_operation())
+	|| (portacl_items !=  nullptr && portacl_items->has_operation());
+}
+
+std::string System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:System/acl-items/ipv6-items/policy-items/egress-items/intf-items/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "If-list";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "acl-items")
+    {
+        if(acl_items == nullptr)
+        {
+            acl_items = std::make_shared<System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::AclItems_>();
+        }
+        return acl_items;
+    }
+
+    if(child_yang_name == "portacl-items")
+    {
+        if(portacl_items == nullptr)
+        {
+            portacl_items = std::make_shared<System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::PortaclItems>();
+        }
+        return portacl_items;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(acl_items != nullptr)
+    {
+        _children["acl-items"] = acl_items;
+    }
+
+    if(portacl_items != nullptr)
+    {
+        _children["portacl-items"] = portacl_items;
+    }
+
+    return _children;
+}
+
+void System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "acl-items" || name == "portacl-items" || name == "name")
+        return true;
+    return false;
+}
+
 System::AclItems::Ipv6Items::PolicyItems::EgressItems::IntfItems::IfList::AclItems_::AclItems_()
     :
     name{YType::str, "name"},
@@ -13349,6 +13472,7 @@ bool System::HwtelemetryItems::InbandtelemetryItems::InstItems::has_leaf_or_chil
 System::HwtelemetryItems::InbandtelemetryItems::InstItems::InstList::InstList()
     :
     mode{YType::enumeration, "mode"},
+    profile{YType::enumeration, "profile"},
     name{YType::str, "name"},
     adminst{YType::enumeration, "adminSt"},
     ctrl{YType::str, "ctrl"},
@@ -13383,6 +13507,7 @@ bool System::HwtelemetryItems::InbandtelemetryItems::InstItems::InstList::has_da
 {
     if (is_presence_container) return true;
     return mode.is_set
+	|| profile.is_set
 	|| name.is_set
 	|| adminst.is_set
 	|| ctrl.is_set
@@ -13401,6 +13526,7 @@ bool System::HwtelemetryItems::InbandtelemetryItems::InstItems::InstList::has_op
 {
     return is_set(yfilter)
 	|| ydk::is_set(mode.yfilter)
+	|| ydk::is_set(profile.yfilter)
 	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(adminst.yfilter)
 	|| ydk::is_set(ctrl.yfilter)
@@ -13435,6 +13561,7 @@ std::vector<std::pair<std::string, LeafData> > System::HwtelemetryItems::Inbandt
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (profile.is_set || is_set(profile.yfilter)) leaf_name_data.push_back(profile.get_name_leafdata());
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (adminst.is_set || is_set(adminst.yfilter)) leaf_name_data.push_back(adminst.get_name_leafdata());
     if (ctrl.is_set || is_set(ctrl.yfilter)) leaf_name_data.push_back(ctrl.get_name_leafdata());
@@ -13576,6 +13703,12 @@ void System::HwtelemetryItems::InbandtelemetryItems::InstItems::InstList::set_va
         mode.value_namespace = name_space;
         mode.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "profile")
+    {
+        profile = value;
+        profile.value_namespace = name_space;
+        profile.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "name")
     {
         name = value;
@@ -13608,6 +13741,10 @@ void System::HwtelemetryItems::InbandtelemetryItems::InstItems::InstList::set_fi
     {
         mode.yfilter = yfilter;
     }
+    if(value_path == "profile")
+    {
+        profile.yfilter = yfilter;
+    }
     if(value_path == "name")
     {
         name.yfilter = yfilter;
@@ -13628,7 +13765,7 @@ void System::HwtelemetryItems::InbandtelemetryItems::InstItems::InstList::set_fi
 
 bool System::HwtelemetryItems::InbandtelemetryItems::InstItems::InstList::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "watchlist-items" || name == "droplist-items" || name == "recordp-items" || name == "collector-items" || name == "flowprof-items" || name == "queueprof-items" || name == "monitor-items" || name == "fwdinst-items" || name == "mode" || name == "name" || name == "adminSt" || name == "ctrl" || name == "operErr")
+    if(name == "watchlist-items" || name == "droplist-items" || name == "recordp-items" || name == "collector-items" || name == "flowprof-items" || name == "queueprof-items" || name == "monitor-items" || name == "fwdinst-items" || name == "mode" || name == "profile" || name == "name" || name == "adminSt" || name == "ctrl" || name == "operErr")
         return true;
     return false;
 }
@@ -19884,99 +20021,6 @@ void System::HwtelemetryItems::NetflowItems::InstItems::InstList::ProfItems::Pro
 bool System::HwtelemetryItems::NetflowItems::InstItems::InstList::ProfItems::ProfileList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "payloadlenbin-items" || name == "tcpopthdrlenbin-items" || name == "rcvwindowszbin-items" || name == "name" || name == "collectIntvl" || name == "srcPort" || name == "ipPktIdShift" || name == "burstIntvlShift" || name == "mtu" || name == "seqNumGuessThreshLo" || name == "seqNumGuessThreshHi" || name == "descr")
-        return true;
-    return false;
-}
-
-System::HwtelemetryItems::NetflowItems::InstItems::InstList::ProfItems::ProfileList::PayloadlenbinItems::PayloadlenbinItems()
-    :
-    payloadlenbin_list(this, {"id"})
-{
-
-    yang_name = "payloadlenbin-items"; yang_parent_name = "Profile-list"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::HwtelemetryItems::NetflowItems::InstItems::InstList::ProfItems::ProfileList::PayloadlenbinItems::~PayloadlenbinItems()
-{
-}
-
-bool System::HwtelemetryItems::NetflowItems::InstItems::InstList::ProfItems::ProfileList::PayloadlenbinItems::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<payloadlenbin_list.len(); index++)
-    {
-        if(payloadlenbin_list[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool System::HwtelemetryItems::NetflowItems::InstItems::InstList::ProfItems::ProfileList::PayloadlenbinItems::has_operation() const
-{
-    for (std::size_t index=0; index<payloadlenbin_list.len(); index++)
-    {
-        if(payloadlenbin_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string System::HwtelemetryItems::NetflowItems::InstItems::InstList::ProfItems::ProfileList::PayloadlenbinItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "payloadlenbin-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::HwtelemetryItems::NetflowItems::InstItems::InstList::ProfItems::ProfileList::PayloadlenbinItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::HwtelemetryItems::NetflowItems::InstItems::InstList::ProfItems::ProfileList::PayloadlenbinItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "PayloadLenBin-list")
-    {
-        auto ent_ = std::make_shared<System::HwtelemetryItems::NetflowItems::InstItems::InstList::ProfItems::ProfileList::PayloadlenbinItems::PayloadLenBinList>();
-        ent_->parent = this;
-        payloadlenbin_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::HwtelemetryItems::NetflowItems::InstItems::InstList::ProfItems::ProfileList::PayloadlenbinItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : payloadlenbin_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void System::HwtelemetryItems::NetflowItems::InstItems::InstList::ProfItems::ProfileList::PayloadlenbinItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void System::HwtelemetryItems::NetflowItems::InstItems::InstList::ProfItems::ProfileList::PayloadlenbinItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool System::HwtelemetryItems::NetflowItems::InstItems::InstList::ProfItems::ProfileList::PayloadlenbinItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "PayloadLenBin-list")
         return true;
     return false;
 }

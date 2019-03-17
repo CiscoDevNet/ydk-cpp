@@ -39,10 +39,13 @@ namespace ydk
     bool has_xml_escape_sequences(const std::string& xml);
     std::string replace_xml_escape_sequences(const std::string& xml);
 
+    Entity * get_top_entity(Entity * entity);
     std::shared_ptr<Entity> get_top_entity_from_filter(Entity & filter);
     std::shared_ptr<Entity> read_datanode(Entity & filter, std::shared_ptr<path::DataNode> read_data_node);
+    std::shared_ptr<Entity> get_child_entity_from_top(std::shared_ptr<Entity> top_entity, Entity & filter_entity);
     std::string get_data_payload(Entity & entity, const ServiceProvider & provider);
     std::string get_xml_subtree_filter_payload(Entity & entity, const ServiceProvider & provider);
+    std::string get_json_subtree_filter_payload(Entity & entity, const ServiceProvider & provider, bool pretty=true);
 
     std::vector<std::string> get_union(std::vector<std::string> & v1, std::vector<std::string> & v2);
 

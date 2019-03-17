@@ -32,8 +32,10 @@ class InstallAdd : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Input; //type: InstallAdd::Input
+        class Output; //type: InstallAdd::Output
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_spirit_install_act::InstallAdd::Input> input;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_spirit_install_act::InstallAdd::Output> output;
         
 }; // InstallAdd
 
@@ -60,6 +62,29 @@ class InstallAdd::Input : public ydk::Entity
 
 }; // InstallAdd::Input
 
+
+class InstallAdd::Output : public ydk::Entity
+{
+    public:
+        Output();
+        ~Output();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf op_id; //type: string
+        ydk::YLeaf error; //type: string
+
+}; // InstallAdd::Output
+
 class InstallCommit : public ydk::Entity
 {
     public:
@@ -82,8 +107,10 @@ class InstallCommit : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Input; //type: InstallCommit::Input
+        class Output; //type: InstallCommit::Output
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_spirit_install_act::InstallCommit::Input> input;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_spirit_install_act::InstallCommit::Output> output;
         
 }; // InstallCommit
 
@@ -109,6 +136,29 @@ class InstallCommit::Input : public ydk::Entity
 
 }; // InstallCommit::Input
 
+
+class InstallCommit::Output : public ydk::Entity
+{
+    public:
+        Output();
+        ~Output();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf op_id; //type: string
+        ydk::YLeaf error; //type: string
+
+}; // InstallCommit::Output
+
 class InstallRemove : public ydk::Entity
 {
     public:
@@ -131,8 +181,10 @@ class InstallRemove : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Input; //type: InstallRemove::Input
+        class Output; //type: InstallRemove::Output
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_spirit_install_act::InstallRemove::Input> input;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_spirit_install_act::InstallRemove::Output> output;
         
 }; // InstallRemove
 
@@ -208,6 +260,29 @@ class InstallRemove::Input::Ids : public ydk::Entity
 
 }; // InstallRemove::Input::Ids
 
+
+class InstallRemove::Output : public ydk::Entity
+{
+    public:
+        Output();
+        ~Output();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf op_id; //type: string
+        ydk::YLeaf error; //type: string
+
+}; // InstallRemove::Output
+
 class InstallPrepare : public ydk::Entity
 {
     public:
@@ -230,8 +305,10 @@ class InstallPrepare : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Input; //type: InstallPrepare::Input
+        class Output; //type: InstallPrepare::Output
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_spirit_install_act::InstallPrepare::Input> input;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_spirit_install_act::InstallPrepare::Output> output;
         
 }; // InstallPrepare
 
@@ -331,6 +408,29 @@ class InstallPrepare::Input::PrepareForce : public ydk::Entity
 
 }; // InstallPrepare::Input::PrepareForce
 
+
+class InstallPrepare::Output : public ydk::Entity
+{
+    public:
+        Output();
+        ~Output();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf op_id; //type: string
+        ydk::YLeaf error; //type: string
+
+}; // InstallPrepare::Output
+
 class InstallActivate : public ydk::Entity
 {
     public:
@@ -353,8 +453,10 @@ class InstallActivate : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Input; //type: InstallActivate::Input
+        class Output; //type: InstallActivate::Output
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_spirit_install_act::InstallActivate::Input> input;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_spirit_install_act::InstallActivate::Output> output;
         
 }; // InstallActivate
 
@@ -661,6 +763,29 @@ class InstallActivate::Input::Ids : public ydk::Entity
 
 }; // InstallActivate::Input::Ids
 
+
+class InstallActivate::Output : public ydk::Entity
+{
+    public:
+        Output();
+        ~Output();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf op_id; //type: string
+        ydk::YLeaf error; //type: string
+
+}; // InstallActivate::Output
+
 class InstallDeactivate : public ydk::Entity
 {
     public:
@@ -683,8 +808,10 @@ class InstallDeactivate : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Input; //type: InstallDeactivate::Input
+        class Output; //type: InstallDeactivate::Output
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_spirit_install_act::InstallDeactivate::Input> input;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_spirit_install_act::InstallDeactivate::Output> output;
         
 }; // InstallDeactivate
 
@@ -784,6 +911,29 @@ class InstallDeactivate::Input::Ids : public ydk::Entity
 
 }; // InstallDeactivate::Input::Ids
 
+
+class InstallDeactivate::Output : public ydk::Entity
+{
+    public:
+        Output();
+        ~Output();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf op_id; //type: string
+        ydk::YLeaf error; //type: string
+
+}; // InstallDeactivate::Output
+
 class InstallExtract : public ydk::Entity
 {
     public:
@@ -806,8 +956,10 @@ class InstallExtract : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Input; //type: InstallExtract::Input
+        class Output; //type: InstallExtract::Output
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_spirit_install_act::InstallExtract::Input> input;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_spirit_install_act::InstallExtract::Output> output;
         
 }; // InstallExtract
 
@@ -857,6 +1009,29 @@ class InstallExtract::Input::Packages : public ydk::Entity
 
 }; // InstallExtract::Input::Packages
 
+
+class InstallExtract::Output : public ydk::Entity
+{
+    public:
+        Output();
+        ~Output();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf op_id; //type: string
+        ydk::YLeaf error; //type: string
+
+}; // InstallExtract::Output
+
 class InstallVerify : public ydk::Entity
 {
     public:
@@ -879,8 +1054,10 @@ class InstallVerify : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Input; //type: InstallVerify::Input
+        class Output; //type: InstallVerify::Output
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_spirit_install_act::InstallVerify::Input> input;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_spirit_install_act::InstallVerify::Output> output;
         
 }; // InstallVerify
 
@@ -906,6 +1083,29 @@ class InstallVerify::Input : public ydk::Entity
 
 }; // InstallVerify::Input
 
+
+class InstallVerify::Output : public ydk::Entity
+{
+    public:
+        Output();
+        ~Output();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf op_id; //type: string
+        ydk::YLeaf error; //type: string
+
+}; // InstallVerify::Output
+
 class InstallUpdate : public ydk::Entity
 {
     public:
@@ -928,8 +1128,10 @@ class InstallUpdate : public ydk::Entity
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
         class Input; //type: InstallUpdate::Input
+        class Output; //type: InstallUpdate::Output
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_spirit_install_act::InstallUpdate::Input> input;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_spirit_install_act::InstallUpdate::Output> output;
         
 }; // InstallUpdate
 
@@ -1181,6 +1383,29 @@ class InstallUpdate::Input::ReplaceCommitForce : public ydk::Entity
         ydk::YLeafList packagename; //type: list of  string
 
 }; // InstallUpdate::Input::ReplaceCommitForce
+
+
+class InstallUpdate::Output : public ydk::Entity
+{
+    public:
+        Output();
+        ~Output();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf op_id; //type: string
+        ydk::YLeaf error; //type: string
+
+}; // InstallUpdate::Output
 
 
 }

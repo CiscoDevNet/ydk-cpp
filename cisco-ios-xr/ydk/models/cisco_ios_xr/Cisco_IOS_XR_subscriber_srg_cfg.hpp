@@ -37,6 +37,7 @@ class SubscriberRedundancy : public ydk::Entity
         ydk::YLeaf source_interface; //type: string
         ydk::YLeaf slave_mode; //type: SubscriberRedundancyGroupSlaveMode
         ydk::YLeaf hold_timer; //type: uint32
+        ydk::YLeaf sync_timer; //type: uint32
         ydk::YLeaf redundancy_disable; //type: empty
         class Groups; //type: SubscriberRedundancy::Groups
         class RevertiveTimer; //type: SubscriberRedundancy::RevertiveTimer

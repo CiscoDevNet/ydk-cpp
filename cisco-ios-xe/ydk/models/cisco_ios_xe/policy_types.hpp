@@ -327,7 +327,7 @@ class PolicyType : public virtual ydk::Identity
 
 }; // PolicyType
 
-class Control : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Identity
+class Control : public ietf::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         Control();
@@ -336,7 +336,7 @@ class Control : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Iden
 
 }; // Control
 
-class Qos : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Identity
+class Qos : public ietf::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         Qos();
@@ -345,7 +345,7 @@ class Qos : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Identity
 
 }; // Qos
 
-class PerfMon : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Identity
+class PerfMon : public ietf::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         PerfMon();
@@ -354,7 +354,7 @@ class PerfMon : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Iden
 
 }; // PerfMon
 
-class PacketService : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Identity
+class PacketService : public ietf::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         PacketService();
@@ -363,7 +363,7 @@ class PacketService : public cisco_ios_xe::policy_types::PolicyType, virtual ydk
 
 }; // PacketService
 
-class QosClass : public cisco_ios_xe::policy_types::ClassType, virtual ydk::Identity
+class QosClass : public ietf::policy_types::ClassType, virtual ydk::Identity
 {
     public:
         QosClass();
@@ -372,7 +372,7 @@ class QosClass : public cisco_ios_xe::policy_types::ClassType, virtual ydk::Iden
 
 }; // QosClass
 
-class ControlClass : public cisco_ios_xe::policy_types::ClassType, virtual ydk::Identity
+class ControlClass : public ietf::policy_types::ClassType, virtual ydk::Identity
 {
     public:
         ControlClass();
@@ -381,7 +381,7 @@ class ControlClass : public cisco_ios_xe::policy_types::ClassType, virtual ydk::
 
 }; // ControlClass
 
-class InspectClass : public cisco_ios_xe::policy_types::ClassType, virtual ydk::Identity
+class InspectClass : public ietf::policy_types::ClassType, virtual ydk::Identity
 {
     public:
         InspectClass();
@@ -390,7 +390,7 @@ class InspectClass : public cisco_ios_xe::policy_types::ClassType, virtual ydk::
 
 }; // InspectClass
 
-class AppnavClass : public cisco_ios_xe::policy_types::ClassType, virtual ydk::Identity
+class AppnavClass : public ietf::policy_types::ClassType, virtual ydk::Identity
 {
     public:
         AppnavClass();
@@ -399,7 +399,7 @@ class AppnavClass : public cisco_ios_xe::policy_types::ClassType, virtual ydk::I
 
 }; // AppnavClass
 
-class Service : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Identity
+class Service : public ietf::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         Service();
@@ -408,7 +408,7 @@ class Service : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Iden
 
 }; // Service
 
-class AccessControlClass : public cisco_ios_xe::policy_types::ClassType, virtual ydk::Identity
+class AccessControlClass : public ietf::policy_types::ClassType, virtual ydk::Identity
 {
     public:
         AccessControlClass();
@@ -417,7 +417,7 @@ class AccessControlClass : public cisco_ios_xe::policy_types::ClassType, virtual
 
 }; // AccessControlClass
 
-class AccessControl : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Identity
+class AccessControl : public ietf::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         AccessControl();
@@ -426,7 +426,7 @@ class AccessControl : public cisco_ios_xe::policy_types::PolicyType, virtual ydk
 
 }; // AccessControl
 
-class Appnav : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Identity
+class Appnav : public ietf::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         Appnav();
@@ -435,7 +435,7 @@ class Appnav : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Ident
 
 }; // Appnav
 
-class Inspect : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Identity
+class Inspect : public ietf::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         Inspect();
@@ -444,7 +444,7 @@ class Inspect : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Iden
 
 }; // Inspect
 
-class Pbr : public cisco_ios_xe::policy_types::PolicyType, virtual ydk::Identity
+class Pbr : public ietf::policy_types::PolicyType, virtual ydk::Identity
 {
     public:
         Pbr();

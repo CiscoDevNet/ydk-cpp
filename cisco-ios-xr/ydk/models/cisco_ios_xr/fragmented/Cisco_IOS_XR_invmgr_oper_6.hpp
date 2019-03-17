@@ -558,10 +558,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Ts
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Attributes::PwgInfo
@@ -1331,10 +1327,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Ts
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Attributes::PwgInfo
@@ -2104,10 +2096,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attribute
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Attributes::PwgInfo
@@ -2877,10 +2865,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Attributes : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Tsi1s::Tsi1::Attributes::PwgInfo
@@ -3650,10 +3634,6 @@ class Inventory::Racks::Rack::Fantray::Slot::Attributes : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf module_done; //type: uint32
-        ydk::YLeaf vm_node_id; //type: uint32
-        ydk::YLeaf vm_done; //type: uint32
-        ydk::YLeaf node_id; //type: uint32
         class InvBasicBag; //type: Inventory::Racks::Rack::Fantray::Slot::Attributes::InvBasicBag
         class EnvSensorInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Attributes::EnvSensorInfo
         class PwgInfo; //type: Inventory::Racks::Rack::Fantray::Slot::Attributes::PwgInfo

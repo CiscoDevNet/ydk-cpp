@@ -564,7 +564,7 @@ class UdpConnection::Nodes::Node::Lpts::Queries::Query::Pcbs::Pcb : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf pcb_address; //type: uint32
+        ydk::YLeaf pcb_address; //type: string
         ydk::YLeaf l4_protocol; //type: uint32
         ydk::YLeaf local_port; //type: uint16
         ydk::YLeaf foreign_port; //type: uint16

@@ -8,11 +8,215 @@
 #include <ydk/errors.hpp>
 
 #include "Cisco_IOS_XR_l2vpn_oper_27.hpp"
-#include "Cisco_IOS_XR_l2vpn_oper_3.hpp"
 #include "Cisco_IOS_XR_l2vpn_oper_34.hpp"
+#include "Cisco_IOS_XR_l2vpn_oper_4.hpp"
 
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_l2vpn_oper {
+
+
+class L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw : public ydk::Entity
+{
+    public:
+        BridgePw();
+        ~BridgePw();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor; //type: string
+        ydk::YLeaf pw_type; //type: L2vpnpw
+        ydk::YLeaf pseudowire_id; //type: uint32
+        ydk::YLeaf ve_id_vpls_id_0_3; //type: uint32
+        ydk::YLeaf vpls_id_4_7; //type: uint32
+        ydk::YLeaf is_access; //type: boolean
+        class Pseudowire; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire
+        class SecurityParameters; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters
+        class StaticMac; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::StaticMac
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire> pseudowire;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::SecurityParameters> security_parameters;
+        ydk::YList static_mac;
+        
+}; // L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw
+
+
+class L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire : public ydk::Entity
+{
+    public:
+        Pseudowire();
+        ~Pseudowire();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf local_source_address; //type: string
+        ydk::YLeaf ipv6_local_source_address; //type: string
+        ydk::YLeaf pseudo_wire_id; //type: uint64
+        ydk::YLeaf is_pwr_type; //type: boolean
+        ydk::YLeaf is_evpn_vpws_type; //type: boolean
+        ydk::YLeaf xconnect_id; //type: uint32
+        ydk::YLeaf state; //type: L2vpnSegmentState
+        ydk::YLeaf pseudo_wire_state; //type: L2vpnPwState
+        ydk::YLeaf protocol; //type: L2vpnSignallingProto
+        ydk::YLeaf pw_class_name; //type: string
+        ydk::YLeaf tag_rewrite; //type: uint16
+        ydk::YLeaf interworking; //type: L2vpnInterworking
+        ydk::YLeaf fe_ctype; //type: L2vpnPwFec
+        ydk::YLeaf evpn_src_acid; //type: uint32
+        ydk::YLeaf sequencing_type; //type: L2vpnPwSequence
+        ydk::YLeaf resync_enabled; //type: boolean
+        ydk::YLeaf resync_threshold; //type: uint32
+        ydk::YLeaf local_control_word; //type: L2vpnPwControlWord
+        ydk::YLeaf remote_control_word; //type: L2vpnPwControlWord
+        ydk::YLeaf local_pseudo_wire_type; //type: L2vpnPw
+        ydk::YLeaf remote_pseudo_wire_type; //type: L2vpnPw
+        ydk::YLeaf imposed_vlan_id; //type: uint32
+        ydk::YLeaf time_created; //type: string
+        ydk::YLeaf time_elapsed_creation; //type: string
+        ydk::YLeaf last_time_status_changed; //type: string
+        ydk::YLeaf time_elapsed_status_changed; //type: string
+        ydk::YLeaf last_time_status_down; //type: string
+        ydk::YLeaf time_elapsed_status_down; //type: uint32
+        ydk::YLeaf shutdown; //type: boolean
+        ydk::YLeaf data_path_down; //type: boolean
+        ydk::YLeaf use_tunnel_path; //type: boolean
+        ydk::YLeaf odn_configured; //type: boolean
+        ydk::YLeaf pseudo_wire_type_mismatched; //type: boolean
+        ydk::YLeaf payload_bytes_mismatched; //type: boolean
+        ydk::YLeaf bitrate_mismatched; //type: boolean
+        ydk::YLeaf rtp_mismatched; //type: boolean
+        ydk::YLeaf diff_ts_mismatched; //type: boolean
+        ydk::YLeaf sig_pkts_mismatched; //type: boolean
+        ydk::YLeaf cas_mismatched; //type: boolean
+        ydk::YLeaf payload_type_mismatched; //type: boolean
+        ydk::YLeaf freq_mismatched; //type: boolean
+        ydk::YLeaf ssrc_mismatched; //type: boolean
+        ydk::YLeaf mtu_mismatched; //type: boolean
+        ydk::YLeaf illegal_control_word; //type: boolean
+        ydk::YLeaf ad_remote_down; //type: boolean
+        ydk::YLeaf not_supported_qinq; //type: boolean
+        ydk::YLeaf local_label_failed; //type: boolean
+        ydk::YLeaf remote_label_failed; //type: boolean
+        ydk::YLeaf preferred_path_disable_fallback; //type: boolean
+        ydk::YLeaf backup_pw; //type: boolean
+        ydk::YLeaf primary_pw; //type: boolean
+        ydk::YLeaf backup_active; //type: boolean
+        ydk::YLeaf backup_force_active; //type: boolean
+        ydk::YLeaf disable_never; //type: boolean
+        ydk::YLeaf disable_delay; //type: uint8
+        ydk::YLeaf primary_peer_id; //type: string
+        ydk::YLeaf primary_pseudo_wire_id; //type: uint64
+        ydk::YLeaf number_ma_cwithdraw_message_sent; //type: uint32
+        ydk::YLeaf num_ma_cwithdraw_msg_received; //type: uint32
+        ydk::YLeaf out_of_memory_state; //type: uint32
+        ydk::YLeaf transport_lsp_down; //type: boolean
+        ydk::YLeaf mac_limit_oper_down; //type: boolean
+        ydk::YLeaf pw_status_use; //type: boolean
+        ydk::YLeaf auto_discovery; //type: boolean
+        ydk::YLeaf ad_method; //type: uint32
+        ydk::YLeaf pwlsd_rewrite_failed; //type: boolean
+        ydk::YLeaf ldp_label_advertise_failed; //type: boolean
+        ydk::YLeaf is_vfi; //type: boolean
+        ydk::YLeaf is_multi_segment_pseudowire; //type: boolean
+        ydk::YLeaf pw_redundancy_one_way; //type: boolean
+        ydk::YLeaf load_balance; //type: L2vpnLoadBal
+        ydk::YLeaf pw_flow_label_type; //type: L2vpnPwFlowLabel
+        ydk::YLeaf pw_flow_label_type_cfg; //type: L2vpnPwFlowLabel
+        ydk::YLeaf pw_flow_label_code17_disabled; //type: boolean
+        ydk::YLeaf is_flow_label_static; //type: boolean
+        ydk::YLeaf is_partially_programmed; //type: boolean
+        ydk::YLeaf pw_redundancy_initial_delay; //type: uint8
+        ydk::YLeaf bridge_pw_type_mismatch; //type: boolean
+        ydk::YLeaf required_bw; //type: uint32
+        ydk::YLeaf admited_bw; //type: uint32
+        ydk::YLeaf forward_class; //type: uint8
+        ydk::YLeaf table_policy_name; //type: string
+        class PeerId; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::PeerId
+        class EncapsulationInfo; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo
+        class LocalInterface; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface
+        class RemoteInterface; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface
+        class PreferredPath; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::PreferredPath
+        class LocalSignalling; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalSignalling
+        class RemoteSignalling; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteSignalling
+        class Statistics; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::Statistics
+        class P2mpPw; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::P2mpPw
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::PeerId> peer_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo> encapsulation_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalInterface> local_interface;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteInterface> remote_interface;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::PreferredPath> preferred_path;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::LocalSignalling> local_signalling;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::RemoteSignalling> remote_signalling;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::Statistics> statistics;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::P2mpPw> p2mp_pw;
+        
+}; // L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire
+
+
+class L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::PeerId : public ydk::Entity
+{
+    public:
+        PeerId();
+        ~PeerId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf type; //type: L2vpnPeer
+        ydk::YLeaf ipv4_peer_id; //type: string
+        ydk::YLeaf ipv6_peer_id; //type: string
+        ydk::YLeaf internal_label; //type: uint32
+
+}; // L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::PeerId
+
+
+class L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo : public ydk::Entity
+{
+    public:
+        EncapsulationInfo();
+        ~EncapsulationInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf encapsulation; //type: L2vpnEncapMethod
+        class Atom; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom
+        class L2tpv3; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::L2tpv3
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom> atom;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::L2tpv3> l2tpv3;
+        
+}; // L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo
 
 
 class L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeAccessVfiTable::BridgePws::BridgePw::Pseudowire::EncapsulationInfo::Atom : public ydk::Entity
@@ -3865,119 +4069,6 @@ class L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::Bri
         ydk::YLeaf byte_counts; //type: uint64
 
 }; // L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::ImpostionStats::Multicast
-
-
-class L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::ImpostionStats::Broadcast : public ydk::Entity
-{
-    public:
-        Broadcast();
-        ~Broadcast();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packet_counts; //type: uint64
-        ydk::YLeaf byte_counts; //type: uint64
-
-}; // L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::ImpostionStats::Broadcast
-
-
-class L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::ImpostionStats::KnownUnicast : public ydk::Entity
-{
-    public:
-        KnownUnicast();
-        ~KnownUnicast();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packet_counts; //type: uint64
-        ydk::YLeaf byte_counts; //type: uint64
-
-}; // L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::ImpostionStats::KnownUnicast
-
-
-class L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::ImpostionStats::UnknownUnicast : public ydk::Entity
-{
-    public:
-        UnknownUnicast();
-        ~UnknownUnicast();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf packet_counts; //type: uint64
-        ydk::YLeaf byte_counts; //type: uint64
-
-}; // L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::ImpostionStats::UnknownUnicast
-
-
-class L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats : public ydk::Entity
-{
-    public:
-        DispostionStats();
-        ~DispostionStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class DispositionStat; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::DispositionStat
-        class DispositionMtuDrop; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::DispositionMtuDrop
-        class DispositionTailDrop; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::DispositionTailDrop
-        class MulticastDrop; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::MulticastDrop
-        class UnicastDrop; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::UnicastDrop
-        class BroadcastDrop; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::BroadcastDrop
-        class ReceivedDrops; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::ReceivedDrops
-        class DaiDrop; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::DaiDrop
-        class IpsgDrop; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::IpsgDrop
-        class DispositionOoODrops; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::DispositionOoODrops
-        class DispositionP2mpStats; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::DispositionP2mpStats
-        class KnownUnicast; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::KnownUnicast
-        class MacMove; //type: L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::MacMove
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::DispositionStat> disposition_stat;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::DispositionMtuDrop> disposition_mtu_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::DispositionTailDrop> disposition_tail_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::MulticastDrop> multicast_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::UnicastDrop> unicast_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::BroadcastDrop> broadcast_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::ReceivedDrops> received_drops;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::DaiDrop> dai_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::IpsgDrop> ipsg_drop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::DispositionOoODrops> disposition_oo_o_drops;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::DispositionP2mpStats> disposition_p2mp_stats;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::KnownUnicast> known_unicast;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_oper::L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats::MacMove> mac_move;
-        
-}; // L2vpnv2::Nodes::Node::BridgeDomains::BridgeDomain::BridgeCoreVfiTable::BridgePws::BridgePw::Pseudowire::Statistics::DispostionStats
 
 
 }

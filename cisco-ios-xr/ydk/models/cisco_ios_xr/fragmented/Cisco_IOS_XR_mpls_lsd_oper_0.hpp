@@ -4027,6 +4027,7 @@ class MgmtLsdApp : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_lsd_app_type_ospf;
         static const ydk::Enum::YLeaf mgmt_lsd_app_type_cgn;
         static const ydk::Enum::YLeaf mgmt_lsd_app_type_dmtc;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_type_cofo_sync_lib;
         static const ydk::Enum::YLeaf mgmt_lsd_app_type_any;
 
 };

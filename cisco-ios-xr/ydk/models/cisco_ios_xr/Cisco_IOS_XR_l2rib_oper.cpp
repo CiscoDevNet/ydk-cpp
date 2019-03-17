@@ -3956,10 +3956,8 @@ bool L2rib::EviChildTables::MacipDetails::has_leaf_or_child_of_name(const std::s
 L2rib::EviChildTables::MacipDetails::MacipDetail::MacipDetail()
     :
     evi{YType::uint32, "evi"},
-    tag_id{YType::uint32, "tag-id"},
     mac_addr{YType::str, "mac-addr"},
     ip_addr{YType::str, "ip-addr"},
-    admin_dist{YType::uint32, "admin-dist"},
     prod_id{YType::uint32, "prod-id"},
     sequence_number{YType::uint32, "sequence-number"},
     flags{YType::str, "flags"},
@@ -3985,10 +3983,8 @@ bool L2rib::EviChildTables::MacipDetails::MacipDetail::has_data() const
 {
     if (is_presence_container) return true;
     return evi.is_set
-	|| tag_id.is_set
 	|| mac_addr.is_set
 	|| ip_addr.is_set
-	|| admin_dist.is_set
 	|| prod_id.is_set
 	|| sequence_number.is_set
 	|| flags.is_set
@@ -4003,10 +3999,8 @@ bool L2rib::EviChildTables::MacipDetails::MacipDetail::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(evi.yfilter)
-	|| ydk::is_set(tag_id.yfilter)
 	|| ydk::is_set(mac_addr.yfilter)
 	|| ydk::is_set(ip_addr.yfilter)
-	|| ydk::is_set(admin_dist.yfilter)
 	|| ydk::is_set(prod_id.yfilter)
 	|| ydk::is_set(sequence_number.yfilter)
 	|| ydk::is_set(flags.yfilter)
@@ -4037,10 +4031,8 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacipDetai
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (evi.is_set || is_set(evi.yfilter)) leaf_name_data.push_back(evi.get_name_leafdata());
-    if (tag_id.is_set || is_set(tag_id.yfilter)) leaf_name_data.push_back(tag_id.get_name_leafdata());
     if (mac_addr.is_set || is_set(mac_addr.yfilter)) leaf_name_data.push_back(mac_addr.get_name_leafdata());
     if (ip_addr.is_set || is_set(ip_addr.yfilter)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-    if (admin_dist.is_set || is_set(admin_dist.yfilter)) leaf_name_data.push_back(admin_dist.get_name_leafdata());
     if (prod_id.is_set || is_set(prod_id.yfilter)) leaf_name_data.push_back(prod_id.get_name_leafdata());
     if (sequence_number.is_set || is_set(sequence_number.yfilter)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
     if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
@@ -4113,12 +4105,6 @@ void L2rib::EviChildTables::MacipDetails::MacipDetail::set_value(const std::stri
         evi.value_namespace = name_space;
         evi.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "tag-id")
-    {
-        tag_id = value;
-        tag_id.value_namespace = name_space;
-        tag_id.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "mac-addr")
     {
         mac_addr = value;
@@ -4130,12 +4116,6 @@ void L2rib::EviChildTables::MacipDetails::MacipDetail::set_value(const std::stri
         ip_addr = value;
         ip_addr.value_namespace = name_space;
         ip_addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "admin-dist")
-    {
-        admin_dist = value;
-        admin_dist.value_namespace = name_space;
-        admin_dist.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prod-id")
     {
@@ -4175,10 +4155,6 @@ void L2rib::EviChildTables::MacipDetails::MacipDetail::set_filter(const std::str
     {
         evi.yfilter = yfilter;
     }
-    if(value_path == "tag-id")
-    {
-        tag_id.yfilter = yfilter;
-    }
     if(value_path == "mac-addr")
     {
         mac_addr.yfilter = yfilter;
@@ -4186,10 +4162,6 @@ void L2rib::EviChildTables::MacipDetails::MacipDetail::set_filter(const std::str
     if(value_path == "ip-addr")
     {
         ip_addr.yfilter = yfilter;
-    }
-    if(value_path == "admin-dist")
-    {
-        admin_dist.yfilter = yfilter;
     }
     if(value_path == "prod-id")
     {
@@ -4215,7 +4187,7 @@ void L2rib::EviChildTables::MacipDetails::MacipDetail::set_filter(const std::str
 
 bool L2rib::EviChildTables::MacipDetails::MacipDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mac-ip-route" || name == "rt-tlv" || name == "nh-tlv" || name == "evi" || name == "tag-id" || name == "mac-addr" || name == "ip-addr" || name == "admin-dist" || name == "prod-id" || name == "sequence-number" || name == "flags" || name == "soo" || name == "last-update-timestamp")
+    if(name == "mac-ip-route" || name == "rt-tlv" || name == "nh-tlv" || name == "evi" || name == "mac-addr" || name == "ip-addr" || name == "prod-id" || name == "sequence-number" || name == "flags" || name == "soo" || name == "last-update-timestamp")
         return true;
     return false;
 }
@@ -5330,10 +5302,8 @@ bool L2rib::EviChildTables::MacIps::has_leaf_or_child_of_name(const std::string 
 L2rib::EviChildTables::MacIps::MacIp::MacIp()
     :
     evi{YType::uint32, "evi"},
-    tag_id{YType::uint32, "tag-id"},
     mac_addr{YType::str, "mac-addr"},
     ip_addr{YType::str, "ip-addr"},
-    admin_dist{YType::uint32, "admin-dist"},
     prod_id{YType::uint32, "prod-id"},
     mac_address{YType::str, "mac-address"},
     ip_address{YType::str, "ip-address"},
@@ -5356,10 +5326,8 @@ bool L2rib::EviChildTables::MacIps::MacIp::has_data() const
 {
     if (is_presence_container) return true;
     return evi.is_set
-	|| tag_id.is_set
 	|| mac_addr.is_set
 	|| ip_addr.is_set
-	|| admin_dist.is_set
 	|| prod_id.is_set
 	|| mac_address.is_set
 	|| ip_address.is_set
@@ -5373,10 +5341,8 @@ bool L2rib::EviChildTables::MacIps::MacIp::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(evi.yfilter)
-	|| ydk::is_set(tag_id.yfilter)
 	|| ydk::is_set(mac_addr.yfilter)
 	|| ydk::is_set(ip_addr.yfilter)
-	|| ydk::is_set(admin_dist.yfilter)
 	|| ydk::is_set(prod_id.yfilter)
 	|| ydk::is_set(mac_address.yfilter)
 	|| ydk::is_set(ip_address.yfilter)
@@ -5406,10 +5372,8 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacIps::Ma
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (evi.is_set || is_set(evi.yfilter)) leaf_name_data.push_back(evi.get_name_leafdata());
-    if (tag_id.is_set || is_set(tag_id.yfilter)) leaf_name_data.push_back(tag_id.get_name_leafdata());
     if (mac_addr.is_set || is_set(mac_addr.yfilter)) leaf_name_data.push_back(mac_addr.get_name_leafdata());
     if (ip_addr.is_set || is_set(ip_addr.yfilter)) leaf_name_data.push_back(ip_addr.get_name_leafdata());
-    if (admin_dist.is_set || is_set(admin_dist.yfilter)) leaf_name_data.push_back(admin_dist.get_name_leafdata());
     if (prod_id.is_set || is_set(prod_id.yfilter)) leaf_name_data.push_back(prod_id.get_name_leafdata());
     if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
     if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
@@ -5455,12 +5419,6 @@ void L2rib::EviChildTables::MacIps::MacIp::set_value(const std::string & value_p
         evi.value_namespace = name_space;
         evi.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "tag-id")
-    {
-        tag_id = value;
-        tag_id.value_namespace = name_space;
-        tag_id.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "mac-addr")
     {
         mac_addr = value;
@@ -5472,12 +5430,6 @@ void L2rib::EviChildTables::MacIps::MacIp::set_value(const std::string & value_p
         ip_addr = value;
         ip_addr.value_namespace = name_space;
         ip_addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "admin-dist")
-    {
-        admin_dist = value;
-        admin_dist.value_namespace = name_space;
-        admin_dist.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prod-id")
     {
@@ -5523,10 +5475,6 @@ void L2rib::EviChildTables::MacIps::MacIp::set_filter(const std::string & value_
     {
         evi.yfilter = yfilter;
     }
-    if(value_path == "tag-id")
-    {
-        tag_id.yfilter = yfilter;
-    }
     if(value_path == "mac-addr")
     {
         mac_addr.yfilter = yfilter;
@@ -5534,10 +5482,6 @@ void L2rib::EviChildTables::MacIps::MacIp::set_filter(const std::string & value_
     if(value_path == "ip-addr")
     {
         ip_addr.yfilter = yfilter;
-    }
-    if(value_path == "admin-dist")
-    {
-        admin_dist.yfilter = yfilter;
     }
     if(value_path == "prod-id")
     {
@@ -5567,7 +5511,7 @@ void L2rib::EviChildTables::MacIps::MacIp::set_filter(const std::string & value_
 
 bool L2rib::EviChildTables::MacIps::MacIp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "next-hop" || name == "evi" || name == "tag-id" || name == "mac-addr" || name == "ip-addr" || name == "admin-dist" || name == "prod-id" || name == "mac-address" || name == "ip-address" || name == "admin-distance" || name == "producer-id" || name == "topology-id")
+    if(name == "next-hop" || name == "evi" || name == "mac-addr" || name == "ip-addr" || name == "prod-id" || name == "mac-address" || name == "ip-address" || name == "admin-distance" || name == "producer-id" || name == "topology-id")
         return true;
     return false;
 }
@@ -6094,9 +6038,7 @@ bool L2rib::EviChildTables::Macs::has_leaf_or_child_of_name(const std::string & 
 L2rib::EviChildTables::Macs::Mac::Mac()
     :
     evi{YType::uint32, "evi"},
-    tag_id{YType::uint32, "tag-id"},
     mac_addr{YType::str, "mac-addr"},
-    admin_dist{YType::uint32, "admin-dist"},
     prod_id{YType::uint32, "prod-id"},
     mac_address{YType::str, "mac-address"},
     admin_distance{YType::uint8, "admin-distance"},
@@ -6118,9 +6060,7 @@ bool L2rib::EviChildTables::Macs::Mac::has_data() const
 {
     if (is_presence_container) return true;
     return evi.is_set
-	|| tag_id.is_set
 	|| mac_addr.is_set
-	|| admin_dist.is_set
 	|| prod_id.is_set
 	|| mac_address.is_set
 	|| admin_distance.is_set
@@ -6133,9 +6073,7 @@ bool L2rib::EviChildTables::Macs::Mac::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(evi.yfilter)
-	|| ydk::is_set(tag_id.yfilter)
 	|| ydk::is_set(mac_addr.yfilter)
-	|| ydk::is_set(admin_dist.yfilter)
 	|| ydk::is_set(prod_id.yfilter)
 	|| ydk::is_set(mac_address.yfilter)
 	|| ydk::is_set(admin_distance.yfilter)
@@ -6164,9 +6102,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::Macs::Mac:
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (evi.is_set || is_set(evi.yfilter)) leaf_name_data.push_back(evi.get_name_leafdata());
-    if (tag_id.is_set || is_set(tag_id.yfilter)) leaf_name_data.push_back(tag_id.get_name_leafdata());
     if (mac_addr.is_set || is_set(mac_addr.yfilter)) leaf_name_data.push_back(mac_addr.get_name_leafdata());
-    if (admin_dist.is_set || is_set(admin_dist.yfilter)) leaf_name_data.push_back(admin_dist.get_name_leafdata());
     if (prod_id.is_set || is_set(prod_id.yfilter)) leaf_name_data.push_back(prod_id.get_name_leafdata());
     if (mac_address.is_set || is_set(mac_address.yfilter)) leaf_name_data.push_back(mac_address.get_name_leafdata());
     if (admin_distance.is_set || is_set(admin_distance.yfilter)) leaf_name_data.push_back(admin_distance.get_name_leafdata());
@@ -6211,23 +6147,11 @@ void L2rib::EviChildTables::Macs::Mac::set_value(const std::string & value_path,
         evi.value_namespace = name_space;
         evi.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "tag-id")
-    {
-        tag_id = value;
-        tag_id.value_namespace = name_space;
-        tag_id.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "mac-addr")
     {
         mac_addr = value;
         mac_addr.value_namespace = name_space;
         mac_addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "admin-dist")
-    {
-        admin_dist = value;
-        admin_dist.value_namespace = name_space;
-        admin_dist.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prod-id")
     {
@@ -6267,17 +6191,9 @@ void L2rib::EviChildTables::Macs::Mac::set_filter(const std::string & value_path
     {
         evi.yfilter = yfilter;
     }
-    if(value_path == "tag-id")
-    {
-        tag_id.yfilter = yfilter;
-    }
     if(value_path == "mac-addr")
     {
         mac_addr.yfilter = yfilter;
-    }
-    if(value_path == "admin-dist")
-    {
-        admin_dist.yfilter = yfilter;
     }
     if(value_path == "prod-id")
     {
@@ -6303,7 +6219,7 @@ void L2rib::EviChildTables::Macs::Mac::set_filter(const std::string & value_path
 
 bool L2rib::EviChildTables::Macs::Mac::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "route" || name == "evi" || name == "tag-id" || name == "mac-addr" || name == "admin-dist" || name == "prod-id" || name == "mac-address" || name == "admin-distance" || name == "producer-id" || name == "topology-id")
+    if(name == "route" || name == "evi" || name == "mac-addr" || name == "prod-id" || name == "mac-address" || name == "admin-distance" || name == "producer-id" || name == "topology-id")
         return true;
     return false;
 }
@@ -10642,9 +10558,7 @@ bool L2rib::EviChildTables::MacDetails::has_leaf_or_child_of_name(const std::str
 L2rib::EviChildTables::MacDetails::MacDetail::MacDetail()
     :
     evi{YType::uint32, "evi"},
-    tag_id{YType::uint32, "tag-id"},
     mac_addr{YType::str, "mac-addr"},
-    admin_dist{YType::uint32, "admin-dist"},
     prod_id{YType::uint32, "prod-id"},
     sequence_number{YType::uint32, "sequence-number"},
     flags{YType::str, "flags"},
@@ -10671,9 +10585,7 @@ bool L2rib::EviChildTables::MacDetails::MacDetail::has_data() const
 {
     if (is_presence_container) return true;
     return evi.is_set
-	|| tag_id.is_set
 	|| mac_addr.is_set
-	|| admin_dist.is_set
 	|| prod_id.is_set
 	|| sequence_number.is_set
 	|| flags.is_set
@@ -10690,9 +10602,7 @@ bool L2rib::EviChildTables::MacDetails::MacDetail::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(evi.yfilter)
-	|| ydk::is_set(tag_id.yfilter)
 	|| ydk::is_set(mac_addr.yfilter)
-	|| ydk::is_set(admin_dist.yfilter)
 	|| ydk::is_set(prod_id.yfilter)
 	|| ydk::is_set(sequence_number.yfilter)
 	|| ydk::is_set(flags.yfilter)
@@ -10725,9 +10635,7 @@ std::vector<std::pair<std::string, LeafData> > L2rib::EviChildTables::MacDetails
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (evi.is_set || is_set(evi.yfilter)) leaf_name_data.push_back(evi.get_name_leafdata());
-    if (tag_id.is_set || is_set(tag_id.yfilter)) leaf_name_data.push_back(tag_id.get_name_leafdata());
     if (mac_addr.is_set || is_set(mac_addr.yfilter)) leaf_name_data.push_back(mac_addr.get_name_leafdata());
-    if (admin_dist.is_set || is_set(admin_dist.yfilter)) leaf_name_data.push_back(admin_dist.get_name_leafdata());
     if (prod_id.is_set || is_set(prod_id.yfilter)) leaf_name_data.push_back(prod_id.get_name_leafdata());
     if (sequence_number.is_set || is_set(sequence_number.yfilter)) leaf_name_data.push_back(sequence_number.get_name_leafdata());
     if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
@@ -10789,23 +10697,11 @@ void L2rib::EviChildTables::MacDetails::MacDetail::set_value(const std::string &
         evi.value_namespace = name_space;
         evi.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "tag-id")
-    {
-        tag_id = value;
-        tag_id.value_namespace = name_space;
-        tag_id.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "mac-addr")
     {
         mac_addr = value;
         mac_addr.value_namespace = name_space;
         mac_addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "admin-dist")
-    {
-        admin_dist = value;
-        admin_dist.value_namespace = name_space;
-        admin_dist.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prod-id")
     {
@@ -10863,17 +10759,9 @@ void L2rib::EviChildTables::MacDetails::MacDetail::set_filter(const std::string 
     {
         evi.yfilter = yfilter;
     }
-    if(value_path == "tag-id")
-    {
-        tag_id.yfilter = yfilter;
-    }
     if(value_path == "mac-addr")
     {
         mac_addr.yfilter = yfilter;
-    }
-    if(value_path == "admin-dist")
-    {
-        admin_dist.yfilter = yfilter;
     }
     if(value_path == "prod-id")
     {
@@ -10911,7 +10799,7 @@ void L2rib::EviChildTables::MacDetails::MacDetail::set_filter(const std::string 
 
 bool L2rib::EviChildTables::MacDetails::MacDetail::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mac-route" || name == "rt-tlv" || name == "evi" || name == "tag-id" || name == "mac-addr" || name == "admin-dist" || name == "prod-id" || name == "sequence-number" || name == "flags" || name == "baseflags" || name == "soo" || name == "slot-id" || name == "esi" || name == "last-update-timestamp")
+    if(name == "mac-route" || name == "rt-tlv" || name == "evi" || name == "mac-addr" || name == "prod-id" || name == "sequence-number" || name == "flags" || name == "baseflags" || name == "soo" || name == "slot-id" || name == "esi" || name == "last-update-timestamp")
         return true;
     return false;
 }

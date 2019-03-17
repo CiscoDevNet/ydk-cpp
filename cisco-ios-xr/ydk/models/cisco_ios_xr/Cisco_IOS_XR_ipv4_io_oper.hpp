@@ -278,7 +278,7 @@ class Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail : publ
         ydk::YLeaf cflct_address; //type: string
         ydk::YLeaf client_type; //type: Ipv4MaOperConfig
         ydk::YLeaf is_or_event; //type: boolean
-        ydk::YLeaf or_im_state; //type: Ipv4MaOperLineState
+        ydk::YLeaf or_im_state; //type: ImStateEnum
         ydk::YLeaf idb_pointer; //type: uint64
         class Acl; //type: Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Acl
         class MultiAcl; //type: Ipv4Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAcl
@@ -1136,7 +1136,7 @@ class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail : public ydk::Entity
         ydk::YLeaf cflct_address; //type: string
         ydk::YLeaf client_type; //type: Ipv4MaOperConfig
         ydk::YLeaf is_or_event; //type: boolean
-        ydk::YLeaf or_im_state; //type: Ipv4MaOperLineState
+        ydk::YLeaf or_im_state; //type: ImStateEnum
         ydk::YLeaf idb_pointer; //type: uint64
         class Acl; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::Acl
         class MultiAcl; //type: Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Detail::MultiAcl
@@ -1586,6 +1586,31 @@ class Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief : public ydk::Entity
         ydk::YLeaf line_state; //type: Ipv4MaOperLineState
 
 }; // Ipv4Network::Interfaces::Interface::Vrfs::Vrf::Brief
+
+class ImStateEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf im_state_not_ready;
+        static const ydk::Enum::YLeaf im_state_admin_down;
+        static const ydk::Enum::YLeaf im_state_down;
+        static const ydk::Enum::YLeaf im_state_up;
+        static const ydk::Enum::YLeaf im_state_shutdown;
+        static const ydk::Enum::YLeaf im_state_err_disable;
+        static const ydk::Enum::YLeaf im_state_down_immediate;
+        static const ydk::Enum::YLeaf im_state_down_immediate_admin;
+        static const ydk::Enum::YLeaf im_state_down_graceful;
+        static const ydk::Enum::YLeaf im_state_begin_shutdown;
+        static const ydk::Enum::YLeaf im_state_end_shutdown;
+        static const ydk::Enum::YLeaf im_state_begin_error_disable;
+        static const ydk::Enum::YLeaf im_state_end_error_disable;
+        static const ydk::Enum::YLeaf im_state_begin_down_graceful;
+        static const ydk::Enum::YLeaf im_state_reset;
+        static const ydk::Enum::YLeaf im_state_operational;
+        static const ydk::Enum::YLeaf im_state_not_operational;
+        static const ydk::Enum::YLeaf im_state_unknown;
+        static const ydk::Enum::YLeaf im_state_last;
+
+};
 
 class Ipv4MaOperConfig : public ydk::Enum
 {

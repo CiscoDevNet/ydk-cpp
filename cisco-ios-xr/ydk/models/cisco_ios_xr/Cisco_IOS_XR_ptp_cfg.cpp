@@ -4273,8 +4273,10 @@ bool Ptp::UtcOffset::ScheduledOffsets::ScheduledOffset::has_leaf_or_child_of_nam
 Ptp::Logging::Logging()
     :
     best_master_clock(std::make_shared<Ptp::Logging::BestMasterClock>())
+    , servo(std::make_shared<Ptp::Logging::Servo>())
 {
     best_master_clock->parent = this;
+    servo->parent = this;
 
     yang_name = "logging"; yang_parent_name = "ptp"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -4286,13 +4288,15 @@ Ptp::Logging::~Logging()
 bool Ptp::Logging::has_data() const
 {
     if (is_presence_container) return true;
-    return (best_master_clock !=  nullptr && best_master_clock->has_data());
+    return (best_master_clock !=  nullptr && best_master_clock->has_data())
+	|| (servo !=  nullptr && servo->has_data());
 }
 
 bool Ptp::Logging::has_operation() const
 {
     return is_set(yfilter)
-	|| (best_master_clock !=  nullptr && best_master_clock->has_operation());
+	|| (best_master_clock !=  nullptr && best_master_clock->has_operation())
+	|| (servo !=  nullptr && servo->has_operation());
 }
 
 std::string Ptp::Logging::get_absolute_path() const
@@ -4329,6 +4333,15 @@ std::shared_ptr<ydk::Entity> Ptp::Logging::get_child_by_name(const std::string &
         return best_master_clock;
     }
 
+    if(child_yang_name == "Cisco-IOS-XR-asr9k-ptp-pd-cfg:servo")
+    {
+        if(servo == nullptr)
+        {
+            servo = std::make_shared<Ptp::Logging::Servo>();
+        }
+        return servo;
+    }
+
     return nullptr;
 }
 
@@ -4339,6 +4352,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ptp::Logging::get_children()
     if(best_master_clock != nullptr)
     {
         _children["best-master-clock"] = best_master_clock;
+    }
+
+    if(servo != nullptr)
+    {
+        _children["Cisco-IOS-XR-asr9k-ptp-pd-cfg:servo"] = servo;
     }
 
     return _children;
@@ -4354,7 +4372,7 @@ void Ptp::Logging::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool Ptp::Logging::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "best-master-clock")
+    if(name == "best-master-clock" || name == "servo")
         return true;
     return false;
 }
@@ -4440,6 +4458,91 @@ void Ptp::Logging::BestMasterClock::set_filter(const std::string & value_path, Y
 bool Ptp::Logging::BestMasterClock::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "changes")
+        return true;
+    return false;
+}
+
+Ptp::Logging::Servo::Servo()
+    :
+    events{YType::empty, "events"}
+{
+
+    yang_name = "servo"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ptp::Logging::Servo::~Servo()
+{
+}
+
+bool Ptp::Logging::Servo::has_data() const
+{
+    if (is_presence_container) return true;
+    return events.is_set;
+}
+
+bool Ptp::Logging::Servo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(events.yfilter);
+}
+
+std::string Ptp::Logging::Servo::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ptp-cfg:ptp/logging/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ptp::Logging::Servo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-asr9k-ptp-pd-cfg:servo";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ptp::Logging::Servo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (events.is_set || is_set(events.yfilter)) leaf_name_data.push_back(events.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ptp::Logging::Servo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ptp::Logging::Servo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ptp::Logging::Servo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "events")
+    {
+        events = value;
+        events.value_namespace = name_space;
+        events.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ptp::Logging::Servo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "events")
+    {
+        events.yfilter = yfilter;
+    }
+}
+
+bool Ptp::Logging::Servo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "events")
         return true;
     return false;
 }

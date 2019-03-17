@@ -3425,6 +3425,7 @@ class System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyCon
         ydk::YLeaf sendcomstd; //type: BgpAdminSt
         ydk::YLeaf sendcomext; //type: BgpAdminSt
         ydk::YLeaf advlocallblrt; //type: NwAdminSt_
+        ydk::YLeaf nhselfall; //type: boolean
         ydk::YLeaf inheritcontpeerpolicyctrl; //type: string
         class MaxpfxpItems; //type: System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyContList::MaxpfxpItems
         class AdvtmapItems; //type: System::BgpItems::InstItems::DomItems::DomList::PolicycontItems::PolicyContList::AdvtmapItems

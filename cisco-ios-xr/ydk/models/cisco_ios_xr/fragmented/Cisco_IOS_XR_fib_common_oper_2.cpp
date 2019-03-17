@@ -247,6 +247,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareIngress::N
     :
     nh_info_replicated_type{YType::uint8, "nh-info-replicated-type"},
     nh_info_replicated_nh_id{YType::uint32, "nh-info-replicated-nh-id"},
+    nh_info_replicated_encap_id{YType::uint64, "nh-info-replicated-encap-id"},
     nh_info_replicated_interface{YType::str, "nh-info-replicated-interface"}
 {
 
@@ -262,6 +263,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareIngre
     if (is_presence_container) return true;
     return nh_info_replicated_type.is_set
 	|| nh_info_replicated_nh_id.is_set
+	|| nh_info_replicated_encap_id.is_set
 	|| nh_info_replicated_interface.is_set;
 }
 
@@ -270,6 +272,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareIngre
     return is_set(yfilter)
 	|| ydk::is_set(nh_info_replicated_type.yfilter)
 	|| ydk::is_set(nh_info_replicated_nh_id.yfilter)
+	|| ydk::is_set(nh_info_replicated_encap_id.yfilter)
 	|| ydk::is_set(nh_info_replicated_interface.yfilter);
 }
 
@@ -286,6 +289,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
     if (nh_info_replicated_type.is_set || is_set(nh_info_replicated_type.yfilter)) leaf_name_data.push_back(nh_info_replicated_type.get_name_leafdata());
     if (nh_info_replicated_nh_id.is_set || is_set(nh_info_replicated_nh_id.yfilter)) leaf_name_data.push_back(nh_info_replicated_nh_id.get_name_leafdata());
+    if (nh_info_replicated_encap_id.is_set || is_set(nh_info_replicated_encap_id.yfilter)) leaf_name_data.push_back(nh_info_replicated_encap_id.get_name_leafdata());
     if (nh_info_replicated_interface.is_set || is_set(nh_info_replicated_interface.yfilter)) leaf_name_data.push_back(nh_info_replicated_interface.get_name_leafdata());
 
     return leaf_name_data;
@@ -318,6 +322,12 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareIngre
         nh_info_replicated_nh_id.value_namespace = name_space;
         nh_info_replicated_nh_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "nh-info-replicated-encap-id")
+    {
+        nh_info_replicated_encap_id = value;
+        nh_info_replicated_encap_id.value_namespace = name_space;
+        nh_info_replicated_encap_id.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "nh-info-replicated-interface")
     {
         nh_info_replicated_interface = value;
@@ -336,6 +346,10 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareIngre
     {
         nh_info_replicated_nh_id.yfilter = yfilter;
     }
+    if(value_path == "nh-info-replicated-encap-id")
+    {
+        nh_info_replicated_encap_id.yfilter = yfilter;
+    }
     if(value_path == "nh-info-replicated-interface")
     {
         nh_info_replicated_interface.yfilter = yfilter;
@@ -344,7 +358,7 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareIngre
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoDetailHardwareIngress::NhInfoSpecialDetailHardwareIngress::NhInfoSpecialDiscardDetailHardwareIngress::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "nh-info-replicated-type" || name == "nh-info-replicated-nh-id" || name == "nh-info-replicated-interface")
+    if(name == "nh-info-replicated-type" || name == "nh-info-replicated-nh-id" || name == "nh-info-replicated-encap-id" || name == "nh-info-replicated-interface")
         return true;
     return false;
 }
@@ -2050,6 +2064,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecialBrie
     :
     nh_info_replicated_type{YType::uint8, "nh-info-replicated-type"},
     nh_info_replicated_nh_id{YType::uint32, "nh-info-replicated-nh-id"},
+    nh_info_replicated_encap_id{YType::uint64, "nh-info-replicated-encap-id"},
     nh_info_replicated_interface{YType::str, "nh-info-replicated-interface"}
 {
 
@@ -2065,6 +2080,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecia
     if (is_presence_container) return true;
     return nh_info_replicated_type.is_set
 	|| nh_info_replicated_nh_id.is_set
+	|| nh_info_replicated_encap_id.is_set
 	|| nh_info_replicated_interface.is_set;
 }
 
@@ -2073,6 +2089,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecia
     return is_set(yfilter)
 	|| ydk::is_set(nh_info_replicated_type.yfilter)
 	|| ydk::is_set(nh_info_replicated_nh_id.yfilter)
+	|| ydk::is_set(nh_info_replicated_encap_id.yfilter)
 	|| ydk::is_set(nh_info_replicated_interface.yfilter);
 }
 
@@ -2089,6 +2106,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
     if (nh_info_replicated_type.is_set || is_set(nh_info_replicated_type.yfilter)) leaf_name_data.push_back(nh_info_replicated_type.get_name_leafdata());
     if (nh_info_replicated_nh_id.is_set || is_set(nh_info_replicated_nh_id.yfilter)) leaf_name_data.push_back(nh_info_replicated_nh_id.get_name_leafdata());
+    if (nh_info_replicated_encap_id.is_set || is_set(nh_info_replicated_encap_id.yfilter)) leaf_name_data.push_back(nh_info_replicated_encap_id.get_name_leafdata());
     if (nh_info_replicated_interface.is_set || is_set(nh_info_replicated_interface.yfilter)) leaf_name_data.push_back(nh_info_replicated_interface.get_name_leafdata());
 
     return leaf_name_data;
@@ -2121,6 +2139,12 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecia
         nh_info_replicated_nh_id.value_namespace = name_space;
         nh_info_replicated_nh_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "nh-info-replicated-encap-id")
+    {
+        nh_info_replicated_encap_id = value;
+        nh_info_replicated_encap_id.value_namespace = name_space;
+        nh_info_replicated_encap_id.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "nh-info-replicated-interface")
     {
         nh_info_replicated_interface = value;
@@ -2139,6 +2163,10 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecia
     {
         nh_info_replicated_nh_id.yfilter = yfilter;
     }
+    if(value_path == "nh-info-replicated-encap-id")
+    {
+        nh_info_replicated_encap_id.yfilter = yfilter;
+    }
     if(value_path == "nh-info-replicated-interface")
     {
         nh_info_replicated_interface.yfilter = yfilter;
@@ -2147,7 +2175,7 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecia
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecialBrief::NhInfoSpecialDiscardBrief::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "nh-info-replicated-type" || name == "nh-info-replicated-nh-id" || name == "nh-info-replicated-interface")
+    if(name == "nh-info-replicated-type" || name == "nh-info-replicated-nh-id" || name == "nh-info-replicated-encap-id" || name == "nh-info-replicated-interface")
         return true;
     return false;
 }
@@ -3599,6 +3627,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecialBrie
     :
     nh_info_replicated_type{YType::uint8, "nh-info-replicated-type"},
     nh_info_replicated_nh_id{YType::uint32, "nh-info-replicated-nh-id"},
+    nh_info_replicated_encap_id{YType::uint64, "nh-info-replicated-encap-id"},
     nh_info_replicated_interface{YType::str, "nh-info-replicated-interface"}
 {
 
@@ -3614,6 +3643,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecia
     if (is_presence_container) return true;
     return nh_info_replicated_type.is_set
 	|| nh_info_replicated_nh_id.is_set
+	|| nh_info_replicated_encap_id.is_set
 	|| nh_info_replicated_interface.is_set;
 }
 
@@ -3622,6 +3652,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecia
     return is_set(yfilter)
 	|| ydk::is_set(nh_info_replicated_type.yfilter)
 	|| ydk::is_set(nh_info_replicated_nh_id.yfilter)
+	|| ydk::is_set(nh_info_replicated_encap_id.yfilter)
 	|| ydk::is_set(nh_info_replicated_interface.yfilter);
 }
 
@@ -3638,6 +3669,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
     if (nh_info_replicated_type.is_set || is_set(nh_info_replicated_type.yfilter)) leaf_name_data.push_back(nh_info_replicated_type.get_name_leafdata());
     if (nh_info_replicated_nh_id.is_set || is_set(nh_info_replicated_nh_id.yfilter)) leaf_name_data.push_back(nh_info_replicated_nh_id.get_name_leafdata());
+    if (nh_info_replicated_encap_id.is_set || is_set(nh_info_replicated_encap_id.yfilter)) leaf_name_data.push_back(nh_info_replicated_encap_id.get_name_leafdata());
     if (nh_info_replicated_interface.is_set || is_set(nh_info_replicated_interface.yfilter)) leaf_name_data.push_back(nh_info_replicated_interface.get_name_leafdata());
 
     return leaf_name_data;
@@ -3670,6 +3702,12 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecia
         nh_info_replicated_nh_id.value_namespace = name_space;
         nh_info_replicated_nh_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "nh-info-replicated-encap-id")
+    {
+        nh_info_replicated_encap_id = value;
+        nh_info_replicated_encap_id.value_namespace = name_space;
+        nh_info_replicated_encap_id.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "nh-info-replicated-interface")
     {
         nh_info_replicated_interface = value;
@@ -3688,6 +3726,10 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecia
     {
         nh_info_replicated_nh_id.yfilter = yfilter;
     }
+    if(value_path == "nh-info-replicated-encap-id")
+    {
+        nh_info_replicated_encap_id.yfilter = yfilter;
+    }
     if(value_path == "nh-info-replicated-interface")
     {
         nh_info_replicated_interface.yfilter = yfilter;
@@ -3696,7 +3738,7 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecia
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecialBrief::NhInfoSpecialNullBrief::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "nh-info-replicated-type" || name == "nh-info-replicated-nh-id" || name == "nh-info-replicated-interface")
+    if(name == "nh-info-replicated-type" || name == "nh-info-replicated-nh-id" || name == "nh-info-replicated-encap-id" || name == "nh-info-replicated-interface")
         return true;
     return false;
 }
@@ -5148,6 +5190,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecialBrie
     :
     nh_info_replicated_type{YType::uint8, "nh-info-replicated-type"},
     nh_info_replicated_nh_id{YType::uint32, "nh-info-replicated-nh-id"},
+    nh_info_replicated_encap_id{YType::uint64, "nh-info-replicated-encap-id"},
     nh_info_replicated_interface{YType::str, "nh-info-replicated-interface"}
 {
 
@@ -5163,6 +5206,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecia
     if (is_presence_container) return true;
     return nh_info_replicated_type.is_set
 	|| nh_info_replicated_nh_id.is_set
+	|| nh_info_replicated_encap_id.is_set
 	|| nh_info_replicated_interface.is_set;
 }
 
@@ -5171,6 +5215,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecia
     return is_set(yfilter)
 	|| ydk::is_set(nh_info_replicated_type.yfilter)
 	|| ydk::is_set(nh_info_replicated_nh_id.yfilter)
+	|| ydk::is_set(nh_info_replicated_encap_id.yfilter)
 	|| ydk::is_set(nh_info_replicated_interface.yfilter);
 }
 
@@ -5187,6 +5232,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
     if (nh_info_replicated_type.is_set || is_set(nh_info_replicated_type.yfilter)) leaf_name_data.push_back(nh_info_replicated_type.get_name_leafdata());
     if (nh_info_replicated_nh_id.is_set || is_set(nh_info_replicated_nh_id.yfilter)) leaf_name_data.push_back(nh_info_replicated_nh_id.get_name_leafdata());
+    if (nh_info_replicated_encap_id.is_set || is_set(nh_info_replicated_encap_id.yfilter)) leaf_name_data.push_back(nh_info_replicated_encap_id.get_name_leafdata());
     if (nh_info_replicated_interface.is_set || is_set(nh_info_replicated_interface.yfilter)) leaf_name_data.push_back(nh_info_replicated_interface.get_name_leafdata());
 
     return leaf_name_data;
@@ -5219,6 +5265,12 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecia
         nh_info_replicated_nh_id.value_namespace = name_space;
         nh_info_replicated_nh_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "nh-info-replicated-encap-id")
+    {
+        nh_info_replicated_encap_id = value;
+        nh_info_replicated_encap_id.value_namespace = name_space;
+        nh_info_replicated_encap_id.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "nh-info-replicated-interface")
     {
         nh_info_replicated_interface = value;
@@ -5237,6 +5289,10 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecia
     {
         nh_info_replicated_nh_id.yfilter = yfilter;
     }
+    if(value_path == "nh-info-replicated-encap-id")
+    {
+        nh_info_replicated_encap_id.yfilter = yfilter;
+    }
     if(value_path == "nh-info-replicated-interface")
     {
         nh_info_replicated_interface.yfilter = yfilter;
@@ -5245,7 +5301,7 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecia
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecialBrief::NhInfoSpecialPuntBrief::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "nh-info-replicated-type" || name == "nh-info-replicated-nh-id" || name == "nh-info-replicated-interface")
+    if(name == "nh-info-replicated-type" || name == "nh-info-replicated-nh-id" || name == "nh-info-replicated-encap-id" || name == "nh-info-replicated-interface")
         return true;
     return false;
 }
@@ -6697,6 +6753,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecialBrie
     :
     nh_info_replicated_type{YType::uint8, "nh-info-replicated-type"},
     nh_info_replicated_nh_id{YType::uint32, "nh-info-replicated-nh-id"},
+    nh_info_replicated_encap_id{YType::uint64, "nh-info-replicated-encap-id"},
     nh_info_replicated_interface{YType::str, "nh-info-replicated-interface"}
 {
 
@@ -6712,6 +6769,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecia
     if (is_presence_container) return true;
     return nh_info_replicated_type.is_set
 	|| nh_info_replicated_nh_id.is_set
+	|| nh_info_replicated_encap_id.is_set
 	|| nh_info_replicated_interface.is_set;
 }
 
@@ -6720,6 +6778,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecia
     return is_set(yfilter)
 	|| ydk::is_set(nh_info_replicated_type.yfilter)
 	|| ydk::is_set(nh_info_replicated_nh_id.yfilter)
+	|| ydk::is_set(nh_info_replicated_encap_id.yfilter)
 	|| ydk::is_set(nh_info_replicated_interface.yfilter);
 }
 
@@ -6736,6 +6795,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
     if (nh_info_replicated_type.is_set || is_set(nh_info_replicated_type.yfilter)) leaf_name_data.push_back(nh_info_replicated_type.get_name_leafdata());
     if (nh_info_replicated_nh_id.is_set || is_set(nh_info_replicated_nh_id.yfilter)) leaf_name_data.push_back(nh_info_replicated_nh_id.get_name_leafdata());
+    if (nh_info_replicated_encap_id.is_set || is_set(nh_info_replicated_encap_id.yfilter)) leaf_name_data.push_back(nh_info_replicated_encap_id.get_name_leafdata());
     if (nh_info_replicated_interface.is_set || is_set(nh_info_replicated_interface.yfilter)) leaf_name_data.push_back(nh_info_replicated_interface.get_name_leafdata());
 
     return leaf_name_data;
@@ -6768,6 +6828,12 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecia
         nh_info_replicated_nh_id.value_namespace = name_space;
         nh_info_replicated_nh_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "nh-info-replicated-encap-id")
+    {
+        nh_info_replicated_encap_id = value;
+        nh_info_replicated_encap_id.value_namespace = name_space;
+        nh_info_replicated_encap_id.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "nh-info-replicated-interface")
     {
         nh_info_replicated_interface = value;
@@ -6786,6 +6852,10 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecia
     {
         nh_info_replicated_nh_id.yfilter = yfilter;
     }
+    if(value_path == "nh-info-replicated-encap-id")
+    {
+        nh_info_replicated_encap_id.yfilter = yfilter;
+    }
     if(value_path == "nh-info-replicated-interface")
     {
         nh_info_replicated_interface.yfilter = yfilter;
@@ -6794,7 +6864,7 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecia
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoSpecialBrief::NhInfoSpecialDropBrief::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "nh-info-replicated-type" || name == "nh-info-replicated-nh-id" || name == "nh-info-replicated-interface")
+    if(name == "nh-info-replicated-type" || name == "nh-info-replicated-nh-id" || name == "nh-info-replicated-encap-id" || name == "nh-info-replicated-interface")
         return true;
     return false;
 }
@@ -8396,6 +8466,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoRemoteBrief
     :
     nh_info_replicated_type{YType::uint8, "nh-info-replicated-type"},
     nh_info_replicated_nh_id{YType::uint32, "nh-info-replicated-nh-id"},
+    nh_info_replicated_encap_id{YType::uint64, "nh-info-replicated-encap-id"},
     nh_info_replicated_interface{YType::str, "nh-info-replicated-interface"}
 {
 
@@ -8411,6 +8482,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoRemote
     if (is_presence_container) return true;
     return nh_info_replicated_type.is_set
 	|| nh_info_replicated_nh_id.is_set
+	|| nh_info_replicated_encap_id.is_set
 	|| nh_info_replicated_interface.is_set;
 }
 
@@ -8419,6 +8491,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoRemote
     return is_set(yfilter)
 	|| ydk::is_set(nh_info_replicated_type.yfilter)
 	|| ydk::is_set(nh_info_replicated_nh_id.yfilter)
+	|| ydk::is_set(nh_info_replicated_encap_id.yfilter)
 	|| ydk::is_set(nh_info_replicated_interface.yfilter);
 }
 
@@ -8435,6 +8508,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
     if (nh_info_replicated_type.is_set || is_set(nh_info_replicated_type.yfilter)) leaf_name_data.push_back(nh_info_replicated_type.get_name_leafdata());
     if (nh_info_replicated_nh_id.is_set || is_set(nh_info_replicated_nh_id.yfilter)) leaf_name_data.push_back(nh_info_replicated_nh_id.get_name_leafdata());
+    if (nh_info_replicated_encap_id.is_set || is_set(nh_info_replicated_encap_id.yfilter)) leaf_name_data.push_back(nh_info_replicated_encap_id.get_name_leafdata());
     if (nh_info_replicated_interface.is_set || is_set(nh_info_replicated_interface.yfilter)) leaf_name_data.push_back(nh_info_replicated_interface.get_name_leafdata());
 
     return leaf_name_data;
@@ -8467,6 +8541,12 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoRemote
         nh_info_replicated_nh_id.value_namespace = name_space;
         nh_info_replicated_nh_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "nh-info-replicated-encap-id")
+    {
+        nh_info_replicated_encap_id = value;
+        nh_info_replicated_encap_id.value_namespace = name_space;
+        nh_info_replicated_encap_id.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "nh-info-replicated-interface")
     {
         nh_info_replicated_interface = value;
@@ -8485,6 +8565,10 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoRemote
     {
         nh_info_replicated_nh_id.yfilter = yfilter;
     }
+    if(value_path == "nh-info-replicated-encap-id")
+    {
+        nh_info_replicated_encap_id.yfilter = yfilter;
+    }
     if(value_path == "nh-info-replicated-interface")
     {
         nh_info_replicated_interface.yfilter = yfilter;
@@ -8493,7 +8577,7 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoRemote
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoRemoteBriefs::NhInfoRemoteBrief::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "nh-info-replicated-type" || name == "nh-info-replicated-nh-id" || name == "nh-info-replicated-interface")
+    if(name == "nh-info-replicated-type" || name == "nh-info-replicated-nh-id" || name == "nh-info-replicated-encap-id" || name == "nh-info-replicated-interface")
         return true;
     return false;
 }
@@ -10095,6 +10179,7 @@ Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoLocalBriefs
     :
     nh_info_replicated_type{YType::uint8, "nh-info-replicated-type"},
     nh_info_replicated_nh_id{YType::uint32, "nh-info-replicated-nh-id"},
+    nh_info_replicated_encap_id{YType::uint64, "nh-info-replicated-encap-id"},
     nh_info_replicated_interface{YType::str, "nh-info-replicated-interface"}
 {
 
@@ -10110,6 +10195,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoLocalB
     if (is_presence_container) return true;
     return nh_info_replicated_type.is_set
 	|| nh_info_replicated_nh_id.is_set
+	|| nh_info_replicated_encap_id.is_set
 	|| nh_info_replicated_interface.is_set;
 }
 
@@ -10118,6 +10204,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoLocalB
     return is_set(yfilter)
 	|| ydk::is_set(nh_info_replicated_type.yfilter)
 	|| ydk::is_set(nh_info_replicated_nh_id.yfilter)
+	|| ydk::is_set(nh_info_replicated_encap_id.yfilter)
 	|| ydk::is_set(nh_info_replicated_interface.yfilter);
 }
 
@@ -10134,6 +10221,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
 
     if (nh_info_replicated_type.is_set || is_set(nh_info_replicated_type.yfilter)) leaf_name_data.push_back(nh_info_replicated_type.get_name_leafdata());
     if (nh_info_replicated_nh_id.is_set || is_set(nh_info_replicated_nh_id.yfilter)) leaf_name_data.push_back(nh_info_replicated_nh_id.get_name_leafdata());
+    if (nh_info_replicated_encap_id.is_set || is_set(nh_info_replicated_encap_id.yfilter)) leaf_name_data.push_back(nh_info_replicated_encap_id.get_name_leafdata());
     if (nh_info_replicated_interface.is_set || is_set(nh_info_replicated_interface.yfilter)) leaf_name_data.push_back(nh_info_replicated_interface.get_name_leafdata());
 
     return leaf_name_data;
@@ -10166,6 +10254,12 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoLocalB
         nh_info_replicated_nh_id.value_namespace = name_space;
         nh_info_replicated_nh_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "nh-info-replicated-encap-id")
+    {
+        nh_info_replicated_encap_id = value;
+        nh_info_replicated_encap_id.value_namespace = name_space;
+        nh_info_replicated_encap_id.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "nh-info-replicated-interface")
     {
         nh_info_replicated_interface = value;
@@ -10184,6 +10278,10 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoLocalB
     {
         nh_info_replicated_nh_id.yfilter = yfilter;
     }
+    if(value_path == "nh-info-replicated-encap-id")
+    {
+        nh_info_replicated_encap_id.yfilter = yfilter;
+    }
     if(value_path == "nh-info-replicated-interface")
     {
         nh_info_replicated_interface.yfilter = yfilter;
@@ -10192,7 +10290,7 @@ void Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoLocalB
 
 bool Fib::Nodes::Node::Protocols::Protocol::Vrfs::Vrf::NhInfoBrief::NhInfoLocalBriefs::NhInfoLocalBrief::NhInfoExtension::NhInfoExtensionDetail::NhInfoExtensionDetail_::SnecdNhr::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "nh-info-replicated-type" || name == "nh-info-replicated-nh-id" || name == "nh-info-replicated-interface")
+    if(name == "nh-info-replicated-type" || name == "nh-info-replicated-nh-id" || name == "nh-info-replicated-encap-id" || name == "nh-info-replicated-interface")
         return true;
     return false;
 }
@@ -10335,6 +10433,7 @@ Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::ExactRoute()
     l2_subscriber_ip_protocol{YType::uint32, "l2-subscriber-ip-protocol"},
     l2tpv3_cookie_length_bits{YType::uint32, "l2tpv3-cookie-length-bits"},
     route_for_external_reach_linecard_flag{YType::boolean, "route-for-external-reach-linecard-flag"},
+    route_source_not_preferred{YType::boolean, "route-source-not-preferred"},
     route_is_sr_flag{YType::boolean, "route-is-sr-flag"}
         ,
     detail_fib_entry_information(std::make_shared<Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::DetailFibEntryInformation>())
@@ -10402,6 +10501,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::has_data() 
 	|| l2_subscriber_ip_protocol.is_set
 	|| l2tpv3_cookie_length_bits.is_set
 	|| route_for_external_reach_linecard_flag.is_set
+	|| route_source_not_preferred.is_set
 	|| route_is_sr_flag.is_set
 	|| (detail_fib_entry_information !=  nullptr && detail_fib_entry_information->has_data())
 	|| (fib_entry_path !=  nullptr && fib_entry_path->has_data());
@@ -10458,6 +10558,7 @@ bool Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::has_operati
 	|| ydk::is_set(l2_subscriber_ip_protocol.yfilter)
 	|| ydk::is_set(l2tpv3_cookie_length_bits.yfilter)
 	|| ydk::is_set(route_for_external_reach_linecard_flag.yfilter)
+	|| ydk::is_set(route_source_not_preferred.yfilter)
 	|| ydk::is_set(route_is_sr_flag.yfilter)
 	|| (detail_fib_entry_information !=  nullptr && detail_fib_entry_information->has_operation())
 	|| (fib_entry_path !=  nullptr && fib_entry_path->has_operation());
@@ -10518,6 +10619,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
     if (l2_subscriber_ip_protocol.is_set || is_set(l2_subscriber_ip_protocol.yfilter)) leaf_name_data.push_back(l2_subscriber_ip_protocol.get_name_leafdata());
     if (l2tpv3_cookie_length_bits.is_set || is_set(l2tpv3_cookie_length_bits.yfilter)) leaf_name_data.push_back(l2tpv3_cookie_length_bits.get_name_leafdata());
     if (route_for_external_reach_linecard_flag.is_set || is_set(route_for_external_reach_linecard_flag.yfilter)) leaf_name_data.push_back(route_for_external_reach_linecard_flag.get_name_leafdata());
+    if (route_source_not_preferred.is_set || is_set(route_source_not_preferred.yfilter)) leaf_name_data.push_back(route_source_not_preferred.get_name_leafdata());
     if (route_is_sr_flag.is_set || is_set(route_is_sr_flag.yfilter)) leaf_name_data.push_back(route_is_sr_flag.get_name_leafdata());
 
     return leaf_name_data;
@@ -10841,6 +10943,12 @@ void Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::set_value(c
         route_for_external_reach_linecard_flag.value_namespace = name_space;
         route_for_external_reach_linecard_flag.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "route-source-not-preferred")
+    {
+        route_source_not_preferred = value;
+        route_source_not_preferred.value_namespace = name_space;
+        route_source_not_preferred.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "route-is-sr-flag")
     {
         route_is_sr_flag = value;
@@ -11023,6 +11131,10 @@ void Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::set_filter(
     {
         route_for_external_reach_linecard_flag.yfilter = yfilter;
     }
+    if(value_path == "route-source-not-preferred")
+    {
+        route_source_not_preferred.yfilter = yfilter;
+    }
     if(value_path == "route-is-sr-flag")
     {
         route_is_sr_flag.yfilter = yfilter;
@@ -11031,7 +11143,7 @@ void Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::set_filter(
 
 bool Fib::Nodes::Node::Protocols::Protocol::ExactRoutes::ExactRoute::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "detail-fib-entry-information" || name == "fib-entry-path" || name == "extension-object" || name == "protocol-name" || name == "vrf-name" || name == "source" || name == "destination" || name == "ipv6-flow-label" || name == "protocol-type-fib-entry" || name == "platform-hardware" || name == "number-of-referances-to-path-list" || name == "path-list-flags" || name == "path-list-source" || name == "number-of-referances-to-ldi" || name == "ldi-flags" || name == "flags-external-ldi" || name == "pointer-external-ldi" || name == "exact-path-interface-handle" || name == "exact-path-gre-interface-handle" || name == "exact-route-gre-phys-ifh-avail" || name == "exact-route-result" || name == "prefix-is-static-or-connected" || name == "packet-should-recieve" || name == "prefix-connected" || name == "prefix-for-adjancency" || name == "prefix-for-pic-next-hop" || name == "purgable-after-purge-interval" || name == "broadcast-recive-flag" || name == "broadcast-forward-flag" || name == "zero-by-zero-route-as-default" || name == "external-switch-triggered" || name == "route-attribute-flag" || name == "dummy-real-zero-route" || name == "ldi-lw-flag" || name == "ref-counter-of-ldi-lw-ldi" || name == "type-of-ldi-lw-ldi" || name == "lspa-flags" || name == "version-of-route" || name == "fib-route-download-priority" || name == "time-of-last-update-in-msec" || name == "l2-subscriber-route" || name == "l2-subscriber-xconnect-id" || name == "l2-subscriber-flags" || name == "l2-subscriber-ip-protocol" || name == "l2tpv3-cookie-length-bits" || name == "route-for-external-reach-linecard-flag" || name == "route-is-sr-flag")
+    if(name == "detail-fib-entry-information" || name == "fib-entry-path" || name == "extension-object" || name == "protocol-name" || name == "vrf-name" || name == "source" || name == "destination" || name == "ipv6-flow-label" || name == "protocol-type-fib-entry" || name == "platform-hardware" || name == "number-of-referances-to-path-list" || name == "path-list-flags" || name == "path-list-source" || name == "number-of-referances-to-ldi" || name == "ldi-flags" || name == "flags-external-ldi" || name == "pointer-external-ldi" || name == "exact-path-interface-handle" || name == "exact-path-gre-interface-handle" || name == "exact-route-gre-phys-ifh-avail" || name == "exact-route-result" || name == "prefix-is-static-or-connected" || name == "packet-should-recieve" || name == "prefix-connected" || name == "prefix-for-adjancency" || name == "prefix-for-pic-next-hop" || name == "purgable-after-purge-interval" || name == "broadcast-recive-flag" || name == "broadcast-forward-flag" || name == "zero-by-zero-route-as-default" || name == "external-switch-triggered" || name == "route-attribute-flag" || name == "dummy-real-zero-route" || name == "ldi-lw-flag" || name == "ref-counter-of-ldi-lw-ldi" || name == "type-of-ldi-lw-ldi" || name == "lspa-flags" || name == "version-of-route" || name == "fib-route-download-priority" || name == "time-of-last-update-in-msec" || name == "l2-subscriber-route" || name == "l2-subscriber-xconnect-id" || name == "l2-subscriber-flags" || name == "l2-subscriber-ip-protocol" || name == "l2tpv3-cookie-length-bits" || name == "route-for-external-reach-linecard-flag" || name == "route-source-not-preferred" || name == "route-is-sr-flag")
         return true;
     return false;
 }
@@ -15521,7 +15633,8 @@ Fib::Nodes::Node::Protocols::Protocol::NhIds::NhId::NhId()
     nh_id_xr{YType::uint32, "nh-id-xr"},
     nh_id_application{YType::uint8, "nh-id-application"},
     version{YType::uint64, "version"},
-    time_of_last_update_in_msec{YType::uint64, "time-of-last-update-in-msec"}
+    time_of_last_update_in_msec{YType::uint64, "time-of-last-update-in-msec"},
+    encap_id{YType::uint64, "encap-id"}
 {
 
     yang_name = "nh-id"; yang_parent_name = "nh-ids"; is_top_level_class = false; has_list_ancestor = true; 
@@ -15545,7 +15658,8 @@ bool Fib::Nodes::Node::Protocols::Protocol::NhIds::NhId::has_data() const
 	|| nh_id_xr.is_set
 	|| nh_id_application.is_set
 	|| version.is_set
-	|| time_of_last_update_in_msec.is_set;
+	|| time_of_last_update_in_msec.is_set
+	|| encap_id.is_set;
 }
 
 bool Fib::Nodes::Node::Protocols::Protocol::NhIds::NhId::has_operation() const
@@ -15562,7 +15676,8 @@ bool Fib::Nodes::Node::Protocols::Protocol::NhIds::NhId::has_operation() const
 	|| ydk::is_set(nh_id_xr.yfilter)
 	|| ydk::is_set(nh_id_application.yfilter)
 	|| ydk::is_set(version.yfilter)
-	|| ydk::is_set(time_of_last_update_in_msec.yfilter);
+	|| ydk::is_set(time_of_last_update_in_msec.yfilter)
+	|| ydk::is_set(encap_id.yfilter);
 }
 
 std::string Fib::Nodes::Node::Protocols::Protocol::NhIds::NhId::get_segment_path() const
@@ -15589,6 +15704,7 @@ std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Prot
     if (nh_id_application.is_set || is_set(nh_id_application.yfilter)) leaf_name_data.push_back(nh_id_application.get_name_leafdata());
     if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
     if (time_of_last_update_in_msec.is_set || is_set(time_of_last_update_in_msec.yfilter)) leaf_name_data.push_back(time_of_last_update_in_msec.get_name_leafdata());
+    if (encap_id.is_set || is_set(encap_id.yfilter)) leaf_name_data.push_back(encap_id.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -15680,6 +15796,12 @@ void Fib::Nodes::Node::Protocols::Protocol::NhIds::NhId::set_value(const std::st
         time_of_last_update_in_msec.value_namespace = name_space;
         time_of_last_update_in_msec.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "encap-id")
+    {
+        encap_id = value;
+        encap_id.value_namespace = name_space;
+        encap_id.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Fib::Nodes::Node::Protocols::Protocol::NhIds::NhId::set_filter(const std::string & value_path, YFilter yfilter)
@@ -15732,11 +15854,495 @@ void Fib::Nodes::Node::Protocols::Protocol::NhIds::NhId::set_filter(const std::s
     {
         time_of_last_update_in_msec.yfilter = yfilter;
     }
+    if(value_path == "encap-id")
+    {
+        encap_id.yfilter = yfilter;
+    }
 }
 
 bool Fib::Nodes::Node::Protocols::Protocol::NhIds::NhId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "nh-id" || name == "nh-interface-name" || name == "nh-address" || name == "nh-interface-name-xr" || name == "nh-address-xr" || name == "nh-protocol" || name == "nh-link-type" || name == "nh-table-id" || name == "nh-id-xr" || name == "nh-id-application" || name == "version" || name == "time-of-last-update-in-msec")
+    if(name == "nh-id" || name == "nh-interface-name" || name == "nh-address" || name == "nh-interface-name-xr" || name == "nh-address-xr" || name == "nh-protocol" || name == "nh-link-type" || name == "nh-table-id" || name == "nh-id-xr" || name == "nh-id-application" || name == "version" || name == "time-of-last-update-in-msec" || name == "encap-id")
+        return true;
+    return false;
+}
+
+Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::FrrNhinfoPendings()
+    :
+    frr_nhinfo_pending(this, {})
+{
+
+    yang_name = "frr-nhinfo-pendings"; yang_parent_name = "protocol"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::~FrrNhinfoPendings()
+{
+}
+
+bool Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<frr_nhinfo_pending.len(); index++)
+    {
+        if(frr_nhinfo_pending[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::has_operation() const
+{
+    for (std::size_t index=0; index<frr_nhinfo_pending.len(); index++)
+    {
+        if(frr_nhinfo_pending[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "frr-nhinfo-pendings";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "frr-nhinfo-pending")
+    {
+        auto ent_ = std::make_shared<Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::FrrNhinfoPending>();
+        ent_->parent = this;
+        frr_nhinfo_pending.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : frr_nhinfo_pending.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "frr-nhinfo-pending")
+        return true;
+    return false;
+}
+
+Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::FrrNhinfoPending::FrrNhinfoPending()
+    :
+    queue_index{YType::uint32, "queue-index"},
+    frr_type{YType::enumeration, "frr-type"},
+    link_type{YType::enumeration, "link-type"},
+    prefix_length{YType::uint32, "prefix-length"},
+    interface_name{YType::str, "interface-name"},
+    main_interface_name{YType::str, "main-interface-name"},
+    next_hop_prefix{YType::str, "next-hop-prefix"},
+    replicated_nh_type{YType::enumeration, "replicated-nh-type"},
+    si_frrtype{YType::uint32, "si-frrtype"},
+    si_refcount{YType::uint32, "si-refcount"},
+    si_flags{YType::uint32, "si-flags"},
+    si_ifh{YType::uint32, "si-ifh"},
+    si_main_ifh{YType::uint32, "si-main-ifh"},
+    si_linktype{YType::uint32, "si-linktype"},
+    si_nh_pfx_proto{YType::uint32, "si-nh-pfx-proto"},
+    si_nh_pfx{YType::str, "si-nh-pfx"},
+    si_nh_pfx_len{YType::uint32, "si-nh-pfx-len"},
+    si_tunid{YType::uint32, "si-tunid"},
+    si_frr_ptr{YType::uint32, "si-frr-ptr"},
+    si_prot_frr_ptr{YType::uint32, "si-prot-frr-ptr"},
+    si_parent_nh_ptr{YType::uint32, "si-parent-nh-ptr"},
+    si_repl_parent_type{YType::uint8, "si-repl-parent-type"},
+    si_upd_ts{YType::uint64, "si-upd-ts"}
+{
+
+    yang_name = "frr-nhinfo-pending"; yang_parent_name = "frr-nhinfo-pendings"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::FrrNhinfoPending::~FrrNhinfoPending()
+{
+}
+
+bool Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::FrrNhinfoPending::has_data() const
+{
+    if (is_presence_container) return true;
+    return queue_index.is_set
+	|| frr_type.is_set
+	|| link_type.is_set
+	|| prefix_length.is_set
+	|| interface_name.is_set
+	|| main_interface_name.is_set
+	|| next_hop_prefix.is_set
+	|| replicated_nh_type.is_set
+	|| si_frrtype.is_set
+	|| si_refcount.is_set
+	|| si_flags.is_set
+	|| si_ifh.is_set
+	|| si_main_ifh.is_set
+	|| si_linktype.is_set
+	|| si_nh_pfx_proto.is_set
+	|| si_nh_pfx.is_set
+	|| si_nh_pfx_len.is_set
+	|| si_tunid.is_set
+	|| si_frr_ptr.is_set
+	|| si_prot_frr_ptr.is_set
+	|| si_parent_nh_ptr.is_set
+	|| si_repl_parent_type.is_set
+	|| si_upd_ts.is_set;
+}
+
+bool Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::FrrNhinfoPending::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(queue_index.yfilter)
+	|| ydk::is_set(frr_type.yfilter)
+	|| ydk::is_set(link_type.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(main_interface_name.yfilter)
+	|| ydk::is_set(next_hop_prefix.yfilter)
+	|| ydk::is_set(replicated_nh_type.yfilter)
+	|| ydk::is_set(si_frrtype.yfilter)
+	|| ydk::is_set(si_refcount.yfilter)
+	|| ydk::is_set(si_flags.yfilter)
+	|| ydk::is_set(si_ifh.yfilter)
+	|| ydk::is_set(si_main_ifh.yfilter)
+	|| ydk::is_set(si_linktype.yfilter)
+	|| ydk::is_set(si_nh_pfx_proto.yfilter)
+	|| ydk::is_set(si_nh_pfx.yfilter)
+	|| ydk::is_set(si_nh_pfx_len.yfilter)
+	|| ydk::is_set(si_tunid.yfilter)
+	|| ydk::is_set(si_frr_ptr.yfilter)
+	|| ydk::is_set(si_prot_frr_ptr.yfilter)
+	|| ydk::is_set(si_parent_nh_ptr.yfilter)
+	|| ydk::is_set(si_repl_parent_type.yfilter)
+	|| ydk::is_set(si_upd_ts.yfilter);
+}
+
+std::string Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::FrrNhinfoPending::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "frr-nhinfo-pending";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::FrrNhinfoPending::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (queue_index.is_set || is_set(queue_index.yfilter)) leaf_name_data.push_back(queue_index.get_name_leafdata());
+    if (frr_type.is_set || is_set(frr_type.yfilter)) leaf_name_data.push_back(frr_type.get_name_leafdata());
+    if (link_type.is_set || is_set(link_type.yfilter)) leaf_name_data.push_back(link_type.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (main_interface_name.is_set || is_set(main_interface_name.yfilter)) leaf_name_data.push_back(main_interface_name.get_name_leafdata());
+    if (next_hop_prefix.is_set || is_set(next_hop_prefix.yfilter)) leaf_name_data.push_back(next_hop_prefix.get_name_leafdata());
+    if (replicated_nh_type.is_set || is_set(replicated_nh_type.yfilter)) leaf_name_data.push_back(replicated_nh_type.get_name_leafdata());
+    if (si_frrtype.is_set || is_set(si_frrtype.yfilter)) leaf_name_data.push_back(si_frrtype.get_name_leafdata());
+    if (si_refcount.is_set || is_set(si_refcount.yfilter)) leaf_name_data.push_back(si_refcount.get_name_leafdata());
+    if (si_flags.is_set || is_set(si_flags.yfilter)) leaf_name_data.push_back(si_flags.get_name_leafdata());
+    if (si_ifh.is_set || is_set(si_ifh.yfilter)) leaf_name_data.push_back(si_ifh.get_name_leafdata());
+    if (si_main_ifh.is_set || is_set(si_main_ifh.yfilter)) leaf_name_data.push_back(si_main_ifh.get_name_leafdata());
+    if (si_linktype.is_set || is_set(si_linktype.yfilter)) leaf_name_data.push_back(si_linktype.get_name_leafdata());
+    if (si_nh_pfx_proto.is_set || is_set(si_nh_pfx_proto.yfilter)) leaf_name_data.push_back(si_nh_pfx_proto.get_name_leafdata());
+    if (si_nh_pfx.is_set || is_set(si_nh_pfx.yfilter)) leaf_name_data.push_back(si_nh_pfx.get_name_leafdata());
+    if (si_nh_pfx_len.is_set || is_set(si_nh_pfx_len.yfilter)) leaf_name_data.push_back(si_nh_pfx_len.get_name_leafdata());
+    if (si_tunid.is_set || is_set(si_tunid.yfilter)) leaf_name_data.push_back(si_tunid.get_name_leafdata());
+    if (si_frr_ptr.is_set || is_set(si_frr_ptr.yfilter)) leaf_name_data.push_back(si_frr_ptr.get_name_leafdata());
+    if (si_prot_frr_ptr.is_set || is_set(si_prot_frr_ptr.yfilter)) leaf_name_data.push_back(si_prot_frr_ptr.get_name_leafdata());
+    if (si_parent_nh_ptr.is_set || is_set(si_parent_nh_ptr.yfilter)) leaf_name_data.push_back(si_parent_nh_ptr.get_name_leafdata());
+    if (si_repl_parent_type.is_set || is_set(si_repl_parent_type.yfilter)) leaf_name_data.push_back(si_repl_parent_type.get_name_leafdata());
+    if (si_upd_ts.is_set || is_set(si_upd_ts.yfilter)) leaf_name_data.push_back(si_upd_ts.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::FrrNhinfoPending::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::FrrNhinfoPending::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::FrrNhinfoPending::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "queue-index")
+    {
+        queue_index = value;
+        queue_index.value_namespace = name_space;
+        queue_index.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "frr-type")
+    {
+        frr_type = value;
+        frr_type.value_namespace = name_space;
+        frr_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "link-type")
+    {
+        link_type = value;
+        link_type.value_namespace = name_space;
+        link_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "main-interface-name")
+    {
+        main_interface_name = value;
+        main_interface_name.value_namespace = name_space;
+        main_interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "next-hop-prefix")
+    {
+        next_hop_prefix = value;
+        next_hop_prefix.value_namespace = name_space;
+        next_hop_prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "replicated-nh-type")
+    {
+        replicated_nh_type = value;
+        replicated_nh_type.value_namespace = name_space;
+        replicated_nh_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "si-frrtype")
+    {
+        si_frrtype = value;
+        si_frrtype.value_namespace = name_space;
+        si_frrtype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "si-refcount")
+    {
+        si_refcount = value;
+        si_refcount.value_namespace = name_space;
+        si_refcount.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "si-flags")
+    {
+        si_flags = value;
+        si_flags.value_namespace = name_space;
+        si_flags.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "si-ifh")
+    {
+        si_ifh = value;
+        si_ifh.value_namespace = name_space;
+        si_ifh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "si-main-ifh")
+    {
+        si_main_ifh = value;
+        si_main_ifh.value_namespace = name_space;
+        si_main_ifh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "si-linktype")
+    {
+        si_linktype = value;
+        si_linktype.value_namespace = name_space;
+        si_linktype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "si-nh-pfx-proto")
+    {
+        si_nh_pfx_proto = value;
+        si_nh_pfx_proto.value_namespace = name_space;
+        si_nh_pfx_proto.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "si-nh-pfx")
+    {
+        si_nh_pfx = value;
+        si_nh_pfx.value_namespace = name_space;
+        si_nh_pfx.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "si-nh-pfx-len")
+    {
+        si_nh_pfx_len = value;
+        si_nh_pfx_len.value_namespace = name_space;
+        si_nh_pfx_len.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "si-tunid")
+    {
+        si_tunid = value;
+        si_tunid.value_namespace = name_space;
+        si_tunid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "si-frr-ptr")
+    {
+        si_frr_ptr = value;
+        si_frr_ptr.value_namespace = name_space;
+        si_frr_ptr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "si-prot-frr-ptr")
+    {
+        si_prot_frr_ptr = value;
+        si_prot_frr_ptr.value_namespace = name_space;
+        si_prot_frr_ptr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "si-parent-nh-ptr")
+    {
+        si_parent_nh_ptr = value;
+        si_parent_nh_ptr.value_namespace = name_space;
+        si_parent_nh_ptr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "si-repl-parent-type")
+    {
+        si_repl_parent_type = value;
+        si_repl_parent_type.value_namespace = name_space;
+        si_repl_parent_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "si-upd-ts")
+    {
+        si_upd_ts = value;
+        si_upd_ts.value_namespace = name_space;
+        si_upd_ts.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::FrrNhinfoPending::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "queue-index")
+    {
+        queue_index.yfilter = yfilter;
+    }
+    if(value_path == "frr-type")
+    {
+        frr_type.yfilter = yfilter;
+    }
+    if(value_path == "link-type")
+    {
+        link_type.yfilter = yfilter;
+    }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "main-interface-name")
+    {
+        main_interface_name.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-prefix")
+    {
+        next_hop_prefix.yfilter = yfilter;
+    }
+    if(value_path == "replicated-nh-type")
+    {
+        replicated_nh_type.yfilter = yfilter;
+    }
+    if(value_path == "si-frrtype")
+    {
+        si_frrtype.yfilter = yfilter;
+    }
+    if(value_path == "si-refcount")
+    {
+        si_refcount.yfilter = yfilter;
+    }
+    if(value_path == "si-flags")
+    {
+        si_flags.yfilter = yfilter;
+    }
+    if(value_path == "si-ifh")
+    {
+        si_ifh.yfilter = yfilter;
+    }
+    if(value_path == "si-main-ifh")
+    {
+        si_main_ifh.yfilter = yfilter;
+    }
+    if(value_path == "si-linktype")
+    {
+        si_linktype.yfilter = yfilter;
+    }
+    if(value_path == "si-nh-pfx-proto")
+    {
+        si_nh_pfx_proto.yfilter = yfilter;
+    }
+    if(value_path == "si-nh-pfx")
+    {
+        si_nh_pfx.yfilter = yfilter;
+    }
+    if(value_path == "si-nh-pfx-len")
+    {
+        si_nh_pfx_len.yfilter = yfilter;
+    }
+    if(value_path == "si-tunid")
+    {
+        si_tunid.yfilter = yfilter;
+    }
+    if(value_path == "si-frr-ptr")
+    {
+        si_frr_ptr.yfilter = yfilter;
+    }
+    if(value_path == "si-prot-frr-ptr")
+    {
+        si_prot_frr_ptr.yfilter = yfilter;
+    }
+    if(value_path == "si-parent-nh-ptr")
+    {
+        si_parent_nh_ptr.yfilter = yfilter;
+    }
+    if(value_path == "si-repl-parent-type")
+    {
+        si_repl_parent_type.yfilter = yfilter;
+    }
+    if(value_path == "si-upd-ts")
+    {
+        si_upd_ts.yfilter = yfilter;
+    }
+}
+
+bool Fib::Nodes::Node::Protocols::Protocol::FrrNhinfoPendings::FrrNhinfoPending::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "queue-index" || name == "frr-type" || name == "link-type" || name == "prefix-length" || name == "interface-name" || name == "main-interface-name" || name == "next-hop-prefix" || name == "replicated-nh-type" || name == "si-frrtype" || name == "si-refcount" || name == "si-flags" || name == "si-ifh" || name == "si-main-ifh" || name == "si-linktype" || name == "si-nh-pfx-proto" || name == "si-nh-pfx" || name == "si-nh-pfx-len" || name == "si-tunid" || name == "si-frr-ptr" || name == "si-prot-frr-ptr" || name == "si-parent-nh-ptr" || name == "si-repl-parent-type" || name == "si-upd-ts")
         return true;
     return false;
 }
@@ -22526,9 +23132,9 @@ bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::has_leaf_or_child_of_name(con
 
 OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Mpls()
     :
-    label_entries(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries>())
+    labels(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels>())
 {
-    label_entries->parent = this;
+    labels->parent = this;
 
     yang_name = "mpls"; yang_parent_name = "abstract-forwarding-tables"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -22540,13 +23146,13 @@ OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::~Mpls()
 bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::has_data() const
 {
     if (is_presence_container) return true;
-    return (label_entries !=  nullptr && label_entries->has_data());
+    return (labels !=  nullptr && labels->has_data());
 }
 
 bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::has_operation() const
 {
     return is_set(yfilter)
-	|| (label_entries !=  nullptr && label_entries->has_operation());
+	|| (labels !=  nullptr && labels->has_operation());
 }
 
 std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::get_segment_path() const
@@ -22567,13 +23173,13 @@ std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwa
 
 std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "label-entries")
+    if(child_yang_name == "labels")
     {
-        if(label_entries == nullptr)
+        if(labels == nullptr)
         {
-            label_entries = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries>();
+            labels = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels>();
         }
-        return label_entries;
+        return labels;
     }
 
     return nullptr;
@@ -22583,9 +23189,9 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::Abstract
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(label_entries != nullptr)
+    if(labels != nullptr)
     {
-        _children["label-entries"] = label_entries;
+        _children["labels"] = labels;
     }
 
     return _children;
@@ -22601,52 +23207,52 @@ void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::set_filter(const std::s
 
 bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "label-entries")
+    if(name == "labels")
         return true;
     return false;
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntries()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Labels()
     :
-    label_entry(this, {"label", "label_length"})
+    label(this, {"label"})
 {
 
-    yang_name = "label-entries"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "labels"; yang_parent_name = "mpls"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::~LabelEntries()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::~Labels()
 {
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::has_data() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::has_data() const
 {
     if (is_presence_container) return true;
-    for (std::size_t index=0; index<label_entry.len(); index++)
+    for (std::size_t index=0; index<label.len(); index++)
     {
-        if(label_entry[index]->has_data())
+        if(label[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::has_operation() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::has_operation() const
 {
-    for (std::size_t index=0; index<label_entry.len(); index++)
+    for (std::size_t index=0; index<label.len(); index++)
     {
-        if(label_entry[index]->has_operation())
+        if(label[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::get_segment_path() const
+std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "label-entries";
+    path_buffer << "labels";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -22655,25 +23261,25 @@ std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwa
 
 }
 
-std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "label-entry")
+    if(child_yang_name == "label")
     {
-        auto ent_ = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry>();
+        auto ent_ = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label>();
         ent_->parent = this;
-        label_entry.append(ent_);
+        label.append(ent_);
         return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     count_ = 0;
-    for (auto ent_ : label_entry.entities())
+    for (auto ent_ : label.entities())
     {
         if(_children.find(ent_->get_segment_path()) == _children.end())
             _children[ent_->get_segment_path()] = ent_;
@@ -22684,39 +23290,150 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::Abstract
     return _children;
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::set_filter(const std::string & value_path, YFilter yfilter)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::has_leaf_or_child_of_name(const std::string & name) const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "label-entry")
+    if(name == "label")
         return true;
     return false;
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::LabelEntry()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::Label()
     :
-    label{YType::str, "label"},
-    label_length{YType::uint32, "label-length"}
+    label{YType::str, "label"}
         ,
-    state(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::State>())
-    , next_hop(this, {})
+    next_hops(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops>())
+    , state(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::State>())
 {
+    next_hops->parent = this;
     state->parent = this;
 
-    yang_name = "label-entry"; yang_parent_name = "label-entries"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "label"; yang_parent_name = "labels"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::~LabelEntry()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::~Label()
 {
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::has_data() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::has_data() const
+{
+    if (is_presence_container) return true;
+    return label.is_set
+	|| (next_hops !=  nullptr && next_hops->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(label.yfilter)
+	|| (next_hops !=  nullptr && next_hops->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "label";
+    ADD_KEY_TOKEN(label, "label");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "next-hops")
+    {
+        if(next_hops == nullptr)
+        {
+            next_hops = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops>();
+        }
+        return next_hops;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(next_hops != nullptr)
+    {
+        _children["next-hops"] = next_hops;
+    }
+
+    if(state != nullptr)
+    {
+        _children["state"] = state;
+    }
+
+    return _children;
+}
+
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "label")
+    {
+        label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+}
+
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hops" || name == "state" || name == "label")
+        return true;
+    return false;
+}
+
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHops()
+    :
+    next_hop(this, {"index_"})
+{
+
+    yang_name = "next-hops"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::~NextHops()
+{
+}
+
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::has_data() const
 {
     if (is_presence_container) return true;
     for (std::size_t index=0; index<next_hop.len(); index++)
@@ -22724,58 +23441,40 @@ bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntr
         if(next_hop[index]->has_data())
             return true;
     }
-    return label.is_set
-	|| label_length.is_set
-	|| (state !=  nullptr && state->has_data());
+    return false;
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::has_operation() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::has_operation() const
 {
     for (std::size_t index=0; index<next_hop.len(); index++)
     {
         if(next_hop[index]->has_operation())
             return true;
     }
-    return is_set(yfilter)
-	|| ydk::is_set(label.yfilter)
-	|| ydk::is_set(label_length.yfilter)
-	|| (state !=  nullptr && state->has_operation());
+    return is_set(yfilter);
 }
 
-std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::get_segment_path() const
+std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "label-entry";
-    ADD_KEY_TOKEN(label, "label");
-    ADD_KEY_TOKEN(label_length, "label-length");
+    path_buffer << "next-hops";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
-    if (label_length.is_set || is_set(label_length.yfilter)) leaf_name_data.push_back(label_length.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::State>();
-        }
-        return state;
-    }
-
     if(child_yang_name == "next-hop")
     {
-        auto ent_ = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop>();
+        auto ent_ = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop>();
         ent_->parent = this;
         next_hop.append(ent_);
         return ent_;
@@ -22784,15 +23483,10 @@ std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(state != nullptr)
-    {
-        _children["state"] = state;
-    }
-
     count_ = 0;
     for (auto ent_ : next_hop.entities())
     {
@@ -22805,186 +23499,79 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::Abstract
     return _children;
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "label")
-    {
-        label = value;
-        label.value_namespace = name_space;
-        label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "label-length")
-    {
-        label_length = value;
-        label_length.value_namespace = name_space;
-        label_length.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::set_filter(const std::string & value_path, YFilter yfilter)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "label")
-    {
-        label.yfilter = yfilter;
-    }
-    if(value_path == "label-length")
-    {
-        label_length.yfilter = yfilter;
-    }
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::has_leaf_or_child_of_name(const std::string & name) const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "state" || name == "next-hop" || name == "label" || name == "label-length")
+    if(name == "next-hop")
         return true;
     return false;
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::State::State()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::NextHop()
     :
-    prefix_index{YType::str, "prefix-index"},
-    label_index{YType::str, "label-index"}
-{
-
-    yang_name = "state"; yang_parent_name = "label-entry"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::State::~State()
-{
-}
-
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::State::has_data() const
-{
-    if (is_presence_container) return true;
-    return prefix_index.is_set
-	|| label_index.is_set;
-}
-
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::State::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(prefix_index.yfilter)
-	|| ydk::is_set(label_index.yfilter);
-}
-
-std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::State::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (prefix_index.is_set || is_set(prefix_index.yfilter)) leaf_name_data.push_back(prefix_index.get_name_leafdata());
-    if (label_index.is_set || is_set(label_index.yfilter)) leaf_name_data.push_back(label_index.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "prefix-index")
-    {
-        prefix_index = value;
-        prefix_index.value_namespace = name_space;
-        prefix_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "label-index")
-    {
-        label_index = value;
-        label_index.value_namespace = name_space;
-        label_index.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::State::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "prefix-index")
-    {
-        prefix_index.yfilter = yfilter;
-    }
-    if(value_path == "label-index")
-    {
-        label_index.yfilter = yfilter;
-    }
-}
-
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::State::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "prefix-index" || name == "label-index")
-        return true;
-    return false;
-}
-
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::NextHop()
-    :
-    state(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::State>())
-    , interface_ref(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef>())
+    index_{YType::uint32, "index"}
+        ,
+    state(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::State>())
+    , interface_ref(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef>())
 {
     state->parent = this;
     interface_ref->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "label-entry"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "next-hop"; yang_parent_name = "next-hops"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::~NextHop()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::~NextHop()
 {
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::has_data() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::has_data() const
 {
     if (is_presence_container) return true;
-    return (state !=  nullptr && state->has_data())
+    return index_.is_set
+	|| (state !=  nullptr && state->has_data())
 	|| (interface_ref !=  nullptr && interface_ref->has_data());
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::has_operation() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(index_.yfilter)
 	|| (state !=  nullptr && state->has_operation())
 	|| (interface_ref !=  nullptr && interface_ref->has_operation());
 }
 
-std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::get_segment_path() const
+std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
-    path_buffer << "[" << get_ylist_key() << "]";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
         if(state == nullptr)
         {
-            state = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::State>();
+            state = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::State>();
         }
         return state;
     }
@@ -22993,7 +23580,7 @@ std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls:
     {
         if(interface_ref == nullptr)
         {
-            interface_ref = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef>();
+            interface_ref = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef>();
         }
         return interface_ref;
     }
@@ -23001,7 +23588,7 @@ std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
@@ -23018,22 +23605,32 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::Abstract
     return _children;
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "index")
+    {
+        index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "state" || name == "interface-ref")
+    if(name == "state" || name == "interface-ref" || name == "index")
         return true;
     return false;
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::State::State()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::State::State()
     :
     index_{YType::uint64, "index"},
     weight{YType::uint32, "weight"},
@@ -23046,11 +23643,11 @@ OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::Ne
     yang_name = "state"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::State::~State()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::State::~State()
 {
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::State::has_data() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::State::has_data() const
 {
     if (is_presence_container) return true;
     for (auto const & leaf : popped_mpls_label_stack.getYLeafs())
@@ -23069,7 +23666,7 @@ bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntr
 	|| network_instance.is_set;
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::State::has_operation() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::State::has_operation() const
 {
     for (auto const & leaf : popped_mpls_label_stack.getYLeafs())
     {
@@ -23090,14 +23687,14 @@ bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntr
 	|| ydk::is_set(pushed_mpls_label_stack.yfilter);
 }
 
-std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::State::get_segment_path() const
+std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::State::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "state";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::State::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::State::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -23114,19 +23711,19 @@ std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwa
 
 }
 
-std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "index")
     {
@@ -23162,7 +23759,7 @@ void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntr
     }
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::State::set_filter(const std::string & value_path, YFilter yfilter)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::State::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "index")
     {
@@ -23190,46 +23787,46 @@ void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntr
     }
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::State::has_leaf_or_child_of_name(const std::string & name) const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::State::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "index" || name == "weight" || name == "ip-address" || name == "network-instance" || name == "popped-mpls-label-stack" || name == "pushed-mpls-label-stack")
         return true;
     return false;
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::InterfaceRef()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::InterfaceRef()
     :
-    state(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::State>())
+    state(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::State>())
 {
     state->parent = this;
 
     yang_name = "interface-ref"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::~InterfaceRef()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::~InterfaceRef()
 {
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::has_data() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::has_data() const
 {
     if (is_presence_container) return true;
     return (state !=  nullptr && state->has_data());
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::has_operation() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::has_operation() const
 {
     return is_set(yfilter)
 	|| (state !=  nullptr && state->has_operation());
 }
 
-std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::get_segment_path() const
+std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-ref";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -23238,13 +23835,13 @@ std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwa
 
 }
 
-std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
         if(state == nullptr)
         {
-            state = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::State>();
+            state = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::State>();
         }
         return state;
     }
@@ -23252,7 +23849,7 @@ std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls:
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
@@ -23264,22 +23861,22 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::Abstract
     return _children;
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::set_filter(const std::string & value_path, YFilter yfilter)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::has_leaf_or_child_of_name(const std::string & name) const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "state")
         return true;
     return false;
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::State::State()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::State::State()
     :
     interface{YType::str, "interface"},
     subinterface{YType::uint32, "subinterface"}
@@ -23288,32 +23885,32 @@ OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::Ne
     yang_name = "state"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::State::~State()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::State::~State()
 {
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::State::has_data() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::State::has_data() const
 {
     if (is_presence_container) return true;
     return interface.is_set
 	|| subinterface.is_set;
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::State::has_operation() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::State::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface.yfilter)
 	|| ydk::is_set(subinterface.yfilter);
 }
 
-std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::State::get_segment_path() const
+std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::State::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "state";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::State::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::State::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -23324,19 +23921,19 @@ std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwa
 
 }
 
-std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface")
     {
@@ -23352,7 +23949,7 @@ void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntr
     }
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::State::set_filter(const std::string & value_path, YFilter yfilter)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::State::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface")
     {
@@ -23364,18 +23961,96 @@ void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntr
     }
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::LabelEntries::LabelEntry::NextHop::InterfaceRef::State::has_leaf_or_child_of_name(const std::string & name) const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::State::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface" || name == "subinterface")
         return true;
     return false;
 }
 
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::State::State()
+    :
+    prefix_index{YType::str, "prefix-index"}
+{
+
+    yang_name = "state"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::State::~State()
+{
+}
+
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::State::has_data() const
+{
+    if (is_presence_container) return true;
+    return prefix_index.is_set;
+}
+
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix_index.yfilter);
+}
+
+std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix_index.is_set || is_set(prefix_index.yfilter)) leaf_name_data.push_back(prefix_index.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix-index")
+    {
+        prefix_index = value;
+        prefix_index.value_namespace = name_space;
+        prefix_index.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix-index")
+    {
+        prefix_index.yfilter = yfilter;
+    }
+}
+
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-index")
+        return true;
+    return false;
+}
+
 OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Ipv6Unicast()
     :
-    prefix_entries(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries>())
+    prefixes(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes>())
 {
-    prefix_entries->parent = this;
+    prefixes->parent = this;
 
     yang_name = "ipv6-unicast"; yang_parent_name = "abstract-forwarding-tables"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -23387,13 +24062,13 @@ OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::~Ipv6Unicast()
 bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::has_data() const
 {
     if (is_presence_container) return true;
-    return (prefix_entries !=  nullptr && prefix_entries->has_data());
+    return (prefixes !=  nullptr && prefixes->has_data());
 }
 
 bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::has_operation() const
 {
     return is_set(yfilter)
-	|| (prefix_entries !=  nullptr && prefix_entries->has_operation());
+	|| (prefixes !=  nullptr && prefixes->has_operation());
 }
 
 std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::get_segment_path() const
@@ -23414,13 +24089,13 @@ std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwa
 
 std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "prefix-entries")
+    if(child_yang_name == "prefixes")
     {
-        if(prefix_entries == nullptr)
+        if(prefixes == nullptr)
         {
-            prefix_entries = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries>();
+            prefixes = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes>();
         }
-        return prefix_entries;
+        return prefixes;
     }
 
     return nullptr;
@@ -23430,9 +24105,9 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::Abstract
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(prefix_entries != nullptr)
+    if(prefixes != nullptr)
     {
-        _children["prefix-entries"] = prefix_entries;
+        _children["prefixes"] = prefixes;
     }
 
     return _children;
@@ -23448,52 +24123,52 @@ void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::set_filter(const
 
 bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "prefix-entries")
+    if(name == "prefixes")
         return true;
     return false;
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntries()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefixes()
     :
-    prefix_entry(this, {"network"})
+    prefix(this, {"prefix"})
 {
 
-    yang_name = "prefix-entries"; yang_parent_name = "ipv6-unicast"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "prefixes"; yang_parent_name = "ipv6-unicast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::~PrefixEntries()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::~Prefixes()
 {
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::has_data() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::has_data() const
 {
     if (is_presence_container) return true;
-    for (std::size_t index=0; index<prefix_entry.len(); index++)
+    for (std::size_t index=0; index<prefix.len(); index++)
     {
-        if(prefix_entry[index]->has_data())
+        if(prefix[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::has_operation() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_entry.len(); index++)
+    for (std::size_t index=0; index<prefix.len(); index++)
     {
-        if(prefix_entry[index]->has_operation())
+        if(prefix[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::get_segment_path() const
+std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-entries";
+    path_buffer << "prefixes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -23502,25 +24177,25 @@ std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwa
 
 }
 
-std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "prefix-entry")
+    if(child_yang_name == "prefix")
     {
-        auto ent_ = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry>();
+        auto ent_ = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix>();
         ent_->parent = this;
-        prefix_entry.append(ent_);
+        prefix.append(ent_);
         return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     count_ = 0;
-    for (auto ent_ : prefix_entry.entities())
+    for (auto ent_ : prefix.entities())
     {
         if(_children.find(ent_->get_segment_path()) == _children.end())
             _children[ent_->get_segment_path()] = ent_;
@@ -23531,38 +24206,150 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::Abstract
     return _children;
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::set_filter(const std::string & value_path, YFilter yfilter)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::has_leaf_or_child_of_name(const std::string & name) const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "prefix-entry")
+    if(name == "prefix")
         return true;
     return false;
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::PrefixEntry()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::Prefix()
     :
-    network{YType::str, "network"}
+    prefix{YType::str, "prefix"}
         ,
-    state(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::State>())
-    , next_hop(this, {})
+    next_hops(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops>())
+    , state(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::State>())
 {
+    next_hops->parent = this;
     state->parent = this;
 
-    yang_name = "prefix-entry"; yang_parent_name = "prefix-entries"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "prefix"; yang_parent_name = "prefixes"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::~PrefixEntry()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::~Prefix()
 {
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::has_data() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::has_data() const
+{
+    if (is_presence_container) return true;
+    return prefix.is_set
+	|| (next_hops !=  nullptr && next_hops->has_data())
+	|| (state !=  nullptr && state->has_data());
+}
+
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| (next_hops !=  nullptr && next_hops->has_operation())
+	|| (state !=  nullptr && state->has_operation());
+}
+
+std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix";
+    ADD_KEY_TOKEN(prefix, "prefix");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "next-hops")
+    {
+        if(next_hops == nullptr)
+        {
+            next_hops = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops>();
+        }
+        return next_hops;
+    }
+
+    if(child_yang_name == "state")
+    {
+        if(state == nullptr)
+        {
+            state = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::State>();
+        }
+        return state;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(next_hops != nullptr)
+    {
+        _children["next-hops"] = next_hops;
+    }
+
+    if(state != nullptr)
+    {
+        _children["state"] = state;
+    }
+
+    return _children;
+}
+
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+}
+
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hops" || name == "state" || name == "prefix")
+        return true;
+    return false;
+}
+
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHops()
+    :
+    next_hop(this, {"index_"})
+{
+
+    yang_name = "next-hops"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::~NextHops()
+{
+}
+
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::has_data() const
 {
     if (is_presence_container) return true;
     for (std::size_t index=0; index<next_hop.len(); index++)
@@ -23570,54 +24357,40 @@ bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::P
         if(next_hop[index]->has_data())
             return true;
     }
-    return network.is_set
-	|| (state !=  nullptr && state->has_data());
+    return false;
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::has_operation() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::has_operation() const
 {
     for (std::size_t index=0; index<next_hop.len(); index++)
     {
         if(next_hop[index]->has_operation())
             return true;
     }
-    return is_set(yfilter)
-	|| ydk::is_set(network.yfilter)
-	|| (state !=  nullptr && state->has_operation());
+    return is_set(yfilter);
 }
 
-std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::get_segment_path() const
+std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-entry";
-    ADD_KEY_TOKEN(network, "network");
+    path_buffer << "next-hops";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (network.is_set || is_set(network.yfilter)) leaf_name_data.push_back(network.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::State>();
-        }
-        return state;
-    }
-
     if(child_yang_name == "next-hop")
     {
-        auto ent_ = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop>();
+        auto ent_ = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop>();
         ent_->parent = this;
         next_hop.append(ent_);
         return ent_;
@@ -23626,15 +24399,10 @@ std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6U
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(state != nullptr)
-    {
-        _children["state"] = state;
-    }
-
     count_ = 0;
     for (auto ent_ : next_hop.entities())
     {
@@ -23647,176 +24415,79 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::Abstract
     return _children;
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "network")
-    {
-        network = value;
-        network.value_namespace = name_space;
-        network.value_namespace_prefix = name_space_prefix;
-    }
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::set_filter(const std::string & value_path, YFilter yfilter)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "network")
-    {
-        network.yfilter = yfilter;
-    }
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::has_leaf_or_child_of_name(const std::string & name) const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "state" || name == "next-hop" || name == "network")
+    if(name == "next-hop")
         return true;
     return false;
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::State::State()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::NextHop()
     :
-    prefix_index{YType::str, "prefix-index"},
-    label_index{YType::str, "label-index"}
-{
-
-    yang_name = "state"; yang_parent_name = "prefix-entry"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::State::~State()
-{
-}
-
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::State::has_data() const
-{
-    if (is_presence_container) return true;
-    return prefix_index.is_set
-	|| label_index.is_set;
-}
-
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::State::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(prefix_index.yfilter)
-	|| ydk::is_set(label_index.yfilter);
-}
-
-std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::State::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (prefix_index.is_set || is_set(prefix_index.yfilter)) leaf_name_data.push_back(prefix_index.get_name_leafdata());
-    if (label_index.is_set || is_set(label_index.yfilter)) leaf_name_data.push_back(label_index.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "prefix-index")
-    {
-        prefix_index = value;
-        prefix_index.value_namespace = name_space;
-        prefix_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "label-index")
-    {
-        label_index = value;
-        label_index.value_namespace = name_space;
-        label_index.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::State::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "prefix-index")
-    {
-        prefix_index.yfilter = yfilter;
-    }
-    if(value_path == "label-index")
-    {
-        label_index.yfilter = yfilter;
-    }
-}
-
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::State::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "prefix-index" || name == "label-index")
-        return true;
-    return false;
-}
-
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::NextHop()
-    :
-    state(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::State>())
-    , interface_ref(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef>())
+    index_{YType::uint32, "index"}
+        ,
+    state(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::State>())
+    , interface_ref(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef>())
 {
     state->parent = this;
     interface_ref->parent = this;
 
-    yang_name = "next-hop"; yang_parent_name = "prefix-entry"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "next-hop"; yang_parent_name = "next-hops"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::~NextHop()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::~NextHop()
 {
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::has_data() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::has_data() const
 {
     if (is_presence_container) return true;
-    return (state !=  nullptr && state->has_data())
+    return index_.is_set
+	|| (state !=  nullptr && state->has_data())
 	|| (interface_ref !=  nullptr && interface_ref->has_data());
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::has_operation() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(index_.yfilter)
 	|| (state !=  nullptr && state->has_operation())
 	|| (interface_ref !=  nullptr && interface_ref->has_operation());
 }
 
-std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::get_segment_path() const
+std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "next-hop";
-    path_buffer << "[" << get_ylist_key() << "]";
+    ADD_KEY_TOKEN(index_, "index");
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
 
     return leaf_name_data;
 
 }
 
-std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
         if(state == nullptr)
         {
-            state = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::State>();
+            state = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::State>();
         }
         return state;
     }
@@ -23825,7 +24496,7 @@ std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6U
     {
         if(interface_ref == nullptr)
         {
-            interface_ref = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef>();
+            interface_ref = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef>();
         }
         return interface_ref;
     }
@@ -23833,7 +24504,7 @@ std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6U
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
@@ -23850,22 +24521,32 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::Abstract
     return _children;
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "index")
+    {
+        index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
+    }
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "state" || name == "interface-ref")
+    if(name == "state" || name == "interface-ref" || name == "index")
         return true;
     return false;
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::State::State()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::State::State()
     :
     index_{YType::uint64, "index"},
     weight{YType::uint32, "weight"},
@@ -23878,11 +24559,11 @@ OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::Prefix
     yang_name = "state"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::State::~State()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::State::~State()
 {
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::State::has_data() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::State::has_data() const
 {
     if (is_presence_container) return true;
     for (auto const & leaf : popped_mpls_label_stack.getYLeafs())
@@ -23901,7 +24582,7 @@ bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::P
 	|| network_instance.is_set;
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::State::has_operation() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::State::has_operation() const
 {
     for (auto const & leaf : popped_mpls_label_stack.getYLeafs())
     {
@@ -23922,14 +24603,14 @@ bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::P
 	|| ydk::is_set(pushed_mpls_label_stack.yfilter);
 }
 
-std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::State::get_segment_path() const
+std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::State::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "state";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::State::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::State::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -23946,19 +24627,19 @@ std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwa
 
 }
 
-std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "index")
     {
@@ -23994,7 +24675,7 @@ void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::P
     }
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::State::set_filter(const std::string & value_path, YFilter yfilter)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::State::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "index")
     {
@@ -24022,46 +24703,46 @@ void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::P
     }
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::State::has_leaf_or_child_of_name(const std::string & name) const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::State::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "index" || name == "weight" || name == "ip-address" || name == "network-instance" || name == "popped-mpls-label-stack" || name == "pushed-mpls-label-stack")
         return true;
     return false;
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::InterfaceRef()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::InterfaceRef()
     :
-    state(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::State>())
+    state(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::State>())
 {
     state->parent = this;
 
     yang_name = "interface-ref"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::~InterfaceRef()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::~InterfaceRef()
 {
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::has_data() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::has_data() const
 {
     if (is_presence_container) return true;
     return (state !=  nullptr && state->has_data());
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::has_operation() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::has_operation() const
 {
     return is_set(yfilter)
 	|| (state !=  nullptr && state->has_operation());
 }
 
-std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::get_segment_path() const
+std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "interface-ref";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -24070,13 +24751,13 @@ std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwa
 
 }
 
-std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     if(child_yang_name == "state")
     {
         if(state == nullptr)
         {
-            state = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::State>();
+            state = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::State>();
         }
         return state;
     }
@@ -24084,7 +24765,7 @@ std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6U
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
@@ -24096,22 +24777,22 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::Abstract
     return _children;
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::set_filter(const std::string & value_path, YFilter yfilter)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::has_leaf_or_child_of_name(const std::string & name) const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "state")
         return true;
     return false;
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::State::State()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::State::State()
     :
     interface{YType::str, "interface"},
     subinterface{YType::uint32, "subinterface"}
@@ -24120,32 +24801,32 @@ OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::Prefix
     yang_name = "state"; yang_parent_name = "interface-ref"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::State::~State()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::State::~State()
 {
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::State::has_data() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::State::has_data() const
 {
     if (is_presence_container) return true;
     return interface.is_set
 	|| subinterface.is_set;
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::State::has_operation() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::State::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(interface.yfilter)
 	|| ydk::is_set(subinterface.yfilter);
 }
 
-std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::State::get_segment_path() const
+std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::State::get_segment_path() const
 {
     std::ostringstream path_buffer;
     path_buffer << "state";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::State::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::State::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -24156,19 +24837,19 @@ std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwa
 
 }
 
-std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::State::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::State::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     return _children;
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
     if(value_path == "interface")
     {
@@ -24184,7 +24865,7 @@ void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::P
     }
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::State::set_filter(const std::string & value_path, YFilter yfilter)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::State::set_filter(const std::string & value_path, YFilter yfilter)
 {
     if(value_path == "interface")
     {
@@ -24196,18 +24877,96 @@ void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::P
     }
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef::State::has_leaf_or_child_of_name(const std::string & name) const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::State::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "interface" || name == "subinterface")
         return true;
     return false;
 }
 
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::State::State()
+    :
+    prefix_index{YType::str, "prefix-index"}
+{
+
+    yang_name = "state"; yang_parent_name = "prefix"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::State::~State()
+{
+}
+
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::State::has_data() const
+{
+    if (is_presence_container) return true;
+    return prefix_index.is_set;
+}
+
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::State::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix_index.yfilter);
+}
+
+std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::State::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::State::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix_index.is_set || is_set(prefix_index.yfilter)) leaf_name_data.push_back(prefix_index.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::State::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix-index")
+    {
+        prefix_index = value;
+        prefix_index.value_namespace = name_space;
+        prefix_index.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::State::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix-index")
+    {
+        prefix_index.yfilter = yfilter;
+    }
+}
+
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::State::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix-index")
+        return true;
+    return false;
+}
+
 OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Ipv4Unicast()
     :
-    prefix_entries(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries>())
+    prefixes(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes>())
 {
-    prefix_entries->parent = this;
+    prefixes->parent = this;
 
     yang_name = "ipv4-unicast"; yang_parent_name = "abstract-forwarding-tables"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -24219,13 +24978,13 @@ OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::~Ipv4Unicast()
 bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::has_data() const
 {
     if (is_presence_container) return true;
-    return (prefix_entries !=  nullptr && prefix_entries->has_data());
+    return (prefixes !=  nullptr && prefixes->has_data());
 }
 
 bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::has_operation() const
 {
     return is_set(yfilter)
-	|| (prefix_entries !=  nullptr && prefix_entries->has_operation());
+	|| (prefixes !=  nullptr && prefixes->has_operation());
 }
 
 std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::get_segment_path() const
@@ -24246,13 +25005,13 @@ std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwa
 
 std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "prefix-entries")
+    if(child_yang_name == "prefixes")
     {
-        if(prefix_entries == nullptr)
+        if(prefixes == nullptr)
         {
-            prefix_entries = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries>();
+            prefixes = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes>();
         }
-        return prefix_entries;
+        return prefixes;
     }
 
     return nullptr;
@@ -24262,9 +25021,9 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::Abstract
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(prefix_entries != nullptr)
+    if(prefixes != nullptr)
     {
-        _children["prefix-entries"] = prefix_entries;
+        _children["prefixes"] = prefixes;
     }
 
     return _children;
@@ -24280,52 +25039,52 @@ void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::set_filter(const
 
 bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "prefix-entries")
+    if(name == "prefixes")
         return true;
     return false;
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntries()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefixes()
     :
-    prefix_entry(this, {"network"})
+    prefix(this, {"prefix"})
 {
 
-    yang_name = "prefix-entries"; yang_parent_name = "ipv4-unicast"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "prefixes"; yang_parent_name = "ipv4-unicast"; is_top_level_class = false; has_list_ancestor = true; 
 }
 
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::~PrefixEntries()
+OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::~Prefixes()
 {
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::has_data() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::has_data() const
 {
     if (is_presence_container) return true;
-    for (std::size_t index=0; index<prefix_entry.len(); index++)
+    for (std::size_t index=0; index<prefix.len(); index++)
     {
-        if(prefix_entry[index]->has_data())
+        if(prefix[index]->has_data())
             return true;
     }
     return false;
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::has_operation() const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::has_operation() const
 {
-    for (std::size_t index=0; index<prefix_entry.len(); index++)
+    for (std::size_t index=0; index<prefix.len(); index++)
     {
-        if(prefix_entry[index]->has_operation())
+        if(prefix[index]->has_operation())
             return true;
     }
     return is_set(yfilter);
 }
 
-std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::get_segment_path() const
+std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::get_segment_path() const
 {
     std::ostringstream path_buffer;
-    path_buffer << "prefix-entries";
+    path_buffer << "prefixes";
     return path_buffer.str();
 }
 
-std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::get_name_leaf_data() const
+std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::get_name_leaf_data() const
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
@@ -24334,25 +25093,25 @@ std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwa
 
 }
 
-std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "prefix-entry")
+    if(child_yang_name == "prefix")
     {
-        auto ent_ = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry>();
+        auto ent_ = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix>();
         ent_->parent = this;
-        prefix_entry.append(ent_);
+        prefix.append(ent_);
         return ent_;
     }
 
     return nullptr;
 }
 
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::get_children() const
+std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::get_children() const
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
     count_ = 0;
-    for (auto ent_ : prefix_entry.entities())
+    for (auto ent_ : prefix.entities())
     {
         if(_children.find(ent_->get_segment_path()) == _children.end())
             _children[ent_->get_segment_path()] = ent_;
@@ -24363,500 +25122,17 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::Abstract
     return _children;
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
 }
 
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::set_filter(const std::string & value_path, YFilter yfilter)
+void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::set_filter(const std::string & value_path, YFilter yfilter)
 {
 }
 
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::has_leaf_or_child_of_name(const std::string & name) const
+bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "prefix-entry")
-        return true;
-    return false;
-}
-
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::PrefixEntry()
-    :
-    network{YType::str, "network"}
-        ,
-    state(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::State>())
-    , next_hop(this, {})
-{
-    state->parent = this;
-
-    yang_name = "prefix-entry"; yang_parent_name = "prefix-entries"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::~PrefixEntry()
-{
-}
-
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<next_hop.len(); index++)
-    {
-        if(next_hop[index]->has_data())
-            return true;
-    }
-    return network.is_set
-	|| (state !=  nullptr && state->has_data());
-}
-
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::has_operation() const
-{
-    for (std::size_t index=0; index<next_hop.len(); index++)
-    {
-        if(next_hop[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(network.yfilter)
-	|| (state !=  nullptr && state->has_operation());
-}
-
-std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "prefix-entry";
-    ADD_KEY_TOKEN(network, "network");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (network.is_set || is_set(network.yfilter)) leaf_name_data.push_back(network.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::State>();
-        }
-        return state;
-    }
-
-    if(child_yang_name == "next-hop")
-    {
-        auto ent_ = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop>();
-        ent_->parent = this;
-        next_hop.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(state != nullptr)
-    {
-        _children["state"] = state;
-    }
-
-    count_ = 0;
-    for (auto ent_ : next_hop.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "network")
-    {
-        network = value;
-        network.value_namespace = name_space;
-        network.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "network")
-    {
-        network.yfilter = yfilter;
-    }
-}
-
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "state" || name == "next-hop" || name == "network")
-        return true;
-    return false;
-}
-
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::State::State()
-    :
-    prefix_index{YType::str, "prefix-index"},
-    label_index{YType::str, "label-index"}
-{
-
-    yang_name = "state"; yang_parent_name = "prefix-entry"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::State::~State()
-{
-}
-
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::State::has_data() const
-{
-    if (is_presence_container) return true;
-    return prefix_index.is_set
-	|| label_index.is_set;
-}
-
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::State::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(prefix_index.yfilter)
-	|| ydk::is_set(label_index.yfilter);
-}
-
-std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::State::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (prefix_index.is_set || is_set(prefix_index.yfilter)) leaf_name_data.push_back(prefix_index.get_name_leafdata());
-    if (label_index.is_set || is_set(label_index.yfilter)) leaf_name_data.push_back(label_index.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "prefix-index")
-    {
-        prefix_index = value;
-        prefix_index.value_namespace = name_space;
-        prefix_index.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "label-index")
-    {
-        label_index = value;
-        label_index.value_namespace = name_space;
-        label_index.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::State::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "prefix-index")
-    {
-        prefix_index.yfilter = yfilter;
-    }
-    if(value_path == "label-index")
-    {
-        label_index.yfilter = yfilter;
-    }
-}
-
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::State::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "prefix-index" || name == "label-index")
-        return true;
-    return false;
-}
-
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::NextHop()
-    :
-    state(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::State>())
-    , interface_ref(std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef>())
-{
-    state->parent = this;
-    interface_ref->parent = this;
-
-    yang_name = "next-hop"; yang_parent_name = "prefix-entry"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::~NextHop()
-{
-}
-
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::has_data() const
-{
-    if (is_presence_container) return true;
-    return (state !=  nullptr && state->has_data())
-	|| (interface_ref !=  nullptr && interface_ref->has_data());
-}
-
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::has_operation() const
-{
-    return is_set(yfilter)
-	|| (state !=  nullptr && state->has_operation())
-	|| (interface_ref !=  nullptr && interface_ref->has_operation());
-}
-
-std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "next-hop";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "state")
-    {
-        if(state == nullptr)
-        {
-            state = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::State>();
-        }
-        return state;
-    }
-
-    if(child_yang_name == "interface-ref")
-    {
-        if(interface_ref == nullptr)
-        {
-            interface_ref = std::make_shared<OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::InterfaceRef>();
-        }
-        return interface_ref;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(state != nullptr)
-    {
-        _children["state"] = state;
-    }
-
-    if(interface_ref != nullptr)
-    {
-        _children["interface-ref"] = interface_ref;
-    }
-
-    return _children;
-}
-
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "state" || name == "interface-ref")
-        return true;
-    return false;
-}
-
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::State::State()
-    :
-    index_{YType::uint64, "index"},
-    weight{YType::uint32, "weight"},
-    ip_address{YType::str, "ip-address"},
-    network_instance{YType::str, "network-instance"},
-    popped_mpls_label_stack{YType::str, "popped-mpls-label-stack"},
-    pushed_mpls_label_stack{YType::str, "pushed-mpls-label-stack"}
-{
-
-    yang_name = "state"; yang_parent_name = "next-hop"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::State::~State()
-{
-}
-
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::State::has_data() const
-{
-    if (is_presence_container) return true;
-    for (auto const & leaf : popped_mpls_label_stack.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    for (auto const & leaf : pushed_mpls_label_stack.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return index_.is_set
-	|| weight.is_set
-	|| ip_address.is_set
-	|| network_instance.is_set;
-}
-
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::State::has_operation() const
-{
-    for (auto const & leaf : popped_mpls_label_stack.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    for (auto const & leaf : pushed_mpls_label_stack.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(index_.yfilter)
-	|| ydk::is_set(weight.yfilter)
-	|| ydk::is_set(ip_address.yfilter)
-	|| ydk::is_set(network_instance.yfilter)
-	|| ydk::is_set(popped_mpls_label_stack.yfilter)
-	|| ydk::is_set(pushed_mpls_label_stack.yfilter);
-}
-
-std::string OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::State::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "state";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::State::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
-    if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
-    if (ip_address.is_set || is_set(ip_address.yfilter)) leaf_name_data.push_back(ip_address.get_name_leafdata());
-    if (network_instance.is_set || is_set(network_instance.yfilter)) leaf_name_data.push_back(network_instance.get_name_leafdata());
-
-    auto popped_mpls_label_stack_name_datas = popped_mpls_label_stack.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), popped_mpls_label_stack_name_datas.begin(), popped_mpls_label_stack_name_datas.end());
-    auto pushed_mpls_label_stack_name_datas = pushed_mpls_label_stack.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), pushed_mpls_label_stack_name_datas.begin(), pushed_mpls_label_stack_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::State::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::State::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::State::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "index")
-    {
-        index_ = value;
-        index_.value_namespace = name_space;
-        index_.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "weight")
-    {
-        weight = value;
-        weight.value_namespace = name_space;
-        weight.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ip-address")
-    {
-        ip_address = value;
-        ip_address.value_namespace = name_space;
-        ip_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "network-instance")
-    {
-        network_instance = value;
-        network_instance.value_namespace = name_space;
-        network_instance.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "popped-mpls-label-stack")
-    {
-        popped_mpls_label_stack.append(value);
-    }
-    if(value_path == "pushed-mpls-label-stack")
-    {
-        pushed_mpls_label_stack.append(value);
-    }
-}
-
-void OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::State::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "index")
-    {
-        index_.yfilter = yfilter;
-    }
-    if(value_path == "weight")
-    {
-        weight.yfilter = yfilter;
-    }
-    if(value_path == "ip-address")
-    {
-        ip_address.yfilter = yfilter;
-    }
-    if(value_path == "network-instance")
-    {
-        network_instance.yfilter = yfilter;
-    }
-    if(value_path == "popped-mpls-label-stack")
-    {
-        popped_mpls_label_stack.yfilter = yfilter;
-    }
-    if(value_path == "pushed-mpls-label-stack")
-    {
-        pushed_mpls_label_stack.yfilter = yfilter;
-    }
-}
-
-bool OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::PrefixEntries::PrefixEntry::NextHop::State::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "index" || name == "weight" || name == "ip-address" || name == "network-instance" || name == "popped-mpls-label-stack" || name == "pushed-mpls-label-stack")
+    if(name == "prefix")
         return true;
     return false;
 }

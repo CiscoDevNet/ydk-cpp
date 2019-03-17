@@ -12,6 +12,204 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
+Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::Msec()
+    :
+    show_timezone{YType::empty, "show-timezone"},
+    year{YType::empty, "year"}
+{
+
+    yang_name = "msec"; yang_parent_name = "localtime"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
+}
+
+Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::~Msec()
+{
+}
+
+bool Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::has_data() const
+{
+    if (is_presence_container) return true;
+    return show_timezone.is_set
+	|| year.is_set;
+}
+
+bool Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(show_timezone.yfilter)
+	|| ydk::is_set(year.yfilter);
+}
+
+std::string Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/service/timestamps/debug/datetime/localtime/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "msec";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (show_timezone.is_set || is_set(show_timezone.yfilter)) leaf_name_data.push_back(show_timezone.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "show-timezone")
+    {
+        show_timezone = value;
+        show_timezone.value_namespace = name_space;
+        show_timezone.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "year")
+    {
+        year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "show-timezone")
+    {
+        show_timezone.yfilter = yfilter;
+    }
+    if(value_path == "year")
+    {
+        year.yfilter = yfilter;
+    }
+}
+
+bool Native::Service::Timestamps::Debug::Datetime::Localtime::Msec::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "show-timezone" || name == "year")
+        return true;
+    return false;
+}
+
+Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::ShowTimezone()
+    :
+    msec{YType::empty, "msec"},
+    year{YType::empty, "year"}
+{
+
+    yang_name = "show-timezone"; yang_parent_name = "localtime"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
+}
+
+Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::~ShowTimezone()
+{
+}
+
+bool Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::has_data() const
+{
+    if (is_presence_container) return true;
+    return msec.is_set
+	|| year.is_set;
+}
+
+bool Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(msec.yfilter)
+	|| ydk::is_set(year.yfilter);
+}
+
+std::string Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/service/timestamps/debug/datetime/localtime/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "show-timezone";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (msec.is_set || is_set(msec.yfilter)) leaf_name_data.push_back(msec.get_name_leafdata());
+    if (year.is_set || is_set(year.yfilter)) leaf_name_data.push_back(year.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "msec")
+    {
+        msec = value;
+        msec.value_namespace = name_space;
+        msec.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "year")
+    {
+        year = value;
+        year.value_namespace = name_space;
+        year.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "msec")
+    {
+        msec.yfilter = yfilter;
+    }
+    if(value_path == "year")
+    {
+        year.yfilter = yfilter;
+    }
+}
+
+bool Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "msec" || name == "year")
+        return true;
+    return false;
+}
+
 Native::Service::Timestamps::Debug::Datetime::Localtime::Year::Year()
     :
     msec{YType::empty, "msec"},
@@ -16094,222 +16292,6 @@ bool Native::Controller::SONET::Au4::ChannelGroupTimeslots::Tug2::has_leaf_or_ch
     return false;
 }
 
-Native::Controller::SONET::Au4::CemGroupUnframed::CemGroupUnframed()
-    :
-    tug_2(this, {"number", "e1", "cem_group"})
-{
-
-    yang_name = "cem-group-unframed"; yang_parent_name = "au-4"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONET::Au4::CemGroupUnframed::~CemGroupUnframed()
-{
-}
-
-bool Native::Controller::SONET::Au4::CemGroupUnframed::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<tug_2.len(); index++)
-    {
-        if(tug_2[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::Controller::SONET::Au4::CemGroupUnframed::has_operation() const
-{
-    for (std::size_t index=0; index<tug_2.len(); index++)
-    {
-        if(tug_2[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::Controller::SONET::Au4::CemGroupUnframed::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "cem-group-unframed";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONET::Au4::CemGroupUnframed::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Controller::SONET::Au4::CemGroupUnframed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "tug-2")
-    {
-        auto ent_ = std::make_shared<Native::Controller::SONET::Au4::CemGroupUnframed::Tug2>();
-        ent_->parent = this;
-        tug_2.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Controller::SONET::Au4::CemGroupUnframed::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : tug_2.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Native::Controller::SONET::Au4::CemGroupUnframed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Controller::SONET::Au4::CemGroupUnframed::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Controller::SONET::Au4::CemGroupUnframed::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "tug-2")
-        return true;
-    return false;
-}
-
-Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::Tug2()
-    :
-    number{YType::int8, "number"},
-    e1{YType::int8, "e1"},
-    cem_group{YType::int32, "cem-group"},
-    unframed{YType::empty, "unframed"}
-{
-
-    yang_name = "tug-2"; yang_parent_name = "cem-group-unframed"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::~Tug2()
-{
-}
-
-bool Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::has_data() const
-{
-    if (is_presence_container) return true;
-    return number.is_set
-	|| e1.is_set
-	|| cem_group.is_set
-	|| unframed.is_set;
-}
-
-bool Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(number.yfilter)
-	|| ydk::is_set(e1.yfilter)
-	|| ydk::is_set(cem_group.yfilter)
-	|| ydk::is_set(unframed.yfilter);
-}
-
-std::string Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "tug-2";
-    ADD_KEY_TOKEN(number, "number");
-    ADD_KEY_TOKEN(e1, "e1");
-    ADD_KEY_TOKEN(cem_group, "cem-group");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (number.is_set || is_set(number.yfilter)) leaf_name_data.push_back(number.get_name_leafdata());
-    if (e1.is_set || is_set(e1.yfilter)) leaf_name_data.push_back(e1.get_name_leafdata());
-    if (cem_group.is_set || is_set(cem_group.yfilter)) leaf_name_data.push_back(cem_group.get_name_leafdata());
-    if (unframed.is_set || is_set(unframed.yfilter)) leaf_name_data.push_back(unframed.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "number")
-    {
-        number = value;
-        number.value_namespace = name_space;
-        number.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "e1")
-    {
-        e1 = value;
-        e1.value_namespace = name_space;
-        e1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cem-group")
-    {
-        cem_group = value;
-        cem_group.value_namespace = name_space;
-        cem_group.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "unframed")
-    {
-        unframed = value;
-        unframed.value_namespace = name_space;
-        unframed.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "number")
-    {
-        number.yfilter = yfilter;
-    }
-    if(value_path == "e1")
-    {
-        e1.yfilter = yfilter;
-    }
-    if(value_path == "cem-group")
-    {
-        cem_group.yfilter = yfilter;
-    }
-    if(value_path == "unframed")
-    {
-        unframed.yfilter = yfilter;
-    }
-}
-
-bool Native::Controller::SONET::Au4::CemGroupUnframed::Tug2::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "number" || name == "e1" || name == "cem-group" || name == "unframed")
-        return true;
-    return false;
-}
-
 const Enum::YLeaf Native::Platform::TcamParityError::enable {0, "enable"};
 const Enum::YLeaf Native::Platform::TcamParityError::disable {1, "disable"};
 
@@ -16326,7 +16308,20 @@ const Enum::YLeaf Native::Platform::Hardware::Throughput::Disable::internal_lice
 
 const Enum::YLeaf Native::Platform::Hardware::Throughput::Level::Kbps::Y_10000 {0, "10000"};
 const Enum::YLeaf Native::Platform::Hardware::Throughput::Level::Kbps::Y_25000 {1, "25000"};
-const Enum::YLeaf Native::Platform::Hardware::Throughput::Level::Kbps::Y_50000 {2, "50000"};
+const Enum::YLeaf Native::Platform::Hardware::Throughput::Level::Kbps::Y_35000 {2, "35000"};
+const Enum::YLeaf Native::Platform::Hardware::Throughput::Level::Kbps::Y_50000 {3, "50000"};
+const Enum::YLeaf Native::Platform::Hardware::Throughput::Level::Kbps::Y_75000 {4, "75000"};
+const Enum::YLeaf Native::Platform::Hardware::Throughput::Level::Kbps::Y_100000 {5, "100000"};
+const Enum::YLeaf Native::Platform::Hardware::Throughput::Level::Kbps::Y_150000 {6, "150000"};
+const Enum::YLeaf Native::Platform::Hardware::Throughput::Level::Kbps::Y_200000 {7, "200000"};
+const Enum::YLeaf Native::Platform::Hardware::Throughput::Level::Kbps::Y_250000 {8, "250000"};
+const Enum::YLeaf Native::Platform::Hardware::Throughput::Level::Kbps::Y_300000 {9, "300000"};
+const Enum::YLeaf Native::Platform::Hardware::Throughput::Level::Kbps::Y_400000 {10, "400000"};
+const Enum::YLeaf Native::Platform::Hardware::Throughput::Level::Kbps::Y_500000 {11, "500000"};
+const Enum::YLeaf Native::Platform::Hardware::Throughput::Level::Kbps::Y_1000000 {12, "1000000"};
+const Enum::YLeaf Native::Platform::Hardware::Throughput::Level::Kbps::Y_1500000 {13, "1500000"};
+const Enum::YLeaf Native::Platform::Hardware::Throughput::Level::Kbps::Y_2000000 {14, "2000000"};
+const Enum::YLeaf Native::Platform::Hardware::Throughput::Level::Kbps::Y_3000000 {15, "3000000"};
 
 const Enum::YLeaf Native::Platform::Ipsec::Gdoi::accept_both {0, "accept-both"};
 

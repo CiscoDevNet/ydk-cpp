@@ -33,9 +33,11 @@ class Ssh : public ydk::Entity
 
         class Client; //type: Ssh::Client
         class Server; //type: Ssh::Server
+        class BackupServer; //type: Ssh::BackupServer
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_cfg::Ssh::Client> client;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_cfg::Ssh::Server> server;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_cfg::Ssh::BackupServer> backup_server;
         
 }; // Ssh
 
@@ -60,6 +62,7 @@ class Ssh::Client : public ydk::Entity
         ydk::YLeaf rekey_volume; //type: uint32
         ydk::YLeaf host_public_key; //type: string
         ydk::YLeaf client_vrf; //type: string
+        ydk::YLeaf tcp_window_scale; //type: uint32
         ydk::YLeaf rekey_time; //type: uint32
         ydk::YLeaf source_interface; //type: string
         ydk::YLeaf dscp; //type: uint32
@@ -186,6 +189,7 @@ class Ssh::Server : public ydk::Entity
         ydk::YLeaf session_limit; //type: uint32
         ydk::YLeaf netconf; //type: uint32
         ydk::YLeaf v2; //type: empty
+        ydk::YLeaf tcp_window_scale; //type: uint32
         ydk::YLeaf rekey_time; //type: uint32
         ydk::YLeaf logging; //type: empty
         ydk::YLeaf rate_limit; //type: uint32
@@ -465,6 +469,53 @@ class Ssh::Server::NetconfVrfTable::Vrf : public ydk::Entity
         ydk::YLeaf ipv6_access_list; //type: string
 
 }; // Ssh::Server::NetconfVrfTable::Vrf
+
+
+class Ssh::BackupServer : public ydk::Entity
+{
+    public:
+        BackupServer();
+        ~BackupServer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class BackupPortVrf; //type: Ssh::BackupServer::BackupPortVrf
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_cfg::Ssh::BackupServer::BackupPortVrf> backup_port_vrf; // presence node
+        
+}; // Ssh::BackupServer
+
+
+class Ssh::BackupServer::BackupPortVrf : public ydk::Entity
+{
+    public:
+        BackupPortVrf();
+        ~BackupPortVrf();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf port; //type: uint32
+        ydk::YLeaf vrf_name; //type: string
+
+}; // Ssh::BackupServer::BackupPortVrf
 
 
 }

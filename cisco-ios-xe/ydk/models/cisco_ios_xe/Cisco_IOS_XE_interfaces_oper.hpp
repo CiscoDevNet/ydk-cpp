@@ -2040,6 +2040,7 @@ class EtherSpeed : public ydk::Enum
         static const ydk::Enum::YLeaf speed_50gb;
         static const ydk::Enum::YLeaf speed_100gb;
         static const ydk::Enum::YLeaf speed_unknown;
+        static const ydk::Enum::YLeaf speed_auto;
 
 };
 

@@ -926,6 +926,8 @@ class OpStartResult : public ydk::Enum
         static const ydk::Enum::YLeaf prepare_error_previous_prepare;
         static const ydk::Enum::YLeaf recover_error_unrecoverable;
         static const ydk::Enum::YLeaf start_error_internal;
+        static const ydk::Enum::YLeaf prepare_error_previous_operation_not_committed;
+        static const ydk::Enum::YLeaf prepare_error_already_in_progress;
 
 };
 

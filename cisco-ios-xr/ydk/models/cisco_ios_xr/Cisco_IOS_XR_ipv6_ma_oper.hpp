@@ -237,6 +237,7 @@ class Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::LinkLoc
         ydk::YLeaf address_state; //type: Ipv6MaIfAddrState
         ydk::YLeaf is_anycast; //type: boolean
         ydk::YLeaf route_tag; //type: uint32
+        ydk::YLeaf arm_flags; //type: uint32
 
 }; // Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::LinkLocalAddress
 
@@ -262,6 +263,7 @@ class Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Address
         ydk::YLeaf address_state; //type: Ipv6MaIfAddrState
         ydk::YLeaf is_anycast; //type: boolean
         ydk::YLeaf route_tag; //type: uint32
+        ydk::YLeaf arm_flags; //type: uint32
 
 }; // Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Briefs::Brief::Address
 
@@ -315,6 +317,9 @@ class Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalD
         ydk::YLeaf mlacp_active; //type: boolean
         ydk::YLeaf flow_tag_src; //type: boolean
         ydk::YLeaf flow_tag_dst; //type: boolean
+        ydk::YLeaf ipv6_config_flag; //type: uint32
+        ydk::YLeaf ipv6_oper_flag; //type: uint32
+        ydk::YLeaf idb_pointer; //type: uint64
         class LinkLocalAddress; //type: Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::LinkLocalAddress
         class AccessControlList; //type: Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::AccessControlList
         class MultiAccessControlList; //type: Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::MultiAccessControlList
@@ -367,6 +372,7 @@ class Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalD
         ydk::YLeaf address_state; //type: Ipv6MaIfAddrState
         ydk::YLeaf is_anycast; //type: boolean
         ydk::YLeaf route_tag; //type: uint32
+        ydk::YLeaf arm_flags; //type: uint32
 
 }; // Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::LinkLocalAddress
 
@@ -722,6 +728,7 @@ class Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalD
         ydk::YLeaf address_state; //type: Ipv6MaIfAddrState
         ydk::YLeaf is_anycast; //type: boolean
         ydk::YLeaf route_tag; //type: uint32
+        ydk::YLeaf arm_flags; //type: uint32
 
 }; // Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalDetails::GlobalDetail::Address
 
@@ -819,6 +826,7 @@ class Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBr
         ydk::YLeaf address_state; //type: Ipv6MaIfAddrState
         ydk::YLeaf is_anycast; //type: boolean
         ydk::YLeaf route_tag; //type: uint32
+        ydk::YLeaf arm_flags; //type: uint32
 
 }; // Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::LinkLocalAddress
 
@@ -844,6 +852,7 @@ class Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBr
         ydk::YLeaf address_state; //type: Ipv6MaIfAddrState
         ydk::YLeaf is_anycast; //type: boolean
         ydk::YLeaf route_tag; //type: uint32
+        ydk::YLeaf arm_flags; //type: uint32
 
 }; // Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::GlobalBriefs::GlobalBrief::Address
 
@@ -897,6 +906,9 @@ class Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail : publ
         ydk::YLeaf mlacp_active; //type: boolean
         ydk::YLeaf flow_tag_src; //type: boolean
         ydk::YLeaf flow_tag_dst; //type: boolean
+        ydk::YLeaf ipv6_config_flag; //type: uint32
+        ydk::YLeaf ipv6_oper_flag; //type: uint32
+        ydk::YLeaf idb_pointer; //type: uint64
         class LinkLocalAddress; //type: Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::LinkLocalAddress
         class AccessControlList; //type: Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::AccessControlList
         class MultiAccessControlList; //type: Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::MultiAccessControlList
@@ -949,6 +961,7 @@ class Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::LinkL
         ydk::YLeaf address_state; //type: Ipv6MaIfAddrState
         ydk::YLeaf is_anycast; //type: boolean
         ydk::YLeaf route_tag; //type: uint32
+        ydk::YLeaf arm_flags; //type: uint32
 
 }; // Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::LinkLocalAddress
 
@@ -1304,6 +1317,7 @@ class Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Addre
         ydk::YLeaf address_state; //type: Ipv6MaIfAddrState
         ydk::YLeaf is_anycast; //type: boolean
         ydk::YLeaf route_tag; //type: uint32
+        ydk::YLeaf arm_flags; //type: uint32
 
 }; // Ipv6Network::Nodes::Node::InterfaceData::Vrfs::Vrf::Details::Detail::Address
 

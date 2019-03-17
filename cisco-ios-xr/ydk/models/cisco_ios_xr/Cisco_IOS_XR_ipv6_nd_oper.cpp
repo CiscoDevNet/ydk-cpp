@@ -2792,7 +2792,9 @@ Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAddress:
     :
     ipv6_address{YType::str, "ipv6-address"},
     valid_lifetime{YType::uint32, "valid-lifetime"},
-    pref_lifetime{YType::uint32, "pref-lifetime"}
+    pref_lifetime{YType::uint32, "pref-lifetime"},
+    prefix_length{YType::uint32, "prefix-length"},
+    flags{YType::uint32, "flags"}
 {
 
     yang_name = "local-address"; yang_parent_name = "bundle-interface"; is_top_level_class = false; has_list_ancestor = true; 
@@ -2807,7 +2809,9 @@ bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAdd
     if (is_presence_container) return true;
     return ipv6_address.is_set
 	|| valid_lifetime.is_set
-	|| pref_lifetime.is_set;
+	|| pref_lifetime.is_set
+	|| prefix_length.is_set
+	|| flags.is_set;
 }
 
 bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAddress::has_operation() const
@@ -2815,7 +2819,9 @@ bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAdd
     return is_set(yfilter)
 	|| ydk::is_set(ipv6_address.yfilter)
 	|| ydk::is_set(valid_lifetime.yfilter)
-	|| ydk::is_set(pref_lifetime.yfilter);
+	|| ydk::is_set(pref_lifetime.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(flags.yfilter);
 }
 
 std::string Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAddress::get_segment_path() const
@@ -2832,6 +2838,8 @@ std::vector<std::pair<std::string, LeafData> > Ipv6NodeDiscovery::Nodes::Node::B
     if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
     if (valid_lifetime.is_set || is_set(valid_lifetime.yfilter)) leaf_name_data.push_back(valid_lifetime.get_name_leafdata());
     if (pref_lifetime.is_set || is_set(pref_lifetime.yfilter)) leaf_name_data.push_back(pref_lifetime.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2869,6 +2877,18 @@ void Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAdd
         pref_lifetime.value_namespace = name_space;
         pref_lifetime.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flags")
+    {
+        flags = value;
+        flags.value_namespace = name_space;
+        flags.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAddress::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2885,11 +2905,19 @@ void Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAdd
     {
         pref_lifetime.yfilter = yfilter;
     }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "flags")
+    {
+        flags.yfilter = yfilter;
+    }
 }
 
 bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv6-address" || name == "valid-lifetime" || name == "pref-lifetime")
+    if(name == "ipv6-address" || name == "valid-lifetime" || name == "pref-lifetime" || name == "prefix-length" || name == "flags")
         return true;
     return false;
 }
@@ -2898,7 +2926,9 @@ Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAddress
     :
     ipv6_address{YType::str, "ipv6-address"},
     valid_lifetime{YType::uint32, "valid-lifetime"},
-    pref_lifetime{YType::uint32, "pref-lifetime"}
+    pref_lifetime{YType::uint32, "pref-lifetime"},
+    prefix_length{YType::uint32, "prefix-length"},
+    flags{YType::uint32, "flags"}
 {
 
     yang_name = "global-address"; yang_parent_name = "bundle-interface"; is_top_level_class = false; has_list_ancestor = true; 
@@ -2913,7 +2943,9 @@ bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAd
     if (is_presence_container) return true;
     return ipv6_address.is_set
 	|| valid_lifetime.is_set
-	|| pref_lifetime.is_set;
+	|| pref_lifetime.is_set
+	|| prefix_length.is_set
+	|| flags.is_set;
 }
 
 bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAddress::has_operation() const
@@ -2921,7 +2953,9 @@ bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAd
     return is_set(yfilter)
 	|| ydk::is_set(ipv6_address.yfilter)
 	|| ydk::is_set(valid_lifetime.yfilter)
-	|| ydk::is_set(pref_lifetime.yfilter);
+	|| ydk::is_set(pref_lifetime.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(flags.yfilter);
 }
 
 std::string Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAddress::get_segment_path() const
@@ -2939,6 +2973,8 @@ std::vector<std::pair<std::string, LeafData> > Ipv6NodeDiscovery::Nodes::Node::B
     if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
     if (valid_lifetime.is_set || is_set(valid_lifetime.yfilter)) leaf_name_data.push_back(valid_lifetime.get_name_leafdata());
     if (pref_lifetime.is_set || is_set(pref_lifetime.yfilter)) leaf_name_data.push_back(pref_lifetime.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2976,6 +3012,18 @@ void Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAd
         pref_lifetime.value_namespace = name_space;
         pref_lifetime.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flags")
+    {
+        flags = value;
+        flags.value_namespace = name_space;
+        flags.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAddress::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2992,11 +3040,19 @@ void Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAd
     {
         pref_lifetime.yfilter = yfilter;
     }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "flags")
+    {
+        flags.yfilter = yfilter;
+    }
 }
 
 bool Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv6-address" || name == "valid-lifetime" || name == "pref-lifetime")
+    if(name == "ipv6-address" || name == "valid-lifetime" || name == "pref-lifetime" || name == "prefix-length" || name == "flags")
         return true;
     return false;
 }
@@ -3825,7 +3881,9 @@ Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAddress:
     :
     ipv6_address{YType::str, "ipv6-address"},
     valid_lifetime{YType::uint32, "valid-lifetime"},
-    pref_lifetime{YType::uint32, "pref-lifetime"}
+    pref_lifetime{YType::uint32, "pref-lifetime"},
+    prefix_length{YType::uint32, "prefix-length"},
+    flags{YType::uint32, "flags"}
 {
 
     yang_name = "local-address"; yang_parent_name = "nd-virtual-router"; is_top_level_class = false; has_list_ancestor = true; 
@@ -3840,7 +3898,9 @@ bool Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAdd
     if (is_presence_container) return true;
     return ipv6_address.is_set
 	|| valid_lifetime.is_set
-	|| pref_lifetime.is_set;
+	|| pref_lifetime.is_set
+	|| prefix_length.is_set
+	|| flags.is_set;
 }
 
 bool Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAddress::has_operation() const
@@ -3848,7 +3908,9 @@ bool Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAdd
     return is_set(yfilter)
 	|| ydk::is_set(ipv6_address.yfilter)
 	|| ydk::is_set(valid_lifetime.yfilter)
-	|| ydk::is_set(pref_lifetime.yfilter);
+	|| ydk::is_set(pref_lifetime.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(flags.yfilter);
 }
 
 std::string Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAddress::get_segment_path() const
@@ -3865,6 +3927,8 @@ std::vector<std::pair<std::string, LeafData> > Ipv6NodeDiscovery::Nodes::Node::N
     if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
     if (valid_lifetime.is_set || is_set(valid_lifetime.yfilter)) leaf_name_data.push_back(valid_lifetime.get_name_leafdata());
     if (pref_lifetime.is_set || is_set(pref_lifetime.yfilter)) leaf_name_data.push_back(pref_lifetime.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3902,6 +3966,18 @@ void Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAdd
         pref_lifetime.value_namespace = name_space;
         pref_lifetime.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flags")
+    {
+        flags = value;
+        flags.value_namespace = name_space;
+        flags.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAddress::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3918,11 +3994,19 @@ void Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAdd
     {
         pref_lifetime.yfilter = yfilter;
     }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "flags")
+    {
+        flags.yfilter = yfilter;
+    }
 }
 
 bool Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv6-address" || name == "valid-lifetime" || name == "pref-lifetime")
+    if(name == "ipv6-address" || name == "valid-lifetime" || name == "pref-lifetime" || name == "prefix-length" || name == "flags")
         return true;
     return false;
 }
@@ -3931,7 +4015,9 @@ Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobalAddre
     :
     ipv6_address{YType::str, "ipv6-address"},
     valid_lifetime{YType::uint32, "valid-lifetime"},
-    pref_lifetime{YType::uint32, "pref-lifetime"}
+    pref_lifetime{YType::uint32, "pref-lifetime"},
+    prefix_length{YType::uint32, "prefix-length"},
+    flags{YType::uint32, "flags"}
 {
 
     yang_name = "vr-global-address"; yang_parent_name = "nd-virtual-router"; is_top_level_class = false; has_list_ancestor = true; 
@@ -3946,7 +4032,9 @@ bool Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobal
     if (is_presence_container) return true;
     return ipv6_address.is_set
 	|| valid_lifetime.is_set
-	|| pref_lifetime.is_set;
+	|| pref_lifetime.is_set
+	|| prefix_length.is_set
+	|| flags.is_set;
 }
 
 bool Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobalAddress::has_operation() const
@@ -3954,7 +4042,9 @@ bool Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobal
     return is_set(yfilter)
 	|| ydk::is_set(ipv6_address.yfilter)
 	|| ydk::is_set(valid_lifetime.yfilter)
-	|| ydk::is_set(pref_lifetime.yfilter);
+	|| ydk::is_set(pref_lifetime.yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(flags.yfilter);
 }
 
 std::string Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobalAddress::get_segment_path() const
@@ -3972,6 +4062,8 @@ std::vector<std::pair<std::string, LeafData> > Ipv6NodeDiscovery::Nodes::Node::N
     if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
     if (valid_lifetime.is_set || is_set(valid_lifetime.yfilter)) leaf_name_data.push_back(valid_lifetime.get_name_leafdata());
     if (pref_lifetime.is_set || is_set(pref_lifetime.yfilter)) leaf_name_data.push_back(pref_lifetime.get_name_leafdata());
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (flags.is_set || is_set(flags.yfilter)) leaf_name_data.push_back(flags.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4009,6 +4101,18 @@ void Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobal
         pref_lifetime.value_namespace = name_space;
         pref_lifetime.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flags")
+    {
+        flags = value;
+        flags.value_namespace = name_space;
+        flags.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobalAddress::set_filter(const std::string & value_path, YFilter yfilter)
@@ -4025,11 +4129,19 @@ void Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobal
     {
         pref_lifetime.yfilter = yfilter;
     }
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "flags")
+    {
+        flags.yfilter = yfilter;
+    }
 }
 
 bool Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobalAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv6-address" || name == "valid-lifetime" || name == "pref-lifetime")
+    if(name == "ipv6-address" || name == "valid-lifetime" || name == "pref-lifetime" || name == "prefix-length" || name == "flags")
         return true;
     return false;
 }

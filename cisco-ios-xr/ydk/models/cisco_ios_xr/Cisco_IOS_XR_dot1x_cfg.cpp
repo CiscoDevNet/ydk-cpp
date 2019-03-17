@@ -346,7 +346,8 @@ bool Dot1x::Dot1xProfile::Supplicant::has_leaf_or_child_of_name(const std::strin
 
 Dot1x::Dot1xProfile::Authenticator::Authenticator()
     :
-    eap_profile{YType::str, "eap-profile"}
+    eap_profile{YType::str, "eap-profile"},
+    server_dead{YType::enumeration, "server-dead"}
         ,
     timers(std::make_shared<Dot1x::Dot1xProfile::Authenticator::Timers>())
 {
@@ -363,6 +364,7 @@ bool Dot1x::Dot1xProfile::Authenticator::has_data() const
 {
     if (is_presence_container) return true;
     return eap_profile.is_set
+	|| server_dead.is_set
 	|| (timers !=  nullptr && timers->has_data());
 }
 
@@ -370,6 +372,7 @@ bool Dot1x::Dot1xProfile::Authenticator::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(eap_profile.yfilter)
+	|| ydk::is_set(server_dead.yfilter)
 	|| (timers !=  nullptr && timers->has_operation());
 }
 
@@ -385,6 +388,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Dot1xProfile::Authenticato
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (eap_profile.is_set || is_set(eap_profile.yfilter)) leaf_name_data.push_back(eap_profile.get_name_leafdata());
+    if (server_dead.is_set || is_set(server_dead.yfilter)) leaf_name_data.push_back(server_dead.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -424,6 +428,12 @@ void Dot1x::Dot1xProfile::Authenticator::set_value(const std::string & value_pat
         eap_profile.value_namespace = name_space;
         eap_profile.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "server-dead")
+    {
+        server_dead = value;
+        server_dead.value_namespace = name_space;
+        server_dead.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Dot1x::Dot1xProfile::Authenticator::set_filter(const std::string & value_path, YFilter yfilter)
@@ -432,11 +442,15 @@ void Dot1x::Dot1xProfile::Authenticator::set_filter(const std::string & value_pa
     {
         eap_profile.yfilter = yfilter;
     }
+    if(value_path == "server-dead")
+    {
+        server_dead.yfilter = yfilter;
+    }
 }
 
 bool Dot1x::Dot1xProfile::Authenticator::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "timers" || name == "eap-profile")
+    if(name == "timers" || name == "eap-profile" || name == "server-dead")
         return true;
     return false;
 }
@@ -929,6 +943,9 @@ bool Eap::EapProfile::Eaptls::has_leaf_or_child_of_name(const std::string & name
         return true;
     return false;
 }
+
+const Enum::YLeaf Dot1xServerDeadAction::auth_fail {0, "auth-fail"};
+const Enum::YLeaf Dot1xServerDeadAction::auth_retry {1, "auth-retry"};
 
 
 }

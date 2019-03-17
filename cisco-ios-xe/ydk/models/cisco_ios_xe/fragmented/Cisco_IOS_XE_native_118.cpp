@@ -13,6 +13,5077 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
+Native::Logging::File::File()
+    :
+    name{YType::str, "name"},
+    max_size{YType::uint32, "max-size"},
+    min_size{YType::uint32, "min-size"},
+    severity{YType::str, "severity"}
+{
+
+    yang_name = "file"; yang_parent_name = "logging"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Logging::File::~File()
+{
+}
+
+bool Native::Logging::File::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| max_size.is_set
+	|| min_size.is_set
+	|| severity.is_set;
+}
+
+bool Native::Logging::File::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(max_size.yfilter)
+	|| ydk::is_set(min_size.yfilter)
+	|| ydk::is_set(severity.yfilter);
+}
+
+std::string Native::Logging::File::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/logging/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Logging::File::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "file";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Logging::File::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (max_size.is_set || is_set(max_size.yfilter)) leaf_name_data.push_back(max_size.get_name_leafdata());
+    if (min_size.is_set || is_set(min_size.yfilter)) leaf_name_data.push_back(min_size.get_name_leafdata());
+    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Logging::File::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Logging::File::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Logging::File::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "max-size")
+    {
+        max_size = value;
+        max_size.value_namespace = name_space;
+        max_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "min-size")
+    {
+        min_size = value;
+        min_size.value_namespace = name_space;
+        min_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "severity")
+    {
+        severity = value;
+        severity.value_namespace = name_space;
+        severity.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Logging::File::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "max-size")
+    {
+        max_size.yfilter = yfilter;
+    }
+    if(value_path == "min-size")
+    {
+        min_size.yfilter = yfilter;
+    }
+    if(value_path == "severity")
+    {
+        severity.yfilter = yfilter;
+    }
+}
+
+bool Native::Logging::File::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "max-size" || name == "min-size" || name == "severity")
+        return true;
+    return false;
+}
+
+Native::Aaa::Aaa()
+    :
+    new_model{YType::empty, "Cisco-IOS-XE-aaa:new-model"},
+    session_id{YType::enumeration, "Cisco-IOS-XE-aaa:session-id"},
+    max_sessions{YType::uint16, "Cisco-IOS-XE-aaa:max-sessions"},
+    password{YType::enumeration, "Cisco-IOS-XE-aaa:password"},
+    traceback{YType::enumeration, "Cisco-IOS-XE-aaa:traceback"}
+        ,
+    group(std::make_shared<Native::Aaa::Group>())
+    , attribute(std::make_shared<Native::Aaa::Attribute>())
+    , authentication(std::make_shared<Native::Aaa::Authentication>())
+    , local(std::make_shared<Native::Aaa::Local>())
+    , authorization(std::make_shared<Native::Aaa::Authorization>())
+    , accounting(std::make_shared<Native::Aaa::Accounting>())
+    , server(std::make_shared<Native::Aaa::Server>())
+    , login(std::make_shared<Native::Aaa::Login>())
+    , memory(std::make_shared<Native::Aaa::Memory>())
+    , policy(std::make_shared<Native::Aaa::Policy>())
+    , route(std::make_shared<Native::Aaa::Route>())
+{
+    group->parent = this;
+    attribute->parent = this;
+    authentication->parent = this;
+    local->parent = this;
+    authorization->parent = this;
+    accounting->parent = this;
+    server->parent = this;
+    login->parent = this;
+    memory->parent = this;
+    policy->parent = this;
+    route->parent = this;
+
+    yang_name = "aaa"; yang_parent_name = "native"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Aaa::~Aaa()
+{
+}
+
+bool Native::Aaa::has_data() const
+{
+    if (is_presence_container) return true;
+    return new_model.is_set
+	|| session_id.is_set
+	|| max_sessions.is_set
+	|| password.is_set
+	|| traceback.is_set
+	|| (group !=  nullptr && group->has_data())
+	|| (attribute !=  nullptr && attribute->has_data())
+	|| (authentication !=  nullptr && authentication->has_data())
+	|| (local !=  nullptr && local->has_data())
+	|| (authorization !=  nullptr && authorization->has_data())
+	|| (accounting !=  nullptr && accounting->has_data())
+	|| (server !=  nullptr && server->has_data())
+	|| (login !=  nullptr && login->has_data())
+	|| (memory !=  nullptr && memory->has_data())
+	|| (policy !=  nullptr && policy->has_data())
+	|| (route !=  nullptr && route->has_data());
+}
+
+bool Native::Aaa::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(new_model.yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(max_sessions.yfilter)
+	|| ydk::is_set(password.yfilter)
+	|| ydk::is_set(traceback.yfilter)
+	|| (group !=  nullptr && group->has_operation())
+	|| (attribute !=  nullptr && attribute->has_operation())
+	|| (authentication !=  nullptr && authentication->has_operation())
+	|| (local !=  nullptr && local->has_operation())
+	|| (authorization !=  nullptr && authorization->has_operation())
+	|| (accounting !=  nullptr && accounting->has_operation())
+	|| (server !=  nullptr && server->has_operation())
+	|| (login !=  nullptr && login->has_operation())
+	|| (memory !=  nullptr && memory->has_operation())
+	|| (policy !=  nullptr && policy->has_operation())
+	|| (route !=  nullptr && route->has_operation());
+}
+
+std::string Native::Aaa::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Aaa::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "aaa";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (new_model.is_set || is_set(new_model.yfilter)) leaf_name_data.push_back(new_model.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (max_sessions.is_set || is_set(max_sessions.yfilter)) leaf_name_data.push_back(max_sessions.get_name_leafdata());
+    if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
+    if (traceback.is_set || is_set(traceback.yfilter)) leaf_name_data.push_back(traceback.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "Cisco-IOS-XE-aaa:group")
+    {
+        if(group == nullptr)
+        {
+            group = std::make_shared<Native::Aaa::Group>();
+        }
+        return group;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-aaa:attribute")
+    {
+        if(attribute == nullptr)
+        {
+            attribute = std::make_shared<Native::Aaa::Attribute>();
+        }
+        return attribute;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-aaa:authentication")
+    {
+        if(authentication == nullptr)
+        {
+            authentication = std::make_shared<Native::Aaa::Authentication>();
+        }
+        return authentication;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-aaa:local")
+    {
+        if(local == nullptr)
+        {
+            local = std::make_shared<Native::Aaa::Local>();
+        }
+        return local;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-aaa:authorization")
+    {
+        if(authorization == nullptr)
+        {
+            authorization = std::make_shared<Native::Aaa::Authorization>();
+        }
+        return authorization;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-aaa:accounting")
+    {
+        if(accounting == nullptr)
+        {
+            accounting = std::make_shared<Native::Aaa::Accounting>();
+        }
+        return accounting;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-aaa:server")
+    {
+        if(server == nullptr)
+        {
+            server = std::make_shared<Native::Aaa::Server>();
+        }
+        return server;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-aaa:login")
+    {
+        if(login == nullptr)
+        {
+            login = std::make_shared<Native::Aaa::Login>();
+        }
+        return login;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-aaa:memory")
+    {
+        if(memory == nullptr)
+        {
+            memory = std::make_shared<Native::Aaa::Memory>();
+        }
+        return memory;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-aaa:policy")
+    {
+        if(policy == nullptr)
+        {
+            policy = std::make_shared<Native::Aaa::Policy>();
+        }
+        return policy;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-aaa:route")
+    {
+        if(route == nullptr)
+        {
+            route = std::make_shared<Native::Aaa::Route>();
+        }
+        return route;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(group != nullptr)
+    {
+        _children["Cisco-IOS-XE-aaa:group"] = group;
+    }
+
+    if(attribute != nullptr)
+    {
+        _children["Cisco-IOS-XE-aaa:attribute"] = attribute;
+    }
+
+    if(authentication != nullptr)
+    {
+        _children["Cisco-IOS-XE-aaa:authentication"] = authentication;
+    }
+
+    if(local != nullptr)
+    {
+        _children["Cisco-IOS-XE-aaa:local"] = local;
+    }
+
+    if(authorization != nullptr)
+    {
+        _children["Cisco-IOS-XE-aaa:authorization"] = authorization;
+    }
+
+    if(accounting != nullptr)
+    {
+        _children["Cisco-IOS-XE-aaa:accounting"] = accounting;
+    }
+
+    if(server != nullptr)
+    {
+        _children["Cisco-IOS-XE-aaa:server"] = server;
+    }
+
+    if(login != nullptr)
+    {
+        _children["Cisco-IOS-XE-aaa:login"] = login;
+    }
+
+    if(memory != nullptr)
+    {
+        _children["Cisco-IOS-XE-aaa:memory"] = memory;
+    }
+
+    if(policy != nullptr)
+    {
+        _children["Cisco-IOS-XE-aaa:policy"] = policy;
+    }
+
+    if(route != nullptr)
+    {
+        _children["Cisco-IOS-XE-aaa:route"] = route;
+    }
+
+    return _children;
+}
+
+void Native::Aaa::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "Cisco-IOS-XE-aaa:new-model")
+    {
+        new_model = value;
+        new_model.value_namespace = name_space;
+        new_model.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Cisco-IOS-XE-aaa:session-id")
+    {
+        session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Cisco-IOS-XE-aaa:max-sessions")
+    {
+        max_sessions = value;
+        max_sessions.value_namespace = name_space;
+        max_sessions.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Cisco-IOS-XE-aaa:password")
+    {
+        password = value;
+        password.value_namespace = name_space;
+        password.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Cisco-IOS-XE-aaa:traceback")
+    {
+        traceback = value;
+        traceback.value_namespace = name_space;
+        traceback.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "new-model")
+    {
+        new_model.yfilter = yfilter;
+    }
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "max-sessions")
+    {
+        max_sessions.yfilter = yfilter;
+    }
+    if(value_path == "password")
+    {
+        password.yfilter = yfilter;
+    }
+    if(value_path == "traceback")
+    {
+        traceback.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group" || name == "attribute" || name == "authentication" || name == "local" || name == "authorization" || name == "accounting" || name == "server" || name == "login" || name == "memory" || name == "policy" || name == "route" || name == "new-model" || name == "session-id" || name == "max-sessions" || name == "password" || name == "traceback")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Group()
+    :
+    server(std::make_shared<Native::Aaa::Group::Server>())
+{
+    server->parent = this;
+
+    yang_name = "group"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Aaa::Group::~Group()
+{
+}
+
+bool Native::Aaa::Group::has_data() const
+{
+    if (is_presence_container) return true;
+    return (server !=  nullptr && server->has_data());
+}
+
+bool Native::Aaa::Group::has_operation() const
+{
+    return is_set(yfilter)
+	|| (server !=  nullptr && server->has_operation());
+}
+
+std::string Native::Aaa::Group::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/aaa/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Aaa::Group::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-aaa:group";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "server")
+    {
+        if(server == nullptr)
+        {
+            server = std::make_shared<Native::Aaa::Group::Server>();
+        }
+        return server;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(server != nullptr)
+    {
+        _children["server"] = server;
+    }
+
+    return _children;
+}
+
+void Native::Aaa::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Aaa::Group::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Aaa::Group::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "server")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Server()
+    :
+    tacacsplus(this, {"name"})
+    , tacacs(this, {"name"})
+    , radius(this, {"name"})
+{
+
+    yang_name = "server"; yang_parent_name = "group"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Aaa::Group::Server::~Server()
+{
+}
+
+bool Native::Aaa::Group::Server::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tacacsplus.len(); index++)
+    {
+        if(tacacsplus[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<tacacs.len(); index++)
+    {
+        if(tacacs[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<radius.len(); index++)
+    {
+        if(radius[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Native::Aaa::Group::Server::has_operation() const
+{
+    for (std::size_t index=0; index<tacacsplus.len(); index++)
+    {
+        if(tacacsplus[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<tacacs.len(); index++)
+    {
+        if(tacacs[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<radius.len(); index++)
+    {
+        if(radius[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Native::Aaa::Group::Server::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:group/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Aaa::Group::Server::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "server";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tacacsplus")
+    {
+        auto ent_ = std::make_shared<Native::Aaa::Group::Server::Tacacsplus>();
+        ent_->parent = this;
+        tacacsplus.append(ent_);
+        return ent_;
+    }
+
+    if(child_yang_name == "tacacs")
+    {
+        auto ent_ = std::make_shared<Native::Aaa::Group::Server::Tacacs>();
+        ent_->parent = this;
+        tacacs.append(ent_);
+        return ent_;
+    }
+
+    if(child_yang_name == "radius")
+    {
+        auto ent_ = std::make_shared<Native::Aaa::Group::Server::Radius>();
+        ent_->parent = this;
+        radius.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tacacsplus.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    count_ = 0;
+    for (auto ent_ : tacacs.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    count_ = 0;
+    for (auto ent_ : radius.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Native::Aaa::Group::Server::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Aaa::Group::Server::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Aaa::Group::Server::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tacacsplus" || name == "tacacs" || name == "radius")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Tacacsplus()
+    :
+    name{YType::str, "name"}
+        ,
+    server(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Server_>())
+    , server_private(this, {"name"})
+    , ip(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip>())
+{
+    server->parent = this;
+    ip->parent = this;
+
+    yang_name = "tacacsplus"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Aaa::Group::Server::Tacacsplus::~Tacacsplus()
+{
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<server_private.len(); index++)
+    {
+        if(server_private[index]->has_data())
+            return true;
+    }
+    return name.is_set
+	|| (server !=  nullptr && server->has_data())
+	|| (ip !=  nullptr && ip->has_data());
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::has_operation() const
+{
+    for (std::size_t index=0; index<server_private.len(); index++)
+    {
+        if(server_private[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| (server !=  nullptr && server->has_operation())
+	|| (ip !=  nullptr && ip->has_operation());
+}
+
+std::string Native::Aaa::Group::Server::Tacacsplus::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:group/server/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Aaa::Group::Server::Tacacsplus::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tacacsplus";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Tacacsplus::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Tacacsplus::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "server")
+    {
+        if(server == nullptr)
+        {
+            server = std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Server_>();
+        }
+        return server;
+    }
+
+    if(child_yang_name == "server-private")
+    {
+        auto ent_ = std::make_shared<Native::Aaa::Group::Server::Tacacsplus::ServerPrivate>();
+        ent_->parent = this;
+        server_private.append(ent_);
+        return ent_;
+    }
+
+    if(child_yang_name == "ip")
+    {
+        if(ip == nullptr)
+        {
+            ip = std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip>();
+        }
+        return ip;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Tacacsplus::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(server != nullptr)
+    {
+        _children["server"] = server;
+    }
+
+    count_ = 0;
+    for (auto ent_ : server_private.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    if(ip != nullptr)
+    {
+        _children["ip"] = ip;
+    }
+
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "server" || name == "server-private" || name == "ip" || name == "name")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Server_::Server_()
+    :
+    name(this, {"name"})
+    , direct(this, {"name"})
+{
+
+    yang_name = "server"; yang_parent_name = "tacacsplus"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Server_::~Server_()
+{
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Server_::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<name.len(); index++)
+    {
+        if(name[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<direct.len(); index++)
+    {
+        if(direct[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Server_::has_operation() const
+{
+    for (std::size_t index=0; index<name.len(); index++)
+    {
+        if(name[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<direct.len(); index++)
+    {
+        if(direct[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Native::Aaa::Group::Server::Tacacsplus::Server_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "server";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Tacacsplus::Server_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Tacacsplus::Server_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "name")
+    {
+        auto ent_ = std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Server_::Name>();
+        ent_->parent = this;
+        name.append(ent_);
+        return ent_;
+    }
+
+    if(child_yang_name == "direct")
+    {
+        auto ent_ = std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Server_::Direct>();
+        ent_->parent = this;
+        direct.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Tacacsplus::Server_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : name.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    count_ = 0;
+    for (auto ent_ : direct.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::Server_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::Server_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Server_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "direct")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Server_::Name::Name()
+    :
+    name{YType::str, "name"}
+{
+
+    yang_name = "name"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Server_::Name::~Name()
+{
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Server_::Name::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set;
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Server_::Name::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter);
+}
+
+std::string Native::Aaa::Group::Server::Tacacsplus::Server_::Name::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "name";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Tacacsplus::Server_::Name::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Tacacsplus::Server_::Name::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Tacacsplus::Server_::Name::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::Server_::Name::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::Server_::Name::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Server_::Name::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Server_::Direct::Direct()
+    :
+    name{YType::str, "name"}
+{
+
+    yang_name = "direct"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Server_::Direct::~Direct()
+{
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Server_::Direct::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set;
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Server_::Direct::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter);
+}
+
+std::string Native::Aaa::Group::Server::Tacacsplus::Server_::Direct::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "direct";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Tacacsplus::Server_::Direct::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Tacacsplus::Server_::Direct::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Tacacsplus::Server_::Direct::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::Server_::Direct::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::Server_::Direct::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Server_::Direct::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::ServerPrivate()
+    :
+    name{YType::str, "name"},
+    port{YType::uint16, "port"},
+    timeout{YType::uint16, "timeout"}
+        ,
+    key(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key>())
+{
+    key->parent = this;
+
+    yang_name = "server-private"; yang_parent_name = "tacacsplus"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::~ServerPrivate()
+{
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| port.is_set
+	|| timeout.is_set
+	|| (key !=  nullptr && key->has_data());
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(port.yfilter)
+	|| ydk::is_set(timeout.yfilter)
+	|| (key !=  nullptr && key->has_operation());
+}
+
+std::string Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "server-private";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "key")
+    {
+        if(key == nullptr)
+        {
+            key = std::make_shared<Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key>();
+        }
+        return key;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(key != nullptr)
+    {
+        _children["key"] = key;
+    }
+
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "key" || name == "name" || name == "port" || name == "timeout")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key::Key()
+    :
+    encryption{YType::enumeration, "encryption"},
+    key{YType::str, "key"}
+{
+
+    yang_name = "key"; yang_parent_name = "server-private"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key::~Key()
+{
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key::has_data() const
+{
+    if (is_presence_container) return true;
+    return encryption.is_set
+	|| key.is_set;
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(encryption.yfilter)
+	|| ydk::is_set(key.yfilter);
+}
+
+std::string Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "key";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (encryption.is_set || is_set(encryption.yfilter)) leaf_name_data.push_back(encryption.get_name_leafdata());
+    if (key.is_set || is_set(key.yfilter)) leaf_name_data.push_back(key.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "encryption")
+    {
+        encryption = value;
+        encryption.value_namespace = name_space;
+        encryption.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "key")
+    {
+        key = value;
+        key.value_namespace = name_space;
+        key.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "encryption")
+    {
+        encryption.yfilter = yfilter;
+    }
+    if(value_path == "key")
+    {
+        key.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "encryption" || name == "key")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Ip::Ip()
+    :
+    tacacs(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs>())
+    , vrf(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Vrf>())
+{
+    tacacs->parent = this;
+    vrf->parent = this;
+
+    yang_name = "ip"; yang_parent_name = "tacacsplus"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Ip::~Ip()
+{
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::has_data() const
+{
+    if (is_presence_container) return true;
+    return (tacacs !=  nullptr && tacacs->has_data())
+	|| (vrf !=  nullptr && vrf->has_data());
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::has_operation() const
+{
+    return is_set(yfilter)
+	|| (tacacs !=  nullptr && tacacs->has_operation())
+	|| (vrf !=  nullptr && vrf->has_operation());
+}
+
+std::string Native::Aaa::Group::Server::Tacacsplus::Ip::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Tacacsplus::Ip::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Tacacsplus::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tacacs")
+    {
+        if(tacacs == nullptr)
+        {
+            tacacs = std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs>();
+        }
+        return tacacs;
+    }
+
+    if(child_yang_name == "vrf")
+    {
+        if(vrf == nullptr)
+        {
+            vrf = std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Vrf>();
+        }
+        return vrf;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Tacacsplus::Ip::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(tacacs != nullptr)
+    {
+        _children["tacacs"] = tacacs;
+    }
+
+    if(vrf != nullptr)
+    {
+        _children["vrf"] = vrf;
+    }
+
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::Ip::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tacacs" || name == "vrf")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::Tacacs()
+    :
+    source_interface(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface>())
+{
+    source_interface->parent = this;
+
+    yang_name = "tacacs"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::~Tacacs()
+{
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::has_data() const
+{
+    if (is_presence_container) return true;
+    return (source_interface !=  nullptr && source_interface->has_data());
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::has_operation() const
+{
+    return is_set(yfilter)
+	|| (source_interface !=  nullptr && source_interface->has_operation());
+}
+
+std::string Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tacacs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "source-interface")
+    {
+        if(source_interface == nullptr)
+        {
+            source_interface = std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface>();
+        }
+        return source_interface;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(source_interface != nullptr)
+    {
+        _children["source-interface"] = source_interface;
+    }
+
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-interface")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::SourceInterface()
+    :
+    appnav_compress{YType::uint16, "AppNav-Compress"},
+    appnav_uncompress{YType::uint16, "AppNav-UnCompress"},
+    atm{YType::str, "ATM"},
+    atm_acr{YType::str, "ATM-ACR"},
+    bdi{YType::str, "BDI"},
+    cem{YType::str, "CEM"},
+    cem_acr{YType::uint8, "CEM-ACR"},
+    embedded_service_engine{YType::str, "Embedded-Service-Engine"},
+    ethernet{YType::str, "Ethernet"},
+    fastethernet{YType::str, "FastEthernet"},
+    gigabitethernet{YType::str, "GigabitEthernet"},
+    fivegigabitethernet{YType::str, "FiveGigabitEthernet"},
+    twentyfivegige{YType::str, "TwentyFiveGigE"},
+    twogigabitethernet{YType::str, "TwoGigabitEthernet"},
+    fortygigabitethernet{YType::str, "FortyGigabitEthernet"},
+    hundredgige{YType::str, "HundredGigE"},
+    lisp{YType::str, "LISP"},
+    loopback{YType::uint32, "Loopback"},
+    multilink{YType::uint16, "Multilink"},
+    nve{YType::uint16, "nve"},
+    overlay{YType::uint16, "overlay"},
+    port_channel{YType::uint32, "Port-channel"},
+    pseudowire{YType::uint32, "pseudowire"},
+    sm{YType::str, "SM"},
+    cellular{YType::str, "Cellular"},
+    serial{YType::str, "Serial"},
+    tengigabitethernet{YType::str, "TenGigabitEthernet"},
+    tunnel{YType::uint32, "Tunnel"},
+    virtual_template{YType::uint16, "Virtual-Template"},
+    vlan{YType::uint16, "Vlan"},
+    virtualportgroup{YType::uint16, "VirtualPortGroup"},
+    vasileft{YType::uint16, "vasileft"},
+    vasiright{YType::uint16, "vasiright"}
+        ,
+    atm_subinterface(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMSubinterface>())
+    , atm_acrsubinterface(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMACRsubinterface>())
+    , lisp_subinterface(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::LISPSubinterface>())
+    , port_channel_subinterface(std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::PortChannelSubinterface>())
+{
+    atm_subinterface->parent = this;
+    atm_acrsubinterface->parent = this;
+    lisp_subinterface->parent = this;
+    port_channel_subinterface->parent = this;
+
+    yang_name = "source-interface"; yang_parent_name = "tacacs"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::~SourceInterface()
+{
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::has_data() const
+{
+    if (is_presence_container) return true;
+    return appnav_compress.is_set
+	|| appnav_uncompress.is_set
+	|| atm.is_set
+	|| atm_acr.is_set
+	|| bdi.is_set
+	|| cem.is_set
+	|| cem_acr.is_set
+	|| embedded_service_engine.is_set
+	|| ethernet.is_set
+	|| fastethernet.is_set
+	|| gigabitethernet.is_set
+	|| fivegigabitethernet.is_set
+	|| twentyfivegige.is_set
+	|| twogigabitethernet.is_set
+	|| fortygigabitethernet.is_set
+	|| hundredgige.is_set
+	|| lisp.is_set
+	|| loopback.is_set
+	|| multilink.is_set
+	|| nve.is_set
+	|| overlay.is_set
+	|| port_channel.is_set
+	|| pseudowire.is_set
+	|| sm.is_set
+	|| cellular.is_set
+	|| serial.is_set
+	|| tengigabitethernet.is_set
+	|| tunnel.is_set
+	|| virtual_template.is_set
+	|| vlan.is_set
+	|| virtualportgroup.is_set
+	|| vasileft.is_set
+	|| vasiright.is_set
+	|| (atm_subinterface !=  nullptr && atm_subinterface->has_data())
+	|| (atm_acrsubinterface !=  nullptr && atm_acrsubinterface->has_data())
+	|| (lisp_subinterface !=  nullptr && lisp_subinterface->has_data())
+	|| (port_channel_subinterface !=  nullptr && port_channel_subinterface->has_data());
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(appnav_compress.yfilter)
+	|| ydk::is_set(appnav_uncompress.yfilter)
+	|| ydk::is_set(atm.yfilter)
+	|| ydk::is_set(atm_acr.yfilter)
+	|| ydk::is_set(bdi.yfilter)
+	|| ydk::is_set(cem.yfilter)
+	|| ydk::is_set(cem_acr.yfilter)
+	|| ydk::is_set(embedded_service_engine.yfilter)
+	|| ydk::is_set(ethernet.yfilter)
+	|| ydk::is_set(fastethernet.yfilter)
+	|| ydk::is_set(gigabitethernet.yfilter)
+	|| ydk::is_set(fivegigabitethernet.yfilter)
+	|| ydk::is_set(twentyfivegige.yfilter)
+	|| ydk::is_set(twogigabitethernet.yfilter)
+	|| ydk::is_set(fortygigabitethernet.yfilter)
+	|| ydk::is_set(hundredgige.yfilter)
+	|| ydk::is_set(lisp.yfilter)
+	|| ydk::is_set(loopback.yfilter)
+	|| ydk::is_set(multilink.yfilter)
+	|| ydk::is_set(nve.yfilter)
+	|| ydk::is_set(overlay.yfilter)
+	|| ydk::is_set(port_channel.yfilter)
+	|| ydk::is_set(pseudowire.yfilter)
+	|| ydk::is_set(sm.yfilter)
+	|| ydk::is_set(cellular.yfilter)
+	|| ydk::is_set(serial.yfilter)
+	|| ydk::is_set(tengigabitethernet.yfilter)
+	|| ydk::is_set(tunnel.yfilter)
+	|| ydk::is_set(virtual_template.yfilter)
+	|| ydk::is_set(vlan.yfilter)
+	|| ydk::is_set(virtualportgroup.yfilter)
+	|| ydk::is_set(vasileft.yfilter)
+	|| ydk::is_set(vasiright.yfilter)
+	|| (atm_subinterface !=  nullptr && atm_subinterface->has_operation())
+	|| (atm_acrsubinterface !=  nullptr && atm_acrsubinterface->has_operation())
+	|| (lisp_subinterface !=  nullptr && lisp_subinterface->has_operation())
+	|| (port_channel_subinterface !=  nullptr && port_channel_subinterface->has_operation());
+}
+
+std::string Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "source-interface";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (appnav_compress.is_set || is_set(appnav_compress.yfilter)) leaf_name_data.push_back(appnav_compress.get_name_leafdata());
+    if (appnav_uncompress.is_set || is_set(appnav_uncompress.yfilter)) leaf_name_data.push_back(appnav_uncompress.get_name_leafdata());
+    if (atm.is_set || is_set(atm.yfilter)) leaf_name_data.push_back(atm.get_name_leafdata());
+    if (atm_acr.is_set || is_set(atm_acr.yfilter)) leaf_name_data.push_back(atm_acr.get_name_leafdata());
+    if (bdi.is_set || is_set(bdi.yfilter)) leaf_name_data.push_back(bdi.get_name_leafdata());
+    if (cem.is_set || is_set(cem.yfilter)) leaf_name_data.push_back(cem.get_name_leafdata());
+    if (cem_acr.is_set || is_set(cem_acr.yfilter)) leaf_name_data.push_back(cem_acr.get_name_leafdata());
+    if (embedded_service_engine.is_set || is_set(embedded_service_engine.yfilter)) leaf_name_data.push_back(embedded_service_engine.get_name_leafdata());
+    if (ethernet.is_set || is_set(ethernet.yfilter)) leaf_name_data.push_back(ethernet.get_name_leafdata());
+    if (fastethernet.is_set || is_set(fastethernet.yfilter)) leaf_name_data.push_back(fastethernet.get_name_leafdata());
+    if (gigabitethernet.is_set || is_set(gigabitethernet.yfilter)) leaf_name_data.push_back(gigabitethernet.get_name_leafdata());
+    if (fivegigabitethernet.is_set || is_set(fivegigabitethernet.yfilter)) leaf_name_data.push_back(fivegigabitethernet.get_name_leafdata());
+    if (twentyfivegige.is_set || is_set(twentyfivegige.yfilter)) leaf_name_data.push_back(twentyfivegige.get_name_leafdata());
+    if (twogigabitethernet.is_set || is_set(twogigabitethernet.yfilter)) leaf_name_data.push_back(twogigabitethernet.get_name_leafdata());
+    if (fortygigabitethernet.is_set || is_set(fortygigabitethernet.yfilter)) leaf_name_data.push_back(fortygigabitethernet.get_name_leafdata());
+    if (hundredgige.is_set || is_set(hundredgige.yfilter)) leaf_name_data.push_back(hundredgige.get_name_leafdata());
+    if (lisp.is_set || is_set(lisp.yfilter)) leaf_name_data.push_back(lisp.get_name_leafdata());
+    if (loopback.is_set || is_set(loopback.yfilter)) leaf_name_data.push_back(loopback.get_name_leafdata());
+    if (multilink.is_set || is_set(multilink.yfilter)) leaf_name_data.push_back(multilink.get_name_leafdata());
+    if (nve.is_set || is_set(nve.yfilter)) leaf_name_data.push_back(nve.get_name_leafdata());
+    if (overlay.is_set || is_set(overlay.yfilter)) leaf_name_data.push_back(overlay.get_name_leafdata());
+    if (port_channel.is_set || is_set(port_channel.yfilter)) leaf_name_data.push_back(port_channel.get_name_leafdata());
+    if (pseudowire.is_set || is_set(pseudowire.yfilter)) leaf_name_data.push_back(pseudowire.get_name_leafdata());
+    if (sm.is_set || is_set(sm.yfilter)) leaf_name_data.push_back(sm.get_name_leafdata());
+    if (cellular.is_set || is_set(cellular.yfilter)) leaf_name_data.push_back(cellular.get_name_leafdata());
+    if (serial.is_set || is_set(serial.yfilter)) leaf_name_data.push_back(serial.get_name_leafdata());
+    if (tengigabitethernet.is_set || is_set(tengigabitethernet.yfilter)) leaf_name_data.push_back(tengigabitethernet.get_name_leafdata());
+    if (tunnel.is_set || is_set(tunnel.yfilter)) leaf_name_data.push_back(tunnel.get_name_leafdata());
+    if (virtual_template.is_set || is_set(virtual_template.yfilter)) leaf_name_data.push_back(virtual_template.get_name_leafdata());
+    if (vlan.is_set || is_set(vlan.yfilter)) leaf_name_data.push_back(vlan.get_name_leafdata());
+    if (virtualportgroup.is_set || is_set(virtualportgroup.yfilter)) leaf_name_data.push_back(virtualportgroup.get_name_leafdata());
+    if (vasileft.is_set || is_set(vasileft.yfilter)) leaf_name_data.push_back(vasileft.get_name_leafdata());
+    if (vasiright.is_set || is_set(vasiright.yfilter)) leaf_name_data.push_back(vasiright.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ATM-subinterface")
+    {
+        if(atm_subinterface == nullptr)
+        {
+            atm_subinterface = std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMSubinterface>();
+        }
+        return atm_subinterface;
+    }
+
+    if(child_yang_name == "ATM-ACRsubinterface")
+    {
+        if(atm_acrsubinterface == nullptr)
+        {
+            atm_acrsubinterface = std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMACRsubinterface>();
+        }
+        return atm_acrsubinterface;
+    }
+
+    if(child_yang_name == "LISP-subinterface")
+    {
+        if(lisp_subinterface == nullptr)
+        {
+            lisp_subinterface = std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::LISPSubinterface>();
+        }
+        return lisp_subinterface;
+    }
+
+    if(child_yang_name == "Port-channel-subinterface")
+    {
+        if(port_channel_subinterface == nullptr)
+        {
+            port_channel_subinterface = std::make_shared<Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::PortChannelSubinterface>();
+        }
+        return port_channel_subinterface;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(atm_subinterface != nullptr)
+    {
+        _children["ATM-subinterface"] = atm_subinterface;
+    }
+
+    if(atm_acrsubinterface != nullptr)
+    {
+        _children["ATM-ACRsubinterface"] = atm_acrsubinterface;
+    }
+
+    if(lisp_subinterface != nullptr)
+    {
+        _children["LISP-subinterface"] = lisp_subinterface;
+    }
+
+    if(port_channel_subinterface != nullptr)
+    {
+        _children["Port-channel-subinterface"] = port_channel_subinterface;
+    }
+
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "AppNav-Compress")
+    {
+        appnav_compress = value;
+        appnav_compress.value_namespace = name_space;
+        appnav_compress.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "AppNav-UnCompress")
+    {
+        appnav_uncompress = value;
+        appnav_uncompress.value_namespace = name_space;
+        appnav_uncompress.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ATM")
+    {
+        atm = value;
+        atm.value_namespace = name_space;
+        atm.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ATM-ACR")
+    {
+        atm_acr = value;
+        atm_acr.value_namespace = name_space;
+        atm_acr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "BDI")
+    {
+        bdi = value;
+        bdi.value_namespace = name_space;
+        bdi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "CEM")
+    {
+        cem = value;
+        cem.value_namespace = name_space;
+        cem.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "CEM-ACR")
+    {
+        cem_acr = value;
+        cem_acr.value_namespace = name_space;
+        cem_acr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Embedded-Service-Engine")
+    {
+        embedded_service_engine = value;
+        embedded_service_engine.value_namespace = name_space;
+        embedded_service_engine.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Ethernet")
+    {
+        ethernet = value;
+        ethernet.value_namespace = name_space;
+        ethernet.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "FastEthernet")
+    {
+        fastethernet = value;
+        fastethernet.value_namespace = name_space;
+        fastethernet.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "GigabitEthernet")
+    {
+        gigabitethernet = value;
+        gigabitethernet.value_namespace = name_space;
+        gigabitethernet.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "FiveGigabitEthernet")
+    {
+        fivegigabitethernet = value;
+        fivegigabitethernet.value_namespace = name_space;
+        fivegigabitethernet.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "TwentyFiveGigE")
+    {
+        twentyfivegige = value;
+        twentyfivegige.value_namespace = name_space;
+        twentyfivegige.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "TwoGigabitEthernet")
+    {
+        twogigabitethernet = value;
+        twogigabitethernet.value_namespace = name_space;
+        twogigabitethernet.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "FortyGigabitEthernet")
+    {
+        fortygigabitethernet = value;
+        fortygigabitethernet.value_namespace = name_space;
+        fortygigabitethernet.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "HundredGigE")
+    {
+        hundredgige = value;
+        hundredgige.value_namespace = name_space;
+        hundredgige.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "LISP")
+    {
+        lisp = value;
+        lisp.value_namespace = name_space;
+        lisp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Loopback")
+    {
+        loopback = value;
+        loopback.value_namespace = name_space;
+        loopback.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Multilink")
+    {
+        multilink = value;
+        multilink.value_namespace = name_space;
+        multilink.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nve")
+    {
+        nve = value;
+        nve.value_namespace = name_space;
+        nve.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "overlay")
+    {
+        overlay = value;
+        overlay.value_namespace = name_space;
+        overlay.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Port-channel")
+    {
+        port_channel = value;
+        port_channel.value_namespace = name_space;
+        port_channel.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pseudowire")
+    {
+        pseudowire = value;
+        pseudowire.value_namespace = name_space;
+        pseudowire.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "SM")
+    {
+        sm = value;
+        sm.value_namespace = name_space;
+        sm.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Cellular")
+    {
+        cellular = value;
+        cellular.value_namespace = name_space;
+        cellular.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Serial")
+    {
+        serial = value;
+        serial.value_namespace = name_space;
+        serial.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "TenGigabitEthernet")
+    {
+        tengigabitethernet = value;
+        tengigabitethernet.value_namespace = name_space;
+        tengigabitethernet.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Tunnel")
+    {
+        tunnel = value;
+        tunnel.value_namespace = name_space;
+        tunnel.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Virtual-Template")
+    {
+        virtual_template = value;
+        virtual_template.value_namespace = name_space;
+        virtual_template.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Vlan")
+    {
+        vlan = value;
+        vlan.value_namespace = name_space;
+        vlan.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "VirtualPortGroup")
+    {
+        virtualportgroup = value;
+        virtualportgroup.value_namespace = name_space;
+        virtualportgroup.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vasileft")
+    {
+        vasileft = value;
+        vasileft.value_namespace = name_space;
+        vasileft.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vasiright")
+    {
+        vasiright = value;
+        vasiright.value_namespace = name_space;
+        vasiright.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "AppNav-Compress")
+    {
+        appnav_compress.yfilter = yfilter;
+    }
+    if(value_path == "AppNav-UnCompress")
+    {
+        appnav_uncompress.yfilter = yfilter;
+    }
+    if(value_path == "ATM")
+    {
+        atm.yfilter = yfilter;
+    }
+    if(value_path == "ATM-ACR")
+    {
+        atm_acr.yfilter = yfilter;
+    }
+    if(value_path == "BDI")
+    {
+        bdi.yfilter = yfilter;
+    }
+    if(value_path == "CEM")
+    {
+        cem.yfilter = yfilter;
+    }
+    if(value_path == "CEM-ACR")
+    {
+        cem_acr.yfilter = yfilter;
+    }
+    if(value_path == "Embedded-Service-Engine")
+    {
+        embedded_service_engine.yfilter = yfilter;
+    }
+    if(value_path == "Ethernet")
+    {
+        ethernet.yfilter = yfilter;
+    }
+    if(value_path == "FastEthernet")
+    {
+        fastethernet.yfilter = yfilter;
+    }
+    if(value_path == "GigabitEthernet")
+    {
+        gigabitethernet.yfilter = yfilter;
+    }
+    if(value_path == "FiveGigabitEthernet")
+    {
+        fivegigabitethernet.yfilter = yfilter;
+    }
+    if(value_path == "TwentyFiveGigE")
+    {
+        twentyfivegige.yfilter = yfilter;
+    }
+    if(value_path == "TwoGigabitEthernet")
+    {
+        twogigabitethernet.yfilter = yfilter;
+    }
+    if(value_path == "FortyGigabitEthernet")
+    {
+        fortygigabitethernet.yfilter = yfilter;
+    }
+    if(value_path == "HundredGigE")
+    {
+        hundredgige.yfilter = yfilter;
+    }
+    if(value_path == "LISP")
+    {
+        lisp.yfilter = yfilter;
+    }
+    if(value_path == "Loopback")
+    {
+        loopback.yfilter = yfilter;
+    }
+    if(value_path == "Multilink")
+    {
+        multilink.yfilter = yfilter;
+    }
+    if(value_path == "nve")
+    {
+        nve.yfilter = yfilter;
+    }
+    if(value_path == "overlay")
+    {
+        overlay.yfilter = yfilter;
+    }
+    if(value_path == "Port-channel")
+    {
+        port_channel.yfilter = yfilter;
+    }
+    if(value_path == "pseudowire")
+    {
+        pseudowire.yfilter = yfilter;
+    }
+    if(value_path == "SM")
+    {
+        sm.yfilter = yfilter;
+    }
+    if(value_path == "Cellular")
+    {
+        cellular.yfilter = yfilter;
+    }
+    if(value_path == "Serial")
+    {
+        serial.yfilter = yfilter;
+    }
+    if(value_path == "TenGigabitEthernet")
+    {
+        tengigabitethernet.yfilter = yfilter;
+    }
+    if(value_path == "Tunnel")
+    {
+        tunnel.yfilter = yfilter;
+    }
+    if(value_path == "Virtual-Template")
+    {
+        virtual_template.yfilter = yfilter;
+    }
+    if(value_path == "Vlan")
+    {
+        vlan.yfilter = yfilter;
+    }
+    if(value_path == "VirtualPortGroup")
+    {
+        virtualportgroup.yfilter = yfilter;
+    }
+    if(value_path == "vasileft")
+    {
+        vasileft.yfilter = yfilter;
+    }
+    if(value_path == "vasiright")
+    {
+        vasiright.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ATM-subinterface" || name == "ATM-ACRsubinterface" || name == "LISP-subinterface" || name == "Port-channel-subinterface" || name == "AppNav-Compress" || name == "AppNav-UnCompress" || name == "ATM" || name == "ATM-ACR" || name == "BDI" || name == "CEM" || name == "CEM-ACR" || name == "Embedded-Service-Engine" || name == "Ethernet" || name == "FastEthernet" || name == "GigabitEthernet" || name == "FiveGigabitEthernet" || name == "TwentyFiveGigE" || name == "TwoGigabitEthernet" || name == "FortyGigabitEthernet" || name == "HundredGigE" || name == "LISP" || name == "Loopback" || name == "Multilink" || name == "nve" || name == "overlay" || name == "Port-channel" || name == "pseudowire" || name == "SM" || name == "Cellular" || name == "Serial" || name == "TenGigabitEthernet" || name == "Tunnel" || name == "Virtual-Template" || name == "Vlan" || name == "VirtualPortGroup" || name == "vasileft" || name == "vasiright")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMSubinterface::ATMSubinterface()
+    :
+    atm{YType::str, "ATM"}
+{
+
+    yang_name = "ATM-subinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMSubinterface::~ATMSubinterface()
+{
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMSubinterface::has_data() const
+{
+    if (is_presence_container) return true;
+    return atm.is_set;
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMSubinterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(atm.yfilter);
+}
+
+std::string Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMSubinterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ATM-subinterface";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMSubinterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (atm.is_set || is_set(atm.yfilter)) leaf_name_data.push_back(atm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMSubinterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ATM")
+    {
+        atm = value;
+        atm.value_namespace = name_space;
+        atm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ATM")
+    {
+        atm.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMSubinterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ATM")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMACRsubinterface::ATMACRsubinterface()
+    :
+    atm_acr{YType::str, "ATM-ACR"}
+{
+
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMACRsubinterface::~ATMACRsubinterface()
+{
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMACRsubinterface::has_data() const
+{
+    if (is_presence_container) return true;
+    return atm_acr.is_set;
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMACRsubinterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(atm_acr.yfilter);
+}
+
+std::string Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMACRsubinterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ATM-ACRsubinterface";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMACRsubinterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (atm_acr.is_set || is_set(atm_acr.yfilter)) leaf_name_data.push_back(atm_acr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMACRsubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMACRsubinterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMACRsubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ATM-ACR")
+    {
+        atm_acr = value;
+        atm_acr.value_namespace = name_space;
+        atm_acr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMACRsubinterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ATM-ACR")
+    {
+        atm_acr.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::ATMACRsubinterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ATM-ACR")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::LISPSubinterface::LISPSubinterface()
+    :
+    lisp{YType::str, "LISP"}
+{
+
+    yang_name = "LISP-subinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::LISPSubinterface::~LISPSubinterface()
+{
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::LISPSubinterface::has_data() const
+{
+    if (is_presence_container) return true;
+    return lisp.is_set;
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::LISPSubinterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(lisp.yfilter);
+}
+
+std::string Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::LISPSubinterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "LISP-subinterface";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::LISPSubinterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (lisp.is_set || is_set(lisp.yfilter)) leaf_name_data.push_back(lisp.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::LISPSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::LISPSubinterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::LISPSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "LISP")
+    {
+        lisp = value;
+        lisp.value_namespace = name_space;
+        lisp.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::LISPSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "LISP")
+    {
+        lisp.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::LISPSubinterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "LISP")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::PortChannelSubinterface::PortChannelSubinterface()
+    :
+    port_channel{YType::str, "Port-channel"}
+{
+
+    yang_name = "Port-channel-subinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::PortChannelSubinterface::~PortChannelSubinterface()
+{
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::PortChannelSubinterface::has_data() const
+{
+    if (is_presence_container) return true;
+    return port_channel.is_set;
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::PortChannelSubinterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(port_channel.yfilter);
+}
+
+std::string Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::PortChannelSubinterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Port-channel-subinterface";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::PortChannelSubinterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (port_channel.is_set || is_set(port_channel.yfilter)) leaf_name_data.push_back(port_channel.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::PortChannelSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::PortChannelSubinterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::PortChannelSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "Port-channel")
+    {
+        port_channel = value;
+        port_channel.value_namespace = name_space;
+        port_channel.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::PortChannelSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "Port-channel")
+    {
+        port_channel.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::Tacacs::SourceInterface::PortChannelSubinterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "Port-channel")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Ip::Vrf::Vrf()
+    :
+    forwarding{YType::str, "forwarding"}
+{
+
+    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Tacacsplus::Ip::Vrf::~Vrf()
+{
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::Vrf::has_data() const
+{
+    if (is_presence_container) return true;
+    return forwarding.is_set;
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::Vrf::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(forwarding.yfilter);
+}
+
+std::string Native::Aaa::Group::Server::Tacacsplus::Ip::Vrf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vrf";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Tacacsplus::Ip::Vrf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (forwarding.is_set || is_set(forwarding.yfilter)) leaf_name_data.push_back(forwarding.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Tacacsplus::Ip::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Tacacsplus::Ip::Vrf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::Ip::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "forwarding")
+    {
+        forwarding = value;
+        forwarding.value_namespace = name_space;
+        forwarding.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Tacacsplus::Ip::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "forwarding")
+    {
+        forwarding.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Tacacsplus::Ip::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "forwarding")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Tacacs::Tacacs()
+    :
+    name{YType::str, "name"}
+{
+
+    yang_name = "tacacs"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Aaa::Group::Server::Tacacs::~Tacacs()
+{
+}
+
+bool Native::Aaa::Group::Server::Tacacs::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set;
+}
+
+bool Native::Aaa::Group::Server::Tacacs::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter);
+}
+
+std::string Native::Aaa::Group::Server::Tacacs::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:group/server/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Aaa::Group::Server::Tacacs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tacacs";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Tacacs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Tacacs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Tacacs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Tacacs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Tacacs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Tacacs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Radius::Radius()
+    :
+    name{YType::str, "name"},
+    mac_delimiter{YType::enumeration, "mac-delimiter"},
+    deadtime{YType::uint16, "deadtime"}
+        ,
+    server(std::make_shared<Native::Aaa::Group::Server::Radius::Server_>())
+    , subscriber(std::make_shared<Native::Aaa::Group::Server::Radius::Subscriber>())
+    , server_private(this, {"name"})
+    , ip(std::make_shared<Native::Aaa::Group::Server::Radius::Ip>())
+    , load_balance(std::make_shared<Native::Aaa::Group::Server::Radius::LoadBalance>())
+{
+    server->parent = this;
+    subscriber->parent = this;
+    ip->parent = this;
+    load_balance->parent = this;
+
+    yang_name = "radius"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Aaa::Group::Server::Radius::~Radius()
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<server_private.len(); index++)
+    {
+        if(server_private[index]->has_data())
+            return true;
+    }
+    return name.is_set
+	|| mac_delimiter.is_set
+	|| deadtime.is_set
+	|| (server !=  nullptr && server->has_data())
+	|| (subscriber !=  nullptr && subscriber->has_data())
+	|| (ip !=  nullptr && ip->has_data())
+	|| (load_balance !=  nullptr && load_balance->has_data());
+}
+
+bool Native::Aaa::Group::Server::Radius::has_operation() const
+{
+    for (std::size_t index=0; index<server_private.len(); index++)
+    {
+        if(server_private[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(mac_delimiter.yfilter)
+	|| ydk::is_set(deadtime.yfilter)
+	|| (server !=  nullptr && server->has_operation())
+	|| (subscriber !=  nullptr && subscriber->has_operation())
+	|| (ip !=  nullptr && ip->has_operation())
+	|| (load_balance !=  nullptr && load_balance->has_operation());
+}
+
+std::string Native::Aaa::Group::Server::Radius::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:group/server/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Aaa::Group::Server::Radius::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "radius";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Radius::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (mac_delimiter.is_set || is_set(mac_delimiter.yfilter)) leaf_name_data.push_back(mac_delimiter.get_name_leafdata());
+    if (deadtime.is_set || is_set(deadtime.yfilter)) leaf_name_data.push_back(deadtime.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Radius::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "server")
+    {
+        if(server == nullptr)
+        {
+            server = std::make_shared<Native::Aaa::Group::Server::Radius::Server_>();
+        }
+        return server;
+    }
+
+    if(child_yang_name == "subscriber")
+    {
+        if(subscriber == nullptr)
+        {
+            subscriber = std::make_shared<Native::Aaa::Group::Server::Radius::Subscriber>();
+        }
+        return subscriber;
+    }
+
+    if(child_yang_name == "server-private")
+    {
+        auto ent_ = std::make_shared<Native::Aaa::Group::Server::Radius::ServerPrivate>();
+        ent_->parent = this;
+        server_private.append(ent_);
+        return ent_;
+    }
+
+    if(child_yang_name == "ip")
+    {
+        if(ip == nullptr)
+        {
+            ip = std::make_shared<Native::Aaa::Group::Server::Radius::Ip>();
+        }
+        return ip;
+    }
+
+    if(child_yang_name == "load-balance")
+    {
+        if(load_balance == nullptr)
+        {
+            load_balance = std::make_shared<Native::Aaa::Group::Server::Radius::LoadBalance>();
+        }
+        return load_balance;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Radius::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(server != nullptr)
+    {
+        _children["server"] = server;
+    }
+
+    if(subscriber != nullptr)
+    {
+        _children["subscriber"] = subscriber;
+    }
+
+    count_ = 0;
+    for (auto ent_ : server_private.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    if(ip != nullptr)
+    {
+        _children["ip"] = ip;
+    }
+
+    if(load_balance != nullptr)
+    {
+        _children["load-balance"] = load_balance;
+    }
+
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Radius::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mac-delimiter")
+    {
+        mac_delimiter = value;
+        mac_delimiter.value_namespace = name_space;
+        mac_delimiter.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "deadtime")
+    {
+        deadtime = value;
+        deadtime.value_namespace = name_space;
+        deadtime.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Radius::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "mac-delimiter")
+    {
+        mac_delimiter.yfilter = yfilter;
+    }
+    if(value_path == "deadtime")
+    {
+        deadtime.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Radius::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "server" || name == "subscriber" || name == "server-private" || name == "ip" || name == "load-balance" || name == "name" || name == "mac-delimiter" || name == "deadtime")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Radius::Server_::Server_()
+    :
+    name(this, {"name"})
+    , direct(this, {"name"})
+{
+
+    yang_name = "server"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Radius::Server_::~Server_()
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::Server_::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<name.len(); index++)
+    {
+        if(name[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<direct.len(); index++)
+    {
+        if(direct[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Native::Aaa::Group::Server::Radius::Server_::has_operation() const
+{
+    for (std::size_t index=0; index<name.len(); index++)
+    {
+        if(name[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<direct.len(); index++)
+    {
+        if(direct[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Native::Aaa::Group::Server::Radius::Server_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "server";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Radius::Server_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Radius::Server_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "name")
+    {
+        auto ent_ = std::make_shared<Native::Aaa::Group::Server::Radius::Server_::Name>();
+        ent_->parent = this;
+        name.append(ent_);
+        return ent_;
+    }
+
+    if(child_yang_name == "direct")
+    {
+        auto ent_ = std::make_shared<Native::Aaa::Group::Server::Radius::Server_::Direct>();
+        ent_->parent = this;
+        direct.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Radius::Server_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : name.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    count_ = 0;
+    for (auto ent_ : direct.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Radius::Server_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Aaa::Group::Server::Radius::Server_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::Server_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "direct")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Radius::Server_::Name::Name()
+    :
+    name{YType::str, "name"}
+{
+
+    yang_name = "name"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Radius::Server_::Name::~Name()
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::Server_::Name::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set;
+}
+
+bool Native::Aaa::Group::Server::Radius::Server_::Name::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter);
+}
+
+std::string Native::Aaa::Group::Server::Radius::Server_::Name::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "name";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Radius::Server_::Name::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Radius::Server_::Name::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Radius::Server_::Name::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Radius::Server_::Name::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Radius::Server_::Name::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Radius::Server_::Name::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Radius::Server_::Direct::Direct()
+    :
+    name{YType::str, "name"},
+    auth_port{YType::uint16, "auth-port"},
+    acct_port{YType::uint16, "acct-port"}
+{
+
+    yang_name = "direct"; yang_parent_name = "server"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Radius::Server_::Direct::~Direct()
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::Server_::Direct::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| auth_port.is_set
+	|| acct_port.is_set;
+}
+
+bool Native::Aaa::Group::Server::Radius::Server_::Direct::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(auth_port.yfilter)
+	|| ydk::is_set(acct_port.yfilter);
+}
+
+std::string Native::Aaa::Group::Server::Radius::Server_::Direct::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "direct";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Radius::Server_::Direct::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (auth_port.is_set || is_set(auth_port.yfilter)) leaf_name_data.push_back(auth_port.get_name_leafdata());
+    if (acct_port.is_set || is_set(acct_port.yfilter)) leaf_name_data.push_back(acct_port.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Radius::Server_::Direct::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Radius::Server_::Direct::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Radius::Server_::Direct::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "auth-port")
+    {
+        auth_port = value;
+        auth_port.value_namespace = name_space;
+        auth_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "acct-port")
+    {
+        acct_port = value;
+        acct_port.value_namespace = name_space;
+        acct_port.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Radius::Server_::Direct::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "auth-port")
+    {
+        auth_port.yfilter = yfilter;
+    }
+    if(value_path == "acct-port")
+    {
+        acct_port.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Radius::Server_::Direct::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "auth-port" || name == "acct-port")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Radius::Subscriber::Subscriber()
+    :
+    mac_filtering(std::make_shared<Native::Aaa::Group::Server::Radius::Subscriber::MacFiltering>())
+{
+    mac_filtering->parent = this;
+
+    yang_name = "subscriber"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Radius::Subscriber::~Subscriber()
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::Subscriber::has_data() const
+{
+    if (is_presence_container) return true;
+    return (mac_filtering !=  nullptr && mac_filtering->has_data());
+}
+
+bool Native::Aaa::Group::Server::Radius::Subscriber::has_operation() const
+{
+    return is_set(yfilter)
+	|| (mac_filtering !=  nullptr && mac_filtering->has_operation());
+}
+
+std::string Native::Aaa::Group::Server::Radius::Subscriber::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "subscriber";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Radius::Subscriber::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Radius::Subscriber::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "mac-filtering")
+    {
+        if(mac_filtering == nullptr)
+        {
+            mac_filtering = std::make_shared<Native::Aaa::Group::Server::Radius::Subscriber::MacFiltering>();
+        }
+        return mac_filtering;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Radius::Subscriber::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(mac_filtering != nullptr)
+    {
+        _children["mac-filtering"] = mac_filtering;
+    }
+
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Radius::Subscriber::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Aaa::Group::Server::Radius::Subscriber::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::Subscriber::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mac-filtering")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Radius::Subscriber::MacFiltering::MacFiltering()
+    :
+    security_mode{YType::enumeration, "security-mode"}
+{
+
+    yang_name = "mac-filtering"; yang_parent_name = "subscriber"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Radius::Subscriber::MacFiltering::~MacFiltering()
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::Subscriber::MacFiltering::has_data() const
+{
+    if (is_presence_container) return true;
+    return security_mode.is_set;
+}
+
+bool Native::Aaa::Group::Server::Radius::Subscriber::MacFiltering::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(security_mode.yfilter);
+}
+
+std::string Native::Aaa::Group::Server::Radius::Subscriber::MacFiltering::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "mac-filtering";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Radius::Subscriber::MacFiltering::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (security_mode.is_set || is_set(security_mode.yfilter)) leaf_name_data.push_back(security_mode.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Radius::Subscriber::MacFiltering::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Radius::Subscriber::MacFiltering::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Radius::Subscriber::MacFiltering::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "security-mode")
+    {
+        security_mode = value;
+        security_mode.value_namespace = name_space;
+        security_mode.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Radius::Subscriber::MacFiltering::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "security-mode")
+    {
+        security_mode.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Radius::Subscriber::MacFiltering::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "security-mode")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Radius::ServerPrivate::ServerPrivate()
+    :
+    name{YType::str, "name"},
+    auth_port{YType::uint16, "auth-port"},
+    acct_port{YType::uint16, "acct-port"},
+    timeout{YType::uint16, "timeout"},
+    retransmit{YType::uint8, "retransmit"}
+        ,
+    key(std::make_shared<Native::Aaa::Group::Server::Radius::ServerPrivate::Key>())
+{
+    key->parent = this;
+
+    yang_name = "server-private"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Radius::ServerPrivate::~ServerPrivate()
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::ServerPrivate::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| auth_port.is_set
+	|| acct_port.is_set
+	|| timeout.is_set
+	|| retransmit.is_set
+	|| (key !=  nullptr && key->has_data());
+}
+
+bool Native::Aaa::Group::Server::Radius::ServerPrivate::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(auth_port.yfilter)
+	|| ydk::is_set(acct_port.yfilter)
+	|| ydk::is_set(timeout.yfilter)
+	|| ydk::is_set(retransmit.yfilter)
+	|| (key !=  nullptr && key->has_operation());
+}
+
+std::string Native::Aaa::Group::Server::Radius::ServerPrivate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "server-private";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Radius::ServerPrivate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (auth_port.is_set || is_set(auth_port.yfilter)) leaf_name_data.push_back(auth_port.get_name_leafdata());
+    if (acct_port.is_set || is_set(acct_port.yfilter)) leaf_name_data.push_back(acct_port.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+    if (retransmit.is_set || is_set(retransmit.yfilter)) leaf_name_data.push_back(retransmit.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Radius::ServerPrivate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "key")
+    {
+        if(key == nullptr)
+        {
+            key = std::make_shared<Native::Aaa::Group::Server::Radius::ServerPrivate::Key>();
+        }
+        return key;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Radius::ServerPrivate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(key != nullptr)
+    {
+        _children["key"] = key;
+    }
+
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Radius::ServerPrivate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "auth-port")
+    {
+        auth_port = value;
+        auth_port.value_namespace = name_space;
+        auth_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "acct-port")
+    {
+        acct_port = value;
+        acct_port.value_namespace = name_space;
+        acct_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "retransmit")
+    {
+        retransmit = value;
+        retransmit.value_namespace = name_space;
+        retransmit.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Radius::ServerPrivate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "auth-port")
+    {
+        auth_port.yfilter = yfilter;
+    }
+    if(value_path == "acct-port")
+    {
+        acct_port.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+    if(value_path == "retransmit")
+    {
+        retransmit.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Radius::ServerPrivate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "key" || name == "name" || name == "auth-port" || name == "acct-port" || name == "timeout" || name == "retransmit")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Radius::ServerPrivate::Key::Key()
+    :
+    encryption{YType::enumeration, "encryption"},
+    key{YType::str, "key"}
+{
+
+    yang_name = "key"; yang_parent_name = "server-private"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Radius::ServerPrivate::Key::~Key()
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::ServerPrivate::Key::has_data() const
+{
+    if (is_presence_container) return true;
+    return encryption.is_set
+	|| key.is_set;
+}
+
+bool Native::Aaa::Group::Server::Radius::ServerPrivate::Key::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(encryption.yfilter)
+	|| ydk::is_set(key.yfilter);
+}
+
+std::string Native::Aaa::Group::Server::Radius::ServerPrivate::Key::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "key";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Radius::ServerPrivate::Key::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (encryption.is_set || is_set(encryption.yfilter)) leaf_name_data.push_back(encryption.get_name_leafdata());
+    if (key.is_set || is_set(key.yfilter)) leaf_name_data.push_back(key.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Radius::ServerPrivate::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Radius::ServerPrivate::Key::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Radius::ServerPrivate::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "encryption")
+    {
+        encryption = value;
+        encryption.value_namespace = name_space;
+        encryption.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "key")
+    {
+        key = value;
+        key.value_namespace = name_space;
+        key.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Radius::ServerPrivate::Key::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "encryption")
+    {
+        encryption.yfilter = yfilter;
+    }
+    if(value_path == "key")
+    {
+        key.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Radius::ServerPrivate::Key::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "encryption" || name == "key")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Radius::Ip::Ip()
+    :
+    radius(std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Radius_>())
+    , vrf(std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Vrf>())
+{
+    radius->parent = this;
+    vrf->parent = this;
+
+    yang_name = "ip"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Radius::Ip::~Ip()
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::has_data() const
+{
+    if (is_presence_container) return true;
+    return (radius !=  nullptr && radius->has_data())
+	|| (vrf !=  nullptr && vrf->has_data());
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::has_operation() const
+{
+    return is_set(yfilter)
+	|| (radius !=  nullptr && radius->has_operation())
+	|| (vrf !=  nullptr && vrf->has_operation());
+}
+
+std::string Native::Aaa::Group::Server::Radius::Ip::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ip";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Radius::Ip::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Radius::Ip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "radius")
+    {
+        if(radius == nullptr)
+        {
+            radius = std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Radius_>();
+        }
+        return radius;
+    }
+
+    if(child_yang_name == "vrf")
+    {
+        if(vrf == nullptr)
+        {
+            vrf = std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Vrf>();
+        }
+        return vrf;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Radius::Ip::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(radius != nullptr)
+    {
+        _children["radius"] = radius;
+    }
+
+    if(vrf != nullptr)
+    {
+        _children["vrf"] = vrf;
+    }
+
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Radius::Ip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Aaa::Group::Server::Radius::Ip::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "radius" || name == "vrf")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Radius::Ip::Radius_::Radius_()
+    :
+    source_interface(std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface>())
+{
+    source_interface->parent = this;
+
+    yang_name = "radius"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Radius::Ip::Radius_::~Radius_()
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::Radius_::has_data() const
+{
+    if (is_presence_container) return true;
+    return (source_interface !=  nullptr && source_interface->has_data());
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::Radius_::has_operation() const
+{
+    return is_set(yfilter)
+	|| (source_interface !=  nullptr && source_interface->has_operation());
+}
+
+std::string Native::Aaa::Group::Server::Radius::Ip::Radius_::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "radius";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Radius::Ip::Radius_::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Radius::Ip::Radius_::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "source-interface")
+    {
+        if(source_interface == nullptr)
+        {
+            source_interface = std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface>();
+        }
+        return source_interface;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Radius::Ip::Radius_::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(source_interface != nullptr)
+    {
+        _children["source-interface"] = source_interface;
+    }
+
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Radius::Ip::Radius_::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Aaa::Group::Server::Radius::Ip::Radius_::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::Radius_::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "source-interface")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::SourceInterface()
+    :
+    appnav_compress{YType::uint16, "AppNav-Compress"},
+    appnav_uncompress{YType::uint16, "AppNav-UnCompress"},
+    atm{YType::str, "ATM"},
+    atm_acr{YType::str, "ATM-ACR"},
+    bdi{YType::str, "BDI"},
+    cem{YType::str, "CEM"},
+    cem_acr{YType::uint8, "CEM-ACR"},
+    embedded_service_engine{YType::str, "Embedded-Service-Engine"},
+    ethernet{YType::str, "Ethernet"},
+    fastethernet{YType::str, "FastEthernet"},
+    gigabitethernet{YType::str, "GigabitEthernet"},
+    fivegigabitethernet{YType::str, "FiveGigabitEthernet"},
+    twentyfivegige{YType::str, "TwentyFiveGigE"},
+    twogigabitethernet{YType::str, "TwoGigabitEthernet"},
+    fortygigabitethernet{YType::str, "FortyGigabitEthernet"},
+    hundredgige{YType::str, "HundredGigE"},
+    lisp{YType::str, "LISP"},
+    loopback{YType::uint32, "Loopback"},
+    multilink{YType::uint16, "Multilink"},
+    nve{YType::uint16, "nve"},
+    overlay{YType::uint16, "overlay"},
+    port_channel{YType::uint32, "Port-channel"},
+    pseudowire{YType::uint32, "pseudowire"},
+    sm{YType::str, "SM"},
+    cellular{YType::str, "Cellular"},
+    serial{YType::str, "Serial"},
+    tengigabitethernet{YType::str, "TenGigabitEthernet"},
+    tunnel{YType::uint32, "Tunnel"},
+    virtual_template{YType::uint16, "Virtual-Template"},
+    vlan{YType::uint16, "Vlan"},
+    virtualportgroup{YType::uint16, "VirtualPortGroup"},
+    vasileft{YType::uint16, "vasileft"},
+    vasiright{YType::uint16, "vasiright"}
+        ,
+    atm_subinterface(std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMSubinterface>())
+    , atm_acrsubinterface(std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMACRsubinterface>())
+    , lisp_subinterface(std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::LISPSubinterface>())
+    , port_channel_subinterface(std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::PortChannelSubinterface>())
+{
+    atm_subinterface->parent = this;
+    atm_acrsubinterface->parent = this;
+    lisp_subinterface->parent = this;
+    port_channel_subinterface->parent = this;
+
+    yang_name = "source-interface"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::~SourceInterface()
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::has_data() const
+{
+    if (is_presence_container) return true;
+    return appnav_compress.is_set
+	|| appnav_uncompress.is_set
+	|| atm.is_set
+	|| atm_acr.is_set
+	|| bdi.is_set
+	|| cem.is_set
+	|| cem_acr.is_set
+	|| embedded_service_engine.is_set
+	|| ethernet.is_set
+	|| fastethernet.is_set
+	|| gigabitethernet.is_set
+	|| fivegigabitethernet.is_set
+	|| twentyfivegige.is_set
+	|| twogigabitethernet.is_set
+	|| fortygigabitethernet.is_set
+	|| hundredgige.is_set
+	|| lisp.is_set
+	|| loopback.is_set
+	|| multilink.is_set
+	|| nve.is_set
+	|| overlay.is_set
+	|| port_channel.is_set
+	|| pseudowire.is_set
+	|| sm.is_set
+	|| cellular.is_set
+	|| serial.is_set
+	|| tengigabitethernet.is_set
+	|| tunnel.is_set
+	|| virtual_template.is_set
+	|| vlan.is_set
+	|| virtualportgroup.is_set
+	|| vasileft.is_set
+	|| vasiright.is_set
+	|| (atm_subinterface !=  nullptr && atm_subinterface->has_data())
+	|| (atm_acrsubinterface !=  nullptr && atm_acrsubinterface->has_data())
+	|| (lisp_subinterface !=  nullptr && lisp_subinterface->has_data())
+	|| (port_channel_subinterface !=  nullptr && port_channel_subinterface->has_data());
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(appnav_compress.yfilter)
+	|| ydk::is_set(appnav_uncompress.yfilter)
+	|| ydk::is_set(atm.yfilter)
+	|| ydk::is_set(atm_acr.yfilter)
+	|| ydk::is_set(bdi.yfilter)
+	|| ydk::is_set(cem.yfilter)
+	|| ydk::is_set(cem_acr.yfilter)
+	|| ydk::is_set(embedded_service_engine.yfilter)
+	|| ydk::is_set(ethernet.yfilter)
+	|| ydk::is_set(fastethernet.yfilter)
+	|| ydk::is_set(gigabitethernet.yfilter)
+	|| ydk::is_set(fivegigabitethernet.yfilter)
+	|| ydk::is_set(twentyfivegige.yfilter)
+	|| ydk::is_set(twogigabitethernet.yfilter)
+	|| ydk::is_set(fortygigabitethernet.yfilter)
+	|| ydk::is_set(hundredgige.yfilter)
+	|| ydk::is_set(lisp.yfilter)
+	|| ydk::is_set(loopback.yfilter)
+	|| ydk::is_set(multilink.yfilter)
+	|| ydk::is_set(nve.yfilter)
+	|| ydk::is_set(overlay.yfilter)
+	|| ydk::is_set(port_channel.yfilter)
+	|| ydk::is_set(pseudowire.yfilter)
+	|| ydk::is_set(sm.yfilter)
+	|| ydk::is_set(cellular.yfilter)
+	|| ydk::is_set(serial.yfilter)
+	|| ydk::is_set(tengigabitethernet.yfilter)
+	|| ydk::is_set(tunnel.yfilter)
+	|| ydk::is_set(virtual_template.yfilter)
+	|| ydk::is_set(vlan.yfilter)
+	|| ydk::is_set(virtualportgroup.yfilter)
+	|| ydk::is_set(vasileft.yfilter)
+	|| ydk::is_set(vasiright.yfilter)
+	|| (atm_subinterface !=  nullptr && atm_subinterface->has_operation())
+	|| (atm_acrsubinterface !=  nullptr && atm_acrsubinterface->has_operation())
+	|| (lisp_subinterface !=  nullptr && lisp_subinterface->has_operation())
+	|| (port_channel_subinterface !=  nullptr && port_channel_subinterface->has_operation());
+}
+
+std::string Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "source-interface";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (appnav_compress.is_set || is_set(appnav_compress.yfilter)) leaf_name_data.push_back(appnav_compress.get_name_leafdata());
+    if (appnav_uncompress.is_set || is_set(appnav_uncompress.yfilter)) leaf_name_data.push_back(appnav_uncompress.get_name_leafdata());
+    if (atm.is_set || is_set(atm.yfilter)) leaf_name_data.push_back(atm.get_name_leafdata());
+    if (atm_acr.is_set || is_set(atm_acr.yfilter)) leaf_name_data.push_back(atm_acr.get_name_leafdata());
+    if (bdi.is_set || is_set(bdi.yfilter)) leaf_name_data.push_back(bdi.get_name_leafdata());
+    if (cem.is_set || is_set(cem.yfilter)) leaf_name_data.push_back(cem.get_name_leafdata());
+    if (cem_acr.is_set || is_set(cem_acr.yfilter)) leaf_name_data.push_back(cem_acr.get_name_leafdata());
+    if (embedded_service_engine.is_set || is_set(embedded_service_engine.yfilter)) leaf_name_data.push_back(embedded_service_engine.get_name_leafdata());
+    if (ethernet.is_set || is_set(ethernet.yfilter)) leaf_name_data.push_back(ethernet.get_name_leafdata());
+    if (fastethernet.is_set || is_set(fastethernet.yfilter)) leaf_name_data.push_back(fastethernet.get_name_leafdata());
+    if (gigabitethernet.is_set || is_set(gigabitethernet.yfilter)) leaf_name_data.push_back(gigabitethernet.get_name_leafdata());
+    if (fivegigabitethernet.is_set || is_set(fivegigabitethernet.yfilter)) leaf_name_data.push_back(fivegigabitethernet.get_name_leafdata());
+    if (twentyfivegige.is_set || is_set(twentyfivegige.yfilter)) leaf_name_data.push_back(twentyfivegige.get_name_leafdata());
+    if (twogigabitethernet.is_set || is_set(twogigabitethernet.yfilter)) leaf_name_data.push_back(twogigabitethernet.get_name_leafdata());
+    if (fortygigabitethernet.is_set || is_set(fortygigabitethernet.yfilter)) leaf_name_data.push_back(fortygigabitethernet.get_name_leafdata());
+    if (hundredgige.is_set || is_set(hundredgige.yfilter)) leaf_name_data.push_back(hundredgige.get_name_leafdata());
+    if (lisp.is_set || is_set(lisp.yfilter)) leaf_name_data.push_back(lisp.get_name_leafdata());
+    if (loopback.is_set || is_set(loopback.yfilter)) leaf_name_data.push_back(loopback.get_name_leafdata());
+    if (multilink.is_set || is_set(multilink.yfilter)) leaf_name_data.push_back(multilink.get_name_leafdata());
+    if (nve.is_set || is_set(nve.yfilter)) leaf_name_data.push_back(nve.get_name_leafdata());
+    if (overlay.is_set || is_set(overlay.yfilter)) leaf_name_data.push_back(overlay.get_name_leafdata());
+    if (port_channel.is_set || is_set(port_channel.yfilter)) leaf_name_data.push_back(port_channel.get_name_leafdata());
+    if (pseudowire.is_set || is_set(pseudowire.yfilter)) leaf_name_data.push_back(pseudowire.get_name_leafdata());
+    if (sm.is_set || is_set(sm.yfilter)) leaf_name_data.push_back(sm.get_name_leafdata());
+    if (cellular.is_set || is_set(cellular.yfilter)) leaf_name_data.push_back(cellular.get_name_leafdata());
+    if (serial.is_set || is_set(serial.yfilter)) leaf_name_data.push_back(serial.get_name_leafdata());
+    if (tengigabitethernet.is_set || is_set(tengigabitethernet.yfilter)) leaf_name_data.push_back(tengigabitethernet.get_name_leafdata());
+    if (tunnel.is_set || is_set(tunnel.yfilter)) leaf_name_data.push_back(tunnel.get_name_leafdata());
+    if (virtual_template.is_set || is_set(virtual_template.yfilter)) leaf_name_data.push_back(virtual_template.get_name_leafdata());
+    if (vlan.is_set || is_set(vlan.yfilter)) leaf_name_data.push_back(vlan.get_name_leafdata());
+    if (virtualportgroup.is_set || is_set(virtualportgroup.yfilter)) leaf_name_data.push_back(virtualportgroup.get_name_leafdata());
+    if (vasileft.is_set || is_set(vasileft.yfilter)) leaf_name_data.push_back(vasileft.get_name_leafdata());
+    if (vasiright.is_set || is_set(vasiright.yfilter)) leaf_name_data.push_back(vasiright.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ATM-subinterface")
+    {
+        if(atm_subinterface == nullptr)
+        {
+            atm_subinterface = std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMSubinterface>();
+        }
+        return atm_subinterface;
+    }
+
+    if(child_yang_name == "ATM-ACRsubinterface")
+    {
+        if(atm_acrsubinterface == nullptr)
+        {
+            atm_acrsubinterface = std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMACRsubinterface>();
+        }
+        return atm_acrsubinterface;
+    }
+
+    if(child_yang_name == "LISP-subinterface")
+    {
+        if(lisp_subinterface == nullptr)
+        {
+            lisp_subinterface = std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::LISPSubinterface>();
+        }
+        return lisp_subinterface;
+    }
+
+    if(child_yang_name == "Port-channel-subinterface")
+    {
+        if(port_channel_subinterface == nullptr)
+        {
+            port_channel_subinterface = std::make_shared<Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::PortChannelSubinterface>();
+        }
+        return port_channel_subinterface;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(atm_subinterface != nullptr)
+    {
+        _children["ATM-subinterface"] = atm_subinterface;
+    }
+
+    if(atm_acrsubinterface != nullptr)
+    {
+        _children["ATM-ACRsubinterface"] = atm_acrsubinterface;
+    }
+
+    if(lisp_subinterface != nullptr)
+    {
+        _children["LISP-subinterface"] = lisp_subinterface;
+    }
+
+    if(port_channel_subinterface != nullptr)
+    {
+        _children["Port-channel-subinterface"] = port_channel_subinterface;
+    }
+
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "AppNav-Compress")
+    {
+        appnav_compress = value;
+        appnav_compress.value_namespace = name_space;
+        appnav_compress.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "AppNav-UnCompress")
+    {
+        appnav_uncompress = value;
+        appnav_uncompress.value_namespace = name_space;
+        appnav_uncompress.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ATM")
+    {
+        atm = value;
+        atm.value_namespace = name_space;
+        atm.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ATM-ACR")
+    {
+        atm_acr = value;
+        atm_acr.value_namespace = name_space;
+        atm_acr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "BDI")
+    {
+        bdi = value;
+        bdi.value_namespace = name_space;
+        bdi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "CEM")
+    {
+        cem = value;
+        cem.value_namespace = name_space;
+        cem.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "CEM-ACR")
+    {
+        cem_acr = value;
+        cem_acr.value_namespace = name_space;
+        cem_acr.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Embedded-Service-Engine")
+    {
+        embedded_service_engine = value;
+        embedded_service_engine.value_namespace = name_space;
+        embedded_service_engine.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Ethernet")
+    {
+        ethernet = value;
+        ethernet.value_namespace = name_space;
+        ethernet.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "FastEthernet")
+    {
+        fastethernet = value;
+        fastethernet.value_namespace = name_space;
+        fastethernet.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "GigabitEthernet")
+    {
+        gigabitethernet = value;
+        gigabitethernet.value_namespace = name_space;
+        gigabitethernet.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "FiveGigabitEthernet")
+    {
+        fivegigabitethernet = value;
+        fivegigabitethernet.value_namespace = name_space;
+        fivegigabitethernet.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "TwentyFiveGigE")
+    {
+        twentyfivegige = value;
+        twentyfivegige.value_namespace = name_space;
+        twentyfivegige.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "TwoGigabitEthernet")
+    {
+        twogigabitethernet = value;
+        twogigabitethernet.value_namespace = name_space;
+        twogigabitethernet.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "FortyGigabitEthernet")
+    {
+        fortygigabitethernet = value;
+        fortygigabitethernet.value_namespace = name_space;
+        fortygigabitethernet.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "HundredGigE")
+    {
+        hundredgige = value;
+        hundredgige.value_namespace = name_space;
+        hundredgige.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "LISP")
+    {
+        lisp = value;
+        lisp.value_namespace = name_space;
+        lisp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Loopback")
+    {
+        loopback = value;
+        loopback.value_namespace = name_space;
+        loopback.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Multilink")
+    {
+        multilink = value;
+        multilink.value_namespace = name_space;
+        multilink.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nve")
+    {
+        nve = value;
+        nve.value_namespace = name_space;
+        nve.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "overlay")
+    {
+        overlay = value;
+        overlay.value_namespace = name_space;
+        overlay.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Port-channel")
+    {
+        port_channel = value;
+        port_channel.value_namespace = name_space;
+        port_channel.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pseudowire")
+    {
+        pseudowire = value;
+        pseudowire.value_namespace = name_space;
+        pseudowire.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "SM")
+    {
+        sm = value;
+        sm.value_namespace = name_space;
+        sm.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Cellular")
+    {
+        cellular = value;
+        cellular.value_namespace = name_space;
+        cellular.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Serial")
+    {
+        serial = value;
+        serial.value_namespace = name_space;
+        serial.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "TenGigabitEthernet")
+    {
+        tengigabitethernet = value;
+        tengigabitethernet.value_namespace = name_space;
+        tengigabitethernet.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Tunnel")
+    {
+        tunnel = value;
+        tunnel.value_namespace = name_space;
+        tunnel.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Virtual-Template")
+    {
+        virtual_template = value;
+        virtual_template.value_namespace = name_space;
+        virtual_template.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Vlan")
+    {
+        vlan = value;
+        vlan.value_namespace = name_space;
+        vlan.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "VirtualPortGroup")
+    {
+        virtualportgroup = value;
+        virtualportgroup.value_namespace = name_space;
+        virtualportgroup.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vasileft")
+    {
+        vasileft = value;
+        vasileft.value_namespace = name_space;
+        vasileft.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vasiright")
+    {
+        vasiright = value;
+        vasiright.value_namespace = name_space;
+        vasiright.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "AppNav-Compress")
+    {
+        appnav_compress.yfilter = yfilter;
+    }
+    if(value_path == "AppNav-UnCompress")
+    {
+        appnav_uncompress.yfilter = yfilter;
+    }
+    if(value_path == "ATM")
+    {
+        atm.yfilter = yfilter;
+    }
+    if(value_path == "ATM-ACR")
+    {
+        atm_acr.yfilter = yfilter;
+    }
+    if(value_path == "BDI")
+    {
+        bdi.yfilter = yfilter;
+    }
+    if(value_path == "CEM")
+    {
+        cem.yfilter = yfilter;
+    }
+    if(value_path == "CEM-ACR")
+    {
+        cem_acr.yfilter = yfilter;
+    }
+    if(value_path == "Embedded-Service-Engine")
+    {
+        embedded_service_engine.yfilter = yfilter;
+    }
+    if(value_path == "Ethernet")
+    {
+        ethernet.yfilter = yfilter;
+    }
+    if(value_path == "FastEthernet")
+    {
+        fastethernet.yfilter = yfilter;
+    }
+    if(value_path == "GigabitEthernet")
+    {
+        gigabitethernet.yfilter = yfilter;
+    }
+    if(value_path == "FiveGigabitEthernet")
+    {
+        fivegigabitethernet.yfilter = yfilter;
+    }
+    if(value_path == "TwentyFiveGigE")
+    {
+        twentyfivegige.yfilter = yfilter;
+    }
+    if(value_path == "TwoGigabitEthernet")
+    {
+        twogigabitethernet.yfilter = yfilter;
+    }
+    if(value_path == "FortyGigabitEthernet")
+    {
+        fortygigabitethernet.yfilter = yfilter;
+    }
+    if(value_path == "HundredGigE")
+    {
+        hundredgige.yfilter = yfilter;
+    }
+    if(value_path == "LISP")
+    {
+        lisp.yfilter = yfilter;
+    }
+    if(value_path == "Loopback")
+    {
+        loopback.yfilter = yfilter;
+    }
+    if(value_path == "Multilink")
+    {
+        multilink.yfilter = yfilter;
+    }
+    if(value_path == "nve")
+    {
+        nve.yfilter = yfilter;
+    }
+    if(value_path == "overlay")
+    {
+        overlay.yfilter = yfilter;
+    }
+    if(value_path == "Port-channel")
+    {
+        port_channel.yfilter = yfilter;
+    }
+    if(value_path == "pseudowire")
+    {
+        pseudowire.yfilter = yfilter;
+    }
+    if(value_path == "SM")
+    {
+        sm.yfilter = yfilter;
+    }
+    if(value_path == "Cellular")
+    {
+        cellular.yfilter = yfilter;
+    }
+    if(value_path == "Serial")
+    {
+        serial.yfilter = yfilter;
+    }
+    if(value_path == "TenGigabitEthernet")
+    {
+        tengigabitethernet.yfilter = yfilter;
+    }
+    if(value_path == "Tunnel")
+    {
+        tunnel.yfilter = yfilter;
+    }
+    if(value_path == "Virtual-Template")
+    {
+        virtual_template.yfilter = yfilter;
+    }
+    if(value_path == "Vlan")
+    {
+        vlan.yfilter = yfilter;
+    }
+    if(value_path == "VirtualPortGroup")
+    {
+        virtualportgroup.yfilter = yfilter;
+    }
+    if(value_path == "vasileft")
+    {
+        vasileft.yfilter = yfilter;
+    }
+    if(value_path == "vasiright")
+    {
+        vasiright.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ATM-subinterface" || name == "ATM-ACRsubinterface" || name == "LISP-subinterface" || name == "Port-channel-subinterface" || name == "AppNav-Compress" || name == "AppNav-UnCompress" || name == "ATM" || name == "ATM-ACR" || name == "BDI" || name == "CEM" || name == "CEM-ACR" || name == "Embedded-Service-Engine" || name == "Ethernet" || name == "FastEthernet" || name == "GigabitEthernet" || name == "FiveGigabitEthernet" || name == "TwentyFiveGigE" || name == "TwoGigabitEthernet" || name == "FortyGigabitEthernet" || name == "HundredGigE" || name == "LISP" || name == "Loopback" || name == "Multilink" || name == "nve" || name == "overlay" || name == "Port-channel" || name == "pseudowire" || name == "SM" || name == "Cellular" || name == "Serial" || name == "TenGigabitEthernet" || name == "Tunnel" || name == "Virtual-Template" || name == "Vlan" || name == "VirtualPortGroup" || name == "vasileft" || name == "vasiright")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMSubinterface::ATMSubinterface()
+    :
+    atm{YType::str, "ATM"}
+{
+
+    yang_name = "ATM-subinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMSubinterface::~ATMSubinterface()
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMSubinterface::has_data() const
+{
+    if (is_presence_container) return true;
+    return atm.is_set;
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMSubinterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(atm.yfilter);
+}
+
+std::string Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMSubinterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ATM-subinterface";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMSubinterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (atm.is_set || is_set(atm.yfilter)) leaf_name_data.push_back(atm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMSubinterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ATM")
+    {
+        atm = value;
+        atm.value_namespace = name_space;
+        atm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ATM")
+    {
+        atm.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMSubinterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ATM")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMACRsubinterface::ATMACRsubinterface()
+    :
+    atm_acr{YType::str, "ATM-ACR"}
+{
+
+    yang_name = "ATM-ACRsubinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMACRsubinterface::~ATMACRsubinterface()
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMACRsubinterface::has_data() const
+{
+    if (is_presence_container) return true;
+    return atm_acr.is_set;
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMACRsubinterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(atm_acr.yfilter);
+}
+
+std::string Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMACRsubinterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ATM-ACRsubinterface";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMACRsubinterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (atm_acr.is_set || is_set(atm_acr.yfilter)) leaf_name_data.push_back(atm_acr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMACRsubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMACRsubinterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMACRsubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ATM-ACR")
+    {
+        atm_acr = value;
+        atm_acr.value_namespace = name_space;
+        atm_acr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMACRsubinterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ATM-ACR")
+    {
+        atm_acr.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::ATMACRsubinterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ATM-ACR")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::LISPSubinterface::LISPSubinterface()
+    :
+    lisp{YType::str, "LISP"}
+{
+
+    yang_name = "LISP-subinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::LISPSubinterface::~LISPSubinterface()
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::LISPSubinterface::has_data() const
+{
+    if (is_presence_container) return true;
+    return lisp.is_set;
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::LISPSubinterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(lisp.yfilter);
+}
+
+std::string Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::LISPSubinterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "LISP-subinterface";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::LISPSubinterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (lisp.is_set || is_set(lisp.yfilter)) leaf_name_data.push_back(lisp.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::LISPSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::LISPSubinterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::LISPSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "LISP")
+    {
+        lisp = value;
+        lisp.value_namespace = name_space;
+        lisp.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::LISPSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "LISP")
+    {
+        lisp.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::LISPSubinterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "LISP")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::PortChannelSubinterface::PortChannelSubinterface()
+    :
+    port_channel{YType::str, "Port-channel"}
+{
+
+    yang_name = "Port-channel-subinterface"; yang_parent_name = "source-interface"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::PortChannelSubinterface::~PortChannelSubinterface()
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::PortChannelSubinterface::has_data() const
+{
+    if (is_presence_container) return true;
+    return port_channel.is_set;
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::PortChannelSubinterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(port_channel.yfilter);
+}
+
+std::string Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::PortChannelSubinterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Port-channel-subinterface";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::PortChannelSubinterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (port_channel.is_set || is_set(port_channel.yfilter)) leaf_name_data.push_back(port_channel.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::PortChannelSubinterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::PortChannelSubinterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::PortChannelSubinterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "Port-channel")
+    {
+        port_channel = value;
+        port_channel.value_namespace = name_space;
+        port_channel.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::PortChannelSubinterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "Port-channel")
+    {
+        port_channel.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::Radius_::SourceInterface::PortChannelSubinterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "Port-channel")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Radius::Ip::Vrf::Vrf()
+    :
+    forwarding{YType::str, "forwarding"}
+{
+
+    yang_name = "vrf"; yang_parent_name = "ip"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Radius::Ip::Vrf::~Vrf()
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::Vrf::has_data() const
+{
+    if (is_presence_container) return true;
+    return forwarding.is_set;
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::Vrf::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(forwarding.yfilter);
+}
+
+std::string Native::Aaa::Group::Server::Radius::Ip::Vrf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vrf";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Radius::Ip::Vrf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (forwarding.is_set || is_set(forwarding.yfilter)) leaf_name_data.push_back(forwarding.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Radius::Ip::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Radius::Ip::Vrf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Radius::Ip::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "forwarding")
+    {
+        forwarding = value;
+        forwarding.value_namespace = name_space;
+        forwarding.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Radius::Ip::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "forwarding")
+    {
+        forwarding.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Radius::Ip::Vrf::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "forwarding")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Radius::LoadBalance::LoadBalance()
+    :
+    method(std::make_shared<Native::Aaa::Group::Server::Radius::LoadBalance::Method>())
+{
+    method->parent = this;
+
+    yang_name = "load-balance"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Radius::LoadBalance::~LoadBalance()
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::LoadBalance::has_data() const
+{
+    if (is_presence_container) return true;
+    return (method !=  nullptr && method->has_data());
+}
+
+bool Native::Aaa::Group::Server::Radius::LoadBalance::has_operation() const
+{
+    return is_set(yfilter)
+	|| (method !=  nullptr && method->has_operation());
+}
+
+std::string Native::Aaa::Group::Server::Radius::LoadBalance::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "load-balance";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Radius::LoadBalance::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Radius::LoadBalance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "method")
+    {
+        if(method == nullptr)
+        {
+            method = std::make_shared<Native::Aaa::Group::Server::Radius::LoadBalance::Method>();
+        }
+        return method;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Radius::LoadBalance::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(method != nullptr)
+    {
+        _children["method"] = method;
+    }
+
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Radius::LoadBalance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Aaa::Group::Server::Radius::LoadBalance::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::LoadBalance::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "method")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Radius::LoadBalance::Method::Method()
+    :
+    least_outstanding(nullptr) // presence node
+{
+
+    yang_name = "method"; yang_parent_name = "load-balance"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Aaa::Group::Server::Radius::LoadBalance::Method::~Method()
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::LoadBalance::Method::has_data() const
+{
+    if (is_presence_container) return true;
+    return (least_outstanding !=  nullptr && least_outstanding->has_data());
+}
+
+bool Native::Aaa::Group::Server::Radius::LoadBalance::Method::has_operation() const
+{
+    return is_set(yfilter)
+	|| (least_outstanding !=  nullptr && least_outstanding->has_operation());
+}
+
+std::string Native::Aaa::Group::Server::Radius::LoadBalance::Method::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "method";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Radius::LoadBalance::Method::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Radius::LoadBalance::Method::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "least-outstanding")
+    {
+        if(least_outstanding == nullptr)
+        {
+            least_outstanding = std::make_shared<Native::Aaa::Group::Server::Radius::LoadBalance::Method::LeastOutstanding>();
+        }
+        return least_outstanding;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Radius::LoadBalance::Method::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(least_outstanding != nullptr)
+    {
+        _children["least-outstanding"] = least_outstanding;
+    }
+
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Radius::LoadBalance::Method::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Aaa::Group::Server::Radius::LoadBalance::Method::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::LoadBalance::Method::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "least-outstanding")
+        return true;
+    return false;
+}
+
+Native::Aaa::Group::Server::Radius::LoadBalance::Method::LeastOutstanding::LeastOutstanding()
+    :
+    batch_size{YType::uint32, "batch-size"},
+    ignore_preferred_server{YType::empty, "ignore-preferred-server"}
+{
+
+    yang_name = "least-outstanding"; yang_parent_name = "method"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Aaa::Group::Server::Radius::LoadBalance::Method::LeastOutstanding::~LeastOutstanding()
+{
+}
+
+bool Native::Aaa::Group::Server::Radius::LoadBalance::Method::LeastOutstanding::has_data() const
+{
+    if (is_presence_container) return true;
+    return batch_size.is_set
+	|| ignore_preferred_server.is_set;
+}
+
+bool Native::Aaa::Group::Server::Radius::LoadBalance::Method::LeastOutstanding::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(batch_size.yfilter)
+	|| ydk::is_set(ignore_preferred_server.yfilter);
+}
+
+std::string Native::Aaa::Group::Server::Radius::LoadBalance::Method::LeastOutstanding::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "least-outstanding";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Group::Server::Radius::LoadBalance::Method::LeastOutstanding::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (batch_size.is_set || is_set(batch_size.yfilter)) leaf_name_data.push_back(batch_size.get_name_leafdata());
+    if (ignore_preferred_server.is_set || is_set(ignore_preferred_server.yfilter)) leaf_name_data.push_back(ignore_preferred_server.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Group::Server::Radius::LoadBalance::Method::LeastOutstanding::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Group::Server::Radius::LoadBalance::Method::LeastOutstanding::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Aaa::Group::Server::Radius::LoadBalance::Method::LeastOutstanding::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "batch-size")
+    {
+        batch_size = value;
+        batch_size.value_namespace = name_space;
+        batch_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ignore-preferred-server")
+    {
+        ignore_preferred_server = value;
+        ignore_preferred_server.value_namespace = name_space;
+        ignore_preferred_server.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Aaa::Group::Server::Radius::LoadBalance::Method::LeastOutstanding::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "batch-size")
+    {
+        batch_size.yfilter = yfilter;
+    }
+    if(value_path == "ignore-preferred-server")
+    {
+        ignore_preferred_server.yfilter = yfilter;
+    }
+}
+
+bool Native::Aaa::Group::Server::Radius::LoadBalance::Method::LeastOutstanding::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "batch-size" || name == "ignore-preferred-server")
+        return true;
+    return false;
+}
+
+Native::Aaa::Attribute::Attribute()
+    :
+    list(this, {"name"})
+{
+
+    yang_name = "attribute"; yang_parent_name = "aaa"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Native::Aaa::Attribute::~Attribute()
+{
+}
+
+bool Native::Aaa::Attribute::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<list.len(); index++)
+    {
+        if(list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Native::Aaa::Attribute::has_operation() const
+{
+    for (std::size_t index=0; index<list.len(); index++)
+    {
+        if(list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Native::Aaa::Attribute::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-native:native/aaa/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Native::Aaa::Attribute::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-aaa:attribute";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Aaa::Attribute::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Aaa::Attribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "list")
+    {
+        auto ent_ = std::make_shared<Native::Aaa::Attribute::List>();
+        ent_->parent = this;
+        list.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Attribute::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : list.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Native::Aaa::Attribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Aaa::Attribute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Aaa::Attribute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "list")
+        return true;
+    return false;
+}
+
 Native::Aaa::Attribute::List::List()
     :
     name{YType::str, "name"}
@@ -13003,4179 +18074,28 @@ bool Native::Aaa::Server::Radius::DynamicAuthor::ServerKey::has_leaf_or_child_of
     return false;
 }
 
-Native::Aaa::Server::Radius::DynamicAuthor::Domain::Domain()
-    :
-    delimiter{YType::str, "delimiter"}
-        ,
-    stripping(nullptr) // presence node
-{
+const Enum::YLeaf Native::Aaa::SessionId::common {0, "common"};
+const Enum::YLeaf Native::Aaa::SessionId::unique {1, "unique"};
 
-    yang_name = "domain"; yang_parent_name = "dynamic-author"; is_top_level_class = false; has_list_ancestor = false; 
-}
+const Enum::YLeaf Native::Aaa::Password::restriction {0, "restriction"};
 
-Native::Aaa::Server::Radius::DynamicAuthor::Domain::~Domain()
-{
-}
+const Enum::YLeaf Native::Aaa::Traceback::recording {0, "recording"};
 
-bool Native::Aaa::Server::Radius::DynamicAuthor::Domain::has_data() const
-{
-    if (is_presence_container) return true;
-    return delimiter.is_set
-	|| (stripping !=  nullptr && stripping->has_data());
-}
+const Enum::YLeaf Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key::Encryption::Y_0 {0, "0"};
+const Enum::YLeaf Native::Aaa::Group::Server::Tacacsplus::ServerPrivate::Key::Encryption::Y_7 {1, "7"};
 
-bool Native::Aaa::Server::Radius::DynamicAuthor::Domain::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(delimiter.yfilter)
-	|| (stripping !=  nullptr && stripping->has_operation());
-}
+const Enum::YLeaf Native::Aaa::Group::Server::Radius::MacDelimiter::colon {0, "colon"};
+const Enum::YLeaf Native::Aaa::Group::Server::Radius::MacDelimiter::hyphen {1, "hyphen"};
+const Enum::YLeaf Native::Aaa::Group::Server::Radius::MacDelimiter::none {2, "none"};
+const Enum::YLeaf Native::Aaa::Group::Server::Radius::MacDelimiter::single_hyphen {3, "single-hyphen"};
 
-std::string Native::Aaa::Server::Radius::DynamicAuthor::Domain::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/dynamic-author/" << get_segment_path();
-    return path_buffer.str();
-}
+const Enum::YLeaf Native::Aaa::Group::Server::Radius::Subscriber::MacFiltering::SecurityMode::mac {0, "mac"};
+const Enum::YLeaf Native::Aaa::Group::Server::Radius::Subscriber::MacFiltering::SecurityMode::none {1, "none"};
+const Enum::YLeaf Native::Aaa::Group::Server::Radius::Subscriber::MacFiltering::SecurityMode::shared_secret {2, "shared-secret"};
 
-std::string Native::Aaa::Server::Radius::DynamicAuthor::Domain::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "domain";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::DynamicAuthor::Domain::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (delimiter.is_set || is_set(delimiter.yfilter)) leaf_name_data.push_back(delimiter.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::DynamicAuthor::Domain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "stripping")
-    {
-        if(stripping == nullptr)
-        {
-            stripping = std::make_shared<Native::Aaa::Server::Radius::DynamicAuthor::Domain::Stripping>();
-        }
-        return stripping;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::DynamicAuthor::Domain::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(stripping != nullptr)
-    {
-        _children["stripping"] = stripping;
-    }
-
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::DynamicAuthor::Domain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "delimiter")
-    {
-        delimiter = value;
-        delimiter.value_namespace = name_space;
-        delimiter.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::DynamicAuthor::Domain::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "delimiter")
-    {
-        delimiter.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::DynamicAuthor::Domain::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "stripping" || name == "delimiter")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::DynamicAuthor::Domain::Stripping::Stripping()
-    :
-    right_to_left{YType::empty, "right-to-left"}
-{
-
-    yang_name = "stripping"; yang_parent_name = "domain"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
-}
-
-Native::Aaa::Server::Radius::DynamicAuthor::Domain::Stripping::~Stripping()
-{
-}
-
-bool Native::Aaa::Server::Radius::DynamicAuthor::Domain::Stripping::has_data() const
-{
-    if (is_presence_container) return true;
-    return right_to_left.is_set;
-}
-
-bool Native::Aaa::Server::Radius::DynamicAuthor::Domain::Stripping::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(right_to_left.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::DynamicAuthor::Domain::Stripping::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/dynamic-author/domain/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::DynamicAuthor::Domain::Stripping::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "stripping";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::DynamicAuthor::Domain::Stripping::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (right_to_left.is_set || is_set(right_to_left.yfilter)) leaf_name_data.push_back(right_to_left.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::DynamicAuthor::Domain::Stripping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::DynamicAuthor::Domain::Stripping::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::DynamicAuthor::Domain::Stripping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "right-to-left")
-    {
-        right_to_left = value;
-        right_to_left.value_namespace = name_space;
-        right_to_left.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::DynamicAuthor::Domain::Stripping::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "right-to-left")
-    {
-        right_to_left.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::DynamicAuthor::Domain::Stripping::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "right-to-left")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::DynamicAuthor::Ignore::Ignore()
-    :
-    retransmission{YType::empty, "retransmission"},
-    server_key{YType::empty, "server-key"},
-    session_key{YType::empty, "session-key"}
-{
-
-    yang_name = "ignore"; yang_parent_name = "dynamic-author"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Aaa::Server::Radius::DynamicAuthor::Ignore::~Ignore()
-{
-}
-
-bool Native::Aaa::Server::Radius::DynamicAuthor::Ignore::has_data() const
-{
-    if (is_presence_container) return true;
-    return retransmission.is_set
-	|| server_key.is_set
-	|| session_key.is_set;
-}
-
-bool Native::Aaa::Server::Radius::DynamicAuthor::Ignore::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(retransmission.yfilter)
-	|| ydk::is_set(server_key.yfilter)
-	|| ydk::is_set(session_key.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::DynamicAuthor::Ignore::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/dynamic-author/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::DynamicAuthor::Ignore::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ignore";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::DynamicAuthor::Ignore::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (retransmission.is_set || is_set(retransmission.yfilter)) leaf_name_data.push_back(retransmission.get_name_leafdata());
-    if (server_key.is_set || is_set(server_key.yfilter)) leaf_name_data.push_back(server_key.get_name_leafdata());
-    if (session_key.is_set || is_set(session_key.yfilter)) leaf_name_data.push_back(session_key.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::DynamicAuthor::Ignore::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::DynamicAuthor::Ignore::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::DynamicAuthor::Ignore::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "retransmission")
-    {
-        retransmission = value;
-        retransmission.value_namespace = name_space;
-        retransmission.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "server-key")
-    {
-        server_key = value;
-        server_key.value_namespace = name_space;
-        server_key.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "session-key")
-    {
-        session_key = value;
-        session_key.value_namespace = name_space;
-        session_key.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::DynamicAuthor::Ignore::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "retransmission")
-    {
-        retransmission.yfilter = yfilter;
-    }
-    if(value_path == "server-key")
-    {
-        server_key.yfilter = yfilter;
-    }
-    if(value_path == "session-key")
-    {
-        session_key.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::DynamicAuthor::Ignore::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "retransmission" || name == "server-key" || name == "session-key")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::PolicyDevice::PolicyDevice()
-    :
-    accounting(std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Accounting>())
-    , authentication(std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Authentication>())
-    , client(this, {"ip"})
-    , key(std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Key>())
-    , message_authenticator(std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::MessageAuthenticator>())
-{
-    accounting->parent = this;
-    authentication->parent = this;
-    key->parent = this;
-    message_authenticator->parent = this;
-
-    yang_name = "policy-device"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
-}
-
-Native::Aaa::Server::Radius::PolicyDevice::~PolicyDevice()
-{
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<client.len(); index++)
-    {
-        if(client[index]->has_data())
-            return true;
-    }
-    return (accounting !=  nullptr && accounting->has_data())
-	|| (authentication !=  nullptr && authentication->has_data())
-	|| (key !=  nullptr && key->has_data())
-	|| (message_authenticator !=  nullptr && message_authenticator->has_data());
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::has_operation() const
-{
-    for (std::size_t index=0; index<client.len(); index++)
-    {
-        if(client[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| (accounting !=  nullptr && accounting->has_operation())
-	|| (authentication !=  nullptr && authentication->has_operation())
-	|| (key !=  nullptr && key->has_operation())
-	|| (message_authenticator !=  nullptr && message_authenticator->has_operation());
-}
-
-std::string Native::Aaa::Server::Radius::PolicyDevice::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::PolicyDevice::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "policy-device";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::PolicyDevice::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::PolicyDevice::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "accounting")
-    {
-        if(accounting == nullptr)
-        {
-            accounting = std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Accounting>();
-        }
-        return accounting;
-    }
-
-    if(child_yang_name == "authentication")
-    {
-        if(authentication == nullptr)
-        {
-            authentication = std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Authentication>();
-        }
-        return authentication;
-    }
-
-    if(child_yang_name == "client")
-    {
-        auto ent_ = std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Client>();
-        ent_->parent = this;
-        client.append(ent_);
-        return ent_;
-    }
-
-    if(child_yang_name == "key")
-    {
-        if(key == nullptr)
-        {
-            key = std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Key>();
-        }
-        return key;
-    }
-
-    if(child_yang_name == "message-authenticator")
-    {
-        if(message_authenticator == nullptr)
-        {
-            message_authenticator = std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::MessageAuthenticator>();
-        }
-        return message_authenticator;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::PolicyDevice::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(accounting != nullptr)
-    {
-        _children["accounting"] = accounting;
-    }
-
-    if(authentication != nullptr)
-    {
-        _children["authentication"] = authentication;
-    }
-
-    count_ = 0;
-    for (auto ent_ : client.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    if(key != nullptr)
-    {
-        _children["key"] = key;
-    }
-
-    if(message_authenticator != nullptr)
-    {
-        _children["message-authenticator"] = message_authenticator;
-    }
-
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::PolicyDevice::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Aaa::Server::Radius::PolicyDevice::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "accounting" || name == "authentication" || name == "client" || name == "key" || name == "message-authenticator")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::PolicyDevice::Accounting::Accounting()
-    :
-    port{YType::uint16, "port"}
-{
-
-    yang_name = "accounting"; yang_parent_name = "policy-device"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Aaa::Server::Radius::PolicyDevice::Accounting::~Accounting()
-{
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::Accounting::has_data() const
-{
-    if (is_presence_container) return true;
-    return port.is_set;
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::Accounting::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(port.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::PolicyDevice::Accounting::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/policy-device/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::PolicyDevice::Accounting::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "accounting";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::PolicyDevice::Accounting::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::PolicyDevice::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::PolicyDevice::Accounting::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::PolicyDevice::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::PolicyDevice::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::Accounting::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "port")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::PolicyDevice::Authentication::Authentication()
-    :
-    port{YType::uint16, "port"}
-{
-
-    yang_name = "authentication"; yang_parent_name = "policy-device"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Aaa::Server::Radius::PolicyDevice::Authentication::~Authentication()
-{
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::Authentication::has_data() const
-{
-    if (is_presence_container) return true;
-    return port.is_set;
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::Authentication::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(port.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::PolicyDevice::Authentication::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/policy-device/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::PolicyDevice::Authentication::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "authentication";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::PolicyDevice::Authentication::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::PolicyDevice::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::PolicyDevice::Authentication::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::PolicyDevice::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::PolicyDevice::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::Authentication::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "port")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::PolicyDevice::Client::Client()
-    :
-    ip{YType::str, "ip"},
-    port{YType::uint16, "port"}
-        ,
-    vrf(this, {"name"})
-    , key(std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Client::Key>())
-{
-    key->parent = this;
-
-    yang_name = "client"; yang_parent_name = "policy-device"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Aaa::Server::Radius::PolicyDevice::Client::~Client()
-{
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::Client::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<vrf.len(); index++)
-    {
-        if(vrf[index]->has_data())
-            return true;
-    }
-    return ip.is_set
-	|| port.is_set
-	|| (key !=  nullptr && key->has_data());
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::Client::has_operation() const
-{
-    for (std::size_t index=0; index<vrf.len(); index++)
-    {
-        if(vrf[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(ip.yfilter)
-	|| ydk::is_set(port.yfilter)
-	|| (key !=  nullptr && key->has_operation());
-}
-
-std::string Native::Aaa::Server::Radius::PolicyDevice::Client::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/policy-device/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::PolicyDevice::Client::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "client";
-    ADD_KEY_TOKEN(ip, "ip");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::PolicyDevice::Client::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::PolicyDevice::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "vrf")
-    {
-        auto ent_ = std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf>();
-        ent_->parent = this;
-        vrf.append(ent_);
-        return ent_;
-    }
-
-    if(child_yang_name == "key")
-    {
-        if(key == nullptr)
-        {
-            key = std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Client::Key>();
-        }
-        return key;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::PolicyDevice::Client::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : vrf.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    if(key != nullptr)
-    {
-        _children["key"] = key;
-    }
-
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::PolicyDevice::Client::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ip")
-    {
-        ip = value;
-        ip.value_namespace = name_space;
-        ip.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::PolicyDevice::Client::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ip")
-    {
-        ip.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::Client::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "vrf" || name == "key" || name == "ip" || name == "port")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Vrf()
-    :
-    name{YType::str, "name"},
-    port{YType::uint16, "port"}
-        ,
-    key(std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Key>())
-{
-    key->parent = this;
-
-    yang_name = "vrf"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::~Vrf()
-{
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::has_data() const
-{
-    if (is_presence_container) return true;
-    return name.is_set
-	|| port.is_set
-	|| (key !=  nullptr && key->has_data());
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(port.yfilter)
-	|| (key !=  nullptr && key->has_operation());
-}
-
-std::string Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vrf";
-    ADD_KEY_TOKEN(name, "name");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "key")
-    {
-        if(key == nullptr)
-        {
-            key = std::make_shared<Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Key>();
-        }
-        return key;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(key != nullptr)
-    {
-        _children["key"] = key;
-    }
-
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "key" || name == "name" || name == "port")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Key::Key()
-    :
-    key{YType::enumeration, "key"},
-    string{YType::str, "string"}
-{
-
-    yang_name = "key"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Key::~Key()
-{
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Key::has_data() const
-{
-    if (is_presence_container) return true;
-    return key.is_set
-	|| string.is_set;
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Key::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(key.yfilter)
-	|| ydk::is_set(string.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Key::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "key";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Key::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (key.is_set || is_set(key.yfilter)) leaf_name_data.push_back(key.get_name_leafdata());
-    if (string.is_set || is_set(string.yfilter)) leaf_name_data.push_back(string.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Key::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "key")
-    {
-        key = value;
-        key.value_namespace = name_space;
-        key.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "string")
-    {
-        string = value;
-        string.value_namespace = name_space;
-        string.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Key::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "key")
-    {
-        key.yfilter = yfilter;
-    }
-    if(value_path == "string")
-    {
-        string.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Key::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "key" || name == "string")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::PolicyDevice::Client::Key::Key()
-    :
-    key{YType::enumeration, "key"},
-    string{YType::str, "string"}
-{
-
-    yang_name = "key"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Aaa::Server::Radius::PolicyDevice::Client::Key::~Key()
-{
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::Client::Key::has_data() const
-{
-    if (is_presence_container) return true;
-    return key.is_set
-	|| string.is_set;
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::Client::Key::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(key.yfilter)
-	|| ydk::is_set(string.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::PolicyDevice::Client::Key::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "key";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::PolicyDevice::Client::Key::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (key.is_set || is_set(key.yfilter)) leaf_name_data.push_back(key.get_name_leafdata());
-    if (string.is_set || is_set(string.yfilter)) leaf_name_data.push_back(string.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::PolicyDevice::Client::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::PolicyDevice::Client::Key::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::PolicyDevice::Client::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "key")
-    {
-        key = value;
-        key.value_namespace = name_space;
-        key.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "string")
-    {
-        string = value;
-        string.value_namespace = name_space;
-        string.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::PolicyDevice::Client::Key::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "key")
-    {
-        key.yfilter = yfilter;
-    }
-    if(value_path == "string")
-    {
-        string.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::Client::Key::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "key" || name == "string")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::PolicyDevice::Key::Key()
-    :
-    key{YType::enumeration, "key"},
-    string{YType::str, "string"}
-{
-
-    yang_name = "key"; yang_parent_name = "policy-device"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Aaa::Server::Radius::PolicyDevice::Key::~Key()
-{
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::Key::has_data() const
-{
-    if (is_presence_container) return true;
-    return key.is_set
-	|| string.is_set;
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::Key::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(key.yfilter)
-	|| ydk::is_set(string.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::PolicyDevice::Key::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/policy-device/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::PolicyDevice::Key::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "key";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::PolicyDevice::Key::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (key.is_set || is_set(key.yfilter)) leaf_name_data.push_back(key.get_name_leafdata());
-    if (string.is_set || is_set(string.yfilter)) leaf_name_data.push_back(string.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::PolicyDevice::Key::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::PolicyDevice::Key::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::PolicyDevice::Key::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "key")
-    {
-        key = value;
-        key.value_namespace = name_space;
-        key.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "string")
-    {
-        string = value;
-        string.value_namespace = name_space;
-        string.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::PolicyDevice::Key::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "key")
-    {
-        key.yfilter = yfilter;
-    }
-    if(value_path == "string")
-    {
-        string.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::Key::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "key" || name == "string")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::PolicyDevice::MessageAuthenticator::MessageAuthenticator()
-    :
-    ignore{YType::empty, "ignore"}
-{
-
-    yang_name = "message-authenticator"; yang_parent_name = "policy-device"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Aaa::Server::Radius::PolicyDevice::MessageAuthenticator::~MessageAuthenticator()
-{
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::MessageAuthenticator::has_data() const
-{
-    if (is_presence_container) return true;
-    return ignore.is_set;
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::MessageAuthenticator::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ignore.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::PolicyDevice::MessageAuthenticator::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/policy-device/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::PolicyDevice::MessageAuthenticator::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "message-authenticator";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::PolicyDevice::MessageAuthenticator::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ignore.is_set || is_set(ignore.yfilter)) leaf_name_data.push_back(ignore.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::PolicyDevice::MessageAuthenticator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::PolicyDevice::MessageAuthenticator::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::PolicyDevice::MessageAuthenticator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ignore")
-    {
-        ignore = value;
-        ignore.value_namespace = name_space;
-        ignore.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::PolicyDevice::MessageAuthenticator::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ignore")
-    {
-        ignore.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::PolicyDevice::MessageAuthenticator::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ignore")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::Proxy()
-    :
-    accounting(std::make_shared<Native::Aaa::Server::Radius::Proxy::Accounting>())
-    , authentication(std::make_shared<Native::Aaa::Server::Radius::Proxy::Authentication>())
-    , calling_station_id(std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId>())
-    , eap_user(std::make_shared<Native::Aaa::Server::Radius::Proxy::EapUser>())
-    , filter(std::make_shared<Native::Aaa::Server::Radius::Proxy::Filter>())
-    , key(std::make_shared<Native::Aaa::Server::Radius::Proxy::Key>())
-    , message_authenticator(std::make_shared<Native::Aaa::Server::Radius::Proxy::MessageAuthenticator>())
-    , mode(std::make_shared<Native::Aaa::Server::Radius::Proxy::Mode>())
-    , pwlan_session(std::make_shared<Native::Aaa::Server::Radius::Proxy::PwlanSession>())
-    , re_authentication(std::make_shared<Native::Aaa::Server::Radius::Proxy::ReAuthentication>())
-    , session_identifier(std::make_shared<Native::Aaa::Server::Radius::Proxy::SessionIdentifier>())
-    , timer(std::make_shared<Native::Aaa::Server::Radius::Proxy::Timer>())
-    , client_ip(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp>())
-    , client_ip_mask(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask>())
-    , client_ip_vrf(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf>())
-    , client_ip_mask_vrf(std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf>())
-    , send(std::make_shared<Native::Aaa::Server::Radius::Proxy::Send>())
-{
-    accounting->parent = this;
-    authentication->parent = this;
-    calling_station_id->parent = this;
-    eap_user->parent = this;
-    filter->parent = this;
-    key->parent = this;
-    message_authenticator->parent = this;
-    mode->parent = this;
-    pwlan_session->parent = this;
-    re_authentication->parent = this;
-    session_identifier->parent = this;
-    timer->parent = this;
-    client_ip->parent = this;
-    client_ip_mask->parent = this;
-    client_ip_vrf->parent = this;
-    client_ip_mask_vrf->parent = this;
-    send->parent = this;
-
-    yang_name = "proxy"; yang_parent_name = "radius"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
-}
-
-Native::Aaa::Server::Radius::Proxy::~Proxy()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::has_data() const
-{
-    if (is_presence_container) return true;
-    return (accounting !=  nullptr && accounting->has_data())
-	|| (authentication !=  nullptr && authentication->has_data())
-	|| (calling_station_id !=  nullptr && calling_station_id->has_data())
-	|| (eap_user !=  nullptr && eap_user->has_data())
-	|| (filter !=  nullptr && filter->has_data())
-	|| (key !=  nullptr && key->has_data())
-	|| (message_authenticator !=  nullptr && message_authenticator->has_data())
-	|| (mode !=  nullptr && mode->has_data())
-	|| (pwlan_session !=  nullptr && pwlan_session->has_data())
-	|| (re_authentication !=  nullptr && re_authentication->has_data())
-	|| (session_identifier !=  nullptr && session_identifier->has_data())
-	|| (timer !=  nullptr && timer->has_data())
-	|| (client_ip !=  nullptr && client_ip->has_data())
-	|| (client_ip_mask !=  nullptr && client_ip_mask->has_data())
-	|| (client_ip_vrf !=  nullptr && client_ip_vrf->has_data())
-	|| (client_ip_mask_vrf !=  nullptr && client_ip_mask_vrf->has_data())
-	|| (send !=  nullptr && send->has_data());
-}
-
-bool Native::Aaa::Server::Radius::Proxy::has_operation() const
-{
-    return is_set(yfilter)
-	|| (accounting !=  nullptr && accounting->has_operation())
-	|| (authentication !=  nullptr && authentication->has_operation())
-	|| (calling_station_id !=  nullptr && calling_station_id->has_operation())
-	|| (eap_user !=  nullptr && eap_user->has_operation())
-	|| (filter !=  nullptr && filter->has_operation())
-	|| (key !=  nullptr && key->has_operation())
-	|| (message_authenticator !=  nullptr && message_authenticator->has_operation())
-	|| (mode !=  nullptr && mode->has_operation())
-	|| (pwlan_session !=  nullptr && pwlan_session->has_operation())
-	|| (re_authentication !=  nullptr && re_authentication->has_operation())
-	|| (session_identifier !=  nullptr && session_identifier->has_operation())
-	|| (timer !=  nullptr && timer->has_operation())
-	|| (client_ip !=  nullptr && client_ip->has_operation())
-	|| (client_ip_mask !=  nullptr && client_ip_mask->has_operation())
-	|| (client_ip_vrf !=  nullptr && client_ip_vrf->has_operation())
-	|| (client_ip_mask_vrf !=  nullptr && client_ip_mask_vrf->has_operation())
-	|| (send !=  nullptr && send->has_operation());
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "proxy";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "accounting")
-    {
-        if(accounting == nullptr)
-        {
-            accounting = std::make_shared<Native::Aaa::Server::Radius::Proxy::Accounting>();
-        }
-        return accounting;
-    }
-
-    if(child_yang_name == "authentication")
-    {
-        if(authentication == nullptr)
-        {
-            authentication = std::make_shared<Native::Aaa::Server::Radius::Proxy::Authentication>();
-        }
-        return authentication;
-    }
-
-    if(child_yang_name == "calling-station-id")
-    {
-        if(calling_station_id == nullptr)
-        {
-            calling_station_id = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId>();
-        }
-        return calling_station_id;
-    }
-
-    if(child_yang_name == "eap-user")
-    {
-        if(eap_user == nullptr)
-        {
-            eap_user = std::make_shared<Native::Aaa::Server::Radius::Proxy::EapUser>();
-        }
-        return eap_user;
-    }
-
-    if(child_yang_name == "filter")
-    {
-        if(filter == nullptr)
-        {
-            filter = std::make_shared<Native::Aaa::Server::Radius::Proxy::Filter>();
-        }
-        return filter;
-    }
-
-    if(child_yang_name == "key")
-    {
-        if(key == nullptr)
-        {
-            key = std::make_shared<Native::Aaa::Server::Radius::Proxy::Key>();
-        }
-        return key;
-    }
-
-    if(child_yang_name == "message-authenticator")
-    {
-        if(message_authenticator == nullptr)
-        {
-            message_authenticator = std::make_shared<Native::Aaa::Server::Radius::Proxy::MessageAuthenticator>();
-        }
-        return message_authenticator;
-    }
-
-    if(child_yang_name == "mode")
-    {
-        if(mode == nullptr)
-        {
-            mode = std::make_shared<Native::Aaa::Server::Radius::Proxy::Mode>();
-        }
-        return mode;
-    }
-
-    if(child_yang_name == "pwlan-session")
-    {
-        if(pwlan_session == nullptr)
-        {
-            pwlan_session = std::make_shared<Native::Aaa::Server::Radius::Proxy::PwlanSession>();
-        }
-        return pwlan_session;
-    }
-
-    if(child_yang_name == "re-authentication")
-    {
-        if(re_authentication == nullptr)
-        {
-            re_authentication = std::make_shared<Native::Aaa::Server::Radius::Proxy::ReAuthentication>();
-        }
-        return re_authentication;
-    }
-
-    if(child_yang_name == "session-identifier")
-    {
-        if(session_identifier == nullptr)
-        {
-            session_identifier = std::make_shared<Native::Aaa::Server::Radius::Proxy::SessionIdentifier>();
-        }
-        return session_identifier;
-    }
-
-    if(child_yang_name == "timer")
-    {
-        if(timer == nullptr)
-        {
-            timer = std::make_shared<Native::Aaa::Server::Radius::Proxy::Timer>();
-        }
-        return timer;
-    }
-
-    if(child_yang_name == "client-ip")
-    {
-        if(client_ip == nullptr)
-        {
-            client_ip = std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIp>();
-        }
-        return client_ip;
-    }
-
-    if(child_yang_name == "client-ip-mask")
-    {
-        if(client_ip_mask == nullptr)
-        {
-            client_ip_mask = std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMask>();
-        }
-        return client_ip_mask;
-    }
-
-    if(child_yang_name == "client-ip-vrf")
-    {
-        if(client_ip_vrf == nullptr)
-        {
-            client_ip_vrf = std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpVrf>();
-        }
-        return client_ip_vrf;
-    }
-
-    if(child_yang_name == "client-ip-mask-vrf")
-    {
-        if(client_ip_mask_vrf == nullptr)
-        {
-            client_ip_mask_vrf = std::make_shared<Native::Aaa::Server::Radius::Proxy::ClientIpMaskVrf>();
-        }
-        return client_ip_mask_vrf;
-    }
-
-    if(child_yang_name == "send")
-    {
-        if(send == nullptr)
-        {
-            send = std::make_shared<Native::Aaa::Server::Radius::Proxy::Send>();
-        }
-        return send;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(accounting != nullptr)
-    {
-        _children["accounting"] = accounting;
-    }
-
-    if(authentication != nullptr)
-    {
-        _children["authentication"] = authentication;
-    }
-
-    if(calling_station_id != nullptr)
-    {
-        _children["calling-station-id"] = calling_station_id;
-    }
-
-    if(eap_user != nullptr)
-    {
-        _children["eap-user"] = eap_user;
-    }
-
-    if(filter != nullptr)
-    {
-        _children["filter"] = filter;
-    }
-
-    if(key != nullptr)
-    {
-        _children["key"] = key;
-    }
-
-    if(message_authenticator != nullptr)
-    {
-        _children["message-authenticator"] = message_authenticator;
-    }
-
-    if(mode != nullptr)
-    {
-        _children["mode"] = mode;
-    }
-
-    if(pwlan_session != nullptr)
-    {
-        _children["pwlan-session"] = pwlan_session;
-    }
-
-    if(re_authentication != nullptr)
-    {
-        _children["re-authentication"] = re_authentication;
-    }
-
-    if(session_identifier != nullptr)
-    {
-        _children["session-identifier"] = session_identifier;
-    }
-
-    if(timer != nullptr)
-    {
-        _children["timer"] = timer;
-    }
-
-    if(client_ip != nullptr)
-    {
-        _children["client-ip"] = client_ip;
-    }
-
-    if(client_ip_mask != nullptr)
-    {
-        _children["client-ip-mask"] = client_ip_mask;
-    }
-
-    if(client_ip_vrf != nullptr)
-    {
-        _children["client-ip-vrf"] = client_ip_vrf;
-    }
-
-    if(client_ip_mask_vrf != nullptr)
-    {
-        _children["client-ip-mask-vrf"] = client_ip_mask_vrf;
-    }
-
-    if(send != nullptr)
-    {
-        _children["send"] = send;
-    }
-
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Aaa::Server::Radius::Proxy::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "accounting" || name == "authentication" || name == "calling-station-id" || name == "eap-user" || name == "filter" || name == "key" || name == "message-authenticator" || name == "mode" || name == "pwlan-session" || name == "re-authentication" || name == "session-identifier" || name == "timer" || name == "client-ip" || name == "client-ip-mask" || name == "client-ip-vrf" || name == "client-ip-mask-vrf" || name == "send")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::Accounting::Accounting()
-    :
-    port{YType::uint16, "port"}
-        ,
-    method_list(std::make_shared<Native::Aaa::Server::Radius::Proxy::Accounting::MethodList>())
-{
-    method_list->parent = this;
-
-    yang_name = "accounting"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Aaa::Server::Radius::Proxy::Accounting::~Accounting()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::Accounting::has_data() const
-{
-    if (is_presence_container) return true;
-    return port.is_set
-	|| (method_list !=  nullptr && method_list->has_data());
-}
-
-bool Native::Aaa::Server::Radius::Proxy::Accounting::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(port.yfilter)
-	|| (method_list !=  nullptr && method_list->has_operation());
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::Accounting::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::Accounting::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "accounting";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::Accounting::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::Accounting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "method-list")
-    {
-        if(method_list == nullptr)
-        {
-            method_list = std::make_shared<Native::Aaa::Server::Radius::Proxy::Accounting::MethodList>();
-        }
-        return method_list;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::Accounting::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(method_list != nullptr)
-    {
-        _children["method-list"] = method_list;
-    }
-
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::Accounting::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::Proxy::Accounting::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::Proxy::Accounting::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "method-list" || name == "port")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::Accounting::MethodList::MethodList()
-    :
-    method_name{YType::str, "method-name"},
-    default_{YType::empty, "default"}
-{
-
-    yang_name = "method-list"; yang_parent_name = "accounting"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Aaa::Server::Radius::Proxy::Accounting::MethodList::~MethodList()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::Accounting::MethodList::has_data() const
-{
-    if (is_presence_container) return true;
-    return method_name.is_set
-	|| default_.is_set;
-}
-
-bool Native::Aaa::Server::Radius::Proxy::Accounting::MethodList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(method_name.yfilter)
-	|| ydk::is_set(default_.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::Accounting::MethodList::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/accounting/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::Accounting::MethodList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "method-list";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::Accounting::MethodList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (method_name.is_set || is_set(method_name.yfilter)) leaf_name_data.push_back(method_name.get_name_leafdata());
-    if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::Accounting::MethodList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::Accounting::MethodList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::Accounting::MethodList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "method-name")
-    {
-        method_name = value;
-        method_name.value_namespace = name_space;
-        method_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "default")
-    {
-        default_ = value;
-        default_.value_namespace = name_space;
-        default_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::Proxy::Accounting::MethodList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "method-name")
-    {
-        method_name.yfilter = yfilter;
-    }
-    if(value_path == "default")
-    {
-        default_.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::Proxy::Accounting::MethodList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "method-name" || name == "default")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::Authentication::Authentication()
-    :
-    port{YType::uint16, "port"}
-        ,
-    method_list(std::make_shared<Native::Aaa::Server::Radius::Proxy::Authentication::MethodList>())
-{
-    method_list->parent = this;
-
-    yang_name = "authentication"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Aaa::Server::Radius::Proxy::Authentication::~Authentication()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::Authentication::has_data() const
-{
-    if (is_presence_container) return true;
-    return port.is_set
-	|| (method_list !=  nullptr && method_list->has_data());
-}
-
-bool Native::Aaa::Server::Radius::Proxy::Authentication::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(port.yfilter)
-	|| (method_list !=  nullptr && method_list->has_operation());
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::Authentication::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::Authentication::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "authentication";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::Authentication::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::Authentication::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "method-list")
-    {
-        if(method_list == nullptr)
-        {
-            method_list = std::make_shared<Native::Aaa::Server::Radius::Proxy::Authentication::MethodList>();
-        }
-        return method_list;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::Authentication::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(method_list != nullptr)
-    {
-        _children["method-list"] = method_list;
-    }
-
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::Authentication::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "port")
-    {
-        port = value;
-        port.value_namespace = name_space;
-        port.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::Proxy::Authentication::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "port")
-    {
-        port.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::Proxy::Authentication::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "method-list" || name == "port")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::Authentication::MethodList::MethodList()
-    :
-    method_name{YType::str, "method-name"},
-    default_{YType::empty, "default"}
-{
-
-    yang_name = "method-list"; yang_parent_name = "authentication"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Aaa::Server::Radius::Proxy::Authentication::MethodList::~MethodList()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::Authentication::MethodList::has_data() const
-{
-    if (is_presence_container) return true;
-    return method_name.is_set
-	|| default_.is_set;
-}
-
-bool Native::Aaa::Server::Radius::Proxy::Authentication::MethodList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(method_name.yfilter)
-	|| ydk::is_set(default_.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::Authentication::MethodList::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/authentication/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::Authentication::MethodList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "method-list";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::Authentication::MethodList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (method_name.is_set || is_set(method_name.yfilter)) leaf_name_data.push_back(method_name.get_name_leafdata());
-    if (default_.is_set || is_set(default_.yfilter)) leaf_name_data.push_back(default_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::Authentication::MethodList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::Authentication::MethodList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::Authentication::MethodList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "method-name")
-    {
-        method_name = value;
-        method_name.value_namespace = name_space;
-        method_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "default")
-    {
-        default_ = value;
-        default_.value_namespace = name_space;
-        default_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::Proxy::Authentication::MethodList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "method-name")
-    {
-        method_name.yfilter = yfilter;
-    }
-    if(value_path == "default")
-    {
-        default_.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::Proxy::Authentication::MethodList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "method-name" || name == "default")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::CallingStationId()
-    :
-    format(std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format>())
-{
-    format->parent = this;
-
-    yang_name = "calling-station-id"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::~CallingStationId()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::has_data() const
-{
-    if (is_presence_container) return true;
-    return (format !=  nullptr && format->has_data());
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::has_operation() const
-{
-    return is_set(yfilter)
-	|| (format !=  nullptr && format->has_operation());
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "calling-station-id";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "format")
-    {
-        if(format == nullptr)
-        {
-            format = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format>();
-        }
-        return format;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(format != nullptr)
-    {
-        _children["format"] = format;
-    }
-
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "format")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::Format()
-    :
-    msisdn{YType::empty, "msisdn"}
-        ,
-    mac_address(std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress>())
-{
-    mac_address->parent = this;
-
-    yang_name = "format"; yang_parent_name = "calling-station-id"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::~Format()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::has_data() const
-{
-    if (is_presence_container) return true;
-    return msisdn.is_set
-	|| (mac_address !=  nullptr && mac_address->has_data());
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(msisdn.yfilter)
-	|| (mac_address !=  nullptr && mac_address->has_operation());
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/calling-station-id/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "format";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (msisdn.is_set || is_set(msisdn.yfilter)) leaf_name_data.push_back(msisdn.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "mac-address")
-    {
-        if(mac_address == nullptr)
-        {
-            mac_address = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress>();
-        }
-        return mac_address;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(mac_address != nullptr)
-    {
-        _children["mac-address"] = mac_address;
-    }
-
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "msisdn")
-    {
-        msisdn = value;
-        msisdn.value_namespace = name_space;
-        msisdn.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "msisdn")
-    {
-        msisdn.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "mac-address" || name == "msisdn")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::MacAddress()
-    :
-    none{YType::empty, "none"}
-        ,
-    default_(nullptr) // presence node
-    , ietf(nullptr) // presence node
-    , one_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte>())
-    , three_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte>())
-    , two_byte(std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte>())
-    , unformatted(nullptr) // presence node
-{
-    one_byte->parent = this;
-    three_byte->parent = this;
-    two_byte->parent = this;
-
-    yang_name = "mac-address"; yang_parent_name = "format"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::~MacAddress()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::has_data() const
-{
-    if (is_presence_container) return true;
-    return none.is_set
-	|| (default_ !=  nullptr && default_->has_data())
-	|| (ietf !=  nullptr && ietf->has_data())
-	|| (one_byte !=  nullptr && one_byte->has_data())
-	|| (three_byte !=  nullptr && three_byte->has_data())
-	|| (two_byte !=  nullptr && two_byte->has_data())
-	|| (unformatted !=  nullptr && unformatted->has_data());
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(none.yfilter)
-	|| (default_ !=  nullptr && default_->has_operation())
-	|| (ietf !=  nullptr && ietf->has_operation())
-	|| (one_byte !=  nullptr && one_byte->has_operation())
-	|| (three_byte !=  nullptr && three_byte->has_operation())
-	|| (two_byte !=  nullptr && two_byte->has_operation())
-	|| (unformatted !=  nullptr && unformatted->has_operation());
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/calling-station-id/format/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mac-address";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "default")
-    {
-        if(default_ == nullptr)
-        {
-            default_ = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default>();
-        }
-        return default_;
-    }
-
-    if(child_yang_name == "ietf")
-    {
-        if(ietf == nullptr)
-        {
-            ietf = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf>();
-        }
-        return ietf;
-    }
-
-    if(child_yang_name == "one-byte")
-    {
-        if(one_byte == nullptr)
-        {
-            one_byte = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte>();
-        }
-        return one_byte;
-    }
-
-    if(child_yang_name == "three-byte")
-    {
-        if(three_byte == nullptr)
-        {
-            three_byte = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte>();
-        }
-        return three_byte;
-    }
-
-    if(child_yang_name == "two-byte")
-    {
-        if(two_byte == nullptr)
-        {
-            two_byte = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte>();
-        }
-        return two_byte;
-    }
-
-    if(child_yang_name == "unformatted")
-    {
-        if(unformatted == nullptr)
-        {
-            unformatted = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Unformatted>();
-        }
-        return unformatted;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(default_ != nullptr)
-    {
-        _children["default"] = default_;
-    }
-
-    if(ietf != nullptr)
-    {
-        _children["ietf"] = ietf;
-    }
-
-    if(one_byte != nullptr)
-    {
-        _children["one-byte"] = one_byte;
-    }
-
-    if(three_byte != nullptr)
-    {
-        _children["three-byte"] = three_byte;
-    }
-
-    if(two_byte != nullptr)
-    {
-        _children["two-byte"] = two_byte;
-    }
-
-    if(unformatted != nullptr)
-    {
-        _children["unformatted"] = unformatted;
-    }
-
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "none")
-    {
-        none = value;
-        none.value_namespace = name_space;
-        none.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "none")
-    {
-        none.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "default" || name == "ietf" || name == "one-byte" || name == "three-byte" || name == "two-byte" || name == "unformatted" || name == "none")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::Default()
-    :
-    type{YType::enumeration, "type"}
-{
-
-    yang_name = "default"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::~Default()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::has_data() const
-{
-    if (is_presence_container) return true;
-    return type.is_set;
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(type.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/calling-station-id/format/mac-address/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "default";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "type")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf::Ietf()
-    :
-    type{YType::enumeration, "type"}
-{
-
-    yang_name = "ietf"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf::~Ietf()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf::has_data() const
-{
-    if (is_presence_container) return true;
-    return type.is_set;
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(type.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/calling-station-id/format/mac-address/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ietf";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "type")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::OneByte()
-    :
-    delimiter(std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter>())
-{
-    delimiter->parent = this;
-
-    yang_name = "one-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::~OneByte()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::has_data() const
-{
-    if (is_presence_container) return true;
-    return (delimiter !=  nullptr && delimiter->has_data());
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::has_operation() const
-{
-    return is_set(yfilter)
-	|| (delimiter !=  nullptr && delimiter->has_operation());
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/calling-station-id/format/mac-address/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "one-byte";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "delimiter")
-    {
-        if(delimiter == nullptr)
-        {
-            delimiter = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter>();
-        }
-        return delimiter;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(delimiter != nullptr)
-    {
-        _children["delimiter"] = delimiter;
-    }
-
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "delimiter")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Delimiter()
-    :
-    colon(nullptr) // presence node
-    , dot(nullptr) // presence node
-    , hyphen(nullptr) // presence node
-{
-
-    yang_name = "delimiter"; yang_parent_name = "one-byte"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::~Delimiter()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::has_data() const
-{
-    if (is_presence_container) return true;
-    return (colon !=  nullptr && colon->has_data())
-	|| (dot !=  nullptr && dot->has_data())
-	|| (hyphen !=  nullptr && hyphen->has_data());
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::has_operation() const
-{
-    return is_set(yfilter)
-	|| (colon !=  nullptr && colon->has_operation())
-	|| (dot !=  nullptr && dot->has_operation())
-	|| (hyphen !=  nullptr && hyphen->has_operation());
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/calling-station-id/format/mac-address/one-byte/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "delimiter";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "colon")
-    {
-        if(colon == nullptr)
-        {
-            colon = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon>();
-        }
-        return colon;
-    }
-
-    if(child_yang_name == "dot")
-    {
-        if(dot == nullptr)
-        {
-            dot = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot>();
-        }
-        return dot;
-    }
-
-    if(child_yang_name == "hyphen")
-    {
-        if(hyphen == nullptr)
-        {
-            hyphen = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen>();
-        }
-        return hyphen;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(colon != nullptr)
-    {
-        _children["colon"] = colon;
-    }
-
-    if(dot != nullptr)
-    {
-        _children["dot"] = dot;
-    }
-
-    if(hyphen != nullptr)
-    {
-        _children["hyphen"] = hyphen;
-    }
-
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "colon" || name == "dot" || name == "hyphen")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::Colon()
-    :
-    type{YType::enumeration, "type"}
-{
-
-    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::~Colon()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::has_data() const
-{
-    if (is_presence_container) return true;
-    return type.is_set;
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(type.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/calling-station-id/format/mac-address/one-byte/delimiter/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "colon";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "type")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::Dot()
-    :
-    type{YType::enumeration, "type"}
-{
-
-    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::~Dot()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::has_data() const
-{
-    if (is_presence_container) return true;
-    return type.is_set;
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(type.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/calling-station-id/format/mac-address/one-byte/delimiter/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dot";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "type")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::Hyphen()
-    :
-    type{YType::enumeration, "type"}
-{
-
-    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::~Hyphen()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::has_data() const
-{
-    if (is_presence_container) return true;
-    return type.is_set;
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(type.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/calling-station-id/format/mac-address/one-byte/delimiter/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hyphen";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "type")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::ThreeByte()
-    :
-    delimiter(std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter>())
-{
-    delimiter->parent = this;
-
-    yang_name = "three-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::~ThreeByte()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::has_data() const
-{
-    if (is_presence_container) return true;
-    return (delimiter !=  nullptr && delimiter->has_data());
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::has_operation() const
-{
-    return is_set(yfilter)
-	|| (delimiter !=  nullptr && delimiter->has_operation());
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/calling-station-id/format/mac-address/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "three-byte";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "delimiter")
-    {
-        if(delimiter == nullptr)
-        {
-            delimiter = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter>();
-        }
-        return delimiter;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(delimiter != nullptr)
-    {
-        _children["delimiter"] = delimiter;
-    }
-
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "delimiter")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Delimiter()
-    :
-    colon(nullptr) // presence node
-    , dot(nullptr) // presence node
-    , hyphen(nullptr) // presence node
-{
-
-    yang_name = "delimiter"; yang_parent_name = "three-byte"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::~Delimiter()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::has_data() const
-{
-    if (is_presence_container) return true;
-    return (colon !=  nullptr && colon->has_data())
-	|| (dot !=  nullptr && dot->has_data())
-	|| (hyphen !=  nullptr && hyphen->has_data());
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::has_operation() const
-{
-    return is_set(yfilter)
-	|| (colon !=  nullptr && colon->has_operation())
-	|| (dot !=  nullptr && dot->has_operation())
-	|| (hyphen !=  nullptr && hyphen->has_operation());
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/calling-station-id/format/mac-address/three-byte/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "delimiter";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "colon")
-    {
-        if(colon == nullptr)
-        {
-            colon = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon>();
-        }
-        return colon;
-    }
-
-    if(child_yang_name == "dot")
-    {
-        if(dot == nullptr)
-        {
-            dot = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot>();
-        }
-        return dot;
-    }
-
-    if(child_yang_name == "hyphen")
-    {
-        if(hyphen == nullptr)
-        {
-            hyphen = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen>();
-        }
-        return hyphen;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(colon != nullptr)
-    {
-        _children["colon"] = colon;
-    }
-
-    if(dot != nullptr)
-    {
-        _children["dot"] = dot;
-    }
-
-    if(hyphen != nullptr)
-    {
-        _children["hyphen"] = hyphen;
-    }
-
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "colon" || name == "dot" || name == "hyphen")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::Colon()
-    :
-    type{YType::enumeration, "type"}
-{
-
-    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::~Colon()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::has_data() const
-{
-    if (is_presence_container) return true;
-    return type.is_set;
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(type.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/calling-station-id/format/mac-address/three-byte/delimiter/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "colon";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "type")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::Dot()
-    :
-    type{YType::enumeration, "type"}
-{
-
-    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::~Dot()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::has_data() const
-{
-    if (is_presence_container) return true;
-    return type.is_set;
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(type.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/calling-station-id/format/mac-address/three-byte/delimiter/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dot";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "type")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::Hyphen()
-    :
-    type{YType::enumeration, "type"}
-{
-
-    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::~Hyphen()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::has_data() const
-{
-    if (is_presence_container) return true;
-    return type.is_set;
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(type.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/calling-station-id/format/mac-address/three-byte/delimiter/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hyphen";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "type")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::TwoByte()
-    :
-    delimiter(std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter>())
-{
-    delimiter->parent = this;
-
-    yang_name = "two-byte"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::~TwoByte()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::has_data() const
-{
-    if (is_presence_container) return true;
-    return (delimiter !=  nullptr && delimiter->has_data());
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::has_operation() const
-{
-    return is_set(yfilter)
-	|| (delimiter !=  nullptr && delimiter->has_operation());
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/calling-station-id/format/mac-address/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "two-byte";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "delimiter")
-    {
-        if(delimiter == nullptr)
-        {
-            delimiter = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter>();
-        }
-        return delimiter;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(delimiter != nullptr)
-    {
-        _children["delimiter"] = delimiter;
-    }
-
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "delimiter")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Delimiter()
-    :
-    colon(nullptr) // presence node
-    , dot(nullptr) // presence node
-    , hyphen(nullptr) // presence node
-{
-
-    yang_name = "delimiter"; yang_parent_name = "two-byte"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::~Delimiter()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::has_data() const
-{
-    if (is_presence_container) return true;
-    return (colon !=  nullptr && colon->has_data())
-	|| (dot !=  nullptr && dot->has_data())
-	|| (hyphen !=  nullptr && hyphen->has_data());
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::has_operation() const
-{
-    return is_set(yfilter)
-	|| (colon !=  nullptr && colon->has_operation())
-	|| (dot !=  nullptr && dot->has_operation())
-	|| (hyphen !=  nullptr && hyphen->has_operation());
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/calling-station-id/format/mac-address/two-byte/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "delimiter";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "colon")
-    {
-        if(colon == nullptr)
-        {
-            colon = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon>();
-        }
-        return colon;
-    }
-
-    if(child_yang_name == "dot")
-    {
-        if(dot == nullptr)
-        {
-            dot = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot>();
-        }
-        return dot;
-    }
-
-    if(child_yang_name == "hyphen")
-    {
-        if(hyphen == nullptr)
-        {
-            hyphen = std::make_shared<Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen>();
-        }
-        return hyphen;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(colon != nullptr)
-    {
-        _children["colon"] = colon;
-    }
-
-    if(dot != nullptr)
-    {
-        _children["dot"] = dot;
-    }
-
-    if(hyphen != nullptr)
-    {
-        _children["hyphen"] = hyphen;
-    }
-
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "colon" || name == "dot" || name == "hyphen")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::Colon()
-    :
-    type{YType::enumeration, "type"}
-{
-
-    yang_name = "colon"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::~Colon()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::has_data() const
-{
-    if (is_presence_container) return true;
-    return type.is_set;
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(type.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/calling-station-id/format/mac-address/two-byte/delimiter/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "colon";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "type")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::Dot()
-    :
-    type{YType::enumeration, "type"}
-{
-
-    yang_name = "dot"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::~Dot()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::has_data() const
-{
-    if (is_presence_container) return true;
-    return type.is_set;
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(type.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/calling-station-id/format/mac-address/two-byte/delimiter/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dot";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "type")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::Hyphen()
-    :
-    type{YType::enumeration, "type"}
-{
-
-    yang_name = "hyphen"; yang_parent_name = "delimiter"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::~Hyphen()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::has_data() const
-{
-    if (is_presence_container) return true;
-    return type.is_set;
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(type.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/calling-station-id/format/mac-address/two-byte/delimiter/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "hyphen";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "type")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Unformatted::Unformatted()
-    :
-    type{YType::enumeration, "type"}
-{
-
-    yang_name = "unformatted"; yang_parent_name = "mac-address"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
-}
-
-Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Unformatted::~Unformatted()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Unformatted::has_data() const
-{
-    if (is_presence_container) return true;
-    return type.is_set;
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Unformatted::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(type.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Unformatted::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/calling-station-id/format/mac-address/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Unformatted::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "unformatted";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Unformatted::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Unformatted::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Unformatted::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Unformatted::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Unformatted::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Unformatted::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "type")
-        return true;
-    return false;
-}
-
-Native::Aaa::Server::Radius::Proxy::EapUser::EapUser()
-    :
-    ignore_open_session{YType::empty, "ignore-open-session"}
-{
-
-    yang_name = "eap-user"; yang_parent_name = "proxy"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Native::Aaa::Server::Radius::Proxy::EapUser::~EapUser()
-{
-}
-
-bool Native::Aaa::Server::Radius::Proxy::EapUser::has_data() const
-{
-    if (is_presence_container) return true;
-    return ignore_open_session.is_set;
-}
-
-bool Native::Aaa::Server::Radius::Proxy::EapUser::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ignore_open_session.yfilter);
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::EapUser::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-native:native/aaa/Cisco-IOS-XE-aaa:server/radius/proxy/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Native::Aaa::Server::Radius::Proxy::EapUser::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "eap-user";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Aaa::Server::Radius::Proxy::EapUser::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ignore_open_session.is_set || is_set(ignore_open_session.yfilter)) leaf_name_data.push_back(ignore_open_session.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Aaa::Server::Radius::Proxy::EapUser::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Aaa::Server::Radius::Proxy::EapUser::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Aaa::Server::Radius::Proxy::EapUser::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ignore-open-session")
-    {
-        ignore_open_session = value;
-        ignore_open_session.value_namespace = name_space;
-        ignore_open_session.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Aaa::Server::Radius::Proxy::EapUser::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ignore-open-session")
-    {
-        ignore_open_session.yfilter = yfilter;
-    }
-}
-
-bool Native::Aaa::Server::Radius::Proxy::EapUser::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ignore-open-session")
-        return true;
-    return false;
-}
+const Enum::YLeaf Native::Aaa::Group::Server::Radius::ServerPrivate::Key::Encryption::Y_0 {0, "0"};
+const Enum::YLeaf Native::Aaa::Group::Server::Radius::ServerPrivate::Key::Encryption::Y_6 {1, "6"};
+const Enum::YLeaf Native::Aaa::Group::Server::Radius::ServerPrivate::Key::Encryption::Y_7 {2, "7"};
 
 const Enum::YLeaf Native::Aaa::Authentication::Dot1x::Dot1xList::Group::radius {0, "radius"};
 const Enum::YLeaf Native::Aaa::Authentication::Dot1x::Dot1xList::Group::ldap {1, "ldap"};
@@ -17419,54 +18339,6 @@ const Enum::YLeaf Native::Aaa::Server::Radius::DynamicAuthor::Client::ServerKey:
 const Enum::YLeaf Native::Aaa::Server::Radius::DynamicAuthor::ServerKey::Key::Y_0 {0, "0"};
 const Enum::YLeaf Native::Aaa::Server::Radius::DynamicAuthor::ServerKey::Key::Y_6 {1, "6"};
 const Enum::YLeaf Native::Aaa::Server::Radius::DynamicAuthor::ServerKey::Key::Y_7 {2, "7"};
-
-const Enum::YLeaf Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Key::Key_::Y_0 {0, "0"};
-const Enum::YLeaf Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Key::Key_::Y_6 {1, "6"};
-const Enum::YLeaf Native::Aaa::Server::Radius::PolicyDevice::Client::Vrf::Key::Key_::Y_7 {2, "7"};
-
-const Enum::YLeaf Native::Aaa::Server::Radius::PolicyDevice::Client::Key::Key_::Y_0 {0, "0"};
-const Enum::YLeaf Native::Aaa::Server::Radius::PolicyDevice::Client::Key::Key_::Y_6 {1, "6"};
-const Enum::YLeaf Native::Aaa::Server::Radius::PolicyDevice::Client::Key::Key_::Y_7 {2, "7"};
-
-const Enum::YLeaf Native::Aaa::Server::Radius::PolicyDevice::Key::Key_::Y_0 {0, "0"};
-const Enum::YLeaf Native::Aaa::Server::Radius::PolicyDevice::Key::Key_::Y_6 {1, "6"};
-const Enum::YLeaf Native::Aaa::Server::Radius::PolicyDevice::Key::Key_::Y_7 {2, "7"};
-
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::Type::lower_case {0, "lower-case"};
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Default::Type::upper_case {1, "upper-case"};
-
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf::Type::lower_case {0, "lower-case"};
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Ietf::Type::upper_case {1, "upper-case"};
-
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::Type::lower_case {0, "lower-case"};
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Colon::Type::upper_case {1, "upper-case"};
-
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::Type::lower_case {0, "lower-case"};
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Dot::Type::upper_case {1, "upper-case"};
-
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::Type::lower_case {0, "lower-case"};
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::OneByte::Delimiter::Hyphen::Type::upper_case {1, "upper-case"};
-
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::Type::lower_case {0, "lower-case"};
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Colon::Type::upper_case {1, "upper-case"};
-
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::Type::lower_case {0, "lower-case"};
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Dot::Type::upper_case {1, "upper-case"};
-
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::Type::lower_case {0, "lower-case"};
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::ThreeByte::Delimiter::Hyphen::Type::upper_case {1, "upper-case"};
-
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::Type::lower_case {0, "lower-case"};
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Colon::Type::upper_case {1, "upper-case"};
-
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::Type::lower_case {0, "lower-case"};
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Dot::Type::upper_case {1, "upper-case"};
-
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::Type::lower_case {0, "lower-case"};
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::TwoByte::Delimiter::Hyphen::Type::upper_case {1, "upper-case"};
-
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Unformatted::Type::lower_case {0, "lower-case"};
-const Enum::YLeaf Native::Aaa::Server::Radius::Proxy::CallingStationId::Format::MacAddress::Unformatted::Type::upper_case {1, "upper-case"};
 
 
 }

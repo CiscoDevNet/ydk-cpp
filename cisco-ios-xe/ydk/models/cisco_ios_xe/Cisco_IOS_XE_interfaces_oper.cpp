@@ -9830,6 +9830,7 @@ const Enum::YLeaf EtherSpeed::speed_40gb {5, "speed-40gb"};
 const Enum::YLeaf EtherSpeed::speed_50gb {6, "speed-50gb"};
 const Enum::YLeaf EtherSpeed::speed_100gb {7, "speed-100gb"};
 const Enum::YLeaf EtherSpeed::speed_unknown {8, "speed-unknown"};
+const Enum::YLeaf EtherSpeed::speed_auto {9, "speed-auto"};
 
 
 }

@@ -83,10 +83,12 @@ class SubscriberAccounting::Nodes::Node : public ydk::Entity
         class SubscriberAccountingSessionFeatures; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures
         class SubscriberAccountingSummary; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary
         class SubscriberAccountingFlowFeatures; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures
+        class SubscriberAccountingSrgFeatures; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures> subscriber_accounting_session_features;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary> subscriber_accounting_summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures> subscriber_accounting_flow_features;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures> subscriber_accounting_srg_features;
         
 }; // SubscriberAccounting::Nodes::Node
 
@@ -484,6 +486,80 @@ class SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::Subsc
         ydk::YLeaf prepaid_charging_rule; //type: string
 
 }; // SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData
+
+
+class SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures : public ydk::Entity
+{
+    public:
+        SubscriberAccountingSrgFeatures();
+        ~SubscriberAccountingSrgFeatures();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SubscriberAccountingSrgFeature; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature
+
+        ydk::YList subscriber_accounting_srg_feature;
+        
+}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures
+
+
+class SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature : public ydk::Entity
+{
+    public:
+        SubscriberAccountingSrgFeature();
+        ~SubscriberAccountingSrgFeature();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        class SrgStatusCounters; //type: SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::SrgStatusCounters
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_subscriber_accounting_oper::SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::SrgStatusCounters> srg_status_counters;
+        
+}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature
+
+
+class SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::SrgStatusCounters : public ydk::Entity
+{
+    public:
+        SrgStatusCounters();
+        ~SrgStatusCounters();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf access_interface_handle; //type: uint32
+        ydk::YLeaf accounting_mode; //type: uint32
+        ydk::YLeaf srg_node_role; //type: uint32
+        ydk::YLeaf srg_master_eoms_pending_flag; //type: boolean
+        ydk::YLeaf srg_diameter_up_flag; //type: boolean
+        ydk::YLeaf srg_role_upd_time; //type: string
+
+}; // SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::SrgStatusCounters
 
 
 }

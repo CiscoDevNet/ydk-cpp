@@ -12,6 +12,2401 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ifmgr_cfg {
 
+InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::FrameSeconds()
+    :
+    window{YType::uint32, "window"}
+        ,
+    threshold(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold>())
+{
+    threshold->parent = this;
+
+    yang_name = "frame-seconds"; yang_parent_name = "link-monitoring"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::~FrameSeconds()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::has_data() const
+{
+    if (is_presence_container) return true;
+    return window.is_set
+	|| (threshold !=  nullptr && threshold->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(window.yfilter)
+	|| (threshold !=  nullptr && threshold->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "frame-seconds";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (window.is_set || is_set(window.yfilter)) leaf_name_data.push_back(window.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "threshold")
+    {
+        if(threshold == nullptr)
+        {
+            threshold = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold>();
+        }
+        return threshold;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(threshold != nullptr)
+    {
+        _children["threshold"] = threshold;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "window")
+    {
+        window = value;
+        window.value_namespace = name_space;
+        window.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "window")
+    {
+        window.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold" || name == "window")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold::Threshold()
+    :
+    threshold_low{YType::uint32, "threshold-low"},
+    threshold_high{YType::uint32, "threshold-high"}
+{
+
+    yang_name = "threshold"; yang_parent_name = "frame-seconds"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold::~Threshold()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return threshold_low.is_set
+	|| threshold_high.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(threshold_low.yfilter)
+	|| ydk::is_set(threshold_high.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (threshold_low.is_set || is_set(threshold_low.yfilter)) leaf_name_data.push_back(threshold_low.get_name_leafdata());
+    if (threshold_high.is_set || is_set(threshold_high.yfilter)) leaf_name_data.push_back(threshold_high.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "threshold-low")
+    {
+        threshold_low = value;
+        threshold_low.value_namespace = name_space;
+        threshold_low.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold-high")
+    {
+        threshold_high = value;
+        threshold_high.value_namespace = name_space;
+        threshold_high.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "threshold-low")
+    {
+        threshold_low.yfilter = yfilter;
+    }
+    if(value_path == "threshold-high")
+    {
+        threshold_high.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold-low" || name == "threshold-high")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Frame()
+    :
+    window{YType::uint32, "window"}
+        ,
+    threshold(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold>())
+{
+    threshold->parent = this;
+
+    yang_name = "frame"; yang_parent_name = "link-monitoring"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::~Frame()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::has_data() const
+{
+    if (is_presence_container) return true;
+    return window.is_set
+	|| (threshold !=  nullptr && threshold->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(window.yfilter)
+	|| (threshold !=  nullptr && threshold->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "frame";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (window.is_set || is_set(window.yfilter)) leaf_name_data.push_back(window.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "threshold")
+    {
+        if(threshold == nullptr)
+        {
+            threshold = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold>();
+        }
+        return threshold;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(threshold != nullptr)
+    {
+        _children["threshold"] = threshold;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "window")
+    {
+        window = value;
+        window.value_namespace = name_space;
+        window.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "window")
+    {
+        window.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold" || name == "window")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold::Threshold()
+    :
+    threshold_low{YType::uint32, "threshold-low"},
+    threshold_high{YType::uint32, "threshold-high"},
+    multiplier_low{YType::enumeration, "multiplier-low"},
+    multiplier_high{YType::enumeration, "multiplier-high"}
+{
+
+    yang_name = "threshold"; yang_parent_name = "frame"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold::~Threshold()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return threshold_low.is_set
+	|| threshold_high.is_set
+	|| multiplier_low.is_set
+	|| multiplier_high.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(threshold_low.yfilter)
+	|| ydk::is_set(threshold_high.yfilter)
+	|| ydk::is_set(multiplier_low.yfilter)
+	|| ydk::is_set(multiplier_high.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (threshold_low.is_set || is_set(threshold_low.yfilter)) leaf_name_data.push_back(threshold_low.get_name_leafdata());
+    if (threshold_high.is_set || is_set(threshold_high.yfilter)) leaf_name_data.push_back(threshold_high.get_name_leafdata());
+    if (multiplier_low.is_set || is_set(multiplier_low.yfilter)) leaf_name_data.push_back(multiplier_low.get_name_leafdata());
+    if (multiplier_high.is_set || is_set(multiplier_high.yfilter)) leaf_name_data.push_back(multiplier_high.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "threshold-low")
+    {
+        threshold_low = value;
+        threshold_low.value_namespace = name_space;
+        threshold_low.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold-high")
+    {
+        threshold_high = value;
+        threshold_high.value_namespace = name_space;
+        threshold_high.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "multiplier-low")
+    {
+        multiplier_low = value;
+        multiplier_low.value_namespace = name_space;
+        multiplier_low.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "multiplier-high")
+    {
+        multiplier_high = value;
+        multiplier_high.value_namespace = name_space;
+        multiplier_high.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "threshold-low")
+    {
+        threshold_low.yfilter = yfilter;
+    }
+    if(value_path == "threshold-high")
+    {
+        threshold_high.yfilter = yfilter;
+    }
+    if(value_path == "multiplier-low")
+    {
+        multiplier_low.yfilter = yfilter;
+    }
+    if(value_path == "multiplier-high")
+    {
+        multiplier_high.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold-low" || name == "threshold-high" || name == "multiplier-low" || name == "multiplier-high")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::CarrierDelay::CarrierDelay()
+    :
+    carrier_delay_up{YType::uint32, "carrier-delay-up"},
+    carrier_delay_down{YType::uint32, "carrier-delay-down"}
+{
+
+    yang_name = "carrier-delay"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::CarrierDelay::~CarrierDelay()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::CarrierDelay::has_data() const
+{
+    if (is_presence_container) return true;
+    return carrier_delay_up.is_set
+	|| carrier_delay_down.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::CarrierDelay::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(carrier_delay_up.yfilter)
+	|| ydk::is_set(carrier_delay_down.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::CarrierDelay::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2-eth-infra-cfg:carrier-delay";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::CarrierDelay::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (carrier_delay_up.is_set || is_set(carrier_delay_up.yfilter)) leaf_name_data.push_back(carrier_delay_up.get_name_leafdata());
+    if (carrier_delay_down.is_set || is_set(carrier_delay_down.yfilter)) leaf_name_data.push_back(carrier_delay_down.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::CarrierDelay::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::CarrierDelay::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::CarrierDelay::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "carrier-delay-up")
+    {
+        carrier_delay_up = value;
+        carrier_delay_up.value_namespace = name_space;
+        carrier_delay_up.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "carrier-delay-down")
+    {
+        carrier_delay_down = value;
+        carrier_delay_down.value_namespace = name_space;
+        carrier_delay_down.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::CarrierDelay::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "carrier-delay-up")
+    {
+        carrier_delay_up.yfilter = yfilter;
+    }
+    if(value_path == "carrier-delay-down")
+    {
+        carrier_delay_down.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::CarrierDelay::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "carrier-delay-up" || name == "carrier-delay-down")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanTrunkConfiguration()
+    :
+    tunneling_ethertype{YType::enumeration, "tunneling-ethertype"}
+        ,
+    native_vlan_identifier(nullptr) // presence node
+    , vlan_switched(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched>())
+{
+    vlan_switched->parent = this;
+
+    yang_name = "vlan-trunk-configuration"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::~VlanTrunkConfiguration()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::has_data() const
+{
+    if (is_presence_container) return true;
+    return tunneling_ethertype.is_set
+	|| (native_vlan_identifier !=  nullptr && native_vlan_identifier->has_data())
+	|| (vlan_switched !=  nullptr && vlan_switched->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(tunneling_ethertype.yfilter)
+	|| (native_vlan_identifier !=  nullptr && native_vlan_identifier->has_operation())
+	|| (vlan_switched !=  nullptr && vlan_switched->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-l2-eth-infra-cfg:vlan-trunk-configuration";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (tunneling_ethertype.is_set || is_set(tunneling_ethertype.yfilter)) leaf_name_data.push_back(tunneling_ethertype.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "native-vlan-identifier")
+    {
+        if(native_vlan_identifier == nullptr)
+        {
+            native_vlan_identifier = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier>();
+        }
+        return native_vlan_identifier;
+    }
+
+    if(child_yang_name == "vlan-switched")
+    {
+        if(vlan_switched == nullptr)
+        {
+            vlan_switched = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched>();
+        }
+        return vlan_switched;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(native_vlan_identifier != nullptr)
+    {
+        _children["native-vlan-identifier"] = native_vlan_identifier;
+    }
+
+    if(vlan_switched != nullptr)
+    {
+        _children["vlan-switched"] = vlan_switched;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "tunneling-ethertype")
+    {
+        tunneling_ethertype = value;
+        tunneling_ethertype.value_namespace = name_space;
+        tunneling_ethertype.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "tunneling-ethertype")
+    {
+        tunneling_ethertype.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "native-vlan-identifier" || name == "vlan-switched" || name == "tunneling-ethertype")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier::NativeVlanIdentifier()
+    :
+    vlan_type{YType::enumeration, "vlan-type"},
+    vlan_identifier{YType::uint32, "vlan-identifier"}
+{
+
+    yang_name = "native-vlan-identifier"; yang_parent_name = "vlan-trunk-configuration"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier::~NativeVlanIdentifier()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier::has_data() const
+{
+    if (is_presence_container) return true;
+    return vlan_type.is_set
+	|| vlan_identifier.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vlan_type.yfilter)
+	|| ydk::is_set(vlan_identifier.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "native-vlan-identifier";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vlan_type.is_set || is_set(vlan_type.yfilter)) leaf_name_data.push_back(vlan_type.get_name_leafdata());
+    if (vlan_identifier.is_set || is_set(vlan_identifier.yfilter)) leaf_name_data.push_back(vlan_identifier.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vlan-type")
+    {
+        vlan_type = value;
+        vlan_type.value_namespace = name_space;
+        vlan_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vlan-identifier")
+    {
+        vlan_identifier = value;
+        vlan_identifier.value_namespace = name_space;
+        vlan_identifier.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vlan-type")
+    {
+        vlan_type.yfilter = yfilter;
+    }
+    if(value_path == "vlan-identifier")
+    {
+        vlan_identifier.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vlan-type" || name == "vlan-identifier")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched::VlanSwitched()
+    :
+    mode{YType::enumeration, "mode"},
+    access_vlan{YType::uint32, "access-vlan"},
+    trunk_tag_type{YType::enumeration, "trunk-tag-type"},
+    trunk_vla_ns{YType::str, "trunk-vla-ns"}
+{
+
+    yang_name = "vlan-switched"; yang_parent_name = "vlan-trunk-configuration"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched::~VlanSwitched()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched::has_data() const
+{
+    if (is_presence_container) return true;
+    return mode.is_set
+	|| access_vlan.is_set
+	|| trunk_tag_type.is_set
+	|| trunk_vla_ns.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mode.yfilter)
+	|| ydk::is_set(access_vlan.yfilter)
+	|| ydk::is_set(trunk_tag_type.yfilter)
+	|| ydk::is_set(trunk_vla_ns.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vlan-switched";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (access_vlan.is_set || is_set(access_vlan.yfilter)) leaf_name_data.push_back(access_vlan.get_name_leafdata());
+    if (trunk_tag_type.is_set || is_set(trunk_tag_type.yfilter)) leaf_name_data.push_back(trunk_tag_type.get_name_leafdata());
+    if (trunk_vla_ns.is_set || is_set(trunk_vla_ns.yfilter)) leaf_name_data.push_back(trunk_vla_ns.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mode")
+    {
+        mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "access-vlan")
+    {
+        access_vlan = value;
+        access_vlan.value_namespace = name_space;
+        access_vlan.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "trunk-tag-type")
+    {
+        trunk_tag_type = value;
+        trunk_tag_type.value_namespace = name_space;
+        trunk_tag_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "trunk-vla-ns")
+    {
+        trunk_vla_ns = value;
+        trunk_vla_ns.value_namespace = name_space;
+        trunk_vla_ns.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+    if(value_path == "access-vlan")
+    {
+        access_vlan.yfilter = yfilter;
+    }
+    if(value_path == "trunk-tag-type")
+    {
+        trunk_tag_type.yfilter = yfilter;
+    }
+    if(value_path == "trunk-vla-ns")
+    {
+        trunk_vla_ns.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mode" || name == "access-vlan" || name == "trunk-tag-type" || name == "trunk-vla-ns")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::SsrpSession::SsrpSession()
+    :
+    group_id(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId>())
+{
+    group_id->parent = this;
+
+    yang_name = "ssrp-session"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::SsrpSession::~SsrpSession()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::SsrpSession::has_data() const
+{
+    if (is_presence_container) return true;
+    return (group_id !=  nullptr && group_id->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::SsrpSession::has_operation() const
+{
+    return is_set(yfilter)
+	|| (group_id !=  nullptr && group_id->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::SsrpSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-ppp-ma-ssrp-cfg:ssrp-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::SsrpSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::SsrpSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "group-id")
+    {
+        if(group_id == nullptr)
+        {
+            group_id = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId>();
+        }
+        return group_id;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::SsrpSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(group_id != nullptr)
+    {
+        _children["group-id"] = group_id;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::SsrpSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::SsrpSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::SsrpSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group-id")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId::GroupId()
+    :
+    group{YType::uint32, "group"},
+    id{YType::uint32, "id"}
+{
+
+    yang_name = "group-id"; yang_parent_name = "ssrp-session"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId::~GroupId()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId::has_data() const
+{
+    if (is_presence_container) return true;
+    return group.is_set
+	|| id.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(group.yfilter)
+	|| ydk::is_set(id.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "group-id";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
+    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "group")
+    {
+        group = value;
+        group.value_namespace = name_space;
+        group.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "id")
+    {
+        id = value;
+        id.value_namespace = name_space;
+        id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "group")
+    {
+        group.yfilter = yfilter;
+    }
+    if(value_path == "id")
+    {
+        id.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::SsrpSession::GroupId::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "group" || name == "id")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Cdp::Cdp()
+    :
+    enable{YType::empty, "enable"}
+{
+
+    yang_name = "cdp"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Cdp::~Cdp()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Cdp::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Cdp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Cdp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-cdp-cfg:cdp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Cdp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Cdp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Cdp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Cdp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Cdp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Cdp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Dwdm::Dwdm()
+    :
+    enable_vtxp{YType::boolean, "enable-vtxp"},
+    network_port_id{YType::str, "network-port-id"},
+    transport_admin_state{YType::enumeration, "transport-admin-state"},
+    laser{YType::empty, "laser"},
+    transmit_power{YType::int32, "transmit-power"},
+    rx_threshold{YType::int32, "rx-threshold"},
+    network_connection_id{YType::str, "network-connection-id"},
+    loopback{YType::enumeration, "loopback"}
+        ,
+    network_srlgs(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs>())
+    , g709(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709>())
+    , wavelength(nullptr) // presence node
+{
+    network_srlgs->parent = this;
+    g709->parent = this;
+
+    yang_name = "dwdm"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Dwdm::~Dwdm()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable_vtxp.is_set
+	|| network_port_id.is_set
+	|| transport_admin_state.is_set
+	|| laser.is_set
+	|| transmit_power.is_set
+	|| rx_threshold.is_set
+	|| network_connection_id.is_set
+	|| loopback.is_set
+	|| (network_srlgs !=  nullptr && network_srlgs->has_data())
+	|| (g709 !=  nullptr && g709->has_data())
+	|| (wavelength !=  nullptr && wavelength->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable_vtxp.yfilter)
+	|| ydk::is_set(network_port_id.yfilter)
+	|| ydk::is_set(transport_admin_state.yfilter)
+	|| ydk::is_set(laser.yfilter)
+	|| ydk::is_set(transmit_power.yfilter)
+	|| ydk::is_set(rx_threshold.yfilter)
+	|| ydk::is_set(network_connection_id.yfilter)
+	|| ydk::is_set(loopback.yfilter)
+	|| (network_srlgs !=  nullptr && network_srlgs->has_operation())
+	|| (g709 !=  nullptr && g709->has_operation())
+	|| (wavelength !=  nullptr && wavelength->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Dwdm::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-dwdm-ui-cfg:dwdm";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Dwdm::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable_vtxp.is_set || is_set(enable_vtxp.yfilter)) leaf_name_data.push_back(enable_vtxp.get_name_leafdata());
+    if (network_port_id.is_set || is_set(network_port_id.yfilter)) leaf_name_data.push_back(network_port_id.get_name_leafdata());
+    if (transport_admin_state.is_set || is_set(transport_admin_state.yfilter)) leaf_name_data.push_back(transport_admin_state.get_name_leafdata());
+    if (laser.is_set || is_set(laser.yfilter)) leaf_name_data.push_back(laser.get_name_leafdata());
+    if (transmit_power.is_set || is_set(transmit_power.yfilter)) leaf_name_data.push_back(transmit_power.get_name_leafdata());
+    if (rx_threshold.is_set || is_set(rx_threshold.yfilter)) leaf_name_data.push_back(rx_threshold.get_name_leafdata());
+    if (network_connection_id.is_set || is_set(network_connection_id.yfilter)) leaf_name_data.push_back(network_connection_id.get_name_leafdata());
+    if (loopback.is_set || is_set(loopback.yfilter)) leaf_name_data.push_back(loopback.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "network-srlgs")
+    {
+        if(network_srlgs == nullptr)
+        {
+            network_srlgs = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs>();
+        }
+        return network_srlgs;
+    }
+
+    if(child_yang_name == "g709")
+    {
+        if(g709 == nullptr)
+        {
+            g709 = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709>();
+        }
+        return g709;
+    }
+
+    if(child_yang_name == "wavelength")
+    {
+        if(wavelength == nullptr)
+        {
+            wavelength = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::Wavelength>();
+        }
+        return wavelength;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(network_srlgs != nullptr)
+    {
+        _children["network-srlgs"] = network_srlgs;
+    }
+
+    if(g709 != nullptr)
+    {
+        _children["g709"] = g709;
+    }
+
+    if(wavelength != nullptr)
+    {
+        _children["wavelength"] = wavelength;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Dwdm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable-vtxp")
+    {
+        enable_vtxp = value;
+        enable_vtxp.value_namespace = name_space;
+        enable_vtxp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "network-port-id")
+    {
+        network_port_id = value;
+        network_port_id.value_namespace = name_space;
+        network_port_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "transport-admin-state")
+    {
+        transport_admin_state = value;
+        transport_admin_state.value_namespace = name_space;
+        transport_admin_state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "laser")
+    {
+        laser = value;
+        laser.value_namespace = name_space;
+        laser.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "transmit-power")
+    {
+        transmit_power = value;
+        transmit_power.value_namespace = name_space;
+        transmit_power.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rx-threshold")
+    {
+        rx_threshold = value;
+        rx_threshold.value_namespace = name_space;
+        rx_threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "network-connection-id")
+    {
+        network_connection_id = value;
+        network_connection_id.value_namespace = name_space;
+        network_connection_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "loopback")
+    {
+        loopback = value;
+        loopback.value_namespace = name_space;
+        loopback.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Dwdm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable-vtxp")
+    {
+        enable_vtxp.yfilter = yfilter;
+    }
+    if(value_path == "network-port-id")
+    {
+        network_port_id.yfilter = yfilter;
+    }
+    if(value_path == "transport-admin-state")
+    {
+        transport_admin_state.yfilter = yfilter;
+    }
+    if(value_path == "laser")
+    {
+        laser.yfilter = yfilter;
+    }
+    if(value_path == "transmit-power")
+    {
+        transmit_power.yfilter = yfilter;
+    }
+    if(value_path == "rx-threshold")
+    {
+        rx_threshold.yfilter = yfilter;
+    }
+    if(value_path == "network-connection-id")
+    {
+        network_connection_id.yfilter = yfilter;
+    }
+    if(value_path == "loopback")
+    {
+        loopback.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "network-srlgs" || name == "g709" || name == "wavelength" || name == "enable-vtxp" || name == "network-port-id" || name == "transport-admin-state" || name == "laser" || name == "transmit-power" || name == "rx-threshold" || name == "network-connection-id" || name == "loopback")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlgs()
+    :
+    network_srlg(this, {"set_id"})
+{
+
+    yang_name = "network-srlgs"; yang_parent_name = "dwdm"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::~NetworkSrlgs()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<network_srlg.len(); index++)
+    {
+        if(network_srlg[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::has_operation() const
+{
+    for (std::size_t index=0; index<network_srlg.len(); index++)
+    {
+        if(network_srlg[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "network-srlgs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "network-srlg")
+    {
+        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg>();
+        ent_->parent = this;
+        network_srlg.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : network_srlg.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "network-srlg")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::NetworkSrlg()
+    :
+    set_id{YType::uint32, "set-id"},
+    srlg1{YType::uint32, "srlg1"},
+    srlg2{YType::uint32, "srlg2"},
+    srlg3{YType::uint32, "srlg3"},
+    srlg4{YType::uint32, "srlg4"},
+    srlg5{YType::uint32, "srlg5"},
+    srlg6{YType::uint32, "srlg6"}
+{
+
+    yang_name = "network-srlg"; yang_parent_name = "network-srlgs"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::~NetworkSrlg()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::has_data() const
+{
+    if (is_presence_container) return true;
+    return set_id.is_set
+	|| srlg1.is_set
+	|| srlg2.is_set
+	|| srlg3.is_set
+	|| srlg4.is_set
+	|| srlg5.is_set
+	|| srlg6.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(set_id.yfilter)
+	|| ydk::is_set(srlg1.yfilter)
+	|| ydk::is_set(srlg2.yfilter)
+	|| ydk::is_set(srlg3.yfilter)
+	|| ydk::is_set(srlg4.yfilter)
+	|| ydk::is_set(srlg5.yfilter)
+	|| ydk::is_set(srlg6.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "network-srlg";
+    ADD_KEY_TOKEN(set_id, "set-id");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (set_id.is_set || is_set(set_id.yfilter)) leaf_name_data.push_back(set_id.get_name_leafdata());
+    if (srlg1.is_set || is_set(srlg1.yfilter)) leaf_name_data.push_back(srlg1.get_name_leafdata());
+    if (srlg2.is_set || is_set(srlg2.yfilter)) leaf_name_data.push_back(srlg2.get_name_leafdata());
+    if (srlg3.is_set || is_set(srlg3.yfilter)) leaf_name_data.push_back(srlg3.get_name_leafdata());
+    if (srlg4.is_set || is_set(srlg4.yfilter)) leaf_name_data.push_back(srlg4.get_name_leafdata());
+    if (srlg5.is_set || is_set(srlg5.yfilter)) leaf_name_data.push_back(srlg5.get_name_leafdata());
+    if (srlg6.is_set || is_set(srlg6.yfilter)) leaf_name_data.push_back(srlg6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "set-id")
+    {
+        set_id = value;
+        set_id.value_namespace = name_space;
+        set_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srlg1")
+    {
+        srlg1 = value;
+        srlg1.value_namespace = name_space;
+        srlg1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srlg2")
+    {
+        srlg2 = value;
+        srlg2.value_namespace = name_space;
+        srlg2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srlg3")
+    {
+        srlg3 = value;
+        srlg3.value_namespace = name_space;
+        srlg3.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srlg4")
+    {
+        srlg4 = value;
+        srlg4.value_namespace = name_space;
+        srlg4.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srlg5")
+    {
+        srlg5 = value;
+        srlg5.value_namespace = name_space;
+        srlg5.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srlg6")
+    {
+        srlg6 = value;
+        srlg6.value_namespace = name_space;
+        srlg6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "set-id")
+    {
+        set_id.yfilter = yfilter;
+    }
+    if(value_path == "srlg1")
+    {
+        srlg1.yfilter = yfilter;
+    }
+    if(value_path == "srlg2")
+    {
+        srlg2.yfilter = yfilter;
+    }
+    if(value_path == "srlg3")
+    {
+        srlg3.yfilter = yfilter;
+    }
+    if(value_path == "srlg4")
+    {
+        srlg4.yfilter = yfilter;
+    }
+    if(value_path == "srlg5")
+    {
+        srlg5.yfilter = yfilter;
+    }
+    if(value_path == "srlg6")
+    {
+        srlg6.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "set-id" || name == "srlg1" || name == "srlg2" || name == "srlg3" || name == "srlg4" || name == "srlg5" || name == "srlg6")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::G709()
+    :
+    proactive{YType::enumeration, "proactive"},
+    bdi_to_gais{YType::empty, "bdi-to-gais"},
+    tim_to_gais{YType::empty, "tim-to-gais"},
+    proactive_logging_file{YType::str, "proactive-logging-file"},
+    tti_processing{YType::empty, "tti-processing"},
+    enable{YType::boolean, "enable"},
+    framing{YType::enumeration, "framing"}
+        ,
+    odu(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu>())
+    , otu(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu>())
+    , prbs(nullptr) // presence node
+    , fec(nullptr) // presence node
+{
+    odu->parent = this;
+    otu->parent = this;
+
+    yang_name = "g709"; yang_parent_name = "dwdm"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::~G709()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::has_data() const
+{
+    if (is_presence_container) return true;
+    return proactive.is_set
+	|| bdi_to_gais.is_set
+	|| tim_to_gais.is_set
+	|| proactive_logging_file.is_set
+	|| tti_processing.is_set
+	|| enable.is_set
+	|| framing.is_set
+	|| (odu !=  nullptr && odu->has_data())
+	|| (otu !=  nullptr && otu->has_data())
+	|| (prbs !=  nullptr && prbs->has_data())
+	|| (fec !=  nullptr && fec->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(proactive.yfilter)
+	|| ydk::is_set(bdi_to_gais.yfilter)
+	|| ydk::is_set(tim_to_gais.yfilter)
+	|| ydk::is_set(proactive_logging_file.yfilter)
+	|| ydk::is_set(tti_processing.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(framing.yfilter)
+	|| (odu !=  nullptr && odu->has_operation())
+	|| (otu !=  nullptr && otu->has_operation())
+	|| (prbs !=  nullptr && prbs->has_operation())
+	|| (fec !=  nullptr && fec->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "g709";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (proactive.is_set || is_set(proactive.yfilter)) leaf_name_data.push_back(proactive.get_name_leafdata());
+    if (bdi_to_gais.is_set || is_set(bdi_to_gais.yfilter)) leaf_name_data.push_back(bdi_to_gais.get_name_leafdata());
+    if (tim_to_gais.is_set || is_set(tim_to_gais.yfilter)) leaf_name_data.push_back(tim_to_gais.get_name_leafdata());
+    if (proactive_logging_file.is_set || is_set(proactive_logging_file.yfilter)) leaf_name_data.push_back(proactive_logging_file.get_name_leafdata());
+    if (tti_processing.is_set || is_set(tti_processing.yfilter)) leaf_name_data.push_back(tti_processing.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (framing.is_set || is_set(framing.yfilter)) leaf_name_data.push_back(framing.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "odu")
+    {
+        if(odu == nullptr)
+        {
+            odu = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu>();
+        }
+        return odu;
+    }
+
+    if(child_yang_name == "otu")
+    {
+        if(otu == nullptr)
+        {
+            otu = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu>();
+        }
+        return otu;
+    }
+
+    if(child_yang_name == "prbs")
+    {
+        if(prbs == nullptr)
+        {
+            prbs = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Prbs>();
+        }
+        return prbs;
+    }
+
+    if(child_yang_name == "fec")
+    {
+        if(fec == nullptr)
+        {
+            fec = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Fec>();
+        }
+        return fec;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(odu != nullptr)
+    {
+        _children["odu"] = odu;
+    }
+
+    if(otu != nullptr)
+    {
+        _children["otu"] = otu;
+    }
+
+    if(prbs != nullptr)
+    {
+        _children["prbs"] = prbs;
+    }
+
+    if(fec != nullptr)
+    {
+        _children["fec"] = fec;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "proactive")
+    {
+        proactive = value;
+        proactive.value_namespace = name_space;
+        proactive.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "bdi-to-gais")
+    {
+        bdi_to_gais = value;
+        bdi_to_gais.value_namespace = name_space;
+        bdi_to_gais.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tim-to-gais")
+    {
+        tim_to_gais = value;
+        tim_to_gais.value_namespace = name_space;
+        tim_to_gais.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "proactive-logging-file")
+    {
+        proactive_logging_file = value;
+        proactive_logging_file.value_namespace = name_space;
+        proactive_logging_file.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tti-processing")
+    {
+        tti_processing = value;
+        tti_processing.value_namespace = name_space;
+        tti_processing.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "framing")
+    {
+        framing = value;
+        framing.value_namespace = name_space;
+        framing.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "proactive")
+    {
+        proactive.yfilter = yfilter;
+    }
+    if(value_path == "bdi-to-gais")
+    {
+        bdi_to_gais.yfilter = yfilter;
+    }
+    if(value_path == "tim-to-gais")
+    {
+        tim_to_gais.yfilter = yfilter;
+    }
+    if(value_path == "proactive-logging-file")
+    {
+        proactive_logging_file.yfilter = yfilter;
+    }
+    if(value_path == "tti-processing")
+    {
+        tti_processing.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "framing")
+    {
+        framing.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "odu" || name == "otu" || name == "prbs" || name == "fec" || name == "proactive" || name == "bdi-to-gais" || name == "tim-to-gais" || name == "proactive-logging-file" || name == "tti-processing" || name == "enable" || name == "framing")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::Odu()
+    :
+    odu_reports(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports>())
+    , odu_thresholds(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds>())
+    , odu_expected_tti(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti>())
+    , odu_tx_tti(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduTxTti>())
+{
+    odu_reports->parent = this;
+    odu_thresholds->parent = this;
+    odu_expected_tti->parent = this;
+    odu_tx_tti->parent = this;
+
+    yang_name = "odu"; yang_parent_name = "g709"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::~Odu()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::has_data() const
+{
+    if (is_presence_container) return true;
+    return (odu_reports !=  nullptr && odu_reports->has_data())
+	|| (odu_thresholds !=  nullptr && odu_thresholds->has_data())
+	|| (odu_expected_tti !=  nullptr && odu_expected_tti->has_data())
+	|| (odu_tx_tti !=  nullptr && odu_tx_tti->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::has_operation() const
+{
+    return is_set(yfilter)
+	|| (odu_reports !=  nullptr && odu_reports->has_operation())
+	|| (odu_thresholds !=  nullptr && odu_thresholds->has_operation())
+	|| (odu_expected_tti !=  nullptr && odu_expected_tti->has_operation())
+	|| (odu_tx_tti !=  nullptr && odu_tx_tti->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "odu";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "odu-reports")
+    {
+        if(odu_reports == nullptr)
+        {
+            odu_reports = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports>();
+        }
+        return odu_reports;
+    }
+
+    if(child_yang_name == "odu-thresholds")
+    {
+        if(odu_thresholds == nullptr)
+        {
+            odu_thresholds = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds>();
+        }
+        return odu_thresholds;
+    }
+
+    if(child_yang_name == "odu-expected-tti")
+    {
+        if(odu_expected_tti == nullptr)
+        {
+            odu_expected_tti = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti>();
+        }
+        return odu_expected_tti;
+    }
+
+    if(child_yang_name == "odu-tx-tti")
+    {
+        if(odu_tx_tti == nullptr)
+        {
+            odu_tx_tti = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduTxTti>();
+        }
+        return odu_tx_tti;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(odu_reports != nullptr)
+    {
+        _children["odu-reports"] = odu_reports;
+    }
+
+    if(odu_thresholds != nullptr)
+    {
+        _children["odu-thresholds"] = odu_thresholds;
+    }
+
+    if(odu_expected_tti != nullptr)
+    {
+        _children["odu-expected-tti"] = odu_expected_tti;
+    }
+
+    if(odu_tx_tti != nullptr)
+    {
+        _children["odu-tx-tti"] = odu_tx_tti;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "odu-reports" || name == "odu-thresholds" || name == "odu-expected-tti" || name == "odu-tx-tti")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReports()
+    :
+    odu_report(this, {"alarm"})
+{
+
+    yang_name = "odu-reports"; yang_parent_name = "odu"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::~OduReports()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<odu_report.len(); index++)
+    {
+        if(odu_report[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::has_operation() const
+{
+    for (std::size_t index=0; index<odu_report.len(); index++)
+    {
+        if(odu_report[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "odu-reports";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "odu-report")
+    {
+        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport>();
+        ent_->parent = this;
+        odu_report.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : odu_report.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "odu-report")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport::OduReport()
+    :
+    alarm{YType::enumeration, "alarm"}
+{
+
+    yang_name = "odu-report"; yang_parent_name = "odu-reports"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport::~OduReport()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport::has_data() const
+{
+    if (is_presence_container) return true;
+    return alarm.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(alarm.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "odu-report";
+    ADD_KEY_TOKEN(alarm, "alarm");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (alarm.is_set || is_set(alarm.yfilter)) leaf_name_data.push_back(alarm.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "alarm")
+    {
+        alarm = value;
+        alarm.value_namespace = name_space;
+        alarm.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "alarm")
+    {
+        alarm.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "alarm")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThresholds()
+    :
+    odu_threshold(this, {"threshold"})
+{
+
+    yang_name = "odu-thresholds"; yang_parent_name = "odu"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::~OduThresholds()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<odu_threshold.len(); index++)
+    {
+        if(odu_threshold[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::has_operation() const
+{
+    for (std::size_t index=0; index<odu_threshold.len(); index++)
+    {
+        if(odu_threshold[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "odu-thresholds";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "odu-threshold")
+    {
+        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold>();
+        ent_->parent = this;
+        odu_threshold.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : odu_threshold.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "odu-threshold")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold::OduThreshold()
+    :
+    threshold{YType::enumeration, "threshold"},
+    threshold_value{YType::uint32, "threshold-value"}
+{
+
+    yang_name = "odu-threshold"; yang_parent_name = "odu-thresholds"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold::~OduThreshold()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return threshold.is_set
+	|| threshold_value.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(threshold_value.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "odu-threshold";
+    ADD_KEY_TOKEN(threshold, "threshold");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (threshold_value.is_set || is_set(threshold_value.yfilter)) leaf_name_data.push_back(threshold_value.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold-value")
+    {
+        threshold_value = value;
+        threshold_value.value_namespace = name_space;
+        threshold_value.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+    if(value_path == "threshold-value")
+    {
+        threshold_value.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold" || name == "threshold-value")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti::OduExpectedTti()
+    :
+    string_type{YType::enumeration, "string-type"},
+    ascii_string{YType::str, "ascii-string"},
+    hex_string{YType::str, "hex-string"}
+{
+
+    yang_name = "odu-expected-tti"; yang_parent_name = "odu"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti::~OduExpectedTti()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti::has_data() const
+{
+    if (is_presence_container) return true;
+    return string_type.is_set
+	|| ascii_string.is_set
+	|| hex_string.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(string_type.yfilter)
+	|| ydk::is_set(ascii_string.yfilter)
+	|| ydk::is_set(hex_string.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "odu-expected-tti";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (string_type.is_set || is_set(string_type.yfilter)) leaf_name_data.push_back(string_type.get_name_leafdata());
+    if (ascii_string.is_set || is_set(ascii_string.yfilter)) leaf_name_data.push_back(ascii_string.get_name_leafdata());
+    if (hex_string.is_set || is_set(hex_string.yfilter)) leaf_name_data.push_back(hex_string.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "string-type")
+    {
+        string_type = value;
+        string_type.value_namespace = name_space;
+        string_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ascii-string")
+    {
+        ascii_string = value;
+        ascii_string.value_namespace = name_space;
+        ascii_string.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "hex-string")
+    {
+        hex_string = value;
+        hex_string.value_namespace = name_space;
+        hex_string.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "string-type")
+    {
+        string_type.yfilter = yfilter;
+    }
+    if(value_path == "ascii-string")
+    {
+        ascii_string.yfilter = yfilter;
+    }
+    if(value_path == "hex-string")
+    {
+        hex_string.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "string-type" || name == "ascii-string" || name == "hex-string")
+        return true;
+    return false;
+}
+
 InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduTxTti::OduTxTti()
     :
     string_type{YType::enumeration, "string-type"},
@@ -3737,6 +6132,1721 @@ void InterfaceConfigurations::InterfaceConfiguration::Lldp::Receive::set_filter(
 bool InterfaceConfigurations::InterfaceConfiguration::Lldp::Receive::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "disable")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::Atm()
+    :
+    max_vpi_bits{YType::enumeration, "max-vpi-bits"},
+    vc_class{YType::str, "vc-class"}
+        ,
+    pvps(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps>())
+    , pvcs(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs>())
+    , maximum_cell_packing_timers(nullptr) // presence node
+    , vp_tunnels(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels>())
+{
+    pvps->parent = this;
+    pvcs->parent = this;
+    vp_tunnels->parent = this;
+
+    yang_name = "atm"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::~Atm()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::has_data() const
+{
+    if (is_presence_container) return true;
+    return max_vpi_bits.is_set
+	|| vc_class.is_set
+	|| (pvps !=  nullptr && pvps->has_data())
+	|| (pvcs !=  nullptr && pvcs->has_data())
+	|| (maximum_cell_packing_timers !=  nullptr && maximum_cell_packing_timers->has_data())
+	|| (vp_tunnels !=  nullptr && vp_tunnels->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_vpi_bits.yfilter)
+	|| ydk::is_set(vc_class.yfilter)
+	|| (pvps !=  nullptr && pvps->has_operation())
+	|| (pvcs !=  nullptr && pvcs->has_operation())
+	|| (maximum_cell_packing_timers !=  nullptr && maximum_cell_packing_timers->has_operation())
+	|| (vp_tunnels !=  nullptr && vp_tunnels->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Atm::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-atm-vcm-cfg:atm";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Atm::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_vpi_bits.is_set || is_set(max_vpi_bits.yfilter)) leaf_name_data.push_back(max_vpi_bits.get_name_leafdata());
+    if (vc_class.is_set || is_set(vc_class.yfilter)) leaf_name_data.push_back(vc_class.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pvps")
+    {
+        if(pvps == nullptr)
+        {
+            pvps = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps>();
+        }
+        return pvps;
+    }
+
+    if(child_yang_name == "pvcs")
+    {
+        if(pvcs == nullptr)
+        {
+            pvcs = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs>();
+        }
+        return pvcs;
+    }
+
+    if(child_yang_name == "maximum-cell-packing-timers")
+    {
+        if(maximum_cell_packing_timers == nullptr)
+        {
+            maximum_cell_packing_timers = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::MaximumCellPackingTimers>();
+        }
+        return maximum_cell_packing_timers;
+    }
+
+    if(child_yang_name == "vp-tunnels")
+    {
+        if(vp_tunnels == nullptr)
+        {
+            vp_tunnels = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels>();
+        }
+        return vp_tunnels;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(pvps != nullptr)
+    {
+        _children["pvps"] = pvps;
+    }
+
+    if(pvcs != nullptr)
+    {
+        _children["pvcs"] = pvcs;
+    }
+
+    if(maximum_cell_packing_timers != nullptr)
+    {
+        _children["maximum-cell-packing-timers"] = maximum_cell_packing_timers;
+    }
+
+    if(vp_tunnels != nullptr)
+    {
+        _children["vp-tunnels"] = vp_tunnels;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-vpi-bits")
+    {
+        max_vpi_bits = value;
+        max_vpi_bits.value_namespace = name_space;
+        max_vpi_bits.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vc-class")
+    {
+        vc_class = value;
+        vc_class.value_namespace = name_space;
+        vc_class.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-vpi-bits")
+    {
+        max_vpi_bits.yfilter = yfilter;
+    }
+    if(value_path == "vc-class")
+    {
+        vc_class.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pvps" || name == "pvcs" || name == "maximum-cell-packing-timers" || name == "vp-tunnels" || name == "max-vpi-bits" || name == "vc-class")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvps()
+    :
+    pvp(this, {"vpi"})
+{
+
+    yang_name = "pvps"; yang_parent_name = "atm"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::~Pvps()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pvp.len(); index++)
+    {
+        if(pvp[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::has_operation() const
+{
+    for (std::size_t index=0; index<pvp.len(); index++)
+    {
+        if(pvp[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pvps";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pvp")
+    {
+        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp>();
+        ent_->parent = this;
+        pvp.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pvp.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pvp")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::Pvp()
+    :
+    vpi{YType::uint32, "vpi"},
+    enable{YType::empty, "enable"},
+    test_mode{YType::enumeration, "test-mode"},
+    oam_segment_endpoint{YType::empty, "oam-segment-endpoint"}
+        ,
+    shape(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::Shape>())
+    , cell_packing(nullptr) // presence node
+{
+    shape->parent = this;
+
+    yang_name = "pvp"; yang_parent_name = "pvps"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::~Pvp()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::has_data() const
+{
+    if (is_presence_container) return true;
+    return vpi.is_set
+	|| enable.is_set
+	|| test_mode.is_set
+	|| oam_segment_endpoint.is_set
+	|| (shape !=  nullptr && shape->has_data())
+	|| (cell_packing !=  nullptr && cell_packing->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vpi.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(test_mode.yfilter)
+	|| ydk::is_set(oam_segment_endpoint.yfilter)
+	|| (shape !=  nullptr && shape->has_operation())
+	|| (cell_packing !=  nullptr && cell_packing->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pvp";
+    ADD_KEY_TOKEN(vpi, "vpi");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vpi.is_set || is_set(vpi.yfilter)) leaf_name_data.push_back(vpi.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (test_mode.is_set || is_set(test_mode.yfilter)) leaf_name_data.push_back(test_mode.get_name_leafdata());
+    if (oam_segment_endpoint.is_set || is_set(oam_segment_endpoint.yfilter)) leaf_name_data.push_back(oam_segment_endpoint.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "shape")
+    {
+        if(shape == nullptr)
+        {
+            shape = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::Shape>();
+        }
+        return shape;
+    }
+
+    if(child_yang_name == "cell-packing")
+    {
+        if(cell_packing == nullptr)
+        {
+            cell_packing = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::CellPacking>();
+        }
+        return cell_packing;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(shape != nullptr)
+    {
+        _children["shape"] = shape;
+    }
+
+    if(cell_packing != nullptr)
+    {
+        _children["cell-packing"] = cell_packing;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vpi")
+    {
+        vpi = value;
+        vpi.value_namespace = name_space;
+        vpi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "test-mode")
+    {
+        test_mode = value;
+        test_mode.value_namespace = name_space;
+        test_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oam-segment-endpoint")
+    {
+        oam_segment_endpoint = value;
+        oam_segment_endpoint.value_namespace = name_space;
+        oam_segment_endpoint.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vpi")
+    {
+        vpi.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "test-mode")
+    {
+        test_mode.yfilter = yfilter;
+    }
+    if(value_path == "oam-segment-endpoint")
+    {
+        oam_segment_endpoint.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "shape" || name == "cell-packing" || name == "vpi" || name == "enable" || name == "test-mode" || name == "oam-segment-endpoint")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::Shape::Shape()
+    :
+    type{YType::enumeration, "type"},
+    peak_cell_rate{YType::uint32, "peak-cell-rate"},
+    sustained_cell_rate{YType::uint32, "sustained-cell-rate"},
+    burst_size{YType::uint32, "burst-size"}
+{
+
+    yang_name = "shape"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::Shape::~Shape()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::Shape::has_data() const
+{
+    if (is_presence_container) return true;
+    return type.is_set
+	|| peak_cell_rate.is_set
+	|| sustained_cell_rate.is_set
+	|| burst_size.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::Shape::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(peak_cell_rate.yfilter)
+	|| ydk::is_set(sustained_cell_rate.yfilter)
+	|| ydk::is_set(burst_size.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::Shape::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "shape";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::Shape::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (peak_cell_rate.is_set || is_set(peak_cell_rate.yfilter)) leaf_name_data.push_back(peak_cell_rate.get_name_leafdata());
+    if (sustained_cell_rate.is_set || is_set(sustained_cell_rate.yfilter)) leaf_name_data.push_back(sustained_cell_rate.get_name_leafdata());
+    if (burst_size.is_set || is_set(burst_size.yfilter)) leaf_name_data.push_back(burst_size.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::Shape::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::Shape::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peak-cell-rate")
+    {
+        peak_cell_rate = value;
+        peak_cell_rate.value_namespace = name_space;
+        peak_cell_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sustained-cell-rate")
+    {
+        sustained_cell_rate = value;
+        sustained_cell_rate.value_namespace = name_space;
+        sustained_cell_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "burst-size")
+    {
+        burst_size = value;
+        burst_size.value_namespace = name_space;
+        burst_size.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::Shape::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "peak-cell-rate")
+    {
+        peak_cell_rate.yfilter = yfilter;
+    }
+    if(value_path == "sustained-cell-rate")
+    {
+        sustained_cell_rate.yfilter = yfilter;
+    }
+    if(value_path == "burst-size")
+    {
+        burst_size.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::Shape::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "type" || name == "peak-cell-rate" || name == "sustained-cell-rate" || name == "burst-size")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::CellPacking::CellPacking()
+    :
+    maximum_cells_packed{YType::uint32, "maximum-cells-packed"},
+    cell_packing_timer_id{YType::uint32, "cell-packing-timer-id"}
+{
+
+    yang_name = "cell-packing"; yang_parent_name = "pvp"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::CellPacking::~CellPacking()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::CellPacking::has_data() const
+{
+    if (is_presence_container) return true;
+    return maximum_cells_packed.is_set
+	|| cell_packing_timer_id.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::CellPacking::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_cells_packed.yfilter)
+	|| ydk::is_set(cell_packing_timer_id.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::CellPacking::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cell-packing";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::CellPacking::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (maximum_cells_packed.is_set || is_set(maximum_cells_packed.yfilter)) leaf_name_data.push_back(maximum_cells_packed.get_name_leafdata());
+    if (cell_packing_timer_id.is_set || is_set(cell_packing_timer_id.yfilter)) leaf_name_data.push_back(cell_packing_timer_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::CellPacking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::CellPacking::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::CellPacking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "maximum-cells-packed")
+    {
+        maximum_cells_packed = value;
+        maximum_cells_packed.value_namespace = name_space;
+        maximum_cells_packed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cell-packing-timer-id")
+    {
+        cell_packing_timer_id = value;
+        cell_packing_timer_id.value_namespace = name_space;
+        cell_packing_timer_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::CellPacking::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-cells-packed")
+    {
+        maximum_cells_packed.yfilter = yfilter;
+    }
+    if(value_path == "cell-packing-timer-id")
+    {
+        cell_packing_timer_id.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvps::Pvp::CellPacking::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-cells-packed" || name == "cell-packing-timer-id")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvcs()
+    :
+    pvc(this, {"vpi", "vci", "pv_ctype"})
+{
+
+    yang_name = "pvcs"; yang_parent_name = "atm"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::~Pvcs()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<pvc.len(); index++)
+    {
+        if(pvc[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::has_operation() const
+{
+    for (std::size_t index=0; index<pvc.len(); index++)
+    {
+        if(pvc[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pvcs";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "pvc")
+    {
+        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc>();
+        ent_->parent = this;
+        pvc.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : pvc.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pvc")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::Pvc()
+    :
+    vpi{YType::uint32, "vpi"},
+    vci{YType::uint32, "vci"},
+    pv_ctype{YType::enumeration, "pv-ctype"},
+    vc_class{YType::str, "vc-class"},
+    encapsulation{YType::enumeration, "encapsulation"},
+    enable{YType::empty, "enable"},
+    test_mode{YType::enumeration, "test-mode"},
+    oam_segment_endpoint{YType::empty, "oam-segment-endpoint"}
+        ,
+    shape(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::Shape>())
+    , oam_emulation(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::OamEmulation>())
+    , cell_packing(nullptr) // presence node
+{
+    shape->parent = this;
+    oam_emulation->parent = this;
+
+    yang_name = "pvc"; yang_parent_name = "pvcs"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::~Pvc()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::has_data() const
+{
+    if (is_presence_container) return true;
+    return vpi.is_set
+	|| vci.is_set
+	|| pv_ctype.is_set
+	|| vc_class.is_set
+	|| encapsulation.is_set
+	|| enable.is_set
+	|| test_mode.is_set
+	|| oam_segment_endpoint.is_set
+	|| (shape !=  nullptr && shape->has_data())
+	|| (oam_emulation !=  nullptr && oam_emulation->has_data())
+	|| (cell_packing !=  nullptr && cell_packing->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vpi.yfilter)
+	|| ydk::is_set(vci.yfilter)
+	|| ydk::is_set(pv_ctype.yfilter)
+	|| ydk::is_set(vc_class.yfilter)
+	|| ydk::is_set(encapsulation.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(test_mode.yfilter)
+	|| ydk::is_set(oam_segment_endpoint.yfilter)
+	|| (shape !=  nullptr && shape->has_operation())
+	|| (oam_emulation !=  nullptr && oam_emulation->has_operation())
+	|| (cell_packing !=  nullptr && cell_packing->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "pvc";
+    ADD_KEY_TOKEN(vpi, "vpi");
+    ADD_KEY_TOKEN(vci, "vci");
+    ADD_KEY_TOKEN(pv_ctype, "pv-ctype");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vpi.is_set || is_set(vpi.yfilter)) leaf_name_data.push_back(vpi.get_name_leafdata());
+    if (vci.is_set || is_set(vci.yfilter)) leaf_name_data.push_back(vci.get_name_leafdata());
+    if (pv_ctype.is_set || is_set(pv_ctype.yfilter)) leaf_name_data.push_back(pv_ctype.get_name_leafdata());
+    if (vc_class.is_set || is_set(vc_class.yfilter)) leaf_name_data.push_back(vc_class.get_name_leafdata());
+    if (encapsulation.is_set || is_set(encapsulation.yfilter)) leaf_name_data.push_back(encapsulation.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (test_mode.is_set || is_set(test_mode.yfilter)) leaf_name_data.push_back(test_mode.get_name_leafdata());
+    if (oam_segment_endpoint.is_set || is_set(oam_segment_endpoint.yfilter)) leaf_name_data.push_back(oam_segment_endpoint.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "shape")
+    {
+        if(shape == nullptr)
+        {
+            shape = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::Shape>();
+        }
+        return shape;
+    }
+
+    if(child_yang_name == "oam-emulation")
+    {
+        if(oam_emulation == nullptr)
+        {
+            oam_emulation = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::OamEmulation>();
+        }
+        return oam_emulation;
+    }
+
+    if(child_yang_name == "cell-packing")
+    {
+        if(cell_packing == nullptr)
+        {
+            cell_packing = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::CellPacking>();
+        }
+        return cell_packing;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(shape != nullptr)
+    {
+        _children["shape"] = shape;
+    }
+
+    if(oam_emulation != nullptr)
+    {
+        _children["oam-emulation"] = oam_emulation;
+    }
+
+    if(cell_packing != nullptr)
+    {
+        _children["cell-packing"] = cell_packing;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vpi")
+    {
+        vpi = value;
+        vpi.value_namespace = name_space;
+        vpi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vci")
+    {
+        vci = value;
+        vci.value_namespace = name_space;
+        vci.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pv-ctype")
+    {
+        pv_ctype = value;
+        pv_ctype.value_namespace = name_space;
+        pv_ctype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "vc-class")
+    {
+        vc_class = value;
+        vc_class.value_namespace = name_space;
+        vc_class.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "encapsulation")
+    {
+        encapsulation = value;
+        encapsulation.value_namespace = name_space;
+        encapsulation.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "test-mode")
+    {
+        test_mode = value;
+        test_mode.value_namespace = name_space;
+        test_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oam-segment-endpoint")
+    {
+        oam_segment_endpoint = value;
+        oam_segment_endpoint.value_namespace = name_space;
+        oam_segment_endpoint.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vpi")
+    {
+        vpi.yfilter = yfilter;
+    }
+    if(value_path == "vci")
+    {
+        vci.yfilter = yfilter;
+    }
+    if(value_path == "pv-ctype")
+    {
+        pv_ctype.yfilter = yfilter;
+    }
+    if(value_path == "vc-class")
+    {
+        vc_class.yfilter = yfilter;
+    }
+    if(value_path == "encapsulation")
+    {
+        encapsulation.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "test-mode")
+    {
+        test_mode.yfilter = yfilter;
+    }
+    if(value_path == "oam-segment-endpoint")
+    {
+        oam_segment_endpoint.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "shape" || name == "oam-emulation" || name == "cell-packing" || name == "vpi" || name == "vci" || name == "pv-ctype" || name == "vc-class" || name == "encapsulation" || name == "enable" || name == "test-mode" || name == "oam-segment-endpoint")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::Shape::Shape()
+    :
+    type{YType::enumeration, "type"},
+    peak_cell_rate{YType::uint32, "peak-cell-rate"},
+    sustained_cell_rate{YType::uint32, "sustained-cell-rate"},
+    burst_size{YType::uint32, "burst-size"}
+{
+
+    yang_name = "shape"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::Shape::~Shape()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::Shape::has_data() const
+{
+    if (is_presence_container) return true;
+    return type.is_set
+	|| peak_cell_rate.is_set
+	|| sustained_cell_rate.is_set
+	|| burst_size.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::Shape::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(peak_cell_rate.yfilter)
+	|| ydk::is_set(sustained_cell_rate.yfilter)
+	|| ydk::is_set(burst_size.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::Shape::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "shape";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::Shape::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (peak_cell_rate.is_set || is_set(peak_cell_rate.yfilter)) leaf_name_data.push_back(peak_cell_rate.get_name_leafdata());
+    if (sustained_cell_rate.is_set || is_set(sustained_cell_rate.yfilter)) leaf_name_data.push_back(sustained_cell_rate.get_name_leafdata());
+    if (burst_size.is_set || is_set(burst_size.yfilter)) leaf_name_data.push_back(burst_size.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::Shape::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::Shape::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peak-cell-rate")
+    {
+        peak_cell_rate = value;
+        peak_cell_rate.value_namespace = name_space;
+        peak_cell_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sustained-cell-rate")
+    {
+        sustained_cell_rate = value;
+        sustained_cell_rate.value_namespace = name_space;
+        sustained_cell_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "burst-size")
+    {
+        burst_size = value;
+        burst_size.value_namespace = name_space;
+        burst_size.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::Shape::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "peak-cell-rate")
+    {
+        peak_cell_rate.yfilter = yfilter;
+    }
+    if(value_path == "sustained-cell-rate")
+    {
+        sustained_cell_rate.yfilter = yfilter;
+    }
+    if(value_path == "burst-size")
+    {
+        burst_size.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::Shape::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "type" || name == "peak-cell-rate" || name == "sustained-cell-rate" || name == "burst-size")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::OamEmulation::OamEmulation()
+    :
+    enable{YType::empty, "enable"},
+    ais_transmit_rate{YType::uint32, "ais-transmit-rate"}
+{
+
+    yang_name = "oam-emulation"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::OamEmulation::~OamEmulation()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::OamEmulation::has_data() const
+{
+    if (is_presence_container) return true;
+    return enable.is_set
+	|| ais_transmit_rate.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::OamEmulation::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(ais_transmit_rate.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::OamEmulation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "oam-emulation";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::OamEmulation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (ais_transmit_rate.is_set || is_set(ais_transmit_rate.yfilter)) leaf_name_data.push_back(ais_transmit_rate.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::OamEmulation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::OamEmulation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::OamEmulation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ais-transmit-rate")
+    {
+        ais_transmit_rate = value;
+        ais_transmit_rate.value_namespace = name_space;
+        ais_transmit_rate.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::OamEmulation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "ais-transmit-rate")
+    {
+        ais_transmit_rate.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::OamEmulation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enable" || name == "ais-transmit-rate")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::CellPacking::CellPacking()
+    :
+    maximum_cells_packed{YType::uint32, "maximum-cells-packed"},
+    cell_packing_timer_id{YType::uint32, "cell-packing-timer-id"}
+{
+
+    yang_name = "cell-packing"; yang_parent_name = "pvc"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::CellPacking::~CellPacking()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::CellPacking::has_data() const
+{
+    if (is_presence_container) return true;
+    return maximum_cells_packed.is_set
+	|| cell_packing_timer_id.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::CellPacking::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(maximum_cells_packed.yfilter)
+	|| ydk::is_set(cell_packing_timer_id.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::CellPacking::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cell-packing";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::CellPacking::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (maximum_cells_packed.is_set || is_set(maximum_cells_packed.yfilter)) leaf_name_data.push_back(maximum_cells_packed.get_name_leafdata());
+    if (cell_packing_timer_id.is_set || is_set(cell_packing_timer_id.yfilter)) leaf_name_data.push_back(cell_packing_timer_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::CellPacking::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::CellPacking::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::CellPacking::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "maximum-cells-packed")
+    {
+        maximum_cells_packed = value;
+        maximum_cells_packed.value_namespace = name_space;
+        maximum_cells_packed.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cell-packing-timer-id")
+    {
+        cell_packing_timer_id = value;
+        cell_packing_timer_id.value_namespace = name_space;
+        cell_packing_timer_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::CellPacking::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "maximum-cells-packed")
+    {
+        maximum_cells_packed.yfilter = yfilter;
+    }
+    if(value_path == "cell-packing-timer-id")
+    {
+        cell_packing_timer_id.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::Pvcs::Pvc::CellPacking::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "maximum-cells-packed" || name == "cell-packing-timer-id")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::MaximumCellPackingTimers::MaximumCellPackingTimers()
+    :
+    cell_packing_timer1{YType::uint32, "cell-packing-timer1"},
+    cell_packing_timer2{YType::uint32, "cell-packing-timer2"},
+    cell_packing_timer3{YType::uint32, "cell-packing-timer3"}
+{
+
+    yang_name = "maximum-cell-packing-timers"; yang_parent_name = "atm"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::MaximumCellPackingTimers::~MaximumCellPackingTimers()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::MaximumCellPackingTimers::has_data() const
+{
+    if (is_presence_container) return true;
+    return cell_packing_timer1.is_set
+	|| cell_packing_timer2.is_set
+	|| cell_packing_timer3.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::MaximumCellPackingTimers::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cell_packing_timer1.yfilter)
+	|| ydk::is_set(cell_packing_timer2.yfilter)
+	|| ydk::is_set(cell_packing_timer3.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Atm::MaximumCellPackingTimers::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "maximum-cell-packing-timers";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Atm::MaximumCellPackingTimers::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cell_packing_timer1.is_set || is_set(cell_packing_timer1.yfilter)) leaf_name_data.push_back(cell_packing_timer1.get_name_leafdata());
+    if (cell_packing_timer2.is_set || is_set(cell_packing_timer2.yfilter)) leaf_name_data.push_back(cell_packing_timer2.get_name_leafdata());
+    if (cell_packing_timer3.is_set || is_set(cell_packing_timer3.yfilter)) leaf_name_data.push_back(cell_packing_timer3.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::MaximumCellPackingTimers::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::MaximumCellPackingTimers::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::MaximumCellPackingTimers::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cell-packing-timer1")
+    {
+        cell_packing_timer1 = value;
+        cell_packing_timer1.value_namespace = name_space;
+        cell_packing_timer1.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cell-packing-timer2")
+    {
+        cell_packing_timer2 = value;
+        cell_packing_timer2.value_namespace = name_space;
+        cell_packing_timer2.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cell-packing-timer3")
+    {
+        cell_packing_timer3 = value;
+        cell_packing_timer3.value_namespace = name_space;
+        cell_packing_timer3.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::MaximumCellPackingTimers::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cell-packing-timer1")
+    {
+        cell_packing_timer1.yfilter = yfilter;
+    }
+    if(value_path == "cell-packing-timer2")
+    {
+        cell_packing_timer2.yfilter = yfilter;
+    }
+    if(value_path == "cell-packing-timer3")
+    {
+        cell_packing_timer3.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::MaximumCellPackingTimers::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cell-packing-timer1" || name == "cell-packing-timer2" || name == "cell-packing-timer3")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnels()
+    :
+    vp_tunnel(this, {"vpi"})
+{
+
+    yang_name = "vp-tunnels"; yang_parent_name = "atm"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::~VpTunnels()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<vp_tunnel.len(); index++)
+    {
+        if(vp_tunnel[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::has_operation() const
+{
+    for (std::size_t index=0; index<vp_tunnel.len(); index++)
+    {
+        if(vp_tunnel[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vp-tunnels";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "vp-tunnel")
+    {
+        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel>();
+        ent_->parent = this;
+        vp_tunnel.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : vp_tunnel.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vp-tunnel")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::VpTunnel()
+    :
+    vpi{YType::uint32, "vpi"},
+    enable_hierarchical_shaping{YType::empty, "enable-hierarchical-shaping"},
+    enable{YType::empty, "enable"},
+    disable_f4oam{YType::empty, "disable-f4oam"}
+        ,
+    shape(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::Shape>())
+{
+    shape->parent = this;
+
+    yang_name = "vp-tunnel"; yang_parent_name = "vp-tunnels"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::~VpTunnel()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::has_data() const
+{
+    if (is_presence_container) return true;
+    return vpi.is_set
+	|| enable_hierarchical_shaping.is_set
+	|| enable.is_set
+	|| disable_f4oam.is_set
+	|| (shape !=  nullptr && shape->has_data());
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(vpi.yfilter)
+	|| ydk::is_set(enable_hierarchical_shaping.yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(disable_f4oam.yfilter)
+	|| (shape !=  nullptr && shape->has_operation());
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vp-tunnel";
+    ADD_KEY_TOKEN(vpi, "vpi");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (vpi.is_set || is_set(vpi.yfilter)) leaf_name_data.push_back(vpi.get_name_leafdata());
+    if (enable_hierarchical_shaping.is_set || is_set(enable_hierarchical_shaping.yfilter)) leaf_name_data.push_back(enable_hierarchical_shaping.get_name_leafdata());
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (disable_f4oam.is_set || is_set(disable_f4oam.yfilter)) leaf_name_data.push_back(disable_f4oam.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "shape")
+    {
+        if(shape == nullptr)
+        {
+            shape = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::Shape>();
+        }
+        return shape;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(shape != nullptr)
+    {
+        _children["shape"] = shape;
+    }
+
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "vpi")
+    {
+        vpi = value;
+        vpi.value_namespace = name_space;
+        vpi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable-hierarchical-shaping")
+    {
+        enable_hierarchical_shaping = value;
+        enable_hierarchical_shaping.value_namespace = name_space;
+        enable_hierarchical_shaping.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "disable-f4oam")
+    {
+        disable_f4oam = value;
+        disable_f4oam.value_namespace = name_space;
+        disable_f4oam.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "vpi")
+    {
+        vpi.yfilter = yfilter;
+    }
+    if(value_path == "enable-hierarchical-shaping")
+    {
+        enable_hierarchical_shaping.yfilter = yfilter;
+    }
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "disable-f4oam")
+    {
+        disable_f4oam.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "shape" || name == "vpi" || name == "enable-hierarchical-shaping" || name == "enable" || name == "disable-f4oam")
+        return true;
+    return false;
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::Shape::Shape()
+    :
+    type{YType::enumeration, "type"},
+    peak_cell_rate{YType::uint32, "peak-cell-rate"},
+    sustained_cell_rate{YType::uint32, "sustained-cell-rate"},
+    burst_size{YType::uint32, "burst-size"}
+{
+
+    yang_name = "shape"; yang_parent_name = "vp-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::Shape::~Shape()
+{
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::Shape::has_data() const
+{
+    if (is_presence_container) return true;
+    return type.is_set
+	|| peak_cell_rate.is_set
+	|| sustained_cell_rate.is_set
+	|| burst_size.is_set;
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::Shape::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(type.yfilter)
+	|| ydk::is_set(peak_cell_rate.yfilter)
+	|| ydk::is_set(sustained_cell_rate.yfilter)
+	|| ydk::is_set(burst_size.yfilter);
+}
+
+std::string InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::Shape::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "shape";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::Shape::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
+    if (peak_cell_rate.is_set || is_set(peak_cell_rate.yfilter)) leaf_name_data.push_back(peak_cell_rate.get_name_leafdata());
+    if (sustained_cell_rate.is_set || is_set(sustained_cell_rate.yfilter)) leaf_name_data.push_back(sustained_cell_rate.get_name_leafdata());
+    if (burst_size.is_set || is_set(burst_size.yfilter)) leaf_name_data.push_back(burst_size.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::Shape::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::Shape::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::Shape::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "type")
+    {
+        type = value;
+        type.value_namespace = name_space;
+        type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "peak-cell-rate")
+    {
+        peak_cell_rate = value;
+        peak_cell_rate.value_namespace = name_space;
+        peak_cell_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sustained-cell-rate")
+    {
+        sustained_cell_rate = value;
+        sustained_cell_rate.value_namespace = name_space;
+        sustained_cell_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "burst-size")
+    {
+        burst_size = value;
+        burst_size.value_namespace = name_space;
+        burst_size.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::Shape::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "type")
+    {
+        type.yfilter = yfilter;
+    }
+    if(value_path == "peak-cell-rate")
+    {
+        peak_cell_rate.yfilter = yfilter;
+    }
+    if(value_path == "sustained-cell-rate")
+    {
+        sustained_cell_rate.yfilter = yfilter;
+    }
+    if(value_path == "burst-size")
+    {
+        burst_size.yfilter = yfilter;
+    }
+}
+
+bool InterfaceConfigurations::InterfaceConfiguration::Atm::VpTunnels::VpTunnel::Shape::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "type" || name == "peak-cell-rate" || name == "sustained-cell-rate" || name == "burst-size")
         return true;
     return false;
 }
@@ -13654,4693 +17764,8 @@ bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoro
     return false;
 }
 
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::AutorouteAnnounce()
-    :
-    enable{YType::empty, "enable"},
-    include_ipv6{YType::empty, "include-ipv6"}
-        ,
-    exclude_traffic(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic>())
-    , metric(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric>())
-{
-    exclude_traffic->parent = this;
-    metric->parent = this;
-
-    yang_name = "autoroute-announce"; yang_parent_name = "autoroute"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::~AutorouteAnnounce()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set
-	|| include_ipv6.is_set
-	|| (exclude_traffic !=  nullptr && exclude_traffic->has_data())
-	|| (metric !=  nullptr && metric->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(include_ipv6.yfilter)
-	|| (exclude_traffic !=  nullptr && exclude_traffic->has_operation())
-	|| (metric !=  nullptr && metric->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "autoroute-announce";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (include_ipv6.is_set || is_set(include_ipv6.yfilter)) leaf_name_data.push_back(include_ipv6.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "exclude-traffic")
-    {
-        if(exclude_traffic == nullptr)
-        {
-            exclude_traffic = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic>();
-        }
-        return exclude_traffic;
-    }
-
-    if(child_yang_name == "metric")
-    {
-        if(metric == nullptr)
-        {
-            metric = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric>();
-        }
-        return metric;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(exclude_traffic != nullptr)
-    {
-        _children["exclude-traffic"] = exclude_traffic;
-    }
-
-    if(metric != nullptr)
-    {
-        _children["metric"] = metric;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "include-ipv6")
-    {
-        include_ipv6 = value;
-        include_ipv6.value_namespace = name_space;
-        include_ipv6.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "include-ipv6")
-    {
-        include_ipv6.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "exclude-traffic" || name == "metric" || name == "enable" || name == "include-ipv6")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::ExcludeTraffic()
-    :
-    segment_routing{YType::empty, "segment-routing"}
-{
-
-    yang_name = "exclude-traffic"; yang_parent_name = "autoroute-announce"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::~ExcludeTraffic()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::has_data() const
-{
-    if (is_presence_container) return true;
-    return segment_routing.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(segment_routing.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "exclude-traffic";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (segment_routing.is_set || is_set(segment_routing.yfilter)) leaf_name_data.push_back(segment_routing.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "segment-routing")
-    {
-        segment_routing = value;
-        segment_routing.value_namespace = name_space;
-        segment_routing.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "segment-routing")
-    {
-        segment_routing.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::ExcludeTraffic::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "segment-routing")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric::Metric()
-    :
-    metric_type{YType::enumeration, "metric-type"},
-    absolute_metric{YType::uint32, "absolute-metric"},
-    relative_metric{YType::int32, "relative-metric"},
-    constant_metric{YType::uint32, "constant-metric"}
-{
-
-    yang_name = "metric"; yang_parent_name = "autoroute-announce"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric::~Metric()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric::has_data() const
-{
-    if (is_presence_container) return true;
-    return metric_type.is_set
-	|| absolute_metric.is_set
-	|| relative_metric.is_set
-	|| constant_metric.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(metric_type.yfilter)
-	|| ydk::is_set(absolute_metric.yfilter)
-	|| ydk::is_set(relative_metric.yfilter)
-	|| ydk::is_set(constant_metric.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "metric";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
-    if (absolute_metric.is_set || is_set(absolute_metric.yfilter)) leaf_name_data.push_back(absolute_metric.get_name_leafdata());
-    if (relative_metric.is_set || is_set(relative_metric.yfilter)) leaf_name_data.push_back(relative_metric.get_name_leafdata());
-    if (constant_metric.is_set || is_set(constant_metric.yfilter)) leaf_name_data.push_back(constant_metric.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "metric-type")
-    {
-        metric_type = value;
-        metric_type.value_namespace = name_space;
-        metric_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "absolute-metric")
-    {
-        absolute_metric = value;
-        absolute_metric.value_namespace = name_space;
-        absolute_metric.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "relative-metric")
-    {
-        relative_metric = value;
-        relative_metric.value_namespace = name_space;
-        relative_metric.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "constant-metric")
-    {
-        constant_metric = value;
-        constant_metric.value_namespace = name_space;
-        constant_metric.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "metric-type")
-    {
-        metric_type.yfilter = yfilter;
-    }
-    if(value_path == "absolute-metric")
-    {
-        absolute_metric.yfilter = yfilter;
-    }
-    if(value_path == "relative-metric")
-    {
-        relative_metric.yfilter = yfilter;
-    }
-    if(value_path == "constant-metric")
-    {
-        constant_metric.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::AutorouteAnnounce::Metric::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "metric-type" || name == "absolute-metric" || name == "relative-metric" || name == "constant-metric")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::Destinations()
-    :
-    destination(this, {"destination_address"})
-{
-
-    yang_name = "destinations"; yang_parent_name = "autoroute"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::~Destinations()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<destination.len(); index++)
-    {
-        if(destination[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::has_operation() const
-{
-    for (std::size_t index=0; index<destination.len(); index++)
-    {
-        if(destination[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "destinations";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "destination")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::Destination>();
-        ent_->parent = this;
-        destination.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : destination.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "destination")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::Destination::Destination()
-    :
-    destination_address{YType::str, "destination-address"}
-{
-
-    yang_name = "destination"; yang_parent_name = "destinations"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::Destination::~Destination()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::Destination::has_data() const
-{
-    if (is_presence_container) return true;
-    return destination_address.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::Destination::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(destination_address.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::Destination::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "destination";
-    ADD_KEY_TOKEN(destination_address, "destination-address");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::Destination::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (destination_address.is_set || is_set(destination_address.yfilter)) leaf_name_data.push_back(destination_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::Destination::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address = value;
-        destination_address.value_namespace = name_space;
-        destination_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::Destination::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "destination-address")
-    {
-        destination_address.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::Autoroute::Destinations::Destination::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "destination-address")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::PolicyClasses::PolicyClasses()
-    :
-    policy_class{YType::uint32, "policy-class"}
-{
-
-    yang_name = "policy-classes"; yang_parent_name = "tunnel-te-attributes"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::PolicyClasses::~PolicyClasses()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::PolicyClasses::has_data() const
-{
-    if (is_presence_container) return true;
-    for (auto const & leaf : policy_class.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::PolicyClasses::has_operation() const
-{
-    for (auto const & leaf : policy_class.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(policy_class.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::PolicyClasses::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "policy-classes";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::PolicyClasses::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto policy_class_name_datas = policy_class.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), policy_class_name_datas.begin(), policy_class_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::PolicyClasses::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::PolicyClasses::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::PolicyClasses::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "policy-class")
-    {
-        policy_class.append(value);
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::PolicyClasses::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "policy-class")
-    {
-        policy_class.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::PolicyClasses::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "policy-class")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypes()
-    :
-    new_style_affinity_affinity_type(this, {"affinity_type"})
-    , new_style_affinity_affinity_type_affinity1(this, {"affinity_type", "affinity1"})
-    , new_style_affinity_affinity_type_affinity1_affinity2(this, {"affinity_type", "affinity1", "affinity2"})
-    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3(this, {"affinity_type", "affinity1", "affinity2", "affinity3"})
-    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4"})
-    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5"})
-    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6"})
-    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6", "affinity7"})
-    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6", "affinity7", "affinity8"})
-    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6", "affinity7", "affinity8", "affinity9"})
-    , new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10(this, {"affinity_type", "affinity1", "affinity2", "affinity3", "affinity4", "affinity5", "affinity6", "affinity7", "affinity8", "affinity9", "affinity10"})
-{
-
-    yang_name = "new-style-affinity-affinity-types"; yang_parent_name = "tunnel-te-attributes"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::~NewStyleAffinityAffinityTypes()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<new_style_affinity_affinity_type.len(); index++)
-    {
-        if(new_style_affinity_affinity_type[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1.len(); index++)
-    {
-        if(new_style_affinity_affinity_type_affinity1[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2.len(); index++)
-    {
-        if(new_style_affinity_affinity_type_affinity1_affinity2[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3.len(); index++)
-    {
-        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.len(); index++)
-    {
-        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.len(); index++)
-    {
-        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.len(); index++)
-    {
-        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.len(); index++)
-    {
-        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.len(); index++)
-    {
-        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.len(); index++)
-    {
-        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.len(); index++)
-    {
-        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::has_operation() const
-{
-    for (std::size_t index=0; index<new_style_affinity_affinity_type.len(); index++)
-    {
-        if(new_style_affinity_affinity_type[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1.len(); index++)
-    {
-        if(new_style_affinity_affinity_type_affinity1[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2.len(); index++)
-    {
-        if(new_style_affinity_affinity_type_affinity1_affinity2[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3.len(); index++)
-    {
-        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.len(); index++)
-    {
-        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.len(); index++)
-    {
-        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.len(); index++)
-    {
-        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.len(); index++)
-    {
-        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.len(); index++)
-    {
-        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.len(); index++)
-    {
-        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.len(); index++)
-    {
-        if(new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-types";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "new-style-affinity-affinity-type")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType>();
-        ent_->parent = this;
-        new_style_affinity_affinity_type.append(ent_);
-        return ent_;
-    }
-
-    if(child_yang_name == "new-style-affinity-affinity-type-affinity1")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1>();
-        ent_->parent = this;
-        new_style_affinity_affinity_type_affinity1.append(ent_);
-        return ent_;
-    }
-
-    if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2>();
-        ent_->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2.append(ent_);
-        return ent_;
-    }
-
-    if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3>();
-        ent_->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3.append(ent_);
-        return ent_;
-    }
-
-    if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4>();
-        ent_->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.append(ent_);
-        return ent_;
-    }
-
-    if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5>();
-        ent_->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.append(ent_);
-        return ent_;
-    }
-
-    if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6>();
-        ent_->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.append(ent_);
-        return ent_;
-    }
-
-    if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7>();
-        ent_->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.append(ent_);
-        return ent_;
-    }
-
-    if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8>();
-        ent_->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.append(ent_);
-        return ent_;
-    }
-
-    if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9>();
-        ent_->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.append(ent_);
-        return ent_;
-    }
-
-    if(child_yang_name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10>();
-        ent_->parent = this;
-        new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : new_style_affinity_affinity_type.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    count_ = 0;
-    for (auto ent_ : new_style_affinity_affinity_type_affinity1.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    count_ = 0;
-    for (auto ent_ : new_style_affinity_affinity_type_affinity1_affinity2.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    count_ = 0;
-    for (auto ent_ : new_style_affinity_affinity_type_affinity1_affinity2_affinity3.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    count_ = 0;
-    for (auto ent_ : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    count_ = 0;
-    for (auto ent_ : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    count_ = 0;
-    for (auto ent_ : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    count_ = 0;
-    for (auto ent_ : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    count_ = 0;
-    for (auto ent_ : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    count_ = 0;
-    for (auto ent_ : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    count_ = 0;
-    for (auto ent_ : new_style_affinity_affinity_type_affinity1_affinity2_affinity3_affinity4_affinity5_affinity6_affinity7_affinity8_affinity9_affinity10.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "new-style-affinity-affinity-type" || name == "new-style-affinity-affinity-type-affinity1" || name == "new-style-affinity-affinity-type-affinity1-affinity2" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9" || name == "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::NewStyleAffinityAffinityType()
-    :
-    affinity_type{YType::enumeration, "affinity-type"}
-{
-
-    yang_name = "new-style-affinity-affinity-type"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::~NewStyleAffinityAffinityType()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::has_data() const
-{
-    if (is_presence_container) return true;
-    return affinity_type.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(affinity_type.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type";
-    ADD_KEY_TOKEN(affinity_type, "affinity-type");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (affinity_type.is_set || is_set(affinity_type.yfilter)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-        affinity_type.value_namespace = name_space;
-        affinity_type.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityType::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "affinity-type")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::NewStyleAffinityAffinityTypeAffinity1()
-    :
-    affinity_type{YType::enumeration, "affinity-type"},
-    affinity1{YType::str, "affinity1"}
-{
-
-    yang_name = "new-style-affinity-affinity-type-affinity1"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::~NewStyleAffinityAffinityTypeAffinity1()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_data() const
-{
-    if (is_presence_container) return true;
-    return affinity_type.is_set
-	|| affinity1.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(affinity_type.yfilter)
-	|| ydk::is_set(affinity1.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1";
-    ADD_KEY_TOKEN(affinity_type, "affinity-type");
-    ADD_KEY_TOKEN(affinity1, "affinity1");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (affinity_type.is_set || is_set(affinity_type.yfilter)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
-    if (affinity1.is_set || is_set(affinity1.yfilter)) leaf_name_data.push_back(affinity1.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-        affinity_type.value_namespace = name_space;
-        affinity_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1 = value;
-        affinity1.value_namespace = name_space;
-        affinity1.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type.yfilter = yfilter;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "affinity-type" || name == "affinity1")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::NewStyleAffinityAffinityTypeAffinity1Affinity2()
-    :
-    affinity_type{YType::enumeration, "affinity-type"},
-    affinity1{YType::str, "affinity1"},
-    affinity2{YType::str, "affinity2"}
-{
-
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::~NewStyleAffinityAffinityTypeAffinity1Affinity2()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_data() const
-{
-    if (is_presence_container) return true;
-    return affinity_type.is_set
-	|| affinity1.is_set
-	|| affinity2.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(affinity_type.yfilter)
-	|| ydk::is_set(affinity1.yfilter)
-	|| ydk::is_set(affinity2.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2";
-    ADD_KEY_TOKEN(affinity_type, "affinity-type");
-    ADD_KEY_TOKEN(affinity1, "affinity1");
-    ADD_KEY_TOKEN(affinity2, "affinity2");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (affinity_type.is_set || is_set(affinity_type.yfilter)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
-    if (affinity1.is_set || is_set(affinity1.yfilter)) leaf_name_data.push_back(affinity1.get_name_leafdata());
-    if (affinity2.is_set || is_set(affinity2.yfilter)) leaf_name_data.push_back(affinity2.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-        affinity_type.value_namespace = name_space;
-        affinity_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1 = value;
-        affinity1.value_namespace = name_space;
-        affinity1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2 = value;
-        affinity2.value_namespace = name_space;
-        affinity2.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type.yfilter = yfilter;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1.yfilter = yfilter;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "affinity-type" || name == "affinity1" || name == "affinity2")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3()
-    :
-    affinity_type{YType::enumeration, "affinity-type"},
-    affinity1{YType::str, "affinity1"},
-    affinity2{YType::str, "affinity2"},
-    affinity3{YType::str, "affinity3"}
-{
-
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_data() const
-{
-    if (is_presence_container) return true;
-    return affinity_type.is_set
-	|| affinity1.is_set
-	|| affinity2.is_set
-	|| affinity3.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(affinity_type.yfilter)
-	|| ydk::is_set(affinity1.yfilter)
-	|| ydk::is_set(affinity2.yfilter)
-	|| ydk::is_set(affinity3.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3";
-    ADD_KEY_TOKEN(affinity_type, "affinity-type");
-    ADD_KEY_TOKEN(affinity1, "affinity1");
-    ADD_KEY_TOKEN(affinity2, "affinity2");
-    ADD_KEY_TOKEN(affinity3, "affinity3");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (affinity_type.is_set || is_set(affinity_type.yfilter)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
-    if (affinity1.is_set || is_set(affinity1.yfilter)) leaf_name_data.push_back(affinity1.get_name_leafdata());
-    if (affinity2.is_set || is_set(affinity2.yfilter)) leaf_name_data.push_back(affinity2.get_name_leafdata());
-    if (affinity3.is_set || is_set(affinity3.yfilter)) leaf_name_data.push_back(affinity3.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-        affinity_type.value_namespace = name_space;
-        affinity_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1 = value;
-        affinity1.value_namespace = name_space;
-        affinity1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2 = value;
-        affinity2.value_namespace = name_space;
-        affinity2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity3")
-    {
-        affinity3 = value;
-        affinity3.value_namespace = name_space;
-        affinity3.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type.yfilter = yfilter;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1.yfilter = yfilter;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2.yfilter = yfilter;
-    }
-    if(value_path == "affinity3")
-    {
-        affinity3.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "affinity-type" || name == "affinity1" || name == "affinity2" || name == "affinity3")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4()
-    :
-    affinity_type{YType::enumeration, "affinity-type"},
-    affinity1{YType::str, "affinity1"},
-    affinity2{YType::str, "affinity2"},
-    affinity3{YType::str, "affinity3"},
-    affinity4{YType::str, "affinity4"}
-{
-
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_data() const
-{
-    if (is_presence_container) return true;
-    return affinity_type.is_set
-	|| affinity1.is_set
-	|| affinity2.is_set
-	|| affinity3.is_set
-	|| affinity4.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(affinity_type.yfilter)
-	|| ydk::is_set(affinity1.yfilter)
-	|| ydk::is_set(affinity2.yfilter)
-	|| ydk::is_set(affinity3.yfilter)
-	|| ydk::is_set(affinity4.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4";
-    ADD_KEY_TOKEN(affinity_type, "affinity-type");
-    ADD_KEY_TOKEN(affinity1, "affinity1");
-    ADD_KEY_TOKEN(affinity2, "affinity2");
-    ADD_KEY_TOKEN(affinity3, "affinity3");
-    ADD_KEY_TOKEN(affinity4, "affinity4");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (affinity_type.is_set || is_set(affinity_type.yfilter)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
-    if (affinity1.is_set || is_set(affinity1.yfilter)) leaf_name_data.push_back(affinity1.get_name_leafdata());
-    if (affinity2.is_set || is_set(affinity2.yfilter)) leaf_name_data.push_back(affinity2.get_name_leafdata());
-    if (affinity3.is_set || is_set(affinity3.yfilter)) leaf_name_data.push_back(affinity3.get_name_leafdata());
-    if (affinity4.is_set || is_set(affinity4.yfilter)) leaf_name_data.push_back(affinity4.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-        affinity_type.value_namespace = name_space;
-        affinity_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1 = value;
-        affinity1.value_namespace = name_space;
-        affinity1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2 = value;
-        affinity2.value_namespace = name_space;
-        affinity2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity3")
-    {
-        affinity3 = value;
-        affinity3.value_namespace = name_space;
-        affinity3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity4")
-    {
-        affinity4 = value;
-        affinity4.value_namespace = name_space;
-        affinity4.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type.yfilter = yfilter;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1.yfilter = yfilter;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2.yfilter = yfilter;
-    }
-    if(value_path == "affinity3")
-    {
-        affinity3.yfilter = yfilter;
-    }
-    if(value_path == "affinity4")
-    {
-        affinity4.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "affinity-type" || name == "affinity1" || name == "affinity2" || name == "affinity3" || name == "affinity4")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5()
-    :
-    affinity_type{YType::enumeration, "affinity-type"},
-    affinity1{YType::str, "affinity1"},
-    affinity2{YType::str, "affinity2"},
-    affinity3{YType::str, "affinity3"},
-    affinity4{YType::str, "affinity4"},
-    affinity5{YType::str, "affinity5"}
-{
-
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_data() const
-{
-    if (is_presence_container) return true;
-    return affinity_type.is_set
-	|| affinity1.is_set
-	|| affinity2.is_set
-	|| affinity3.is_set
-	|| affinity4.is_set
-	|| affinity5.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(affinity_type.yfilter)
-	|| ydk::is_set(affinity1.yfilter)
-	|| ydk::is_set(affinity2.yfilter)
-	|| ydk::is_set(affinity3.yfilter)
-	|| ydk::is_set(affinity4.yfilter)
-	|| ydk::is_set(affinity5.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5";
-    ADD_KEY_TOKEN(affinity_type, "affinity-type");
-    ADD_KEY_TOKEN(affinity1, "affinity1");
-    ADD_KEY_TOKEN(affinity2, "affinity2");
-    ADD_KEY_TOKEN(affinity3, "affinity3");
-    ADD_KEY_TOKEN(affinity4, "affinity4");
-    ADD_KEY_TOKEN(affinity5, "affinity5");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (affinity_type.is_set || is_set(affinity_type.yfilter)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
-    if (affinity1.is_set || is_set(affinity1.yfilter)) leaf_name_data.push_back(affinity1.get_name_leafdata());
-    if (affinity2.is_set || is_set(affinity2.yfilter)) leaf_name_data.push_back(affinity2.get_name_leafdata());
-    if (affinity3.is_set || is_set(affinity3.yfilter)) leaf_name_data.push_back(affinity3.get_name_leafdata());
-    if (affinity4.is_set || is_set(affinity4.yfilter)) leaf_name_data.push_back(affinity4.get_name_leafdata());
-    if (affinity5.is_set || is_set(affinity5.yfilter)) leaf_name_data.push_back(affinity5.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-        affinity_type.value_namespace = name_space;
-        affinity_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1 = value;
-        affinity1.value_namespace = name_space;
-        affinity1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2 = value;
-        affinity2.value_namespace = name_space;
-        affinity2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity3")
-    {
-        affinity3 = value;
-        affinity3.value_namespace = name_space;
-        affinity3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity4")
-    {
-        affinity4 = value;
-        affinity4.value_namespace = name_space;
-        affinity4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity5")
-    {
-        affinity5 = value;
-        affinity5.value_namespace = name_space;
-        affinity5.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type.yfilter = yfilter;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1.yfilter = yfilter;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2.yfilter = yfilter;
-    }
-    if(value_path == "affinity3")
-    {
-        affinity3.yfilter = yfilter;
-    }
-    if(value_path == "affinity4")
-    {
-        affinity4.yfilter = yfilter;
-    }
-    if(value_path == "affinity5")
-    {
-        affinity5.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "affinity-type" || name == "affinity1" || name == "affinity2" || name == "affinity3" || name == "affinity4" || name == "affinity5")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6()
-    :
-    affinity_type{YType::enumeration, "affinity-type"},
-    affinity1{YType::str, "affinity1"},
-    affinity2{YType::str, "affinity2"},
-    affinity3{YType::str, "affinity3"},
-    affinity4{YType::str, "affinity4"},
-    affinity5{YType::str, "affinity5"},
-    affinity6{YType::str, "affinity6"}
-{
-
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::has_data() const
-{
-    if (is_presence_container) return true;
-    return affinity_type.is_set
-	|| affinity1.is_set
-	|| affinity2.is_set
-	|| affinity3.is_set
-	|| affinity4.is_set
-	|| affinity5.is_set
-	|| affinity6.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(affinity_type.yfilter)
-	|| ydk::is_set(affinity1.yfilter)
-	|| ydk::is_set(affinity2.yfilter)
-	|| ydk::is_set(affinity3.yfilter)
-	|| ydk::is_set(affinity4.yfilter)
-	|| ydk::is_set(affinity5.yfilter)
-	|| ydk::is_set(affinity6.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6";
-    ADD_KEY_TOKEN(affinity_type, "affinity-type");
-    ADD_KEY_TOKEN(affinity1, "affinity1");
-    ADD_KEY_TOKEN(affinity2, "affinity2");
-    ADD_KEY_TOKEN(affinity3, "affinity3");
-    ADD_KEY_TOKEN(affinity4, "affinity4");
-    ADD_KEY_TOKEN(affinity5, "affinity5");
-    ADD_KEY_TOKEN(affinity6, "affinity6");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (affinity_type.is_set || is_set(affinity_type.yfilter)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
-    if (affinity1.is_set || is_set(affinity1.yfilter)) leaf_name_data.push_back(affinity1.get_name_leafdata());
-    if (affinity2.is_set || is_set(affinity2.yfilter)) leaf_name_data.push_back(affinity2.get_name_leafdata());
-    if (affinity3.is_set || is_set(affinity3.yfilter)) leaf_name_data.push_back(affinity3.get_name_leafdata());
-    if (affinity4.is_set || is_set(affinity4.yfilter)) leaf_name_data.push_back(affinity4.get_name_leafdata());
-    if (affinity5.is_set || is_set(affinity5.yfilter)) leaf_name_data.push_back(affinity5.get_name_leafdata());
-    if (affinity6.is_set || is_set(affinity6.yfilter)) leaf_name_data.push_back(affinity6.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-        affinity_type.value_namespace = name_space;
-        affinity_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1 = value;
-        affinity1.value_namespace = name_space;
-        affinity1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2 = value;
-        affinity2.value_namespace = name_space;
-        affinity2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity3")
-    {
-        affinity3 = value;
-        affinity3.value_namespace = name_space;
-        affinity3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity4")
-    {
-        affinity4 = value;
-        affinity4.value_namespace = name_space;
-        affinity4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity5")
-    {
-        affinity5 = value;
-        affinity5.value_namespace = name_space;
-        affinity5.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity6")
-    {
-        affinity6 = value;
-        affinity6.value_namespace = name_space;
-        affinity6.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type.yfilter = yfilter;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1.yfilter = yfilter;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2.yfilter = yfilter;
-    }
-    if(value_path == "affinity3")
-    {
-        affinity3.yfilter = yfilter;
-    }
-    if(value_path == "affinity4")
-    {
-        affinity4.yfilter = yfilter;
-    }
-    if(value_path == "affinity5")
-    {
-        affinity5.yfilter = yfilter;
-    }
-    if(value_path == "affinity6")
-    {
-        affinity6.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "affinity-type" || name == "affinity1" || name == "affinity2" || name == "affinity3" || name == "affinity4" || name == "affinity5" || name == "affinity6")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7()
-    :
-    affinity_type{YType::enumeration, "affinity-type"},
-    affinity1{YType::str, "affinity1"},
-    affinity2{YType::str, "affinity2"},
-    affinity3{YType::str, "affinity3"},
-    affinity4{YType::str, "affinity4"},
-    affinity5{YType::str, "affinity5"},
-    affinity6{YType::str, "affinity6"},
-    affinity7{YType::str, "affinity7"}
-{
-
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::has_data() const
-{
-    if (is_presence_container) return true;
-    return affinity_type.is_set
-	|| affinity1.is_set
-	|| affinity2.is_set
-	|| affinity3.is_set
-	|| affinity4.is_set
-	|| affinity5.is_set
-	|| affinity6.is_set
-	|| affinity7.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(affinity_type.yfilter)
-	|| ydk::is_set(affinity1.yfilter)
-	|| ydk::is_set(affinity2.yfilter)
-	|| ydk::is_set(affinity3.yfilter)
-	|| ydk::is_set(affinity4.yfilter)
-	|| ydk::is_set(affinity5.yfilter)
-	|| ydk::is_set(affinity6.yfilter)
-	|| ydk::is_set(affinity7.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7";
-    ADD_KEY_TOKEN(affinity_type, "affinity-type");
-    ADD_KEY_TOKEN(affinity1, "affinity1");
-    ADD_KEY_TOKEN(affinity2, "affinity2");
-    ADD_KEY_TOKEN(affinity3, "affinity3");
-    ADD_KEY_TOKEN(affinity4, "affinity4");
-    ADD_KEY_TOKEN(affinity5, "affinity5");
-    ADD_KEY_TOKEN(affinity6, "affinity6");
-    ADD_KEY_TOKEN(affinity7, "affinity7");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (affinity_type.is_set || is_set(affinity_type.yfilter)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
-    if (affinity1.is_set || is_set(affinity1.yfilter)) leaf_name_data.push_back(affinity1.get_name_leafdata());
-    if (affinity2.is_set || is_set(affinity2.yfilter)) leaf_name_data.push_back(affinity2.get_name_leafdata());
-    if (affinity3.is_set || is_set(affinity3.yfilter)) leaf_name_data.push_back(affinity3.get_name_leafdata());
-    if (affinity4.is_set || is_set(affinity4.yfilter)) leaf_name_data.push_back(affinity4.get_name_leafdata());
-    if (affinity5.is_set || is_set(affinity5.yfilter)) leaf_name_data.push_back(affinity5.get_name_leafdata());
-    if (affinity6.is_set || is_set(affinity6.yfilter)) leaf_name_data.push_back(affinity6.get_name_leafdata());
-    if (affinity7.is_set || is_set(affinity7.yfilter)) leaf_name_data.push_back(affinity7.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-        affinity_type.value_namespace = name_space;
-        affinity_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1 = value;
-        affinity1.value_namespace = name_space;
-        affinity1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2 = value;
-        affinity2.value_namespace = name_space;
-        affinity2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity3")
-    {
-        affinity3 = value;
-        affinity3.value_namespace = name_space;
-        affinity3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity4")
-    {
-        affinity4 = value;
-        affinity4.value_namespace = name_space;
-        affinity4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity5")
-    {
-        affinity5 = value;
-        affinity5.value_namespace = name_space;
-        affinity5.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity6")
-    {
-        affinity6 = value;
-        affinity6.value_namespace = name_space;
-        affinity6.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity7")
-    {
-        affinity7 = value;
-        affinity7.value_namespace = name_space;
-        affinity7.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type.yfilter = yfilter;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1.yfilter = yfilter;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2.yfilter = yfilter;
-    }
-    if(value_path == "affinity3")
-    {
-        affinity3.yfilter = yfilter;
-    }
-    if(value_path == "affinity4")
-    {
-        affinity4.yfilter = yfilter;
-    }
-    if(value_path == "affinity5")
-    {
-        affinity5.yfilter = yfilter;
-    }
-    if(value_path == "affinity6")
-    {
-        affinity6.yfilter = yfilter;
-    }
-    if(value_path == "affinity7")
-    {
-        affinity7.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "affinity-type" || name == "affinity1" || name == "affinity2" || name == "affinity3" || name == "affinity4" || name == "affinity5" || name == "affinity6" || name == "affinity7")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8()
-    :
-    affinity_type{YType::enumeration, "affinity-type"},
-    affinity1{YType::str, "affinity1"},
-    affinity2{YType::str, "affinity2"},
-    affinity3{YType::str, "affinity3"},
-    affinity4{YType::str, "affinity4"},
-    affinity5{YType::str, "affinity5"},
-    affinity6{YType::str, "affinity6"},
-    affinity7{YType::str, "affinity7"},
-    affinity8{YType::str, "affinity8"}
-{
-
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::has_data() const
-{
-    if (is_presence_container) return true;
-    return affinity_type.is_set
-	|| affinity1.is_set
-	|| affinity2.is_set
-	|| affinity3.is_set
-	|| affinity4.is_set
-	|| affinity5.is_set
-	|| affinity6.is_set
-	|| affinity7.is_set
-	|| affinity8.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(affinity_type.yfilter)
-	|| ydk::is_set(affinity1.yfilter)
-	|| ydk::is_set(affinity2.yfilter)
-	|| ydk::is_set(affinity3.yfilter)
-	|| ydk::is_set(affinity4.yfilter)
-	|| ydk::is_set(affinity5.yfilter)
-	|| ydk::is_set(affinity6.yfilter)
-	|| ydk::is_set(affinity7.yfilter)
-	|| ydk::is_set(affinity8.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8";
-    ADD_KEY_TOKEN(affinity_type, "affinity-type");
-    ADD_KEY_TOKEN(affinity1, "affinity1");
-    ADD_KEY_TOKEN(affinity2, "affinity2");
-    ADD_KEY_TOKEN(affinity3, "affinity3");
-    ADD_KEY_TOKEN(affinity4, "affinity4");
-    ADD_KEY_TOKEN(affinity5, "affinity5");
-    ADD_KEY_TOKEN(affinity6, "affinity6");
-    ADD_KEY_TOKEN(affinity7, "affinity7");
-    ADD_KEY_TOKEN(affinity8, "affinity8");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (affinity_type.is_set || is_set(affinity_type.yfilter)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
-    if (affinity1.is_set || is_set(affinity1.yfilter)) leaf_name_data.push_back(affinity1.get_name_leafdata());
-    if (affinity2.is_set || is_set(affinity2.yfilter)) leaf_name_data.push_back(affinity2.get_name_leafdata());
-    if (affinity3.is_set || is_set(affinity3.yfilter)) leaf_name_data.push_back(affinity3.get_name_leafdata());
-    if (affinity4.is_set || is_set(affinity4.yfilter)) leaf_name_data.push_back(affinity4.get_name_leafdata());
-    if (affinity5.is_set || is_set(affinity5.yfilter)) leaf_name_data.push_back(affinity5.get_name_leafdata());
-    if (affinity6.is_set || is_set(affinity6.yfilter)) leaf_name_data.push_back(affinity6.get_name_leafdata());
-    if (affinity7.is_set || is_set(affinity7.yfilter)) leaf_name_data.push_back(affinity7.get_name_leafdata());
-    if (affinity8.is_set || is_set(affinity8.yfilter)) leaf_name_data.push_back(affinity8.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-        affinity_type.value_namespace = name_space;
-        affinity_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1 = value;
-        affinity1.value_namespace = name_space;
-        affinity1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2 = value;
-        affinity2.value_namespace = name_space;
-        affinity2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity3")
-    {
-        affinity3 = value;
-        affinity3.value_namespace = name_space;
-        affinity3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity4")
-    {
-        affinity4 = value;
-        affinity4.value_namespace = name_space;
-        affinity4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity5")
-    {
-        affinity5 = value;
-        affinity5.value_namespace = name_space;
-        affinity5.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity6")
-    {
-        affinity6 = value;
-        affinity6.value_namespace = name_space;
-        affinity6.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity7")
-    {
-        affinity7 = value;
-        affinity7.value_namespace = name_space;
-        affinity7.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity8")
-    {
-        affinity8 = value;
-        affinity8.value_namespace = name_space;
-        affinity8.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type.yfilter = yfilter;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1.yfilter = yfilter;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2.yfilter = yfilter;
-    }
-    if(value_path == "affinity3")
-    {
-        affinity3.yfilter = yfilter;
-    }
-    if(value_path == "affinity4")
-    {
-        affinity4.yfilter = yfilter;
-    }
-    if(value_path == "affinity5")
-    {
-        affinity5.yfilter = yfilter;
-    }
-    if(value_path == "affinity6")
-    {
-        affinity6.yfilter = yfilter;
-    }
-    if(value_path == "affinity7")
-    {
-        affinity7.yfilter = yfilter;
-    }
-    if(value_path == "affinity8")
-    {
-        affinity8.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "affinity-type" || name == "affinity1" || name == "affinity2" || name == "affinity3" || name == "affinity4" || name == "affinity5" || name == "affinity6" || name == "affinity7" || name == "affinity8")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9()
-    :
-    affinity_type{YType::enumeration, "affinity-type"},
-    affinity1{YType::str, "affinity1"},
-    affinity2{YType::str, "affinity2"},
-    affinity3{YType::str, "affinity3"},
-    affinity4{YType::str, "affinity4"},
-    affinity5{YType::str, "affinity5"},
-    affinity6{YType::str, "affinity6"},
-    affinity7{YType::str, "affinity7"},
-    affinity8{YType::str, "affinity8"},
-    affinity9{YType::str, "affinity9"}
-{
-
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::has_data() const
-{
-    if (is_presence_container) return true;
-    return affinity_type.is_set
-	|| affinity1.is_set
-	|| affinity2.is_set
-	|| affinity3.is_set
-	|| affinity4.is_set
-	|| affinity5.is_set
-	|| affinity6.is_set
-	|| affinity7.is_set
-	|| affinity8.is_set
-	|| affinity9.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(affinity_type.yfilter)
-	|| ydk::is_set(affinity1.yfilter)
-	|| ydk::is_set(affinity2.yfilter)
-	|| ydk::is_set(affinity3.yfilter)
-	|| ydk::is_set(affinity4.yfilter)
-	|| ydk::is_set(affinity5.yfilter)
-	|| ydk::is_set(affinity6.yfilter)
-	|| ydk::is_set(affinity7.yfilter)
-	|| ydk::is_set(affinity8.yfilter)
-	|| ydk::is_set(affinity9.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9";
-    ADD_KEY_TOKEN(affinity_type, "affinity-type");
-    ADD_KEY_TOKEN(affinity1, "affinity1");
-    ADD_KEY_TOKEN(affinity2, "affinity2");
-    ADD_KEY_TOKEN(affinity3, "affinity3");
-    ADD_KEY_TOKEN(affinity4, "affinity4");
-    ADD_KEY_TOKEN(affinity5, "affinity5");
-    ADD_KEY_TOKEN(affinity6, "affinity6");
-    ADD_KEY_TOKEN(affinity7, "affinity7");
-    ADD_KEY_TOKEN(affinity8, "affinity8");
-    ADD_KEY_TOKEN(affinity9, "affinity9");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (affinity_type.is_set || is_set(affinity_type.yfilter)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
-    if (affinity1.is_set || is_set(affinity1.yfilter)) leaf_name_data.push_back(affinity1.get_name_leafdata());
-    if (affinity2.is_set || is_set(affinity2.yfilter)) leaf_name_data.push_back(affinity2.get_name_leafdata());
-    if (affinity3.is_set || is_set(affinity3.yfilter)) leaf_name_data.push_back(affinity3.get_name_leafdata());
-    if (affinity4.is_set || is_set(affinity4.yfilter)) leaf_name_data.push_back(affinity4.get_name_leafdata());
-    if (affinity5.is_set || is_set(affinity5.yfilter)) leaf_name_data.push_back(affinity5.get_name_leafdata());
-    if (affinity6.is_set || is_set(affinity6.yfilter)) leaf_name_data.push_back(affinity6.get_name_leafdata());
-    if (affinity7.is_set || is_set(affinity7.yfilter)) leaf_name_data.push_back(affinity7.get_name_leafdata());
-    if (affinity8.is_set || is_set(affinity8.yfilter)) leaf_name_data.push_back(affinity8.get_name_leafdata());
-    if (affinity9.is_set || is_set(affinity9.yfilter)) leaf_name_data.push_back(affinity9.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-        affinity_type.value_namespace = name_space;
-        affinity_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1 = value;
-        affinity1.value_namespace = name_space;
-        affinity1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2 = value;
-        affinity2.value_namespace = name_space;
-        affinity2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity3")
-    {
-        affinity3 = value;
-        affinity3.value_namespace = name_space;
-        affinity3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity4")
-    {
-        affinity4 = value;
-        affinity4.value_namespace = name_space;
-        affinity4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity5")
-    {
-        affinity5 = value;
-        affinity5.value_namespace = name_space;
-        affinity5.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity6")
-    {
-        affinity6 = value;
-        affinity6.value_namespace = name_space;
-        affinity6.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity7")
-    {
-        affinity7 = value;
-        affinity7.value_namespace = name_space;
-        affinity7.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity8")
-    {
-        affinity8 = value;
-        affinity8.value_namespace = name_space;
-        affinity8.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity9")
-    {
-        affinity9 = value;
-        affinity9.value_namespace = name_space;
-        affinity9.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type.yfilter = yfilter;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1.yfilter = yfilter;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2.yfilter = yfilter;
-    }
-    if(value_path == "affinity3")
-    {
-        affinity3.yfilter = yfilter;
-    }
-    if(value_path == "affinity4")
-    {
-        affinity4.yfilter = yfilter;
-    }
-    if(value_path == "affinity5")
-    {
-        affinity5.yfilter = yfilter;
-    }
-    if(value_path == "affinity6")
-    {
-        affinity6.yfilter = yfilter;
-    }
-    if(value_path == "affinity7")
-    {
-        affinity7.yfilter = yfilter;
-    }
-    if(value_path == "affinity8")
-    {
-        affinity8.yfilter = yfilter;
-    }
-    if(value_path == "affinity9")
-    {
-        affinity9.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "affinity-type" || name == "affinity1" || name == "affinity2" || name == "affinity3" || name == "affinity4" || name == "affinity5" || name == "affinity6" || name == "affinity7" || name == "affinity8" || name == "affinity9")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10()
-    :
-    affinity_type{YType::enumeration, "affinity-type"},
-    affinity1{YType::str, "affinity1"},
-    affinity2{YType::str, "affinity2"},
-    affinity3{YType::str, "affinity3"},
-    affinity4{YType::str, "affinity4"},
-    affinity5{YType::str, "affinity5"},
-    affinity6{YType::str, "affinity6"},
-    affinity7{YType::str, "affinity7"},
-    affinity8{YType::str, "affinity8"},
-    affinity9{YType::str, "affinity9"},
-    affinity10{YType::str, "affinity10"}
-{
-
-    yang_name = "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10"; yang_parent_name = "new-style-affinity-affinity-types"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::~NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::has_data() const
-{
-    if (is_presence_container) return true;
-    return affinity_type.is_set
-	|| affinity1.is_set
-	|| affinity2.is_set
-	|| affinity3.is_set
-	|| affinity4.is_set
-	|| affinity5.is_set
-	|| affinity6.is_set
-	|| affinity7.is_set
-	|| affinity8.is_set
-	|| affinity9.is_set
-	|| affinity10.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(affinity_type.yfilter)
-	|| ydk::is_set(affinity1.yfilter)
-	|| ydk::is_set(affinity2.yfilter)
-	|| ydk::is_set(affinity3.yfilter)
-	|| ydk::is_set(affinity4.yfilter)
-	|| ydk::is_set(affinity5.yfilter)
-	|| ydk::is_set(affinity6.yfilter)
-	|| ydk::is_set(affinity7.yfilter)
-	|| ydk::is_set(affinity8.yfilter)
-	|| ydk::is_set(affinity9.yfilter)
-	|| ydk::is_set(affinity10.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "new-style-affinity-affinity-type-affinity1-affinity2-affinity3-affinity4-affinity5-affinity6-affinity7-affinity8-affinity9-affinity10";
-    ADD_KEY_TOKEN(affinity_type, "affinity-type");
-    ADD_KEY_TOKEN(affinity1, "affinity1");
-    ADD_KEY_TOKEN(affinity2, "affinity2");
-    ADD_KEY_TOKEN(affinity3, "affinity3");
-    ADD_KEY_TOKEN(affinity4, "affinity4");
-    ADD_KEY_TOKEN(affinity5, "affinity5");
-    ADD_KEY_TOKEN(affinity6, "affinity6");
-    ADD_KEY_TOKEN(affinity7, "affinity7");
-    ADD_KEY_TOKEN(affinity8, "affinity8");
-    ADD_KEY_TOKEN(affinity9, "affinity9");
-    ADD_KEY_TOKEN(affinity10, "affinity10");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (affinity_type.is_set || is_set(affinity_type.yfilter)) leaf_name_data.push_back(affinity_type.get_name_leafdata());
-    if (affinity1.is_set || is_set(affinity1.yfilter)) leaf_name_data.push_back(affinity1.get_name_leafdata());
-    if (affinity2.is_set || is_set(affinity2.yfilter)) leaf_name_data.push_back(affinity2.get_name_leafdata());
-    if (affinity3.is_set || is_set(affinity3.yfilter)) leaf_name_data.push_back(affinity3.get_name_leafdata());
-    if (affinity4.is_set || is_set(affinity4.yfilter)) leaf_name_data.push_back(affinity4.get_name_leafdata());
-    if (affinity5.is_set || is_set(affinity5.yfilter)) leaf_name_data.push_back(affinity5.get_name_leafdata());
-    if (affinity6.is_set || is_set(affinity6.yfilter)) leaf_name_data.push_back(affinity6.get_name_leafdata());
-    if (affinity7.is_set || is_set(affinity7.yfilter)) leaf_name_data.push_back(affinity7.get_name_leafdata());
-    if (affinity8.is_set || is_set(affinity8.yfilter)) leaf_name_data.push_back(affinity8.get_name_leafdata());
-    if (affinity9.is_set || is_set(affinity9.yfilter)) leaf_name_data.push_back(affinity9.get_name_leafdata());
-    if (affinity10.is_set || is_set(affinity10.yfilter)) leaf_name_data.push_back(affinity10.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type = value;
-        affinity_type.value_namespace = name_space;
-        affinity_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1 = value;
-        affinity1.value_namespace = name_space;
-        affinity1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2 = value;
-        affinity2.value_namespace = name_space;
-        affinity2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity3")
-    {
-        affinity3 = value;
-        affinity3.value_namespace = name_space;
-        affinity3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity4")
-    {
-        affinity4 = value;
-        affinity4.value_namespace = name_space;
-        affinity4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity5")
-    {
-        affinity5 = value;
-        affinity5.value_namespace = name_space;
-        affinity5.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity6")
-    {
-        affinity6 = value;
-        affinity6.value_namespace = name_space;
-        affinity6.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity7")
-    {
-        affinity7 = value;
-        affinity7.value_namespace = name_space;
-        affinity7.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity8")
-    {
-        affinity8 = value;
-        affinity8.value_namespace = name_space;
-        affinity8.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity9")
-    {
-        affinity9 = value;
-        affinity9.value_namespace = name_space;
-        affinity9.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "affinity10")
-    {
-        affinity10 = value;
-        affinity10.value_namespace = name_space;
-        affinity10.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "affinity-type")
-    {
-        affinity_type.yfilter = yfilter;
-    }
-    if(value_path == "affinity1")
-    {
-        affinity1.yfilter = yfilter;
-    }
-    if(value_path == "affinity2")
-    {
-        affinity2.yfilter = yfilter;
-    }
-    if(value_path == "affinity3")
-    {
-        affinity3.yfilter = yfilter;
-    }
-    if(value_path == "affinity4")
-    {
-        affinity4.yfilter = yfilter;
-    }
-    if(value_path == "affinity5")
-    {
-        affinity5.yfilter = yfilter;
-    }
-    if(value_path == "affinity6")
-    {
-        affinity6.yfilter = yfilter;
-    }
-    if(value_path == "affinity7")
-    {
-        affinity7.yfilter = yfilter;
-    }
-    if(value_path == "affinity8")
-    {
-        affinity8.yfilter = yfilter;
-    }
-    if(value_path == "affinity9")
-    {
-        affinity9.yfilter = yfilter;
-    }
-    if(value_path == "affinity10")
-    {
-        affinity10.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::NewStyleAffinityAffinityTypes::NewStyleAffinityAffinityTypeAffinity1Affinity2Affinity3Affinity4Affinity5Affinity6Affinity7Affinity8Affinity9Affinity10::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "affinity-type" || name == "affinity1" || name == "affinity2" || name == "affinity3" || name == "affinity4" || name == "affinity5" || name == "affinity6" || name == "affinity7" || name == "affinity8" || name == "affinity9" || name == "affinity10")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::FastReroute::FastReroute()
-    :
-    bandwidth_protection{YType::uint32, "bandwidth-protection"},
-    node_protection{YType::uint32, "node-protection"}
-{
-
-    yang_name = "fast-reroute"; yang_parent_name = "tunnel-te-attributes"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::FastReroute::~FastReroute()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::FastReroute::has_data() const
-{
-    if (is_presence_container) return true;
-    return bandwidth_protection.is_set
-	|| node_protection.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::FastReroute::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(bandwidth_protection.yfilter)
-	|| ydk::is_set(node_protection.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::FastReroute::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fast-reroute";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::FastReroute::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (bandwidth_protection.is_set || is_set(bandwidth_protection.yfilter)) leaf_name_data.push_back(bandwidth_protection.get_name_leafdata());
-    if (node_protection.is_set || is_set(node_protection.yfilter)) leaf_name_data.push_back(node_protection.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::FastReroute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::FastReroute::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::FastReroute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "bandwidth-protection")
-    {
-        bandwidth_protection = value;
-        bandwidth_protection.value_namespace = name_space;
-        bandwidth_protection.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "node-protection")
-    {
-        node_protection = value;
-        node_protection.value_namespace = name_space;
-        node_protection.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::FastReroute::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "bandwidth-protection")
-    {
-        bandwidth_protection.yfilter = yfilter;
-    }
-    if(value_path == "node-protection")
-    {
-        node_protection.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TunnelTeAttributes::FastReroute::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bandwidth-protection" || name == "node-protection")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::TransportProfileTunnel()
-    :
-    source{YType::str, "source"}
-        ,
-    bfd(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd>())
-    , working_lsp(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp>())
-    , destination(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination>())
-    , fault(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault>())
-    , protect_lsp(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp>())
-{
-    bfd->parent = this;
-    working_lsp->parent = this;
-    destination->parent = this;
-    fault->parent = this;
-    protect_lsp->parent = this;
-
-    yang_name = "transport-profile-tunnel"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::~TransportProfileTunnel()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::has_data() const
-{
-    if (is_presence_container) return true;
-    return source.is_set
-	|| (bfd !=  nullptr && bfd->has_data())
-	|| (working_lsp !=  nullptr && working_lsp->has_data())
-	|| (destination !=  nullptr && destination->has_data())
-	|| (fault !=  nullptr && fault->has_data())
-	|| (protect_lsp !=  nullptr && protect_lsp->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(source.yfilter)
-	|| (bfd !=  nullptr && bfd->has_operation())
-	|| (working_lsp !=  nullptr && working_lsp->has_operation())
-	|| (destination !=  nullptr && destination->has_operation())
-	|| (fault !=  nullptr && fault->has_operation())
-	|| (protect_lsp !=  nullptr && protect_lsp->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:transport-profile-tunnel";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (source.is_set || is_set(source.yfilter)) leaf_name_data.push_back(source.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bfd")
-    {
-        if(bfd == nullptr)
-        {
-            bfd = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd>();
-        }
-        return bfd;
-    }
-
-    if(child_yang_name == "working-lsp")
-    {
-        if(working_lsp == nullptr)
-        {
-            working_lsp = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp>();
-        }
-        return working_lsp;
-    }
-
-    if(child_yang_name == "destination")
-    {
-        if(destination == nullptr)
-        {
-            destination = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination>();
-        }
-        return destination;
-    }
-
-    if(child_yang_name == "fault")
-    {
-        if(fault == nullptr)
-        {
-            fault = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault>();
-        }
-        return fault;
-    }
-
-    if(child_yang_name == "protect-lsp")
-    {
-        if(protect_lsp == nullptr)
-        {
-            protect_lsp = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp>();
-        }
-        return protect_lsp;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(bfd != nullptr)
-    {
-        _children["bfd"] = bfd;
-    }
-
-    if(working_lsp != nullptr)
-    {
-        _children["working-lsp"] = working_lsp;
-    }
-
-    if(destination != nullptr)
-    {
-        _children["destination"] = destination;
-    }
-
-    if(fault != nullptr)
-    {
-        _children["fault"] = fault;
-    }
-
-    if(protect_lsp != nullptr)
-    {
-        _children["protect-lsp"] = protect_lsp;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "source")
-    {
-        source = value;
-        source.value_namespace = name_space;
-        source.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "source")
-    {
-        source.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bfd" || name == "working-lsp" || name == "destination" || name == "fault" || name == "protect-lsp" || name == "source")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::Bfd()
-    :
-    detection_multiplier{YType::uint32, "detection-multiplier"},
-    enable{YType::empty, "enable"},
-    multiplier_standby{YType::uint32, "multiplier-standby"}
-        ,
-    min_interval(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval>())
-    , min_interval_standby(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby>())
-{
-    min_interval->parent = this;
-    min_interval_standby->parent = this;
-
-    yang_name = "bfd"; yang_parent_name = "transport-profile-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::~Bfd()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::has_data() const
-{
-    if (is_presence_container) return true;
-    return detection_multiplier.is_set
-	|| enable.is_set
-	|| multiplier_standby.is_set
-	|| (min_interval !=  nullptr && min_interval->has_data())
-	|| (min_interval_standby !=  nullptr && min_interval_standby->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(detection_multiplier.yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(multiplier_standby.yfilter)
-	|| (min_interval !=  nullptr && min_interval->has_operation())
-	|| (min_interval_standby !=  nullptr && min_interval_standby->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bfd";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (detection_multiplier.is_set || is_set(detection_multiplier.yfilter)) leaf_name_data.push_back(detection_multiplier.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (multiplier_standby.is_set || is_set(multiplier_standby.yfilter)) leaf_name_data.push_back(multiplier_standby.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "min-interval")
-    {
-        if(min_interval == nullptr)
-        {
-            min_interval = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval>();
-        }
-        return min_interval;
-    }
-
-    if(child_yang_name == "min-interval-standby")
-    {
-        if(min_interval_standby == nullptr)
-        {
-            min_interval_standby = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby>();
-        }
-        return min_interval_standby;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(min_interval != nullptr)
-    {
-        _children["min-interval"] = min_interval;
-    }
-
-    if(min_interval_standby != nullptr)
-    {
-        _children["min-interval-standby"] = min_interval_standby;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "detection-multiplier")
-    {
-        detection_multiplier = value;
-        detection_multiplier.value_namespace = name_space;
-        detection_multiplier.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "multiplier-standby")
-    {
-        multiplier_standby = value;
-        multiplier_standby.value_namespace = name_space;
-        multiplier_standby.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "detection-multiplier")
-    {
-        detection_multiplier.yfilter = yfilter;
-    }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "multiplier-standby")
-    {
-        multiplier_standby.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "min-interval" || name == "min-interval-standby" || name == "detection-multiplier" || name == "enable" || name == "multiplier-standby")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval::MinInterval()
-    :
-    interval_ms{YType::uint32, "interval-ms"},
-    interval_us{YType::uint32, "interval-us"}
-{
-
-    yang_name = "min-interval"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval::~MinInterval()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval::has_data() const
-{
-    if (is_presence_container) return true;
-    return interval_ms.is_set
-	|| interval_us.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interval_ms.yfilter)
-	|| ydk::is_set(interval_us.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "min-interval";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interval_ms.is_set || is_set(interval_ms.yfilter)) leaf_name_data.push_back(interval_ms.get_name_leafdata());
-    if (interval_us.is_set || is_set(interval_us.yfilter)) leaf_name_data.push_back(interval_us.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interval-ms")
-    {
-        interval_ms = value;
-        interval_ms.value_namespace = name_space;
-        interval_ms.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interval-us")
-    {
-        interval_us = value;
-        interval_us.value_namespace = name_space;
-        interval_us.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interval-ms")
-    {
-        interval_ms.yfilter = yfilter;
-    }
-    if(value_path == "interval-us")
-    {
-        interval_us.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinInterval::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interval-ms" || name == "interval-us")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby::MinIntervalStandby()
-    :
-    interval_standby_ms{YType::uint32, "interval-standby-ms"},
-    interval_standby_us{YType::uint32, "interval-standby-us"}
-{
-
-    yang_name = "min-interval-standby"; yang_parent_name = "bfd"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby::~MinIntervalStandby()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby::has_data() const
-{
-    if (is_presence_container) return true;
-    return interval_standby_ms.is_set
-	|| interval_standby_us.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interval_standby_ms.yfilter)
-	|| ydk::is_set(interval_standby_us.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "min-interval-standby";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interval_standby_ms.is_set || is_set(interval_standby_ms.yfilter)) leaf_name_data.push_back(interval_standby_ms.get_name_leafdata());
-    if (interval_standby_us.is_set || is_set(interval_standby_us.yfilter)) leaf_name_data.push_back(interval_standby_us.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interval-standby-ms")
-    {
-        interval_standby_ms = value;
-        interval_standby_ms.value_namespace = name_space;
-        interval_standby_ms.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interval-standby-us")
-    {
-        interval_standby_us = value;
-        interval_standby_us.value_namespace = name_space;
-        interval_standby_us.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interval-standby-ms")
-    {
-        interval_standby_ms.yfilter = yfilter;
-    }
-    if(value_path == "interval-standby-us")
-    {
-        interval_standby_us.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Bfd::MinIntervalStandby::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "interval-standby-ms" || name == "interval-standby-us")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::WorkingLsp()
-    :
-    in_label{YType::uint32, "in-label"},
-    lockout{YType::empty, "lockout"},
-    lsp_id{YType::uint32, "lsp-id"}
-        ,
-    out_label(nullptr) // presence node
-{
-
-    yang_name = "working-lsp"; yang_parent_name = "transport-profile-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::~WorkingLsp()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::has_data() const
-{
-    if (is_presence_container) return true;
-    return in_label.is_set
-	|| lockout.is_set
-	|| lsp_id.is_set
-	|| (out_label !=  nullptr && out_label->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(in_label.yfilter)
-	|| ydk::is_set(lockout.yfilter)
-	|| ydk::is_set(lsp_id.yfilter)
-	|| (out_label !=  nullptr && out_label->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "working-lsp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (in_label.is_set || is_set(in_label.yfilter)) leaf_name_data.push_back(in_label.get_name_leafdata());
-    if (lockout.is_set || is_set(lockout.yfilter)) leaf_name_data.push_back(lockout.get_name_leafdata());
-    if (lsp_id.is_set || is_set(lsp_id.yfilter)) leaf_name_data.push_back(lsp_id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "out-label")
-    {
-        if(out_label == nullptr)
-        {
-            out_label = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::OutLabel>();
-        }
-        return out_label;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(out_label != nullptr)
-    {
-        _children["out-label"] = out_label;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "in-label")
-    {
-        in_label = value;
-        in_label.value_namespace = name_space;
-        in_label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lockout")
-    {
-        lockout = value;
-        lockout.value_namespace = name_space;
-        lockout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lsp-id")
-    {
-        lsp_id = value;
-        lsp_id.value_namespace = name_space;
-        lsp_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "in-label")
-    {
-        in_label.yfilter = yfilter;
-    }
-    if(value_path == "lockout")
-    {
-        lockout.yfilter = yfilter;
-    }
-    if(value_path == "lsp-id")
-    {
-        lsp_id.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "out-label" || name == "in-label" || name == "lockout" || name == "lsp-id")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::OutLabel::OutLabel()
-    :
-    label{YType::uint32, "label"},
-    link{YType::uint32, "link"}
-{
-
-    yang_name = "out-label"; yang_parent_name = "working-lsp"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::OutLabel::~OutLabel()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::OutLabel::has_data() const
-{
-    if (is_presence_container) return true;
-    return label.is_set
-	|| link.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::OutLabel::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(label.yfilter)
-	|| ydk::is_set(link.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::OutLabel::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "out-label";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::OutLabel::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
-    if (link.is_set || is_set(link.yfilter)) leaf_name_data.push_back(link.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::OutLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::OutLabel::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::OutLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "label")
-    {
-        label = value;
-        label.value_namespace = name_space;
-        label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link")
-    {
-        link = value;
-        link.value_namespace = name_space;
-        link.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::OutLabel::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "label")
-    {
-        label.yfilter = yfilter;
-    }
-    if(value_path == "link")
-    {
-        link.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::WorkingLsp::OutLabel::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "label" || name == "link")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination::Destination()
-    :
-    node_id{YType::str, "node-id"},
-    global_id{YType::uint32, "global-id"},
-    tunnel_id{YType::uint32, "tunnel-id"}
-{
-
-    yang_name = "destination"; yang_parent_name = "transport-profile-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination::~Destination()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination::has_data() const
-{
-    if (is_presence_container) return true;
-    return node_id.is_set
-	|| global_id.is_set
-	|| tunnel_id.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(node_id.yfilter)
-	|| ydk::is_set(global_id.yfilter)
-	|| ydk::is_set(tunnel_id.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "destination";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (node_id.is_set || is_set(node_id.yfilter)) leaf_name_data.push_back(node_id.get_name_leafdata());
-    if (global_id.is_set || is_set(global_id.yfilter)) leaf_name_data.push_back(global_id.get_name_leafdata());
-    if (tunnel_id.is_set || is_set(tunnel_id.yfilter)) leaf_name_data.push_back(tunnel_id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "node-id")
-    {
-        node_id = value;
-        node_id.value_namespace = name_space;
-        node_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "global-id")
-    {
-        global_id = value;
-        global_id.value_namespace = name_space;
-        global_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tunnel-id")
-    {
-        tunnel_id = value;
-        tunnel_id.value_namespace = name_space;
-        tunnel_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "node-id")
-    {
-        node_id.yfilter = yfilter;
-    }
-    if(value_path == "global-id")
-    {
-        global_id.yfilter = yfilter;
-    }
-    if(value_path == "tunnel-id")
-    {
-        tunnel_id.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Destination::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "node-id" || name == "global-id" || name == "tunnel-id")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::Fault()
-    :
-    enable{YType::empty, "enable"}
-        ,
-    protection_trigger(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger>())
-{
-    protection_trigger->parent = this;
-
-    yang_name = "fault"; yang_parent_name = "transport-profile-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::~Fault()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set
-	|| (protection_trigger !=  nullptr && protection_trigger->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| (protection_trigger !=  nullptr && protection_trigger->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "fault";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "protection-trigger")
-    {
-        if(protection_trigger == nullptr)
-        {
-            protection_trigger = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger>();
-        }
-        return protection_trigger;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(protection_trigger != nullptr)
-    {
-        _children["protection-trigger"] = protection_trigger;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "protection-trigger" || name == "enable")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger::ProtectionTrigger()
-    :
-    ldi{YType::boolean, "ldi"},
-    ais{YType::boolean, "ais"},
-    lkr{YType::boolean, "lkr"}
-{
-
-    yang_name = "protection-trigger"; yang_parent_name = "fault"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger::~ProtectionTrigger()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger::has_data() const
-{
-    if (is_presence_container) return true;
-    return ldi.is_set
-	|| ais.is_set
-	|| lkr.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(ldi.yfilter)
-	|| ydk::is_set(ais.yfilter)
-	|| ydk::is_set(lkr.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "protection-trigger";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (ldi.is_set || is_set(ldi.yfilter)) leaf_name_data.push_back(ldi.get_name_leafdata());
-    if (ais.is_set || is_set(ais.yfilter)) leaf_name_data.push_back(ais.get_name_leafdata());
-    if (lkr.is_set || is_set(lkr.yfilter)) leaf_name_data.push_back(lkr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "ldi")
-    {
-        ldi = value;
-        ldi.value_namespace = name_space;
-        ldi.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ais")
-    {
-        ais = value;
-        ais.value_namespace = name_space;
-        ais.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lkr")
-    {
-        lkr = value;
-        lkr.value_namespace = name_space;
-        lkr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "ldi")
-    {
-        ldi.yfilter = yfilter;
-    }
-    if(value_path == "ais")
-    {
-        ais.yfilter = yfilter;
-    }
-    if(value_path == "lkr")
-    {
-        lkr.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::Fault::ProtectionTrigger::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "ldi" || name == "ais" || name == "lkr")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::ProtectLsp()
-    :
-    in_label{YType::uint32, "in-label"},
-    lockout{YType::empty, "lockout"},
-    lsp_id{YType::uint32, "lsp-id"}
-        ,
-    out_label(nullptr) // presence node
-{
-
-    yang_name = "protect-lsp"; yang_parent_name = "transport-profile-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::~ProtectLsp()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::has_data() const
-{
-    if (is_presence_container) return true;
-    return in_label.is_set
-	|| lockout.is_set
-	|| lsp_id.is_set
-	|| (out_label !=  nullptr && out_label->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(in_label.yfilter)
-	|| ydk::is_set(lockout.yfilter)
-	|| ydk::is_set(lsp_id.yfilter)
-	|| (out_label !=  nullptr && out_label->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "protect-lsp";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (in_label.is_set || is_set(in_label.yfilter)) leaf_name_data.push_back(in_label.get_name_leafdata());
-    if (lockout.is_set || is_set(lockout.yfilter)) leaf_name_data.push_back(lockout.get_name_leafdata());
-    if (lsp_id.is_set || is_set(lsp_id.yfilter)) leaf_name_data.push_back(lsp_id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "out-label")
-    {
-        if(out_label == nullptr)
-        {
-            out_label = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::OutLabel>();
-        }
-        return out_label;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(out_label != nullptr)
-    {
-        _children["out-label"] = out_label;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "in-label")
-    {
-        in_label = value;
-        in_label.value_namespace = name_space;
-        in_label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lockout")
-    {
-        lockout = value;
-        lockout.value_namespace = name_space;
-        lockout.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "lsp-id")
-    {
-        lsp_id = value;
-        lsp_id.value_namespace = name_space;
-        lsp_id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "in-label")
-    {
-        in_label.yfilter = yfilter;
-    }
-    if(value_path == "lockout")
-    {
-        lockout.yfilter = yfilter;
-    }
-    if(value_path == "lsp-id")
-    {
-        lsp_id.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "out-label" || name == "in-label" || name == "lockout" || name == "lsp-id")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::OutLabel::OutLabel()
-    :
-    label{YType::uint32, "label"},
-    link{YType::uint32, "link"}
-{
-
-    yang_name = "out-label"; yang_parent_name = "protect-lsp"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::OutLabel::~OutLabel()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::OutLabel::has_data() const
-{
-    if (is_presence_container) return true;
-    return label.is_set
-	|| link.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::OutLabel::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(label.yfilter)
-	|| ydk::is_set(link.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::OutLabel::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "out-label";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::OutLabel::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
-    if (link.is_set || is_set(link.yfilter)) leaf_name_data.push_back(link.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::OutLabel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::OutLabel::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::OutLabel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "label")
-    {
-        label = value;
-        label.value_namespace = name_space;
-        label.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "link")
-    {
-        link = value;
-        link.value_namespace = name_space;
-        link.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::OutLabel::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "label")
-    {
-        label.yfilter = yfilter;
-    }
-    if(value_path == "link")
-    {
-        link.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::TransportProfileTunnel::ProtectLsp::OutLabel::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "label" || name == "link")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::MteTunnelAttributes()
-    :
-    record_route{YType::empty, "record-route"},
-    signalled_name{YType::str, "signalled-name"},
-    path_selection_metric{YType::enumeration, "path-selection-metric"},
-    signalled_payload{YType::str, "signalled-payload"},
-    fast_reroute{YType::empty, "fast-reroute"},
-    impose_explicit_null{YType::empty, "impose-explicit-null"}
-        ,
-    destination_leafs(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs>())
-    , priority(nullptr) // presence node
-    , new_style_affinities(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities>())
-    , bandwidth(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Bandwidth>())
-    , affinity_mask(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::AffinityMask>())
-    , logging(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Logging>())
-{
-    destination_leafs->parent = this;
-    new_style_affinities->parent = this;
-    bandwidth->parent = this;
-    affinity_mask->parent = this;
-    logging->parent = this;
-
-    yang_name = "mte-tunnel-attributes"; yang_parent_name = "interface-configuration"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::~MteTunnelAttributes()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::has_data() const
-{
-    if (is_presence_container) return true;
-    return record_route.is_set
-	|| signalled_name.is_set
-	|| path_selection_metric.is_set
-	|| signalled_payload.is_set
-	|| fast_reroute.is_set
-	|| impose_explicit_null.is_set
-	|| (destination_leafs !=  nullptr && destination_leafs->has_data())
-	|| (priority !=  nullptr && priority->has_data())
-	|| (new_style_affinities !=  nullptr && new_style_affinities->has_data())
-	|| (bandwidth !=  nullptr && bandwidth->has_data())
-	|| (affinity_mask !=  nullptr && affinity_mask->has_data())
-	|| (logging !=  nullptr && logging->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(record_route.yfilter)
-	|| ydk::is_set(signalled_name.yfilter)
-	|| ydk::is_set(path_selection_metric.yfilter)
-	|| ydk::is_set(signalled_payload.yfilter)
-	|| ydk::is_set(fast_reroute.yfilter)
-	|| ydk::is_set(impose_explicit_null.yfilter)
-	|| (destination_leafs !=  nullptr && destination_leafs->has_operation())
-	|| (priority !=  nullptr && priority->has_operation())
-	|| (new_style_affinities !=  nullptr && new_style_affinities->has_operation())
-	|| (bandwidth !=  nullptr && bandwidth->has_operation())
-	|| (affinity_mask !=  nullptr && affinity_mask->has_operation())
-	|| (logging !=  nullptr && logging->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-mpls-te-cfg:mte-tunnel-attributes";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (record_route.is_set || is_set(record_route.yfilter)) leaf_name_data.push_back(record_route.get_name_leafdata());
-    if (signalled_name.is_set || is_set(signalled_name.yfilter)) leaf_name_data.push_back(signalled_name.get_name_leafdata());
-    if (path_selection_metric.is_set || is_set(path_selection_metric.yfilter)) leaf_name_data.push_back(path_selection_metric.get_name_leafdata());
-    if (signalled_payload.is_set || is_set(signalled_payload.yfilter)) leaf_name_data.push_back(signalled_payload.get_name_leafdata());
-    if (fast_reroute.is_set || is_set(fast_reroute.yfilter)) leaf_name_data.push_back(fast_reroute.get_name_leafdata());
-    if (impose_explicit_null.is_set || is_set(impose_explicit_null.yfilter)) leaf_name_data.push_back(impose_explicit_null.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "destination-leafs")
-    {
-        if(destination_leafs == nullptr)
-        {
-            destination_leafs = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs>();
-        }
-        return destination_leafs;
-    }
-
-    if(child_yang_name == "priority")
-    {
-        if(priority == nullptr)
-        {
-            priority = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Priority>();
-        }
-        return priority;
-    }
-
-    if(child_yang_name == "new-style-affinities")
-    {
-        if(new_style_affinities == nullptr)
-        {
-            new_style_affinities = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::NewStyleAffinities>();
-        }
-        return new_style_affinities;
-    }
-
-    if(child_yang_name == "bandwidth")
-    {
-        if(bandwidth == nullptr)
-        {
-            bandwidth = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Bandwidth>();
-        }
-        return bandwidth;
-    }
-
-    if(child_yang_name == "affinity-mask")
-    {
-        if(affinity_mask == nullptr)
-        {
-            affinity_mask = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::AffinityMask>();
-        }
-        return affinity_mask;
-    }
-
-    if(child_yang_name == "logging")
-    {
-        if(logging == nullptr)
-        {
-            logging = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::Logging>();
-        }
-        return logging;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(destination_leafs != nullptr)
-    {
-        _children["destination-leafs"] = destination_leafs;
-    }
-
-    if(priority != nullptr)
-    {
-        _children["priority"] = priority;
-    }
-
-    if(new_style_affinities != nullptr)
-    {
-        _children["new-style-affinities"] = new_style_affinities;
-    }
-
-    if(bandwidth != nullptr)
-    {
-        _children["bandwidth"] = bandwidth;
-    }
-
-    if(affinity_mask != nullptr)
-    {
-        _children["affinity-mask"] = affinity_mask;
-    }
-
-    if(logging != nullptr)
-    {
-        _children["logging"] = logging;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "record-route")
-    {
-        record_route = value;
-        record_route.value_namespace = name_space;
-        record_route.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "signalled-name")
-    {
-        signalled_name = value;
-        signalled_name.value_namespace = name_space;
-        signalled_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "path-selection-metric")
-    {
-        path_selection_metric = value;
-        path_selection_metric.value_namespace = name_space;
-        path_selection_metric.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "signalled-payload")
-    {
-        signalled_payload = value;
-        signalled_payload.value_namespace = name_space;
-        signalled_payload.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "fast-reroute")
-    {
-        fast_reroute = value;
-        fast_reroute.value_namespace = name_space;
-        fast_reroute.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "impose-explicit-null")
-    {
-        impose_explicit_null = value;
-        impose_explicit_null.value_namespace = name_space;
-        impose_explicit_null.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "record-route")
-    {
-        record_route.yfilter = yfilter;
-    }
-    if(value_path == "signalled-name")
-    {
-        signalled_name.yfilter = yfilter;
-    }
-    if(value_path == "path-selection-metric")
-    {
-        path_selection_metric.yfilter = yfilter;
-    }
-    if(value_path == "signalled-payload")
-    {
-        signalled_payload.yfilter = yfilter;
-    }
-    if(value_path == "fast-reroute")
-    {
-        fast_reroute.yfilter = yfilter;
-    }
-    if(value_path == "impose-explicit-null")
-    {
-        impose_explicit_null.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "destination-leafs" || name == "priority" || name == "new-style-affinities" || name == "bandwidth" || name == "affinity-mask" || name == "logging" || name == "record-route" || name == "signalled-name" || name == "path-selection-metric" || name == "signalled-payload" || name == "fast-reroute" || name == "impose-explicit-null")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeafs()
-    :
-    destination_leaf(this, {"address"})
-{
-
-    yang_name = "destination-leafs"; yang_parent_name = "mte-tunnel-attributes"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::~DestinationLeafs()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<destination_leaf.len(); index++)
-    {
-        if(destination_leaf[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::has_operation() const
-{
-    for (std::size_t index=0; index<destination_leaf.len(); index++)
-    {
-        if(destination_leaf[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "destination-leafs";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "destination-leaf")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf>();
-        ent_->parent = this;
-        destination_leaf.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : destination_leaf.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "destination-leaf")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::DestinationLeaf()
-    :
-    address{YType::str, "address"},
-    destination_disable{YType::empty, "destination-disable"},
-    destination{YType::empty, "destination"}
-        ,
-    s2l_logging(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2lLogging>())
-    , path_options(std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions>())
-{
-    s2l_logging->parent = this;
-    path_options->parent = this;
-
-    yang_name = "destination-leaf"; yang_parent_name = "destination-leafs"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::~DestinationLeaf()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::has_data() const
-{
-    if (is_presence_container) return true;
-    return address.is_set
-	|| destination_disable.is_set
-	|| destination.is_set
-	|| (s2l_logging !=  nullptr && s2l_logging->has_data())
-	|| (path_options !=  nullptr && path_options->has_data());
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address.yfilter)
-	|| ydk::is_set(destination_disable.yfilter)
-	|| ydk::is_set(destination.yfilter)
-	|| (s2l_logging !=  nullptr && s2l_logging->has_operation())
-	|| (path_options !=  nullptr && path_options->has_operation());
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "destination-leaf";
-    ADD_KEY_TOKEN(address, "address");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
-    if (destination_disable.is_set || is_set(destination_disable.yfilter)) leaf_name_data.push_back(destination_disable.get_name_leafdata());
-    if (destination.is_set || is_set(destination.yfilter)) leaf_name_data.push_back(destination.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "s2l-logging")
-    {
-        if(s2l_logging == nullptr)
-        {
-            s2l_logging = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2lLogging>();
-        }
-        return s2l_logging;
-    }
-
-    if(child_yang_name == "path-options")
-    {
-        if(path_options == nullptr)
-        {
-            path_options = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions>();
-        }
-        return path_options;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(s2l_logging != nullptr)
-    {
-        _children["s2l-logging"] = s2l_logging;
-    }
-
-    if(path_options != nullptr)
-    {
-        _children["path-options"] = path_options;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address")
-    {
-        address = value;
-        address.value_namespace = name_space;
-        address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "destination-disable")
-    {
-        destination_disable = value;
-        destination_disable.value_namespace = name_space;
-        destination_disable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "destination")
-    {
-        destination = value;
-        destination.value_namespace = name_space;
-        destination.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address")
-    {
-        address.yfilter = yfilter;
-    }
-    if(value_path == "destination-disable")
-    {
-        destination_disable.yfilter = yfilter;
-    }
-    if(value_path == "destination")
-    {
-        destination.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "s2l-logging" || name == "path-options" || name == "address" || name == "destination-disable" || name == "destination")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2lLogging::S2lLogging()
-    :
-    s2l_reroute_messsage{YType::empty, "s2l-reroute-messsage"},
-    s2l_insufficient_bw_messsage{YType::empty, "s2l-insufficient-bw-messsage"},
-    s2l_pcalc_failure_message{YType::empty, "s2l-pcalc-failure-message"},
-    s2l_state_message{YType::empty, "s2l-state-message"}
-{
-
-    yang_name = "s2l-logging"; yang_parent_name = "destination-leaf"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2lLogging::~S2lLogging()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2lLogging::has_data() const
-{
-    if (is_presence_container) return true;
-    return s2l_reroute_messsage.is_set
-	|| s2l_insufficient_bw_messsage.is_set
-	|| s2l_pcalc_failure_message.is_set
-	|| s2l_state_message.is_set;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2lLogging::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(s2l_reroute_messsage.yfilter)
-	|| ydk::is_set(s2l_insufficient_bw_messsage.yfilter)
-	|| ydk::is_set(s2l_pcalc_failure_message.yfilter)
-	|| ydk::is_set(s2l_state_message.yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2lLogging::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "s2l-logging";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2lLogging::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (s2l_reroute_messsage.is_set || is_set(s2l_reroute_messsage.yfilter)) leaf_name_data.push_back(s2l_reroute_messsage.get_name_leafdata());
-    if (s2l_insufficient_bw_messsage.is_set || is_set(s2l_insufficient_bw_messsage.yfilter)) leaf_name_data.push_back(s2l_insufficient_bw_messsage.get_name_leafdata());
-    if (s2l_pcalc_failure_message.is_set || is_set(s2l_pcalc_failure_message.yfilter)) leaf_name_data.push_back(s2l_pcalc_failure_message.get_name_leafdata());
-    if (s2l_state_message.is_set || is_set(s2l_state_message.yfilter)) leaf_name_data.push_back(s2l_state_message.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2lLogging::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2lLogging::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2lLogging::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "s2l-reroute-messsage")
-    {
-        s2l_reroute_messsage = value;
-        s2l_reroute_messsage.value_namespace = name_space;
-        s2l_reroute_messsage.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "s2l-insufficient-bw-messsage")
-    {
-        s2l_insufficient_bw_messsage = value;
-        s2l_insufficient_bw_messsage.value_namespace = name_space;
-        s2l_insufficient_bw_messsage.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "s2l-pcalc-failure-message")
-    {
-        s2l_pcalc_failure_message = value;
-        s2l_pcalc_failure_message.value_namespace = name_space;
-        s2l_pcalc_failure_message.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "s2l-state-message")
-    {
-        s2l_state_message = value;
-        s2l_state_message.value_namespace = name_space;
-        s2l_state_message.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2lLogging::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "s2l-reroute-messsage")
-    {
-        s2l_reroute_messsage.yfilter = yfilter;
-    }
-    if(value_path == "s2l-insufficient-bw-messsage")
-    {
-        s2l_insufficient_bw_messsage.yfilter = yfilter;
-    }
-    if(value_path == "s2l-pcalc-failure-message")
-    {
-        s2l_pcalc_failure_message.yfilter = yfilter;
-    }
-    if(value_path == "s2l-state-message")
-    {
-        s2l_state_message.yfilter = yfilter;
-    }
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::S2lLogging::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "s2l-reroute-messsage" || name == "s2l-insufficient-bw-messsage" || name == "s2l-pcalc-failure-message" || name == "s2l-state-message")
-        return true;
-    return false;
-}
-
-InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::PathOptions()
-    :
-    path_option(this, {"preference_level"})
-{
-
-    yang_name = "path-options"; yang_parent_name = "destination-leaf"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::~PathOptions()
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<path_option.len(); index++)
-    {
-        if(path_option[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::has_operation() const
-{
-    for (std::size_t index=0; index<path_option.len(); index++)
-    {
-        if(path_option[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "path-options";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "path-option")
-    {
-        auto ent_ = std::make_shared<InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::PathOption>();
-        ent_->parent = this;
-        path_option.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : path_option.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool InterfaceConfigurations::InterfaceConfiguration::MteTunnelAttributes::DestinationLeafs::DestinationLeaf::PathOptions::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "path-option")
-        return true;
-    return false;
-}
+const Enum::YLeaf InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::TunnelingEthertype::Y_0x9100 {37120, "0x9100"};
+const Enum::YLeaf InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::TunnelingEthertype::Y_0x9200 {37376, "0x9200"};
 
 
 }

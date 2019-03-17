@@ -265,6 +265,7 @@ class System::SyslogItems : public ydk::Entity
         class LevelItems; //type: System::SyslogItems::LevelItems
         class MonitorItems; //type: System::SyslogItems::MonitorItems
         class ConsoleItems; //type: System::SyslogItems::ConsoleItems
+        class OriginidItems; //type: System::SyslogItems::OriginidItems
         class RdstItems; //type: System::SyslogItems::RdstItems
         class SourceItems; //type: System::SyslogItems::SourceItems
         class FileItems; //type: System::SyslogItems::FileItems
@@ -274,6 +275,7 @@ class System::SyslogItems : public ydk::Entity
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::SyslogItems::LevelItems> level_items;
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::SyslogItems::MonitorItems> monitor_items;
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::SyslogItems::ConsoleItems> console_items;
+        std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::SyslogItems::OriginidItems> originid_items;
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::SyslogItems::RdstItems> rdst_items;
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::SyslogItems::SourceItems> source_items;
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::SyslogItems::FileItems> file_items;
@@ -395,6 +397,29 @@ class System::SyslogItems::ConsoleItems : public ydk::Entity
         ydk::YLeaf severity; //type: SyslogSeverity
 
 }; // System::SyslogItems::ConsoleItems
+
+
+class System::SyslogItems::OriginidItems : public ydk::Entity
+{
+    public:
+        OriginidItems();
+        ~OriginidItems();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf idtype; //type: SyslogOriginIdType
+        ydk::YLeaf idvalue; //type: string
+
+}; // System::SyslogItems::OriginidItems
 
 
 class System::SyslogItems::RdstItems : public ydk::Entity
@@ -1513,6 +1538,8 @@ class System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::Area
         ydk::YLeaf mcastcost; //type: uint16
         ydk::YLeaf tag; //type: uint32
         ydk::YLeaf dist; //type: uint8
+        ydk::YLeaf sgmntrtgmplssid; //type: uint32
+        ydk::YLeaf sgmntrtgmplsinlabel; //type: uint32
         class UcnhItems; //type: System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaList::DbItems::DbList::RtItems::RouteList::UcnhItems
         class McnhItems; //type: System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaList::DbItems::DbList::RtItems::RouteList::McnhItems
 
@@ -1565,6 +1592,7 @@ class System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::Area
         ydk::YLeaf addr; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf flags; //type: string
+        ydk::YLeaf sgmntrtgmplsoutlabel; //type: uint32
 
 }; // System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaList::DbItems::DbList::RtItems::RouteList::UcnhItems::UcNexthopList
 
@@ -1612,6 +1640,7 @@ class System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::Area
         ydk::YLeaf addr; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf flags; //type: string
+        ydk::YLeaf sgmntrtgmplsoutlabel; //type: uint32
 
 }; // System::OspfItems::InstItems::InstList::DomItems::DomList::AreaItems::AreaList::DbItems::DbList::RtItems::RouteList::McnhItems::McNexthopList
 
@@ -2193,6 +2222,8 @@ class System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList
         ydk::YLeaf mcastcost; //type: uint16
         ydk::YLeaf tag; //type: uint32
         ydk::YLeaf dist; //type: uint8
+        ydk::YLeaf sgmntrtgmplssid; //type: uint32
+        ydk::YLeaf sgmntrtgmplsinlabel; //type: uint32
         class UcnhItems; //type: System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList::RtItems::RouteList::UcnhItems
         class McnhItems; //type: System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList::RtItems::RouteList::McnhItems
 
@@ -2245,6 +2276,7 @@ class System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList
         ydk::YLeaf addr; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf flags; //type: string
+        ydk::YLeaf sgmntrtgmplsoutlabel; //type: uint32
 
 }; // System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList::RtItems::RouteList::UcnhItems::UcNexthopList
 
@@ -2292,6 +2324,7 @@ class System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList
         ydk::YLeaf addr; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf flags; //type: string
+        ydk::YLeaf sgmntrtgmplsoutlabel; //type: uint32
 
 }; // System::OspfItems::InstItems::InstList::DomItems::DomList::DbItems::DbList::RtItems::RouteList::McnhItems::McNexthopList
 
@@ -2463,6 +2496,7 @@ class System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList
         ydk::YLeaf xmitdelay; //type: uint16
         ydk::YLeaf area; //type: string
         ydk::YLeaf advertisesecondaries; //type: boolean
+        ydk::YLeaf nodeflag; //type: OspfFlagStatus
         ydk::YLeaf operst; //type: OspfIfOperSt
         ydk::YLeaf failstqual; //type: string
         ydk::YLeaf type; //type: OspfIfType
@@ -2476,6 +2510,7 @@ class System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList
         ydk::YLeaf opercost; //type: uint16
         ydk::YLeaf operdeadintvl; //type: uint32
         ydk::YLeaf opersidindex; //type: int32
+        ydk::YLeaf explicitnull; //type: OspfActive
         ydk::YLeaf hellointvl; //type: uint16
         ydk::YLeaf deadintvl; //type: uint32
         ydk::YLeaf rexmitintvl; //type: uint16
@@ -2821,6 +2856,8 @@ class System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList
         ydk::YLeaf mcastcost; //type: uint16
         ydk::YLeaf tag; //type: uint32
         ydk::YLeaf dist; //type: uint8
+        ydk::YLeaf sgmntrtgmplssid; //type: uint32
+        ydk::YLeaf sgmntrtgmplsinlabel; //type: uint32
         class UcnhItems; //type: System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList::DbItems::DbList::RtItems::RouteList::UcnhItems
         class McnhItems; //type: System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList::DbItems::DbList::RtItems::RouteList::McnhItems
 
@@ -2873,6 +2910,7 @@ class System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList
         ydk::YLeaf addr; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf flags; //type: string
+        ydk::YLeaf sgmntrtgmplsoutlabel; //type: uint32
 
 }; // System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList::DbItems::DbList::RtItems::RouteList::UcnhItems::UcNexthopList
 
@@ -2920,6 +2958,7 @@ class System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList
         ydk::YLeaf addr; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf flags; //type: string
+        ydk::YLeaf sgmntrtgmplsoutlabel; //type: uint32
 
 }; // System::OspfItems::InstItems::InstList::DomItems::DomList::IfItems::IfList::DbItems::DbList::RtItems::RouteList::McnhItems::McNexthopList
 
@@ -4112,30 +4151,6 @@ class System::UserextItems::LdapextItems : public ydk::Entity
         std::shared_ptr<cisco_nx_os::Cisco_NX_OS_device::System::UserextItems::LdapextItems::RtfabricResLdapEpItems> rtfabricresldapep_items;
         
 }; // System::UserextItems::LdapextItems
-
-
-class System::UserextItems::LdapextItems::LdapprovidergroupItems : public ydk::Entity
-{
-    public:
-        LdapprovidergroupItems();
-        ~LdapprovidergroupItems();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class LdapProviderGroupList; //type: System::UserextItems::LdapextItems::LdapprovidergroupItems::LdapProviderGroupList
-
-        ydk::YList ldapprovidergroup_list;
-        
-}; // System::UserextItems::LdapextItems::LdapprovidergroupItems
 
 
 }

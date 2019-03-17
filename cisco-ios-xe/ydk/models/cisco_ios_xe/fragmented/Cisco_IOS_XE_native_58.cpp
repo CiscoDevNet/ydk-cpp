@@ -5,12 +5,3841 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_58.hpp"
-#include "Cisco_IOS_XE_native_59.hpp"
 
 using namespace ydk;
 
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
+
+Native::Interface::TenGigabitEthernet::Ethernet::Ethernet()
+    :
+    oam(nullptr) // presence node
+    , dot1ad(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad>())
+{
+    dot1ad->parent = this;
+
+    yang_name = "ethernet"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::~Ethernet()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::has_data() const
+{
+    if (is_presence_container) return true;
+    return (oam !=  nullptr && oam->has_data())
+	|| (dot1ad !=  nullptr && dot1ad->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::has_operation() const
+{
+    return is_set(yfilter)
+	|| (oam !=  nullptr && oam->has_operation())
+	|| (dot1ad !=  nullptr && dot1ad->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-ethernet:ethernet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "oam")
+    {
+        if(oam == nullptr)
+        {
+            oam = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam>();
+        }
+        return oam;
+    }
+
+    if(child_yang_name == "dot1ad")
+    {
+        if(dot1ad == nullptr)
+        {
+            dot1ad = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad>();
+        }
+        return dot1ad;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(oam != nullptr)
+    {
+        _children["oam"] = oam;
+    }
+
+    if(dot1ad != nullptr)
+    {
+        _children["dot1ad"] = dot1ad;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "oam" || name == "dot1ad")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::Oam()
+    :
+    max_rate{YType::uint8, "max-rate"},
+    min_rate{YType::uint8, "min-rate"},
+    mode{YType::enumeration, "mode"},
+    timeout{YType::uint8, "timeout"}
+        ,
+    link_monitor(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor>())
+    , remote_failure(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure>())
+    , remote_loopback(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteLoopback>())
+{
+    link_monitor->parent = this;
+    remote_failure->parent = this;
+    remote_loopback->parent = this;
+
+    yang_name = "oam"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::~Oam()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::has_data() const
+{
+    if (is_presence_container) return true;
+    return max_rate.is_set
+	|| min_rate.is_set
+	|| mode.is_set
+	|| timeout.is_set
+	|| (link_monitor !=  nullptr && link_monitor->has_data())
+	|| (remote_failure !=  nullptr && remote_failure->has_data())
+	|| (remote_loopback !=  nullptr && remote_loopback->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_rate.yfilter)
+	|| ydk::is_set(min_rate.yfilter)
+	|| ydk::is_set(mode.yfilter)
+	|| ydk::is_set(timeout.yfilter)
+	|| (link_monitor !=  nullptr && link_monitor->has_operation())
+	|| (remote_failure !=  nullptr && remote_failure->has_operation())
+	|| (remote_loopback !=  nullptr && remote_loopback->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "oam";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_rate.is_set || is_set(max_rate.yfilter)) leaf_name_data.push_back(max_rate.get_name_leafdata());
+    if (min_rate.is_set || is_set(min_rate.yfilter)) leaf_name_data.push_back(min_rate.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "link-monitor")
+    {
+        if(link_monitor == nullptr)
+        {
+            link_monitor = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor>();
+        }
+        return link_monitor;
+    }
+
+    if(child_yang_name == "remote-failure")
+    {
+        if(remote_failure == nullptr)
+        {
+            remote_failure = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure>();
+        }
+        return remote_failure;
+    }
+
+    if(child_yang_name == "remote-loopback")
+    {
+        if(remote_loopback == nullptr)
+        {
+            remote_loopback = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteLoopback>();
+        }
+        return remote_loopback;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(link_monitor != nullptr)
+    {
+        _children["link-monitor"] = link_monitor;
+    }
+
+    if(remote_failure != nullptr)
+    {
+        _children["remote-failure"] = remote_failure;
+    }
+
+    if(remote_loopback != nullptr)
+    {
+        _children["remote-loopback"] = remote_loopback;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-rate")
+    {
+        max_rate = value;
+        max_rate.value_namespace = name_space;
+        max_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "min-rate")
+    {
+        min_rate = value;
+        min_rate.value_namespace = name_space;
+        min_rate.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mode")
+    {
+        mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-rate")
+    {
+        max_rate.yfilter = yfilter;
+    }
+    if(value_path == "min-rate")
+    {
+        min_rate.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "link-monitor" || name == "remote-failure" || name == "remote-loopback" || name == "max-rate" || name == "min-rate" || name == "mode" || name == "timeout")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::LinkMonitor()
+    :
+    on{YType::empty, "on"},
+    supported{YType::empty, "supported"}
+        ,
+    frame(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame>())
+    , frame_period(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod>())
+    , frame_seconds(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds>())
+    , high_threshold(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold>())
+    , receive_crc(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc>())
+    , symbol_period(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod>())
+{
+    frame->parent = this;
+    frame_period->parent = this;
+    frame_seconds->parent = this;
+    high_threshold->parent = this;
+    receive_crc->parent = this;
+    symbol_period->parent = this;
+
+    yang_name = "link-monitor"; yang_parent_name = "oam"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::~LinkMonitor()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::has_data() const
+{
+    if (is_presence_container) return true;
+    return on.is_set
+	|| supported.is_set
+	|| (frame !=  nullptr && frame->has_data())
+	|| (frame_period !=  nullptr && frame_period->has_data())
+	|| (frame_seconds !=  nullptr && frame_seconds->has_data())
+	|| (high_threshold !=  nullptr && high_threshold->has_data())
+	|| (receive_crc !=  nullptr && receive_crc->has_data())
+	|| (symbol_period !=  nullptr && symbol_period->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(on.yfilter)
+	|| ydk::is_set(supported.yfilter)
+	|| (frame !=  nullptr && frame->has_operation())
+	|| (frame_period !=  nullptr && frame_period->has_operation())
+	|| (frame_seconds !=  nullptr && frame_seconds->has_operation())
+	|| (high_threshold !=  nullptr && high_threshold->has_operation())
+	|| (receive_crc !=  nullptr && receive_crc->has_operation())
+	|| (symbol_period !=  nullptr && symbol_period->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "link-monitor";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (on.is_set || is_set(on.yfilter)) leaf_name_data.push_back(on.get_name_leafdata());
+    if (supported.is_set || is_set(supported.yfilter)) leaf_name_data.push_back(supported.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "frame")
+    {
+        if(frame == nullptr)
+        {
+            frame = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame>();
+        }
+        return frame;
+    }
+
+    if(child_yang_name == "frame-period")
+    {
+        if(frame_period == nullptr)
+        {
+            frame_period = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod>();
+        }
+        return frame_period;
+    }
+
+    if(child_yang_name == "frame-seconds")
+    {
+        if(frame_seconds == nullptr)
+        {
+            frame_seconds = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds>();
+        }
+        return frame_seconds;
+    }
+
+    if(child_yang_name == "high-threshold")
+    {
+        if(high_threshold == nullptr)
+        {
+            high_threshold = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold>();
+        }
+        return high_threshold;
+    }
+
+    if(child_yang_name == "receive-crc")
+    {
+        if(receive_crc == nullptr)
+        {
+            receive_crc = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc>();
+        }
+        return receive_crc;
+    }
+
+    if(child_yang_name == "symbol-period")
+    {
+        if(symbol_period == nullptr)
+        {
+            symbol_period = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod>();
+        }
+        return symbol_period;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(frame != nullptr)
+    {
+        _children["frame"] = frame;
+    }
+
+    if(frame_period != nullptr)
+    {
+        _children["frame-period"] = frame_period;
+    }
+
+    if(frame_seconds != nullptr)
+    {
+        _children["frame-seconds"] = frame_seconds;
+    }
+
+    if(high_threshold != nullptr)
+    {
+        _children["high-threshold"] = high_threshold;
+    }
+
+    if(receive_crc != nullptr)
+    {
+        _children["receive-crc"] = receive_crc;
+    }
+
+    if(symbol_period != nullptr)
+    {
+        _children["symbol-period"] = symbol_period;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "on")
+    {
+        on = value;
+        on.value_namespace = name_space;
+        on.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "supported")
+    {
+        supported = value;
+        supported.value_namespace = name_space;
+        supported.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "on")
+    {
+        on.yfilter = yfilter;
+    }
+    if(value_path == "supported")
+    {
+        supported.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "frame" || name == "frame-period" || name == "frame-seconds" || name == "high-threshold" || name == "receive-crc" || name == "symbol-period" || name == "on" || name == "supported")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Frame()
+    :
+    window{YType::uint16, "window"}
+        ,
+    threshold(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold>())
+{
+    threshold->parent = this;
+
+    yang_name = "frame"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::~Frame()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::has_data() const
+{
+    if (is_presence_container) return true;
+    return window.is_set
+	|| (threshold !=  nullptr && threshold->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(window.yfilter)
+	|| (threshold !=  nullptr && threshold->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "frame";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (window.is_set || is_set(window.yfilter)) leaf_name_data.push_back(window.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "threshold")
+    {
+        if(threshold == nullptr)
+        {
+            threshold = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold>();
+        }
+        return threshold;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(threshold != nullptr)
+    {
+        _children["threshold"] = threshold;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "window")
+    {
+        window = value;
+        window.value_namespace = name_space;
+        window.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "window")
+    {
+        window.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold" || name == "window")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::Threshold()
+    :
+    low{YType::uint16, "low"}
+        ,
+    high(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::High>())
+{
+    high->parent = this;
+
+    yang_name = "threshold"; yang_parent_name = "frame"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::~Threshold()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return low.is_set
+	|| (high !=  nullptr && high->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(low.yfilter)
+	|| (high !=  nullptr && high->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (low.is_set || is_set(low.yfilter)) leaf_name_data.push_back(low.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "high")
+    {
+        if(high == nullptr)
+        {
+            high = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::High>();
+        }
+        return high;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(high != nullptr)
+    {
+        _children["high"] = high;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "low")
+    {
+        low = value;
+        low.value_namespace = name_space;
+        low.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "low")
+    {
+        low.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "high" || name == "low")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::High()
+    :
+    thresh{YType::uint16, "thresh"},
+    none{YType::empty, "none"}
+{
+
+    yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::~High()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::has_data() const
+{
+    if (is_presence_container) return true;
+    return thresh.is_set
+	|| none.is_set;
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(thresh.yfilter)
+	|| ydk::is_set(none.yfilter);
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (thresh.is_set || is_set(thresh.yfilter)) leaf_name_data.push_back(thresh.get_name_leafdata());
+    if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "thresh")
+    {
+        thresh = value;
+        thresh.value_namespace = name_space;
+        thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "none")
+    {
+        none = value;
+        none.value_namespace = name_space;
+        none.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "thresh")
+    {
+        thresh.yfilter = yfilter;
+    }
+    if(value_path == "none")
+    {
+        none.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::Frame::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "thresh" || name == "none")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::FramePeriod()
+    :
+    window{YType::uint16, "window"}
+        ,
+    threshold(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold>())
+{
+    threshold->parent = this;
+
+    yang_name = "frame-period"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::~FramePeriod()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::has_data() const
+{
+    if (is_presence_container) return true;
+    return window.is_set
+	|| (threshold !=  nullptr && threshold->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(window.yfilter)
+	|| (threshold !=  nullptr && threshold->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "frame-period";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (window.is_set || is_set(window.yfilter)) leaf_name_data.push_back(window.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "threshold")
+    {
+        if(threshold == nullptr)
+        {
+            threshold = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold>();
+        }
+        return threshold;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(threshold != nullptr)
+    {
+        _children["threshold"] = threshold;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "window")
+    {
+        window = value;
+        window.value_namespace = name_space;
+        window.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "window")
+    {
+        window.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold" || name == "window")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::Threshold()
+    :
+    low{YType::uint16, "low"}
+        ,
+    high(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High>())
+{
+    high->parent = this;
+
+    yang_name = "threshold"; yang_parent_name = "frame-period"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::~Threshold()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return low.is_set
+	|| (high !=  nullptr && high->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(low.yfilter)
+	|| (high !=  nullptr && high->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (low.is_set || is_set(low.yfilter)) leaf_name_data.push_back(low.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "high")
+    {
+        if(high == nullptr)
+        {
+            high = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High>();
+        }
+        return high;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(high != nullptr)
+    {
+        _children["high"] = high;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "low")
+    {
+        low = value;
+        low.value_namespace = name_space;
+        low.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "low")
+    {
+        low.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "high" || name == "low")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::High()
+    :
+    f_thresh{YType::uint16, "f-thresh"},
+    none{YType::empty, "none"}
+{
+
+    yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::~High()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::has_data() const
+{
+    if (is_presence_container) return true;
+    return f_thresh.is_set
+	|| none.is_set;
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(f_thresh.yfilter)
+	|| ydk::is_set(none.yfilter);
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (f_thresh.is_set || is_set(f_thresh.yfilter)) leaf_name_data.push_back(f_thresh.get_name_leafdata());
+    if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "f-thresh")
+    {
+        f_thresh = value;
+        f_thresh.value_namespace = name_space;
+        f_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "none")
+    {
+        none = value;
+        none.value_namespace = name_space;
+        none.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "f-thresh")
+    {
+        f_thresh.yfilter = yfilter;
+    }
+    if(value_path == "none")
+    {
+        none.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FramePeriod::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "f-thresh" || name == "none")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::FrameSeconds()
+    :
+    window{YType::uint16, "window"}
+        ,
+    threshold(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold>())
+{
+    threshold->parent = this;
+
+    yang_name = "frame-seconds"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::~FrameSeconds()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::has_data() const
+{
+    if (is_presence_container) return true;
+    return window.is_set
+	|| (threshold !=  nullptr && threshold->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(window.yfilter)
+	|| (threshold !=  nullptr && threshold->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "frame-seconds";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (window.is_set || is_set(window.yfilter)) leaf_name_data.push_back(window.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "threshold")
+    {
+        if(threshold == nullptr)
+        {
+            threshold = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold>();
+        }
+        return threshold;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(threshold != nullptr)
+    {
+        _children["threshold"] = threshold;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "window")
+    {
+        window = value;
+        window.value_namespace = name_space;
+        window.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "window")
+    {
+        window.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold" || name == "window")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::Threshold()
+    :
+    low{YType::uint16, "low"}
+        ,
+    high(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High>())
+{
+    high->parent = this;
+
+    yang_name = "threshold"; yang_parent_name = "frame-seconds"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::~Threshold()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return low.is_set
+	|| (high !=  nullptr && high->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(low.yfilter)
+	|| (high !=  nullptr && high->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (low.is_set || is_set(low.yfilter)) leaf_name_data.push_back(low.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "high")
+    {
+        if(high == nullptr)
+        {
+            high = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High>();
+        }
+        return high;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(high != nullptr)
+    {
+        _children["high"] = high;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "low")
+    {
+        low = value;
+        low.value_namespace = name_space;
+        low.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "low")
+    {
+        low.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "high" || name == "low")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::High()
+    :
+    e_thresh{YType::uint16, "e-thresh"},
+    none{YType::empty, "none"}
+{
+
+    yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::~High()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::has_data() const
+{
+    if (is_presence_container) return true;
+    return e_thresh.is_set
+	|| none.is_set;
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(e_thresh.yfilter)
+	|| ydk::is_set(none.yfilter);
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (e_thresh.is_set || is_set(e_thresh.yfilter)) leaf_name_data.push_back(e_thresh.get_name_leafdata());
+    if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "e-thresh")
+    {
+        e_thresh = value;
+        e_thresh.value_namespace = name_space;
+        e_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "none")
+    {
+        none = value;
+        none.value_namespace = name_space;
+        none.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "e-thresh")
+    {
+        e_thresh.yfilter = yfilter;
+    }
+    if(value_path == "none")
+    {
+        none.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::FrameSeconds::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "e-thresh" || name == "none")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::HighThreshold()
+    :
+    action(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::Action>())
+{
+    action->parent = this;
+
+    yang_name = "high-threshold"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::~HighThreshold()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return (action !=  nullptr && action->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| (action !=  nullptr && action->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high-threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "action")
+    {
+        if(action == nullptr)
+        {
+            action = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::Action>();
+        }
+        return action;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(action != nullptr)
+    {
+        _children["action"] = action;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::Action::Action()
+    :
+    error_disable_interface{YType::empty, "error-disable-interface"}
+{
+
+    yang_name = "action"; yang_parent_name = "high-threshold"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::Action::~Action()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::Action::has_data() const
+{
+    if (is_presence_container) return true;
+    return error_disable_interface.is_set;
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::Action::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(error_disable_interface.yfilter);
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::Action::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "action";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::Action::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (error_disable_interface.is_set || is_set(error_disable_interface.yfilter)) leaf_name_data.push_back(error_disable_interface.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::Action::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "error-disable-interface")
+    {
+        error_disable_interface = value;
+        error_disable_interface.value_namespace = name_space;
+        error_disable_interface.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::Action::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error-disable-interface")
+    {
+        error_disable_interface.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::HighThreshold::Action::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "error-disable-interface")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::ReceiveCrc()
+    :
+    window{YType::uint16, "window"}
+        ,
+    threshold(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold>())
+{
+    threshold->parent = this;
+
+    yang_name = "receive-crc"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::~ReceiveCrc()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::has_data() const
+{
+    if (is_presence_container) return true;
+    return window.is_set
+	|| (threshold !=  nullptr && threshold->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(window.yfilter)
+	|| (threshold !=  nullptr && threshold->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "receive-crc";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (window.is_set || is_set(window.yfilter)) leaf_name_data.push_back(window.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "threshold")
+    {
+        if(threshold == nullptr)
+        {
+            threshold = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold>();
+        }
+        return threshold;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(threshold != nullptr)
+    {
+        _children["threshold"] = threshold;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "window")
+    {
+        window = value;
+        window.value_namespace = name_space;
+        window.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "window")
+    {
+        window.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold" || name == "window")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::Threshold()
+    :
+    low{YType::uint16, "low"}
+        ,
+    high(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High>())
+{
+    high->parent = this;
+
+    yang_name = "threshold"; yang_parent_name = "receive-crc"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::~Threshold()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return low.is_set
+	|| (high !=  nullptr && high->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(low.yfilter)
+	|| (high !=  nullptr && high->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (low.is_set || is_set(low.yfilter)) leaf_name_data.push_back(low.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "high")
+    {
+        if(high == nullptr)
+        {
+            high = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High>();
+        }
+        return high;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(high != nullptr)
+    {
+        _children["high"] = high;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "low")
+    {
+        low = value;
+        low.value_namespace = name_space;
+        low.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "low")
+    {
+        low.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "high" || name == "low")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::High()
+    :
+    crc_thresh{YType::uint16, "crc-thresh"},
+    none{YType::empty, "none"}
+{
+
+    yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::~High()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::has_data() const
+{
+    if (is_presence_container) return true;
+    return crc_thresh.is_set
+	|| none.is_set;
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(crc_thresh.yfilter)
+	|| ydk::is_set(none.yfilter);
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (crc_thresh.is_set || is_set(crc_thresh.yfilter)) leaf_name_data.push_back(crc_thresh.get_name_leafdata());
+    if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "crc-thresh")
+    {
+        crc_thresh = value;
+        crc_thresh.value_namespace = name_space;
+        crc_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "none")
+    {
+        none = value;
+        none.value_namespace = name_space;
+        none.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "crc-thresh")
+    {
+        crc_thresh.yfilter = yfilter;
+    }
+    if(value_path == "none")
+    {
+        none.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::ReceiveCrc::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "crc-thresh" || name == "none")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::SymbolPeriod()
+    :
+    window{YType::uint16, "window"}
+        ,
+    threshold(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold>())
+{
+    threshold->parent = this;
+
+    yang_name = "symbol-period"; yang_parent_name = "link-monitor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::~SymbolPeriod()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::has_data() const
+{
+    if (is_presence_container) return true;
+    return window.is_set
+	|| (threshold !=  nullptr && threshold->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(window.yfilter)
+	|| (threshold !=  nullptr && threshold->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "symbol-period";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (window.is_set || is_set(window.yfilter)) leaf_name_data.push_back(window.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "threshold")
+    {
+        if(threshold == nullptr)
+        {
+            threshold = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold>();
+        }
+        return threshold;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(threshold != nullptr)
+    {
+        _children["threshold"] = threshold;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "window")
+    {
+        window = value;
+        window.value_namespace = name_space;
+        window.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "window")
+    {
+        window.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "threshold" || name == "window")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::Threshold()
+    :
+    low{YType::uint16, "low"}
+        ,
+    high(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High>())
+{
+    high->parent = this;
+
+    yang_name = "threshold"; yang_parent_name = "symbol-period"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::~Threshold()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::has_data() const
+{
+    if (is_presence_container) return true;
+    return low.is_set
+	|| (high !=  nullptr && high->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(low.yfilter)
+	|| (high !=  nullptr && high->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "threshold";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (low.is_set || is_set(low.yfilter)) leaf_name_data.push_back(low.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "high")
+    {
+        if(high == nullptr)
+        {
+            high = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High>();
+        }
+        return high;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(high != nullptr)
+    {
+        _children["high"] = high;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "low")
+    {
+        low = value;
+        low.value_namespace = name_space;
+        low.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "low")
+    {
+        low.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "high" || name == "low")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::High()
+    :
+    err_thresh{YType::uint16, "err-thresh"},
+    none{YType::empty, "none"}
+{
+
+    yang_name = "high"; yang_parent_name = "threshold"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::~High()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::has_data() const
+{
+    if (is_presence_container) return true;
+    return err_thresh.is_set
+	|| none.is_set;
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(err_thresh.yfilter)
+	|| ydk::is_set(none.yfilter);
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "high";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (err_thresh.is_set || is_set(err_thresh.yfilter)) leaf_name_data.push_back(err_thresh.get_name_leafdata());
+    if (none.is_set || is_set(none.yfilter)) leaf_name_data.push_back(none.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "err-thresh")
+    {
+        err_thresh = value;
+        err_thresh.value_namespace = name_space;
+        err_thresh.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "none")
+    {
+        none = value;
+        none.value_namespace = name_space;
+        none.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "err-thresh")
+    {
+        err_thresh.yfilter = yfilter;
+    }
+    if(value_path == "none")
+    {
+        none.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::LinkMonitor::SymbolPeriod::Threshold::High::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "err-thresh" || name == "none")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::RemoteFailure()
+    :
+    critical_event(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent>())
+    , dying_gasp(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp>())
+    , link_fault(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault>())
+{
+    critical_event->parent = this;
+    dying_gasp->parent = this;
+    link_fault->parent = this;
+
+    yang_name = "remote-failure"; yang_parent_name = "oam"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::~RemoteFailure()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::has_data() const
+{
+    if (is_presence_container) return true;
+    return (critical_event !=  nullptr && critical_event->has_data())
+	|| (dying_gasp !=  nullptr && dying_gasp->has_data())
+	|| (link_fault !=  nullptr && link_fault->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::has_operation() const
+{
+    return is_set(yfilter)
+	|| (critical_event !=  nullptr && critical_event->has_operation())
+	|| (dying_gasp !=  nullptr && dying_gasp->has_operation())
+	|| (link_fault !=  nullptr && link_fault->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "remote-failure";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "critical-event")
+    {
+        if(critical_event == nullptr)
+        {
+            critical_event = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent>();
+        }
+        return critical_event;
+    }
+
+    if(child_yang_name == "dying-gasp")
+    {
+        if(dying_gasp == nullptr)
+        {
+            dying_gasp = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp>();
+        }
+        return dying_gasp;
+    }
+
+    if(child_yang_name == "link-fault")
+    {
+        if(link_fault == nullptr)
+        {
+            link_fault = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault>();
+        }
+        return link_fault;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(critical_event != nullptr)
+    {
+        _children["critical-event"] = critical_event;
+    }
+
+    if(dying_gasp != nullptr)
+    {
+        _children["dying-gasp"] = dying_gasp;
+    }
+
+    if(link_fault != nullptr)
+    {
+        _children["link-fault"] = link_fault;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "critical-event" || name == "dying-gasp" || name == "link-fault")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::CriticalEvent()
+    :
+    action(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::Action>())
+{
+    action->parent = this;
+
+    yang_name = "critical-event"; yang_parent_name = "remote-failure"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::~CriticalEvent()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::has_data() const
+{
+    if (is_presence_container) return true;
+    return (action !=  nullptr && action->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::has_operation() const
+{
+    return is_set(yfilter)
+	|| (action !=  nullptr && action->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "critical-event";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "action")
+    {
+        if(action == nullptr)
+        {
+            action = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::Action>();
+        }
+        return action;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(action != nullptr)
+    {
+        _children["action"] = action;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::Action()
+    :
+    error_disable_interface{YType::empty, "error-disable-interface"}
+{
+
+    yang_name = "action"; yang_parent_name = "critical-event"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::~Action()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::has_data() const
+{
+    if (is_presence_container) return true;
+    return error_disable_interface.is_set;
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(error_disable_interface.yfilter);
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "action";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (error_disable_interface.is_set || is_set(error_disable_interface.yfilter)) leaf_name_data.push_back(error_disable_interface.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "error-disable-interface")
+    {
+        error_disable_interface = value;
+        error_disable_interface.value_namespace = name_space;
+        error_disable_interface.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error-disable-interface")
+    {
+        error_disable_interface.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::CriticalEvent::Action::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "error-disable-interface")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::DyingGasp()
+    :
+    action(nullptr) // presence node
+{
+
+    yang_name = "dying-gasp"; yang_parent_name = "remote-failure"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::~DyingGasp()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::has_data() const
+{
+    if (is_presence_container) return true;
+    return (action !=  nullptr && action->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::has_operation() const
+{
+    return is_set(yfilter)
+	|| (action !=  nullptr && action->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dying-gasp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "action")
+    {
+        if(action == nullptr)
+        {
+            action = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::Action>();
+        }
+        return action;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(action != nullptr)
+    {
+        _children["action"] = action;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::Action::Action()
+    :
+    error_disable_interface{YType::empty, "error-disable-interface"}
+{
+
+    yang_name = "action"; yang_parent_name = "dying-gasp"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::Action::~Action()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::Action::has_data() const
+{
+    if (is_presence_container) return true;
+    return error_disable_interface.is_set;
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::Action::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(error_disable_interface.yfilter);
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::Action::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "action";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::Action::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (error_disable_interface.is_set || is_set(error_disable_interface.yfilter)) leaf_name_data.push_back(error_disable_interface.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::Action::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "error-disable-interface")
+    {
+        error_disable_interface = value;
+        error_disable_interface.value_namespace = name_space;
+        error_disable_interface.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::Action::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error-disable-interface")
+    {
+        error_disable_interface.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::DyingGasp::Action::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "error-disable-interface")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::LinkFault()
+    :
+    action(nullptr) // presence node
+{
+
+    yang_name = "link-fault"; yang_parent_name = "remote-failure"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::~LinkFault()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::has_data() const
+{
+    if (is_presence_container) return true;
+    return (action !=  nullptr && action->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::has_operation() const
+{
+    return is_set(yfilter)
+	|| (action !=  nullptr && action->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "link-fault";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "action")
+    {
+        if(action == nullptr)
+        {
+            action = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::Action>();
+        }
+        return action;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(action != nullptr)
+    {
+        _children["action"] = action;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "action")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::Action::Action()
+    :
+    error_disable_interface{YType::empty, "error-disable-interface"}
+{
+
+    yang_name = "action"; yang_parent_name = "link-fault"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::Action::~Action()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::Action::has_data() const
+{
+    if (is_presence_container) return true;
+    return error_disable_interface.is_set;
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::Action::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(error_disable_interface.yfilter);
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::Action::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "action";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::Action::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (error_disable_interface.is_set || is_set(error_disable_interface.yfilter)) leaf_name_data.push_back(error_disable_interface.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::Action::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::Action::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::Action::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "error-disable-interface")
+    {
+        error_disable_interface = value;
+        error_disable_interface.value_namespace = name_space;
+        error_disable_interface.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::Action::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "error-disable-interface")
+    {
+        error_disable_interface.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteFailure::LinkFault::Action::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "error-disable-interface")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteLoopback::RemoteLoopback()
+    :
+    supported{YType::empty, "supported"},
+    timeout{YType::uint8, "timeout"}
+{
+
+    yang_name = "remote-loopback"; yang_parent_name = "oam"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteLoopback::~RemoteLoopback()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteLoopback::has_data() const
+{
+    if (is_presence_container) return true;
+    return supported.is_set
+	|| timeout.is_set;
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteLoopback::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(supported.yfilter)
+	|| ydk::is_set(timeout.yfilter);
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteLoopback::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "remote-loopback";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteLoopback::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (supported.is_set || is_set(supported.yfilter)) leaf_name_data.push_back(supported.get_name_leafdata());
+    if (timeout.is_set || is_set(timeout.yfilter)) leaf_name_data.push_back(timeout.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteLoopback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteLoopback::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteLoopback::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "supported")
+    {
+        supported = value;
+        supported.value_namespace = name_space;
+        supported.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "timeout")
+    {
+        timeout = value;
+        timeout.value_namespace = name_space;
+        timeout.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteLoopback::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "supported")
+    {
+        supported.yfilter = yfilter;
+    }
+    if(value_path == "timeout")
+    {
+        timeout.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Oam::RemoteLoopback::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "supported" || name == "timeout")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::Dot1ad()
+    :
+    nni{YType::empty, "nni"}
+        ,
+    uni(std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::Uni>())
+{
+    uni->parent = this;
+
+    yang_name = "dot1ad"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::~Dot1ad()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::has_data() const
+{
+    if (is_presence_container) return true;
+    return nni.is_set
+	|| (uni !=  nullptr && uni->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(nni.yfilter)
+	|| (uni !=  nullptr && uni->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dot1ad";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (nni.is_set || is_set(nni.yfilter)) leaf_name_data.push_back(nni.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "uni")
+    {
+        if(uni == nullptr)
+        {
+            uni = std::make_shared<Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::Uni>();
+        }
+        return uni;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(uni != nullptr)
+    {
+        _children["uni"] = uni;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "nni")
+    {
+        nni = value;
+        nni.value_namespace = name_space;
+        nni.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "nni")
+    {
+        nni.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "uni" || name == "nni")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::Uni::Uni()
+    :
+    c_port{YType::empty, "c-port"},
+    s_port{YType::empty, "s-port"}
+{
+
+    yang_name = "uni"; yang_parent_name = "dot1ad"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::Uni::~Uni()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::Uni::has_data() const
+{
+    if (is_presence_container) return true;
+    return c_port.is_set
+	|| s_port.is_set;
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::Uni::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(c_port.yfilter)
+	|| ydk::is_set(s_port.yfilter);
+}
+
+std::string Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::Uni::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "uni";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::Uni::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (c_port.is_set || is_set(c_port.yfilter)) leaf_name_data.push_back(c_port.get_name_leafdata());
+    if (s_port.is_set || is_set(s_port.yfilter)) leaf_name_data.push_back(s_port.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::Uni::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::Uni::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::Uni::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "c-port")
+    {
+        c_port = value;
+        c_port.value_namespace = name_space;
+        c_port.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "s-port")
+    {
+        s_port = value;
+        s_port.value_namespace = name_space;
+        s_port.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::Uni::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "c-port")
+    {
+        c_port.yfilter = yfilter;
+    }
+    if(value_path == "s-port")
+    {
+        s_port.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Ethernet::Dot1ad::Uni::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "c-port" || name == "s-port")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Eapol::Eapol()
+    :
+    destination_address(std::make_shared<Native::Interface::TenGigabitEthernet::Eapol::DestinationAddress>())
+{
+    destination_address->parent = this;
+
+    yang_name = "eapol"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Eapol::~Eapol()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Eapol::has_data() const
+{
+    if (is_presence_container) return true;
+    return (destination_address !=  nullptr && destination_address->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Eapol::has_operation() const
+{
+    return is_set(yfilter)
+	|| (destination_address !=  nullptr && destination_address->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Eapol::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-ethernet:eapol";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Eapol::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Eapol::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "destination-address")
+    {
+        if(destination_address == nullptr)
+        {
+            destination_address = std::make_shared<Native::Interface::TenGigabitEthernet::Eapol::DestinationAddress>();
+        }
+        return destination_address;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Eapol::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(destination_address != nullptr)
+    {
+        _children["destination-address"] = destination_address;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Eapol::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TenGigabitEthernet::Eapol::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Eapol::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "destination-address")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Eapol::DestinationAddress::DestinationAddress()
+    :
+    broadcast_address{YType::empty, "broadcast-address"}
+{
+
+    yang_name = "destination-address"; yang_parent_name = "eapol"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Eapol::DestinationAddress::~DestinationAddress()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Eapol::DestinationAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return broadcast_address.is_set;
+}
+
+bool Native::Interface::TenGigabitEthernet::Eapol::DestinationAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(broadcast_address.yfilter);
+}
+
+std::string Native::Interface::TenGigabitEthernet::Eapol::DestinationAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "destination-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Eapol::DestinationAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (broadcast_address.is_set || is_set(broadcast_address.yfilter)) leaf_name_data.push_back(broadcast_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Eapol::DestinationAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Eapol::DestinationAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Eapol::DestinationAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "broadcast-address")
+    {
+        broadcast_address = value;
+        broadcast_address.value_namespace = name_space;
+        broadcast_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Eapol::DestinationAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "broadcast-address")
+    {
+        broadcast_address.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Eapol::DestinationAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "broadcast-address")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Synchronous::Synchronous()
+    :
+    mode{YType::empty, "mode"}
+{
+
+    yang_name = "synchronous"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Synchronous::~Synchronous()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Synchronous::has_data() const
+{
+    if (is_presence_container) return true;
+    return mode.is_set;
+}
+
+bool Native::Interface::TenGigabitEthernet::Synchronous::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(mode.yfilter);
+}
+
+std::string Native::Interface::TenGigabitEthernet::Synchronous::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-ethernet:synchronous";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Synchronous::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Synchronous::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Synchronous::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Synchronous::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "mode")
+    {
+        mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Synchronous::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Synchronous::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "mode")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Speed::Speed()
+    :
+    auto_{YType::empty, "auto"},
+    value_10{YType::empty, "value-10"},
+    value_100{YType::empty, "value-100"},
+    value_1000{YType::empty, "value-1000"},
+    value_10000{YType::empty, "value-10000"},
+    nonegotiate{YType::empty, "nonegotiate"}
+{
+
+    yang_name = "speed"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Speed::~Speed()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Speed::has_data() const
+{
+    if (is_presence_container) return true;
+    return auto_.is_set
+	|| value_10.is_set
+	|| value_100.is_set
+	|| value_1000.is_set
+	|| value_10000.is_set
+	|| nonegotiate.is_set;
+}
+
+bool Native::Interface::TenGigabitEthernet::Speed::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(auto_.yfilter)
+	|| ydk::is_set(value_10.yfilter)
+	|| ydk::is_set(value_100.yfilter)
+	|| ydk::is_set(value_1000.yfilter)
+	|| ydk::is_set(value_10000.yfilter)
+	|| ydk::is_set(nonegotiate.yfilter);
+}
+
+std::string Native::Interface::TenGigabitEthernet::Speed::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-ethernet:speed";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Speed::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (auto_.is_set || is_set(auto_.yfilter)) leaf_name_data.push_back(auto_.get_name_leafdata());
+    if (value_10.is_set || is_set(value_10.yfilter)) leaf_name_data.push_back(value_10.get_name_leafdata());
+    if (value_100.is_set || is_set(value_100.yfilter)) leaf_name_data.push_back(value_100.get_name_leafdata());
+    if (value_1000.is_set || is_set(value_1000.yfilter)) leaf_name_data.push_back(value_1000.get_name_leafdata());
+    if (value_10000.is_set || is_set(value_10000.yfilter)) leaf_name_data.push_back(value_10000.get_name_leafdata());
+    if (nonegotiate.is_set || is_set(nonegotiate.yfilter)) leaf_name_data.push_back(nonegotiate.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Speed::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Speed::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Speed::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "auto")
+    {
+        auto_ = value;
+        auto_.value_namespace = name_space;
+        auto_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value-10")
+    {
+        value_10 = value;
+        value_10.value_namespace = name_space;
+        value_10.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value-100")
+    {
+        value_100 = value;
+        value_100.value_namespace = name_space;
+        value_100.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value-1000")
+    {
+        value_1000 = value;
+        value_1000.value_namespace = name_space;
+        value_1000.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value-10000")
+    {
+        value_10000 = value;
+        value_10000.value_namespace = name_space;
+        value_10000.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nonegotiate")
+    {
+        nonegotiate = value;
+        nonegotiate.value_namespace = name_space;
+        nonegotiate.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Speed::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "auto")
+    {
+        auto_.yfilter = yfilter;
+    }
+    if(value_path == "value-10")
+    {
+        value_10.yfilter = yfilter;
+    }
+    if(value_path == "value-100")
+    {
+        value_100.yfilter = yfilter;
+    }
+    if(value_path == "value-1000")
+    {
+        value_1000.yfilter = yfilter;
+    }
+    if(value_path == "value-10000")
+    {
+        value_10000.yfilter = yfilter;
+    }
+    if(value_path == "nonegotiate")
+    {
+        nonegotiate.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Speed::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auto" || name == "value-10" || name == "value-100" || name == "value-1000" || name == "value-10000" || name == "nonegotiate")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Negotiation::Negotiation()
+    :
+    auto_{YType::boolean, "auto"}
+{
+
+    yang_name = "negotiation"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Negotiation::~Negotiation()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Negotiation::has_data() const
+{
+    if (is_presence_container) return true;
+    return auto_.is_set;
+}
+
+bool Native::Interface::TenGigabitEthernet::Negotiation::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(auto_.yfilter);
+}
+
+std::string Native::Interface::TenGigabitEthernet::Negotiation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-ethernet:negotiation";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Negotiation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (auto_.is_set || is_set(auto_.yfilter)) leaf_name_data.push_back(auto_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Negotiation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Negotiation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Negotiation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "auto")
+    {
+        auto_ = value;
+        auto_.value_namespace = name_space;
+        auto_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Negotiation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "auto")
+    {
+        auto_.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Negotiation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "auto")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Plim::Plim()
+    :
+    ethernet(std::make_shared<Native::Interface::TenGigabitEthernet::Plim::Ethernet>())
+    , qos(std::make_shared<Native::Interface::TenGigabitEthernet::Plim::Qos>())
+{
+    ethernet->parent = this;
+    qos->parent = this;
+
+    yang_name = "plim"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Plim::~Plim()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Plim::has_data() const
+{
+    if (is_presence_container) return true;
+    return (ethernet !=  nullptr && ethernet->has_data())
+	|| (qos !=  nullptr && qos->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Plim::has_operation() const
+{
+    return is_set(yfilter)
+	|| (ethernet !=  nullptr && ethernet->has_operation())
+	|| (qos !=  nullptr && qos->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Plim::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-ethernet:plim";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Plim::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Plim::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "ethernet")
+    {
+        if(ethernet == nullptr)
+        {
+            ethernet = std::make_shared<Native::Interface::TenGigabitEthernet::Plim::Ethernet>();
+        }
+        return ethernet;
+    }
+
+    if(child_yang_name == "qos")
+    {
+        if(qos == nullptr)
+        {
+            qos = std::make_shared<Native::Interface::TenGigabitEthernet::Plim::Qos>();
+        }
+        return qos;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Plim::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(ethernet != nullptr)
+    {
+        _children["ethernet"] = ethernet;
+    }
+
+    if(qos != nullptr)
+    {
+        _children["qos"] = qos;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Plim::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TenGigabitEthernet::Plim::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Plim::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ethernet" || name == "qos")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Plim::Ethernet::Ethernet()
+    :
+    vlan(std::make_shared<Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan>())
+{
+    vlan->parent = this;
+
+    yang_name = "ethernet"; yang_parent_name = "plim"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Plim::Ethernet::~Ethernet()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Plim::Ethernet::has_data() const
+{
+    if (is_presence_container) return true;
+    return (vlan !=  nullptr && vlan->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Plim::Ethernet::has_operation() const
+{
+    return is_set(yfilter)
+	|| (vlan !=  nullptr && vlan->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Plim::Ethernet::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ethernet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Plim::Ethernet::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Plim::Ethernet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "vlan")
+    {
+        if(vlan == nullptr)
+        {
+            vlan = std::make_shared<Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan>();
+        }
+        return vlan;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Plim::Ethernet::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(vlan != nullptr)
+    {
+        _children["vlan"] = vlan;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Plim::Ethernet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TenGigabitEthernet::Plim::Ethernet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Plim::Ethernet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "vlan")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::Vlan()
+    :
+    filter(std::make_shared<Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::Filter>())
+{
+    filter->parent = this;
+
+    yang_name = "vlan"; yang_parent_name = "ethernet"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::~Vlan()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::has_data() const
+{
+    if (is_presence_container) return true;
+    return (filter !=  nullptr && filter->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::has_operation() const
+{
+    return is_set(yfilter)
+	|| (filter !=  nullptr && filter->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "vlan";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "filter")
+    {
+        if(filter == nullptr)
+        {
+            filter = std::make_shared<Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::Filter>();
+        }
+        return filter;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(filter != nullptr)
+    {
+        _children["filter"] = filter;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "filter")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::Filter::Filter()
+    :
+    disable{YType::empty, "disable"}
+{
+
+    yang_name = "filter"; yang_parent_name = "vlan"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::Filter::~Filter()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::Filter::has_data() const
+{
+    if (is_presence_container) return true;
+    return disable.is_set;
+}
+
+bool Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::Filter::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(disable.yfilter);
+}
+
+std::string Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::Filter::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "filter";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::Filter::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::Filter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::Filter::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::Filter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "disable")
+    {
+        disable = value;
+        disable.value_namespace = name_space;
+        disable.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::Filter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "disable")
+    {
+        disable.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::TenGigabitEthernet::Plim::Ethernet::Vlan::Filter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "disable")
+        return true;
+    return false;
+}
+
+Native::Interface::TenGigabitEthernet::Plim::Qos::Qos()
+    :
+    input(std::make_shared<Native::Interface::TenGigabitEthernet::Plim::Qos::Input>())
+{
+    input->parent = this;
+
+    yang_name = "qos"; yang_parent_name = "plim"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::TenGigabitEthernet::Plim::Qos::~Qos()
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Plim::Qos::has_data() const
+{
+    if (is_presence_container) return true;
+    return (input !=  nullptr && input->has_data());
+}
+
+bool Native::Interface::TenGigabitEthernet::Plim::Qos::has_operation() const
+{
+    return is_set(yfilter)
+	|| (input !=  nullptr && input->has_operation());
+}
+
+std::string Native::Interface::TenGigabitEthernet::Plim::Qos::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "qos";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Plim::Qos::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Plim::Qos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "input")
+    {
+        if(input == nullptr)
+        {
+            input = std::make_shared<Native::Interface::TenGigabitEthernet::Plim::Qos::Input>();
+        }
+        return input;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Plim::Qos::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(input != nullptr)
+    {
+        _children["input"] = input;
+    }
+
+    return _children;
+}
+
+void Native::Interface::TenGigabitEthernet::Plim::Qos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Native::Interface::TenGigabitEthernet::Plim::Qos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Native::Interface::TenGigabitEthernet::Plim::Qos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input")
+        return true;
+    return false;
+}
 
 Native::Interface::TenGigabitEthernet::Plim::Qos::Input::Input()
     :
@@ -11031,3723 +14860,8 @@ bool Native::Interface::TenGigabitEthernet::Mab::has_leaf_or_child_of_name(const
     return false;
 }
 
-Native::Interface::TenGigabitEthernet::EtAnalytics::EtAnalytics()
-    :
-    enable{YType::empty, "enable"}
-{
-
-    yang_name = "et-analytics"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::EtAnalytics::~EtAnalytics()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::EtAnalytics::has_data() const
-{
-    if (is_presence_container) return true;
-    return enable.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::EtAnalytics::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(enable.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::EtAnalytics::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-eta:et-analytics";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::EtAnalytics::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::EtAnalytics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::EtAnalytics::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::EtAnalytics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::EtAnalytics::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::EtAnalytics::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "enable")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::ServicePolicy::ServicePolicy()
-    :
-    history{YType::empty, "history"},
-    input{YType::str, "input"},
-    output{YType::str, "output"}
-        ,
-    type(std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type>())
-{
-    type->parent = this;
-
-    yang_name = "service-policy"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::ServicePolicy::~ServicePolicy()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::has_data() const
-{
-    if (is_presence_container) return true;
-    return history.is_set
-	|| input.is_set
-	|| output.is_set
-	|| (type !=  nullptr && type->has_data());
-}
-
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(history.yfilter)
-	|| ydk::is_set(input.yfilter)
-	|| ydk::is_set(output.yfilter)
-	|| (type !=  nullptr && type->has_operation());
-}
-
-std::string Native::Interface::TenGigabitEthernet::ServicePolicy::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-policy:service-policy";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::ServicePolicy::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (history.is_set || is_set(history.yfilter)) leaf_name_data.push_back(history.get_name_leafdata());
-    if (input.is_set || is_set(input.yfilter)) leaf_name_data.push_back(input.get_name_leafdata());
-    if (output.is_set || is_set(output.yfilter)) leaf_name_data.push_back(output.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "type")
-    {
-        if(type == nullptr)
-        {
-            type = std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type>();
-        }
-        return type;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::ServicePolicy::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(type != nullptr)
-    {
-        _children["type"] = type;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "history")
-    {
-        history = value;
-        history.value_namespace = name_space;
-        history.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "input")
-    {
-        input = value;
-        input.value_namespace = name_space;
-        input.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "output")
-    {
-        output = value;
-        output.value_namespace = name_space;
-        output.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "history")
-    {
-        history.yfilter = yfilter;
-    }
-    if(value_path == "input")
-    {
-        input.yfilter = yfilter;
-    }
-    if(value_path == "output")
-    {
-        output.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "type" || name == "history" || name == "input" || name == "output")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Type()
-    :
-    control(std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control>())
-    , performance_monitor(std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor>())
-    , service_chain(std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain>())
-{
-    control->parent = this;
-    performance_monitor->parent = this;
-    service_chain->parent = this;
-
-    yang_name = "type"; yang_parent_name = "service-policy"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::~Type()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::has_data() const
-{
-    if (is_presence_container) return true;
-    return (control !=  nullptr && control->has_data())
-	|| (performance_monitor !=  nullptr && performance_monitor->has_data())
-	|| (service_chain !=  nullptr && service_chain->has_data());
-}
-
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::has_operation() const
-{
-    return is_set(yfilter)
-	|| (control !=  nullptr && control->has_operation())
-	|| (performance_monitor !=  nullptr && performance_monitor->has_operation())
-	|| (service_chain !=  nullptr && service_chain->has_operation());
-}
-
-std::string Native::Interface::TenGigabitEthernet::ServicePolicy::Type::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "type";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::ServicePolicy::Type::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "control")
-    {
-        if(control == nullptr)
-        {
-            control = std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control>();
-        }
-        return control;
-    }
-
-    if(child_yang_name == "performance-monitor")
-    {
-        if(performance_monitor == nullptr)
-        {
-            performance_monitor = std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor>();
-        }
-        return performance_monitor;
-    }
-
-    if(child_yang_name == "service-chain")
-    {
-        if(service_chain == nullptr)
-        {
-            service_chain = std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain>();
-        }
-        return service_chain;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(control != nullptr)
-    {
-        _children["control"] = control;
-    }
-
-    if(performance_monitor != nullptr)
-    {
-        _children["performance-monitor"] = performance_monitor;
-    }
-
-    if(service_chain != nullptr)
-    {
-        _children["service-chain"] = service_chain;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "control" || name == "performance-monitor" || name == "service-chain")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::Control()
-    :
-    subscriber{YType::str, "subscriber"}
-{
-
-    yang_name = "control"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::~Control()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::has_data() const
-{
-    if (is_presence_container) return true;
-    return subscriber.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(subscriber.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "control";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (subscriber.is_set || is_set(subscriber.yfilter)) leaf_name_data.push_back(subscriber.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "subscriber")
-    {
-        subscriber = value;
-        subscriber.value_namespace = name_space;
-        subscriber.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "subscriber")
-    {
-        subscriber.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::Control::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "subscriber")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::PerformanceMonitor()
-    :
-    direction{YType::enumeration, "direction"},
-    name{YType::str, "name"}
-{
-
-    yang_name = "performance-monitor"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::~PerformanceMonitor()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::has_data() const
-{
-    if (is_presence_container) return true;
-    return direction.is_set
-	|| name.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(direction.yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "performance-monitor";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "direction")
-    {
-        direction = value;
-        direction.value_namespace = name_space;
-        direction.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "direction")
-    {
-        direction.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "direction" || name == "name")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::ServiceChain()
-    :
-    input(std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input>())
-    , output(std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output>())
-{
-    input->parent = this;
-    output->parent = this;
-
-    yang_name = "service-chain"; yang_parent_name = "type"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::~ServiceChain()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::has_data() const
-{
-    if (is_presence_container) return true;
-    return (input !=  nullptr && input->has_data())
-	|| (output !=  nullptr && output->has_data());
-}
-
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::has_operation() const
-{
-    return is_set(yfilter)
-	|| (input !=  nullptr && input->has_operation())
-	|| (output !=  nullptr && output->has_operation());
-}
-
-std::string Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "service-chain";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "input")
-    {
-        if(input == nullptr)
-        {
-            input = std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input>();
-        }
-        return input;
-    }
-
-    if(child_yang_name == "output")
-    {
-        if(output == nullptr)
-        {
-            output = std::make_shared<Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output>();
-        }
-        return output;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(input != nullptr)
-    {
-        _children["input"] = input;
-    }
-
-    if(output != nullptr)
-    {
-        _children["output"] = output;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input" || name == "output")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input::Input()
-    :
-    name{YType::str, "name"}
-{
-
-    yang_name = "input"; yang_parent_name = "service-chain"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input::~Input()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input::has_data() const
-{
-    if (is_presence_container) return true;
-    return name.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "input";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Input::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output::Output()
-    :
-    name{YType::str, "name"}
-{
-
-    yang_name = "output"; yang_parent_name = "service-chain"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output::~Output()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output::has_data() const
-{
-    if (is_presence_container) return true;
-    return name.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "output";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::ServicePolicy::Type::ServiceChain::Output::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Auto::Auto()
-    :
-    qos(std::make_shared<Native::Interface::TenGigabitEthernet::Auto::Qos>())
-{
-    qos->parent = this;
-
-    yang_name = "auto"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::Auto::~Auto()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Auto::has_data() const
-{
-    if (is_presence_container) return true;
-    return (qos !=  nullptr && qos->has_data());
-}
-
-bool Native::Interface::TenGigabitEthernet::Auto::has_operation() const
-{
-    return is_set(yfilter)
-	|| (qos !=  nullptr && qos->has_operation());
-}
-
-std::string Native::Interface::TenGigabitEthernet::Auto::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:auto";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Auto::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "qos")
-    {
-        if(qos == nullptr)
-        {
-            qos = std::make_shared<Native::Interface::TenGigabitEthernet::Auto::Qos>();
-        }
-        return qos;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Auto::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(qos != nullptr)
-    {
-        _children["qos"] = qos;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Auto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TenGigabitEthernet::Auto::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Auto::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "qos")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Auto::Qos::Qos()
-    :
-    classify(nullptr) // presence node
-    , trust(nullptr) // presence node
-    , video(std::make_shared<Native::Interface::TenGigabitEthernet::Auto::Qos::Video>())
-    , voip(nullptr) // presence node
-{
-    video->parent = this;
-
-    yang_name = "qos"; yang_parent_name = "auto"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::Auto::Qos::~Qos()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Auto::Qos::has_data() const
-{
-    if (is_presence_container) return true;
-    return (classify !=  nullptr && classify->has_data())
-	|| (trust !=  nullptr && trust->has_data())
-	|| (video !=  nullptr && video->has_data())
-	|| (voip !=  nullptr && voip->has_data());
-}
-
-bool Native::Interface::TenGigabitEthernet::Auto::Qos::has_operation() const
-{
-    return is_set(yfilter)
-	|| (classify !=  nullptr && classify->has_operation())
-	|| (trust !=  nullptr && trust->has_operation())
-	|| (video !=  nullptr && video->has_operation())
-	|| (voip !=  nullptr && voip->has_operation());
-}
-
-std::string Native::Interface::TenGigabitEthernet::Auto::Qos::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "qos";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Auto::Qos::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Auto::Qos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "classify")
-    {
-        if(classify == nullptr)
-        {
-            classify = std::make_shared<Native::Interface::TenGigabitEthernet::Auto::Qos::Classify>();
-        }
-        return classify;
-    }
-
-    if(child_yang_name == "trust")
-    {
-        if(trust == nullptr)
-        {
-            trust = std::make_shared<Native::Interface::TenGigabitEthernet::Auto::Qos::Trust>();
-        }
-        return trust;
-    }
-
-    if(child_yang_name == "video")
-    {
-        if(video == nullptr)
-        {
-            video = std::make_shared<Native::Interface::TenGigabitEthernet::Auto::Qos::Video>();
-        }
-        return video;
-    }
-
-    if(child_yang_name == "voip")
-    {
-        if(voip == nullptr)
-        {
-            voip = std::make_shared<Native::Interface::TenGigabitEthernet::Auto::Qos::Voip>();
-        }
-        return voip;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Auto::Qos::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(classify != nullptr)
-    {
-        _children["classify"] = classify;
-    }
-
-    if(trust != nullptr)
-    {
-        _children["trust"] = trust;
-    }
-
-    if(video != nullptr)
-    {
-        _children["video"] = video;
-    }
-
-    if(voip != nullptr)
-    {
-        _children["voip"] = voip;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Auto::Qos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TenGigabitEthernet::Auto::Qos::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Auto::Qos::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "classify" || name == "trust" || name == "video" || name == "voip")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Auto::Qos::Classify::Classify()
-    :
-    police{YType::empty, "police"}
-{
-
-    yang_name = "classify"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::TenGigabitEthernet::Auto::Qos::Classify::~Classify()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Auto::Qos::Classify::has_data() const
-{
-    if (is_presence_container) return true;
-    return police.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::Auto::Qos::Classify::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(police.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::Auto::Qos::Classify::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "classify";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Auto::Qos::Classify::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (police.is_set || is_set(police.yfilter)) leaf_name_data.push_back(police.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Auto::Qos::Classify::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Auto::Qos::Classify::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Auto::Qos::Classify::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "police")
-    {
-        police = value;
-        police.value_namespace = name_space;
-        police.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::Auto::Qos::Classify::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "police")
-    {
-        police.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::Auto::Qos::Classify::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "police")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Auto::Qos::Trust::Trust()
-    :
-    cos{YType::empty, "cos"},
-    dscp{YType::empty, "dscp"}
-{
-
-    yang_name = "trust"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::TenGigabitEthernet::Auto::Qos::Trust::~Trust()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Auto::Qos::Trust::has_data() const
-{
-    if (is_presence_container) return true;
-    return cos.is_set
-	|| dscp.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::Auto::Qos::Trust::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cos.yfilter)
-	|| ydk::is_set(dscp.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::Auto::Qos::Trust::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "trust";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Auto::Qos::Trust::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cos.is_set || is_set(cos.yfilter)) leaf_name_data.push_back(cos.get_name_leafdata());
-    if (dscp.is_set || is_set(dscp.yfilter)) leaf_name_data.push_back(dscp.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Auto::Qos::Trust::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Auto::Qos::Trust::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Auto::Qos::Trust::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cos")
-    {
-        cos = value;
-        cos.value_namespace = name_space;
-        cos.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dscp")
-    {
-        dscp = value;
-        dscp.value_namespace = name_space;
-        dscp.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::Auto::Qos::Trust::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cos")
-    {
-        cos.yfilter = yfilter;
-    }
-    if(value_path == "dscp")
-    {
-        dscp.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::Auto::Qos::Trust::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cos" || name == "dscp")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Auto::Qos::Video::Video()
-    :
-    cts{YType::empty, "cts"},
-    ip_camera{YType::empty, "ip-camera"},
-    media_player{YType::empty, "media-player"}
-{
-
-    yang_name = "video"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::Auto::Qos::Video::~Video()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Auto::Qos::Video::has_data() const
-{
-    if (is_presence_container) return true;
-    return cts.is_set
-	|| ip_camera.is_set
-	|| media_player.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::Auto::Qos::Video::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cts.yfilter)
-	|| ydk::is_set(ip_camera.yfilter)
-	|| ydk::is_set(media_player.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::Auto::Qos::Video::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "video";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Auto::Qos::Video::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cts.is_set || is_set(cts.yfilter)) leaf_name_data.push_back(cts.get_name_leafdata());
-    if (ip_camera.is_set || is_set(ip_camera.yfilter)) leaf_name_data.push_back(ip_camera.get_name_leafdata());
-    if (media_player.is_set || is_set(media_player.yfilter)) leaf_name_data.push_back(media_player.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Auto::Qos::Video::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Auto::Qos::Video::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Auto::Qos::Video::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cts")
-    {
-        cts = value;
-        cts.value_namespace = name_space;
-        cts.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ip-camera")
-    {
-        ip_camera = value;
-        ip_camera.value_namespace = name_space;
-        ip_camera.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "media-player")
-    {
-        media_player = value;
-        media_player.value_namespace = name_space;
-        media_player.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::Auto::Qos::Video::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cts")
-    {
-        cts.yfilter = yfilter;
-    }
-    if(value_path == "ip-camera")
-    {
-        ip_camera.yfilter = yfilter;
-    }
-    if(value_path == "media-player")
-    {
-        media_player.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::Auto::Qos::Video::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cts" || name == "ip-camera" || name == "media-player")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Auto::Qos::Voip::Voip()
-    :
-    cisco_phone{YType::empty, "cisco-phone"},
-    cisco_softphone{YType::empty, "cisco-softphone"},
-    trust{YType::empty, "trust"}
-{
-
-    yang_name = "voip"; yang_parent_name = "qos"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::TenGigabitEthernet::Auto::Qos::Voip::~Voip()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Auto::Qos::Voip::has_data() const
-{
-    if (is_presence_container) return true;
-    return cisco_phone.is_set
-	|| cisco_softphone.is_set
-	|| trust.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::Auto::Qos::Voip::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(cisco_phone.yfilter)
-	|| ydk::is_set(cisco_softphone.yfilter)
-	|| ydk::is_set(trust.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::Auto::Qos::Voip::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "voip";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Auto::Qos::Voip::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (cisco_phone.is_set || is_set(cisco_phone.yfilter)) leaf_name_data.push_back(cisco_phone.get_name_leafdata());
-    if (cisco_softphone.is_set || is_set(cisco_softphone.yfilter)) leaf_name_data.push_back(cisco_softphone.get_name_leafdata());
-    if (trust.is_set || is_set(trust.yfilter)) leaf_name_data.push_back(trust.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Auto::Qos::Voip::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Auto::Qos::Voip::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Auto::Qos::Voip::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "cisco-phone")
-    {
-        cisco_phone = value;
-        cisco_phone.value_namespace = name_space;
-        cisco_phone.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "cisco-softphone")
-    {
-        cisco_softphone = value;
-        cisco_softphone.value_namespace = name_space;
-        cisco_softphone.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "trust")
-    {
-        trust = value;
-        trust.value_namespace = name_space;
-        trust.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::Auto::Qos::Voip::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "cisco-phone")
-    {
-        cisco_phone.yfilter = yfilter;
-    }
-    if(value_path == "cisco-softphone")
-    {
-        cisco_softphone.yfilter = yfilter;
-    }
-    if(value_path == "trust")
-    {
-        trust.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::Auto::Qos::Voip::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "cisco-phone" || name == "cisco-softphone" || name == "trust")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Datalink::Datalink()
-    :
-    flow(std::make_shared<Native::Interface::TenGigabitEthernet::Datalink::Flow>())
-{
-    flow->parent = this;
-
-    yang_name = "datalink"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::Datalink::~Datalink()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Datalink::has_data() const
-{
-    if (is_presence_container) return true;
-    return (flow !=  nullptr && flow->has_data());
-}
-
-bool Native::Interface::TenGigabitEthernet::Datalink::has_operation() const
-{
-    return is_set(yfilter)
-	|| (flow !=  nullptr && flow->has_operation());
-}
-
-std::string Native::Interface::TenGigabitEthernet::Datalink::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:datalink";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Datalink::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Datalink::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "flow")
-    {
-        if(flow == nullptr)
-        {
-            flow = std::make_shared<Native::Interface::TenGigabitEthernet::Datalink::Flow>();
-        }
-        return flow;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Datalink::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(flow != nullptr)
-    {
-        _children["flow"] = flow;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Datalink::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TenGigabitEthernet::Datalink::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Datalink::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "flow")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Datalink::Flow::Flow()
-    :
-    monitor(nullptr) // presence node
-{
-
-    yang_name = "flow"; yang_parent_name = "datalink"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::Datalink::Flow::~Flow()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Datalink::Flow::has_data() const
-{
-    if (is_presence_container) return true;
-    return (monitor !=  nullptr && monitor->has_data());
-}
-
-bool Native::Interface::TenGigabitEthernet::Datalink::Flow::has_operation() const
-{
-    return is_set(yfilter)
-	|| (monitor !=  nullptr && monitor->has_operation());
-}
-
-std::string Native::Interface::TenGigabitEthernet::Datalink::Flow::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "flow";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Datalink::Flow::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Datalink::Flow::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "monitor")
-    {
-        if(monitor == nullptr)
-        {
-            monitor = std::make_shared<Native::Interface::TenGigabitEthernet::Datalink::Flow::Monitor>();
-        }
-        return monitor;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Datalink::Flow::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(monitor != nullptr)
-    {
-        _children["monitor"] = monitor;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Datalink::Flow::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TenGigabitEthernet::Datalink::Flow::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Datalink::Flow::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "monitor")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Datalink::Flow::Monitor::Monitor()
-    :
-    user_defined_flow{YType::str, "User-defined-flow"},
-    input_output{YType::enumeration, "input-output"}
-{
-
-    yang_name = "monitor"; yang_parent_name = "flow"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::TenGigabitEthernet::Datalink::Flow::Monitor::~Monitor()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Datalink::Flow::Monitor::has_data() const
-{
-    if (is_presence_container) return true;
-    return user_defined_flow.is_set
-	|| input_output.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::Datalink::Flow::Monitor::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(user_defined_flow.yfilter)
-	|| ydk::is_set(input_output.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::Datalink::Flow::Monitor::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "monitor";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Datalink::Flow::Monitor::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (user_defined_flow.is_set || is_set(user_defined_flow.yfilter)) leaf_name_data.push_back(user_defined_flow.get_name_leafdata());
-    if (input_output.is_set || is_set(input_output.yfilter)) leaf_name_data.push_back(input_output.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Datalink::Flow::Monitor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Datalink::Flow::Monitor::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Datalink::Flow::Monitor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "User-defined-flow")
-    {
-        user_defined_flow = value;
-        user_defined_flow.value_namespace = name_space;
-        user_defined_flow.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "input-output")
-    {
-        input_output = value;
-        input_output.value_namespace = name_space;
-        input_output.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::Datalink::Flow::Monitor::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "User-defined-flow")
-    {
-        user_defined_flow.yfilter = yfilter;
-    }
-    if(value_path == "input-output")
-    {
-        input_output.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::Datalink::Flow::Monitor::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "User-defined-flow" || name == "input-output")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Energywise::Energywise()
-    :
-    activitycheck{YType::empty, "activitycheck"}
-        ,
-    level(this, {"range"})
-{
-
-    yang_name = "energywise"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::TenGigabitEthernet::Energywise::~Energywise()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Energywise::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<level.len(); index++)
-    {
-        if(level[index]->has_data())
-            return true;
-    }
-    return activitycheck.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::Energywise::has_operation() const
-{
-    for (std::size_t index=0; index<level.len(); index++)
-    {
-        if(level[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(activitycheck.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::Energywise::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:energywise";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Energywise::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (activitycheck.is_set || is_set(activitycheck.yfilter)) leaf_name_data.push_back(activitycheck.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Energywise::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "level")
-    {
-        auto ent_ = std::make_shared<Native::Interface::TenGigabitEthernet::Energywise::Level>();
-        ent_->parent = this;
-        level.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Energywise::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : level.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Energywise::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "activitycheck")
-    {
-        activitycheck = value;
-        activitycheck.value_namespace = name_space;
-        activitycheck.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::Energywise::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "activitycheck")
-    {
-        activitycheck.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::Energywise::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level" || name == "activitycheck")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Energywise::Level::Level()
-    :
-    range{YType::uint8, "range"}
-        ,
-    recurrence(std::make_shared<Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence>())
-{
-    recurrence->parent = this;
-
-    yang_name = "level"; yang_parent_name = "energywise"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::Energywise::Level::~Level()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Energywise::Level::has_data() const
-{
-    if (is_presence_container) return true;
-    return range.is_set
-	|| (recurrence !=  nullptr && recurrence->has_data());
-}
-
-bool Native::Interface::TenGigabitEthernet::Energywise::Level::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(range.yfilter)
-	|| (recurrence !=  nullptr && recurrence->has_operation());
-}
-
-std::string Native::Interface::TenGigabitEthernet::Energywise::Level::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "level";
-    ADD_KEY_TOKEN(range, "range");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Energywise::Level::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (range.is_set || is_set(range.yfilter)) leaf_name_data.push_back(range.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Energywise::Level::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "recurrence")
-    {
-        if(recurrence == nullptr)
-        {
-            recurrence = std::make_shared<Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence>();
-        }
-        return recurrence;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Energywise::Level::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(recurrence != nullptr)
-    {
-        _children["recurrence"] = recurrence;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Energywise::Level::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "range")
-    {
-        range = value;
-        range.value_namespace = name_space;
-        range.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::Energywise::Level::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "range")
-    {
-        range.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::Energywise::Level::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "recurrence" || name == "range")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Recurrence()
-    :
-    importance(this, {"range"})
-{
-
-    yang_name = "recurrence"; yang_parent_name = "level"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::~Recurrence()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<importance.len(); index++)
-    {
-        if(importance[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::has_operation() const
-{
-    for (std::size_t index=0; index<importance.len(); index++)
-    {
-        if(importance[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "recurrence";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "importance")
-    {
-        auto ent_ = std::make_shared<Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance>();
-        ent_->parent = this;
-        importance.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : importance.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "importance")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::Importance()
-    :
-    range{YType::uint16, "range"}
-        ,
-    at(std::make_shared<Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::At>())
-{
-    at->parent = this;
-
-    yang_name = "importance"; yang_parent_name = "recurrence"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::~Importance()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::has_data() const
-{
-    if (is_presence_container) return true;
-    return range.is_set
-	|| (at !=  nullptr && at->has_data());
-}
-
-bool Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(range.yfilter)
-	|| (at !=  nullptr && at->has_operation());
-}
-
-std::string Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "importance";
-    ADD_KEY_TOKEN(range, "range");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (range.is_set || is_set(range.yfilter)) leaf_name_data.push_back(range.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "at")
-    {
-        if(at == nullptr)
-        {
-            at = std::make_shared<Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::At>();
-        }
-        return at;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(at != nullptr)
-    {
-        _children["at"] = at;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "range")
-    {
-        range = value;
-        range.value_namespace = name_space;
-        range.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "range")
-    {
-        range.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "at" || name == "range")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::At::At()
-    :
-    minute{YType::str, "minute"},
-    hour{YType::str, "hour"},
-    day{YType::str, "day"},
-    month{YType::str, "month"},
-    weekday{YType::str, "weekday"}
-{
-
-    yang_name = "at"; yang_parent_name = "importance"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::At::~At()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::At::has_data() const
-{
-    if (is_presence_container) return true;
-    return minute.is_set
-	|| hour.is_set
-	|| day.is_set
-	|| month.is_set
-	|| weekday.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::At::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(minute.yfilter)
-	|| ydk::is_set(hour.yfilter)
-	|| ydk::is_set(day.yfilter)
-	|| ydk::is_set(month.yfilter)
-	|| ydk::is_set(weekday.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::At::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "at";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::At::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (minute.is_set || is_set(minute.yfilter)) leaf_name_data.push_back(minute.get_name_leafdata());
-    if (hour.is_set || is_set(hour.yfilter)) leaf_name_data.push_back(hour.get_name_leafdata());
-    if (day.is_set || is_set(day.yfilter)) leaf_name_data.push_back(day.get_name_leafdata());
-    if (month.is_set || is_set(month.yfilter)) leaf_name_data.push_back(month.get_name_leafdata());
-    if (weekday.is_set || is_set(weekday.yfilter)) leaf_name_data.push_back(weekday.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::At::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::At::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::At::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "minute")
-    {
-        minute = value;
-        minute.value_namespace = name_space;
-        minute.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hour")
-    {
-        hour = value;
-        hour.value_namespace = name_space;
-        hour.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "day")
-    {
-        day = value;
-        day.value_namespace = name_space;
-        day.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "month")
-    {
-        month = value;
-        month.value_namespace = name_space;
-        month.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "weekday")
-    {
-        weekday = value;
-        weekday.value_namespace = name_space;
-        weekday.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::At::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "minute")
-    {
-        minute.yfilter = yfilter;
-    }
-    if(value_path == "hour")
-    {
-        hour.yfilter = yfilter;
-    }
-    if(value_path == "day")
-    {
-        day.yfilter = yfilter;
-    }
-    if(value_path == "month")
-    {
-        month.yfilter = yfilter;
-    }
-    if(value_path == "weekday")
-    {
-        weekday.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::Energywise::Level::Recurrence::Importance::At::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "minute" || name == "hour" || name == "day" || name == "month" || name == "weekday")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Location::Location()
-    :
-    civic_location_id(std::make_shared<Native::Interface::TenGigabitEthernet::Location::CivicLocationId>())
-{
-    civic_location_id->parent = this;
-
-    yang_name = "location"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::Location::~Location()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Location::has_data() const
-{
-    if (is_presence_container) return true;
-    return (civic_location_id !=  nullptr && civic_location_id->has_data());
-}
-
-bool Native::Interface::TenGigabitEthernet::Location::has_operation() const
-{
-    return is_set(yfilter)
-	|| (civic_location_id !=  nullptr && civic_location_id->has_operation());
-}
-
-std::string Native::Interface::TenGigabitEthernet::Location::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:location";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Location::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Location::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "civic-location-id")
-    {
-        if(civic_location_id == nullptr)
-        {
-            civic_location_id = std::make_shared<Native::Interface::TenGigabitEthernet::Location::CivicLocationId>();
-        }
-        return civic_location_id;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Location::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(civic_location_id != nullptr)
-    {
-        _children["civic-location-id"] = civic_location_id;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Location::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TenGigabitEthernet::Location::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Location::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "civic-location-id")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Location::CivicLocationId::CivicLocationId()
-    :
-    location_identifier{YType::str, "location-identifier"}
-        ,
-    host(nullptr) // presence node
-    , none(nullptr) // presence node
-{
-
-    yang_name = "civic-location-id"; yang_parent_name = "location"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::Location::CivicLocationId::~CivicLocationId()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Location::CivicLocationId::has_data() const
-{
-    if (is_presence_container) return true;
-    return location_identifier.is_set
-	|| (host !=  nullptr && host->has_data())
-	|| (none !=  nullptr && none->has_data());
-}
-
-bool Native::Interface::TenGigabitEthernet::Location::CivicLocationId::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(location_identifier.yfilter)
-	|| (host !=  nullptr && host->has_operation())
-	|| (none !=  nullptr && none->has_operation());
-}
-
-std::string Native::Interface::TenGigabitEthernet::Location::CivicLocationId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "civic-location-id";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Location::CivicLocationId::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (location_identifier.is_set || is_set(location_identifier.yfilter)) leaf_name_data.push_back(location_identifier.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Location::CivicLocationId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "host")
-    {
-        if(host == nullptr)
-        {
-            host = std::make_shared<Native::Interface::TenGigabitEthernet::Location::CivicLocationId::Host>();
-        }
-        return host;
-    }
-
-    if(child_yang_name == "none")
-    {
-        if(none == nullptr)
-        {
-            none = std::make_shared<Native::Interface::TenGigabitEthernet::Location::CivicLocationId::None>();
-        }
-        return none;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Location::CivicLocationId::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(host != nullptr)
-    {
-        _children["host"] = host;
-    }
-
-    if(none != nullptr)
-    {
-        _children["none"] = none;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Location::CivicLocationId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "location-identifier")
-    {
-        location_identifier = value;
-        location_identifier.value_namespace = name_space;
-        location_identifier.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::Location::CivicLocationId::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "location-identifier")
-    {
-        location_identifier.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::Location::CivicLocationId::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "host" || name == "none" || name == "location-identifier")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Location::CivicLocationId::Host::Host()
-    :
-    port_location{YType::str, "port-location"}
-{
-
-    yang_name = "host"; yang_parent_name = "civic-location-id"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::TenGigabitEthernet::Location::CivicLocationId::Host::~Host()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Location::CivicLocationId::Host::has_data() const
-{
-    if (is_presence_container) return true;
-    return port_location.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::Location::CivicLocationId::Host::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(port_location.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::Location::CivicLocationId::Host::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "host";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Location::CivicLocationId::Host::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (port_location.is_set || is_set(port_location.yfilter)) leaf_name_data.push_back(port_location.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Location::CivicLocationId::Host::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Location::CivicLocationId::Host::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Location::CivicLocationId::Host::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "port-location")
-    {
-        port_location = value;
-        port_location.value_namespace = name_space;
-        port_location.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::Location::CivicLocationId::Host::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "port-location")
-    {
-        port_location.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::Location::CivicLocationId::Host::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "port-location")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Location::CivicLocationId::None::None()
-    :
-    port_location{YType::str, "port-location"}
-{
-
-    yang_name = "none"; yang_parent_name = "civic-location-id"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Native::Interface::TenGigabitEthernet::Location::CivicLocationId::None::~None()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Location::CivicLocationId::None::has_data() const
-{
-    if (is_presence_container) return true;
-    return port_location.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::Location::CivicLocationId::None::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(port_location.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::Location::CivicLocationId::None::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "none";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Location::CivicLocationId::None::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (port_location.is_set || is_set(port_location.yfilter)) leaf_name_data.push_back(port_location.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Location::CivicLocationId::None::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Location::CivicLocationId::None::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Location::CivicLocationId::None::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "port-location")
-    {
-        port_location = value;
-        port_location.value_namespace = name_space;
-        port_location.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::Location::CivicLocationId::None::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "port-location")
-    {
-        port_location.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::Location::CivicLocationId::None::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "port-location")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Mac::Mac()
-    :
-    access_group(this, {"direction"})
-{
-
-    yang_name = "mac"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::Mac::~Mac()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Mac::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<access_group.len(); index++)
-    {
-        if(access_group[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Native::Interface::TenGigabitEthernet::Mac::has_operation() const
-{
-    for (std::size_t index=0; index<access_group.len(); index++)
-    {
-        if(access_group[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::Mac::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:mac";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Mac::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Mac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "access-group")
-    {
-        auto ent_ = std::make_shared<Native::Interface::TenGigabitEthernet::Mac::AccessGroup>();
-        ent_->parent = this;
-        access_group.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Mac::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : access_group.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Mac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TenGigabitEthernet::Mac::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Mac::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "access-group")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Mac::AccessGroup::AccessGroup()
-    :
-    direction{YType::enumeration, "direction"},
-    acl_name{YType::str, "acl-name"}
-{
-
-    yang_name = "access-group"; yang_parent_name = "mac"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::Mac::AccessGroup::~AccessGroup()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Mac::AccessGroup::has_data() const
-{
-    if (is_presence_container) return true;
-    return direction.is_set
-	|| acl_name.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::Mac::AccessGroup::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(direction.yfilter)
-	|| ydk::is_set(acl_name.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::Mac::AccessGroup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "access-group";
-    ADD_KEY_TOKEN(direction, "direction");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Mac::AccessGroup::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (direction.is_set || is_set(direction.yfilter)) leaf_name_data.push_back(direction.get_name_leafdata());
-    if (acl_name.is_set || is_set(acl_name.yfilter)) leaf_name_data.push_back(acl_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Mac::AccessGroup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Mac::AccessGroup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Mac::AccessGroup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "direction")
-    {
-        direction = value;
-        direction.value_namespace = name_space;
-        direction.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "acl-name")
-    {
-        acl_name = value;
-        acl_name.value_namespace = name_space;
-        acl_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::Mac::AccessGroup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "direction")
-    {
-        direction.yfilter = yfilter;
-    }
-    if(value_path == "acl-name")
-    {
-        acl_name.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::Mac::AccessGroup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "direction" || name == "acl-name")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Macro::Macro()
-    :
-    description{YType::str, "description"}
-        ,
-    auto_(std::make_shared<Native::Interface::TenGigabitEthernet::Macro::Auto>())
-{
-    auto_->parent = this;
-
-    yang_name = "macro"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::Macro::~Macro()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Macro::has_data() const
-{
-    if (is_presence_container) return true;
-    return description.is_set
-	|| (auto_ !=  nullptr && auto_->has_data());
-}
-
-bool Native::Interface::TenGigabitEthernet::Macro::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| (auto_ !=  nullptr && auto_->has_operation());
-}
-
-std::string Native::Interface::TenGigabitEthernet::Macro::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:macro";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Macro::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Macro::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "auto")
-    {
-        if(auto_ == nullptr)
-        {
-            auto_ = std::make_shared<Native::Interface::TenGigabitEthernet::Macro::Auto>();
-        }
-        return auto_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Macro::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(auto_ != nullptr)
-    {
-        _children["auto"] = auto_;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Macro::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "description")
-    {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::Macro::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "description")
-    {
-        description.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::Macro::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "auto" || name == "description")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Macro::Auto::Auto()
-    :
-    processing{YType::boolean, "processing"}
-        ,
-    port(std::make_shared<Native::Interface::TenGigabitEthernet::Macro::Auto::Port>())
-    , control(std::make_shared<Native::Interface::TenGigabitEthernet::Macro::Auto::Control>())
-{
-    port->parent = this;
-    control->parent = this;
-
-    yang_name = "auto"; yang_parent_name = "macro"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::Macro::Auto::~Auto()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Macro::Auto::has_data() const
-{
-    if (is_presence_container) return true;
-    return processing.is_set
-	|| (port !=  nullptr && port->has_data())
-	|| (control !=  nullptr && control->has_data());
-}
-
-bool Native::Interface::TenGigabitEthernet::Macro::Auto::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(processing.yfilter)
-	|| (port !=  nullptr && port->has_operation())
-	|| (control !=  nullptr && control->has_operation());
-}
-
-std::string Native::Interface::TenGigabitEthernet::Macro::Auto::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "auto";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Macro::Auto::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (processing.is_set || is_set(processing.yfilter)) leaf_name_data.push_back(processing.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Macro::Auto::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "port")
-    {
-        if(port == nullptr)
-        {
-            port = std::make_shared<Native::Interface::TenGigabitEthernet::Macro::Auto::Port>();
-        }
-        return port;
-    }
-
-    if(child_yang_name == "control")
-    {
-        if(control == nullptr)
-        {
-            control = std::make_shared<Native::Interface::TenGigabitEthernet::Macro::Auto::Control>();
-        }
-        return control;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Macro::Auto::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(port != nullptr)
-    {
-        _children["port"] = port;
-    }
-
-    if(control != nullptr)
-    {
-        _children["control"] = control;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Macro::Auto::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "processing")
-    {
-        processing = value;
-        processing.value_namespace = name_space;
-        processing.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::Macro::Auto::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "processing")
-    {
-        processing.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::Macro::Auto::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "port" || name == "control" || name == "processing")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Macro::Auto::Port::Port()
-    :
-    sticky{YType::empty, "sticky"}
-{
-
-    yang_name = "port"; yang_parent_name = "auto"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::Macro::Auto::Port::~Port()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Macro::Auto::Port::has_data() const
-{
-    if (is_presence_container) return true;
-    return sticky.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::Macro::Auto::Port::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(sticky.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::Macro::Auto::Port::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "port";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Macro::Auto::Port::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (sticky.is_set || is_set(sticky.yfilter)) leaf_name_data.push_back(sticky.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Macro::Auto::Port::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Macro::Auto::Port::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Macro::Auto::Port::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "sticky")
-    {
-        sticky = value;
-        sticky.value_namespace = name_space;
-        sticky.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::Macro::Auto::Port::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "sticky")
-    {
-        sticky.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::Macro::Auto::Port::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "sticky")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Macro::Auto::Control::Control()
-    :
-    device(std::make_shared<Native::Interface::TenGigabitEthernet::Macro::Auto::Control::Device>())
-{
-    device->parent = this;
-
-    yang_name = "control"; yang_parent_name = "auto"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::Macro::Auto::Control::~Control()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Macro::Auto::Control::has_data() const
-{
-    if (is_presence_container) return true;
-    return (device !=  nullptr && device->has_data());
-}
-
-bool Native::Interface::TenGigabitEthernet::Macro::Auto::Control::has_operation() const
-{
-    return is_set(yfilter)
-	|| (device !=  nullptr && device->has_operation());
-}
-
-std::string Native::Interface::TenGigabitEthernet::Macro::Auto::Control::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "control";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Macro::Auto::Control::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Macro::Auto::Control::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "device")
-    {
-        if(device == nullptr)
-        {
-            device = std::make_shared<Native::Interface::TenGigabitEthernet::Macro::Auto::Control::Device>();
-        }
-        return device;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Macro::Auto::Control::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(device != nullptr)
-    {
-        _children["device"] = device;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Macro::Auto::Control::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TenGigabitEthernet::Macro::Auto::Control::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Macro::Auto::Control::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "device")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Macro::Auto::Control::Device::Device()
-    :
-    phone{YType::empty, "phone"}
-{
-
-    yang_name = "device"; yang_parent_name = "control"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::Macro::Auto::Control::Device::~Device()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Macro::Auto::Control::Device::has_data() const
-{
-    if (is_presence_container) return true;
-    return phone.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::Macro::Auto::Control::Device::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(phone.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::Macro::Auto::Control::Device::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "device";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Macro::Auto::Control::Device::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (phone.is_set || is_set(phone.yfilter)) leaf_name_data.push_back(phone.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Macro::Auto::Control::Device::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Macro::Auto::Control::Device::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Macro::Auto::Control::Device::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "phone")
-    {
-        phone = value;
-        phone.value_namespace = name_space;
-        phone.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::Macro::Auto::Control::Device::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "phone")
-    {
-        phone.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::Macro::Auto::Control::Device::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "phone")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::DualActive::DualActive()
-    :
-    fast_hello{YType::empty, "fast-hello"}
-{
-
-    yang_name = "dual-active"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::DualActive::~DualActive()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::DualActive::has_data() const
-{
-    if (is_presence_container) return true;
-    return fast_hello.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::DualActive::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(fast_hello.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::DualActive::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:dual-active";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::DualActive::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (fast_hello.is_set || is_set(fast_hello.yfilter)) leaf_name_data.push_back(fast_hello.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::DualActive::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::DualActive::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::DualActive::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "fast-hello")
-    {
-        fast_hello = value;
-        fast_hello.value_namespace = name_space;
-        fast_hello.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::DualActive::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "fast-hello")
-    {
-        fast_hello.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::DualActive::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "fast-hello")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::LoadBalancing::LoadBalancing()
-    :
-    flow{YType::empty, "flow"},
-    vlan{YType::empty, "vlan"}
-{
-
-    yang_name = "load-balancing"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::LoadBalancing::~LoadBalancing()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::LoadBalancing::has_data() const
-{
-    if (is_presence_container) return true;
-    return flow.is_set
-	|| vlan.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::LoadBalancing::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(flow.yfilter)
-	|| ydk::is_set(vlan.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::LoadBalancing::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:load-balancing";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::LoadBalancing::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (flow.is_set || is_set(flow.yfilter)) leaf_name_data.push_back(flow.get_name_leafdata());
-    if (vlan.is_set || is_set(vlan.yfilter)) leaf_name_data.push_back(vlan.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::LoadBalancing::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::LoadBalancing::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::LoadBalancing::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "flow")
-    {
-        flow = value;
-        flow.value_namespace = name_space;
-        flow.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vlan")
-    {
-        vlan = value;
-        vlan.value_namespace = name_space;
-        vlan.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::LoadBalancing::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "flow")
-    {
-        flow.yfilter = yfilter;
-    }
-    if(value_path == "vlan")
-    {
-        vlan.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::LoadBalancing::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "flow" || name == "vlan")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::VlanRange::VlanRange()
-    :
-    id{YType::str, "id"}
-        ,
-    service_policy(std::make_shared<Native::Interface::TenGigabitEthernet::VlanRange::ServicePolicy>())
-{
-    service_policy->parent = this;
-
-    yang_name = "vlan-range"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::VlanRange::~VlanRange()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::VlanRange::has_data() const
-{
-    if (is_presence_container) return true;
-    return id.is_set
-	|| (service_policy !=  nullptr && service_policy->has_data());
-}
-
-bool Native::Interface::TenGigabitEthernet::VlanRange::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(id.yfilter)
-	|| (service_policy !=  nullptr && service_policy->has_operation());
-}
-
-std::string Native::Interface::TenGigabitEthernet::VlanRange::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:vlan-range";
-    ADD_KEY_TOKEN(id, "id");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::VlanRange::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::VlanRange::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "service-policy")
-    {
-        if(service_policy == nullptr)
-        {
-            service_policy = std::make_shared<Native::Interface::TenGigabitEthernet::VlanRange::ServicePolicy>();
-        }
-        return service_policy;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::VlanRange::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(service_policy != nullptr)
-    {
-        _children["service-policy"] = service_policy;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::VlanRange::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "id")
-    {
-        id = value;
-        id.value_namespace = name_space;
-        id.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::VlanRange::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "id")
-    {
-        id.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::VlanRange::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "service-policy" || name == "id")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::VlanRange::ServicePolicy::ServicePolicy()
-    :
-    input{YType::str, "input"},
-    output{YType::str, "output"}
-{
-
-    yang_name = "service-policy"; yang_parent_name = "vlan-range"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::VlanRange::ServicePolicy::~ServicePolicy()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::VlanRange::ServicePolicy::has_data() const
-{
-    if (is_presence_container) return true;
-    return input.is_set
-	|| output.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::VlanRange::ServicePolicy::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(input.yfilter)
-	|| ydk::is_set(output.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::VlanRange::ServicePolicy::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "service-policy";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::VlanRange::ServicePolicy::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (input.is_set || is_set(input.yfilter)) leaf_name_data.push_back(input.get_name_leafdata());
-    if (output.is_set || is_set(output.yfilter)) leaf_name_data.push_back(output.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::VlanRange::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::VlanRange::ServicePolicy::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::VlanRange::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "input")
-    {
-        input = value;
-        input.value_namespace = name_space;
-        input.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "output")
-    {
-        output = value;
-        output.value_namespace = name_space;
-        output.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::VlanRange::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "input")
-    {
-        input.yfilter = yfilter;
-    }
-    if(value_path == "output")
-    {
-        output.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::VlanRange::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input" || name == "output")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Switch::Switch()
-    :
-    virtual_(std::make_shared<Native::Interface::TenGigabitEthernet::Switch::Virtual>())
-{
-    virtual_->parent = this;
-
-    yang_name = "switch"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::Switch::~Switch()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Switch::has_data() const
-{
-    if (is_presence_container) return true;
-    return (virtual_ !=  nullptr && virtual_->has_data());
-}
-
-bool Native::Interface::TenGigabitEthernet::Switch::has_operation() const
-{
-    return is_set(yfilter)
-	|| (virtual_ !=  nullptr && virtual_->has_operation());
-}
-
-std::string Native::Interface::TenGigabitEthernet::Switch::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:switch";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Switch::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Switch::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "virtual")
-    {
-        if(virtual_ == nullptr)
-        {
-            virtual_ = std::make_shared<Native::Interface::TenGigabitEthernet::Switch::Virtual>();
-        }
-        return virtual_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Switch::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(virtual_ != nullptr)
-    {
-        _children["virtual"] = virtual_;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Switch::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TenGigabitEthernet::Switch::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Switch::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "virtual")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::Switch::Virtual::Virtual()
-    :
-    link{YType::uint8, "link"}
-{
-
-    yang_name = "virtual"; yang_parent_name = "switch"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::Switch::Virtual::~Virtual()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::Switch::Virtual::has_data() const
-{
-    if (is_presence_container) return true;
-    return link.is_set;
-}
-
-bool Native::Interface::TenGigabitEthernet::Switch::Virtual::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(link.yfilter);
-}
-
-std::string Native::Interface::TenGigabitEthernet::Switch::Virtual::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "virtual";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::Switch::Virtual::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (link.is_set || is_set(link.yfilter)) leaf_name_data.push_back(link.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::Switch::Virtual::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::Switch::Virtual::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::Switch::Virtual::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "link")
-    {
-        link = value;
-        link.value_namespace = name_space;
-        link.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::TenGigabitEthernet::Switch::Virtual::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "link")
-    {
-        link.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::TenGigabitEthernet::Switch::Virtual::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "link")
-        return true;
-    return false;
-}
-
-Native::Interface::TenGigabitEthernet::SrrQueue::SrrQueue()
-    :
-    bandwidth(std::make_shared<Native::Interface::TenGigabitEthernet::SrrQueue::Bandwidth>())
-{
-    bandwidth->parent = this;
-
-    yang_name = "srr-queue"; yang_parent_name = "TenGigabitEthernet"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::TenGigabitEthernet::SrrQueue::~SrrQueue()
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::SrrQueue::has_data() const
-{
-    if (is_presence_container) return true;
-    return (bandwidth !=  nullptr && bandwidth->has_data());
-}
-
-bool Native::Interface::TenGigabitEthernet::SrrQueue::has_operation() const
-{
-    return is_set(yfilter)
-	|| (bandwidth !=  nullptr && bandwidth->has_operation());
-}
-
-std::string Native::Interface::TenGigabitEthernet::SrrQueue::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-switch:srr-queue";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::TenGigabitEthernet::SrrQueue::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::TenGigabitEthernet::SrrQueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bandwidth")
-    {
-        if(bandwidth == nullptr)
-        {
-            bandwidth = std::make_shared<Native::Interface::TenGigabitEthernet::SrrQueue::Bandwidth>();
-        }
-        return bandwidth;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TenGigabitEthernet::SrrQueue::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(bandwidth != nullptr)
-    {
-        _children["bandwidth"] = bandwidth;
-    }
-
-    return _children;
-}
-
-void Native::Interface::TenGigabitEthernet::SrrQueue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Native::Interface::TenGigabitEthernet::SrrQueue::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Native::Interface::TenGigabitEthernet::SrrQueue::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bandwidth")
-        return true;
-    return false;
-}
+const Enum::YLeaf Native::Interface::TenGigabitEthernet::Ethernet::Oam::Mode::active {0, "active"};
+const Enum::YLeaf Native::Interface::TenGigabitEthernet::Ethernet::Oam::Mode::passive {1, "passive"};
 
 const Enum::YLeaf Native::Interface::TenGigabitEthernet::Pppoe::Enable::Group::global {0, "global"};
 
@@ -14919,15 +15033,6 @@ const Enum::YLeaf Native::Interface::TenGigabitEthernet::Authentication::Violati
 const Enum::YLeaf Native::Interface::TenGigabitEthernet::Authentication::Violation::replace {1, "replace"};
 const Enum::YLeaf Native::Interface::TenGigabitEthernet::Authentication::Violation::restrict {2, "restrict"};
 const Enum::YLeaf Native::Interface::TenGigabitEthernet::Authentication::Violation::shutdown {3, "shutdown"};
-
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::Direction::input {0, "input"};
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::ServicePolicy::Type::PerformanceMonitor::Direction::output {1, "output"};
-
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Datalink::Flow::Monitor::InputOutput::input {0, "input"};
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Datalink::Flow::Monitor::InputOutput::output {1, "output"};
-
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Mac::AccessGroup::Direction::in {0, "in"};
-const Enum::YLeaf Native::Interface::TenGigabitEthernet::Mac::AccessGroup::Direction::out {1, "out"};
 
 
 }

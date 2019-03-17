@@ -396,7 +396,7 @@ ydk::path::RepositoryPtr::get_new_ly_modules_from_path(ly_ctx* ctx,
                                                        const std::string& path,
                                                        const std::unordered_map<std::string, path::Capability>& lookup_table)
 {
-    YLOG_DEBUG("Getting new modules from '{}'", path);
+    //YLOG_DEBUG("Getting new modules from '{}'", path);
     auto module_names = path::segmentalize_module_names(path);
     return get_new_ly_modules_from_lookup(ctx, module_names, lookup_table);
 }

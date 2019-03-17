@@ -12,6 +12,2064 @@ using namespace ydk;
 namespace cisco_nx_os {
 namespace Cisco_NX_OS_device {
 
+System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::NhItems()
+    :
+    polnh_list(this, {"pathid"})
+{
+
+    yang_name = "nh-items"; yang_parent_name = "PolicyLclLbl-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::~NhItems()
+{
+}
+
+bool System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<polnh_list.len(); index++)
+    {
+        if(polnh_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::has_operation() const
+{
+    for (std::size_t index=0; index<polnh_list.len(); index++)
+    {
+        if(polnh_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nh-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "PolNh-list")
+    {
+        auto ent_ = std::make_shared<System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::PolNhList>();
+        ent_->parent = this;
+        polnh_list.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : polnh_list.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "PolNh-list")
+        return true;
+    return false;
+}
+
+System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::PolNhList::PolNhList()
+    :
+    pathid{YType::uint16, "pathId"},
+    outlblstack{YType::str, "outLblStack"},
+    nhaddr{YType::str, "nhAddr"}
+{
+
+    yang_name = "PolNh-list"; yang_parent_name = "nh-items"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::PolNhList::~PolNhList()
+{
+}
+
+bool System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::PolNhList::has_data() const
+{
+    if (is_presence_container) return true;
+    return pathid.is_set
+	|| outlblstack.is_set
+	|| nhaddr.is_set;
+}
+
+bool System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::PolNhList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(pathid.yfilter)
+	|| ydk::is_set(outlblstack.yfilter)
+	|| ydk::is_set(nhaddr.yfilter);
+}
+
+std::string System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::PolNhList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "PolNh-list";
+    ADD_KEY_TOKEN(pathid, "pathId");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::PolNhList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (pathid.is_set || is_set(pathid.yfilter)) leaf_name_data.push_back(pathid.get_name_leafdata());
+    if (outlblstack.is_set || is_set(outlblstack.yfilter)) leaf_name_data.push_back(outlblstack.get_name_leafdata());
+    if (nhaddr.is_set || is_set(nhaddr.yfilter)) leaf_name_data.push_back(nhaddr.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::PolNhList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::PolNhList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::PolNhList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "pathId")
+    {
+        pathid = value;
+        pathid.value_namespace = name_space;
+        pathid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "outLblStack")
+    {
+        outlblstack = value;
+        outlblstack.value_namespace = name_space;
+        outlblstack.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nhAddr")
+    {
+        nhaddr = value;
+        nhaddr.value_namespace = name_space;
+        nhaddr.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::PolNhList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "pathId")
+    {
+        pathid.yfilter = yfilter;
+    }
+    if(value_path == "outLblStack")
+    {
+        outlblstack.yfilter = yfilter;
+    }
+    if(value_path == "nhAddr")
+    {
+        nhaddr.yfilter = yfilter;
+    }
+}
+
+bool System::MplsstaticItems::AfItems::AfList::LspItems::NamedLSPList::PollabelItems::PolicyLclLblList::NhItems::PolNhList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "pathId" || name == "outLblStack" || name == "nhAddr")
+        return true;
+    return false;
+}
+
+System::LabeltableItems::LabeltableItems()
+    :
+    operlabels{YType::uint32, "operLabels"},
+    operipv4prefixes{YType::uint32, "operIPv4Prefixes"},
+    operipv6prefixes{YType::uint32, "operIPv6Prefixes"},
+    name{YType::str, "name"},
+    adminst{YType::enumeration, "adminSt"},
+    operst{YType::enumeration, "operSt"}
+        ,
+    client_items(std::make_shared<System::LabeltableItems::ClientItems>())
+    , lblrange_items(std::make_shared<System::LabeltableItems::LblrangeItems>())
+    , lbl_items(std::make_shared<System::LabeltableItems::LblItems>())
+{
+    client_items->parent = this;
+    lblrange_items->parent = this;
+    lbl_items->parent = this;
+
+    yang_name = "labeltable-items"; yang_parent_name = "System"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+System::LabeltableItems::~LabeltableItems()
+{
+}
+
+bool System::LabeltableItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return operlabels.is_set
+	|| operipv4prefixes.is_set
+	|| operipv6prefixes.is_set
+	|| name.is_set
+	|| adminst.is_set
+	|| operst.is_set
+	|| (client_items !=  nullptr && client_items->has_data())
+	|| (lblrange_items !=  nullptr && lblrange_items->has_data())
+	|| (lbl_items !=  nullptr && lbl_items->has_data());
+}
+
+bool System::LabeltableItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(operlabels.yfilter)
+	|| ydk::is_set(operipv4prefixes.yfilter)
+	|| ydk::is_set(operipv6prefixes.yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(adminst.yfilter)
+	|| ydk::is_set(operst.yfilter)
+	|| (client_items !=  nullptr && client_items->has_operation())
+	|| (lblrange_items !=  nullptr && lblrange_items->has_operation())
+	|| (lbl_items !=  nullptr && lbl_items->has_operation());
+}
+
+std::string System::LabeltableItems::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:System/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string System::LabeltableItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "labeltable-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::LabeltableItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (operlabels.is_set || is_set(operlabels.yfilter)) leaf_name_data.push_back(operlabels.get_name_leafdata());
+    if (operipv4prefixes.is_set || is_set(operipv4prefixes.yfilter)) leaf_name_data.push_back(operipv4prefixes.get_name_leafdata());
+    if (operipv6prefixes.is_set || is_set(operipv6prefixes.yfilter)) leaf_name_data.push_back(operipv6prefixes.get_name_leafdata());
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (adminst.is_set || is_set(adminst.yfilter)) leaf_name_data.push_back(adminst.get_name_leafdata());
+    if (operst.is_set || is_set(operst.yfilter)) leaf_name_data.push_back(operst.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::LabeltableItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "client-items")
+    {
+        if(client_items == nullptr)
+        {
+            client_items = std::make_shared<System::LabeltableItems::ClientItems>();
+        }
+        return client_items;
+    }
+
+    if(child_yang_name == "lblrange-items")
+    {
+        if(lblrange_items == nullptr)
+        {
+            lblrange_items = std::make_shared<System::LabeltableItems::LblrangeItems>();
+        }
+        return lblrange_items;
+    }
+
+    if(child_yang_name == "lbl-items")
+    {
+        if(lbl_items == nullptr)
+        {
+            lbl_items = std::make_shared<System::LabeltableItems::LblItems>();
+        }
+        return lbl_items;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LabeltableItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(client_items != nullptr)
+    {
+        _children["client-items"] = client_items;
+    }
+
+    if(lblrange_items != nullptr)
+    {
+        _children["lblrange-items"] = lblrange_items;
+    }
+
+    if(lbl_items != nullptr)
+    {
+        _children["lbl-items"] = lbl_items;
+    }
+
+    return _children;
+}
+
+void System::LabeltableItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "operLabels")
+    {
+        operlabels = value;
+        operlabels.value_namespace = name_space;
+        operlabels.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "operIPv4Prefixes")
+    {
+        operipv4prefixes = value;
+        operipv4prefixes.value_namespace = name_space;
+        operipv4prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "operIPv6Prefixes")
+    {
+        operipv6prefixes = value;
+        operipv6prefixes.value_namespace = name_space;
+        operipv6prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adminSt")
+    {
+        adminst = value;
+        adminst.value_namespace = name_space;
+        adminst.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "operSt")
+    {
+        operst = value;
+        operst.value_namespace = name_space;
+        operst.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::LabeltableItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "operLabels")
+    {
+        operlabels.yfilter = yfilter;
+    }
+    if(value_path == "operIPv4Prefixes")
+    {
+        operipv4prefixes.yfilter = yfilter;
+    }
+    if(value_path == "operIPv6Prefixes")
+    {
+        operipv6prefixes.yfilter = yfilter;
+    }
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "adminSt")
+    {
+        adminst.yfilter = yfilter;
+    }
+    if(value_path == "operSt")
+    {
+        operst.yfilter = yfilter;
+    }
+}
+
+bool System::LabeltableItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "client-items" || name == "lblrange-items" || name == "lbl-items" || name == "operLabels" || name == "operIPv4Prefixes" || name == "operIPv6Prefixes" || name == "name" || name == "adminSt" || name == "operSt")
+        return true;
+    return false;
+}
+
+System::LabeltableItems::ClientItems::ClientItems()
+    :
+    clients_list(this, {"name"})
+{
+
+    yang_name = "client-items"; yang_parent_name = "labeltable-items"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+System::LabeltableItems::ClientItems::~ClientItems()
+{
+}
+
+bool System::LabeltableItems::ClientItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<clients_list.len(); index++)
+    {
+        if(clients_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::LabeltableItems::ClientItems::has_operation() const
+{
+    for (std::size_t index=0; index<clients_list.len(); index++)
+    {
+        if(clients_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::LabeltableItems::ClientItems::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:System/labeltable-items/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string System::LabeltableItems::ClientItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "client-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::LabeltableItems::ClientItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::LabeltableItems::ClientItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "Clients-list")
+    {
+        auto ent_ = std::make_shared<System::LabeltableItems::ClientItems::ClientsList>();
+        ent_->parent = this;
+        clients_list.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LabeltableItems::ClientItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : clients_list.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void System::LabeltableItems::ClientItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::LabeltableItems::ClientItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::LabeltableItems::ClientItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "Clients-list")
+        return true;
+    return false;
+}
+
+System::LabeltableItems::ClientItems::ClientsList::ClientsList()
+    :
+    name{YType::str, "name"},
+    index_{YType::uint32, "index"},
+    uuid{YType::uint32, "uuid"},
+    mtssap{YType::uint32, "mtsSap"},
+    staletime{YType::str, "staleTime"},
+    flag{YType::str, "flag"},
+    regmsg{YType::uint32, "regMsg"},
+    convmsg{YType::uint32, "convMsg"},
+    fecmsg{YType::uint32, "fecMsg"},
+    fecadd{YType::uint32, "fecAdd"},
+    ileadd{YType::uint32, "ileAdd"},
+    fecdel{YType::uint32, "fecDel"},
+    iledel{YType::uint32, "ileDel"},
+    lastxid{YType::uint32, "lastXid"},
+    fecack{YType::uint32, "fecAck"}
+{
+
+    yang_name = "Clients-list"; yang_parent_name = "client-items"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+System::LabeltableItems::ClientItems::ClientsList::~ClientsList()
+{
+}
+
+bool System::LabeltableItems::ClientItems::ClientsList::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| index_.is_set
+	|| uuid.is_set
+	|| mtssap.is_set
+	|| staletime.is_set
+	|| flag.is_set
+	|| regmsg.is_set
+	|| convmsg.is_set
+	|| fecmsg.is_set
+	|| fecadd.is_set
+	|| ileadd.is_set
+	|| fecdel.is_set
+	|| iledel.is_set
+	|| lastxid.is_set
+	|| fecack.is_set;
+}
+
+bool System::LabeltableItems::ClientItems::ClientsList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(index_.yfilter)
+	|| ydk::is_set(uuid.yfilter)
+	|| ydk::is_set(mtssap.yfilter)
+	|| ydk::is_set(staletime.yfilter)
+	|| ydk::is_set(flag.yfilter)
+	|| ydk::is_set(regmsg.yfilter)
+	|| ydk::is_set(convmsg.yfilter)
+	|| ydk::is_set(fecmsg.yfilter)
+	|| ydk::is_set(fecadd.yfilter)
+	|| ydk::is_set(ileadd.yfilter)
+	|| ydk::is_set(fecdel.yfilter)
+	|| ydk::is_set(iledel.yfilter)
+	|| ydk::is_set(lastxid.yfilter)
+	|| ydk::is_set(fecack.yfilter);
+}
+
+std::string System::LabeltableItems::ClientItems::ClientsList::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:System/labeltable-items/client-items/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string System::LabeltableItems::ClientItems::ClientsList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Clients-list";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::LabeltableItems::ClientItems::ClientsList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (index_.is_set || is_set(index_.yfilter)) leaf_name_data.push_back(index_.get_name_leafdata());
+    if (uuid.is_set || is_set(uuid.yfilter)) leaf_name_data.push_back(uuid.get_name_leafdata());
+    if (mtssap.is_set || is_set(mtssap.yfilter)) leaf_name_data.push_back(mtssap.get_name_leafdata());
+    if (staletime.is_set || is_set(staletime.yfilter)) leaf_name_data.push_back(staletime.get_name_leafdata());
+    if (flag.is_set || is_set(flag.yfilter)) leaf_name_data.push_back(flag.get_name_leafdata());
+    if (regmsg.is_set || is_set(regmsg.yfilter)) leaf_name_data.push_back(regmsg.get_name_leafdata());
+    if (convmsg.is_set || is_set(convmsg.yfilter)) leaf_name_data.push_back(convmsg.get_name_leafdata());
+    if (fecmsg.is_set || is_set(fecmsg.yfilter)) leaf_name_data.push_back(fecmsg.get_name_leafdata());
+    if (fecadd.is_set || is_set(fecadd.yfilter)) leaf_name_data.push_back(fecadd.get_name_leafdata());
+    if (ileadd.is_set || is_set(ileadd.yfilter)) leaf_name_data.push_back(ileadd.get_name_leafdata());
+    if (fecdel.is_set || is_set(fecdel.yfilter)) leaf_name_data.push_back(fecdel.get_name_leafdata());
+    if (iledel.is_set || is_set(iledel.yfilter)) leaf_name_data.push_back(iledel.get_name_leafdata());
+    if (lastxid.is_set || is_set(lastxid.yfilter)) leaf_name_data.push_back(lastxid.get_name_leafdata());
+    if (fecack.is_set || is_set(fecack.yfilter)) leaf_name_data.push_back(fecack.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::LabeltableItems::ClientItems::ClientsList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LabeltableItems::ClientItems::ClientsList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::LabeltableItems::ClientItems::ClientsList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "index")
+    {
+        index_ = value;
+        index_.value_namespace = name_space;
+        index_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "uuid")
+    {
+        uuid = value;
+        uuid.value_namespace = name_space;
+        uuid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mtsSap")
+    {
+        mtssap = value;
+        mtssap.value_namespace = name_space;
+        mtssap.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "staleTime")
+    {
+        staletime = value;
+        staletime.value_namespace = name_space;
+        staletime.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "flag")
+    {
+        flag = value;
+        flag.value_namespace = name_space;
+        flag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "regMsg")
+    {
+        regmsg = value;
+        regmsg.value_namespace = name_space;
+        regmsg.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "convMsg")
+    {
+        convmsg = value;
+        convmsg.value_namespace = name_space;
+        convmsg.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fecMsg")
+    {
+        fecmsg = value;
+        fecmsg.value_namespace = name_space;
+        fecmsg.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fecAdd")
+    {
+        fecadd = value;
+        fecadd.value_namespace = name_space;
+        fecadd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ileAdd")
+    {
+        ileadd = value;
+        ileadd.value_namespace = name_space;
+        ileadd.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fecDel")
+    {
+        fecdel = value;
+        fecdel.value_namespace = name_space;
+        fecdel.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ileDel")
+    {
+        iledel = value;
+        iledel.value_namespace = name_space;
+        iledel.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "lastXid")
+    {
+        lastxid = value;
+        lastxid.value_namespace = name_space;
+        lastxid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fecAck")
+    {
+        fecack = value;
+        fecack.value_namespace = name_space;
+        fecack.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::LabeltableItems::ClientItems::ClientsList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "index")
+    {
+        index_.yfilter = yfilter;
+    }
+    if(value_path == "uuid")
+    {
+        uuid.yfilter = yfilter;
+    }
+    if(value_path == "mtsSap")
+    {
+        mtssap.yfilter = yfilter;
+    }
+    if(value_path == "staleTime")
+    {
+        staletime.yfilter = yfilter;
+    }
+    if(value_path == "flag")
+    {
+        flag.yfilter = yfilter;
+    }
+    if(value_path == "regMsg")
+    {
+        regmsg.yfilter = yfilter;
+    }
+    if(value_path == "convMsg")
+    {
+        convmsg.yfilter = yfilter;
+    }
+    if(value_path == "fecMsg")
+    {
+        fecmsg.yfilter = yfilter;
+    }
+    if(value_path == "fecAdd")
+    {
+        fecadd.yfilter = yfilter;
+    }
+    if(value_path == "ileAdd")
+    {
+        ileadd.yfilter = yfilter;
+    }
+    if(value_path == "fecDel")
+    {
+        fecdel.yfilter = yfilter;
+    }
+    if(value_path == "ileDel")
+    {
+        iledel.yfilter = yfilter;
+    }
+    if(value_path == "lastXid")
+    {
+        lastxid.yfilter = yfilter;
+    }
+    if(value_path == "fecAck")
+    {
+        fecack.yfilter = yfilter;
+    }
+}
+
+bool System::LabeltableItems::ClientItems::ClientsList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "index" || name == "uuid" || name == "mtsSap" || name == "staleTime" || name == "flag" || name == "regMsg" || name == "convMsg" || name == "fecMsg" || name == "fecAdd" || name == "ileAdd" || name == "fecDel" || name == "ileDel" || name == "lastXid" || name == "fecAck")
+        return true;
+    return false;
+}
+
+System::LabeltableItems::LblrangeItems::LblrangeItems()
+    :
+    dynlblmin{YType::uint32, "dynLblMin"},
+    dynlblmax{YType::uint32, "dynLblMax"},
+    staticlblmin{YType::uint32, "staticLblMin"},
+    staticlblmax{YType::uint32, "staticLblMax"},
+    operdynlblmin{YType::uint32, "operDynLblMin"},
+    operdynlblmax{YType::uint32, "operDynLblMax"},
+    operstaticlblmin{YType::uint32, "operStaticLblMin"},
+    operstaticlblmax{YType::uint32, "operStaticLblMax"},
+    operstaticlblsoutofrange{YType::uint32, "operStaticLblsOutOfRange"}
+{
+
+    yang_name = "lblrange-items"; yang_parent_name = "labeltable-items"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+System::LabeltableItems::LblrangeItems::~LblrangeItems()
+{
+}
+
+bool System::LabeltableItems::LblrangeItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return dynlblmin.is_set
+	|| dynlblmax.is_set
+	|| staticlblmin.is_set
+	|| staticlblmax.is_set
+	|| operdynlblmin.is_set
+	|| operdynlblmax.is_set
+	|| operstaticlblmin.is_set
+	|| operstaticlblmax.is_set
+	|| operstaticlblsoutofrange.is_set;
+}
+
+bool System::LabeltableItems::LblrangeItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dynlblmin.yfilter)
+	|| ydk::is_set(dynlblmax.yfilter)
+	|| ydk::is_set(staticlblmin.yfilter)
+	|| ydk::is_set(staticlblmax.yfilter)
+	|| ydk::is_set(operdynlblmin.yfilter)
+	|| ydk::is_set(operdynlblmax.yfilter)
+	|| ydk::is_set(operstaticlblmin.yfilter)
+	|| ydk::is_set(operstaticlblmax.yfilter)
+	|| ydk::is_set(operstaticlblsoutofrange.yfilter);
+}
+
+std::string System::LabeltableItems::LblrangeItems::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:System/labeltable-items/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string System::LabeltableItems::LblrangeItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lblrange-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::LabeltableItems::LblrangeItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dynlblmin.is_set || is_set(dynlblmin.yfilter)) leaf_name_data.push_back(dynlblmin.get_name_leafdata());
+    if (dynlblmax.is_set || is_set(dynlblmax.yfilter)) leaf_name_data.push_back(dynlblmax.get_name_leafdata());
+    if (staticlblmin.is_set || is_set(staticlblmin.yfilter)) leaf_name_data.push_back(staticlblmin.get_name_leafdata());
+    if (staticlblmax.is_set || is_set(staticlblmax.yfilter)) leaf_name_data.push_back(staticlblmax.get_name_leafdata());
+    if (operdynlblmin.is_set || is_set(operdynlblmin.yfilter)) leaf_name_data.push_back(operdynlblmin.get_name_leafdata());
+    if (operdynlblmax.is_set || is_set(operdynlblmax.yfilter)) leaf_name_data.push_back(operdynlblmax.get_name_leafdata());
+    if (operstaticlblmin.is_set || is_set(operstaticlblmin.yfilter)) leaf_name_data.push_back(operstaticlblmin.get_name_leafdata());
+    if (operstaticlblmax.is_set || is_set(operstaticlblmax.yfilter)) leaf_name_data.push_back(operstaticlblmax.get_name_leafdata());
+    if (operstaticlblsoutofrange.is_set || is_set(operstaticlblsoutofrange.yfilter)) leaf_name_data.push_back(operstaticlblsoutofrange.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::LabeltableItems::LblrangeItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LabeltableItems::LblrangeItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::LabeltableItems::LblrangeItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dynLblMin")
+    {
+        dynlblmin = value;
+        dynlblmin.value_namespace = name_space;
+        dynlblmin.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dynLblMax")
+    {
+        dynlblmax = value;
+        dynlblmax.value_namespace = name_space;
+        dynlblmax.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "staticLblMin")
+    {
+        staticlblmin = value;
+        staticlblmin.value_namespace = name_space;
+        staticlblmin.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "staticLblMax")
+    {
+        staticlblmax = value;
+        staticlblmax.value_namespace = name_space;
+        staticlblmax.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "operDynLblMin")
+    {
+        operdynlblmin = value;
+        operdynlblmin.value_namespace = name_space;
+        operdynlblmin.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "operDynLblMax")
+    {
+        operdynlblmax = value;
+        operdynlblmax.value_namespace = name_space;
+        operdynlblmax.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "operStaticLblMin")
+    {
+        operstaticlblmin = value;
+        operstaticlblmin.value_namespace = name_space;
+        operstaticlblmin.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "operStaticLblMax")
+    {
+        operstaticlblmax = value;
+        operstaticlblmax.value_namespace = name_space;
+        operstaticlblmax.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "operStaticLblsOutOfRange")
+    {
+        operstaticlblsoutofrange = value;
+        operstaticlblsoutofrange.value_namespace = name_space;
+        operstaticlblsoutofrange.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::LabeltableItems::LblrangeItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dynLblMin")
+    {
+        dynlblmin.yfilter = yfilter;
+    }
+    if(value_path == "dynLblMax")
+    {
+        dynlblmax.yfilter = yfilter;
+    }
+    if(value_path == "staticLblMin")
+    {
+        staticlblmin.yfilter = yfilter;
+    }
+    if(value_path == "staticLblMax")
+    {
+        staticlblmax.yfilter = yfilter;
+    }
+    if(value_path == "operDynLblMin")
+    {
+        operdynlblmin.yfilter = yfilter;
+    }
+    if(value_path == "operDynLblMax")
+    {
+        operdynlblmax.yfilter = yfilter;
+    }
+    if(value_path == "operStaticLblMin")
+    {
+        operstaticlblmin.yfilter = yfilter;
+    }
+    if(value_path == "operStaticLblMax")
+    {
+        operstaticlblmax.yfilter = yfilter;
+    }
+    if(value_path == "operStaticLblsOutOfRange")
+    {
+        operstaticlblsoutofrange.yfilter = yfilter;
+    }
+}
+
+bool System::LabeltableItems::LblrangeItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dynLblMin" || name == "dynLblMax" || name == "staticLblMin" || name == "staticLblMax" || name == "operDynLblMin" || name == "operDynLblMax" || name == "operStaticLblMin" || name == "operStaticLblMax" || name == "operStaticLblsOutOfRange")
+        return true;
+    return false;
+}
+
+System::LabeltableItems::LblItems::LblItems()
+    :
+    labels_list(this, {"label"})
+{
+
+    yang_name = "lbl-items"; yang_parent_name = "labeltable-items"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+System::LabeltableItems::LblItems::~LblItems()
+{
+}
+
+bool System::LabeltableItems::LblItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<labels_list.len(); index++)
+    {
+        if(labels_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::LabeltableItems::LblItems::has_operation() const
+{
+    for (std::size_t index=0; index<labels_list.len(); index++)
+    {
+        if(labels_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::LabeltableItems::LblItems::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:System/labeltable-items/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string System::LabeltableItems::LblItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lbl-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::LabeltableItems::LblItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::LabeltableItems::LblItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "Labels-list")
+    {
+        auto ent_ = std::make_shared<System::LabeltableItems::LblItems::LabelsList>();
+        ent_->parent = this;
+        labels_list.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LabeltableItems::LblItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : labels_list.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void System::LabeltableItems::LblItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::LabeltableItems::LblItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::LabeltableItems::LblItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "Labels-list")
+        return true;
+    return false;
+}
+
+System::LabeltableItems::LblItems::LabelsList::LabelsList()
+    :
+    label{YType::uint32, "label"},
+    fectype{YType::str, "fecType"},
+    labelbytestats{YType::uint64, "labelByteStats"},
+    labelpacketstats{YType::uint64, "labelPacketStats"}
+        ,
+    fecipv4_items(std::make_shared<System::LabeltableItems::LblItems::LabelsList::FecIPv4Items>())
+    , fecipv6_items(std::make_shared<System::LabeltableItems::LblItems::LabelsList::FecIPv6Items>())
+    , fecpolicyipv4_items(std::make_shared<System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv4Items>())
+    , fecpolicyipv6_items(std::make_shared<System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv6Items>())
+    , fecnone_items(std::make_shared<System::LabeltableItems::LblItems::LabelsList::FecNoneItems>())
+    , fecsrte_items(std::make_shared<System::LabeltableItems::LblItems::LabelsList::FecSRTEItems>())
+    , fecperce_items(std::make_shared<System::LabeltableItems::LblItems::LabelsList::FecPerCEItems>())
+    , fecreserved_items(std::make_shared<System::LabeltableItems::LblItems::LabelsList::FecReservedItems>())
+    , fecdeagg_items(std::make_shared<System::LabeltableItems::LblItems::LabelsList::FecDeaggItems>())
+    , fecadjsid_items(std::make_shared<System::LabeltableItems::LblItems::LabelsList::FecAdjSIDItems>())
+    , nhlfe_items(std::make_shared<System::LabeltableItems::LblItems::LabelsList::NhlfeItems>())
+{
+    fecipv4_items->parent = this;
+    fecipv6_items->parent = this;
+    fecpolicyipv4_items->parent = this;
+    fecpolicyipv6_items->parent = this;
+    fecnone_items->parent = this;
+    fecsrte_items->parent = this;
+    fecperce_items->parent = this;
+    fecreserved_items->parent = this;
+    fecdeagg_items->parent = this;
+    fecadjsid_items->parent = this;
+    nhlfe_items->parent = this;
+
+    yang_name = "Labels-list"; yang_parent_name = "lbl-items"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+System::LabeltableItems::LblItems::LabelsList::~LabelsList()
+{
+}
+
+bool System::LabeltableItems::LblItems::LabelsList::has_data() const
+{
+    if (is_presence_container) return true;
+    return label.is_set
+	|| fectype.is_set
+	|| labelbytestats.is_set
+	|| labelpacketstats.is_set
+	|| (fecipv4_items !=  nullptr && fecipv4_items->has_data())
+	|| (fecipv6_items !=  nullptr && fecipv6_items->has_data())
+	|| (fecpolicyipv4_items !=  nullptr && fecpolicyipv4_items->has_data())
+	|| (fecpolicyipv6_items !=  nullptr && fecpolicyipv6_items->has_data())
+	|| (fecnone_items !=  nullptr && fecnone_items->has_data())
+	|| (fecsrte_items !=  nullptr && fecsrte_items->has_data())
+	|| (fecperce_items !=  nullptr && fecperce_items->has_data())
+	|| (fecreserved_items !=  nullptr && fecreserved_items->has_data())
+	|| (fecdeagg_items !=  nullptr && fecdeagg_items->has_data())
+	|| (fecadjsid_items !=  nullptr && fecadjsid_items->has_data())
+	|| (nhlfe_items !=  nullptr && nhlfe_items->has_data());
+}
+
+bool System::LabeltableItems::LblItems::LabelsList::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(label.yfilter)
+	|| ydk::is_set(fectype.yfilter)
+	|| ydk::is_set(labelbytestats.yfilter)
+	|| ydk::is_set(labelpacketstats.yfilter)
+	|| (fecipv4_items !=  nullptr && fecipv4_items->has_operation())
+	|| (fecipv6_items !=  nullptr && fecipv6_items->has_operation())
+	|| (fecpolicyipv4_items !=  nullptr && fecpolicyipv4_items->has_operation())
+	|| (fecpolicyipv6_items !=  nullptr && fecpolicyipv6_items->has_operation())
+	|| (fecnone_items !=  nullptr && fecnone_items->has_operation())
+	|| (fecsrte_items !=  nullptr && fecsrte_items->has_operation())
+	|| (fecperce_items !=  nullptr && fecperce_items->has_operation())
+	|| (fecreserved_items !=  nullptr && fecreserved_items->has_operation())
+	|| (fecdeagg_items !=  nullptr && fecdeagg_items->has_operation())
+	|| (fecadjsid_items !=  nullptr && fecadjsid_items->has_operation())
+	|| (nhlfe_items !=  nullptr && nhlfe_items->has_operation());
+}
+
+std::string System::LabeltableItems::LblItems::LabelsList::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:System/labeltable-items/lbl-items/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string System::LabeltableItems::LblItems::LabelsList::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Labels-list";
+    ADD_KEY_TOKEN(label, "label");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::LabeltableItems::LblItems::LabelsList::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (fectype.is_set || is_set(fectype.yfilter)) leaf_name_data.push_back(fectype.get_name_leafdata());
+    if (labelbytestats.is_set || is_set(labelbytestats.yfilter)) leaf_name_data.push_back(labelbytestats.get_name_leafdata());
+    if (labelpacketstats.is_set || is_set(labelpacketstats.yfilter)) leaf_name_data.push_back(labelpacketstats.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::LabeltableItems::LblItems::LabelsList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "FecIPv4-items")
+    {
+        if(fecipv4_items == nullptr)
+        {
+            fecipv4_items = std::make_shared<System::LabeltableItems::LblItems::LabelsList::FecIPv4Items>();
+        }
+        return fecipv4_items;
+    }
+
+    if(child_yang_name == "FecIPv6-items")
+    {
+        if(fecipv6_items == nullptr)
+        {
+            fecipv6_items = std::make_shared<System::LabeltableItems::LblItems::LabelsList::FecIPv6Items>();
+        }
+        return fecipv6_items;
+    }
+
+    if(child_yang_name == "FecPolicyIPv4-items")
+    {
+        if(fecpolicyipv4_items == nullptr)
+        {
+            fecpolicyipv4_items = std::make_shared<System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv4Items>();
+        }
+        return fecpolicyipv4_items;
+    }
+
+    if(child_yang_name == "FecPolicyIPv6-items")
+    {
+        if(fecpolicyipv6_items == nullptr)
+        {
+            fecpolicyipv6_items = std::make_shared<System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv6Items>();
+        }
+        return fecpolicyipv6_items;
+    }
+
+    if(child_yang_name == "FecNone-items")
+    {
+        if(fecnone_items == nullptr)
+        {
+            fecnone_items = std::make_shared<System::LabeltableItems::LblItems::LabelsList::FecNoneItems>();
+        }
+        return fecnone_items;
+    }
+
+    if(child_yang_name == "FecSRTE-items")
+    {
+        if(fecsrte_items == nullptr)
+        {
+            fecsrte_items = std::make_shared<System::LabeltableItems::LblItems::LabelsList::FecSRTEItems>();
+        }
+        return fecsrte_items;
+    }
+
+    if(child_yang_name == "FecPerCE-items")
+    {
+        if(fecperce_items == nullptr)
+        {
+            fecperce_items = std::make_shared<System::LabeltableItems::LblItems::LabelsList::FecPerCEItems>();
+        }
+        return fecperce_items;
+    }
+
+    if(child_yang_name == "FecReserved-items")
+    {
+        if(fecreserved_items == nullptr)
+        {
+            fecreserved_items = std::make_shared<System::LabeltableItems::LblItems::LabelsList::FecReservedItems>();
+        }
+        return fecreserved_items;
+    }
+
+    if(child_yang_name == "FecDeagg-items")
+    {
+        if(fecdeagg_items == nullptr)
+        {
+            fecdeagg_items = std::make_shared<System::LabeltableItems::LblItems::LabelsList::FecDeaggItems>();
+        }
+        return fecdeagg_items;
+    }
+
+    if(child_yang_name == "FecAdjSID-items")
+    {
+        if(fecadjsid_items == nullptr)
+        {
+            fecadjsid_items = std::make_shared<System::LabeltableItems::LblItems::LabelsList::FecAdjSIDItems>();
+        }
+        return fecadjsid_items;
+    }
+
+    if(child_yang_name == "Nhlfe-items")
+    {
+        if(nhlfe_items == nullptr)
+        {
+            nhlfe_items = std::make_shared<System::LabeltableItems::LblItems::LabelsList::NhlfeItems>();
+        }
+        return nhlfe_items;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LabeltableItems::LblItems::LabelsList::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(fecipv4_items != nullptr)
+    {
+        _children["FecIPv4-items"] = fecipv4_items;
+    }
+
+    if(fecipv6_items != nullptr)
+    {
+        _children["FecIPv6-items"] = fecipv6_items;
+    }
+
+    if(fecpolicyipv4_items != nullptr)
+    {
+        _children["FecPolicyIPv4-items"] = fecpolicyipv4_items;
+    }
+
+    if(fecpolicyipv6_items != nullptr)
+    {
+        _children["FecPolicyIPv6-items"] = fecpolicyipv6_items;
+    }
+
+    if(fecnone_items != nullptr)
+    {
+        _children["FecNone-items"] = fecnone_items;
+    }
+
+    if(fecsrte_items != nullptr)
+    {
+        _children["FecSRTE-items"] = fecsrte_items;
+    }
+
+    if(fecperce_items != nullptr)
+    {
+        _children["FecPerCE-items"] = fecperce_items;
+    }
+
+    if(fecreserved_items != nullptr)
+    {
+        _children["FecReserved-items"] = fecreserved_items;
+    }
+
+    if(fecdeagg_items != nullptr)
+    {
+        _children["FecDeagg-items"] = fecdeagg_items;
+    }
+
+    if(fecadjsid_items != nullptr)
+    {
+        _children["FecAdjSID-items"] = fecadjsid_items;
+    }
+
+    if(nhlfe_items != nullptr)
+    {
+        _children["Nhlfe-items"] = nhlfe_items;
+    }
+
+    return _children;
+}
+
+void System::LabeltableItems::LblItems::LabelsList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "label")
+    {
+        label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fecType")
+    {
+        fectype = value;
+        fectype.value_namespace = name_space;
+        fectype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "labelByteStats")
+    {
+        labelbytestats = value;
+        labelbytestats.value_namespace = name_space;
+        labelbytestats.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "labelPacketStats")
+    {
+        labelpacketstats = value;
+        labelpacketstats.value_namespace = name_space;
+        labelpacketstats.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::LabeltableItems::LblItems::LabelsList::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+    if(value_path == "fecType")
+    {
+        fectype.yfilter = yfilter;
+    }
+    if(value_path == "labelByteStats")
+    {
+        labelbytestats.yfilter = yfilter;
+    }
+    if(value_path == "labelPacketStats")
+    {
+        labelpacketstats.yfilter = yfilter;
+    }
+}
+
+bool System::LabeltableItems::LblItems::LabelsList::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "FecIPv4-items" || name == "FecIPv6-items" || name == "FecPolicyIPv4-items" || name == "FecPolicyIPv6-items" || name == "FecNone-items" || name == "FecSRTE-items" || name == "FecPerCE-items" || name == "FecReserved-items" || name == "FecDeagg-items" || name == "FecAdjSID-items" || name == "Nhlfe-items" || name == "label" || name == "fecType" || name == "labelByteStats" || name == "labelPacketStats")
+        return true;
+    return false;
+}
+
+System::LabeltableItems::LblItems::LabelsList::FecIPv4Items::FecIPv4Items()
+    :
+    fectype{YType::str, "fecType"},
+    state{YType::str, "state"},
+    tableid{YType::str, "tableId"},
+    prefix{YType::str, "prefix"},
+    masklength{YType::uint8, "maskLength"}
+{
+
+    yang_name = "FecIPv4-items"; yang_parent_name = "Labels-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::LabeltableItems::LblItems::LabelsList::FecIPv4Items::~FecIPv4Items()
+{
+}
+
+bool System::LabeltableItems::LblItems::LabelsList::FecIPv4Items::has_data() const
+{
+    if (is_presence_container) return true;
+    return fectype.is_set
+	|| state.is_set
+	|| tableid.is_set
+	|| prefix.is_set
+	|| masklength.is_set;
+}
+
+bool System::LabeltableItems::LblItems::LabelsList::FecIPv4Items::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(fectype.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(tableid.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(masklength.yfilter);
+}
+
+std::string System::LabeltableItems::LblItems::LabelsList::FecIPv4Items::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "FecIPv4-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::LabeltableItems::LblItems::LabelsList::FecIPv4Items::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (fectype.is_set || is_set(fectype.yfilter)) leaf_name_data.push_back(fectype.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (tableid.is_set || is_set(tableid.yfilter)) leaf_name_data.push_back(tableid.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (masklength.is_set || is_set(masklength.yfilter)) leaf_name_data.push_back(masklength.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::LabeltableItems::LblItems::LabelsList::FecIPv4Items::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LabeltableItems::LblItems::LabelsList::FecIPv4Items::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::LabeltableItems::LblItems::LabelsList::FecIPv4Items::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "fecType")
+    {
+        fectype = value;
+        fectype.value_namespace = name_space;
+        fectype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tableId")
+    {
+        tableid = value;
+        tableid.value_namespace = name_space;
+        tableid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maskLength")
+    {
+        masklength = value;
+        masklength.value_namespace = name_space;
+        masklength.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::LabeltableItems::LblItems::LabelsList::FecIPv4Items::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fecType")
+    {
+        fectype.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "tableId")
+    {
+        tableid.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "maskLength")
+    {
+        masklength.yfilter = yfilter;
+    }
+}
+
+bool System::LabeltableItems::LblItems::LabelsList::FecIPv4Items::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fecType" || name == "state" || name == "tableId" || name == "prefix" || name == "maskLength")
+        return true;
+    return false;
+}
+
+System::LabeltableItems::LblItems::LabelsList::FecIPv6Items::FecIPv6Items()
+    :
+    fectype{YType::str, "fecType"},
+    state{YType::str, "state"},
+    tableid{YType::str, "tableId"},
+    prefix{YType::str, "prefix"},
+    masklength{YType::uint8, "maskLength"}
+{
+
+    yang_name = "FecIPv6-items"; yang_parent_name = "Labels-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::LabeltableItems::LblItems::LabelsList::FecIPv6Items::~FecIPv6Items()
+{
+}
+
+bool System::LabeltableItems::LblItems::LabelsList::FecIPv6Items::has_data() const
+{
+    if (is_presence_container) return true;
+    return fectype.is_set
+	|| state.is_set
+	|| tableid.is_set
+	|| prefix.is_set
+	|| masklength.is_set;
+}
+
+bool System::LabeltableItems::LblItems::LabelsList::FecIPv6Items::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(fectype.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(tableid.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(masklength.yfilter);
+}
+
+std::string System::LabeltableItems::LblItems::LabelsList::FecIPv6Items::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "FecIPv6-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::LabeltableItems::LblItems::LabelsList::FecIPv6Items::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (fectype.is_set || is_set(fectype.yfilter)) leaf_name_data.push_back(fectype.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (tableid.is_set || is_set(tableid.yfilter)) leaf_name_data.push_back(tableid.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (masklength.is_set || is_set(masklength.yfilter)) leaf_name_data.push_back(masklength.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::LabeltableItems::LblItems::LabelsList::FecIPv6Items::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LabeltableItems::LblItems::LabelsList::FecIPv6Items::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::LabeltableItems::LblItems::LabelsList::FecIPv6Items::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "fecType")
+    {
+        fectype = value;
+        fectype.value_namespace = name_space;
+        fectype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tableId")
+    {
+        tableid = value;
+        tableid.value_namespace = name_space;
+        tableid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maskLength")
+    {
+        masklength = value;
+        masklength.value_namespace = name_space;
+        masklength.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::LabeltableItems::LblItems::LabelsList::FecIPv6Items::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fecType")
+    {
+        fectype.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "tableId")
+    {
+        tableid.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "maskLength")
+    {
+        masklength.yfilter = yfilter;
+    }
+}
+
+bool System::LabeltableItems::LblItems::LabelsList::FecIPv6Items::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fecType" || name == "state" || name == "tableId" || name == "prefix" || name == "maskLength")
+        return true;
+    return false;
+}
+
+System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv4Items::FecPolicyIPv4Items()
+    :
+    fectype{YType::str, "fecType"},
+    state{YType::str, "state"},
+    tableid{YType::str, "tableId"},
+    prefix{YType::str, "prefix"},
+    masklength{YType::uint8, "maskLength"}
+{
+
+    yang_name = "FecPolicyIPv4-items"; yang_parent_name = "Labels-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv4Items::~FecPolicyIPv4Items()
+{
+}
+
+bool System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv4Items::has_data() const
+{
+    if (is_presence_container) return true;
+    return fectype.is_set
+	|| state.is_set
+	|| tableid.is_set
+	|| prefix.is_set
+	|| masklength.is_set;
+}
+
+bool System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv4Items::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(fectype.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(tableid.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(masklength.yfilter);
+}
+
+std::string System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv4Items::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "FecPolicyIPv4-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv4Items::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (fectype.is_set || is_set(fectype.yfilter)) leaf_name_data.push_back(fectype.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (tableid.is_set || is_set(tableid.yfilter)) leaf_name_data.push_back(tableid.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (masklength.is_set || is_set(masklength.yfilter)) leaf_name_data.push_back(masklength.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv4Items::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv4Items::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv4Items::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "fecType")
+    {
+        fectype = value;
+        fectype.value_namespace = name_space;
+        fectype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tableId")
+    {
+        tableid = value;
+        tableid.value_namespace = name_space;
+        tableid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maskLength")
+    {
+        masklength = value;
+        masklength.value_namespace = name_space;
+        masklength.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv4Items::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fecType")
+    {
+        fectype.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "tableId")
+    {
+        tableid.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "maskLength")
+    {
+        masklength.yfilter = yfilter;
+    }
+}
+
+bool System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv4Items::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fecType" || name == "state" || name == "tableId" || name == "prefix" || name == "maskLength")
+        return true;
+    return false;
+}
+
+System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv6Items::FecPolicyIPv6Items()
+    :
+    fectype{YType::str, "fecType"},
+    state{YType::str, "state"},
+    tableid{YType::str, "tableId"},
+    prefix{YType::str, "prefix"},
+    masklength{YType::uint8, "maskLength"}
+{
+
+    yang_name = "FecPolicyIPv6-items"; yang_parent_name = "Labels-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv6Items::~FecPolicyIPv6Items()
+{
+}
+
+bool System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv6Items::has_data() const
+{
+    if (is_presence_container) return true;
+    return fectype.is_set
+	|| state.is_set
+	|| tableid.is_set
+	|| prefix.is_set
+	|| masklength.is_set;
+}
+
+bool System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv6Items::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(fectype.yfilter)
+	|| ydk::is_set(state.yfilter)
+	|| ydk::is_set(tableid.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(masklength.yfilter);
+}
+
+std::string System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv6Items::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "FecPolicyIPv6-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv6Items::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (fectype.is_set || is_set(fectype.yfilter)) leaf_name_data.push_back(fectype.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+    if (tableid.is_set || is_set(tableid.yfilter)) leaf_name_data.push_back(tableid.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (masklength.is_set || is_set(masklength.yfilter)) leaf_name_data.push_back(masklength.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv6Items::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv6Items::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv6Items::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "fecType")
+    {
+        fectype = value;
+        fectype.value_namespace = name_space;
+        fectype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tableId")
+    {
+        tableid = value;
+        tableid.value_namespace = name_space;
+        tableid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "maskLength")
+    {
+        masklength = value;
+        masklength.value_namespace = name_space;
+        masklength.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv6Items::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "fecType")
+    {
+        fectype.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+    if(value_path == "tableId")
+    {
+        tableid.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "maskLength")
+    {
+        masklength.yfilter = yfilter;
+    }
+}
+
+bool System::LabeltableItems::LblItems::LabelsList::FecPolicyIPv6Items::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "fecType" || name == "state" || name == "tableId" || name == "prefix" || name == "maskLength")
+        return true;
+    return false;
+}
+
+System::LabeltableItems::LblItems::LabelsList::FecNoneItems::FecNoneItems()
+    :
+    label{YType::uint32, "label"},
+    fectype{YType::str, "fecType"},
+    state{YType::str, "state"}
+{
+
+    yang_name = "FecNone-items"; yang_parent_name = "Labels-list"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+System::LabeltableItems::LblItems::LabelsList::FecNoneItems::~FecNoneItems()
+{
+}
+
+bool System::LabeltableItems::LblItems::LabelsList::FecNoneItems::has_data() const
+{
+    if (is_presence_container) return true;
+    return label.is_set
+	|| fectype.is_set
+	|| state.is_set;
+}
+
+bool System::LabeltableItems::LblItems::LabelsList::FecNoneItems::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(label.yfilter)
+	|| ydk::is_set(fectype.yfilter)
+	|| ydk::is_set(state.yfilter);
+}
+
+std::string System::LabeltableItems::LblItems::LabelsList::FecNoneItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "FecNone-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::LabeltableItems::LblItems::LabelsList::FecNoneItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (fectype.is_set || is_set(fectype.yfilter)) leaf_name_data.push_back(fectype.get_name_leafdata());
+    if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::LabeltableItems::LblItems::LabelsList::FecNoneItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::LabeltableItems::LblItems::LabelsList::FecNoneItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void System::LabeltableItems::LblItems::LabelsList::FecNoneItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "label")
+    {
+        label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "fecType")
+    {
+        fectype = value;
+        fectype.value_namespace = name_space;
+        fectype.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "state")
+    {
+        state = value;
+        state.value_namespace = name_space;
+        state.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void System::LabeltableItems::LblItems::LabelsList::FecNoneItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+    if(value_path == "fecType")
+    {
+        fectype.yfilter = yfilter;
+    }
+    if(value_path == "state")
+    {
+        state.yfilter = yfilter;
+    }
+}
+
+bool System::LabeltableItems::LblItems::LabelsList::FecNoneItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label" || name == "fecType" || name == "state")
+        return true;
+    return false;
+}
+
 System::LabeltableItems::LblItems::LabelsList::FecSRTEItems::FecSRTEItems()
     :
     id{YType::uint32, "id"},
@@ -19936,2077 +21994,6 @@ void System::NgmvpnItems::InstItems::AfItems::AfList::DbItems::DbList::VrfItems:
 bool System::NgmvpnItems::InstItems::AfItems::AfList::DbItems::DbList::VrfItems::VrfList::GroupItems::GroupList::SourceItems::SourceList::FabNodeItems::FabNodeList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipAddr")
-        return true;
-    return false;
-}
-
-System::NgmvpnItems::InstItems::EventhistItems::EventhistItems()
-    :
-    eventhistory_list(this, {"type"})
-{
-
-    yang_name = "eventhist-items"; yang_parent_name = "inst-items"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-System::NgmvpnItems::InstItems::EventhistItems::~EventhistItems()
-{
-}
-
-bool System::NgmvpnItems::InstItems::EventhistItems::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<eventhistory_list.len(); index++)
-    {
-        if(eventhistory_list[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool System::NgmvpnItems::InstItems::EventhistItems::has_operation() const
-{
-    for (std::size_t index=0; index<eventhistory_list.len(); index++)
-    {
-        if(eventhistory_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string System::NgmvpnItems::InstItems::EventhistItems::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-NX-OS-device:System/ngmvpn-items/inst-items/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string System::NgmvpnItems::InstItems::EventhistItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "eventhist-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::NgmvpnItems::InstItems::EventhistItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::NgmvpnItems::InstItems::EventhistItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "EventHistory-list")
-    {
-        auto ent_ = std::make_shared<System::NgmvpnItems::InstItems::EventhistItems::EventHistoryList>();
-        ent_->parent = this;
-        eventhistory_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::NgmvpnItems::InstItems::EventhistItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : eventhistory_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void System::NgmvpnItems::InstItems::EventhistItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void System::NgmvpnItems::InstItems::EventhistItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool System::NgmvpnItems::InstItems::EventhistItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "EventHistory-list")
-        return true;
-    return false;
-}
-
-System::NgmvpnItems::InstItems::EventhistItems::EventHistoryList::EventHistoryList()
-    :
-    type{YType::enumeration, "type"},
-    size{YType::uint32, "size"}
-{
-
-    yang_name = "EventHistory-list"; yang_parent_name = "eventhist-items"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-System::NgmvpnItems::InstItems::EventhistItems::EventHistoryList::~EventHistoryList()
-{
-}
-
-bool System::NgmvpnItems::InstItems::EventhistItems::EventHistoryList::has_data() const
-{
-    if (is_presence_container) return true;
-    return type.is_set
-	|| size.is_set;
-}
-
-bool System::NgmvpnItems::InstItems::EventhistItems::EventHistoryList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(type.yfilter)
-	|| ydk::is_set(size.yfilter);
-}
-
-std::string System::NgmvpnItems::InstItems::EventhistItems::EventHistoryList::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-NX-OS-device:System/ngmvpn-items/inst-items/eventhist-items/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string System::NgmvpnItems::InstItems::EventhistItems::EventHistoryList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "EventHistory-list";
-    ADD_KEY_TOKEN(type, "type");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::NgmvpnItems::InstItems::EventhistItems::EventHistoryList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
-    if (size.is_set || is_set(size.yfilter)) leaf_name_data.push_back(size.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::NgmvpnItems::InstItems::EventhistItems::EventHistoryList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::NgmvpnItems::InstItems::EventhistItems::EventHistoryList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void System::NgmvpnItems::InstItems::EventhistItems::EventHistoryList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "type")
-    {
-        type = value;
-        type.value_namespace = name_space;
-        type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "size")
-    {
-        size = value;
-        size.value_namespace = name_space;
-        size.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::NgmvpnItems::InstItems::EventhistItems::EventHistoryList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "type")
-    {
-        type.yfilter = yfilter;
-    }
-    if(value_path == "size")
-    {
-        size.yfilter = yfilter;
-    }
-}
-
-bool System::NgmvpnItems::InstItems::EventhistItems::EventHistoryList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "type" || name == "size")
-        return true;
-    return false;
-}
-
-System::PimItems::PimItems()
-    :
-    name{YType::str, "name"},
-    adminst{YType::enumeration, "adminSt"},
-    operst{YType::enumeration, "operSt"},
-    opererr{YType::str, "operErr"}
-        ,
-    inst_items(std::make_shared<System::PimItems::InstItems>())
-{
-    inst_items->parent = this;
-
-    yang_name = "pim-items"; yang_parent_name = "System"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-System::PimItems::~PimItems()
-{
-}
-
-bool System::PimItems::has_data() const
-{
-    if (is_presence_container) return true;
-    return name.is_set
-	|| adminst.is_set
-	|| operst.is_set
-	|| opererr.is_set
-	|| (inst_items !=  nullptr && inst_items->has_data());
-}
-
-bool System::PimItems::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(adminst.yfilter)
-	|| ydk::is_set(operst.yfilter)
-	|| ydk::is_set(opererr.yfilter)
-	|| (inst_items !=  nullptr && inst_items->has_operation());
-}
-
-std::string System::PimItems::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-NX-OS-device:System/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string System::PimItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "pim-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::PimItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (adminst.is_set || is_set(adminst.yfilter)) leaf_name_data.push_back(adminst.get_name_leafdata());
-    if (operst.is_set || is_set(operst.yfilter)) leaf_name_data.push_back(operst.get_name_leafdata());
-    if (opererr.is_set || is_set(opererr.yfilter)) leaf_name_data.push_back(opererr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::PimItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "inst-items")
-    {
-        if(inst_items == nullptr)
-        {
-            inst_items = std::make_shared<System::PimItems::InstItems>();
-        }
-        return inst_items;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::PimItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(inst_items != nullptr)
-    {
-        _children["inst-items"] = inst_items;
-    }
-
-    return _children;
-}
-
-void System::PimItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "adminSt")
-    {
-        adminst = value;
-        adminst.value_namespace = name_space;
-        adminst.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "operSt")
-    {
-        operst = value;
-        operst.value_namespace = name_space;
-        operst.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "operErr")
-    {
-        opererr = value;
-        opererr.value_namespace = name_space;
-        opererr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::PimItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "adminSt")
-    {
-        adminst.yfilter = yfilter;
-    }
-    if(value_path == "operSt")
-    {
-        operst.yfilter = yfilter;
-    }
-    if(value_path == "operErr")
-    {
-        opererr.yfilter = yfilter;
-    }
-}
-
-bool System::PimItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "inst-items" || name == "name" || name == "adminSt" || name == "operSt" || name == "operErr")
-        return true;
-    return false;
-}
-
-System::PimItems::InstItems::InstItems()
-    :
-    evpnborderleaf{YType::boolean, "evpnBorderLeaf"},
-    extranet{YType::boolean, "extraNet"},
-    name{YType::str, "name"},
-    adminst{YType::enumeration, "adminSt"},
-    ctrl{YType::str, "ctrl"},
-    opererr{YType::str, "operErr"},
-    jpdelay{YType::uint32, "jpDelay"},
-    nrdelay{YType::uint16, "nrDelay"},
-    nrnumrt{YType::uint16, "nrNumRt"},
-    regstop{YType::boolean, "regStop"}
-        ,
-    dom_items(std::make_shared<System::PimItems::InstItems::DomItems>())
-    , gl_items(std::make_shared<System::PimItems::InstItems::GlItems>())
-    , routedb_items(std::make_shared<System::PimItems::InstItems::RoutedbItems>())
-{
-    dom_items->parent = this;
-    gl_items->parent = this;
-    routedb_items->parent = this;
-
-    yang_name = "inst-items"; yang_parent_name = "pim-items"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-System::PimItems::InstItems::~InstItems()
-{
-}
-
-bool System::PimItems::InstItems::has_data() const
-{
-    if (is_presence_container) return true;
-    return evpnborderleaf.is_set
-	|| extranet.is_set
-	|| name.is_set
-	|| adminst.is_set
-	|| ctrl.is_set
-	|| opererr.is_set
-	|| jpdelay.is_set
-	|| nrdelay.is_set
-	|| nrnumrt.is_set
-	|| regstop.is_set
-	|| (dom_items !=  nullptr && dom_items->has_data())
-	|| (gl_items !=  nullptr && gl_items->has_data())
-	|| (routedb_items !=  nullptr && routedb_items->has_data());
-}
-
-bool System::PimItems::InstItems::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(evpnborderleaf.yfilter)
-	|| ydk::is_set(extranet.yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(adminst.yfilter)
-	|| ydk::is_set(ctrl.yfilter)
-	|| ydk::is_set(opererr.yfilter)
-	|| ydk::is_set(jpdelay.yfilter)
-	|| ydk::is_set(nrdelay.yfilter)
-	|| ydk::is_set(nrnumrt.yfilter)
-	|| ydk::is_set(regstop.yfilter)
-	|| (dom_items !=  nullptr && dom_items->has_operation())
-	|| (gl_items !=  nullptr && gl_items->has_operation())
-	|| (routedb_items !=  nullptr && routedb_items->has_operation());
-}
-
-std::string System::PimItems::InstItems::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-NX-OS-device:System/pim-items/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string System::PimItems::InstItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "inst-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::PimItems::InstItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (evpnborderleaf.is_set || is_set(evpnborderleaf.yfilter)) leaf_name_data.push_back(evpnborderleaf.get_name_leafdata());
-    if (extranet.is_set || is_set(extranet.yfilter)) leaf_name_data.push_back(extranet.get_name_leafdata());
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (adminst.is_set || is_set(adminst.yfilter)) leaf_name_data.push_back(adminst.get_name_leafdata());
-    if (ctrl.is_set || is_set(ctrl.yfilter)) leaf_name_data.push_back(ctrl.get_name_leafdata());
-    if (opererr.is_set || is_set(opererr.yfilter)) leaf_name_data.push_back(opererr.get_name_leafdata());
-    if (jpdelay.is_set || is_set(jpdelay.yfilter)) leaf_name_data.push_back(jpdelay.get_name_leafdata());
-    if (nrdelay.is_set || is_set(nrdelay.yfilter)) leaf_name_data.push_back(nrdelay.get_name_leafdata());
-    if (nrnumrt.is_set || is_set(nrnumrt.yfilter)) leaf_name_data.push_back(nrnumrt.get_name_leafdata());
-    if (regstop.is_set || is_set(regstop.yfilter)) leaf_name_data.push_back(regstop.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::PimItems::InstItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "dom-items")
-    {
-        if(dom_items == nullptr)
-        {
-            dom_items = std::make_shared<System::PimItems::InstItems::DomItems>();
-        }
-        return dom_items;
-    }
-
-    if(child_yang_name == "gl-items")
-    {
-        if(gl_items == nullptr)
-        {
-            gl_items = std::make_shared<System::PimItems::InstItems::GlItems>();
-        }
-        return gl_items;
-    }
-
-    if(child_yang_name == "routedb-items")
-    {
-        if(routedb_items == nullptr)
-        {
-            routedb_items = std::make_shared<System::PimItems::InstItems::RoutedbItems>();
-        }
-        return routedb_items;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::PimItems::InstItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(dom_items != nullptr)
-    {
-        _children["dom-items"] = dom_items;
-    }
-
-    if(gl_items != nullptr)
-    {
-        _children["gl-items"] = gl_items;
-    }
-
-    if(routedb_items != nullptr)
-    {
-        _children["routedb-items"] = routedb_items;
-    }
-
-    return _children;
-}
-
-void System::PimItems::InstItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "evpnBorderLeaf")
-    {
-        evpnborderleaf = value;
-        evpnborderleaf.value_namespace = name_space;
-        evpnborderleaf.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "extraNet")
-    {
-        extranet = value;
-        extranet.value_namespace = name_space;
-        extranet.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "adminSt")
-    {
-        adminst = value;
-        adminst.value_namespace = name_space;
-        adminst.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ctrl")
-    {
-        ctrl = value;
-        ctrl.value_namespace = name_space;
-        ctrl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "operErr")
-    {
-        opererr = value;
-        opererr.value_namespace = name_space;
-        opererr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "jpDelay")
-    {
-        jpdelay = value;
-        jpdelay.value_namespace = name_space;
-        jpdelay.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nrDelay")
-    {
-        nrdelay = value;
-        nrdelay.value_namespace = name_space;
-        nrdelay.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "nrNumRt")
-    {
-        nrnumrt = value;
-        nrnumrt.value_namespace = name_space;
-        nrnumrt.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "regStop")
-    {
-        regstop = value;
-        regstop.value_namespace = name_space;
-        regstop.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::PimItems::InstItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "evpnBorderLeaf")
-    {
-        evpnborderleaf.yfilter = yfilter;
-    }
-    if(value_path == "extraNet")
-    {
-        extranet.yfilter = yfilter;
-    }
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "adminSt")
-    {
-        adminst.yfilter = yfilter;
-    }
-    if(value_path == "ctrl")
-    {
-        ctrl.yfilter = yfilter;
-    }
-    if(value_path == "operErr")
-    {
-        opererr.yfilter = yfilter;
-    }
-    if(value_path == "jpDelay")
-    {
-        jpdelay.yfilter = yfilter;
-    }
-    if(value_path == "nrDelay")
-    {
-        nrdelay.yfilter = yfilter;
-    }
-    if(value_path == "nrNumRt")
-    {
-        nrnumrt.yfilter = yfilter;
-    }
-    if(value_path == "regStop")
-    {
-        regstop.yfilter = yfilter;
-    }
-}
-
-bool System::PimItems::InstItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dom-items" || name == "gl-items" || name == "routedb-items" || name == "evpnBorderLeaf" || name == "extraNet" || name == "name" || name == "adminSt" || name == "ctrl" || name == "operErr" || name == "jpDelay" || name == "nrDelay" || name == "nrNumRt" || name == "regStop")
-        return true;
-    return false;
-}
-
-System::PimItems::InstItems::DomItems::DomItems()
-    :
-    dom_list(this, {"name"})
-{
-
-    yang_name = "dom-items"; yang_parent_name = "inst-items"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-System::PimItems::InstItems::DomItems::~DomItems()
-{
-}
-
-bool System::PimItems::InstItems::DomItems::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<dom_list.len(); index++)
-    {
-        if(dom_list[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool System::PimItems::InstItems::DomItems::has_operation() const
-{
-    for (std::size_t index=0; index<dom_list.len(); index++)
-    {
-        if(dom_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string System::PimItems::InstItems::DomItems::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-NX-OS-device:System/pim-items/inst-items/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string System::PimItems::InstItems::DomItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "dom-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::PimItems::InstItems::DomItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::PimItems::InstItems::DomItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "Dom-list")
-    {
-        auto ent_ = std::make_shared<System::PimItems::InstItems::DomItems::DomList>();
-        ent_->parent = this;
-        dom_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::PimItems::InstItems::DomItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : dom_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void System::PimItems::InstItems::DomItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void System::PimItems::InstItems::DomItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool System::PimItems::InstItems::DomItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "Dom-list")
-        return true;
-    return false;
-}
-
-System::PimItems::InstItems::DomItems::DomList::DomList()
-    :
-    name{YType::str, "name"},
-    adminst{YType::enumeration, "adminSt"},
-    ctrl{YType::str, "ctrl"},
-    mtu{YType::uint32, "mtu"},
-    autoenable{YType::boolean, "autoEnable"},
-    lognbhchng{YType::boolean, "logNbhChng"},
-    flushroutes{YType::boolean, "flushRoutes"},
-    bfd{YType::boolean, "bfd"},
-    jpdelay{YType::uint32, "jpDelay"},
-    regratelmt{YType::uint32, "regRateLmt"}
-        ,
-    acastrpfunc_items(std::make_shared<System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems>())
-    , autorp_items(std::make_shared<System::PimItems::InstItems::DomItems::DomList::AutorpItems>())
-    , bsr_items(std::make_shared<System::PimItems::InstItems::DomItems::DomList::BsrItems>())
-    , db_items(std::make_shared<System::PimItems::InstItems::DomItems::DomList::DbItems>())
-    , domstats_items(std::make_shared<System::PimItems::InstItems::DomItems::DomList::DomstatsItems>())
-    , eventhist_items(std::make_shared<System::PimItems::InstItems::DomItems::DomList::EventHistItems>())
-    , if_items(std::make_shared<System::PimItems::InstItems::DomItems::DomList::IfItems>())
-    , limit_items(std::make_shared<System::PimItems::InstItems::DomItems::DomList::LimitItems>())
-    , asm_items(std::make_shared<System::PimItems::InstItems::DomItems::DomList::AsmItems>())
-    , ssm_items(std::make_shared<System::PimItems::InstItems::DomItems::DomList::SsmItems>())
-    , bidir_items(std::make_shared<System::PimItems::InstItems::DomItems::DomList::BidirItems>())
-    , staticrp_items(std::make_shared<System::PimItems::InstItems::DomItems::DomList::StaticrpItems>())
-    , trstats_items(std::make_shared<System::PimItems::InstItems::DomItems::DomList::TrstatsItems>())
-{
-    acastrpfunc_items->parent = this;
-    autorp_items->parent = this;
-    bsr_items->parent = this;
-    db_items->parent = this;
-    domstats_items->parent = this;
-    eventhist_items->parent = this;
-    if_items->parent = this;
-    limit_items->parent = this;
-    asm_items->parent = this;
-    ssm_items->parent = this;
-    bidir_items->parent = this;
-    staticrp_items->parent = this;
-    trstats_items->parent = this;
-
-    yang_name = "Dom-list"; yang_parent_name = "dom-items"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-System::PimItems::InstItems::DomItems::DomList::~DomList()
-{
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::has_data() const
-{
-    if (is_presence_container) return true;
-    return name.is_set
-	|| adminst.is_set
-	|| ctrl.is_set
-	|| mtu.is_set
-	|| autoenable.is_set
-	|| lognbhchng.is_set
-	|| flushroutes.is_set
-	|| bfd.is_set
-	|| jpdelay.is_set
-	|| regratelmt.is_set
-	|| (acastrpfunc_items !=  nullptr && acastrpfunc_items->has_data())
-	|| (autorp_items !=  nullptr && autorp_items->has_data())
-	|| (bsr_items !=  nullptr && bsr_items->has_data())
-	|| (db_items !=  nullptr && db_items->has_data())
-	|| (domstats_items !=  nullptr && domstats_items->has_data())
-	|| (eventhist_items !=  nullptr && eventhist_items->has_data())
-	|| (if_items !=  nullptr && if_items->has_data())
-	|| (limit_items !=  nullptr && limit_items->has_data())
-	|| (asm_items !=  nullptr && asm_items->has_data())
-	|| (ssm_items !=  nullptr && ssm_items->has_data())
-	|| (bidir_items !=  nullptr && bidir_items->has_data())
-	|| (staticrp_items !=  nullptr && staticrp_items->has_data())
-	|| (trstats_items !=  nullptr && trstats_items->has_data());
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(adminst.yfilter)
-	|| ydk::is_set(ctrl.yfilter)
-	|| ydk::is_set(mtu.yfilter)
-	|| ydk::is_set(autoenable.yfilter)
-	|| ydk::is_set(lognbhchng.yfilter)
-	|| ydk::is_set(flushroutes.yfilter)
-	|| ydk::is_set(bfd.yfilter)
-	|| ydk::is_set(jpdelay.yfilter)
-	|| ydk::is_set(regratelmt.yfilter)
-	|| (acastrpfunc_items !=  nullptr && acastrpfunc_items->has_operation())
-	|| (autorp_items !=  nullptr && autorp_items->has_operation())
-	|| (bsr_items !=  nullptr && bsr_items->has_operation())
-	|| (db_items !=  nullptr && db_items->has_operation())
-	|| (domstats_items !=  nullptr && domstats_items->has_operation())
-	|| (eventhist_items !=  nullptr && eventhist_items->has_operation())
-	|| (if_items !=  nullptr && if_items->has_operation())
-	|| (limit_items !=  nullptr && limit_items->has_operation())
-	|| (asm_items !=  nullptr && asm_items->has_operation())
-	|| (ssm_items !=  nullptr && ssm_items->has_operation())
-	|| (bidir_items !=  nullptr && bidir_items->has_operation())
-	|| (staticrp_items !=  nullptr && staticrp_items->has_operation())
-	|| (trstats_items !=  nullptr && trstats_items->has_operation());
-}
-
-std::string System::PimItems::InstItems::DomItems::DomList::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-NX-OS-device:System/pim-items/inst-items/dom-items/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string System::PimItems::InstItems::DomItems::DomList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Dom-list";
-    ADD_KEY_TOKEN(name, "name");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::PimItems::InstItems::DomItems::DomList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (adminst.is_set || is_set(adminst.yfilter)) leaf_name_data.push_back(adminst.get_name_leafdata());
-    if (ctrl.is_set || is_set(ctrl.yfilter)) leaf_name_data.push_back(ctrl.get_name_leafdata());
-    if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
-    if (autoenable.is_set || is_set(autoenable.yfilter)) leaf_name_data.push_back(autoenable.get_name_leafdata());
-    if (lognbhchng.is_set || is_set(lognbhchng.yfilter)) leaf_name_data.push_back(lognbhchng.get_name_leafdata());
-    if (flushroutes.is_set || is_set(flushroutes.yfilter)) leaf_name_data.push_back(flushroutes.get_name_leafdata());
-    if (bfd.is_set || is_set(bfd.yfilter)) leaf_name_data.push_back(bfd.get_name_leafdata());
-    if (jpdelay.is_set || is_set(jpdelay.yfilter)) leaf_name_data.push_back(jpdelay.get_name_leafdata());
-    if (regratelmt.is_set || is_set(regratelmt.yfilter)) leaf_name_data.push_back(regratelmt.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::PimItems::InstItems::DomItems::DomList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "acastrpfunc-items")
-    {
-        if(acastrpfunc_items == nullptr)
-        {
-            acastrpfunc_items = std::make_shared<System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems>();
-        }
-        return acastrpfunc_items;
-    }
-
-    if(child_yang_name == "autorp-items")
-    {
-        if(autorp_items == nullptr)
-        {
-            autorp_items = std::make_shared<System::PimItems::InstItems::DomItems::DomList::AutorpItems>();
-        }
-        return autorp_items;
-    }
-
-    if(child_yang_name == "bsr-items")
-    {
-        if(bsr_items == nullptr)
-        {
-            bsr_items = std::make_shared<System::PimItems::InstItems::DomItems::DomList::BsrItems>();
-        }
-        return bsr_items;
-    }
-
-    if(child_yang_name == "db-items")
-    {
-        if(db_items == nullptr)
-        {
-            db_items = std::make_shared<System::PimItems::InstItems::DomItems::DomList::DbItems>();
-        }
-        return db_items;
-    }
-
-    if(child_yang_name == "domstats-items")
-    {
-        if(domstats_items == nullptr)
-        {
-            domstats_items = std::make_shared<System::PimItems::InstItems::DomItems::DomList::DomstatsItems>();
-        }
-        return domstats_items;
-    }
-
-    if(child_yang_name == "eventHist-items")
-    {
-        if(eventhist_items == nullptr)
-        {
-            eventhist_items = std::make_shared<System::PimItems::InstItems::DomItems::DomList::EventHistItems>();
-        }
-        return eventhist_items;
-    }
-
-    if(child_yang_name == "if-items")
-    {
-        if(if_items == nullptr)
-        {
-            if_items = std::make_shared<System::PimItems::InstItems::DomItems::DomList::IfItems>();
-        }
-        return if_items;
-    }
-
-    if(child_yang_name == "limit-items")
-    {
-        if(limit_items == nullptr)
-        {
-            limit_items = std::make_shared<System::PimItems::InstItems::DomItems::DomList::LimitItems>();
-        }
-        return limit_items;
-    }
-
-    if(child_yang_name == "asm-items")
-    {
-        if(asm_items == nullptr)
-        {
-            asm_items = std::make_shared<System::PimItems::InstItems::DomItems::DomList::AsmItems>();
-        }
-        return asm_items;
-    }
-
-    if(child_yang_name == "ssm-items")
-    {
-        if(ssm_items == nullptr)
-        {
-            ssm_items = std::make_shared<System::PimItems::InstItems::DomItems::DomList::SsmItems>();
-        }
-        return ssm_items;
-    }
-
-    if(child_yang_name == "bidir-items")
-    {
-        if(bidir_items == nullptr)
-        {
-            bidir_items = std::make_shared<System::PimItems::InstItems::DomItems::DomList::BidirItems>();
-        }
-        return bidir_items;
-    }
-
-    if(child_yang_name == "staticrp-items")
-    {
-        if(staticrp_items == nullptr)
-        {
-            staticrp_items = std::make_shared<System::PimItems::InstItems::DomItems::DomList::StaticrpItems>();
-        }
-        return staticrp_items;
-    }
-
-    if(child_yang_name == "trstats-items")
-    {
-        if(trstats_items == nullptr)
-        {
-            trstats_items = std::make_shared<System::PimItems::InstItems::DomItems::DomList::TrstatsItems>();
-        }
-        return trstats_items;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::PimItems::InstItems::DomItems::DomList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(acastrpfunc_items != nullptr)
-    {
-        _children["acastrpfunc-items"] = acastrpfunc_items;
-    }
-
-    if(autorp_items != nullptr)
-    {
-        _children["autorp-items"] = autorp_items;
-    }
-
-    if(bsr_items != nullptr)
-    {
-        _children["bsr-items"] = bsr_items;
-    }
-
-    if(db_items != nullptr)
-    {
-        _children["db-items"] = db_items;
-    }
-
-    if(domstats_items != nullptr)
-    {
-        _children["domstats-items"] = domstats_items;
-    }
-
-    if(eventhist_items != nullptr)
-    {
-        _children["eventHist-items"] = eventhist_items;
-    }
-
-    if(if_items != nullptr)
-    {
-        _children["if-items"] = if_items;
-    }
-
-    if(limit_items != nullptr)
-    {
-        _children["limit-items"] = limit_items;
-    }
-
-    if(asm_items != nullptr)
-    {
-        _children["asm-items"] = asm_items;
-    }
-
-    if(ssm_items != nullptr)
-    {
-        _children["ssm-items"] = ssm_items;
-    }
-
-    if(bidir_items != nullptr)
-    {
-        _children["bidir-items"] = bidir_items;
-    }
-
-    if(staticrp_items != nullptr)
-    {
-        _children["staticrp-items"] = staticrp_items;
-    }
-
-    if(trstats_items != nullptr)
-    {
-        _children["trstats-items"] = trstats_items;
-    }
-
-    return _children;
-}
-
-void System::PimItems::InstItems::DomItems::DomList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "adminSt")
-    {
-        adminst = value;
-        adminst.value_namespace = name_space;
-        adminst.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ctrl")
-    {
-        ctrl = value;
-        ctrl.value_namespace = name_space;
-        ctrl.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "mtu")
-    {
-        mtu = value;
-        mtu.value_namespace = name_space;
-        mtu.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "autoEnable")
-    {
-        autoenable = value;
-        autoenable.value_namespace = name_space;
-        autoenable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "logNbhChng")
-    {
-        lognbhchng = value;
-        lognbhchng.value_namespace = name_space;
-        lognbhchng.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "flushRoutes")
-    {
-        flushroutes = value;
-        flushroutes.value_namespace = name_space;
-        flushroutes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "bfd")
-    {
-        bfd = value;
-        bfd.value_namespace = name_space;
-        bfd.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "jpDelay")
-    {
-        jpdelay = value;
-        jpdelay.value_namespace = name_space;
-        jpdelay.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "regRateLmt")
-    {
-        regratelmt = value;
-        regratelmt.value_namespace = name_space;
-        regratelmt.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::PimItems::InstItems::DomItems::DomList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "adminSt")
-    {
-        adminst.yfilter = yfilter;
-    }
-    if(value_path == "ctrl")
-    {
-        ctrl.yfilter = yfilter;
-    }
-    if(value_path == "mtu")
-    {
-        mtu.yfilter = yfilter;
-    }
-    if(value_path == "autoEnable")
-    {
-        autoenable.yfilter = yfilter;
-    }
-    if(value_path == "logNbhChng")
-    {
-        lognbhchng.yfilter = yfilter;
-    }
-    if(value_path == "flushRoutes")
-    {
-        flushroutes.yfilter = yfilter;
-    }
-    if(value_path == "bfd")
-    {
-        bfd.yfilter = yfilter;
-    }
-    if(value_path == "jpDelay")
-    {
-        jpdelay.yfilter = yfilter;
-    }
-    if(value_path == "regRateLmt")
-    {
-        regratelmt.yfilter = yfilter;
-    }
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "acastrpfunc-items" || name == "autorp-items" || name == "bsr-items" || name == "db-items" || name == "domstats-items" || name == "eventHist-items" || name == "if-items" || name == "limit-items" || name == "asm-items" || name == "ssm-items" || name == "bidir-items" || name == "staticrp-items" || name == "trstats-items" || name == "name" || name == "adminSt" || name == "ctrl" || name == "mtu" || name == "autoEnable" || name == "logNbhChng" || name == "flushRoutes" || name == "bfd" || name == "jpDelay" || name == "regRateLmt")
-        return true;
-    return false;
-}
-
-System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::AcastrpfuncItems()
-    :
-    name{YType::str, "name"},
-    descr{YType::str, "descr"},
-    srcif{YType::str, "srcIf"},
-    localif{YType::str, "localIf"}
-        ,
-    peer_items(std::make_shared<System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems>())
-{
-    peer_items->parent = this;
-
-    yang_name = "acastrpfunc-items"; yang_parent_name = "Dom-list"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::~AcastrpfuncItems()
-{
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::has_data() const
-{
-    if (is_presence_container) return true;
-    return name.is_set
-	|| descr.is_set
-	|| srcif.is_set
-	|| localif.is_set
-	|| (peer_items !=  nullptr && peer_items->has_data());
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(descr.yfilter)
-	|| ydk::is_set(srcif.yfilter)
-	|| ydk::is_set(localif.yfilter)
-	|| (peer_items !=  nullptr && peer_items->has_operation());
-}
-
-std::string System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "acastrpfunc-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (descr.is_set || is_set(descr.yfilter)) leaf_name_data.push_back(descr.get_name_leafdata());
-    if (srcif.is_set || is_set(srcif.yfilter)) leaf_name_data.push_back(srcif.get_name_leafdata());
-    if (localif.is_set || is_set(localif.yfilter)) leaf_name_data.push_back(localif.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "peer-items")
-    {
-        if(peer_items == nullptr)
-        {
-            peer_items = std::make_shared<System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems>();
-        }
-        return peer_items;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(peer_items != nullptr)
-    {
-        _children["peer-items"] = peer_items;
-    }
-
-    return _children;
-}
-
-void System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "descr")
-    {
-        descr = value;
-        descr.value_namespace = name_space;
-        descr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "srcIf")
-    {
-        srcif = value;
-        srcif.value_namespace = name_space;
-        srcif.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "localIf")
-    {
-        localif = value;
-        localif.value_namespace = name_space;
-        localif.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "descr")
-    {
-        descr.yfilter = yfilter;
-    }
-    if(value_path == "srcIf")
-    {
-        srcif.yfilter = yfilter;
-    }
-    if(value_path == "localIf")
-    {
-        localif.yfilter = yfilter;
-    }
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "peer-items" || name == "name" || name == "descr" || name == "srcIf" || name == "localIf")
-        return true;
-    return false;
-}
-
-System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::PeerItems()
-    :
-    acastrppeer_list(this, {"addr", "rpsetaddr"})
-{
-
-    yang_name = "peer-items"; yang_parent_name = "acastrpfunc-items"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::~PeerItems()
-{
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<acastrppeer_list.len(); index++)
-    {
-        if(acastrppeer_list[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::has_operation() const
-{
-    for (std::size_t index=0; index<acastrppeer_list.len(); index++)
-    {
-        if(acastrppeer_list[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "peer-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "AcastRPPeer-list")
-    {
-        auto ent_ = std::make_shared<System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::AcastRPPeerList>();
-        ent_->parent = this;
-        acastrppeer_list.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : acastrppeer_list.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "AcastRPPeer-list")
-        return true;
-    return false;
-}
-
-System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::AcastRPPeerList::AcastRPPeerList()
-    :
-    addr{YType::str, "addr"},
-    rpsetaddr{YType::str, "rpSetAddr"}
-{
-
-    yang_name = "AcastRPPeer-list"; yang_parent_name = "peer-items"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::AcastRPPeerList::~AcastRPPeerList()
-{
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::AcastRPPeerList::has_data() const
-{
-    if (is_presence_container) return true;
-    return addr.is_set
-	|| rpsetaddr.is_set;
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::AcastRPPeerList::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(addr.yfilter)
-	|| ydk::is_set(rpsetaddr.yfilter);
-}
-
-std::string System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::AcastRPPeerList::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "AcastRPPeer-list";
-    ADD_KEY_TOKEN(addr, "addr");
-    ADD_KEY_TOKEN(rpsetaddr, "rpSetAddr");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::AcastRPPeerList::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (addr.is_set || is_set(addr.yfilter)) leaf_name_data.push_back(addr.get_name_leafdata());
-    if (rpsetaddr.is_set || is_set(rpsetaddr.yfilter)) leaf_name_data.push_back(rpsetaddr.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::AcastRPPeerList::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::AcastRPPeerList::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::AcastRPPeerList::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "addr")
-    {
-        addr = value;
-        addr.value_namespace = name_space;
-        addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rpSetAddr")
-    {
-        rpsetaddr = value;
-        rpsetaddr.value_namespace = name_space;
-        rpsetaddr.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::AcastRPPeerList::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "addr")
-    {
-        addr.yfilter = yfilter;
-    }
-    if(value_path == "rpSetAddr")
-    {
-        rpsetaddr.yfilter = yfilter;
-    }
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::AcastrpfuncItems::PeerItems::AcastRPPeerList::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "addr" || name == "rpSetAddr")
-        return true;
-    return false;
-}
-
-System::PimItems::InstItems::DomItems::DomList::AutorpItems::AutorpItems()
-    :
-    name{YType::str, "name"},
-    descr{YType::str, "descr"},
-    ctrl{YType::str, "ctrl"}
-        ,
-    rpfilter_items(std::make_shared<System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfilterItems>())
-    , mafilter_items(std::make_shared<System::PimItems::InstItems::DomItems::DomList::AutorpItems::MafilterItems>())
-    , rpfunc_items(std::make_shared<System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfuncItems>())
-    , mafunc_items(std::make_shared<System::PimItems::InstItems::DomItems::DomList::AutorpItems::MafuncItems>())
-{
-    rpfilter_items->parent = this;
-    mafilter_items->parent = this;
-    rpfunc_items->parent = this;
-    mafunc_items->parent = this;
-
-    yang_name = "autorp-items"; yang_parent_name = "Dom-list"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::PimItems::InstItems::DomItems::DomList::AutorpItems::~AutorpItems()
-{
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::AutorpItems::has_data() const
-{
-    if (is_presence_container) return true;
-    return name.is_set
-	|| descr.is_set
-	|| ctrl.is_set
-	|| (rpfilter_items !=  nullptr && rpfilter_items->has_data())
-	|| (mafilter_items !=  nullptr && mafilter_items->has_data())
-	|| (rpfunc_items !=  nullptr && rpfunc_items->has_data())
-	|| (mafunc_items !=  nullptr && mafunc_items->has_data());
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::AutorpItems::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(descr.yfilter)
-	|| ydk::is_set(ctrl.yfilter)
-	|| (rpfilter_items !=  nullptr && rpfilter_items->has_operation())
-	|| (mafilter_items !=  nullptr && mafilter_items->has_operation())
-	|| (rpfunc_items !=  nullptr && rpfunc_items->has_operation())
-	|| (mafunc_items !=  nullptr && mafunc_items->has_operation());
-}
-
-std::string System::PimItems::InstItems::DomItems::DomList::AutorpItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "autorp-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::PimItems::InstItems::DomItems::DomList::AutorpItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (descr.is_set || is_set(descr.yfilter)) leaf_name_data.push_back(descr.get_name_leafdata());
-    if (ctrl.is_set || is_set(ctrl.yfilter)) leaf_name_data.push_back(ctrl.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::PimItems::InstItems::DomItems::DomList::AutorpItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "rpfilter-items")
-    {
-        if(rpfilter_items == nullptr)
-        {
-            rpfilter_items = std::make_shared<System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfilterItems>();
-        }
-        return rpfilter_items;
-    }
-
-    if(child_yang_name == "mafilter-items")
-    {
-        if(mafilter_items == nullptr)
-        {
-            mafilter_items = std::make_shared<System::PimItems::InstItems::DomItems::DomList::AutorpItems::MafilterItems>();
-        }
-        return mafilter_items;
-    }
-
-    if(child_yang_name == "rpfunc-items")
-    {
-        if(rpfunc_items == nullptr)
-        {
-            rpfunc_items = std::make_shared<System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfuncItems>();
-        }
-        return rpfunc_items;
-    }
-
-    if(child_yang_name == "mafunc-items")
-    {
-        if(mafunc_items == nullptr)
-        {
-            mafunc_items = std::make_shared<System::PimItems::InstItems::DomItems::DomList::AutorpItems::MafuncItems>();
-        }
-        return mafunc_items;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::PimItems::InstItems::DomItems::DomList::AutorpItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(rpfilter_items != nullptr)
-    {
-        _children["rpfilter-items"] = rpfilter_items;
-    }
-
-    if(mafilter_items != nullptr)
-    {
-        _children["mafilter-items"] = mafilter_items;
-    }
-
-    if(rpfunc_items != nullptr)
-    {
-        _children["rpfunc-items"] = rpfunc_items;
-    }
-
-    if(mafunc_items != nullptr)
-    {
-        _children["mafunc-items"] = mafunc_items;
-    }
-
-    return _children;
-}
-
-void System::PimItems::InstItems::DomItems::DomList::AutorpItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "descr")
-    {
-        descr = value;
-        descr.value_namespace = name_space;
-        descr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ctrl")
-    {
-        ctrl = value;
-        ctrl.value_namespace = name_space;
-        ctrl.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::PimItems::InstItems::DomItems::DomList::AutorpItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "descr")
-    {
-        descr.yfilter = yfilter;
-    }
-    if(value_path == "ctrl")
-    {
-        ctrl.yfilter = yfilter;
-    }
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::AutorpItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "rpfilter-items" || name == "mafilter-items" || name == "rpfunc-items" || name == "mafunc-items" || name == "name" || name == "descr" || name == "ctrl")
-        return true;
-    return false;
-}
-
-System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfilterItems::RpfilterItems()
-    :
-    name{YType::str, "name"},
-    descr{YType::str, "descr"},
-    rtmap{YType::str, "rtMap"}
-{
-
-    yang_name = "rpfilter-items"; yang_parent_name = "autorp-items"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfilterItems::~RpfilterItems()
-{
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfilterItems::has_data() const
-{
-    if (is_presence_container) return true;
-    return name.is_set
-	|| descr.is_set
-	|| rtmap.is_set;
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfilterItems::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(descr.yfilter)
-	|| ydk::is_set(rtmap.yfilter);
-}
-
-std::string System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfilterItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rpfilter-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfilterItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (descr.is_set || is_set(descr.yfilter)) leaf_name_data.push_back(descr.get_name_leafdata());
-    if (rtmap.is_set || is_set(rtmap.yfilter)) leaf_name_data.push_back(rtmap.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfilterItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfilterItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfilterItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "descr")
-    {
-        descr = value;
-        descr.value_namespace = name_space;
-        descr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rtMap")
-    {
-        rtmap = value;
-        rtmap.value_namespace = name_space;
-        rtmap.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfilterItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "descr")
-    {
-        descr.yfilter = yfilter;
-    }
-    if(value_path == "rtMap")
-    {
-        rtmap.yfilter = yfilter;
-    }
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfilterItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name" || name == "descr" || name == "rtMap")
-        return true;
-    return false;
-}
-
-System::PimItems::InstItems::DomItems::DomList::AutorpItems::MafilterItems::MafilterItems()
-    :
-    name{YType::str, "name"},
-    descr{YType::str, "descr"},
-    rtmap{YType::str, "rtMap"}
-{
-
-    yang_name = "mafilter-items"; yang_parent_name = "autorp-items"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::PimItems::InstItems::DomItems::DomList::AutorpItems::MafilterItems::~MafilterItems()
-{
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::AutorpItems::MafilterItems::has_data() const
-{
-    if (is_presence_container) return true;
-    return name.is_set
-	|| descr.is_set
-	|| rtmap.is_set;
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::AutorpItems::MafilterItems::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(descr.yfilter)
-	|| ydk::is_set(rtmap.yfilter);
-}
-
-std::string System::PimItems::InstItems::DomItems::DomList::AutorpItems::MafilterItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "mafilter-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::PimItems::InstItems::DomItems::DomList::AutorpItems::MafilterItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (descr.is_set || is_set(descr.yfilter)) leaf_name_data.push_back(descr.get_name_leafdata());
-    if (rtmap.is_set || is_set(rtmap.yfilter)) leaf_name_data.push_back(rtmap.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::PimItems::InstItems::DomItems::DomList::AutorpItems::MafilterItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::PimItems::InstItems::DomItems::DomList::AutorpItems::MafilterItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void System::PimItems::InstItems::DomItems::DomList::AutorpItems::MafilterItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "descr")
-    {
-        descr = value;
-        descr.value_namespace = name_space;
-        descr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rtMap")
-    {
-        rtmap = value;
-        rtmap.value_namespace = name_space;
-        rtmap.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::PimItems::InstItems::DomItems::DomList::AutorpItems::MafilterItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "descr")
-    {
-        descr.yfilter = yfilter;
-    }
-    if(value_path == "rtMap")
-    {
-        rtmap.yfilter = yfilter;
-    }
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::AutorpItems::MafilterItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "name" || name == "descr" || name == "rtMap")
-        return true;
-    return false;
-}
-
-System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfuncItems::RpfuncItems()
-    :
-    name{YType::str, "name"},
-    descr{YType::str, "descr"},
-    srcif{YType::str, "srcIf"},
-    prio{YType::uint16, "prio"},
-    interval{YType::uint16, "interval"},
-    scope{YType::uint16, "scope"},
-    addr{YType::str, "addr"},
-    usesendrpanncommand{YType::boolean, "useSendRPAnnCommand"}
-        ,
-    range_items(std::make_shared<System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfuncItems::RangeItems>())
-{
-    range_items->parent = this;
-
-    yang_name = "rpfunc-items"; yang_parent_name = "autorp-items"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfuncItems::~RpfuncItems()
-{
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfuncItems::has_data() const
-{
-    if (is_presence_container) return true;
-    return name.is_set
-	|| descr.is_set
-	|| srcif.is_set
-	|| prio.is_set
-	|| interval.is_set
-	|| scope.is_set
-	|| addr.is_set
-	|| usesendrpanncommand.is_set
-	|| (range_items !=  nullptr && range_items->has_data());
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfuncItems::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(name.yfilter)
-	|| ydk::is_set(descr.yfilter)
-	|| ydk::is_set(srcif.yfilter)
-	|| ydk::is_set(prio.yfilter)
-	|| ydk::is_set(interval.yfilter)
-	|| ydk::is_set(scope.yfilter)
-	|| ydk::is_set(addr.yfilter)
-	|| ydk::is_set(usesendrpanncommand.yfilter)
-	|| (range_items !=  nullptr && range_items->has_operation());
-}
-
-std::string System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfuncItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "rpfunc-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfuncItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
-    if (descr.is_set || is_set(descr.yfilter)) leaf_name_data.push_back(descr.get_name_leafdata());
-    if (srcif.is_set || is_set(srcif.yfilter)) leaf_name_data.push_back(srcif.get_name_leafdata());
-    if (prio.is_set || is_set(prio.yfilter)) leaf_name_data.push_back(prio.get_name_leafdata());
-    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
-    if (scope.is_set || is_set(scope.yfilter)) leaf_name_data.push_back(scope.get_name_leafdata());
-    if (addr.is_set || is_set(addr.yfilter)) leaf_name_data.push_back(addr.get_name_leafdata());
-    if (usesendrpanncommand.is_set || is_set(usesendrpanncommand.yfilter)) leaf_name_data.push_back(usesendrpanncommand.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfuncItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "range-items")
-    {
-        if(range_items == nullptr)
-        {
-            range_items = std::make_shared<System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfuncItems::RangeItems>();
-        }
-        return range_items;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfuncItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(range_items != nullptr)
-    {
-        _children["range-items"] = range_items;
-    }
-
-    return _children;
-}
-
-void System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfuncItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "name")
-    {
-        name = value;
-        name.value_namespace = name_space;
-        name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "descr")
-    {
-        descr = value;
-        descr.value_namespace = name_space;
-        descr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "srcIf")
-    {
-        srcif = value;
-        srcif.value_namespace = name_space;
-        srcif.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prio")
-    {
-        prio = value;
-        prio.value_namespace = name_space;
-        prio.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interval")
-    {
-        interval = value;
-        interval.value_namespace = name_space;
-        interval.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "scope")
-    {
-        scope = value;
-        scope.value_namespace = name_space;
-        scope.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "addr")
-    {
-        addr = value;
-        addr.value_namespace = name_space;
-        addr.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "useSendRPAnnCommand")
-    {
-        usesendrpanncommand = value;
-        usesendrpanncommand.value_namespace = name_space;
-        usesendrpanncommand.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfuncItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "name")
-    {
-        name.yfilter = yfilter;
-    }
-    if(value_path == "descr")
-    {
-        descr.yfilter = yfilter;
-    }
-    if(value_path == "srcIf")
-    {
-        srcif.yfilter = yfilter;
-    }
-    if(value_path == "prio")
-    {
-        prio.yfilter = yfilter;
-    }
-    if(value_path == "interval")
-    {
-        interval.yfilter = yfilter;
-    }
-    if(value_path == "scope")
-    {
-        scope.yfilter = yfilter;
-    }
-    if(value_path == "addr")
-    {
-        addr.yfilter = yfilter;
-    }
-    if(value_path == "useSendRPAnnCommand")
-    {
-        usesendrpanncommand.yfilter = yfilter;
-    }
-}
-
-bool System::PimItems::InstItems::DomItems::DomList::AutorpItems::RpfuncItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "range-items" || name == "name" || name == "descr" || name == "srcIf" || name == "prio" || name == "interval" || name == "scope" || name == "addr" || name == "useSendRPAnnCommand")
         return true;
     return false;
 }

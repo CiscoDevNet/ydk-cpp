@@ -13,6 +13,52 @@ namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_native {
 
 
+class Native::Service::Timestamps::Debug::Datetime::Localtime::Msec : public ydk::Entity
+{
+    public:
+        Msec();
+        ~Msec();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf show_timezone; //type: empty
+        ydk::YLeaf year; //type: empty
+
+}; // Native::Service::Timestamps::Debug::Datetime::Localtime::Msec
+
+
+class Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone : public ydk::Entity
+{
+    public:
+        ShowTimezone();
+        ~ShowTimezone();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf msec; //type: empty
+        ydk::YLeaf year; //type: empty
+
+}; // Native::Service::Timestamps::Debug::Datetime::Localtime::ShowTimezone
+
+
 class Native::Service::Timestamps::Debug::Datetime::Localtime::Year : public ydk::Entity
 {
     public:
@@ -3671,53 +3717,6 @@ class Native::Controller::SONET::Au4::ChannelGroupTimeslots::Tug2 : public ydk::
 
 }; // Native::Controller::SONET::Au4::ChannelGroupTimeslots::Tug2
 
-
-class Native::Controller::SONET::Au4::CemGroupUnframed : public ydk::Entity
-{
-    public:
-        CemGroupUnframed();
-        ~CemGroupUnframed();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Tug2; //type: Native::Controller::SONET::Au4::CemGroupUnframed::Tug2
-
-        ydk::YList tug_2;
-        
-}; // Native::Controller::SONET::Au4::CemGroupUnframed
-
-
-class Native::Controller::SONET::Au4::CemGroupUnframed::Tug2 : public ydk::Entity
-{
-    public:
-        Tug2();
-        ~Tug2();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf number; //type: int8
-        ydk::YLeaf e1; //type: int8
-        ydk::YLeaf cem_group; //type: int32
-        ydk::YLeaf unframed; //type: empty
-
-}; // Native::Controller::SONET::Au4::CemGroupUnframed::Tug2
-
 class Native::Platform::TcamParityError : public ydk::Enum
 {
     public:
@@ -3762,7 +3761,20 @@ class Native::Platform::Hardware::Throughput::Level::Kbps : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf Y_10000;
         static const ydk::Enum::YLeaf Y_25000;
+        static const ydk::Enum::YLeaf Y_35000;
         static const ydk::Enum::YLeaf Y_50000;
+        static const ydk::Enum::YLeaf Y_75000;
+        static const ydk::Enum::YLeaf Y_100000;
+        static const ydk::Enum::YLeaf Y_150000;
+        static const ydk::Enum::YLeaf Y_200000;
+        static const ydk::Enum::YLeaf Y_250000;
+        static const ydk::Enum::YLeaf Y_300000;
+        static const ydk::Enum::YLeaf Y_400000;
+        static const ydk::Enum::YLeaf Y_500000;
+        static const ydk::Enum::YLeaf Y_1000000;
+        static const ydk::Enum::YLeaf Y_1500000;
+        static const ydk::Enum::YLeaf Y_2000000;
+        static const ydk::Enum::YLeaf Y_3000000;
 
 };
 

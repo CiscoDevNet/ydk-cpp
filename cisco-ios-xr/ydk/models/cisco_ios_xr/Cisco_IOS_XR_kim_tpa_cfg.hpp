@@ -183,9 +183,11 @@ class Tpa::VrfNames::VrfName::AddressFamily::Ipv6 : public ydk::Entity
 
         ydk::YLeaf default_route; //type: string
         class InterfaceNames; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames
+        class AllowEntries; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries
         class UpdateSource; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv6::UpdateSource
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_kim_tpa_cfg::Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames> interface_names;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_kim_tpa_cfg::Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries> allow_entries;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_kim_tpa_cfg::Tpa::VrfNames::VrfName::AddressFamily::Ipv6::UpdateSource> update_source;
         
 }; // Tpa::VrfNames::VrfName::AddressFamily::Ipv6
@@ -236,6 +238,231 @@ class Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames::InterfaceName
 }; // Tpa::VrfNames::VrfName::AddressFamily::Ipv6::InterfaceNames::InterfaceName
 
 
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries : public ydk::Entity
+{
+    public:
+        AllowEntries();
+        ~AllowEntries();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class AllowEntry; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntry
+        class AllowEntryLocalAddress; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntryLocalAddress
+        class AllowEntryRemoteAddress; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntryRemoteAddress
+        class AllowEntryLocalAddressRemoteAddress; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntryLocalAddressRemoteAddress
+        class AllowEntryInterfaceName; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntryInterfaceName
+        class AllowEntryLocalAddressInterfaceName; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntryLocalAddressInterfaceName
+        class AllowEntryRemoteAddressInterfaceName; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntryRemoteAddressInterfaceName
+        class AllowEntryLocalAddressRemoteAddressInterfaceName; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntryLocalAddressRemoteAddressInterfaceName
+
+        ydk::YList allow_entry;
+        ydk::YList allow_entry_local_address;
+        ydk::YList allow_entry_remote_address;
+        ydk::YList allow_entry_local_address_remote_address;
+        ydk::YList allow_entry_interface_name;
+        ydk::YList allow_entry_local_address_interface_name;
+        ydk::YList allow_entry_remote_address_interface_name;
+        ydk::YList allow_entry_local_address_remote_address_interface_name;
+        
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntry : public ydk::Entity
+{
+    public:
+        AllowEntry();
+        ~AllowEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf protocol; //type: IpProtocol
+        ydk::YLeaf local_port; //type: uint16
+
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntry
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntryLocalAddress : public ydk::Entity
+{
+    public:
+        AllowEntryLocalAddress();
+        ~AllowEntryLocalAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf local_address; //type: string
+        ydk::YLeaf protocol; //type: IpProtocol
+        ydk::YLeaf local_port; //type: uint16
+
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntryLocalAddress
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntryRemoteAddress : public ydk::Entity
+{
+    public:
+        AllowEntryRemoteAddress();
+        ~AllowEntryRemoteAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf remote_address; //type: string
+        ydk::YLeaf protocol; //type: IpProtocol
+        ydk::YLeaf local_port; //type: uint16
+
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntryRemoteAddress
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntryLocalAddressRemoteAddress : public ydk::Entity
+{
+    public:
+        AllowEntryLocalAddressRemoteAddress();
+        ~AllowEntryLocalAddressRemoteAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf local_address; //type: string
+        ydk::YLeaf remote_address; //type: string
+        ydk::YLeaf protocol; //type: IpProtocol
+        ydk::YLeaf local_port; //type: uint16
+
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntryLocalAddressRemoteAddress
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntryInterfaceName : public ydk::Entity
+{
+    public:
+        AllowEntryInterfaceName();
+        ~AllowEntryInterfaceName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf protocol; //type: IpProtocol
+        ydk::YLeaf local_port; //type: uint16
+
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntryInterfaceName
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntryLocalAddressInterfaceName : public ydk::Entity
+{
+    public:
+        AllowEntryLocalAddressInterfaceName();
+        ~AllowEntryLocalAddressInterfaceName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf local_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf protocol; //type: IpProtocol
+        ydk::YLeaf local_port; //type: uint16
+
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntryLocalAddressInterfaceName
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntryRemoteAddressInterfaceName : public ydk::Entity
+{
+    public:
+        AllowEntryRemoteAddressInterfaceName();
+        ~AllowEntryRemoteAddressInterfaceName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf remote_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf protocol; //type: IpProtocol
+        ydk::YLeaf local_port; //type: uint16
+
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntryRemoteAddressInterfaceName
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntryLocalAddressRemoteAddressInterfaceName : public ydk::Entity
+{
+    public:
+        AllowEntryLocalAddressRemoteAddressInterfaceName();
+        ~AllowEntryLocalAddressRemoteAddressInterfaceName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf local_address; //type: string
+        ydk::YLeaf remote_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf protocol; //type: IpProtocol
+        ydk::YLeaf local_port; //type: uint16
+
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv6::AllowEntries::AllowEntryLocalAddressRemoteAddressInterfaceName
+
+
 class Tpa::VrfNames::VrfName::AddressFamily::Ipv6::UpdateSource : public ydk::Entity
 {
     public:
@@ -276,9 +503,11 @@ class Tpa::VrfNames::VrfName::AddressFamily::Ipv4 : public ydk::Entity
 
         ydk::YLeaf default_route; //type: string
         class InterfaceNames; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames
+        class AllowEntries; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries
         class UpdateSource; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv4::UpdateSource
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_kim_tpa_cfg::Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames> interface_names;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_kim_tpa_cfg::Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries> allow_entries;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_kim_tpa_cfg::Tpa::VrfNames::VrfName::AddressFamily::Ipv4::UpdateSource> update_source;
         
 }; // Tpa::VrfNames::VrfName::AddressFamily::Ipv4
@@ -327,6 +556,231 @@ class Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames::InterfaceName
         ydk::YLeaf egress_interface_source; //type: string
 
 }; // Tpa::VrfNames::VrfName::AddressFamily::Ipv4::InterfaceNames::InterfaceName
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries : public ydk::Entity
+{
+    public:
+        AllowEntries();
+        ~AllowEntries();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class AllowEntry; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntry
+        class AllowEntryLocalAddress; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntryLocalAddress
+        class AllowEntryRemoteAddress; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntryRemoteAddress
+        class AllowEntryLocalAddressRemoteAddress; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntryLocalAddressRemoteAddress
+        class AllowEntryInterfaceName; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntryInterfaceName
+        class AllowEntryLocalAddressInterfaceName; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntryLocalAddressInterfaceName
+        class AllowEntryRemoteAddressInterfaceName; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntryRemoteAddressInterfaceName
+        class AllowEntryLocalAddressRemoteAddressInterfaceName; //type: Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntryLocalAddressRemoteAddressInterfaceName
+
+        ydk::YList allow_entry;
+        ydk::YList allow_entry_local_address;
+        ydk::YList allow_entry_remote_address;
+        ydk::YList allow_entry_local_address_remote_address;
+        ydk::YList allow_entry_interface_name;
+        ydk::YList allow_entry_local_address_interface_name;
+        ydk::YList allow_entry_remote_address_interface_name;
+        ydk::YList allow_entry_local_address_remote_address_interface_name;
+        
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntry : public ydk::Entity
+{
+    public:
+        AllowEntry();
+        ~AllowEntry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf protocol; //type: IpProtocol
+        ydk::YLeaf local_port; //type: uint16
+
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntry
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntryLocalAddress : public ydk::Entity
+{
+    public:
+        AllowEntryLocalAddress();
+        ~AllowEntryLocalAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf local_address; //type: string
+        ydk::YLeaf protocol; //type: IpProtocol
+        ydk::YLeaf local_port; //type: uint16
+
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntryLocalAddress
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntryRemoteAddress : public ydk::Entity
+{
+    public:
+        AllowEntryRemoteAddress();
+        ~AllowEntryRemoteAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf remote_address; //type: string
+        ydk::YLeaf protocol; //type: IpProtocol
+        ydk::YLeaf local_port; //type: uint16
+
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntryRemoteAddress
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntryLocalAddressRemoteAddress : public ydk::Entity
+{
+    public:
+        AllowEntryLocalAddressRemoteAddress();
+        ~AllowEntryLocalAddressRemoteAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf local_address; //type: string
+        ydk::YLeaf remote_address; //type: string
+        ydk::YLeaf protocol; //type: IpProtocol
+        ydk::YLeaf local_port; //type: uint16
+
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntryLocalAddressRemoteAddress
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntryInterfaceName : public ydk::Entity
+{
+    public:
+        AllowEntryInterfaceName();
+        ~AllowEntryInterfaceName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf protocol; //type: IpProtocol
+        ydk::YLeaf local_port; //type: uint16
+
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntryInterfaceName
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntryLocalAddressInterfaceName : public ydk::Entity
+{
+    public:
+        AllowEntryLocalAddressInterfaceName();
+        ~AllowEntryLocalAddressInterfaceName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf local_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf protocol; //type: IpProtocol
+        ydk::YLeaf local_port; //type: uint16
+
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntryLocalAddressInterfaceName
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntryRemoteAddressInterfaceName : public ydk::Entity
+{
+    public:
+        AllowEntryRemoteAddressInterfaceName();
+        ~AllowEntryRemoteAddressInterfaceName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf remote_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf protocol; //type: IpProtocol
+        ydk::YLeaf local_port; //type: uint16
+
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntryRemoteAddressInterfaceName
+
+
+class Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntryLocalAddressRemoteAddressInterfaceName : public ydk::Entity
+{
+    public:
+        AllowEntryLocalAddressRemoteAddressInterfaceName();
+        ~AllowEntryLocalAddressRemoteAddressInterfaceName();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf local_address; //type: string
+        ydk::YLeaf remote_address; //type: string
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf protocol; //type: IpProtocol
+        ydk::YLeaf local_port; //type: uint16
+
+}; // Tpa::VrfNames::VrfName::AddressFamily::Ipv4::AllowEntries::AllowEntryLocalAddressRemoteAddressInterfaceName
 
 
 class Tpa::VrfNames::VrfName::AddressFamily::Ipv4::UpdateSource : public ydk::Entity
@@ -420,6 +874,14 @@ class Tpa::Statistics : public ydk::Entity
         ydk::YLeaf statistics_update_frequency; //type: uint32
 
 }; // Tpa::Statistics
+
+class IpProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf tcp;
+        static const ydk::Enum::YLeaf udp;
+
+};
 
 
 }

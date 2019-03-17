@@ -1590,6 +1590,9 @@ const Enum::YLeaf SyslogSeverity::notice {5, "notice"};
 const Enum::YLeaf SyslogSeverity::info {6, "info"};
 const Enum::YLeaf SyslogSeverity::debug {7, "debug"};
 
+const Enum::YLeaf ParserMsgProcessingMethod::blacklist {0, "blacklist"};
+const Enum::YLeaf ParserMsgProcessingMethod::whitelist {1, "whitelist"};
+
 const Enum::YLeaf OnepLogLevel::none {0, "none"};
 const Enum::YLeaf OnepLogLevel::fatal {1, "fatal"};
 const Enum::YLeaf OnepLogLevel::error {2, "error"};

@@ -12,6 +12,106 @@ using namespace ydk;
 namespace cisco_nx_os {
 namespace Cisco_NX_OS_device {
 
+System::NpvItems::InstItems::SrvifItems::SrvifItems()
+    :
+    srvif_list(this, {"id"})
+{
+
+    yang_name = "srvif-items"; yang_parent_name = "inst-items"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+System::NpvItems::InstItems::SrvifItems::~SrvifItems()
+{
+}
+
+bool System::NpvItems::InstItems::SrvifItems::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<srvif_list.len(); index++)
+    {
+        if(srvif_list[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool System::NpvItems::InstItems::SrvifItems::has_operation() const
+{
+    for (std::size_t index=0; index<srvif_list.len(); index++)
+    {
+        if(srvif_list[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string System::NpvItems::InstItems::SrvifItems::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-NX-OS-device:System/npv-items/inst-items/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string System::NpvItems::InstItems::SrvifItems::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "srvif-items";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > System::NpvItems::InstItems::SrvifItems::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> System::NpvItems::InstItems::SrvifItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "SrvIf-list")
+    {
+        auto ent_ = std::make_shared<System::NpvItems::InstItems::SrvifItems::SrvIfList>();
+        ent_->parent = this;
+        srvif_list.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> System::NpvItems::InstItems::SrvifItems::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : srvif_list.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void System::NpvItems::InstItems::SrvifItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void System::NpvItems::InstItems::SrvifItems::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool System::NpvItems::InstItems::SrvifItems::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "SrvIf-list")
+        return true;
+    return false;
+}
+
 System::NpvItems::InstItems::SrvifItems::SrvIfList::SrvIfList()
     :
     id{YType::str, "id"},
@@ -3222,6 +3322,7 @@ System::FmItems::FmItems()
     , isis_items(std::make_shared<System::FmItems::IsisItems>())
     , hwtelemetry_items(std::make_shared<System::FmItems::HwtelemetryItems>())
     , portsec_items(std::make_shared<System::FmItems::PortsecItems>())
+    , flexlink_items(std::make_shared<System::FmItems::FlexlinkItems>())
 {
     mplsstatic_items->parent = this;
     mplsoam_items->parent = this;
@@ -3273,6 +3374,7 @@ System::FmItems::FmItems()
     isis_items->parent = this;
     hwtelemetry_items->parent = this;
     portsec_items->parent = this;
+    flexlink_items->parent = this;
 
     yang_name = "fm-items"; yang_parent_name = "System"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -3333,7 +3435,8 @@ bool System::FmItems::has_data() const
 	|| (pim6_items !=  nullptr && pim6_items->has_data())
 	|| (isis_items !=  nullptr && isis_items->has_data())
 	|| (hwtelemetry_items !=  nullptr && hwtelemetry_items->has_data())
-	|| (portsec_items !=  nullptr && portsec_items->has_data());
+	|| (portsec_items !=  nullptr && portsec_items->has_data())
+	|| (flexlink_items !=  nullptr && flexlink_items->has_data());
 }
 
 bool System::FmItems::has_operation() const
@@ -3388,7 +3491,8 @@ bool System::FmItems::has_operation() const
 	|| (pim6_items !=  nullptr && pim6_items->has_operation())
 	|| (isis_items !=  nullptr && isis_items->has_operation())
 	|| (hwtelemetry_items !=  nullptr && hwtelemetry_items->has_operation())
-	|| (portsec_items !=  nullptr && portsec_items->has_operation());
+	|| (portsec_items !=  nullptr && portsec_items->has_operation())
+	|| (flexlink_items !=  nullptr && flexlink_items->has_operation());
 }
 
 std::string System::FmItems::get_absolute_path() const
@@ -3866,6 +3970,15 @@ std::shared_ptr<ydk::Entity> System::FmItems::get_child_by_name(const std::strin
         return portsec_items;
     }
 
+    if(child_yang_name == "flexlink-items")
+    {
+        if(flexlink_items == nullptr)
+        {
+            flexlink_items = std::make_shared<System::FmItems::FlexlinkItems>();
+        }
+        return flexlink_items;
+    }
+
     return nullptr;
 }
 
@@ -4123,6 +4236,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> System::FmItems::get_childre
         _children["portsec-items"] = portsec_items;
     }
 
+    if(flexlink_items != nullptr)
+    {
+        _children["flexlink-items"] = flexlink_items;
+    }
+
     return _children;
 }
 
@@ -4136,7 +4254,7 @@ void System::FmItems::set_filter(const std::string & value_path, YFilter yfilter
 
 bool System::FmItems::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mplsstatic-items" || name == "mplsoam-items" || name == "srte-items" || name == "mplssgmntrtg-items" || name == "mplsldp-items" || name == "mplsl3vpn-items" || name == "mplsevpn-items" || name == "bgp-items" || name == "hmm-items" || name == "evpn-items" || name == "ngoam-items" || name == "poe-items" || name == "msdp-items" || name == "dhcp-items" || name == "ifvlan-items" || name == "bashshell-items" || name == "scpserver-items" || name == "lldp-items" || name == "lacp-items" || name == "nxapi-items" || name == "telnet-items" || name == "nxdb-items" || name == "vnsegment-items" || name == "tacacsplus-items" || name == "udld-items" || name == "nat-items" || name == "vrrpv3-items" || name == "vrrp-items" || name == "hsrp-items" || name == "netflow-items" || name == "analytics-items" || name == "bfd-items" || name == "tunnelif-items" || name == "nvo-items" || name == "pbr-items" || name == "pim-items" || name == "ngmvpn-items" || name == "vpc-items" || name == "vtp-items" || name == "pvlan-items" || name == "ntpd-items" || name == "telemetry-items" || name == "ospf-items" || name == "vctrl-items" || name == "macsec-items" || name == "npiv-items" || name == "pim6-items" || name == "isis-items" || name == "hwtelemetry-items" || name == "portsec-items")
+    if(name == "mplsstatic-items" || name == "mplsoam-items" || name == "srte-items" || name == "mplssgmntrtg-items" || name == "mplsldp-items" || name == "mplsl3vpn-items" || name == "mplsevpn-items" || name == "bgp-items" || name == "hmm-items" || name == "evpn-items" || name == "ngoam-items" || name == "poe-items" || name == "msdp-items" || name == "dhcp-items" || name == "ifvlan-items" || name == "bashshell-items" || name == "scpserver-items" || name == "lldp-items" || name == "lacp-items" || name == "nxapi-items" || name == "telnet-items" || name == "nxdb-items" || name == "vnsegment-items" || name == "tacacsplus-items" || name == "udld-items" || name == "nat-items" || name == "vrrpv3-items" || name == "vrrp-items" || name == "hsrp-items" || name == "netflow-items" || name == "analytics-items" || name == "bfd-items" || name == "tunnelif-items" || name == "nvo-items" || name == "pbr-items" || name == "pim-items" || name == "ngmvpn-items" || name == "vpc-items" || name == "vtp-items" || name == "pvlan-items" || name == "ntpd-items" || name == "telemetry-items" || name == "ospf-items" || name == "vctrl-items" || name == "macsec-items" || name == "npiv-items" || name == "pim6-items" || name == "isis-items" || name == "hwtelemetry-items" || name == "portsec-items" || name == "flexlink-items")
         return true;
     return false;
 }
@@ -17784,105 +17902,6 @@ void System::FmItems::OspfItems::ServiceItems::ServiceInstanceList::set_filter(c
 bool System::FmItems::OspfItems::ServiceItems::ServiceInstanceList::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "id" || name == "operSt")
-        return true;
-    return false;
-}
-
-System::FmItems::VctrlItems::VctrlItems()
-    :
-    adminst{YType::enumeration, "adminSt"},
-    operst{YType::enumeration, "operSt"}
-{
-
-    yang_name = "vctrl-items"; yang_parent_name = "fm-items"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-System::FmItems::VctrlItems::~VctrlItems()
-{
-}
-
-bool System::FmItems::VctrlItems::has_data() const
-{
-    if (is_presence_container) return true;
-    return adminst.is_set
-	|| operst.is_set;
-}
-
-bool System::FmItems::VctrlItems::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(adminst.yfilter)
-	|| ydk::is_set(operst.yfilter);
-}
-
-std::string System::FmItems::VctrlItems::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-NX-OS-device:System/fm-items/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string System::FmItems::VctrlItems::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "vctrl-items";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > System::FmItems::VctrlItems::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (adminst.is_set || is_set(adminst.yfilter)) leaf_name_data.push_back(adminst.get_name_leafdata());
-    if (operst.is_set || is_set(operst.yfilter)) leaf_name_data.push_back(operst.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> System::FmItems::VctrlItems::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> System::FmItems::VctrlItems::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void System::FmItems::VctrlItems::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "adminSt")
-    {
-        adminst = value;
-        adminst.value_namespace = name_space;
-        adminst.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "operSt")
-    {
-        operst = value;
-        operst.value_namespace = name_space;
-        operst.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void System::FmItems::VctrlItems::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "adminSt")
-    {
-        adminst.yfilter = yfilter;
-    }
-    if(value_path == "operSt")
-    {
-        operst.yfilter = yfilter;
-    }
-}
-
-bool System::FmItems::VctrlItems::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "adminSt" || name == "operSt")
         return true;
     return false;
 }

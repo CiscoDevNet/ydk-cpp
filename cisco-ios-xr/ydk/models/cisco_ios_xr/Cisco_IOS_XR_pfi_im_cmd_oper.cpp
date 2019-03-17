@@ -15455,6 +15455,7 @@ const Enum::YLeaf ImAttrMedia::im_attr_media_25gbase_cu2m {378, "im-attr-media-2
 const Enum::YLeaf ImAttrMedia::im_attr_media_25gbase_cu3m {379, "im-attr-media-25gbase-cu3m"};
 const Enum::YLeaf ImAttrMedia::im_attr_media_25gbase_cu5m {380, "im-attr-media-25gbase-cu5m"};
 const Enum::YLeaf ImAttrMedia::im_attr_media_100gbase_sm_sr {381, "im-attr-media-100gbase-sm-sr"};
+const Enum::YLeaf ImAttrMedia::im_attr_media_100gbase_sr_bd {382, "im-attr-media-100gbase-sr-bd"};
 
 const Enum::YLeaf SrpMgmtSrrNodeState::idle_srr_state {0, "idle-srr-state"};
 const Enum::YLeaf SrpMgmtSrrNodeState::discovery_srr_state {1, "discovery-srr-state"};

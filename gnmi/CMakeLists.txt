@@ -7,7 +7,7 @@ set(YDK_DESCRIPTION "YANG Development Kit Library. The gNMI library for YDK API.
 # CPack Dynamic Settings
 set (CPACK_PACKAGE_NAME "libydk_gnmi")
 set (CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
-set (CPACK_PACKAGE_RELEASE "1")
+set (CPACK_PACKAGE_RELEASE "2")
 set (CPACK_PACKAGE_DESCRIPTION_SUMMARY "YDK gNMI Library")
 
 # CPack Static Settings
@@ -56,7 +56,7 @@ elseif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
         # <foo>_<VersionNumber>-<DebianRevisionNumber>_<DebianArchitecture>.deb
         # libydk_0.6.0-0.1.alpha_amd64.deb   // Debian
         set (CPACK_PACKAGE_FILE_NAME
-            "${CPACK_PACKAGE_NAME}_${CPACK_PACKAGE_VERSION}-${CPACK_PACKAGE_RELEASE}_${CPACK_DEBIAN_PACKAGE_ARCHITECTURE}")
+            "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${CPACK_PACKAGE_RELEASE}.${CPACK_DEBIAN_PACKAGE_ARCHITECTURE}")
 
     # Linux Fedora
     elseif(${LSB_RELEASE_ID_SHORT} MATCHES "CentOS")

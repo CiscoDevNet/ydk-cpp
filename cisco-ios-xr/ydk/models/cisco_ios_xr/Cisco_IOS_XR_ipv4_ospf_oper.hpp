@@ -5716,7 +5716,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::Neighbors::Neig
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf neighbor_address; //type: string
         ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf neighbor_address_xr; //type: string
+        ydk::YLeaf neighbor_ip_address; //type: string
         ydk::YLeaf neighbor_interface_name; //type: string
         ydk::YLeaf neighbor_dr_priority; //type: uint8
         ydk::YLeaf neighbor_state; //type: NeighborState
@@ -6031,7 +6031,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AdjacencyInformation::NeighborDetails
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf neighbor_address_xr; //type: string
+        ydk::YLeaf neighbor_ip_address; //type: string
         ydk::YLeaf neighbor_interface_name; //type: string
         ydk::YLeaf neighbor_dr_priority; //type: uint8
         ydk::YLeaf neighbor_state; //type: NeighborState
@@ -11504,7 +11504,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::Neighbors::Neighbor : pu
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf neighbor_address; //type: string
         ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf neighbor_address_xr; //type: string
+        ydk::YLeaf neighbor_ip_address; //type: string
         ydk::YLeaf neighbor_interface_name; //type: string
         ydk::YLeaf neighbor_dr_priority; //type: uint8
         ydk::YLeaf neighbor_state; //type: NeighborState
@@ -12022,7 +12022,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::Areas::Area::NeighborDetails::Neighbo
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf neighbor_address_xr; //type: string
+        ydk::YLeaf neighbor_ip_address; //type: string
         ydk::YLeaf neighbor_interface_name; //type: string
         ydk::YLeaf neighbor_dr_priority; //type: uint8
         ydk::YLeaf neighbor_state; //type: NeighborState
@@ -21312,7 +21312,7 @@ class Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::Neighbors::Nei
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf neighbor_address; //type: string
         ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf neighbor_address_xr; //type: string
+        ydk::YLeaf neighbor_ip_address; //type: string
         ydk::YLeaf neighbor_interface_name; //type: string
         ydk::YLeaf neighbor_dr_priority; //type: uint8
         ydk::YLeaf neighbor_state; //type: NeighborState
@@ -21627,7 +21627,7 @@ class Ospf::Processes::Process::DefaultVrf::AdjacencyInformation::NeighborDetail
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf neighbor_address_xr; //type: string
+        ydk::YLeaf neighbor_ip_address; //type: string
         ydk::YLeaf neighbor_interface_name; //type: string
         ydk::YLeaf neighbor_dr_priority; //type: uint8
         ydk::YLeaf neighbor_state; //type: NeighborState
@@ -27100,7 +27100,7 @@ class Ospf::Processes::Process::DefaultVrf::Areas::Area::Neighbors::Neighbor : p
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf neighbor_address; //type: string
         ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf neighbor_address_xr; //type: string
+        ydk::YLeaf neighbor_ip_address; //type: string
         ydk::YLeaf neighbor_interface_name; //type: string
         ydk::YLeaf neighbor_dr_priority; //type: uint8
         ydk::YLeaf neighbor_state; //type: NeighborState
@@ -27618,7 +27618,7 @@ class Ospf::Processes::Process::DefaultVrf::Areas::Area::NeighborDetails::Neighb
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf neighbor_id; //type: string
-        ydk::YLeaf neighbor_address_xr; //type: string
+        ydk::YLeaf neighbor_ip_address; //type: string
         ydk::YLeaf neighbor_interface_name; //type: string
         ydk::YLeaf neighbor_dr_priority; //type: uint8
         ydk::YLeaf neighbor_state; //type: NeighborState

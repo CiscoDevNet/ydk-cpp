@@ -25,6 +25,7 @@
 #include <ydk/common_utilities.hpp>
 #include <ydk/errors.hpp>
 #include <ydk/logger.hpp>
+#include <ydk/json_subtree_codec.hpp>
 
 #include "gnmi_provider.hpp"
 #include "gnmi_service.hpp"
@@ -41,16 +42,23 @@ namespace ydk {
 
 static string get_data_payload(gNMIServiceProvider& provider, Entity & entity)
 {
-    path::Codec codec_service{};
-    path::RootSchemaNode & root_schema = provider.get_session().get_root_schema();
-    auto yfilter = entity.yfilter;
-    entity.yfilter = YFilter::not_set;
-    path::DataNode& datanode = get_data_node_from_entity(entity, root_schema);
-    entity.yfilter = yfilter;
-
-    string payload = codec_service.encode(datanode, EncodingFormat::JSON, false);
-    YLOG_DEBUG("===========Generating Target Payload============");
-    YLOG_DEBUG("{}", payload);
+    string payload;
+    auto top_entity = get_top_entity(&entity);
+    if (entity.ignore_validation && top_entity->is_top_level_class) {
+        YLOG_DEBUG("=========== Generating JSON payload with JsonSubtreeCodec ============");
+        payload = get_json_subtree_filter_payload(*top_entity, provider, false);
+    }
+    else {
+        YLOG_DEBUG("=========== Generating JSON payload with path::Codec ============");
+        path::Codec codec_service{};
+        path::RootSchemaNode & root_schema = provider.get_session().get_root_schema();
+        auto yfilter = entity.yfilter;
+        entity.yfilter = YFilter::not_set;
+        path::DataNode& datanode = get_data_node_from_entity(entity, root_schema);
+        entity.yfilter = yfilter;
+        payload = codec_service.encode(datanode, EncodingFormat::JSON, false);
+    }
+    YLOG_DEBUG("\n{}", payload);
     return payload;
 }
 
@@ -63,8 +71,15 @@ gNMIService::~gNMIService()
 }
 
 //get
-shared_ptr<path::DataNode>
-gNMIService::get_from_path(gNMIServiceProvider& provider, vector<gnmi::Path*> path_list, const string & operation) const
+static shared_ptr<Entity> json_codec_payload_to_entity(const std::string & payload, shared_ptr<Entity> filter)
+{
+    JsonSubtreeCodec json_subtree_codec{};
+    YLOG_DEBUG("Decoding JSON payload to Entity using subtree codec");
+    return json_subtree_codec.decode(payload, filter);
+}
+
+static vector<string>
+get_json_from_path(gNMIServiceProvider& provider, vector<gnmi::Path*> path_list, const string & operation)
 {
 	YLOG_DEBUG("Executing 'get' gRPC on multiple paths");
 
@@ -81,6 +96,15 @@ gNMIService::get_from_path(gNMIServiceProvider& provider, vector<gnmi::Path*> pa
     auto & client = gnmi_session.get_client();
     vector<string> reply = client.execute_get_operation(get_request_list, operation);
 
+    return reply;
+}
+
+shared_ptr<path::DataNode>
+gNMIService::get_from_path(gNMIServiceProvider& provider, vector<gnmi::Path*> path_list, const string & operation) const
+{
+    vector<string> reply = get_json_from_path(provider, path_list, operation);
+
+    auto & gnmi_session = dynamic_cast<const path::gNMISession&> (provider.get_session());
     return gnmi_session.handle_get_reply(reply);
 }
 
@@ -89,11 +113,21 @@ gNMIService::get(gNMIServiceProvider& provider, Entity& filter, const string & o
 {
     YLOG_DEBUG("Executing 'get' gRPC on single entity");
 
+    auto top_entity = get_top_entity(&filter);
     gnmi::Path* path = new gnmi::Path;
-    parse_entity_to_path(filter, path);
-
+    parse_entity_to_path(*top_entity, path);
     vector<gnmi::Path*> path_list;
     path_list.push_back(path);
+
+    if (filter.ignore_validation && top_entity->is_top_level_class) {
+        // Bypass libyang validation
+        vector<string> reply = get_json_from_path(provider, path_list, operation);
+        if (reply.empty())
+            return nullptr;
+        auto reply_entity = json_codec_payload_to_entity(reply[0], top_entity->clone_ptr());
+        return get_child_entity_from_top(reply_entity, filter);
+    }
+
     auto root_dn = get_from_path(provider, path_list, operation);
     if (root_dn) {
         return read_datanode(filter, root_dn->get_children()[0]);
@@ -106,15 +140,46 @@ gNMIService::get(gNMIServiceProvider & provider, vector<Entity*> & filter_list, 
 {
     YLOG_DEBUG("Executing get gRPC for multiple entities");
 
+    vector<shared_ptr<Entity>> response_list{};
+    size_t bypass_validation = 0;
     vector<gnmi::Path*> path_list;
     for (auto filter : filter_list) {
+        auto top_entity = get_top_entity(filter);
         gnmi::Path* path = new gnmi::Path;
-        parse_entity_to_path(*filter, path);
+        parse_entity_to_path(*top_entity, path);
         path_list.push_back(path);
+        if (top_entity->is_top_level_class && filter->ignore_validation)
+            bypass_validation++;
     }
-    auto root_dn = get_from_path(provider, path_list, operation);
 
-    vector<shared_ptr<Entity>> response_list{};
+    if (bypass_validation == filter_list.size()) {
+        // Bypass libyang validation
+        vector<string> reply = get_json_from_path(provider, path_list, operation);
+        if (reply.empty())
+            return response_list;
+
+        // Build output list
+        for (auto filter : filter_list) {
+            auto fsp = filter->get_segment_path();
+            bool found = false;
+            for (auto r : reply) {
+                if (r.find(fsp) != string::npos) {
+                    auto top_entity = get_top_entity(filter);
+                    auto reply_entity = json_codec_payload_to_entity(r, top_entity->clone_ptr());
+                    auto child_entity = get_child_entity_from_top(reply_entity, *filter);
+                    response_list.push_back(child_entity);
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                response_list.push_back((std::shared_ptr<Entity>) filter);
+            }
+        }
+        return response_list;
+    }
+
+    auto root_dn = get_from_path(provider, path_list, operation);
     if (root_dn) {
         // Build map of data nodes in order to retain filter list order
         map<string,std::shared_ptr<path::DataNode>> path_to_dn{};

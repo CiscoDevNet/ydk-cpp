@@ -138,13 +138,10 @@ bool Traceroute::has_leaf_or_child_of_name(const std::string & name) const
 
 Traceroute::Input::Input()
     :
-    destination(std::make_shared<Traceroute::Input::Destination>())
-    , ipv4(std::make_shared<Traceroute::Input::Ipv4>())
-    , ipv6(std::make_shared<Traceroute::Input::Ipv6>())
+    destination(nullptr) // presence node
+    , ipv4(nullptr) // presence node
+    , ipv6(nullptr) // presence node
 {
-    destination->parent = this;
-    ipv4->parent = this;
-    ipv6->parent = this;
 
     yang_name = "input"; yang_parent_name = "traceroute"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -277,7 +274,7 @@ Traceroute::Input::Destination::Destination()
     outgoing_interface{YType::str, "outgoing-interface"}
 {
 
-    yang_name = "destination"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "destination"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Traceroute::Input::Destination::~Destination()
@@ -514,7 +511,7 @@ Traceroute::Input::Ipv4::Ipv4()
     verbose{YType::boolean, "verbose"}
 {
 
-    yang_name = "ipv4"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "ipv4"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Traceroute::Input::Ipv4::~Ipv4()
@@ -727,7 +724,7 @@ Traceroute::Input::Ipv6::Ipv6()
     outgoing_interface{YType::str, "outgoing-interface"}
 {
 
-    yang_name = "ipv6"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "ipv6"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Traceroute::Input::Ipv6::~Ipv6()
@@ -1041,11 +1038,9 @@ bool Traceroute::Output::has_leaf_or_child_of_name(const std::string & name) con
 
 Traceroute::Output::TracerouteResponse::TracerouteResponse()
     :
-    ipv4(std::make_shared<Traceroute::Output::TracerouteResponse::Ipv4>())
-    , ipv6(std::make_shared<Traceroute::Output::TracerouteResponse::Ipv6>())
+    ipv4(nullptr) // presence node
+    , ipv6(nullptr) // presence node
 {
-    ipv4->parent = this;
-    ipv6->parent = this;
 
     yang_name = "traceroute-response"; yang_parent_name = "output"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -1155,7 +1150,7 @@ Traceroute::Output::TracerouteResponse::Ipv4::Ipv4()
 {
     hops->parent = this;
 
-    yang_name = "ipv4"; yang_parent_name = "traceroute-response"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "ipv4"; yang_parent_name = "traceroute-response"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Traceroute::Output::TracerouteResponse::Ipv4::~Ipv4()
@@ -1734,7 +1729,7 @@ Traceroute::Output::TracerouteResponse::Ipv6::Ipv6()
 {
     hops->parent = this;
 
-    yang_name = "ipv6"; yang_parent_name = "traceroute-response"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "ipv6"; yang_parent_name = "traceroute-response"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Traceroute::Output::TracerouteResponse::Ipv6::~Ipv6()

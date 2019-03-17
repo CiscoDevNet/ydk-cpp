@@ -184,7 +184,6 @@ class AddressPoolService::Nodes::Node::Pools::Pool::AddressRanges::AddressRange 
         ydk::YLeaf start_address; //type: string
         ydk::YLeaf pool_name; //type: string
         ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf pool_scope; //type: string
         ydk::YLeaf allocated_addresses; //type: uint32
         ydk::YLeaf free_addresses; //type: uint32
         ydk::YLeaf excluded_addresses; //type: uint32

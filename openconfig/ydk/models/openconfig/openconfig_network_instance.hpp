@@ -29689,7 +29689,7 @@ class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessi
 class NetworkInstances::NetworkInstance::Mpls::SignalingProtocols::RsvpTe::Sessions::Session::State::SenderTspec::PeakDataRate : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf INFINITY;
+        static const ydk::Enum::YLeaf INFINITY_;
 
 };
 

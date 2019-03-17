@@ -4363,6 +4363,14 @@ class MribMultipathMode : public ydk::Enum
 
 };
 
+class BfdAuthInterop : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
+
+};
+
 class IgmpsnoopEhType : public ydk::Enum
 {
     public:
@@ -5382,6 +5390,16 @@ class IpUrpfT : public ydk::Enum
         static const ydk::Enum::YLeaf strict;
         static const ydk::Enum::YLeaf loose;
         static const ydk::Enum::YLeaf loose_allow_default;
+
+};
+
+class NbmNbmOifOrigin : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf UNDEFINED;
+        static const ydk::Enum::YLeaf PROTOCOL;
+        static const ydk::Enum::YLeaf API;
+        static const ydk::Enum::YLeaf API_PROTOCOL;
 
 };
 
@@ -6498,6 +6516,7 @@ class UdldPortEnable : public ydk::Enum
         static const ydk::Enum::YLeaf port_enabled;
         static const ydk::Enum::YLeaf port_fiber_disabled;
         static const ydk::Enum::YLeaf port_default;
+        static const ydk::Enum::YLeaf port_default_disable;
 
 };
 
@@ -7468,6 +7487,25 @@ class ArpSuppressArpMode : public ydk::Enum
 
 };
 
+class EqptcapXcvrT : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unspecified;
+        static const ydk::Enum::YLeaf gbic;
+        static const ydk::Enum::YLeaf solder;
+        static const ydk::Enum::YLeaf sfp;
+        static const ydk::Enum::YLeaf xbi;
+        static const ydk::Enum::YLeaf xenpak;
+        static const ydk::Enum::YLeaf xfp;
+        static const ydk::Enum::YLeaf xff;
+        static const ydk::Enum::YLeaf xfp_e;
+        static const ydk::Enum::YLeaf xpak;
+        static const ydk::Enum::YLeaf x2;
+        static const ydk::Enum::YLeaf dwdm_sfp;
+        static const ydk::Enum::YLeaf qsfp;
+
+};
+
 class L1DceMode : public ydk::Enum
 {
     public:
@@ -7983,6 +8021,15 @@ class NbmNbmRcvOwner : public ydk::Enum
         static const ydk::Enum::YLeaf IGMP;
         static const ydk::Enum::YLeaf STATIC;
         static const ydk::Enum::YLeaf PIM;
+        static const ydk::Enum::YLeaf NBM_STATIC;
+
+};
+
+class NbmNbmFlowPolicerEn : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf DISABLED;
+        static const ydk::Enum::YLeaf ENABLED;
 
 };
 
@@ -9318,6 +9365,14 @@ class McpOperSt : public ydk::Enum
 
 };
 
+class OspfFlagStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf set;
+        static const ydk::Enum::YLeaf clear;
+
+};
+
 class RtdmcAdjOperSt : public ydk::Enum
 {
     public:
@@ -9796,15 +9851,6 @@ class StpPortState : public ydk::Enum
 
 };
 
-class CfsIpDistMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
 class BgpLsProtoId : public ydk::Enum
 {
     public:
@@ -9952,25 +9998,6 @@ class AggregateResourceStatus : public ydk::Enum
         static const ydk::Enum::YLeaf myTEPIPPublished;
         static const ydk::Enum::YLeaf controllerIntfNotCarved;
         static const ydk::Enum::YLeaf controllerIntfCarved;
-
-};
-
-class EqptcapXcvrT : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unspecified;
-        static const ydk::Enum::YLeaf gbic;
-        static const ydk::Enum::YLeaf solder;
-        static const ydk::Enum::YLeaf sfp;
-        static const ydk::Enum::YLeaf xbi;
-        static const ydk::Enum::YLeaf xenpak;
-        static const ydk::Enum::YLeaf xfp;
-        static const ydk::Enum::YLeaf xff;
-        static const ydk::Enum::YLeaf xfp_e;
-        static const ydk::Enum::YLeaf xpak;
-        static const ydk::Enum::YLeaf x2;
-        static const ydk::Enum::YLeaf dwdm_sfp;
-        static const ydk::Enum::YLeaf qsfp;
 
 };
 
@@ -10998,6 +11025,7 @@ class NbmNbmFaultType : public ydk::Enum
         static const ydk::Enum::YLeaf EXTFLOWLIMITREACHED;
         static const ydk::Enum::YLeaf EXTPOLICYDENIED;
         static const ydk::Enum::YLeaf EXTPOLICERUNAVAIL;
+        static const ydk::Enum::YLeaf BADIFSTATE;
 
 };
 
@@ -11291,6 +11319,16 @@ class L1OperStQual_ : public ydk::Enum
 
 };
 
+class SyslogOriginIdType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf hostname;
+        static const ydk::Enum::YLeaf ip;
+        static const ydk::Enum::YLeaf string;
+
+};
+
 class RtmapMatchT : public ydk::Enum
 {
     public:
@@ -11535,6 +11573,14 @@ class NvoVniStateT : public ydk::Enum
 
 };
 
+class InbandTelemetryProfile : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf endpoint;
+        static const ydk::Enum::YLeaf transit;
+
+};
+
 class UdldPktDirection : public ydk::Enum
 {
     public:
@@ -11637,6 +11683,14 @@ class SisfNonGlobalTracking : public ydk::Enum
         static const ydk::Enum::YLeaf default_;
         static const ydk::Enum::YLeaf disable;
         static const ydk::Enum::YLeaf enable;
+
+};
+
+class OspfActive : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no;
+        static const ydk::Enum::YLeaf yes;
 
 };
 
@@ -12305,6 +12359,7 @@ class NbmNbmNoYes : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf NO;
         static const ydk::Enum::YLeaf YES;
+        static const ydk::Enum::YLeaf NA;
 
 };
 

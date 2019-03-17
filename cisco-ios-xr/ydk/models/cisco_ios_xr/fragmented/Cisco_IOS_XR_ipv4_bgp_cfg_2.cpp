@@ -11713,7 +11713,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::GlobalAfs::Globa
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes::RpkiStaticRoutes()
     :
-    rpki_static_route(this, {"addrress", "minimum", "maximum", "as"})
+    rpki_static_route(this, {"address", "minimum", "maximum", "as"})
 {
 
     yang_name = "rpki-static-routes"; yang_parent_name = "global"; is_top_level_class = false; has_list_ancestor = true; 
@@ -11806,7 +11806,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes
 
 Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes::RpkiStaticRoute::RpkiStaticRoute()
     :
-    addrress{YType::str, "addrress"},
+    address{YType::str, "address"},
     minimum{YType::uint32, "minimum"},
     maximum{YType::uint32, "maximum"},
     as{YType::uint32, "as"}
@@ -11822,7 +11822,7 @@ Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes::Rpk
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes::RpkiStaticRoute::has_data() const
 {
     if (is_presence_container) return true;
-    return addrress.is_set
+    return address.is_set
 	|| minimum.is_set
 	|| maximum.is_set
 	|| as.is_set;
@@ -11831,7 +11831,7 @@ bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes::RpkiStaticRoute::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(addrress.yfilter)
+	|| ydk::is_set(address.yfilter)
 	|| ydk::is_set(minimum.yfilter)
 	|| ydk::is_set(maximum.yfilter)
 	|| ydk::is_set(as.yfilter);
@@ -11841,7 +11841,7 @@ std::string Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStati
 {
     std::ostringstream path_buffer;
     path_buffer << "rpki-static-route";
-    ADD_KEY_TOKEN(addrress, "addrress");
+    ADD_KEY_TOKEN(address, "address");
     ADD_KEY_TOKEN(minimum, "minimum");
     ADD_KEY_TOKEN(maximum, "maximum");
     ADD_KEY_TOKEN(as, "as");
@@ -11852,7 +11852,7 @@ std::vector<std::pair<std::string, LeafData> > Bgp::Instance::InstanceAs::FourBy
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (addrress.is_set || is_set(addrress.yfilter)) leaf_name_data.push_back(addrress.get_name_leafdata());
+    if (address.is_set || is_set(address.yfilter)) leaf_name_data.push_back(address.get_name_leafdata());
     if (minimum.is_set || is_set(minimum.yfilter)) leaf_name_data.push_back(minimum.get_name_leafdata());
     if (maximum.is_set || is_set(maximum.yfilter)) leaf_name_data.push_back(maximum.get_name_leafdata());
     if (as.is_set || is_set(as.yfilter)) leaf_name_data.push_back(as.get_name_leafdata());
@@ -11875,11 +11875,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::Instance::InstanceAs::F
 
 void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes::RpkiStaticRoute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "addrress")
+    if(value_path == "address")
     {
-        addrress = value;
-        addrress.value_namespace = name_space;
-        addrress.value_namespace_prefix = name_space_prefix;
+        address = value;
+        address.value_namespace = name_space;
+        address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "minimum")
     {
@@ -11903,9 +11903,9 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes
 
 void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes::RpkiStaticRoute::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "addrress")
+    if(value_path == "address")
     {
-        addrress.yfilter = yfilter;
+        address.yfilter = yfilter;
     }
     if(value_path == "minimum")
     {
@@ -11923,7 +11923,7 @@ void Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes
 
 bool Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoutes::RpkiStaticRoute::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "addrress" || name == "minimum" || name == "maximum" || name == "as")
+    if(name == "address" || name == "minimum" || name == "maximum" || name == "as")
         return true;
     return false;
 }

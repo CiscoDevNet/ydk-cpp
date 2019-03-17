@@ -199,7 +199,6 @@ class CallHome::Profiles::Profile : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf profile_name; //type: string
-        ydk::YLeaf create; //type: empty
         ydk::YLeaf message_format; //type: string
         ydk::YLeaf anonymous; //type: boolean
         ydk::YLeaf message_size_limit; //type: uint32

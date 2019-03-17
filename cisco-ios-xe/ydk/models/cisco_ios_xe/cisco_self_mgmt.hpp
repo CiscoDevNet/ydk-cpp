@@ -64,6 +64,7 @@ class NetconfYang::CiscoIa : public ydk::Entity
         ydk::YLeaf post_sync_acl_process; //type: boolean
         ydk::YLeaf config_change_delay; //type: int16
         ydk::YLeaf process_missing_prc; //type: boolean
+        ydk::YLeaf missing_prc_method; //type: ParserMsgProcessingMethod
         ydk::YLeaf snmp_community_string; //type: string
         ydk::YLeaf preserve_paths_enabled; //type: boolean
         ydk::YLeaf nes_ttynum; //type: int16
@@ -72,19 +73,25 @@ class NetconfYang::CiscoIa : public ydk::Entity
         class PreserveNedPath; //type: NetconfYang::CiscoIa::PreserveNedPath
         class ParserMsgIgnore; //type: NetconfYang::CiscoIa::ParserMsgIgnore
         class ConfParserMsgIgnore; //type: NetconfYang::CiscoIa::ConfParserMsgIgnore
+        class ParserMsgError; //type: NetconfYang::CiscoIa::ParserMsgError
+        class ConfParserMsgError; //type: NetconfYang::CiscoIa::ConfParserMsgError
         class FullSyncCli; //type: NetconfYang::CiscoIa::FullSyncCli
         class ConfFullSyncCli; //type: NetconfYang::CiscoIa::ConfFullSyncCli
         class Logging; //type: NetconfYang::CiscoIa::Logging
         class Blocking; //type: NetconfYang::CiscoIa::Blocking
+        class PivotCommands; //type: NetconfYang::CiscoIa::PivotCommands
 
         std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::SnmpTrapControl> snmp_trap_control;
         ydk::YList preserve_ned_path;
         ydk::YList parser_msg_ignore;
         ydk::YList conf_parser_msg_ignore;
+        ydk::YList parser_msg_error;
+        ydk::YList conf_parser_msg_error;
         ydk::YList full_sync_cli;
         ydk::YList conf_full_sync_cli;
         std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::Logging> logging;
         std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::Blocking> blocking;
+        std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::PivotCommands> pivot_commands;
         
 }; // NetconfYang::CiscoIa
 
@@ -202,6 +209,50 @@ class NetconfYang::CiscoIa::ConfParserMsgIgnore : public ydk::Entity
         ydk::YLeaf message; //type: string
 
 }; // NetconfYang::CiscoIa::ConfParserMsgIgnore
+
+
+class NetconfYang::CiscoIa::ParserMsgError : public ydk::Entity
+{
+    public:
+        ParserMsgError();
+        ~ParserMsgError();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf message; //type: string
+
+}; // NetconfYang::CiscoIa::ParserMsgError
+
+
+class NetconfYang::CiscoIa::ConfParserMsgError : public ydk::Entity
+{
+    public:
+        ConfParserMsgError();
+        ~ConfParserMsgError();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf message; //type: string
+
+}; // NetconfYang::CiscoIa::ConfParserMsgError
 
 
 class NetconfYang::CiscoIa::FullSyncCli : public ydk::Entity
@@ -345,6 +396,77 @@ class NetconfYang::CiscoIa::Blocking::ConfdCfgCommand : public ydk::Entity
         ydk::YLeaf command; //type: string
 
 }; // NetconfYang::CiscoIa::Blocking::ConfdCfgCommand
+
+
+class NetconfYang::CiscoIa::PivotCommands : public ydk::Entity
+{
+    public:
+        PivotCommands();
+        ~PivotCommands();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class PivotCommand; //type: NetconfYang::CiscoIa::PivotCommands::PivotCommand
+
+        ydk::YList pivot_command;
+        
+}; // NetconfYang::CiscoIa::PivotCommands
+
+
+class NetconfYang::CiscoIa::PivotCommands::PivotCommand : public ydk::Entity
+{
+    public:
+        PivotCommand();
+        ~PivotCommand();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf command; //type: string
+        class Retry; //type: NetconfYang::CiscoIa::PivotCommands::PivotCommand::Retry
+
+        std::shared_ptr<cisco_ios_xe::cisco_self_mgmt::NetconfYang::CiscoIa::PivotCommands::PivotCommand::Retry> retry; // presence node
+        
+}; // NetconfYang::CiscoIa::PivotCommands::PivotCommand
+
+
+class NetconfYang::CiscoIa::PivotCommands::PivotCommand::Retry : public ydk::Entity
+{
+    public:
+        Retry();
+        ~Retry();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf min_retry_time; //type: uint16
+        ydk::YLeaf max_retry_time; //type: uint16
+
+}; // NetconfYang::CiscoIa::PivotCommands::PivotCommand::Retry
 
 
 }

@@ -143,6 +143,7 @@ class Dhcpv6::Profiles::Profile::Relay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf link_address; //type: string
         ydk::YLeaf src_intf_name; //type: string
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf iana_route_add; //type: empty

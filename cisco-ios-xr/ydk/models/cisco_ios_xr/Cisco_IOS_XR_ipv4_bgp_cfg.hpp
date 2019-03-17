@@ -10089,7 +10089,7 @@ class Bgp::Instance::InstanceAs::FourByteAs::DefaultVrf::Global::RpkiStaticRoute
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf addrress; //type: string
+        ydk::YLeaf address; //type: string
         ydk::YLeaf minimum; //type: uint32
         ydk::YLeaf maximum; //type: uint32
         ydk::YLeaf as; //type: uint32

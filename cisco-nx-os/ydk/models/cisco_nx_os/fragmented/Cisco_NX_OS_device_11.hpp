@@ -3173,6 +3173,7 @@ class System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContLis
         ydk::YLeaf rewritertasn; //type: BgpAdminSt
         ydk::YLeaf advgwip; //type: NwAdminSt_
         ydk::YLeaf advlocallblrt; //type: NwAdminSt_
+        ydk::YLeaf nhselfall; //type: boolean
         ydk::YLeaf inheritcontpeerpolicyctrl; //type: string
         ydk::YLeaf name; //type: string
         class MaxpfxpItems; //type: System::BgpItems::InstItems::DomItems::DomList::PeercontItems::PeerContList::AfItems::PeerAfList::MaxpfxpItems

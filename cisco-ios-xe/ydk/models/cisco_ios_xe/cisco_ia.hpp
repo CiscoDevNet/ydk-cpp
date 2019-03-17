@@ -418,6 +418,14 @@ class SyslogSeverity : public ydk::Enum
 
 };
 
+class ParserMsgProcessingMethod : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf blacklist;
+        static const ydk::Enum::YLeaf whitelist;
+
+};
+
 class OnepLogLevel : public ydk::Enum
 {
     public:

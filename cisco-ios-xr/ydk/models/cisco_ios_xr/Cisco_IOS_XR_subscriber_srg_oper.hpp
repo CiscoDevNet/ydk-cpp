@@ -123,6 +123,7 @@ class SubscriberRedundancyManager::Summary : public ydk::Entity
         ydk::YLeaf preferred_role; //type: SrgShowRole
         ydk::YLeaf slave_mode; //type: SrgShowSlaveMode
         ydk::YLeaf hold_timer; //type: uint32
+        ydk::YLeaf sync_time; //type: uint32
         ydk::YLeaf source_interface_name; //type: string
         ydk::YLeaf vrf_name; //type: string
         ydk::YLeaf source_interface_ipv4_address; //type: string
@@ -632,14 +633,14 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId : public ydk::En
         ydk::YLeaf peer_ipv4_address; //type: string
         ydk::YLeaf peer_ipv6_address; //type: string
         ydk::YLeaf peer_status; //type: SrgPeerStatus
-        ydk::YLeaf peer_last_negotiation_time; //type: string
-        ydk::YLeaf peer_last_up_time; //type: string
-        ydk::YLeaf peer_last_down_time; //type: string
+        ydk::YLeaf peer_last_negotiation_time_epoch; //type: uint64
+        ydk::YLeaf peer_last_up_time_epoch; //type: uint64
+        ydk::YLeaf peer_last_down_time_epoch; //type: uint64
         ydk::YLeaf peer_init_role; //type: SrgShowRole
         ydk::YLeaf peer_negotiating_role; //type: SrgShowRole
         ydk::YLeaf peer_current_role; //type: SrgShowRole
         ydk::YLeaf peer_object_tracking_status; //type: boolean
-        ydk::YLeaf last_switchover_time; //type: string
+        ydk::YLeaf last_switchover_time_epoch; //type: uint64
         ydk::YLeaf switchover_count; //type: uint32
         ydk::YLeaf last_switchover_reason; //type: SrgShowSoReason
         ydk::YLeaf switchover_hold_time; //type: uint32

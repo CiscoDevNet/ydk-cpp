@@ -3712,6 +3712,8 @@ class Aaa::Diameter::Diams::Diam::DiamAttrDefs::DiamAttrDef::DiamAttrValue : pub
         ydk::YLeaf type_ulong; //type: uint32
         ydk::YLeaf type_identity; //type: string
         ydk::YLeaf data_type; //type: uint32
+        ydk::YLeaf type_ulonglong; //type: uint32
+        ydk::YLeaf type_utc; //type: uint32
         ydk::YLeaf mandatory; //type: uint32
 
 }; // Aaa::Diameter::Diams::Diam::DiamAttrDefs::DiamAttrDef::DiamAttrValue

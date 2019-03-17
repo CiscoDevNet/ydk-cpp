@@ -160,6 +160,7 @@ class SdrInventory::Racks::Rack::Slot::Card::Attributes : public ydk::Entity
         ydk::YLeaf card_type; //type: uint32
         ydk::YLeaf card_type_string; //type: string
         ydk::YLeaf node_name_string; //type: string
+        ydk::YLeaf card_valid; //type: uint32
         ydk::YLeaf pi_slot_number; //type: uint32
         ydk::YLeaf shutdown; //type: uint32
         ydk::YLeaf ctype; //type: uint32

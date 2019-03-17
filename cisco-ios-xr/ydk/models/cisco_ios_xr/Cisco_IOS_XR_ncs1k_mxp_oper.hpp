@@ -85,7 +85,7 @@ class HwModule::SliceIds::SliceId : public ydk::Entity
         ydk::YLeaf slice_id; //type: uint32
         ydk::YLeaf client_rate; //type: ClientDataRate
         ydk::YLeaf trunk_rate; //type: TrunkDataRate
-        ydk::YLeaf hardware_status; //type: HwModuleSliceStatus
+        ydk::YLeaf status; //type: HwModuleSliceStatus
         ydk::YLeaf dp_fpga_fw_type; //type: string
         ydk::YLeaf dp_fpga_fw_ver; //type: string
         ydk::YLeaf need_upg; //type: uint32
@@ -190,7 +190,7 @@ class HwModule::SliceAll::SliceInfo : public ydk::Entity
         ydk::YLeaf slice_id; //type: uint32
         ydk::YLeaf client_rate; //type: ClientDataRate
         ydk::YLeaf trunk_rate; //type: TrunkDataRate
-        ydk::YLeaf hardware_status; //type: HwModuleSliceStatus
+        ydk::YLeaf status; //type: HwModuleSliceStatus
         ydk::YLeaf dp_fpga_fw_type; //type: string
         ydk::YLeaf dp_fpga_fw_ver; //type: string
         ydk::YLeaf need_upg; //type: uint32

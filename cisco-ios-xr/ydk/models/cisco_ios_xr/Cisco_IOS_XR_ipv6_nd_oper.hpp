@@ -531,6 +531,8 @@ class Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAd
         ydk::YLeaf ipv6_address; //type: string
         ydk::YLeaf valid_lifetime; //type: uint32
         ydk::YLeaf pref_lifetime; //type: uint32
+        ydk::YLeaf prefix_length; //type: uint32
+        ydk::YLeaf flags; //type: uint32
 
 }; // Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::LocalAddress
 
@@ -554,6 +556,8 @@ class Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalA
         ydk::YLeaf ipv6_address; //type: string
         ydk::YLeaf valid_lifetime; //type: uint32
         ydk::YLeaf pref_lifetime; //type: uint32
+        ydk::YLeaf prefix_length; //type: uint32
+        ydk::YLeaf flags; //type: uint32
 
 }; // Ipv6NodeDiscovery::Nodes::Node::BundleInterfaces::BundleInterface::GlobalAddress
 
@@ -716,6 +720,8 @@ class Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAd
         ydk::YLeaf ipv6_address; //type: string
         ydk::YLeaf valid_lifetime; //type: uint32
         ydk::YLeaf pref_lifetime; //type: uint32
+        ydk::YLeaf prefix_length; //type: uint32
+        ydk::YLeaf flags; //type: uint32
 
 }; // Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::LocalAddress
 
@@ -739,6 +745,8 @@ class Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGloba
         ydk::YLeaf ipv6_address; //type: string
         ydk::YLeaf valid_lifetime; //type: uint32
         ydk::YLeaf pref_lifetime; //type: uint32
+        ydk::YLeaf prefix_length; //type: uint32
+        ydk::YLeaf flags; //type: uint32
 
 }; // Ipv6NodeDiscovery::Nodes::Node::NdVirtualRouters::NdVirtualRouter::VrGlobalAddress
 

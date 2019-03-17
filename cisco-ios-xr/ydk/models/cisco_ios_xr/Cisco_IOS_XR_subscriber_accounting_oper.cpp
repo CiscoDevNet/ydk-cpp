@@ -225,10 +225,12 @@ SubscriberAccounting::Nodes::Node::Node()
     subscriber_accounting_session_features(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSessionFeatures>())
     , subscriber_accounting_summary(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSummary>())
     , subscriber_accounting_flow_features(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures>())
+    , subscriber_accounting_srg_features(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures>())
 {
     subscriber_accounting_session_features->parent = this;
     subscriber_accounting_summary->parent = this;
     subscriber_accounting_flow_features->parent = this;
+    subscriber_accounting_srg_features->parent = this;
 
     yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -243,7 +245,8 @@ bool SubscriberAccounting::Nodes::Node::has_data() const
     return node_id.is_set
 	|| (subscriber_accounting_session_features !=  nullptr && subscriber_accounting_session_features->has_data())
 	|| (subscriber_accounting_summary !=  nullptr && subscriber_accounting_summary->has_data())
-	|| (subscriber_accounting_flow_features !=  nullptr && subscriber_accounting_flow_features->has_data());
+	|| (subscriber_accounting_flow_features !=  nullptr && subscriber_accounting_flow_features->has_data())
+	|| (subscriber_accounting_srg_features !=  nullptr && subscriber_accounting_srg_features->has_data());
 }
 
 bool SubscriberAccounting::Nodes::Node::has_operation() const
@@ -252,7 +255,8 @@ bool SubscriberAccounting::Nodes::Node::has_operation() const
 	|| ydk::is_set(node_id.yfilter)
 	|| (subscriber_accounting_session_features !=  nullptr && subscriber_accounting_session_features->has_operation())
 	|| (subscriber_accounting_summary !=  nullptr && subscriber_accounting_summary->has_operation())
-	|| (subscriber_accounting_flow_features !=  nullptr && subscriber_accounting_flow_features->has_operation());
+	|| (subscriber_accounting_flow_features !=  nullptr && subscriber_accounting_flow_features->has_operation())
+	|| (subscriber_accounting_srg_features !=  nullptr && subscriber_accounting_srg_features->has_operation());
 }
 
 std::string SubscriberAccounting::Nodes::Node::get_absolute_path() const
@@ -309,6 +313,15 @@ std::shared_ptr<ydk::Entity> SubscriberAccounting::Nodes::Node::get_child_by_nam
         return subscriber_accounting_flow_features;
     }
 
+    if(child_yang_name == "subscriber-accounting-srg-features")
+    {
+        if(subscriber_accounting_srg_features == nullptr)
+        {
+            subscriber_accounting_srg_features = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures>();
+        }
+        return subscriber_accounting_srg_features;
+    }
+
     return nullptr;
 }
 
@@ -329,6 +342,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberAccounting::Nodes:
     if(subscriber_accounting_flow_features != nullptr)
     {
         _children["subscriber-accounting-flow-features"] = subscriber_accounting_flow_features;
+    }
+
+    if(subscriber_accounting_srg_features != nullptr)
+    {
+        _children["subscriber-accounting-srg-features"] = subscriber_accounting_srg_features;
     }
 
     return _children;
@@ -354,7 +372,7 @@ void SubscriberAccounting::Nodes::Node::set_filter(const std::string & value_pat
 
 bool SubscriberAccounting::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "subscriber-accounting-session-features" || name == "subscriber-accounting-summary" || name == "subscriber-accounting-flow-features" || name == "node-id")
+    if(name == "subscriber-accounting-session-features" || name == "subscriber-accounting-summary" || name == "subscriber-accounting-flow-features" || name == "subscriber-accounting-srg-features" || name == "node-id")
         return true;
     return false;
 }
@@ -3157,6 +3175,359 @@ void SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::Subscr
 bool SubscriberAccounting::Nodes::Node::SubscriberAccountingFlowFeatures::SubscriberAccountingFlowFeature::FlowFeatureData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "flow-accounting-enabled-flag" || name == "flow-idle-timeout-enabled-flag" || name == "prepaid-enabled-flag" || name == "prepaid-reauth-timer-enabled" || name == "prepaid-idle-timeout-enabled" || name == "prepaid-final-unit" || name == "unique-class-label" || name == "flow-direction" || name == "flow-accounting-periodic-interval" || name == "flow-idle-timeout-value" || name == "prepaid-time-quota" || name == "prepaid-time-threshold" || name == "prepaid-total-time-quota" || name == "prepaid-volume-threshold" || name == "prepaid-remaining-qt" || name == "prepaid-remaining-qat" || name == "prepaid-remaining-qit" || name == "prepaid-remaining-qtt" || name == "prepaid-remaining-wheel" || name == "prepaid-tariff-time" || name == "prepaid-idle-timeout-value" || name == "prepaid-reauth-timeout-value" || name == "prepaid-ccfh" || name == "prepaid-result-code" || name == "prepaid-volumei-quota" || name == "prepaid-volumeo-quota" || name == "prepaid-volumeb-quota" || name == "prepaid-total-volumei-quota" || name == "prepaid-total-volumeo-quota" || name == "prepaid-total-volumeb-quota" || name == "prepaid-volume-usedi-quota" || name == "prepaid-volume-usedo-quota" || name == "prepaid-volume-refi-quota" || name == "prepaid-volume-refo-quota" || name == "prepaid-volume-refb-quota" || name == "prepaid-volume-agg-refi-quota" || name == "prepaid-volume-agg-refo-quota" || name == "prepaid-volume-agg-refb-quota" || name == "prepaid-volume-newi-quota" || name == "prepaid-volume-newo-quota" || name == "prepaid-volume-newb-quota" || name == "prepaid-tariff-volumei-quota" || name == "prepaid-tariff-volumeo-quota" || name == "prepaid-tariff-volumeb-quota" || name == "flow-accounting-method-list-name" || name == "prepaid-cfg" || name == "prepaid-time-state" || name == "prepaid-volume-state" || name == "prepaid-charging-rule")
+        return true;
+    return false;
+}
+
+SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeatures()
+    :
+    subscriber_accounting_srg_feature(this, {"interface_name"})
+{
+
+    yang_name = "subscriber-accounting-srg-features"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::~SubscriberAccountingSrgFeatures()
+{
+}
+
+bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<subscriber_accounting_srg_feature.len(); index++)
+    {
+        if(subscriber_accounting_srg_feature[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::has_operation() const
+{
+    for (std::size_t index=0; index<subscriber_accounting_srg_feature.len(); index++)
+    {
+        if(subscriber_accounting_srg_feature[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "subscriber-accounting-srg-features";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "subscriber-accounting-srg-feature")
+    {
+        auto ent_ = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature>();
+        ent_->parent = this;
+        subscriber_accounting_srg_feature.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : subscriber_accounting_srg_feature.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "subscriber-accounting-srg-feature")
+        return true;
+    return false;
+}
+
+SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::SubscriberAccountingSrgFeature()
+    :
+    interface_name{YType::str, "interface-name"}
+        ,
+    srg_status_counters(std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::SrgStatusCounters>())
+{
+    srg_status_counters->parent = this;
+
+    yang_name = "subscriber-accounting-srg-feature"; yang_parent_name = "subscriber-accounting-srg-features"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::~SubscriberAccountingSrgFeature()
+{
+}
+
+bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::has_data() const
+{
+    if (is_presence_container) return true;
+    return interface_name.is_set
+	|| (srg_status_counters !=  nullptr && srg_status_counters->has_data());
+}
+
+bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| (srg_status_counters !=  nullptr && srg_status_counters->has_operation());
+}
+
+std::string SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "subscriber-accounting-srg-feature";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "srg-status-counters")
+    {
+        if(srg_status_counters == nullptr)
+        {
+            srg_status_counters = std::make_shared<SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::SrgStatusCounters>();
+        }
+        return srg_status_counters;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(srg_status_counters != nullptr)
+    {
+        _children["srg-status-counters"] = srg_status_counters;
+    }
+
+    return _children;
+}
+
+void SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "srg-status-counters" || name == "interface-name")
+        return true;
+    return false;
+}
+
+SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::SrgStatusCounters::SrgStatusCounters()
+    :
+    interface_name{YType::str, "interface-name"},
+    access_interface_handle{YType::uint32, "access-interface-handle"},
+    accounting_mode{YType::uint32, "accounting-mode"},
+    srg_node_role{YType::uint32, "srg-node-role"},
+    srg_master_eoms_pending_flag{YType::boolean, "srg-master-eoms-pending-flag"},
+    srg_diameter_up_flag{YType::boolean, "srg-diameter-up-flag"},
+    srg_role_upd_time{YType::str, "srg-role-upd-time"}
+{
+
+    yang_name = "srg-status-counters"; yang_parent_name = "subscriber-accounting-srg-feature"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::SrgStatusCounters::~SrgStatusCounters()
+{
+}
+
+bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::SrgStatusCounters::has_data() const
+{
+    if (is_presence_container) return true;
+    return interface_name.is_set
+	|| access_interface_handle.is_set
+	|| accounting_mode.is_set
+	|| srg_node_role.is_set
+	|| srg_master_eoms_pending_flag.is_set
+	|| srg_diameter_up_flag.is_set
+	|| srg_role_upd_time.is_set;
+}
+
+bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::SrgStatusCounters::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(access_interface_handle.yfilter)
+	|| ydk::is_set(accounting_mode.yfilter)
+	|| ydk::is_set(srg_node_role.yfilter)
+	|| ydk::is_set(srg_master_eoms_pending_flag.yfilter)
+	|| ydk::is_set(srg_diameter_up_flag.yfilter)
+	|| ydk::is_set(srg_role_upd_time.yfilter);
+}
+
+std::string SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::SrgStatusCounters::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "srg-status-counters";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::SrgStatusCounters::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (access_interface_handle.is_set || is_set(access_interface_handle.yfilter)) leaf_name_data.push_back(access_interface_handle.get_name_leafdata());
+    if (accounting_mode.is_set || is_set(accounting_mode.yfilter)) leaf_name_data.push_back(accounting_mode.get_name_leafdata());
+    if (srg_node_role.is_set || is_set(srg_node_role.yfilter)) leaf_name_data.push_back(srg_node_role.get_name_leafdata());
+    if (srg_master_eoms_pending_flag.is_set || is_set(srg_master_eoms_pending_flag.yfilter)) leaf_name_data.push_back(srg_master_eoms_pending_flag.get_name_leafdata());
+    if (srg_diameter_up_flag.is_set || is_set(srg_diameter_up_flag.yfilter)) leaf_name_data.push_back(srg_diameter_up_flag.get_name_leafdata());
+    if (srg_role_upd_time.is_set || is_set(srg_role_upd_time.yfilter)) leaf_name_data.push_back(srg_role_upd_time.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::SrgStatusCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::SrgStatusCounters::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::SrgStatusCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "access-interface-handle")
+    {
+        access_interface_handle = value;
+        access_interface_handle.value_namespace = name_space;
+        access_interface_handle.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accounting-mode")
+    {
+        accounting_mode = value;
+        accounting_mode.value_namespace = name_space;
+        accounting_mode.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srg-node-role")
+    {
+        srg_node_role = value;
+        srg_node_role.value_namespace = name_space;
+        srg_node_role.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srg-master-eoms-pending-flag")
+    {
+        srg_master_eoms_pending_flag = value;
+        srg_master_eoms_pending_flag.value_namespace = name_space;
+        srg_master_eoms_pending_flag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srg-diameter-up-flag")
+    {
+        srg_diameter_up_flag = value;
+        srg_diameter_up_flag.value_namespace = name_space;
+        srg_diameter_up_flag.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "srg-role-upd-time")
+    {
+        srg_role_upd_time = value;
+        srg_role_upd_time.value_namespace = name_space;
+        srg_role_upd_time.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::SrgStatusCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "access-interface-handle")
+    {
+        access_interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "accounting-mode")
+    {
+        accounting_mode.yfilter = yfilter;
+    }
+    if(value_path == "srg-node-role")
+    {
+        srg_node_role.yfilter = yfilter;
+    }
+    if(value_path == "srg-master-eoms-pending-flag")
+    {
+        srg_master_eoms_pending_flag.yfilter = yfilter;
+    }
+    if(value_path == "srg-diameter-up-flag")
+    {
+        srg_diameter_up_flag.yfilter = yfilter;
+    }
+    if(value_path == "srg-role-upd-time")
+    {
+        srg_role_upd_time.yfilter = yfilter;
+    }
+}
+
+bool SubscriberAccounting::Nodes::Node::SubscriberAccountingSrgFeatures::SubscriberAccountingSrgFeature::SrgStatusCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name" || name == "access-interface-handle" || name == "accounting-mode" || name == "srg-node-role" || name == "srg-master-eoms-pending-flag" || name == "srg-diameter-up-flag" || name == "srg-role-upd-time")
         return true;
     return false;
 }

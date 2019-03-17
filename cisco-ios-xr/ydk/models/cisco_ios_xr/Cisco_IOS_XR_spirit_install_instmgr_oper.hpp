@@ -391,6 +391,7 @@ class SoftwareInstall::Version : public ydk::Entity
         ydk::YLeaf copyright_info; //type: string
         ydk::YLeaf hardware_info; //type: string
         ydk::YLeaf system_uptime; //type: string
+        ydk::YLeaf img_info; //type: string
         class Package; //type: SoftwareInstall::Version::Package
 
         ydk::YList package;

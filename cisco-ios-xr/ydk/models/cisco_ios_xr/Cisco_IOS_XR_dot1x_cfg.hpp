@@ -104,6 +104,7 @@ class Dot1x::Dot1xProfile::Authenticator : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf eap_profile; //type: string
+        ydk::YLeaf server_dead; //type: Dot1xServerDeadAction
         class Timers; //type: Dot1x::Dot1xProfile::Authenticator::Timers
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_dot1x_cfg::Dot1x::Dot1xProfile::Authenticator::Timers> timers;
@@ -228,6 +229,14 @@ class Eap::EapProfile::Eaptls : public ydk::Entity
         ydk::YLeaf pki_trustpoint; //type: string
 
 }; // Eap::EapProfile::Eaptls
+
+class Dot1xServerDeadAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf auth_fail;
+        static const ydk::Enum::YLeaf auth_retry;
+
+};
 
 
 }

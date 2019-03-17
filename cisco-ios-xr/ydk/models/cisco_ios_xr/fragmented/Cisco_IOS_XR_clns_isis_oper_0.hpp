@@ -3947,45 +3947,6 @@ class IsisIfTopoAdvPrefixDisabledReason : public ydk::Enum
 
 };
 
-class IsisLspTrigger : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_lsp_trig_config;
-        static const ydk::Enum::YLeaf isis_lsp_trig_newadj;
-        static const ydk::Enum::YLeaf isis_lsp_trig_deladj;
-        static const ydk::Enum::YLeaf isis_lsp_trig_dr_change;
-        static const ydk::Enum::YLeaf isis_lsp_trig_area_set;
-        static const ydk::Enum::YLeaf isis_lsp_trig_attach;
-        static const ydk::Enum::YLeaf isis_lsp_trig_hippity;
-        static const ydk::Enum::YLeaf isis_lsp_trig_regen;
-        static const ydk::Enum::YLeaf isis_lsp_trig_ip_if_up;
-        static const ydk::Enum::YLeaf isis_lsp_trig_ip_if_down;
-        static const ydk::Enum::YLeaf isis_lsp_trig_ip_inter_area;
-        static const ydk::Enum::YLeaf isis_lsp_trig_ip_external;
-        static const ydk::Enum::YLeaf isis_lsp_trig_ip_external_full;
-        static const ydk::Enum::YLeaf isis_lsp_trig_ip_def_orig;
-        static const ydk::Enum::YLeaf isis_lsp_trig_ip_addr_chg;
-        static const ydk::Enum::YLeaf isis_lsp_trig_te_info;
-        static const ydk::Enum::YLeaf isis_lsp_trig_te_pce_info;
-        static const ydk::Enum::YLeaf isis_lsp_trig_te_fa_info;
-        static const ydk::Enum::YLeaf isis_lsp_trig_nsr_fo;
-        static const ydk::Enum::YLeaf isis_lsp_trig_pn_cancel;
-        static const ydk::Enum::YLeaf isis_lsp_trig_lkgp;
-        static const ydk::Enum::YLeaf isis_lsp_trig_pp;
-        static const ydk::Enum::YLeaf isis_lsp_trig_config_force_send;
-        static const ydk::Enum::YLeaf isis_lsp_trig_config_force_init;
-        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_add;
-        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_delete;
-        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_change;
-        static const ydk::Enum::YLeaf isis_lsp_trig_msd;
-        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_wait_timer;
-        static const ydk::Enum::YLeaf isis_lsp_trig_direct_gen;
-        static const ydk::Enum::YLeaf isis_lsp_trig_flex_algo_enable_disable;
-        static const ydk::Enum::YLeaf isis_lsp_trig_pm_delay_loss;
-        static const ydk::Enum::YLeaf isis_lsp_trig_pm_bw_util;
-
-};
-
 class IsisAdjState : public ydk::Enum
 {
     public:
@@ -4072,6 +4033,15 @@ class IsisIfAdjFormDisabledReason : public ydk::Enum
 
 };
 
+class IsisEdmLabelTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_edm_label_alloc_prefix_sid;
+        static const ydk::Enum::YLeaf isis_edm_label_alloc_local_sid;
+        static const ydk::Enum::YLeaf isis_edm_label_alloc_max;
+
+};
+
 class OpenconfigIsisLspIsisMetricFlagsEnum : public ydk::Enum
 {
     public:
@@ -4127,15 +4097,6 @@ class OpenconfigIsisLspStateFlagsEnum : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf numbered;
-
-};
-
-class IsisIfAfPrefixUnknownReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_adv_suppressed;
-        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_global_addr_reg_error;
-        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_internal_error;
 
 };
 
@@ -4343,6 +4304,15 @@ class OpenconfigIsisTypesLevelTypeEnum : public ydk::Enum
 
 };
 
+class IsisIfAfPrefixUnknownReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_adv_suppressed;
+        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_global_addr_reg_error;
+        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_internal_error;
+
+};
+
 class IsisSpfClass : public ydk::Enum
 {
     public:
@@ -4421,6 +4391,45 @@ class IsisReachable : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf isis_unreachable;
         static const ydk::Enum::YLeaf isis_reachable;
+
+};
+
+class IsisLspTrigger : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_lsp_trig_config;
+        static const ydk::Enum::YLeaf isis_lsp_trig_newadj;
+        static const ydk::Enum::YLeaf isis_lsp_trig_deladj;
+        static const ydk::Enum::YLeaf isis_lsp_trig_dr_change;
+        static const ydk::Enum::YLeaf isis_lsp_trig_area_set;
+        static const ydk::Enum::YLeaf isis_lsp_trig_attach;
+        static const ydk::Enum::YLeaf isis_lsp_trig_hippity;
+        static const ydk::Enum::YLeaf isis_lsp_trig_regen;
+        static const ydk::Enum::YLeaf isis_lsp_trig_ip_if_up;
+        static const ydk::Enum::YLeaf isis_lsp_trig_ip_if_down;
+        static const ydk::Enum::YLeaf isis_lsp_trig_ip_inter_area;
+        static const ydk::Enum::YLeaf isis_lsp_trig_ip_external;
+        static const ydk::Enum::YLeaf isis_lsp_trig_ip_external_full;
+        static const ydk::Enum::YLeaf isis_lsp_trig_ip_def_orig;
+        static const ydk::Enum::YLeaf isis_lsp_trig_ip_addr_chg;
+        static const ydk::Enum::YLeaf isis_lsp_trig_te_info;
+        static const ydk::Enum::YLeaf isis_lsp_trig_te_pce_info;
+        static const ydk::Enum::YLeaf isis_lsp_trig_te_fa_info;
+        static const ydk::Enum::YLeaf isis_lsp_trig_nsr_fo;
+        static const ydk::Enum::YLeaf isis_lsp_trig_pn_cancel;
+        static const ydk::Enum::YLeaf isis_lsp_trig_lkgp;
+        static const ydk::Enum::YLeaf isis_lsp_trig_pp;
+        static const ydk::Enum::YLeaf isis_lsp_trig_config_force_send;
+        static const ydk::Enum::YLeaf isis_lsp_trig_config_force_init;
+        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_add;
+        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_delete;
+        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_change;
+        static const ydk::Enum::YLeaf isis_lsp_trig_msd;
+        static const ydk::Enum::YLeaf isis_lsp_trig_adj_sid_wait_timer;
+        static const ydk::Enum::YLeaf isis_lsp_trig_direct_gen;
+        static const ydk::Enum::YLeaf isis_lsp_trig_flex_algo_enable_disable;
+        static const ydk::Enum::YLeaf isis_lsp_trig_pm_delay_loss;
+        static const ydk::Enum::YLeaf isis_lsp_trig_pm_bw_util;
 
 };
 
