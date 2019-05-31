@@ -125,21 +125,6 @@ class FibOperData::FibNiEntry::FibEntries::FibNexthopEntries : public ydk::Entit
 
 }; // FibOperData::FibNiEntry::FibEntries::FibNexthopEntries
 
-class FibPathType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf fib_path_type_unknown;
-        static const ydk::Enum::YLeaf fib_path_type_receive;
-        static const ydk::Enum::YLeaf fib_path_type_connected;
-        static const ydk::Enum::YLeaf fib_path_type_attached_prefix;
-        static const ydk::Enum::YLeaf fib_path_type_attached_host;
-        static const ydk::Enum::YLeaf fib_path_type_attached_nexthop;
-        static const ydk::Enum::YLeaf fib_path_type_recursive;
-        static const ydk::Enum::YLeaf fib_path_type_adjacency_prefix;
-        static const ydk::Enum::YLeaf fib_path_type_special_prefix;
-
-};
-
 class FibAddressFamily : public ydk::Enum
 {
     public:
@@ -157,6 +142,21 @@ class EncapsulationHeaderType : public ydk::Enum
         static const ydk::Enum::YLeaf encap_hdr_type_ipv4;
         static const ydk::Enum::YLeaf encap_hdr_type_ipv6;
         static const ydk::Enum::YLeaf encap_hdr_type_mpls;
+
+};
+
+class FibPathType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf fib_path_type_unknown;
+        static const ydk::Enum::YLeaf fib_path_type_receive;
+        static const ydk::Enum::YLeaf fib_path_type_connected;
+        static const ydk::Enum::YLeaf fib_path_type_attached_prefix;
+        static const ydk::Enum::YLeaf fib_path_type_attached_host;
+        static const ydk::Enum::YLeaf fib_path_type_attached_nexthop;
+        static const ydk::Enum::YLeaf fib_path_type_recursive;
+        static const ydk::Enum::YLeaf fib_path_type_adjacency_prefix;
+        static const ydk::Enum::YLeaf fib_path_type_special_prefix;
 
 };
 

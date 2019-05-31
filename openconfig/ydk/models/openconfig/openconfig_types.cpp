@@ -21,13 +21,13 @@ ADDRESSFAMILY::~ADDRESSFAMILY()
 {
 }
 
-L2ETHERNET::L2ETHERNET()
-     : Identity("http://openconfig.net/yang/openconfig-types", "openconfig-types", "openconfig-types:L2_ETHERNET")
+IPV4::IPV4()
+     : Identity("http://openconfig.net/yang/openconfig-types", "openconfig-types", "openconfig-types:IPV4")
 {
 
 }
 
-L2ETHERNET::~L2ETHERNET()
+IPV4::~IPV4()
 {
 }
 
@@ -51,13 +51,13 @@ MPLS::~MPLS()
 {
 }
 
-IPV4::IPV4()
-     : Identity("http://openconfig.net/yang/openconfig-types", "openconfig-types", "openconfig-types:IPV4")
+L2ETHERNET::L2ETHERNET()
+     : Identity("http://openconfig.net/yang/openconfig-types", "openconfig-types", "openconfig-types:L2_ETHERNET")
 {
 
 }
 
-IPV4::~IPV4()
+L2ETHERNET::~L2ETHERNET()
 {
 }
 

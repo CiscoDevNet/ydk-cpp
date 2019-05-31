@@ -277,6 +277,16 @@ class CpeExtLldpPwrSrc : public ydk::Enum
 
 };
 
+class CpeExtPwrPriority : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf high;
+        static const ydk::Enum::YLeaf low;
+        static const ydk::Enum::YLeaf unknown;
+
+};
+
 class CpeExtLldpPwrClassOrZero : public ydk::Enum
 {
     public:
@@ -286,16 +296,6 @@ class CpeExtLldpPwrClassOrZero : public ydk::Enum
         static const ydk::Enum::YLeaf class2;
         static const ydk::Enum::YLeaf class3;
         static const ydk::Enum::YLeaf class4;
-
-};
-
-class CpeExtPwrPriority : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf high;
-        static const ydk::Enum::YLeaf low;
-        static const ydk::Enum::YLeaf unknown;
 
 };
 

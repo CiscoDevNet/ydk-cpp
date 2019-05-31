@@ -3885,23 +3885,39 @@ class MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabelRangeCnts::RewriteLabelRan
         
 }; // MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabelRangeCnts::RewriteLabelRangeCnt::Mois::MoiArray::Moi::NnhStackv4Data::Ipv4Stack::InnerStack
 
-class MgmtLsdClient : public ydk::Enum
+class MgmtLsdIntfState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mgmt_lsd_client_type_app;
-        static const ydk::Enum::YLeaf mgmt_lsd_client_type_ba;
+        static const ydk::Enum::YLeaf mgmt_lsd_intf_state_unknown;
+        static const ydk::Enum::YLeaf mgmt_lsd_intf_state_up;
+        static const ydk::Enum::YLeaf mgmt_lsd_intf_state_down;
 
 };
 
-class MgmtLsdFrrState : public ydk::Enum
+class MgmtLsdAppState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_partial;
-        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_active;
-        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_ready;
-        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_complete;
-        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_any;
-        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_igp;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_state_active;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_state_zombie;
+        static const ydk::Enum::YLeaf mgmt_lsd_app_state_recover;
+
+};
+
+class MgmtLsdRwId : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_lsd_rw_id_type_none;
+        static const ydk::Enum::YLeaf mgmt_lsd_rw_id_type_lbl_ctx;
+        static const ydk::Enum::YLeaf mgmt_lsd_rw_id_type_loc_lbl;
+
+};
+
+class MplsLsdNnh : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf ipv4_address;
+        static const ydk::Enum::YLeaf interface_name;
 
 };
 
@@ -3942,6 +3958,36 @@ class MgmtLsdFpi : public ydk::Enum
 
 };
 
+class MgmtLsdFrrState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_partial;
+        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_active;
+        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_ready;
+        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_complete;
+        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_any;
+        static const ydk::Enum::YLeaf mgmt_lsd_frr_state_igp;
+
+};
+
+class MgmtLsdLspRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_lsd_lsp_role_head;
+        static const ydk::Enum::YLeaf mgmt_lsd_lsp_role_mid;
+
+};
+
+class MgmtLsdTeBinding : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_lsd_ident_p2p_tun_id;
+        static const ydk::Enum::YLeaf mgmt_lsd_ident_p2p_grp_id;
+        static const ydk::Enum::YLeaf mgmt_lsd_ident_p2mp_tun_id;
+        static const ydk::Enum::YLeaf mgmt_lsd_ident_p2mp_grp_id;
+
+};
+
 class MgmtLsdLblCtx : public ydk::Enum
 {
     public:
@@ -3979,29 +4025,12 @@ class MgmtLsdLblCtx : public ydk::Enum
 
 };
 
-class MgmtLsdLspRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_lsd_lsp_role_head;
-        static const ydk::Enum::YLeaf mgmt_lsd_lsp_role_mid;
-
-};
-
 class MgmtLsdAppRsrcState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf mgmt_lsd_app_rsrc_state_active;
         static const ydk::Enum::YLeaf mgmt_lsd_app_rsrc_state_pnd;
         static const ydk::Enum::YLeaf mgmt_lsd_app_rsrc_state_pnd_svr;
-
-};
-
-class MplsLsdNnh : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf ipv4_address;
-        static const ydk::Enum::YLeaf interface_name;
 
 };
 
@@ -4027,45 +4056,15 @@ class MgmtLsdApp : public ydk::Enum
         static const ydk::Enum::YLeaf mgmt_lsd_app_type_ospf;
         static const ydk::Enum::YLeaf mgmt_lsd_app_type_cgn;
         static const ydk::Enum::YLeaf mgmt_lsd_app_type_dmtc;
-        static const ydk::Enum::YLeaf mgmt_lsd_app_type_cofo_sync_lib;
         static const ydk::Enum::YLeaf mgmt_lsd_app_type_any;
 
 };
 
-class MgmtLsdTeBinding : public ydk::Enum
+class MgmtLsdClient : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mgmt_lsd_ident_p2p_tun_id;
-        static const ydk::Enum::YLeaf mgmt_lsd_ident_p2p_grp_id;
-        static const ydk::Enum::YLeaf mgmt_lsd_ident_p2mp_tun_id;
-        static const ydk::Enum::YLeaf mgmt_lsd_ident_p2mp_grp_id;
-
-};
-
-class MgmtLsdAppState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_lsd_app_state_active;
-        static const ydk::Enum::YLeaf mgmt_lsd_app_state_zombie;
-        static const ydk::Enum::YLeaf mgmt_lsd_app_state_recover;
-
-};
-
-class MgmtLsdIntfState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_lsd_intf_state_unknown;
-        static const ydk::Enum::YLeaf mgmt_lsd_intf_state_up;
-        static const ydk::Enum::YLeaf mgmt_lsd_intf_state_down;
-
-};
-
-class MgmtLsdRwId : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_lsd_rw_id_type_none;
-        static const ydk::Enum::YLeaf mgmt_lsd_rw_id_type_lbl_ctx;
-        static const ydk::Enum::YLeaf mgmt_lsd_rw_id_type_loc_lbl;
+        static const ydk::Enum::YLeaf mgmt_lsd_client_type_app;
+        static const ydk::Enum::YLeaf mgmt_lsd_client_type_ba;
 
 };
 

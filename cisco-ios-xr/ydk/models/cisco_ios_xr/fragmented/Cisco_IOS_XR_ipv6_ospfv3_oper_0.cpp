@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv6_ospfv3_oper_0.hpp"
-#include "Cisco_IOS_XR_ipv6_ospfv3_oper_1.hpp"
 #include "Cisco_IOS_XR_ipv6_ospfv3_oper_2.hpp"
+#include "Cisco_IOS_XR_ipv6_ospfv3_oper_1.hpp"
 
 using namespace ydk;
 
@@ -31559,6 +31559,25 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable::In
     return false;
 }
 
+const Enum::YLeaf Ospfv3Lsa::link_lsa {8, "link-lsa"};
+const Enum::YLeaf Ospfv3Lsa::grace_lsa {11, "grace-lsa"};
+const Enum::YLeaf Ospfv3Lsa::router {8193, "router"};
+const Enum::YLeaf Ospfv3Lsa::network {8194, "network"};
+const Enum::YLeaf Ospfv3Lsa::inter_area_prefix {8195, "inter-area-prefix"};
+const Enum::YLeaf Ospfv3Lsa::inter_area_router {8196, "inter-area-router"};
+const Enum::YLeaf Ospfv3Lsa::nssa_external {8199, "nssa-external"};
+const Enum::YLeaf Ospfv3Lsa::intra_area_prefix {8201, "intra-area-prefix"};
+const Enum::YLeaf Ospfv3Lsa::external {16389, "external"};
+const Enum::YLeaf Ospfv3Lsa::opaque_link {32768, "opaque-link"};
+const Enum::YLeaf Ospfv3Lsa::opaque_area {40960, "opaque-area"};
+const Enum::YLeaf Ospfv3Lsa::opaque_as {49152, "opaque-as"};
+const Enum::YLeaf Ospfv3Lsa::unknown {57344, "unknown"};
+
+const Enum::YLeaf OspfNsrSchedPri::ospf_nsr_stats_sched_pri_hi {0, "ospf-nsr-stats-sched-pri-hi"};
+const Enum::YLeaf OspfNsrSchedPri::ospf_nsr_stats_sched_pri_med {1, "ospf-nsr-stats-sched-pri-med"};
+const Enum::YLeaf OspfNsrSchedPri::ospf_nsr_stats_sched_pri_low {2, "ospf-nsr-stats-sched-pri-low"};
+const Enum::YLeaf OspfNsrSchedPri::ospf_nsr_stats_sched_pri_max {3, "ospf-nsr-stats-sched-pri-max"};
+
 const Enum::YLeaf Ospfv3GracefulShutdownState::init {0, "init"};
 const Enum::YLeaf Ospfv3GracefulShutdownState::normal {1, "normal"};
 const Enum::YLeaf Ospfv3GracefulShutdownState::flushing {2, "flushing"};
@@ -31574,33 +31593,18 @@ const Enum::YLeaf IpfrrTbrkr::secondary_path {5, "secondary-path"};
 const Enum::YLeaf IpfrrTbrkr::srlg_disjoint {6, "srlg-disjoint"};
 const Enum::YLeaf IpfrrTbrkr::tunnel {7, "tunnel"};
 
-const Enum::YLeaf OspfLsaSyncState::none {0, "none"};
-const Enum::YLeaf OspfLsaSyncState::out_of_sync {1, "out-of-sync"};
-const Enum::YLeaf OspfLsaSyncState::in_sync {2, "in-sync"};
-const Enum::YLeaf OspfLsaSyncState::nsr_ack_pending {3, "nsr-ack-pending"};
+const Enum::YLeaf StubRouterAbrOffReason::init_delay {2, "init-delay"};
+const Enum::YLeaf StubRouterAbrOffReason::no_neighbor {3, "no-neighbor"};
+const Enum::YLeaf StubRouterAbrOffReason::no_full_neighbor {4, "no-full-neighbor"};
+const Enum::YLeaf StubRouterAbrOffReason::new_neighbor {5, "new-neighbor"};
+const Enum::YLeaf StubRouterAbrOffReason::full_neighbor {6, "full-neighbor"};
 
-const Enum::YLeaf Ospfv3Lsa1::link {8, "link"};
-const Enum::YLeaf Ospfv3Lsa1::grace {11, "grace"};
-const Enum::YLeaf Ospfv3Lsa1::router {8193, "router"};
-const Enum::YLeaf Ospfv3Lsa1::network {8194, "network"};
-const Enum::YLeaf Ospfv3Lsa1::inter_area_prefix {8195, "inter-area-prefix"};
-const Enum::YLeaf Ospfv3Lsa1::inter_area_router {8196, "inter-area-router"};
-const Enum::YLeaf Ospfv3Lsa1::mospf {8198, "mospf"};
-const Enum::YLeaf Ospfv3Lsa1::type7_external {8199, "type7-external"};
-const Enum::YLeaf Ospfv3Lsa1::lsa_prefix {8201, "lsa-prefix"};
-const Enum::YLeaf Ospfv3Lsa1::as_external {16389, "as-external"};
-const Enum::YLeaf Ospfv3Lsa1::unknown_link {32768, "unknown-link"};
-const Enum::YLeaf Ospfv3Lsa1::unknown_area {40960, "unknown-area"};
-const Enum::YLeaf Ospfv3Lsa1::unknown_as {49152, "unknown-as"};
-const Enum::YLeaf Ospfv3Lsa1::unknown_type {57344, "unknown-type"};
-
-const Enum::YLeaf OspfNsrSchedPri::ospf_nsr_stats_sched_pri_hi {0, "ospf-nsr-stats-sched-pri-hi"};
-const Enum::YLeaf OspfNsrSchedPri::ospf_nsr_stats_sched_pri_med {1, "ospf-nsr-stats-sched-pri-med"};
-const Enum::YLeaf OspfNsrSchedPri::ospf_nsr_stats_sched_pri_low {2, "ospf-nsr-stats-sched-pri-low"};
-const Enum::YLeaf OspfNsrSchedPri::ospf_nsr_stats_sched_pri_max {3, "ospf-nsr-stats-sched-pri-max"};
-
-const Enum::YLeaf Ospfv3AreaRangeStatus::advertise {1, "advertise"};
-const Enum::YLeaf Ospfv3AreaRangeStatus::do_not_advertise {2, "do-not-advertise"};
+const Enum::YLeaf StubRouterExitReason::none {0, "none"};
+const Enum::YLeaf StubRouterExitReason::bgp {1, "bgp"};
+const Enum::YLeaf StubRouterExitReason::timer {2, "timer"};
+const Enum::YLeaf StubRouterExitReason::configuration {3, "configuration"};
+const Enum::YLeaf StubRouterExitReason::cleared {4, "cleared"};
+const Enum::YLeaf StubRouterExitReason::override {5, "override"};
 
 const Enum::YLeaf StubRouterTrigger::on_proc_migration {0, "on-proc-migration"};
 const Enum::YLeaf StubRouterTrigger::on_proc_restart {1, "on-proc-restart"};
@@ -31608,6 +31612,11 @@ const Enum::YLeaf StubRouterTrigger::on_switchover {2, "on-switchover"};
 const Enum::YLeaf StubRouterTrigger::on_startup {3, "on-startup"};
 const Enum::YLeaf StubRouterTrigger::always {4, "always"};
 const Enum::YLeaf StubRouterTrigger::none {5, "none"};
+
+const Enum::YLeaf StubRouterMode::rbit {0, "rbit"};
+const Enum::YLeaf StubRouterMode::v6bit {1, "v6bit"};
+const Enum::YLeaf StubRouterMode::max_metric {2, "max-metric"};
+const Enum::YLeaf StubRouterMode::none {3, "none"};
 
 const Enum::YLeaf Ospfv3Interface::none {0, "none"};
 const Enum::YLeaf Ospfv3Interface::broadcast {1, "broadcast"};
@@ -31619,40 +31628,6 @@ const Enum::YLeaf Ospfv3Interface::virtual_link {6, "virtual-link"};
 const Enum::YLeaf Ospfv3Interface::loopback_interface {7, "loopback-interface"};
 const Enum::YLeaf Ospfv3Interface::mpls_traffic_engineering {8, "mpls-traffic-engineering"};
 const Enum::YLeaf Ospfv3Interface::sham_link {9, "sham-link"};
-
-const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_lsasum_type {0, "mgmt-lsa-lsasum-type"};
-const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_link_type {8, "mgmt-lsa-link-type"};
-const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_gr_type {11, "mgmt-lsa-gr-type"};
-const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_rtr_type {8193, "mgmt-lsa-rtr-type"};
-const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_net_type {8194, "mgmt-lsa-net-type"};
-const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_iapfx_type {8195, "mgmt-lsa-iapfx-type"};
-const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_iartr_type {8196, "mgmt-lsa-iartr-type"};
-const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_nssaext_type {8199, "mgmt-lsa-nssaext-type"};
-const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_prefix_type {8201, "mgmt-lsa-prefix-type"};
-const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_ext_type {16389, "mgmt-lsa-ext-type"};
-const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_unk_link_type {32768, "mgmt-lsa-unk-link-type"};
-const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_unk_area_type {40960, "mgmt-lsa-unk-area-type"};
-const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_unk_as_type {49152, "mgmt-lsa-unk-as-type"};
-const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_unk_type {57344, "mgmt-lsa-unk-type"};
-
-const Enum::YLeaf StubRouterAbrOffReason::init_delay {2, "init-delay"};
-const Enum::YLeaf StubRouterAbrOffReason::no_neighbor {3, "no-neighbor"};
-const Enum::YLeaf StubRouterAbrOffReason::no_full_neighbor {4, "no-full-neighbor"};
-const Enum::YLeaf StubRouterAbrOffReason::new_neighbor {5, "new-neighbor"};
-const Enum::YLeaf StubRouterAbrOffReason::full_neighbor {6, "full-neighbor"};
-
-const Enum::YLeaf Ospfv3InterfaceState::down {0, "down"};
-const Enum::YLeaf Ospfv3InterfaceState::loopback {1, "loopback"};
-const Enum::YLeaf Ospfv3InterfaceState::waiting {2, "waiting"};
-const Enum::YLeaf Ospfv3InterfaceState::point_to_multipoint {3, "point-to-multipoint"};
-const Enum::YLeaf Ospfv3InterfaceState::point_to_point {4, "point-to-point"};
-const Enum::YLeaf Ospfv3InterfaceState::designated_router {5, "designated-router"};
-const Enum::YLeaf Ospfv3InterfaceState::backup_designated_router {6, "backup-designated-router"};
-const Enum::YLeaf Ospfv3InterfaceState::other_designated_router {7, "other-designated-router"};
-
-const Enum::YLeaf Ospfv3BorderRoute::abr {1, "abr"};
-const Enum::YLeaf Ospfv3BorderRoute::asbr {2, "asbr"};
-const Enum::YLeaf Ospfv3BorderRoute::abr_asbr {3, "abr-asbr"};
 
 const Enum::YLeaf ImStateEnum::im_state_not_ready {0, "im-state-not-ready"};
 const Enum::YLeaf ImStateEnum::im_state_admin_down {1, "im-state-admin-down"};
@@ -31679,9 +31654,52 @@ const Enum::YLeaf Ospfv3GracefulRestartReason::grace_reason_software_restart {1,
 const Enum::YLeaf Ospfv3GracefulRestartReason::grace_reason_software_upgrade {2, "grace-reason-software-upgrade"};
 const Enum::YLeaf Ospfv3GracefulRestartReason::grace_reason_switchover {3, "grace-reason-switchover"};
 
-const Enum::YLeaf Ospfv3DefaultMetric::type_none {0, "type-none"};
-const Enum::YLeaf Ospfv3DefaultMetric::type1 {1, "type1"};
-const Enum::YLeaf Ospfv3DefaultMetric::type2 {2, "type2"};
+const Enum::YLeaf Ospfv3Lsa1::link {8, "link"};
+const Enum::YLeaf Ospfv3Lsa1::grace {11, "grace"};
+const Enum::YLeaf Ospfv3Lsa1::router {8193, "router"};
+const Enum::YLeaf Ospfv3Lsa1::network {8194, "network"};
+const Enum::YLeaf Ospfv3Lsa1::inter_area_prefix {8195, "inter-area-prefix"};
+const Enum::YLeaf Ospfv3Lsa1::inter_area_router {8196, "inter-area-router"};
+const Enum::YLeaf Ospfv3Lsa1::mospf {8198, "mospf"};
+const Enum::YLeaf Ospfv3Lsa1::type7_external {8199, "type7-external"};
+const Enum::YLeaf Ospfv3Lsa1::lsa_prefix {8201, "lsa-prefix"};
+const Enum::YLeaf Ospfv3Lsa1::as_external {16389, "as-external"};
+const Enum::YLeaf Ospfv3Lsa1::unknown_link {32768, "unknown-link"};
+const Enum::YLeaf Ospfv3Lsa1::unknown_area {40960, "unknown-area"};
+const Enum::YLeaf Ospfv3Lsa1::unknown_as {49152, "unknown-as"};
+const Enum::YLeaf Ospfv3Lsa1::unknown_type {57344, "unknown-type"};
+
+const Enum::YLeaf PrefixPriority::critical {0, "critical"};
+const Enum::YLeaf PrefixPriority::high {1, "high"};
+const Enum::YLeaf PrefixPriority::medium {2, "medium"};
+const Enum::YLeaf PrefixPriority::low {3, "low"};
+
+const Enum::YLeaf Ospfv3Link::link_router {1, "link-router"};
+const Enum::YLeaf Ospfv3Link::link_trans_net {2, "link-trans-net"};
+const Enum::YLeaf Ospfv3Link::link_virtual_link {4, "link-virtual-link"};
+
+const Enum::YLeaf OspfLsaSyncState::none {0, "none"};
+const Enum::YLeaf OspfLsaSyncState::out_of_sync {1, "out-of-sync"};
+const Enum::YLeaf OspfLsaSyncState::in_sync {2, "in-sync"};
+const Enum::YLeaf OspfLsaSyncState::nsr_ack_pending {3, "nsr-ack-pending"};
+
+const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_lsasum_type {0, "mgmt-lsa-lsasum-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_link_type {8, "mgmt-lsa-link-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_gr_type {11, "mgmt-lsa-gr-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_rtr_type {8193, "mgmt-lsa-rtr-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_net_type {8194, "mgmt-lsa-net-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_iapfx_type {8195, "mgmt-lsa-iapfx-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_iartr_type {8196, "mgmt-lsa-iartr-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_nssaext_type {8199, "mgmt-lsa-nssaext-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_prefix_type {8201, "mgmt-lsa-prefix-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_ext_type {16389, "mgmt-lsa-ext-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_unk_link_type {32768, "mgmt-lsa-unk-link-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_unk_area_type {40960, "mgmt-lsa-unk-area-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_unk_as_type {49152, "mgmt-lsa-unk-as-type"};
+const Enum::YLeaf Ospfv3LsaInfoTypes::mgmt_lsa_unk_type {57344, "mgmt-lsa-unk-type"};
+
+const Enum::YLeaf Ospfv3AreaRangeStatus::advertise {1, "advertise"};
+const Enum::YLeaf Ospfv3AreaRangeStatus::do_not_advertise {2, "do-not-advertise"};
 
 const Enum::YLeaf Ospfv3NeighborState::neigbhor_down {0, "neigbhor-down"};
 const Enum::YLeaf Ospfv3NeighborState::attempt {1, "attempt"};
@@ -31693,40 +31711,22 @@ const Enum::YLeaf Ospfv3NeighborState::loading {6, "loading"};
 const Enum::YLeaf Ospfv3NeighborState::full {7, "full"};
 const Enum::YLeaf Ospfv3NeighborState::sc_virtual {8, "sc-virtual"};
 
-const Enum::YLeaf PrefixPriority::critical {0, "critical"};
-const Enum::YLeaf PrefixPriority::high {1, "high"};
-const Enum::YLeaf PrefixPriority::medium {2, "medium"};
-const Enum::YLeaf PrefixPriority::low {3, "low"};
+const Enum::YLeaf Ospfv3InterfaceState::down {0, "down"};
+const Enum::YLeaf Ospfv3InterfaceState::loopback {1, "loopback"};
+const Enum::YLeaf Ospfv3InterfaceState::waiting {2, "waiting"};
+const Enum::YLeaf Ospfv3InterfaceState::point_to_multipoint {3, "point-to-multipoint"};
+const Enum::YLeaf Ospfv3InterfaceState::point_to_point {4, "point-to-point"};
+const Enum::YLeaf Ospfv3InterfaceState::designated_router {5, "designated-router"};
+const Enum::YLeaf Ospfv3InterfaceState::backup_designated_router {6, "backup-designated-router"};
+const Enum::YLeaf Ospfv3InterfaceState::other_designated_router {7, "other-designated-router"};
 
-const Enum::YLeaf StubRouterMode::rbit {0, "rbit"};
-const Enum::YLeaf StubRouterMode::v6bit {1, "v6bit"};
-const Enum::YLeaf StubRouterMode::max_metric {2, "max-metric"};
-const Enum::YLeaf StubRouterMode::none {3, "none"};
+const Enum::YLeaf Ospfv3BorderRoute::abr {1, "abr"};
+const Enum::YLeaf Ospfv3BorderRoute::asbr {2, "asbr"};
+const Enum::YLeaf Ospfv3BorderRoute::abr_asbr {3, "abr-asbr"};
 
-const Enum::YLeaf Ospfv3Link::link_router {1, "link-router"};
-const Enum::YLeaf Ospfv3Link::link_trans_net {2, "link-trans-net"};
-const Enum::YLeaf Ospfv3Link::link_virtual_link {4, "link-virtual-link"};
-
-const Enum::YLeaf Ospfv3Lsa::link_lsa {8, "link-lsa"};
-const Enum::YLeaf Ospfv3Lsa::grace_lsa {11, "grace-lsa"};
-const Enum::YLeaf Ospfv3Lsa::router {8193, "router"};
-const Enum::YLeaf Ospfv3Lsa::network {8194, "network"};
-const Enum::YLeaf Ospfv3Lsa::inter_area_prefix {8195, "inter-area-prefix"};
-const Enum::YLeaf Ospfv3Lsa::inter_area_router {8196, "inter-area-router"};
-const Enum::YLeaf Ospfv3Lsa::nssa_external {8199, "nssa-external"};
-const Enum::YLeaf Ospfv3Lsa::intra_area_prefix {8201, "intra-area-prefix"};
-const Enum::YLeaf Ospfv3Lsa::external {16389, "external"};
-const Enum::YLeaf Ospfv3Lsa::opaque_link {32768, "opaque-link"};
-const Enum::YLeaf Ospfv3Lsa::opaque_area {40960, "opaque-area"};
-const Enum::YLeaf Ospfv3Lsa::opaque_as {49152, "opaque-as"};
-const Enum::YLeaf Ospfv3Lsa::unknown {57344, "unknown"};
-
-const Enum::YLeaf StubRouterExitReason::none {0, "none"};
-const Enum::YLeaf StubRouterExitReason::bgp {1, "bgp"};
-const Enum::YLeaf StubRouterExitReason::timer {2, "timer"};
-const Enum::YLeaf StubRouterExitReason::configuration {3, "configuration"};
-const Enum::YLeaf StubRouterExitReason::cleared {4, "cleared"};
-const Enum::YLeaf StubRouterExitReason::override {5, "override"};
+const Enum::YLeaf Ospfv3DefaultMetric::type_none {0, "type-none"};
+const Enum::YLeaf Ospfv3DefaultMetric::type1 {1, "type1"};
+const Enum::YLeaf Ospfv3DefaultMetric::type2 {2, "type2"};
 
 
 }

@@ -19,14 +19,14 @@ class MacLimitNotificationType : public virtual ydk::Identity
 
 }; // MacLimitNotificationType
 
-class NotifSyslog : public cisco_ios_xe::cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
+class NotifNone : public cisco_ios_xe::cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
 {
     public:
-        NotifSyslog();
-        ~NotifSyslog();
+        NotifNone();
+        ~NotifNone();
 
 
-}; // NotifSyslog
+}; // NotifNone
 
 class NotifSnmpTrap : public cisco_ios_xe::cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
 {
@@ -37,14 +37,14 @@ class NotifSnmpTrap : public cisco_ios_xe::cisco_bridge_common::MacLimitNotifica
 
 }; // NotifSnmpTrap
 
-class NotifNone : public cisco_ios_xe::cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
+class NotifSyslog : public cisco_ios_xe::cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
 {
     public:
-        NotifNone();
-        ~NotifNone();
+        NotifSyslog();
+        ~NotifSyslog();
 
 
-}; // NotifNone
+}; // NotifSyslog
 
 class NotifSyslogAndSnmpTrap : public cisco_ios_xe::cisco_bridge_common::MacLimitNotificationType, virtual ydk::Identity
 {
@@ -54,16 +54,6 @@ class NotifSyslogAndSnmpTrap : public cisco_ios_xe::cisco_bridge_common::MacLimi
 
 
 }; // NotifSyslogAndSnmpTrap
-
-class MacLimitAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf flood;
-        static const ydk::Enum::YLeaf drop;
-        static const ydk::Enum::YLeaf shutdown;
-
-};
 
 class EthTrafficClass : public ydk::Enum
 {
@@ -79,6 +69,16 @@ class MacAgingType : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf inactivity;
         static const ydk::Enum::YLeaf absolute;
+
+};
+
+class MacLimitAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf flood;
+        static const ydk::Enum::YLeaf drop;
+        static const ydk::Enum::YLeaf shutdown;
 
 };
 

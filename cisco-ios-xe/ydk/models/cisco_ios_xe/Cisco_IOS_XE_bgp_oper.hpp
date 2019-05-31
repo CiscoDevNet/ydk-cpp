@@ -1757,6 +1757,14 @@ class BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdR
 
 }; // BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRouteNeighbors::BgpRdRouteNeighbor::BgpRdNeighborRouteFilters::BgpRdNeighborRouteFilter::BgpRdNeighborRouteEntries::BgpRdNeighborRouteEntry::BgpRdNeighborPathEntries::BgpRdNeighborPathEntry::PathStatus
 
+class BgpLink : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf external;
+
+};
+
 class BgpFsmState : public ydk::Enum
 {
     public:
@@ -1767,14 +1775,6 @@ class BgpFsmState : public ydk::Enum
         static const ydk::Enum::YLeaf fsm_openconfirm;
         static const ydk::Enum::YLeaf fsm_established;
         static const ydk::Enum::YLeaf fsm_nonnegotiated;
-
-};
-
-class BgpLink : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf internal;
-        static const ydk::Enum::YLeaf external;
 
 };
 

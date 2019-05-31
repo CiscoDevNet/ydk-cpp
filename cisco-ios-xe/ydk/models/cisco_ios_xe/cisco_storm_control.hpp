@@ -19,14 +19,14 @@ class StormControlAction : public virtual ydk::Identity
 
 }; // StormControlAction
 
-class ActionShutdown : public cisco_ios_xe::cisco_storm_control::StormControlAction, virtual ydk::Identity
+class ActionDrop : public cisco_ios_xe::cisco_storm_control::StormControlAction, virtual ydk::Identity
 {
     public:
-        ActionShutdown();
-        ~ActionShutdown();
+        ActionDrop();
+        ~ActionDrop();
 
 
-}; // ActionShutdown
+}; // ActionDrop
 
 class ActionSnmpTrap : public cisco_ios_xe::cisco_storm_control::StormControlAction, virtual ydk::Identity
 {
@@ -37,14 +37,14 @@ class ActionSnmpTrap : public cisco_ios_xe::cisco_storm_control::StormControlAct
 
 }; // ActionSnmpTrap
 
-class ActionDrop : public cisco_ios_xe::cisco_storm_control::StormControlAction, virtual ydk::Identity
+class ActionShutdown : public cisco_ios_xe::cisco_storm_control::StormControlAction, virtual ydk::Identity
 {
     public:
-        ActionDrop();
-        ~ActionDrop();
+        ActionShutdown();
+        ~ActionShutdown();
 
 
-}; // ActionDrop
+}; // ActionShutdown
 
 
 }

@@ -577,12 +577,12 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Is
         class Lsp; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Lsp
         class Iih; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Iih
         class Psnp; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Psnp
-        class Cnsp; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp
+        class Csnp; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Lsp> lsp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Iih> iih;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Psnp> psnp;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp> cnsp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp> csnp;
         
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters
 
@@ -725,11 +725,11 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Is
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Psnp::State
 
 
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp : public ydk::Entity
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp : public ydk::Entity
 {
     public:
-        Cnsp();
-        ~Cnsp();
+        Csnp();
+        ~Csnp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -741,14 +741,14 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Is
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::State
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::State
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::State> state;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::State> state;
         
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp
 
 
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::State : public ydk::Entity
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::State : public ydk::Entity
 {
     public:
         State();
@@ -768,7 +768,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Is
         ydk::YLeaf processed; //type: uint32
         ydk::YLeaf sent; //type: uint32
 
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Cnsp::State
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::PacketCounters::Csnp::State
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::IsisInterfaces::IsisInterface::InterfacesLevels::InterfacesLevel::Adjacencies : public ydk::Entity
@@ -2609,7 +2609,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList area_address; //type: list of  string
+        ydk::YLeafList address; //type: list of  string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::AreaAddress::State
 
@@ -2698,7 +2698,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList ipv4_interface_address; //type: list of  string
+        ydk::YLeafList address; //type: list of  string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4InterfaceAddresses::State
 
@@ -2772,7 +2772,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
 
         ydk::YLeaf instance_number; //type: uint32
         ydk::YLeaf router_id; //type: string
-        ydk::YLeafList flags; //type: list of  OpenconfigIsisLspRouterCapabilityStateFlagsEnum
+        ydk::YLeafList flags; //type: list of  OpenconfigIsisLspCapabilityStateFlagsEnum
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::RouterCapabilitiesState
 
@@ -2935,39 +2935,14 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SegmentRoutingAlgorithm; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::State
 
-        ydk::YList segment_routing_algorithm;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::State> state;
         
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms
 
 
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm : public ydk::Entity
-{
-    public:
-        SegmentRoutingAlgorithm();
-        ~SegmentRoutingAlgorithm();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf algorithm; //type: Algorithm
-        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State> state;
-                class Algorithm;
-
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm
-
-
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State : public ydk::Entity
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::State : public ydk::Entity
 {
     public:
         State();
@@ -2983,9 +2958,9 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf algorithm; //type: OpenconfigIsisLspAlgorithmEnum
+        ydk::YLeafList algorithm; //type: list of  OpenconfigIsisLspAlgorithmEnum
 
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::State
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::State
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability : public ydk::Entity
@@ -3004,20 +2979,20 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State
+        class SegmentRoutingCapabilityState; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SegmentRoutingCapabilityState
         class SrgbDescriptors; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SrgbDescriptors
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State> state;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SegmentRoutingCapabilityState> segment_routing_capability_state;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SrgbDescriptors> srgb_descriptors;
         
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability
 
 
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State : public ydk::Entity
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SegmentRoutingCapabilityState : public ydk::Entity
 {
     public:
-        State();
-        ~State();
+        SegmentRoutingCapabilityState();
+        ~SegmentRoutingCapabilityState();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3031,7 +3006,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
 
         ydk::YLeafList flags; //type: list of  OpenconfigIsisLspSegmentRoutingCapabilityStateFlagsEnum
 
-}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::State
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SegmentRoutingCapabilityState
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SrgbDescriptors : public ydk::Entity
@@ -3073,6 +3048,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf range; //type: uint32
         class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SrgbDescriptors::SrgbDescriptor::State
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingCapability::SrgbDescriptors::SrgbDescriptor::State> state;
@@ -3480,7 +3456,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf type; //type: string
-        ydk::YLeaf ipv4_source_router_id; //type: string
+        ydk::YLeaf router_id; //type: string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv4Reachability::MtIpv4ReachabilityPrefixes::MtIpv4ReachabilityPrefixe::MtIpv4ReachabilityPrefixesSubtlvs::MtIpv4ReachabilityPrefixesSubtlv::PrefixesSubtlvsIpv4SourceRouterId::State
 
@@ -3525,7 +3501,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf type; //type: string
-        ydk::YLeaf ipv6_source_router_id; //type: string
+        ydk::YLeaf router_id; //type: string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv4Reachability::MtIpv4ReachabilityPrefixes::MtIpv4ReachabilityPrefixe::MtIpv4ReachabilityPrefixesSubtlvs::MtIpv4ReachabilityPrefixesSubtlv::PrefixesSubtlvsIpv6SourceRouterId::State
 
@@ -3644,11 +3620,341 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv4Reachability::MtIpv4ReachabilityPrefixes::MtIpv4ReachabilityPrefixe::MtIpv4ReachabilityPrefixesSubtlvs::MtIpv4ReachabilityPrefixesSubtlv::PrefixesSubtlvsFlags::State
 
-class IsisSubAfId : public ydk::Enum
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf unicast;
-        static const ydk::Enum::YLeaf multicast;
+        MtIsn();
+        ~MtIsn();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class MtIsnNeighbors; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn::MtIsnNeighbors> mt_isn_neighbors;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIsn
+
+class OpenconfigIsisLspAttributesEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf overload;
+        static const ydk::Enum::YLeaf attached;
+
+};
+
+class OpenconfigIsisLspNlpidEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+};
+
+class OpenconfigIsisLspStateFlagsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf numbered;
+
+};
+
+class OpenconfigIsisLspIsisMetricFlagsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf unsupported;
+
+};
+
+class OpenconfigIsisLspDefaultMetricStateFlagsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf internal;
+
+};
+
+class OpenconfigIsisLspIpv6SrlgStateFlagsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf na;
+
+};
+
+class OpenconfigIsisLspLanAdjacencySidStateFlagsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf address_family;
+        static const ydk::Enum::YLeaf backup;
+        static const ydk::Enum::YLeaf value_;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf set;
+
+};
+
+class OpenconfigIsisLspAdjacencySidStateFlagsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf address_family;
+        static const ydk::Enum::YLeaf backup;
+        static const ydk::Enum::YLeaf value_;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf set;
+
+};
+
+class OpenconfigIsisLspFlagsStateFlagsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf external_flag;
+        static const ydk::Enum::YLeaf readvertisement_flag;
+        static const ydk::Enum::YLeaf node_flag;
+
+};
+
+class OpenconfigIsisLspPrefixSidStateFlagsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf readvertisement;
+        static const ydk::Enum::YLeaf node;
+        static const ydk::Enum::YLeaf no_php;
+        static const ydk::Enum::YLeaf explicit_null;
+        static const ydk::Enum::YLeaf value_;
+        static const ydk::Enum::YLeaf local;
+
+};
+
+class OpenconfigIsisLspSegmentRoutingCapabilityStateFlagsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4_mpls;
+        static const ydk::Enum::YLeaf ipv6_mpls;
+        static const ydk::Enum::YLeaf ipv6_sr;
+
+};
+
+class OpenconfigIsisLspAlgorithmEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf spf;
+        static const ydk::Enum::YLeaf strict_spf;
+
+};
+
+class OpenconfigIsisLspCapabilityStateFlagsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf flood;
+        static const ydk::Enum::YLeaf down;
+
+};
+
+class OpenconfigIsisLspCryptoTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf hmac_md5;
+        static const ydk::Enum::YLeaf cleartext;
+
+};
+
+class OpenconfigIsisLspFlagsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf partition_repair;
+        static const ydk::Enum::YLeaf attached_error;
+        static const ydk::Enum::YLeaf attached_expense;
+        static const ydk::Enum::YLeaf attached_delay;
+        static const ydk::Enum::YLeaf attached_default;
+        static const ydk::Enum::YLeaf overload;
+
+};
+
+class OpenconfigIsisLspPduTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf level1;
+        static const ydk::Enum::YLeaf level2;
+
+};
+
+class OpenconfigIsisTypesMetricStyleEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf narrow_metric;
+        static const ydk::Enum::YLeaf wide_metric;
+
+};
+
+class OpenconfigIsisTypesAdaptiveTimerTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf linear;
+        static const ydk::Enum::YLeaf exponential;
+
+};
+
+class OpenconfigSegmentRoutingLabelOptionsEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_php;
+        static const ydk::Enum::YLeaf explicit_null;
+
+};
+
+class OpenconfigIsisAdjacencyStateNlpidEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+};
+
+class OpenconfigIsisTypesIsisInterfaceAdjStateEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf init;
+        static const ydk::Enum::YLeaf failed;
+
+};
+
+class OpenconfigIsisTypesLevelTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf level1;
+        static const ydk::Enum::YLeaf level2;
+        static const ydk::Enum::YLeaf level12;
+
+};
+
+class OpenconfigIsisTypesCircuitTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf point_to_point;
+        static const ydk::Enum::YLeaf broadcast;
+
+};
+
+class OpenconfigIsisTypesHelloPaddingTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf strict;
+        static const ydk::Enum::YLeaf loose;
+        static const ydk::Enum::YLeaf adaptive;
+        static const ydk::Enum::YLeaf disable;
+
+};
+
+class SrmsMiFlagEB : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf true_;
+
+};
+
+class SrmsMiAfEB : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+};
+
+class SrmsMiSrcEB : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf remote;
+
+};
+
+class IsisUloopEvent : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_u_loop_event_none;
+        static const ydk::Enum::YLeaf isis_u_loop_event_link_down;
+        static const ydk::Enum::YLeaf isis_u_loop_event_link_up;
+        static const ydk::Enum::YLeaf isis_u_loop_event_ol_bit_set;
+        static const ydk::Enum::YLeaf isis_u_loop_event_ol_bit_unset;
+
+};
+
+class IsisUloopAvoidance : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_u_loop_avoidance_type_none;
+        static const ydk::Enum::YLeaf isis_u_loop_avoidance_type_all;
+        static const ydk::Enum::YLeaf isis_u_loop_avoidance_type_protected;
+        static const ydk::Enum::YLeaf isis_u_loop_avoidance_type_sr;
+
+};
+
+class IsisMetricStyle : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_metric_style_narrow;
+        static const ydk::Enum::YLeaf isis_metric_style_wide;
+        static const ydk::Enum::YLeaf isis_metric_style_transition;
+        static const ydk::Enum::YLeaf isis_metric_style_narrow_transition;
+        static const ydk::Enum::YLeaf isis_metric_style_wide_transition;
+
+};
+
+class IsisStartupStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_startup_ssm_active;
+        static const ydk::Enum::YLeaf isis_startup_ssm_complete;
+        static const ydk::Enum::YLeaf isis_startup_ssm_aborted;
+        static const ydk::Enum::YLeaf isis_startup_ssm_not_run;
+
+};
+
+class IsisNsfFlavor : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_nsf_protocol_none;
+        static const ydk::Enum::YLeaf isis_nsf_protocol_cisco;
+        static const ydk::Enum::YLeaf isis_nsf_protocol_ietf;
+        static const ydk::Enum::YLeaf isis_nsf_protocol_nsr;
+
+};
+
+class IsisEdmLabelTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_edm_label_alloc_prefix_sid;
+        static const ydk::Enum::YLeaf isis_edm_label_alloc_local_sid;
+        static const ydk::Enum::YLeaf isis_edm_label_alloc_max;
+
+};
+
+class IsisErrLogLevel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_err_log_level_info;
+        static const ydk::Enum::YLeaf isis_err_log_level_warn;
+        static const ydk::Enum::YLeaf isis_err_log_level_critical;
+
+};
+
+class IsisIfAfPrefixUnknownReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_adv_suppressed;
+        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_global_addr_reg_error;
+        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_internal_error;
 
 };
 
@@ -3665,79 +3971,57 @@ class IsisIfAfFwdAddrUnknownReason : public ydk::Enum
 
 };
 
-class IsisUloopEvent : public ydk::Enum
+class IsisIfAfProtoDownReason : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_u_loop_event_none;
-        static const ydk::Enum::YLeaf isis_u_loop_event_link_down;
-        static const ydk::Enum::YLeaf isis_u_loop_event_link_up;
-        static const ydk::Enum::YLeaf isis_u_loop_event_ol_bit_set;
-        static const ydk::Enum::YLeaf isis_u_loop_event_ol_bit_unset;
+        static const ydk::Enum::YLeaf isis_intf_af_proto_down_imd_conn_fail;
+        static const ydk::Enum::YLeaf isis_intf_af_proto_down_imd_node_doesnt_exist;
+        static const ydk::Enum::YLeaf isis_intf_af_proto_down_imd_exist_reg_error;
+        static const ydk::Enum::YLeaf isis_intf_af_proto_down_imd_state_reg_error;
+        static const ydk::Enum::YLeaf isis_intf_af_proto_down_af_not_up;
+        static const ydk::Enum::YLeaf isis_intf_af_proto_down_internal_error;
 
 };
 
-class SrmsMiSrcEB : public ydk::Enum
+class IsisIfAfDisabledReason : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf local;
-        static const ydk::Enum::YLeaf remote;
+        static const ydk::Enum::YLeaf isis_intf_af_disabled_no_topo_enabled;
+        static const ydk::Enum::YLeaf isis_intf_af_disabled_internal_error;
 
 };
 
-class IsisLspDbOp : public ydk::Enum
+class IsisFrrTiebreaker : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_lsp_db_clear;
-        static const ydk::Enum::YLeaf isis_lsp_db_insert_new_lsp;
-        static const ydk::Enum::YLeaf isis_lsp_db_replace_lsp_with_lsp;
-        static const ydk::Enum::YLeaf isis_lsp_db_purge_lsp;
-        static const ydk::Enum::YLeaf isis_lsp_db_delete_lsp;
+        static const ydk::Enum::YLeaf isis_frr_tiebreaker_down_stream;
+        static const ydk::Enum::YLeaf isis_frr_tiebreaker_lc_disjoint;
+        static const ydk::Enum::YLeaf isis_frr_tiebreaker_low_est_backup_metric;
+        static const ydk::Enum::YLeaf isis_frr_tiebreaker_node_protecting;
+        static const ydk::Enum::YLeaf isis_frr_tiebreaker_primary_path;
+        static const ydk::Enum::YLeaf isis_frr_tiebreaker_secondary_path;
+        static const ydk::Enum::YLeaf isis_frr_tiebreaker_srlg_disjoint;
+        static const ydk::Enum::YLeaf isis_frr_tiebreaker_default;
 
 };
 
-class OpenconfigIsisLspRouterCapabilityStateFlagsEnum : public ydk::Enum
+class IsisFrr : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf flood;
-        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf isis_frr_type_none;
+        static const ydk::Enum::YLeaf isis_frr_type_per_link;
+        static const ydk::Enum::YLeaf isis_frr_type_per_prefix;
+        static const ydk::Enum::YLeaf isis_frr_type_sr_u_loop;
 
 };
 
-class IsisStartupStatus : public ydk::Enum
+class IsisIfTopoAdvPrefixDisabledReason : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_startup_ssm_active;
-        static const ydk::Enum::YLeaf isis_startup_ssm_complete;
-        static const ydk::Enum::YLeaf isis_startup_ssm_aborted;
-        static const ydk::Enum::YLeaf isis_startup_ssm_not_run;
-
-};
-
-class IsisUp : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_down;
-        static const ydk::Enum::YLeaf isis_up;
-
-};
-
-class IsisErrLogLevel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_err_log_level_info;
-        static const ydk::Enum::YLeaf isis_err_log_level_warn;
-        static const ydk::Enum::YLeaf isis_err_log_level_critical;
-
-};
-
-class OpenconfigIsisTypesHelloPaddingTypeEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf strict;
-        static const ydk::Enum::YLeaf loose;
-        static const ydk::Enum::YLeaf adaptive;
-        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf isis_intf_topo_adv_prefix_disabled_intf_suppressed;
+        static const ydk::Enum::YLeaf isis_intf_topo_adv_prefix_disabled_af_not_up;
+        static const ydk::Enum::YLeaf isis_intf_topo_adv_prefix_disabled_af_prefixes_unknown;
+        static const ydk::Enum::YLeaf isis_intf_topo_adv_prefix_disabled_internal_error;
 
 };
 
@@ -3757,132 +4041,85 @@ class IsisIfTopoAdjFormDisabledReason : public ydk::Enum
 
 };
 
-class IsisTilfaComputation : public ydk::Enum
+class IsisIfTopoDisabledReason : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_tilfa_comp_none;
-        static const ydk::Enum::YLeaf isis_tilfa_comp_link;
-        static const ydk::Enum::YLeaf isis_tilfa_comp_node;
-        static const ydk::Enum::YLeaf isis_tilfa_comp_srlg;
-        static const ydk::Enum::YLeaf isis_tilfa_comp_node_srlg;
+        static const ydk::Enum::YLeaf isis_intf_topo_disabled_not_cfg;
+        static const ydk::Enum::YLeaf isis_intf_topo_disabled_internal_error;
 
 };
 
-class IsisAdjStateReason : public ydk::Enum
+class IsisIfMcastInvalidReason : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_adj_up_nsf_restart;
-        static const ydk::Enum::YLeaf isis_adj_up_new_adj;
-        static const ydk::Enum::YLeaf isis_adj_up_restarted;
-        static const ydk::Enum::YLeaf isis_adj_up_nsf_restored;
-        static const ydk::Enum::YLeaf isis_adj_up_chkpt_restored;
-        static const ydk::Enum::YLeaf isis_adj_init_reason;
-        static const ydk::Enum::YLeaf isis_adj_init_neighbor_forgot;
-        static const ydk::Enum::YLeaf isis_adj_down_hold_time;
-        static const ydk::Enum::YLeaf isis_adj_down_if_down;
-        static const ydk::Enum::YLeaf isis_adj_down_cfg_mismatch;
-        static const ydk::Enum::YLeaf isis_adj_down_circ_id;
-        static const ydk::Enum::YLeaf isis_adj_down_nsf_ack_fail;
-        static const ydk::Enum::YLeaf isis_adj_down_db_clear;
-        static const ydk::Enum::YLeaf isis_adj_down_no_common_topology;
-        static const ydk::Enum::YLeaf isis_adj_down_restart_tlv_missing;
-        static const ydk::Enum::YLeaf isis_adj_down_bfd_down;
-        static const ydk::Enum::YLeaf isis_adj_down_3way_down;
+        static const ydk::Enum::YLeaf isis_intf_mcast_invalid_join_error;
+        static const ydk::Enum::YLeaf isis_intf_mcast_invalid_internal_error;
+        static const ydk::Enum::YLeaf isis_intf_mcast_invalid_not_yet_needed;
 
 };
 
-class SrmsMiAfEB : public ydk::Enum
+class IsisIfClnsSnpaUnknownReason : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf isis_intf_clns_snpa_unknown_access_error;
+        static const ydk::Enum::YLeaf isis_intf_clns_snpa_unknown_not_lan;
+        static const ydk::Enum::YLeaf isis_intf_clns_snpa_unknown_internal_error;
 
 };
 
-class IsisAdjBfdState : public ydk::Enum
+class IsisKnown : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_adj_bfd_no_state;
-        static const ydk::Enum::YLeaf isis_adj_bfd_down_state;
-        static const ydk::Enum::YLeaf isis_adj_bfd_init_state;
-        static const ydk::Enum::YLeaf isis_adj_bfd_up_state;
+        static const ydk::Enum::YLeaf isis_unknown;
+        static const ydk::Enum::YLeaf isis_known;
 
 };
 
-class IsisRedistProto : public ydk::Enum
+class IsisIfClnsMtuInvalidReason : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_redist_connected;
-        static const ydk::Enum::YLeaf isis_redist_static;
-        static const ydk::Enum::YLeaf isis_redist_ospf;
-        static const ydk::Enum::YLeaf isis_redist_bgp;
-        static const ydk::Enum::YLeaf isis_redist_isis;
-        static const ydk::Enum::YLeaf isis_redist_ospfv3;
-        static const ydk::Enum::YLeaf isis_redist_rip;
-        static const ydk::Enum::YLeaf isis_redist_eigrp;
-        static const ydk::Enum::YLeaf isis_redist_subscriber;
-        static const ydk::Enum::YLeaf isis_redist_application;
-        static const ydk::Enum::YLeaf isis_redist_mobile;
+        static const ydk::Enum::YLeaf isis_intf_clns_mtu_invalid_too_small;
+        static const ydk::Enum::YLeaf isis_intf_clns_mtu_invalid_internal_error;
 
 };
 
-class IsisShRouteAdvOrigin : public ydk::Enum
+class IsisIfClnsProtoDownReason : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_sh_route_adv_origin_interface;
-        static const ydk::Enum::YLeaf isis_sh_route_adv_origin_redistributed;
-        static const ydk::Enum::YLeaf isis_sh_route_adv_origin_native;
-        static const ydk::Enum::YLeaf isis_sh_route_adv_origin_summary;
-        static const ydk::Enum::YLeaf isis_sh_route_adv_origin_default;
+        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_add_to_intf_stack_fail;
+        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_no_imd_conn;
+        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_imd_node_doesnt_exist;
+        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_imd_exist_reg_error;
+        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_imd_state_reg_error;
+        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_clns_not_up;
 
 };
 
-class IsisEnabled : public ydk::Enum
+class IsisUp : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_disabled;
-        static const ydk::Enum::YLeaf isis_enabled;
+        static const ydk::Enum::YLeaf isis_down;
+        static const ydk::Enum::YLeaf isis_up;
 
 };
 
-class IsisLevel : public ydk::Enum
+class IsisIfAdvPrefixDisabledReason : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_level0;
-        static const ydk::Enum::YLeaf isis_level1;
-        static const ydk::Enum::YLeaf isis_level2;
+        static const ydk::Enum::YLeaf isis_intf_adv_prefix_disabled_if_cfg_suppressed;
+        static const ydk::Enum::YLeaf isis_intf_adv_prefix_disabled_no_topo_participate;
+        static const ydk::Enum::YLeaf isis_intf_adv_prefix_disabled_internal_error;
 
 };
 
-class IsisFrrTiebreaker : public ydk::Enum
+class IsisIfAdjFormDisabledReason : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_frr_tiebreaker_down_stream;
-        static const ydk::Enum::YLeaf isis_frr_tiebreaker_lc_disjoint;
-        static const ydk::Enum::YLeaf isis_frr_tiebreaker_low_est_backup_metric;
-        static const ydk::Enum::YLeaf isis_frr_tiebreaker_node_protecting;
-        static const ydk::Enum::YLeaf isis_frr_tiebreaker_primary_path;
-        static const ydk::Enum::YLeaf isis_frr_tiebreaker_secondary_path;
-        static const ydk::Enum::YLeaf isis_frr_tiebreaker_srlg_disjoint;
-        static const ydk::Enum::YLeaf isis_frr_tiebreaker_default;
-
-};
-
-class OpenconfigIsisLspIpv6SrlgStateFlagsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf na;
-
-};
-
-class IsisFrr : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_frr_type_none;
-        static const ydk::Enum::YLeaf isis_frr_type_per_link;
-        static const ydk::Enum::YLeaf isis_frr_type_per_prefix;
-        static const ydk::Enum::YLeaf isis_frr_type_sr_u_loop;
+        static const ydk::Enum::YLeaf isis_intf_adj_form_disabled_cfg_passive;
+        static const ydk::Enum::YLeaf isis_intf_adj_form_disabled_no_topo_participate;
+        static const ydk::Enum::YLeaf isis_intf_adj_form_disabled_add_to_intf_stack_fail;
+        static const ydk::Enum::YLeaf isis_intf_adj_form_disabled_clns_io;
+        static const ydk::Enum::YLeaf isis_intf_adj_form_disabled_internal_error;
 
 };
 
@@ -3903,357 +4140,19 @@ class IsisIfDisabledReason : public ydk::Enum
 
 };
 
-class IsisShTeLink : public ydk::Enum
+class IsisEnabled : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_sh_te_link_p2p;
-        static const ydk::Enum::YLeaf isis_sh_te_link_broadcast;
+        static const ydk::Enum::YLeaf isis_disabled;
+        static const ydk::Enum::YLeaf isis_enabled;
 
 };
 
-class IsisMediaClass : public ydk::Enum
+class IsisReachable : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_media_class_lan;
-        static const ydk::Enum::YLeaf isis_media_class_p2p;
-        static const ydk::Enum::YLeaf isis_media_class_loop_back;
-
-};
-
-class OpenconfigIsisTypesAdaptiveTimerTypeEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf linear;
-        static const ydk::Enum::YLeaf exponential;
-
-};
-
-class IsisIfMcastInvalidReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_intf_mcast_invalid_join_error;
-        static const ydk::Enum::YLeaf isis_intf_mcast_invalid_internal_error;
-        static const ydk::Enum::YLeaf isis_intf_mcast_invalid_not_yet_needed;
-
-};
-
-class IsisIfTopoAdvPrefixDisabledReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_intf_topo_adv_prefix_disabled_intf_suppressed;
-        static const ydk::Enum::YLeaf isis_intf_topo_adv_prefix_disabled_af_not_up;
-        static const ydk::Enum::YLeaf isis_intf_topo_adv_prefix_disabled_af_prefixes_unknown;
-        static const ydk::Enum::YLeaf isis_intf_topo_adv_prefix_disabled_internal_error;
-
-};
-
-class IsisAdjState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_adj_up_state;
-        static const ydk::Enum::YLeaf isis_adj_init_state;
-        static const ydk::Enum::YLeaf isis_adj_failed_state;
-
-};
-
-class OpenconfigIsisLspNlpidEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
-class IsisIfClnsProtoDownReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_add_to_intf_stack_fail;
-        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_no_imd_conn;
-        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_imd_node_doesnt_exist;
-        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_imd_exist_reg_error;
-        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_imd_state_reg_error;
-        static const ydk::Enum::YLeaf isis_intf_clns_proto_down_clns_not_up;
-
-};
-
-class SrmsMiFlagEB : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf false_;
-        static const ydk::Enum::YLeaf true_;
-
-};
-
-class IsisAdjTopoStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_adj_topo_status_ok;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_intf_not_configured;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_intf_not_running;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_init_state;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_neighbor_doesnt_participate;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv4_address_tlv_missing;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv4_address_tlv_empty;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv6_address_tlv_missing;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv6_address_tlv_empty;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv4_address_matches_ours;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv6_address_matches_ours;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv4_address_subnet_mismatch;
-        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv6_address_not_link_local;
-
-};
-
-class OpenconfigIsisLspLanAdjacencySidStateFlagsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf address_family;
-        static const ydk::Enum::YLeaf backup;
-        static const ydk::Enum::YLeaf value_;
-        static const ydk::Enum::YLeaf local;
-        static const ydk::Enum::YLeaf set;
-
-};
-
-class IsisIfTopoDisabledReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_intf_topo_disabled_not_cfg;
-        static const ydk::Enum::YLeaf isis_intf_topo_disabled_internal_error;
-
-};
-
-class IsisIfAdjFormDisabledReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_intf_adj_form_disabled_cfg_passive;
-        static const ydk::Enum::YLeaf isis_intf_adj_form_disabled_no_topo_participate;
-        static const ydk::Enum::YLeaf isis_intf_adj_form_disabled_add_to_intf_stack_fail;
-        static const ydk::Enum::YLeaf isis_intf_adj_form_disabled_clns_io;
-        static const ydk::Enum::YLeaf isis_intf_adj_form_disabled_internal_error;
-
-};
-
-class IsisEdmLabelTypeEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_edm_label_alloc_prefix_sid;
-        static const ydk::Enum::YLeaf isis_edm_label_alloc_local_sid;
-        static const ydk::Enum::YLeaf isis_edm_label_alloc_max;
-
-};
-
-class OpenconfigIsisLspIsisMetricFlagsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf internal;
-        static const ydk::Enum::YLeaf unsupported;
-
-};
-
-class OpenconfigSegmentRoutingLabelOptionsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_php;
-        static const ydk::Enum::YLeaf explicit_null;
-
-};
-
-class IsisLevels : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_levels_none;
-        static const ydk::Enum::YLeaf isis_levels_1;
-        static const ydk::Enum::YLeaf isis_levels_2;
-        static const ydk::Enum::YLeaf isis_levels_12;
-        static const ydk::Enum::YLeaf isis_levels_total;
-
-};
-
-class OpenconfigIsisTypesCircuitTypeEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf point_to_point;
-        static const ydk::Enum::YLeaf broadcast;
-
-};
-
-class OpenconfigIsisLspCryptoTypeEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf hmac_md5;
-        static const ydk::Enum::YLeaf cleartext;
-
-};
-
-class IsisIfAfDisabledReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_intf_af_disabled_no_topo_enabled;
-        static const ydk::Enum::YLeaf isis_intf_af_disabled_internal_error;
-
-};
-
-class OpenconfigIsisLspStateFlagsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf numbered;
-
-};
-
-class OpenconfigIsisTypesMetricStyleEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf narrow_metric;
-        static const ydk::Enum::YLeaf wide_metric;
-
-};
-
-class IsisNsfFlavor : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_nsf_flav_or_none;
-        static const ydk::Enum::YLeaf isis_nsf_flav_or_cisco;
-        static const ydk::Enum::YLeaf isis_nsf_flav_or_ietf;
-        static const ydk::Enum::YLeaf isis_nsf_flav_or_nsr;
-
-};
-
-class IsisAdjTopoChange : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_adj_topo_up_change;
-        static const ydk::Enum::YLeaf isis_adj_topo_next_hop_change;
-        static const ydk::Enum::YLeaf isis_adj_topo_down_change;
-
-};
-
-class IsisShTePceFloodingScope : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf area;
-        static const ydk::Enum::YLeaf domain;
-
-};
-
-class OpenconfigIsisLspAlgorithmEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf spf;
-        static const ydk::Enum::YLeaf strict_spf;
-
-};
-
-class IsisPrefixPriority : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_prefix_priority_critical;
-        static const ydk::Enum::YLeaf isis_prefix_priority_high;
-        static const ydk::Enum::YLeaf isis_prefix_priority_med;
-        static const ydk::Enum::YLeaf isis_prefix_priority_low;
-
-};
-
-class OpenconfigIsisLspFlagsStateFlagsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf external_flag;
-        static const ydk::Enum::YLeaf readvertisement_flag;
-        static const ydk::Enum::YLeaf node_flag;
-
-};
-
-class IsisAfId : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
-class IsisKnown : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_unknown;
-        static const ydk::Enum::YLeaf isis_known;
-
-};
-
-class OpenconfigIsisLspAdjacencySidStateFlagsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf address_family;
-        static const ydk::Enum::YLeaf backup;
-        static const ydk::Enum::YLeaf value_;
-        static const ydk::Enum::YLeaf local;
-        static const ydk::Enum::YLeaf set;
-
-};
-
-class OpenconfigIsisLspPrefixSidStateFlagsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf readvertisement;
-        static const ydk::Enum::YLeaf node;
-        static const ydk::Enum::YLeaf php;
-        static const ydk::Enum::YLeaf explicit_null;
-        static const ydk::Enum::YLeaf value_;
-        static const ydk::Enum::YLeaf local;
-
-};
-
-class OpenconfigIsisLspFlagsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf partition_repair;
-        static const ydk::Enum::YLeaf attached_error;
-        static const ydk::Enum::YLeaf attached_expense;
-        static const ydk::Enum::YLeaf attached_delay;
-        static const ydk::Enum::YLeaf attached_default;
-        static const ydk::Enum::YLeaf overload;
-
-};
-
-class IsisValid : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_invalid;
-        static const ydk::Enum::YLeaf isis_valid;
-
-};
-
-class IsisIfClnsMtuInvalidReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_intf_clns_mtu_invalid_too_small;
-        static const ydk::Enum::YLeaf isis_intf_clns_mtu_invalid_internal_error;
-
-};
-
-class OpenconfigIsisLspDefaultMetricStateFlagsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf internal;
-
-};
-
-class OpenconfigIsisAdjacencyStateNlpidEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
-class IsisIfAfProtoDownReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_intf_af_proto_down_imd_conn_fail;
-        static const ydk::Enum::YLeaf isis_intf_af_proto_down_imd_node_doesnt_exist;
-        static const ydk::Enum::YLeaf isis_intf_af_proto_down_imd_exist_reg_error;
-        static const ydk::Enum::YLeaf isis_intf_af_proto_down_imd_state_reg_error;
-        static const ydk::Enum::YLeaf isis_intf_af_proto_down_af_not_up;
-        static const ydk::Enum::YLeaf isis_intf_af_proto_down_internal_error;
+        static const ydk::Enum::YLeaf isis_unreachable;
+        static const ydk::Enum::YLeaf isis_reachable;
 
 };
 
@@ -4263,68 +4162,6 @@ class IsisMetricMode : public ydk::Enum
         static const ydk::Enum::YLeaf isis_metric_mode_fixed;
         static const ydk::Enum::YLeaf isis_metric_mode_relative;
         static const ydk::Enum::YLeaf isis_metric_mode_absolute;
-
-};
-
-class OpenconfigIsisLspSegmentRoutingCapabilityStateFlagsEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4_mpls;
-        static const ydk::Enum::YLeaf ipv6_mpls;
-        static const ydk::Enum::YLeaf ipv6_sr;
-
-};
-
-class IsisMetricStyle : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_metric_style_narrow;
-        static const ydk::Enum::YLeaf isis_metric_style_wide;
-        static const ydk::Enum::YLeaf isis_metric_style_transition;
-        static const ydk::Enum::YLeaf isis_metric_style_narrow_transition;
-        static const ydk::Enum::YLeaf isis_metric_style_wide_transition;
-
-};
-
-class IsisIfAdvPrefixDisabledReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_intf_adv_prefix_disabled_if_cfg_suppressed;
-        static const ydk::Enum::YLeaf isis_intf_adv_prefix_disabled_no_topo_participate;
-        static const ydk::Enum::YLeaf isis_intf_adv_prefix_disabled_internal_error;
-
-};
-
-class OpenconfigIsisTypesLevelTypeEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf level1;
-        static const ydk::Enum::YLeaf level2;
-        static const ydk::Enum::YLeaf level12;
-
-};
-
-class IsisIfAfPrefixUnknownReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_adv_suppressed;
-        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_global_addr_reg_error;
-        static const ydk::Enum::YLeaf isis_intf_af_prefix_unknown_internal_error;
-
-};
-
-class IsisSpfClass : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isis_spf_frr_sr_u_loop;
-        static const ydk::Enum::YLeaf isis_spf_frr_per_link;
-        static const ydk::Enum::YLeaf isis_spf_partial;
-        static const ydk::Enum::YLeaf isis_spf_frr_per_prefix;
-        static const ydk::Enum::YLeaf isis_spf_ucmp_calc;
-        static const ydk::Enum::YLeaf isis_spf_flex;
-        static const ydk::Enum::YLeaf isis_spf_next_hop;
-        static const ydk::Enum::YLeaf isis_spf_incremental;
-        static const ydk::Enum::YLeaf isis_spf_full;
 
 };
 
@@ -4363,34 +4200,155 @@ class IsisSpfTrigger : public ydk::Enum
         static const ydk::Enum::YLeaf isis_spf_trig_ip_addr;
         static const ydk::Enum::YLeaf isis_spf_trig_rtrid;
         static const ydk::Enum::YLeaf isis_spf_trig_flex_algo;
+        static const ydk::Enum::YLeaf isis_spf_trig_srv6_cap;
+        static const ydk::Enum::YLeaf isis_spf_trig_srv6_locator;
         static const ydk::Enum::YLeaf isis_spf_trig_prefix_policy;
 
 };
 
-class IsisIfClnsSnpaUnknownReason : public ydk::Enum
+class IsisSpfClass : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_intf_clns_snpa_unknown_access_error;
-        static const ydk::Enum::YLeaf isis_intf_clns_snpa_unknown_not_lan;
-        static const ydk::Enum::YLeaf isis_intf_clns_snpa_unknown_internal_error;
+        static const ydk::Enum::YLeaf isis_spf_frr_sr_u_loop;
+        static const ydk::Enum::YLeaf isis_spf_frr_per_link;
+        static const ydk::Enum::YLeaf isis_spf_partial;
+        static const ydk::Enum::YLeaf isis_spf_frr_per_prefix;
+        static const ydk::Enum::YLeaf isis_spf_ucmp_calc;
+        static const ydk::Enum::YLeaf isis_spf_flex;
+        static const ydk::Enum::YLeaf isis_spf_next_hop;
+        static const ydk::Enum::YLeaf isis_spf_incremental;
+        static const ydk::Enum::YLeaf isis_spf_full;
 
 };
 
-class OpenconfigIsisTypesIsisInterfaceAdjStateEnum : public ydk::Enum
+class IsisShTePceFloodingScope : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf init;
-        static const ydk::Enum::YLeaf failed;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf area;
+        static const ydk::Enum::YLeaf domain;
 
 };
 
-class IsisReachable : public ydk::Enum
+class IsisShTeLink : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_unreachable;
-        static const ydk::Enum::YLeaf isis_reachable;
+        static const ydk::Enum::YLeaf isis_sh_te_link_p2p;
+        static const ydk::Enum::YLeaf isis_sh_te_link_broadcast;
+
+};
+
+class Srv6EndFunction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf end;
+        static const ydk::Enum::YLeaf end_with_psp;
+        static const ydk::Enum::YLeaf end_with_usp;
+        static const ydk::Enum::YLeaf end_with_psp_usp;
+        static const ydk::Enum::YLeaf end_x;
+        static const ydk::Enum::YLeaf end_x_with_psp;
+        static const ydk::Enum::YLeaf end_x_with_usp;
+        static const ydk::Enum::YLeaf end_x_with_psp_usp;
+        static const ydk::Enum::YLeaf end_tn;
+        static const ydk::Enum::YLeaf end_t_with_psp;
+        static const ydk::Enum::YLeaf end_t_with_usp;
+        static const ydk::Enum::YLeaf end_t_with_psp_usp;
+        static const ydk::Enum::YLeaf end_b6;
+        static const ydk::Enum::YLeaf end_b6_encaps;
+        static const ydk::Enum::YLeaf end_bm;
+        static const ydk::Enum::YLeaf end_dx6;
+        static const ydk::Enum::YLeaf end_dx4;
+        static const ydk::Enum::YLeaf end_dt6;
+        static const ydk::Enum::YLeaf end_dt4;
+        static const ydk::Enum::YLeaf end_dt46;
+        static const ydk::Enum::YLeaf end_dx2;
+        static const ydk::Enum::YLeaf end_dx2v;
+        static const ydk::Enum::YLeaf end_dx2u;
+        static const ydk::Enum::YLeaf end_dx2m;
+        static const ydk::Enum::YLeaf end_otp;
+        static const ydk::Enum::YLeaf end_s;
+
+};
+
+class IsisShRouteAdvOrigin : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_sh_route_adv_origin_interface;
+        static const ydk::Enum::YLeaf isis_sh_route_adv_origin_redistributed;
+        static const ydk::Enum::YLeaf isis_sh_route_adv_origin_native;
+        static const ydk::Enum::YLeaf isis_sh_route_adv_origin_summary;
+        static const ydk::Enum::YLeaf isis_sh_route_adv_origin_default;
+
+};
+
+class IsisPrefixPriority : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_prefix_priority_critical;
+        static const ydk::Enum::YLeaf isis_prefix_priority_high;
+        static const ydk::Enum::YLeaf isis_prefix_priority_med;
+        static const ydk::Enum::YLeaf isis_prefix_priority_low;
+
+};
+
+class IsisTilfaComputation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_tilfa_comp_none;
+        static const ydk::Enum::YLeaf isis_tilfa_comp_link;
+        static const ydk::Enum::YLeaf isis_tilfa_comp_node;
+        static const ydk::Enum::YLeaf isis_tilfa_comp_srlg;
+        static const ydk::Enum::YLeaf isis_tilfa_comp_node_srlg;
+
+};
+
+class IsisPrefixOrigin : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_prefix_origin_l1_summary_null;
+        static const ydk::Enum::YLeaf isis_prefix_origin_l1;
+        static const ydk::Enum::YLeaf isis_prefix_origin_l2_summary_null;
+        static const ydk::Enum::YLeaf isis_prefix_origin_l2;
+        static const ydk::Enum::YLeaf isis_prefix_origin_inter_area_summary_null;
+        static const ydk::Enum::YLeaf isis_prefix_origin_inter_area;
+        static const ydk::Enum::YLeaf isis_prefix_origin_default_nearest_attached;
+
+};
+
+class IsisRedistProto : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_redist_connected;
+        static const ydk::Enum::YLeaf isis_redist_static;
+        static const ydk::Enum::YLeaf isis_redist_ospf;
+        static const ydk::Enum::YLeaf isis_redist_bgp;
+        static const ydk::Enum::YLeaf isis_redist_isis;
+        static const ydk::Enum::YLeaf isis_redist_ospfv3;
+        static const ydk::Enum::YLeaf isis_redist_rip;
+        static const ydk::Enum::YLeaf isis_redist_eigrp;
+        static const ydk::Enum::YLeaf isis_redist_subscriber;
+        static const ydk::Enum::YLeaf isis_redist_application;
+        static const ydk::Enum::YLeaf isis_redist_mobile;
+
+};
+
+class IsisValid : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_invalid;
+        static const ydk::Enum::YLeaf isis_valid;
+
+};
+
+class IsisLspDbOp : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_lsp_db_clear;
+        static const ydk::Enum::YLeaf isis_lsp_db_insert_new_lsp;
+        static const ydk::Enum::YLeaf isis_lsp_db_replace_lsp_with_lsp;
+        static const ydk::Enum::YLeaf isis_lsp_db_purge_lsp;
+        static const ydk::Enum::YLeaf isis_lsp_db_delete_lsp;
 
 };
 
@@ -4433,83 +4391,118 @@ class IsisLspTrigger : public ydk::Enum
 
 };
 
-class IsisUloopAvoidance : public ydk::Enum
+class IsisAdjTopoStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_u_loop_avoidance_type_none;
-        static const ydk::Enum::YLeaf isis_u_loop_avoidance_type_all;
-        static const ydk::Enum::YLeaf isis_u_loop_avoidance_type_protected;
-        static const ydk::Enum::YLeaf isis_u_loop_avoidance_type_sr;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_ok;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_intf_not_configured;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_intf_not_running;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_init_state;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_neighbor_doesnt_participate;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv4_address_tlv_missing;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv4_address_tlv_empty;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv6_address_tlv_missing;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv6_address_tlv_empty;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv4_address_matches_ours;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv6_address_matches_ours;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv4_address_subnet_mismatch;
+        static const ydk::Enum::YLeaf isis_adj_topo_status_ipv6_address_not_link_local;
 
 };
 
-class Srv6EndFunction : public ydk::Enum
+class IsisAdjBfdState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf end;
-        static const ydk::Enum::YLeaf end_with_psp;
-        static const ydk::Enum::YLeaf end_with_usp;
-        static const ydk::Enum::YLeaf end_with_psp_usp;
-        static const ydk::Enum::YLeaf end_x;
-        static const ydk::Enum::YLeaf end_x_with_psp;
-        static const ydk::Enum::YLeaf end_x_with_usp;
-        static const ydk::Enum::YLeaf end_x_with_psp_usp;
-        static const ydk::Enum::YLeaf end_tn;
-        static const ydk::Enum::YLeaf end_t_with_psp;
-        static const ydk::Enum::YLeaf end_t_with_usp;
-        static const ydk::Enum::YLeaf end_t_with_psp_usp;
-        static const ydk::Enum::YLeaf end_b6;
-        static const ydk::Enum::YLeaf end_b6_encaps;
-        static const ydk::Enum::YLeaf end_bm;
-        static const ydk::Enum::YLeaf end_dx6;
-        static const ydk::Enum::YLeaf end_dx4;
-        static const ydk::Enum::YLeaf end_dt6;
-        static const ydk::Enum::YLeaf end_dt4;
-        static const ydk::Enum::YLeaf end_dt46;
-        static const ydk::Enum::YLeaf end_dx2;
-        static const ydk::Enum::YLeaf end_dx2v;
-        static const ydk::Enum::YLeaf end_dx2u;
-        static const ydk::Enum::YLeaf end_dx2m;
-        static const ydk::Enum::YLeaf end_otp;
-        static const ydk::Enum::YLeaf end_s;
+        static const ydk::Enum::YLeaf isis_adj_bfd_no_state;
+        static const ydk::Enum::YLeaf isis_adj_bfd_down_state;
+        static const ydk::Enum::YLeaf isis_adj_bfd_init_state;
+        static const ydk::Enum::YLeaf isis_adj_bfd_up_state;
 
 };
 
-class IsisPrefixOrigin : public ydk::Enum
+class IsisAdjTopoChange : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isis_prefix_origin_l1_summary_null;
-        static const ydk::Enum::YLeaf isis_prefix_origin_l1;
-        static const ydk::Enum::YLeaf isis_prefix_origin_l2_summary_null;
-        static const ydk::Enum::YLeaf isis_prefix_origin_l2;
-        static const ydk::Enum::YLeaf isis_prefix_origin_inter_area_summary_null;
-        static const ydk::Enum::YLeaf isis_prefix_origin_inter_area;
-        static const ydk::Enum::YLeaf isis_prefix_origin_default_nearest_attached;
+        static const ydk::Enum::YLeaf isis_adj_topo_up_change;
+        static const ydk::Enum::YLeaf isis_adj_topo_next_hop_change;
+        static const ydk::Enum::YLeaf isis_adj_topo_down_change;
 
 };
 
-class OpenconfigIsisLspAttributesEnum : public ydk::Enum
+class IsisAdjStateReason : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf overload;
-        static const ydk::Enum::YLeaf attached;
+        static const ydk::Enum::YLeaf isis_adj_up_nsf_restart;
+        static const ydk::Enum::YLeaf isis_adj_up_new_adj;
+        static const ydk::Enum::YLeaf isis_adj_up_restarted;
+        static const ydk::Enum::YLeaf isis_adj_up_nsf_restored;
+        static const ydk::Enum::YLeaf isis_adj_up_chkpt_restored;
+        static const ydk::Enum::YLeaf isis_adj_init_reason;
+        static const ydk::Enum::YLeaf isis_adj_init_neighbor_forgot;
+        static const ydk::Enum::YLeaf isis_adj_down_hold_time;
+        static const ydk::Enum::YLeaf isis_adj_down_if_down;
+        static const ydk::Enum::YLeaf isis_adj_down_cfg_mismatch;
+        static const ydk::Enum::YLeaf isis_adj_down_circ_id;
+        static const ydk::Enum::YLeaf isis_adj_down_nsf_ack_fail;
+        static const ydk::Enum::YLeaf isis_adj_down_db_clear;
+        static const ydk::Enum::YLeaf isis_adj_down_no_common_topology;
+        static const ydk::Enum::YLeaf isis_adj_down_restart_tlv_missing;
+        static const ydk::Enum::YLeaf isis_adj_down_bfd_down;
+        static const ydk::Enum::YLeaf isis_adj_down_3way_down;
 
 };
 
-class OpenconfigIsisLspPduTypeEnum : public ydk::Enum
+class IsisLevel : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf level1;
-        static const ydk::Enum::YLeaf level2;
+        static const ydk::Enum::YLeaf isis_level0;
+        static const ydk::Enum::YLeaf isis_level1;
+        static const ydk::Enum::YLeaf isis_level2;
 
 };
 
-class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::RouterCapabilities::RouterCapability::Subtlvs::Subtlv::SegmentRoutingAlgorithms::SegmentRoutingAlgorithm::Algorithm : public ydk::Enum
+class IsisSubAfId : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf spf;
-        static const ydk::Enum::YLeaf strict_spf;
+        static const ydk::Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf multicast;
+
+};
+
+class IsisAfId : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+};
+
+class IsisMediaClass : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_media_class_lan;
+        static const ydk::Enum::YLeaf isis_media_class_p2p;
+        static const ydk::Enum::YLeaf isis_media_class_loop_back;
+
+};
+
+class IsisLevels : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_levels_none;
+        static const ydk::Enum::YLeaf isis_levels_1;
+        static const ydk::Enum::YLeaf isis_levels_2;
+        static const ydk::Enum::YLeaf isis_levels_12;
+        static const ydk::Enum::YLeaf isis_levels_total;
+
+};
+
+class IsisAdjState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isis_adj_up_state;
+        static const ydk::Enum::YLeaf isis_adj_init_state;
+        static const ydk::Enum::YLeaf isis_adj_failed_state;
 
 };
 

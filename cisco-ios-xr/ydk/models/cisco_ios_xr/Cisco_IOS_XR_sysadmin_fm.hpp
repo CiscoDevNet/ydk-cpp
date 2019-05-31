@@ -792,54 +792,6 @@ class Fm::Agents::FmStatistics::Detail : public ydk::Entity
 
 }; // Fm::Agents::FmStatistics::Detail
 
-class FmActionT : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ISOLATION;
-        static const ydk::Enum::YLeaf MITIGATION;
-        static const ydk::Enum::YLeaf RECOVERY;
-        static const ydk::Enum::YLeaf CORRELATION;
-        static const ydk::Enum::YLeaf ALARM;
-        static const ydk::Enum::YLeaf REPORT;
-
-};
-
-class FmHistoryStateT : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf FM_HISTORY_STATE_ACTIVE;
-        static const ydk::Enum::YLeaf FM_HISTORY_STATE_CLEARED;
-        static const ydk::Enum::YLeaf FM_HISTORY_STATE_INVALID;
-
-};
-
-class FmServiceScopeT : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf FM_SERVICE_NODE_SCOPE;
-        static const ydk::Enum::YLeaf FM_SERVICE_RACK_SCOPE;
-        static const ydk::Enum::YLeaf FM_SERVICE_SYSTEM_SCOPE;
-
-};
-
-class FmActionResultT : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf SUCCESS;
-        static const ydk::Enum::YLeaf FAILURE;
-        static const ydk::Enum::YLeaf NO_OP;
-
-};
-
-class GenericHaRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_ha_role;
-        static const ydk::Enum::YLeaf Active;
-        static const ydk::Enum::YLeaf Standby;
-
-};
-
 class FmFaultStateT : public ydk::Enum
 {
     public:
@@ -865,11 +817,41 @@ class FmFaultSeverityT : public ydk::Enum
 
 };
 
+class FmActionT : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ISOLATION;
+        static const ydk::Enum::YLeaf MITIGATION;
+        static const ydk::Enum::YLeaf RECOVERY;
+        static const ydk::Enum::YLeaf CORRELATION;
+        static const ydk::Enum::YLeaf ALARM;
+        static const ydk::Enum::YLeaf REPORT;
+
+};
+
+class FmActionResultT : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf SUCCESS;
+        static const ydk::Enum::YLeaf FAILURE;
+        static const ydk::Enum::YLeaf NO_OP;
+
+};
+
 class FmRuleEvalResultT : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf SUCCESS;
         static const ydk::Enum::YLeaf FAILURE;
+
+};
+
+class GenericHaRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_ha_role;
+        static const ydk::Enum::YLeaf Active;
+        static const ydk::Enum::YLeaf Standby;
 
 };
 
@@ -880,6 +862,24 @@ class FmCorrelationObjQualifierT : public ydk::Enum
         static const ydk::Enum::YLeaf QUALIFIER_RACK;
         static const ydk::Enum::YLeaf QUALIFIER_SLOT;
         static const ydk::Enum::YLeaf QUALIFIER_OBJECT;
+
+};
+
+class FmHistoryStateT : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf FM_HISTORY_STATE_ACTIVE;
+        static const ydk::Enum::YLeaf FM_HISTORY_STATE_CLEARED;
+        static const ydk::Enum::YLeaf FM_HISTORY_STATE_INVALID;
+
+};
+
+class FmServiceScopeT : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf FM_SERVICE_NODE_SCOPE;
+        static const ydk::Enum::YLeaf FM_SERVICE_RACK_SCOPE;
+        static const ydk::Enum::YLeaf FM_SERVICE_SYSTEM_SCOPE;
 
 };
 

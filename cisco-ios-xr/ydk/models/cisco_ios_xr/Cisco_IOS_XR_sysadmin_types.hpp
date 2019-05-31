@@ -10,30 +10,6 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sysadmin_types {
 
-class GenericOperStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf down;
-
-};
-
-class GenericHaRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_ha_role;
-        static const ydk::Enum::YLeaf Active;
-        static const ydk::Enum::YLeaf Standby;
-
-};
-
-class Adminstate : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable;
-
-};
-
 class RackId : public ydk::Enum
 {
     public:
@@ -62,12 +38,18 @@ class RackId : public ydk::Enum
 
 };
 
-class FabricLinkTypes : public ydk::Enum
+class Adminstate : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf S1;
-        static const ydk::Enum::YLeaf S2;
-        static const ydk::Enum::YLeaf S3;
+        static const ydk::Enum::YLeaf disable;
+
+};
+
+class GenericOperStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf down;
 
 };
 
@@ -84,6 +66,24 @@ class GenericOperStatus__ : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf down;
+
+};
+
+class GenericHaRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_ha_role;
+        static const ydk::Enum::YLeaf Active;
+        static const ydk::Enum::YLeaf Standby;
+
+};
+
+class FabricLinkTypes : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf S1;
+        static const ydk::Enum::YLeaf S2;
+        static const ydk::Enum::YLeaf S3;
 
 };
 

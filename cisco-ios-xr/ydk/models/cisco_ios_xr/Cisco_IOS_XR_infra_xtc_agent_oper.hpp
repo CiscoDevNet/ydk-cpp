@@ -619,8 +619,8 @@ class Xtc : public ydk::Entity
         class PolicySummary; //type: Xtc::PolicySummary
         class OnDemandColors; //type: Xtc::OnDemandColors
         class Controller; //type: Xtc::Controller
-        class TopologySummary; //type: Xtc::TopologySummary
         class TopologyNodes; //type: Xtc::TopologyNodes
+        class TopologySummaries; //type: Xtc::TopologySummaries
         class PrefixInfos; //type: Xtc::PrefixInfos
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::Policies> policies;
@@ -628,8 +628,8 @@ class Xtc : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::PolicySummary> policy_summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::OnDemandColors> on_demand_colors;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::Controller> controller;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::TopologySummary> topology_summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::TopologyNodes> topology_nodes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::TopologySummaries> topology_summaries;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::PrefixInfos> prefix_infos;
         
 }; // Xtc
@@ -797,19 +797,21 @@ class Xtc::Policies::Policy::CandidatePath : public ydk::Entity
         ydk::YLeaf preference; //type: uint32
         ydk::YLeaf protocol_originator; //type: XtcPolicyCpathProtoOrigin
         ydk::YLeaf discriminator; //type: uint32
-        ydk::YLeaf is_current; //type: boolean
+        ydk::YLeaf is_active; //type: boolean
         ydk::YLeaf is_reoptimizing; //type: boolean
         ydk::YLeaf shutdown; //type: boolean
         ydk::YLeaf error; //type: string
         class Originator; //type: Xtc::Policies::Policy::CandidatePath::Originator
         class SrPathConstraints; //type: Xtc::Policies::Policy::CandidatePath::SrPathConstraints
         class RequestedBsid; //type: Xtc::Policies::Policy::CandidatePath::RequestedBsid
+        class CleanupTimer; //type: Xtc::Policies::Policy::CandidatePath::CleanupTimer
         class PccInformation; //type: Xtc::Policies::Policy::CandidatePath::PccInformation
         class SegmentList; //type: Xtc::Policies::Policy::CandidatePath::SegmentList
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::Policies::Policy::CandidatePath::Originator> originator;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::Policies::Policy::CandidatePath::SrPathConstraints> sr_path_constraints;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::Policies::Policy::CandidatePath::RequestedBsid> requested_bsid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::Policies::Policy::CandidatePath::CleanupTimer> cleanup_timer;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::Policies::Policy::CandidatePath::PccInformation> pcc_information;
         ydk::YList segment_list;
         
@@ -955,6 +957,7 @@ class Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstrain
 
         ydk::YLeaf type; //type: uint8
         ydk::YLeaf value_; //type: uint32
+        ydk::YLeafList extended_value; //type: list of  uint32
         class Color; //type: Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::Color
 
         ydk::YList color;
@@ -1004,6 +1007,29 @@ class Xtc::Policies::Policy::CandidatePath::RequestedBsid : public ydk::Entity
         ydk::YLeaf ipv6; //type: string
 
 }; // Xtc::Policies::Policy::CandidatePath::RequestedBsid
+
+
+class Xtc::Policies::Policy::CandidatePath::CleanupTimer : public ydk::Entity
+{
+    public:
+        CleanupTimer();
+        ~CleanupTimer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf running; //type: boolean
+        ydk::YLeaf remaining_seconds; //type: int64
+        ydk::YLeaf remaining_nano_seconds; //type: int64
+
+}; // Xtc::Policies::Policy::CandidatePath::CleanupTimer
 
 
 class Xtc::Policies::Policy::CandidatePath::PccInformation : public ydk::Entity
@@ -1206,7 +1232,7 @@ class Xtc::Policies::Policy::LsPs : public ydk::Entity
         ydk::YLeaf policy_id; //type: uint16
         ydk::YLeaf local_label; //type: uint32
         ydk::YLeaf state; //type: XtcPolicyLspSmState
-        ydk::YLeaf is_current_lsp; //type: boolean
+        ydk::YLeaf is_active_lsp; //type: boolean
         ydk::YLeaf is_reoptimized_lsp; //type: boolean
         class BindingSid; //type: Xtc::Policies::Policy::LsPs::BindingSid
         class InstallTimer; //type: Xtc::Policies::Policy::LsPs::InstallTimer
@@ -1378,6 +1404,7 @@ class Xtc::PolicyForwardings::PolicyForwarding : public ydk::Entity
 
         ydk::YLeaf name; //type: string
         ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf candidate_path_name; //type: string
         ydk::YLeaf color; //type: uint32
         ydk::YLeaf is_local_label_valid; //type: boolean
         ydk::YLeaf local_label; //type: uint32
@@ -1385,9 +1412,11 @@ class Xtc::PolicyForwardings::PolicyForwarding : public ydk::Entity
         ydk::YLeaf forwarding_stats_pkts; //type: uint64
         ydk::YLeaf forwarding_stats_bytes; //type: uint64
         class EndpointAddress; //type: Xtc::PolicyForwardings::PolicyForwarding::EndpointAddress
+        class BindingSid; //type: Xtc::PolicyForwardings::PolicyForwarding::BindingSid
         class Paths; //type: Xtc::PolicyForwardings::PolicyForwarding::Paths
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::PolicyForwardings::PolicyForwarding::EndpointAddress> endpoint_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::PolicyForwardings::PolicyForwarding::BindingSid> binding_sid;
         ydk::YList paths;
         
 }; // Xtc::PolicyForwardings::PolicyForwarding
@@ -1414,6 +1443,29 @@ class Xtc::PolicyForwardings::PolicyForwarding::EndpointAddress : public ydk::En
         ydk::YLeaf ipv6; //type: string
 
 }; // Xtc::PolicyForwardings::PolicyForwarding::EndpointAddress
+
+
+class Xtc::PolicyForwardings::PolicyForwarding::BindingSid : public ydk::Entity
+{
+    public:
+        BindingSid();
+        ~BindingSid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sid_type; //type: XtcSid
+        ydk::YLeaf label; //type: uint32
+        ydk::YLeaf ipv6; //type: string
+
+}; // Xtc::PolicyForwardings::PolicyForwarding::BindingSid
 
 
 class Xtc::PolicyForwardings::PolicyForwarding::Paths : public ydk::Entity
@@ -1466,38 +1518,19 @@ class Xtc::PolicySummary : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf configured_total_policy_count; //type: uint32
-        ydk::YLeaf configured_up_policy_count; //type: uint32
-        ydk::YLeaf configured_down_policy_count; //type: uint32
-        class Ipv4SourceAddress; //type: Xtc::PolicySummary::Ipv4SourceAddress
+        ydk::YLeaf total_policy_count; //type: uint32
+        ydk::YLeaf up_policy_count; //type: uint32
+        ydk::YLeaf down_policy_count; //type: uint32
+        ydk::YLeaf total_candidate_path_count; //type: uint32
+        ydk::YLeaf active_candidate_path_count; //type: uint32
+        ydk::YLeaf inactive_candidate_path_count; //type: uint32
+        ydk::YLeaf total_lsp_count; //type: uint32
+        ydk::YLeaf active_lsp_count; //type: uint32
+        ydk::YLeaf reoptimized_lsp_count; //type: uint32
+        ydk::YLeaf cleanup_lsp_count; //type: uint32
+        ydk::YLeaf oor_lsp_count; //type: uint32
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::PolicySummary::Ipv4SourceAddress> ipv4_source_address;
-        
 }; // Xtc::PolicySummary
-
-
-class Xtc::PolicySummary::Ipv4SourceAddress : public ydk::Entity
-{
-    public:
-        Ipv4SourceAddress();
-        ~Ipv4SourceAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf af_name; //type: XtcAfId
-        ydk::YLeaf ipv4; //type: string
-        ydk::YLeaf ipv6; //type: string
-
-}; // Xtc::PolicySummary::Ipv4SourceAddress
 
 
 class Xtc::OnDemandColors : public ydk::Entity
@@ -1816,32 +1849,6 @@ class Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::RemoteA
 }; // Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::RemoteAddress
 
 
-class Xtc::TopologySummary : public ydk::Entity
-{
-    public:
-        TopologySummary();
-        ~TopologySummary();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf nodes; //type: uint32
-        ydk::YLeaf prefixes; //type: uint32
-        ydk::YLeaf prefix_sids; //type: uint32
-        ydk::YLeaf links; //type: uint32
-        ydk::YLeaf adjacency_sids; //type: uint32
-
-}; // Xtc::TopologySummary
-
-
 class Xtc::TopologyNodes : public ydk::Entity
 {
     public:
@@ -2116,13 +2123,16 @@ class Xtc::TopologyNodes::TopologyNode::Ipv4Link : public ydk::Entity
         ydk::YLeaf maximum_link_bandwidth; //type: uint64
         ydk::YLeaf max_reservable_bandwidth; //type: uint64
         ydk::YLeaf administrative_groups; //type: uint32
+        ydk::YLeafList extended_administrative_group; //type: list of  uint32
         ydk::YLeafList srlgs; //type: list of  uint32
         class LocalIgpInformation; //type: Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation
         class RemoteNodeProtocolIdentifier; //type: Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier
+        class PerformanceMetrics; //type: Xtc::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics
         class AdjacencySid; //type: Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation> local_igp_information;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier> remote_node_protocol_identifier;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_agent_oper::Xtc::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics> performance_metrics;
         ydk::YList adjacency_sid;
         
 }; // Xtc::TopologyNodes::TopologyNode::Ipv4Link
@@ -2388,6 +2398,27 @@ class Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::
         ydk::YLeaf router_id; //type: string
 
 }; // Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp
+
+
+class Xtc::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics : public ydk::Entity
+{
+    public:
+        PerformanceMetrics();
+        ~PerformanceMetrics();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf unidirectional_minimum_delay_microseconds; //type: uint32
+
+}; // Xtc::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics
 
 
 class Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid : public ydk::Entity
@@ -2783,6 +2814,58 @@ class Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix : publ
 }; // Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix
 
 
+class Xtc::TopologySummaries : public ydk::Entity
+{
+    public:
+        TopologySummaries();
+        ~TopologySummaries();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class TopologySummary; //type: Xtc::TopologySummaries::TopologySummary
+
+        ydk::YList topology_summary;
+        
+}; // Xtc::TopologySummaries
+
+
+class Xtc::TopologySummaries::TopologySummary : public ydk::Entity
+{
+    public:
+        TopologySummary();
+        ~TopologySummary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf af; //type: XtcAddressFamily
+        ydk::YLeaf protocol; //type: XtcigpProtocol
+        ydk::YLeaf nodes; //type: uint32
+        ydk::YLeaf prefixes; //type: uint32
+        ydk::YLeaf prefix_sids; //type: uint32
+        ydk::YLeaf links; //type: uint32
+        ydk::YLeaf adjacency_sids; //type: uint32
+
+}; // Xtc::TopologySummaries::TopologySummary
+
+
 class Xtc::PrefixInfos : public ydk::Entity
 {
     public:
@@ -3025,28 +3108,20 @@ class Xtc::PrefixInfos::PrefixInfo::Address::IpAddress : public ydk::Entity
 
 }; // Xtc::PrefixInfos::PrefixInfo::Address::IpAddress
 
-class XtcSrSid : public ydk::Enum
+class XtcigpProtocol : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ipv4_node_sid;
-        static const ydk::Enum::YLeaf ipv4_adjacency_sid;
-        static const ydk::Enum::YLeaf unknown_sid;
-
-};
-
-class XtcIgpInfoId : public ydk::Enum
-{
-    public:
+        static const ydk::Enum::YLeaf unknown;
         static const ydk::Enum::YLeaf isis;
         static const ydk::Enum::YLeaf ospf;
         static const ydk::Enum::YLeaf bgp;
+        static const ydk::Enum::YLeaf te;
 
 };
 
-class XtcAfId : public ydk::Enum
+class XtcAddressFamily : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 
@@ -3063,13 +3138,12 @@ class XtcSid1 : public ydk::Enum
 
 };
 
-class XtcPolicyCpathProtoOrigin : public ydk::Enum
+class XtcIgpInfoId : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf pcep;
+        static const ydk::Enum::YLeaf isis;
+        static const ydk::Enum::YLeaf ospf;
         static const ydk::Enum::YLeaf bgp;
-        static const ydk::Enum::YLeaf configuration;
 
 };
 
@@ -3092,6 +3166,7 @@ class XtcPolicyLspSmState : public ydk::Enum
         static const ydk::Enum::YLeaf deleted;
         static const ydk::Enum::YLeaf programmed;
         static const ydk::Enum::YLeaf egress_paths_pending;
+        static const ydk::Enum::YLeaf out_of_resources_pending;
         static const ydk::Enum::YLeaf label_allocation_pending;
         static const ydk::Enum::YLeaf label_allocation_cleanup_pending;
         static const ydk::Enum::YLeaf label_rewrite_pending;
@@ -3107,12 +3182,31 @@ class XtcPolicyLspSmState : public ydk::Enum
 
 };
 
+class XtcSrSid : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4_node_sid;
+        static const ydk::Enum::YLeaf ipv4_adjacency_sid;
+        static const ydk::Enum::YLeaf unknown_sid;
+
+};
+
 class XtcPolicyPath : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf explicit_;
         static const ydk::Enum::YLeaf dynamic;
         static const ydk::Enum::YLeaf dynamic_pce;
+
+};
+
+class XtcPolicyCpathProtoOrigin : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf pcep;
+        static const ydk::Enum::YLeaf bgp;
+        static const ydk::Enum::YLeaf configuration;
 
 };
 
@@ -3125,9 +3219,10 @@ class XtcSid : public ydk::Enum
 
 };
 
-class XtcAddressFamily : public ydk::Enum
+class XtcAfId : public ydk::Enum
 {
     public:
+        static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
 

@@ -589,11 +589,11 @@ bool Fib::Platform::LabelSwitchedMulticast::has_leaf_or_child_of_name(const std:
     return false;
 }
 
+const Enum::YLeaf FibPbtsForwardClass::any {8, "any"};
+
 const Enum::YLeaf FibPbtsFallback::list {1, "list"};
 const Enum::YLeaf FibPbtsFallback::any {2, "any"};
 const Enum::YLeaf FibPbtsFallback::drop {3, "drop"};
-
-const Enum::YLeaf FibPbtsForwardClass::any {8, "any"};
 
 
 }

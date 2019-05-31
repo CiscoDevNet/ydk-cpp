@@ -712,6 +712,7 @@ class Dot1x::Session::InterfaceSessions::InterfaceSession : public ydk::Entity
         ydk::YLeaf if_handle; //type: string
         ydk::YLeaf mac; //type: string
         ydk::YLeaf ethertype; //type: string
+        ydk::YLeaf eapol_addr; //type: string
         class IntfInfo; //type: Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo
         class MkaStatusInfo; //type: Dot1x::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo
 

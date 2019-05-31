@@ -247,6 +247,42 @@ class Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg : public ydk::Entit
 
 }; // Classifiers::ClassifierEntry::FilterEntry::ProtocolCfg
 
+class Dscp : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        Dscp();
+        ~Dscp();
+
+
+}; // Dscp
+
+class SourceIpAddress : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        SourceIpAddress();
+        ~SourceIpAddress();
+
+
+}; // SourceIpAddress
+
+class DestinationIpAddress : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        DestinationIpAddress();
+        ~DestinationIpAddress();
+
+
+}; // DestinationIpAddress
+
+class SourcePort : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+{
+    public:
+        SourcePort();
+        ~SourcePort();
+
+
+}; // SourcePort
+
 class DestinationPort : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
 {
     public:
@@ -265,42 +301,6 @@ class Protocol : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk:
 
 }; // Protocol
 
-class DestinationIpAddress : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        DestinationIpAddress();
-        ~DestinationIpAddress();
-
-
-}; // DestinationIpAddress
-
-class Dscp : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        Dscp();
-        ~Dscp();
-
-
-}; // Dscp
-
-class MatchAllFilter : public ietf::ietf_diffserv_classifier::ClassifierEntryFilterOperationType, virtual ydk::Identity
-{
-    public:
-        MatchAllFilter();
-        ~MatchAllFilter();
-
-
-}; // MatchAllFilter
-
-class SourceIpAddress : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
-{
-    public:
-        SourceIpAddress();
-        ~SourceIpAddress();
-
-
-}; // SourceIpAddress
-
 class MatchAnyFilter : public ietf::ietf_diffserv_classifier::ClassifierEntryFilterOperationType, virtual ydk::Identity
 {
     public:
@@ -310,14 +310,14 @@ class MatchAnyFilter : public ietf::ietf_diffserv_classifier::ClassifierEntryFil
 
 }; // MatchAnyFilter
 
-class SourcePort : public ietf::ietf_diffserv_classifier::FilterType, virtual ydk::Identity
+class MatchAllFilter : public ietf::ietf_diffserv_classifier::ClassifierEntryFilterOperationType, virtual ydk::Identity
 {
     public:
-        SourcePort();
-        ~SourcePort();
+        MatchAllFilter();
+        ~MatchAllFilter();
 
 
-}; // SourcePort
+}; // MatchAllFilter
 
 
 }

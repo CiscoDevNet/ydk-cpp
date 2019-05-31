@@ -1026,7 +1026,7 @@ class Native::Interface::Multilink::Standby::StandbyList : public ydk::Entity
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of string, enumeration
+        ydk::YLeaf ipv6; //type: one of enumeration, string
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -2205,8 +2205,8 @@ class Native::Interface::Multilink::Ppp : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf accounting; //type: one of string, enumeration
-        ydk::YLeaf authorization; //type: one of string, enumeration
+        ydk::YLeaf accounting; //type: one of enumeration, string
+        ydk::YLeaf authorization; //type: one of enumeration, string
         class Chap; //type: Native::Interface::Multilink::Ppp::Chap
         class Authentication; //type: Native::Interface::Multilink::Ppp::Authentication
         class Ipcp; //type: Native::Interface::Multilink::Ppp::Ipcp
@@ -2527,8 +2527,8 @@ class Native::Interface::Serial : public ydk::Entity
         class RcvQueue; //type: Native::Interface::Serial::RcvQueue
         class Peer; //type: Native::Interface::Serial::Peer
         class PmPath; //type: Native::Interface::Serial::PmPath
-        class Ppp; //type: Native::Interface::Serial::Ppp
         class AnalysisModule; //type: Native::Interface::Serial::AnalysisModule
+        class Ppp; //type: Native::Interface::Serial::Ppp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::SwitchportConf> switchport_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Switchport> switchport;
@@ -2567,8 +2567,8 @@ class Native::Interface::Serial : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::RcvQueue> rcv_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Peer> peer;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::PmPath> pm_path;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ppp> ppp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::AnalysisModule> analysis_module;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Serial::Ppp> ppp;
                 class IfState;
         class ServiceInsertion;
 
@@ -2702,8 +2702,8 @@ class Native::Interface::Serial::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -2872,8 +2872,8 @@ class Native::Interface::Serial::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 

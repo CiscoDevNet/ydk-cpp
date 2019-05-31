@@ -2579,7 +2579,7 @@ class Native::Router::Bgp::Scope::Vrf::PeerGroup::Neighbor : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: string
-        ydk::YLeaf remote_as; //type: one of uint32, string
+        ydk::YLeaf remote_as; //type: one of string, uint32
         class PeerGroup_; //type: Native::Router::Bgp::Scope::Vrf::PeerGroup::Neighbor::PeerGroup_
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Scope::Vrf::PeerGroup::Neighbor::PeerGroup_> peer_group;
@@ -2625,7 +2625,7 @@ class Native::Router::Bgp::Scope::Vrf::Neighbor : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: string
-        ydk::YLeaf remote_as; //type: one of uint32, string
+        ydk::YLeaf remote_as; //type: one of string, uint32
         class PeerGroup; //type: Native::Router::Bgp::Scope::Vrf::Neighbor::PeerGroup
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Bgp::Scope::Vrf::Neighbor::PeerGroup> peer_group;

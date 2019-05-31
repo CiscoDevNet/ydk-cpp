@@ -159,14 +159,17 @@ Ssh::Client::Client()
     rekey_volume{YType::uint32, "rekey-volume"},
     host_public_key{YType::str, "host-public-key"},
     client_vrf{YType::str, "client-vrf"},
+    v2{YType::empty, "v2"},
     tcp_window_scale{YType::uint32, "tcp-window-scale"},
     rekey_time{YType::uint32, "rekey-time"},
     source_interface{YType::str, "source-interface"},
     dscp{YType::uint32, "dscp"}
         ,
-    client_algo(std::make_shared<Ssh::Client::ClientAlgo>())
+    client_disable(std::make_shared<Ssh::Client::ClientDisable>())
+    , client_algo(std::make_shared<Ssh::Client::ClientAlgo>())
     , client_enable(std::make_shared<Ssh::Client::ClientEnable>())
 {
+    client_disable->parent = this;
     client_algo->parent = this;
     client_enable->parent = this;
 
@@ -183,10 +186,12 @@ bool Ssh::Client::has_data() const
     return rekey_volume.is_set
 	|| host_public_key.is_set
 	|| client_vrf.is_set
+	|| v2.is_set
 	|| tcp_window_scale.is_set
 	|| rekey_time.is_set
 	|| source_interface.is_set
 	|| dscp.is_set
+	|| (client_disable !=  nullptr && client_disable->has_data())
 	|| (client_algo !=  nullptr && client_algo->has_data())
 	|| (client_enable !=  nullptr && client_enable->has_data());
 }
@@ -197,10 +202,12 @@ bool Ssh::Client::has_operation() const
 	|| ydk::is_set(rekey_volume.yfilter)
 	|| ydk::is_set(host_public_key.yfilter)
 	|| ydk::is_set(client_vrf.yfilter)
+	|| ydk::is_set(v2.yfilter)
 	|| ydk::is_set(tcp_window_scale.yfilter)
 	|| ydk::is_set(rekey_time.yfilter)
 	|| ydk::is_set(source_interface.yfilter)
 	|| ydk::is_set(dscp.yfilter)
+	|| (client_disable !=  nullptr && client_disable->has_operation())
 	|| (client_algo !=  nullptr && client_algo->has_operation())
 	|| (client_enable !=  nullptr && client_enable->has_operation());
 }
@@ -226,6 +233,7 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Client::get_name_leaf_data()
     if (rekey_volume.is_set || is_set(rekey_volume.yfilter)) leaf_name_data.push_back(rekey_volume.get_name_leafdata());
     if (host_public_key.is_set || is_set(host_public_key.yfilter)) leaf_name_data.push_back(host_public_key.get_name_leafdata());
     if (client_vrf.is_set || is_set(client_vrf.yfilter)) leaf_name_data.push_back(client_vrf.get_name_leafdata());
+    if (v2.is_set || is_set(v2.yfilter)) leaf_name_data.push_back(v2.get_name_leafdata());
     if (tcp_window_scale.is_set || is_set(tcp_window_scale.yfilter)) leaf_name_data.push_back(tcp_window_scale.get_name_leafdata());
     if (rekey_time.is_set || is_set(rekey_time.yfilter)) leaf_name_data.push_back(rekey_time.get_name_leafdata());
     if (source_interface.is_set || is_set(source_interface.yfilter)) leaf_name_data.push_back(source_interface.get_name_leafdata());
@@ -237,6 +245,15 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Client::get_name_leaf_data()
 
 std::shared_ptr<ydk::Entity> Ssh::Client::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "client-disable")
+    {
+        if(client_disable == nullptr)
+        {
+            client_disable = std::make_shared<Ssh::Client::ClientDisable>();
+        }
+        return client_disable;
+    }
+
     if(child_yang_name == "client-algo")
     {
         if(client_algo == nullptr)
@@ -262,6 +279,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Client::get_children() 
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(client_disable != nullptr)
+    {
+        _children["client-disable"] = client_disable;
+    }
+
     if(client_algo != nullptr)
     {
         _children["client-algo"] = client_algo;
@@ -294,6 +316,12 @@ void Ssh::Client::set_value(const std::string & value_path, const std::string & 
         client_vrf = value;
         client_vrf.value_namespace = name_space;
         client_vrf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "v2")
+    {
+        v2 = value;
+        v2.value_namespace = name_space;
+        v2.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tcp-window-scale")
     {
@@ -335,6 +363,10 @@ void Ssh::Client::set_filter(const std::string & value_path, YFilter yfilter)
     {
         client_vrf.yfilter = yfilter;
     }
+    if(value_path == "v2")
+    {
+        v2.yfilter = yfilter;
+    }
     if(value_path == "tcp-window-scale")
     {
         tcp_window_scale.yfilter = yfilter;
@@ -355,7 +387,181 @@ void Ssh::Client::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool Ssh::Client::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "client-algo" || name == "client-enable" || name == "rekey-volume" || name == "host-public-key" || name == "client-vrf" || name == "tcp-window-scale" || name == "rekey-time" || name == "source-interface" || name == "dscp")
+    if(name == "client-disable" || name == "client-algo" || name == "client-enable" || name == "rekey-volume" || name == "host-public-key" || name == "client-vrf" || name == "v2" || name == "tcp-window-scale" || name == "rekey-time" || name == "source-interface" || name == "dscp")
+        return true;
+    return false;
+}
+
+Ssh::Client::ClientDisable::ClientDisable()
+    :
+    client_hmac(std::make_shared<Ssh::Client::ClientDisable::ClientHmac>())
+{
+    client_hmac->parent = this;
+
+    yang_name = "client-disable"; yang_parent_name = "client"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ssh::Client::ClientDisable::~ClientDisable()
+{
+}
+
+bool Ssh::Client::ClientDisable::has_data() const
+{
+    if (is_presence_container) return true;
+    return (client_hmac !=  nullptr && client_hmac->has_data());
+}
+
+bool Ssh::Client::ClientDisable::has_operation() const
+{
+    return is_set(yfilter)
+	|| (client_hmac !=  nullptr && client_hmac->has_operation());
+}
+
+std::string Ssh::Client::ClientDisable::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-cfg:ssh/client/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::Client::ClientDisable::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "client-disable";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::Client::ClientDisable::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ssh::Client::ClientDisable::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "client-hmac")
+    {
+        if(client_hmac == nullptr)
+        {
+            client_hmac = std::make_shared<Ssh::Client::ClientDisable::ClientHmac>();
+        }
+        return client_hmac;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Client::ClientDisable::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(client_hmac != nullptr)
+    {
+        _children["client-hmac"] = client_hmac;
+    }
+
+    return _children;
+}
+
+void Ssh::Client::ClientDisable::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ssh::Client::ClientDisable::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ssh::Client::ClientDisable::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "client-hmac")
+        return true;
+    return false;
+}
+
+Ssh::Client::ClientDisable::ClientHmac::ClientHmac()
+    :
+    client_hmac_sha1{YType::boolean, "client-hmac-sha1"}
+{
+
+    yang_name = "client-hmac"; yang_parent_name = "client-disable"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ssh::Client::ClientDisable::ClientHmac::~ClientHmac()
+{
+}
+
+bool Ssh::Client::ClientDisable::ClientHmac::has_data() const
+{
+    if (is_presence_container) return true;
+    return client_hmac_sha1.is_set;
+}
+
+bool Ssh::Client::ClientDisable::ClientHmac::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(client_hmac_sha1.yfilter);
+}
+
+std::string Ssh::Client::ClientDisable::ClientHmac::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-cfg:ssh/client/client-disable/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::Client::ClientDisable::ClientHmac::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "client-hmac";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::Client::ClientDisable::ClientHmac::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (client_hmac_sha1.is_set || is_set(client_hmac_sha1.yfilter)) leaf_name_data.push_back(client_hmac_sha1.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ssh::Client::ClientDisable::ClientHmac::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Client::ClientDisable::ClientHmac::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ssh::Client::ClientDisable::ClientHmac::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "client-hmac-sha1")
+    {
+        client_hmac_sha1 = value;
+        client_hmac_sha1.value_namespace = name_space;
+        client_hmac_sha1.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ssh::Client::ClientDisable::ClientHmac::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "client-hmac-sha1")
+    {
+        client_hmac_sha1.yfilter = yfilter;
+    }
+}
+
+bool Ssh::Client::ClientDisable::ClientHmac::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "client-hmac-sha1")
         return true;
     return false;
 }
@@ -1142,7 +1348,8 @@ bool Ssh::Server::Disable::has_leaf_or_child_of_name(const std::string & name) c
 
 Ssh::Server::Disable::Hmac::Hmac()
     :
-    hmac_sha512{YType::boolean, "hmac-sha512"}
+    hmac_sha512{YType::boolean, "hmac-sha512"},
+    hmac_sha1{YType::boolean, "hmac-sha1"}
 {
 
     yang_name = "hmac"; yang_parent_name = "disable"; is_top_level_class = false; has_list_ancestor = false; 
@@ -1155,13 +1362,15 @@ Ssh::Server::Disable::Hmac::~Hmac()
 bool Ssh::Server::Disable::Hmac::has_data() const
 {
     if (is_presence_container) return true;
-    return hmac_sha512.is_set;
+    return hmac_sha512.is_set
+	|| hmac_sha1.is_set;
 }
 
 bool Ssh::Server::Disable::Hmac::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(hmac_sha512.yfilter);
+	|| ydk::is_set(hmac_sha512.yfilter)
+	|| ydk::is_set(hmac_sha1.yfilter);
 }
 
 std::string Ssh::Server::Disable::Hmac::get_absolute_path() const
@@ -1183,6 +1392,7 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Server::Disable::Hmac::get_n
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (hmac_sha512.is_set || is_set(hmac_sha512.yfilter)) leaf_name_data.push_back(hmac_sha512.get_name_leafdata());
+    if (hmac_sha1.is_set || is_set(hmac_sha1.yfilter)) leaf_name_data.push_back(hmac_sha1.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1208,6 +1418,12 @@ void Ssh::Server::Disable::Hmac::set_value(const std::string & value_path, const
         hmac_sha512.value_namespace = name_space;
         hmac_sha512.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "hmac-sha1")
+    {
+        hmac_sha1 = value;
+        hmac_sha1.value_namespace = name_space;
+        hmac_sha1.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ssh::Server::Disable::Hmac::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1216,11 +1432,15 @@ void Ssh::Server::Disable::Hmac::set_filter(const std::string & value_path, YFil
     {
         hmac_sha512.yfilter = yfilter;
     }
+    if(value_path == "hmac-sha1")
+    {
+        hmac_sha1.yfilter = yfilter;
+    }
 }
 
 bool Ssh::Server::Disable::Hmac::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "hmac-sha512")
+    if(name == "hmac-sha512" || name == "hmac-sha1")
         return true;
     return false;
 }

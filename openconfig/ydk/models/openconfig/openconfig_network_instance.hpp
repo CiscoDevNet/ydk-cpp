@@ -6786,7 +6786,7 @@ class NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardin
         ydk::YLeaf mpls_label; //type: one of uint32, enumeration
         ydk::YLeaf mpls_tc; //type: uint8
         ydk::YLeaf ip_dscp; //type: uint8
-        ydk::YLeaf ip_protocol; //type: one of identityref, uint8
+        ydk::YLeaf ip_protocol; //type: one of uint8, identityref
         ydk::YLeaf l4_src_port; //type: uint16
         ydk::YLeaf l4_dst_port; //type: uint16
 
@@ -6815,7 +6815,7 @@ class NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardin
         ydk::YLeaf mpls_label; //type: one of uint32, enumeration
         ydk::YLeaf mpls_tc; //type: uint8
         ydk::YLeaf ip_dscp; //type: uint8
-        ydk::YLeaf ip_protocol; //type: one of identityref, uint8
+        ydk::YLeaf ip_protocol; //type: one of uint8, identityref
         ydk::YLeaf l4_src_port; //type: uint16
         ydk::YLeaf l4_dst_port; //type: uint16
         ydk::YLeaf packets_forwarded; //type: uint64
@@ -10600,7 +10600,7 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Neighbors::Ne
         ydk::YLeaf tcp_mss; //type: uint16
         ydk::YLeaf mtu_discovery; //type: boolean
         ydk::YLeaf passive_mode; //type: boolean
-        ydk::YLeaf local_address; //type: one of union, string
+        ydk::YLeaf local_address; //type: one of string, union
 
 }; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Neighbors::Neighbor::Transport::Config
 
@@ -10624,7 +10624,7 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Neighbors::Ne
         ydk::YLeaf tcp_mss; //type: uint16
         ydk::YLeaf mtu_discovery; //type: boolean
         ydk::YLeaf passive_mode; //type: boolean
-        ydk::YLeaf local_address; //type: one of union, string
+        ydk::YLeaf local_address; //type: one of string, union
         ydk::YLeaf local_port; //type: uint16
         ydk::YLeaf remote_address; //type: string
         ydk::YLeaf remote_port; //type: uint16
@@ -13069,7 +13069,7 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::PeerGroups::P
         ydk::YLeaf tcp_mss; //type: uint16
         ydk::YLeaf mtu_discovery; //type: boolean
         ydk::YLeaf passive_mode; //type: boolean
-        ydk::YLeaf local_address; //type: one of union, string
+        ydk::YLeaf local_address; //type: one of string, union
 
 }; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::PeerGroups::PeerGroup::Transport::Config
 
@@ -13093,7 +13093,7 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::PeerGroups::P
         ydk::YLeaf tcp_mss; //type: uint16
         ydk::YLeaf mtu_discovery; //type: boolean
         ydk::YLeaf passive_mode; //type: boolean
-        ydk::YLeaf local_address; //type: one of union, string
+        ydk::YLeaf local_address; //type: one of string, union
 
 }; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::PeerGroups::PeerGroup::Transport::State
 
@@ -29122,7 +29122,7 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf sid_id; //type: one of union, string
+        ydk::YLeaf sid_id; //type: one of string, union
         ydk::YLeaf label_options; //type: LabelOptions
         class LabelOptions;
 
@@ -29146,7 +29146,7 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf sid_id; //type: one of union, string
+        ydk::YLeaf sid_id; //type: one of string, union
         ydk::YLeaf label_options; //type: LabelOptions
         class LabelOptions;
 
@@ -29250,7 +29250,7 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::
         ydk::YLeaf protection_eligible; //type: boolean
         ydk::YLeaf group; //type: boolean
         ydk::YLeaf neighbor; //type: string
-        ydk::YLeaf allocated_dynamic_local; //type: one of union, string
+        ydk::YLeaf allocated_dynamic_local; //type: one of string, union
         class SidId;
 
 }; // NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::Interface::Levels::Level::AfiSafi::Af::SegmentRouting::AdjacencySids::AdjacencySid::State

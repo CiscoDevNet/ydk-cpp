@@ -10752,14 +10752,39 @@ bool Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause::has_leaf_or_chil
     return false;
 }
 
-const Enum::YLeaf LogSeverity::emergency {0, "emergency"};
-const Enum::YLeaf LogSeverity::alert {1, "alert"};
-const Enum::YLeaf LogSeverity::critical {2, "critical"};
-const Enum::YLeaf LogSeverity::error {3, "error"};
-const Enum::YLeaf LogSeverity::warning {4, "warning"};
-const Enum::YLeaf LogSeverity::notice {5, "notice"};
-const Enum::YLeaf LogSeverity::informational {6, "informational"};
-const Enum::YLeaf LogSeverity::debug {7, "debug"};
+const Enum::YLeaf LoggingTos::precedence {0, "precedence"};
+const Enum::YLeaf LoggingTos::dscp {1, "dscp"};
+
+const Enum::YLeaf LoggingDscpValue::default_ {0, "default"};
+const Enum::YLeaf LoggingDscpValue::af11 {10, "af11"};
+const Enum::YLeaf LoggingDscpValue::af12 {12, "af12"};
+const Enum::YLeaf LoggingDscpValue::af13 {14, "af13"};
+const Enum::YLeaf LoggingDscpValue::af21 {18, "af21"};
+const Enum::YLeaf LoggingDscpValue::af22 {20, "af22"};
+const Enum::YLeaf LoggingDscpValue::af23 {22, "af23"};
+const Enum::YLeaf LoggingDscpValue::af31 {26, "af31"};
+const Enum::YLeaf LoggingDscpValue::af32 {28, "af32"};
+const Enum::YLeaf LoggingDscpValue::af33 {30, "af33"};
+const Enum::YLeaf LoggingDscpValue::af41 {34, "af41"};
+const Enum::YLeaf LoggingDscpValue::af42 {36, "af42"};
+const Enum::YLeaf LoggingDscpValue::af43 {38, "af43"};
+const Enum::YLeaf LoggingDscpValue::ef {46, "ef"};
+const Enum::YLeaf LoggingDscpValue::cs1 {8, "cs1"};
+const Enum::YLeaf LoggingDscpValue::cs2 {16, "cs2"};
+const Enum::YLeaf LoggingDscpValue::cs3 {24, "cs3"};
+const Enum::YLeaf LoggingDscpValue::cs4 {32, "cs4"};
+const Enum::YLeaf LoggingDscpValue::cs5 {40, "cs5"};
+const Enum::YLeaf LoggingDscpValue::cs6 {48, "cs6"};
+const Enum::YLeaf LoggingDscpValue::cs7 {56, "cs7"};
+
+const Enum::YLeaf LoggingPrecedenceValue::routine {0, "routine"};
+const Enum::YLeaf LoggingPrecedenceValue::priority {1, "priority"};
+const Enum::YLeaf LoggingPrecedenceValue::immediate {2, "immediate"};
+const Enum::YLeaf LoggingPrecedenceValue::flash {3, "flash"};
+const Enum::YLeaf LoggingPrecedenceValue::flash_override {4, "flash-override"};
+const Enum::YLeaf LoggingPrecedenceValue::critical {5, "critical"};
+const Enum::YLeaf LoggingPrecedenceValue::internet {6, "internet"};
+const Enum::YLeaf LoggingPrecedenceValue::network {7, "network"};
 
 const Enum::YLeaf Facility::kern {0, "kern"};
 const Enum::YLeaf Facility::user {8, "user"};
@@ -10788,20 +10813,7 @@ const Enum::YLeaf Facility::sys12 {216, "sys12"};
 const Enum::YLeaf Facility::sys13 {224, "sys13"};
 const Enum::YLeaf Facility::sys14 {232, "sys14"};
 
-const Enum::YLeaf LogCollectFrequency::weekly {1, "weekly"};
-const Enum::YLeaf LogCollectFrequency::daily {2, "daily"};
-
-const Enum::YLeaf LoggingPrecedenceValue::routine {0, "routine"};
-const Enum::YLeaf LoggingPrecedenceValue::priority {1, "priority"};
-const Enum::YLeaf LoggingPrecedenceValue::immediate {2, "immediate"};
-const Enum::YLeaf LoggingPrecedenceValue::flash {3, "flash"};
-const Enum::YLeaf LoggingPrecedenceValue::flash_override {4, "flash-override"};
-const Enum::YLeaf LoggingPrecedenceValue::critical {5, "critical"};
-const Enum::YLeaf LoggingPrecedenceValue::internet {6, "internet"};
-const Enum::YLeaf LoggingPrecedenceValue::network {7, "network"};
-
-const Enum::YLeaf LoggingTos::precedence {0, "precedence"};
-const Enum::YLeaf LoggingTos::dscp {1, "dscp"};
+const Enum::YLeaf LoggingDscp::dscp {1, "dscp"};
 
 const Enum::YLeaf LoggingLevels::emergency {0, "emergency"};
 const Enum::YLeaf LoggingLevels::alert {1, "alert"};
@@ -10815,27 +10827,8 @@ const Enum::YLeaf LoggingLevels::disable {15, "disable"};
 
 const Enum::YLeaf LoggingPrecedence::precedence {0, "precedence"};
 
-const Enum::YLeaf LoggingDscpValue::default_ {0, "default"};
-const Enum::YLeaf LoggingDscpValue::af11 {10, "af11"};
-const Enum::YLeaf LoggingDscpValue::af12 {12, "af12"};
-const Enum::YLeaf LoggingDscpValue::af13 {14, "af13"};
-const Enum::YLeaf LoggingDscpValue::af21 {18, "af21"};
-const Enum::YLeaf LoggingDscpValue::af22 {20, "af22"};
-const Enum::YLeaf LoggingDscpValue::af23 {22, "af23"};
-const Enum::YLeaf LoggingDscpValue::af31 {26, "af31"};
-const Enum::YLeaf LoggingDscpValue::af32 {28, "af32"};
-const Enum::YLeaf LoggingDscpValue::af33 {30, "af33"};
-const Enum::YLeaf LoggingDscpValue::af41 {34, "af41"};
-const Enum::YLeaf LoggingDscpValue::af42 {36, "af42"};
-const Enum::YLeaf LoggingDscpValue::af43 {38, "af43"};
-const Enum::YLeaf LoggingDscpValue::ef {46, "ef"};
-const Enum::YLeaf LoggingDscpValue::cs1 {8, "cs1"};
-const Enum::YLeaf LoggingDscpValue::cs2 {16, "cs2"};
-const Enum::YLeaf LoggingDscpValue::cs3 {24, "cs3"};
-const Enum::YLeaf LoggingDscpValue::cs4 {32, "cs4"};
-const Enum::YLeaf LoggingDscpValue::cs5 {40, "cs5"};
-const Enum::YLeaf LoggingDscpValue::cs6 {48, "cs6"};
-const Enum::YLeaf LoggingDscpValue::cs7 {56, "cs7"};
+const Enum::YLeaf TimeInfo::disable {0, "disable"};
+const Enum::YLeaf TimeInfo::enable {1, "enable"};
 
 const Enum::YLeaf LogMessageSeverity::emergency {0, "emergency"};
 const Enum::YLeaf LogMessageSeverity::alert {1, "alert"};
@@ -10846,10 +10839,17 @@ const Enum::YLeaf LogMessageSeverity::notice {5, "notice"};
 const Enum::YLeaf LogMessageSeverity::informational {6, "informational"};
 const Enum::YLeaf LogMessageSeverity::debug {7, "debug"};
 
-const Enum::YLeaf TimeInfo::disable {0, "disable"};
-const Enum::YLeaf TimeInfo::enable {1, "enable"};
+const Enum::YLeaf LogCollectFrequency::weekly {1, "weekly"};
+const Enum::YLeaf LogCollectFrequency::daily {2, "daily"};
 
-const Enum::YLeaf LoggingDscp::dscp {1, "dscp"};
+const Enum::YLeaf LogSeverity::emergency {0, "emergency"};
+const Enum::YLeaf LogSeverity::alert {1, "alert"};
+const Enum::YLeaf LogSeverity::critical {2, "critical"};
+const Enum::YLeaf LogSeverity::error {3, "error"};
+const Enum::YLeaf LogSeverity::warning {4, "warning"};
+const Enum::YLeaf LogSeverity::notice {5, "notice"};
+const Enum::YLeaf LogSeverity::informational {6, "informational"};
+const Enum::YLeaf LogSeverity::debug {7, "debug"};
 
 
 }

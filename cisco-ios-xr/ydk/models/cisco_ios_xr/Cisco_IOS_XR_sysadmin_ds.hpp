@@ -337,13 +337,13 @@ class ServicesStats::AllLocations::Stats : public ydk::Entity
 
 }; // ServicesStats::AllLocations::Stats
 
-class ProcessIssuRole : public ydk::Enum
+class ServiceScope : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf Primary;
-        static const ydk::Enum::YLeaf Secondary;
-        static const ydk::Enum::YLeaf Tertiary;
-        static const ydk::Enum::YLeaf Unknown;
+        static const ydk::Enum::YLeaf None;
+        static const ydk::Enum::YLeaf Rack;
+        static const ydk::Enum::YLeaf System;
+        static const ydk::Enum::YLeaf Node;
 
 };
 
@@ -358,13 +358,13 @@ class ProcessRole : public ydk::Enum
 
 };
 
-class ServiceScope : public ydk::Enum
+class ProcessIssuRole : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf None;
-        static const ydk::Enum::YLeaf Rack;
-        static const ydk::Enum::YLeaf System;
-        static const ydk::Enum::YLeaf Node;
+        static const ydk::Enum::YLeaf Primary;
+        static const ydk::Enum::YLeaf Secondary;
+        static const ydk::Enum::YLeaf Tertiary;
+        static const ydk::Enum::YLeaf Unknown;
 
 };
 

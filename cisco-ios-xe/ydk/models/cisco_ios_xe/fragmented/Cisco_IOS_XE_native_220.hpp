@@ -1891,7 +1891,7 @@ class Native::SnmpServer::Group::V3 : public ydk::Entity
         ydk::YLeaf read; //type: string
         ydk::YLeaf write; //type: string
         ydk::YLeaf notify; //type: string
-        ydk::YLeaf access; //type: one of uint8, string
+        ydk::YLeaf access; //type: one of string, uint8
         class SecurityLevel;
         class Match;
 

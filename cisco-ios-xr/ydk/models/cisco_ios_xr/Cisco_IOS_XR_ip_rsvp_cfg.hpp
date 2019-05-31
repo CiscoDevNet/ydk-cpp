@@ -380,7 +380,6 @@ class Rsvp::Interfaces::Interface : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        ydk::YLeaf enable; //type: empty
         class IfSignalling; //type: Rsvp::Interfaces::Interface::IfSignalling
         class Bandwidth; //type: Rsvp::Interfaces::Interface::Bandwidth
         class Authentication; //type: Rsvp::Interfaces::Interface::Authentication
@@ -816,11 +815,12 @@ class Rsvp::Authentication : public ydk::Entity
 
 }; // Rsvp::Authentication
 
-class RsvpBwCfg : public ydk::Enum
+class RsvpRdm : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf absolute;
-        static const ydk::Enum::YLeaf percentage;
+        static const ydk::Enum::YLeaf rdm;
+        static const ydk::Enum::YLeaf not_specified;
+        static const ydk::Enum::YLeaf use_default_bandwidth;
 
 };
 
@@ -833,20 +833,19 @@ class RsvpBc0 : public ydk::Enum
 
 };
 
+class RsvpBwCfg : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf absolute;
+        static const ydk::Enum::YLeaf percentage;
+
+};
+
 class RsvpBc1 : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf bc1;
         static const ydk::Enum::YLeaf sub_pool;
-
-};
-
-class RsvpRdm : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rdm;
-        static const ydk::Enum::YLeaf not_specified;
-        static const ydk::Enum::YLeaf use_default_bandwidth;
 
 };
 

@@ -1676,6 +1676,7 @@ Arp::Nodes::Node::Node()
     node_name{YType::str, "node-name"}
         ,
     resolution_history_dynamic(std::make_shared<Arp::Nodes::Node::ResolutionHistoryDynamic>())
+    , arp_status_info(std::make_shared<Arp::Nodes::Node::ArpStatusInfo>())
     , traffic_vrfs(std::make_shared<Arp::Nodes::Node::TrafficVrfs>())
     , traffic_node(std::make_shared<Arp::Nodes::Node::TrafficNode>())
     , resolution_history_client(std::make_shared<Arp::Nodes::Node::ResolutionHistoryClient>())
@@ -1683,6 +1684,7 @@ Arp::Nodes::Node::Node()
     , traffic_interfaces(std::make_shared<Arp::Nodes::Node::TrafficInterfaces>())
 {
     resolution_history_dynamic->parent = this;
+    arp_status_info->parent = this;
     traffic_vrfs->parent = this;
     traffic_node->parent = this;
     resolution_history_client->parent = this;
@@ -1701,6 +1703,7 @@ bool Arp::Nodes::Node::has_data() const
     if (is_presence_container) return true;
     return node_name.is_set
 	|| (resolution_history_dynamic !=  nullptr && resolution_history_dynamic->has_data())
+	|| (arp_status_info !=  nullptr && arp_status_info->has_data())
 	|| (traffic_vrfs !=  nullptr && traffic_vrfs->has_data())
 	|| (traffic_node !=  nullptr && traffic_node->has_data())
 	|| (resolution_history_client !=  nullptr && resolution_history_client->has_data())
@@ -1713,6 +1716,7 @@ bool Arp::Nodes::Node::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(node_name.yfilter)
 	|| (resolution_history_dynamic !=  nullptr && resolution_history_dynamic->has_operation())
+	|| (arp_status_info !=  nullptr && arp_status_info->has_operation())
 	|| (traffic_vrfs !=  nullptr && traffic_vrfs->has_operation())
 	|| (traffic_node !=  nullptr && traffic_node->has_operation())
 	|| (resolution_history_client !=  nullptr && resolution_history_client->has_operation())
@@ -1754,6 +1758,15 @@ std::shared_ptr<ydk::Entity> Arp::Nodes::Node::get_child_by_name(const std::stri
             resolution_history_dynamic = std::make_shared<Arp::Nodes::Node::ResolutionHistoryDynamic>();
         }
         return resolution_history_dynamic;
+    }
+
+    if(child_yang_name == "arp-status-info")
+    {
+        if(arp_status_info == nullptr)
+        {
+            arp_status_info = std::make_shared<Arp::Nodes::Node::ArpStatusInfo>();
+        }
+        return arp_status_info;
     }
 
     if(child_yang_name == "traffic-vrfs")
@@ -1813,6 +1826,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Arp::Nodes::Node::get_childr
         _children["resolution-history-dynamic"] = resolution_history_dynamic;
     }
 
+    if(arp_status_info != nullptr)
+    {
+        _children["arp-status-info"] = arp_status_info;
+    }
+
     if(traffic_vrfs != nullptr)
     {
         _children["traffic-vrfs"] = traffic_vrfs;
@@ -1861,7 +1879,7 @@ void Arp::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilte
 
 bool Arp::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "resolution-history-dynamic" || name == "traffic-vrfs" || name == "traffic-node" || name == "resolution-history-client" || name == "entries" || name == "traffic-interfaces" || name == "node-name")
+    if(name == "resolution-history-dynamic" || name == "arp-status-info" || name == "traffic-vrfs" || name == "traffic-node" || name == "resolution-history-client" || name == "entries" || name == "traffic-interfaces" || name == "node-name")
         return true;
     return false;
 }
@@ -2136,6 +2154,280 @@ bool Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry::has_leaf_or_child_of_
     return false;
 }
 
+Arp::Nodes::Node::ArpStatusInfo::ArpStatusInfo()
+    :
+    process_start_time{YType::uint64, "process-start-time"},
+    issu_sync_complete_time{YType::uint64, "issu-sync-complete-time"},
+    issu_ready_time{YType::uint64, "issu-ready-time"},
+    big_bang_time{YType::uint64, "big-bang-time"},
+    primary_role_time{YType::uint64, "primary-role-time"},
+    role{YType::enumeration, "role"},
+    phase{YType::enumeration, "phase"},
+    version{YType::enumeration, "version"},
+    dynamic_entries_recovered_count{YType::uint32, "dynamic-entries-recovered-count"},
+    non_operational_entries_count{YType::uint32, "non-operational-entries-count"},
+    interface_handle_translation_failure_count{YType::uint32, "interface-handle-translation-failure-count"},
+    issu_ready_issu_mgr_connection{YType::boolean, "issu-ready-issu-mgr-connection"},
+    issu_ready_im{YType::boolean, "issu-ready-im"},
+    issu_ready_dagr_rib{YType::boolean, "issu-ready-dagr-rib"},
+    issu_ready_entries_replicate{YType::boolean, "issu-ready-entries-replicate"}
+{
+
+    yang_name = "arp-status-info"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Arp::Nodes::Node::ArpStatusInfo::~ArpStatusInfo()
+{
+}
+
+bool Arp::Nodes::Node::ArpStatusInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return process_start_time.is_set
+	|| issu_sync_complete_time.is_set
+	|| issu_ready_time.is_set
+	|| big_bang_time.is_set
+	|| primary_role_time.is_set
+	|| role.is_set
+	|| phase.is_set
+	|| version.is_set
+	|| dynamic_entries_recovered_count.is_set
+	|| non_operational_entries_count.is_set
+	|| interface_handle_translation_failure_count.is_set
+	|| issu_ready_issu_mgr_connection.is_set
+	|| issu_ready_im.is_set
+	|| issu_ready_dagr_rib.is_set
+	|| issu_ready_entries_replicate.is_set;
+}
+
+bool Arp::Nodes::Node::ArpStatusInfo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(process_start_time.yfilter)
+	|| ydk::is_set(issu_sync_complete_time.yfilter)
+	|| ydk::is_set(issu_ready_time.yfilter)
+	|| ydk::is_set(big_bang_time.yfilter)
+	|| ydk::is_set(primary_role_time.yfilter)
+	|| ydk::is_set(role.yfilter)
+	|| ydk::is_set(phase.yfilter)
+	|| ydk::is_set(version.yfilter)
+	|| ydk::is_set(dynamic_entries_recovered_count.yfilter)
+	|| ydk::is_set(non_operational_entries_count.yfilter)
+	|| ydk::is_set(interface_handle_translation_failure_count.yfilter)
+	|| ydk::is_set(issu_ready_issu_mgr_connection.yfilter)
+	|| ydk::is_set(issu_ready_im.yfilter)
+	|| ydk::is_set(issu_ready_dagr_rib.yfilter)
+	|| ydk::is_set(issu_ready_entries_replicate.yfilter);
+}
+
+std::string Arp::Nodes::Node::ArpStatusInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "arp-status-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Arp::Nodes::Node::ArpStatusInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (process_start_time.is_set || is_set(process_start_time.yfilter)) leaf_name_data.push_back(process_start_time.get_name_leafdata());
+    if (issu_sync_complete_time.is_set || is_set(issu_sync_complete_time.yfilter)) leaf_name_data.push_back(issu_sync_complete_time.get_name_leafdata());
+    if (issu_ready_time.is_set || is_set(issu_ready_time.yfilter)) leaf_name_data.push_back(issu_ready_time.get_name_leafdata());
+    if (big_bang_time.is_set || is_set(big_bang_time.yfilter)) leaf_name_data.push_back(big_bang_time.get_name_leafdata());
+    if (primary_role_time.is_set || is_set(primary_role_time.yfilter)) leaf_name_data.push_back(primary_role_time.get_name_leafdata());
+    if (role.is_set || is_set(role.yfilter)) leaf_name_data.push_back(role.get_name_leafdata());
+    if (phase.is_set || is_set(phase.yfilter)) leaf_name_data.push_back(phase.get_name_leafdata());
+    if (version.is_set || is_set(version.yfilter)) leaf_name_data.push_back(version.get_name_leafdata());
+    if (dynamic_entries_recovered_count.is_set || is_set(dynamic_entries_recovered_count.yfilter)) leaf_name_data.push_back(dynamic_entries_recovered_count.get_name_leafdata());
+    if (non_operational_entries_count.is_set || is_set(non_operational_entries_count.yfilter)) leaf_name_data.push_back(non_operational_entries_count.get_name_leafdata());
+    if (interface_handle_translation_failure_count.is_set || is_set(interface_handle_translation_failure_count.yfilter)) leaf_name_data.push_back(interface_handle_translation_failure_count.get_name_leafdata());
+    if (issu_ready_issu_mgr_connection.is_set || is_set(issu_ready_issu_mgr_connection.yfilter)) leaf_name_data.push_back(issu_ready_issu_mgr_connection.get_name_leafdata());
+    if (issu_ready_im.is_set || is_set(issu_ready_im.yfilter)) leaf_name_data.push_back(issu_ready_im.get_name_leafdata());
+    if (issu_ready_dagr_rib.is_set || is_set(issu_ready_dagr_rib.yfilter)) leaf_name_data.push_back(issu_ready_dagr_rib.get_name_leafdata());
+    if (issu_ready_entries_replicate.is_set || is_set(issu_ready_entries_replicate.yfilter)) leaf_name_data.push_back(issu_ready_entries_replicate.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Arp::Nodes::Node::ArpStatusInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Arp::Nodes::Node::ArpStatusInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Arp::Nodes::Node::ArpStatusInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "process-start-time")
+    {
+        process_start_time = value;
+        process_start_time.value_namespace = name_space;
+        process_start_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "issu-sync-complete-time")
+    {
+        issu_sync_complete_time = value;
+        issu_sync_complete_time.value_namespace = name_space;
+        issu_sync_complete_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "issu-ready-time")
+    {
+        issu_ready_time = value;
+        issu_ready_time.value_namespace = name_space;
+        issu_ready_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "big-bang-time")
+    {
+        big_bang_time = value;
+        big_bang_time.value_namespace = name_space;
+        big_bang_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "primary-role-time")
+    {
+        primary_role_time = value;
+        primary_role_time.value_namespace = name_space;
+        primary_role_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "role")
+    {
+        role = value;
+        role.value_namespace = name_space;
+        role.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "phase")
+    {
+        phase = value;
+        phase.value_namespace = name_space;
+        phase.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "version")
+    {
+        version = value;
+        version.value_namespace = name_space;
+        version.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dynamic-entries-recovered-count")
+    {
+        dynamic_entries_recovered_count = value;
+        dynamic_entries_recovered_count.value_namespace = name_space;
+        dynamic_entries_recovered_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "non-operational-entries-count")
+    {
+        non_operational_entries_count = value;
+        non_operational_entries_count.value_namespace = name_space;
+        non_operational_entries_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-handle-translation-failure-count")
+    {
+        interface_handle_translation_failure_count = value;
+        interface_handle_translation_failure_count.value_namespace = name_space;
+        interface_handle_translation_failure_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "issu-ready-issu-mgr-connection")
+    {
+        issu_ready_issu_mgr_connection = value;
+        issu_ready_issu_mgr_connection.value_namespace = name_space;
+        issu_ready_issu_mgr_connection.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "issu-ready-im")
+    {
+        issu_ready_im = value;
+        issu_ready_im.value_namespace = name_space;
+        issu_ready_im.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "issu-ready-dagr-rib")
+    {
+        issu_ready_dagr_rib = value;
+        issu_ready_dagr_rib.value_namespace = name_space;
+        issu_ready_dagr_rib.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "issu-ready-entries-replicate")
+    {
+        issu_ready_entries_replicate = value;
+        issu_ready_entries_replicate.value_namespace = name_space;
+        issu_ready_entries_replicate.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Arp::Nodes::Node::ArpStatusInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "process-start-time")
+    {
+        process_start_time.yfilter = yfilter;
+    }
+    if(value_path == "issu-sync-complete-time")
+    {
+        issu_sync_complete_time.yfilter = yfilter;
+    }
+    if(value_path == "issu-ready-time")
+    {
+        issu_ready_time.yfilter = yfilter;
+    }
+    if(value_path == "big-bang-time")
+    {
+        big_bang_time.yfilter = yfilter;
+    }
+    if(value_path == "primary-role-time")
+    {
+        primary_role_time.yfilter = yfilter;
+    }
+    if(value_path == "role")
+    {
+        role.yfilter = yfilter;
+    }
+    if(value_path == "phase")
+    {
+        phase.yfilter = yfilter;
+    }
+    if(value_path == "version")
+    {
+        version.yfilter = yfilter;
+    }
+    if(value_path == "dynamic-entries-recovered-count")
+    {
+        dynamic_entries_recovered_count.yfilter = yfilter;
+    }
+    if(value_path == "non-operational-entries-count")
+    {
+        non_operational_entries_count.yfilter = yfilter;
+    }
+    if(value_path == "interface-handle-translation-failure-count")
+    {
+        interface_handle_translation_failure_count.yfilter = yfilter;
+    }
+    if(value_path == "issu-ready-issu-mgr-connection")
+    {
+        issu_ready_issu_mgr_connection.yfilter = yfilter;
+    }
+    if(value_path == "issu-ready-im")
+    {
+        issu_ready_im.yfilter = yfilter;
+    }
+    if(value_path == "issu-ready-dagr-rib")
+    {
+        issu_ready_dagr_rib.yfilter = yfilter;
+    }
+    if(value_path == "issu-ready-entries-replicate")
+    {
+        issu_ready_entries_replicate.yfilter = yfilter;
+    }
+}
+
+bool Arp::Nodes::Node::ArpStatusInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "process-start-time" || name == "issu-sync-complete-time" || name == "issu-ready-time" || name == "big-bang-time" || name == "primary-role-time" || name == "role" || name == "phase" || name == "version" || name == "dynamic-entries-recovered-count" || name == "non-operational-entries-count" || name == "interface-handle-translation-failure-count" || name == "issu-ready-issu-mgr-connection" || name == "issu-ready-im" || name == "issu-ready-dagr-rib" || name == "issu-ready-entries-replicate")
+        return true;
+    return false;
+}
+
 Arp::Nodes::Node::TrafficVrfs::TrafficVrfs()
     :
     traffic_vrf(this, {"vrf_name"})
@@ -2255,6 +2547,7 @@ Arp::Nodes::Node::TrafficVrfs::TrafficVrf::TrafficVrf()
     standby_entries{YType::uint32, "standby-entries"},
     dhcp_entries{YType::uint32, "dhcp-entries"},
     vxlan_entries{YType::uint32, "vxlan-entries"},
+    drop_adjacency_entries{YType::uint32, "drop-adjacency-entries"},
     ip_packets_dropped_node{YType::uint32, "ip-packets-dropped-node"},
     arp_packet_node_out_of_subnet{YType::uint32, "arp-packet-node-out-of-subnet"},
     ip_packets_dropped_interface{YType::uint32, "ip-packets-dropped-interface"},
@@ -2297,6 +2590,7 @@ bool Arp::Nodes::Node::TrafficVrfs::TrafficVrf::has_data() const
 	|| standby_entries.is_set
 	|| dhcp_entries.is_set
 	|| vxlan_entries.is_set
+	|| drop_adjacency_entries.is_set
 	|| ip_packets_dropped_node.is_set
 	|| arp_packet_node_out_of_subnet.is_set
 	|| ip_packets_dropped_interface.is_set
@@ -2332,6 +2626,7 @@ bool Arp::Nodes::Node::TrafficVrfs::TrafficVrf::has_operation() const
 	|| ydk::is_set(standby_entries.yfilter)
 	|| ydk::is_set(dhcp_entries.yfilter)
 	|| ydk::is_set(vxlan_entries.yfilter)
+	|| ydk::is_set(drop_adjacency_entries.yfilter)
 	|| ydk::is_set(ip_packets_dropped_node.yfilter)
 	|| ydk::is_set(arp_packet_node_out_of_subnet.yfilter)
 	|| ydk::is_set(ip_packets_dropped_interface.yfilter)
@@ -2376,6 +2671,7 @@ std::vector<std::pair<std::string, LeafData> > Arp::Nodes::Node::TrafficVrfs::Tr
     if (standby_entries.is_set || is_set(standby_entries.yfilter)) leaf_name_data.push_back(standby_entries.get_name_leafdata());
     if (dhcp_entries.is_set || is_set(dhcp_entries.yfilter)) leaf_name_data.push_back(dhcp_entries.get_name_leafdata());
     if (vxlan_entries.is_set || is_set(vxlan_entries.yfilter)) leaf_name_data.push_back(vxlan_entries.get_name_leafdata());
+    if (drop_adjacency_entries.is_set || is_set(drop_adjacency_entries.yfilter)) leaf_name_data.push_back(drop_adjacency_entries.get_name_leafdata());
     if (ip_packets_dropped_node.is_set || is_set(ip_packets_dropped_node.yfilter)) leaf_name_data.push_back(ip_packets_dropped_node.get_name_leafdata());
     if (arp_packet_node_out_of_subnet.is_set || is_set(arp_packet_node_out_of_subnet.yfilter)) leaf_name_data.push_back(arp_packet_node_out_of_subnet.get_name_leafdata());
     if (ip_packets_dropped_interface.is_set || is_set(ip_packets_dropped_interface.yfilter)) leaf_name_data.push_back(ip_packets_dropped_interface.get_name_leafdata());
@@ -2545,6 +2841,12 @@ void Arp::Nodes::Node::TrafficVrfs::TrafficVrf::set_value(const std::string & va
         vxlan_entries.value_namespace = name_space;
         vxlan_entries.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "drop-adjacency-entries")
+    {
+        drop_adjacency_entries = value;
+        drop_adjacency_entries.value_namespace = name_space;
+        drop_adjacency_entries.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "ip-packets-dropped-node")
     {
         ip_packets_dropped_node = value;
@@ -2681,6 +2983,10 @@ void Arp::Nodes::Node::TrafficVrfs::TrafficVrf::set_filter(const std::string & v
     {
         vxlan_entries.yfilter = yfilter;
     }
+    if(value_path == "drop-adjacency-entries")
+    {
+        drop_adjacency_entries.yfilter = yfilter;
+    }
     if(value_path == "ip-packets-dropped-node")
     {
         ip_packets_dropped_node.yfilter = yfilter;
@@ -2709,7 +3015,7 @@ void Arp::Nodes::Node::TrafficVrfs::TrafficVrf::set_filter(const std::string & v
 
 bool Arp::Nodes::Node::TrafficVrfs::TrafficVrf::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "vrf-name" || name == "requests-received" || name == "replies-received" || name == "requests-sent" || name == "replies-sent" || name == "proxy-replies-sent" || name == "subscr-requests-received" || name == "subscr-replies-sent" || name == "subscr-replies-gratg-sent" || name == "local-proxy-replies-sent" || name == "gratuitous-replies-sent" || name == "resolution-requests-received" || name == "resolution-replies-received" || name == "resolution-requests-dropped" || name == "out-of-memory-errors" || name == "no-buffer-errors" || name == "total-entries" || name == "dynamic-entries" || name == "static-entries" || name == "alias-entries" || name == "interface-entries" || name == "standby-entries" || name == "dhcp-entries" || name == "vxlan-entries" || name == "ip-packets-dropped-node" || name == "arp-packet-node-out-of-subnet" || name == "ip-packets-dropped-interface" || name == "arp-packet-interface-out-of-subnet" || name == "arp-packet-unsolicited-packet" || name == "idb-structures")
+    if(name == "vrf-name" || name == "requests-received" || name == "replies-received" || name == "requests-sent" || name == "replies-sent" || name == "proxy-replies-sent" || name == "subscr-requests-received" || name == "subscr-replies-sent" || name == "subscr-replies-gratg-sent" || name == "local-proxy-replies-sent" || name == "gratuitous-replies-sent" || name == "resolution-requests-received" || name == "resolution-replies-received" || name == "resolution-requests-dropped" || name == "out-of-memory-errors" || name == "no-buffer-errors" || name == "total-entries" || name == "dynamic-entries" || name == "static-entries" || name == "alias-entries" || name == "interface-entries" || name == "standby-entries" || name == "dhcp-entries" || name == "vxlan-entries" || name == "drop-adjacency-entries" || name == "ip-packets-dropped-node" || name == "arp-packet-node-out-of-subnet" || name == "ip-packets-dropped-interface" || name == "arp-packet-interface-out-of-subnet" || name == "arp-packet-unsolicited-packet" || name == "idb-structures")
         return true;
     return false;
 }
@@ -2739,6 +3045,7 @@ Arp::Nodes::Node::TrafficNode::TrafficNode()
     standby_entries{YType::uint32, "standby-entries"},
     dhcp_entries{YType::uint32, "dhcp-entries"},
     vxlan_entries{YType::uint32, "vxlan-entries"},
+    drop_adjacency_entries{YType::uint32, "drop-adjacency-entries"},
     ip_packets_dropped_node{YType::uint32, "ip-packets-dropped-node"},
     arp_packet_node_out_of_subnet{YType::uint32, "arp-packet-node-out-of-subnet"},
     ip_packets_dropped_interface{YType::uint32, "ip-packets-dropped-interface"},
@@ -2780,6 +3087,7 @@ bool Arp::Nodes::Node::TrafficNode::has_data() const
 	|| standby_entries.is_set
 	|| dhcp_entries.is_set
 	|| vxlan_entries.is_set
+	|| drop_adjacency_entries.is_set
 	|| ip_packets_dropped_node.is_set
 	|| arp_packet_node_out_of_subnet.is_set
 	|| ip_packets_dropped_interface.is_set
@@ -2814,6 +3122,7 @@ bool Arp::Nodes::Node::TrafficNode::has_operation() const
 	|| ydk::is_set(standby_entries.yfilter)
 	|| ydk::is_set(dhcp_entries.yfilter)
 	|| ydk::is_set(vxlan_entries.yfilter)
+	|| ydk::is_set(drop_adjacency_entries.yfilter)
 	|| ydk::is_set(ip_packets_dropped_node.yfilter)
 	|| ydk::is_set(arp_packet_node_out_of_subnet.yfilter)
 	|| ydk::is_set(ip_packets_dropped_interface.yfilter)
@@ -2856,6 +3165,7 @@ std::vector<std::pair<std::string, LeafData> > Arp::Nodes::Node::TrafficNode::ge
     if (standby_entries.is_set || is_set(standby_entries.yfilter)) leaf_name_data.push_back(standby_entries.get_name_leafdata());
     if (dhcp_entries.is_set || is_set(dhcp_entries.yfilter)) leaf_name_data.push_back(dhcp_entries.get_name_leafdata());
     if (vxlan_entries.is_set || is_set(vxlan_entries.yfilter)) leaf_name_data.push_back(vxlan_entries.get_name_leafdata());
+    if (drop_adjacency_entries.is_set || is_set(drop_adjacency_entries.yfilter)) leaf_name_data.push_back(drop_adjacency_entries.get_name_leafdata());
     if (ip_packets_dropped_node.is_set || is_set(ip_packets_dropped_node.yfilter)) leaf_name_data.push_back(ip_packets_dropped_node.get_name_leafdata());
     if (arp_packet_node_out_of_subnet.is_set || is_set(arp_packet_node_out_of_subnet.yfilter)) leaf_name_data.push_back(arp_packet_node_out_of_subnet.get_name_leafdata());
     if (ip_packets_dropped_interface.is_set || is_set(ip_packets_dropped_interface.yfilter)) leaf_name_data.push_back(ip_packets_dropped_interface.get_name_leafdata());
@@ -3019,6 +3329,12 @@ void Arp::Nodes::Node::TrafficNode::set_value(const std::string & value_path, co
         vxlan_entries.value_namespace = name_space;
         vxlan_entries.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "drop-adjacency-entries")
+    {
+        drop_adjacency_entries = value;
+        drop_adjacency_entries.value_namespace = name_space;
+        drop_adjacency_entries.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "ip-packets-dropped-node")
     {
         ip_packets_dropped_node = value;
@@ -3151,6 +3467,10 @@ void Arp::Nodes::Node::TrafficNode::set_filter(const std::string & value_path, Y
     {
         vxlan_entries.yfilter = yfilter;
     }
+    if(value_path == "drop-adjacency-entries")
+    {
+        drop_adjacency_entries.yfilter = yfilter;
+    }
     if(value_path == "ip-packets-dropped-node")
     {
         ip_packets_dropped_node.yfilter = yfilter;
@@ -3179,7 +3499,7 @@ void Arp::Nodes::Node::TrafficNode::set_filter(const std::string & value_path, Y
 
 bool Arp::Nodes::Node::TrafficNode::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "requests-received" || name == "replies-received" || name == "requests-sent" || name == "replies-sent" || name == "proxy-replies-sent" || name == "subscr-requests-received" || name == "subscr-replies-sent" || name == "subscr-replies-gratg-sent" || name == "local-proxy-replies-sent" || name == "gratuitous-replies-sent" || name == "resolution-requests-received" || name == "resolution-replies-received" || name == "resolution-requests-dropped" || name == "out-of-memory-errors" || name == "no-buffer-errors" || name == "total-entries" || name == "dynamic-entries" || name == "static-entries" || name == "alias-entries" || name == "interface-entries" || name == "standby-entries" || name == "dhcp-entries" || name == "vxlan-entries" || name == "ip-packets-dropped-node" || name == "arp-packet-node-out-of-subnet" || name == "ip-packets-dropped-interface" || name == "arp-packet-interface-out-of-subnet" || name == "arp-packet-unsolicited-packet" || name == "idb-structures")
+    if(name == "requests-received" || name == "replies-received" || name == "requests-sent" || name == "replies-sent" || name == "proxy-replies-sent" || name == "subscr-requests-received" || name == "subscr-replies-sent" || name == "subscr-replies-gratg-sent" || name == "local-proxy-replies-sent" || name == "gratuitous-replies-sent" || name == "resolution-requests-received" || name == "resolution-replies-received" || name == "resolution-requests-dropped" || name == "out-of-memory-errors" || name == "no-buffer-errors" || name == "total-entries" || name == "dynamic-entries" || name == "static-entries" || name == "alias-entries" || name == "interface-entries" || name == "standby-entries" || name == "dhcp-entries" || name == "vxlan-entries" || name == "drop-adjacency-entries" || name == "ip-packets-dropped-node" || name == "arp-packet-node-out-of-subnet" || name == "ip-packets-dropped-interface" || name == "arp-packet-interface-out-of-subnet" || name == "arp-packet-unsolicited-packet" || name == "idb-structures")
         return true;
     return false;
 }
@@ -3858,6 +4178,7 @@ Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::TrafficInterface()
     standby_entries{YType::uint32, "standby-entries"},
     dhcp_entries{YType::uint32, "dhcp-entries"},
     vxlan_entries{YType::uint32, "vxlan-entries"},
+    drop_adjacency_entries{YType::uint32, "drop-adjacency-entries"},
     ip_packets_dropped_node{YType::uint32, "ip-packets-dropped-node"},
     arp_packet_node_out_of_subnet{YType::uint32, "arp-packet-node-out-of-subnet"},
     ip_packets_dropped_interface{YType::uint32, "ip-packets-dropped-interface"},
@@ -3900,6 +4221,7 @@ bool Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::has_data() const
 	|| standby_entries.is_set
 	|| dhcp_entries.is_set
 	|| vxlan_entries.is_set
+	|| drop_adjacency_entries.is_set
 	|| ip_packets_dropped_node.is_set
 	|| arp_packet_node_out_of_subnet.is_set
 	|| ip_packets_dropped_interface.is_set
@@ -3935,6 +4257,7 @@ bool Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::has_operation() cons
 	|| ydk::is_set(standby_entries.yfilter)
 	|| ydk::is_set(dhcp_entries.yfilter)
 	|| ydk::is_set(vxlan_entries.yfilter)
+	|| ydk::is_set(drop_adjacency_entries.yfilter)
 	|| ydk::is_set(ip_packets_dropped_node.yfilter)
 	|| ydk::is_set(arp_packet_node_out_of_subnet.yfilter)
 	|| ydk::is_set(ip_packets_dropped_interface.yfilter)
@@ -3979,6 +4302,7 @@ std::vector<std::pair<std::string, LeafData> > Arp::Nodes::Node::TrafficInterfac
     if (standby_entries.is_set || is_set(standby_entries.yfilter)) leaf_name_data.push_back(standby_entries.get_name_leafdata());
     if (dhcp_entries.is_set || is_set(dhcp_entries.yfilter)) leaf_name_data.push_back(dhcp_entries.get_name_leafdata());
     if (vxlan_entries.is_set || is_set(vxlan_entries.yfilter)) leaf_name_data.push_back(vxlan_entries.get_name_leafdata());
+    if (drop_adjacency_entries.is_set || is_set(drop_adjacency_entries.yfilter)) leaf_name_data.push_back(drop_adjacency_entries.get_name_leafdata());
     if (ip_packets_dropped_node.is_set || is_set(ip_packets_dropped_node.yfilter)) leaf_name_data.push_back(ip_packets_dropped_node.get_name_leafdata());
     if (arp_packet_node_out_of_subnet.is_set || is_set(arp_packet_node_out_of_subnet.yfilter)) leaf_name_data.push_back(arp_packet_node_out_of_subnet.get_name_leafdata());
     if (ip_packets_dropped_interface.is_set || is_set(ip_packets_dropped_interface.yfilter)) leaf_name_data.push_back(ip_packets_dropped_interface.get_name_leafdata());
@@ -4148,6 +4472,12 @@ void Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::set_value(const std:
         vxlan_entries.value_namespace = name_space;
         vxlan_entries.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "drop-adjacency-entries")
+    {
+        drop_adjacency_entries = value;
+        drop_adjacency_entries.value_namespace = name_space;
+        drop_adjacency_entries.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "ip-packets-dropped-node")
     {
         ip_packets_dropped_node = value;
@@ -4284,6 +4614,10 @@ void Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::set_filter(const std
     {
         vxlan_entries.yfilter = yfilter;
     }
+    if(value_path == "drop-adjacency-entries")
+    {
+        drop_adjacency_entries.yfilter = yfilter;
+    }
     if(value_path == "ip-packets-dropped-node")
     {
         ip_packets_dropped_node.yfilter = yfilter;
@@ -4312,15 +4646,71 @@ void Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::set_filter(const std
 
 bool Arp::Nodes::Node::TrafficInterfaces::TrafficInterface::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "interface-name" || name == "requests-received" || name == "replies-received" || name == "requests-sent" || name == "replies-sent" || name == "proxy-replies-sent" || name == "subscr-requests-received" || name == "subscr-replies-sent" || name == "subscr-replies-gratg-sent" || name == "local-proxy-replies-sent" || name == "gratuitous-replies-sent" || name == "resolution-requests-received" || name == "resolution-replies-received" || name == "resolution-requests-dropped" || name == "out-of-memory-errors" || name == "no-buffer-errors" || name == "total-entries" || name == "dynamic-entries" || name == "static-entries" || name == "alias-entries" || name == "interface-entries" || name == "standby-entries" || name == "dhcp-entries" || name == "vxlan-entries" || name == "ip-packets-dropped-node" || name == "arp-packet-node-out-of-subnet" || name == "ip-packets-dropped-interface" || name == "arp-packet-interface-out-of-subnet" || name == "arp-packet-unsolicited-packet" || name == "idb-structures")
+    if(name == "interface-name" || name == "requests-received" || name == "replies-received" || name == "requests-sent" || name == "replies-sent" || name == "proxy-replies-sent" || name == "subscr-requests-received" || name == "subscr-replies-sent" || name == "subscr-replies-gratg-sent" || name == "local-proxy-replies-sent" || name == "gratuitous-replies-sent" || name == "resolution-requests-received" || name == "resolution-replies-received" || name == "resolution-requests-dropped" || name == "out-of-memory-errors" || name == "no-buffer-errors" || name == "total-entries" || name == "dynamic-entries" || name == "static-entries" || name == "alias-entries" || name == "interface-entries" || name == "standby-entries" || name == "dhcp-entries" || name == "vxlan-entries" || name == "drop-adjacency-entries" || name == "ip-packets-dropped-node" || name == "arp-packet-node-out-of-subnet" || name == "ip-packets-dropped-interface" || name == "arp-packet-interface-out-of-subnet" || name == "arp-packet-unsolicited-packet" || name == "idb-structures")
         return true;
     return false;
 }
+
+const Enum::YLeaf ArpGmpBagEntry::null {0, "null"};
+const Enum::YLeaf ArpGmpBagEntry::static_ {1, "static"};
+const Enum::YLeaf ArpGmpBagEntry::alias {2, "alias"};
+
+const Enum::YLeaf ArpGmpBagEncap::none {0, "none"};
+const Enum::YLeaf ArpGmpBagEncap::arpa {1, "arpa"};
+const Enum::YLeaf ArpGmpBagEncap::snap {2, "snap"};
+const Enum::YLeaf ArpGmpBagEncap::ieee802_1q {3, "ieee802-1q"};
+const Enum::YLeaf ArpGmpBagEncap::srp {4, "srp"};
+const Enum::YLeaf ArpGmpBagEncap::srpa {5, "srpa"};
+const Enum::YLeaf ArpGmpBagEncap::srpb {6, "srpb"};
+
+const Enum::YLeaf IpArpBagEncap::none {0, "none"};
+const Enum::YLeaf IpArpBagEncap::arpa {1, "arpa"};
+const Enum::YLeaf IpArpBagEncap::snap {2, "snap"};
+const Enum::YLeaf IpArpBagEncap::ieee802_1q {3, "ieee802-1q"};
+const Enum::YLeaf IpArpBagEncap::srp {4, "srp"};
+const Enum::YLeaf IpArpBagEncap::srpa {5, "srpa"};
+const Enum::YLeaf IpArpBagEncap::srpb {6, "srpb"};
 
 const Enum::YLeaf IpArpBagFlags::flag_none {0, "flag-none"};
 const Enum::YLeaf IpArpBagFlags::flag_dynamic {1, "flag-dynamic"};
 const Enum::YLeaf IpArpBagFlags::flag_evpn_sync {2, "flag-evpn-sync"};
 const Enum::YLeaf IpArpBagFlags::flag_max {3, "flag-max"};
+
+const Enum::YLeaf IpArpBagState::state_none {0, "state-none"};
+const Enum::YLeaf IpArpBagState::state_interface {1, "state-interface"};
+const Enum::YLeaf IpArpBagState::state_standby {2, "state-standby"};
+const Enum::YLeaf IpArpBagState::state_static {3, "state-static"};
+const Enum::YLeaf IpArpBagState::state_alias {4, "state-alias"};
+const Enum::YLeaf IpArpBagState::state_mobile {5, "state-mobile"};
+const Enum::YLeaf IpArpBagState::state_incomplete {6, "state-incomplete"};
+const Enum::YLeaf IpArpBagState::state_deleted {7, "state-deleted"};
+const Enum::YLeaf IpArpBagState::state_dynamic {8, "state-dynamic"};
+const Enum::YLeaf IpArpBagState::state_probe {9, "state-probe"};
+const Enum::YLeaf IpArpBagState::state_purge_delayed {10, "state-purge-delayed"};
+const Enum::YLeaf IpArpBagState::state_dhcp {11, "state-dhcp"};
+const Enum::YLeaf IpArpBagState::state_vxlan {12, "state-vxlan"};
+const Enum::YLeaf IpArpBagState::state_evpn_sync {13, "state-evpn-sync"};
+const Enum::YLeaf IpArpBagState::state_sat {14, "state-sat"};
+const Enum::YLeaf IpArpBagState::state_r_sync {15, "state-r-sync"};
+const Enum::YLeaf IpArpBagState::state_drop_adj {16, "state-drop-adj"};
+const Enum::YLeaf IpArpBagState::state_stale {17, "state-stale"};
+const Enum::YLeaf IpArpBagState::state_max {18, "state-max"};
+
+const Enum::YLeaf IpArpBagMedia::media_arpa {0, "media-arpa"};
+const Enum::YLeaf IpArpBagMedia::media_srp {1, "media-srp"};
+const Enum::YLeaf IpArpBagMedia::media_unknown {2, "media-unknown"};
+
+const Enum::YLeaf ArpIssuVersion::version1 {0, "version1"};
+const Enum::YLeaf ArpIssuVersion::version2 {1, "version2"};
+
+const Enum::YLeaf ArpIssuPhase::phase_not_started {0, "phase-not-started"};
+const Enum::YLeaf ArpIssuPhase::phase_load {1, "phase-load"};
+const Enum::YLeaf ArpIssuPhase::phase_run {2, "phase-run"};
+const Enum::YLeaf ArpIssuPhase::phase_completed {3, "phase-completed"};
+const Enum::YLeaf ArpIssuPhase::phase_aborted {4, "phase-aborted"};
+
+const Enum::YLeaf ArpIssuRole::role_primary {0, "role-primary"};
+const Enum::YLeaf ArpIssuRole::role_secondary {1, "role-secondary"};
 
 const Enum::YLeaf ArpResolutionHistoryStatus::status_none {0, "status-none"};
 const Enum::YLeaf ArpResolutionHistoryStatus::status_resolution_request {1, "status-resolution-request"};
@@ -4345,48 +4735,7 @@ const Enum::YLeaf ArpResolutionHistoryStatus::status_added_v1 {19, "status-added
 const Enum::YLeaf ArpResolutionHistoryStatus::status_removed_v1 {20, "status-removed-v1"};
 const Enum::YLeaf ArpResolutionHistoryStatus::status_resolved_peer_sync {21, "status-resolved-peer-sync"};
 const Enum::YLeaf ArpResolutionHistoryStatus::status_dropped_unsolicited_pak {22, "status-dropped-unsolicited-pak"};
-
-const Enum::YLeaf IpArpBagEncap::none {0, "none"};
-const Enum::YLeaf IpArpBagEncap::arpa {1, "arpa"};
-const Enum::YLeaf IpArpBagEncap::snap {2, "snap"};
-const Enum::YLeaf IpArpBagEncap::ieee802_1q {3, "ieee802-1q"};
-const Enum::YLeaf IpArpBagEncap::srp {4, "srp"};
-const Enum::YLeaf IpArpBagEncap::srpa {5, "srpa"};
-const Enum::YLeaf IpArpBagEncap::srpb {6, "srpb"};
-
-const Enum::YLeaf ArpGmpBagEncap::none {0, "none"};
-const Enum::YLeaf ArpGmpBagEncap::arpa {1, "arpa"};
-const Enum::YLeaf ArpGmpBagEncap::snap {2, "snap"};
-const Enum::YLeaf ArpGmpBagEncap::ieee802_1q {3, "ieee802-1q"};
-const Enum::YLeaf ArpGmpBagEncap::srp {4, "srp"};
-const Enum::YLeaf ArpGmpBagEncap::srpa {5, "srpa"};
-const Enum::YLeaf ArpGmpBagEncap::srpb {6, "srpb"};
-
-const Enum::YLeaf IpArpBagMedia::media_arpa {0, "media-arpa"};
-const Enum::YLeaf IpArpBagMedia::media_srp {1, "media-srp"};
-const Enum::YLeaf IpArpBagMedia::media_unknown {2, "media-unknown"};
-
-const Enum::YLeaf ArpGmpBagEntry::null {0, "null"};
-const Enum::YLeaf ArpGmpBagEntry::static_ {1, "static"};
-const Enum::YLeaf ArpGmpBagEntry::alias {2, "alias"};
-
-const Enum::YLeaf IpArpBagState::state_none {0, "state-none"};
-const Enum::YLeaf IpArpBagState::state_interface {1, "state-interface"};
-const Enum::YLeaf IpArpBagState::state_standby {2, "state-standby"};
-const Enum::YLeaf IpArpBagState::state_static {3, "state-static"};
-const Enum::YLeaf IpArpBagState::state_alias {4, "state-alias"};
-const Enum::YLeaf IpArpBagState::state_mobile {5, "state-mobile"};
-const Enum::YLeaf IpArpBagState::state_incomplete {6, "state-incomplete"};
-const Enum::YLeaf IpArpBagState::state_deleted {7, "state-deleted"};
-const Enum::YLeaf IpArpBagState::state_dynamic {8, "state-dynamic"};
-const Enum::YLeaf IpArpBagState::state_probe {9, "state-probe"};
-const Enum::YLeaf IpArpBagState::state_purge_delayed {10, "state-purge-delayed"};
-const Enum::YLeaf IpArpBagState::state_dhcp {11, "state-dhcp"};
-const Enum::YLeaf IpArpBagState::state_vxlan {12, "state-vxlan"};
-const Enum::YLeaf IpArpBagState::state_evpn_sync {13, "state-evpn-sync"};
-const Enum::YLeaf IpArpBagState::state_sat {14, "state-sat"};
-const Enum::YLeaf IpArpBagState::state_r_sync {15, "state-r-sync"};
-const Enum::YLeaf IpArpBagState::state_max {16, "state-max"};
+const Enum::YLeaf ArpResolutionHistoryStatus::status_drop_adjacency_added {23, "status-drop-adjacency-added"};
 
 
 }

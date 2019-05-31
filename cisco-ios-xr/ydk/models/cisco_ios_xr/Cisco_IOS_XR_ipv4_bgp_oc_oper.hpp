@@ -3959,15 +3959,6 @@ class OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigN
 
 }; // OcBgp::BgpRib::AfiSafiTable::Ipv6Unicast::OpenConfigNeighbors::OpenConfigNeighbor::AdjRibInPre::NumRoutes
 
-class BgpOcOriginAttr : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf igp;
-        static const ydk::Enum::YLeaf egp;
-        static const ydk::Enum::YLeaf incomplete;
-
-};
-
 class BgpOcInvalidRouteReason : public ydk::Enum
 {
     public:
@@ -3976,6 +3967,15 @@ class BgpOcInvalidRouteReason : public ydk::Enum
         static const ydk::Enum::YLeaf invalid_as_path_loop;
         static const ydk::Enum::YLeaf invalid_origin_at_or_id;
         static const ydk::Enum::YLeaf invalid_as_confed_loop;
+
+};
+
+class BgpOcOriginAttr : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf igp;
+        static const ydk::Enum::YLeaf egp;
+        static const ydk::Enum::YLeaf incomplete;
 
 };
 

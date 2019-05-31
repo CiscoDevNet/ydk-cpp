@@ -4032,76 +4032,46 @@ class MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor::ProtocolInforma
 
 }; // MplsLdp::Global::Standby::DefaultVrf::Neighbors::Neighbor::ProtocolInformation::TaGracefulRestartAdjacency
 
+class MplsLdpOperAfName : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf all;
+
+};
+
+class L2vpnLdpPwAii : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf local_id;
+        static const ydk::Enum::YLeaf type2;
+
+};
+
+class L2vpnLdpPwAgi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rd;
+
+};
+
+class L2vpnLdpPwFec : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf fec128;
+        static const ydk::Enum::YLeaf fec129;
+        static const ydk::Enum::YLeaf fec130;
+        static const ydk::Enum::YLeaf invalid;
+
+};
+
 class MgmtLdpNbrBgpAdvtState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf not_applicable;
         static const ydk::Enum::YLeaf permit;
         static const ydk::Enum::YLeaf deny;
-
-};
-
-class MgmtLdpNsrPeerSyncState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_none;
-        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_wait;
-        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_ready;
-        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_prep;
-        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_app_wait;
-        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_oper;
-        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_tcp_phase1;
-        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_tcp_phase2;
-
-};
-
-class LdpRoutePathFlags : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ip_path_no_flag;
-        static const ydk::Enum::YLeaf ip_path_protected;
-        static const ydk::Enum::YLeaf ip_path_backup;
-        static const ydk::Enum::YLeaf ip_path_backup_remote;
-        static const ydk::Enum::YLeaf ip_path_bgp_backup;
-
-};
-
-class LdpAfId : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ldp_af_id_none;
-        static const ydk::Enum::YLeaf ldp_af_id_ipv4;
-        static const ydk::Enum::YLeaf ldp_af_id_ipv6;
-
-};
-
-class LdpIgpSyncState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf isync_ready;
-        static const ydk::Enum::YLeaf isync_not_ready;
-        static const ydk::Enum::YLeaf isync_deferred;
-
-};
-
-class LdpIgpSyncDownReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf igp_sync_down_reason_not_applicable;
-        static const ydk::Enum::YLeaf no_hello_adjacency;
-        static const ydk::Enum::YLeaf no_peer_session;
-        static const ydk::Enum::YLeaf initial_update_to_peer_not_done;
-        static const ydk::Enum::YLeaf initial_update_from_peer_not_received;
-        static const ydk::Enum::YLeaf internal_reason;
-
-};
-
-class LocalLabelState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf local_label_state_none;
-        static const ydk::Enum::YLeaf local_label_state_assigned;
-        static const ydk::Enum::YLeaf local_label_state_withdrawn;
 
 };
 
@@ -4154,10 +4124,43 @@ class MgmtLdpNsrPeerSyncErr : public ydk::Enum
 
 };
 
-class L2vpnLdpPwAgi : public ydk::Enum
+class MgmtLdpNsrPeerSyncState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf rd;
+        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_none;
+        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_wait;
+        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_ready;
+        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_prep;
+        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_app_wait;
+        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_oper;
+        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_tcp_phase1;
+        static const ydk::Enum::YLeaf mgmt_ldp_nsr_peer_sync_st_tcp_phase2;
+
+};
+
+class LdpAdjUnionDiscrim : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf link_hello;
+        static const ydk::Enum::YLeaf targeted_hello;
+
+};
+
+class ShowNsrState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf nsr_ready;
+        static const ydk::Enum::YLeaf nsr_not_ready;
+        static const ydk::Enum::YLeaf nsr_na;
+
+};
+
+class LdpRoutePathLblOwner : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ip_path_lbl_owner_none;
+        static const ydk::Enum::YLeaf ip_path_lbl_owner_ldp;
+        static const ydk::Enum::YLeaf ip_path_lbl_owner_bgp;
 
 };
 
@@ -4185,57 +4188,14 @@ class LdpFwdUnlblRsn : public ydk::Enum
 
 };
 
-class LdpAdjUnionDiscrim : public ydk::Enum
+class LdpRoutePathFlags : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf link_hello;
-        static const ydk::Enum::YLeaf targeted_hello;
-
-};
-
-class LdpRoutePathLblOwner : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ip_path_lbl_owner_none;
-        static const ydk::Enum::YLeaf ip_path_lbl_owner_ldp;
-        static const ydk::Enum::YLeaf ip_path_lbl_owner_bgp;
-
-};
-
-class L2vpnLdpPwFec : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf fec128;
-        static const ydk::Enum::YLeaf fec129;
-        static const ydk::Enum::YLeaf fec130;
-        static const ydk::Enum::YLeaf invalid;
-
-};
-
-class MplsLdpOperAfName : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-        static const ydk::Enum::YLeaf all;
-
-};
-
-class LdpAf : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ldp_show_af_none;
-        static const ydk::Enum::YLeaf ldp_show_af_ipv4;
-        static const ydk::Enum::YLeaf ldp_show_af_ipv6;
-        static const ydk::Enum::YLeaf ldp_show_af_ipv4_ipv6;
-
-};
-
-class L2vpnLdpPwAii : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf local_id;
-        static const ydk::Enum::YLeaf type2;
+        static const ydk::Enum::YLeaf ip_path_no_flag;
+        static const ydk::Enum::YLeaf ip_path_protected;
+        static const ydk::Enum::YLeaf ip_path_backup;
+        static const ydk::Enum::YLeaf ip_path_backup_remote;
+        static const ydk::Enum::YLeaf ip_path_bgp_backup;
 
 };
 
@@ -4249,12 +4209,52 @@ class DhcbState : public ydk::Enum
 
 };
 
-class ShowNsrState : public ydk::Enum
+class LdpIgpSyncDownReason : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf nsr_ready;
-        static const ydk::Enum::YLeaf nsr_not_ready;
-        static const ydk::Enum::YLeaf nsr_na;
+        static const ydk::Enum::YLeaf igp_sync_down_reason_not_applicable;
+        static const ydk::Enum::YLeaf no_hello_adjacency;
+        static const ydk::Enum::YLeaf no_peer_session;
+        static const ydk::Enum::YLeaf initial_update_to_peer_not_done;
+        static const ydk::Enum::YLeaf initial_update_from_peer_not_received;
+        static const ydk::Enum::YLeaf internal_reason;
+
+};
+
+class LdpIgpSyncState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf isync_ready;
+        static const ydk::Enum::YLeaf isync_not_ready;
+        static const ydk::Enum::YLeaf isync_deferred;
+
+};
+
+class LocalLabelState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf local_label_state_none;
+        static const ydk::Enum::YLeaf local_label_state_assigned;
+        static const ydk::Enum::YLeaf local_label_state_withdrawn;
+
+};
+
+class LdpAf : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ldp_show_af_none;
+        static const ydk::Enum::YLeaf ldp_show_af_ipv4;
+        static const ydk::Enum::YLeaf ldp_show_af_ipv6;
+        static const ydk::Enum::YLeaf ldp_show_af_ipv4_ipv6;
+
+};
+
+class LdpAfId : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ldp_af_id_none;
+        static const ydk::Enum::YLeaf ldp_af_id_ipv4;
+        static const ydk::Enum::YLeaf ldp_af_id_ipv6;
 
 };
 

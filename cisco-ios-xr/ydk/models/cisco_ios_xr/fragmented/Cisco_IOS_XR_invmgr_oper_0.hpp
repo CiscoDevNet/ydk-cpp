@@ -82,13 +82,58 @@ class Inventory::Entities::Entity : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        class Attributes; //type: Inventory::Entities::Entity::Attributes
         class Subentities; //type: Inventory::Entities::Entity::Subentities
+        class Attributes; //type: Inventory::Entities::Entity::Attributes
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes> attributes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Subentities> subentities;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes> attributes;
         
 }; // Inventory::Entities::Entity
+
+
+class Inventory::Entities::Entity::Subentities : public ydk::Entity
+{
+    public:
+        Subentities();
+        ~Subentities();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Subentity; //type: Inventory::Entities::Entity::Subentities::Subentity
+
+        ydk::YList subentity;
+        
+}; // Inventory::Entities::Entity::Subentities
+
+
+class Inventory::Entities::Entity::Subentities::Subentity : public ydk::Entity
+{
+    public:
+        Subentity();
+        ~Subentity();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf subentity_name; //type: string
+
+}; // Inventory::Entities::Entity::Subentities::Subentity
 
 
 class Inventory::Entities::Entity::Attributes : public ydk::Entity
@@ -108,10 +153,26 @@ class Inventory::Entities::Entity::Attributes : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class InvBasicBag; //type: Inventory::Entities::Entity::Attributes::InvBasicBag
+        class VmNodeId; //type: Inventory::Entities::Entity::Attributes::VmNodeId
+        class Threshold; //type: Inventory::Entities::Entity::Attributes::Threshold
+        class VmDone; //type: Inventory::Entities::Entity::Attributes::VmDone
+        class FruInfo; //type: Inventory::Entities::Entity::Attributes::FruInfo
+        class EnvSensorInfoXml; //type: Inventory::Entities::Entity::Attributes::EnvSensorInfoXml
         class InvAssetBag; //type: Inventory::Entities::Entity::Attributes::InvAssetBag
+        class EnvSensorInfo; //type: Inventory::Entities::Entity::Attributes::EnvSensorInfo
+        class NodeId; //type: Inventory::Entities::Entity::Attributes::NodeId
+        class InvEepromInfo; //type: Inventory::Entities::Entity::Attributes::InvEepromInfo
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::InvBasicBag> inv_basic_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::VmNodeId> vm_node_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::Threshold> threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::VmDone> vm_done;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::FruInfo> fru_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::EnvSensorInfoXml> env_sensor_info_xml;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::InvAssetBag> inv_asset_bag;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::EnvSensorInfo> env_sensor_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::NodeId> node_id;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::InvEepromInfo> inv_eeprom_info;
         
 }; // Inventory::Entities::Entity::Attributes
 
@@ -158,8 +219,524 @@ class Inventory::Entities::Entity::Attributes::InvBasicBag : public ydk::Entity
         ydk::YLeaf ceport; //type: boolean
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
+        ydk::YLeaf allocated_power; //type: int32
 
 }; // Inventory::Entities::Entity::Attributes::InvBasicBag
+
+
+class Inventory::Entities::Entity::Attributes::VmNodeId : public ydk::Entity
+{
+    public:
+        VmNodeId();
+        ~VmNodeId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf vm_node_id; //type: uint32
+
+}; // Inventory::Entities::Entity::Attributes::VmNodeId
+
+
+class Inventory::Entities::Entity::Attributes::Threshold : public ydk::Entity
+{
+    public:
+        Threshold();
+        ~Threshold();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class MinorHi; //type: Inventory::Entities::Entity::Attributes::Threshold::MinorHi
+        class MajorHi; //type: Inventory::Entities::Entity::Attributes::Threshold::MajorHi
+        class MinorLo; //type: Inventory::Entities::Entity::Attributes::Threshold::MinorLo
+        class MajorLo; //type: Inventory::Entities::Entity::Attributes::Threshold::MajorLo
+        class CriticalHi; //type: Inventory::Entities::Entity::Attributes::Threshold::CriticalHi
+        class CriticalLo; //type: Inventory::Entities::Entity::Attributes::Threshold::CriticalLo
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::Threshold::MinorHi> minor_hi;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::Threshold::MajorHi> major_hi;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::Threshold::MinorLo> minor_lo;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::Threshold::MajorLo> major_lo;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::Threshold::CriticalHi> critical_hi;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::Threshold::CriticalLo> critical_lo;
+        
+}; // Inventory::Entities::Entity::Attributes::Threshold
+
+
+class Inventory::Entities::Entity::Attributes::Threshold::MinorHi : public ydk::Entity
+{
+    public:
+        MinorHi();
+        ~MinorHi();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ThreshBag; //type: Inventory::Entities::Entity::Attributes::Threshold::MinorHi::ThreshBag
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::Threshold::MinorHi::ThreshBag> thresh_bag;
+        
+}; // Inventory::Entities::Entity::Attributes::Threshold::MinorHi
+
+
+class Inventory::Entities::Entity::Attributes::Threshold::MinorHi::ThreshBag : public ydk::Entity
+{
+    public:
+        ThreshBag();
+        ~ThreshBag();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf threshold_severity; //type: uint32
+        ydk::YLeaf threshold_relation; //type: uint32
+        ydk::YLeaf threshold_value; //type: uint32
+        ydk::YLeaf threshold_evaluation; //type: boolean
+        ydk::YLeaf threshold_notification_enabled; //type: boolean
+
+}; // Inventory::Entities::Entity::Attributes::Threshold::MinorHi::ThreshBag
+
+
+class Inventory::Entities::Entity::Attributes::Threshold::MajorHi : public ydk::Entity
+{
+    public:
+        MajorHi();
+        ~MajorHi();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ThreshBag; //type: Inventory::Entities::Entity::Attributes::Threshold::MajorHi::ThreshBag
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::Threshold::MajorHi::ThreshBag> thresh_bag;
+        
+}; // Inventory::Entities::Entity::Attributes::Threshold::MajorHi
+
+
+class Inventory::Entities::Entity::Attributes::Threshold::MajorHi::ThreshBag : public ydk::Entity
+{
+    public:
+        ThreshBag();
+        ~ThreshBag();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf threshold_severity; //type: uint32
+        ydk::YLeaf threshold_relation; //type: uint32
+        ydk::YLeaf threshold_value; //type: uint32
+        ydk::YLeaf threshold_evaluation; //type: boolean
+        ydk::YLeaf threshold_notification_enabled; //type: boolean
+
+}; // Inventory::Entities::Entity::Attributes::Threshold::MajorHi::ThreshBag
+
+
+class Inventory::Entities::Entity::Attributes::Threshold::MinorLo : public ydk::Entity
+{
+    public:
+        MinorLo();
+        ~MinorLo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ThreshBag; //type: Inventory::Entities::Entity::Attributes::Threshold::MinorLo::ThreshBag
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::Threshold::MinorLo::ThreshBag> thresh_bag;
+        
+}; // Inventory::Entities::Entity::Attributes::Threshold::MinorLo
+
+
+class Inventory::Entities::Entity::Attributes::Threshold::MinorLo::ThreshBag : public ydk::Entity
+{
+    public:
+        ThreshBag();
+        ~ThreshBag();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf threshold_severity; //type: uint32
+        ydk::YLeaf threshold_relation; //type: uint32
+        ydk::YLeaf threshold_value; //type: uint32
+        ydk::YLeaf threshold_evaluation; //type: boolean
+        ydk::YLeaf threshold_notification_enabled; //type: boolean
+
+}; // Inventory::Entities::Entity::Attributes::Threshold::MinorLo::ThreshBag
+
+
+class Inventory::Entities::Entity::Attributes::Threshold::MajorLo : public ydk::Entity
+{
+    public:
+        MajorLo();
+        ~MajorLo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ThreshBag; //type: Inventory::Entities::Entity::Attributes::Threshold::MajorLo::ThreshBag
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::Threshold::MajorLo::ThreshBag> thresh_bag;
+        
+}; // Inventory::Entities::Entity::Attributes::Threshold::MajorLo
+
+
+class Inventory::Entities::Entity::Attributes::Threshold::MajorLo::ThreshBag : public ydk::Entity
+{
+    public:
+        ThreshBag();
+        ~ThreshBag();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf threshold_severity; //type: uint32
+        ydk::YLeaf threshold_relation; //type: uint32
+        ydk::YLeaf threshold_value; //type: uint32
+        ydk::YLeaf threshold_evaluation; //type: boolean
+        ydk::YLeaf threshold_notification_enabled; //type: boolean
+
+}; // Inventory::Entities::Entity::Attributes::Threshold::MajorLo::ThreshBag
+
+
+class Inventory::Entities::Entity::Attributes::Threshold::CriticalHi : public ydk::Entity
+{
+    public:
+        CriticalHi();
+        ~CriticalHi();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ThreshBag; //type: Inventory::Entities::Entity::Attributes::Threshold::CriticalHi::ThreshBag
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::Threshold::CriticalHi::ThreshBag> thresh_bag;
+        
+}; // Inventory::Entities::Entity::Attributes::Threshold::CriticalHi
+
+
+class Inventory::Entities::Entity::Attributes::Threshold::CriticalHi::ThreshBag : public ydk::Entity
+{
+    public:
+        ThreshBag();
+        ~ThreshBag();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf threshold_severity; //type: uint32
+        ydk::YLeaf threshold_relation; //type: uint32
+        ydk::YLeaf threshold_value; //type: uint32
+        ydk::YLeaf threshold_evaluation; //type: boolean
+        ydk::YLeaf threshold_notification_enabled; //type: boolean
+
+}; // Inventory::Entities::Entity::Attributes::Threshold::CriticalHi::ThreshBag
+
+
+class Inventory::Entities::Entity::Attributes::Threshold::CriticalLo : public ydk::Entity
+{
+    public:
+        CriticalLo();
+        ~CriticalLo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ThreshBag; //type: Inventory::Entities::Entity::Attributes::Threshold::CriticalLo::ThreshBag
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::Threshold::CriticalLo::ThreshBag> thresh_bag;
+        
+}; // Inventory::Entities::Entity::Attributes::Threshold::CriticalLo
+
+
+class Inventory::Entities::Entity::Attributes::Threshold::CriticalLo::ThreshBag : public ydk::Entity
+{
+    public:
+        ThreshBag();
+        ~ThreshBag();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf threshold_severity; //type: uint32
+        ydk::YLeaf threshold_relation; //type: uint32
+        ydk::YLeaf threshold_value; //type: uint32
+        ydk::YLeaf threshold_evaluation; //type: boolean
+        ydk::YLeaf threshold_notification_enabled; //type: boolean
+
+}; // Inventory::Entities::Entity::Attributes::Threshold::CriticalLo::ThreshBag
+
+
+class Inventory::Entities::Entity::Attributes::VmDone : public ydk::Entity
+{
+    public:
+        VmDone();
+        ~VmDone();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf vm_node_done; //type: uint8
+
+}; // Inventory::Entities::Entity::Attributes::VmDone
+
+
+class Inventory::Entities::Entity::Attributes::FruInfo : public ydk::Entity
+{
+    public:
+        FruInfo();
+        ~FruInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf card_administrative_state; //type: int32
+        ydk::YLeaf power_administrative_state; //type: int32
+        ydk::YLeaf card_operational_state; //type: int32
+        ydk::YLeaf card_monitor_state; //type: int32
+        ydk::YLeaf card_reset_reason; //type: CardResetReason
+        ydk::YLeaf power_current_measurement; //type: int32
+        ydk::YLeaf power_operational_state; //type: int32
+        class LastOperationalStateChange; //type: Inventory::Entities::Entity::Attributes::FruInfo::LastOperationalStateChange
+        class CardUpTime; //type: Inventory::Entities::Entity::Attributes::FruInfo::CardUpTime
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::FruInfo::CardUpTime> card_up_time;
+        
+}; // Inventory::Entities::Entity::Attributes::FruInfo
+
+
+class Inventory::Entities::Entity::Attributes::FruInfo::LastOperationalStateChange : public ydk::Entity
+{
+    public:
+        LastOperationalStateChange();
+        ~LastOperationalStateChange();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
+
+}; // Inventory::Entities::Entity::Attributes::FruInfo::LastOperationalStateChange
+
+
+class Inventory::Entities::Entity::Attributes::FruInfo::CardUpTime : public ydk::Entity
+{
+    public:
+        CardUpTime();
+        ~CardUpTime();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf time_in_seconds; //type: int32
+        ydk::YLeaf time_in_nano_seconds; //type: int32
+
+}; // Inventory::Entities::Entity::Attributes::FruInfo::CardUpTime
+
+
+class Inventory::Entities::Entity::Attributes::EnvSensorInfoXml : public ydk::Entity
+{
+    public:
+        EnvSensorInfoXml();
+        ~EnvSensorInfoXml();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf units; //type: Unit
+        ydk::YLeaf value_; //type: string
+        ydk::YLeaf data_type; //type: SensorData
+        ydk::YLeaf status; //type: SensorStatus
+        ydk::YLeaf update_rate; //type: uint32
+        class Threshold; //type: Inventory::Entities::Entity::Attributes::EnvSensorInfoXml::Threshold
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::EnvSensorInfoXml::Threshold> threshold;
+        
+}; // Inventory::Entities::Entity::Attributes::EnvSensorInfoXml
+
+
+class Inventory::Entities::Entity::Attributes::EnvSensorInfoXml::Threshold : public ydk::Entity
+{
+    public:
+        Threshold();
+        ~Threshold();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ThresholdArray; //type: Inventory::Entities::Entity::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
+
+        ydk::YList threshold_array;
+        
+}; // Inventory::Entities::Entity::Attributes::EnvSensorInfoXml::Threshold
+
+
+class Inventory::Entities::Entity::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray : public ydk::Entity
+{
+    public:
+        ThresholdArray();
+        ~ThresholdArray();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf threshold_severity; //type: ThresholdSeverity
+        ydk::YLeaf threshold_relation; //type: ThresholdRelation
+        ydk::YLeaf threshold_value; //type: int32
+        ydk::YLeaf threshold_name; //type: string
+
+}; // Inventory::Entities::Entity::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
 
 
 class Inventory::Entities::Entity::Attributes::InvAssetBag : public ydk::Entity
@@ -189,11 +766,11 @@ class Inventory::Entities::Entity::Attributes::InvAssetBag : public ydk::Entity
 }; // Inventory::Entities::Entity::Attributes::InvAssetBag
 
 
-class Inventory::Entities::Entity::Subentities : public ydk::Entity
+class Inventory::Entities::Entity::Attributes::EnvSensorInfo : public ydk::Entity
 {
     public:
-        Subentities();
-        ~Subentities();
+        EnvSensorInfo();
+        ~EnvSensorInfo();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -205,18 +782,86 @@ class Inventory::Entities::Entity::Subentities : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Subentity; //type: Inventory::Entities::Entity::Subentities::Subentity
+        ydk::YLeaf field_validity_bitmap; //type: uint32
+        ydk::YLeaf device_description; //type: string
+        ydk::YLeaf units; //type: string
+        ydk::YLeaf device_id; //type: uint32
+        ydk::YLeaf value_; //type: uint32
+        ydk::YLeaf alarm_type; //type: uint32
+        ydk::YLeaf data_type; //type: uint32
+        ydk::YLeaf scale; //type: uint32
+        ydk::YLeaf precision; //type: uint32
+        ydk::YLeaf status; //type: uint32
+        ydk::YLeaf age_time_stamp; //type: uint32
+        ydk::YLeaf update_rate; //type: uint32
+        ydk::YLeaf average; //type: int32
+        ydk::YLeaf minimum; //type: int32
+        ydk::YLeaf maximum; //type: int32
+        ydk::YLeaf interval; //type: int32
 
-        ydk::YList subentity;
+}; // Inventory::Entities::Entity::Attributes::EnvSensorInfo
+
+
+class Inventory::Entities::Entity::Attributes::NodeId : public ydk::Entity
+{
+    public:
+        NodeId();
+        ~NodeId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf node_id; //type: uint32
+
+}; // Inventory::Entities::Entity::Attributes::NodeId
+
+
+class Inventory::Entities::Entity::Attributes::InvEepromInfo : public ydk::Entity
+{
+    public:
+        InvEepromInfo();
+        ~InvEepromInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf inv_card_type; //type: uint8
+        ydk::YLeaf opaque_data; //type: string
+        ydk::YLeaf opaque_data_size; //type: uint32
+        ydk::YLeaf has_eeprom; //type: uint32
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf form_factor; //type: uint32
+        ydk::YLeaf connector_type; //type: uint32
+        ydk::YLeaf otn_application_code; //type: uint32
+        ydk::YLeaf sonet_application_code; //type: uint32
+        ydk::YLeaf ethernet_compliance_code; //type: uint32
+        ydk::YLeaf date_string; //type: string
+        class Eeprom; //type: Inventory::Entities::Entity::Attributes::InvEepromInfo::Eeprom
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::InvEepromInfo::Eeprom> eeprom;
         
-}; // Inventory::Entities::Entity::Subentities
+}; // Inventory::Entities::Entity::Attributes::InvEepromInfo
 
 
-class Inventory::Entities::Entity::Subentities::Subentity : public ydk::Entity
+class Inventory::Entities::Entity::Attributes::InvEepromInfo::Eeprom : public ydk::Entity
 {
     public:
-        Subentity();
-        ~Subentity();
+        Eeprom();
+        ~Eeprom();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -228,10 +873,91 @@ class Inventory::Entities::Entity::Subentities::Subentity : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf name_xr; //type: string
+        ydk::YLeaf description; //type: string
+        ydk::YLeaf idprom_format_rev; //type: string
+        ydk::YLeaf controller_family; //type: string
+        ydk::YLeaf controller_type; //type: string
+        ydk::YLeaf vid; //type: string
+        ydk::YLeaf hwid; //type: string
+        ydk::YLeaf pid; //type: string
+        ydk::YLeaf udi_description; //type: string
+        ydk::YLeaf udi_name; //type: string
+        ydk::YLeaf clei; //type: string
+        ydk::YLeaf eci; //type: string
+        ydk::YLeaf top_assem_part_num; //type: string
+        ydk::YLeaf top_assem_vid; //type: string
+        ydk::YLeaf pca_num; //type: string
+        ydk::YLeaf pcavid; //type: string
+        ydk::YLeaf chassis_sid; //type: string
+        ydk::YLeaf dev_num1; //type: string
+        ydk::YLeaf dev_num2; //type: string
+        ydk::YLeaf dev_num3; //type: string
+        ydk::YLeaf dev_num4; //type: string
+        ydk::YLeaf dev_num5; //type: string
+        ydk::YLeaf dev_num6; //type: string
+        ydk::YLeaf dev_num7; //type: string
+        ydk::YLeaf manu_test_data; //type: string
+        ydk::YLeaf asset_id; //type: string
+        ydk::YLeaf asset_alias; //type: string
+        ydk::YLeaf base_mac_address1; //type: string
+        ydk::YLeaf mac_add_blk_size1; //type: string
+        ydk::YLeaf base_mac_address2; //type: string
+        ydk::YLeaf mac_add_blk_size2; //type: string
+        ydk::YLeaf base_mac_address3; //type: string
+        ydk::YLeaf mac_add_blk_size3; //type: string
+        ydk::YLeaf base_mac_address4; //type: string
+        ydk::YLeaf mac_add_blk_size4; //type: string
+        ydk::YLeaf pcb_serial_num; //type: string
+        ydk::YLeaf power_supply_type; //type: string
+        ydk::YLeaf power_consumption; //type: string
+        ydk::YLeaf block_signature; //type: string
+        ydk::YLeaf block_version; //type: string
+        ydk::YLeaf block_length; //type: string
+        ydk::YLeaf block_checksum; //type: string
+        ydk::YLeaf eeprom_size; //type: string
+        ydk::YLeaf block_count; //type: string
+        ydk::YLeaf fru_major_type; //type: string
+        ydk::YLeaf fru_minor_type; //type: string
+        ydk::YLeaf oem_string; //type: string
+        ydk::YLeaf product_id; //type: string
+        ydk::YLeaf serial_number; //type: string
+        ydk::YLeaf part_number; //type: string
+        ydk::YLeaf part_revision; //type: string
+        ydk::YLeaf mfg_deviation; //type: string
+        ydk::YLeaf hw_version; //type: string
+        ydk::YLeaf mfg_bits; //type: string
+        ydk::YLeaf engineer_use; //type: string
+        ydk::YLeaf snmpoid; //type: string
+        ydk::YLeaf rma_code; //type: string
+        ydk::YLeaf eci_alpha_number; //type: string
+        class Rma; //type: Inventory::Entities::Entity::Attributes::InvEepromInfo::Eeprom::Rma
 
-}; // Inventory::Entities::Entity::Subentities::Subentity
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Entities::Entity::Attributes::InvEepromInfo::Eeprom::Rma> rma;
+        
+}; // Inventory::Entities::Entity::Attributes::InvEepromInfo::Eeprom
+
+
+class Inventory::Entities::Entity::Attributes::InvEepromInfo::Eeprom::Rma : public ydk::Entity
+{
+    public:
+        Rma();
+        ~Rma();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf test_history; //type: string
+        ydk::YLeaf rma_number; //type: string
+        ydk::YLeaf rma_history; //type: string
+
+}; // Inventory::Entities::Entity::Attributes::InvEepromInfo::Eeprom::Rma
 
 
 class Inventory::Racks : public ydk::Entity
@@ -954,6 +1680,7 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf ceport; //type: boolean
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
+        ydk::YLeaf allocated_power; //type: int32
 
 }; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvBasicBag
 
@@ -986,6 +1713,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf status; //type: uint32
         ydk::YLeaf age_time_stamp; //type: uint32
         ydk::YLeaf update_rate; //type: uint32
+        ydk::YLeaf average; //type: int32
+        ydk::YLeaf minimum; //type: int32
+        ydk::YLeaf maximum; //type: int32
+        ydk::YLeaf interval; //type: int32
 
 }; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::EnvSensorInfo
 
@@ -1535,6 +2266,12 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf opaque_data_size; //type: uint32
         ydk::YLeaf has_eeprom; //type: uint32
         ydk::YLeaf description; //type: string
+        ydk::YLeaf form_factor; //type: uint32
+        ydk::YLeaf connector_type; //type: uint32
+        ydk::YLeaf otn_application_code; //type: uint32
+        ydk::YLeaf sonet_application_code; //type: uint32
+        ydk::YLeaf ethernet_compliance_code; //type: uint32
+        ydk::YLeaf date_string; //type: string
         class Eeprom; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo::Eeprom
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo::Eeprom> eeprom;
@@ -1614,6 +2351,7 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf engineer_use; //type: string
         ydk::YLeaf snmpoid; //type: string
         ydk::YLeaf rma_code; //type: string
+        ydk::YLeaf eci_alpha_number; //type: string
         class Rma; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo::Eeprom::Rma
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Tsi11s::Tsi11::Attributes::InvEepromInfo::Eeprom::Rma> rma;
@@ -1723,6 +2461,7 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf ceport; //type: boolean
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
+        ydk::YLeaf allocated_power; //type: int32
 
 }; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvBasicBag
 
@@ -1755,6 +2494,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf status; //type: uint32
         ydk::YLeaf age_time_stamp; //type: uint32
         ydk::YLeaf update_rate; //type: uint32
+        ydk::YLeaf average; //type: int32
+        ydk::YLeaf minimum; //type: int32
+        ydk::YLeaf maximum; //type: int32
+        ydk::YLeaf interval; //type: int32
 
 }; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::EnvSensorInfo
 
@@ -2304,6 +3047,12 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf opaque_data_size; //type: uint32
         ydk::YLeaf has_eeprom; //type: uint32
         ydk::YLeaf description; //type: string
+        ydk::YLeaf form_factor; //type: uint32
+        ydk::YLeaf connector_type; //type: uint32
+        ydk::YLeaf otn_application_code; //type: uint32
+        ydk::YLeaf sonet_application_code; //type: uint32
+        ydk::YLeaf ethernet_compliance_code; //type: uint32
+        ydk::YLeaf date_string; //type: string
         class Eeprom; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo::Eeprom
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo::Eeprom> eeprom;
@@ -2383,6 +3132,7 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf engineer_use; //type: string
         ydk::YLeaf snmpoid; //type: string
         ydk::YLeaf rma_code; //type: string
+        ydk::YLeaf eci_alpha_number; //type: string
         class Rma; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo::Eeprom::Rma
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Tsi10s::Tsi10::Attributes::InvEepromInfo::Eeprom::Rma> rma;
@@ -2492,6 +3242,7 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf ceport; //type: boolean
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
+        ydk::YLeaf allocated_power; //type: int32
 
 }; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvBasicBag
 
@@ -2524,6 +3275,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf status; //type: uint32
         ydk::YLeaf age_time_stamp; //type: uint32
         ydk::YLeaf update_rate; //type: uint32
+        ydk::YLeaf average; //type: int32
+        ydk::YLeaf minimum; //type: int32
+        ydk::YLeaf maximum; //type: int32
+        ydk::YLeaf interval; //type: int32
 
 }; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::EnvSensorInfo
 
@@ -3073,6 +3828,12 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf opaque_data_size; //type: uint32
         ydk::YLeaf has_eeprom; //type: uint32
         ydk::YLeaf description; //type: string
+        ydk::YLeaf form_factor; //type: uint32
+        ydk::YLeaf connector_type; //type: uint32
+        ydk::YLeaf otn_application_code; //type: uint32
+        ydk::YLeaf sonet_application_code; //type: uint32
+        ydk::YLeaf ethernet_compliance_code; //type: uint32
+        ydk::YLeaf date_string; //type: string
         class Eeprom; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo::Eeprom
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo::Eeprom> eeprom;
@@ -3152,6 +3913,7 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf engineer_use; //type: string
         ydk::YLeaf snmpoid; //type: string
         ydk::YLeaf rma_code; //type: string
+        ydk::YLeaf eci_alpha_number; //type: string
         class Rma; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo::Eeprom::Rma
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Tsi9s::Tsi9::Attributes::InvEepromInfo::Eeprom::Rma> rma;
@@ -3261,6 +4023,7 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf ceport; //type: boolean
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
+        ydk::YLeaf allocated_power; //type: int32
 
 }; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvBasicBag
 
@@ -3293,6 +4056,10 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         ydk::YLeaf status; //type: uint32
         ydk::YLeaf age_time_stamp; //type: uint32
         ydk::YLeaf update_rate; //type: uint32
+        ydk::YLeaf average; //type: int32
+        ydk::YLeaf minimum; //type: int32
+        ydk::YLeaf maximum; //type: int32
+        ydk::YLeaf interval; //type: int32
 
 }; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::EnvSensorInfo
 
@@ -3456,741 +4223,65 @@ class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi
         
 }; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold
 
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorLo : public ydk::Entity
+class ThresholdRelation : public ydk::Enum
 {
     public:
-        MajorLo();
-        ~MajorLo();
+        static const ydk::Enum::YLeaf less_than;
+        static const ydk::Enum::YLeaf less_or_equal;
+        static const ydk::Enum::YLeaf greater_than;
+        static const ydk::Enum::YLeaf greater_or_equal;
+        static const ydk::Enum::YLeaf equal;
+        static const ydk::Enum::YLeaf not_equal;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
+};
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorLo::ThreshBag
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorLo::ThreshBag> thresh_bag;
-        
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorLo
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorLo::ThreshBag : public ydk::Entity
+class ThresholdSeverity : public ydk::Enum
 {
     public:
-        ThreshBag();
-        ~ThreshBag();
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf minor;
+        static const ydk::Enum::YLeaf major_;
+        static const ydk::Enum::YLeaf critical;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
+};
 
-        ydk::YLeaf threshold_severity; //type: uint32
-        ydk::YLeaf threshold_relation; //type: uint32
-        ydk::YLeaf threshold_value; //type: uint32
-        ydk::YLeaf threshold_evaluation; //type: boolean
-        ydk::YLeaf threshold_notification_enabled; //type: boolean
-
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorLo::ThreshBag
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalHi : public ydk::Entity
+class SensorStatus : public ydk::Enum
 {
     public:
-        CriticalHi();
-        ~CriticalHi();
+        static const ydk::Enum::YLeaf ok;
+        static const ydk::Enum::YLeaf unavailable;
+        static const ydk::Enum::YLeaf non_operational;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
+};
 
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalHi::ThreshBag
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalHi::ThreshBag> thresh_bag;
-        
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalHi
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalHi::ThreshBag : public ydk::Entity
+class SensorData : public ydk::Enum
 {
     public:
-        ThreshBag();
-        ~ThreshBag();
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf ac_volts;
+        static const ydk::Enum::YLeaf dc_volts;
+        static const ydk::Enum::YLeaf amperes;
+        static const ydk::Enum::YLeaf watts;
+        static const ydk::Enum::YLeaf hertz;
+        static const ydk::Enum::YLeaf celsius;
+        static const ydk::Enum::YLeaf rpm;
+        static const ydk::Enum::YLeaf dbm;
+        static const ydk::Enum::YLeaf db;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
+};
 
-        ydk::YLeaf threshold_severity; //type: uint32
-        ydk::YLeaf threshold_relation; //type: uint32
-        ydk::YLeaf threshold_value; //type: uint32
-        ydk::YLeaf threshold_evaluation; //type: boolean
-        ydk::YLeaf threshold_notification_enabled; //type: boolean
-
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalHi::ThreshBag
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorHi : public ydk::Entity
+class Unit : public ydk::Enum
 {
     public:
-        MinorHi();
-        ~MinorHi();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorHi::ThreshBag
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorHi::ThreshBag> thresh_bag;
-        
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorHi
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorHi::ThreshBag : public ydk::Entity
-{
-    public:
-        ThreshBag();
-        ~ThreshBag();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf threshold_severity; //type: uint32
-        ydk::YLeaf threshold_relation; //type: uint32
-        ydk::YLeaf threshold_value; //type: uint32
-        ydk::YLeaf threshold_evaluation; //type: boolean
-        ydk::YLeaf threshold_notification_enabled; //type: boolean
-
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorHi::ThreshBag
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorHi : public ydk::Entity
-{
-    public:
-        MajorHi();
-        ~MajorHi();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorHi::ThreshBag
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorHi::ThreshBag> thresh_bag;
-        
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorHi
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorHi::ThreshBag : public ydk::Entity
-{
-    public:
-        ThreshBag();
-        ~ThreshBag();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf threshold_severity; //type: uint32
-        ydk::YLeaf threshold_relation; //type: uint32
-        ydk::YLeaf threshold_value; //type: uint32
-        ydk::YLeaf threshold_evaluation; //type: boolean
-        ydk::YLeaf threshold_notification_enabled; //type: boolean
-
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MajorHi::ThreshBag
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalLo : public ydk::Entity
-{
-    public:
-        CriticalLo();
-        ~CriticalLo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalLo::ThreshBag
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalLo::ThreshBag> thresh_bag;
-        
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalLo
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalLo::ThreshBag : public ydk::Entity
-{
-    public:
-        ThreshBag();
-        ~ThreshBag();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf threshold_severity; //type: uint32
-        ydk::YLeaf threshold_relation; //type: uint32
-        ydk::YLeaf threshold_value; //type: uint32
-        ydk::YLeaf threshold_evaluation; //type: boolean
-        ydk::YLeaf threshold_notification_enabled; //type: boolean
-
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::CriticalLo::ThreshBag
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorLo : public ydk::Entity
-{
-    public:
-        MinorLo();
-        ~MinorLo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ThreshBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorLo::ThreshBag
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorLo::ThreshBag> thresh_bag;
-        
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorLo
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorLo::ThreshBag : public ydk::Entity
-{
-    public:
-        ThreshBag();
-        ~ThreshBag();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf threshold_severity; //type: uint32
-        ydk::YLeaf threshold_relation; //type: uint32
-        ydk::YLeaf threshold_value; //type: uint32
-        ydk::YLeaf threshold_evaluation; //type: boolean
-        ydk::YLeaf threshold_notification_enabled; //type: boolean
-
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::Threshold::MinorLo::ThreshBag
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo : public ydk::Entity
-{
-    public:
-        FruInfo();
-        ~FruInfo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf card_administrative_state; //type: int32
-        ydk::YLeaf power_administrative_state; //type: int32
-        ydk::YLeaf card_operational_state; //type: int32
-        ydk::YLeaf card_monitor_state; //type: int32
-        ydk::YLeaf card_reset_reason; //type: CardResetReason
-        ydk::YLeaf power_current_measurement; //type: int32
-        ydk::YLeaf power_operational_state; //type: int32
-        class LastOperationalStateChange; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::LastOperationalStateChange
-        class CardUpTime; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::CardUpTime
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::LastOperationalStateChange> last_operational_state_change;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::CardUpTime> card_up_time;
-        
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::LastOperationalStateChange : public ydk::Entity
-{
-    public:
-        LastOperationalStateChange();
-        ~LastOperationalStateChange();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf time_in_seconds; //type: int32
-        ydk::YLeaf time_in_nano_seconds; //type: int32
-
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::LastOperationalStateChange
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::CardUpTime : public ydk::Entity
-{
-    public:
-        CardUpTime();
-        ~CardUpTime();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf time_in_seconds; //type: int32
-        ydk::YLeaf time_in_nano_seconds; //type: int32
-
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::FruInfo::CardUpTime
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo : public ydk::Entity
-{
-    public:
-        InvEepromInfo();
-        ~InvEepromInfo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf inv_card_type; //type: uint8
-        ydk::YLeaf opaque_data; //type: string
-        ydk::YLeaf opaque_data_size; //type: uint32
-        ydk::YLeaf has_eeprom; //type: uint32
-        ydk::YLeaf description; //type: string
-        class Eeprom; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom> eeprom;
-        
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom : public ydk::Entity
-{
-    public:
-        Eeprom();
-        ~Eeprom();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf description; //type: string
-        ydk::YLeaf idprom_format_rev; //type: string
-        ydk::YLeaf controller_family; //type: string
-        ydk::YLeaf controller_type; //type: string
-        ydk::YLeaf vid; //type: string
-        ydk::YLeaf hwid; //type: string
-        ydk::YLeaf pid; //type: string
-        ydk::YLeaf udi_description; //type: string
-        ydk::YLeaf udi_name; //type: string
-        ydk::YLeaf clei; //type: string
-        ydk::YLeaf eci; //type: string
-        ydk::YLeaf top_assem_part_num; //type: string
-        ydk::YLeaf top_assem_vid; //type: string
-        ydk::YLeaf pca_num; //type: string
-        ydk::YLeaf pcavid; //type: string
-        ydk::YLeaf chassis_sid; //type: string
-        ydk::YLeaf dev_num1; //type: string
-        ydk::YLeaf dev_num2; //type: string
-        ydk::YLeaf dev_num3; //type: string
-        ydk::YLeaf dev_num4; //type: string
-        ydk::YLeaf dev_num5; //type: string
-        ydk::YLeaf dev_num6; //type: string
-        ydk::YLeaf dev_num7; //type: string
-        ydk::YLeaf manu_test_data; //type: string
-        ydk::YLeaf asset_id; //type: string
-        ydk::YLeaf asset_alias; //type: string
-        ydk::YLeaf base_mac_address1; //type: string
-        ydk::YLeaf mac_add_blk_size1; //type: string
-        ydk::YLeaf base_mac_address2; //type: string
-        ydk::YLeaf mac_add_blk_size2; //type: string
-        ydk::YLeaf base_mac_address3; //type: string
-        ydk::YLeaf mac_add_blk_size3; //type: string
-        ydk::YLeaf base_mac_address4; //type: string
-        ydk::YLeaf mac_add_blk_size4; //type: string
-        ydk::YLeaf pcb_serial_num; //type: string
-        ydk::YLeaf power_supply_type; //type: string
-        ydk::YLeaf power_consumption; //type: string
-        ydk::YLeaf block_signature; //type: string
-        ydk::YLeaf block_version; //type: string
-        ydk::YLeaf block_length; //type: string
-        ydk::YLeaf block_checksum; //type: string
-        ydk::YLeaf eeprom_size; //type: string
-        ydk::YLeaf block_count; //type: string
-        ydk::YLeaf fru_major_type; //type: string
-        ydk::YLeaf fru_minor_type; //type: string
-        ydk::YLeaf oem_string; //type: string
-        ydk::YLeaf product_id; //type: string
-        ydk::YLeaf serial_number; //type: string
-        ydk::YLeaf part_number; //type: string
-        ydk::YLeaf part_revision; //type: string
-        ydk::YLeaf mfg_deviation; //type: string
-        ydk::YLeaf hw_version; //type: string
-        ydk::YLeaf mfg_bits; //type: string
-        ydk::YLeaf engineer_use; //type: string
-        ydk::YLeaf snmpoid; //type: string
-        ydk::YLeaf rma_code; //type: string
-        class Rma; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom::Rma
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom::Rma> rma;
-        
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom::Rma : public ydk::Entity
-{
-    public:
-        Rma();
-        ~Rma();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf test_history; //type: string
-        ydk::YLeaf rma_number; //type: string
-        ydk::YLeaf rma_history; //type: string
-
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Tsi8s::Tsi8::Attributes::InvEepromInfo::Eeprom::Rma
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes : public ydk::Entity
-{
-    public:
-        Attributes();
-        ~Attributes();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class InvBasicBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvBasicBag
-        class EnvSensorInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfo
-        class PwgInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::PwgInfo
-        class EnvSensorInfoXml; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml
-        class InvAssetBag; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvAssetBag
-        class Threshold; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::Threshold
-        class FruInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::FruInfo
-        class InvEepromInfo; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvEepromInfo
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvBasicBag> inv_basic_bag;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfo> env_sensor_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::PwgInfo> pwg_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml> env_sensor_info_xml;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvAssetBag> inv_asset_bag;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::Threshold> threshold;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::FruInfo> fru_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvEepromInfo> inv_eeprom_info;
-        
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvBasicBag : public ydk::Entity
-{
-    public:
-        InvBasicBag();
-        ~InvBasicBag();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf description; //type: string
-        ydk::YLeaf vendor_type; //type: string
-        ydk::YLeaf name; //type: string
-        ydk::YLeaf hardware_revision; //type: string
-        ydk::YLeaf firmware_revision; //type: string
-        ydk::YLeaf software_revision; //type: string
-        ydk::YLeaf chip_hardware_revision; //type: string
-        ydk::YLeaf serial_number; //type: string
-        ydk::YLeaf manufacturer_name; //type: string
-        ydk::YLeaf model_name; //type: string
-        ydk::YLeaf asset_id_str; //type: string
-        ydk::YLeaf asset_identification; //type: int32
-        ydk::YLeaf is_field_replaceable_unit; //type: boolean
-        ydk::YLeaf manufacturer_asset_tags; //type: int32
-        ydk::YLeaf composite_class_code; //type: int32
-        ydk::YLeaf memory_size; //type: int32
-        ydk::YLeaf environmental_monitor_path; //type: string
-        ydk::YLeaf alias; //type: string
-        ydk::YLeaf group_flag; //type: boolean
-        ydk::YLeaf new_deviation_number; //type: int32
-        ydk::YLeaf physical_layer_interface_module_type; //type: int32
-        ydk::YLeaf unrecognized_fru; //type: boolean
-        ydk::YLeaf redundancystate; //type: int32
-        ydk::YLeaf ceport; //type: boolean
-        ydk::YLeaf xr_scoped; //type: boolean
-        ydk::YLeaf unique_id; //type: int32
-
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvBasicBag
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfo : public ydk::Entity
-{
-    public:
-        EnvSensorInfo();
-        ~EnvSensorInfo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf field_validity_bitmap; //type: uint32
-        ydk::YLeaf device_description; //type: string
-        ydk::YLeaf units; //type: string
-        ydk::YLeaf device_id; //type: uint32
-        ydk::YLeaf value_; //type: uint32
-        ydk::YLeaf alarm_type; //type: uint32
-        ydk::YLeaf data_type; //type: uint32
-        ydk::YLeaf scale; //type: uint32
-        ydk::YLeaf precision; //type: uint32
-        ydk::YLeaf status; //type: uint32
-        ydk::YLeaf age_time_stamp; //type: uint32
-        ydk::YLeaf update_rate; //type: uint32
-
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfo
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::PwgInfo : public ydk::Entity
-{
-    public:
-        PwgInfo();
-        ~PwgInfo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf power_group_redundancy_mode; //type: int32
-        ydk::YLeaf power_group_power_units; //type: string
-        ydk::YLeaf power_group_available_current; //type: int32
-        ydk::YLeaf power_group_drawn_current; //type: int32
-
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::PwgInfo
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml : public ydk::Entity
-{
-    public:
-        EnvSensorInfoXml();
-        ~EnvSensorInfoXml();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf description; //type: string
-        ydk::YLeaf units; //type: Unit
-        ydk::YLeaf value_; //type: string
-        ydk::YLeaf data_type; //type: SensorData
-        ydk::YLeaf status; //type: SensorStatus
-        ydk::YLeaf update_rate; //type: uint32
-        class Threshold; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml::Threshold
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_invmgr_oper::Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml::Threshold> threshold;
-        
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml::Threshold : public ydk::Entity
-{
-    public:
-        Threshold();
-        ~Threshold();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class ThresholdArray; //type: Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
-
-        ydk::YList threshold_array;
-        
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml::Threshold
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray : public ydk::Entity
-{
-    public:
-        ThresholdArray();
-        ~ThresholdArray();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf threshold_severity; //type: ThresholdSeverity
-        ydk::YLeaf threshold_relation; //type: ThresholdRelation
-        ydk::YLeaf threshold_value; //type: int32
-        ydk::YLeaf threshold_name; //type: string
-
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::EnvSensorInfoXml::Threshold::ThresholdArray
-
-
-class Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvAssetBag : public ydk::Entity
-{
-    public:
-        InvAssetBag();
-        ~InvAssetBag();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf part_number; //type: string
-        ydk::YLeaf manufacturer_assembly_number; //type: string
-        ydk::YLeaf manufacturer_assembly_revision; //type: string
-        ydk::YLeaf manufacturer_firmware_identifier; //type: string
-        ydk::YLeaf manufacturer_software_identifier; //type: string
-        ydk::YLeaf manufacturer_common_language_equipment_identifier; //type: string
-        ydk::YLeaf original_equipment_manufacturer_string; //type: string
-
-}; // Inventory::Racks::Rack::Entity::Slot::Tsi1s::Tsi1::Tsi2s::Tsi2::Tsi3s::Tsi3::Tsi4s::Tsi4::Tsi5s::Tsi5::Tsi6s::Tsi6::Tsi7s::Tsi7::Attributes::InvAssetBag
+        static const ydk::Enum::YLeaf celsius;
+        static const ydk::Enum::YLeaf milli_volts;
+        static const ydk::Enum::YLeaf milli_amperes;
+        static const ydk::Enum::YLeaf rpm;
+        static const ydk::Enum::YLeaf watts;
+        static const ydk::Enum::YLeaf dbm;
+        static const ydk::Enum::YLeaf db;
+
+};
 
 class CardResetReason : public ydk::Enum
 {
@@ -4219,66 +4310,6 @@ class CardResetReason : public ydk::Enum
         static const ydk::Enum::YLeaf non_native_config_clear_reset;
         static const ydk::Enum::YLeaf memory_protection_error_reset;
         static const ydk::Enum::YLeaf card_reset_reason_max;
-
-};
-
-class ThresholdSeverity : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf minor;
-        static const ydk::Enum::YLeaf major_;
-        static const ydk::Enum::YLeaf critical;
-
-};
-
-class SensorData : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf ac_volts;
-        static const ydk::Enum::YLeaf dc_volts;
-        static const ydk::Enum::YLeaf amperes;
-        static const ydk::Enum::YLeaf watts;
-        static const ydk::Enum::YLeaf hertz;
-        static const ydk::Enum::YLeaf celsius;
-        static const ydk::Enum::YLeaf rpm;
-        static const ydk::Enum::YLeaf dbm;
-        static const ydk::Enum::YLeaf db;
-
-};
-
-class SensorStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ok;
-        static const ydk::Enum::YLeaf unavailable;
-        static const ydk::Enum::YLeaf non_operational;
-
-};
-
-class ThresholdRelation : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf less_than;
-        static const ydk::Enum::YLeaf less_or_equal;
-        static const ydk::Enum::YLeaf greater_than;
-        static const ydk::Enum::YLeaf greater_or_equal;
-        static const ydk::Enum::YLeaf equal;
-        static const ydk::Enum::YLeaf not_equal;
-
-};
-
-class Unit : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf celsius;
-        static const ydk::Enum::YLeaf milli_volts;
-        static const ydk::Enum::YLeaf milli_amperes;
-        static const ydk::Enum::YLeaf rpm;
-        static const ydk::Enum::YLeaf watts;
-        static const ydk::Enum::YLeaf dbm;
-        static const ydk::Enum::YLeaf db;
 
 };
 

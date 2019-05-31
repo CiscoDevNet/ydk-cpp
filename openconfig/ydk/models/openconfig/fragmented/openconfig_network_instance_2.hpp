@@ -3072,7 +3072,7 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Neighbors::Ne
         ydk::YLeaf tcp_mss; //type: uint16
         ydk::YLeaf mtu_discovery; //type: boolean
         ydk::YLeaf passive_mode; //type: boolean
-        ydk::YLeaf local_address; //type: one of union, string
+        ydk::YLeaf local_address; //type: one of string, union
 
 }; // NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Neighbors::Neighbor::Transport::Config
 
@@ -3096,7 +3096,7 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Bgp::Neighbors::Ne
         ydk::YLeaf tcp_mss; //type: uint16
         ydk::YLeaf mtu_discovery; //type: boolean
         ydk::YLeaf passive_mode; //type: boolean
-        ydk::YLeaf local_address; //type: one of union, string
+        ydk::YLeaf local_address; //type: one of string, union
         ydk::YLeaf local_port; //type: uint16
         ydk::YLeaf remote_address; //type: string
         ydk::YLeaf remote_port; //type: uint16

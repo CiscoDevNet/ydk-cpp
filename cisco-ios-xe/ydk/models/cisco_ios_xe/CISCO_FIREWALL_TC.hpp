@@ -10,15 +10,6 @@
 namespace cisco_ios_xe {
 namespace CISCO_FIREWALL_TC {
 
-class CFWUrlServerStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf online;
-        static const ydk::Enum::YLeaf offline;
-        static const ydk::Enum::YLeaf indeterminate;
-
-};
-
 class CFWNetworkProtocol : public ydk::Enum
 {
     public:
@@ -29,15 +20,6 @@ class CFWNetworkProtocol : public ydk::Enum
         static const ydk::Enum::YLeaf gre;
         static const ydk::Enum::YLeaf udp;
         static const ydk::Enum::YLeaf tcp;
-
-};
-
-class CFWUrlfVendorId : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf websense;
-        static const ydk::Enum::YLeaf n2h2;
 
 };
 
@@ -228,6 +210,24 @@ class CFWPolicyTargetType : public ydk::Enum
         static const ydk::Enum::YLeaf user;
         static const ydk::Enum::YLeaf usergroup;
         static const ydk::Enum::YLeaf context;
+
+};
+
+class CFWUrlfVendorId : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf websense;
+        static const ydk::Enum::YLeaf n2h2;
+
+};
+
+class CFWUrlServerStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf online;
+        static const ydk::Enum::YLeaf offline;
+        static const ydk::Enum::YLeaf indeterminate;
 
 };
 

@@ -1223,12 +1223,11 @@ class CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry : public ydk::Entity
 
 }; // CISCOIETFISISMIB::CiiLSPTLVTable::CiiLSPTLVEntry
 
-class CiiMetricStyle : public ydk::Enum
+class CiiAdminState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf narrow;
-        static const ydk::Enum::YLeaf wide;
-        static const ydk::Enum::YLeaf both;
+        static const ydk::Enum::YLeaf on;
+        static const ydk::Enum::YLeaf off;
 
 };
 
@@ -1251,19 +1250,20 @@ class CiiSupportedProtocol : public ydk::Enum
 
 };
 
-class CiiAdminState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf on;
-        static const ydk::Enum::YLeaf off;
-
-};
-
 class CiiMetricType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf internal;
         static const ydk::Enum::YLeaf external;
+
+};
+
+class CiiMetricStyle : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf narrow;
+        static const ydk::Enum::YLeaf wide;
+        static const ydk::Enum::YLeaf both;
 
 };
 

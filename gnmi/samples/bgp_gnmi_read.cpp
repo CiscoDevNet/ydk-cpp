@@ -20,7 +20,6 @@
 #include <ydk/gnmi_provider.hpp>
 #include <ydk/crud_service.hpp>
 
-//#include <ydk_openconfig/openconfig_bgp.hpp>
 #include <ydk_ydktest/openconfig_bgp.hpp>
 #include <ydk_ydktest/openconfig_bgp_types.hpp>
 
@@ -52,7 +51,7 @@ int main(int argc, char* argv[])
         logger->set_level(spdlog::level::debug);
     }
 
-    ydk::path::Repository repo{"/home/osboxes/ydk-gen/sdk/cpp/core/tests/models/"};
+    ydk::path::Repository repo{TEST_HOME};
     int port = stoi(sport);
     gNMIServiceProvider provider{repo, host, port, username, password};
 
@@ -81,7 +80,7 @@ int main(int argc, char* argv[])
         auto neighbor = dynamic_cast<openconfig_bgp::Bgp::Neighbors::Neighbor*>(neighbor_entity.get());
     	cout << "  Neighbor address: " << neighbor->neighbor_address <<endl;
 //        cout << "Neighbor local AS: " <<  neighbor.config->local_as << endl;
-        cout << "  Neighbor peer group: " <<  neighbor->config->peer_group << endl;
+//        cout << "  Neighbor peer group: " <<  neighbor->config->peer_group << endl;
         cout << "  Neighbor peer AS: " <<  neighbor->config->peer_as << endl << endl;
     }
 

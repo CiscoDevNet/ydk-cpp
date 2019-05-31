@@ -6061,10 +6061,10 @@ bool DOCSIFMIB::DocsIfCmtsUpChannelCounterTable::DocsIfCmtsUpChannelCounterEntry
     return false;
 }
 
-const Enum::YLeaf DocsisUpstreamTypeStatus::unknown {0, "unknown"};
-const Enum::YLeaf DocsisUpstreamTypeStatus::tdma {1, "tdma"};
-const Enum::YLeaf DocsisUpstreamTypeStatus::atdma {2, "atdma"};
-const Enum::YLeaf DocsisUpstreamTypeStatus::scdma {3, "scdma"};
+const Enum::YLeaf DocsisVersion::docsis10 {1, "docsis10"};
+const Enum::YLeaf DocsisVersion::docsis11 {2, "docsis11"};
+const Enum::YLeaf DocsisVersion::docsis20 {3, "docsis20"};
+const Enum::YLeaf DocsisVersion::docsis30 {4, "docsis30"};
 
 const Enum::YLeaf DocsisQosVersion::docsis10 {1, "docsis10"};
 const Enum::YLeaf DocsisQosVersion::docsis11 {2, "docsis11"};
@@ -6075,10 +6075,10 @@ const Enum::YLeaf DocsisUpstreamType::atdma {2, "atdma"};
 const Enum::YLeaf DocsisUpstreamType::scdma {3, "scdma"};
 const Enum::YLeaf DocsisUpstreamType::tdmaAndAtdma {4, "tdmaAndAtdma"};
 
-const Enum::YLeaf DocsisVersion::docsis10 {1, "docsis10"};
-const Enum::YLeaf DocsisVersion::docsis11 {2, "docsis11"};
-const Enum::YLeaf DocsisVersion::docsis20 {3, "docsis20"};
-const Enum::YLeaf DocsisVersion::docsis30 {4, "docsis30"};
+const Enum::YLeaf DocsisUpstreamTypeStatus::unknown {0, "unknown"};
+const Enum::YLeaf DocsisUpstreamTypeStatus::tdma {1, "tdma"};
+const Enum::YLeaf DocsisUpstreamTypeStatus::atdma {2, "atdma"};
+const Enum::YLeaf DocsisUpstreamTypeStatus::scdma {3, "scdma"};
 
 const Enum::YLeaf DOCSIFMIB::DocsIfDownstreamChannelTable::DocsIfDownstreamChannelEntry::DocsIfDownChannelModulation::unknown {1, "unknown"};
 const Enum::YLeaf DOCSIFMIB::DocsIfDownstreamChannelTable::DocsIfDownstreamChannelEntry::DocsIfDownChannelModulation::other {2, "other"};

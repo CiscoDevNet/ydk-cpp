@@ -5,9 +5,9 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_bundlemgr_oper_0.hpp"
-#include "Cisco_IOS_XR_bundlemgr_oper_2.hpp"
-#include "Cisco_IOS_XR_bundlemgr_oper_1.hpp"
 #include "Cisco_IOS_XR_bundlemgr_oper_3.hpp"
+#include "Cisco_IOS_XR_bundlemgr_oper_1.hpp"
+#include "Cisco_IOS_XR_bundlemgr_oper_2.hpp"
 
 using namespace ydk;
 
@@ -349,7 +349,8 @@ LacpBundles::Bundles::Bundle::Data::Data()
     actor_operational_key{YType::uint16, "actor-operational-key"},
     partner_system_priority{YType::uint16, "partner-system-priority"},
     partner_system_mac_address{YType::str, "partner-system-mac-address"},
-    partner_operational_key{YType::uint16, "partner-operational-key"}
+    partner_operational_key{YType::uint16, "partner-operational-key"},
+    applied_lacp_mode{YType::enumeration, "applied-lacp-mode"}
         ,
     actor_bundle_data(std::make_shared<LacpBundles::Bundles::Bundle::Data::ActorBundleData>())
     , bundle_system_id(std::make_shared<LacpBundles::Bundles::Bundle::Data::BundleSystemId>())
@@ -371,6 +372,7 @@ bool LacpBundles::Bundles::Bundle::Data::has_data() const
 	|| partner_system_priority.is_set
 	|| partner_system_mac_address.is_set
 	|| partner_operational_key.is_set
+	|| applied_lacp_mode.is_set
 	|| (actor_bundle_data !=  nullptr && actor_bundle_data->has_data())
 	|| (bundle_system_id !=  nullptr && bundle_system_id->has_data());
 }
@@ -382,6 +384,7 @@ bool LacpBundles::Bundles::Bundle::Data::has_operation() const
 	|| ydk::is_set(partner_system_priority.yfilter)
 	|| ydk::is_set(partner_system_mac_address.yfilter)
 	|| ydk::is_set(partner_operational_key.yfilter)
+	|| ydk::is_set(applied_lacp_mode.yfilter)
 	|| (actor_bundle_data !=  nullptr && actor_bundle_data->has_operation())
 	|| (bundle_system_id !=  nullptr && bundle_system_id->has_operation());
 }
@@ -401,6 +404,7 @@ std::vector<std::pair<std::string, LeafData> > LacpBundles::Bundles::Bundle::Dat
     if (partner_system_priority.is_set || is_set(partner_system_priority.yfilter)) leaf_name_data.push_back(partner_system_priority.get_name_leafdata());
     if (partner_system_mac_address.is_set || is_set(partner_system_mac_address.yfilter)) leaf_name_data.push_back(partner_system_mac_address.get_name_leafdata());
     if (partner_operational_key.is_set || is_set(partner_operational_key.yfilter)) leaf_name_data.push_back(partner_operational_key.get_name_leafdata());
+    if (applied_lacp_mode.is_set || is_set(applied_lacp_mode.yfilter)) leaf_name_data.push_back(applied_lacp_mode.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -472,6 +476,12 @@ void LacpBundles::Bundles::Bundle::Data::set_value(const std::string & value_pat
         partner_operational_key.value_namespace = name_space;
         partner_operational_key.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "applied-lacp-mode")
+    {
+        applied_lacp_mode = value;
+        applied_lacp_mode.value_namespace = name_space;
+        applied_lacp_mode.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void LacpBundles::Bundles::Bundle::Data::set_filter(const std::string & value_path, YFilter yfilter)
@@ -492,11 +502,15 @@ void LacpBundles::Bundles::Bundle::Data::set_filter(const std::string & value_pa
     {
         partner_operational_key.yfilter = yfilter;
     }
+    if(value_path == "applied-lacp-mode")
+    {
+        applied_lacp_mode.yfilter = yfilter;
+    }
 }
 
 bool LacpBundles::Bundles::Bundle::Data::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "actor-bundle-data" || name == "bundle-system-id" || name == "actor-operational-key" || name == "partner-system-priority" || name == "partner-system-mac-address" || name == "partner-operational-key")
+    if(name == "actor-bundle-data" || name == "bundle-system-id" || name == "actor-operational-key" || name == "partner-system-priority" || name == "partner-system-mac-address" || name == "partner-operational-key" || name == "applied-lacp-mode")
         return true;
     return false;
 }
@@ -1804,7 +1818,8 @@ LacpBundles::Bundles::Bundle::Members::Member::Member()
     bandwidth{YType::uint32, "bandwidth"},
     lacp_enabled{YType::str, "lacp-enabled"},
     member_type{YType::enumeration, "member-type"},
-    member_name{YType::str, "member-name"}
+    member_name{YType::str, "member-name"},
+    replication_error{YType::uint32, "replication-error"}
         ,
     counters(std::make_shared<LacpBundles::Bundles::Bundle::Members::Member::Counters>())
     , link_data(std::make_shared<LacpBundles::Bundles::Bundle::Members::Member::LinkData>())
@@ -1837,6 +1852,7 @@ bool LacpBundles::Bundles::Bundle::Members::Member::has_data() const
 	|| lacp_enabled.is_set
 	|| member_type.is_set
 	|| member_name.is_set
+	|| replication_error.is_set
 	|| (counters !=  nullptr && counters->has_data())
 	|| (link_data !=  nullptr && link_data->has_data())
 	|| (member_mux_data !=  nullptr && member_mux_data->has_data())
@@ -1857,6 +1873,7 @@ bool LacpBundles::Bundles::Bundle::Members::Member::has_operation() const
 	|| ydk::is_set(lacp_enabled.yfilter)
 	|| ydk::is_set(member_type.yfilter)
 	|| ydk::is_set(member_name.yfilter)
+	|| ydk::is_set(replication_error.yfilter)
 	|| (counters !=  nullptr && counters->has_operation())
 	|| (link_data !=  nullptr && link_data->has_operation())
 	|| (member_mux_data !=  nullptr && member_mux_data->has_operation())
@@ -1886,6 +1903,7 @@ std::vector<std::pair<std::string, LeafData> > LacpBundles::Bundles::Bundle::Mem
     if (lacp_enabled.is_set || is_set(lacp_enabled.yfilter)) leaf_name_data.push_back(lacp_enabled.get_name_leafdata());
     if (member_type.is_set || is_set(member_type.yfilter)) leaf_name_data.push_back(member_type.get_name_leafdata());
     if (member_name.is_set || is_set(member_name.yfilter)) leaf_name_data.push_back(member_name.get_name_leafdata());
+    if (replication_error.is_set || is_set(replication_error.yfilter)) leaf_name_data.push_back(replication_error.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2027,6 +2045,12 @@ void LacpBundles::Bundles::Bundle::Members::Member::set_value(const std::string 
         member_name.value_namespace = name_space;
         member_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "replication-error")
+    {
+        replication_error = value;
+        replication_error.value_namespace = name_space;
+        replication_error.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void LacpBundles::Bundles::Bundle::Members::Member::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2075,11 +2099,15 @@ void LacpBundles::Bundles::Bundle::Members::Member::set_filter(const std::string
     {
         member_name.yfilter = yfilter;
     }
+    if(value_path == "replication-error")
+    {
+        replication_error.yfilter = yfilter;
+    }
 }
 
 bool LacpBundles::Bundles::Bundle::Members::Member::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "counters" || name == "link-data" || name == "member-mux-data" || name == "mac-address" || name == "member-interface" || name == "interface-name" || name == "port-priority" || name == "port-number" || name == "underlying-link-id" || name == "link-order-number" || name == "iccp-node" || name == "bandwidth" || name == "lacp-enabled" || name == "member-type" || name == "member-name")
+    if(name == "counters" || name == "link-data" || name == "member-mux-data" || name == "mac-address" || name == "member-interface" || name == "interface-name" || name == "port-priority" || name == "port-number" || name == "underlying-link-id" || name == "link-order-number" || name == "iccp-node" || name == "bandwidth" || name == "lacp-enabled" || name == "member-type" || name == "member-name" || name == "replication-error")
         return true;
     return false;
 }
@@ -6792,7 +6820,8 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::
     bandwidth{YType::uint32, "bandwidth"},
     lacp_enabled{YType::str, "lacp-enabled"},
     member_type{YType::enumeration, "member-type"},
-    member_name{YType::str, "member-name"}
+    member_name{YType::str, "member-name"},
+    replication_error{YType::uint32, "replication-error"}
         ,
     counters(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::Counters>())
     , link_data(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::LinkData>())
@@ -6824,6 +6853,7 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
 	|| lacp_enabled.is_set
 	|| member_type.is_set
 	|| member_name.is_set
+	|| replication_error.is_set
 	|| (counters !=  nullptr && counters->has_data())
 	|| (link_data !=  nullptr && link_data->has_data())
 	|| (member_mux_data !=  nullptr && member_mux_data->has_data())
@@ -6843,6 +6873,7 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
 	|| ydk::is_set(lacp_enabled.yfilter)
 	|| ydk::is_set(member_type.yfilter)
 	|| ydk::is_set(member_name.yfilter)
+	|| ydk::is_set(replication_error.yfilter)
 	|| (counters !=  nullptr && counters->has_operation())
 	|| (link_data !=  nullptr && link_data->has_operation())
 	|| (member_mux_data !=  nullptr && member_mux_data->has_operation())
@@ -6871,6 +6902,7 @@ std::vector<std::pair<std::string, LeafData> > BundleInformation::Bundle::Bundle
     if (lacp_enabled.is_set || is_set(lacp_enabled.yfilter)) leaf_name_data.push_back(lacp_enabled.get_name_leafdata());
     if (member_type.is_set || is_set(member_type.yfilter)) leaf_name_data.push_back(member_type.get_name_leafdata());
     if (member_name.is_set || is_set(member_name.yfilter)) leaf_name_data.push_back(member_name.get_name_leafdata());
+    if (replication_error.is_set || is_set(replication_error.yfilter)) leaf_name_data.push_back(replication_error.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -7006,6 +7038,12 @@ void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
         member_name.value_namespace = name_space;
         member_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "replication-error")
+    {
+        replication_error = value;
+        replication_error.value_namespace = name_space;
+        replication_error.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::set_filter(const std::string & value_path, YFilter yfilter)
@@ -7050,11 +7088,15 @@ void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescend
     {
         member_name.yfilter = yfilter;
     }
+    if(value_path == "replication-error")
+    {
+        replication_error.yfilter = yfilter;
+    }
 }
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleDescendant::MemberData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "counters" || name == "link-data" || name == "member-mux-data" || name == "mac-address" || name == "interface-name" || name == "port-priority" || name == "port-number" || name == "underlying-link-id" || name == "link-order-number" || name == "iccp-node" || name == "bandwidth" || name == "lacp-enabled" || name == "member-type" || name == "member-name")
+    if(name == "counters" || name == "link-data" || name == "member-mux-data" || name == "mac-address" || name == "interface-name" || name == "port-priority" || name == "port-number" || name == "underlying-link-id" || name == "link-order-number" || name == "iccp-node" || name == "bandwidth" || name == "lacp-enabled" || name == "member-type" || name == "member-name" || name == "replication-error")
         return true;
     return false;
 }
@@ -7979,7 +8021,8 @@ BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMemb
     bandwidth{YType::uint32, "bandwidth"},
     lacp_enabled{YType::str, "lacp-enabled"},
     member_type{YType::enumeration, "member-type"},
-    member_name{YType::str, "member-name"}
+    member_name{YType::str, "member-name"},
+    replication_error{YType::uint32, "replication-error"}
         ,
     counters(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::Counters>())
     , link_data(std::make_shared<BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::LinkData>())
@@ -8012,6 +8055,7 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildre
 	|| lacp_enabled.is_set
 	|| member_type.is_set
 	|| member_name.is_set
+	|| replication_error.is_set
 	|| (counters !=  nullptr && counters->has_data())
 	|| (link_data !=  nullptr && link_data->has_data())
 	|| (member_mux_data !=  nullptr && member_mux_data->has_data())
@@ -8032,6 +8076,7 @@ bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildre
 	|| ydk::is_set(lacp_enabled.yfilter)
 	|| ydk::is_set(member_type.yfilter)
 	|| ydk::is_set(member_name.yfilter)
+	|| ydk::is_set(replication_error.yfilter)
 	|| (counters !=  nullptr && counters->has_operation())
 	|| (link_data !=  nullptr && link_data->has_operation())
 	|| (member_mux_data !=  nullptr && member_mux_data->has_operation())
@@ -8061,6 +8106,7 @@ std::vector<std::pair<std::string, LeafData> > BundleInformation::Bundle::Bundle
     if (lacp_enabled.is_set || is_set(lacp_enabled.yfilter)) leaf_name_data.push_back(lacp_enabled.get_name_leafdata());
     if (member_type.is_set || is_set(member_type.yfilter)) leaf_name_data.push_back(member_type.get_name_leafdata());
     if (member_name.is_set || is_set(member_name.yfilter)) leaf_name_data.push_back(member_name.get_name_leafdata());
+    if (replication_error.is_set || is_set(replication_error.yfilter)) leaf_name_data.push_back(replication_error.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -8202,6 +8248,12 @@ void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildre
         member_name.value_namespace = name_space;
         member_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "replication-error")
+    {
+        replication_error = value;
+        replication_error.value_namespace = name_space;
+        replication_error.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::set_filter(const std::string & value_path, YFilter yfilter)
@@ -8250,11 +8302,15 @@ void BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildre
     {
         member_name.yfilter = yfilter;
     }
+    if(value_path == "replication-error")
+    {
+        replication_error.yfilter = yfilter;
+    }
 }
 
 bool BundleInformation::Bundle::BundleBundles::BundleBundle::BundleBundleChildrenMembers::BundleBundleChildrenMember::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "counters" || name == "link-data" || name == "member-mux-data" || name == "mac-address" || name == "member-interface" || name == "interface-name" || name == "port-priority" || name == "port-number" || name == "underlying-link-id" || name == "link-order-number" || name == "iccp-node" || name == "bandwidth" || name == "lacp-enabled" || name == "member-type" || name == "member-name")
+    if(name == "counters" || name == "link-data" || name == "member-mux-data" || name == "mac-address" || name == "member-interface" || name == "interface-name" || name == "port-priority" || name == "port-number" || name == "underlying-link-id" || name == "link-order-number" || name == "iccp-node" || name == "bandwidth" || name == "lacp-enabled" || name == "member-type" || name == "member-name" || name == "replication-error")
         return true;
     return false;
 }
@@ -11464,7 +11520,8 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::Me
     bandwidth{YType::uint32, "bandwidth"},
     lacp_enabled{YType::str, "lacp-enabled"},
     member_type{YType::enumeration, "member-type"},
-    member_name{YType::str, "member-name"}
+    member_name{YType::str, "member-name"},
+    replication_error{YType::uint32, "replication-error"}
         ,
     counters(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::Counters>())
     , link_data(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::LinkData>())
@@ -11496,6 +11553,7 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncesto
 	|| lacp_enabled.is_set
 	|| member_type.is_set
 	|| member_name.is_set
+	|| replication_error.is_set
 	|| (counters !=  nullptr && counters->has_data())
 	|| (link_data !=  nullptr && link_data->has_data())
 	|| (member_mux_data !=  nullptr && member_mux_data->has_data())
@@ -11515,6 +11573,7 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncesto
 	|| ydk::is_set(lacp_enabled.yfilter)
 	|| ydk::is_set(member_type.yfilter)
 	|| ydk::is_set(member_name.yfilter)
+	|| ydk::is_set(replication_error.yfilter)
 	|| (counters !=  nullptr && counters->has_operation())
 	|| (link_data !=  nullptr && link_data->has_operation())
 	|| (member_mux_data !=  nullptr && member_mux_data->has_operation())
@@ -11543,6 +11602,7 @@ std::vector<std::pair<std::string, LeafData> > BundleInformation::Bundle::Bundle
     if (lacp_enabled.is_set || is_set(lacp_enabled.yfilter)) leaf_name_data.push_back(lacp_enabled.get_name_leafdata());
     if (member_type.is_set || is_set(member_type.yfilter)) leaf_name_data.push_back(member_type.get_name_leafdata());
     if (member_name.is_set || is_set(member_name.yfilter)) leaf_name_data.push_back(member_name.get_name_leafdata());
+    if (replication_error.is_set || is_set(replication_error.yfilter)) leaf_name_data.push_back(replication_error.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -11678,6 +11738,12 @@ void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncesto
         member_name.value_namespace = name_space;
         member_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "replication-error")
+    {
+        replication_error = value;
+        replication_error.value_namespace = name_space;
+        replication_error.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::set_filter(const std::string & value_path, YFilter yfilter)
@@ -11722,11 +11788,15 @@ void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncesto
     {
         member_name.yfilter = yfilter;
     }
+    if(value_path == "replication-error")
+    {
+        replication_error.yfilter = yfilter;
+    }
 }
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberAncestor::MemberData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "counters" || name == "link-data" || name == "member-mux-data" || name == "mac-address" || name == "interface-name" || name == "port-priority" || name == "port-number" || name == "underlying-link-id" || name == "link-order-number" || name == "iccp-node" || name == "bandwidth" || name == "lacp-enabled" || name == "member-type" || name == "member-name")
+    if(name == "counters" || name == "link-data" || name == "member-mux-data" || name == "mac-address" || name == "interface-name" || name == "port-priority" || name == "port-number" || name == "underlying-link-id" || name == "link-order-number" || name == "iccp-node" || name == "bandwidth" || name == "lacp-enabled" || name == "member-type" || name == "member-name" || name == "replication-error")
         return true;
     return false;
 }
@@ -12557,7 +12627,8 @@ BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Bundle
     bandwidth{YType::uint32, "bandwidth"},
     lacp_enabled{YType::str, "lacp-enabled"},
     member_type{YType::enumeration, "member-type"},
-    member_name{YType::str, "member-name"}
+    member_name{YType::str, "member-name"},
+    replication_error{YType::uint32, "replication-error"}
         ,
     counters(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::Counters>())
     , link_data(std::make_shared<BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::LinkData>())
@@ -12589,6 +12660,7 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::h
 	|| lacp_enabled.is_set
 	|| member_type.is_set
 	|| member_name.is_set
+	|| replication_error.is_set
 	|| (counters !=  nullptr && counters->has_data())
 	|| (link_data !=  nullptr && link_data->has_data())
 	|| (member_mux_data !=  nullptr && member_mux_data->has_data())
@@ -12608,6 +12680,7 @@ bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::h
 	|| ydk::is_set(lacp_enabled.yfilter)
 	|| ydk::is_set(member_type.yfilter)
 	|| ydk::is_set(member_name.yfilter)
+	|| ydk::is_set(replication_error.yfilter)
 	|| (counters !=  nullptr && counters->has_operation())
 	|| (link_data !=  nullptr && link_data->has_operation())
 	|| (member_mux_data !=  nullptr && member_mux_data->has_operation())
@@ -12635,6 +12708,7 @@ std::vector<std::pair<std::string, LeafData> > BundleInformation::Bundle::Bundle
     if (lacp_enabled.is_set || is_set(lacp_enabled.yfilter)) leaf_name_data.push_back(lacp_enabled.get_name_leafdata());
     if (member_type.is_set || is_set(member_type.yfilter)) leaf_name_data.push_back(member_type.get_name_leafdata());
     if (member_name.is_set || is_set(member_name.yfilter)) leaf_name_data.push_back(member_name.get_name_leafdata());
+    if (replication_error.is_set || is_set(replication_error.yfilter)) leaf_name_data.push_back(replication_error.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -12770,6 +12844,12 @@ void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::s
         member_name.value_namespace = name_space;
         member_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "replication-error")
+    {
+        replication_error = value;
+        replication_error.value_namespace = name_space;
+        replication_error.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::set_filter(const std::string & value_path, YFilter yfilter)
@@ -12814,11 +12894,15 @@ void BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::s
     {
         member_name.yfilter = yfilter;
     }
+    if(value_path == "replication-error")
+    {
+        replication_error.yfilter = yfilter;
+    }
 }
 
 bool BundleInformation::Bundle::BundleMembers::BundleMember::BundleMemberItem::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "counters" || name == "link-data" || name == "member-mux-data" || name == "mac-address" || name == "interface-name" || name == "port-priority" || name == "port-number" || name == "underlying-link-id" || name == "link-order-number" || name == "iccp-node" || name == "bandwidth" || name == "lacp-enabled" || name == "member-type" || name == "member-name")
+    if(name == "counters" || name == "link-data" || name == "member-mux-data" || name == "mac-address" || name == "interface-name" || name == "port-priority" || name == "port-number" || name == "underlying-link-id" || name == "link-order-number" || name == "iccp-node" || name == "bandwidth" || name == "lacp-enabled" || name == "member-type" || name == "member-name" || name == "replication-error")
         return true;
     return false;
 }
@@ -17533,7 +17617,8 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::LacpBundleItem
     actor_operational_key{YType::uint16, "actor-operational-key"},
     partner_system_priority{YType::uint16, "partner-system-priority"},
     partner_system_mac_address{YType::str, "partner-system-mac-address"},
-    partner_operational_key{YType::uint16, "partner-operational-key"}
+    partner_operational_key{YType::uint16, "partner-operational-key"},
+    applied_lacp_mode{YType::enumeration, "applied-lacp-mode"}
         ,
     actor_bundle_data(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::ActorBundleData>())
     , bundle_system_id(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::BundleSystemId>())
@@ -17555,6 +17640,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::has_data(
 	|| partner_system_priority.is_set
 	|| partner_system_mac_address.is_set
 	|| partner_operational_key.is_set
+	|| applied_lacp_mode.is_set
 	|| (actor_bundle_data !=  nullptr && actor_bundle_data->has_data())
 	|| (bundle_system_id !=  nullptr && bundle_system_id->has_data());
 }
@@ -17566,6 +17652,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::has_opera
 	|| ydk::is_set(partner_system_priority.yfilter)
 	|| ydk::is_set(partner_system_mac_address.yfilter)
 	|| ydk::is_set(partner_operational_key.yfilter)
+	|| ydk::is_set(applied_lacp_mode.yfilter)
 	|| (actor_bundle_data !=  nullptr && actor_bundle_data->has_operation())
 	|| (bundle_system_id !=  nullptr && bundle_system_id->has_operation());
 }
@@ -17585,6 +17672,7 @@ std::vector<std::pair<std::string, LeafData> > BundleInformation::Lacp::LacpBund
     if (partner_system_priority.is_set || is_set(partner_system_priority.yfilter)) leaf_name_data.push_back(partner_system_priority.get_name_leafdata());
     if (partner_system_mac_address.is_set || is_set(partner_system_mac_address.yfilter)) leaf_name_data.push_back(partner_system_mac_address.get_name_leafdata());
     if (partner_operational_key.is_set || is_set(partner_operational_key.yfilter)) leaf_name_data.push_back(partner_operational_key.get_name_leafdata());
+    if (applied_lacp_mode.is_set || is_set(applied_lacp_mode.yfilter)) leaf_name_data.push_back(applied_lacp_mode.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -17656,6 +17744,12 @@ void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::set_value
         partner_operational_key.value_namespace = name_space;
         partner_operational_key.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "applied-lacp-mode")
+    {
+        applied_lacp_mode = value;
+        applied_lacp_mode.value_namespace = name_space;
+        applied_lacp_mode.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::set_filter(const std::string & value_path, YFilter yfilter)
@@ -17676,11 +17770,15 @@ void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::set_filte
     {
         partner_operational_key.yfilter = yfilter;
     }
+    if(value_path == "applied-lacp-mode")
+    {
+        applied_lacp_mode.yfilter = yfilter;
+    }
 }
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleItem::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "actor-bundle-data" || name == "bundle-system-id" || name == "actor-operational-key" || name == "partner-system-priority" || name == "partner-system-mac-address" || name == "partner-operational-key")
+    if(name == "actor-bundle-data" || name == "bundle-system-id" || name == "actor-operational-key" || name == "partner-system-priority" || name == "partner-system-mac-address" || name == "partner-operational-key" || name == "applied-lacp-mode")
         return true;
     return false;
 }
@@ -18998,7 +19096,8 @@ BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleDa
     actor_operational_key{YType::uint16, "actor-operational-key"},
     partner_system_priority{YType::uint16, "partner-system-priority"},
     partner_system_mac_address{YType::str, "partner-system-mac-address"},
-    partner_operational_key{YType::uint16, "partner-operational-key"}
+    partner_operational_key{YType::uint16, "partner-operational-key"},
+    applied_lacp_mode{YType::enumeration, "applied-lacp-mode"}
         ,
     actor_bundle_data(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::ActorBundleData>())
     , bundle_system_id(std::make_shared<BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::BundleSystemId>())
@@ -19020,6 +19119,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bun
 	|| partner_system_priority.is_set
 	|| partner_system_mac_address.is_set
 	|| partner_operational_key.is_set
+	|| applied_lacp_mode.is_set
 	|| (actor_bundle_data !=  nullptr && actor_bundle_data->has_data())
 	|| (bundle_system_id !=  nullptr && bundle_system_id->has_data());
 }
@@ -19031,6 +19131,7 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bun
 	|| ydk::is_set(partner_system_priority.yfilter)
 	|| ydk::is_set(partner_system_mac_address.yfilter)
 	|| ydk::is_set(partner_operational_key.yfilter)
+	|| ydk::is_set(applied_lacp_mode.yfilter)
 	|| (actor_bundle_data !=  nullptr && actor_bundle_data->has_operation())
 	|| (bundle_system_id !=  nullptr && bundle_system_id->has_operation());
 }
@@ -19050,6 +19151,7 @@ std::vector<std::pair<std::string, LeafData> > BundleInformation::Lacp::LacpBund
     if (partner_system_priority.is_set || is_set(partner_system_priority.yfilter)) leaf_name_data.push_back(partner_system_priority.get_name_leafdata());
     if (partner_system_mac_address.is_set || is_set(partner_system_mac_address.yfilter)) leaf_name_data.push_back(partner_system_mac_address.get_name_leafdata());
     if (partner_operational_key.is_set || is_set(partner_operational_key.yfilter)) leaf_name_data.push_back(partner_operational_key.get_name_leafdata());
+    if (applied_lacp_mode.is_set || is_set(applied_lacp_mode.yfilter)) leaf_name_data.push_back(applied_lacp_mode.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -19121,6 +19223,12 @@ void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bun
         partner_operational_key.value_namespace = name_space;
         partner_operational_key.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "applied-lacp-mode")
+    {
+        applied_lacp_mode = value;
+        applied_lacp_mode.value_namespace = name_space;
+        applied_lacp_mode.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::set_filter(const std::string & value_path, YFilter yfilter)
@@ -19141,11 +19249,15 @@ void BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::Bun
     {
         partner_operational_key.yfilter = yfilter;
     }
+    if(value_path == "applied-lacp-mode")
+    {
+        applied_lacp_mode.yfilter = yfilter;
+    }
 }
 
 bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleDescendant::BundleData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "actor-bundle-data" || name == "bundle-system-id" || name == "actor-operational-key" || name == "partner-system-priority" || name == "partner-system-mac-address" || name == "partner-operational-key")
+    if(name == "actor-bundle-data" || name == "bundle-system-id" || name == "actor-operational-key" || name == "partner-system-priority" || name == "partner-system-mac-address" || name == "partner-operational-key" || name == "applied-lacp-mode")
         return true;
     return false;
 }
@@ -22808,40 +22920,13 @@ bool BundleInformation::Lacp::LacpBundles::LacpBundle::LacpBundleChildrenMembers
     return false;
 }
 
-const Enum::YLeaf BmdMlacpSwitchover::bmd_mlacp_switchover_nonrevertive {0, "bmd-mlacp-switchover-nonrevertive"};
-const Enum::YLeaf BmdMlacpSwitchover::bmd_mlacp_switchover_brute_force {1, "bmd-mlacp-switchover-brute-force"};
-const Enum::YLeaf BmdMlacpSwitchover::bmd_mlacp_switchover_revertive {2, "bmd-mlacp-switchover-revertive"};
-const Enum::YLeaf BmdMlacpSwitchover::bmd_mlacp_switchover_count {3, "bmd-mlacp-switchover-count"};
-
-const Enum::YLeaf LoadBalance::default_ {0, "default"};
-const Enum::YLeaf LoadBalance::auto_ {1, "auto"};
-const Enum::YLeaf LoadBalance::value_ {2, "value"};
-const Enum::YLeaf LoadBalance::source_ip {3, "source-ip"};
-const Enum::YLeaf LoadBalance::destination_ip {4, "destination-ip"};
-const Enum::YLeaf LoadBalance::unknown {5, "unknown"};
-
-const Enum::YLeaf BmBdlState::bm_bdl_state_admin_down {0, "bm-bdl-state-admin-down"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_down {1, "bm-bdl-state-down"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_client_down {2, "bm-bdl-state-client-down"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_ptnr_down {3, "bm-bdl-state-ptnr-down"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_bundle_shutdown {4, "bm-bdl-state-bundle-shutdown"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_pe_isolated {5, "bm-bdl-state-pe-isolated"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_nak {6, "bm-bdl-state-nak"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_up_active {7, "bm-bdl-state-up-active"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_mlacp_hot_standby {8, "bm-bdl-state-mlacp-hot-standby"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_mlacp_cold_standby {9, "bm-bdl-state-mlacp-cold-standby"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_unknown {10, "bm-bdl-state-unknown"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_cold_standby {11, "bm-bdl-state-cold-standby"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_error_disabled {12, "bm-bdl-state-error-disabled"};
-const Enum::YLeaf BmBdlState::bm_bdl_state_efd_disabled {13, "bm-bdl-state-efd-disabled"};
-
-const Enum::YLeaf LacpPeriodState::period_s_low {0, "period-s-low"};
-const Enum::YLeaf LacpPeriodState::period_fast {1, "period-fast"};
-const Enum::YLeaf LacpPeriodState::period_none {2, "period-none"};
-
-const Enum::YLeaf BundleMedia::bundle_media_ethernet {0, "bundle-media-ethernet"};
-const Enum::YLeaf BundleMedia::bundle_media_pos {1, "bundle-media-pos"};
-const Enum::YLeaf BundleMedia::bundle_media_count {2, "bundle-media-count"};
+const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_nak {0, "mbr-state-nak"};
+const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_unknown {1, "mbr-state-unknown"};
+const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_up {2, "mbr-state-up"};
+const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_down {3, "mbr-state-down"};
+const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_admin_down {4, "mbr-state-admin-down"};
+const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_test {5, "mbr-state-test"};
+const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_error {6, "mbr-state-error"};
 
 const Enum::YLeaf BmdMlacpBdlStateEnum::bdl_state_nak {0, "bdl-state-nak"};
 const Enum::YLeaf BmdMlacpBdlStateEnum::bdl_state_unknown {1, "bdl-state-unknown"};
@@ -22853,8 +22938,30 @@ const Enum::YLeaf BmdMlacpBdlStateEnum::bdl_state_admin_down {6, "bdl-state-admi
 const Enum::YLeaf BmdMlacpBdlStateEnum::bdl_state_test {7, "bdl-state-test"};
 const Enum::YLeaf BmdMlacpBdlStateEnum::bdl_state_error {8, "bdl-state-error"};
 
-const Enum::YLeaf BundleMedia1::ethernet {0, "ethernet"};
-const Enum::YLeaf BundleMedia1::pos {1, "pos"};
+const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_req {0, "node-sync-req"};
+const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_done {1, "node-sync-done"};
+const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_start {2, "node-sync-start"};
+const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_init {3, "node-sync-init"};
+const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_singleton {4, "node-sync-singleton"};
+
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_incomplete {0, "node-state-incomplete"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_conn_rejected {1, "node-state-conn-rejected"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_connect_sent {2, "node-state-connect-sent"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_unconfigured {3, "node-state-unconfigured"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_unreachable {4, "node-state-unreachable"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_iccp_down {5, "node-state-iccp-down"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_nak {6, "node-state-nak"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_unknown {7, "node-state-unknown"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_mlacp_down {8, "node-state-mlacp-down"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_admin_down {9, "node-state-admin-down"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_pe_isolated {10, "node-state-pe-isolated"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_error {11, "node-state-error"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_test {12, "node-state-test"};
+const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_up {13, "node-state-up"};
+
+const Enum::YLeaf LacpChurnstates::no_churn {1, "no-churn"};
+const Enum::YLeaf LacpChurnstates::churn {2, "churn"};
+const Enum::YLeaf LacpChurnstates::churn_monitor {3, "churn-monitor"};
 
 const Enum::YLeaf Rxstates::current_rx {1, "current-rx"};
 const Enum::YLeaf Rxstates::expired {2, "expired"};
@@ -22863,9 +22970,44 @@ const Enum::YLeaf Rxstates::initialize {4, "initialize"};
 const Enum::YLeaf Rxstates::lacp_disabled {5, "lacp-disabled"};
 const Enum::YLeaf Rxstates::port_disabled {6, "port-disabled"};
 
-const Enum::YLeaf LacpChurnstates::no_churn {1, "no-churn"};
-const Enum::YLeaf LacpChurnstates::churn {2, "churn"};
-const Enum::YLeaf LacpChurnstates::churn_monitor {3, "churn-monitor"};
+const Enum::YLeaf LacpPeriodState::period_s_low {0, "period-s-low"};
+const Enum::YLeaf LacpPeriodState::period_fast {1, "period-fast"};
+const Enum::YLeaf LacpPeriodState::period_none {2, "period-none"};
+
+const Enum::YLeaf LacpSelState::unselected {0, "unselected"};
+const Enum::YLeaf LacpSelState::standby {1, "standby"};
+const Enum::YLeaf LacpSelState::selected {2, "selected"};
+
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_idb_create {0, "bmd-event-rg-idb-create"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_configured {1, "bmd-event-rg-configured"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_user_config {2, "bmd-event-rg-user-config"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_connect_ion {3, "bmd-event-rg-connect-ion"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_data {4, "bmd-event-rg-data"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_sync {5, "bmd-event-rg-sync"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_first_retry {6, "bmd-event-rg-first-retry"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_error {7, "bmd-event-rg-error"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_mlacp_tlv {8, "bmd-event-rg-mlacp-tlv"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_iccp_event {9, "bmd-event-rg-iccp-event"};
+const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_count {10, "bmd-event-rg-count"};
+
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_idb_create {0, "bmd-event-bdl-idb-create"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_configured {1, "bmd-event-bdl-configured"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_im_state {2, "bmd-event-bdl-im-state"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_mbr_added {3, "bmd-event-bdl-mbr-added"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_mbr_deleted {4, "bmd-event-bdl-mbr-deleted"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_mac_addr {5, "bmd-event-bdl-mac-addr"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_first_retry {6, "bmd-event-bdl-first-retry"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_user_config {7, "bmd-event-bdl-user-config"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_error {8, "bmd-event-bdl-error"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_mlacp_tlv {9, "bmd-event-bdl-mlacp-tlv"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_redundancy_role {10, "bmd-event-bdl-redundancy-role"};
+const Enum::YLeaf BmdBagEventBdlItem::bdl_bfd_state_change {11, "bdl-bfd-state-change"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_icl {12, "bmd-event-bdl-icl"};
+const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_count {13, "bmd-event-bdl-count"};
+
+const Enum::YLeaf BmdBagEventData::bmd_bag_evt_data_none {0, "bmd-bag-evt-data-none"};
+const Enum::YLeaf BmdBagEventData::bmd_bag_evt_data_error {1, "bmd-bag-evt-data-error"};
+const Enum::YLeaf BmdBagEventData::bmd_bag_evt_data_string {2, "bmd-bag-evt-data-string"};
 
 const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_idb_create {0, "bmd-event-mbr-idb-create"};
 const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_bdl_add {1, "bmd-event-mbr-bdl-add"};
@@ -22882,9 +23024,10 @@ const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_mlacp_tlv {11, "bmd-event-mb
 const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_redundancy_role {12, "bmd-event-mbr-redundancy-role"};
 const Enum::YLeaf BmdBagEventMbrItem::bmd_event_mbr_count {13, "bmd-event-mbr-count"};
 
-const Enum::YLeaf BmdBagEventData::bmd_bag_evt_data_none {0, "bmd-bag-evt-data-none"};
-const Enum::YLeaf BmdBagEventData::bmd_bag_evt_data_error {1, "bmd-bag-evt-data-error"};
-const Enum::YLeaf BmdBagEventData::bmd_bag_evt_data_string {2, "bmd-bag-evt-data-string"};
+const Enum::YLeaf BmdBagTarget::bm_bag_target_mbr {0, "bm-bag-target-mbr"};
+const Enum::YLeaf BmdBagTarget::bm_bag_target_bdl {1, "bm-bag-target-bdl"};
+const Enum::YLeaf BmdBagTarget::bm_bag_target_node {2, "bm-bag-target-node"};
+const Enum::YLeaf BmdBagTarget::bm_bag_target_rg {3, "bm-bag-target-rg"};
 
 const Enum::YLeaf BmdSwitchReason::bm_switch_reason_none {0, "bm-switch-reason-none"};
 const Enum::YLeaf BmdSwitchReason::bm_switch_reason_noop {1, "bm-switch-reason-noop"};
@@ -22896,12 +23039,49 @@ const Enum::YLeaf BmdSwitchReason::bm_switch_reason_preceding_error {6, "bm-swit
 const Enum::YLeaf BmdSwitchReason::bm_switch_reason_wrong_order {7, "bm-switch-reason-wrong-order"};
 const Enum::YLeaf BmdSwitchReason::bm_switch_reason_singleton {8, "bm-switch-reason-singleton"};
 
+const Enum::YLeaf BmdBagMlacpSchActionItem::switchover {0, "switchover"};
+const Enum::YLeaf BmdBagMlacpSchActionItem::switchback {1, "switchback"};
+
 const Enum::YLeaf BmdMemberTypeEnum::bmd_mbr_local {0, "bmd-mbr-local"};
 const Enum::YLeaf BmdMemberTypeEnum::bmd_mbr_foreign {1, "bmd-mbr-foreign"};
 const Enum::YLeaf BmdMemberTypeEnum::bmd_mbr_unknown {2, "bmd-mbr-unknown"};
 
-const Enum::YLeaf BmAfId::bm_af_id_ipv4 {1136568623, "bm-af-id-ipv4"};
-const Enum::YLeaf BmAfId::bm_af_id_ipv6 {1136568624, "bm-af-id-ipv6"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_no_reason {0, "bm-mux-reason-no-reason"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_link_down {1, "bm-mux-reason-link-down"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_link_deleted {2, "bm-mux-reason-link-deleted"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_duplex {3, "bm-mux-reason-duplex"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_bandwidth {4, "bm-mux-reason-bandwidth"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_loop_back {5, "bm-mux-reason-loop-back"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_activity_type {6, "bm-mux-reason-activity-type"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_link_limit {7, "bm-mux-reason-link-limit"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_shared {8, "bm-mux-reason-shared"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_lagid {9, "bm-mux-reason-lagid"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_no_bundle {10, "bm-mux-reason-no-bundle"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_no_primary {11, "bm-mux-reason-no-primary"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_bundle_down {12, "bm-mux-reason-bundle-down"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_individual {13, "bm-mux-reason-individual"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_defaulted {14, "bm-mux-reason-defaulted"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_in_sync {15, "bm-mux-reason-in-sync"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_collecting {16, "bm-mux-reason-collecting"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_active_link_limit {17, "bm-mux-reason-active-link-limit"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_distributing {18, "bm-mux-reason-distributing"};
+const Enum::YLeaf BmMuxreason::bm_mux_reason_count {19, "bm-mux-reason-count"};
+
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_configured {1, "bmd-mbr-state-configured"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_standby {2, "bmd-mbr-state-standby"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_hot_standby {3, "bmd-mbr-state-hot-standby"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_negotiating {4, "bmd-mbr-state-negotiating"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_bfd_running {5, "bmd-mbr-state-bfd-running"};
+const Enum::YLeaf BmdMemberState::bmd_mbr_state_active {6, "bmd-mbr-state-active"};
+
+const Enum::YLeaf BmSeverity::ok {0, "ok"};
+const Enum::YLeaf BmSeverity::information {1, "information"};
+const Enum::YLeaf BmSeverity::misconfiguration {2, "misconfiguration"};
+const Enum::YLeaf BmSeverity::warning {3, "warning"};
+const Enum::YLeaf BmSeverity::error {5, "error"};
+
+const Enum::YLeaf BmStateReasonTarget::member_reason {0, "member-reason"};
+const Enum::YLeaf BmStateReasonTarget::bundle_reason {1, "bundle-reason"};
 
 const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_unknown {0, "bm-mbr-state-reason-unknown"};
 const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_unselectable_unknown {1, "bm-mbr-state-reason-unselectable-unknown"};
@@ -22978,70 +23158,9 @@ const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_bfd_ipv6_down {71, "bm-m
 const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_bfd_ipv6_nbr_unconfig {72, "bm-mbr-state-reason-bfd-ipv6-nbr-unconfig"};
 const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_timer_running {73, "bm-mbr-state-reason-timer-running"};
 const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_client_bundle_ctrl {74, "bm-mbr-state-reason-client-bundle-ctrl"};
-const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_count {75, "bm-mbr-state-reason-count"};
-
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_idb_create {0, "bmd-event-bdl-idb-create"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_configured {1, "bmd-event-bdl-configured"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_im_state {2, "bmd-event-bdl-im-state"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_mbr_added {3, "bmd-event-bdl-mbr-added"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_mbr_deleted {4, "bmd-event-bdl-mbr-deleted"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_mac_addr {5, "bmd-event-bdl-mac-addr"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_first_retry {6, "bmd-event-bdl-first-retry"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_user_config {7, "bmd-event-bdl-user-config"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_error {8, "bmd-event-bdl-error"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_mlacp_tlv {9, "bmd-event-bdl-mlacp-tlv"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_redundancy_role {10, "bmd-event-bdl-redundancy-role"};
-const Enum::YLeaf BmdBagEventBdlItem::bdl_bfd_state_change {11, "bdl-bfd-state-change"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_icl {12, "bmd-event-bdl-icl"};
-const Enum::YLeaf BmdBagEventBdlItem::bmd_event_bdl_count {13, "bmd-event-bdl-count"};
-
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_incomplete {0, "node-state-incomplete"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_conn_rejected {1, "node-state-conn-rejected"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_connect_sent {2, "node-state-connect-sent"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_unconfigured {3, "node-state-unconfigured"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_unreachable {4, "node-state-unreachable"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_iccp_down {5, "node-state-iccp-down"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_nak {6, "node-state-nak"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_unknown {7, "node-state-unknown"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_mlacp_down {8, "node-state-mlacp-down"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_admin_down {9, "node-state-admin-down"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_pe_isolated {10, "node-state-pe-isolated"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_error {11, "node-state-error"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_test {12, "node-state-test"};
-const Enum::YLeaf BmdMlacpNodeStateEnum::node_state_up {13, "node-state-up"};
-
-const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_idb_create {0, "bmd-event-rg-idb-create"};
-const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_configured {1, "bmd-event-rg-configured"};
-const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_user_config {2, "bmd-event-rg-user-config"};
-const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_connect_ion {3, "bmd-event-rg-connect-ion"};
-const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_data {4, "bmd-event-rg-data"};
-const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_sync {5, "bmd-event-rg-sync"};
-const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_first_retry {6, "bmd-event-rg-first-retry"};
-const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_error {7, "bmd-event-rg-error"};
-const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_mlacp_tlv {8, "bmd-event-rg-mlacp-tlv"};
-const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_iccp_event {9, "bmd-event-rg-iccp-event"};
-const Enum::YLeaf BmdBagEventRgItem::bmd_event_rg_count {10, "bmd-event-rg-count"};
-
-const Enum::YLeaf BmWhichSystem::bm_which_system_actr {0, "bm-which-system-actr"};
-const Enum::YLeaf BmWhichSystem::bm_which_system_ptnr {1, "bm-which-system-ptnr"};
-
-const Enum::YLeaf BmdBfdBdlState::bmd_bfd_bdl_down {0, "bmd-bfd-bdl-down"};
-const Enum::YLeaf BmdBfdBdlState::bmd_bfd_bdl_unknown {1, "bmd-bfd-bdl-unknown"};
-const Enum::YLeaf BmdBfdBdlState::bmd_bfd_bdl_up {2, "bmd-bfd-bdl-up"};
-const Enum::YLeaf BmdBfdBdlState::bmd_bfd_bdl_count {3, "bmd-bfd-bdl-count"};
-
-const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_nak {0, "mbr-state-nak"};
-const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_unknown {1, "mbr-state-unknown"};
-const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_up {2, "mbr-state-up"};
-const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_down {3, "mbr-state-down"};
-const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_admin_down {4, "mbr-state-admin-down"};
-const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_test {5, "mbr-state-test"};
-const Enum::YLeaf BmdMlacpMbrStateEnum::mbr_state_error {6, "mbr-state-error"};
-
-const Enum::YLeaf BmdBagTarget::bm_bag_target_mbr {0, "bm-bag-target-mbr"};
-const Enum::YLeaf BmdBagTarget::bm_bag_target_bdl {1, "bm-bag-target-bdl"};
-const Enum::YLeaf BmdBagTarget::bm_bag_target_node {2, "bm-bag-target-node"};
-const Enum::YLeaf BmdBagTarget::bm_bag_target_rg {3, "bm-bag-target-rg"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_lacp_oos {75, "bm-mbr-state-reason-lacp-oos"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_errdis_bundle_oos {76, "bm-mbr-state-reason-errdis-bundle-oos"};
+const Enum::YLeaf BmMbrStateReason::bm_mbr_state_reason_count {77, "bm-mbr-state-reason-count"};
 
 const Enum::YLeaf BmMuxstate::detached {1, "detached"};
 const Enum::YLeaf BmMuxstate::waiting {2, "waiting"};
@@ -23050,69 +23169,70 @@ const Enum::YLeaf BmMuxstate::collecting {4, "collecting"};
 const Enum::YLeaf BmMuxstate::distributing {5, "distributing"};
 const Enum::YLeaf BmMuxstate::collecting_distributing {6, "collecting-distributing"};
 
-const Enum::YLeaf LacpSelState::unselected {0, "unselected"};
-const Enum::YLeaf LacpSelState::standby {1, "standby"};
-const Enum::YLeaf LacpSelState::selected {2, "selected"};
+const Enum::YLeaf BmdLacpMode::bmd_mode_on {0, "bmd-mode-on"};
+const Enum::YLeaf BmdLacpMode::bmd_mode_active {1, "bmd-mode-active"};
+const Enum::YLeaf BmdLacpMode::bmd_mode_passive {2, "bmd-mode-passive"};
+const Enum::YLeaf BmdLacpMode::bmd_mode_count {3, "bmd-mode-count"};
 
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_configured {1, "bmd-mbr-state-configured"};
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_standby {2, "bmd-mbr-state-standby"};
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_hot_standby {3, "bmd-mbr-state-hot-standby"};
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_negotiating {4, "bmd-mbr-state-negotiating"};
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_bfd_running {5, "bmd-mbr-state-bfd-running"};
-const Enum::YLeaf BmdMemberState::bmd_mbr_state_active {6, "bmd-mbr-state-active"};
-
-const Enum::YLeaf BmMuxreason::bm_mux_reason_no_reason {0, "bm-mux-reason-no-reason"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_link_down {1, "bm-mux-reason-link-down"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_link_deleted {2, "bm-mux-reason-link-deleted"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_duplex {3, "bm-mux-reason-duplex"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_bandwidth {4, "bm-mux-reason-bandwidth"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_loop_back {5, "bm-mux-reason-loop-back"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_activity_type {6, "bm-mux-reason-activity-type"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_link_limit {7, "bm-mux-reason-link-limit"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_shared {8, "bm-mux-reason-shared"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_lagid {9, "bm-mux-reason-lagid"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_no_bundle {10, "bm-mux-reason-no-bundle"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_no_primary {11, "bm-mux-reason-no-primary"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_bundle_down {12, "bm-mux-reason-bundle-down"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_individual {13, "bm-mux-reason-individual"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_defaulted {14, "bm-mux-reason-defaulted"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_in_sync {15, "bm-mux-reason-in-sync"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_collecting {16, "bm-mux-reason-collecting"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_active_link_limit {17, "bm-mux-reason-active-link-limit"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_distributing {18, "bm-mux-reason-distributing"};
-const Enum::YLeaf BmMuxreason::bm_mux_reason_count {19, "bm-mux-reason-count"};
+const Enum::YLeaf BmdMlacpSwitchover::bmd_mlacp_switchover_nonrevertive {0, "bmd-mlacp-switchover-nonrevertive"};
+const Enum::YLeaf BmdMlacpSwitchover::bmd_mlacp_switchover_brute_force {1, "bmd-mlacp-switchover-brute-force"};
+const Enum::YLeaf BmdMlacpSwitchover::bmd_mlacp_switchover_revertive {2, "bmd-mlacp-switchover-revertive"};
+const Enum::YLeaf BmdMlacpSwitchover::bmd_mlacp_switchover_count {3, "bmd-mlacp-switchover-count"};
 
 const Enum::YLeaf BmFeatureStatus::bm_feature_not_configured {0, "bm-feature-not-configured"};
 const Enum::YLeaf BmFeatureStatus::bm_feature_not_operational {1, "bm-feature-not-operational"};
 const Enum::YLeaf BmFeatureStatus::bm_feature_operational {2, "bm-feature-operational"};
-
-const Enum::YLeaf BmSeverity::ok {0, "ok"};
-const Enum::YLeaf BmSeverity::information {1, "information"};
-const Enum::YLeaf BmSeverity::misconfiguration {2, "misconfiguration"};
-const Enum::YLeaf BmSeverity::warning {3, "warning"};
-const Enum::YLeaf BmSeverity::error {5, "error"};
-
-const Enum::YLeaf BundleMlacpMode::bundle_mlacp_mode_standby {0, "bundle-mlacp-mode-standby"};
-const Enum::YLeaf BundleMlacpMode::bundle_mlacp_mode_active {1, "bundle-mlacp-mode-active"};
-const Enum::YLeaf BundleMlacpMode::bundle_mlacp_mode_count {2, "bundle-mlacp-mode-count"};
-
-const Enum::YLeaf BmdBagMlacpSchActionItem::switchover {0, "switchover"};
-const Enum::YLeaf BmdBagMlacpSchActionItem::switchback {1, "switchback"};
-
-const Enum::YLeaf BmStateReasonTarget::member_reason {0, "member-reason"};
-const Enum::YLeaf BmStateReasonTarget::bundle_reason {1, "bundle-reason"};
-
-const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_req {0, "node-sync-req"};
-const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_done {1, "node-sync-done"};
-const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_start {2, "node-sync-start"};
-const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_init {3, "node-sync-init"};
-const Enum::YLeaf BmdMlacpNodeSyncEnum::node_sync_singleton {4, "node-sync-singleton"};
 
 const Enum::YLeaf BmBdlMacSource::bm_bdl_mac_source_unknown {0, "bm-bdl-mac-source-unknown"};
 const Enum::YLeaf BmBdlMacSource::bm_bdl_mac_source_chassis {1, "bm-bdl-mac-source-chassis"};
 const Enum::YLeaf BmBdlMacSource::bm_bdl_mac_source_configured {2, "bm-bdl-mac-source-configured"};
 const Enum::YLeaf BmBdlMacSource::bm_bdl_mac_source_member {3, "bm-bdl-mac-source-member"};
 const Enum::YLeaf BmBdlMacSource::bm_bdl_mac_source_peer {4, "bm-bdl-mac-source-peer"};
+
+const Enum::YLeaf BmBdlState::bm_bdl_state_admin_down {0, "bm-bdl-state-admin-down"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_down {1, "bm-bdl-state-down"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_client_down {2, "bm-bdl-state-client-down"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_ptnr_down {3, "bm-bdl-state-ptnr-down"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_bundle_shutdown {4, "bm-bdl-state-bundle-shutdown"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_pe_isolated {5, "bm-bdl-state-pe-isolated"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_nak {6, "bm-bdl-state-nak"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_up_active {7, "bm-bdl-state-up-active"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_mlacp_hot_standby {8, "bm-bdl-state-mlacp-hot-standby"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_mlacp_cold_standby {9, "bm-bdl-state-mlacp-cold-standby"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_unknown {10, "bm-bdl-state-unknown"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_cold_standby {11, "bm-bdl-state-cold-standby"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_error_disabled {12, "bm-bdl-state-error-disabled"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_efd_disabled {13, "bm-bdl-state-efd-disabled"};
+const Enum::YLeaf BmBdlState::bm_bdl_state_lacp_oos {14, "bm-bdl-state-lacp-oos"};
+
+const Enum::YLeaf BmAfId::bm_af_id_ipv4 {1136568623, "bm-af-id-ipv4"};
+const Enum::YLeaf BmAfId::bm_af_id_ipv6 {1136568624, "bm-af-id-ipv6"};
+
+const Enum::YLeaf BmdBfdBdlState::bmd_bfd_bdl_down {0, "bmd-bfd-bdl-down"};
+const Enum::YLeaf BmdBfdBdlState::bmd_bfd_bdl_unknown {1, "bmd-bfd-bdl-unknown"};
+const Enum::YLeaf BmdBfdBdlState::bmd_bfd_bdl_up {2, "bmd-bfd-bdl-up"};
+const Enum::YLeaf BmdBfdBdlState::bmd_bfd_bdl_count {3, "bmd-bfd-bdl-count"};
+
+const Enum::YLeaf BmWhichSystem::bm_which_system_actr {0, "bm-which-system-actr"};
+const Enum::YLeaf BmWhichSystem::bm_which_system_ptnr {1, "bm-which-system-ptnr"};
+
+const Enum::YLeaf BundleMedia1::ethernet {0, "ethernet"};
+const Enum::YLeaf BundleMedia1::pos {1, "pos"};
+
+const Enum::YLeaf LoadBalance::default_ {0, "default"};
+const Enum::YLeaf LoadBalance::auto_ {1, "auto"};
+const Enum::YLeaf LoadBalance::value_ {2, "value"};
+const Enum::YLeaf LoadBalance::source_ip {3, "source-ip"};
+const Enum::YLeaf LoadBalance::destination_ip {4, "destination-ip"};
+const Enum::YLeaf LoadBalance::unknown {5, "unknown"};
+
+const Enum::YLeaf BundleMedia::bundle_media_ethernet {0, "bundle-media-ethernet"};
+const Enum::YLeaf BundleMedia::bundle_media_pos {1, "bundle-media-pos"};
+const Enum::YLeaf BundleMedia::bundle_media_count {2, "bundle-media-count"};
+
+const Enum::YLeaf BundleMlacpMode::bundle_mlacp_mode_standby {0, "bundle-mlacp-mode-standby"};
+const Enum::YLeaf BundleMlacpMode::bundle_mlacp_mode_active {1, "bundle-mlacp-mode-active"};
+const Enum::YLeaf BundleMlacpMode::bundle_mlacp_mode_count {2, "bundle-mlacp-mode-count"};
 
 
 }

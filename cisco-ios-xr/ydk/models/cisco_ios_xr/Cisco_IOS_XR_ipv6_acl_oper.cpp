@@ -4060,10 +4060,21 @@ bool Ipv6AclAndPrefixList::Oor::AccessListSummary::Details::has_leaf_or_child_of
     return false;
 }
 
-const Enum::YLeaf AclTcpflagsOperator::match_none {0, "match-none"};
-const Enum::YLeaf AclTcpflagsOperator::match_all {1, "match-all"};
-const Enum::YLeaf AclTcpflagsOperator::match_any_old {2, "match-any-old"};
-const Enum::YLeaf AclTcpflagsOperator::match_any {3, "match-any"};
+const Enum::YLeaf BagAclNhAtStatus::unknown {0, "unknown"};
+const Enum::YLeaf BagAclNhAtStatus::up {1, "up"};
+const Enum::YLeaf BagAclNhAtStatus::down {2, "down"};
+const Enum::YLeaf BagAclNhAtStatus::not_present {3, "not-present"};
+const Enum::YLeaf BagAclNhAtStatus::max {4, "max"};
+
+const Enum::YLeaf BagAclNhStatus::not_present {0, "not-present"};
+const Enum::YLeaf BagAclNhStatus::unknown {1, "unknown"};
+const Enum::YLeaf BagAclNhStatus::down {2, "down"};
+const Enum::YLeaf BagAclNhStatus::up {3, "up"};
+const Enum::YLeaf BagAclNhStatus::max {4, "max"};
+
+const Enum::YLeaf BagAclNh::nexthop_none {0, "nexthop-none"};
+const Enum::YLeaf BagAclNh::nexthop_default {1, "nexthop-default"};
+const Enum::YLeaf BagAclNh::nexthop {2, "nexthop"};
 
 const Enum::YLeaf AclPortOperator::none {0, "none"};
 const Enum::YLeaf AclPortOperator::eq {1, "eq"};
@@ -4074,10 +4085,6 @@ const Enum::YLeaf AclPortOperator::range {5, "range"};
 const Enum::YLeaf AclPortOperator::onebyte {8, "onebyte"};
 const Enum::YLeaf AclPortOperator::twobytes {9, "twobytes"};
 
-const Enum::YLeaf AclAce1::normal {0, "normal"};
-const Enum::YLeaf AclAce1::remark {1, "remark"};
-const Enum::YLeaf AclAce1::abf {2, "abf"};
-
 const Enum::YLeaf AclPortOperator_::none {0, "none"};
 const Enum::YLeaf AclPortOperator_::eq {1, "eq"};
 const Enum::YLeaf AclPortOperator_::gt {2, "gt"};
@@ -4087,15 +4094,14 @@ const Enum::YLeaf AclPortOperator_::range {5, "range"};
 const Enum::YLeaf AclPortOperator_::onebyte {8, "onebyte"};
 const Enum::YLeaf AclPortOperator_::twobytes {9, "twobytes"};
 
-const Enum::YLeaf BagAclNhAtStatus::unknown {0, "unknown"};
-const Enum::YLeaf BagAclNhAtStatus::up {1, "up"};
-const Enum::YLeaf BagAclNhAtStatus::down {2, "down"};
-const Enum::YLeaf BagAclNhAtStatus::not_present {3, "not-present"};
-const Enum::YLeaf BagAclNhAtStatus::max {4, "max"};
+const Enum::YLeaf AclTcpflagsOperator::match_none {0, "match-none"};
+const Enum::YLeaf AclTcpflagsOperator::match_all {1, "match-all"};
+const Enum::YLeaf AclTcpflagsOperator::match_any_old {2, "match-any-old"};
+const Enum::YLeaf AclTcpflagsOperator::match_any {3, "match-any"};
 
-const Enum::YLeaf BagAclNh::nexthop_none {0, "nexthop-none"};
-const Enum::YLeaf BagAclNh::nexthop_default {1, "nexthop-default"};
-const Enum::YLeaf BagAclNh::nexthop {2, "nexthop"};
+const Enum::YLeaf AclLog::log_none {0, "log-none"};
+const Enum::YLeaf AclLog::log {1, "log"};
+const Enum::YLeaf AclLog::log_input {2, "log-input"};
 
 const Enum::YLeaf AclPortOperator__::none {0, "none"};
 const Enum::YLeaf AclPortOperator__::eq {1, "eq"};
@@ -4122,15 +4128,9 @@ const Enum::YLeaf AclAction::bypass {3, "bypass"};
 const Enum::YLeaf AclAction::fallthrough {4, "fallthrough"};
 const Enum::YLeaf AclAction::invalid {5, "invalid"};
 
-const Enum::YLeaf BagAclNhStatus::not_present {0, "not-present"};
-const Enum::YLeaf BagAclNhStatus::unknown {1, "unknown"};
-const Enum::YLeaf BagAclNhStatus::down {2, "down"};
-const Enum::YLeaf BagAclNhStatus::up {3, "up"};
-const Enum::YLeaf BagAclNhStatus::max {4, "max"};
-
-const Enum::YLeaf AclLog::log_none {0, "log-none"};
-const Enum::YLeaf AclLog::log {1, "log"};
-const Enum::YLeaf AclLog::log_input {2, "log-input"};
+const Enum::YLeaf AclAce1::normal {0, "normal"};
+const Enum::YLeaf AclAce1::remark {1, "remark"};
+const Enum::YLeaf AclAce1::abf {2, "abf"};
 
 const Enum::YLeaf AclAce1_::normal {0, "normal"};
 const Enum::YLeaf AclAce1_::remark {1, "remark"};

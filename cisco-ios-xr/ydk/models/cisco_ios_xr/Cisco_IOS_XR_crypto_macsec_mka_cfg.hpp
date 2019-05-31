@@ -95,15 +95,6 @@ class Macsec::PolicyNames::PolicyName : public ydk::Entity
 
 }; // Macsec::PolicyNames::PolicyName
 
-class MacsecMkaConfOffset : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf conf_off_set_0;
-        static const ydk::Enum::YLeaf conf_off_set_30;
-        static const ydk::Enum::YLeaf conf_off_set_50;
-
-};
-
 class MacsecMkaSecurityPolicy : public ydk::Enum
 {
     public:
@@ -126,6 +117,15 @@ class MacsecMkaCipherSuite : public ydk::Enum
         static const ydk::Enum::YLeaf gcm_aes_256;
         static const ydk::Enum::YLeaf gcm_aes_xpn_128;
         static const ydk::Enum::YLeaf gcm_aes_xpn_256;
+
+};
+
+class MacsecMkaConfOffset : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf conf_off_set_0;
+        static const ydk::Enum::YLeaf conf_off_set_30;
+        static const ydk::Enum::YLeaf conf_off_set_50;
 
 };
 

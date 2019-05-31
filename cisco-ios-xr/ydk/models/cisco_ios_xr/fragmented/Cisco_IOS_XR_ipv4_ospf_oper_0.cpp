@@ -5,9 +5,9 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv4_ospf_oper_0.hpp"
-#include "Cisco_IOS_XR_ipv4_ospf_oper_3.hpp"
-#include "Cisco_IOS_XR_ipv4_ospf_oper_1.hpp"
 #include "Cisco_IOS_XR_ipv4_ospf_oper_2.hpp"
+#include "Cisco_IOS_XR_ipv4_ospf_oper_1.hpp"
+#include "Cisco_IOS_XR_ipv4_ospf_oper_3.hpp"
 
 using namespace ydk;
 
@@ -2635,8 +2635,10 @@ bool Ospf::Processes::Process::Vrfs::Vrf::FloodListTable::Flood::AsFlood::has_le
 
 Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SegmentRouting()
     :
-    sr_endpoint_policies(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies>())
+    adjacency_sids(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids>())
+    , sr_endpoint_policies(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::SrEndpointPolicies>())
 {
+    adjacency_sids->parent = this;
     sr_endpoint_policies->parent = this;
 
     yang_name = "segment-routing"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
@@ -2649,12 +2651,14 @@ Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::~SegmentRouting()
 bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::has_data() const
 {
     if (is_presence_container) return true;
-    return (sr_endpoint_policies !=  nullptr && sr_endpoint_policies->has_data());
+    return (adjacency_sids !=  nullptr && adjacency_sids->has_data())
+	|| (sr_endpoint_policies !=  nullptr && sr_endpoint_policies->has_data());
 }
 
 bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::has_operation() const
 {
     return is_set(yfilter)
+	|| (adjacency_sids !=  nullptr && adjacency_sids->has_operation())
 	|| (sr_endpoint_policies !=  nullptr && sr_endpoint_policies->has_operation());
 }
 
@@ -2676,6 +2680,15 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::V
 
 std::shared_ptr<ydk::Entity> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "adjacency-sids")
+    {
+        if(adjacency_sids == nullptr)
+        {
+            adjacency_sids = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids>();
+        }
+        return adjacency_sids;
+    }
+
     if(child_yang_name == "sr-endpoint-policies")
     {
         if(sr_endpoint_policies == nullptr)
@@ -2692,6 +2705,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::Vr
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(adjacency_sids != nullptr)
+    {
+        _children["adjacency-sids"] = adjacency_sids;
+    }
+
     if(sr_endpoint_policies != nullptr)
     {
         _children["sr-endpoint-policies"] = sr_endpoint_policies;
@@ -2710,7 +2728,836 @@ void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::set_filter(const std::
 
 bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "sr-endpoint-policies")
+    if(name == "adjacency-sids" || name == "sr-endpoint-policies")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySids()
+    :
+    adjacency_sid(this, {"adj_sid"})
+{
+
+    yang_name = "adjacency-sids"; yang_parent_name = "segment-routing"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::~AdjacencySids()
+{
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<adjacency_sid.len(); index++)
+    {
+        if(adjacency_sid[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::has_operation() const
+{
+    for (std::size_t index=0; index<adjacency_sid.len(); index++)
+    {
+        if(adjacency_sid[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "adjacency-sids";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "adjacency-sid")
+    {
+        auto ent_ = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid>();
+        ent_->parent = this;
+        adjacency_sid.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : adjacency_sid.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adjacency-sid")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::AdjacencySid()
+    :
+    adj_sid{YType::uint32, "adj-sid"},
+    sr_adjacency_sid{YType::uint32, "sr-adjacency-sid"},
+    sr_adj_sid_is_configured{YType::boolean, "sr-adj-sid-is-configured"},
+    is_deleted_adjacency_protected{YType::boolean, "is-deleted-adjacency-protected"},
+    deleted_adjacency_protection_timer{YType::uint32, "deleted-adjacency-protection-timer"}
+        ,
+    sr_adj_sid_neighbor(this, {})
+{
+
+    yang_name = "adjacency-sid"; yang_parent_name = "adjacency-sids"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::~AdjacencySid()
+{
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<sr_adj_sid_neighbor.len(); index++)
+    {
+        if(sr_adj_sid_neighbor[index]->has_data())
+            return true;
+    }
+    return adj_sid.is_set
+	|| sr_adjacency_sid.is_set
+	|| sr_adj_sid_is_configured.is_set
+	|| is_deleted_adjacency_protected.is_set
+	|| deleted_adjacency_protection_timer.is_set;
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::has_operation() const
+{
+    for (std::size_t index=0; index<sr_adj_sid_neighbor.len(); index++)
+    {
+        if(sr_adj_sid_neighbor[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(adj_sid.yfilter)
+	|| ydk::is_set(sr_adjacency_sid.yfilter)
+	|| ydk::is_set(sr_adj_sid_is_configured.yfilter)
+	|| ydk::is_set(is_deleted_adjacency_protected.yfilter)
+	|| ydk::is_set(deleted_adjacency_protection_timer.yfilter);
+}
+
+std::string Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "adjacency-sid";
+    ADD_KEY_TOKEN(adj_sid, "adj-sid");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (adj_sid.is_set || is_set(adj_sid.yfilter)) leaf_name_data.push_back(adj_sid.get_name_leafdata());
+    if (sr_adjacency_sid.is_set || is_set(sr_adjacency_sid.yfilter)) leaf_name_data.push_back(sr_adjacency_sid.get_name_leafdata());
+    if (sr_adj_sid_is_configured.is_set || is_set(sr_adj_sid_is_configured.yfilter)) leaf_name_data.push_back(sr_adj_sid_is_configured.get_name_leafdata());
+    if (is_deleted_adjacency_protected.is_set || is_set(is_deleted_adjacency_protected.yfilter)) leaf_name_data.push_back(is_deleted_adjacency_protected.get_name_leafdata());
+    if (deleted_adjacency_protection_timer.is_set || is_set(deleted_adjacency_protection_timer.yfilter)) leaf_name_data.push_back(deleted_adjacency_protection_timer.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "sr-adj-sid-neighbor")
+    {
+        auto ent_ = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor>();
+        ent_->parent = this;
+        sr_adj_sid_neighbor.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : sr_adj_sid_neighbor.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "adj-sid")
+    {
+        adj_sid = value;
+        adj_sid.value_namespace = name_space;
+        adj_sid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-adjacency-sid")
+    {
+        sr_adjacency_sid = value;
+        sr_adjacency_sid.value_namespace = name_space;
+        sr_adjacency_sid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-adj-sid-is-configured")
+    {
+        sr_adj_sid_is_configured = value;
+        sr_adj_sid_is_configured.value_namespace = name_space;
+        sr_adj_sid_is_configured.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-deleted-adjacency-protected")
+    {
+        is_deleted_adjacency_protected = value;
+        is_deleted_adjacency_protected.value_namespace = name_space;
+        is_deleted_adjacency_protected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "deleted-adjacency-protection-timer")
+    {
+        deleted_adjacency_protection_timer = value;
+        deleted_adjacency_protection_timer.value_namespace = name_space;
+        deleted_adjacency_protection_timer.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "adj-sid")
+    {
+        adj_sid.yfilter = yfilter;
+    }
+    if(value_path == "sr-adjacency-sid")
+    {
+        sr_adjacency_sid.yfilter = yfilter;
+    }
+    if(value_path == "sr-adj-sid-is-configured")
+    {
+        sr_adj_sid_is_configured.yfilter = yfilter;
+    }
+    if(value_path == "is-deleted-adjacency-protected")
+    {
+        is_deleted_adjacency_protected.yfilter = yfilter;
+    }
+    if(value_path == "deleted-adjacency-protection-timer")
+    {
+        deleted_adjacency_protection_timer.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sr-adj-sid-neighbor" || name == "adj-sid" || name == "sr-adjacency-sid" || name == "sr-adj-sid-is-configured" || name == "is-deleted-adjacency-protected" || name == "deleted-adjacency-protection-timer")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::SrAdjSidNeighbor()
+    :
+    neighbor_id{YType::str, "neighbor-id"},
+    sr_adj_sid_is_protected{YType::boolean, "sr-adj-sid-is-protected"},
+    sr_adj_sid_has_backup{YType::boolean, "sr-adj-sid-has-backup"}
+        ,
+    primary_path_info(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo>())
+    , backup_path_info(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo>())
+{
+    primary_path_info->parent = this;
+    backup_path_info->parent = this;
+
+    yang_name = "sr-adj-sid-neighbor"; yang_parent_name = "adjacency-sid"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::~SrAdjSidNeighbor()
+{
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::has_data() const
+{
+    if (is_presence_container) return true;
+    return neighbor_id.is_set
+	|| sr_adj_sid_is_protected.is_set
+	|| sr_adj_sid_has_backup.is_set
+	|| (primary_path_info !=  nullptr && primary_path_info->has_data())
+	|| (backup_path_info !=  nullptr && backup_path_info->has_data());
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(neighbor_id.yfilter)
+	|| ydk::is_set(sr_adj_sid_is_protected.yfilter)
+	|| ydk::is_set(sr_adj_sid_has_backup.yfilter)
+	|| (primary_path_info !=  nullptr && primary_path_info->has_operation())
+	|| (backup_path_info !=  nullptr && backup_path_info->has_operation());
+}
+
+std::string Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sr-adj-sid-neighbor";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (neighbor_id.is_set || is_set(neighbor_id.yfilter)) leaf_name_data.push_back(neighbor_id.get_name_leafdata());
+    if (sr_adj_sid_is_protected.is_set || is_set(sr_adj_sid_is_protected.yfilter)) leaf_name_data.push_back(sr_adj_sid_is_protected.get_name_leafdata());
+    if (sr_adj_sid_has_backup.is_set || is_set(sr_adj_sid_has_backup.yfilter)) leaf_name_data.push_back(sr_adj_sid_has_backup.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "primary-path-info")
+    {
+        if(primary_path_info == nullptr)
+        {
+            primary_path_info = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo>();
+        }
+        return primary_path_info;
+    }
+
+    if(child_yang_name == "backup-path-info")
+    {
+        if(backup_path_info == nullptr)
+        {
+            backup_path_info = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo>();
+        }
+        return backup_path_info;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(primary_path_info != nullptr)
+    {
+        _children["primary-path-info"] = primary_path_info;
+    }
+
+    if(backup_path_info != nullptr)
+    {
+        _children["backup-path-info"] = backup_path_info;
+    }
+
+    return _children;
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "neighbor-id")
+    {
+        neighbor_id = value;
+        neighbor_id.value_namespace = name_space;
+        neighbor_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-adj-sid-is-protected")
+    {
+        sr_adj_sid_is_protected = value;
+        sr_adj_sid_is_protected.value_namespace = name_space;
+        sr_adj_sid_is_protected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sr-adj-sid-has-backup")
+    {
+        sr_adj_sid_has_backup = value;
+        sr_adj_sid_has_backup.value_namespace = name_space;
+        sr_adj_sid_has_backup.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "neighbor-id")
+    {
+        neighbor_id.yfilter = yfilter;
+    }
+    if(value_path == "sr-adj-sid-is-protected")
+    {
+        sr_adj_sid_is_protected.yfilter = yfilter;
+    }
+    if(value_path == "sr-adj-sid-has-backup")
+    {
+        sr_adj_sid_has_backup.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "primary-path-info" || name == "backup-path-info" || name == "neighbor-id" || name == "sr-adj-sid-is-protected" || name == "sr-adj-sid-has-backup")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::PrimaryPathInfo()
+    :
+    interface_handle{YType::str, "interface-handle"},
+    nexthop_ip_address{YType::str, "nexthop-ip-address"},
+    load_metric{YType::uint32, "load-metric"}
+        ,
+    label_stack(this, {})
+{
+
+    yang_name = "primary-path-info"; yang_parent_name = "sr-adj-sid-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::~PrimaryPathInfo()
+{
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<label_stack.len(); index++)
+    {
+        if(label_stack[index]->has_data())
+            return true;
+    }
+    return interface_handle.is_set
+	|| nexthop_ip_address.is_set
+	|| load_metric.is_set;
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::has_operation() const
+{
+    for (std::size_t index=0; index<label_stack.len(); index++)
+    {
+        if(label_stack[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(interface_handle.yfilter)
+	|| ydk::is_set(nexthop_ip_address.yfilter)
+	|| ydk::is_set(load_metric.yfilter);
+}
+
+std::string Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "primary-path-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
+    if (nexthop_ip_address.is_set || is_set(nexthop_ip_address.yfilter)) leaf_name_data.push_back(nexthop_ip_address.get_name_leafdata());
+    if (load_metric.is_set || is_set(load_metric.yfilter)) leaf_name_data.push_back(load_metric.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "label-stack")
+    {
+        auto ent_ = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::LabelStack>();
+        ent_->parent = this;
+        label_stack.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : label_stack.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-handle")
+    {
+        interface_handle = value;
+        interface_handle.value_namespace = name_space;
+        interface_handle.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nexthop-ip-address")
+    {
+        nexthop_ip_address = value;
+        nexthop_ip_address.value_namespace = name_space;
+        nexthop_ip_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "load-metric")
+    {
+        load_metric = value;
+        load_metric.value_namespace = name_space;
+        load_metric.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-handle")
+    {
+        interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "nexthop-ip-address")
+    {
+        nexthop_ip_address.yfilter = yfilter;
+    }
+    if(value_path == "load-metric")
+    {
+        load_metric.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label-stack" || name == "interface-handle" || name == "nexthop-ip-address" || name == "load-metric")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::LabelStack::LabelStack()
+    :
+    entry{YType::uint32, "entry"}
+{
+
+    yang_name = "label-stack"; yang_parent_name = "primary-path-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::LabelStack::~LabelStack()
+{
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::LabelStack::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::LabelStack::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::LabelStack::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::LabelStack::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::LabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::LabelStack::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::LabelStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::LabelStack::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::LabelStack::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::BackupPathInfo()
+    :
+    interface_handle{YType::str, "interface-handle"},
+    nexthop_ip_address{YType::str, "nexthop-ip-address"},
+    load_metric{YType::uint32, "load-metric"}
+        ,
+    label_stack(this, {})
+{
+
+    yang_name = "backup-path-info"; yang_parent_name = "sr-adj-sid-neighbor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::~BackupPathInfo()
+{
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<label_stack.len(); index++)
+    {
+        if(label_stack[index]->has_data())
+            return true;
+    }
+    return interface_handle.is_set
+	|| nexthop_ip_address.is_set
+	|| load_metric.is_set;
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::has_operation() const
+{
+    for (std::size_t index=0; index<label_stack.len(); index++)
+    {
+        if(label_stack[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(interface_handle.yfilter)
+	|| ydk::is_set(nexthop_ip_address.yfilter)
+	|| ydk::is_set(load_metric.yfilter);
+}
+
+std::string Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "backup-path-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_handle.is_set || is_set(interface_handle.yfilter)) leaf_name_data.push_back(interface_handle.get_name_leafdata());
+    if (nexthop_ip_address.is_set || is_set(nexthop_ip_address.yfilter)) leaf_name_data.push_back(nexthop_ip_address.get_name_leafdata());
+    if (load_metric.is_set || is_set(load_metric.yfilter)) leaf_name_data.push_back(load_metric.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "label-stack")
+    {
+        auto ent_ = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::LabelStack>();
+        ent_->parent = this;
+        label_stack.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : label_stack.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-handle")
+    {
+        interface_handle = value;
+        interface_handle.value_namespace = name_space;
+        interface_handle.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nexthop-ip-address")
+    {
+        nexthop_ip_address = value;
+        nexthop_ip_address.value_namespace = name_space;
+        nexthop_ip_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "load-metric")
+    {
+        load_metric = value;
+        load_metric.value_namespace = name_space;
+        load_metric.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-handle")
+    {
+        interface_handle.yfilter = yfilter;
+    }
+    if(value_path == "nexthop-ip-address")
+    {
+        nexthop_ip_address.yfilter = yfilter;
+    }
+    if(value_path == "load-metric")
+    {
+        load_metric.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label-stack" || name == "interface-handle" || name == "nexthop-ip-address" || name == "load-metric")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::LabelStack::LabelStack()
+    :
+    entry{YType::uint32, "entry"}
+{
+
+    yang_name = "label-stack"; yang_parent_name = "backup-path-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::LabelStack::~LabelStack()
+{
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::LabelStack::has_data() const
+{
+    if (is_presence_container) return true;
+    return entry.is_set;
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::LabelStack::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(entry.yfilter);
+}
+
+std::string Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::LabelStack::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "label-stack";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::LabelStack::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::LabelStack::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::LabelStack::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::LabelStack::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "entry")
+    {
+        entry = value;
+        entry.value_namespace = name_space;
+        entry.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::LabelStack::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "entry")
+    {
+        entry.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::LabelStack::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "entry")
         return true;
     return false;
 }
@@ -18969,907 +19816,72 @@ bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragmen
     return false;
 }
 
-Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::UnresOdujPrio()
-    :
-    entry{YType::uint32, "entry"}
-{
-
-    yang_name = "unres-oduj-prio"; yang_parent_name = "fixed-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::~UnresOdujPrio()
-{
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "unres-oduj-prio";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FixedBwSubTlvValue::UnresOdujPrio::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexBwSubTlvValue()
-    :
-    flex_sub_tlv_value_common(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon>())
-    , unres_lspbw(this, {})
-    , max_lspbw(this, {})
-{
-    flex_sub_tlv_value_common->parent = this;
-
-    yang_name = "flex-bw-sub-tlv-value"; yang_parent_name = "bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::~FlexBwSubTlvValue()
-{
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<unres_lspbw.len(); index++)
-    {
-        if(unres_lspbw[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<max_lspbw.len(); index++)
-    {
-        if(max_lspbw[index]->has_data())
-            return true;
-    }
-    return (flex_sub_tlv_value_common !=  nullptr && flex_sub_tlv_value_common->has_data());
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::has_operation() const
-{
-    for (std::size_t index=0; index<unres_lspbw.len(); index++)
-    {
-        if(unres_lspbw[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<max_lspbw.len(); index++)
-    {
-        if(max_lspbw[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter)
-	|| (flex_sub_tlv_value_common !=  nullptr && flex_sub_tlv_value_common->has_operation());
-}
-
-std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "flex-bw-sub-tlv-value";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "flex-sub-tlv-value-common")
-    {
-        if(flex_sub_tlv_value_common == nullptr)
-        {
-            flex_sub_tlv_value_common = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon>();
-        }
-        return flex_sub_tlv_value_common;
-    }
-
-    if(child_yang_name == "unres-lspbw")
-    {
-        auto ent_ = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw>();
-        ent_->parent = this;
-        unres_lspbw.append(ent_);
-        return ent_;
-    }
-
-    if(child_yang_name == "max-lspbw")
-    {
-        auto ent_ = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw>();
-        ent_->parent = this;
-        max_lspbw.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(flex_sub_tlv_value_common != nullptr)
-    {
-        _children["flex-sub-tlv-value-common"] = flex_sub_tlv_value_common;
-    }
-
-    count_ = 0;
-    for (auto ent_ : unres_lspbw.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    count_ = 0;
-    for (auto ent_ : max_lspbw.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "flex-sub-tlv-value-common" || name == "unres-lspbw" || name == "max-lspbw")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::FlexSubTlvValueCommon()
-    :
-    signal_type{YType::uint8, "signal-type"},
-    num_stages{YType::uint8, "num-stages"},
-    tbit{YType::uint8, "tbit"},
-    sbit{YType::uint8, "sbit"},
-    tsg{YType::uint8, "tsg"},
-    res{YType::uint8, "res"},
-    priority_bit0{YType::uint8, "priority-bit0"},
-    priority_bit1{YType::uint8, "priority-bit1"},
-    priority_bit2{YType::uint8, "priority-bit2"},
-    priority_bit3{YType::uint8, "priority-bit3"},
-    priority_bit4{YType::uint8, "priority-bit4"},
-    priority_bit5{YType::uint8, "priority-bit5"},
-    priority_bit6{YType::uint8, "priority-bit6"},
-    priority_bit7{YType::uint8, "priority-bit7"},
-    stage{YType::str, "stage"}
-{
-
-    yang_name = "flex-sub-tlv-value-common"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::~FlexSubTlvValueCommon()
-{
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::has_data() const
-{
-    if (is_presence_container) return true;
-    return signal_type.is_set
-	|| num_stages.is_set
-	|| tbit.is_set
-	|| sbit.is_set
-	|| tsg.is_set
-	|| res.is_set
-	|| priority_bit0.is_set
-	|| priority_bit1.is_set
-	|| priority_bit2.is_set
-	|| priority_bit3.is_set
-	|| priority_bit4.is_set
-	|| priority_bit5.is_set
-	|| priority_bit6.is_set
-	|| priority_bit7.is_set
-	|| stage.is_set;
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(signal_type.yfilter)
-	|| ydk::is_set(num_stages.yfilter)
-	|| ydk::is_set(tbit.yfilter)
-	|| ydk::is_set(sbit.yfilter)
-	|| ydk::is_set(tsg.yfilter)
-	|| ydk::is_set(res.yfilter)
-	|| ydk::is_set(priority_bit0.yfilter)
-	|| ydk::is_set(priority_bit1.yfilter)
-	|| ydk::is_set(priority_bit2.yfilter)
-	|| ydk::is_set(priority_bit3.yfilter)
-	|| ydk::is_set(priority_bit4.yfilter)
-	|| ydk::is_set(priority_bit5.yfilter)
-	|| ydk::is_set(priority_bit6.yfilter)
-	|| ydk::is_set(priority_bit7.yfilter)
-	|| ydk::is_set(stage.yfilter);
-}
-
-std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "flex-sub-tlv-value-common";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (signal_type.is_set || is_set(signal_type.yfilter)) leaf_name_data.push_back(signal_type.get_name_leafdata());
-    if (num_stages.is_set || is_set(num_stages.yfilter)) leaf_name_data.push_back(num_stages.get_name_leafdata());
-    if (tbit.is_set || is_set(tbit.yfilter)) leaf_name_data.push_back(tbit.get_name_leafdata());
-    if (sbit.is_set || is_set(sbit.yfilter)) leaf_name_data.push_back(sbit.get_name_leafdata());
-    if (tsg.is_set || is_set(tsg.yfilter)) leaf_name_data.push_back(tsg.get_name_leafdata());
-    if (res.is_set || is_set(res.yfilter)) leaf_name_data.push_back(res.get_name_leafdata());
-    if (priority_bit0.is_set || is_set(priority_bit0.yfilter)) leaf_name_data.push_back(priority_bit0.get_name_leafdata());
-    if (priority_bit1.is_set || is_set(priority_bit1.yfilter)) leaf_name_data.push_back(priority_bit1.get_name_leafdata());
-    if (priority_bit2.is_set || is_set(priority_bit2.yfilter)) leaf_name_data.push_back(priority_bit2.get_name_leafdata());
-    if (priority_bit3.is_set || is_set(priority_bit3.yfilter)) leaf_name_data.push_back(priority_bit3.get_name_leafdata());
-    if (priority_bit4.is_set || is_set(priority_bit4.yfilter)) leaf_name_data.push_back(priority_bit4.get_name_leafdata());
-    if (priority_bit5.is_set || is_set(priority_bit5.yfilter)) leaf_name_data.push_back(priority_bit5.get_name_leafdata());
-    if (priority_bit6.is_set || is_set(priority_bit6.yfilter)) leaf_name_data.push_back(priority_bit6.get_name_leafdata());
-    if (priority_bit7.is_set || is_set(priority_bit7.yfilter)) leaf_name_data.push_back(priority_bit7.get_name_leafdata());
-    if (stage.is_set || is_set(stage.yfilter)) leaf_name_data.push_back(stage.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "signal-type")
-    {
-        signal_type = value;
-        signal_type.value_namespace = name_space;
-        signal_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "num-stages")
-    {
-        num_stages = value;
-        num_stages.value_namespace = name_space;
-        num_stages.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tbit")
-    {
-        tbit = value;
-        tbit.value_namespace = name_space;
-        tbit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "sbit")
-    {
-        sbit = value;
-        sbit.value_namespace = name_space;
-        sbit.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "tsg")
-    {
-        tsg = value;
-        tsg.value_namespace = name_space;
-        tsg.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "res")
-    {
-        res = value;
-        res.value_namespace = name_space;
-        res.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority-bit0")
-    {
-        priority_bit0 = value;
-        priority_bit0.value_namespace = name_space;
-        priority_bit0.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority-bit1")
-    {
-        priority_bit1 = value;
-        priority_bit1.value_namespace = name_space;
-        priority_bit1.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority-bit2")
-    {
-        priority_bit2 = value;
-        priority_bit2.value_namespace = name_space;
-        priority_bit2.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority-bit3")
-    {
-        priority_bit3 = value;
-        priority_bit3.value_namespace = name_space;
-        priority_bit3.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority-bit4")
-    {
-        priority_bit4 = value;
-        priority_bit4.value_namespace = name_space;
-        priority_bit4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority-bit5")
-    {
-        priority_bit5 = value;
-        priority_bit5.value_namespace = name_space;
-        priority_bit5.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority-bit6")
-    {
-        priority_bit6 = value;
-        priority_bit6.value_namespace = name_space;
-        priority_bit6.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority-bit7")
-    {
-        priority_bit7 = value;
-        priority_bit7.value_namespace = name_space;
-        priority_bit7.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "stage")
-    {
-        stage = value;
-        stage.value_namespace = name_space;
-        stage.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "signal-type")
-    {
-        signal_type.yfilter = yfilter;
-    }
-    if(value_path == "num-stages")
-    {
-        num_stages.yfilter = yfilter;
-    }
-    if(value_path == "tbit")
-    {
-        tbit.yfilter = yfilter;
-    }
-    if(value_path == "sbit")
-    {
-        sbit.yfilter = yfilter;
-    }
-    if(value_path == "tsg")
-    {
-        tsg.yfilter = yfilter;
-    }
-    if(value_path == "res")
-    {
-        res.yfilter = yfilter;
-    }
-    if(value_path == "priority-bit0")
-    {
-        priority_bit0.yfilter = yfilter;
-    }
-    if(value_path == "priority-bit1")
-    {
-        priority_bit1.yfilter = yfilter;
-    }
-    if(value_path == "priority-bit2")
-    {
-        priority_bit2.yfilter = yfilter;
-    }
-    if(value_path == "priority-bit3")
-    {
-        priority_bit3.yfilter = yfilter;
-    }
-    if(value_path == "priority-bit4")
-    {
-        priority_bit4.yfilter = yfilter;
-    }
-    if(value_path == "priority-bit5")
-    {
-        priority_bit5.yfilter = yfilter;
-    }
-    if(value_path == "priority-bit6")
-    {
-        priority_bit6.yfilter = yfilter;
-    }
-    if(value_path == "priority-bit7")
-    {
-        priority_bit7.yfilter = yfilter;
-    }
-    if(value_path == "stage")
-    {
-        stage.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::FlexSubTlvValueCommon::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "signal-type" || name == "num-stages" || name == "tbit" || name == "sbit" || name == "tsg" || name == "res" || name == "priority-bit0" || name == "priority-bit1" || name == "priority-bit2" || name == "priority-bit3" || name == "priority-bit4" || name == "priority-bit5" || name == "priority-bit6" || name == "priority-bit7" || name == "stage")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::UnresLspbw()
-    :
-    entry{YType::uint64, "entry"}
-{
-
-    yang_name = "unres-lspbw"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::~UnresLspbw()
-{
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "unres-lspbw";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::UnresLspbw::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::MaxLspbw()
-    :
-    entry{YType::uint64, "entry"}
-{
-
-    yang_name = "max-lspbw"; yang_parent_name = "flex-bw-sub-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::~MaxLspbw()
-{
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "max-lspbw";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::IxcdSwitchingCapType::IxcdbwSubTlv::ArrBwSubTlv::BwSubTlvValue::FlexBwSubTlvValue::MaxLspbw::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::MaxLspbw()
-    :
-    entry{YType::int64, "entry"}
-{
-
-    yang_name = "max-lspbw"; yang_parent_name = "ixcdtlv-value"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::~MaxLspbw()
-{
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::has_data() const
-{
-    if (is_presence_container) return true;
-    return entry.is_set;
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(entry.yfilter);
-}
-
-std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "max-lspbw";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (entry.is_set || is_set(entry.yfilter)) leaf_name_data.push_back(entry.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "entry")
-    {
-        entry = value;
-        entry.value_namespace = name_space;
-        entry.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "entry")
-    {
-        entry.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::IxcdtlvValue::MaxLspbw::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "entry")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::UnidtlvValue()
-    :
-    uni_dir_delay{YType::uint32, "uni-dir-delay"}
-{
-
-    yang_name = "unidtlv-value"; yang_parent_name = "mplste-link-opt-tlv-value"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::~UnidtlvValue()
-{
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::has_data() const
-{
-    if (is_presence_container) return true;
-    return uni_dir_delay.is_set;
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(uni_dir_delay.yfilter);
-}
-
-std::string Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "unidtlv-value";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (uni_dir_delay.is_set || is_set(uni_dir_delay.yfilter)) leaf_name_data.push_back(uni_dir_delay.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "uni-dir-delay")
-    {
-        uni_dir_delay = value;
-        uni_dir_delay.value_namespace = name_space;
-        uni_dir_delay.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "uni-dir-delay")
-    {
-        uni_dir_delay.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::Vrfs::Vrf::MplsTe::MplsTeFragments::MplsTeFragment::MplsTeFragment_::MplsTeLink::MplsteLinkOptTlv::MplsteLinkOptTlvValue::UnidtlvValue::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "uni-dir-delay")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf NsfRtr::mgmt_nsf_rtr_none {0, "mgmt-nsf-rtr-none"};
-const Enum::YLeaf NsfRtr::mgmt_nsf_rtr_requester {1, "mgmt-nsf-rtr-requester"};
-const Enum::YLeaf NsfRtr::mgmt_nsf_rtr_receiver {2, "mgmt-nsf-rtr-receiver"};
-
-const Enum::YLeaf IpfrrTbrkr::downstream {0, "downstream"};
-const Enum::YLeaf IpfrrTbrkr::line_card_disjoint {1, "line-card-disjoint"};
-const Enum::YLeaf IpfrrTbrkr::backup_metric {2, "backup-metric"};
-const Enum::YLeaf IpfrrTbrkr::node_protect {3, "node-protect"};
-const Enum::YLeaf IpfrrTbrkr::primary_path {4, "primary-path"};
-const Enum::YLeaf IpfrrTbrkr::secondary_path {5, "secondary-path"};
-const Enum::YLeaf IpfrrTbrkr::srlg_disjoint {6, "srlg-disjoint"};
-const Enum::YLeaf IpfrrTbrkr::interface_disjoint {7, "interface-disjoint"};
-const Enum::YLeaf IpfrrTbrkr::tunnel {8, "tunnel"};
-const Enum::YLeaf IpfrrTbrkr::post_convergence {9, "post-convergence"};
-
-const Enum::YLeaf IgpteLibBwModel::rdm {0, "rdm"};
-const Enum::YLeaf IgpteLibBwModel::mam {1, "mam"};
-const Enum::YLeaf IgpteLibBwModel::not_set {2, "not-set"};
-
-const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_none {0, "mgmt-igp-subnet-type-none"};
-const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_p2p {1, "mgmt-igp-subnet-type-p2p"};
-const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_broadcast {2, "mgmt-igp-subnet-type-broadcast"};
-const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_nbma {3, "mgmt-igp-subnet-type-nbma"};
-const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_p2mp {4, "mgmt-igp-subnet-type-p2mp"};
-const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_loop_back {5, "mgmt-igp-subnet-type-loop-back"};
-const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_max {6, "mgmt-igp-subnet-type-max"};
-
-const Enum::YLeaf Authentication::mgmt_ospf_auth_none {0, "mgmt-ospf-auth-none"};
-const Enum::YLeaf Authentication::mgmt_ospf_auth_ct {1, "mgmt-ospf-auth-ct"};
-const Enum::YLeaf Authentication::mgmt_ospf_auth_md {2, "mgmt-ospf-auth-md"};
-const Enum::YLeaf Authentication::mgmt_ospf_auth_kc {3, "mgmt-ospf-auth-kc"};
-
-const Enum::YLeaf OspfShNnhValTypes::mgmt_nnh_val_type_ip_addr {1, "mgmt-nnh-val-type-ip-addr"};
-const Enum::YLeaf OspfShNnhValTypes::mgmt_nnh_val_type_if_index {2, "mgmt-nnh-val-type-if-index"};
-
-const Enum::YLeaf UloopAvoidance::none {0, "none"};
-const Enum::YLeaf UloopAvoidance::protected_prefixes {1, "protected-prefixes"};
-const Enum::YLeaf UloopAvoidance::all_prefixes {2, "all-prefixes"};
-const Enum::YLeaf UloopAvoidance::segment_routing_uloop {3, "segment-routing-uloop"};
+const Enum::YLeaf OspfLs::router {1, "router"};
+const Enum::YLeaf OspfLs::network {2, "network"};
+const Enum::YLeaf OspfLs::summary {3, "summary"};
+const Enum::YLeaf OspfLs::asbr_summary {4, "asbr-summary"};
+const Enum::YLeaf OspfLs::external {5, "external"};
+const Enum::YLeaf OspfLs::nssa_external {7, "nssa-external"};
+const Enum::YLeaf OspfLs::opaque_link {9, "opaque-link"};
+const Enum::YLeaf OspfLs::opaque_area {10, "opaque-area"};
+const Enum::YLeaf OspfLs::opaque_as {11, "opaque-as"};
+
+const Enum::YLeaf OspfShOpqRiPceAddrTypes::mgmt_ospf_opq_pce_addr_type_invalid {0, "mgmt-ospf-opq-pce-addr-type-invalid"};
+const Enum::YLeaf OspfShOpqRiPceAddrTypes::mgmt_ospf_opq_pce_addr_type_ipv4 {1, "mgmt-ospf-opq-pce-addr-type-ipv4"};
+const Enum::YLeaf OspfShOpqRiPceAddrTypes::mgmt_ospf_opq_pce_addr_type_ipv6 {2, "mgmt-ospf-opq-pce-addr-type-ipv6"};
+
+const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_unknown {0, "mgmt-ospf-opq-ri-tlv-type-unknown"};
+const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_rtrcap {1, "mgmt-ospf-opq-ri-tlv-type-rtrcap"};
+const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_pce_discovery {2, "mgmt-ospf-opq-ri-tlv-type-pce-discovery"};
+const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_sr_algo {3, "mgmt-ospf-opq-ri-tlv-type-sr-algo"};
+const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_sr_range {4, "mgmt-ospf-opq-ri-tlv-type-sr-range"};
+const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_node_msd {5, "mgmt-ospf-opq-ri-tlv-type-node-msd"};
+const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_srlb {6, "mgmt-ospf-opq-ri-tlv-type-srlb"};
+const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_host_name {7, "mgmt-ospf-opq-ri-tlv-type-host-name"};
+
+const Enum::YLeaf OspfLsaOpqRiScope::mgmt_lsa_opq_ri_scope_link {9, "mgmt-lsa-opq-ri-scope-link"};
+const Enum::YLeaf OspfLsaOpqRiScope::mgmt_lsa_opq_ri_scope_area {10, "mgmt-lsa-opq-ri-scope-area"};
+const Enum::YLeaf OspfLsaOpqRiScope::mgmt_lsa_opq_ri_scope_as {11, "mgmt-lsa-opq-ri-scope-as"};
+
+const Enum::YLeaf OspfGrReason::mgmt_gr_reason_unknown {0, "mgmt-gr-reason-unknown"};
+const Enum::YLeaf OspfGrReason::mgmt_gr_reason_sw_restart {1, "mgmt-gr-reason-sw-restart"};
+const Enum::YLeaf OspfGrReason::mgmt_gr_reason_sw_upgrade {2, "mgmt-gr-reason-sw-upgrade"};
+const Enum::YLeaf OspfGrReason::mgmt_gr_reason_switchover {3, "mgmt-gr-reason-switchover"};
+
+const Enum::YLeaf Stlv::mgmt_rrr_link_type {1, "mgmt-rrr-link-type"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_id {2, "mgmt-rrr-link-id"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_local_if_addr {3, "mgmt-rrr-link-local-if-addr"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_remote_if_addr {4, "mgmt-rrr-link-remote-if-addr"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_metric {5, "mgmt-rrr-link-metric"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_max_bw {6, "mgmt-rrr-link-max-bw"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_max_reservable_bw {7, "mgmt-rrr-link-max-reservable-bw"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_unreserved_bw {8, "mgmt-rrr-link-unreserved-bw"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_re_source_class {9, "mgmt-rrr-link-re-source-class"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_in_out_if_id {11, "mgmt-rrr-link-in-out-if-id"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_if_switching_cap_desc {15, "mgmt-rrr-link-if-switching-cap-desc"};
+const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_srlg {16, "mgmt-ospf-rrr-link-srlg"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_bw_constraints_sub {17, "mgmt-rrr-link-bw-constraints-sub"};
+const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_ext_admin_sub {26, "mgmt-ospf-rrr-link-ext-admin-sub"};
+const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_uni_delay {27, "mgmt-ospf-rrr-link-uni-delay"};
+const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_uni_min_max_delay {28, "mgmt-ospf-rrr-link-uni-min-max-delay"};
+const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_uni_delay_var_iance {29, "mgmt-ospf-rrr-link-uni-delay-var-iance"};
+const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_uni_link_loss {30, "mgmt-ospf-rrr-link-uni-link-loss"};
+const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_uni_residual_bw {31, "mgmt-ospf-rrr-link-uni-residual-bw"};
+const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_uni_available_bw {32, "mgmt-ospf-rrr-link-uni-available-bw"};
+const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_uni_utilized_bw {33, "mgmt-ospf-rrr-link-uni-utilized-bw"};
+const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_max_reservable_bw_sub {32768, "mgmt-ospf-rrr-link-max-reservable-bw-sub"};
+const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_unreserved_bw_sub {32769, "mgmt-ospf-rrr-link-unreserved-bw-sub"};
+const Enum::YLeaf Stlv::mgmt_rrr_link_igp_metric {32770, "mgmt-rrr-link-igp-metric"};
+const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_ext_admin_sub_backward {32771, "mgmt-ospf-rrr-link-ext-admin-sub-backward"};
+
+const Enum::YLeaf ExMetric::mgmt_ex_metric_type_none {0, "mgmt-ex-metric-type-none"};
+const Enum::YLeaf ExMetric::mgmt_ex_metric_type_1 {1, "mgmt-ex-metric-type-1"};
+const Enum::YLeaf ExMetric::mgmt_ex_metric_type_2 {2, "mgmt-ex-metric-type-2"};
 
 const Enum::YLeaf OspfLinkTypes::mgmt_rtr_link {1, "mgmt-rtr-link"};
 const Enum::YLeaf OspfLinkTypes::mgmt_trans_link {2, "mgmt-trans-link"};
 const Enum::YLeaf OspfLinkTypes::mgmt_stub_net {3, "mgmt-stub-net"};
 const Enum::YLeaf OspfLinkTypes::mgmt_vitural_link {4, "mgmt-vitural-link"};
-
-const Enum::YLeaf SrmsMiSrcEB::none {0, "none"};
-const Enum::YLeaf SrmsMiSrcEB::local {1, "local"};
-const Enum::YLeaf SrmsMiSrcEB::remote {2, "remote"};
-
-const Enum::YLeaf OspfInterfaceState::mgmt_ospf_ifs_down {0, "mgmt-ospf-ifs-down"};
-const Enum::YLeaf OspfInterfaceState::mgmt_ospf_ifs_loop_back {1, "mgmt-ospf-ifs-loop-back"};
-const Enum::YLeaf OspfInterfaceState::mgmt_ospf_ifs_waiting {2, "mgmt-ospf-ifs-waiting"};
-const Enum::YLeaf OspfInterfaceState::mgmt_ospf_ifs_point_to_m_point {3, "mgmt-ospf-ifs-point-to-m-point"};
-const Enum::YLeaf OspfInterfaceState::mgmt_ospf_ifs_point_to_point {4, "mgmt-ospf-ifs-point-to-point"};
-const Enum::YLeaf OspfInterfaceState::mgmt_ospf_ifs_dr {5, "mgmt-ospf-ifs-dr"};
-const Enum::YLeaf OspfInterfaceState::mgmt_ospf_ifs_backup {6, "mgmt-ospf-ifs-backup"};
-const Enum::YLeaf OspfInterfaceState::mgmt_ospf_ifs_other {7, "mgmt-ospf-ifs-other"};
-
-const Enum::YLeaf Ipfrr::none {0, "none"};
-const Enum::YLeaf Ipfrr::per_link {1, "per-link"};
-const Enum::YLeaf Ipfrr::per_prefix {2, "per-prefix"};
-
-const Enum::YLeaf OspfSrgbStatus::not_allocated {0, "not-allocated"};
-const Enum::YLeaf OspfSrgbStatus::pending {1, "pending"};
-const Enum::YLeaf OspfSrgbStatus::allocated {2, "allocated"};
-
-const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_none {0, "ospf-se-res-fail-none"};
-const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_no_route {1, "ospf-se-res-fail-no-route"};
-const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_inv_route_type {2, "ospf-se-res-fail-inv-route-type"};
-const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_default_route {3, "ospf-se-res-fail-default-route"};
-const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_intra_multi_home_d {4, "ospf-se-res-fail-intra-multi-home-d"};
-const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_no_path {5, "ospf-se-res-fail-no-path"};
-const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_no_epl {6, "ospf-se-res-fail-no-epl"};
-const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_area_not_sr_enable {7, "ospf-se-res-fail-area-not-sr-enable"};
-const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_epl_multi_home_d {8, "ospf-se-res-fail-epl-multi-home-d"};
-const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_no_n_bit_epl {9, "ospf-se-res-fail-no-n-bit-epl"};
-const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_no_na_bit_epl {10, "ospf-se-res-fail-no-na-bit-epl"};
-const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_area_mismatch {11, "ospf-se-res-fail-area-mismatch"};
-const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_rid_mismatch {12, "ospf-se-res-fail-rid-mismatch"};
-
-const Enum::YLeaf OspfSrlbStatus::unknown {0, "unknown"};
-const Enum::YLeaf OspfSrlbStatus::not_allocated {1, "not-allocated"};
-const Enum::YLeaf OspfSrlbStatus::allocated {2, "allocated"};
-
-const Enum::YLeaf SrDp::mgmt_ospf_sr_dp_none {0, "mgmt-ospf-sr-dp-none"};
-const Enum::YLeaf SrDp::mgmt_ospf_sr_dp_mpls {1, "mgmt-ospf-sr-dp-mpls"};
-
-const Enum::YLeaf Interface::mgmt_if_broadcast {1, "mgmt-if-broadcast"};
-const Enum::YLeaf Interface::mgmt_if_nonbroadcast {2, "mgmt-if-nonbroadcast"};
-const Enum::YLeaf Interface::mgmt_if_point_to_point {3, "mgmt-if-point-to-point"};
-const Enum::YLeaf Interface::mgmt_if_point_to_m_point {4, "mgmt-if-point-to-m-point"};
-const Enum::YLeaf Interface::mgmt_if_p2mp_non_bcast {5, "mgmt-if-p2mp-non-bcast"};
-const Enum::YLeaf Interface::mgmt_if_virtual_link {6, "mgmt-if-virtual-link"};
-const Enum::YLeaf Interface::mgmt_if_sham_link {7, "mgmt-if-sham-link"};
-const Enum::YLeaf Interface::mgmt_if_loop_back {8, "mgmt-if-loop-back"};
 
 const Enum::YLeaf OspfInternalLsaTypes::mgmt_rtr_type {1, "mgmt-rtr-type"};
 const Enum::YLeaf OspfInternalLsaTypes::mgmt_ntwk_type {2, "mgmt-ntwk-type"};
@@ -19883,9 +19895,28 @@ const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_ri_type {9, "mgmt-opq-ri-type"}
 const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_epl_type {10, "mgmt-opq-epl-type"};
 const Enum::YLeaf OspfInternalLsaTypes::mgmt_opq_ell_type {11, "mgmt-opq-ell-type"};
 
-const Enum::YLeaf ExMetric::mgmt_ex_metric_type_none {0, "mgmt-ex-metric-type-none"};
-const Enum::YLeaf ExMetric::mgmt_ex_metric_type_1 {1, "mgmt-ex-metric-type-1"};
-const Enum::YLeaf ExMetric::mgmt_ex_metric_type_2 {2, "mgmt-ex-metric-type-2"};
+const Enum::YLeaf Timer::mgmt_db_stop {0, "mgmt-db-stop"};
+const Enum::YLeaf Timer::mgmt_db_refresh {1, "mgmt-db-refresh"};
+const Enum::YLeaf Timer::mgmt_db_checksum {2, "mgmt-db-checksum"};
+const Enum::YLeaf Timer::mgmt_db_max_age {3, "mgmt-db-max-age"};
+
+const Enum::YLeaf TimerTable::mgmt_db_no_table {0, "mgmt-db-no-table"};
+const Enum::YLeaf TimerTable::mgmt_db_sec_table {1, "mgmt-db-sec-table"};
+const Enum::YLeaf TimerTable::mgmt_db_buffer_table {2, "mgmt-db-buffer-table"};
+const Enum::YLeaf TimerTable::mgmt_db_min_table {3, "mgmt-db-min-table"};
+
+const Enum::YLeaf OspfSrlbStatus::unknown {0, "unknown"};
+const Enum::YLeaf OspfSrlbStatus::not_allocated {1, "not-allocated"};
+const Enum::YLeaf OspfSrlbStatus::allocated {2, "allocated"};
+
+const Enum::YLeaf OspfSrgbStatus::not_allocated {0, "not-allocated"};
+const Enum::YLeaf OspfSrgbStatus::pending {1, "pending"};
+const Enum::YLeaf OspfSrgbStatus::allocated {2, "allocated"};
+
+const Enum::YLeaf UloopAvoidance::none {0, "none"};
+const Enum::YLeaf UloopAvoidance::protected_prefixes {1, "protected-prefixes"};
+const Enum::YLeaf UloopAvoidance::all_prefixes {2, "all-prefixes"};
+const Enum::YLeaf UloopAvoidance::segment_routing_uloop {3, "segment-routing-uloop"};
 
 const Enum::YLeaf GsState::mgmt_gs_init {0, "mgmt-gs-init"};
 const Enum::YLeaf GsState::mgmt_gs_normal {1, "mgmt-gs-normal"};
@@ -19894,9 +19925,18 @@ const Enum::YLeaf GsState::mgmt_gs_flush {3, "mgmt-gs-flush"};
 const Enum::YLeaf GsState::mgmt_gs_hello {4, "mgmt-gs-hello"};
 const Enum::YLeaf GsState::mgmt_gs_quiet {5, "mgmt-gs-quiet"};
 
-const Enum::YLeaf OspfShOpqRiPceAddrTypes::mgmt_ospf_opq_pce_addr_type_invalid {0, "mgmt-ospf-opq-pce-addr-type-invalid"};
-const Enum::YLeaf OspfShOpqRiPceAddrTypes::mgmt_ospf_opq_pce_addr_type_ipv4 {1, "mgmt-ospf-opq-pce-addr-type-ipv4"};
-const Enum::YLeaf OspfShOpqRiPceAddrTypes::mgmt_ospf_opq_pce_addr_type_ipv6 {2, "mgmt-ospf-opq-pce-addr-type-ipv6"};
+const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_none {0, "mgmt-max-metric-unset-none"};
+const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_bgp {1, "mgmt-max-metric-unset-bgp"};
+const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_timer {2, "mgmt-max-metric-unset-timer"};
+const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_cfg {3, "mgmt-max-metric-unset-cfg"};
+const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_process_cleared {4, "mgmt-max-metric-unset-process-cleared"};
+const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_over_write {5, "mgmt-max-metric-unset-over-write"};
+
+const Enum::YLeaf OspfMaxMetricAbrOffReasons::ospf_max_metric_abr_off_reason_none {0, "ospf-max-metric-abr-off-reason-none"};
+const Enum::YLeaf OspfMaxMetricAbrOffReasons::ospf_max_metric_abr_off_reason_no_nbr {1, "ospf-max-metric-abr-off-reason-no-nbr"};
+const Enum::YLeaf OspfMaxMetricAbrOffReasons::ospf_max_metric_abr_off_reason_new_nbr {2, "ospf-max-metric-abr-off-reason-new-nbr"};
+const Enum::YLeaf OspfMaxMetricAbrOffReasons::ospf_max_metric_abr_off_reason_nbr_full {4, "ospf-max-metric-abr-off-reason-nbr-full"};
+const Enum::YLeaf OspfMaxMetricAbrOffReasons::ospf_max_metric_abr_off_reason_flush_p_end {8, "ospf-max-metric-abr-off-reason-flush-p-end"};
 
 const Enum::YLeaf MaxMetricSetReason::mgmt_max_metric_on_proc_migration {0, "mgmt-max-metric-on-proc-migration"};
 const Enum::YLeaf MaxMetricSetReason::mgmt_max_metric_on_proc_restart {1, "mgmt-max-metric-on-proc-restart"};
@@ -19904,6 +19944,97 @@ const Enum::YLeaf MaxMetricSetReason::mgmt_max_metric_on_switchover {2, "mgmt-ma
 const Enum::YLeaf MaxMetricSetReason::mgmt_max_metric_on_startup {3, "mgmt-max-metric-on-startup"};
 const Enum::YLeaf MaxMetricSetReason::mgmt_max_metric_always {4, "mgmt-max-metric-always"};
 const Enum::YLeaf MaxMetricSetReason::mgmt_max_metric_reason_none {5, "mgmt-max-metric-reason-none"};
+
+const Enum::YLeaf SrUloopEvent::none {0, "none"};
+const Enum::YLeaf SrUloopEvent::link_down {1, "link-down"};
+const Enum::YLeaf SrUloopEvent::link_up {2, "link-up"};
+
+const Enum::YLeaf SrDp::mgmt_ospf_sr_dp_none {0, "mgmt-ospf-sr-dp-none"};
+const Enum::YLeaf SrDp::mgmt_ospf_sr_dp_mpls {1, "mgmt-ospf-sr-dp-mpls"};
+
+const Enum::YLeaf OspfBr::mgmt_d_type_abr_asbr {0, "mgmt-d-type-abr-asbr"};
+const Enum::YLeaf OspfBr::mgmt_d_type_asbr {1, "mgmt-d-type-asbr"};
+const Enum::YLeaf OspfBr::mgmt_d_type_abr {2, "mgmt-d-type-abr"};
+
+const Enum::YLeaf OspfSrAdjSidInactiveReason::ospf_adj_sid_inactive_none {0, "ospf-adj-sid-inactive-none"};
+const Enum::YLeaf OspfSrAdjSidInactiveReason::ospf_adj_sid_inactive_no_nbr {1, "ospf-adj-sid-inactive-no-nbr"};
+const Enum::YLeaf OspfSrAdjSidInactiveReason::ospf_adj_sid_inactive_no_nbr_addr {2, "ospf-adj-sid-inactive-no-nbr-addr"};
+const Enum::YLeaf OspfSrAdjSidInactiveReason::ospf_adj_sid_inactive_nbr_not_found {3, "ospf-adj-sid-inactive-nbr-not-found"};
+const Enum::YLeaf OspfSrAdjSidInactiveReason::ospf_adj_sid_inactive_out_of_srlb {4, "ospf-adj-sid-inactive-out-of-srlb"};
+const Enum::YLeaf OspfSrAdjSidInactiveReason::ospf_adj_sid_inactive_lsd_alloc_pending {5, "ospf-adj-sid-inactive-lsd-alloc-pending"};
+const Enum::YLeaf OspfSrAdjSidInactiveReason::ospf_adj_sid_inactive_no_srlb {6, "ospf-adj-sid-inactive-no-srlb"};
+const Enum::YLeaf OspfSrAdjSidInactiveReason::ospf_adj_sid_inactive_sr_not_enable {7, "ospf-adj-sid-inactive-sr-not-enable"};
+const Enum::YLeaf OspfSrAdjSidInactiveReason::ospf_adj_sid_inactive_dadj {8, "ospf-adj-sid-inactive-dadj"};
+
+const Enum::YLeaf IpfrrTbrkr::downstream {0, "downstream"};
+const Enum::YLeaf IpfrrTbrkr::line_card_disjoint {1, "line-card-disjoint"};
+const Enum::YLeaf IpfrrTbrkr::backup_metric {2, "backup-metric"};
+const Enum::YLeaf IpfrrTbrkr::node_protect {3, "node-protect"};
+const Enum::YLeaf IpfrrTbrkr::primary_path {4, "primary-path"};
+const Enum::YLeaf IpfrrTbrkr::secondary_path {5, "secondary-path"};
+const Enum::YLeaf IpfrrTbrkr::srlg_disjoint {6, "srlg-disjoint"};
+const Enum::YLeaf IpfrrTbrkr::interface_disjoint {7, "interface-disjoint"};
+const Enum::YLeaf IpfrrTbrkr::tunnel {8, "tunnel"};
+const Enum::YLeaf IpfrrTbrkr::post_convergence {9, "post-convergence"};
+
+const Enum::YLeaf Ipfrr::none {0, "none"};
+const Enum::YLeaf Ipfrr::per_link {1, "per-link"};
+const Enum::YLeaf Ipfrr::per_prefix {2, "per-prefix"};
+
+const Enum::YLeaf InterfaceState::mgmt_ifs_unknown {0, "mgmt-ifs-unknown"};
+const Enum::YLeaf InterfaceState::mgmt_ifs_admin_down {1, "mgmt-ifs-admin-down"};
+const Enum::YLeaf InterfaceState::mgmt_ifs_down {2, "mgmt-ifs-down"};
+const Enum::YLeaf InterfaceState::mgmt_ifs_up {3, "mgmt-ifs-up"};
+const Enum::YLeaf InterfaceState::mgmt_ifs_shutdown {4, "mgmt-ifs-shutdown"};
+
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_not_configured {0, "mgmt-not-configured"};
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_aes_128_cmac_96 {1, "mgmt-aes-128-cmac-96"};
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_hmac_sha1_12 {2, "mgmt-hmac-sha1-12"};
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_md5_16 {3, "mgmt-md5-16"};
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_sha1_20 {4, "mgmt-sha1-20"};
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_hmac_md5_16 {5, "mgmt-hmac-md5-16"};
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_hmac_sha1_20 {6, "mgmt-hmac-sha1-20"};
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_aes_128_cmac {7, "mgmt-aes-128-cmac"};
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_aes_256_cmac {8, "mgmt-aes-256-cmac"};
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_hmac_sha1_96 {9, "mgmt-hmac-sha1-96"};
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_hmac_sha_256 {10, "mgmt-hmac-sha-256"};
+const Enum::YLeaf OspfCrytographicAlgo::mgmt_hmac_sha1 {11, "mgmt-hmac-sha1"};
+
+const Enum::YLeaf Authentication::mgmt_ospf_auth_none {0, "mgmt-ospf-auth-none"};
+const Enum::YLeaf Authentication::mgmt_ospf_auth_ct {1, "mgmt-ospf-auth-ct"};
+const Enum::YLeaf Authentication::mgmt_ospf_auth_md {2, "mgmt-ospf-auth-md"};
+const Enum::YLeaf Authentication::mgmt_ospf_auth_kc {3, "mgmt-ospf-auth-kc"};
+
+const Enum::YLeaf OspfInterfaceState::mgmt_ospf_ifs_down {0, "mgmt-ospf-ifs-down"};
+const Enum::YLeaf OspfInterfaceState::mgmt_ospf_ifs_loop_back {1, "mgmt-ospf-ifs-loop-back"};
+const Enum::YLeaf OspfInterfaceState::mgmt_ospf_ifs_waiting {2, "mgmt-ospf-ifs-waiting"};
+const Enum::YLeaf OspfInterfaceState::mgmt_ospf_ifs_point_to_m_point {3, "mgmt-ospf-ifs-point-to-m-point"};
+const Enum::YLeaf OspfInterfaceState::mgmt_ospf_ifs_point_to_point {4, "mgmt-ospf-ifs-point-to-point"};
+const Enum::YLeaf OspfInterfaceState::mgmt_ospf_ifs_dr {5, "mgmt-ospf-ifs-dr"};
+const Enum::YLeaf OspfInterfaceState::mgmt_ospf_ifs_backup {6, "mgmt-ospf-ifs-backup"};
+const Enum::YLeaf OspfInterfaceState::mgmt_ospf_ifs_other {7, "mgmt-ospf-ifs-other"};
+
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_all {0, "mgmt-rib-protocol-all"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_connected {1, "mgmt-rib-protocol-connected"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_local {2, "mgmt-rib-protocol-local"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_static {3, "mgmt-rib-protocol-static"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_bgp {4, "mgmt-rib-protocol-bgp"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_rip {5, "mgmt-rib-protocol-rip"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_isis {6, "mgmt-rib-protocol-isis"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_ospf {7, "mgmt-rib-protocol-ospf"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_eigrp {8, "mgmt-rib-protocol-eigrp"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_dagr {9, "mgmt-rib-protocol-dagr"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_subscriber {10, "mgmt-rib-protocol-subscriber"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_application {11, "mgmt-rib-protocol-application"};
+const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_mobile {12, "mgmt-rib-protocol-mobile"};
+
+const Enum::YLeaf OspfShNnhValTypes::mgmt_nnh_val_type_ip_addr {1, "mgmt-nnh-val-type-ip-addr"};
+const Enum::YLeaf OspfShNnhValTypes::mgmt_nnh_val_type_if_index {2, "mgmt-nnh-val-type-if-index"};
+
+const Enum::YLeaf Lfa::mgmt_ospf_unknown_lfa {0, "mgmt-ospf-unknown-lfa"};
+const Enum::YLeaf Lfa::mgmt_ospf_direct_lfa {1, "mgmt-ospf-direct-lfa"};
+const Enum::YLeaf Lfa::mgmt_ospf_ti_lfa {2, "mgmt-ospf-ti-lfa"};
+const Enum::YLeaf Lfa::mgmt_ospf_remote_lfa {3, "mgmt-ospf-remote-lfa"};
 
 const Enum::YLeaf OspfRoute::mgmt_r_type_none {0, "mgmt-r-type-none"};
 const Enum::YLeaf OspfRoute::mgmt_r_type_other {1, "mgmt-r-type-other"};
@@ -19923,59 +20054,23 @@ const Enum::YLeaf OspfRoute::mgmt_r_type_nssa2 {8192, "mgmt-r-type-nssa2"};
 const Enum::YLeaf OspfRoute::mgmt_r_type_i_grp2_int {16384, "mgmt-r-type-i-grp2-int"};
 const Enum::YLeaf OspfRoute::mgmt_r_type_i_grp2_ext {32768, "mgmt-r-type-i-grp2-ext"};
 
-const Enum::YLeaf SrUloopEvent::none {0, "none"};
-const Enum::YLeaf SrUloopEvent::link_down {1, "link-down"};
-const Enum::YLeaf SrUloopEvent::link_up {2, "link-up"};
+const Enum::YLeaf NsfRtr::mgmt_nsf_rtr_none {0, "mgmt-nsf-rtr-none"};
+const Enum::YLeaf NsfRtr::mgmt_nsf_rtr_requester {1, "mgmt-nsf-rtr-requester"};
+const Enum::YLeaf NsfRtr::mgmt_nsf_rtr_receiver {2, "mgmt-nsf-rtr-receiver"};
 
-const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_unknown {0, "mgmt-ospf-opq-ri-tlv-type-unknown"};
-const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_rtrcap {1, "mgmt-ospf-opq-ri-tlv-type-rtrcap"};
-const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_pce_discovery {2, "mgmt-ospf-opq-ri-tlv-type-pce-discovery"};
-const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_sr_algo {3, "mgmt-ospf-opq-ri-tlv-type-sr-algo"};
-const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_sr_range {4, "mgmt-ospf-opq-ri-tlv-type-sr-range"};
-const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_node_msd {5, "mgmt-ospf-opq-ri-tlv-type-node-msd"};
-const Enum::YLeaf OspfShOpqRiTlvTypes::mgmt_ospf_opq_ri_tlv_type_srlb {6, "mgmt-ospf-opq-ri-tlv-type-srlb"};
+const Enum::YLeaf Interface::mgmt_if_broadcast {1, "mgmt-if-broadcast"};
+const Enum::YLeaf Interface::mgmt_if_nonbroadcast {2, "mgmt-if-nonbroadcast"};
+const Enum::YLeaf Interface::mgmt_if_point_to_point {3, "mgmt-if-point-to-point"};
+const Enum::YLeaf Interface::mgmt_if_point_to_m_point {4, "mgmt-if-point-to-m-point"};
+const Enum::YLeaf Interface::mgmt_if_p2mp_non_bcast {5, "mgmt-if-p2mp-non-bcast"};
+const Enum::YLeaf Interface::mgmt_if_virtual_link {6, "mgmt-if-virtual-link"};
+const Enum::YLeaf Interface::mgmt_if_sham_link {7, "mgmt-if-sham-link"};
+const Enum::YLeaf Interface::mgmt_if_loop_back {8, "mgmt-if-loop-back"};
 
-const Enum::YLeaf Timer::mgmt_db_stop {0, "mgmt-db-stop"};
-const Enum::YLeaf Timer::mgmt_db_refresh {1, "mgmt-db-refresh"};
-const Enum::YLeaf Timer::mgmt_db_checksum {2, "mgmt-db-checksum"};
-const Enum::YLeaf Timer::mgmt_db_max_age {3, "mgmt-db-max-age"};
-
-const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_none {0, "mgmt-max-metric-unset-none"};
-const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_bgp {1, "mgmt-max-metric-unset-bgp"};
-const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_timer {2, "mgmt-max-metric-unset-timer"};
-const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_cfg {3, "mgmt-max-metric-unset-cfg"};
-const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_process_cleared {4, "mgmt-max-metric-unset-process-cleared"};
-const Enum::YLeaf MaxMetricUnsetReason::mgmt_max_metric_unset_over_write {5, "mgmt-max-metric-unset-over-write"};
-
-const Enum::YLeaf OspfBr::mgmt_d_type_abr_asbr {0, "mgmt-d-type-abr-asbr"};
-const Enum::YLeaf OspfBr::mgmt_d_type_asbr {1, "mgmt-d-type-asbr"};
-const Enum::YLeaf OspfBr::mgmt_d_type_abr {2, "mgmt-d-type-abr"};
-
-const Enum::YLeaf Stlv::mgmt_rrr_link_type {1, "mgmt-rrr-link-type"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_id {2, "mgmt-rrr-link-id"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_local_if_addr {3, "mgmt-rrr-link-local-if-addr"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_remote_if_addr {4, "mgmt-rrr-link-remote-if-addr"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_metric {5, "mgmt-rrr-link-metric"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_max_bw {6, "mgmt-rrr-link-max-bw"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_max_reservable_bw {7, "mgmt-rrr-link-max-reservable-bw"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_unreserved_bw {8, "mgmt-rrr-link-unreserved-bw"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_re_source_class {9, "mgmt-rrr-link-re-source-class"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_in_out_if_id {11, "mgmt-rrr-link-in-out-if-id"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_if_switching_cap_desc {15, "mgmt-rrr-link-if-switching-cap-desc"};
-const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_srlg {16, "mgmt-ospf-rrr-link-srlg"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_bw_constraints_sub {17, "mgmt-rrr-link-bw-constraints-sub"};
-const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_ext_admin_sub {26, "mgmt-ospf-rrr-link-ext-admin-sub"};
-const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_uni_delay {27, "mgmt-ospf-rrr-link-uni-delay"};
-const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_max_reservable_bw_sub {32768, "mgmt-ospf-rrr-link-max-reservable-bw-sub"};
-const Enum::YLeaf Stlv::mgmt_ospf_rrr_link_unreserved_bw_sub {32769, "mgmt-ospf-rrr-link-unreserved-bw-sub"};
-const Enum::YLeaf Stlv::mgmt_rrr_link_igp_metric {32770, "mgmt-rrr-link-igp-metric"};
-
-const Enum::YLeaf SrmsMiFlagEB::false_ {0, "false"};
-const Enum::YLeaf SrmsMiFlagEB::true_ {1, "true"};
-
-const Enum::YLeaf SrmsMiAfEB::none {0, "none"};
-const Enum::YLeaf SrmsMiAfEB::ipv4 {1, "ipv4"};
-const Enum::YLeaf SrmsMiAfEB::ipv6 {2, "ipv6"};
+const Enum::YLeaf DrBdrState::mgmt_dbdr_none {0, "mgmt-dbdr-none"};
+const Enum::YLeaf DrBdrState::mgmt_dbdr_dr {1, "mgmt-dbdr-dr"};
+const Enum::YLeaf DrBdrState::mgmt_dbdr_bdr {2, "mgmt-dbdr-bdr"};
+const Enum::YLeaf DrBdrState::mgmt_dbdr_dr_other {3, "mgmt-dbdr-dr-other"};
 
 const Enum::YLeaf NeighborState::mgmt_nbr_down {0, "mgmt-nbr-down"};
 const Enum::YLeaf NeighborState::mgmt_nbr_attempt {1, "mgmt-nbr-attempt"};
@@ -19987,40 +20082,42 @@ const Enum::YLeaf NeighborState::mgmt_nbr_load_ing {6, "mgmt-nbr-load-ing"};
 const Enum::YLeaf NeighborState::mgmt_nbr_full {7, "mgmt-nbr-full"};
 const Enum::YLeaf NeighborState::mgmt_nbr_sc_virtual {8, "mgmt-nbr-sc-virtual"};
 
-const Enum::YLeaf InterfaceState::mgmt_ifs_unknown {0, "mgmt-ifs-unknown"};
-const Enum::YLeaf InterfaceState::mgmt_ifs_admin_down {1, "mgmt-ifs-admin-down"};
-const Enum::YLeaf InterfaceState::mgmt_ifs_down {2, "mgmt-ifs-down"};
-const Enum::YLeaf InterfaceState::mgmt_ifs_up {3, "mgmt-ifs-up"};
-const Enum::YLeaf InterfaceState::mgmt_ifs_shutdown {4, "mgmt-ifs-shutdown"};
-
 const Enum::YLeaf MplsTeOptTlv::mpls_te_opt_tlv_type_none {0, "mpls-te-opt-tlv-type-none"};
 const Enum::YLeaf MplsTeOptTlv::mpls_te_opt_tlv_type_srlg {1, "mpls-te-opt-tlv-type-srlg"};
 const Enum::YLeaf MplsTeOptTlv::mpls_te_opt_tlv_type_bc {2, "mpls-te-opt-tlv-type-bc"};
 const Enum::YLeaf MplsTeOptTlv::mpls_te_opt_tlv_type_ixcd {3, "mpls-te-opt-tlv-type-ixcd"};
 const Enum::YLeaf MplsTeOptTlv::mpls_te_opt_tlv_type_uni_delay {4, "mpls-te-opt-tlv-type-uni-delay"};
 
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_all {0, "mgmt-rib-protocol-all"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_connected {1, "mgmt-rib-protocol-connected"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_local {2, "mgmt-rib-protocol-local"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_static {3, "mgmt-rib-protocol-static"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_bgp {4, "mgmt-rib-protocol-bgp"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_rip {5, "mgmt-rib-protocol-rip"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_isis {6, "mgmt-rib-protocol-isis"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_ospf {7, "mgmt-rib-protocol-ospf"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_eigrp {8, "mgmt-rib-protocol-eigrp"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_dagr {9, "mgmt-rib-protocol-dagr"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_subscriber {10, "mgmt-rib-protocol-subscriber"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_application {11, "mgmt-rib-protocol-application"};
-const Enum::YLeaf RedistProtocol::mgmt_rib_protocol_mobile {12, "mgmt-rib-protocol-mobile"};
+const Enum::YLeaf IgpteLibBwModel::rdm {0, "rdm"};
+const Enum::YLeaf IgpteLibBwModel::mam {1, "mam"};
+const Enum::YLeaf IgpteLibBwModel::not_set {2, "not-set"};
 
-const Enum::YLeaf Lfa::mgmt_ospf_unknown_lfa {0, "mgmt-ospf-unknown-lfa"};
-const Enum::YLeaf Lfa::mgmt_ospf_direct_lfa {1, "mgmt-ospf-direct-lfa"};
-const Enum::YLeaf Lfa::mgmt_ospf_ti_lfa {2, "mgmt-ospf-ti-lfa"};
-const Enum::YLeaf Lfa::mgmt_ospf_remote_lfa {3, "mgmt-ospf-remote-lfa"};
+const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_none {0, "mgmt-igp-subnet-type-none"};
+const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_p2p {1, "mgmt-igp-subnet-type-p2p"};
+const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_broadcast {2, "mgmt-igp-subnet-type-broadcast"};
+const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_nbma {3, "mgmt-igp-subnet-type-nbma"};
+const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_p2mp {4, "mgmt-igp-subnet-type-p2mp"};
+const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_loop_back {5, "mgmt-igp-subnet-type-loop-back"};
+const Enum::YLeaf LinkSubnet::mgmt_igp_subnet_type_max {6, "mgmt-igp-subnet-type-max"};
 
-const Enum::YLeaf OspfLsaOpqRiScope::mgmt_lsa_opq_ri_scope_link {9, "mgmt-lsa-opq-ri-scope-link"};
-const Enum::YLeaf OspfLsaOpqRiScope::mgmt_lsa_opq_ri_scope_area {10, "mgmt-lsa-opq-ri-scope-area"};
-const Enum::YLeaf OspfLsaOpqRiScope::mgmt_lsa_opq_ri_scope_as {11, "mgmt-lsa-opq-ri-scope-as"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_none {0, "ospf-se-res-fail-none"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_no_route {1, "ospf-se-res-fail-no-route"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_inv_route_type {2, "ospf-se-res-fail-inv-route-type"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_default_route {3, "ospf-se-res-fail-default-route"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_intra_multi_home_d {4, "ospf-se-res-fail-intra-multi-home-d"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_no_path {5, "ospf-se-res-fail-no-path"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_no_epl {6, "ospf-se-res-fail-no-epl"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_area_not_sr_enable {7, "ospf-se-res-fail-area-not-sr-enable"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_epl_multi_home_d {8, "ospf-se-res-fail-epl-multi-home-d"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_no_n_bit_epl {9, "ospf-se-res-fail-no-n-bit-epl"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_no_na_bit_epl {10, "ospf-se-res-fail-no-na-bit-epl"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_area_mismatch {11, "ospf-se-res-fail-area-mismatch"};
+const Enum::YLeaf OspfSrEndpResFailReason::ospf_se_res_fail_rid_mismatch {12, "ospf-se-res-fail-rid-mismatch"};
+
+const Enum::YLeaf OspfSrPolMetricMode::mgmt_ospf_metric_mode_none {0, "mgmt-ospf-metric-mode-none"};
+const Enum::YLeaf OspfSrPolMetricMode::mgmt_ospf_metric_mode_relative {1, "mgmt-ospf-metric-mode-relative"};
+const Enum::YLeaf OspfSrPolMetricMode::mgmt_ospf_metric_mode_constant {3, "mgmt-ospf-metric-mode-constant"};
+const Enum::YLeaf OspfSrPolMetricMode::mgmt_ospf_metric_mode_absolute {4, "mgmt-ospf-metric-mode-absolute"};
 
 const Enum::YLeaf Lsa::mgmt_lsa_type_rtr {1, "mgmt-lsa-type-rtr"};
 const Enum::YLeaf Lsa::mgmt_lsa_type_net {2, "mgmt-lsa-type-net"};
@@ -20034,54 +20131,16 @@ const Enum::YLeaf Lsa::mgmt_lsa_type_opq_link {9, "mgmt-lsa-type-opq-link"};
 const Enum::YLeaf Lsa::mgmt_lsa_type_opq_area {10, "mgmt-lsa-type-opq-area"};
 const Enum::YLeaf Lsa::mgmt_lsa_type_opq_as {11, "mgmt-lsa-type-opq-as"};
 
-const Enum::YLeaf OspfSrPolMetricMode::mgmt_ospf_metric_mode_none {0, "mgmt-ospf-metric-mode-none"};
-const Enum::YLeaf OspfSrPolMetricMode::mgmt_ospf_metric_mode_relative {1, "mgmt-ospf-metric-mode-relative"};
-const Enum::YLeaf OspfSrPolMetricMode::mgmt_ospf_metric_mode_constant {3, "mgmt-ospf-metric-mode-constant"};
-const Enum::YLeaf OspfSrPolMetricMode::mgmt_ospf_metric_mode_absolute {4, "mgmt-ospf-metric-mode-absolute"};
+const Enum::YLeaf SrmsMiFlagEB::false_ {0, "false"};
+const Enum::YLeaf SrmsMiFlagEB::true_ {1, "true"};
 
-const Enum::YLeaf DrBdrState::mgmt_dbdr_none {0, "mgmt-dbdr-none"};
-const Enum::YLeaf DrBdrState::mgmt_dbdr_dr {1, "mgmt-dbdr-dr"};
-const Enum::YLeaf DrBdrState::mgmt_dbdr_bdr {2, "mgmt-dbdr-bdr"};
-const Enum::YLeaf DrBdrState::mgmt_dbdr_dr_other {3, "mgmt-dbdr-dr-other"};
+const Enum::YLeaf SrmsMiAfEB::none {0, "none"};
+const Enum::YLeaf SrmsMiAfEB::ipv4 {1, "ipv4"};
+const Enum::YLeaf SrmsMiAfEB::ipv6 {2, "ipv6"};
 
-const Enum::YLeaf OspfCrytographicAlgo::mgmt_not_configured {0, "mgmt-not-configured"};
-const Enum::YLeaf OspfCrytographicAlgo::mgmt_aes_128_cmac_96 {1, "mgmt-aes-128-cmac-96"};
-const Enum::YLeaf OspfCrytographicAlgo::mgmt_hmac_sha1_12 {2, "mgmt-hmac-sha1-12"};
-const Enum::YLeaf OspfCrytographicAlgo::mgmt_md5_16 {3, "mgmt-md5-16"};
-const Enum::YLeaf OspfCrytographicAlgo::mgmt_sha1_20 {4, "mgmt-sha1-20"};
-const Enum::YLeaf OspfCrytographicAlgo::mgmt_hmac_md5_16 {5, "mgmt-hmac-md5-16"};
-const Enum::YLeaf OspfCrytographicAlgo::mgmt_hmac_sha1_20 {6, "mgmt-hmac-sha1-20"};
-const Enum::YLeaf OspfCrytographicAlgo::mgmt_aes_128_cmac {7, "mgmt-aes-128-cmac"};
-const Enum::YLeaf OspfCrytographicAlgo::mgmt_aes_256_cmac {8, "mgmt-aes-256-cmac"};
-const Enum::YLeaf OspfCrytographicAlgo::mgmt_hmac_sha1_96 {9, "mgmt-hmac-sha1-96"};
-const Enum::YLeaf OspfCrytographicAlgo::mgmt_hmac_sha_256 {10, "mgmt-hmac-sha-256"};
-const Enum::YLeaf OspfCrytographicAlgo::mgmt_hmac_sha1 {11, "mgmt-hmac-sha1"};
-
-const Enum::YLeaf TimerTable::mgmt_db_no_table {0, "mgmt-db-no-table"};
-const Enum::YLeaf TimerTable::mgmt_db_sec_table {1, "mgmt-db-sec-table"};
-const Enum::YLeaf TimerTable::mgmt_db_buffer_table {2, "mgmt-db-buffer-table"};
-const Enum::YLeaf TimerTable::mgmt_db_min_table {3, "mgmt-db-min-table"};
-
-const Enum::YLeaf OspfGrReason::mgmt_gr_reason_unknown {0, "mgmt-gr-reason-unknown"};
-const Enum::YLeaf OspfGrReason::mgmt_gr_reason_sw_restart {1, "mgmt-gr-reason-sw-restart"};
-const Enum::YLeaf OspfGrReason::mgmt_gr_reason_sw_upgrade {2, "mgmt-gr-reason-sw-upgrade"};
-const Enum::YLeaf OspfGrReason::mgmt_gr_reason_switchover {3, "mgmt-gr-reason-switchover"};
-
-const Enum::YLeaf OspfMaxMetricAbrOffReasons::ospf_max_metric_abr_off_reason_none {0, "ospf-max-metric-abr-off-reason-none"};
-const Enum::YLeaf OspfMaxMetricAbrOffReasons::ospf_max_metric_abr_off_reason_no_nbr {1, "ospf-max-metric-abr-off-reason-no-nbr"};
-const Enum::YLeaf OspfMaxMetricAbrOffReasons::ospf_max_metric_abr_off_reason_new_nbr {2, "ospf-max-metric-abr-off-reason-new-nbr"};
-const Enum::YLeaf OspfMaxMetricAbrOffReasons::ospf_max_metric_abr_off_reason_nbr_full {4, "ospf-max-metric-abr-off-reason-nbr-full"};
-const Enum::YLeaf OspfMaxMetricAbrOffReasons::ospf_max_metric_abr_off_reason_flush_p_end {8, "ospf-max-metric-abr-off-reason-flush-p-end"};
-
-const Enum::YLeaf OspfLs::router {1, "router"};
-const Enum::YLeaf OspfLs::network {2, "network"};
-const Enum::YLeaf OspfLs::summary {3, "summary"};
-const Enum::YLeaf OspfLs::asbr_summary {4, "asbr-summary"};
-const Enum::YLeaf OspfLs::external {5, "external"};
-const Enum::YLeaf OspfLs::nssa_external {7, "nssa-external"};
-const Enum::YLeaf OspfLs::opaque_link {9, "opaque-link"};
-const Enum::YLeaf OspfLs::opaque_area {10, "opaque-area"};
-const Enum::YLeaf OspfLs::opaque_as {11, "opaque-as"};
+const Enum::YLeaf SrmsMiSrcEB::none {0, "none"};
+const Enum::YLeaf SrmsMiSrcEB::local {1, "local"};
+const Enum::YLeaf SrmsMiSrcEB::remote {2, "remote"};
 
 
 }

@@ -1251,17 +1251,17 @@ const Enum::YLeaf CpeExtLldpPwrSrc::backupSrc {4, "backupSrc"};
 const Enum::YLeaf CpeExtLldpPwrSrc::primarySrc {5, "primarySrc"};
 const Enum::YLeaf CpeExtLldpPwrSrc::unknown {6, "unknown"};
 
+const Enum::YLeaf CpeExtPwrPriority::critical {1, "critical"};
+const Enum::YLeaf CpeExtPwrPriority::high {2, "high"};
+const Enum::YLeaf CpeExtPwrPriority::low {3, "low"};
+const Enum::YLeaf CpeExtPwrPriority::unknown {4, "unknown"};
+
 const Enum::YLeaf CpeExtLldpPwrClassOrZero::unknown {0, "unknown"};
 const Enum::YLeaf CpeExtLldpPwrClassOrZero::class0 {1, "class0"};
 const Enum::YLeaf CpeExtLldpPwrClassOrZero::class1 {2, "class1"};
 const Enum::YLeaf CpeExtLldpPwrClassOrZero::class2 {3, "class2"};
 const Enum::YLeaf CpeExtLldpPwrClassOrZero::class3 {4, "class3"};
 const Enum::YLeaf CpeExtLldpPwrClassOrZero::class4 {5, "class4"};
-
-const Enum::YLeaf CpeExtPwrPriority::critical {1, "critical"};
-const Enum::YLeaf CpeExtPwrPriority::high {2, "high"};
-const Enum::YLeaf CpeExtPwrPriority::low {3, "low"};
-const Enum::YLeaf CpeExtPwrPriority::unknown {4, "unknown"};
 
 const Enum::YLeaf CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::CpeExtPdStatsClass::cisco {1, "cisco"};
 const Enum::YLeaf CISCOPOWERETHERNETEXTMIB::CpeExtPdStatsTable::CpeExtPdStatsEntry::CpeExtPdStatsClass::class0 {2, "class0"};

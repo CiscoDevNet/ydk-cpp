@@ -1051,13 +1051,13 @@ class DOCSIFMIB::DocsIfCmtsUpChannelCounterTable::DocsIfCmtsUpChannelCounterEntr
 
 }; // DOCSIFMIB::DocsIfCmtsUpChannelCounterTable::DocsIfCmtsUpChannelCounterEntry
 
-class DocsisUpstreamTypeStatus : public ydk::Enum
+class DocsisVersion : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf tdma;
-        static const ydk::Enum::YLeaf atdma;
-        static const ydk::Enum::YLeaf scdma;
+        static const ydk::Enum::YLeaf docsis10;
+        static const ydk::Enum::YLeaf docsis11;
+        static const ydk::Enum::YLeaf docsis20;
+        static const ydk::Enum::YLeaf docsis30;
 
 };
 
@@ -1080,13 +1080,13 @@ class DocsisUpstreamType : public ydk::Enum
 
 };
 
-class DocsisVersion : public ydk::Enum
+class DocsisUpstreamTypeStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf docsis10;
-        static const ydk::Enum::YLeaf docsis11;
-        static const ydk::Enum::YLeaf docsis20;
-        static const ydk::Enum::YLeaf docsis30;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf tdma;
+        static const ydk::Enum::YLeaf atdma;
+        static const ydk::Enum::YLeaf scdma;
 
 };
 

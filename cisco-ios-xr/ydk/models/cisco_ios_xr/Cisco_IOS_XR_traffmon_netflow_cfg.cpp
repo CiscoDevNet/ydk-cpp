@@ -281,11 +281,10 @@ NetFlow::FlowExporterMaps::FlowExporterMap::FlowExporterMap()
         ,
     udp(std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Udp>())
     , destination(std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Destination>())
-    , version(std::make_shared<NetFlow::FlowExporterMaps::FlowExporterMap::Version>())
+    , version(nullptr) // presence node
 {
     udp->parent = this;
     destination->parent = this;
-    version->parent = this;
 
     yang_name = "flow-exporter-map"; yang_parent_name = "flow-exporter-maps"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -641,7 +640,7 @@ bool NetFlow::FlowExporterMaps::FlowExporterMap::Destination::has_leaf_or_child_
 
 NetFlow::FlowExporterMaps::FlowExporterMap::Version::Version()
     :
-    version_type{YType::uint32, "version-type"},
+    version_type{YType::enumeration, "version-type"},
     options_template_timeout{YType::uint32, "options-template-timeout"},
     common_template_timeout{YType::uint32, "common-template-timeout"},
     data_template_timeout{YType::uint32, "data-template-timeout"}
@@ -650,7 +649,7 @@ NetFlow::FlowExporterMaps::FlowExporterMap::Version::Version()
 {
     options->parent = this;
 
-    yang_name = "version"; yang_parent_name = "flow-exporter-map"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "version"; yang_parent_name = "flow-exporter-map"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 NetFlow::FlowExporterMaps::FlowExporterMap::Version::~Version()
@@ -1907,7 +1906,7 @@ bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Exporters::Exporter::has_leaf
 
 NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::Record()
     :
-    record_name{YType::str, "record-name"},
+    record_format{YType::enumeration, "record-format"},
     label{YType::uint32, "label"}
 {
 
@@ -1921,14 +1920,14 @@ NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::~Record()
 bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::has_data() const
 {
     if (is_presence_container) return true;
-    return record_name.is_set
+    return record_format.is_set
 	|| label.is_set;
 }
 
 bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(record_name.yfilter)
+	|| ydk::is_set(record_format.yfilter)
 	|| ydk::is_set(label.yfilter);
 }
 
@@ -1943,7 +1942,7 @@ std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapTable::Flo
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (record_name.is_set || is_set(record_name.yfilter)) leaf_name_data.push_back(record_name.get_name_leafdata());
+    if (record_format.is_set || is_set(record_format.yfilter)) leaf_name_data.push_back(record_format.get_name_leafdata());
     if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
 
     return leaf_name_data;
@@ -1964,11 +1963,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> NetFlow::FlowMonitorMapTable
 
 void NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "record-name")
+    if(value_path == "record-format")
     {
-        record_name = value;
-        record_name.value_namespace = name_space;
-        record_name.value_namespace_prefix = name_space_prefix;
+        record_format = value;
+        record_format.value_namespace = name_space;
+        record_format.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label")
     {
@@ -1980,9 +1979,9 @@ void NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::set_value(const std::
 
 void NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "record-name")
+    if(value_path == "record-format")
     {
-        record_name.yfilter = yfilter;
+        record_format.yfilter = yfilter;
     }
     if(value_path == "label")
     {
@@ -1992,7 +1991,7 @@ void NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::set_filter(const std:
 
 bool NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "record-name" || name == "label")
+    if(name == "record-format" || name == "label")
         return true;
     return false;
 }
@@ -2615,7 +2614,7 @@ bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Exporters::Exporte
 
 NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::Record()
     :
-    record_name{YType::str, "record-name"},
+    record_format{YType::enumeration, "record-format"},
     label{YType::uint32, "label"}
 {
 
@@ -2629,14 +2628,14 @@ NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::~Record()
 bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::has_data() const
 {
     if (is_presence_container) return true;
-    return record_name.is_set
+    return record_format.is_set
 	|| label.is_set;
 }
 
 bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(record_name.yfilter)
+	|| ydk::is_set(record_format.yfilter)
 	|| ydk::is_set(label.yfilter);
 }
 
@@ -2651,7 +2650,7 @@ std::vector<std::pair<std::string, LeafData> > NetFlow::FlowMonitorMapPerformanc
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (record_name.is_set || is_set(record_name.yfilter)) leaf_name_data.push_back(record_name.get_name_leafdata());
+    if (record_format.is_set || is_set(record_format.yfilter)) leaf_name_data.push_back(record_format.get_name_leafdata());
     if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
 
     return leaf_name_data;
@@ -2672,11 +2671,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> NetFlow::FlowMonitorMapPerfo
 
 void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "record-name")
+    if(value_path == "record-format")
     {
-        record_name = value;
-        record_name.value_namespace = name_space;
-        record_name.value_namespace_prefix = name_space_prefix;
+        record_format = value;
+        record_format.value_namespace = name_space;
+        record_format.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "label")
     {
@@ -2688,9 +2687,9 @@ void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::set_value(
 
 void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "record-name")
+    if(value_path == "record-format")
     {
-        record_name.yfilter = yfilter;
+        record_format.yfilter = yfilter;
     }
     if(value_path == "label")
     {
@@ -2700,16 +2699,54 @@ void NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::set_filter
 
 bool NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "record-name" || name == "label")
+    if(name == "record-format" || name == "label")
         return true;
     return false;
 }
 
-const Enum::YLeaf NfSamplingMode::random {2, "random"};
+const Enum::YLeaf NfRecordFormat::datalinkframesections_any {0, "datalinkframesections-any"};
+const Enum::YLeaf NfRecordFormat::default_mdi {1, "default-mdi"};
+const Enum::YLeaf NfRecordFormat::default_rtp {2, "default-rtp"};
+const Enum::YLeaf NfRecordFormat::ipv4_as_agg {3, "ipv4-as-agg"};
+const Enum::YLeaf NfRecordFormat::ipv4_as_tos_agg {4, "ipv4-as-tos-agg"};
+const Enum::YLeaf NfRecordFormat::ipv4_bgp_nexthop_tos_agg {5, "ipv4-bgp-nexthop-tos-agg"};
+const Enum::YLeaf NfRecordFormat::ipv4_destination {6, "ipv4-destination"};
+const Enum::YLeaf NfRecordFormat::ipv4_destination_tos_agg {7, "ipv4-destination-tos-agg"};
+const Enum::YLeaf NfRecordFormat::ipv4_destination_prefix_agg {8, "ipv4-destination-prefix-agg"};
+const Enum::YLeaf NfRecordFormat::ipv4_destination_prefix_tos_agg {9, "ipv4-destination-prefix-tos-agg"};
+const Enum::YLeaf NfRecordFormat::ipv4_peer_as {10, "ipv4-peer-as"};
+const Enum::YLeaf NfRecordFormat::ipv4_prefix_agg {11, "ipv4-prefix-agg"};
+const Enum::YLeaf NfRecordFormat::ipv4_prefix_port_agg {12, "ipv4-prefix-port-agg"};
+const Enum::YLeaf NfRecordFormat::ipv4_prefix_tos_agg {13, "ipv4-prefix-tos-agg"};
+const Enum::YLeaf NfRecordFormat::ipv4_protocol_port_agg {14, "ipv4-protocol-port-agg"};
+const Enum::YLeaf NfRecordFormat::ipv4_protocol_port_tos_agg {15, "ipv4-protocol-port-tos-agg"};
+const Enum::YLeaf NfRecordFormat::ipv4_raw {16, "ipv4-raw"};
+const Enum::YLeaf NfRecordFormat::ipv4_source_prefix_agg {17, "ipv4-source-prefix-agg"};
+const Enum::YLeaf NfRecordFormat::ipv4_source_prefix_tos_agg {18, "ipv4-source-prefix-tos-agg"};
+const Enum::YLeaf NfRecordFormat::ipv6 {19, "ipv6"};
+const Enum::YLeaf NfRecordFormat::ipv6_destination {20, "ipv6-destination"};
+const Enum::YLeaf NfRecordFormat::ipv6_peer_as {21, "ipv6-peer-as"};
+const Enum::YLeaf NfRecordFormat::mpls {22, "mpls"};
+const Enum::YLeaf NfRecordFormat::mpls_ipv4 {23, "mpls-ipv4"};
+const Enum::YLeaf NfRecordFormat::mpls_ipv4_ipv6 {24, "mpls-ipv4-ipv6"};
+const Enum::YLeaf NfRecordFormat::mpls_ipv6 {25, "mpls-ipv6"};
 
 const Enum::YLeaf NfCacheAgingMode::normal {0, "normal"};
 const Enum::YLeaf NfCacheAgingMode::permanent {1, "permanent"};
 const Enum::YLeaf NfCacheAgingMode::immediate {2, "immediate"};
+
+const Enum::YLeaf NfSamplingMode::random {2, "random"};
+
+const Enum::YLeaf NfExportVersion::v9 {9, "v9"};
+const Enum::YLeaf NfExportVersion::ipfix {10, "ipfix"};
+
+const Enum::YLeaf NfFlowDirection::ingress {0, "ingress"};
+const Enum::YLeaf NfFlowDirection::egress {1, "egress"};
+
+const Enum::YLeaf NfFlowProtocol::ipv4 {0, "ipv4"};
+const Enum::YLeaf NfFlowProtocol::ipv6 {1, "ipv6"};
+const Enum::YLeaf NfFlowProtocol::mpls {2, "mpls"};
+const Enum::YLeaf NfFlowProtocol::data_link_frame_section {13, "data-link-frame-section"};
 
 
 }

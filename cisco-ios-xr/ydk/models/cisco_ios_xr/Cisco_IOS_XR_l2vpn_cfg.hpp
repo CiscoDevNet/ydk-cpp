@@ -1848,6 +1848,8 @@ class L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Bri
         ydk::YLeaf coupled_mode; //type: empty
         ydk::YLeaf shutdown; //type: empty
         ydk::YLeaf flooding_unknown_unicast; //type: empty
+        ydk::YLeaf efp_visibility; //type: empty
+        ydk::YLeaf l2_multicast_source; //type: L2mcSrcTrafficEnabled
         ydk::YLeaf igmp_snooping_disable; //type: empty
         ydk::YLeaf transport_mode; //type: BridgeDomainTransportMode
         ydk::YLeaf mld_snooping; //type: string
@@ -2172,9 +2174,10 @@ class L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Bri
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf logging; //type: empty
-        ydk::YLeaf action; //type: MacSecureAction
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf threshold; //type: empty
+        ydk::YLeaf action; //type: MacSecureAction
+        ydk::YLeaf shutdown_recovery_timer; //type: uint32
 
 }; // L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainMac::MacSecure
 
@@ -2481,11 +2484,11 @@ class L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Bri
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf accept_shutdown; //type: empty
         ydk::YLeaf logging; //type: L2vpnLogging
         ydk::YLeaf disable; //type: empty
         ydk::YLeaf action; //type: MacSecureAction
-        ydk::YLeaf enable; //type: empty
-        ydk::YLeaf accept_shutdown; //type: empty
 
 }; // L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure
 
@@ -3165,10 +3168,11 @@ class L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Bri
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf enable; //type: empty
         ydk::YLeaf logging; //type: L2vpnLogging
         ydk::YLeaf disable; //type: empty
         ydk::YLeaf action; //type: MacSecureAction
-        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf shutdown_recovery_timer; //type: uint32
 
 }; // L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure
 
@@ -4362,10 +4366,11 @@ class L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Bri
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf enable; //type: empty
         ydk::YLeaf logging; //type: L2vpnLogging
         ydk::YLeaf disable; //type: empty
         ydk::YLeaf action; //type: MacSecureAction
-        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf shutdown_recovery_timer; //type: uint32
 
 }; // L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure
 
@@ -4877,7 +4882,7 @@ class L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::Pr
         ydk::YLeaf type; //type: PreferredPath
         ydk::YLeaf interface_tunnel_number; //type: uint32
         ydk::YLeaf fallback_disable; //type: empty
-        ydk::YLeaf srte_policy; //type: string
+        ydk::YLeaf path_name; //type: string
 
 }; // L2vpn::Database::PseudowireClasses::PseudowireClass::MplsEncapsulation::PreferredPath
 
@@ -5187,6 +5192,8 @@ class L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain : p
         ydk::YLeaf coupled_mode; //type: empty
         ydk::YLeaf shutdown; //type: empty
         ydk::YLeaf flooding_unknown_unicast; //type: empty
+        ydk::YLeaf efp_visibility; //type: empty
+        ydk::YLeaf l2_multicast_source; //type: L2mcSrcTrafficEnabled
         ydk::YLeaf igmp_snooping_disable; //type: empty
         ydk::YLeaf transport_mode; //type: BridgeDomainTransportMode
         ydk::YLeaf mld_snooping; //type: string
@@ -5511,9 +5518,10 @@ class L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Br
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf logging; //type: empty
-        ydk::YLeaf action; //type: MacSecureAction
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf threshold; //type: empty
+        ydk::YLeaf action; //type: MacSecureAction
+        ydk::YLeaf shutdown_recovery_timer; //type: uint32
 
 }; // L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainMac::MacSecure
 
@@ -5820,11 +5828,11 @@ class L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Br
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf accept_shutdown; //type: empty
         ydk::YLeaf logging; //type: L2vpnLogging
         ydk::YLeaf disable; //type: empty
         ydk::YLeaf action; //type: MacSecureAction
-        ydk::YLeaf enable; //type: empty
-        ydk::YLeaf accept_shutdown; //type: empty
 
 }; // L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure
 
@@ -6504,10 +6512,11 @@ class L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Bd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf enable; //type: empty
         ydk::YLeaf logging; //type: L2vpnLogging
         ydk::YLeaf disable; //type: empty
         ydk::YLeaf action; //type: MacSecureAction
-        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf shutdown_recovery_timer; //type: uint32
 
 }; // L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure
 
@@ -7701,10 +7710,11 @@ class L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::Bd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf enable; //type: empty
         ydk::YLeaf logging; //type: L2vpnLogging
         ydk::YLeaf disable; //type: empty
         ydk::YLeaf action; //type: MacSecureAction
-        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf shutdown_recovery_timer; //type: uint32
 
 }; // L2vpn::Database::VlanSwitches::VlanSwitch::BridgeDomains::BridgeDomain::BdAttachmentCircuits::BdAttachmentCircuit::InterfaceMac::InterfaceMacSecure
 
@@ -8681,7 +8691,6 @@ class Evpn::EvpnTables : public ydk::Entity
         ydk::YLeaf evpn_source_interface; //type: string
         ydk::YLeaf evpn_cost_in_startup; //type: uint32
         class EvpnTimers; //type: Evpn::EvpnTables::EvpnTimers
-        class Evpnmac; //type: Evpn::EvpnTables::Evpnmac
         class EvpnEvis; //type: Evpn::EvpnTables::EvpnEvis
         class EvpnVirtualAccessVfis; //type: Evpn::EvpnTables::EvpnVirtualAccessVfis
         class EvpnLoadBalancing; //type: Evpn::EvpnTables::EvpnLoadBalancing
@@ -8692,9 +8701,9 @@ class Evpn::EvpnTables : public ydk::Entity
         class EvpnInterfaces; //type: Evpn::EvpnTables::EvpnInterfaces
         class EvpnVirtualAccessPws; //type: Evpn::EvpnTables::EvpnVirtualAccessPws
         class EvpnEthernetSegment; //type: Evpn::EvpnTables::EvpnEthernetSegment
+        class Host; //type: Evpn::EvpnTables::Host
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::EvpnTimers> evpn_timers;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::Evpnmac> evpnmac;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::EvpnEvis> evpn_evis;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::EvpnVirtualAccessVfis> evpn_virtual_access_vfis;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::EvpnLoadBalancing> evpn_load_balancing;
@@ -8705,6 +8714,7 @@ class Evpn::EvpnTables : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::EvpnInterfaces> evpn_interfaces;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::EvpnVirtualAccessPws> evpn_virtual_access_pws;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::EvpnEthernetSegment> evpn_ethernet_segment;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::Host> host;
         
 }; // Evpn::EvpnTables
 
@@ -8732,57 +8742,6 @@ class Evpn::EvpnTables::EvpnTimers : public ydk::Entity
         ydk::YLeaf evpn_peering; //type: uint32
 
 }; // Evpn::EvpnTables::EvpnTimers
-
-
-class Evpn::EvpnTables::Evpnmac : public ydk::Entity
-{
-    public:
-        Evpnmac();
-        ~Evpnmac();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf enable; //type: empty
-        class EvpnmacSecure; //type: Evpn::EvpnTables::Evpnmac::EvpnmacSecure
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::Evpnmac::EvpnmacSecure> evpnmac_secure;
-        
-}; // Evpn::EvpnTables::Evpnmac
-
-
-class Evpn::EvpnTables::Evpnmac::EvpnmacSecure : public ydk::Entity
-{
-    public:
-        EvpnmacSecure();
-        ~EvpnmacSecure();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf evpnmac_secure_freeze_time; //type: uint32
-        ydk::YLeaf enable; //type: empty
-        ydk::YLeaf evpnmac_secure_retry_count; //type: uint32
-        ydk::YLeaf evpnmac_secure_move_count; //type: uint32
-        ydk::YLeaf evpnmac_secure_move_interval; //type: uint32
-
-}; // Evpn::EvpnTables::Evpnmac::EvpnmacSecure
 
 
 class Evpn::EvpnTables::EvpnEvis : public ydk::Entity
@@ -9157,6 +9116,7 @@ class Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtual
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf enable; //type: empty
+        ydk::YLeaf service_carving_mcast_type; //type: EthernetSegmentServiceCarvingMcast
         ydk::YLeaf es_import_route_target; //type: string
         ydk::YLeaf service_carving_type; //type: EthernetSegmentServiceCarving
         class Identifier; //type: Evpn::EvpnTables::EvpnVirtualAccessVfis::EvpnVirtualAccessVfi::EvpnVirtualEthernetSegment::Identifier
@@ -9458,11 +9418,13 @@ class Evpn::EvpnTables::EvpnInstances::EvpnInstance : public ydk::Entity
         ydk::YLeaf evi_unknown_unicast_flooding_disable; //type: empty
         ydk::YLeaf evpn_evi_cw_disable; //type: empty
         class EvpnInstanceBgpAutoDiscovery; //type: Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery
+        class EvpnInstanceEtree; //type: Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceEtree
         class EvpnInstanceAdvertiseMac; //type: Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceAdvertiseMac
         class EvpnInstanceMulticast; //type: Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceMulticast
         class EvpnInstanceLoadBalancing; //type: Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceLoadBalancing
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery> evpn_instance_bgp_auto_discovery;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceEtree> evpn_instance_etree;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceAdvertiseMac> evpn_instance_advertise_mac;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceMulticast> evpn_instance_multicast;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceLoadBalancing> evpn_instance_load_balancing;
@@ -9621,6 +9583,28 @@ class Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscover
         ydk::YLeaf stitching; //type: BgpRouteTarget
 
 }; // Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceBgpAutoDiscovery::EvpnRouteTargets::EvpnRouteTargetIpv4Address
+
+
+class Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceEtree : public ydk::Entity
+{
+    public:
+        EvpnInstanceEtree();
+        ~EvpnInstanceEtree();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf evpn_instance_etree_leaf; //type: empty
+        ydk::YLeaf enable; //type: empty
+
+}; // Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceEtree
 
 
 class Evpn::EvpnTables::EvpnInstances::EvpnInstance::EvpnInstanceAdvertiseMac : public ydk::Entity
@@ -9809,6 +9793,7 @@ class Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment : public 
         ydk::YLeaf load_balancing_mode; //type: EthernetSegmentLoadBalance
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf backbone_source_mac; //type: string
+        ydk::YLeaf service_carving_mcast_type; //type: EthernetSegmentServiceCarvingMcast
         ydk::YLeaf es_import_route_target; //type: string
         ydk::YLeaf service_carving_type; //type: EthernetSegmentServiceCarving
         class Identifier; //type: Evpn::EvpnTables::EvpnInterfaces::EvpnInterface::EthernetSegment::Identifier
@@ -9985,6 +9970,7 @@ class Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEt
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf enable; //type: empty
+        ydk::YLeaf service_carving_mcast_type; //type: EthernetSegmentServiceCarvingMcast
         ydk::YLeaf es_import_route_target; //type: string
         ydk::YLeaf service_carving_type; //type: EthernetSegmentServiceCarving
         class Identifier; //type: Evpn::EvpnTables::EvpnVirtualAccessPws::EvpnVirtualAccessPw::EvpnVirtualEthernetSegment::Identifier
@@ -10139,36 +10125,189 @@ class Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::EvpnEsiType : public 
 
 }; // Evpn::EvpnTables::EvpnEthernetSegment::EvpnEsiTypes::EvpnEsiType
 
-class FlowLabelTlvCode : public ydk::Enum
+
+class Evpn::EvpnTables::Host : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf Y_17;
-        static const ydk::Enum::YLeaf disable;
+        Host();
+        ~Host();
 
-};
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-class MacAging : public ydk::Enum
+        class Ipv6; //type: Evpn::EvpnTables::Host::Ipv6
+        class Ipv4; //type: Evpn::EvpnTables::Host::Ipv4
+        class Mac; //type: Evpn::EvpnTables::Host::Mac
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::Host::Ipv6> ipv6;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::Host::Ipv4> ipv4;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::Host::Mac> mac;
+        
+}; // Evpn::EvpnTables::Host
+
+
+class Evpn::EvpnTables::Host::Ipv6 : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf absolute;
-        static const ydk::Enum::YLeaf inactivity;
+        Ipv6();
+        ~Ipv6();
 
-};
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-class MacLimitAction : public ydk::Enum
+        class DuplicateDetection; //type: Evpn::EvpnTables::Host::Ipv6::DuplicateDetection
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::Host::Ipv6::DuplicateDetection> duplicate_detection;
+        
+}; // Evpn::EvpnTables::Host::Ipv6
+
+
+class Evpn::EvpnTables::Host::Ipv6::DuplicateDetection : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf flood;
-        static const ydk::Enum::YLeaf no_flood;
-        static const ydk::Enum::YLeaf shutdown;
+        DuplicateDetection();
+        ~DuplicateDetection();
 
-};
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
 
-class BdmacLearn : public ydk::Enum
+        ydk::YLeaf move_count; //type: uint32
+        ydk::YLeaf retry_count; //type: uint32
+        ydk::YLeaf freeze_time; //type: uint32
+        ydk::YLeaf move_interval; //type: uint32
+        ydk::YLeaf disable; //type: empty
+
+}; // Evpn::EvpnTables::Host::Ipv6::DuplicateDetection
+
+
+class Evpn::EvpnTables::Host::Ipv4 : public ydk::Entity
 {
     public:
-        static const ydk::Enum::YLeaf disable_learning;
+        Ipv4();
+        ~Ipv4();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class DuplicateDetection; //type: Evpn::EvpnTables::Host::Ipv4::DuplicateDetection
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::Host::Ipv4::DuplicateDetection> duplicate_detection;
+        
+}; // Evpn::EvpnTables::Host::Ipv4
+
+
+class Evpn::EvpnTables::Host::Ipv4::DuplicateDetection : public ydk::Entity
+{
+    public:
+        DuplicateDetection();
+        ~DuplicateDetection();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf move_count; //type: uint32
+        ydk::YLeaf retry_count; //type: uint32
+        ydk::YLeaf freeze_time; //type: uint32
+        ydk::YLeaf move_interval; //type: uint32
+        ydk::YLeaf disable; //type: empty
+
+}; // Evpn::EvpnTables::Host::Ipv4::DuplicateDetection
+
+
+class Evpn::EvpnTables::Host::Mac : public ydk::Entity
+{
+    public:
+        Mac();
+        ~Mac();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class DuplicateDetection; //type: Evpn::EvpnTables::Host::Mac::DuplicateDetection
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_l2vpn_cfg::Evpn::EvpnTables::Host::Mac::DuplicateDetection> duplicate_detection;
+        
+}; // Evpn::EvpnTables::Host::Mac
+
+
+class Evpn::EvpnTables::Host::Mac::DuplicateDetection : public ydk::Entity
+{
+    public:
+        DuplicateDetection();
+        ~DuplicateDetection();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf move_count; //type: uint32
+        ydk::YLeaf retry_count; //type: uint32
+        ydk::YLeaf freeze_time; //type: uint32
+        ydk::YLeaf move_interval; //type: uint32
+        ydk::YLeaf disable; //type: empty
+
+}; // Evpn::EvpnTables::Host::Mac::DuplicateDetection
+
+class EvpnEncapsulation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf evpn_encapsulationvxlan;
+        static const ydk::Enum::YLeaf evpn_encapsulation_mpls;
 
 };
 
@@ -10180,79 +10319,86 @@ class Interworking : public ydk::Enum
 
 };
 
-class PwSwitchingPointTlv : public ydk::Enum
+class L2vpnCapabilityMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf hide;
+        static const ydk::Enum::YLeaf high_mode;
+        static const ydk::Enum::YLeaf single_mode;
 
 };
 
-class L2tpv3Sequencing : public ydk::Enum
+class EvpnSide : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf off;
-        static const ydk::Enum::YLeaf both;
+        static const ydk::Enum::YLeaf evpn_side_regular;
+        static const ydk::Enum::YLeaf evpn_side_stitching;
 
 };
 
-class InterfaceProfile : public ydk::Enum
+class BridgeDomainTransportMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf snoop;
-        static const ydk::Enum::YLeaf dhcp_protocol;
+        static const ydk::Enum::YLeaf vlan_passthrough;
 
 };
 
-class BgpRouteTargetRole : public ydk::Enum
+class PreferredPath : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf both;
-        static const ydk::Enum::YLeaf import;
-        static const ydk::Enum::YLeaf export_;
+        static const ydk::Enum::YLeaf te_tunnel;
+        static const ydk::Enum::YLeaf ip_tunnel;
+        static const ydk::Enum::YLeaf tp_tunnel;
+        static const ydk::Enum::YLeaf sr_te_policy;
+        static const ydk::Enum::YLeaf named_te_tunnel;
 
 };
 
-class ErpPort : public ydk::Enum
+class VccvVerification : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf virtual_;
-        static const ydk::Enum::YLeaf interface;
+        static const ydk::Enum::YLeaf lsp_ping;
 
 };
 
-class BgpRouteTarget : public ydk::Enum
+class MacWithdrawBehavior : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf no_stitching;
-        static const ydk::Enum::YLeaf stitching;
+        static const ydk::Enum::YLeaf legacy;
+        static const ydk::Enum::YLeaf optimized;
 
 };
 
-class FlowLabelLoadBalance : public ydk::Enum
+class PortDownFlush : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf off;
-        static const ydk::Enum::YLeaf receive;
-        static const ydk::Enum::YLeaf transmit;
-        static const ydk::Enum::YLeaf both;
+        static const ydk::Enum::YLeaf port_down_flush;
+        static const ydk::Enum::YLeaf enable_port_down_flush;
+        static const ydk::Enum::YLeaf disable_port_down_flush;
 
 };
 
-class L2vpnVerification : public ydk::Enum
+class TypeOfServiceMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf enable;
-        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf reflect;
 
 };
 
-class MacLearn : public ydk::Enum
+class EthernetSegmentLoadBalance : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf default_learning;
-        static const ydk::Enum::YLeaf enable_learning;
-        static const ydk::Enum::YLeaf disable_learning;
+        static const ydk::Enum::YLeaf single_active;
+        static const ydk::Enum::YLeaf port_active;
+
+};
+
+class MplsSignalingProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf ldp;
 
 };
 
@@ -10266,11 +10412,38 @@ class Erpaps : public ydk::Enum
 
 };
 
-class VccvVerification : public ydk::Enum
+class MacSecureAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf restrict;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf shutdown;
+
+};
+
+class ErpPort : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf lsp_ping;
+        static const ydk::Enum::YLeaf virtual_;
+        static const ydk::Enum::YLeaf interface;
+
+};
+
+class BgpRouteTargetRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf both;
+        static const ydk::Enum::YLeaf import;
+        static const ydk::Enum::YLeaf export_;
+
+};
+
+class BackupDisable : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf never;
+        static const ydk::Enum::YLeaf delay;
 
 };
 
@@ -10283,11 +10456,87 @@ class TransportMode : public ydk::Enum
 
 };
 
-class BackupDisable : public ydk::Enum
+class FlowLabelTlvCode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf never;
-        static const ydk::Enum::YLeaf delay;
+        static const ydk::Enum::YLeaf Y_17;
+        static const ydk::Enum::YLeaf disable;
+
+};
+
+class BgpRouteTarget : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_stitching;
+        static const ydk::Enum::YLeaf stitching;
+
+};
+
+class InterfaceProfile : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf snoop;
+        static const ydk::Enum::YLeaf dhcp_protocol;
+
+};
+
+class EthernetSegmentIdentifier : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf type0;
+        static const ydk::Enum::YLeaf legacy;
+        static const ydk::Enum::YLeaf override;
+
+};
+
+class RplRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf owner;
+        static const ydk::Enum::YLeaf neighbor;
+        static const ydk::Enum::YLeaf next_neighbor;
+
+};
+
+class PwSwitchingPointTlv : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf hide;
+
+};
+
+class StormControl : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf broadcast;
+
+};
+
+class EthernetSegmentServiceCarving : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mod_n;
+        static const ydk::Enum::YLeaf manual;
+        static const ydk::Enum::YLeaf hrw;
+
+};
+
+class MacLearn : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_learning;
+        static const ydk::Enum::YLeaf enable_learning;
+        static const ydk::Enum::YLeaf disable_learning;
+
+};
+
+class L2tpv3Sequencing : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf off;
+        static const ydk::Enum::YLeaf both;
 
 };
 
@@ -10300,11 +10549,36 @@ class LoadBalance : public ydk::Enum
 
 };
 
-class ErpPort1 : public ydk::Enum
+class L2tpSignalingProtocol : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf port0;
-        static const ydk::Enum::YLeaf port1;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf l2tpv3;
+
+};
+
+class BdmacLearn : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disable_learning;
+
+};
+
+class L2mcSrcTrafficEnabled : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf l2mc_none;
+        static const ydk::Enum::YLeaf l2mc_ipv4;
+        static const ydk::Enum::YLeaf l2mc_ipv6;
+        static const ydk::Enum::YLeaf l2mc_ipv4_ipv6;
+
+};
+
+class L2vpnVerification : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
 
 };
 
@@ -10314,6 +10588,22 @@ class InterfaceTrafficFlood : public ydk::Enum
         static const ydk::Enum::YLeaf traffic_flooding;
         static const ydk::Enum::YLeaf enable_flooding;
         static const ydk::Enum::YLeaf disable_flooding;
+
+};
+
+class L2Encapsulation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf vlan;
+        static const ydk::Enum::YLeaf ethernet;
+
+};
+
+class L2vpnLogging : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
 
 };
 
@@ -10333,22 +10623,40 @@ class L2tpCookieSize : public ydk::Enum
 
 };
 
-class StormControl : public ydk::Enum
+class MplsSequencing : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unicast;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf broadcast;
+        static const ydk::Enum::YLeaf off;
+        static const ydk::Enum::YLeaf transmit;
+        static const ydk::Enum::YLeaf receive;
+        static const ydk::Enum::YLeaf both;
 
 };
 
-class BgpRouteDistinguisher : public ydk::Enum
+class EthernetSegmentServiceCarvingMcast : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf auto_;
-        static const ydk::Enum::YLeaf two_byte_as;
-        static const ydk::Enum::YLeaf four_byte_as;
-        static const ydk::Enum::YLeaf ipv4_address;
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf hrw_s_g;
+        static const ydk::Enum::YLeaf hrw_g;
+
+};
+
+class MacLimitAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf flood;
+        static const ydk::Enum::YLeaf no_flood;
+        static const ydk::Enum::YLeaf shutdown;
+
+};
+
+class ErpPort1 : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf port0;
+        static const ydk::Enum::YLeaf port1;
 
 };
 
@@ -10359,6 +10667,24 @@ class MacNotification : public ydk::Enum
         static const ydk::Enum::YLeaf syslog;
         static const ydk::Enum::YLeaf trap;
         static const ydk::Enum::YLeaf syslog_snmp;
+
+};
+
+class ControlWord : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
+
+};
+
+class BgpRouteDistinguisher : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf auto_;
+        static const ydk::Enum::YLeaf two_byte_as;
+        static const ydk::Enum::YLeaf four_byte_as;
+        static const ydk::Enum::YLeaf ipv4_address;
 
 };
 
@@ -10373,89 +10699,6 @@ class BgpRouteTargetFormat : public ydk::Enum
 
 };
 
-class MplsSignalingProtocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf ldp;
-
-};
-
-class EvpnSide : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf evpn_side_regular;
-        static const ydk::Enum::YLeaf evpn_side_stitching;
-
-};
-
-class ControlWord : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enable;
-        static const ydk::Enum::YLeaf disable;
-
-};
-
-class PreferredPath : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf te_tunnel;
-        static const ydk::Enum::YLeaf ip_tunnel;
-        static const ydk::Enum::YLeaf tp_tunnel;
-        static const ydk::Enum::YLeaf sr_te_policy;
-
-};
-
-class EvpnEncapsulation : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf evpn_encapsulationvxlan;
-        static const ydk::Enum::YLeaf evpn_encapsulation_mpls;
-
-};
-
-class MplsSequencing : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf off;
-        static const ydk::Enum::YLeaf transmit;
-        static const ydk::Enum::YLeaf receive;
-        static const ydk::Enum::YLeaf both;
-
-};
-
-class EthernetSegmentLoadBalance : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf single_active;
-
-};
-
-class L2tpSignalingProtocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf l2tpv3;
-
-};
-
-class EthernetSegmentIdentifier : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf type0;
-        static const ydk::Enum::YLeaf legacy;
-        static const ydk::Enum::YLeaf override;
-
-};
-
-class BridgeDomainTransportMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf vlan_passthrough;
-
-};
-
 class LdpVplsId : public ydk::Enum
 {
     public:
@@ -10464,77 +10707,21 @@ class LdpVplsId : public ydk::Enum
 
 };
 
-class L2Encapsulation : public ydk::Enum
+class MacAging : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf vlan;
-        static const ydk::Enum::YLeaf ethernet;
+        static const ydk::Enum::YLeaf absolute;
+        static const ydk::Enum::YLeaf inactivity;
 
 };
 
-class EthernetSegmentServiceCarving : public ydk::Enum
+class FlowLabelLoadBalance : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf hrw;
-
-};
-
-class L2vpnLogging : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enable;
-        static const ydk::Enum::YLeaf disable;
-
-};
-
-class MacWithdrawBehavior : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf legacy;
-        static const ydk::Enum::YLeaf optimized;
-
-};
-
-class RplRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf owner;
-        static const ydk::Enum::YLeaf neighbor;
-        static const ydk::Enum::YLeaf next_neighbor;
-
-};
-
-class TypeOfServiceMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf reflect;
-
-};
-
-class PortDownFlush : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf port_down_flush;
-        static const ydk::Enum::YLeaf enable_port_down_flush;
-        static const ydk::Enum::YLeaf disable_port_down_flush;
-
-};
-
-class L2vpnCapabilityMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf high_mode;
-        static const ydk::Enum::YLeaf single_mode;
-
-};
-
-class MacSecureAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf restrict;
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf shutdown;
+        static const ydk::Enum::YLeaf off;
+        static const ydk::Enum::YLeaf receive;
+        static const ydk::Enum::YLeaf transmit;
+        static const ydk::Enum::YLeaf both;
 
 };
 

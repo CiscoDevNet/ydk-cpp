@@ -20,24 +20,6 @@ class Stream : public virtual ydk::Identity
 
 }; // Stream
 
-class Encodings : public virtual ydk::Identity
-{
-    public:
-        Encodings();
-        ~Encodings();
-
-
-}; // Encodings
-
-class Transport : public virtual ydk::Identity
-{
-    public:
-        Transport();
-        ~Transport();
-
-
-}; // Transport
-
 class SubscriptionResult : public virtual ydk::Identity
 {
     public:
@@ -64,6 +46,24 @@ class SubscriptionErrors : public virtual ydk::Identity
 
 
 }; // SubscriptionErrors
+
+class Encodings : public virtual ydk::Identity
+{
+    public:
+        Encodings();
+        ~Encodings();
+
+
+}; // Encodings
+
+class Transport : public virtual ydk::Identity
+{
+    public:
+        Transport();
+        ~Transport();
+
+
+}; // Transport
 
 class EstablishSubscription : public ydk::Entity
 {
@@ -718,14 +718,86 @@ class Subscriptions::Subscription::Receivers::Receiver : public ydk::Entity
 
 }; // Subscriptions::Subscription::Receivers::Receiver
 
-class NoResources : public ietf::ietf_event_notifications::SubscriptionErrors, virtual ydk::Identity
+class NETCONF : public ietf::ietf_event_notifications::Stream, virtual ydk::Identity
 {
     public:
-        NoResources();
-        ~NoResources();
+        NETCONF();
+        ~NETCONF();
 
 
-}; // NoResources
+}; // NETCONF
+
+class Ok : public ietf::ietf_event_notifications::SubscriptionResult, virtual ydk::Identity
+{
+    public:
+        Ok();
+        ~Ok();
+
+
+}; // Ok
+
+class Error : public ietf::ietf_event_notifications::SubscriptionResult, virtual ydk::Identity
+{
+    public:
+        Error();
+        ~Error();
+
+
+}; // Error
+
+class ErrorNoSuchSubscription : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
+{
+    public:
+        ErrorNoSuchSubscription();
+        ~ErrorNoSuchSubscription();
+
+
+}; // ErrorNoSuchSubscription
+
+class ErrorNoSuchOption : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
+{
+    public:
+        ErrorNoSuchOption();
+        ~ErrorNoSuchOption();
+
+
+}; // ErrorNoSuchOption
+
+class ErrorInsufficientResources : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
+{
+    public:
+        ErrorInsufficientResources();
+        ~ErrorInsufficientResources();
+
+
+}; // ErrorInsufficientResources
+
+class ErrorConfiguredSubscription : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
+{
+    public:
+        ErrorConfiguredSubscription();
+        ~ErrorConfiguredSubscription();
+
+
+}; // ErrorConfiguredSubscription
+
+class ErrorOther : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
+{
+    public:
+        ErrorOther();
+        ~ErrorOther();
+
+
+}; // ErrorOther
+
+class Active : public ietf::ietf_event_notifications::SubscriptionStreamStatus, virtual ydk::Identity
+{
+    public:
+        Active();
+        ~Active();
+
+
+}; // Active
 
 class Inactive : public ietf::ietf_event_notifications::SubscriptionStreamStatus, virtual ydk::Identity
 {
@@ -745,14 +817,14 @@ class Suspended : public ietf::ietf_event_notifications::SubscriptionStreamStatu
 
 }; // Suspended
 
-class EncodeJson : public ietf::ietf_event_notifications::Encodings, virtual ydk::Identity
+class InError : public ietf::ietf_event_notifications::SubscriptionStreamStatus, virtual ydk::Identity
 {
     public:
-        EncodeJson();
-        ~EncodeJson();
+        InError();
+        ~InError();
 
 
-}; // EncodeJson
+}; // InError
 
 class InternalError : public ietf::ietf_event_notifications::SubscriptionErrors, virtual ydk::Identity
 {
@@ -763,77 +835,14 @@ class InternalError : public ietf::ietf_event_notifications::SubscriptionErrors,
 
 }; // InternalError
 
-class Other : public ietf::ietf_event_notifications::SubscriptionErrors, virtual ydk::Identity
+class NoResources : public ietf::ietf_event_notifications::SubscriptionErrors, virtual ydk::Identity
 {
     public:
-        Other();
-        ~Other();
+        NoResources();
+        ~NoResources();
 
 
-}; // Other
-
-class InError : public ietf::ietf_event_notifications::SubscriptionStreamStatus, virtual ydk::Identity
-{
-    public:
-        InError();
-        ~InError();
-
-
-}; // InError
-
-class Netconf : public ietf::ietf_event_notifications::Transport, virtual ydk::Identity
-{
-    public:
-        Netconf();
-        ~Netconf();
-
-
-}; // Netconf
-
-class Error : public ietf::ietf_event_notifications::SubscriptionResult, virtual ydk::Identity
-{
-    public:
-        Error();
-        ~Error();
-
-
-}; // Error
-
-class Active : public ietf::ietf_event_notifications::SubscriptionStreamStatus, virtual ydk::Identity
-{
-    public:
-        Active();
-        ~Active();
-
-
-}; // Active
-
-class NETCONF : public ietf::ietf_event_notifications::Stream, virtual ydk::Identity
-{
-    public:
-        NETCONF();
-        ~NETCONF();
-
-
-}; // NETCONF
-
-class Ok : public ietf::ietf_event_notifications::SubscriptionResult, virtual ydk::Identity
-{
-    public:
-        Ok();
-        ~Ok();
-
-
-}; // Ok
-
-class EncodeXml : public ietf::ietf_event_notifications::Encodings, virtual ydk::Identity
-{
-    public:
-        EncodeXml();
-        ~EncodeXml();
-
-
-}; // EncodeXml
+}; // NoResources
 
 class SubscriptionDeleted : public ietf::ietf_event_notifications::SubscriptionErrors, virtual ydk::Identity
 {
@@ -844,50 +853,41 @@ class SubscriptionDeleted : public ietf::ietf_event_notifications::SubscriptionE
 
 }; // SubscriptionDeleted
 
-class ErrorNoSuchOption : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
+class Other : public ietf::ietf_event_notifications::SubscriptionErrors, virtual ydk::Identity
 {
     public:
-        ErrorNoSuchOption();
-        ~ErrorNoSuchOption();
+        Other();
+        ~Other();
 
 
-}; // ErrorNoSuchOption
+}; // Other
 
-class ErrorNoSuchSubscription : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
+class EncodeXml : public ietf::ietf_event_notifications::Encodings, virtual ydk::Identity
 {
     public:
-        ErrorNoSuchSubscription();
-        ~ErrorNoSuchSubscription();
+        EncodeXml();
+        ~EncodeXml();
 
 
-}; // ErrorNoSuchSubscription
+}; // EncodeXml
 
-class ErrorOther : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
+class EncodeJson : public ietf::ietf_event_notifications::Encodings, virtual ydk::Identity
 {
     public:
-        ErrorOther();
-        ~ErrorOther();
+        EncodeJson();
+        ~EncodeJson();
 
 
-}; // ErrorOther
+}; // EncodeJson
 
-class ErrorInsufficientResources : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
+class Netconf : public ietf::ietf_event_notifications::Transport, virtual ydk::Identity
 {
     public:
-        ErrorInsufficientResources();
-        ~ErrorInsufficientResources();
+        Netconf();
+        ~Netconf();
 
 
-}; // ErrorInsufficientResources
-
-class ErrorConfiguredSubscription : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
-{
-    public:
-        ErrorConfiguredSubscription();
-        ~ErrorConfiguredSubscription();
-
-
-}; // ErrorConfiguredSubscription
+}; // Netconf
 
 class PushSource : public ydk::Enum
 {

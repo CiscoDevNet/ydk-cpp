@@ -675,6 +675,13 @@ class Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName:
 
 }; // Vservice::ServiceFunctionPath::Paths::Path::ServiceIndex::SfNames::SfName::Node
 
+class SfcMetadataType1AllocFormat : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf dc_allocation;
+
+};
+
 class SfcSfTransport : public ydk::Enum
 {
     public:
@@ -689,24 +696,17 @@ class SfcMetadataDispositionMatch : public ydk::Enum
 
 };
 
-class SfcMetadataAlloc : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf type1;
-
-};
-
-class SfcMetadataType1AllocFormat : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf dc_allocation;
-
-};
-
 class SfcMetadataDispositionAction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf redirect_nexthop;
+
+};
+
+class SfcMetadataAlloc : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf type1;
 
 };
 

@@ -2747,6 +2747,14 @@ bool Sam::CertificateRevocationListSummary::Issuer::has_leaf_or_child_of_name(co
     return false;
 }
 
+const Enum::YLeaf LogTables::unkown {0, "unkown"};
+const Enum::YLeaf LogTables::memory_digest_table {1, "memory-digest-table"};
+const Enum::YLeaf LogTables::system_database_digest {2, "system-database-digest"};
+const Enum::YLeaf LogTables::sam_tables {3, "sam-tables"};
+
+const Enum::YLeaf CertificateIssuer::unknown {0, "unknown"};
+const Enum::YLeaf CertificateIssuer::code_signing_server_certificate_authority {1, "code-signing-server-certificate-authority"};
+
 const Enum::YLeaf LogError::unknown {0, "unknown"};
 const Enum::YLeaf LogError::log_message_error {1, "log-message-error"};
 const Enum::YLeaf LogError::get_issuer_name_failed {2, "get-issuer-name-failed"};
@@ -2772,14 +2780,6 @@ const Enum::YLeaf LogCode::backup_file_on_nvram_deleted {17, "backup-file-on-nvr
 const Enum::YLeaf LogCode::sam_log_file_recovered_from_system_database {18, "sam-log-file-recovered-from-system-database"};
 const Enum::YLeaf LogCode::validated_elf {19, "validated-elf"};
 const Enum::YLeaf LogCode::namespace_deleted_recovered_by_sam {20, "namespace-deleted-recovered-by-sam"};
-
-const Enum::YLeaf CertificateIssuer::unknown {0, "unknown"};
-const Enum::YLeaf CertificateIssuer::code_signing_server_certificate_authority {1, "code-signing-server-certificate-authority"};
-
-const Enum::YLeaf LogTables::unkown {0, "unkown"};
-const Enum::YLeaf LogTables::memory_digest_table {1, "memory-digest-table"};
-const Enum::YLeaf LogTables::system_database_digest {2, "system-database-digest"};
-const Enum::YLeaf LogTables::sam_tables {3, "sam-tables"};
 
 
 }

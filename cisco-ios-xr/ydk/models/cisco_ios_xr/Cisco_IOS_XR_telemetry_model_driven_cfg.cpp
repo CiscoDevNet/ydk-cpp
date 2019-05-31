@@ -1877,7 +1877,7 @@ TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv6Destinations::Ipv
     :
     protocol{YType::enumeration, "protocol"},
     tls_hostname{YType::str, "tls-hostname"},
-    no_tls{YType::uint32, "no-tls"},
+    no_tls{YType::empty, "no-tls"},
     packetsize{YType::uint32, "packetsize"}
 {
 
@@ -2216,7 +2216,7 @@ TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv4Destinations::Ipv
     :
     protocol{YType::enumeration, "protocol"},
     tls_hostname{YType::str, "tls-hostname"},
-    no_tls{YType::uint32, "no-tls"},
+    no_tls{YType::empty, "no-tls"},
     packetsize{YType::uint32, "packetsize"}
 {
 

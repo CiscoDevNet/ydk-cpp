@@ -216,6 +216,14 @@ class EventManager::Environments::Environment : public ydk::Entity
 
 }; // EventManager::Environments::Environment
 
+class EventManagerChecksum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf sha_1;
+        static const ydk::Enum::YLeaf md5;
+
+};
+
 class EventManagerPolicySec : public ydk::Enum
 {
     public:
@@ -229,14 +237,6 @@ class EventManagerPolicyMode : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf cisco;
         static const ydk::Enum::YLeaf trust;
-
-};
-
-class EventManagerChecksum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf sha_1;
-        static const ydk::Enum::YLeaf md5;
 
 };
 

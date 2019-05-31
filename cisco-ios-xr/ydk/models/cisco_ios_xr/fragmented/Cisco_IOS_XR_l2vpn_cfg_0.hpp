@@ -1848,6 +1848,8 @@ class L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Bri
         ydk::YLeaf coupled_mode; //type: empty
         ydk::YLeaf shutdown; //type: empty
         ydk::YLeaf flooding_unknown_unicast; //type: empty
+        ydk::YLeaf efp_visibility; //type: empty
+        ydk::YLeaf l2_multicast_source; //type: L2mcSrcTrafficEnabled
         ydk::YLeaf igmp_snooping_disable; //type: empty
         ydk::YLeaf transport_mode; //type: BridgeDomainTransportMode
         ydk::YLeaf mld_snooping; //type: string
@@ -2172,9 +2174,10 @@ class L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Bri
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf logging; //type: empty
-        ydk::YLeaf action; //type: MacSecureAction
         ydk::YLeaf enable; //type: empty
         ydk::YLeaf threshold; //type: empty
+        ydk::YLeaf action; //type: MacSecureAction
+        ydk::YLeaf shutdown_recovery_timer; //type: uint32
 
 }; // L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainMac::MacSecure
 
@@ -2481,11 +2484,11 @@ class L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Bri
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf accept_shutdown; //type: empty
         ydk::YLeaf logging; //type: L2vpnLogging
         ydk::YLeaf disable; //type: empty
         ydk::YLeaf action; //type: MacSecureAction
-        ydk::YLeaf enable; //type: empty
-        ydk::YLeaf accept_shutdown; //type: empty
 
 }; // L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure
 
@@ -3165,10 +3168,11 @@ class L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Bri
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
+        ydk::YLeaf enable; //type: empty
         ydk::YLeaf logging; //type: L2vpnLogging
         ydk::YLeaf disable; //type: empty
         ydk::YLeaf action; //type: MacSecureAction
-        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf shutdown_recovery_timer; //type: uint32
 
 }; // L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure
 
@@ -3725,36 +3729,11 @@ class L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Bri
 
 }; // L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::Vfis::Vfi::BgpAutoDiscovery::LdpSignalingProtocol::VplsId
 
-class FlowLabelTlvCode : public ydk::Enum
+class EvpnEncapsulation : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf Y_17;
-        static const ydk::Enum::YLeaf disable;
-
-};
-
-class MacAging : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf absolute;
-        static const ydk::Enum::YLeaf inactivity;
-
-};
-
-class MacLimitAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf flood;
-        static const ydk::Enum::YLeaf no_flood;
-        static const ydk::Enum::YLeaf shutdown;
-
-};
-
-class BdmacLearn : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable_learning;
+        static const ydk::Enum::YLeaf evpn_encapsulationvxlan;
+        static const ydk::Enum::YLeaf evpn_encapsulation_mpls;
 
 };
 
@@ -3766,79 +3745,86 @@ class Interworking : public ydk::Enum
 
 };
 
-class PwSwitchingPointTlv : public ydk::Enum
+class L2vpnCapabilityMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf hide;
+        static const ydk::Enum::YLeaf high_mode;
+        static const ydk::Enum::YLeaf single_mode;
 
 };
 
-class L2tpv3Sequencing : public ydk::Enum
+class EvpnSide : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf off;
-        static const ydk::Enum::YLeaf both;
+        static const ydk::Enum::YLeaf evpn_side_regular;
+        static const ydk::Enum::YLeaf evpn_side_stitching;
 
 };
 
-class InterfaceProfile : public ydk::Enum
+class BridgeDomainTransportMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf snoop;
-        static const ydk::Enum::YLeaf dhcp_protocol;
+        static const ydk::Enum::YLeaf vlan_passthrough;
 
 };
 
-class BgpRouteTargetRole : public ydk::Enum
+class PreferredPath : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf both;
-        static const ydk::Enum::YLeaf import;
-        static const ydk::Enum::YLeaf export_;
+        static const ydk::Enum::YLeaf te_tunnel;
+        static const ydk::Enum::YLeaf ip_tunnel;
+        static const ydk::Enum::YLeaf tp_tunnel;
+        static const ydk::Enum::YLeaf sr_te_policy;
+        static const ydk::Enum::YLeaf named_te_tunnel;
 
 };
 
-class ErpPort : public ydk::Enum
+class VccvVerification : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf virtual_;
-        static const ydk::Enum::YLeaf interface;
+        static const ydk::Enum::YLeaf lsp_ping;
 
 };
 
-class BgpRouteTarget : public ydk::Enum
+class MacWithdrawBehavior : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf no_stitching;
-        static const ydk::Enum::YLeaf stitching;
+        static const ydk::Enum::YLeaf legacy;
+        static const ydk::Enum::YLeaf optimized;
 
 };
 
-class FlowLabelLoadBalance : public ydk::Enum
+class PortDownFlush : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf off;
-        static const ydk::Enum::YLeaf receive;
-        static const ydk::Enum::YLeaf transmit;
-        static const ydk::Enum::YLeaf both;
+        static const ydk::Enum::YLeaf port_down_flush;
+        static const ydk::Enum::YLeaf enable_port_down_flush;
+        static const ydk::Enum::YLeaf disable_port_down_flush;
 
 };
 
-class L2vpnVerification : public ydk::Enum
+class TypeOfServiceMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf enable;
-        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf reflect;
 
 };
 
-class MacLearn : public ydk::Enum
+class EthernetSegmentLoadBalance : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf default_learning;
-        static const ydk::Enum::YLeaf enable_learning;
-        static const ydk::Enum::YLeaf disable_learning;
+        static const ydk::Enum::YLeaf single_active;
+        static const ydk::Enum::YLeaf port_active;
+
+};
+
+class MplsSignalingProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf ldp;
 
 };
 
@@ -3852,11 +3838,38 @@ class Erpaps : public ydk::Enum
 
 };
 
-class VccvVerification : public ydk::Enum
+class MacSecureAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf restrict;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf shutdown;
+
+};
+
+class ErpPort : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf lsp_ping;
+        static const ydk::Enum::YLeaf virtual_;
+        static const ydk::Enum::YLeaf interface;
+
+};
+
+class BgpRouteTargetRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf both;
+        static const ydk::Enum::YLeaf import;
+        static const ydk::Enum::YLeaf export_;
+
+};
+
+class BackupDisable : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf never;
+        static const ydk::Enum::YLeaf delay;
 
 };
 
@@ -3869,11 +3882,87 @@ class TransportMode : public ydk::Enum
 
 };
 
-class BackupDisable : public ydk::Enum
+class FlowLabelTlvCode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf never;
-        static const ydk::Enum::YLeaf delay;
+        static const ydk::Enum::YLeaf Y_17;
+        static const ydk::Enum::YLeaf disable;
+
+};
+
+class BgpRouteTarget : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_stitching;
+        static const ydk::Enum::YLeaf stitching;
+
+};
+
+class InterfaceProfile : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf snoop;
+        static const ydk::Enum::YLeaf dhcp_protocol;
+
+};
+
+class EthernetSegmentIdentifier : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf type0;
+        static const ydk::Enum::YLeaf legacy;
+        static const ydk::Enum::YLeaf override;
+
+};
+
+class RplRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf owner;
+        static const ydk::Enum::YLeaf neighbor;
+        static const ydk::Enum::YLeaf next_neighbor;
+
+};
+
+class PwSwitchingPointTlv : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf hide;
+
+};
+
+class StormControl : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf broadcast;
+
+};
+
+class EthernetSegmentServiceCarving : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mod_n;
+        static const ydk::Enum::YLeaf manual;
+        static const ydk::Enum::YLeaf hrw;
+
+};
+
+class MacLearn : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_learning;
+        static const ydk::Enum::YLeaf enable_learning;
+        static const ydk::Enum::YLeaf disable_learning;
+
+};
+
+class L2tpv3Sequencing : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf off;
+        static const ydk::Enum::YLeaf both;
 
 };
 
@@ -3886,11 +3975,36 @@ class LoadBalance : public ydk::Enum
 
 };
 
-class ErpPort1 : public ydk::Enum
+class L2tpSignalingProtocol : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf port0;
-        static const ydk::Enum::YLeaf port1;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf l2tpv3;
+
+};
+
+class BdmacLearn : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disable_learning;
+
+};
+
+class L2mcSrcTrafficEnabled : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf l2mc_none;
+        static const ydk::Enum::YLeaf l2mc_ipv4;
+        static const ydk::Enum::YLeaf l2mc_ipv6;
+        static const ydk::Enum::YLeaf l2mc_ipv4_ipv6;
+
+};
+
+class L2vpnVerification : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
 
 };
 
@@ -3900,6 +4014,22 @@ class InterfaceTrafficFlood : public ydk::Enum
         static const ydk::Enum::YLeaf traffic_flooding;
         static const ydk::Enum::YLeaf enable_flooding;
         static const ydk::Enum::YLeaf disable_flooding;
+
+};
+
+class L2Encapsulation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf vlan;
+        static const ydk::Enum::YLeaf ethernet;
+
+};
+
+class L2vpnLogging : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
 
 };
 
@@ -3919,22 +4049,40 @@ class L2tpCookieSize : public ydk::Enum
 
 };
 
-class StormControl : public ydk::Enum
+class MplsSequencing : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unicast;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf broadcast;
+        static const ydk::Enum::YLeaf off;
+        static const ydk::Enum::YLeaf transmit;
+        static const ydk::Enum::YLeaf receive;
+        static const ydk::Enum::YLeaf both;
 
 };
 
-class BgpRouteDistinguisher : public ydk::Enum
+class EthernetSegmentServiceCarvingMcast : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf auto_;
-        static const ydk::Enum::YLeaf two_byte_as;
-        static const ydk::Enum::YLeaf four_byte_as;
-        static const ydk::Enum::YLeaf ipv4_address;
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf hrw_s_g;
+        static const ydk::Enum::YLeaf hrw_g;
+
+};
+
+class MacLimitAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf flood;
+        static const ydk::Enum::YLeaf no_flood;
+        static const ydk::Enum::YLeaf shutdown;
+
+};
+
+class ErpPort1 : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf port0;
+        static const ydk::Enum::YLeaf port1;
 
 };
 
@@ -3945,6 +4093,24 @@ class MacNotification : public ydk::Enum
         static const ydk::Enum::YLeaf syslog;
         static const ydk::Enum::YLeaf trap;
         static const ydk::Enum::YLeaf syslog_snmp;
+
+};
+
+class ControlWord : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf disable;
+
+};
+
+class BgpRouteDistinguisher : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf auto_;
+        static const ydk::Enum::YLeaf two_byte_as;
+        static const ydk::Enum::YLeaf four_byte_as;
+        static const ydk::Enum::YLeaf ipv4_address;
 
 };
 
@@ -3959,89 +4125,6 @@ class BgpRouteTargetFormat : public ydk::Enum
 
 };
 
-class MplsSignalingProtocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf ldp;
-
-};
-
-class EvpnSide : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf evpn_side_regular;
-        static const ydk::Enum::YLeaf evpn_side_stitching;
-
-};
-
-class ControlWord : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enable;
-        static const ydk::Enum::YLeaf disable;
-
-};
-
-class PreferredPath : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf te_tunnel;
-        static const ydk::Enum::YLeaf ip_tunnel;
-        static const ydk::Enum::YLeaf tp_tunnel;
-        static const ydk::Enum::YLeaf sr_te_policy;
-
-};
-
-class EvpnEncapsulation : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf evpn_encapsulationvxlan;
-        static const ydk::Enum::YLeaf evpn_encapsulation_mpls;
-
-};
-
-class MplsSequencing : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf off;
-        static const ydk::Enum::YLeaf transmit;
-        static const ydk::Enum::YLeaf receive;
-        static const ydk::Enum::YLeaf both;
-
-};
-
-class EthernetSegmentLoadBalance : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf single_active;
-
-};
-
-class L2tpSignalingProtocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf l2tpv3;
-
-};
-
-class EthernetSegmentIdentifier : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf type0;
-        static const ydk::Enum::YLeaf legacy;
-        static const ydk::Enum::YLeaf override;
-
-};
-
-class BridgeDomainTransportMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf vlan_passthrough;
-
-};
-
 class LdpVplsId : public ydk::Enum
 {
     public:
@@ -4050,77 +4133,21 @@ class LdpVplsId : public ydk::Enum
 
 };
 
-class L2Encapsulation : public ydk::Enum
+class MacAging : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf vlan;
-        static const ydk::Enum::YLeaf ethernet;
+        static const ydk::Enum::YLeaf absolute;
+        static const ydk::Enum::YLeaf inactivity;
 
 };
 
-class EthernetSegmentServiceCarving : public ydk::Enum
+class FlowLabelLoadBalance : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf hrw;
-
-};
-
-class L2vpnLogging : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enable;
-        static const ydk::Enum::YLeaf disable;
-
-};
-
-class MacWithdrawBehavior : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf legacy;
-        static const ydk::Enum::YLeaf optimized;
-
-};
-
-class RplRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf owner;
-        static const ydk::Enum::YLeaf neighbor;
-        static const ydk::Enum::YLeaf next_neighbor;
-
-};
-
-class TypeOfServiceMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf reflect;
-
-};
-
-class PortDownFlush : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf port_down_flush;
-        static const ydk::Enum::YLeaf enable_port_down_flush;
-        static const ydk::Enum::YLeaf disable_port_down_flush;
-
-};
-
-class L2vpnCapabilityMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf high_mode;
-        static const ydk::Enum::YLeaf single_mode;
-
-};
-
-class MacSecureAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf restrict;
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf shutdown;
+        static const ydk::Enum::YLeaf off;
+        static const ydk::Enum::YLeaf receive;
+        static const ydk::Enum::YLeaf transmit;
+        static const ydk::Enum::YLeaf both;
 
 };
 

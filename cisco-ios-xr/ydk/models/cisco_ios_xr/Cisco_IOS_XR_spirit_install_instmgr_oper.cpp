@@ -494,7 +494,8 @@ SoftwareInstall::Superseded::SupersededPackageInfo::SupersededPackageInfo()
     location{YType::str, "location"},
     node_type{YType::str, "node-type"},
     boot_partition_name{YType::str, "boot-partition-name"},
-    superseded_packages{YType::str, "superseded-packages"}
+    superseded_packages{YType::str, "superseded-packages"},
+    number_of_packages{YType::uint32, "number-of-packages"}
 {
 
     yang_name = "superseded-package-info"; yang_parent_name = "superseded"; is_top_level_class = false; has_list_ancestor = false; 
@@ -511,7 +512,8 @@ bool SoftwareInstall::Superseded::SupersededPackageInfo::has_data() const
 	|| location.is_set
 	|| node_type.is_set
 	|| boot_partition_name.is_set
-	|| superseded_packages.is_set;
+	|| superseded_packages.is_set
+	|| number_of_packages.is_set;
 }
 
 bool SoftwareInstall::Superseded::SupersededPackageInfo::has_operation() const
@@ -521,7 +523,8 @@ bool SoftwareInstall::Superseded::SupersededPackageInfo::has_operation() const
 	|| ydk::is_set(location.yfilter)
 	|| ydk::is_set(node_type.yfilter)
 	|| ydk::is_set(boot_partition_name.yfilter)
-	|| ydk::is_set(superseded_packages.yfilter);
+	|| ydk::is_set(superseded_packages.yfilter)
+	|| ydk::is_set(number_of_packages.yfilter);
 }
 
 std::string SoftwareInstall::Superseded::SupersededPackageInfo::get_absolute_path() const
@@ -548,6 +551,7 @@ std::vector<std::pair<std::string, LeafData> > SoftwareInstall::Superseded::Supe
     if (node_type.is_set || is_set(node_type.yfilter)) leaf_name_data.push_back(node_type.get_name_leafdata());
     if (boot_partition_name.is_set || is_set(boot_partition_name.yfilter)) leaf_name_data.push_back(boot_partition_name.get_name_leafdata());
     if (superseded_packages.is_set || is_set(superseded_packages.yfilter)) leaf_name_data.push_back(superseded_packages.get_name_leafdata());
+    if (number_of_packages.is_set || is_set(number_of_packages.yfilter)) leaf_name_data.push_back(number_of_packages.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -597,6 +601,12 @@ void SoftwareInstall::Superseded::SupersededPackageInfo::set_value(const std::st
         superseded_packages.value_namespace = name_space;
         superseded_packages.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "number-of-packages")
+    {
+        number_of_packages = value;
+        number_of_packages.value_namespace = name_space;
+        number_of_packages.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void SoftwareInstall::Superseded::SupersededPackageInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -621,11 +631,15 @@ void SoftwareInstall::Superseded::SupersededPackageInfo::set_filter(const std::s
     {
         superseded_packages.yfilter = yfilter;
     }
+    if(value_path == "number-of-packages")
+    {
+        number_of_packages.yfilter = yfilter;
+    }
 }
 
 bool SoftwareInstall::Superseded::SupersededPackageInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "error-message" || name == "location" || name == "node-type" || name == "boot-partition-name" || name == "superseded-packages")
+    if(name == "error-message" || name == "location" || name == "node-type" || name == "boot-partition-name" || name == "superseded-packages" || name == "number-of-packages")
         return true;
     return false;
 }
@@ -4836,6 +4850,28 @@ bool SoftwareInstall::Repository::All::has_leaf_or_child_of_name(const std::stri
     return false;
 }
 
+const Enum::YLeaf NodeRoleEt::node_unknown {0, "node-unknown"};
+const Enum::YLeaf NodeRoleEt::node_active {1, "node-active"};
+const Enum::YLeaf NodeRoleEt::node_standby {2, "node-standby"};
+const Enum::YLeaf NodeRoleEt::node_unusable {3, "node-unusable"};
+
+const Enum::YLeaf IssudirNodeStatusEt::not_issu_ready {0, "not-issu-ready"};
+const Enum::YLeaf IssudirNodeStatusEt::issu_ready {1, "issu-ready"};
+const Enum::YLeaf IssudirNodeStatusEt::isus_go {2, "isus-go"};
+const Enum::YLeaf IssudirNodeStatusEt::node_fail {3, "node-fail"};
+
+const Enum::YLeaf IssuNodeRoleEt::unknown_role {0, "unknown-role"};
+const Enum::YLeaf IssuNodeRoleEt::primary_role {1, "primary-role"};
+const Enum::YLeaf IssuNodeRoleEt::secondary_role {2, "secondary-role"};
+const Enum::YLeaf IssuNodeRoleEt::tertiary_role {3, "tertiary-role"};
+
+const Enum::YLeaf CardTypeEt::card_rp {0, "card-rp"};
+const Enum::YLeaf CardTypeEt::card_drp {1, "card-drp"};
+const Enum::YLeaf CardTypeEt::card_lc {2, "card-lc"};
+const Enum::YLeaf CardTypeEt::card_sc {3, "card-sc"};
+const Enum::YLeaf CardTypeEt::card_sp {4, "card-sp"};
+const Enum::YLeaf CardTypeEt::card_other {5, "card-other"};
+
 const Enum::YLeaf IsdErrorEt::none {0, "none"};
 const Enum::YLeaf IsdErrorEt::not_compatible {1, "not-compatible"};
 const Enum::YLeaf IsdErrorEt::not_enough_resource {2, "not-enough-resource"};
@@ -4859,10 +4895,15 @@ const Enum::YLeaf IsdErrorEt::fsa_error {19, "fsa-error"};
 const Enum::YLeaf IsdErrorEt::err_post_issu {20, "err-post-issu"};
 const Enum::YLeaf IsdErrorEt::err_issu_dir_restart {21, "err-issu-dir-restart"};
 
-const Enum::YLeaf NodeRoleEt::node_unknown {0, "node-unknown"};
-const Enum::YLeaf NodeRoleEt::node_active {1, "node-active"};
-const Enum::YLeaf NodeRoleEt::node_standby {2, "node-standby"};
-const Enum::YLeaf NodeRoleEt::node_unusable {3, "node-unusable"};
+const Enum::YLeaf IsdIssuStatusEt::ok {0, "ok"};
+const Enum::YLeaf IsdIssuStatusEt::prep_done {1, "prep-done"};
+const Enum::YLeaf IsdIssuStatusEt::big_bang {2, "big-bang"};
+const Enum::YLeaf IsdIssuStatusEt::done {3, "done"};
+const Enum::YLeaf IsdIssuStatusEt::abort {4, "abort"};
+const Enum::YLeaf IsdIssuStatusEt::cmd_reject {5, "cmd-reject"};
+const Enum::YLeaf IsdIssuStatusEt::unknown {6, "unknown"};
+const Enum::YLeaf IsdIssuStatusEt::abort_cleanup {7, "abort-cleanup"};
+const Enum::YLeaf IsdIssuStatusEt::abort_cmd_reject {8, "abort-cmd-reject"};
 
 const Enum::YLeaf IsdStateEt::none {0, "none"};
 const Enum::YLeaf IsdStateEt::idle {1, "idle"};
@@ -4882,33 +4923,6 @@ const Enum::YLeaf IsdStateEt::abort {14, "abort"};
 const Enum::YLeaf IsdStateEt::abort_done {15, "abort-done"};
 const Enum::YLeaf IsdStateEt::abort_cleanup {16, "abort-cleanup"};
 const Enum::YLeaf IsdStateEt::unknown_state {17, "unknown-state"};
-
-const Enum::YLeaf IsdIssuStatusEt::ok {0, "ok"};
-const Enum::YLeaf IsdIssuStatusEt::prep_done {1, "prep-done"};
-const Enum::YLeaf IsdIssuStatusEt::big_bang {2, "big-bang"};
-const Enum::YLeaf IsdIssuStatusEt::done {3, "done"};
-const Enum::YLeaf IsdIssuStatusEt::abort {4, "abort"};
-const Enum::YLeaf IsdIssuStatusEt::cmd_reject {5, "cmd-reject"};
-const Enum::YLeaf IsdIssuStatusEt::unknown {6, "unknown"};
-const Enum::YLeaf IsdIssuStatusEt::abort_cleanup {7, "abort-cleanup"};
-const Enum::YLeaf IsdIssuStatusEt::abort_cmd_reject {8, "abort-cmd-reject"};
-
-const Enum::YLeaf IssudirNodeStatusEt::not_issu_ready {0, "not-issu-ready"};
-const Enum::YLeaf IssudirNodeStatusEt::issu_ready {1, "issu-ready"};
-const Enum::YLeaf IssudirNodeStatusEt::isus_go {2, "isus-go"};
-const Enum::YLeaf IssudirNodeStatusEt::node_fail {3, "node-fail"};
-
-const Enum::YLeaf IssuNodeRoleEt::unknown_role {0, "unknown-role"};
-const Enum::YLeaf IssuNodeRoleEt::primary_role {1, "primary-role"};
-const Enum::YLeaf IssuNodeRoleEt::secondary_role {2, "secondary-role"};
-const Enum::YLeaf IssuNodeRoleEt::tertiary_role {3, "tertiary-role"};
-
-const Enum::YLeaf CardTypeEt::card_rp {0, "card-rp"};
-const Enum::YLeaf CardTypeEt::card_drp {1, "card-drp"};
-const Enum::YLeaf CardTypeEt::card_lc {2, "card-lc"};
-const Enum::YLeaf CardTypeEt::card_sc {3, "card-sc"};
-const Enum::YLeaf CardTypeEt::card_sp {4, "card-sp"};
-const Enum::YLeaf CardTypeEt::card_other {5, "card-other"};
 
 
 }

@@ -2353,17 +2353,52 @@ class Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause : public ydk::En
 
 }; // Syslog::Suppression::Rules::Rule::AlarmCauses::AlarmCause
 
-class LogSeverity : public ydk::Enum
+class LoggingTos : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf emergency;
-        static const ydk::Enum::YLeaf alert;
+        static const ydk::Enum::YLeaf precedence;
+        static const ydk::Enum::YLeaf dscp;
+
+};
+
+class LoggingDscpValue : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf af11;
+        static const ydk::Enum::YLeaf af12;
+        static const ydk::Enum::YLeaf af13;
+        static const ydk::Enum::YLeaf af21;
+        static const ydk::Enum::YLeaf af22;
+        static const ydk::Enum::YLeaf af23;
+        static const ydk::Enum::YLeaf af31;
+        static const ydk::Enum::YLeaf af32;
+        static const ydk::Enum::YLeaf af33;
+        static const ydk::Enum::YLeaf af41;
+        static const ydk::Enum::YLeaf af42;
+        static const ydk::Enum::YLeaf af43;
+        static const ydk::Enum::YLeaf ef;
+        static const ydk::Enum::YLeaf cs1;
+        static const ydk::Enum::YLeaf cs2;
+        static const ydk::Enum::YLeaf cs3;
+        static const ydk::Enum::YLeaf cs4;
+        static const ydk::Enum::YLeaf cs5;
+        static const ydk::Enum::YLeaf cs6;
+        static const ydk::Enum::YLeaf cs7;
+
+};
+
+class LoggingPrecedenceValue : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf routine;
+        static const ydk::Enum::YLeaf priority;
+        static const ydk::Enum::YLeaf immediate;
+        static const ydk::Enum::YLeaf flash;
+        static const ydk::Enum::YLeaf flash_override;
         static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf error;
-        static const ydk::Enum::YLeaf warning;
-        static const ydk::Enum::YLeaf notice;
-        static const ydk::Enum::YLeaf informational;
-        static const ydk::Enum::YLeaf debug;
+        static const ydk::Enum::YLeaf internet;
+        static const ydk::Enum::YLeaf network;
 
 };
 
@@ -2399,32 +2434,9 @@ class Facility : public ydk::Enum
 
 };
 
-class LogCollectFrequency : public ydk::Enum
+class LoggingDscp : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf weekly;
-        static const ydk::Enum::YLeaf daily;
-
-};
-
-class LoggingPrecedenceValue : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf routine;
-        static const ydk::Enum::YLeaf priority;
-        static const ydk::Enum::YLeaf immediate;
-        static const ydk::Enum::YLeaf flash;
-        static const ydk::Enum::YLeaf flash_override;
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf internet;
-        static const ydk::Enum::YLeaf network;
-
-};
-
-class LoggingTos : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf precedence;
         static const ydk::Enum::YLeaf dscp;
 
 };
@@ -2451,30 +2463,11 @@ class LoggingPrecedence : public ydk::Enum
 
 };
 
-class LoggingDscpValue : public ydk::Enum
+class TimeInfo : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf af11;
-        static const ydk::Enum::YLeaf af12;
-        static const ydk::Enum::YLeaf af13;
-        static const ydk::Enum::YLeaf af21;
-        static const ydk::Enum::YLeaf af22;
-        static const ydk::Enum::YLeaf af23;
-        static const ydk::Enum::YLeaf af31;
-        static const ydk::Enum::YLeaf af32;
-        static const ydk::Enum::YLeaf af33;
-        static const ydk::Enum::YLeaf af41;
-        static const ydk::Enum::YLeaf af42;
-        static const ydk::Enum::YLeaf af43;
-        static const ydk::Enum::YLeaf ef;
-        static const ydk::Enum::YLeaf cs1;
-        static const ydk::Enum::YLeaf cs2;
-        static const ydk::Enum::YLeaf cs3;
-        static const ydk::Enum::YLeaf cs4;
-        static const ydk::Enum::YLeaf cs5;
-        static const ydk::Enum::YLeaf cs6;
-        static const ydk::Enum::YLeaf cs7;
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
 
 };
 
@@ -2492,18 +2485,25 @@ class LogMessageSeverity : public ydk::Enum
 
 };
 
-class TimeInfo : public ydk::Enum
+class LogCollectFrequency : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf weekly;
+        static const ydk::Enum::YLeaf daily;
 
 };
 
-class LoggingDscp : public ydk::Enum
+class LogSeverity : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf dscp;
+        static const ydk::Enum::YLeaf emergency;
+        static const ydk::Enum::YLeaf alert;
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf error;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf notice;
+        static const ydk::Enum::YLeaf informational;
+        static const ydk::Enum::YLeaf debug;
 
 };
 

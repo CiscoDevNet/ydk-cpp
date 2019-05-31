@@ -877,15 +877,6 @@ class EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::
 
 }; // EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::Threshold
 
-class EgressFiltering : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf egress_filtering_type_strict;
-        static const ydk::Enum::YLeaf egress_filtering_type_disable;
-        static const ydk::Enum::YLeaf egress_filtering_type_default;
-
-};
-
 class L2ProtocolName : public ydk::Enum
 {
     public:
@@ -897,14 +888,6 @@ class L2ProtocolName : public ydk::Enum
 
 };
 
-class Filtering : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf filtering_type_dot1q;
-        static const ydk::Enum::YLeaf filtering_type_dot1ad;
-
-};
-
 class L2ProtocolMode : public ydk::Enum
 {
     public:
@@ -912,6 +895,23 @@ class L2ProtocolMode : public ydk::Enum
         static const ydk::Enum::YLeaf drop;
         static const ydk::Enum::YLeaf tunnel;
         static const ydk::Enum::YLeaf reverse_tunnel;
+
+};
+
+class EgressFiltering : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf egress_filtering_type_strict;
+        static const ydk::Enum::YLeaf egress_filtering_type_disable;
+        static const ydk::Enum::YLeaf egress_filtering_type_default;
+
+};
+
+class Filtering : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf filtering_type_dot1q;
+        static const ydk::Enum::YLeaf filtering_type_dot1ad;
 
 };
 

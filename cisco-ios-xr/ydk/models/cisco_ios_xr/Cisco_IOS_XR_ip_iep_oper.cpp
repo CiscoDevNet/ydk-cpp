@@ -892,15 +892,15 @@ bool ExplicitPaths::Names::Name::Address::has_leaf_or_child_of_name(const std::s
     return false;
 }
 
-const Enum::YLeaf IepStatus::enabled {0, "enabled"};
-const Enum::YLeaf IepStatus::disabled {1, "disabled"};
+const Enum::YLeaf IepHop::strict {0, "strict"};
+const Enum::YLeaf IepHop::loose {1, "loose"};
 
 const Enum::YLeaf IepAddress::next {0, "next"};
 const Enum::YLeaf IepAddress::exclude {1, "exclude"};
 const Enum::YLeaf IepAddress::exclude_srlg {2, "exclude-srlg"};
 
-const Enum::YLeaf IepHop::strict {0, "strict"};
-const Enum::YLeaf IepHop::loose {1, "loose"};
+const Enum::YLeaf IepStatus::enabled {0, "enabled"};
+const Enum::YLeaf IepStatus::disabled {1, "disabled"};
 
 
 }

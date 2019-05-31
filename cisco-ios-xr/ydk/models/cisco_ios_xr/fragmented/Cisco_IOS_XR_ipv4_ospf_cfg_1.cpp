@@ -13,6 +13,270 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_ospf_cfg {
 
+Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterfaces()
+    :
+    exclude_interface(this, {"interface_name"})
+{
+
+    yang_name = "exclude-interfaces"; yang_parent_name = "per-prefix"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::~ExcludeInterfaces()
+{
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
+    {
+        if(exclude_interface[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::has_operation() const
+{
+    for (std::size_t index=0; index<exclude_interface.len(); index++)
+    {
+        if(exclude_interface[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "exclude-interfaces";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "exclude-interface")
+    {
+        auto ent_ = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface>();
+        ent_->parent = this;
+        exclude_interface.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : exclude_interface.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "exclude-interface")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::ExcludeInterface()
+    :
+    interface_name{YType::str, "interface-name"}
+{
+
+    yang_name = "exclude-interface"; yang_parent_name = "exclude-interfaces"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::~ExcludeInterface()
+{
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::has_data() const
+{
+    if (is_presence_container) return true;
+    return interface_name.is_set;
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(interface_name.yfilter);
+}
+
+std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "exclude-interface";
+    ADD_KEY_TOKEN(interface_name, "interface-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "interface-name")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::CostFallback::CostFallback()
+    :
+    cost{YType::uint32, "cost"},
+    threshold{YType::uint32, "threshold"}
+{
+
+    yang_name = "cost-fallback"; yang_parent_name = "name-scope"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::CostFallback::~CostFallback()
+{
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::CostFallback::has_data() const
+{
+    if (is_presence_container) return true;
+    return cost.is_set
+	|| threshold.is_set;
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::CostFallback::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(cost.yfilter)
+	|| ydk::is_set(threshold.yfilter);
+}
+
+std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::CostFallback::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cost-fallback";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::CostFallback::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (cost.is_set || is_set(cost.yfilter)) leaf_name_data.push_back(cost.get_name_leafdata());
+    if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::CostFallback::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::CostFallback::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::CostFallback::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "cost")
+    {
+        cost = value;
+        cost.value_namespace = name_space;
+        cost.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "threshold")
+    {
+        threshold = value;
+        threshold.value_namespace = name_space;
+        threshold.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::CostFallback::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "cost")
+    {
+        cost.yfilter = yfilter;
+    }
+    if(value_path == "threshold")
+    {
+        threshold.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::CostFallback::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "cost" || name == "threshold")
+        return true;
+    return false;
+}
+
 Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScopes()
     :
     multi_area_interface_scope(this, {"interface_name"})
@@ -116,8 +380,7 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterf
     transmit_delay{YType::uint32, "transmit-delay"},
     packet_size{YType::uint32, "packet-size"},
     database_filter{YType::boolean, "database-filter"},
-    retransmit_interval{YType::uint32, "retransmit-interval"},
-    running{YType::empty, "running"}
+    retransmit_interval{YType::uint32, "retransmit-interval"}
         ,
     distribute_list(nullptr) // presence node
     , authentication(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication>())
@@ -151,7 +414,6 @@ bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaI
 	|| packet_size.is_set
 	|| database_filter.is_set
 	|| retransmit_interval.is_set
-	|| running.is_set
 	|| (distribute_list !=  nullptr && distribute_list->has_data())
 	|| (authentication !=  nullptr && authentication->has_data())
 	|| (neighbors !=  nullptr && neighbors->has_data())
@@ -172,7 +434,6 @@ bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaI
 	|| ydk::is_set(packet_size.yfilter)
 	|| ydk::is_set(database_filter.yfilter)
 	|| ydk::is_set(retransmit_interval.yfilter)
-	|| ydk::is_set(running.yfilter)
 	|| (distribute_list !=  nullptr && distribute_list->has_operation())
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (neighbors !=  nullptr && neighbors->has_operation())
@@ -202,7 +463,6 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::V
     if (packet_size.is_set || is_set(packet_size.yfilter)) leaf_name_data.push_back(packet_size.get_name_leafdata());
     if (database_filter.is_set || is_set(database_filter.yfilter)) leaf_name_data.push_back(database_filter.get_name_leafdata());
     if (retransmit_interval.is_set || is_set(retransmit_interval.yfilter)) leaf_name_data.push_back(retransmit_interval.get_name_leafdata());
-    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -360,12 +620,6 @@ void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaI
         retransmit_interval.value_namespace = name_space;
         retransmit_interval.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "running")
-    {
-        running = value;
-        running.value_namespace = name_space;
-        running.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::set_filter(const std::string & value_path, YFilter yfilter)
@@ -406,15 +660,11 @@ void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaI
     {
         retransmit_interval.yfilter = yfilter;
     }
-    if(value_path == "running")
-    {
-        running.yfilter = yfilter;
-    }
 }
 
 bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "distribute-list" || name == "authentication" || name == "neighbors" || name == "dead-interval-minimal" || name == "fast-reroute" || name == "cost-fallback" || name == "interface-name" || name == "cost" || name == "mtu-ignore" || name == "hello-interval" || name == "passive" || name == "transmit-delay" || name == "packet-size" || name == "database-filter" || name == "retransmit-interval" || name == "running")
+    if(name == "distribute-list" || name == "authentication" || name == "neighbors" || name == "dead-interval-minimal" || name == "fast-reroute" || name == "cost-fallback" || name == "interface-name" || name == "cost" || name == "mtu-ignore" || name == "hello-interval" || name == "passive" || name == "transmit-delay" || name == "packet-size" || name == "database-filter" || name == "retransmit-interval")
         return true;
     return false;
 }
@@ -3037,8 +3287,7 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaAreaId()
     mpls_traffic_eng{YType::empty, "mpls-traffic-eng"},
     external_out{YType::boolean, "external-out"},
     summary_in{YType::boolean, "summary-in"},
-    segment_routing{YType::enumeration, "segment-routing"},
-    running{YType::empty, "running"}
+    segment_routing{YType::enumeration, "segment-routing"}
         ,
     virtual_link_scopes(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes>())
     , sham_link_scopes(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes>())
@@ -3076,7 +3325,6 @@ bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::has_data() 
 	|| external_out.is_set
 	|| summary_in.is_set
 	|| segment_routing.is_set
-	|| running.is_set
 	|| (virtual_link_scopes !=  nullptr && virtual_link_scopes->has_data())
 	|| (sham_link_scopes !=  nullptr && sham_link_scopes->has_data())
 	|| (area_scope !=  nullptr && area_scope->has_data())
@@ -3099,7 +3347,6 @@ bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::has_operati
 	|| ydk::is_set(external_out.yfilter)
 	|| ydk::is_set(summary_in.yfilter)
 	|| ydk::is_set(segment_routing.yfilter)
-	|| ydk::is_set(running.yfilter)
 	|| (virtual_link_scopes !=  nullptr && virtual_link_scopes->has_operation())
 	|| (sham_link_scopes !=  nullptr && sham_link_scopes->has_operation())
 	|| (area_scope !=  nullptr && area_scope->has_operation())
@@ -3131,7 +3378,6 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::V
     if (external_out.is_set || is_set(external_out.yfilter)) leaf_name_data.push_back(external_out.get_name_leafdata());
     if (summary_in.is_set || is_set(summary_in.yfilter)) leaf_name_data.push_back(summary_in.get_name_leafdata());
     if (segment_routing.is_set || is_set(segment_routing.yfilter)) leaf_name_data.push_back(segment_routing.get_name_leafdata());
-    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3309,12 +3555,6 @@ void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::set_value(c
         segment_routing.value_namespace = name_space;
         segment_routing.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "running")
-    {
-        running = value;
-        running.value_namespace = name_space;
-        running.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3359,15 +3599,11 @@ void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::set_filter(
     {
         segment_routing.yfilter = yfilter;
     }
-    if(value_path == "running")
-    {
-        running.yfilter = yfilter;
-    }
 }
 
 bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "virtual-link-scopes" || name == "sham-link-scopes" || name == "area-scope" || name == "name-scopes" || name == "multi-area-interface-scopes" || name == "area-ranges" || name == "nssa" || name == "area-id" || name == "route-policy-in" || name == "default-cost" || name == "route-policy-out" || name == "stub" || name == "type7-translate-always" || name == "mpls-traffic-eng" || name == "external-out" || name == "summary-in" || name == "segment-routing" || name == "running")
+    if(name == "virtual-link-scopes" || name == "sham-link-scopes" || name == "area-scope" || name == "name-scopes" || name == "multi-area-interface-scopes" || name == "area-ranges" || name == "nssa" || name == "area-id" || name == "route-policy-in" || name == "default-cost" || name == "route-policy-out" || name == "stub" || name == "type7-translate-always" || name == "mpls-traffic-eng" || name == "external-out" || name == "summary-in" || name == "segment-routing")
         return true;
     return false;
 }
@@ -3470,8 +3706,7 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScope
     address{YType::str, "address"},
     hello_interval{YType::uint32, "hello-interval"},
     transmit_delay{YType::uint32, "transmit-delay"},
-    retransmit_interval{YType::uint32, "retransmit-interval"},
-    running{YType::empty, "running"}
+    retransmit_interval{YType::uint32, "retransmit-interval"}
         ,
     authentication(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::Authentication>())
     , dead_interval_minimal(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::DeadIntervalMinimal>())
@@ -3493,7 +3728,6 @@ bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLink
 	|| hello_interval.is_set
 	|| transmit_delay.is_set
 	|| retransmit_interval.is_set
-	|| running.is_set
 	|| (authentication !=  nullptr && authentication->has_data())
 	|| (dead_interval_minimal !=  nullptr && dead_interval_minimal->has_data());
 }
@@ -3505,7 +3739,6 @@ bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLink
 	|| ydk::is_set(hello_interval.yfilter)
 	|| ydk::is_set(transmit_delay.yfilter)
 	|| ydk::is_set(retransmit_interval.yfilter)
-	|| ydk::is_set(running.yfilter)
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (dead_interval_minimal !=  nullptr && dead_interval_minimal->has_operation());
 }
@@ -3526,7 +3759,6 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::V
     if (hello_interval.is_set || is_set(hello_interval.yfilter)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
     if (transmit_delay.is_set || is_set(transmit_delay.yfilter)) leaf_name_data.push_back(transmit_delay.get_name_leafdata());
     if (retransmit_interval.is_set || is_set(retransmit_interval.yfilter)) leaf_name_data.push_back(retransmit_interval.get_name_leafdata());
-    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3598,12 +3830,6 @@ void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLink
         retransmit_interval.value_namespace = name_space;
         retransmit_interval.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "running")
-    {
-        running = value;
-        running.value_namespace = name_space;
-        running.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3624,15 +3850,11 @@ void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLink
     {
         retransmit_interval.yfilter = yfilter;
     }
-    if(value_path == "running")
-    {
-        running.yfilter = yfilter;
-    }
 }
 
 bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::VirtualLinkScopes::VirtualLinkScope::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "authentication" || name == "dead-interval-minimal" || name == "address" || name == "hello-interval" || name == "transmit-delay" || name == "retransmit-interval" || name == "running")
+    if(name == "authentication" || name == "dead-interval-minimal" || name == "address" || name == "hello-interval" || name == "transmit-delay" || name == "retransmit-interval")
         return true;
     return false;
 }
@@ -4237,8 +4459,7 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::
     cost{YType::uint32, "cost"},
     hello_interval{YType::uint32, "hello-interval"},
     transmit_delay{YType::uint32, "transmit-delay"},
-    retransmit_interval{YType::uint32, "retransmit-interval"},
-    running{YType::empty, "running"}
+    retransmit_interval{YType::uint32, "retransmit-interval"}
         ,
     authentication(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::Authentication>())
     , dead_interval_minimal(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::DeadIntervalMinimal>())
@@ -4263,7 +4484,6 @@ bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkSco
 	|| hello_interval.is_set
 	|| transmit_delay.is_set
 	|| retransmit_interval.is_set
-	|| running.is_set
 	|| (authentication !=  nullptr && authentication->has_data())
 	|| (dead_interval_minimal !=  nullptr && dead_interval_minimal->has_data());
 }
@@ -4278,7 +4498,6 @@ bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkSco
 	|| ydk::is_set(hello_interval.yfilter)
 	|| ydk::is_set(transmit_delay.yfilter)
 	|| ydk::is_set(retransmit_interval.yfilter)
-	|| ydk::is_set(running.yfilter)
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (dead_interval_minimal !=  nullptr && dead_interval_minimal->has_operation());
 }
@@ -4303,7 +4522,6 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::V
     if (hello_interval.is_set || is_set(hello_interval.yfilter)) leaf_name_data.push_back(hello_interval.get_name_leafdata());
     if (transmit_delay.is_set || is_set(transmit_delay.yfilter)) leaf_name_data.push_back(transmit_delay.get_name_leafdata());
     if (retransmit_interval.is_set || is_set(retransmit_interval.yfilter)) leaf_name_data.push_back(retransmit_interval.get_name_leafdata());
-    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4393,12 +4611,6 @@ void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkSco
         retransmit_interval.value_namespace = name_space;
         retransmit_interval.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "running")
-    {
-        running = value;
-        running.value_namespace = name_space;
-        running.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::set_filter(const std::string & value_path, YFilter yfilter)
@@ -4431,15 +4643,11 @@ void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkSco
     {
         retransmit_interval.yfilter = yfilter;
     }
-    if(value_path == "running")
-    {
-        running.yfilter = yfilter;
-    }
 }
 
 bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkScopes::ShamLinkScope::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "authentication" || name == "dead-interval-minimal" || name == "source-address" || name == "destination-address" || name == "source" || name == "cost" || name == "hello-interval" || name == "transmit-delay" || name == "retransmit-interval" || name == "running")
+    if(name == "authentication" || name == "dead-interval-minimal" || name == "source-address" || name == "destination-address" || name == "source" || name == "cost" || name == "hello-interval" || name == "transmit-delay" || name == "retransmit-interval")
         return true;
     return false;
 }
@@ -4946,6 +5154,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::ShamLinkSco
 Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::AreaScope()
     :
     cost{YType::uint32, "cost"},
+    weight{YType::uint32, "weight"},
     prefix_suppression_primary{YType::boolean, "prefix-suppression-primary"},
     mtu_ignore{YType::boolean, "mtu-ignore"},
     ldp_sync_igp_shortcuts{YType::boolean, "ldp-sync-igp-shortcuts"},
@@ -4992,6 +5201,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::
 {
     if (is_presence_container) return true;
     return cost.is_set
+	|| weight.is_set
 	|| prefix_suppression_primary.is_set
 	|| mtu_ignore.is_set
 	|| ldp_sync_igp_shortcuts.is_set
@@ -5024,6 +5234,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::
 {
     return is_set(yfilter)
 	|| ydk::is_set(cost.yfilter)
+	|| ydk::is_set(weight.yfilter)
 	|| ydk::is_set(prefix_suppression_primary.yfilter)
 	|| ydk::is_set(mtu_ignore.yfilter)
 	|| ydk::is_set(ldp_sync_igp_shortcuts.yfilter)
@@ -5064,6 +5275,7 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::V
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (cost.is_set || is_set(cost.yfilter)) leaf_name_data.push_back(cost.get_name_leafdata());
+    if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
     if (prefix_suppression_primary.is_set || is_set(prefix_suppression_primary.yfilter)) leaf_name_data.push_back(prefix_suppression_primary.get_name_leafdata());
     if (mtu_ignore.is_set || is_set(mtu_ignore.yfilter)) leaf_name_data.push_back(mtu_ignore.get_name_leafdata());
     if (ldp_sync_igp_shortcuts.is_set || is_set(ldp_sync_igp_shortcuts.yfilter)) leaf_name_data.push_back(ldp_sync_igp_shortcuts.get_name_leafdata());
@@ -5206,6 +5418,12 @@ void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::
         cost.value_namespace = name_space;
         cost.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "weight")
+    {
+        weight = value;
+        weight.value_namespace = name_space;
+        weight.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "prefix-suppression-primary")
     {
         prefix_suppression_primary = value;
@@ -5328,6 +5546,10 @@ void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::
     {
         cost.yfilter = yfilter;
     }
+    if(value_path == "weight")
+    {
+        weight.yfilter = yfilter;
+    }
     if(value_path == "prefix-suppression-primary")
     {
         prefix_suppression_primary.yfilter = yfilter;
@@ -5408,7 +5630,7 @@ void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::
 
 bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::AreaScope::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "distribute-list" || name == "bfd" || name == "authentication" || name == "security" || name == "dead-interval-minimal" || name == "fast-reroute" || name == "cost-fallback" || name == "cost" || name == "prefix-suppression-primary" || name == "mtu-ignore" || name == "ldp-sync-igp-shortcuts" || name == "ldp-auto-config" || name == "network-type" || name == "hello-interval" || name == "loopback-stub-network" || name == "prefix-suppression-secondary" || name == "demand-circuit" || name == "passive" || name == "transmit-delay" || name == "packet-size" || name == "ldp-sync" || name == "database-filter" || name == "link-down-fast-detect" || name == "segment-routing-forwarding" || name == "retransmit-interval" || name == "priority" || name == "flood-reduction")
+    if(name == "distribute-list" || name == "bfd" || name == "authentication" || name == "security" || name == "dead-interval-minimal" || name == "fast-reroute" || name == "cost-fallback" || name == "cost" || name == "weight" || name == "prefix-suppression-primary" || name == "mtu-ignore" || name == "ldp-sync-igp-shortcuts" || name == "ldp-auto-config" || name == "network-type" || name == "hello-interval" || name == "loopback-stub-network" || name == "prefix-suppression-secondary" || name == "demand-circuit" || name == "passive" || name == "transmit-delay" || name == "packet-size" || name == "ldp-sync" || name == "database-filter" || name == "link-down-fast-detect" || name == "segment-routing-forwarding" || name == "retransmit-interval" || name == "priority" || name == "flood-reduction")
         return true;
     return false;
 }
@@ -7834,6 +8056,7 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::Name
     :
     interface_name{YType::str, "interface-name"},
     cost{YType::uint32, "cost"},
+    weight{YType::uint32, "weight"},
     prefix_suppression_primary{YType::boolean, "prefix-suppression-primary"},
     mtu_ignore{YType::boolean, "mtu-ignore"},
     ldp_sync_igp_shortcuts{YType::boolean, "ldp-sync-igp-shortcuts"},
@@ -7852,10 +8075,10 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::Name
     segment_routing_forwarding{YType::enumeration, "segment-routing-forwarding"},
     retransmit_interval{YType::uint32, "retransmit-interval"},
     priority{YType::uint32, "priority"},
-    flood_reduction{YType::boolean, "flood-reduction"},
-    running{YType::empty, "running"}
+    flood_reduction{YType::boolean, "flood-reduction"}
         ,
-    prefix_sid(nullptr) // presence node
+    adjacency_sids(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids>())
+    , prefix_sid(nullptr) // presence node
     , prefix_sid_strict(nullptr) // presence node
     , distribute_list(nullptr) // presence node
     , bfd(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::Bfd>())
@@ -7866,6 +8089,7 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::Name
     , fast_reroute(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::FastReroute>())
     , cost_fallback(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::CostFallback>())
 {
+    adjacency_sids->parent = this;
     bfd->parent = this;
     authentication->parent = this;
     security->parent = this;
@@ -7886,6 +8110,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes:
     if (is_presence_container) return true;
     return interface_name.is_set
 	|| cost.is_set
+	|| weight.is_set
 	|| prefix_suppression_primary.is_set
 	|| mtu_ignore.is_set
 	|| ldp_sync_igp_shortcuts.is_set
@@ -7905,7 +8130,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes:
 	|| retransmit_interval.is_set
 	|| priority.is_set
 	|| flood_reduction.is_set
-	|| running.is_set
+	|| (adjacency_sids !=  nullptr && adjacency_sids->has_data())
 	|| (prefix_sid !=  nullptr && prefix_sid->has_data())
 	|| (prefix_sid_strict !=  nullptr && prefix_sid_strict->has_data())
 	|| (distribute_list !=  nullptr && distribute_list->has_data())
@@ -7923,6 +8148,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes:
     return is_set(yfilter)
 	|| ydk::is_set(interface_name.yfilter)
 	|| ydk::is_set(cost.yfilter)
+	|| ydk::is_set(weight.yfilter)
 	|| ydk::is_set(prefix_suppression_primary.yfilter)
 	|| ydk::is_set(mtu_ignore.yfilter)
 	|| ydk::is_set(ldp_sync_igp_shortcuts.yfilter)
@@ -7942,7 +8168,7 @@ bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes:
 	|| ydk::is_set(retransmit_interval.yfilter)
 	|| ydk::is_set(priority.yfilter)
 	|| ydk::is_set(flood_reduction.yfilter)
-	|| ydk::is_set(running.yfilter)
+	|| (adjacency_sids !=  nullptr && adjacency_sids->has_operation())
 	|| (prefix_sid !=  nullptr && prefix_sid->has_operation())
 	|| (prefix_sid_strict !=  nullptr && prefix_sid_strict->has_operation())
 	|| (distribute_list !=  nullptr && distribute_list->has_operation())
@@ -7969,6 +8195,7 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::V
 
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
     if (cost.is_set || is_set(cost.yfilter)) leaf_name_data.push_back(cost.get_name_leafdata());
+    if (weight.is_set || is_set(weight.yfilter)) leaf_name_data.push_back(weight.get_name_leafdata());
     if (prefix_suppression_primary.is_set || is_set(prefix_suppression_primary.yfilter)) leaf_name_data.push_back(prefix_suppression_primary.get_name_leafdata());
     if (mtu_ignore.is_set || is_set(mtu_ignore.yfilter)) leaf_name_data.push_back(mtu_ignore.get_name_leafdata());
     if (ldp_sync_igp_shortcuts.is_set || is_set(ldp_sync_igp_shortcuts.yfilter)) leaf_name_data.push_back(ldp_sync_igp_shortcuts.get_name_leafdata());
@@ -7988,7 +8215,6 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::V
     if (retransmit_interval.is_set || is_set(retransmit_interval.yfilter)) leaf_name_data.push_back(retransmit_interval.get_name_leafdata());
     if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
     if (flood_reduction.is_set || is_set(flood_reduction.yfilter)) leaf_name_data.push_back(flood_reduction.get_name_leafdata());
-    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -7996,6 +8222,15 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::V
 
 std::shared_ptr<ydk::Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "adjacency-sids")
+    {
+        if(adjacency_sids == nullptr)
+        {
+            adjacency_sids = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids>();
+        }
+        return adjacency_sids;
+    }
+
     if(child_yang_name == "prefix-sid")
     {
         if(prefix_sid == nullptr)
@@ -8093,6 +8328,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::Vr
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(adjacency_sids != nullptr)
+    {
+        _children["adjacency-sids"] = adjacency_sids;
+    }
+
     if(prefix_sid != nullptr)
     {
         _children["prefix-sid"] = prefix_sid;
@@ -8159,6 +8399,12 @@ void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes:
         cost = value;
         cost.value_namespace = name_space;
         cost.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "weight")
+    {
+        weight = value;
+        weight.value_namespace = name_space;
+        weight.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "prefix-suppression-primary")
     {
@@ -8274,12 +8520,6 @@ void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes:
         flood_reduction.value_namespace = name_space;
         flood_reduction.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "running")
-    {
-        running = value;
-        running.value_namespace = name_space;
-        running.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::set_filter(const std::string & value_path, YFilter yfilter)
@@ -8291,6 +8531,10 @@ void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes:
     if(value_path == "cost")
     {
         cost.yfilter = yfilter;
+    }
+    if(value_path == "weight")
+    {
+        weight.yfilter = yfilter;
     }
     if(value_path == "prefix-suppression-primary")
     {
@@ -8368,15 +8612,226 @@ void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes:
     {
         flood_reduction.yfilter = yfilter;
     }
-    if(value_path == "running")
-    {
-        running.yfilter = yfilter;
-    }
 }
 
 bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "prefix-sid" || name == "prefix-sid-strict" || name == "distribute-list" || name == "bfd" || name == "authentication" || name == "security" || name == "neighbors" || name == "dead-interval-minimal" || name == "fast-reroute" || name == "cost-fallback" || name == "interface-name" || name == "cost" || name == "prefix-suppression-primary" || name == "mtu-ignore" || name == "ldp-sync-igp-shortcuts" || name == "ldp-auto-config" || name == "network-type" || name == "hello-interval" || name == "loopback-stub-network" || name == "prefix-suppression-secondary" || name == "demand-circuit" || name == "passive" || name == "transmit-delay" || name == "packet-size" || name == "ldp-sync" || name == "database-filter" || name == "link-down-fast-detect" || name == "segment-routing-forwarding" || name == "retransmit-interval" || name == "priority" || name == "flood-reduction" || name == "running")
+    if(name == "adjacency-sids" || name == "prefix-sid" || name == "prefix-sid-strict" || name == "distribute-list" || name == "bfd" || name == "authentication" || name == "security" || name == "neighbors" || name == "dead-interval-minimal" || name == "fast-reroute" || name == "cost-fallback" || name == "interface-name" || name == "cost" || name == "weight" || name == "prefix-suppression-primary" || name == "mtu-ignore" || name == "ldp-sync-igp-shortcuts" || name == "ldp-auto-config" || name == "network-type" || name == "hello-interval" || name == "loopback-stub-network" || name == "prefix-suppression-secondary" || name == "demand-circuit" || name == "passive" || name == "transmit-delay" || name == "packet-size" || name == "ldp-sync" || name == "database-filter" || name == "link-down-fast-detect" || name == "segment-routing-forwarding" || name == "retransmit-interval" || name == "priority" || name == "flood-reduction")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::AdjacencySids()
+    :
+    adjacency_sid(this, {"sid_type", "sid_value"})
+{
+
+    yang_name = "adjacency-sids"; yang_parent_name = "name-scope"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::~AdjacencySids()
+{
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<adjacency_sid.len(); index++)
+    {
+        if(adjacency_sid[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::has_operation() const
+{
+    for (std::size_t index=0; index<adjacency_sid.len(); index++)
+    {
+        if(adjacency_sid[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "adjacency-sids";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "adjacency-sid")
+    {
+        auto ent_ = std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::AdjacencySid>();
+        ent_->parent = this;
+        adjacency_sid.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : adjacency_sid.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "adjacency-sid")
+        return true;
+    return false;
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::AdjacencySid::AdjacencySid()
+    :
+    sid_type{YType::enumeration, "sid-type"},
+    sid_value{YType::uint32, "sid-value"},
+    protected_{YType::boolean, "protected"},
+    neighbor_address{YType::str, "neighbor-address"}
+{
+
+    yang_name = "adjacency-sid"; yang_parent_name = "adjacency-sids"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::AdjacencySid::~AdjacencySid()
+{
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::AdjacencySid::has_data() const
+{
+    if (is_presence_container) return true;
+    return sid_type.is_set
+	|| sid_value.is_set
+	|| protected_.is_set
+	|| neighbor_address.is_set;
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::AdjacencySid::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sid_type.yfilter)
+	|| ydk::is_set(sid_value.yfilter)
+	|| ydk::is_set(protected_.yfilter)
+	|| ydk::is_set(neighbor_address.yfilter);
+}
+
+std::string Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::AdjacencySid::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "adjacency-sid";
+    ADD_KEY_TOKEN(sid_type, "sid-type");
+    ADD_KEY_TOKEN(sid_value, "sid-value");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::AdjacencySid::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sid_type.is_set || is_set(sid_type.yfilter)) leaf_name_data.push_back(sid_type.get_name_leafdata());
+    if (sid_value.is_set || is_set(sid_value.yfilter)) leaf_name_data.push_back(sid_value.get_name_leafdata());
+    if (protected_.is_set || is_set(protected_.yfilter)) leaf_name_data.push_back(protected_.get_name_leafdata());
+    if (neighbor_address.is_set || is_set(neighbor_address.yfilter)) leaf_name_data.push_back(neighbor_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::AdjacencySid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::AdjacencySid::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::AdjacencySid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sid-type")
+    {
+        sid_type = value;
+        sid_type.value_namespace = name_space;
+        sid_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-value")
+    {
+        sid_value = value;
+        sid_value.value_namespace = name_space;
+        sid_value.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "protected")
+    {
+        protected_ = value;
+        protected_.value_namespace = name_space;
+        protected_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address = value;
+        neighbor_address.value_namespace = name_space;
+        neighbor_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::AdjacencySid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sid-type")
+    {
+        sid_type.yfilter = yfilter;
+    }
+    if(value_path == "sid-value")
+    {
+        sid_value.yfilter = yfilter;
+    }
+    if(value_path == "protected")
+    {
+        protected_.yfilter = yfilter;
+    }
+    if(value_path == "neighbor-address")
+    {
+        neighbor_address.yfilter = yfilter;
+    }
+}
+
+bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::NameScopes::NameScope::AdjacencySids::AdjacencySid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sid-type" || name == "sid-value" || name == "protected" || name == "neighbor-address")
         return true;
     return false;
 }
@@ -11276,8 +11731,7 @@ Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfa
     transmit_delay{YType::uint32, "transmit-delay"},
     packet_size{YType::uint32, "packet-size"},
     database_filter{YType::boolean, "database-filter"},
-    retransmit_interval{YType::uint32, "retransmit-interval"},
-    running{YType::empty, "running"}
+    retransmit_interval{YType::uint32, "retransmit-interval"}
         ,
     distribute_list(nullptr) // presence node
     , authentication(std::make_shared<Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::Authentication>())
@@ -11311,7 +11765,6 @@ bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaIn
 	|| packet_size.is_set
 	|| database_filter.is_set
 	|| retransmit_interval.is_set
-	|| running.is_set
 	|| (distribute_list !=  nullptr && distribute_list->has_data())
 	|| (authentication !=  nullptr && authentication->has_data())
 	|| (neighbors !=  nullptr && neighbors->has_data())
@@ -11332,7 +11785,6 @@ bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaIn
 	|| ydk::is_set(packet_size.yfilter)
 	|| ydk::is_set(database_filter.yfilter)
 	|| ydk::is_set(retransmit_interval.yfilter)
-	|| ydk::is_set(running.yfilter)
 	|| (distribute_list !=  nullptr && distribute_list->has_operation())
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (neighbors !=  nullptr && neighbors->has_operation())
@@ -11362,7 +11814,6 @@ std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::Vrfs::V
     if (packet_size.is_set || is_set(packet_size.yfilter)) leaf_name_data.push_back(packet_size.get_name_leafdata());
     if (database_filter.is_set || is_set(database_filter.yfilter)) leaf_name_data.push_back(database_filter.get_name_leafdata());
     if (retransmit_interval.is_set || is_set(retransmit_interval.yfilter)) leaf_name_data.push_back(retransmit_interval.get_name_leafdata());
-    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -11520,12 +11971,6 @@ void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaIn
         retransmit_interval.value_namespace = name_space;
         retransmit_interval.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "running")
-    {
-        running = value;
-        running.value_namespace = name_space;
-        running.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::set_filter(const std::string & value_path, YFilter yfilter)
@@ -11566,15 +12011,11 @@ void Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaIn
     {
         retransmit_interval.yfilter = yfilter;
     }
-    if(value_path == "running")
-    {
-        running.yfilter = yfilter;
-    }
 }
 
 bool Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAreaId::MultiAreaInterfaceScopes::MultiAreaInterfaceScope::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "distribute-list" || name == "authentication" || name == "neighbors" || name == "dead-interval-minimal" || name == "fast-reroute" || name == "cost-fallback" || name == "interface-name" || name == "cost" || name == "mtu-ignore" || name == "hello-interval" || name == "passive" || name == "transmit-delay" || name == "packet-size" || name == "database-filter" || name == "retransmit-interval" || name == "running")
+    if(name == "distribute-list" || name == "authentication" || name == "neighbors" || name == "dead-interval-minimal" || name == "fast-reroute" || name == "cost-fallback" || name == "interface-name" || name == "cost" || name == "mtu-ignore" || name == "hello-interval" || name == "passive" || name == "transmit-delay" || name == "packet-size" || name == "database-filter" || name == "retransmit-interval")
         return true;
     return false;
 }
@@ -14876,6 +15317,7 @@ Ospf::Processes::Process::DefaultVrf::DefaultVrf()
     , max_lsa(nullptr) // presence node
     , auto_cost(std::make_shared<Ospf::Processes::Process::DefaultVrf::AutoCost>())
     , ucmp(std::make_shared<Ospf::Processes::Process::DefaultVrf::Ucmp>())
+    , apply_weight(nullptr) // presence node
     , fast_reroute(std::make_shared<Ospf::Processes::Process::DefaultVrf::FastReroute>())
     , summary_prefixes(std::make_shared<Ospf::Processes::Process::DefaultVrf::SummaryPrefixes>())
     , outgoing_route_updates(std::make_shared<Ospf::Processes::Process::DefaultVrf::OutgoingRouteUpdates>())
@@ -14940,6 +15382,7 @@ bool Ospf::Processes::Process::DefaultVrf::has_data() const
 	|| (max_lsa !=  nullptr && max_lsa->has_data())
 	|| (auto_cost !=  nullptr && auto_cost->has_data())
 	|| (ucmp !=  nullptr && ucmp->has_data())
+	|| (apply_weight !=  nullptr && apply_weight->has_data())
 	|| (fast_reroute !=  nullptr && fast_reroute->has_data())
 	|| (summary_prefixes !=  nullptr && summary_prefixes->has_data())
 	|| (outgoing_route_updates !=  nullptr && outgoing_route_updates->has_data())
@@ -14977,6 +15420,7 @@ bool Ospf::Processes::Process::DefaultVrf::has_operation() const
 	|| (max_lsa !=  nullptr && max_lsa->has_operation())
 	|| (auto_cost !=  nullptr && auto_cost->has_operation())
 	|| (ucmp !=  nullptr && ucmp->has_operation())
+	|| (apply_weight !=  nullptr && apply_weight->has_operation())
 	|| (fast_reroute !=  nullptr && fast_reroute->has_operation())
 	|| (summary_prefixes !=  nullptr && summary_prefixes->has_operation())
 	|| (outgoing_route_updates !=  nullptr && outgoing_route_updates->has_operation())
@@ -15157,6 +15601,15 @@ std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::get_child_by_
         return ucmp;
     }
 
+    if(child_yang_name == "apply-weight")
+    {
+        if(apply_weight == nullptr)
+        {
+            apply_weight = std::make_shared<Ospf::Processes::Process::DefaultVrf::ApplyWeight>();
+        }
+        return apply_weight;
+    }
+
     if(child_yang_name == "fast-reroute")
     {
         if(fast_reroute == nullptr)
@@ -15296,6 +15749,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::De
     if(ucmp != nullptr)
     {
         _children["ucmp"] = ucmp;
+    }
+
+    if(apply_weight != nullptr)
+    {
+        _children["apply-weight"] = apply_weight;
     }
 
     if(fast_reroute != nullptr)
@@ -15441,7 +15899,7 @@ void Ospf::Processes::Process::DefaultVrf::set_filter(const std::string & value_
 
 bool Ospf::Processes::Process::DefaultVrf::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "monitor-convergence" || name == "segment-routing" || name == "mpls" || name == "microloop" || name == "maximum-redistribute-prefix" || name == "default-information" || name == "af" || name == "queue" || name == "max-metric" || name == "nsf" || name == "process-scope" || name == "redistribution" || name == "adjacency-stagger" || name == "max-lsa" || name == "auto-cost" || name == "ucmp" || name == "fast-reroute" || name == "summary-prefixes" || name == "outgoing-route-updates" || name == "distance" || name == "area-addresses" || name == "timers" || name == "ignore-mospf" || name == "router-id" || name == "type7" || name == "snmp-context" || name == "maximum-interfaces" || name == "no-opaque" || name == "spf-prefix-priority" || name == "maximum-paths" || name == "adjacency-changes" || name == "default-metric")
+    if(name == "monitor-convergence" || name == "segment-routing" || name == "mpls" || name == "microloop" || name == "maximum-redistribute-prefix" || name == "default-information" || name == "af" || name == "queue" || name == "max-metric" || name == "nsf" || name == "process-scope" || name == "redistribution" || name == "adjacency-stagger" || name == "max-lsa" || name == "auto-cost" || name == "ucmp" || name == "apply-weight" || name == "fast-reroute" || name == "summary-prefixes" || name == "outgoing-route-updates" || name == "distance" || name == "area-addresses" || name == "timers" || name == "ignore-mospf" || name == "router-id" || name == "type7" || name == "snmp-context" || name == "maximum-interfaces" || name == "no-opaque" || name == "spf-prefix-priority" || name == "maximum-paths" || name == "adjacency-changes" || name == "default-metric")
         return true;
     return false;
 }
@@ -16847,788 +17305,6 @@ void Ospf::Processes::Process::DefaultVrf::MaxMetric::set_filter(const std::stri
 bool Ospf::Processes::Process::DefaultVrf::MaxMetric::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "max-metric-on-proc-restart" || name == "max-metric-on-startup" || name == "max-metric-on-proc-migration" || name == "max-metric-always" || name == "max-metric-on-switchover" || name == "max-metric-no-abr-off")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcRestart::MaxMetricOnProcRestart()
-    :
-    wait_for_bgp{YType::boolean, "wait-for-bgp"},
-    startup_max{YType::uint32, "startup-max"},
-    include_stub{YType::boolean, "include-stub"},
-    summary_lsa{YType::boolean, "summary-lsa"},
-    summary_lsa_maximum_metric{YType::uint32, "summary-lsa-maximum-metric"},
-    external_lsa{YType::boolean, "external-lsa"},
-    external_lsa_maximum_metric{YType::uint32, "external-lsa-maximum-metric"}
-{
-
-    yang_name = "max-metric-on-proc-restart"; yang_parent_name = "max-metric"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcRestart::~MaxMetricOnProcRestart()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcRestart::has_data() const
-{
-    if (is_presence_container) return true;
-    return wait_for_bgp.is_set
-	|| startup_max.is_set
-	|| include_stub.is_set
-	|| summary_lsa.is_set
-	|| summary_lsa_maximum_metric.is_set
-	|| external_lsa.is_set
-	|| external_lsa_maximum_metric.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcRestart::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(wait_for_bgp.yfilter)
-	|| ydk::is_set(startup_max.yfilter)
-	|| ydk::is_set(include_stub.yfilter)
-	|| ydk::is_set(summary_lsa.yfilter)
-	|| ydk::is_set(summary_lsa_maximum_metric.yfilter)
-	|| ydk::is_set(external_lsa.yfilter)
-	|| ydk::is_set(external_lsa_maximum_metric.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcRestart::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "max-metric-on-proc-restart";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcRestart::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (wait_for_bgp.is_set || is_set(wait_for_bgp.yfilter)) leaf_name_data.push_back(wait_for_bgp.get_name_leafdata());
-    if (startup_max.is_set || is_set(startup_max.yfilter)) leaf_name_data.push_back(startup_max.get_name_leafdata());
-    if (include_stub.is_set || is_set(include_stub.yfilter)) leaf_name_data.push_back(include_stub.get_name_leafdata());
-    if (summary_lsa.is_set || is_set(summary_lsa.yfilter)) leaf_name_data.push_back(summary_lsa.get_name_leafdata());
-    if (summary_lsa_maximum_metric.is_set || is_set(summary_lsa_maximum_metric.yfilter)) leaf_name_data.push_back(summary_lsa_maximum_metric.get_name_leafdata());
-    if (external_lsa.is_set || is_set(external_lsa.yfilter)) leaf_name_data.push_back(external_lsa.get_name_leafdata());
-    if (external_lsa_maximum_metric.is_set || is_set(external_lsa_maximum_metric.yfilter)) leaf_name_data.push_back(external_lsa_maximum_metric.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcRestart::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcRestart::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcRestart::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "wait-for-bgp")
-    {
-        wait_for_bgp = value;
-        wait_for_bgp.value_namespace = name_space;
-        wait_for_bgp.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "startup-max")
-    {
-        startup_max = value;
-        startup_max.value_namespace = name_space;
-        startup_max.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "include-stub")
-    {
-        include_stub = value;
-        include_stub.value_namespace = name_space;
-        include_stub.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "summary-lsa")
-    {
-        summary_lsa = value;
-        summary_lsa.value_namespace = name_space;
-        summary_lsa.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "summary-lsa-maximum-metric")
-    {
-        summary_lsa_maximum_metric = value;
-        summary_lsa_maximum_metric.value_namespace = name_space;
-        summary_lsa_maximum_metric.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "external-lsa")
-    {
-        external_lsa = value;
-        external_lsa.value_namespace = name_space;
-        external_lsa.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "external-lsa-maximum-metric")
-    {
-        external_lsa_maximum_metric = value;
-        external_lsa_maximum_metric.value_namespace = name_space;
-        external_lsa_maximum_metric.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcRestart::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "wait-for-bgp")
-    {
-        wait_for_bgp.yfilter = yfilter;
-    }
-    if(value_path == "startup-max")
-    {
-        startup_max.yfilter = yfilter;
-    }
-    if(value_path == "include-stub")
-    {
-        include_stub.yfilter = yfilter;
-    }
-    if(value_path == "summary-lsa")
-    {
-        summary_lsa.yfilter = yfilter;
-    }
-    if(value_path == "summary-lsa-maximum-metric")
-    {
-        summary_lsa_maximum_metric.yfilter = yfilter;
-    }
-    if(value_path == "external-lsa")
-    {
-        external_lsa.yfilter = yfilter;
-    }
-    if(value_path == "external-lsa-maximum-metric")
-    {
-        external_lsa_maximum_metric.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcRestart::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "wait-for-bgp" || name == "startup-max" || name == "include-stub" || name == "summary-lsa" || name == "summary-lsa-maximum-metric" || name == "external-lsa" || name == "external-lsa-maximum-metric")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnStartup::MaxMetricOnStartup()
-    :
-    wait_for_bgp{YType::boolean, "wait-for-bgp"},
-    startup_max{YType::uint32, "startup-max"},
-    include_stub{YType::boolean, "include-stub"},
-    summary_lsa{YType::boolean, "summary-lsa"},
-    summary_lsa_maximum_metric{YType::uint32, "summary-lsa-maximum-metric"},
-    external_lsa{YType::boolean, "external-lsa"},
-    external_lsa_maximum_metric{YType::uint32, "external-lsa-maximum-metric"}
-{
-
-    yang_name = "max-metric-on-startup"; yang_parent_name = "max-metric"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnStartup::~MaxMetricOnStartup()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnStartup::has_data() const
-{
-    if (is_presence_container) return true;
-    return wait_for_bgp.is_set
-	|| startup_max.is_set
-	|| include_stub.is_set
-	|| summary_lsa.is_set
-	|| summary_lsa_maximum_metric.is_set
-	|| external_lsa.is_set
-	|| external_lsa_maximum_metric.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnStartup::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(wait_for_bgp.yfilter)
-	|| ydk::is_set(startup_max.yfilter)
-	|| ydk::is_set(include_stub.yfilter)
-	|| ydk::is_set(summary_lsa.yfilter)
-	|| ydk::is_set(summary_lsa_maximum_metric.yfilter)
-	|| ydk::is_set(external_lsa.yfilter)
-	|| ydk::is_set(external_lsa_maximum_metric.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnStartup::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "max-metric-on-startup";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnStartup::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (wait_for_bgp.is_set || is_set(wait_for_bgp.yfilter)) leaf_name_data.push_back(wait_for_bgp.get_name_leafdata());
-    if (startup_max.is_set || is_set(startup_max.yfilter)) leaf_name_data.push_back(startup_max.get_name_leafdata());
-    if (include_stub.is_set || is_set(include_stub.yfilter)) leaf_name_data.push_back(include_stub.get_name_leafdata());
-    if (summary_lsa.is_set || is_set(summary_lsa.yfilter)) leaf_name_data.push_back(summary_lsa.get_name_leafdata());
-    if (summary_lsa_maximum_metric.is_set || is_set(summary_lsa_maximum_metric.yfilter)) leaf_name_data.push_back(summary_lsa_maximum_metric.get_name_leafdata());
-    if (external_lsa.is_set || is_set(external_lsa.yfilter)) leaf_name_data.push_back(external_lsa.get_name_leafdata());
-    if (external_lsa_maximum_metric.is_set || is_set(external_lsa_maximum_metric.yfilter)) leaf_name_data.push_back(external_lsa_maximum_metric.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnStartup::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnStartup::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnStartup::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "wait-for-bgp")
-    {
-        wait_for_bgp = value;
-        wait_for_bgp.value_namespace = name_space;
-        wait_for_bgp.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "startup-max")
-    {
-        startup_max = value;
-        startup_max.value_namespace = name_space;
-        startup_max.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "include-stub")
-    {
-        include_stub = value;
-        include_stub.value_namespace = name_space;
-        include_stub.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "summary-lsa")
-    {
-        summary_lsa = value;
-        summary_lsa.value_namespace = name_space;
-        summary_lsa.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "summary-lsa-maximum-metric")
-    {
-        summary_lsa_maximum_metric = value;
-        summary_lsa_maximum_metric.value_namespace = name_space;
-        summary_lsa_maximum_metric.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "external-lsa")
-    {
-        external_lsa = value;
-        external_lsa.value_namespace = name_space;
-        external_lsa.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "external-lsa-maximum-metric")
-    {
-        external_lsa_maximum_metric = value;
-        external_lsa_maximum_metric.value_namespace = name_space;
-        external_lsa_maximum_metric.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnStartup::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "wait-for-bgp")
-    {
-        wait_for_bgp.yfilter = yfilter;
-    }
-    if(value_path == "startup-max")
-    {
-        startup_max.yfilter = yfilter;
-    }
-    if(value_path == "include-stub")
-    {
-        include_stub.yfilter = yfilter;
-    }
-    if(value_path == "summary-lsa")
-    {
-        summary_lsa.yfilter = yfilter;
-    }
-    if(value_path == "summary-lsa-maximum-metric")
-    {
-        summary_lsa_maximum_metric.yfilter = yfilter;
-    }
-    if(value_path == "external-lsa")
-    {
-        external_lsa.yfilter = yfilter;
-    }
-    if(value_path == "external-lsa-maximum-metric")
-    {
-        external_lsa_maximum_metric.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnStartup::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "wait-for-bgp" || name == "startup-max" || name == "include-stub" || name == "summary-lsa" || name == "summary-lsa-maximum-metric" || name == "external-lsa" || name == "external-lsa-maximum-metric")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcMigration::MaxMetricOnProcMigration()
-    :
-    wait_for_bgp{YType::boolean, "wait-for-bgp"},
-    startup_max{YType::uint32, "startup-max"},
-    include_stub{YType::boolean, "include-stub"},
-    summary_lsa{YType::boolean, "summary-lsa"},
-    summary_lsa_maximum_metric{YType::uint32, "summary-lsa-maximum-metric"},
-    external_lsa{YType::boolean, "external-lsa"},
-    external_lsa_maximum_metric{YType::uint32, "external-lsa-maximum-metric"}
-{
-
-    yang_name = "max-metric-on-proc-migration"; yang_parent_name = "max-metric"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcMigration::~MaxMetricOnProcMigration()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcMigration::has_data() const
-{
-    if (is_presence_container) return true;
-    return wait_for_bgp.is_set
-	|| startup_max.is_set
-	|| include_stub.is_set
-	|| summary_lsa.is_set
-	|| summary_lsa_maximum_metric.is_set
-	|| external_lsa.is_set
-	|| external_lsa_maximum_metric.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcMigration::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(wait_for_bgp.yfilter)
-	|| ydk::is_set(startup_max.yfilter)
-	|| ydk::is_set(include_stub.yfilter)
-	|| ydk::is_set(summary_lsa.yfilter)
-	|| ydk::is_set(summary_lsa_maximum_metric.yfilter)
-	|| ydk::is_set(external_lsa.yfilter)
-	|| ydk::is_set(external_lsa_maximum_metric.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcMigration::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "max-metric-on-proc-migration";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcMigration::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (wait_for_bgp.is_set || is_set(wait_for_bgp.yfilter)) leaf_name_data.push_back(wait_for_bgp.get_name_leafdata());
-    if (startup_max.is_set || is_set(startup_max.yfilter)) leaf_name_data.push_back(startup_max.get_name_leafdata());
-    if (include_stub.is_set || is_set(include_stub.yfilter)) leaf_name_data.push_back(include_stub.get_name_leafdata());
-    if (summary_lsa.is_set || is_set(summary_lsa.yfilter)) leaf_name_data.push_back(summary_lsa.get_name_leafdata());
-    if (summary_lsa_maximum_metric.is_set || is_set(summary_lsa_maximum_metric.yfilter)) leaf_name_data.push_back(summary_lsa_maximum_metric.get_name_leafdata());
-    if (external_lsa.is_set || is_set(external_lsa.yfilter)) leaf_name_data.push_back(external_lsa.get_name_leafdata());
-    if (external_lsa_maximum_metric.is_set || is_set(external_lsa_maximum_metric.yfilter)) leaf_name_data.push_back(external_lsa_maximum_metric.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcMigration::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcMigration::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcMigration::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "wait-for-bgp")
-    {
-        wait_for_bgp = value;
-        wait_for_bgp.value_namespace = name_space;
-        wait_for_bgp.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "startup-max")
-    {
-        startup_max = value;
-        startup_max.value_namespace = name_space;
-        startup_max.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "include-stub")
-    {
-        include_stub = value;
-        include_stub.value_namespace = name_space;
-        include_stub.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "summary-lsa")
-    {
-        summary_lsa = value;
-        summary_lsa.value_namespace = name_space;
-        summary_lsa.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "summary-lsa-maximum-metric")
-    {
-        summary_lsa_maximum_metric = value;
-        summary_lsa_maximum_metric.value_namespace = name_space;
-        summary_lsa_maximum_metric.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "external-lsa")
-    {
-        external_lsa = value;
-        external_lsa.value_namespace = name_space;
-        external_lsa.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "external-lsa-maximum-metric")
-    {
-        external_lsa_maximum_metric = value;
-        external_lsa_maximum_metric.value_namespace = name_space;
-        external_lsa_maximum_metric.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcMigration::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "wait-for-bgp")
-    {
-        wait_for_bgp.yfilter = yfilter;
-    }
-    if(value_path == "startup-max")
-    {
-        startup_max.yfilter = yfilter;
-    }
-    if(value_path == "include-stub")
-    {
-        include_stub.yfilter = yfilter;
-    }
-    if(value_path == "summary-lsa")
-    {
-        summary_lsa.yfilter = yfilter;
-    }
-    if(value_path == "summary-lsa-maximum-metric")
-    {
-        summary_lsa_maximum_metric.yfilter = yfilter;
-    }
-    if(value_path == "external-lsa")
-    {
-        external_lsa.yfilter = yfilter;
-    }
-    if(value_path == "external-lsa-maximum-metric")
-    {
-        external_lsa_maximum_metric.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnProcMigration::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "wait-for-bgp" || name == "startup-max" || name == "include-stub" || name == "summary-lsa" || name == "summary-lsa-maximum-metric" || name == "external-lsa" || name == "external-lsa-maximum-metric")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricAlways::MaxMetricAlways()
-    :
-    include_stub{YType::boolean, "include-stub"},
-    summary_lsa{YType::boolean, "summary-lsa"},
-    summary_lsa_maximum_metric{YType::uint32, "summary-lsa-maximum-metric"},
-    external_lsa{YType::boolean, "external-lsa"},
-    external_lsa_maximum_metric{YType::uint32, "external-lsa-maximum-metric"}
-{
-
-    yang_name = "max-metric-always"; yang_parent_name = "max-metric"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricAlways::~MaxMetricAlways()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricAlways::has_data() const
-{
-    if (is_presence_container) return true;
-    return include_stub.is_set
-	|| summary_lsa.is_set
-	|| summary_lsa_maximum_metric.is_set
-	|| external_lsa.is_set
-	|| external_lsa_maximum_metric.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricAlways::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(include_stub.yfilter)
-	|| ydk::is_set(summary_lsa.yfilter)
-	|| ydk::is_set(summary_lsa_maximum_metric.yfilter)
-	|| ydk::is_set(external_lsa.yfilter)
-	|| ydk::is_set(external_lsa_maximum_metric.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricAlways::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "max-metric-always";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricAlways::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (include_stub.is_set || is_set(include_stub.yfilter)) leaf_name_data.push_back(include_stub.get_name_leafdata());
-    if (summary_lsa.is_set || is_set(summary_lsa.yfilter)) leaf_name_data.push_back(summary_lsa.get_name_leafdata());
-    if (summary_lsa_maximum_metric.is_set || is_set(summary_lsa_maximum_metric.yfilter)) leaf_name_data.push_back(summary_lsa_maximum_metric.get_name_leafdata());
-    if (external_lsa.is_set || is_set(external_lsa.yfilter)) leaf_name_data.push_back(external_lsa.get_name_leafdata());
-    if (external_lsa_maximum_metric.is_set || is_set(external_lsa_maximum_metric.yfilter)) leaf_name_data.push_back(external_lsa_maximum_metric.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricAlways::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricAlways::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricAlways::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "include-stub")
-    {
-        include_stub = value;
-        include_stub.value_namespace = name_space;
-        include_stub.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "summary-lsa")
-    {
-        summary_lsa = value;
-        summary_lsa.value_namespace = name_space;
-        summary_lsa.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "summary-lsa-maximum-metric")
-    {
-        summary_lsa_maximum_metric = value;
-        summary_lsa_maximum_metric.value_namespace = name_space;
-        summary_lsa_maximum_metric.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "external-lsa")
-    {
-        external_lsa = value;
-        external_lsa.value_namespace = name_space;
-        external_lsa.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "external-lsa-maximum-metric")
-    {
-        external_lsa_maximum_metric = value;
-        external_lsa_maximum_metric.value_namespace = name_space;
-        external_lsa_maximum_metric.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricAlways::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "include-stub")
-    {
-        include_stub.yfilter = yfilter;
-    }
-    if(value_path == "summary-lsa")
-    {
-        summary_lsa.yfilter = yfilter;
-    }
-    if(value_path == "summary-lsa-maximum-metric")
-    {
-        summary_lsa_maximum_metric.yfilter = yfilter;
-    }
-    if(value_path == "external-lsa")
-    {
-        external_lsa.yfilter = yfilter;
-    }
-    if(value_path == "external-lsa-maximum-metric")
-    {
-        external_lsa_maximum_metric.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricAlways::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "include-stub" || name == "summary-lsa" || name == "summary-lsa-maximum-metric" || name == "external-lsa" || name == "external-lsa-maximum-metric")
-        return true;
-    return false;
-}
-
-Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchover::MaxMetricOnSwitchover()
-    :
-    wait_for_bgp{YType::boolean, "wait-for-bgp"},
-    startup_max{YType::uint32, "startup-max"},
-    include_stub{YType::boolean, "include-stub"},
-    summary_lsa{YType::boolean, "summary-lsa"},
-    summary_lsa_maximum_metric{YType::uint32, "summary-lsa-maximum-metric"},
-    external_lsa{YType::boolean, "external-lsa"},
-    external_lsa_maximum_metric{YType::uint32, "external-lsa-maximum-metric"}
-{
-
-    yang_name = "max-metric-on-switchover"; yang_parent_name = "max-metric"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchover::~MaxMetricOnSwitchover()
-{
-}
-
-bool Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchover::has_data() const
-{
-    if (is_presence_container) return true;
-    return wait_for_bgp.is_set
-	|| startup_max.is_set
-	|| include_stub.is_set
-	|| summary_lsa.is_set
-	|| summary_lsa_maximum_metric.is_set
-	|| external_lsa.is_set
-	|| external_lsa_maximum_metric.is_set;
-}
-
-bool Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchover::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(wait_for_bgp.yfilter)
-	|| ydk::is_set(startup_max.yfilter)
-	|| ydk::is_set(include_stub.yfilter)
-	|| ydk::is_set(summary_lsa.yfilter)
-	|| ydk::is_set(summary_lsa_maximum_metric.yfilter)
-	|| ydk::is_set(external_lsa.yfilter)
-	|| ydk::is_set(external_lsa_maximum_metric.yfilter);
-}
-
-std::string Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchover::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "max-metric-on-switchover";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchover::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (wait_for_bgp.is_set || is_set(wait_for_bgp.yfilter)) leaf_name_data.push_back(wait_for_bgp.get_name_leafdata());
-    if (startup_max.is_set || is_set(startup_max.yfilter)) leaf_name_data.push_back(startup_max.get_name_leafdata());
-    if (include_stub.is_set || is_set(include_stub.yfilter)) leaf_name_data.push_back(include_stub.get_name_leafdata());
-    if (summary_lsa.is_set || is_set(summary_lsa.yfilter)) leaf_name_data.push_back(summary_lsa.get_name_leafdata());
-    if (summary_lsa_maximum_metric.is_set || is_set(summary_lsa_maximum_metric.yfilter)) leaf_name_data.push_back(summary_lsa_maximum_metric.get_name_leafdata());
-    if (external_lsa.is_set || is_set(external_lsa.yfilter)) leaf_name_data.push_back(external_lsa.get_name_leafdata());
-    if (external_lsa_maximum_metric.is_set || is_set(external_lsa_maximum_metric.yfilter)) leaf_name_data.push_back(external_lsa_maximum_metric.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchover::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchover::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchover::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "wait-for-bgp")
-    {
-        wait_for_bgp = value;
-        wait_for_bgp.value_namespace = name_space;
-        wait_for_bgp.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "startup-max")
-    {
-        startup_max = value;
-        startup_max.value_namespace = name_space;
-        startup_max.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "include-stub")
-    {
-        include_stub = value;
-        include_stub.value_namespace = name_space;
-        include_stub.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "summary-lsa")
-    {
-        summary_lsa = value;
-        summary_lsa.value_namespace = name_space;
-        summary_lsa.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "summary-lsa-maximum-metric")
-    {
-        summary_lsa_maximum_metric = value;
-        summary_lsa_maximum_metric.value_namespace = name_space;
-        summary_lsa_maximum_metric.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "external-lsa")
-    {
-        external_lsa = value;
-        external_lsa.value_namespace = name_space;
-        external_lsa.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "external-lsa-maximum-metric")
-    {
-        external_lsa_maximum_metric = value;
-        external_lsa_maximum_metric.value_namespace = name_space;
-        external_lsa_maximum_metric.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchover::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "wait-for-bgp")
-    {
-        wait_for_bgp.yfilter = yfilter;
-    }
-    if(value_path == "startup-max")
-    {
-        startup_max.yfilter = yfilter;
-    }
-    if(value_path == "include-stub")
-    {
-        include_stub.yfilter = yfilter;
-    }
-    if(value_path == "summary-lsa")
-    {
-        summary_lsa.yfilter = yfilter;
-    }
-    if(value_path == "summary-lsa-maximum-metric")
-    {
-        summary_lsa_maximum_metric.yfilter = yfilter;
-    }
-    if(value_path == "external-lsa")
-    {
-        external_lsa.yfilter = yfilter;
-    }
-    if(value_path == "external-lsa-maximum-metric")
-    {
-        external_lsa_maximum_metric.yfilter = yfilter;
-    }
-}
-
-bool Ospf::Processes::Process::DefaultVrf::MaxMetric::MaxMetricOnSwitchover::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "wait-for-bgp" || name == "startup-max" || name == "include-stub" || name == "summary-lsa" || name == "summary-lsa-maximum-metric" || name == "external-lsa" || name == "external-lsa-maximum-metric")
         return true;
     return false;
 }

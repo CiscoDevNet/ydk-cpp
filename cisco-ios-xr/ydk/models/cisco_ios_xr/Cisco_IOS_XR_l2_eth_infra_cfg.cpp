@@ -4185,23 +4185,23 @@ bool EthernetFeatures::EtherLinkOam::Profiles::Profile::LinkMonitoring::Frame::T
     return false;
 }
 
-const Enum::YLeaf EgressFiltering::egress_filtering_type_strict {1, "egress-filtering-type-strict"};
-const Enum::YLeaf EgressFiltering::egress_filtering_type_disable {2, "egress-filtering-type-disable"};
-const Enum::YLeaf EgressFiltering::egress_filtering_type_default {3, "egress-filtering-type-default"};
-
 const Enum::YLeaf L2ProtocolName::cdp {0, "cdp"};
 const Enum::YLeaf L2ProtocolName::stp {1, "stp"};
 const Enum::YLeaf L2ProtocolName::vtp {2, "vtp"};
 const Enum::YLeaf L2ProtocolName::pvst {3, "pvst"};
 const Enum::YLeaf L2ProtocolName::cpsv {4, "cpsv"};
 
-const Enum::YLeaf Filtering::filtering_type_dot1q {0, "filtering-type-dot1q"};
-const Enum::YLeaf Filtering::filtering_type_dot1ad {1, "filtering-type-dot1ad"};
-
 const Enum::YLeaf L2ProtocolMode::forward {0, "forward"};
 const Enum::YLeaf L2ProtocolMode::drop {1, "drop"};
 const Enum::YLeaf L2ProtocolMode::tunnel {2, "tunnel"};
 const Enum::YLeaf L2ProtocolMode::reverse_tunnel {3, "reverse-tunnel"};
+
+const Enum::YLeaf EgressFiltering::egress_filtering_type_strict {1, "egress-filtering-type-strict"};
+const Enum::YLeaf EgressFiltering::egress_filtering_type_disable {2, "egress-filtering-type-disable"};
+const Enum::YLeaf EgressFiltering::egress_filtering_type_default {3, "egress-filtering-type-default"};
+
+const Enum::YLeaf Filtering::filtering_type_dot1q {0, "filtering-type-dot1q"};
+const Enum::YLeaf Filtering::filtering_type_dot1ad {1, "filtering-type-dot1ad"};
 
 
 }

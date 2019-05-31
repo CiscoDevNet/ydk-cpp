@@ -1262,6 +1262,28 @@ class AlarmMgr::Detail::System::Suppressed : public ydk::Entity
 
 }; // AlarmMgr::Detail::System::Suppressed
 
+class SeverityTd : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf not_reported;
+        static const ydk::Enum::YLeaf not_alarmed;
+        static const ydk::Enum::YLeaf minor;
+        static const ydk::Enum::YLeaf major_;
+        static const ydk::Enum::YLeaf critical;
+
+};
+
+class StatusTd : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf set;
+        static const ydk::Enum::YLeaf clear;
+        static const ydk::Enum::YLeaf suppress;
+
+};
+
 class GroupTd : public ydk::Enum
 {
     public:
@@ -1287,16 +1309,6 @@ class GroupTd : public ydk::Enum
 
 };
 
-class StatusTd : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf set;
-        static const ydk::Enum::YLeaf clear;
-        static const ydk::Enum::YLeaf suppress;
-
-};
-
 class AgentStateTd : public ydk::Enum
 {
     public:
@@ -1316,18 +1328,6 @@ class AgentTypeTd : public ydk::Enum
         static const ydk::Enum::YLeaf producer;
         static const ydk::Enum::YLeaf consumer;
         static const ydk::Enum::YLeaf subscriber;
-
-};
-
-class SeverityTd : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf not_reported;
-        static const ydk::Enum::YLeaf not_alarmed;
-        static const ydk::Enum::YLeaf minor;
-        static const ydk::Enum::YLeaf major_;
-        static const ydk::Enum::YLeaf critical;
 
 };
 

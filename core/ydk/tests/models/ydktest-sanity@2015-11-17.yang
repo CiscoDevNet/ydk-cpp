@@ -237,7 +237,9 @@ module ydktest-sanity {
 
         leaf number32 {
           description "integer value type";
-          type int32;
+          type int32 {
+            range "min..0 | 10 | 19 | 1000..max";
+          }
         }
 
         leaf number64 {
@@ -729,7 +731,9 @@ module ydktest-sanity {
             }
 
             leaf mtu {
-                type int32;
+                type int32 {
+                    range "10..8000";
+                }
                 mandatory true;
             }
         }
@@ -791,7 +795,6 @@ module ydktest-sanity {
     uses inner-pres;
 
     container runner-2 {
-
        presence "Runner-2 is presence controlled";
        leaf some-leaf {
           type string;

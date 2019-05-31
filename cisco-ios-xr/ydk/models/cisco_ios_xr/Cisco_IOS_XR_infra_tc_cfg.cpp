@@ -478,8 +478,6 @@ bool TrafficCollector::Statistics::has_leaf_or_child_of_name(const std::string &
     return false;
 }
 
-const Enum::YLeaf HistoryTimeout::max {720, "max"};
-
 const Enum::YLeaf HistorySize::max {10, "max"};
 
 const Enum::YLeaf CollectIonInterval::Y_1_minute {1, "1-minute"};
@@ -494,6 +492,8 @@ const Enum::YLeaf CollectIonInterval::Y_15_minutes {15, "15-minutes"};
 const Enum::YLeaf CollectIonInterval::Y_20_minutes {20, "20-minutes"};
 const Enum::YLeaf CollectIonInterval::Y_30_minutes {30, "30-minutes"};
 const Enum::YLeaf CollectIonInterval::Y_60_minutes {60, "60-minutes"};
+
+const Enum::YLeaf HistoryTimeout::max {720, "max"};
 
 
 }

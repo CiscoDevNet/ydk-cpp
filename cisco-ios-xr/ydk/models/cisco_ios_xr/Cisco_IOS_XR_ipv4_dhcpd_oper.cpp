@@ -5912,7 +5912,10 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::has_leaf_o
 Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::Ipv4DhcpdProxyVrfReference()
     :
     proxy_reference_vrf_name{YType::str, "proxy-reference-vrf-name"}
+        ,
+    next_vrf(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::NextVrf>())
 {
+    next_vrf->parent = this;
 
     yang_name = "ipv4-dhcpd-proxy-vrf-reference"; yang_parent_name = "vrf-references"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -5924,13 +5927,15 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyV
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::has_data() const
 {
     if (is_presence_container) return true;
-    return proxy_reference_vrf_name.is_set;
+    return proxy_reference_vrf_name.is_set
+	|| (next_vrf !=  nullptr && next_vrf->has_data());
 }
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(proxy_reference_vrf_name.yfilter);
+	|| ydk::is_set(proxy_reference_vrf_name.yfilter)
+	|| (next_vrf !=  nullptr && next_vrf->has_operation());
 }
 
 std::string Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::get_segment_path() const
@@ -5953,6 +5958,15 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Nodes::Node::Proxy::Pr
 
 std::shared_ptr<ydk::Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "next-vrf")
+    {
+        if(next_vrf == nullptr)
+        {
+            next_vrf = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::NextVrf>();
+        }
+        return next_vrf;
+    }
+
     return nullptr;
 }
 
@@ -5960,6 +5974,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Dhcpd::Nodes::Node::Prox
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(next_vrf != nullptr)
+    {
+        _children["next-vrf"] = next_vrf;
+    }
+
     return _children;
 }
 
@@ -5983,8 +6002,70 @@ void Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdP
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "proxy-reference-vrf-name")
+    if(name == "next-vrf" || name == "proxy-reference-vrf-name")
         return true;
+    return false;
+}
+
+Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::NextVrf::NextVrf()
+{
+
+    yang_name = "next-vrf"; yang_parent_name = "ipv4-dhcpd-proxy-vrf-reference"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::NextVrf::~NextVrf()
+{
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::NextVrf::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::NextVrf::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::NextVrf::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-vrf";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::NextVrf::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::NextVrf::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::NextVrf::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::NextVrf::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::NextVrf::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::VrfReferences::Ipv4DhcpdProxyVrfReference::NextVrf::has_leaf_or_child_of_name(const std::string & name) const
+{
     return false;
 }
 
@@ -6084,7 +6165,10 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::has_
 Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::Ipv4DhcpdProxyInterfaceReference()
     :
     proxy_reference_interface_name{YType::str, "proxy-reference-interface-name"}
+        ,
+    next_interface(std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::NextInterface>())
 {
+    next_interface->parent = this;
 
     yang_name = "ipv4-dhcpd-proxy-interface-reference"; yang_parent_name = "interface-references"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -6096,13 +6180,15 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4Dhcpd
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::has_data() const
 {
     if (is_presence_container) return true;
-    return proxy_reference_interface_name.is_set;
+    return proxy_reference_interface_name.is_set
+	|| (next_interface !=  nullptr && next_interface->has_data());
 }
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(proxy_reference_interface_name.yfilter);
+	|| ydk::is_set(proxy_reference_interface_name.yfilter)
+	|| (next_interface !=  nullptr && next_interface->has_operation());
 }
 
 std::string Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::get_segment_path() const
@@ -6125,6 +6211,15 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Nodes::Node::Proxy::Pr
 
 std::shared_ptr<ydk::Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "next-interface")
+    {
+        if(next_interface == nullptr)
+        {
+            next_interface = std::make_shared<Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::NextInterface>();
+        }
+        return next_interface;
+    }
+
     return nullptr;
 }
 
@@ -6132,6 +6227,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Dhcpd::Nodes::Node::Prox
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(next_interface != nullptr)
+    {
+        _children["next-interface"] = next_interface;
+    }
+
     return _children;
 }
 
@@ -6155,8 +6255,70 @@ void Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "proxy-reference-interface-name")
+    if(name == "next-interface" || name == "proxy-reference-interface-name")
         return true;
+    return false;
+}
+
+Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::NextInterface::NextInterface()
+{
+
+    yang_name = "next-interface"; yang_parent_name = "ipv4-dhcpd-proxy-interface-reference"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::NextInterface::~NextInterface()
+{
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::NextInterface::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::NextInterface::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::NextInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-interface";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::NextInterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::NextInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::NextInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::NextInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::NextInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Proxy::Profiles::Profile::InterfaceReferences::Ipv4DhcpdProxyInterfaceReference::NextInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
     return false;
 }
 
@@ -6912,6 +7074,7 @@ Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::Client()
     proxy_binding_outer_tag{YType::uint32, "proxy-binding-outer-tag"},
     proxy_binding_inner_tag{YType::uint32, "proxy-binding-inner-tag"},
     profile_name{YType::str, "profile-name"},
+    selected_profile_name{YType::str, "selected-profile-name"},
     is_nak_next_renew{YType::boolean, "is-nak-next-renew"},
     subscriber_label{YType::uint32, "subscriber-label"},
     old_subscriber_label{YType::uint32, "old-subscriber-label"},
@@ -6964,6 +7127,7 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::has_data() const
 	|| proxy_binding_outer_tag.is_set
 	|| proxy_binding_inner_tag.is_set
 	|| profile_name.is_set
+	|| selected_profile_name.is_set
 	|| is_nak_next_renew.is_set
 	|| subscriber_label.is_set
 	|| old_subscriber_label.is_set
@@ -7008,6 +7172,7 @@ bool Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::has_operation() co
 	|| ydk::is_set(proxy_binding_outer_tag.yfilter)
 	|| ydk::is_set(proxy_binding_inner_tag.yfilter)
 	|| ydk::is_set(profile_name.yfilter)
+	|| ydk::is_set(selected_profile_name.yfilter)
 	|| ydk::is_set(is_nak_next_renew.yfilter)
 	|| ydk::is_set(subscriber_label.yfilter)
 	|| ydk::is_set(old_subscriber_label.yfilter)
@@ -7057,6 +7222,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Nodes::Node::Proxy::Bi
     if (proxy_binding_outer_tag.is_set || is_set(proxy_binding_outer_tag.yfilter)) leaf_name_data.push_back(proxy_binding_outer_tag.get_name_leafdata());
     if (proxy_binding_inner_tag.is_set || is_set(proxy_binding_inner_tag.yfilter)) leaf_name_data.push_back(proxy_binding_inner_tag.get_name_leafdata());
     if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+    if (selected_profile_name.is_set || is_set(selected_profile_name.yfilter)) leaf_name_data.push_back(selected_profile_name.get_name_leafdata());
     if (is_nak_next_renew.is_set || is_set(is_nak_next_renew.yfilter)) leaf_name_data.push_back(is_nak_next_renew.get_name_leafdata());
     if (subscriber_label.is_set || is_set(subscriber_label.yfilter)) leaf_name_data.push_back(subscriber_label.get_name_leafdata());
     if (old_subscriber_label.is_set || is_set(old_subscriber_label.yfilter)) leaf_name_data.push_back(old_subscriber_label.get_name_leafdata());
@@ -7201,6 +7367,12 @@ void Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::set_value(const st
         profile_name = value;
         profile_name.value_namespace = name_space;
         profile_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "selected-profile-name")
+    {
+        selected_profile_name = value;
+        selected_profile_name.value_namespace = name_space;
+        selected_profile_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-nak-next-renew")
     {
@@ -7378,6 +7550,10 @@ void Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::set_filter(const s
     {
         profile_name.yfilter = yfilter;
     }
+    if(value_path == "selected-profile-name")
+    {
+        selected_profile_name.yfilter = yfilter;
+    }
     if(value_path == "is-nak-next-renew")
     {
         is_nak_next_renew.yfilter = yfilter;
@@ -7450,7 +7626,7 @@ void Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::set_filter(const s
 
 bool Ipv4Dhcpd::Nodes::Node::Proxy::Binding::Clients::Client::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "client-id" || name == "client-id-xr" || name == "mac-address" || name == "vrf-name" || name == "server-vrf-name" || name == "ip-address" || name == "client-gi-addr" || name == "to-server-gi-addr" || name == "server-ip-address" || name == "reply-server-ip-address" || name == "lease-time" || name == "remaining-lease-time" || name == "state" || name == "interface-name" || name == "access-vrf-name" || name == "proxy-binding-outer-tag" || name == "proxy-binding-inner-tag" || name == "profile-name" || name == "is-nak-next-renew" || name == "subscriber-label" || name == "old-subscriber-label" || name == "subscriber-interface-name" || name == "rx-circuit-id" || name == "tx-circuit-id" || name == "rx-remote-id" || name == "tx-remote-id" || name == "rx-vsiso" || name == "tx-vsiso" || name == "is-auth-received" || name == "is-mbl-subscriber" || name == "param-request" || name == "param-response" || name == "session-start-time-epoch" || name == "srg-state" || name == "event-history")
+    if(name == "client-id" || name == "client-id-xr" || name == "mac-address" || name == "vrf-name" || name == "server-vrf-name" || name == "ip-address" || name == "client-gi-addr" || name == "to-server-gi-addr" || name == "server-ip-address" || name == "reply-server-ip-address" || name == "lease-time" || name == "remaining-lease-time" || name == "state" || name == "interface-name" || name == "access-vrf-name" || name == "proxy-binding-outer-tag" || name == "proxy-binding-inner-tag" || name == "profile-name" || name == "selected-profile-name" || name == "is-nak-next-renew" || name == "subscriber-label" || name == "old-subscriber-label" || name == "subscriber-interface-name" || name == "rx-circuit-id" || name == "tx-circuit-id" || name == "rx-remote-id" || name == "tx-remote-id" || name == "rx-vsiso" || name == "tx-vsiso" || name == "is-auth-received" || name == "is-mbl-subscriber" || name == "param-request" || name == "param-response" || name == "session-start-time-epoch" || name == "srg-state" || name == "event-history")
         return true;
     return false;
 }
@@ -11118,7 +11294,10 @@ bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::has_l
 Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::Ipv4DhcpdBaseInterfaceReference()
     :
     base_reference_interface_name{YType::str, "base-reference-interface-name"}
+        ,
+    next_interface(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::NextInterface>())
 {
+    next_interface->parent = this;
 
     yang_name = "ipv4-dhcpd-base-interface-reference"; yang_parent_name = "interface-references"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -11130,13 +11309,15 @@ Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdB
 bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::has_data() const
 {
     if (is_presence_container) return true;
-    return base_reference_interface_name.is_set;
+    return base_reference_interface_name.is_set
+	|| (next_interface !=  nullptr && next_interface->has_data());
 }
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(base_reference_interface_name.yfilter);
+	|| ydk::is_set(base_reference_interface_name.yfilter)
+	|| (next_interface !=  nullptr && next_interface->has_operation());
 }
 
 std::string Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::get_segment_path() const
@@ -11159,6 +11340,15 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Nodes::Node::Base::Pro
 
 std::shared_ptr<ydk::Entity> Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "next-interface")
+    {
+        if(next_interface == nullptr)
+        {
+            next_interface = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::NextInterface>();
+        }
+        return next_interface;
+    }
+
     return nullptr;
 }
 
@@ -11166,6 +11356,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Dhcpd::Nodes::Node::Base
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(next_interface != nullptr)
+    {
+        _children["next-interface"] = next_interface;
+    }
+
     return _children;
 }
 
@@ -11189,8 +11384,70 @@ void Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4D
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "base-reference-interface-name")
+    if(name == "next-interface" || name == "base-reference-interface-name")
         return true;
+    return false;
+}
+
+Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::NextInterface::NextInterface()
+{
+
+    yang_name = "next-interface"; yang_parent_name = "ipv4-dhcpd-base-interface-reference"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::NextInterface::~NextInterface()
+{
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::NextInterface::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::NextInterface::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::NextInterface::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-interface";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::NextInterface::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::NextInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::NextInterface::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::NextInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::NextInterface::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::InterfaceReferences::Ipv4DhcpdBaseInterfaceReference::NextInterface::has_leaf_or_child_of_name(const std::string & name) const
+{
     return false;
 }
 
@@ -11294,7 +11551,10 @@ Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBase
     matched_option_code{YType::uint8, "matched-option-code"},
     matched_option_len{YType::uint8, "matched-option-len"},
     option_data{YType::str, "option-data"}
+        ,
+    next_child_profile_info(std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::NextChildProfileInfo>())
 {
+    next_child_profile_info->parent = this;
 
     yang_name = "ipv4-dhcpd-base-child-profile-info"; yang_parent_name = "child-profile-info"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -11310,7 +11570,8 @@ bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4Dhcp
 	|| mode.is_set
 	|| matched_option_code.is_set
 	|| matched_option_len.is_set
-	|| option_data.is_set;
+	|| option_data.is_set
+	|| (next_child_profile_info !=  nullptr && next_child_profile_info->has_data());
 }
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::has_operation() const
@@ -11320,7 +11581,8 @@ bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4Dhcp
 	|| ydk::is_set(mode.yfilter)
 	|| ydk::is_set(matched_option_code.yfilter)
 	|| ydk::is_set(matched_option_len.yfilter)
-	|| ydk::is_set(option_data.yfilter);
+	|| ydk::is_set(option_data.yfilter)
+	|| (next_child_profile_info !=  nullptr && next_child_profile_info->has_operation());
 }
 
 std::string Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::get_segment_path() const
@@ -11347,6 +11609,15 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Nodes::Node::Base::Pro
 
 std::shared_ptr<ydk::Entity> Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "next-child-profile-info")
+    {
+        if(next_child_profile_info == nullptr)
+        {
+            next_child_profile_info = std::make_shared<Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::NextChildProfileInfo>();
+        }
+        return next_child_profile_info;
+    }
+
     return nullptr;
 }
 
@@ -11354,6 +11625,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Dhcpd::Nodes::Node::Base
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(next_child_profile_info != nullptr)
+    {
+        _children["next-child-profile-info"] = next_child_profile_info;
+    }
+
     return _children;
 }
 
@@ -11417,8 +11693,70 @@ void Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4Dhcp
 
 bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "base-child-profile-name" || name == "mode" || name == "matched-option-code" || name == "matched-option-len" || name == "option-data")
+    if(name == "next-child-profile-info" || name == "base-child-profile-name" || name == "mode" || name == "matched-option-code" || name == "matched-option-len" || name == "option-data")
         return true;
+    return false;
+}
+
+Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::NextChildProfileInfo::NextChildProfileInfo()
+{
+
+    yang_name = "next-child-profile-info"; yang_parent_name = "ipv4-dhcpd-base-child-profile-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::NextChildProfileInfo::~NextChildProfileInfo()
+{
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::NextChildProfileInfo::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::NextChildProfileInfo::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::NextChildProfileInfo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-child-profile-info";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::NextChildProfileInfo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::NextChildProfileInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::NextChildProfileInfo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::NextChildProfileInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::NextChildProfileInfo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ipv4Dhcpd::Nodes::Node::Base::Profiles::Profile::ChildProfileInfo::Ipv4DhcpdBaseChildProfileInfo::NextChildProfileInfo::has_leaf_or_child_of_name(const std::string & name) const
+{
     return false;
 }
 
@@ -13290,6 +13628,7 @@ Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::Client()
     proxy_binding_outer_tag{YType::uint32, "proxy-binding-outer-tag"},
     proxy_binding_inner_tag{YType::uint32, "proxy-binding-inner-tag"},
     profile_name{YType::str, "profile-name"},
+    selected_profile_name{YType::str, "selected-profile-name"},
     is_nak_next_renew{YType::boolean, "is-nak-next-renew"},
     subscriber_label{YType::uint32, "subscriber-label"},
     old_subscriber_label{YType::uint32, "old-subscriber-label"},
@@ -13342,6 +13681,7 @@ bool Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::has_data() const
 	|| proxy_binding_outer_tag.is_set
 	|| proxy_binding_inner_tag.is_set
 	|| profile_name.is_set
+	|| selected_profile_name.is_set
 	|| is_nak_next_renew.is_set
 	|| subscriber_label.is_set
 	|| old_subscriber_label.is_set
@@ -13386,6 +13726,7 @@ bool Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::has_operation() c
 	|| ydk::is_set(proxy_binding_outer_tag.yfilter)
 	|| ydk::is_set(proxy_binding_inner_tag.yfilter)
 	|| ydk::is_set(profile_name.yfilter)
+	|| ydk::is_set(selected_profile_name.yfilter)
 	|| ydk::is_set(is_nak_next_renew.yfilter)
 	|| ydk::is_set(subscriber_label.yfilter)
 	|| ydk::is_set(old_subscriber_label.yfilter)
@@ -13435,6 +13776,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv4Dhcpd::Nodes::Node::Server::B
     if (proxy_binding_outer_tag.is_set || is_set(proxy_binding_outer_tag.yfilter)) leaf_name_data.push_back(proxy_binding_outer_tag.get_name_leafdata());
     if (proxy_binding_inner_tag.is_set || is_set(proxy_binding_inner_tag.yfilter)) leaf_name_data.push_back(proxy_binding_inner_tag.get_name_leafdata());
     if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+    if (selected_profile_name.is_set || is_set(selected_profile_name.yfilter)) leaf_name_data.push_back(selected_profile_name.get_name_leafdata());
     if (is_nak_next_renew.is_set || is_set(is_nak_next_renew.yfilter)) leaf_name_data.push_back(is_nak_next_renew.get_name_leafdata());
     if (subscriber_label.is_set || is_set(subscriber_label.yfilter)) leaf_name_data.push_back(subscriber_label.get_name_leafdata());
     if (old_subscriber_label.is_set || is_set(old_subscriber_label.yfilter)) leaf_name_data.push_back(old_subscriber_label.get_name_leafdata());
@@ -13579,6 +13921,12 @@ void Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::set_value(const s
         profile_name = value;
         profile_name.value_namespace = name_space;
         profile_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "selected-profile-name")
+    {
+        selected_profile_name = value;
+        selected_profile_name.value_namespace = name_space;
+        selected_profile_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-nak-next-renew")
     {
@@ -13756,6 +14104,10 @@ void Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::set_filter(const 
     {
         profile_name.yfilter = yfilter;
     }
+    if(value_path == "selected-profile-name")
+    {
+        selected_profile_name.yfilter = yfilter;
+    }
     if(value_path == "is-nak-next-renew")
     {
         is_nak_next_renew.yfilter = yfilter;
@@ -13828,7 +14180,7 @@ void Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::set_filter(const 
 
 bool Ipv4Dhcpd::Nodes::Node::Server::Binding::Clients::Client::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "client-id" || name == "client-id-xr" || name == "mac-address" || name == "vrf-name" || name == "server-vrf-name" || name == "ip-address" || name == "client-gi-addr" || name == "to-server-gi-addr" || name == "server-ip-address" || name == "reply-server-ip-address" || name == "lease-time" || name == "remaining-lease-time" || name == "state" || name == "interface-name" || name == "access-vrf-name" || name == "proxy-binding-outer-tag" || name == "proxy-binding-inner-tag" || name == "profile-name" || name == "is-nak-next-renew" || name == "subscriber-label" || name == "old-subscriber-label" || name == "subscriber-interface-name" || name == "rx-circuit-id" || name == "tx-circuit-id" || name == "rx-remote-id" || name == "tx-remote-id" || name == "rx-vsiso" || name == "tx-vsiso" || name == "is-auth-received" || name == "is-mbl-subscriber" || name == "param-request" || name == "param-response" || name == "session-start-time-epoch" || name == "srg-state" || name == "event-history")
+    if(name == "client-id" || name == "client-id-xr" || name == "mac-address" || name == "vrf-name" || name == "server-vrf-name" || name == "ip-address" || name == "client-gi-addr" || name == "to-server-gi-addr" || name == "server-ip-address" || name == "reply-server-ip-address" || name == "lease-time" || name == "remaining-lease-time" || name == "state" || name == "interface-name" || name == "access-vrf-name" || name == "proxy-binding-outer-tag" || name == "proxy-binding-inner-tag" || name == "profile-name" || name == "selected-profile-name" || name == "is-nak-next-renew" || name == "subscriber-label" || name == "old-subscriber-label" || name == "subscriber-interface-name" || name == "rx-circuit-id" || name == "tx-circuit-id" || name == "rx-remote-id" || name == "tx-remote-id" || name == "rx-vsiso" || name == "tx-vsiso" || name == "is-auth-received" || name == "is-mbl-subscriber" || name == "param-request" || name == "param-response" || name == "session-start-time-epoch" || name == "srg-state" || name == "event-history")
         return true;
     return false;
 }
@@ -19052,33 +19404,6 @@ bool Ipv4Dhcpd::Nodes::Node::Relay::Vrfs::Vrf::VrfStatistics::BootpReply::has_le
     return false;
 }
 
-const Enum::YLeaf DhcpIssuVersion::version1 {0, "version1"};
-const Enum::YLeaf DhcpIssuVersion::version2 {1, "version2"};
-
-const Enum::YLeaf DhcpIssuRole::role_primary {0, "role-primary"};
-const Enum::YLeaf DhcpIssuRole::role_secondary {1, "role-secondary"};
-
-const Enum::YLeaf ProxyLeaseLimit::none {0, "none"};
-const Enum::YLeaf ProxyLeaseLimit::interface {1, "interface"};
-const Enum::YLeaf ProxyLeaseLimit::circuit_id {2, "circuit-id"};
-const Enum::YLeaf ProxyLeaseLimit::remote_id {3, "remote-id"};
-const Enum::YLeaf ProxyLeaseLimit::remote_id_circuit_id {4, "remote-id-circuit-id"};
-
-const Enum::YLeaf DhcpIssuPhase::phase_not_started {0, "phase-not-started"};
-const Enum::YLeaf DhcpIssuPhase::phase_load {1, "phase-load"};
-const Enum::YLeaf DhcpIssuPhase::phase_run {2, "phase-run"};
-const Enum::YLeaf DhcpIssuPhase::phase_completed {3, "phase-completed"};
-const Enum::YLeaf DhcpIssuPhase::phase_aborted {4, "phase-aborted"};
-
-const Enum::YLeaf RelayInfoPolicy::replace {0, "replace"};
-const Enum::YLeaf RelayInfoPolicy::keep {1, "keep"};
-const Enum::YLeaf RelayInfoPolicy::drop {2, "drop"};
-const Enum::YLeaf RelayInfoPolicy::encapsulate {3, "encapsulate"};
-
-const Enum::YLeaf BagDhcpdIntfSrgRole::none {0, "none"};
-const Enum::YLeaf BagDhcpdIntfSrgRole::master {1, "master"};
-const Enum::YLeaf BagDhcpdIntfSrgRole::slave {2, "slave"};
-
 const Enum::YLeaf DhcpcIpv4State::init {0, "init"};
 const Enum::YLeaf DhcpcIpv4State::init_reboot {1, "init-reboot"};
 const Enum::YLeaf DhcpcIpv4State::rebooting {2, "rebooting"};
@@ -19088,6 +19413,22 @@ const Enum::YLeaf DhcpcIpv4State::bound {5, "bound"};
 const Enum::YLeaf DhcpcIpv4State::renewing {6, "renewing"};
 const Enum::YLeaf DhcpcIpv4State::rebinding {7, "rebinding"};
 const Enum::YLeaf DhcpcIpv4State::invalid {8, "invalid"};
+
+const Enum::YLeaf DhcpIssuVersion::version1 {0, "version1"};
+const Enum::YLeaf DhcpIssuVersion::version2 {1, "version2"};
+
+const Enum::YLeaf DhcpIssuPhase::phase_not_started {0, "phase-not-started"};
+const Enum::YLeaf DhcpIssuPhase::phase_load {1, "phase-load"};
+const Enum::YLeaf DhcpIssuPhase::phase_run {2, "phase-run"};
+const Enum::YLeaf DhcpIssuPhase::phase_completed {3, "phase-completed"};
+const Enum::YLeaf DhcpIssuPhase::phase_aborted {4, "phase-aborted"};
+
+const Enum::YLeaf DhcpIssuRole::role_primary {0, "role-primary"};
+const Enum::YLeaf DhcpIssuRole::role_secondary {1, "role-secondary"};
+
+const Enum::YLeaf BagDhcpdIntfSrgRole::none {0, "none"};
+const Enum::YLeaf BagDhcpdIntfSrgRole::master {1, "master"};
+const Enum::YLeaf BagDhcpdIntfSrgRole::slave {2, "slave"};
 
 const Enum::YLeaf BagDhcpdProxyState::initializing {0, "initializing"};
 const Enum::YLeaf BagDhcpdProxyState::selecting {1, "selecting"};
@@ -19107,15 +19448,26 @@ const Enum::YLeaf BagDhcpdProxyState::request_dpm {14, "request-dpm"};
 const Enum::YLeaf BagDhcpdProxyState::change_addr_dpm {15, "change-addr-dpm"};
 const Enum::YLeaf BagDhcpdProxyState::max {16, "max"};
 
+const Enum::YLeaf ProxyLeaseLimit::none {0, "none"};
+const Enum::YLeaf ProxyLeaseLimit::interface {1, "interface"};
+const Enum::YLeaf ProxyLeaseLimit::circuit_id {2, "circuit-id"};
+const Enum::YLeaf ProxyLeaseLimit::remote_id {3, "remote-id"};
+const Enum::YLeaf ProxyLeaseLimit::remote_id_circuit_id {4, "remote-id-circuit-id"};
+
+const Enum::YLeaf BroadcastFlag::ignore {0, "ignore"};
+const Enum::YLeaf BroadcastFlag::check {1, "check"};
+const Enum::YLeaf BroadcastFlag::unicast_always {2, "unicast-always"};
+
 const Enum::YLeaf RelayInfoVpnMode::rfc {0, "rfc"};
 const Enum::YLeaf RelayInfoVpnMode::cisco {1, "cisco"};
 
 const Enum::YLeaf RelayInfoAuthenticate::received {0, "received"};
 const Enum::YLeaf RelayInfoAuthenticate::inserted {1, "inserted"};
 
-const Enum::YLeaf BroadcastFlag::ignore {0, "ignore"};
-const Enum::YLeaf BroadcastFlag::check {1, "check"};
-const Enum::YLeaf BroadcastFlag::unicast_always {2, "unicast-always"};
+const Enum::YLeaf RelayInfoPolicy::replace {0, "replace"};
+const Enum::YLeaf RelayInfoPolicy::keep {1, "keep"};
+const Enum::YLeaf RelayInfoPolicy::drop {2, "drop"};
+const Enum::YLeaf RelayInfoPolicy::encapsulate {3, "encapsulate"};
 
 
 }

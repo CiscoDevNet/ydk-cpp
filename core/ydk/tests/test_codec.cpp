@@ -219,3 +219,41 @@ TEST_CASE("value_error")
 
     CHECK_NOTHROW(s.decode(schema, value_error_json, EncodingFormat::JSON));
 }
+
+namespace ydk {
+  namespace path {
+    std::string get_netconf_output(const string & reply);
+  }
+}
+
+TEST_CASE( "decode_rpc_with_nc_prefix" )
+{
+    auto rpc_reply = R"(
+<nc:rpc-reply xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns:junos="http://xml.juniper.net/junos/15.1X49/junos" xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="1">
+<nc:data>
+<interfaces xmlns="http://openconfig.net/yang/interfaces">
+  <interface>
+    <name>GigabitEthernet0/0/0/2</name>
+    <config>
+      <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+      <name>GigabitEthernet0/0/0/2</name>
+    </config>
+  </interface>
+</interfaces>
+</nc:data>
+</nc:rpc-reply>
+)";
+    auto reply_xml = ydk::path::get_netconf_output(rpc_reply);
+    REQUIRE(!reply_xml.empty());
+
+    auto rpc_reply_extracted = R"(<interfaces xmlns="http://openconfig.net/yang/interfaces">
+  <interface>
+    <name>GigabitEthernet0/0/0/2</name>
+    <config>
+      <type xmlns:ianaift="urn:ietf:params:xml:ns:yang:iana-if-type">ianaift:ethernetCsmacd</type>
+      <name>GigabitEthernet0/0/0/2</name>
+    </config>
+  </interface>
+</interfaces>)";
+    REQUIRE(reply_xml == rpc_reply_extracted);
+}

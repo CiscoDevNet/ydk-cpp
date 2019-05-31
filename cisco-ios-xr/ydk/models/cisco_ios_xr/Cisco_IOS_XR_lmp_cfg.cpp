@@ -1529,13 +1529,13 @@ bool Lmp::GmplsUni::Controllers::Controller::Adjacency::RemoteNeighbor::LinkId::
     return false;
 }
 
-const Enum::YLeaf OlmSwitchingCap::lsc {150, "lsc"};
-const Enum::YLeaf OlmSwitchingCap::fsc {200, "fsc"};
-
 const Enum::YLeaf OlmAddr::ipv4 {101, "ipv4"};
 const Enum::YLeaf OlmAddr::ipv6 {102, "ipv6"};
 const Enum::YLeaf OlmAddr::unnumbered {103, "unnumbered"};
 const Enum::YLeaf OlmAddr::nsap {104, "nsap"};
+
+const Enum::YLeaf OlmSwitchingCap::lsc {150, "lsc"};
+const Enum::YLeaf OlmSwitchingCap::fsc {200, "fsc"};
 
 
 }

@@ -351,11 +351,11 @@ class BfdEchoStartupValidate : public ydk::Enum
 
 };
 
-class BfdIfIpv6ChecksumUsage : public ydk::Enum
+class BfdBundleCoexistenceBobBlb : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf inherited;
+        static const ydk::Enum::YLeaf logical;
 
 };
 
@@ -367,11 +367,11 @@ class BfdIfEchoUsage : public ydk::Enum
 
 };
 
-class BfdBundleCoexistenceBobBlb : public ydk::Enum
+class BfdIfIpv6ChecksumUsage : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf inherited;
-        static const ydk::Enum::YLeaf logical;
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
 
 };
 

@@ -6709,6 +6709,11 @@ bool Vrrp::MgoSessions::MgoSession::Slave::has_leaf_or_child_of_name(const std::
     return false;
 }
 
+const Enum::YLeaf VrrpVmacState::stored {0, "stored"};
+const Enum::YLeaf VrrpVmacState::reserved {1, "reserved"};
+const Enum::YLeaf VrrpVmacState::active {2, "active"};
+const Enum::YLeaf VrrpVmacState::reserving {3, "reserving"};
+
 const Enum::YLeaf VrrpStateChangeReason::state_change_bfd_down {0, "state-change-bfd-down"};
 const Enum::YLeaf VrrpStateChangeReason::state_change_virtual_ip_configured {1, "state-change-virtual-ip-configured"};
 const Enum::YLeaf VrrpStateChangeReason::state_change_interface_ip {2, "state-change-interface-ip"};
@@ -6723,30 +6728,25 @@ const Enum::YLeaf VrrpStateChangeReason::state_change_mgo_parent {10, "state-cha
 const Enum::YLeaf VrrpStateChangeReason::state_change_chkpt_update {11, "state-change-chkpt-update"};
 const Enum::YLeaf VrrpStateChangeReason::state_change_issu_resync {12, "state-change-issu-resync"};
 
-const Enum::YLeaf VrrpVmacState::stored {0, "stored"};
-const Enum::YLeaf VrrpVmacState::reserved {1, "reserved"};
-const Enum::YLeaf VrrpVmacState::active {2, "active"};
-const Enum::YLeaf VrrpVmacState::reserving {3, "reserving"};
-
-const Enum::YLeaf VrrpBAf::address_family_ipv4 {0, "address-family-ipv4"};
-const Enum::YLeaf VrrpBAf::address_family_ipv6 {1, "address-family-ipv6"};
-const Enum::YLeaf VrrpBAf::vrrp_baf_count {2, "vrrp-baf-count"};
-
-const Enum::YLeaf VrrpVipState::virtual_ip_state_down {0, "virtual-ip-state-down"};
-const Enum::YLeaf VrrpVipState::virtual_ip_state_up {1, "virtual-ip-state-up"};
-
-const Enum::YLeaf VrrpProtAuth::authentication_none {0, "authentication-none"};
-const Enum::YLeaf VrrpProtAuth::authentication_text {1, "authentication-text"};
-const Enum::YLeaf VrrpProtAuth::authentication_ip {2, "authentication-ip"};
-
 const Enum::YLeaf VrrpBfdSessionState::bfd_state_none {0, "bfd-state-none"};
 const Enum::YLeaf VrrpBfdSessionState::bfd_state_inactive {1, "bfd-state-inactive"};
 const Enum::YLeaf VrrpBfdSessionState::bfd_state_up {2, "bfd-state-up"};
 const Enum::YLeaf VrrpBfdSessionState::bfd_state_down {3, "bfd-state-down"};
 
+const Enum::YLeaf VrrpProtAuth::authentication_none {0, "authentication-none"};
+const Enum::YLeaf VrrpProtAuth::authentication_text {1, "authentication-text"};
+const Enum::YLeaf VrrpProtAuth::authentication_ip {2, "authentication-ip"};
+
 const Enum::YLeaf VrrpBagProtocolState::state_initial {1, "state-initial"};
 const Enum::YLeaf VrrpBagProtocolState::state_backup {2, "state-backup"};
 const Enum::YLeaf VrrpBagProtocolState::state_master {3, "state-master"};
+
+const Enum::YLeaf VrrpVipState::virtual_ip_state_down {0, "virtual-ip-state-down"};
+const Enum::YLeaf VrrpVipState::virtual_ip_state_up {1, "virtual-ip-state-up"};
+
+const Enum::YLeaf VrrpBAf::address_family_ipv4 {0, "address-family-ipv4"};
+const Enum::YLeaf VrrpBAf::address_family_ipv6 {1, "address-family-ipv6"};
+const Enum::YLeaf VrrpBAf::vrrp_baf_count {2, "vrrp-baf-count"};
 
 
 }

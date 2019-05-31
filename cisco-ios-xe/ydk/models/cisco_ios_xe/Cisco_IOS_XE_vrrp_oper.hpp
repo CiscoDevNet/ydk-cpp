@@ -114,6 +114,13 @@ class VrrpOperData::VrrpOperState::TrackList : public ydk::Entity
 
 }; // VrrpOperData::VrrpOperState::TrackList
 
+class ProtoVersion : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf vrrp_v3;
+
+};
+
 class MasterReason : public ydk::Enum
 {
     public:
@@ -134,10 +141,11 @@ class VrrpProtoState : public ydk::Enum
 
 };
 
-class ProtoVersion : public ydk::Enum
+class OmpStateUpdown : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf vrrp_v3;
+        static const ydk::Enum::YLeaf omp_up;
+        static const ydk::Enum::YLeaf omp_down;
 
 };
 
@@ -146,14 +154,6 @@ class TrackState : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf vrrp_track_state_resolved;
         static const ydk::Enum::YLeaf vrrp_track_state_unresolved;
-
-};
-
-class OmpStateUpdown : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf omp_up;
-        static const ydk::Enum::YLeaf omp_down;
 
 };
 

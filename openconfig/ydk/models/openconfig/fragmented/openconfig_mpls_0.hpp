@@ -3836,6 +3836,14 @@ class Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSeco
 
 }; // Mpls::Lsps::ConstrainedPath::Tunnels::Tunnel::P2pTunnelAttributes::P2pSecondaryPaths::P2pSecondaryPath::Config
 
+class TeBandwidthType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf SPECIFIED;
+        static const ydk::Enum::YLeaf AUTO;
+
+};
+
 class MplsSrlgFloodingType : public ydk::Enum
 {
     public:
@@ -3852,15 +3860,6 @@ class MplsHopType : public ydk::Enum
 
 };
 
-class CspfTieBreaking : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf RANDOM;
-        static const ydk::Enum::YLeaf LEAST_FILL;
-        static const ydk::Enum::YLeaf MOST_FILL;
-
-};
-
 class TeMetricType : public ydk::Enum
 {
     public:
@@ -3868,11 +3867,12 @@ class TeMetricType : public ydk::Enum
 
 };
 
-class TeBandwidthType : public ydk::Enum
+class CspfTieBreaking : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf SPECIFIED;
-        static const ydk::Enum::YLeaf AUTO;
+        static const ydk::Enum::YLeaf RANDOM;
+        static const ydk::Enum::YLeaf LEAST_FILL;
+        static const ydk::Enum::YLeaf MOST_FILL;
 
 };
 

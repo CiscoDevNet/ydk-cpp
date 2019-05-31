@@ -82,6 +82,9 @@ class Led::Location::LedAttributes : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf led_name; //type: string
+        ydk::YLeaf location; //type: string
+        ydk::YLeaf print_header; //type: boolean
+        ydk::YLeaf loc_header; //type: boolean
         ydk::YLeaf led_mode; //type: string
         ydk::YLeaf led_color; //type: string
 

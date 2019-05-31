@@ -7,10 +7,771 @@
 #include <ydk/types.hpp>
 #include <ydk/errors.hpp>
 
+#include "Cisco_IOS_XR_fib_common_oper_0.hpp"
 #include "Cisco_IOS_XR_fib_common_oper_2.hpp"
 
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_fib_common_oper {
+
+
+class Fib::Nodes::Node::Protocols::Protocol::Misc::MiFrrStat : public ydk::Entity
+{
+    public:
+        MiFrrStat();
+        ~MiFrrStat();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf mi_num_intf_frr; //type: uint32
+        ydk::YLeaf mi_num_parent_intf_frr; //type: uint32
+        ydk::YLeaf mi_num_pfi_intf_down; //type: uint32
+        ydk::YLeaf mi_num_bfd_down; //type: uint32
+        ydk::YLeaf mi_num_prot_frr_objects; //type: uint32
+        ydk::YLeaf mi_num_bkup_frr_objects; //type: uint32
+        ydk::YLeaf mi_num_tunid_allocs; //type: uint32
+        ydk::YLeaf mi_num_tunid_alloc_failures; //type: uint32
+        ydk::YLeaf mi_num_tunid_frees; //type: uint32
+        ydk::YLeaf mi_num_tunid_free_failures; //type: uint32
+        ydk::YLeaf mi_num_frr_reset_queue_adds; //type: uint32
+        ydk::YLeaf mi_num_frr_reset_queue_remove; //type: uint32
+        ydk::YLeaf mi_num_frr_reset; //type: uint32
+        ydk::YLeaf mi_num_frr_proto_events; //type: uint32
+        ydk::YLeaf mi_num_frr_logs; //type: uint32
+
+}; // Fib::Nodes::Node::Protocols::Protocol::Misc::MiFrrStat
+
+
+class Fib::Nodes::Node::Protocols::Protocol::LocalLabel : public ydk::Entity
+{
+    public:
+        LocalLabel();
+        ~LocalLabel();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Conflicts; //type: Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts> conflicts;
+        
+}; // Fib::Nodes::Node::Protocols::Protocol::LocalLabel
+
+
+class Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts : public ydk::Entity
+{
+    public:
+        Conflicts();
+        ~Conflicts();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Conflict; //type: Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict
+
+        ydk::YList conflict;
+        
+}; // Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts
+
+
+class Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict : public ydk::Entity
+{
+    public:
+        Conflict();
+        ~Conflict();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf label; //type: uint32
+        ydk::YLeaf source; //type: FibRouteSource
+        ydk::YLeaf ll_ctype; //type: FibllcEntry
+        ydk::YLeaf pfx_tbl_id; //type: uint32
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf prefix_len; //type: uint32
+        ydk::YLeaf local_label; //type: uint32
+        ydk::YLeaf source_xr; //type: uint32
+        ydk::YLeaf update_ts; //type: uint64
+        ydk::YLeaf retry_ts; //type: uint64
+        ydk::YLeaf num_retries; //type: uint32
+        class Ext; //type: Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext> ext;
+        
+}; // Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict
+
+
+class Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext : public ydk::Entity
+{
+    public:
+        Ext();
+        ~Ext();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf type; //type: FibMplsLlcEntryBag
+        class Pfx; //type: Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Pfx
+        class Lsm; //type: Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Lsm
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Pfx> pfx;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Lsm> lsm;
+        
+}; // Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext
+
+
+class Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Pfx : public ydk::Entity
+{
+    public:
+        Pfx();
+        ~Pfx();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf pfx; //type: string
+        ydk::YLeaf tbl_id; //type: uint32
+
+}; // Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Pfx
+
+
+class Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Lsm : public ydk::Entity
+{
+    public:
+        Lsm();
+        ~Lsm();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf nh; //type: string
+        ydk::YLeaf mcast_id; //type: uint32
+
+}; // Fib::Nodes::Node::Protocols::Protocol::LocalLabel::Conflicts::Conflict::Ext::Lsm
+
+class OcAftL3 : public ydk::Entity
+{
+    public:
+        OcAftL3();
+        ~OcAftL3();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
+        std::string get_bundle_yang_models_location() const override;
+        std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
+
+        class Vrfs; //type: OcAftL3::Vrfs
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs> vrfs;
+        
+}; // OcAftL3
+
+
+class OcAftL3::Vrfs : public ydk::Entity
+{
+    public:
+        Vrfs();
+        ~Vrfs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Vrf; //type: OcAftL3::Vrfs::Vrf
+
+        ydk::YList vrf;
+        
+}; // OcAftL3::Vrfs
+
+
+class OcAftL3::Vrfs::Vrf : public ydk::Entity
+{
+    public:
+        Vrf();
+        ~Vrf();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf vrf_name; //type: string
+        class AbstractForwardingTables; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables> abstract_forwarding_tables;
+        
+}; // OcAftL3::Vrfs::Vrf
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables : public ydk::Entity
+{
+    public:
+        AbstractForwardingTables();
+        ~AbstractForwardingTables();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Mpls; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls
+        class Ipv6Unicast; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast
+        class Ipv4Unicast; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls> mpls;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast> ipv6_unicast;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast> ipv4_unicast;
+        
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls : public ydk::Entity
+{
+    public:
+        Mpls();
+        ~Mpls();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Labels; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels> labels;
+        
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels : public ydk::Entity
+{
+    public:
+        Labels();
+        ~Labels();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Label; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label
+
+        ydk::YList label;
+        
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label : public ydk::Entity
+{
+    public:
+        Label();
+        ~Label();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf label; //type: string
+        class NextHops; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops
+        class State; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops> next_hops;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::State> state;
+        
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops : public ydk::Entity
+{
+    public:
+        NextHops();
+        ~NextHops();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class NextHop; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop
+
+        ydk::YList next_hop;
+        
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop : public ydk::Entity
+{
+    public:
+        NextHop();
+        ~NextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf index_; //type: uint32
+        class State; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::State
+        class InterfaceRef; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::State> state;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef> interface_ref;
+        
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf index_; //type: uint64
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf ip_address; //type: string
+        ydk::YLeaf network_instance; //type: string
+        ydk::YLeafList popped_mpls_label_stack; //type: list of  string
+        ydk::YLeafList pushed_mpls_label_stack; //type: list of  string
+
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::State
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef : public ydk::Entity
+{
+    public:
+        InterfaceRef();
+        ~InterfaceRef();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class State; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::State> state;
+        
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf subinterface; //type: uint32
+
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::NextHops::NextHop::InterfaceRef::State
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix_index; //type: string
+
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Mpls::Labels::Label::State
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast : public ydk::Entity
+{
+    public:
+        Ipv6Unicast();
+        ~Ipv6Unicast();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Prefixes; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes> prefixes;
+        
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes : public ydk::Entity
+{
+    public:
+        Prefixes();
+        ~Prefixes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Prefix; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix
+
+        ydk::YList prefix;
+        
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix : public ydk::Entity
+{
+    public:
+        Prefix();
+        ~Prefix();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix; //type: string
+        class NextHops; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops
+        class State; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops> next_hops;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::State> state;
+        
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops : public ydk::Entity
+{
+    public:
+        NextHops();
+        ~NextHops();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class NextHop; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop
+
+        ydk::YList next_hop;
+        
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop : public ydk::Entity
+{
+    public:
+        NextHop();
+        ~NextHop();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf index_; //type: uint32
+        class State; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::State
+        class InterfaceRef; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::State> state;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef> interface_ref;
+        
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf index_; //type: uint64
+        ydk::YLeaf weight; //type: uint32
+        ydk::YLeaf ip_address; //type: string
+        ydk::YLeaf network_instance; //type: string
+        ydk::YLeafList popped_mpls_label_stack; //type: list of  string
+        ydk::YLeafList pushed_mpls_label_stack; //type: list of  string
+
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::State
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef : public ydk::Entity
+{
+    public:
+        InterfaceRef();
+        ~InterfaceRef();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class State; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::State> state;
+        
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface; //type: string
+        ydk::YLeaf subinterface; //type: uint32
+
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::NextHops::NextHop::InterfaceRef::State
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf prefix_index; //type: string
+
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv6Unicast::Prefixes::Prefix::State
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast : public ydk::Entity
+{
+    public:
+        Ipv4Unicast();
+        ~Ipv4Unicast();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Prefixes; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_fib_common_oper::OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes> prefixes;
+        
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast
+
+
+class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes : public ydk::Entity
+{
+    public:
+        Prefixes();
+        ~Prefixes();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Prefix; //type: OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix
+
+        ydk::YList prefix;
+        
+}; // OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes
 
 
 class OcAftL3::Vrfs::Vrf::AbstractForwardingTables::Ipv4Unicast::Prefixes::Prefix : public ydk::Entity
@@ -283,6 +1044,9 @@ class MplsForwarding::Nodes::Node::ForwardingSummary : public ydk::Entity
         ydk::YLeaf ipv4_imposition_entries; //type: uint32
         ydk::YLeaf reserved_label_entries; //type: uint32
         ydk::YLeaf label_switched_entries; //type: uint32
+        ydk::YLeaf protected_label_switched_entries; //type: uint32
+        ydk::YLeaf frr_ready_label_switched_entries; //type: uint32
+        ydk::YLeaf frr_active_label_switched_entries; //type: uint32
         ydk::YLeaf deleted_stale_entries; //type: uint32
         ydk::YLeaf te_head_entries; //type: uint32
         ydk::YLeaf te_frr_head_entries; //type: uint32

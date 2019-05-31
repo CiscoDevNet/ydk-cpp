@@ -3947,28 +3947,17 @@ class Ipsla::ApplicationInfo : public ydk::Entity
 
 }; // Ipsla::ApplicationInfo
 
-class IpslaTargetTypeEnum : public ydk::Enum
+class OpTypeEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ipv4_address_target_type;
-        static const ydk::Enum::YLeaf ipv4_prefix_target_type;
-        static const ydk::Enum::YLeaf tunnel_id_target_type;
-        static const ydk::Enum::YLeaf ipv4_pseudowire_target_type;
-        static const ydk::Enum::YLeaf ipv6_address_target_type;
-
-};
-
-class SlaOpTypes : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf oper_icmp_echo;
-        static const ydk::Enum::YLeaf oper_icmp_path_jitter;
-        static const ydk::Enum::YLeaf oper_icmp_path_echo;
-        static const ydk::Enum::YLeaf oper_udp_jitter;
-        static const ydk::Enum::YLeaf oper_udp_echo;
-        static const ydk::Enum::YLeaf oper_mpls_lsp_ping;
-        static const ydk::Enum::YLeaf oper_mpls_lsp_trace;
-        static const ydk::Enum::YLeaf oper_mpls_lsp_group;
+        static const ydk::Enum::YLeaf icmp_echo;
+        static const ydk::Enum::YLeaf icmp_path_jitter;
+        static const ydk::Enum::YLeaf icmp_path_echo;
+        static const ydk::Enum::YLeaf udp_jitter;
+        static const ydk::Enum::YLeaf udp_echo;
+        static const ydk::Enum::YLeaf mpls_lsp_ping;
+        static const ydk::Enum::YLeaf mpls_lsp_trace;
+        static const ydk::Enum::YLeaf mpls_lsp_group;
 
 };
 
@@ -4028,40 +4017,6 @@ class IpslaRetCode : public ydk::Enum
 
 };
 
-class OpTypeEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf icmp_echo;
-        static const ydk::Enum::YLeaf icmp_path_jitter;
-        static const ydk::Enum::YLeaf icmp_path_echo;
-        static const ydk::Enum::YLeaf udp_jitter;
-        static const ydk::Enum::YLeaf udp_echo;
-        static const ydk::Enum::YLeaf mpls_lsp_ping;
-        static const ydk::Enum::YLeaf mpls_lsp_trace;
-        static const ydk::Enum::YLeaf mpls_lsp_group;
-
-};
-
-class IpslaLspGrpPathStatusEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipsla_lsp_grp_path_status_unknown;
-        static const ydk::Enum::YLeaf ipsla_lsp_grp_path_status_up;
-        static const ydk::Enum::YLeaf ipsla_lsp_grp_path_status_down;
-        static const ydk::Enum::YLeaf ipsla_lsp_grp_path_status_retry;
-        static const ydk::Enum::YLeaf ipsla_lsp_grp_path_status_pending;
-
-};
-
-class IpslaOperStateEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipsla_oper_state_inactive;
-        static const ydk::Enum::YLeaf ipsla_oper_state_pending;
-        static const ydk::Enum::YLeaf ipsla_oper_state_active;
-
-};
-
 class IpslaMplsLpdDiscoveryModeEnum : public ydk::Enum
 {
     public:
@@ -4070,6 +4025,16 @@ class IpslaMplsLpdDiscoveryModeEnum : public ydk::Enum
         static const ydk::Enum::YLeaf ipsla_mpls_lpd_initial_complete;
         static const ydk::Enum::YLeaf ipsla_mpls_lpd_rediscovery_running;
         static const ydk::Enum::YLeaf ipsla_mpls_lpd_rediscovery_complete;
+
+};
+
+class IpslaMplsLpdPathDiscoveryStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipsla_mpls_lpd_path_discovery_unknown;
+        static const ydk::Enum::YLeaf ipsla_mpls_lpd_path_discovery_ok;
+        static const ydk::Enum::YLeaf ipsla_mpls_lpd_path_discovery_broken;
+        static const ydk::Enum::YLeaf ipsla_mpls_lpd_path_discovery_unexplorable;
 
 };
 
@@ -4087,14 +4052,23 @@ class IpslaMplsLpdRetCode : public ydk::Enum
 
 };
 
-class IpslaLspGrpStatusEnum : public ydk::Enum
+class IpslaTargetTypeEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ipsla_lsp_grp_status_unknown;
-        static const ydk::Enum::YLeaf ipsla_lsp_grp_status_up;
-        static const ydk::Enum::YLeaf ipsla_lsp_grp_status_partial;
-        static const ydk::Enum::YLeaf ipsla_lsp_grp_status_down;
-        static const ydk::Enum::YLeaf ipsla_lsp_grp_status_pending;
+        static const ydk::Enum::YLeaf ipv4_address_target_type;
+        static const ydk::Enum::YLeaf ipv4_prefix_target_type;
+        static const ydk::Enum::YLeaf tunnel_id_target_type;
+        static const ydk::Enum::YLeaf ipv4_pseudowire_target_type;
+        static const ydk::Enum::YLeaf ipv6_address_target_type;
+
+};
+
+class IpslaOperStateEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipsla_oper_state_inactive;
+        static const ydk::Enum::YLeaf ipsla_oper_state_pending;
+        static const ydk::Enum::YLeaf ipsla_oper_state_active;
 
 };
 
@@ -4106,13 +4080,39 @@ class IpslaMplsAddDeleteEnum : public ydk::Enum
 
 };
 
-class IpslaMplsLpdPathDiscoveryStatus : public ydk::Enum
+class IpslaLspGrpPathStatusEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ipsla_mpls_lpd_path_discovery_unknown;
-        static const ydk::Enum::YLeaf ipsla_mpls_lpd_path_discovery_ok;
-        static const ydk::Enum::YLeaf ipsla_mpls_lpd_path_discovery_broken;
-        static const ydk::Enum::YLeaf ipsla_mpls_lpd_path_discovery_unexplorable;
+        static const ydk::Enum::YLeaf ipsla_lsp_grp_path_status_unknown;
+        static const ydk::Enum::YLeaf ipsla_lsp_grp_path_status_up;
+        static const ydk::Enum::YLeaf ipsla_lsp_grp_path_status_down;
+        static const ydk::Enum::YLeaf ipsla_lsp_grp_path_status_retry;
+        static const ydk::Enum::YLeaf ipsla_lsp_grp_path_status_pending;
+
+};
+
+class IpslaLspGrpStatusEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipsla_lsp_grp_status_unknown;
+        static const ydk::Enum::YLeaf ipsla_lsp_grp_status_up;
+        static const ydk::Enum::YLeaf ipsla_lsp_grp_status_partial;
+        static const ydk::Enum::YLeaf ipsla_lsp_grp_status_down;
+        static const ydk::Enum::YLeaf ipsla_lsp_grp_status_pending;
+
+};
+
+class SlaOpTypes : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf oper_icmp_echo;
+        static const ydk::Enum::YLeaf oper_icmp_path_jitter;
+        static const ydk::Enum::YLeaf oper_icmp_path_echo;
+        static const ydk::Enum::YLeaf oper_udp_jitter;
+        static const ydk::Enum::YLeaf oper_udp_echo;
+        static const ydk::Enum::YLeaf oper_mpls_lsp_ping;
+        static const ydk::Enum::YLeaf oper_mpls_lsp_trace;
+        static const ydk::Enum::YLeaf oper_mpls_lsp_group;
 
 };
 

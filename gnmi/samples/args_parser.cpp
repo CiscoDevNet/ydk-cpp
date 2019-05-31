@@ -18,6 +18,7 @@
 
 #include <ydk/entity_data_node_walker.hpp>
 
+#define _UTILITY_MODULE_
 #include "args_parser.h"
 
 using namespace std;

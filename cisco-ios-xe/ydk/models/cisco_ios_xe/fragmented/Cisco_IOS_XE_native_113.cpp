@@ -11743,84 +11743,6 @@ bool Native::Interface::Vasileft::Umbrella::has_leaf_or_child_of_name(const std:
     return false;
 }
 
-Native::Interface::Vasileft::ZoneMember::ZoneMember()
-    :
-    security{YType::str, "security"}
-{
-
-    yang_name = "zone-member"; yang_parent_name = "vasileft"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::Vasileft::ZoneMember::~ZoneMember()
-{
-}
-
-bool Native::Interface::Vasileft::ZoneMember::has_data() const
-{
-    if (is_presence_container) return true;
-    return security.is_set;
-}
-
-bool Native::Interface::Vasileft::ZoneMember::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(security.yfilter);
-}
-
-std::string Native::Interface::Vasileft::ZoneMember::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-zone:zone-member";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::Vasileft::ZoneMember::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (security.is_set || is_set(security.yfilter)) leaf_name_data.push_back(security.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::Vasileft::ZoneMember::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vasileft::ZoneMember::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::Vasileft::ZoneMember::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "security")
-    {
-        security = value;
-        security.value_namespace = name_space;
-        security.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::Vasileft::ZoneMember::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "security")
-    {
-        security.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::Vasileft::ZoneMember::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "security")
-        return true;
-    return false;
-}
-
 Native::Interface::Vasileft::Utd::Utd()
     :
     enable{YType::empty, "enable"}
@@ -11899,6 +11821,84 @@ bool Native::Interface::Vasileft::Utd::has_leaf_or_child_of_name(const std::stri
     return false;
 }
 
+Native::Interface::Vasileft::ZoneMember::ZoneMember()
+    :
+    security{YType::str, "security"}
+{
+
+    yang_name = "zone-member"; yang_parent_name = "vasileft"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::Vasileft::ZoneMember::~ZoneMember()
+{
+}
+
+bool Native::Interface::Vasileft::ZoneMember::has_data() const
+{
+    if (is_presence_container) return true;
+    return security.is_set;
+}
+
+bool Native::Interface::Vasileft::ZoneMember::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(security.yfilter);
+}
+
+std::string Native::Interface::Vasileft::ZoneMember::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-zone:zone-member";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::Vasileft::ZoneMember::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (security.is_set || is_set(security.yfilter)) leaf_name_data.push_back(security.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::Vasileft::ZoneMember::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vasileft::ZoneMember::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::Vasileft::ZoneMember::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "security")
+    {
+        security = value;
+        security.value_namespace = name_space;
+        security.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::Vasileft::ZoneMember::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "security")
+    {
+        security.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::Vasileft::ZoneMember::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "security")
+        return true;
+    return false;
+}
+
 Native::Interface::Vasiright::Vasiright()
     :
     name{YType::uint16, "name"},
@@ -11953,8 +11953,8 @@ Native::Interface::Vasiright::Vasiright()
     , et_analytics(std::make_shared<Native::Interface::Vasiright::EtAnalytics>())
     , service_policy(std::make_shared<Native::Interface::Vasiright::ServicePolicy>())
     , umbrella(std::make_shared<Native::Interface::Vasiright::Umbrella>())
-    , zone_member(std::make_shared<Native::Interface::Vasiright::ZoneMember>())
     , utd(std::make_shared<Native::Interface::Vasiright::Utd>())
+    , zone_member(std::make_shared<Native::Interface::Vasiright::ZoneMember>())
 {
     switchport_conf->parent = this;
     switchport->parent = this;
@@ -11994,8 +11994,8 @@ Native::Interface::Vasiright::Vasiright()
     et_analytics->parent = this;
     service_policy->parent = this;
     umbrella->parent = this;
-    zone_member->parent = this;
     utd->parent = this;
+    zone_member->parent = this;
 
     yang_name = "vasiright"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -12062,8 +12062,8 @@ bool Native::Interface::Vasiright::has_data() const
 	|| (et_analytics !=  nullptr && et_analytics->has_data())
 	|| (service_policy !=  nullptr && service_policy->has_data())
 	|| (umbrella !=  nullptr && umbrella->has_data())
-	|| (zone_member !=  nullptr && zone_member->has_data())
-	|| (utd !=  nullptr && utd->has_data());
+	|| (utd !=  nullptr && utd->has_data())
+	|| (zone_member !=  nullptr && zone_member->has_data());
 }
 
 bool Native::Interface::Vasiright::has_operation() const
@@ -12124,8 +12124,8 @@ bool Native::Interface::Vasiright::has_operation() const
 	|| (et_analytics !=  nullptr && et_analytics->has_operation())
 	|| (service_policy !=  nullptr && service_policy->has_operation())
 	|| (umbrella !=  nullptr && umbrella->has_operation())
-	|| (zone_member !=  nullptr && zone_member->has_operation())
-	|| (utd !=  nullptr && utd->has_operation());
+	|| (utd !=  nullptr && utd->has_operation())
+	|| (zone_member !=  nullptr && zone_member->has_operation());
 }
 
 std::string Native::Interface::Vasiright::get_absolute_path() const
@@ -12524,15 +12524,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::Vasiright::get_child_by_name(con
         return umbrella;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-zone:zone-member")
-    {
-        if(zone_member == nullptr)
-        {
-            zone_member = std::make_shared<Native::Interface::Vasiright::ZoneMember>();
-        }
-        return zone_member;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-utd:utd")
     {
         if(utd == nullptr)
@@ -12540,6 +12531,15 @@ std::shared_ptr<ydk::Entity> Native::Interface::Vasiright::get_child_by_name(con
             utd = std::make_shared<Native::Interface::Vasiright::Utd>();
         }
         return utd;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-zone:zone-member")
+    {
+        if(zone_member == nullptr)
+        {
+            zone_member = std::make_shared<Native::Interface::Vasiright::ZoneMember>();
+        }
+        return zone_member;
     }
 
     return nullptr;
@@ -12753,14 +12753,14 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::Vasiright
         _children["Cisco-IOS-XE-umbrella:umbrella"] = umbrella;
     }
 
-    if(zone_member != nullptr)
-    {
-        _children["Cisco-IOS-XE-zone:zone-member"] = zone_member;
-    }
-
     if(utd != nullptr)
     {
         _children["Cisco-IOS-XE-utd:utd"] = utd;
+    }
+
+    if(zone_member != nullptr)
+    {
+        _children["Cisco-IOS-XE-zone:zone-member"] = zone_member;
     }
 
     return _children;
@@ -12886,7 +12886,7 @@ void Native::Interface::Vasiright::set_filter(const std::string & value_path, YF
 
 bool Native::Interface::Vasiright::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "et-analytics" || name == "service-policy" || name == "umbrella" || name == "zone-member" || name == "utd" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion")
+    if(name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "et-analytics" || name == "service-policy" || name == "umbrella" || name == "utd" || name == "zone-member" || name == "name" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion")
         return true;
     return false;
 }

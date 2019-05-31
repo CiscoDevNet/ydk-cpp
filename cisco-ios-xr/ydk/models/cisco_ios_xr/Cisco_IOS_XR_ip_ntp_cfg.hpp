@@ -958,11 +958,11 @@ class Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup 
 
 }; // Ntp::AccessGroupTables::AccessGroupTable::AccessGroupAfTable::AccessGroup
 
-class NtpAccessAf : public ydk::Enum
+class Ntpdscp : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf ntp_precedence;
+        static const ydk::Enum::YLeaf ntpdscp;
 
 };
 
@@ -974,11 +974,11 @@ class NtpPeer : public ydk::Enum
 
 };
 
-class Ntpdscp : public ydk::Enum
+class NtpAccessAf : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ntp_precedence;
-        static const ydk::Enum::YLeaf ntpdscp;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 

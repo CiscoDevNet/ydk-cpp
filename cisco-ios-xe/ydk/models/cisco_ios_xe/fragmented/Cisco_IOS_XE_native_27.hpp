@@ -1926,7 +1926,7 @@ class Native::Interface::BDI::Pppoe::Enable : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf group; //type: one of string, enumeration
+        ydk::YLeaf group; //type: one of enumeration, string
         class Group;
 
 }; // Native::Interface::BDI::Pppoe::Enable
@@ -2056,9 +2056,9 @@ class Native::Interface::BDI::Service::Instance::Encapsulation::Dot1ad : public 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf exact; //type: empty
-        ydk::YLeafList id; //type: list of  one of uint16, string, enumeration
+        ydk::YLeafList id; //type: list of  one of enumeration, uint16, string
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList dot1q; //type: list of  one of uint16, string, enumeration
+        ydk::YLeafList dot1q; //type: list of  one of enumeration, uint16, string
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::BDI::Service::Instance::Encapsulation::Dot1ad::Cos2
 
@@ -2109,9 +2109,9 @@ class Native::Interface::BDI::Service::Instance::Encapsulation::Dot1q : public y
 
         ydk::YLeaf exact; //type: empty
         ydk::YLeaf vlan_type; //type: VlanType
-        ydk::YLeafList id; //type: list of  one of uint16, string, enumeration
+        ydk::YLeafList id; //type: list of  one of enumeration, uint16, string
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList second_dot1q; //type: list of  one of uint16, string, enumeration
+        ydk::YLeafList second_dot1q; //type: list of  one of enumeration, uint16, string
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::BDI::Service::Instance::Encapsulation::Dot1q::Cos2
 

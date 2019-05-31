@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_23.hpp"
-#include "Cisco_IOS_XE_native_24.hpp"
 #include "Cisco_IOS_XE_native_25.hpp"
+#include "Cisco_IOS_XE_native_24.hpp"
 
 using namespace ydk;
 
@@ -7226,98 +7226,6 @@ bool Native::Interface::ATM::PmPath::has_leaf_or_child_of_name(const std::string
     return false;
 }
 
-Native::Interface::ATM::ServicePolicy::ServicePolicy()
-    :
-    input{YType::str, "input"},
-    output{YType::str, "output"}
-{
-
-    yang_name = "service-policy"; yang_parent_name = "ATM"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Native::Interface::ATM::ServicePolicy::~ServicePolicy()
-{
-}
-
-bool Native::Interface::ATM::ServicePolicy::has_data() const
-{
-    if (is_presence_container) return true;
-    return input.is_set
-	|| output.is_set;
-}
-
-bool Native::Interface::ATM::ServicePolicy::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(input.yfilter)
-	|| ydk::is_set(output.yfilter);
-}
-
-std::string Native::Interface::ATM::ServicePolicy::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XE-policy:service-policy";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Native::Interface::ATM::ServicePolicy::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (input.is_set || is_set(input.yfilter)) leaf_name_data.push_back(input.get_name_leafdata());
-    if (output.is_set || is_set(output.yfilter)) leaf_name_data.push_back(output.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Native::Interface::ATM::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::ATM::ServicePolicy::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Native::Interface::ATM::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "input")
-    {
-        input = value;
-        input.value_namespace = name_space;
-        input.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "output")
-    {
-        output = value;
-        output.value_namespace = name_space;
-        output.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Native::Interface::ATM::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "input")
-    {
-        input.yfilter = yfilter;
-    }
-    if(value_path == "output")
-    {
-        output.yfilter = yfilter;
-    }
-}
-
-bool Native::Interface::ATM::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "input" || name == "output")
-        return true;
-    return false;
-}
-
 Native::Interface::ATM::CiscoIOSXEAtmIp::CiscoIOSXEAtmIp()
     :
     address{YType::str, "address"},
@@ -11465,6 +11373,98 @@ bool Native::Interface::ATM::Pvc::XconnectPwClass::Xconnect::Udp::Port::has_leaf
     return false;
 }
 
+Native::Interface::ATM::ServicePolicy::ServicePolicy()
+    :
+    input{YType::str, "input"},
+    output{YType::str, "output"}
+{
+
+    yang_name = "service-policy"; yang_parent_name = "ATM"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Native::Interface::ATM::ServicePolicy::~ServicePolicy()
+{
+}
+
+bool Native::Interface::ATM::ServicePolicy::has_data() const
+{
+    if (is_presence_container) return true;
+    return input.is_set
+	|| output.is_set;
+}
+
+bool Native::Interface::ATM::ServicePolicy::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(input.yfilter)
+	|| ydk::is_set(output.yfilter);
+}
+
+std::string Native::Interface::ATM::ServicePolicy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XE-policy:service-policy";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Native::Interface::ATM::ServicePolicy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (input.is_set || is_set(input.yfilter)) leaf_name_data.push_back(input.get_name_leafdata());
+    if (output.is_set || is_set(output.yfilter)) leaf_name_data.push_back(output.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Native::Interface::ATM::ServicePolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::ATM::ServicePolicy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Native::Interface::ATM::ServicePolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "input")
+    {
+        input = value;
+        input.value_namespace = name_space;
+        input.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output")
+    {
+        output = value;
+        output.value_namespace = name_space;
+        output.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Native::Interface::ATM::ServicePolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "input")
+    {
+        input.yfilter = yfilter;
+    }
+    if(value_path == "output")
+    {
+        output.yfilter = yfilter;
+    }
+}
+
+bool Native::Interface::ATM::ServicePolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "input" || name == "output")
+        return true;
+    return false;
+}
+
 Native::Interface::ATMSubinterface::ATMSubinterface()
     :
     atm(this, {"name"})
@@ -11591,7 +11591,7 @@ Native::Interface::ATMSubinterface::ATM::ATM()
     keepalive{YType::boolean, "keepalive"},
     if_state{YType::enumeration, "if-state"},
     delay{YType::uint32, "delay"},
-    cisco_ios_xe_interfaces_load_interval{YType::uint16, "load-interval"},
+    load_interval{YType::uint16, "load-interval"},
     max_reserved_bandwidth{YType::uint8, "max-reserved-bandwidth"},
     mtu{YType::uint16, "mtu"},
     service_insertion{YType::enumeration, "service-insertion"},
@@ -11620,7 +11620,7 @@ Native::Interface::ATMSubinterface::ATM::ATM()
     , mpls(std::make_shared<Native::Interface::ATMSubinterface::ATM::Mpls>())
     , ip_vrf(std::make_shared<Native::Interface::ATMSubinterface::ATM::IpVrf>())
     , vrf(std::make_shared<Native::Interface::ATMSubinterface::ATM::Vrf>())
-    , cisco_ios_xe_interfaces_ip(std::make_shared<Native::Interface::ATMSubinterface::ATM::CiscoIOSXEInterfacesIp>())
+    , ip(std::make_shared<Native::Interface::ATMSubinterface::ATM::Ip>())
     , ipv6(std::make_shared<Native::Interface::ATMSubinterface::ATM::Ipv6>())
     , logging(std::make_shared<Native::Interface::ATMSubinterface::ATM::Logging>())
     , mdix(std::make_shared<Native::Interface::ATMSubinterface::ATM::Mdix>())
@@ -11635,7 +11635,7 @@ Native::Interface::ATMSubinterface::ATM::ATM()
     , rcv_queue(std::make_shared<Native::Interface::ATMSubinterface::ATM::RcvQueue>())
     , peer(std::make_shared<Native::Interface::ATMSubinterface::ATM::Peer>())
     , pm_path(std::make_shared<Native::Interface::ATMSubinterface::ATM::PmPath>())
-    , cisco_ios_xe_atm_ip_(std::make_shared<Native::Interface::ATMSubinterface::ATM::CiscoIOSXEAtmIp>())
+    , cisco_ios_xe_atm_ip(std::make_shared<Native::Interface::ATMSubinterface::ATM::CiscoIOSXEAtmIp>())
     , atm(std::make_shared<Native::Interface::ATMSubinterface::ATM::Atm>())
     , cem(this, {"number"})
     , pvc(this, {"local_vpi_vci"})
@@ -11660,7 +11660,7 @@ Native::Interface::ATMSubinterface::ATM::ATM()
     mpls->parent = this;
     ip_vrf->parent = this;
     vrf->parent = this;
-    cisco_ios_xe_interfaces_ip->parent = this;
+    ip->parent = this;
     ipv6->parent = this;
     logging->parent = this;
     mdix->parent = this;
@@ -11675,7 +11675,7 @@ Native::Interface::ATMSubinterface::ATM::ATM()
     rcv_queue->parent = this;
     peer->parent = this;
     pm_path->parent = this;
-    cisco_ios_xe_atm_ip_->parent = this;
+    cisco_ios_xe_atm_ip->parent = this;
     atm->parent = this;
 
     yang_name = "ATM"; yang_parent_name = "ATM-subinterface"; is_top_level_class = false; has_list_ancestor = false; 
@@ -11710,7 +11710,7 @@ bool Native::Interface::ATMSubinterface::ATM::has_data() const
 	|| keepalive.is_set
 	|| if_state.is_set
 	|| delay.is_set
-	|| cisco_ios_xe_interfaces_load_interval.is_set
+	|| load_interval.is_set
 	|| max_reserved_bandwidth.is_set
 	|| mtu.is_set
 	|| service_insertion.is_set
@@ -11737,7 +11737,7 @@ bool Native::Interface::ATMSubinterface::ATM::has_data() const
 	|| (mpls !=  nullptr && mpls->has_data())
 	|| (ip_vrf !=  nullptr && ip_vrf->has_data())
 	|| (vrf !=  nullptr && vrf->has_data())
-	|| (cisco_ios_xe_interfaces_ip !=  nullptr && cisco_ios_xe_interfaces_ip->has_data())
+	|| (ip !=  nullptr && ip->has_data())
 	|| (ipv6 !=  nullptr && ipv6->has_data())
 	|| (logging !=  nullptr && logging->has_data())
 	|| (mdix !=  nullptr && mdix->has_data())
@@ -11752,7 +11752,7 @@ bool Native::Interface::ATMSubinterface::ATM::has_data() const
 	|| (rcv_queue !=  nullptr && rcv_queue->has_data())
 	|| (peer !=  nullptr && peer->has_data())
 	|| (pm_path !=  nullptr && pm_path->has_data())
-	|| (cisco_ios_xe_atm_ip_ !=  nullptr && cisco_ios_xe_atm_ip_->has_data())
+	|| (cisco_ios_xe_atm_ip !=  nullptr && cisco_ios_xe_atm_ip->has_data())
 	|| (atm !=  nullptr && atm->has_data());
 }
 
@@ -11781,7 +11781,7 @@ bool Native::Interface::ATMSubinterface::ATM::has_operation() const
 	|| ydk::is_set(keepalive.yfilter)
 	|| ydk::is_set(if_state.yfilter)
 	|| ydk::is_set(delay.yfilter)
-	|| ydk::is_set(cisco_ios_xe_interfaces_load_interval.yfilter)
+	|| ydk::is_set(load_interval.yfilter)
 	|| ydk::is_set(max_reserved_bandwidth.yfilter)
 	|| ydk::is_set(mtu.yfilter)
 	|| ydk::is_set(service_insertion.yfilter)
@@ -11808,7 +11808,7 @@ bool Native::Interface::ATMSubinterface::ATM::has_operation() const
 	|| (mpls !=  nullptr && mpls->has_operation())
 	|| (ip_vrf !=  nullptr && ip_vrf->has_operation())
 	|| (vrf !=  nullptr && vrf->has_operation())
-	|| (cisco_ios_xe_interfaces_ip !=  nullptr && cisco_ios_xe_interfaces_ip->has_operation())
+	|| (ip !=  nullptr && ip->has_operation())
 	|| (ipv6 !=  nullptr && ipv6->has_operation())
 	|| (logging !=  nullptr && logging->has_operation())
 	|| (mdix !=  nullptr && mdix->has_operation())
@@ -11823,7 +11823,7 @@ bool Native::Interface::ATMSubinterface::ATM::has_operation() const
 	|| (rcv_queue !=  nullptr && rcv_queue->has_operation())
 	|| (peer !=  nullptr && peer->has_operation())
 	|| (pm_path !=  nullptr && pm_path->has_operation())
-	|| (cisco_ios_xe_atm_ip_ !=  nullptr && cisco_ios_xe_atm_ip_->has_operation())
+	|| (cisco_ios_xe_atm_ip !=  nullptr && cisco_ios_xe_atm_ip->has_operation())
 	|| (atm !=  nullptr && atm->has_operation());
 }
 
@@ -11853,7 +11853,7 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::ATMSubinterfac
     if (keepalive.is_set || is_set(keepalive.yfilter)) leaf_name_data.push_back(keepalive.get_name_leafdata());
     if (if_state.is_set || is_set(if_state.yfilter)) leaf_name_data.push_back(if_state.get_name_leafdata());
     if (delay.is_set || is_set(delay.yfilter)) leaf_name_data.push_back(delay.get_name_leafdata());
-    if (cisco_ios_xe_interfaces_load_interval.is_set || is_set(cisco_ios_xe_interfaces_load_interval.yfilter)) leaf_name_data.push_back(cisco_ios_xe_interfaces_load_interval.get_name_leafdata());
+    if (load_interval.is_set || is_set(load_interval.yfilter)) leaf_name_data.push_back(load_interval.get_name_leafdata());
     if (max_reserved_bandwidth.is_set || is_set(max_reserved_bandwidth.yfilter)) leaf_name_data.push_back(max_reserved_bandwidth.get_name_leafdata());
     if (mtu.is_set || is_set(mtu.yfilter)) leaf_name_data.push_back(mtu.get_name_leafdata());
     if (service_insertion.is_set || is_set(service_insertion.yfilter)) leaf_name_data.push_back(service_insertion.get_name_leafdata());
@@ -12065,11 +12065,11 @@ std::shared_ptr<ydk::Entity> Native::Interface::ATMSubinterface::ATM::get_child_
 
     if(child_yang_name == "ip")
     {
-        if(cisco_ios_xe_interfaces_ip == nullptr)
+        if(ip == nullptr)
         {
-            cisco_ios_xe_interfaces_ip = std::make_shared<Native::Interface::ATMSubinterface::ATM::CiscoIOSXEInterfacesIp>();
+            ip = std::make_shared<Native::Interface::ATMSubinterface::ATM::Ip>();
         }
-        return cisco_ios_xe_interfaces_ip;
+        return ip;
     }
 
     if(child_yang_name == "ipv6")
@@ -12200,11 +12200,11 @@ std::shared_ptr<ydk::Entity> Native::Interface::ATMSubinterface::ATM::get_child_
 
     if(child_yang_name == "Cisco-IOS-XE-atm:ip")
     {
-        if(cisco_ios_xe_atm_ip_ == nullptr)
+        if(cisco_ios_xe_atm_ip == nullptr)
         {
-            cisco_ios_xe_atm_ip_ = std::make_shared<Native::Interface::ATMSubinterface::ATM::CiscoIOSXEAtmIp>();
+            cisco_ios_xe_atm_ip = std::make_shared<Native::Interface::ATMSubinterface::ATM::CiscoIOSXEAtmIp>();
         }
-        return cisco_ios_xe_atm_ip_;
+        return cisco_ios_xe_atm_ip;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-atm:atm")
@@ -12353,9 +12353,9 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::ATMSubint
         _children["vrf"] = vrf;
     }
 
-    if(cisco_ios_xe_interfaces_ip != nullptr)
+    if(ip != nullptr)
     {
-        _children["ip"] = cisco_ios_xe_interfaces_ip;
+        _children["ip"] = ip;
     }
 
     if(ipv6 != nullptr)
@@ -12428,9 +12428,9 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::ATMSubint
         _children["pm-path"] = pm_path;
     }
 
-    if(cisco_ios_xe_atm_ip_ != nullptr)
+    if(cisco_ios_xe_atm_ip != nullptr)
     {
-        _children["Cisco-IOS-XE-atm:ip"] = cisco_ios_xe_atm_ip_;
+        _children["Cisco-IOS-XE-atm:ip"] = cisco_ios_xe_atm_ip;
     }
 
     if(atm != nullptr)
@@ -12505,9 +12505,9 @@ void Native::Interface::ATMSubinterface::ATM::set_value(const std::string & valu
     }
     if(value_path == "load-interval")
     {
-        cisco_ios_xe_interfaces_load_interval = value;
-        cisco_ios_xe_interfaces_load_interval.value_namespace = name_space;
-        cisco_ios_xe_interfaces_load_interval.value_namespace_prefix = name_space_prefix;
+        load_interval = value;
+        load_interval.value_namespace = name_space;
+        load_interval.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "max-reserved-bandwidth")
     {
@@ -12573,7 +12573,7 @@ void Native::Interface::ATMSubinterface::ATM::set_filter(const std::string & val
     }
     if(value_path == "load-interval")
     {
-        cisco_ios_xe_interfaces_load_interval.yfilter = yfilter;
+        load_interval.yfilter = yfilter;
     }
     if(value_path == "max-reserved-bandwidth")
     {

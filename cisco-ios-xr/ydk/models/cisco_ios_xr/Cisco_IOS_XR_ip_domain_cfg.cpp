@@ -13,6 +13,8 @@ namespace Cisco_IOS_XR_ip_domain_cfg {
 
 IpDomain::IpDomain()
     :
+    default_flows_disable{YType::empty, "default-flows-disable"}
+        ,
     vrfs(std::make_shared<IpDomain::Vrfs>())
 {
     vrfs->parent = this;
@@ -27,12 +29,14 @@ IpDomain::~IpDomain()
 bool IpDomain::has_data() const
 {
     if (is_presence_container) return true;
-    return (vrfs !=  nullptr && vrfs->has_data());
+    return default_flows_disable.is_set
+	|| (vrfs !=  nullptr && vrfs->has_data());
 }
 
 bool IpDomain::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(default_flows_disable.yfilter)
 	|| (vrfs !=  nullptr && vrfs->has_operation());
 }
 
@@ -47,6 +51,7 @@ std::vector<std::pair<std::string, LeafData> > IpDomain::get_name_leaf_data() co
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (default_flows_disable.is_set || is_set(default_flows_disable.yfilter)) leaf_name_data.push_back(default_flows_disable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -80,10 +85,20 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> IpDomain::get_children() con
 
 void IpDomain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "default-flows-disable")
+    {
+        default_flows_disable = value;
+        default_flows_disable.value_namespace = name_space;
+        default_flows_disable.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void IpDomain::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "default-flows-disable")
+    {
+        default_flows_disable.yfilter = yfilter;
+    }
 }
 
 std::shared_ptr<ydk::Entity> IpDomain::clone_ptr() const
@@ -113,7 +128,7 @@ std::map<std::pair<std::string, std::string>, std::string> IpDomain::get_namespa
 
 bool IpDomain::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "vrfs")
+    if(name == "vrfs" || name == "default-flows-disable")
         return true;
     return false;
 }

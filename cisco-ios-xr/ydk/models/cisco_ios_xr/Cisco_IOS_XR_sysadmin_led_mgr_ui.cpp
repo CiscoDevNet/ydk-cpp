@@ -275,6 +275,9 @@ bool Led::Location::has_leaf_or_child_of_name(const std::string & name) const
 Led::Location::LedAttributes::LedAttributes()
     :
     led_name{YType::str, "led_name"},
+    location{YType::str, "location"},
+    print_header{YType::boolean, "print_header"},
+    loc_header{YType::boolean, "loc_header"},
     led_mode{YType::str, "led_mode"},
     led_color{YType::str, "led_color"}
 {
@@ -290,6 +293,9 @@ bool Led::Location::LedAttributes::has_data() const
 {
     if (is_presence_container) return true;
     return led_name.is_set
+	|| location.is_set
+	|| print_header.is_set
+	|| loc_header.is_set
 	|| led_mode.is_set
 	|| led_color.is_set;
 }
@@ -298,6 +304,9 @@ bool Led::Location::LedAttributes::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(led_name.yfilter)
+	|| ydk::is_set(location.yfilter)
+	|| ydk::is_set(print_header.yfilter)
+	|| ydk::is_set(loc_header.yfilter)
 	|| ydk::is_set(led_mode.yfilter)
 	|| ydk::is_set(led_color.yfilter);
 }
@@ -315,6 +324,9 @@ std::vector<std::pair<std::string, LeafData> > Led::Location::LedAttributes::get
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (led_name.is_set || is_set(led_name.yfilter)) leaf_name_data.push_back(led_name.get_name_leafdata());
+    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
+    if (print_header.is_set || is_set(print_header.yfilter)) leaf_name_data.push_back(print_header.get_name_leafdata());
+    if (loc_header.is_set || is_set(loc_header.yfilter)) leaf_name_data.push_back(loc_header.get_name_leafdata());
     if (led_mode.is_set || is_set(led_mode.yfilter)) leaf_name_data.push_back(led_mode.get_name_leafdata());
     if (led_color.is_set || is_set(led_color.yfilter)) leaf_name_data.push_back(led_color.get_name_leafdata());
 
@@ -342,6 +354,24 @@ void Led::Location::LedAttributes::set_value(const std::string & value_path, con
         led_name.value_namespace = name_space;
         led_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "location")
+    {
+        location = value;
+        location.value_namespace = name_space;
+        location.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "print_header")
+    {
+        print_header = value;
+        print_header.value_namespace = name_space;
+        print_header.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "loc_header")
+    {
+        loc_header = value;
+        loc_header.value_namespace = name_space;
+        loc_header.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "led_mode")
     {
         led_mode = value;
@@ -362,6 +392,18 @@ void Led::Location::LedAttributes::set_filter(const std::string & value_path, YF
     {
         led_name.yfilter = yfilter;
     }
+    if(value_path == "location")
+    {
+        location.yfilter = yfilter;
+    }
+    if(value_path == "print_header")
+    {
+        print_header.yfilter = yfilter;
+    }
+    if(value_path == "loc_header")
+    {
+        loc_header.yfilter = yfilter;
+    }
     if(value_path == "led_mode")
     {
         led_mode.yfilter = yfilter;
@@ -374,7 +416,7 @@ void Led::Location::LedAttributes::set_filter(const std::string & value_path, YF
 
 bool Led::Location::LedAttributes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "led_name" || name == "led_mode" || name == "led_color")
+    if(name == "led_name" || name == "location" || name == "print_header" || name == "loc_header" || name == "led_mode" || name == "led_color")
         return true;
     return false;
 }

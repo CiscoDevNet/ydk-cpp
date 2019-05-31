@@ -142,7 +142,7 @@ class Nacm::RuleList::Rule : public ydk::Entity
         ydk::YLeaf rpc_name; //type: string
         ydk::YLeaf notification_name; //type: string
         ydk::YLeaf path; //type: string
-        ydk::YLeaf access_operations; //type: one of bits, string
+        ydk::YLeaf access_operations; //type: one of string, bits
         ydk::YLeaf action; //type: ActionType
         ydk::YLeaf comment; //type: string
 

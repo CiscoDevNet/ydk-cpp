@@ -305,6 +305,14 @@ class Watchdog::Nodes::Node::OverloadState::LastThrottle : public ydk::Entity
 
 }; // Watchdog::Nodes::Node::OverloadState::LastThrottle
 
+class OverloadCtrlNotif : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf enabled;
+
+};
+
 class MemoryState : public ydk::Enum
 {
     public:
@@ -313,14 +321,6 @@ class MemoryState : public ydk::Enum
         static const ydk::Enum::YLeaf minor;
         static const ydk::Enum::YLeaf severe;
         static const ydk::Enum::YLeaf critical;
-
-};
-
-class OverloadCtrlNotif : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf enabled;
 
 };
 

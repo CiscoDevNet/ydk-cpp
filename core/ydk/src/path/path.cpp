@@ -191,23 +191,22 @@ static ydk::path::RootSchemaNodeImpl & get_root_schema_impl(ydk::path::RootSchem
 static std::shared_ptr<ydk::path::DataNode> perform_decode(ydk::path::RootSchemaNodeImpl & rs_impl, struct lyd_node *lnode)
 {
     ydk::YLOG_DEBUG("Performing decode operation");
-    ydk::path::RootDataImpl* rd = new ydk::path::RootDataImpl{rs_impl, rs_impl.m_ctx, "/"};
+    std::shared_ptr<ydk::path::RootDataImpl> rd = std::make_shared<ydk::path::RootDataImpl> (rs_impl, rs_impl.m_ctx, "/");
     rd->m_node = lnode;
 
     struct lyd_node* first_dnode = lyd_first_sibling(lnode);
     struct lyd_node* dnode = first_dnode;
-    do
-    {
-        rd->child_map.insert(std::make_pair(dnode, std::make_shared<ydk::path::DataNodeImpl>(rd, dnode, nullptr)));
+    do {
+        rd->child_map.insert(std::make_pair(dnode, std::make_shared<ydk::path::DataNodeImpl>(rd.get(), dnode, nullptr)));
         dnode = dnode->next;
     } while(dnode && dnode != first_dnode);
 
-    return std::shared_ptr<ydk::path::DataNode>(rd);
+    return rd;
 }
 
-static const struct lyd_node* create_lyd_node_for_rpc(ydk::path::RootSchemaNodeImpl & rs_impl, const std::string & rpc_path)
+static struct lyd_node* create_lyd_node_for_rpc(ydk::path::RootSchemaNodeImpl & rs_impl, const std::string & rpc_path)
 {
-    const struct lyd_node* rpc = lyd_new_path(NULL, rs_impl.m_ctx, rpc_path.c_str(), NULL, LYD_ANYDATA_SXML, 0);
+    struct lyd_node* rpc = lyd_new_path(NULL, rs_impl.m_ctx, rpc_path.c_str(), NULL, LYD_ANYDATA_SXML, 0);
     if( rpc == nullptr || ly_errno )
     {
         ydk::YLOG_ERROR( "Parsing failed with message {}", ly_errmsg());
@@ -257,7 +256,6 @@ ydk::path::Codec::encode(const ydk::path::DataNode& dn, ydk::EncodingFormat form
             throw(ydk::YInvalidArgumentError{"No data in data node"});
         }
         char* buffer = nullptr;
-        //lyd_node* temp_node = m_node->prev->next; m_node->prev->next = nullptr;    // Fixing libyang bug in printer_json
         if(!lyd_print_mem(&buffer, m_node, scheme, (pretty ? LYP_FORMAT : 0)|LYP_WD_ALL|LYP_KEEPEMPTYCONT)) {
             if(!buffer)
             {
@@ -269,7 +267,6 @@ ydk::path::Codec::encode(const ydk::path::DataNode& dn, ydk::EncodingFormat form
             ret = buffer;
             std::free(buffer);
         }
-        //m_node->prev->next = temp_node;    // Fixing libyang bug in printer_json
     }
     return ret;
 }
@@ -301,7 +298,7 @@ ydk::path::Codec::decode_rpc_output(RootSchemaNode & root_schema, const std::str
 
     RootSchemaNodeImpl & rs_impl = get_root_schema_impl(root_schema);
     rs_impl.populate_new_schemas_from_payload(buffer, format);
-    const struct lyd_node* rpc = create_lyd_node_for_rpc(rs_impl, rpc_path);
+    struct lyd_node* rpc = create_lyd_node_for_rpc(rs_impl, rpc_path);
 
     struct lyd_node* root = lyd_parse_mem(rs_impl.m_ctx, buffer.c_str(),
                 get_ly_format(format), LYD_OPT_TRUSTED |  LYD_OPT_RPCREPLY, rpc, NULL);
@@ -310,8 +307,9 @@ ydk::path::Codec::decode_rpc_output(RootSchemaNode & root_schema, const std::str
         YLOG_ERROR( "Parsing failed with message {}", ly_errmsg());
         throw(YCodecError{YCodecError::Error::XML_INVAL});
     }
-
-    return perform_decode(rs_impl, root);
+    auto dn = perform_decode(rs_impl, root);
+    if (rpc) lyd_free(rpc);
+    return dn;
 }
 
 std::shared_ptr<ydk::path::DataNode>
@@ -321,7 +319,7 @@ ydk::path::Codec::decode_json_output(RootSchemaNode & root_schema, const std::ve
 
     RootSchemaNodeImpl & rs_impl = get_root_schema_impl(root_schema);
 
-    ydk::path::RootDataImpl* rd = new ydk::path::RootDataImpl{rs_impl, rs_impl.m_ctx, "/"};
+    std::shared_ptr<ydk::path::RootDataImpl> rd = std::make_shared<ydk::path::RootDataImpl> (rs_impl, rs_impl.m_ctx, "/");
     lyd_node* prev_sibling = nullptr;
     lyd_node* first_sibling = nullptr;
 
@@ -341,7 +339,7 @@ ydk::path::Codec::decode_json_output(RootSchemaNode & root_schema, const std::ve
         }
 
         // Populate children map and connect siblings
-        rd->child_map.insert(std::make_pair(dnode, std::make_shared<ydk::path::DataNodeImpl>(rd, dnode, nullptr)));
+        rd->child_map.insert(std::make_pair(dnode, std::make_shared<ydk::path::DataNodeImpl>(rd.get(), dnode, nullptr)));
 
         if (prev_sibling) {
             prev_sibling->next = dnode;
@@ -351,7 +349,7 @@ ydk::path::Codec::decode_json_output(RootSchemaNode & root_schema, const std::ve
         first_sibling->prev = dnode;
     }
 
-    return std::shared_ptr<ydk::path::DataNode>(rd);
+    return rd;
 }
 
 #undef SLASH_CHAR

@@ -20081,6 +20081,21 @@ bool OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3L
     return false;
 }
 
+const Enum::YLeaf AddressFamily::address_family_ipv4 {0, "address-family-ipv4"};
+const Enum::YLeaf AddressFamily::address_family_ipv6 {1, "address-family-ipv6"};
+
+const Enum::YLeaf OspfOperationMode::ospf_ships_in_the_night {0, "ospf-ships-in-the-night"};
+
+const Enum::YLeaf OspfNetworkType::ospf_broadcast {0, "ospf-broadcast"};
+const Enum::YLeaf OspfNetworkType::ospf_non_broadcast {1, "ospf-non-broadcast"};
+const Enum::YLeaf OspfNetworkType::ospf_point_to_multipoint {2, "ospf-point-to-multipoint"};
+const Enum::YLeaf OspfNetworkType::ospf_point_to_point {3, "ospf-point-to-point"};
+
+const Enum::YLeaf OspfAuthType::ospf_auth_ipsec {0, "ospf-auth-ipsec"};
+const Enum::YLeaf OspfAuthType::ospf_auth_trailer_keychain {1, "ospf-auth-trailer-keychain"};
+const Enum::YLeaf OspfAuthType::ospf_auth_trailer_key {2, "ospf-auth-trailer-key"};
+const Enum::YLeaf OspfAuthType::ospf_auth_type_none {3, "ospf-auth-type-none"};
+
 const Enum::YLeaf NbrStateType::ospf_nbr_down {1, "ospf-nbr-down"};
 const Enum::YLeaf NbrStateType::ospf_nbr_attempt {2, "ospf-nbr-attempt"};
 const Enum::YLeaf NbrStateType::ospf_nbr_init {3, "ospf-nbr-init"};
@@ -20089,15 +20104,6 @@ const Enum::YLeaf NbrStateType::ospf_nbr_exchange_start {5, "ospf-nbr-exchange-s
 const Enum::YLeaf NbrStateType::ospf_nbr_exchange {6, "ospf-nbr-exchange"};
 const Enum::YLeaf NbrStateType::ospf_nbr_loading {7, "ospf-nbr-loading"};
 const Enum::YLeaf NbrStateType::ospf_nbr_full {8, "ospf-nbr-full"};
-
-const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_down {0, "ospfv2-interface-state-down"};
-const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_loopback {1, "ospfv2-interface-state-loopback"};
-const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_waiting {2, "ospfv2-interface-state-waiting"};
-const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_point_to_mpoint {3, "ospfv2-interface-state-point-to-mpoint"};
-const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_point_to_point {4, "ospfv2-interface-state-point-to-point"};
-const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_dr {5, "ospfv2-interface-state-dr"};
-const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_backup {6, "ospfv2-interface-state-backup"};
-const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_other {7, "ospfv2-interface-state-other"};
 
 const Enum::YLeaf Ospfv2LsaType::ospfv2_lsa_type_unsupported_lsa_type {0, "ospfv2-lsa-type-unsupported-lsa-type"};
 const Enum::YLeaf Ospfv2LsaType::ospfv2_lsa_type_router {1, "ospfv2-lsa-type-router"};
@@ -20110,30 +20116,24 @@ const Enum::YLeaf Ospfv2LsaType::ospfv2_lsa_type_link_scope_opaque {7, "ospfv2-l
 const Enum::YLeaf Ospfv2LsaType::ospfv2_lsa_type_area_scope_opaque {8, "ospfv2-lsa-type-area-scope-opaque"};
 const Enum::YLeaf Ospfv2LsaType::ospfv2_lsa_type_as_scope_opaque {9, "ospfv2-lsa-type-as-scope-opaque"};
 
-const Enum::YLeaf OspfNetworkType::ospf_broadcast {0, "ospf-broadcast"};
-const Enum::YLeaf OspfNetworkType::ospf_non_broadcast {1, "ospf-non-broadcast"};
-const Enum::YLeaf OspfNetworkType::ospf_point_to_multipoint {2, "ospf-point-to-multipoint"};
-const Enum::YLeaf OspfNetworkType::ospf_point_to_point {3, "ospf-point-to-point"};
-
-const Enum::YLeaf Ospfv2CryptoAlgorithm::ospfv2_crypto_cleartest {0, "ospfv2-crypto-cleartest"};
-const Enum::YLeaf Ospfv2CryptoAlgorithm::ospfv2_crypto_md5 {1, "ospfv2-crypto-md5"};
-
-const Enum::YLeaf OspfAuthType::ospf_auth_ipsec {0, "ospf-auth-ipsec"};
-const Enum::YLeaf OspfAuthType::ospf_auth_trailer_keychain {1, "ospf-auth-trailer-keychain"};
-const Enum::YLeaf OspfAuthType::ospf_auth_trailer_key {2, "ospf-auth-trailer-key"};
-const Enum::YLeaf OspfAuthType::ospf_auth_type_none {3, "ospf-auth-type-none"};
-
 const Enum::YLeaf OspfExternalMetricType::ospf_ext_metric_type_1 {0, "ospf-ext-metric-type-1"};
 const Enum::YLeaf OspfExternalMetricType::ospf_ext_metric_type_2 {1, "ospf-ext-metric-type-2"};
 
-const Enum::YLeaf OspfOperationMode::ospf_ships_in_the_night {0, "ospf-ships-in-the-night"};
-
-const Enum::YLeaf AddressFamily::address_family_ipv4 {0, "address-family-ipv4"};
-const Enum::YLeaf AddressFamily::address_family_ipv6 {1, "address-family-ipv6"};
+const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_down {0, "ospfv2-interface-state-down"};
+const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_loopback {1, "ospfv2-interface-state-loopback"};
+const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_waiting {2, "ospfv2-interface-state-waiting"};
+const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_point_to_mpoint {3, "ospfv2-interface-state-point-to-mpoint"};
+const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_point_to_point {4, "ospfv2-interface-state-point-to-point"};
+const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_dr {5, "ospfv2-interface-state-dr"};
+const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_backup {6, "ospfv2-interface-state-backup"};
+const Enum::YLeaf Ospfv2IntfState::ospfv2_interface_state_other {7, "ospfv2-interface-state-other"};
 
 const Enum::YLeaf Ospfv2AuthTypeSelection::ospfv2_auth_none {0, "ospfv2-auth-none"};
 const Enum::YLeaf Ospfv2AuthTypeSelection::ospfv2_auth_trailer_key {1, "ospfv2-auth-trailer-key"};
 const Enum::YLeaf Ospfv2AuthTypeSelection::ospfv2_auth_trailer_key_chain {2, "ospfv2-auth-trailer-key-chain"};
+
+const Enum::YLeaf Ospfv2CryptoAlgorithm::ospfv2_crypto_cleartest {0, "ospfv2-crypto-cleartest"};
+const Enum::YLeaf Ospfv2CryptoAlgorithm::ospfv2_crypto_md5 {1, "ospfv2-crypto-md5"};
 
 
 }

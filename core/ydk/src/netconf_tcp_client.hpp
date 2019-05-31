@@ -41,6 +41,8 @@ public:
     virtual std::vector<std::string> get_capabilities();
     virtual std::string get_hostname_port();
 
+    void perform_session_check(const std::string & message);
+
 private:
     void initialize(const std::string& address, int port);
     void initialize_curl(const std::string& address, int port);

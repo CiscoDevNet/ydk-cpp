@@ -10,23 +10,14 @@
 namespace openconfig {
 namespace openconfig_network_instance_types {
 
-class SIGNALLINGPROTOCOL : public virtual ydk::Identity
+class NETWORKINSTANCETYPE : public virtual ydk::Identity
 {
     public:
-        SIGNALLINGPROTOCOL();
-        ~SIGNALLINGPROTOCOL();
+        NETWORKINSTANCETYPE();
+        ~NETWORKINSTANCETYPE();
 
 
-}; // SIGNALLINGPROTOCOL
-
-class LABELALLOCATIONMODE : public virtual ydk::Identity
-{
-    public:
-        LABELALLOCATIONMODE();
-        ~LABELALLOCATIONMODE();
-
-
-}; // LABELALLOCATIONMODE
+}; // NETWORKINSTANCETYPE
 
 class ENDPOINTTYPE : public virtual ydk::Identity
 {
@@ -37,6 +28,15 @@ class ENDPOINTTYPE : public virtual ydk::Identity
 
 }; // ENDPOINTTYPE
 
+class LABELALLOCATIONMODE : public virtual ydk::Identity
+{
+    public:
+        LABELALLOCATIONMODE();
+        ~LABELALLOCATIONMODE();
+
+
+}; // LABELALLOCATIONMODE
+
 class ENCAPSULATION : public virtual ydk::Identity
 {
     public:
@@ -46,32 +46,23 @@ class ENCAPSULATION : public virtual ydk::Identity
 
 }; // ENCAPSULATION
 
-class NETWORKINSTANCETYPE : public virtual ydk::Identity
+class SIGNALLINGPROTOCOL : public virtual ydk::Identity
 {
     public:
-        NETWORKINSTANCETYPE();
-        ~NETWORKINSTANCETYPE();
+        SIGNALLINGPROTOCOL();
+        ~SIGNALLINGPROTOCOL();
 
 
-}; // NETWORKINSTANCETYPE
+}; // SIGNALLINGPROTOCOL
 
-class INSTANCELABEL : public openconfig::openconfig_network_instance_types::LABELALLOCATIONMODE, virtual ydk::Identity
+class DEFAULTINSTANCE : public openconfig::openconfig_network_instance_types::NETWORKINSTANCETYPE, virtual ydk::Identity
 {
     public:
-        INSTANCELABEL();
-        ~INSTANCELABEL();
+        DEFAULTINSTANCE();
+        ~DEFAULTINSTANCE();
 
 
-}; // INSTANCELABEL
-
-class L2VSI : public openconfig::openconfig_network_instance_types::NETWORKINSTANCETYPE, virtual ydk::Identity
-{
-    public:
-        L2VSI();
-        ~L2VSI();
-
-
-}; // L2VSI
+}; // DEFAULTINSTANCE
 
 class L3VRF : public openconfig::openconfig_network_instance_types::NETWORKINSTANCETYPE, virtual ydk::Identity
 {
@@ -82,6 +73,42 @@ class L3VRF : public openconfig::openconfig_network_instance_types::NETWORKINSTA
 
 }; // L3VRF
 
+class L2VSI : public openconfig::openconfig_network_instance_types::NETWORKINSTANCETYPE, virtual ydk::Identity
+{
+    public:
+        L2VSI();
+        ~L2VSI();
+
+
+}; // L2VSI
+
+class L2P2P : public openconfig::openconfig_network_instance_types::NETWORKINSTANCETYPE, virtual ydk::Identity
+{
+    public:
+        L2P2P();
+        ~L2P2P();
+
+
+}; // L2P2P
+
+class L2L3 : public openconfig::openconfig_network_instance_types::NETWORKINSTANCETYPE, virtual ydk::Identity
+{
+    public:
+        L2L3();
+        ~L2L3();
+
+
+}; // L2L3
+
+class LOCAL : public openconfig::openconfig_network_instance_types::ENDPOINTTYPE, virtual ydk::Identity
+{
+    public:
+        LOCAL();
+        ~LOCAL();
+
+
+}; // LOCAL
+
 class REMOTE : public openconfig::openconfig_network_instance_types::ENDPOINTTYPE, virtual ydk::Identity
 {
     public:
@@ -90,15 +117,6 @@ class REMOTE : public openconfig::openconfig_network_instance_types::ENDPOINTTYP
 
 
 }; // REMOTE
-
-class LDP : public openconfig::openconfig_network_instance_types::SIGNALLINGPROTOCOL, virtual ydk::Identity
-{
-    public:
-        LDP();
-        ~LDP();
-
-
-}; // LDP
 
 class PERPREFIX : public openconfig::openconfig_network_instance_types::LABELALLOCATIONMODE, virtual ydk::Identity
 {
@@ -109,6 +127,24 @@ class PERPREFIX : public openconfig::openconfig_network_instance_types::LABELALL
 
 }; // PERPREFIX
 
+class PERNEXTHOP : public openconfig::openconfig_network_instance_types::LABELALLOCATIONMODE, virtual ydk::Identity
+{
+    public:
+        PERNEXTHOP();
+        ~PERNEXTHOP();
+
+
+}; // PERNEXTHOP
+
+class INSTANCELABEL : public openconfig::openconfig_network_instance_types::LABELALLOCATIONMODE, virtual ydk::Identity
+{
+    public:
+        INSTANCELABEL();
+        ~INSTANCELABEL();
+
+
+}; // INSTANCELABEL
+
 class MPLS : public openconfig::openconfig_network_instance_types::ENCAPSULATION, virtual ydk::Identity
 {
     public:
@@ -117,6 +153,24 @@ class MPLS : public openconfig::openconfig_network_instance_types::ENCAPSULATION
 
 
 }; // MPLS
+
+class VXLAN : public openconfig::openconfig_network_instance_types::ENCAPSULATION, virtual ydk::Identity
+{
+    public:
+        VXLAN();
+        ~VXLAN();
+
+
+}; // VXLAN
+
+class LDP : public openconfig::openconfig_network_instance_types::SIGNALLINGPROTOCOL, virtual ydk::Identity
+{
+    public:
+        LDP();
+        ~LDP();
+
+
+}; // LDP
 
 class BGPVPLS : public openconfig::openconfig_network_instance_types::SIGNALLINGPROTOCOL, virtual ydk::Identity
 {
@@ -135,60 +189,6 @@ class BGPEVPN : public openconfig::openconfig_network_instance_types::SIGNALLING
 
 
 }; // BGPEVPN
-
-class L2P2P : public openconfig::openconfig_network_instance_types::NETWORKINSTANCETYPE, virtual ydk::Identity
-{
-    public:
-        L2P2P();
-        ~L2P2P();
-
-
-}; // L2P2P
-
-class DEFAULTINSTANCE : public openconfig::openconfig_network_instance_types::NETWORKINSTANCETYPE, virtual ydk::Identity
-{
-    public:
-        DEFAULTINSTANCE();
-        ~DEFAULTINSTANCE();
-
-
-}; // DEFAULTINSTANCE
-
-class LOCAL : public openconfig::openconfig_network_instance_types::ENDPOINTTYPE, virtual ydk::Identity
-{
-    public:
-        LOCAL();
-        ~LOCAL();
-
-
-}; // LOCAL
-
-class L2L3 : public openconfig::openconfig_network_instance_types::NETWORKINSTANCETYPE, virtual ydk::Identity
-{
-    public:
-        L2L3();
-        ~L2L3();
-
-
-}; // L2L3
-
-class VXLAN : public openconfig::openconfig_network_instance_types::ENCAPSULATION, virtual ydk::Identity
-{
-    public:
-        VXLAN();
-        ~VXLAN();
-
-
-}; // VXLAN
-
-class PERNEXTHOP : public openconfig::openconfig_network_instance_types::LABELALLOCATIONMODE, virtual ydk::Identity
-{
-    public:
-        PERNEXTHOP();
-        ~PERNEXTHOP();
-
-
-}; // PERNEXTHOP
 
 
 }

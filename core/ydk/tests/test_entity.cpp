@@ -499,6 +499,8 @@ TEST_CASE("test_ylist")
 
     ep = ylist_1.pop("test1");
     REQUIRE(ep == nullptr);
+
+    delete list_holder;
 }
 
 //TODO Test for issue #800 to be resolved
@@ -520,4 +522,6 @@ TEST_CASE("test_ylist")
 //
 //    auto ep = ylist["test1"];
 //    REQUIRE(ep != nullptr);
+//
+//    delete list_holder;
 //}

@@ -1025,7 +1025,7 @@ class Native::Event::Manager::Applet::Action::Syslog : public ydk::Entity
 
         ydk::YLeaf facility; //type: string
         ydk::YLeaf msg; //type: string
-        ydk::YLeaf priority; //type: one of uint16, enumeration
+        ydk::YLeaf priority; //type: one of enumeration, uint16
 
 }; // Native::Event::Manager::Applet::Action::Syslog
 

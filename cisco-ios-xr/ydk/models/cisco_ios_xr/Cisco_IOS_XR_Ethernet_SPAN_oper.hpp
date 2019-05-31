@@ -1016,28 +1016,26 @@ class SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::Traffi
 
 }; // SpanMonitorSession::Nodes::Node::Interfaces::Interface::Attachment::TrafficMirroringParameters
 
-class ImStateEnum : public ydk::Enum
+class MirrorInterval : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf im_state_not_ready;
-        static const ydk::Enum::YLeaf im_state_admin_down;
-        static const ydk::Enum::YLeaf im_state_down;
-        static const ydk::Enum::YLeaf im_state_up;
-        static const ydk::Enum::YLeaf im_state_shutdown;
-        static const ydk::Enum::YLeaf im_state_err_disable;
-        static const ydk::Enum::YLeaf im_state_down_immediate;
-        static const ydk::Enum::YLeaf im_state_down_immediate_admin;
-        static const ydk::Enum::YLeaf im_state_down_graceful;
-        static const ydk::Enum::YLeaf im_state_begin_shutdown;
-        static const ydk::Enum::YLeaf im_state_end_shutdown;
-        static const ydk::Enum::YLeaf im_state_begin_error_disable;
-        static const ydk::Enum::YLeaf im_state_end_error_disable;
-        static const ydk::Enum::YLeaf im_state_begin_down_graceful;
-        static const ydk::Enum::YLeaf im_state_reset;
-        static const ydk::Enum::YLeaf im_state_operational;
-        static const ydk::Enum::YLeaf im_state_not_operational;
-        static const ydk::Enum::YLeaf im_state_unknown;
-        static const ydk::Enum::YLeaf im_state_last;
+        static const ydk::Enum::YLeaf mirror_interval_all;
+        static const ydk::Enum::YLeaf mirror_interval512;
+        static const ydk::Enum::YLeaf mirror_interval1k;
+        static const ydk::Enum::YLeaf mirror_interval2k;
+        static const ydk::Enum::YLeaf mirror_interval4k;
+        static const ydk::Enum::YLeaf mirror_interval8k;
+        static const ydk::Enum::YLeaf mirror_interval16k;
+
+};
+
+class TrafficDirection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf invalid;
+        static const ydk::Enum::YLeaf rx_only;
+        static const ydk::Enum::YLeaf tx_only;
+        static const ydk::Enum::YLeaf both;
 
 };
 
@@ -1064,26 +1062,28 @@ class SessionClass : public ydk::Enum
 
 };
 
-class MirrorInterval : public ydk::Enum
+class ImStateEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mirror_interval_all;
-        static const ydk::Enum::YLeaf mirror_interval512;
-        static const ydk::Enum::YLeaf mirror_interval1k;
-        static const ydk::Enum::YLeaf mirror_interval2k;
-        static const ydk::Enum::YLeaf mirror_interval4k;
-        static const ydk::Enum::YLeaf mirror_interval8k;
-        static const ydk::Enum::YLeaf mirror_interval16k;
-
-};
-
-class TrafficDirection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf invalid;
-        static const ydk::Enum::YLeaf rx_only;
-        static const ydk::Enum::YLeaf tx_only;
-        static const ydk::Enum::YLeaf both;
+        static const ydk::Enum::YLeaf im_state_not_ready;
+        static const ydk::Enum::YLeaf im_state_admin_down;
+        static const ydk::Enum::YLeaf im_state_down;
+        static const ydk::Enum::YLeaf im_state_up;
+        static const ydk::Enum::YLeaf im_state_shutdown;
+        static const ydk::Enum::YLeaf im_state_err_disable;
+        static const ydk::Enum::YLeaf im_state_down_immediate;
+        static const ydk::Enum::YLeaf im_state_down_immediate_admin;
+        static const ydk::Enum::YLeaf im_state_down_graceful;
+        static const ydk::Enum::YLeaf im_state_begin_shutdown;
+        static const ydk::Enum::YLeaf im_state_end_shutdown;
+        static const ydk::Enum::YLeaf im_state_begin_error_disable;
+        static const ydk::Enum::YLeaf im_state_end_error_disable;
+        static const ydk::Enum::YLeaf im_state_begin_down_graceful;
+        static const ydk::Enum::YLeaf im_state_reset;
+        static const ydk::Enum::YLeaf im_state_operational;
+        static const ydk::Enum::YLeaf im_state_not_operational;
+        static const ydk::Enum::YLeaf im_state_unknown;
+        static const ydk::Enum::YLeaf im_state_last;
 
 };
 

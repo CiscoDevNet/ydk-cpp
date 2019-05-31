@@ -3876,6 +3876,41 @@ class OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3
 
 }; // OspfOperData::OspfState::OspfInstance::LinkScopeLsas::AreaScopeLsa::Ospfv3Lsa::LsaBody::Nssa::LsaNssaExternal::Flags
 
+class AddressFamily : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf address_family_ipv4;
+        static const ydk::Enum::YLeaf address_family_ipv6;
+
+};
+
+class OspfOperationMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ospf_ships_in_the_night;
+
+};
+
+class OspfNetworkType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ospf_broadcast;
+        static const ydk::Enum::YLeaf ospf_non_broadcast;
+        static const ydk::Enum::YLeaf ospf_point_to_multipoint;
+        static const ydk::Enum::YLeaf ospf_point_to_point;
+
+};
+
+class OspfAuthType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ospf_auth_ipsec;
+        static const ydk::Enum::YLeaf ospf_auth_trailer_keychain;
+        static const ydk::Enum::YLeaf ospf_auth_trailer_key;
+        static const ydk::Enum::YLeaf ospf_auth_type_none;
+
+};
+
 class NbrStateType : public ydk::Enum
 {
     public:
@@ -3887,20 +3922,6 @@ class NbrStateType : public ydk::Enum
         static const ydk::Enum::YLeaf ospf_nbr_exchange;
         static const ydk::Enum::YLeaf ospf_nbr_loading;
         static const ydk::Enum::YLeaf ospf_nbr_full;
-
-};
-
-class Ospfv2IntfState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ospfv2_interface_state_down;
-        static const ydk::Enum::YLeaf ospfv2_interface_state_loopback;
-        static const ydk::Enum::YLeaf ospfv2_interface_state_waiting;
-        static const ydk::Enum::YLeaf ospfv2_interface_state_point_to_mpoint;
-        static const ydk::Enum::YLeaf ospfv2_interface_state_point_to_point;
-        static const ydk::Enum::YLeaf ospfv2_interface_state_dr;
-        static const ydk::Enum::YLeaf ospfv2_interface_state_backup;
-        static const ydk::Enum::YLeaf ospfv2_interface_state_other;
 
 };
 
@@ -3920,34 +3941,6 @@ class Ospfv2LsaType : public ydk::Enum
 
 };
 
-class OspfNetworkType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ospf_broadcast;
-        static const ydk::Enum::YLeaf ospf_non_broadcast;
-        static const ydk::Enum::YLeaf ospf_point_to_multipoint;
-        static const ydk::Enum::YLeaf ospf_point_to_point;
-
-};
-
-class Ospfv2CryptoAlgorithm : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ospfv2_crypto_cleartest;
-        static const ydk::Enum::YLeaf ospfv2_crypto_md5;
-
-};
-
-class OspfAuthType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ospf_auth_ipsec;
-        static const ydk::Enum::YLeaf ospf_auth_trailer_keychain;
-        static const ydk::Enum::YLeaf ospf_auth_trailer_key;
-        static const ydk::Enum::YLeaf ospf_auth_type_none;
-
-};
-
 class OspfExternalMetricType : public ydk::Enum
 {
     public:
@@ -3956,18 +3949,17 @@ class OspfExternalMetricType : public ydk::Enum
 
 };
 
-class OspfOperationMode : public ydk::Enum
+class Ospfv2IntfState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ospf_ships_in_the_night;
-
-};
-
-class AddressFamily : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf address_family_ipv4;
-        static const ydk::Enum::YLeaf address_family_ipv6;
+        static const ydk::Enum::YLeaf ospfv2_interface_state_down;
+        static const ydk::Enum::YLeaf ospfv2_interface_state_loopback;
+        static const ydk::Enum::YLeaf ospfv2_interface_state_waiting;
+        static const ydk::Enum::YLeaf ospfv2_interface_state_point_to_mpoint;
+        static const ydk::Enum::YLeaf ospfv2_interface_state_point_to_point;
+        static const ydk::Enum::YLeaf ospfv2_interface_state_dr;
+        static const ydk::Enum::YLeaf ospfv2_interface_state_backup;
+        static const ydk::Enum::YLeaf ospfv2_interface_state_other;
 
 };
 
@@ -3977,6 +3969,14 @@ class Ospfv2AuthTypeSelection : public ydk::Enum
         static const ydk::Enum::YLeaf ospfv2_auth_none;
         static const ydk::Enum::YLeaf ospfv2_auth_trailer_key;
         static const ydk::Enum::YLeaf ospfv2_auth_trailer_key_chain;
+
+};
+
+class Ospfv2CryptoAlgorithm : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ospfv2_crypto_cleartest;
+        static const ydk::Enum::YLeaf ospfv2_crypto_md5;
 
 };
 

@@ -578,6 +578,7 @@ class MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::DelayCleanPpLsp : public y
         ydk::YLeaf last_path_change; //type: uint32
         ydk::YLeaf persistent_bytes; //type: uint64
         ydk::YLeaf persistent_packets; //type: uint64
+        ydk::YLeaf protection_role; //type: TeLspPathProtectionRole
         class LspFec; //type: MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::DelayCleanPpLsp::LspFec
         class S2l; //type: MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::DelayCleanPpLsp::S2l
 

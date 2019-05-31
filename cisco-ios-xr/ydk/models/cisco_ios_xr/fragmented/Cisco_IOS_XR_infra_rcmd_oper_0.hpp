@@ -3936,57 +3936,32 @@ class Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExte
 
 }; // Rcmd::Ospf::Instances::Instance::SummaryExternalEventOfflines::SummaryExternalEventOffline::Path::LfaPath
 
-class RcmdBagEnblDsbl : public ydk::Enum
+class RcmdShowInstState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf dsbl;
-        static const ydk::Enum::YLeaf enbl;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf in_active;
+        static const ydk::Enum::YLeaf na;
 
 };
 
-class RcmdBoolYesNo : public ydk::Enum
+class RcmdShowIntfEvent : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf no;
-        static const ydk::Enum::YLeaf yes;
-
-};
-
-class RcmdPriorityLevel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf high;
-        static const ydk::Enum::YLeaf medium;
-        static const ydk::Enum::YLeaf low;
-
-};
-
-class RcmdSpfState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf complete;
-        static const ydk::Enum::YLeaf in_complete;
-        static const ydk::Enum::YLeaf collecting;
-        static const ydk::Enum::YLeaf no_route_change;
-
-};
-
-class RcmdShowIpfrrLfa : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf local;
-        static const ydk::Enum::YLeaf remote;
-
-};
-
-class RcmdShowPrcsState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf success;
-        static const ydk::Enum::YLeaf cpu;
-        static const ydk::Enum::YLeaf memory;
+        static const ydk::Enum::YLeaf create;
+        static const ydk::Enum::YLeaf delete_;
+        static const ydk::Enum::YLeaf link_up;
+        static const ydk::Enum::YLeaf link_down;
+        static const ydk::Enum::YLeaf primary_address;
+        static const ydk::Enum::YLeaf secondary_address;
+        static const ydk::Enum::YLeaf ipv6_link_local_address;
+        static const ydk::Enum::YLeaf ipv6_global_address;
+        static const ydk::Enum::YLeaf mtu;
+        static const ydk::Enum::YLeaf band_width;
+        static const ydk::Enum::YLeaf ldp_sync;
+        static const ydk::Enum::YLeaf forward_reference;
+        static const ydk::Enum::YLeaf ldp_no_sync;
 
 };
 
@@ -3996,6 +3971,17 @@ class RcmdShowCompId : public ydk::Enum
         static const ydk::Enum::YLeaf ospf;
         static const ydk::Enum::YLeaf isis;
         static const ydk::Enum::YLeaf un_known;
+
+};
+
+class RcmdShowLdpConvState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_full;
+        static const ydk::Enum::YLeaf fully_covered;
+        static const ydk::Enum::YLeaf coverage_above_threshold;
+        static const ydk::Enum::YLeaf coverage_below_threshold;
+        static const ydk::Enum::YLeaf coverage_flapping;
 
 };
 
@@ -4021,40 +4007,31 @@ class RcmdProtocolId : public ydk::Enum
 
 };
 
-class RcmdShowLdpConvState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_full;
-        static const ydk::Enum::YLeaf fully_covered;
-        static const ydk::Enum::YLeaf coverage_above_threshold;
-        static const ydk::Enum::YLeaf coverage_below_threshold;
-        static const ydk::Enum::YLeaf coverage_flapping;
-
-};
-
-class RcmdLinecardSpeed : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf fastest;
-        static const ydk::Enum::YLeaf slowest;
-
-};
-
-class RcmdShowNode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf lc;
-        static const ydk::Enum::YLeaf rp;
-
-};
-
 class RcmdShowLdpNeighbourStatus : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf up;
+
+};
+
+class RcmdLdpEvent : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf neighbor;
+        static const ydk::Enum::YLeaf adjacency;
+
+};
+
+class RcmdShowMem : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf standard;
+        static const ydk::Enum::YLeaf chunk;
+        static const ydk::Enum::YLeaf edm;
+        static const ydk::Enum::YLeaf string;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf unknown;
 
 };
 
@@ -4068,6 +4045,65 @@ class RcmdIsisSpf : public ydk::Enum
 
 };
 
+class RcmdIsisLvl : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf l1;
+        static const ydk::Enum::YLeaf l2;
+
+};
+
+class RcmdBagEnblDsbl : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf dsbl;
+        static const ydk::Enum::YLeaf enbl;
+
+};
+
+class RcmdShowNode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf lc;
+        static const ydk::Enum::YLeaf rp;
+
+};
+
+class RcmdBoolYesNo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no;
+        static const ydk::Enum::YLeaf yes;
+
+};
+
+class RcmdShowPrcsState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf success;
+        static const ydk::Enum::YLeaf cpu;
+        static const ydk::Enum::YLeaf memory;
+
+};
+
+class RcmdBagEnableDisable : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf enable;
+
+};
+
+class RcmdShowIpfrrLfa : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf remote;
+
+};
+
 class RcmdShowRoutePathChange : public ydk::Enum
 {
     public:
@@ -4076,11 +4112,46 @@ class RcmdShowRoutePathChange : public ydk::Enum
 
 };
 
-class RcmdIsisLvl : public ydk::Enum
+class RcmdLinecardSpeed : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf l1;
-        static const ydk::Enum::YLeaf l2;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf fastest;
+        static const ydk::Enum::YLeaf slowest;
+
+};
+
+class RcmdLsChange : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf new_;
+        static const ydk::Enum::YLeaf delete_;
+        static const ydk::Enum::YLeaf modify;
+        static const ydk::Enum::YLeaf noop;
+
+};
+
+class RcmdLsa : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf router;
+        static const ydk::Enum::YLeaf network;
+        static const ydk::Enum::YLeaf summary;
+        static const ydk::Enum::YLeaf asbr;
+        static const ydk::Enum::YLeaf external;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf nssa;
+
+};
+
+class RcmdSpfState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf complete;
+        static const ydk::Enum::YLeaf in_complete;
+        static const ydk::Enum::YLeaf collecting;
+        static const ydk::Enum::YLeaf no_route_change;
 
 };
 
@@ -4116,84 +4187,13 @@ class RcmdShowRoute : public ydk::Enum
 
 };
 
-class RcmdLdpEvent : public ydk::Enum
+class RcmdPriorityLevel : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf neighbor;
-        static const ydk::Enum::YLeaf adjacency;
-
-};
-
-class RcmdLsa : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf router;
-        static const ydk::Enum::YLeaf network;
-        static const ydk::Enum::YLeaf summary;
-        static const ydk::Enum::YLeaf asbr;
-        static const ydk::Enum::YLeaf external;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf nssa;
-
-};
-
-class RcmdShowMem : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf standard;
-        static const ydk::Enum::YLeaf chunk;
-        static const ydk::Enum::YLeaf edm;
-        static const ydk::Enum::YLeaf string;
-        static const ydk::Enum::YLeaf static_;
-        static const ydk::Enum::YLeaf unknown;
-
-};
-
-class RcmdBagEnableDisable : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf enable;
-
-};
-
-class RcmdShowInstState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf in_active;
-        static const ydk::Enum::YLeaf na;
-
-};
-
-class RcmdLsChange : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf new_;
-        static const ydk::Enum::YLeaf delete_;
-        static const ydk::Enum::YLeaf modify;
-        static const ydk::Enum::YLeaf noop;
-
-};
-
-class RcmdShowIntfEvent : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf create;
-        static const ydk::Enum::YLeaf delete_;
-        static const ydk::Enum::YLeaf link_up;
-        static const ydk::Enum::YLeaf link_down;
-        static const ydk::Enum::YLeaf primary_address;
-        static const ydk::Enum::YLeaf secondary_address;
-        static const ydk::Enum::YLeaf ipv6_link_local_address;
-        static const ydk::Enum::YLeaf ipv6_global_address;
-        static const ydk::Enum::YLeaf mtu;
-        static const ydk::Enum::YLeaf band_width;
-        static const ydk::Enum::YLeaf ldp_sync;
-        static const ydk::Enum::YLeaf forward_reference;
-        static const ydk::Enum::YLeaf ldp_no_sync;
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf high;
+        static const ydk::Enum::YLeaf medium;
+        static const ydk::Enum::YLeaf low;
 
 };
 

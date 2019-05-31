@@ -556,23 +556,6 @@ class IpSlaStats::SlaOperEntry::Stats::VoiceScore : public ydk::Entity
 
 }; // IpSlaStats::SlaOperEntry::Stats::VoiceScore
 
-class TtlType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ttl_finite;
-        static const ydk::Enum::YLeaf ttl_forever;
-
-};
-
-class RttType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rtt_known;
-        static const ydk::Enum::YLeaf rtt_unknown;
-        static const ydk::Enum::YLeaf rtt_could_not_find;
-
-};
-
 class SlaOperType : public ydk::Enum
 {
     public:
@@ -612,6 +595,23 @@ class AccuracyType : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf accuracy_milliseconds;
         static const ydk::Enum::YLeaf accuracy_microseconds;
+
+};
+
+class RttType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rtt_known;
+        static const ydk::Enum::YLeaf rtt_unknown;
+        static const ydk::Enum::YLeaf rtt_could_not_find;
+
+};
+
+class TtlType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ttl_finite;
+        static const ydk::Enum::YLeaf ttl_forever;
 
 };
 

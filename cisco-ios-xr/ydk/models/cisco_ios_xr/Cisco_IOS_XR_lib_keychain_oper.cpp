@@ -952,9 +952,6 @@ bool Keychain::Keys::Key::Key_::KeyId::AcceptLifetime::has_leaf_or_child_of_name
     return false;
 }
 
-const Enum::YLeaf Enc::password_type7 {0, "password-type7"};
-const Enum::YLeaf Enc::password_type6 {2, "password-type6"};
-
 const Enum::YLeaf CrytoAlgo::not_configured {0, "not-configured"};
 const Enum::YLeaf CrytoAlgo::aes_128_cmac_96 {1, "aes-128-cmac-96"};
 const Enum::YLeaf CrytoAlgo::hmac_sha1_12 {2, "hmac-sha1-12"};
@@ -966,6 +963,9 @@ const Enum::YLeaf CrytoAlgo::aes_128_cmac {7, "aes-128-cmac"};
 const Enum::YLeaf CrytoAlgo::aes_256_cmac {8, "aes-256-cmac"};
 const Enum::YLeaf CrytoAlgo::hmac_sha1_96 {9, "hmac-sha1-96"};
 const Enum::YLeaf CrytoAlgo::hmac_sha_256 {10, "hmac-sha-256"};
+
+const Enum::YLeaf Enc::password_type7 {0, "password-type7"};
+const Enum::YLeaf Enc::password_type6 {2, "password-type6"};
 
 
 }

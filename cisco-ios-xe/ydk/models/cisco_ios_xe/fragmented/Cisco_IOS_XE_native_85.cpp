@@ -5,11 +5,11 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_85.hpp"
-#include "Cisco_IOS_XE_native_86.hpp"
 #include "Cisco_IOS_XE_native_90.hpp"
-#include "Cisco_IOS_XE_native_89.hpp"
-#include "Cisco_IOS_XE_native_88.hpp"
+#include "Cisco_IOS_XE_native_86.hpp"
 #include "Cisco_IOS_XE_native_87.hpp"
+#include "Cisco_IOS_XE_native_88.hpp"
+#include "Cisco_IOS_XE_native_89.hpp"
 
 using namespace ydk;
 
@@ -9985,8 +9985,8 @@ Native::Interface::PortChannel::PortChannel()
     service_insertion{YType::enumeration, "service-insertion"},
     channel_protocol{YType::enumeration, "Cisco-IOS-XE-ethernet:channel-protocol"},
     duplex{YType::enumeration, "Cisco-IOS-XE-ethernet:duplex"},
-    macsec{YType::empty, "Cisco-IOS-XE-switch:macsec"},
-    nat66{YType::enumeration, "Cisco-IOS-XE-nat:nat66"}
+    nat66{YType::enumeration, "Cisco-IOS-XE-nat:nat66"},
+    macsec{YType::empty, "Cisco-IOS-XE-switch:macsec"}
         ,
     port_channel(std::make_shared<Native::Interface::PortChannel::PortChannel_>())
     , switchport_conf(std::make_shared<Native::Interface::PortChannel::SwitchportConf>())
@@ -10038,10 +10038,20 @@ Native::Interface::PortChannel::PortChannel()
     , service(std::make_shared<Native::Interface::PortChannel::Service>())
     , lacp(std::make_shared<Native::Interface::PortChannel::Lacp>())
     , mlacp(std::make_shared<Native::Interface::PortChannel::Mlacp>())
+    , xconnect(std::make_shared<Native::Interface::PortChannel::Xconnect>())
+    , evpn(std::make_shared<Native::Interface::PortChannel::Evpn>())
     , snmp(std::make_shared<Native::Interface::PortChannel::Snmp>())
+    , ospfv3(std::make_shared<Native::Interface::PortChannel::Ospfv3>())
+    , crypto(std::make_shared<Native::Interface::PortChannel::Crypto>())
+    , cts(std::make_shared<Native::Interface::PortChannel::Cts>())
+    , dot1x(std::make_shared<Native::Interface::PortChannel::Dot1x>())
+    , service_policy(std::make_shared<Native::Interface::PortChannel::ServicePolicy>())
+    , lisp(std::make_shared<Native::Interface::PortChannel::Lisp>())
+    , mvrp(nullptr) // presence node
+    , analysis_module(std::make_shared<Native::Interface::PortChannel::AnalysisModule>())
     , authentication(std::make_shared<Native::Interface::PortChannel::Authentication>())
     , mab(nullptr) // presence node
-    , service_policy(std::make_shared<Native::Interface::PortChannel::ServicePolicy>())
+    , spanning_tree(std::make_shared<Native::Interface::PortChannel::SpanningTree>())
     , auto_(std::make_shared<Native::Interface::PortChannel::Auto>())
     , datalink(std::make_shared<Native::Interface::PortChannel::Datalink>())
     , energywise(nullptr) // presence node
@@ -10054,16 +10064,6 @@ Native::Interface::PortChannel::PortChannel()
     , switch_(std::make_shared<Native::Interface::PortChannel::Switch>())
     , srr_queue(std::make_shared<Native::Interface::PortChannel::SrrQueue>())
     , macsec_option(std::make_shared<Native::Interface::PortChannel::MacsecOption>())
-    , ospfv3(std::make_shared<Native::Interface::PortChannel::Ospfv3>())
-    , lisp(std::make_shared<Native::Interface::PortChannel::Lisp>())
-    , spanning_tree(std::make_shared<Native::Interface::PortChannel::SpanningTree>())
-    , xconnect(std::make_shared<Native::Interface::PortChannel::Xconnect>())
-    , evpn(std::make_shared<Native::Interface::PortChannel::Evpn>())
-    , dot1x(std::make_shared<Native::Interface::PortChannel::Dot1x>())
-    , crypto(std::make_shared<Native::Interface::PortChannel::Crypto>())
-    , analysis_module(std::make_shared<Native::Interface::PortChannel::AnalysisModule>())
-    , cts(std::make_shared<Native::Interface::PortChannel::Cts>())
-    , mvrp(nullptr) // presence node
 {
     port_channel->parent = this;
     switchport_conf->parent = this;
@@ -10113,9 +10113,18 @@ Native::Interface::PortChannel::PortChannel()
     service->parent = this;
     lacp->parent = this;
     mlacp->parent = this;
+    xconnect->parent = this;
+    evpn->parent = this;
     snmp->parent = this;
-    authentication->parent = this;
+    ospfv3->parent = this;
+    crypto->parent = this;
+    cts->parent = this;
+    dot1x->parent = this;
     service_policy->parent = this;
+    lisp->parent = this;
+    analysis_module->parent = this;
+    authentication->parent = this;
+    spanning_tree->parent = this;
     auto_->parent = this;
     datalink->parent = this;
     location->parent = this;
@@ -10126,15 +10135,6 @@ Native::Interface::PortChannel::PortChannel()
     switch_->parent = this;
     srr_queue->parent = this;
     macsec_option->parent = this;
-    ospfv3->parent = this;
-    lisp->parent = this;
-    spanning_tree->parent = this;
-    xconnect->parent = this;
-    evpn->parent = this;
-    dot1x->parent = this;
-    crypto->parent = this;
-    analysis_module->parent = this;
-    cts->parent = this;
 
     yang_name = "Port-channel"; yang_parent_name = "interface"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -10170,8 +10170,8 @@ bool Native::Interface::PortChannel::has_data() const
 	|| service_insertion.is_set
 	|| channel_protocol.is_set
 	|| duplex.is_set
-	|| macsec.is_set
 	|| nat66.is_set
+	|| macsec.is_set
 	|| (port_channel !=  nullptr && port_channel->has_data())
 	|| (switchport_conf !=  nullptr && switchport_conf->has_data())
 	|| (switchport !=  nullptr && switchport->has_data())
@@ -10221,10 +10221,20 @@ bool Native::Interface::PortChannel::has_data() const
 	|| (service !=  nullptr && service->has_data())
 	|| (lacp !=  nullptr && lacp->has_data())
 	|| (mlacp !=  nullptr && mlacp->has_data())
+	|| (xconnect !=  nullptr && xconnect->has_data())
+	|| (evpn !=  nullptr && evpn->has_data())
 	|| (snmp !=  nullptr && snmp->has_data())
+	|| (ospfv3 !=  nullptr && ospfv3->has_data())
+	|| (crypto !=  nullptr && crypto->has_data())
+	|| (cts !=  nullptr && cts->has_data())
+	|| (dot1x !=  nullptr && dot1x->has_data())
+	|| (service_policy !=  nullptr && service_policy->has_data())
+	|| (lisp !=  nullptr && lisp->has_data())
+	|| (mvrp !=  nullptr && mvrp->has_data())
+	|| (analysis_module !=  nullptr && analysis_module->has_data())
 	|| (authentication !=  nullptr && authentication->has_data())
 	|| (mab !=  nullptr && mab->has_data())
-	|| (service_policy !=  nullptr && service_policy->has_data())
+	|| (spanning_tree !=  nullptr && spanning_tree->has_data())
 	|| (auto_ !=  nullptr && auto_->has_data())
 	|| (datalink !=  nullptr && datalink->has_data())
 	|| (energywise !=  nullptr && energywise->has_data())
@@ -10235,17 +10245,7 @@ bool Native::Interface::PortChannel::has_data() const
 	|| (load_balancing !=  nullptr && load_balancing->has_data())
 	|| (switch_ !=  nullptr && switch_->has_data())
 	|| (srr_queue !=  nullptr && srr_queue->has_data())
-	|| (macsec_option !=  nullptr && macsec_option->has_data())
-	|| (ospfv3 !=  nullptr && ospfv3->has_data())
-	|| (lisp !=  nullptr && lisp->has_data())
-	|| (spanning_tree !=  nullptr && spanning_tree->has_data())
-	|| (xconnect !=  nullptr && xconnect->has_data())
-	|| (evpn !=  nullptr && evpn->has_data())
-	|| (dot1x !=  nullptr && dot1x->has_data())
-	|| (crypto !=  nullptr && crypto->has_data())
-	|| (analysis_module !=  nullptr && analysis_module->has_data())
-	|| (cts !=  nullptr && cts->has_data())
-	|| (mvrp !=  nullptr && mvrp->has_data());
+	|| (macsec_option !=  nullptr && macsec_option->has_data());
 }
 
 bool Native::Interface::PortChannel::has_operation() const
@@ -10275,8 +10275,8 @@ bool Native::Interface::PortChannel::has_operation() const
 	|| ydk::is_set(service_insertion.yfilter)
 	|| ydk::is_set(channel_protocol.yfilter)
 	|| ydk::is_set(duplex.yfilter)
-	|| ydk::is_set(macsec.yfilter)
 	|| ydk::is_set(nat66.yfilter)
+	|| ydk::is_set(macsec.yfilter)
 	|| (port_channel !=  nullptr && port_channel->has_operation())
 	|| (switchport_conf !=  nullptr && switchport_conf->has_operation())
 	|| (switchport !=  nullptr && switchport->has_operation())
@@ -10326,10 +10326,20 @@ bool Native::Interface::PortChannel::has_operation() const
 	|| (service !=  nullptr && service->has_operation())
 	|| (lacp !=  nullptr && lacp->has_operation())
 	|| (mlacp !=  nullptr && mlacp->has_operation())
+	|| (xconnect !=  nullptr && xconnect->has_operation())
+	|| (evpn !=  nullptr && evpn->has_operation())
 	|| (snmp !=  nullptr && snmp->has_operation())
+	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
+	|| (crypto !=  nullptr && crypto->has_operation())
+	|| (cts !=  nullptr && cts->has_operation())
+	|| (dot1x !=  nullptr && dot1x->has_operation())
+	|| (service_policy !=  nullptr && service_policy->has_operation())
+	|| (lisp !=  nullptr && lisp->has_operation())
+	|| (mvrp !=  nullptr && mvrp->has_operation())
+	|| (analysis_module !=  nullptr && analysis_module->has_operation())
 	|| (authentication !=  nullptr && authentication->has_operation())
 	|| (mab !=  nullptr && mab->has_operation())
-	|| (service_policy !=  nullptr && service_policy->has_operation())
+	|| (spanning_tree !=  nullptr && spanning_tree->has_operation())
 	|| (auto_ !=  nullptr && auto_->has_operation())
 	|| (datalink !=  nullptr && datalink->has_operation())
 	|| (energywise !=  nullptr && energywise->has_operation())
@@ -10340,17 +10350,7 @@ bool Native::Interface::PortChannel::has_operation() const
 	|| (load_balancing !=  nullptr && load_balancing->has_operation())
 	|| (switch_ !=  nullptr && switch_->has_operation())
 	|| (srr_queue !=  nullptr && srr_queue->has_operation())
-	|| (macsec_option !=  nullptr && macsec_option->has_operation())
-	|| (ospfv3 !=  nullptr && ospfv3->has_operation())
-	|| (lisp !=  nullptr && lisp->has_operation())
-	|| (spanning_tree !=  nullptr && spanning_tree->has_operation())
-	|| (xconnect !=  nullptr && xconnect->has_operation())
-	|| (evpn !=  nullptr && evpn->has_operation())
-	|| (dot1x !=  nullptr && dot1x->has_operation())
-	|| (crypto !=  nullptr && crypto->has_operation())
-	|| (analysis_module !=  nullptr && analysis_module->has_operation())
-	|| (cts !=  nullptr && cts->has_operation())
-	|| (mvrp !=  nullptr && mvrp->has_operation());
+	|| (macsec_option !=  nullptr && macsec_option->has_operation());
 }
 
 std::string Native::Interface::PortChannel::get_absolute_path() const
@@ -10386,8 +10386,8 @@ std::vector<std::pair<std::string, LeafData> > Native::Interface::PortChannel::g
     if (service_insertion.is_set || is_set(service_insertion.yfilter)) leaf_name_data.push_back(service_insertion.get_name_leafdata());
     if (channel_protocol.is_set || is_set(channel_protocol.yfilter)) leaf_name_data.push_back(channel_protocol.get_name_leafdata());
     if (duplex.is_set || is_set(duplex.yfilter)) leaf_name_data.push_back(duplex.get_name_leafdata());
-    if (macsec.is_set || is_set(macsec.yfilter)) leaf_name_data.push_back(macsec.get_name_leafdata());
     if (nat66.is_set || is_set(nat66.yfilter)) leaf_name_data.push_back(nat66.get_name_leafdata());
+    if (macsec.is_set || is_set(macsec.yfilter)) leaf_name_data.push_back(macsec.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -10844,6 +10844,24 @@ std::shared_ptr<ydk::Entity> Native::Interface::PortChannel::get_child_by_name(c
         return mlacp;
     }
 
+    if(child_yang_name == "Cisco-IOS-XE-l2vpn:xconnect")
+    {
+        if(xconnect == nullptr)
+        {
+            xconnect = std::make_shared<Native::Interface::PortChannel::Xconnect>();
+        }
+        return xconnect;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-l2vpn:evpn")
+    {
+        if(evpn == nullptr)
+        {
+            evpn = std::make_shared<Native::Interface::PortChannel::Evpn>();
+        }
+        return evpn;
+    }
+
     if(child_yang_name == "Cisco-IOS-XE-snmp:snmp")
     {
         if(snmp == nullptr)
@@ -10851,6 +10869,78 @@ std::shared_ptr<ydk::Entity> Native::Interface::PortChannel::get_child_by_name(c
             snmp = std::make_shared<Native::Interface::PortChannel::Snmp>();
         }
         return snmp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-ospfv3:ospfv3")
+    {
+        if(ospfv3 == nullptr)
+        {
+            ospfv3 = std::make_shared<Native::Interface::PortChannel::Ospfv3>();
+        }
+        return ospfv3;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-crypto:crypto")
+    {
+        if(crypto == nullptr)
+        {
+            crypto = std::make_shared<Native::Interface::PortChannel::Crypto>();
+        }
+        return crypto;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-cts:cts")
+    {
+        if(cts == nullptr)
+        {
+            cts = std::make_shared<Native::Interface::PortChannel::Cts>();
+        }
+        return cts;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-dot1x:dot1x")
+    {
+        if(dot1x == nullptr)
+        {
+            dot1x = std::make_shared<Native::Interface::PortChannel::Dot1x>();
+        }
+        return dot1x;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
+    {
+        if(service_policy == nullptr)
+        {
+            service_policy = std::make_shared<Native::Interface::PortChannel::ServicePolicy>();
+        }
+        return service_policy;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-lisp:lisp")
+    {
+        if(lisp == nullptr)
+        {
+            lisp = std::make_shared<Native::Interface::PortChannel::Lisp>();
+        }
+        return lisp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-mvrp:mvrp")
+    {
+        if(mvrp == nullptr)
+        {
+            mvrp = std::make_shared<Native::Interface::PortChannel::Mvrp>();
+        }
+        return mvrp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-nam:analysis-module")
+    {
+        if(analysis_module == nullptr)
+        {
+            analysis_module = std::make_shared<Native::Interface::PortChannel::AnalysisModule>();
+        }
+        return analysis_module;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-sanet:authentication")
@@ -10871,13 +10961,13 @@ std::shared_ptr<ydk::Entity> Native::Interface::PortChannel::get_child_by_name(c
         return mab;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-policy:service-policy")
+    if(child_yang_name == "Cisco-IOS-XE-spanning-tree:spanning-tree")
     {
-        if(service_policy == nullptr)
+        if(spanning_tree == nullptr)
         {
-            service_policy = std::make_shared<Native::Interface::PortChannel::ServicePolicy>();
+            spanning_tree = std::make_shared<Native::Interface::PortChannel::SpanningTree>();
         }
-        return service_policy;
+        return spanning_tree;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-switch:auto")
@@ -10985,96 +11075,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::PortChannel::get_child_by_name(c
             macsec_option = std::make_shared<Native::Interface::PortChannel::MacsecOption>();
         }
         return macsec_option;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-ospfv3:ospfv3")
-    {
-        if(ospfv3 == nullptr)
-        {
-            ospfv3 = std::make_shared<Native::Interface::PortChannel::Ospfv3>();
-        }
-        return ospfv3;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-lisp:lisp")
-    {
-        if(lisp == nullptr)
-        {
-            lisp = std::make_shared<Native::Interface::PortChannel::Lisp>();
-        }
-        return lisp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-spanning-tree:spanning-tree")
-    {
-        if(spanning_tree == nullptr)
-        {
-            spanning_tree = std::make_shared<Native::Interface::PortChannel::SpanningTree>();
-        }
-        return spanning_tree;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-l2vpn:xconnect")
-    {
-        if(xconnect == nullptr)
-        {
-            xconnect = std::make_shared<Native::Interface::PortChannel::Xconnect>();
-        }
-        return xconnect;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-l2vpn:evpn")
-    {
-        if(evpn == nullptr)
-        {
-            evpn = std::make_shared<Native::Interface::PortChannel::Evpn>();
-        }
-        return evpn;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-dot1x:dot1x")
-    {
-        if(dot1x == nullptr)
-        {
-            dot1x = std::make_shared<Native::Interface::PortChannel::Dot1x>();
-        }
-        return dot1x;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-crypto:crypto")
-    {
-        if(crypto == nullptr)
-        {
-            crypto = std::make_shared<Native::Interface::PortChannel::Crypto>();
-        }
-        return crypto;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-nam:analysis-module")
-    {
-        if(analysis_module == nullptr)
-        {
-            analysis_module = std::make_shared<Native::Interface::PortChannel::AnalysisModule>();
-        }
-        return analysis_module;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-cts:cts")
-    {
-        if(cts == nullptr)
-        {
-            cts = std::make_shared<Native::Interface::PortChannel::Cts>();
-        }
-        return cts;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-mvrp:mvrp")
-    {
-        if(mvrp == nullptr)
-        {
-            mvrp = std::make_shared<Native::Interface::PortChannel::Mvrp>();
-        }
-        return mvrp;
     }
 
     return nullptr;
@@ -11338,9 +11338,59 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::PortChann
         _children["Cisco-IOS-XE-ethernet:mlacp"] = mlacp;
     }
 
+    if(xconnect != nullptr)
+    {
+        _children["Cisco-IOS-XE-l2vpn:xconnect"] = xconnect;
+    }
+
+    if(evpn != nullptr)
+    {
+        _children["Cisco-IOS-XE-l2vpn:evpn"] = evpn;
+    }
+
     if(snmp != nullptr)
     {
         _children["Cisco-IOS-XE-snmp:snmp"] = snmp;
+    }
+
+    if(ospfv3 != nullptr)
+    {
+        _children["Cisco-IOS-XE-ospfv3:ospfv3"] = ospfv3;
+    }
+
+    if(crypto != nullptr)
+    {
+        _children["Cisco-IOS-XE-crypto:crypto"] = crypto;
+    }
+
+    if(cts != nullptr)
+    {
+        _children["Cisco-IOS-XE-cts:cts"] = cts;
+    }
+
+    if(dot1x != nullptr)
+    {
+        _children["Cisco-IOS-XE-dot1x:dot1x"] = dot1x;
+    }
+
+    if(service_policy != nullptr)
+    {
+        _children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
+    }
+
+    if(lisp != nullptr)
+    {
+        _children["Cisco-IOS-XE-lisp:lisp"] = lisp;
+    }
+
+    if(mvrp != nullptr)
+    {
+        _children["Cisco-IOS-XE-mvrp:mvrp"] = mvrp;
+    }
+
+    if(analysis_module != nullptr)
+    {
+        _children["Cisco-IOS-XE-nam:analysis-module"] = analysis_module;
     }
 
     if(authentication != nullptr)
@@ -11353,9 +11403,9 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::PortChann
         _children["Cisco-IOS-XE-sanet:mab"] = mab;
     }
 
-    if(service_policy != nullptr)
+    if(spanning_tree != nullptr)
     {
-        _children["Cisco-IOS-XE-policy:service-policy"] = service_policy;
+        _children["Cisco-IOS-XE-spanning-tree:spanning-tree"] = spanning_tree;
     }
 
     if(auto_ != nullptr)
@@ -11420,56 +11470,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::PortChann
     if(macsec_option != nullptr)
     {
         _children["Cisco-IOS-XE-switch:macsec-option"] = macsec_option;
-    }
-
-    if(ospfv3 != nullptr)
-    {
-        _children["Cisco-IOS-XE-ospfv3:ospfv3"] = ospfv3;
-    }
-
-    if(lisp != nullptr)
-    {
-        _children["Cisco-IOS-XE-lisp:lisp"] = lisp;
-    }
-
-    if(spanning_tree != nullptr)
-    {
-        _children["Cisco-IOS-XE-spanning-tree:spanning-tree"] = spanning_tree;
-    }
-
-    if(xconnect != nullptr)
-    {
-        _children["Cisco-IOS-XE-l2vpn:xconnect"] = xconnect;
-    }
-
-    if(evpn != nullptr)
-    {
-        _children["Cisco-IOS-XE-l2vpn:evpn"] = evpn;
-    }
-
-    if(dot1x != nullptr)
-    {
-        _children["Cisco-IOS-XE-dot1x:dot1x"] = dot1x;
-    }
-
-    if(crypto != nullptr)
-    {
-        _children["Cisco-IOS-XE-crypto:crypto"] = crypto;
-    }
-
-    if(analysis_module != nullptr)
-    {
-        _children["Cisco-IOS-XE-nam:analysis-module"] = analysis_module;
-    }
-
-    if(cts != nullptr)
-    {
-        _children["Cisco-IOS-XE-cts:cts"] = cts;
-    }
-
-    if(mvrp != nullptr)
-    {
-        _children["Cisco-IOS-XE-mvrp:mvrp"] = mvrp;
     }
 
     return _children;
@@ -11561,17 +11561,17 @@ void Native::Interface::PortChannel::set_value(const std::string & value_path, c
         duplex.value_namespace = name_space;
         duplex.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "Cisco-IOS-XE-switch:macsec")
-    {
-        macsec = value;
-        macsec.value_namespace = name_space;
-        macsec.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "Cisco-IOS-XE-nat:nat66")
     {
         nat66 = value;
         nat66.value_namespace = name_space;
         nat66.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "Cisco-IOS-XE-switch:macsec")
+    {
+        macsec = value;
+        macsec.value_namespace = name_space;
+        macsec.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -11633,19 +11633,19 @@ void Native::Interface::PortChannel::set_filter(const std::string & value_path, 
     {
         duplex.yfilter = yfilter;
     }
-    if(value_path == "macsec")
-    {
-        macsec.yfilter = yfilter;
-    }
     if(value_path == "nat66")
     {
         nat66.yfilter = yfilter;
+    }
+    if(value_path == "macsec")
+    {
+        macsec.yfilter = yfilter;
     }
 }
 
 bool Native::Interface::PortChannel::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "port-channel" || name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "carrier-delay" || name == "channel-group" || name == "ethernet" || name == "eapol" || name == "synchronous" || name == "speed" || name == "negotiation" || name == "plim" || name == "pppoe" || name == "service" || name == "lacp" || name == "mlacp" || name == "snmp" || name == "authentication" || name == "mab" || name == "service-policy" || name == "auto" || name == "datalink" || name == "energywise" || name == "location" || name == "mac" || name == "macro" || name == "dual-active" || name == "load-balancing" || name == "vlan-range" || name == "switch" || name == "srr-queue" || name == "macsec-option" || name == "ospfv3" || name == "lisp" || name == "spanning-tree" || name == "xconnect" || name == "evpn" || name == "dot1x" || name == "crypto" || name == "analysis-module" || name == "cts" || name == "mvrp" || name == "name" || name == "pc-speed" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "channel-protocol" || name == "duplex" || name == "macsec" || name == "nat66")
+    if(name == "port-channel" || name == "switchport-conf" || name == "switchport" || name == "stackwise-virtual" || name == "arp" || name == "backup" || name == "cemoudp" || name == "cws-tunnel" || name == "l2protocol-tunnel" || name == "encapsulation" || name == "fair-queue-conf" || name == "fair-queue" || name == "flowcontrol" || name == "isis" || name == "keepalive-settings" || name == "bfd" || name == "bandwidth" || name == "dampening" || name == "domain" || name == "hold-queue" || name == "mpls" || name == "ip-vrf" || name == "vrf" || name == "ip" || name == "ipv6" || name == "logging" || name == "mdix" || name == "mop" || name == "interface_qos" || name == "source" || name == "standby" || name == "access-session" || name == "storm-control" || name == "trust" || name == "priority-queue" || name == "rcv-queue" || name == "peer" || name == "pm-path" || name == "carrier-delay" || name == "channel-group" || name == "ethernet" || name == "eapol" || name == "synchronous" || name == "speed" || name == "negotiation" || name == "plim" || name == "pppoe" || name == "service" || name == "lacp" || name == "mlacp" || name == "xconnect" || name == "evpn" || name == "snmp" || name == "ospfv3" || name == "crypto" || name == "cts" || name == "dot1x" || name == "service-policy" || name == "lisp" || name == "mvrp" || name == "analysis-module" || name == "authentication" || name == "mab" || name == "spanning-tree" || name == "auto" || name == "datalink" || name == "energywise" || name == "location" || name == "mac" || name == "macro" || name == "dual-active" || name == "load-balancing" || name == "vlan-range" || name == "switch" || name == "srr-queue" || name == "macsec-option" || name == "name" || name == "pc-speed" || name == "description" || name == "mac-address" || name == "shutdown" || name == "keepalive" || name == "if-state" || name == "delay" || name == "load-interval" || name == "max-reserved-bandwidth" || name == "mtu" || name == "service-insertion" || name == "channel-protocol" || name == "duplex" || name == "nat66" || name == "macsec")
         return true;
     return false;
 }

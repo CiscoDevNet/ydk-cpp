@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_mpls_te_cfg_0.hpp"
-#include "Cisco_IOS_XR_mpls_te_cfg_1.hpp"
 #include "Cisco_IOS_XR_mpls_te_cfg_2.hpp"
+#include "Cisco_IOS_XR_mpls_te_cfg_1.hpp"
 
 using namespace ydk;
 
@@ -814,8 +814,7 @@ bool MplsTe::NamedTunnels::Tunnels::has_leaf_or_child_of_name(const std::string 
 MplsTe::NamedTunnels::Tunnels::Tunnel::Tunnel()
     :
     tunnel_name{YType::str, "tunnel-name"},
-    tunnel_type{YType::enumeration, "tunnel-type"},
-    enable{YType::empty, "enable"}
+    tunnel_type{YType::enumeration, "tunnel-type"}
         ,
     tunnel_attributes(std::make_shared<MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes>())
     , tunnel_id(nullptr) // presence node
@@ -834,7 +833,6 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::has_data() const
     if (is_presence_container) return true;
     return tunnel_name.is_set
 	|| tunnel_type.is_set
-	|| enable.is_set
 	|| (tunnel_attributes !=  nullptr && tunnel_attributes->has_data())
 	|| (tunnel_id !=  nullptr && tunnel_id->has_data());
 }
@@ -844,7 +842,6 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(tunnel_name.yfilter)
 	|| ydk::is_set(tunnel_type.yfilter)
-	|| ydk::is_set(enable.yfilter)
 	|| (tunnel_attributes !=  nullptr && tunnel_attributes->has_operation())
 	|| (tunnel_id !=  nullptr && tunnel_id->has_operation());
 }
@@ -871,7 +868,6 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::NamedTunnels::Tunnels::Tu
 
     if (tunnel_name.is_set || is_set(tunnel_name.yfilter)) leaf_name_data.push_back(tunnel_name.get_name_leafdata());
     if (tunnel_type.is_set || is_set(tunnel_type.yfilter)) leaf_name_data.push_back(tunnel_type.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -931,12 +927,6 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::set_value(const std::string & value_
         tunnel_type.value_namespace = name_space;
         tunnel_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void MplsTe::NamedTunnels::Tunnels::Tunnel::set_filter(const std::string & value_path, YFilter yfilter)
@@ -949,15 +939,11 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::set_filter(const std::string & value
     {
         tunnel_type.yfilter = yfilter;
     }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
 }
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "tunnel-attributes" || name == "tunnel-id" || name == "tunnel-name" || name == "tunnel-type" || name == "enable")
+    if(name == "tunnel-attributes" || name == "tunnel-id" || name == "tunnel-name" || name == "tunnel-type")
         return true;
     return false;
 }
@@ -1415,8 +1401,7 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::has_le
 MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::PathSetup()
     :
     path_setup_name{YType::str, "path-setup-name"},
-    preference{YType::uint32, "preference"},
-    enable{YType::empty, "enable"}
+    preference{YType::uint32, "preference"}
         ,
     path_computation(nullptr) // presence node
 {
@@ -1433,7 +1418,6 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSe
     if (is_presence_container) return true;
     return path_setup_name.is_set
 	|| preference.is_set
-	|| enable.is_set
 	|| (path_computation !=  nullptr && path_computation->has_data());
 }
 
@@ -1442,7 +1426,6 @@ bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSe
     return is_set(yfilter)
 	|| ydk::is_set(path_setup_name.yfilter)
 	|| ydk::is_set(preference.yfilter)
-	|| ydk::is_set(enable.yfilter)
 	|| (path_computation !=  nullptr && path_computation->has_operation());
 }
 
@@ -1460,7 +1443,6 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::NamedTunnels::Tunnels::Tu
 
     if (path_setup_name.is_set || is_set(path_setup_name.yfilter)) leaf_name_data.push_back(path_setup_name.get_name_leafdata());
     if (preference.is_set || is_set(preference.yfilter)) leaf_name_data.push_back(preference.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1506,12 +1488,6 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSe
         preference.value_namespace = name_space;
         preference.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1524,15 +1500,11 @@ void MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSe
     {
         preference.yfilter = yfilter;
     }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
 }
 
 bool MplsTe::NamedTunnels::Tunnels::Tunnel::TunnelAttributes::PathSetups::PathSetup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "path-computation" || name == "path-setup-name" || name == "preference" || name == "enable")
+    if(name == "path-computation" || name == "path-setup-name" || name == "preference")
         return true;
     return false;
 }
@@ -9528,7 +9500,6 @@ MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup::MeshGroup()
     destination_list{YType::str, "destination-list"},
     disable{YType::empty, "disable"},
     attribute_set{YType::str, "attribute-set"},
-    create{YType::empty, "create"},
     one_hop{YType::empty, "one-hop"}
 {
 
@@ -9546,7 +9517,6 @@ bool MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup::has_data
 	|| destination_list.is_set
 	|| disable.is_set
 	|| attribute_set.is_set
-	|| create.is_set
 	|| one_hop.is_set;
 }
 
@@ -9557,7 +9527,6 @@ bool MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup::has_oper
 	|| ydk::is_set(destination_list.yfilter)
 	|| ydk::is_set(disable.yfilter)
 	|| ydk::is_set(attribute_set.yfilter)
-	|| ydk::is_set(create.yfilter)
 	|| ydk::is_set(one_hop.yfilter);
 }
 
@@ -9584,7 +9553,6 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::AutoTun
     if (destination_list.is_set || is_set(destination_list.yfilter)) leaf_name_data.push_back(destination_list.get_name_leafdata());
     if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
     if (attribute_set.is_set || is_set(attribute_set.yfilter)) leaf_name_data.push_back(attribute_set.get_name_leafdata());
-    if (create.is_set || is_set(create.yfilter)) leaf_name_data.push_back(create.get_name_leafdata());
     if (one_hop.is_set || is_set(one_hop.yfilter)) leaf_name_data.push_back(one_hop.get_name_leafdata());
 
     return leaf_name_data;
@@ -9629,12 +9597,6 @@ void MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup::set_valu
         attribute_set.value_namespace = name_space;
         attribute_set.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "create")
-    {
-        create = value;
-        create.value_namespace = name_space;
-        create.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "one-hop")
     {
         one_hop = value;
@@ -9661,10 +9623,6 @@ void MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup::set_filt
     {
         attribute_set.yfilter = yfilter;
     }
-    if(value_path == "create")
-    {
-        create.yfilter = yfilter;
-    }
     if(value_path == "one-hop")
     {
         one_hop.yfilter = yfilter;
@@ -9673,7 +9631,7 @@ void MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup::set_filt
 
 bool MplsTe::GlobalAttributes::AutoTunnel::Mesh::MeshGroups::MeshGroup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mesh-group-id" || name == "destination-list" || name == "disable" || name == "attribute-set" || name == "create" || name == "one-hop")
+    if(name == "mesh-group-id" || name == "destination-list" || name == "disable" || name == "attribute-set" || name == "one-hop")
         return true;
     return false;
 }
@@ -11993,8 +11951,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::has_leaf_or_c
 
 MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::PathOptionAttribute()
     :
-    attribute_set_name{YType::str, "attribute-set-name"},
-    enable{YType::empty, "enable"}
+    attribute_set_name{YType::str, "attribute-set-name"}
         ,
     bfd_reverse_path(nullptr) // presence node
     , att_path_option_path_selection(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::AttPathOptionPathSelection>())
@@ -12018,7 +11975,6 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 {
     if (is_presence_container) return true;
     return attribute_set_name.is_set
-	|| enable.is_set
 	|| (bfd_reverse_path !=  nullptr && bfd_reverse_path->has_data())
 	|| (att_path_option_path_selection !=  nullptr && att_path_option_path_selection->has_data())
 	|| (pce !=  nullptr && pce->has_data())
@@ -12031,7 +11987,6 @@ bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
 {
     return is_set(yfilter)
 	|| ydk::is_set(attribute_set_name.yfilter)
-	|| ydk::is_set(enable.yfilter)
 	|| (bfd_reverse_path !=  nullptr && bfd_reverse_path->has_operation())
 	|| (att_path_option_path_selection !=  nullptr && att_path_option_path_selection->has_operation())
 	|| (pce !=  nullptr && pce->has_operation())
@@ -12060,7 +12015,6 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (attribute_set_name.is_set || is_set(attribute_set_name.yfilter)) leaf_name_data.push_back(attribute_set_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -12170,12 +12124,6 @@ void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
         attribute_set_name.value_namespace = name_space;
         attribute_set_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::set_filter(const std::string & value_path, YFilter yfilter)
@@ -12184,15 +12132,11 @@ void MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAtt
     {
         attribute_set_name.yfilter = yfilter;
     }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::PathOptionAttributes::PathOptionAttribute::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "bfd-reverse-path" || name == "att-path-option-path-selection" || name == "pce" || name == "affinity-mask" || name == "bandwidth" || name == "new-style-affinity-affinity-types" || name == "attribute-set-name" || name == "enable")
+    if(name == "bfd-reverse-path" || name == "att-path-option-path-selection" || name == "pce" || name == "affinity-mask" || name == "bandwidth" || name == "new-style-affinity-affinity-types" || name == "attribute-set-name")
         return true;
     return false;
 }
@@ -15199,7 +15143,6 @@ MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::P2mpt
     :
     attribute_set_name{YType::str, "attribute-set-name"},
     interface_bandwidth{YType::uint32, "interface-bandwidth"},
-    enable{YType::empty, "enable"},
     record_route{YType::empty, "record-route"}
         ,
     priority(nullptr) // presence node
@@ -15226,7 +15169,6 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::
     if (is_presence_container) return true;
     return attribute_set_name.is_set
 	|| interface_bandwidth.is_set
-	|| enable.is_set
 	|| record_route.is_set
 	|| (priority !=  nullptr && priority->has_data())
 	|| (affinity_mask !=  nullptr && affinity_mask->has_data())
@@ -15242,7 +15184,6 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::
     return is_set(yfilter)
 	|| ydk::is_set(attribute_set_name.yfilter)
 	|| ydk::is_set(interface_bandwidth.yfilter)
-	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(record_route.yfilter)
 	|| (priority !=  nullptr && priority->has_operation())
 	|| (affinity_mask !=  nullptr && affinity_mask->has_operation())
@@ -15274,7 +15215,6 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
 
     if (attribute_set_name.is_set || is_set(attribute_set_name.yfilter)) leaf_name_data.push_back(attribute_set_name.get_name_leafdata());
     if (interface_bandwidth.is_set || is_set(interface_bandwidth.yfilter)) leaf_name_data.push_back(interface_bandwidth.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (record_route.is_set || is_set(record_route.yfilter)) leaf_name_data.push_back(record_route.get_name_leafdata());
 
     return leaf_name_data;
@@ -15405,12 +15345,6 @@ void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::
         interface_bandwidth.value_namespace = name_space;
         interface_bandwidth.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "record-route")
     {
         record_route = value;
@@ -15429,10 +15363,6 @@ void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::
     {
         interface_bandwidth.yfilter = yfilter;
     }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
     if(value_path == "record-route")
     {
         record_route.yfilter = yfilter;
@@ -15441,7 +15371,7 @@ void MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2mpteAttributes::P2mpteAttribute::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "priority" || name == "affinity-mask" || name == "bandwidth" || name == "path-selection" || name == "new-style-affinity-affinity-types" || name == "fast-reroute" || name == "logging" || name == "attribute-set-name" || name == "interface-bandwidth" || name == "enable" || name == "record-route")
+    if(name == "priority" || name == "affinity-mask" || name == "bandwidth" || name == "path-selection" || name == "new-style-affinity-affinity-types" || name == "fast-reroute" || name == "logging" || name == "attribute-set-name" || name == "interface-bandwidth" || name == "record-route")
         return true;
     return false;
 }
@@ -18265,8 +18195,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::has_leaf_or_child_
 
 MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::P2pTeAttribute()
     :
-    attribute_set_name{YType::str, "attribute-set-name"},
-    enable{YType::empty, "enable"}
+    attribute_set_name{YType::str, "attribute-set-name"}
         ,
     path_selection(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::PathSelection>())
     , pce(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Pce>())
@@ -18290,7 +18219,6 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::ha
 {
     if (is_presence_container) return true;
     return attribute_set_name.is_set
-	|| enable.is_set
 	|| (path_selection !=  nullptr && path_selection->has_data())
 	|| (pce !=  nullptr && pce->has_data())
 	|| (affinity_mask !=  nullptr && affinity_mask->has_data())
@@ -18302,7 +18230,6 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::ha
 {
     return is_set(yfilter)
 	|| ydk::is_set(attribute_set_name.yfilter)
-	|| ydk::is_set(enable.yfilter)
 	|| (path_selection !=  nullptr && path_selection->has_operation())
 	|| (pce !=  nullptr && pce->has_operation())
 	|| (affinity_mask !=  nullptr && affinity_mask->has_operation())
@@ -18330,7 +18257,6 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (attribute_set_name.is_set || is_set(attribute_set_name.yfilter)) leaf_name_data.push_back(attribute_set_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -18426,12 +18352,6 @@ void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::se
         attribute_set_name.value_namespace = name_space;
         attribute_set_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::set_filter(const std::string & value_path, YFilter yfilter)
@@ -18440,15 +18360,11 @@ void MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::se
     {
         attribute_set_name.yfilter = yfilter;
     }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "path-selection" || name == "pce" || name == "affinity-mask" || name == "logging" || name == "new-style-affinity-affinity-types" || name == "attribute-set-name" || name == "enable")
+    if(name == "path-selection" || name == "pce" || name == "affinity-mask" || name == "logging" || name == "new-style-affinity-affinity-types" || name == "attribute-set-name")
         return true;
     return false;
 }
@@ -20385,41 +20301,53 @@ bool MplsTe::GlobalAttributes::AttributeSet::P2pTeAttributes::P2pTeAttribute::Ne
     return false;
 }
 
-const Enum::YLeaf MplsTeBackupBandwidthClass::class0 {0, "class0"};
-const Enum::YLeaf MplsTeBackupBandwidthClass::class1 {1, "class1"};
-const Enum::YLeaf MplsTeBackupBandwidthClass::any_class {9, "any-class"};
+const Enum::YLeaf MplsTesrlgExclude::mandatory {1, "mandatory"};
+const Enum::YLeaf MplsTesrlgExclude::preferred {2, "preferred"};
+const Enum::YLeaf MplsTesrlgExclude::weighted {3, "weighted"};
+
+const Enum::YLeaf MplsTeAffinityValue::hex_value {1, "hex-value"};
+const Enum::YLeaf MplsTeAffinityValue::bit_position {2, "bit-position"};
+
+const Enum::YLeaf RoutePriorityRole::route_priority_role_head_back_up {0, "route-priority-role-head-back-up"};
+const Enum::YLeaf RoutePriorityRole::route_priority_role_head_primary {1, "route-priority-role-head-primary"};
+const Enum::YLeaf RoutePriorityRole::route_priority_role_middle {2, "route-priority-role-middle"};
+
+const Enum::YLeaf OtnSignaledBandwidthFlexFraming::cbr {20, "cbr"};
+const Enum::YLeaf OtnSignaledBandwidthFlexFraming::framed_gfp_fixed {21, "framed-gfp-fixed"};
+const Enum::YLeaf OtnSignaledBandwidthFlexFraming::framed_gfp_resize {22, "framed-gfp-resize"};
 
 const Enum::YLeaf SrPrepend::none_type {0, "none-type"};
 const Enum::YLeaf SrPrepend::next_label {1, "next-label"};
 const Enum::YLeaf SrPrepend::bgp_n_hop {2, "bgp-n-hop"};
+
+const Enum::YLeaf MplsTePathSelectionTiebreaker::min_fill {1, "min-fill"};
+const Enum::YLeaf MplsTePathSelectionTiebreaker::max_fill {2, "max-fill"};
+const Enum::YLeaf MplsTePathSelectionTiebreaker::random {3, "random"};
+
+const Enum::YLeaf MplsTeOtnApsProtection::Y_1plus1_unidir_no_aps {4, "1plus1-unidir-no-aps"};
+const Enum::YLeaf MplsTeOtnApsProtection::Y_1plus1_unidir_aps {8, "1plus1-unidir-aps"};
+const Enum::YLeaf MplsTeOtnApsProtection::Y_1plus1_bdir_aps {16, "1plus1-bdir-aps"};
+
+const Enum::YLeaf OspfAreaMode::ospf_int {0, "ospf-int"};
+const Enum::YLeaf OspfAreaMode::ospfip_addr {1, "ospfip-addr"};
+
+const Enum::YLeaf MplsTePathOptionProperty::none {0, "none"};
+const Enum::YLeaf MplsTePathOptionProperty::lockdown {1, "lockdown"};
+const Enum::YLeaf MplsTePathOptionProperty::verbatim {4, "verbatim"};
+const Enum::YLeaf MplsTePathOptionProperty::pce {8, "pce"};
+const Enum::YLeaf MplsTePathOptionProperty::segment_routing {16, "segment-routing"};
+const Enum::YLeaf MplsTePathOptionProperty::sticky {32, "sticky"};
 
 const Enum::YLeaf MplsTePathComputationMethod::not_set {0, "not-set"};
 const Enum::YLeaf MplsTePathComputationMethod::dynamic {1, "dynamic"};
 const Enum::YLeaf MplsTePathComputationMethod::pce {2, "pce"};
 const Enum::YLeaf MplsTePathComputationMethod::explicit_ {3, "explicit"};
 
+const Enum::YLeaf MplsTeSignaledLabel::not_set {0, "not-set"};
+const Enum::YLeaf MplsTeSignaledLabel::dwdm {1, "dwdm"};
+
 const Enum::YLeaf OtnDestination::number_ed {0, "number-ed"};
 const Enum::YLeaf OtnDestination::un_number_ed {1, "un-number-ed"};
-
-const Enum::YLeaf MplsTeSwitchingCap::psc1 {1, "psc1"};
-const Enum::YLeaf MplsTeSwitchingCap::lsc {150, "lsc"};
-const Enum::YLeaf MplsTeSwitchingCap::fsc {200, "fsc"};
-
-const Enum::YLeaf MplsTeBfdSessionDownAction::re_setup {1, "re-setup"};
-
-const Enum::YLeaf RoutePriorityRole::route_priority_role_head_back_up {0, "route-priority-role-head-back-up"};
-const Enum::YLeaf RoutePriorityRole::route_priority_role_head_primary {1, "route-priority-role-head-primary"};
-const Enum::YLeaf RoutePriorityRole::route_priority_role_middle {2, "route-priority-role-middle"};
-
-const Enum::YLeaf MplsTebfdSession::regular_bfd {1, "regular-bfd"};
-const Enum::YLeaf MplsTebfdSession::sbfd {2, "sbfd"};
-const Enum::YLeaf MplsTebfdSession::redundant_sbfd {3, "redundant-sbfd"};
-
-const Enum::YLeaf MplsTeLogFrrProtection::frr_active_primary {1, "frr-active-primary"};
-const Enum::YLeaf MplsTeLogFrrProtection::backup {256, "backup"};
-const Enum::YLeaf MplsTeLogFrrProtection::frr_ready_primary {512, "frr-ready-primary"};
-const Enum::YLeaf MplsTeLogFrrProtection::primary {513, "primary"};
-const Enum::YLeaf MplsTeLogFrrProtection::all {769, "all"};
 
 const Enum::YLeaf MplsTeTunnelAffinity::include {1, "include"};
 const Enum::YLeaf MplsTeTunnelAffinity::include_strict {2, "include-strict"};
@@ -20427,49 +20355,36 @@ const Enum::YLeaf MplsTeTunnelAffinity::exclude {3, "exclude"};
 const Enum::YLeaf MplsTeTunnelAffinity::exclude_all {4, "exclude-all"};
 const Enum::YLeaf MplsTeTunnelAffinity::ignore {5, "ignore"};
 
-const Enum::YLeaf IetfMode::standard {3, "standard"};
-
-const Enum::YLeaf MplsTePathOptionProperty::none {0, "none"};
-const Enum::YLeaf MplsTePathOptionProperty::lockdown {1, "lockdown"};
-const Enum::YLeaf MplsTePathOptionProperty::verbatim {4, "verbatim"};
-const Enum::YLeaf MplsTePathOptionProperty::pce {8, "pce"};
-const Enum::YLeaf MplsTePathOptionProperty::segment_routing {16, "segment-routing"};
-
-const Enum::YLeaf GmplsttiMode::sm {1, "sm"};
-const Enum::YLeaf GmplsttiMode::pm {2, "pm"};
-const Enum::YLeaf GmplsttiMode::tcm {3, "tcm"};
-
-const Enum::YLeaf MplsTePathSelectionInvalidationTimerExpire::tunnel_action_tear {1, "tunnel-action-tear"};
-const Enum::YLeaf MplsTePathSelectionInvalidationTimerExpire::tunnel_action_drop {2, "tunnel-action-drop"};
-
-const Enum::YLeaf MplsTeOtnApsProtection::Y_1plus1_unidir_no_aps {4, "1plus1-unidir-no-aps"};
-const Enum::YLeaf MplsTeOtnApsProtection::Y_1plus1_unidir_aps {8, "1plus1-unidir-aps"};
-const Enum::YLeaf MplsTeOtnApsProtection::Y_1plus1_bdir_aps {16, "1plus1-bdir-aps"};
-
-const Enum::YLeaf MplsTeSwitchingEncoding::packet {1, "packet"};
-const Enum::YLeaf MplsTeSwitchingEncoding::ethernet {2, "ethernet"};
-const Enum::YLeaf MplsTeSwitchingEncoding::sondet_sdh {5, "sondet-sdh"};
-
-const Enum::YLeaf MplsTeSigNameOption::none {0, "none"};
-const Enum::YLeaf MplsTeSigNameOption::address {1, "address"};
-const Enum::YLeaf MplsTeSigNameOption::name {2, "name"};
-
-const Enum::YLeaf OtnProtectionSwitchLockout::none {0, "none"};
-const Enum::YLeaf OtnProtectionSwitchLockout::working {1, "working"};
-
-const Enum::YLeaf MplsTeTunnelId::auto_ {0, "auto"};
-const Enum::YLeaf MplsTeTunnelId::explicit_ {1, "explicit"};
-
-const Enum::YLeaf MplsTeAffinityValue::hex_value {1, "hex-value"};
-const Enum::YLeaf MplsTeAffinityValue::bit_position {2, "bit-position"};
-
 const Enum::YLeaf OtnStaticUni::unknown {0, "unknown"};
 const Enum::YLeaf OtnStaticUni::xc {1, "xc"};
 const Enum::YLeaf OtnStaticUni::termination {2, "termination"};
 
-const Enum::YLeaf MplsTeOtnSncMode::snc_n {1, "snc-n"};
-const Enum::YLeaf MplsTeOtnSncMode::snc_i {2, "snc-i"};
-const Enum::YLeaf MplsTeOtnSncMode::snc_s {3, "snc-s"};
+const Enum::YLeaf MplsTeSwitchingCap::psc1 {1, "psc1"};
+const Enum::YLeaf MplsTeSwitchingCap::lsc {150, "lsc"};
+const Enum::YLeaf MplsTeSwitchingCap::fsc {200, "fsc"};
+
+const Enum::YLeaf MplsTeOtnApsProtectionMode::revertive {1, "revertive"};
+const Enum::YLeaf MplsTeOtnApsProtectionMode::non_revertive {2, "non-revertive"};
+
+const Enum::YLeaf MplsTeConfigTunnel::p2p {0, "p2p"};
+const Enum::YLeaf MplsTeConfigTunnel::p2mp {1, "p2mp"};
+
+const Enum::YLeaf MplsTeBfdSessionDownAction::re_setup {1, "re-setup"};
+
+const Enum::YLeaf MplsTeLogFrrProtection::frr_active_primary {1, "frr-active-primary"};
+const Enum::YLeaf MplsTeLogFrrProtection::backup {256, "backup"};
+const Enum::YLeaf MplsTeLogFrrProtection::frr_ready_primary {512, "frr-ready-primary"};
+const Enum::YLeaf MplsTeLogFrrProtection::primary {513, "primary"};
+const Enum::YLeaf MplsTeLogFrrProtection::all {769, "all"};
+
+const Enum::YLeaf LinkNextHop::none {1, "none"};
+const Enum::YLeaf LinkNextHop::ipv4_address {2, "ipv4-address"};
+
+const Enum::YLeaf MplsTeAutorouteMetric::relative {1, "relative"};
+const Enum::YLeaf MplsTeAutorouteMetric::absolute {2, "absolute"};
+const Enum::YLeaf MplsTeAutorouteMetric::constant {3, "constant"};
+
+const Enum::YLeaf BandwidthConstraint::bandwidth_constraint_maximum_allocation_model {1, "bandwidth-constraint-maximum-allocation-model"};
 
 const Enum::YLeaf OtnPayload::unknown {0, "unknown"};
 const Enum::YLeaf OtnPayload::bmp {50, "bmp"};
@@ -20477,16 +20392,15 @@ const Enum::YLeaf OtnPayload::gfp_f {54, "gfp-f"};
 const Enum::YLeaf OtnPayload::gmp {55, "gmp"};
 const Enum::YLeaf OtnPayload::gfp_f_ext {70, "gfp-f-ext"};
 
-const Enum::YLeaf OspfAreaMode::ospf_int {0, "ospf-int"};
-const Enum::YLeaf OspfAreaMode::ospfip_addr {1, "ospfip-addr"};
+const Enum::YLeaf MplsTeOtnSncMode::snc_n {1, "snc-n"};
+const Enum::YLeaf MplsTeOtnSncMode::snc_i {2, "snc-i"};
+const Enum::YLeaf MplsTeOtnSncMode::snc_s {3, "snc-s"};
 
-const Enum::YLeaf MplsTeIgpProtocol::none {0, "none"};
-const Enum::YLeaf MplsTeIgpProtocol::isis {1, "isis"};
-const Enum::YLeaf MplsTeIgpProtocol::ospf {2, "ospf"};
+const Enum::YLeaf BfdReversePath::bfd_reverse_path_binding_label {1, "bfd-reverse-path-binding-label"};
 
-const Enum::YLeaf MplsTePathSelectionTiebreaker::min_fill {1, "min-fill"};
-const Enum::YLeaf MplsTePathSelectionTiebreaker::max_fill {2, "max-fill"};
-const Enum::YLeaf MplsTePathSelectionTiebreaker::random {3, "random"};
+const Enum::YLeaf MplsTePathSelectionMetric::igp {1, "igp"};
+const Enum::YLeaf MplsTePathSelectionMetric::te {2, "te"};
+const Enum::YLeaf MplsTePathSelectionMetric::delay {4, "delay"};
 
 const Enum::YLeaf MplsTePathOption::not_set {0, "not-set"};
 const Enum::YLeaf MplsTePathOption::dynamic {1, "dynamic"};
@@ -20495,8 +20409,13 @@ const Enum::YLeaf MplsTePathOption::explicit_number {4, "explicit-number"};
 const Enum::YLeaf MplsTePathOption::no_ero {5, "no-ero"};
 const Enum::YLeaf MplsTePathOption::sr {6, "sr"};
 
-const Enum::YLeaf PathInvalidationAction::tear {1, "tear"};
-const Enum::YLeaf PathInvalidationAction::drop {2, "drop"};
+const Enum::YLeaf MplsLcacFloodingIgp::ospf {0, "ospf"};
+
+const Enum::YLeaf OtnProtectionSwitchLockout::none {0, "none"};
+const Enum::YLeaf OtnProtectionSwitchLockout::working {1, "working"};
+
+const Enum::YLeaf MplsTeTunnelId::auto_ {0, "auto"};
+const Enum::YLeaf MplsTeTunnelId::explicit_ {1, "explicit"};
 
 const Enum::YLeaf OtnSignaledBandwidth::odu1 {1, "odu1"};
 const Enum::YLeaf OtnSignaledBandwidth::odu2 {2, "odu2"};
@@ -20513,72 +20432,70 @@ const Enum::YLeaf OtnSignaledBandwidth::odu2f {25, "odu2f"};
 const Enum::YLeaf OtnSignaledBandwidth::odu3e1 {26, "odu3e1"};
 const Enum::YLeaf OtnSignaledBandwidth::odu3e2 {27, "odu3e2"};
 
-const Enum::YLeaf MplsTeAutorouteMetric::relative {1, "relative"};
-const Enum::YLeaf MplsTeAutorouteMetric::absolute {2, "absolute"};
-const Enum::YLeaf MplsTeAutorouteMetric::constant {3, "constant"};
+const Enum::YLeaf MplsTeBandwidthDste::standard_dste {0, "standard-dste"};
+const Enum::YLeaf MplsTeBandwidthDste::pre_standard_dste {1, "pre-standard-dste"};
+
+const Enum::YLeaf MplsTePathSelectionInvalidationTimerExpire::tunnel_action_tear {1, "tunnel-action-tear"};
+const Enum::YLeaf MplsTePathSelectionInvalidationTimerExpire::tunnel_action_drop {2, "tunnel-action-drop"};
+
+const Enum::YLeaf MplsTePathDiversityConformance::strict {0, "strict"};
+const Enum::YLeaf MplsTePathDiversityConformance::best_effort {1, "best-effort"};
+
+const Enum::YLeaf IetfMode::standard {3, "standard"};
+
+const Enum::YLeaf MplsTeOtnApsRestorationStyle::keep_failed_lsp {1, "keep-failed-lsp"};
+const Enum::YLeaf MplsTeOtnApsRestorationStyle::delete_failed_lsp {2, "delete-failed-lsp"};
+
+const Enum::YLeaf MplsTePathSelectionSegmentRoutingAdjacencyProtection::not_set {0, "not-set"};
+const Enum::YLeaf MplsTePathSelectionSegmentRoutingAdjacencyProtection::adj_unprotected {1, "adj-unprotected"};
+const Enum::YLeaf MplsTePathSelectionSegmentRoutingAdjacencyProtection::adj_protected {2, "adj-protected"};
+
+const Enum::YLeaf GmplsttiMode::sm {1, "sm"};
+const Enum::YLeaf GmplsttiMode::pm {2, "pm"};
+const Enum::YLeaf GmplsttiMode::tcm {3, "tcm"};
+
+const Enum::YLeaf MplsTeSwitchingEncoding::packet {1, "packet"};
+const Enum::YLeaf MplsTeSwitchingEncoding::ethernet {2, "ethernet"};
+const Enum::YLeaf MplsTeSwitchingEncoding::sondet_sdh {5, "sondet-sdh"};
+
+const Enum::YLeaf MplsTeSigNameOption::none {0, "none"};
+const Enum::YLeaf MplsTeSigNameOption::address {1, "address"};
+const Enum::YLeaf MplsTeSigNameOption::name {2, "name"};
+
+const Enum::YLeaf PathInvalidationAction::tear {1, "tear"};
+const Enum::YLeaf PathInvalidationAction::drop {2, "drop"};
+
+const Enum::YLeaf MplsTeSwitchingIndex::link {255, "link"};
+
+const Enum::YLeaf MplsTeIgpProtocol::none {0, "none"};
+const Enum::YLeaf MplsTeIgpProtocol::isis {1, "isis"};
+const Enum::YLeaf MplsTeIgpProtocol::ospf {2, "ospf"};
+
+const Enum::YLeaf MplsTebfdSession::regular_bfd {1, "regular-bfd"};
+const Enum::YLeaf MplsTebfdSession::sbfd {2, "sbfd"};
+const Enum::YLeaf MplsTebfdSession::redundant_sbfd {3, "redundant-sbfd"};
 
 const Enum::YLeaf BindingSegmentId::any_label {1, "any-label"};
 const Enum::YLeaf BindingSegmentId::specified_label {2, "specified-label"};
 
-const Enum::YLeaf MplsTesrlgExclude::mandatory {1, "mandatory"};
-const Enum::YLeaf MplsTesrlgExclude::preferred {2, "preferred"};
-const Enum::YLeaf MplsTesrlgExclude::weighted {3, "weighted"};
-
-const Enum::YLeaf MplsTeSignaledLabel::not_set {0, "not-set"};
-const Enum::YLeaf MplsTeSignaledLabel::dwdm {1, "dwdm"};
-
-const Enum::YLeaf BandwidthConstraint::bandwidth_constraint_maximum_allocation_model {1, "bandwidth-constraint-maximum-allocation-model"};
+const Enum::YLeaf MplsTeBackupBandwidthPool::any_pool {1, "any-pool"};
+const Enum::YLeaf MplsTeBackupBandwidthPool::global_pool {2, "global-pool"};
+const Enum::YLeaf MplsTeBackupBandwidthPool::sub_pool {4, "sub-pool"};
 
 const Enum::YLeaf MplsTeSwitchingEncode::none {0, "none"};
 const Enum::YLeaf MplsTeSwitchingEncode::packet {1, "packet"};
 const Enum::YLeaf MplsTeSwitchingEncode::ethernet {2, "ethernet"};
 const Enum::YLeaf MplsTeSwitchingEncode::sondet_sdh {5, "sondet-sdh"};
 
-const Enum::YLeaf MplsTePathSelectionMetric::igp {1, "igp"};
-const Enum::YLeaf MplsTePathSelectionMetric::te {2, "te"};
-const Enum::YLeaf MplsTePathSelectionMetric::delay {4, "delay"};
+const Enum::YLeaf MplsTeBackupBandwidthClass::class0 {0, "class0"};
+const Enum::YLeaf MplsTeBackupBandwidthClass::class1 {1, "class1"};
+const Enum::YLeaf MplsTeBackupBandwidthClass::any_class {9, "any-class"};
 
 const Enum::YLeaf MplsTePathOptionProtection::active {0, "active"};
 const Enum::YLeaf MplsTePathOptionProtection::protecting {1, "protecting"};
 
-const Enum::YLeaf OtnSignaledBandwidthFlexFraming::cbr {20, "cbr"};
-const Enum::YLeaf OtnSignaledBandwidthFlexFraming::framed_gfp_fixed {21, "framed-gfp-fixed"};
-const Enum::YLeaf OtnSignaledBandwidthFlexFraming::framed_gfp_resize {22, "framed-gfp-resize"};
-
 const Enum::YLeaf MplsTeBandwidthLimit::unlimited {64, "unlimited"};
 const Enum::YLeaf MplsTeBandwidthLimit::limited {128, "limited"};
-
-const Enum::YLeaf MplsTePathSelectionSegmentRoutingAdjacencyProtection::not_set {0, "not-set"};
-const Enum::YLeaf MplsTePathSelectionSegmentRoutingAdjacencyProtection::adj_unprotected {1, "adj-unprotected"};
-const Enum::YLeaf MplsTePathSelectionSegmentRoutingAdjacencyProtection::adj_protected {2, "adj-protected"};
-
-const Enum::YLeaf LinkNextHop::none {1, "none"};
-const Enum::YLeaf LinkNextHop::ipv4_address {2, "ipv4-address"};
-
-const Enum::YLeaf MplsLcacFloodingIgp::ospf {0, "ospf"};
-
-const Enum::YLeaf BfdReversePath::bfd_reverse_path_binding_label {1, "bfd-reverse-path-binding-label"};
-
-const Enum::YLeaf MplsTeOtnApsRestorationStyle::keep_failed_lsp {1, "keep-failed-lsp"};
-const Enum::YLeaf MplsTeOtnApsRestorationStyle::delete_failed_lsp {2, "delete-failed-lsp"};
-
-const Enum::YLeaf MplsTeBandwidthDste::standard_dste {0, "standard-dste"};
-const Enum::YLeaf MplsTeBandwidthDste::pre_standard_dste {1, "pre-standard-dste"};
-
-const Enum::YLeaf MplsTePathDiversityConformance::strict {0, "strict"};
-const Enum::YLeaf MplsTePathDiversityConformance::best_effort {1, "best-effort"};
-
-const Enum::YLeaf MplsTeBackupBandwidthPool::any_pool {1, "any-pool"};
-const Enum::YLeaf MplsTeBackupBandwidthPool::global_pool {2, "global-pool"};
-const Enum::YLeaf MplsTeBackupBandwidthPool::sub_pool {4, "sub-pool"};
-
-const Enum::YLeaf MplsTeOtnApsProtectionMode::revertive {1, "revertive"};
-const Enum::YLeaf MplsTeOtnApsProtectionMode::non_revertive {2, "non-revertive"};
-
-const Enum::YLeaf MplsTeSwitchingIndex::link {255, "link"};
-
-const Enum::YLeaf MplsTeConfigTunnel::p2p {0, "p2p"};
-const Enum::YLeaf MplsTeConfigTunnel::p2mp {1, "p2mp"};
 
 
 }

@@ -116,14 +116,6 @@ class HwModuleSpaPhysicalMode : public ydk::Enum
 
 };
 
-class HwModuleShutdownPowerMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unpowered;
-        static const ydk::Enum::YLeaf powered;
-
-};
-
 class HwModuleSpaPhysicalInterface : public ydk::Enum
 {
     public:
@@ -133,6 +125,14 @@ class HwModuleSpaPhysicalInterface : public ydk::Enum
         static const ydk::Enum::YLeaf e1;
         static const ydk::Enum::YLeaf sonet;
         static const ydk::Enum::YLeaf sdh;
+
+};
+
+class HwModuleShutdownPowerMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unpowered;
+        static const ydk::Enum::YLeaf powered;
 
 };
 

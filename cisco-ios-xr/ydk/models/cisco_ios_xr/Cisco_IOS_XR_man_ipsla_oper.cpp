@@ -22983,20 +22983,14 @@ bool Ipsla::ApplicationInfo::has_leaf_or_child_of_name(const std::string & name)
     return false;
 }
 
-const Enum::YLeaf IpslaTargetTypeEnum::ipv4_address_target_type {1, "ipv4-address-target-type"};
-const Enum::YLeaf IpslaTargetTypeEnum::ipv4_prefix_target_type {2, "ipv4-prefix-target-type"};
-const Enum::YLeaf IpslaTargetTypeEnum::tunnel_id_target_type {3, "tunnel-id-target-type"};
-const Enum::YLeaf IpslaTargetTypeEnum::ipv4_pseudowire_target_type {4, "ipv4-pseudowire-target-type"};
-const Enum::YLeaf IpslaTargetTypeEnum::ipv6_address_target_type {5, "ipv6-address-target-type"};
-
-const Enum::YLeaf SlaOpTypes::oper_icmp_echo {1, "oper-icmp-echo"};
-const Enum::YLeaf SlaOpTypes::oper_icmp_path_jitter {2, "oper-icmp-path-jitter"};
-const Enum::YLeaf SlaOpTypes::oper_icmp_path_echo {4, "oper-icmp-path-echo"};
-const Enum::YLeaf SlaOpTypes::oper_udp_jitter {8, "oper-udp-jitter"};
-const Enum::YLeaf SlaOpTypes::oper_udp_echo {16, "oper-udp-echo"};
-const Enum::YLeaf SlaOpTypes::oper_mpls_lsp_ping {32, "oper-mpls-lsp-ping"};
-const Enum::YLeaf SlaOpTypes::oper_mpls_lsp_trace {64, "oper-mpls-lsp-trace"};
-const Enum::YLeaf SlaOpTypes::oper_mpls_lsp_group {128, "oper-mpls-lsp-group"};
+const Enum::YLeaf OpTypeEnum::icmp_echo {1, "icmp-echo"};
+const Enum::YLeaf OpTypeEnum::icmp_path_jitter {2, "icmp-path-jitter"};
+const Enum::YLeaf OpTypeEnum::icmp_path_echo {4, "icmp-path-echo"};
+const Enum::YLeaf OpTypeEnum::udp_jitter {8, "udp-jitter"};
+const Enum::YLeaf OpTypeEnum::udp_echo {16, "udp-echo"};
+const Enum::YLeaf OpTypeEnum::mpls_lsp_ping {32, "mpls-lsp-ping"};
+const Enum::YLeaf OpTypeEnum::mpls_lsp_trace {64, "mpls-lsp-trace"};
+const Enum::YLeaf OpTypeEnum::mpls_lsp_group {128, "mpls-lsp-group"};
 
 const Enum::YLeaf IpslaRetCode::ipsla_ret_code_unknown {0, "ipsla-ret-code-unknown"};
 const Enum::YLeaf IpslaRetCode::ipsla_ret_code_ok {1, "ipsla-ret-code-ok"};
@@ -23049,30 +23043,16 @@ const Enum::YLeaf IpslaRetCode::ipsla_ret_code_pending {47, "ipsla-ret-code-pend
 const Enum::YLeaf IpslaRetCode::ipsla_ret_code_invalid_address {48, "ipsla-ret-code-invalid-address"};
 const Enum::YLeaf IpslaRetCode::ipsla_ret_code_max {49, "ipsla-ret-code-max"};
 
-const Enum::YLeaf OpTypeEnum::icmp_echo {1, "icmp-echo"};
-const Enum::YLeaf OpTypeEnum::icmp_path_jitter {2, "icmp-path-jitter"};
-const Enum::YLeaf OpTypeEnum::icmp_path_echo {4, "icmp-path-echo"};
-const Enum::YLeaf OpTypeEnum::udp_jitter {8, "udp-jitter"};
-const Enum::YLeaf OpTypeEnum::udp_echo {16, "udp-echo"};
-const Enum::YLeaf OpTypeEnum::mpls_lsp_ping {32, "mpls-lsp-ping"};
-const Enum::YLeaf OpTypeEnum::mpls_lsp_trace {64, "mpls-lsp-trace"};
-const Enum::YLeaf OpTypeEnum::mpls_lsp_group {128, "mpls-lsp-group"};
-
-const Enum::YLeaf IpslaLspGrpPathStatusEnum::ipsla_lsp_grp_path_status_unknown {0, "ipsla-lsp-grp-path-status-unknown"};
-const Enum::YLeaf IpslaLspGrpPathStatusEnum::ipsla_lsp_grp_path_status_up {1, "ipsla-lsp-grp-path-status-up"};
-const Enum::YLeaf IpslaLspGrpPathStatusEnum::ipsla_lsp_grp_path_status_down {2, "ipsla-lsp-grp-path-status-down"};
-const Enum::YLeaf IpslaLspGrpPathStatusEnum::ipsla_lsp_grp_path_status_retry {3, "ipsla-lsp-grp-path-status-retry"};
-const Enum::YLeaf IpslaLspGrpPathStatusEnum::ipsla_lsp_grp_path_status_pending {4, "ipsla-lsp-grp-path-status-pending"};
-
-const Enum::YLeaf IpslaOperStateEnum::ipsla_oper_state_inactive {0, "ipsla-oper-state-inactive"};
-const Enum::YLeaf IpslaOperStateEnum::ipsla_oper_state_pending {1, "ipsla-oper-state-pending"};
-const Enum::YLeaf IpslaOperStateEnum::ipsla_oper_state_active {2, "ipsla-oper-state-active"};
-
 const Enum::YLeaf IpslaMplsLpdDiscoveryModeEnum::ipsla_mpls_lpd_unknown {0, "ipsla-mpls-lpd-unknown"};
 const Enum::YLeaf IpslaMplsLpdDiscoveryModeEnum::ipsla_mpls_lpd_initial_running {1, "ipsla-mpls-lpd-initial-running"};
 const Enum::YLeaf IpslaMplsLpdDiscoveryModeEnum::ipsla_mpls_lpd_initial_complete {2, "ipsla-mpls-lpd-initial-complete"};
 const Enum::YLeaf IpslaMplsLpdDiscoveryModeEnum::ipsla_mpls_lpd_rediscovery_running {3, "ipsla-mpls-lpd-rediscovery-running"};
 const Enum::YLeaf IpslaMplsLpdDiscoveryModeEnum::ipsla_mpls_lpd_rediscovery_complete {4, "ipsla-mpls-lpd-rediscovery-complete"};
+
+const Enum::YLeaf IpslaMplsLpdPathDiscoveryStatus::ipsla_mpls_lpd_path_discovery_unknown {0, "ipsla-mpls-lpd-path-discovery-unknown"};
+const Enum::YLeaf IpslaMplsLpdPathDiscoveryStatus::ipsla_mpls_lpd_path_discovery_ok {1, "ipsla-mpls-lpd-path-discovery-ok"};
+const Enum::YLeaf IpslaMplsLpdPathDiscoveryStatus::ipsla_mpls_lpd_path_discovery_broken {2, "ipsla-mpls-lpd-path-discovery-broken"};
+const Enum::YLeaf IpslaMplsLpdPathDiscoveryStatus::ipsla_mpls_lpd_path_discovery_unexplorable {3, "ipsla-mpls-lpd-path-discovery-unexplorable"};
 
 const Enum::YLeaf IpslaMplsLpdRetCode::ipsla_mpls_lpd_ret_code_unknown {1, "ipsla-mpls-lpd-ret-code-unknown"};
 const Enum::YLeaf IpslaMplsLpdRetCode::ipsla_mpls_lpd_ret_code_no_path {2, "ipsla-mpls-lpd-ret-code-no-path"};
@@ -23083,19 +23063,39 @@ const Enum::YLeaf IpslaMplsLpdRetCode::ipsla_mpls_lpd_ret_code_timeout {6, "ipsl
 const Enum::YLeaf IpslaMplsLpdRetCode::ipsla_mpls_lpd_ret_code_error {7, "ipsla-mpls-lpd-ret-code-error"};
 const Enum::YLeaf IpslaMplsLpdRetCode::ipsla_mpls_lpd_ret_code_ok {8, "ipsla-mpls-lpd-ret-code-ok"};
 
+const Enum::YLeaf IpslaTargetTypeEnum::ipv4_address_target_type {1, "ipv4-address-target-type"};
+const Enum::YLeaf IpslaTargetTypeEnum::ipv4_prefix_target_type {2, "ipv4-prefix-target-type"};
+const Enum::YLeaf IpslaTargetTypeEnum::tunnel_id_target_type {3, "tunnel-id-target-type"};
+const Enum::YLeaf IpslaTargetTypeEnum::ipv4_pseudowire_target_type {4, "ipv4-pseudowire-target-type"};
+const Enum::YLeaf IpslaTargetTypeEnum::ipv6_address_target_type {5, "ipv6-address-target-type"};
+
+const Enum::YLeaf IpslaOperStateEnum::ipsla_oper_state_inactive {0, "ipsla-oper-state-inactive"};
+const Enum::YLeaf IpslaOperStateEnum::ipsla_oper_state_pending {1, "ipsla-oper-state-pending"};
+const Enum::YLeaf IpslaOperStateEnum::ipsla_oper_state_active {2, "ipsla-oper-state-active"};
+
+const Enum::YLeaf IpslaMplsAddDeleteEnum::ipsla_mpls_add_delete_add_q {1, "ipsla-mpls-add-delete-add-q"};
+const Enum::YLeaf IpslaMplsAddDeleteEnum::ipsla_mpls_add_delete_delete_q {2, "ipsla-mpls-add-delete-delete-q"};
+
+const Enum::YLeaf IpslaLspGrpPathStatusEnum::ipsla_lsp_grp_path_status_unknown {0, "ipsla-lsp-grp-path-status-unknown"};
+const Enum::YLeaf IpslaLspGrpPathStatusEnum::ipsla_lsp_grp_path_status_up {1, "ipsla-lsp-grp-path-status-up"};
+const Enum::YLeaf IpslaLspGrpPathStatusEnum::ipsla_lsp_grp_path_status_down {2, "ipsla-lsp-grp-path-status-down"};
+const Enum::YLeaf IpslaLspGrpPathStatusEnum::ipsla_lsp_grp_path_status_retry {3, "ipsla-lsp-grp-path-status-retry"};
+const Enum::YLeaf IpslaLspGrpPathStatusEnum::ipsla_lsp_grp_path_status_pending {4, "ipsla-lsp-grp-path-status-pending"};
+
 const Enum::YLeaf IpslaLspGrpStatusEnum::ipsla_lsp_grp_status_unknown {1, "ipsla-lsp-grp-status-unknown"};
 const Enum::YLeaf IpslaLspGrpStatusEnum::ipsla_lsp_grp_status_up {2, "ipsla-lsp-grp-status-up"};
 const Enum::YLeaf IpslaLspGrpStatusEnum::ipsla_lsp_grp_status_partial {3, "ipsla-lsp-grp-status-partial"};
 const Enum::YLeaf IpslaLspGrpStatusEnum::ipsla_lsp_grp_status_down {4, "ipsla-lsp-grp-status-down"};
 const Enum::YLeaf IpslaLspGrpStatusEnum::ipsla_lsp_grp_status_pending {5, "ipsla-lsp-grp-status-pending"};
 
-const Enum::YLeaf IpslaMplsAddDeleteEnum::ipsla_mpls_add_delete_add_q {1, "ipsla-mpls-add-delete-add-q"};
-const Enum::YLeaf IpslaMplsAddDeleteEnum::ipsla_mpls_add_delete_delete_q {2, "ipsla-mpls-add-delete-delete-q"};
-
-const Enum::YLeaf IpslaMplsLpdPathDiscoveryStatus::ipsla_mpls_lpd_path_discovery_unknown {0, "ipsla-mpls-lpd-path-discovery-unknown"};
-const Enum::YLeaf IpslaMplsLpdPathDiscoveryStatus::ipsla_mpls_lpd_path_discovery_ok {1, "ipsla-mpls-lpd-path-discovery-ok"};
-const Enum::YLeaf IpslaMplsLpdPathDiscoveryStatus::ipsla_mpls_lpd_path_discovery_broken {2, "ipsla-mpls-lpd-path-discovery-broken"};
-const Enum::YLeaf IpslaMplsLpdPathDiscoveryStatus::ipsla_mpls_lpd_path_discovery_unexplorable {3, "ipsla-mpls-lpd-path-discovery-unexplorable"};
+const Enum::YLeaf SlaOpTypes::oper_icmp_echo {1, "oper-icmp-echo"};
+const Enum::YLeaf SlaOpTypes::oper_icmp_path_jitter {2, "oper-icmp-path-jitter"};
+const Enum::YLeaf SlaOpTypes::oper_icmp_path_echo {4, "oper-icmp-path-echo"};
+const Enum::YLeaf SlaOpTypes::oper_udp_jitter {8, "oper-udp-jitter"};
+const Enum::YLeaf SlaOpTypes::oper_udp_echo {16, "oper-udp-echo"};
+const Enum::YLeaf SlaOpTypes::oper_mpls_lsp_ping {32, "oper-mpls-lsp-ping"};
+const Enum::YLeaf SlaOpTypes::oper_mpls_lsp_trace {64, "oper-mpls-lsp-trace"};
+const Enum::YLeaf SlaOpTypes::oper_mpls_lsp_group {128, "oper-mpls-lsp-group"};
 
 
 }

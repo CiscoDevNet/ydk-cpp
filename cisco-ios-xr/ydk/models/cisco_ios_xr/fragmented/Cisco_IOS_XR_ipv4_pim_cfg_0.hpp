@@ -3831,14 +3831,6 @@ class Pim::DefaultContext::Ipv4::Mofrr::CloneSources : public ydk::Entity
         
 }; // Pim::DefaultContext::Ipv4::Mofrr::CloneSources
 
-class PimProtocolMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf sm;
-        static const ydk::Enum::YLeaf bidir;
-
-};
-
 class PimMultipath : public ydk::Enum
 {
     public:
@@ -3847,6 +3839,14 @@ class PimMultipath : public ydk::Enum
         static const ydk::Enum::YLeaf source_hash;
         static const ydk::Enum::YLeaf source_next_hop_hash;
         static const ydk::Enum::YLeaf source_group_hash;
+
+};
+
+class PimProtocolMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf sm;
+        static const ydk::Enum::YLeaf bidir;
 
 };
 

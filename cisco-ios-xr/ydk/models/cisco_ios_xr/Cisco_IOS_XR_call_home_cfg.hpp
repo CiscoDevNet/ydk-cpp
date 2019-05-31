@@ -828,6 +828,15 @@ class CallHome::Authorization : public ydk::Entity
 
 }; // CallHome::Authorization
 
+class CallHomeMailSendInterval : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf daily;
+        static const ydk::Enum::YLeaf weekly;
+        static const ydk::Enum::YLeaf monthly;
+
+};
+
 class CallHomeDayOfWeek : public ydk::Enum
 {
     public:
@@ -838,24 +847,6 @@ class CallHomeDayOfWeek : public ydk::Enum
         static const ydk::Enum::YLeaf thursday;
         static const ydk::Enum::YLeaf friday;
         static const ydk::Enum::YLeaf saturday;
-
-};
-
-class DataPrivacyLevel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf normal;
-        static const ydk::Enum::YLeaf high;
-        static const ydk::Enum::YLeaf host_name;
-
-};
-
-class CallHomeMailSendInterval : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf daily;
-        static const ydk::Enum::YLeaf weekly;
-        static const ydk::Enum::YLeaf monthly;
 
 };
 
@@ -889,6 +880,15 @@ class CallHomeTransMethod : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf email;
         static const ydk::Enum::YLeaf http;
+
+};
+
+class DataPrivacyLevel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf normal;
+        static const ydk::Enum::YLeaf high;
+        static const ydk::Enum::YLeaf host_name;
 
 };
 

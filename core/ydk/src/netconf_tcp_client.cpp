@@ -326,6 +326,21 @@ void NetconfTCPClient::check_timeout(CURLcode res, int for_recv, const char* fmt
     }
 }
 
+void NetconfTCPClient::perform_session_check(const std::string & message)
+{
+    // get socket descriptor
+    // CURLINFO_LASTSOCKET is deprecated after curl >= 7.45.0 (470272)
+    CURLcode res;
+    #if LIBCURL_VERSION_NUM >= 470272
+    res = curl_easy_getinfo(curl, CURLINFO_ACTIVESOCKET, &sockfd);
+    #else
+    res = curl_easy_getinfo(curl, CURLINFO_LASTSOCKET, &sockfd);
+    #endif
+
+    std::string msg = message + ": Unable to retrieve sockfd: {}";
+    check_ok(res, msg.c_str());
+}
+
 // from libcurl examples
 /* Auxiliary function that waits on the socket. */
 static int wait_on_socket(curl_socket_t sockfd, int for_recv, long timeout_ms)

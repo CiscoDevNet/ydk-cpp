@@ -12,15 +12,6 @@
 namespace cisco_ios_xe {
 namespace EtherLike_MIB {
 
-class Dot3ErrorInitError : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        Dot3ErrorInitError();
-        ~Dot3ErrorInitError();
-
-
-}; // Dot3ErrorInitError
-
 class Dot3TestTdr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
@@ -30,15 +21,6 @@ class Dot3TestTdr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::I
 
 }; // Dot3TestTdr
 
-class Dot3ErrorLoopbackError : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        Dot3ErrorLoopbackError();
-        ~Dot3ErrorLoopbackError();
-
-
-}; // Dot3ErrorLoopbackError
-
 class Dot3TestLoopBack : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
@@ -47,6 +29,24 @@ class Dot3TestLoopBack : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual y
 
 
 }; // Dot3TestLoopBack
+
+class Dot3ErrorInitError : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        Dot3ErrorInitError();
+        ~Dot3ErrorInitError();
+
+
+}; // Dot3ErrorInitError
+
+class Dot3ErrorLoopbackError : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        Dot3ErrorLoopbackError();
+        ~Dot3ErrorLoopbackError();
+
+
+}; // Dot3ErrorLoopbackError
 
 class EtherLikeMIB : public ydk::Entity
 {

@@ -31,56 +31,6 @@ OPENCONFIGSOFTWARECOMPONENT::~OPENCONFIGSOFTWARECOMPONENT()
 {
 }
 
-OPERATINGSYSTEM::OPERATINGSYSTEM()
-     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:OPERATING_SYSTEM")
-{
-
-}
-
-OPERATINGSYSTEM::~OPERATINGSYSTEM()
-{
-}
-
-LINECARD::LINECARD()
-     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:LINECARD")
-{
-
-}
-
-LINECARD::~LINECARD()
-{
-}
-
-MODULE::MODULE()
-     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:MODULE")
-{
-
-}
-
-MODULE::~MODULE()
-{
-}
-
-CPU::CPU()
-     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:CPU")
-{
-
-}
-
-CPU::~CPU()
-{
-}
-
-TRANSCEIVER::TRANSCEIVER()
-     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:TRANSCEIVER")
-{
-
-}
-
-TRANSCEIVER::~TRANSCEIVER()
-{
-}
-
 CHASSIS::CHASSIS()
      : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:CHASSIS")
 {
@@ -88,16 +38,6 @@ CHASSIS::CHASSIS()
 }
 
 CHASSIS::~CHASSIS()
-{
-}
-
-FAN::FAN()
-     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:FAN")
-{
-
-}
-
-FAN::~FAN()
 {
 }
 
@@ -111,6 +51,26 @@ BACKPLANE::~BACKPLANE()
 {
 }
 
+POWERSUPPLY::POWERSUPPLY()
+     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:POWER_SUPPLY")
+{
+
+}
+
+POWERSUPPLY::~POWERSUPPLY()
+{
+}
+
+FAN::FAN()
+     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:FAN")
+{
+
+}
+
+FAN::~FAN()
+{
+}
+
 SENSOR::SENSOR()
      : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:SENSOR")
 {
@@ -118,6 +78,26 @@ SENSOR::SENSOR()
 }
 
 SENSOR::~SENSOR()
+{
+}
+
+MODULE::MODULE()
+     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:MODULE")
+{
+
+}
+
+MODULE::~MODULE()
+{
+}
+
+LINECARD::LINECARD()
+     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:LINECARD")
+{
+
+}
+
+LINECARD::~LINECARD()
 {
 }
 
@@ -131,13 +111,33 @@ PORT::~PORT()
 {
 }
 
-POWERSUPPLY::POWERSUPPLY()
-     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:POWER_SUPPLY")
+TRANSCEIVER::TRANSCEIVER()
+     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:TRANSCEIVER")
 {
 
 }
 
-POWERSUPPLY::~POWERSUPPLY()
+TRANSCEIVER::~TRANSCEIVER()
+{
+}
+
+CPU::CPU()
+     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:CPU")
+{
+
+}
+
+CPU::~CPU()
+{
+}
+
+OPERATINGSYSTEM::OPERATINGSYSTEM()
+     : Identity("http://openconfig.net/yang/platform-types", "openconfig-platform-types", "openconfig-platform-types:OPERATING_SYSTEM")
+{
+
+}
+
+OPERATINGSYSTEM::~OPERATINGSYSTEM()
 {
 }
 

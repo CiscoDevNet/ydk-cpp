@@ -552,7 +552,7 @@ class RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::C
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf community_set_name; //type: string
-        ydk::YLeafList community_member; //type: list of  one of union, identityref, string
+        ydk::YLeafList community_member; //type: list of  one of string, union, identityref
 
 }; // RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::Config
 
@@ -574,7 +574,7 @@ class RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::S
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf community_set_name; //type: string
-        ydk::YLeafList community_member; //type: list of  one of union, identityref, string
+        ydk::YLeafList community_member; //type: list of  one of string, union, identityref
 
 }; // RoutingPolicy::DefinedSets::BgpDefinedSets::CommunitySets::CommunitySet::State
 
@@ -648,7 +648,7 @@ class RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf ext_community_set_name; //type: string
-        ydk::YLeafList ext_community_member; //type: list of  one of union, string
+        ydk::YLeafList ext_community_member; //type: list of  one of string, union
 
 }; // RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::Config
 
@@ -670,7 +670,7 @@ class RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf ext_community_set_name; //type: string
-        ydk::YLeafList ext_community_member; //type: list of  one of union, string
+        ydk::YLeafList ext_community_member; //type: list of  one of string, union
 
 }; // RoutingPolicy::DefinedSets::BgpDefinedSets::ExtCommunitySets::ExtCommunitySet::State
 
@@ -986,8 +986,8 @@ class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement:
         class MatchNeighborSet; //type: RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchNeighborSet
         class MatchTagSet; //type: RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchTagSet
         class IgpConditions; //type: RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IgpConditions
-        class IsisConditions; //type: RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions
         class BgpConditions; //type: RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions
+        class IsisConditions; //type: RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions
 
         std::shared_ptr<openconfig::openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::Config> config;
         std::shared_ptr<openconfig::openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::State> state;
@@ -996,8 +996,8 @@ class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement:
         std::shared_ptr<openconfig::openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchNeighborSet> match_neighbor_set;
         std::shared_ptr<openconfig::openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::MatchTagSet> match_tag_set;
         std::shared_ptr<openconfig::openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IgpConditions> igp_conditions;
-        std::shared_ptr<openconfig::openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions> isis_conditions;
         std::shared_ptr<openconfig::openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions> bgp_conditions;
+        std::shared_ptr<openconfig::openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions> isis_conditions;
         
 }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions
 
@@ -1352,73 +1352,6 @@ class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement:
 
 
 }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IgpConditions
-
-
-class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions : public ydk::Entity
-{
-    public:
-        IsisConditions();
-        ~IsisConditions();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Config; //type: RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config
-        class State; //type: RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State
-
-        std::shared_ptr<openconfig::openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config> config;
-        std::shared_ptr<openconfig::openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State> state;
-        
-}; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions
-
-
-class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config : public ydk::Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf level_eq; //type: uint8
-
-}; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config
-
-
-class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf level_eq; //type: uint8
-
-}; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State
 
 
 class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions : public ydk::Entity
@@ -1861,6 +1794,73 @@ class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement:
 }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::BgpConditions::MatchAsPathSet::State
 
 
+class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions : public ydk::Entity
+{
+    public:
+        IsisConditions();
+        ~IsisConditions();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config
+        class State; //type: RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State
+
+        std::shared_ptr<openconfig::openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config> config;
+        std::shared_ptr<openconfig::openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State> state;
+        
+}; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions
+
+
+class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf level_eq; //type: uint8
+
+}; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::Config
+
+
+class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf level_eq; //type: uint8
+
+}; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Conditions::IsisConditions::State
+
+
 class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions : public ydk::Entity
 {
     public:
@@ -1880,14 +1880,14 @@ class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement:
         class Config; //type: RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::Config
         class State; //type: RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::State
         class IgpActions; //type: RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IgpActions
-        class IsisActions; //type: RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions
         class BgpActions; //type: RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions
+        class IsisActions; //type: RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions
 
         std::shared_ptr<openconfig::openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::Config> config;
         std::shared_ptr<openconfig::openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::State> state;
         std::shared_ptr<openconfig::openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IgpActions> igp_actions;
-        std::shared_ptr<openconfig::openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions> isis_actions;
         std::shared_ptr<openconfig::openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions> bgp_actions;
+        std::shared_ptr<openconfig::openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions> isis_actions;
         
 }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions
 
@@ -2003,77 +2003,6 @@ class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement:
 }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IgpActions::State
 
 
-class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions : public ydk::Entity
-{
-    public:
-        IsisActions();
-        ~IsisActions();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Config; //type: RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config
-        class State; //type: RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State
-
-        std::shared_ptr<openconfig::openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config> config;
-        std::shared_ptr<openconfig::openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State> state;
-        
-}; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions
-
-
-class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config : public ydk::Entity
-{
-    public:
-        Config();
-        ~Config();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf set_level; //type: uint8
-        ydk::YLeaf set_metric_type; //type: uint8
-        ydk::YLeaf set_metric; //type: uint32
-
-}; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config
-
-
-class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State : public ydk::Entity
-{
-    public:
-        State();
-        ~State();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf set_level; //type: uint8
-        ydk::YLeaf set_metric_type; //type: uint8
-        ydk::YLeaf set_metric; //type: uint32
-
-}; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State
-
-
 class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions : public ydk::Entity
 {
     public:
@@ -2124,7 +2053,7 @@ class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement:
         ydk::YLeaf set_route_origin; //type: BgpOriginAttrType
         ydk::YLeaf set_local_pref; //type: uint32
         ydk::YLeaf set_next_hop; //type: one of union, enumeration
-        ydk::YLeaf set_med; //type: one of uint32, enumeration, string
+        ydk::YLeaf set_med; //type: one of uint32, string, enumeration
 
 }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::Config
 
@@ -2148,7 +2077,7 @@ class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement:
         ydk::YLeaf set_route_origin; //type: BgpOriginAttrType
         ydk::YLeaf set_local_pref; //type: uint32
         ydk::YLeaf set_next_hop; //type: one of union, enumeration
-        ydk::YLeaf set_med; //type: one of uint32, enumeration, string
+        ydk::YLeaf set_med; //type: one of uint32, string, enumeration
 
 }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::State
 
@@ -2640,6 +2569,77 @@ class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement:
         ydk::YLeaf ext_community_set_ref;
 
 }; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::BgpActions::SetExtCommunity::Reference::State
+
+
+class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions : public ydk::Entity
+{
+    public:
+        IsisActions();
+        ~IsisActions();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Config; //type: RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config
+        class State; //type: RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State
+
+        std::shared_ptr<openconfig::openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config> config;
+        std::shared_ptr<openconfig::openconfig_routing_policy::RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State> state;
+        
+}; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions
+
+
+class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config : public ydk::Entity
+{
+    public:
+        Config();
+        ~Config();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf set_level; //type: uint8
+        ydk::YLeaf set_metric_type; //type: uint8
+        ydk::YLeaf set_metric; //type: uint32
+
+}; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::Config
+
+
+class RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State : public ydk::Entity
+{
+    public:
+        State();
+        ~State();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf set_level; //type: uint8
+        ydk::YLeaf set_metric_type; //type: uint8
+        ydk::YLeaf set_metric; //type: uint32
+
+}; // RoutingPolicy::PolicyDefinitions::PolicyDefinition::Statements::Statement::Actions::IsisActions::State
 
 class DefaultPolicyType : public ydk::Enum
 {

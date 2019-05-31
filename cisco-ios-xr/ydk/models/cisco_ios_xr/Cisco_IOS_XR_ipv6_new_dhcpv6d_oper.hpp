@@ -873,8 +873,31 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences
 
         ydk::YLeaf proxy_iid_interface_name; //type: string
         ydk::YLeaf proxy_interface_id; //type: string
+        class NextInterfaceId; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences::Ipv6Dhcpv6dProxyIidReference::NextInterfaceId
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences::Ipv6Dhcpv6dProxyIidReference::NextInterfaceId> next_interface_id;
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences::Ipv6Dhcpv6dProxyIidReference
+
+
+class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences::Ipv6Dhcpv6dProxyIidReference::NextInterfaceId : public ydk::Entity
+{
+    public:
+        NextInterfaceId();
+        ~NextInterfaceId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+
+}; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceIdReferences::Ipv6Dhcpv6dProxyIidReference::NextInterfaceId
 
 
 class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences : public ydk::Entity
@@ -917,8 +940,31 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dh
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf proxy_reference_vrf_name; //type: string
+        class NextVrf; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dhcpv6dProxyVrfReference::NextVrf
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dhcpv6dProxyVrfReference::NextVrf> next_vrf;
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dhcpv6dProxyVrfReference
+
+
+class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dhcpv6dProxyVrfReference::NextVrf : public ydk::Entity
+{
+    public:
+        NextVrf();
+        ~NextVrf();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+
+}; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::VrfReferences::Ipv6Dhcpv6dProxyVrfReference::NextVrf
 
 
 class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences : public ydk::Entity
@@ -961,8 +1007,31 @@ class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf proxy_reference_interface_name; //type: string
+        class NextInterface; //type: Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6dProxyInterfaceReference::NextInterface
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6dProxyInterfaceReference::NextInterface> next_interface;
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6dProxyInterfaceReference
+
+
+class Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6dProxyInterfaceReference::NextInterface : public ydk::Entity
+{
+    public:
+        NextInterface();
+        ~NextInterface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+
+}; // Dhcpv6::Nodes::Node::Proxy::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6dProxyInterfaceReference::NextInterface
 
 
 class Dhcpv6::Nodes::Node::Proxy::DisconnectHistories : public ydk::Entity
@@ -1226,6 +1295,7 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client : public ydk::Entity
         ydk::YLeaf tx_interface_id; //type: string
         ydk::YLeaf server_ipv6_address; //type: string
         ydk::YLeaf profile_name; //type: string
+        ydk::YLeaf selected_profile_name; //type: string
         ydk::YLeaf framed_ipv6_prefix; //type: string
         ydk::YLeaf framed_prefix_length; //type: uint8
         ydk::YLeaf is_nak_next_renew; //type: boolean
@@ -1287,8 +1357,10 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIa
         ydk::YLeaf total_address; //type: uint16
         ydk::YLeaf state; //type: BagDhcpv6dFsmState
         class Addresses; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses
+        class NextIaiapd; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::NextIaiapd
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses> addresses;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::NextIaiapd> next_iaiapd;
         
 }; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo
 
@@ -1336,8 +1408,51 @@ class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIa
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf lease_time; //type: uint32
         ydk::YLeaf remaining_lease_time; //type: uint32
+        class NextAddrAttrb; //type: Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses::BagDhcpv6dAddrAttrb::NextAddrAttrb
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses::BagDhcpv6dAddrAttrb::NextAddrAttrb> next_addr_attrb;
+        
 }; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses::BagDhcpv6dAddrAttrb
+
+
+class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses::BagDhcpv6dAddrAttrb::NextAddrAttrb : public ydk::Entity
+{
+    public:
+        NextAddrAttrb();
+        ~NextAddrAttrb();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+
+}; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses::BagDhcpv6dAddrAttrb::NextAddrAttrb
+
+
+class Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::NextIaiapd : public ydk::Entity
+{
+    public:
+        NextIaiapd();
+        ~NextIaiapd();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+
+}; // Dhcpv6::Nodes::Node::Proxy::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::NextIaiapd
 
 
 class Dhcpv6::Nodes::Node::Proxy::Binding::Summary : public ydk::Entity
@@ -1796,6 +1911,7 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client : public ydk::Entity
         ydk::YLeaf server_binding_inner_tag; //type: uint32
         ydk::YLeaf pool_name; //type: string
         ydk::YLeaf profile_name; //type: string
+        ydk::YLeaf seleceted_profile_name; //type: string
         ydk::YLeaf framed_ipv6_prefix; //type: string
         ydk::YLeaf framed_prefix_length; //type: uint8
         ydk::YLeaf class_name; //type: string
@@ -1863,8 +1979,10 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dI
         ydk::YLeaf total_address; //type: uint16
         ydk::YLeaf state; //type: BagDhcpv6dFsmState
         class Addresses; //type: Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses
+        class NextIaiapd; //type: Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::NextIaiapd
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses> addresses;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::NextIaiapd> next_iaiapd;
         
 }; // Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo
 
@@ -1912,8 +2030,51 @@ class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dI
         ydk::YLeaf prefix_length; //type: uint8
         ydk::YLeaf lease_time; //type: uint32
         ydk::YLeaf remaining_lease_time; //type: uint32
+        class NextAddrAttrb; //type: Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses::BagDhcpv6dAddrAttrb::NextAddrAttrb
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses::BagDhcpv6dAddrAttrb::NextAddrAttrb> next_addr_attrb;
+        
 }; // Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses::BagDhcpv6dAddrAttrb
+
+
+class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses::BagDhcpv6dAddrAttrb::NextAddrAttrb : public ydk::Entity
+{
+    public:
+        NextAddrAttrb();
+        ~NextAddrAttrb();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+
+}; // Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::Addresses::BagDhcpv6dAddrAttrb::NextAddrAttrb
+
+
+class Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::NextIaiapd : public ydk::Entity
+{
+    public:
+        NextIaiapd();
+        ~NextIaiapd();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+
+}; // Dhcpv6::Nodes::Node::Server::Binding::Clients::Client::IaIdPd::BagDhcpv6dIaIdPdInfo::NextIaiapd
 
 
 class Dhcpv6::Nodes::Node::Server::Vrfs : public ydk::Entity
@@ -2556,8 +2717,31 @@ class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf server_reference_interface_name; //type: string
+        class NextInterface; //type: Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6dServerInterfaceReference::NextInterface
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_new_dhcpv6d_oper::Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6dServerInterfaceReference::NextInterface> next_interface;
+        
 }; // Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6dServerInterfaceReference
+
+
+class Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6dServerInterfaceReference::NextInterface : public ydk::Entity
+{
+    public:
+        NextInterface();
+        ~NextInterface();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+
+}; // Dhcpv6::Nodes::Node::Server::Profiles::Profile::Info::InterfaceReferences::Ipv6Dhcpv6dServerInterfaceReference::NextInterface
 
 
 class Dhcpv6::Nodes::Node::Server::Profiles::Profile::ThrottleInfos : public ydk::Entity
@@ -3100,6 +3284,11 @@ class Dhcpv6::Nodes::Node::Relay::Binding::Clients::Client : public ydk::Entity
         ydk::YLeaf next_hop_addr; //type: string
         ydk::YLeaf ia_id; //type: uint32
         ydk::YLeaf relay_profile_name; //type: string
+        ydk::YLeaf l2_intf_ac_name; //type: string
+        ydk::YLeaf ifname; //type: string
+        ydk::YLeaf serg_state; //type: uint32
+        ydk::YLeaf serg_intf_role; //type: uint32
+        ydk::YLeaf relay_binding_chaddr; //type: string
 
 }; // Dhcpv6::Nodes::Node::Relay::Binding::Clients::Client
 
@@ -3596,25 +3785,6 @@ class Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryData : public
 
 }; // Dhcpv6::Nodes::Node::Relay::Vrfs::Vrf::Statistics::LeaseQueryData
 
-class LeaseLimit : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf interface;
-        static const ydk::Enum::YLeaf circuit_id;
-        static const ydk::Enum::YLeaf remote_id;
-
-};
-
-class BagDhcpv6dSubMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf base;
-        static const ydk::Enum::YLeaf server;
-        static const ydk::Enum::YLeaf proxy;
-
-};
-
 class BagDhcpv6dFsmState : public ydk::Enum
 {
     public:
@@ -3635,37 +3805,12 @@ class BagDhcpv6dFsmState : public ydk::Enum
 
 };
 
-class BagDhcpv6dIntfSrgRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf master;
-        static const ydk::Enum::YLeaf slave;
-
-};
-
-class Dhcpv6IssuVersion : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf version1;
-        static const ydk::Enum::YLeaf version2;
-
-};
-
 class BagDhcpv6dIaId : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf iana;
         static const ydk::Enum::YLeaf iapd;
         static const ydk::Enum::YLeaf iata;
-
-};
-
-class Dhcpv6IssuRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf role_primary;
-        static const ydk::Enum::YLeaf role_secondary;
 
 };
 
@@ -3678,6 +3823,42 @@ class BagDhcpv6dIntfSergRole : public ydk::Enum
 
 };
 
+class BagDhcpv6dIntfSrgRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf slave;
+
+};
+
+class LeaseLimit : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf interface;
+        static const ydk::Enum::YLeaf circuit_id;
+        static const ydk::Enum::YLeaf remote_id;
+
+};
+
+class BagDhcpv6dSubMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf base;
+        static const ydk::Enum::YLeaf server;
+        static const ydk::Enum::YLeaf proxy;
+
+};
+
+class Dhcpv6IssuVersion : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf version1;
+        static const ydk::Enum::YLeaf version2;
+
+};
+
 class DhcpIssuPhase : public ydk::Enum
 {
     public:
@@ -3686,6 +3867,14 @@ class DhcpIssuPhase : public ydk::Enum
         static const ydk::Enum::YLeaf phase_run;
         static const ydk::Enum::YLeaf phase_completed;
         static const ydk::Enum::YLeaf phase_aborted;
+
+};
+
+class Dhcpv6IssuRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf role_primary;
+        static const ydk::Enum::YLeaf role_secondary;
 
 };
 

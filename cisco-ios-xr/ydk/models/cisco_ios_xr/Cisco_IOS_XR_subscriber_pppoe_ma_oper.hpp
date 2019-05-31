@@ -2151,26 +2151,21 @@ class Pppoe::Nodes::Node::SummaryTotal : public ydk::Entity
 
 }; // Pppoe::Nodes::Node::SummaryTotal
 
-class PppoeMaSessionState : public ydk::Enum
+class PppoeMaThrottleState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf destroying;
-        static const ydk::Enum::YLeaf deleting;
-        static const ydk::Enum::YLeaf initializing;
-        static const ydk::Enum::YLeaf created;
-        static const ydk::Enum::YLeaf stopping;
-        static const ydk::Enum::YLeaf started;
-        static const ydk::Enum::YLeaf activated;
-        static const ydk::Enum::YLeaf complete;
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf monitor;
+        static const ydk::Enum::YLeaf block;
 
 };
 
-class PppoeMaSessionIdbSrgState : public ydk::Enum
+class PppoeMaLimitState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf standby;
+        static const ydk::Enum::YLeaf ok;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf block;
 
 };
 
@@ -2201,21 +2196,26 @@ class PppoeMaSessionTrig : public ydk::Enum
 
 };
 
-class PppoeMaLimitState : public ydk::Enum
+class PppoeMaSessionIdbSrgState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ok;
-        static const ydk::Enum::YLeaf warning;
-        static const ydk::Enum::YLeaf block;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf standby;
 
 };
 
-class PppoeMaThrottleState : public ydk::Enum
+class PppoeMaSessionState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf idle;
-        static const ydk::Enum::YLeaf monitor;
-        static const ydk::Enum::YLeaf block;
+        static const ydk::Enum::YLeaf destroying;
+        static const ydk::Enum::YLeaf deleting;
+        static const ydk::Enum::YLeaf initializing;
+        static const ydk::Enum::YLeaf created;
+        static const ydk::Enum::YLeaf stopping;
+        static const ydk::Enum::YLeaf started;
+        static const ydk::Enum::YLeaf activated;
+        static const ydk::Enum::YLeaf complete;
 
 };
 

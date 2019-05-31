@@ -194,30 +194,16 @@ class StpDetails::StpGlobal::MstOnly : public ydk::Entity
 
 }; // StpDetails::StpGlobal::MstOnly
 
-class StpPortBpduguard : public ydk::Enum
+class StpPortState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf stp_port_bpduguard_disable;
-        static const ydk::Enum::YLeaf stp_port_bpduguard_enable;
-        static const ydk::Enum::YLeaf stp_port_bpduguard_default;
-
-};
-
-class StpLinkRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf stp_auto;
-        static const ydk::Enum::YLeaf stp_point_to_point;
-        static const ydk::Enum::YLeaf stp_shared;
-
-};
-
-class StpMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf stp_mode_pvst;
-        static const ydk::Enum::YLeaf stp_mode_rapid_pvst;
-        static const ydk::Enum::YLeaf stp_mode_mst;
+        static const ydk::Enum::YLeaf stp_disabled;
+        static const ydk::Enum::YLeaf stp_blocking;
+        static const ydk::Enum::YLeaf stp_listening;
+        static const ydk::Enum::YLeaf stp_learning;
+        static const ydk::Enum::YLeaf stp_forwarding;
+        static const ydk::Enum::YLeaf stp_broken;
+        static const ydk::Enum::YLeaf stp_invalid;
 
 };
 
@@ -232,16 +218,31 @@ class StpPortRole : public ydk::Enum
 
 };
 
-class StpPortState : public ydk::Enum
+class StpLinkRole : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf stp_disabled;
-        static const ydk::Enum::YLeaf stp_blocking;
-        static const ydk::Enum::YLeaf stp_listening;
-        static const ydk::Enum::YLeaf stp_learning;
-        static const ydk::Enum::YLeaf stp_forwarding;
-        static const ydk::Enum::YLeaf stp_broken;
-        static const ydk::Enum::YLeaf stp_invalid;
+        static const ydk::Enum::YLeaf stp_auto;
+        static const ydk::Enum::YLeaf stp_point_to_point;
+        static const ydk::Enum::YLeaf stp_shared;
+
+};
+
+class StpPortGuard : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf stp_port_guard_default;
+        static const ydk::Enum::YLeaf stp_port_guard_root;
+        static const ydk::Enum::YLeaf stp_port_guard_loop;
+        static const ydk::Enum::YLeaf stp_port_guard_none;
+
+};
+
+class StpPortBpduguard : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf stp_port_bpduguard_disable;
+        static const ydk::Enum::YLeaf stp_port_bpduguard_enable;
+        static const ydk::Enum::YLeaf stp_port_bpduguard_default;
 
 };
 
@@ -254,13 +255,12 @@ class StpPortBpdufilter : public ydk::Enum
 
 };
 
-class StpPortGuard : public ydk::Enum
+class StpMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf stp_port_guard_default;
-        static const ydk::Enum::YLeaf stp_port_guard_root;
-        static const ydk::Enum::YLeaf stp_port_guard_loop;
-        static const ydk::Enum::YLeaf stp_port_guard_none;
+        static const ydk::Enum::YLeaf stp_mode_pvst;
+        static const ydk::Enum::YLeaf stp_mode_rapid_pvst;
+        static const ydk::Enum::YLeaf stp_mode_mst;
 
 };
 

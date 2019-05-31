@@ -244,10 +244,16 @@ class Ipv6NodeDiscovery::Nodes::Node::NeighborSummary : public ydk::Entity
         class Multicast; //type: Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Multicast
         class Static; //type: Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Static
         class Dynamic; //type: Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Dynamic
+        class Sync; //type: Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Sync
+        class StaticSync; //type: Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::StaticSync
+        class DynamicSync; //type: Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::DynamicSync
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Multicast> multicast;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Static> static_;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Dynamic> dynamic;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Sync> sync;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::StaticSync> static_sync;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_nd_oper::Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::DynamicSync> dynamic_sync;
         
 }; // Ipv6NodeDiscovery::Nodes::Node::NeighborSummary
 
@@ -331,6 +337,87 @@ class Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Dynamic : public ydk::Ent
         ydk::YLeaf subtotal_neighbor_entries; //type: uint32
 
 }; // Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Dynamic
+
+
+class Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Sync : public ydk::Entity
+{
+    public:
+        Sync();
+        ~Sync();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf incomplete_entries; //type: uint32
+        ydk::YLeaf reachable_entries; //type: uint32
+        ydk::YLeaf stale_entries; //type: uint32
+        ydk::YLeaf delayed_entries; //type: uint32
+        ydk::YLeaf probe_entries; //type: uint32
+        ydk::YLeaf deleted_entries; //type: uint32
+        ydk::YLeaf subtotal_neighbor_entries; //type: uint32
+
+}; // Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Sync
+
+
+class Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::StaticSync : public ydk::Entity
+{
+    public:
+        StaticSync();
+        ~StaticSync();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf incomplete_entries; //type: uint32
+        ydk::YLeaf reachable_entries; //type: uint32
+        ydk::YLeaf stale_entries; //type: uint32
+        ydk::YLeaf delayed_entries; //type: uint32
+        ydk::YLeaf probe_entries; //type: uint32
+        ydk::YLeaf deleted_entries; //type: uint32
+        ydk::YLeaf subtotal_neighbor_entries; //type: uint32
+
+}; // Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::StaticSync
+
+
+class Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::DynamicSync : public ydk::Entity
+{
+    public:
+        DynamicSync();
+        ~DynamicSync();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf incomplete_entries; //type: uint32
+        ydk::YLeaf reachable_entries; //type: uint32
+        ydk::YLeaf stale_entries; //type: uint32
+        ydk::YLeaf delayed_entries; //type: uint32
+        ydk::YLeaf probe_entries; //type: uint32
+        ydk::YLeaf deleted_entries; //type: uint32
+        ydk::YLeaf subtotal_neighbor_entries; //type: uint32
+
+}; // Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::DynamicSync
 
 
 class Ipv6NodeDiscovery::Nodes::Node::BundleNodes : public ydk::Entity
@@ -951,6 +1038,14 @@ class Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdv
 
 }; // Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdvertDetail::Ra::PrefixQ
 
+class Ipv6NdShVrFlags : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_flags;
+        static const ydk::Enum::YLeaf final_ra;
+
+};
+
 class Ipv6NdShVrState : public ydk::Enum
 {
     public:
@@ -966,6 +1061,15 @@ class Ipv6NdBndlState : public ydk::Enum
         static const ydk::Enum::YLeaf run;
         static const ydk::Enum::YLeaf error;
         static const ydk::Enum::YLeaf wait;
+
+};
+
+class Ipv6NdNeighborOrigin : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf dynamic;
 
 };
 
@@ -988,15 +1092,6 @@ class Ipv6NdMediaEncap : public ydk::Enum
 
 };
 
-class Ipv6NdNeighborOrigin : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf static_;
-        static const ydk::Enum::YLeaf dynamic;
-
-};
-
 class Ipv6NdShState : public ydk::Enum
 {
     public:
@@ -1007,14 +1102,6 @@ class Ipv6NdShState : public ydk::Enum
         static const ydk::Enum::YLeaf delay;
         static const ydk::Enum::YLeaf probe;
         static const ydk::Enum::YLeaf delete_;
-
-};
-
-class Ipv6NdShVrFlags : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_flags;
-        static const ydk::Enum::YLeaf final_ra;
 
 };
 

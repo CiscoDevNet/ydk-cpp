@@ -149,81 +149,6 @@ class CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallHistoryTable::CvCommonDcCall
 
 }; // CISCOVOICECOMMONDIALCONTROLMIB::CvCommonDcCallHistoryTable::CvCommonDcCallHistoryEntry
 
-class CvcInBandSignaling : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cas;
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf cept;
-        static const ydk::Enum::YLeaf transparent;
-        static const ydk::Enum::YLeaf gr303;
-
-};
-
-class CvcCoderTypeRate : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf fax2400;
-        static const ydk::Enum::YLeaf fax4800;
-        static const ydk::Enum::YLeaf fax7200;
-        static const ydk::Enum::YLeaf fax9600;
-        static const ydk::Enum::YLeaf fax14400;
-        static const ydk::Enum::YLeaf fax12000;
-        static const ydk::Enum::YLeaf g729r8000;
-        static const ydk::Enum::YLeaf g729Ar8000;
-        static const ydk::Enum::YLeaf g726r16000;
-        static const ydk::Enum::YLeaf g726r24000;
-        static const ydk::Enum::YLeaf g726r32000;
-        static const ydk::Enum::YLeaf g711ulawr64000;
-        static const ydk::Enum::YLeaf g711Alawr64000;
-        static const ydk::Enum::YLeaf g728r16000;
-        static const ydk::Enum::YLeaf g723r6300;
-        static const ydk::Enum::YLeaf g723r5300;
-        static const ydk::Enum::YLeaf gsmr13200;
-        static const ydk::Enum::YLeaf g729Br8000;
-        static const ydk::Enum::YLeaf g729ABr8000;
-        static const ydk::Enum::YLeaf g723Ar6300;
-        static const ydk::Enum::YLeaf g723Ar5300;
-        static const ydk::Enum::YLeaf ietfg729r8000;
-        static const ydk::Enum::YLeaf gsmeEr12200;
-        static const ydk::Enum::YLeaf clearChannel;
-        static const ydk::Enum::YLeaf g726r40000;
-        static const ydk::Enum::YLeaf llcc;
-        static const ydk::Enum::YLeaf gsmAmrNb;
-        static const ydk::Enum::YLeaf g722;
-        static const ydk::Enum::YLeaf iLBC;
-        static const ydk::Enum::YLeaf iLBCr15200;
-        static const ydk::Enum::YLeaf iLBCr13330;
-        static const ydk::Enum::YLeaf g722r4800;
-        static const ydk::Enum::YLeaf g722r5600;
-        static const ydk::Enum::YLeaf g722r6400;
-        static const ydk::Enum::YLeaf iSAC;
-        static const ydk::Enum::YLeaf aaclc;
-        static const ydk::Enum::YLeaf aacld;
-
-};
-
-class CvcVideoCoderRate : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf h261;
-        static const ydk::Enum::YLeaf h263;
-        static const ydk::Enum::YLeaf h263plus;
-        static const ydk::Enum::YLeaf h264;
-
-};
-
-class CvcH320CallType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf primary;
-        static const ydk::Enum::YLeaf secondary;
-
-};
-
 class CvcSpeechCoderRate : public ydk::Enum
 {
     public:
@@ -271,6 +196,81 @@ class CvcFaxTransmitRate : public ydk::Enum
         static const ydk::Enum::YLeaf fax9600;
         static const ydk::Enum::YLeaf fax14400;
         static const ydk::Enum::YLeaf fax12000;
+
+};
+
+class CvcCoderTypeRate : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf fax2400;
+        static const ydk::Enum::YLeaf fax4800;
+        static const ydk::Enum::YLeaf fax7200;
+        static const ydk::Enum::YLeaf fax9600;
+        static const ydk::Enum::YLeaf fax14400;
+        static const ydk::Enum::YLeaf fax12000;
+        static const ydk::Enum::YLeaf g729r8000;
+        static const ydk::Enum::YLeaf g729Ar8000;
+        static const ydk::Enum::YLeaf g726r16000;
+        static const ydk::Enum::YLeaf g726r24000;
+        static const ydk::Enum::YLeaf g726r32000;
+        static const ydk::Enum::YLeaf g711ulawr64000;
+        static const ydk::Enum::YLeaf g711Alawr64000;
+        static const ydk::Enum::YLeaf g728r16000;
+        static const ydk::Enum::YLeaf g723r6300;
+        static const ydk::Enum::YLeaf g723r5300;
+        static const ydk::Enum::YLeaf gsmr13200;
+        static const ydk::Enum::YLeaf g729Br8000;
+        static const ydk::Enum::YLeaf g729ABr8000;
+        static const ydk::Enum::YLeaf g723Ar6300;
+        static const ydk::Enum::YLeaf g723Ar5300;
+        static const ydk::Enum::YLeaf ietfg729r8000;
+        static const ydk::Enum::YLeaf gsmeEr12200;
+        static const ydk::Enum::YLeaf clearChannel;
+        static const ydk::Enum::YLeaf g726r40000;
+        static const ydk::Enum::YLeaf llcc;
+        static const ydk::Enum::YLeaf gsmAmrNb;
+        static const ydk::Enum::YLeaf g722;
+        static const ydk::Enum::YLeaf iLBC;
+        static const ydk::Enum::YLeaf iLBCr15200;
+        static const ydk::Enum::YLeaf iLBCr13330;
+        static const ydk::Enum::YLeaf g722r4800;
+        static const ydk::Enum::YLeaf g722r5600;
+        static const ydk::Enum::YLeaf g722r6400;
+        static const ydk::Enum::YLeaf iSAC;
+        static const ydk::Enum::YLeaf aaclc;
+        static const ydk::Enum::YLeaf aacld;
+
+};
+
+class CvcInBandSignaling : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cas;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf cept;
+        static const ydk::Enum::YLeaf transparent;
+        static const ydk::Enum::YLeaf gr303;
+
+};
+
+class CvcH320CallType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf primary;
+        static const ydk::Enum::YLeaf secondary;
+
+};
+
+class CvcVideoCoderRate : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf h261;
+        static const ydk::Enum::YLeaf h263;
+        static const ydk::Enum::YLeaf h263plus;
+        static const ydk::Enum::YLeaf h264;
 
 };
 

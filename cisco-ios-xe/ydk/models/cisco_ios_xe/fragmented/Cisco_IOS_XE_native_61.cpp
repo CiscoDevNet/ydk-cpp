@@ -9610,9 +9610,9 @@ Native::Interface::TwentyFiveGigE::Ip::Ip()
     , dhcp(std::make_shared<Native::Interface::TwentyFiveGigE::Ip::Dhcp>())
     , summary_address(std::make_shared<Native::Interface::TwentyFiveGigE::Ip::SummaryAddress>())
     , verify(std::make_shared<Native::Interface::TwentyFiveGigE::Ip::Verify>())
+    , ospf(std::make_shared<Native::Interface::TwentyFiveGigE::Ip::Ospf>())
     , flow(std::make_shared<Native::Interface::TwentyFiveGigE::Ip::Flow>())
     , igmp(std::make_shared<Native::Interface::TwentyFiveGigE::Ip::Igmp>())
-    , ospf(std::make_shared<Native::Interface::TwentyFiveGigE::Ip::Ospf>())
     , lisp(std::make_shared<Native::Interface::TwentyFiveGigE::Ip::Lisp>())
     , nat(std::make_shared<Native::Interface::TwentyFiveGigE::Ip::Nat>())
     , nbar(std::make_shared<Native::Interface::TwentyFiveGigE::Ip::Nbar>())
@@ -9636,9 +9636,9 @@ Native::Interface::TwentyFiveGigE::Ip::Ip()
     dhcp->parent = this;
     summary_address->parent = this;
     verify->parent = this;
+    ospf->parent = this;
     flow->parent = this;
     igmp->parent = this;
-    ospf->parent = this;
     lisp->parent = this;
     nat->parent = this;
     nbar->parent = this;
@@ -9687,9 +9687,9 @@ bool Native::Interface::TwentyFiveGigE::Ip::has_data() const
 	|| (dhcp !=  nullptr && dhcp->has_data())
 	|| (summary_address !=  nullptr && summary_address->has_data())
 	|| (verify !=  nullptr && verify->has_data())
+	|| (ospf !=  nullptr && ospf->has_data())
 	|| (flow !=  nullptr && flow->has_data())
 	|| (igmp !=  nullptr && igmp->has_data())
-	|| (ospf !=  nullptr && ospf->has_data())
 	|| (lisp !=  nullptr && lisp->has_data())
 	|| (nat !=  nullptr && nat->has_data())
 	|| (nbar !=  nullptr && nbar->has_data())
@@ -9732,9 +9732,9 @@ bool Native::Interface::TwentyFiveGigE::Ip::has_operation() const
 	|| (dhcp !=  nullptr && dhcp->has_operation())
 	|| (summary_address !=  nullptr && summary_address->has_operation())
 	|| (verify !=  nullptr && verify->has_operation())
+	|| (ospf !=  nullptr && ospf->has_operation())
 	|| (flow !=  nullptr && flow->has_operation())
 	|| (igmp !=  nullptr && igmp->has_operation())
-	|| (ospf !=  nullptr && ospf->has_operation())
 	|| (lisp !=  nullptr && lisp->has_operation())
 	|| (nat !=  nullptr && nat->has_operation())
 	|| (nbar !=  nullptr && nbar->has_operation())
@@ -9947,6 +9947,15 @@ std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Ip::get_child_by
         return verify;
     }
 
+    if(child_yang_name == "Cisco-IOS-XE-ospf:ospf")
+    {
+        if(ospf == nullptr)
+        {
+            ospf = std::make_shared<Native::Interface::TwentyFiveGigE::Ip::Ospf>();
+        }
+        return ospf;
+    }
+
     if(child_yang_name == "Cisco-IOS-XE-flow:flow")
     {
         if(flow == nullptr)
@@ -9963,15 +9972,6 @@ std::shared_ptr<ydk::Entity> Native::Interface::TwentyFiveGigE::Ip::get_child_by
             igmp = std::make_shared<Native::Interface::TwentyFiveGigE::Ip::Igmp>();
         }
         return igmp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-ospf:ospf")
-    {
-        if(ospf == nullptr)
-        {
-            ospf = std::make_shared<Native::Interface::TwentyFiveGigE::Ip::Ospf>();
-        }
-        return ospf;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-lisp:lisp")
@@ -10130,6 +10130,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiv
         _children["verify"] = verify;
     }
 
+    if(ospf != nullptr)
+    {
+        _children["Cisco-IOS-XE-ospf:ospf"] = ospf;
+    }
+
     if(flow != nullptr)
     {
         _children["Cisco-IOS-XE-flow:flow"] = flow;
@@ -10138,11 +10143,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::Interface::TwentyFiv
     if(igmp != nullptr)
     {
         _children["Cisco-IOS-XE-igmp:igmp"] = igmp;
-    }
-
-    if(ospf != nullptr)
-    {
-        _children["Cisco-IOS-XE-ospf:ospf"] = ospf;
     }
 
     if(lisp != nullptr)
@@ -10263,7 +10263,7 @@ void Native::Interface::TwentyFiveGigE::Ip::set_filter(const std::string & value
 
 bool Native::Interface::TwentyFiveGigE::Ip::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "access-group" || name == "arp" || name == "vrf" || name == "address" || name == "directed-broadcast" || name == "hello-interval" || name == "authentication" || name == "hold-time" || name == "helper-address" || name == "pim" || name == "policy" || name == "rip" || name == "route-cache-conf" || name == "route-cache" || name == "router" || name == "tcp" || name == "virtual-reassembly" || name == "dhcp" || name == "summary-address" || name == "verify" || name == "flow" || name == "igmp" || name == "ospf" || name == "lisp" || name == "nat" || name == "nbar" || name == "rsvp" || name == "wccp" || name == "admission" || name == "unnumbered" || name == "local-proxy-arp" || name == "proxy-arp" || name == "redirects" || name == "mtu" || name == "mroute-cache" || name == "unreachables")
+    if(name == "access-group" || name == "arp" || name == "vrf" || name == "address" || name == "directed-broadcast" || name == "hello-interval" || name == "authentication" || name == "hold-time" || name == "helper-address" || name == "pim" || name == "policy" || name == "rip" || name == "route-cache-conf" || name == "route-cache" || name == "router" || name == "tcp" || name == "virtual-reassembly" || name == "dhcp" || name == "summary-address" || name == "verify" || name == "ospf" || name == "flow" || name == "igmp" || name == "lisp" || name == "nat" || name == "nbar" || name == "rsvp" || name == "wccp" || name == "admission" || name == "unnumbered" || name == "local-proxy-arp" || name == "proxy-arp" || name == "redirects" || name == "mtu" || name == "mroute-cache" || name == "unreachables")
         return true;
     return false;
 }

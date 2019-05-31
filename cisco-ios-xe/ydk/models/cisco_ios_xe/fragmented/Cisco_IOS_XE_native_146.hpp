@@ -233,7 +233,7 @@ class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Glob
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_number; //type: one of uint32, string
+        ydk::YLeaf as_number; //type: one of string, uint32
         class RedistOptions; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Bgp::RedistOptions
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Bgp::RedistOptions> redist_options;
@@ -334,7 +334,7 @@ class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Glob
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_number; //type: one of uint32, string
+        ydk::YLeaf as_number; //type: one of string, uint32
         class RedistOptions; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Eigrp::RedistOptions
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::Global::Eigrp::RedistOptions> redist_options;
@@ -1289,7 +1289,7 @@ class Native::Router::Bgp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
         class Bgp_; //type: Native::Router::Bgp::Bgp_
         class PeerGroup; //type: Native::Router::Bgp::PeerGroup
         class Neighbor; //type: Native::Router::Bgp::Neighbor
@@ -1327,7 +1327,7 @@ class Native::Router::Bgp::Bgp_ : public ydk::Entity
 
         ydk::YLeaf aigp_rib_metric; //type: empty
         ydk::YLeaf always_compare_med; //type: empty
-        ydk::YLeaf cluster_id; //type: one of uint32, string
+        ydk::YLeaf cluster_id; //type: one of string, uint32
         ydk::YLeaf deterministic_med; //type: empty
         ydk::YLeaf enforce_first_as; //type: empty
         ydk::YLeaf enhanced_error; //type: boolean
@@ -2198,10 +2198,10 @@ class Native::Router::Bgp::PeerGroup::Neighbor : public ydk::Entity
 
         ydk::YLeaf id; //type: string
         ydk::YLeaf peer_group; //type: empty
-        ydk::YLeaf cluster_id; //type: one of uint32, string
+        ydk::YLeaf cluster_id; //type: one of string, uint32
         ydk::YLeaf description; //type: string
         ydk::YLeaf disable_connected_check; //type: empty
-        ydk::YLeaf remote_as; //type: one of uint32, string
+        ydk::YLeaf remote_as; //type: one of string, uint32
         ydk::YLeaf shutdown; //type: empty
         ydk::YLeaf version; //type: uint16
         class EbgpMultihop; //type: Native::Router::Bgp::PeerGroup::Neighbor::EbgpMultihop
@@ -2430,7 +2430,7 @@ class Native::Router::Bgp::PeerGroup::Neighbor::LocalAs : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_no; //type: one of uint32, string
+        ydk::YLeaf as_no; //type: one of string, uint32
         ydk::YLeaf no_prepend; //type: empty
         ydk::YLeaf replace_as; //type: empty
         ydk::YLeaf dual_as; //type: empty
@@ -2900,8 +2900,8 @@ class Native::Router::Bgp::Neighbor : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: string
-        ydk::YLeaf remote_as; //type: one of uint32, string
-        ydk::YLeaf cluster_id; //type: one of uint32, string
+        ydk::YLeaf remote_as; //type: one of string, uint32
+        ydk::YLeaf cluster_id; //type: one of string, uint32
         ydk::YLeaf description; //type: string
         ydk::YLeaf disable_connected_check; //type: empty
         ydk::YLeaf shutdown; //type: empty
@@ -3134,7 +3134,7 @@ class Native::Router::Bgp::Neighbor::LocalAs : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_no; //type: one of uint32, string
+        ydk::YLeaf as_no; //type: one of string, uint32
         ydk::YLeaf no_prepend; //type: empty
         ydk::YLeaf replace_as; //type: empty
         ydk::YLeaf dual_as; //type: empty

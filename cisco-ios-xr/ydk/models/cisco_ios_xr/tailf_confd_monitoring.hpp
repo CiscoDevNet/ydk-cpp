@@ -38,17 +38,21 @@ class ConfdState : public ydk::Entity
         ydk::YLeaf upgrade_mode; //type: empty
         class Smp; //type: ConfdState::Smp
         class Ha; //type: ConfdState::Ha
+        class LoadedDataModels; //type: ConfdState::LoadedDataModels
         class Netconf; //type: ConfdState::Netconf
         class Cli; //type: ConfdState::Cli
         class Webui; //type: ConfdState::Webui
+        class Rest; //type: ConfdState::Rest
         class Snmp; //type: ConfdState::Snmp
         class Internal; //type: ConfdState::Internal
 
         std::shared_ptr<cisco_ios_xr::tailf_confd_monitoring::ConfdState::Smp> smp; // presence node
         std::shared_ptr<cisco_ios_xr::tailf_confd_monitoring::ConfdState::Ha> ha; // presence node
+        std::shared_ptr<cisco_ios_xr::tailf_confd_monitoring::ConfdState::LoadedDataModels> loaded_data_models;
         std::shared_ptr<cisco_ios_xr::tailf_confd_monitoring::ConfdState::Netconf> netconf; // presence node
         std::shared_ptr<cisco_ios_xr::tailf_confd_monitoring::ConfdState::Cli> cli; // presence node
         std::shared_ptr<cisco_ios_xr::tailf_confd_monitoring::ConfdState::Webui> webui; // presence node
+        std::shared_ptr<cisco_ios_xr::tailf_confd_monitoring::ConfdState::Rest> rest; // presence node
         std::shared_ptr<cisco_ios_xr::tailf_confd_monitoring::ConfdState::Snmp> snmp; // presence node
         std::shared_ptr<cisco_ios_xr::tailf_confd_monitoring::ConfdState::Internal> internal;
                 class DaemonStatus;
@@ -103,6 +107,58 @@ class ConfdState::Ha : public ydk::Entity
         class Mode;
 
 }; // ConfdState::Ha
+
+
+class ConfdState::LoadedDataModels : public ydk::Entity
+{
+    public:
+        LoadedDataModels();
+        ~LoadedDataModels();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class DataModel; //type: ConfdState::LoadedDataModels::DataModel
+
+        ydk::YList data_model;
+        
+}; // ConfdState::LoadedDataModels
+
+
+class ConfdState::LoadedDataModels::DataModel : public ydk::Entity
+{
+    public:
+        DataModel();
+        ~DataModel();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf revision; //type: string
+        ydk::YLeaf namespace_; //type: string
+        ydk::YLeaf prefix; //type: string
+        ydk::YLeaf exported_to_all; //type: empty
+        ydk::YLeafList exported_to; //type: list of  one of string, enumeration
+        class ExportedTo;
+
+}; // ConfdState::LoadedDataModels::DataModel
 
 
 class ConfdState::Netconf : public ydk::Entity
@@ -366,6 +422,102 @@ class ConfdState::Webui::Listen::Ssl : public ydk::Entity
         ydk::YLeaf port; //type: uint16
 
 }; // ConfdState::Webui::Listen::Ssl
+
+
+class ConfdState::Rest : public ydk::Entity
+{
+    public:
+        Rest();
+        ~Rest();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Listen; //type: ConfdState::Rest::Listen
+
+        std::shared_ptr<cisco_ios_xr::tailf_confd_monitoring::ConfdState::Rest::Listen> listen;
+        
+}; // ConfdState::Rest
+
+
+class ConfdState::Rest::Listen : public ydk::Entity
+{
+    public:
+        Listen();
+        ~Listen();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Tcp; //type: ConfdState::Rest::Listen::Tcp
+        class Ssl; //type: ConfdState::Rest::Listen::Ssl
+
+        ydk::YList tcp;
+        ydk::YList ssl;
+        
+}; // ConfdState::Rest::Listen
+
+
+class ConfdState::Rest::Listen::Tcp : public ydk::Entity
+{
+    public:
+        Tcp();
+        ~Tcp();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ip; //type: string
+        ydk::YLeaf port; //type: uint16
+
+}; // ConfdState::Rest::Listen::Tcp
+
+
+class ConfdState::Rest::Listen::Ssl : public ydk::Entity
+{
+    public:
+        Ssl();
+        ~Ssl();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ip; //type: string
+        ydk::YLeaf port; //type: uint16
+
+}; // ConfdState::Rest::Listen::Ssl
 
 
 class ConfdState::Snmp : public ydk::Entity
@@ -1673,7 +1825,7 @@ class ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf priority; //type: int32
-        ydk::YLeaf time_remaining; //type: one of uint64, enumeration
+        ydk::YLeaf time_remaining; //type: one of enumeration, uint64
         class Notification; //type: ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification
 
         ydk::YList notification;
@@ -1826,6 +1978,18 @@ class ConfdState::Ha::Mode : public ydk::Enum
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf slave;
         static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf relay_slave;
+
+};
+
+class ConfdState::LoadedDataModels::DataModel::ExportedTo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf netconf;
+        static const ydk::Enum::YLeaf cli;
+        static const ydk::Enum::YLeaf webui;
+        static const ydk::Enum::YLeaf rest;
+        static const ydk::Enum::YLeaf snmp;
 
 };
 

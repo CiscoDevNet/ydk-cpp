@@ -1157,24 +1157,6 @@ bool StpDetails::StpGlobal::MstOnly::has_leaf_or_child_of_name(const std::string
     return false;
 }
 
-const Enum::YLeaf StpPortBpduguard::stp_port_bpduguard_disable {0, "stp-port-bpduguard-disable"};
-const Enum::YLeaf StpPortBpduguard::stp_port_bpduguard_enable {1, "stp-port-bpduguard-enable"};
-const Enum::YLeaf StpPortBpduguard::stp_port_bpduguard_default {2, "stp-port-bpduguard-default"};
-
-const Enum::YLeaf StpLinkRole::stp_auto {0, "stp-auto"};
-const Enum::YLeaf StpLinkRole::stp_point_to_point {1, "stp-point-to-point"};
-const Enum::YLeaf StpLinkRole::stp_shared {2, "stp-shared"};
-
-const Enum::YLeaf StpMode::stp_mode_pvst {0, "stp-mode-pvst"};
-const Enum::YLeaf StpMode::stp_mode_rapid_pvst {1, "stp-mode-rapid-pvst"};
-const Enum::YLeaf StpMode::stp_mode_mst {2, "stp-mode-mst"};
-
-const Enum::YLeaf StpPortRole::stp_master {0, "stp-master"};
-const Enum::YLeaf StpPortRole::stp_alternate {1, "stp-alternate"};
-const Enum::YLeaf StpPortRole::stp_root {2, "stp-root"};
-const Enum::YLeaf StpPortRole::stp_designated {3, "stp-designated"};
-const Enum::YLeaf StpPortRole::stp_backup {4, "stp-backup"};
-
 const Enum::YLeaf StpPortState::stp_disabled {0, "stp-disabled"};
 const Enum::YLeaf StpPortState::stp_blocking {1, "stp-blocking"};
 const Enum::YLeaf StpPortState::stp_listening {2, "stp-listening"};
@@ -1183,14 +1165,32 @@ const Enum::YLeaf StpPortState::stp_forwarding {4, "stp-forwarding"};
 const Enum::YLeaf StpPortState::stp_broken {5, "stp-broken"};
 const Enum::YLeaf StpPortState::stp_invalid {6, "stp-invalid"};
 
-const Enum::YLeaf StpPortBpdufilter::stp_port_bpdufilter_disable {0, "stp-port-bpdufilter-disable"};
-const Enum::YLeaf StpPortBpdufilter::stp_port_bpdufilter_enable {1, "stp-port-bpdufilter-enable"};
-const Enum::YLeaf StpPortBpdufilter::stp_port_bpdufilter_default {2, "stp-port-bpdufilter-default"};
+const Enum::YLeaf StpPortRole::stp_master {0, "stp-master"};
+const Enum::YLeaf StpPortRole::stp_alternate {1, "stp-alternate"};
+const Enum::YLeaf StpPortRole::stp_root {2, "stp-root"};
+const Enum::YLeaf StpPortRole::stp_designated {3, "stp-designated"};
+const Enum::YLeaf StpPortRole::stp_backup {4, "stp-backup"};
+
+const Enum::YLeaf StpLinkRole::stp_auto {0, "stp-auto"};
+const Enum::YLeaf StpLinkRole::stp_point_to_point {1, "stp-point-to-point"};
+const Enum::YLeaf StpLinkRole::stp_shared {2, "stp-shared"};
 
 const Enum::YLeaf StpPortGuard::stp_port_guard_default {0, "stp-port-guard-default"};
 const Enum::YLeaf StpPortGuard::stp_port_guard_root {1, "stp-port-guard-root"};
 const Enum::YLeaf StpPortGuard::stp_port_guard_loop {2, "stp-port-guard-loop"};
 const Enum::YLeaf StpPortGuard::stp_port_guard_none {3, "stp-port-guard-none"};
+
+const Enum::YLeaf StpPortBpduguard::stp_port_bpduguard_disable {0, "stp-port-bpduguard-disable"};
+const Enum::YLeaf StpPortBpduguard::stp_port_bpduguard_enable {1, "stp-port-bpduguard-enable"};
+const Enum::YLeaf StpPortBpduguard::stp_port_bpduguard_default {2, "stp-port-bpduguard-default"};
+
+const Enum::YLeaf StpPortBpdufilter::stp_port_bpdufilter_disable {0, "stp-port-bpdufilter-disable"};
+const Enum::YLeaf StpPortBpdufilter::stp_port_bpdufilter_enable {1, "stp-port-bpdufilter-enable"};
+const Enum::YLeaf StpPortBpdufilter::stp_port_bpdufilter_default {2, "stp-port-bpdufilter-default"};
+
+const Enum::YLeaf StpMode::stp_mode_pvst {0, "stp-mode-pvst"};
+const Enum::YLeaf StpMode::stp_mode_rapid_pvst {1, "stp-mode-rapid-pvst"};
+const Enum::YLeaf StpMode::stp_mode_mst {2, "stp-mode-mst"};
 
 
 }

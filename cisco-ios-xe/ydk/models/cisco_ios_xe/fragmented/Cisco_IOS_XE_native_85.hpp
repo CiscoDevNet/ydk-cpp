@@ -355,7 +355,7 @@ class Native::Interface::Overlay::Pppoe::Enable : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf group; //type: one of string, enumeration
+        ydk::YLeaf group; //type: one of enumeration, string
         class Group;
 
 }; // Native::Interface::Overlay::Pppoe::Enable
@@ -485,9 +485,9 @@ class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad : pub
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf exact; //type: empty
-        ydk::YLeafList id; //type: list of  one of uint16, string, enumeration
+        ydk::YLeafList id; //type: list of  one of enumeration, uint16, string
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList dot1q; //type: list of  one of uint16, string, enumeration
+        ydk::YLeafList dot1q; //type: list of  one of enumeration, uint16, string
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1ad::Cos2
 
@@ -538,9 +538,9 @@ class Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q : publ
 
         ydk::YLeaf exact; //type: empty
         ydk::YLeaf vlan_type; //type: VlanType
-        ydk::YLeafList id; //type: list of  one of uint16, string, enumeration
+        ydk::YLeafList id; //type: list of  one of enumeration, uint16, string
         ydk::YLeafList cos; //type: list of  uint8
-        ydk::YLeafList second_dot1q; //type: list of  one of uint16, string, enumeration
+        ydk::YLeafList second_dot1q; //type: list of  one of enumeration, uint16, string
         ydk::YLeafList etype; //type: list of  Etype
         class Cos2; //type: Native::Interface::Overlay::Service::Instance::Encapsulation::Dot1q::Cos2
 
@@ -2306,8 +2306,8 @@ class Native::Interface::PortChannel : public ydk::Entity
         ydk::YLeaf service_insertion; //type: ServiceInsertion
         ydk::YLeaf channel_protocol; //type: ChannelProtocol
         ydk::YLeaf duplex; //type: Duplex
-        ydk::YLeaf macsec; //type: empty
         ydk::YLeaf nat66; //type: Nat66
+        ydk::YLeaf macsec; //type: empty
         class PortChannel_; //type: Native::Interface::PortChannel::PortChannel_
         class SwitchportConf; //type: Native::Interface::PortChannel::SwitchportConf
         class Switchport; //type: Native::Interface::PortChannel::Switchport
@@ -2358,10 +2358,20 @@ class Native::Interface::PortChannel : public ydk::Entity
         class Service; //type: Native::Interface::PortChannel::Service
         class Lacp; //type: Native::Interface::PortChannel::Lacp
         class Mlacp; //type: Native::Interface::PortChannel::Mlacp
+        class Xconnect; //type: Native::Interface::PortChannel::Xconnect
+        class Evpn; //type: Native::Interface::PortChannel::Evpn
         class Snmp; //type: Native::Interface::PortChannel::Snmp
+        class Ospfv3; //type: Native::Interface::PortChannel::Ospfv3
+        class Crypto; //type: Native::Interface::PortChannel::Crypto
+        class Cts; //type: Native::Interface::PortChannel::Cts
+        class Dot1x; //type: Native::Interface::PortChannel::Dot1x
+        class ServicePolicy; //type: Native::Interface::PortChannel::ServicePolicy
+        class Lisp; //type: Native::Interface::PortChannel::Lisp
+        class Mvrp; //type: Native::Interface::PortChannel::Mvrp
+        class AnalysisModule; //type: Native::Interface::PortChannel::AnalysisModule
         class Authentication; //type: Native::Interface::PortChannel::Authentication
         class Mab; //type: Native::Interface::PortChannel::Mab
-        class ServicePolicy; //type: Native::Interface::PortChannel::ServicePolicy
+        class SpanningTree; //type: Native::Interface::PortChannel::SpanningTree
         class Auto; //type: Native::Interface::PortChannel::Auto
         class Datalink; //type: Native::Interface::PortChannel::Datalink
         class Energywise; //type: Native::Interface::PortChannel::Energywise
@@ -2374,16 +2384,6 @@ class Native::Interface::PortChannel : public ydk::Entity
         class Switch; //type: Native::Interface::PortChannel::Switch
         class SrrQueue; //type: Native::Interface::PortChannel::SrrQueue
         class MacsecOption; //type: Native::Interface::PortChannel::MacsecOption
-        class Ospfv3; //type: Native::Interface::PortChannel::Ospfv3
-        class Lisp; //type: Native::Interface::PortChannel::Lisp
-        class SpanningTree; //type: Native::Interface::PortChannel::SpanningTree
-        class Xconnect; //type: Native::Interface::PortChannel::Xconnect
-        class Evpn; //type: Native::Interface::PortChannel::Evpn
-        class Dot1x; //type: Native::Interface::PortChannel::Dot1x
-        class Crypto; //type: Native::Interface::PortChannel::Crypto
-        class AnalysisModule; //type: Native::Interface::PortChannel::AnalysisModule
-        class Cts; //type: Native::Interface::PortChannel::Cts
-        class Mvrp; //type: Native::Interface::PortChannel::Mvrp
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::PortChannel_> port_channel;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::SwitchportConf> switchport_conf;
@@ -2435,10 +2435,20 @@ class Native::Interface::PortChannel : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Service> service;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Lacp> lacp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Mlacp> mlacp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Xconnect> xconnect;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Evpn> evpn;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Snmp> snmp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3> ospfv3;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Crypto> crypto;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Cts> cts;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Dot1x> dot1x;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::ServicePolicy> service_policy;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Lisp> lisp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Mvrp> mvrp; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::AnalysisModule> analysis_module;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Authentication> authentication;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Mab> mab; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::ServicePolicy> service_policy;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::SpanningTree> spanning_tree;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Auto> auto_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Datalink> datalink;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Energywise> energywise; // presence node
@@ -2451,16 +2461,6 @@ class Native::Interface::PortChannel : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Switch> switch_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::SrrQueue> srr_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::MacsecOption> macsec_option;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Ospfv3> ospfv3;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Lisp> lisp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::SpanningTree> spanning_tree;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Xconnect> xconnect;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Evpn> evpn;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Dot1x> dot1x;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Crypto> crypto;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::AnalysisModule> analysis_module;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Cts> cts;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::PortChannel::Mvrp> mvrp; // presence node
                 class PcSpeed;
         class IfState;
         class ServiceInsertion;
@@ -2597,7 +2597,7 @@ class Native::Interface::PortChannel::Switchport::Access::Vlan : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of uint16, enumeration
+        ydk::YLeaf vlan; //type: one of enumeration, uint16
         ydk::YLeaf name; //type: string
         class Vlan_;
 
@@ -2931,7 +2931,7 @@ class Native::Interface::PortChannel::Switchport::Trunk::Native_ : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of uint16, enumeration
+        ydk::YLeaf vlan; //type: one of enumeration, uint16
         class Vlan;
 
 }; // Native::Interface::PortChannel::Switchport::Trunk::Native_
@@ -3026,7 +3026,7 @@ class Native::Interface::PortChannel::Switchport::Voice::Vlan : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of uint16, string, enumeration
+        ydk::YLeaf vlan; //type: one of enumeration, uint16, string
         ydk::YLeaf name; //type: string
         class Vlan_;
 
@@ -3394,8 +3394,8 @@ class Native::Interface::PortChannel::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -3564,8 +3564,8 @@ class Native::Interface::PortChannel::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 

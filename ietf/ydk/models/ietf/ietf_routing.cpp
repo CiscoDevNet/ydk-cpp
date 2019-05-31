@@ -11,13 +11,13 @@ using namespace ydk;
 namespace ietf {
 namespace ietf_routing {
 
-RoutingProtocol::RoutingProtocol()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:routing-protocol")
+AddressFamily::AddressFamily()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:address-family")
 {
 
 }
 
-RoutingProtocol::~RoutingProtocol()
+AddressFamily::~AddressFamily()
 {
 }
 
@@ -31,13 +31,13 @@ RoutingInstance::~RoutingInstance()
 {
 }
 
-AddressFamily::AddressFamily()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:address-family")
+RoutingProtocol::RoutingProtocol()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:routing-protocol")
 {
 
 }
 
-AddressFamily::~AddressFamily()
+RoutingProtocol::~RoutingProtocol()
 {
 }
 
@@ -16668,11 +16668,11 @@ bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::has_leaf_or_ch
 
 Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::StaticRoutes()
     :
-    ipv6(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6>())
-    , ipv4(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4>())
+    ipv4(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4>())
+    , ipv6(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6>())
 {
-    ipv6->parent = this;
     ipv4->parent = this;
+    ipv6->parent = this;
 
     yang_name = "static-routes"; yang_parent_name = "routing-protocol"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -16684,15 +16684,15 @@ Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::~Stat
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::has_data() const
 {
     if (is_presence_container) return true;
-    return (ipv6 !=  nullptr && ipv6->has_data())
-	|| (ipv4 !=  nullptr && ipv4->has_data());
+    return (ipv4 !=  nullptr && ipv4->has_data())
+	|| (ipv6 !=  nullptr && ipv6->has_data());
 }
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::has_operation() const
 {
     return is_set(yfilter)
-	|| (ipv6 !=  nullptr && ipv6->has_operation())
-	|| (ipv4 !=  nullptr && ipv4->has_operation());
+	|| (ipv4 !=  nullptr && ipv4->has_operation())
+	|| (ipv6 !=  nullptr && ipv6->has_operation());
 }
 
 std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::get_segment_path() const
@@ -16713,15 +16713,6 @@ std::vector<std::pair<std::string, LeafData> > Routing::RoutingInstance::Routing
 
 std::shared_ptr<ydk::Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "ietf-ipv6-unicast-routing:ipv6")
-    {
-        if(ipv6 == nullptr)
-        {
-            ipv6 = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6>();
-        }
-        return ipv6;
-    }
-
     if(child_yang_name == "ietf-ipv4-unicast-routing:ipv4")
     {
         if(ipv4 == nullptr)
@@ -16731,6 +16722,15 @@ std::shared_ptr<ydk::Entity> Routing::RoutingInstance::RoutingProtocols::Routing
         return ipv4;
     }
 
+    if(child_yang_name == "ietf-ipv6-unicast-routing:ipv6")
+    {
+        if(ipv6 == nullptr)
+        {
+            ipv6 = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6>();
+        }
+        return ipv6;
+    }
+
     return nullptr;
 }
 
@@ -16738,14 +16738,14 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Routing::RoutingInstance::Ro
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(ipv6 != nullptr)
-    {
-        _children["ietf-ipv6-unicast-routing:ipv6"] = ipv6;
-    }
-
     if(ipv4 != nullptr)
     {
         _children["ietf-ipv4-unicast-routing:ipv4"] = ipv4;
+    }
+
+    if(ipv6 != nullptr)
+    {
+        _children["ietf-ipv6-unicast-routing:ipv6"] = ipv6;
     }
 
     return _children;
@@ -16761,318 +16761,7 @@ void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv6" || name == "ipv4")
-        return true;
-    return false;
-}
-
-Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Ipv6()
-    :
-    route(this, {"destination_prefix"})
-{
-
-    yang_name = "ipv6"; yang_parent_name = "static-routes"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::~Ipv6()
-{
-}
-
-bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<route.len(); index++)
-    {
-        if(route[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::has_operation() const
-{
-    for (std::size_t index=0; index<route.len(); index++)
-    {
-        if(route[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ietf-ipv6-unicast-routing:ipv6";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "route")
-    {
-        auto ent_ = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route>();
-        ent_->parent = this;
-        route.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : route.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "route")
-        return true;
-    return false;
-}
-
-Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::Route()
-    :
-    destination_prefix{YType::str, "destination-prefix"},
-    description{YType::str, "description"}
-        ,
-    next_hop(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop>())
-{
-    next_hop->parent = this;
-
-    yang_name = "route"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::~Route()
-{
-}
-
-bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::has_data() const
-{
-    if (is_presence_container) return true;
-    return destination_prefix.is_set
-	|| description.is_set
-	|| (next_hop !=  nullptr && next_hop->has_data());
-}
-
-bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(destination_prefix.yfilter)
-	|| ydk::is_set(description.yfilter)
-	|| (next_hop !=  nullptr && next_hop->has_operation());
-}
-
-std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "route";
-    ADD_KEY_TOKEN(destination_prefix, "destination-prefix");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (destination_prefix.is_set || is_set(destination_prefix.yfilter)) leaf_name_data.push_back(destination_prefix.get_name_leafdata());
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "next-hop")
-    {
-        if(next_hop == nullptr)
-        {
-            next_hop = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop>();
-        }
-        return next_hop;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(next_hop != nullptr)
-    {
-        _children["next-hop"] = next_hop;
-    }
-
-    return _children;
-}
-
-void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "destination-prefix")
-    {
-        destination_prefix = value;
-        destination_prefix.value_namespace = name_space;
-        destination_prefix.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "description")
-    {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "destination-prefix")
-    {
-        destination_prefix.yfilter = yfilter;
-    }
-    if(value_path == "description")
-    {
-        description.yfilter = yfilter;
-    }
-}
-
-bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "next-hop" || name == "destination-prefix" || name == "description")
-        return true;
-    return false;
-}
-
-Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::NextHop()
-    :
-    outgoing_interface{YType::str, "outgoing-interface"},
-    special_next_hop{YType::enumeration, "special-next-hop"},
-    next_hop_address{YType::str, "next-hop-address"}
-{
-
-    yang_name = "next-hop"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::~NextHop()
-{
-}
-
-bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::has_data() const
-{
-    if (is_presence_container) return true;
-    return outgoing_interface.is_set
-	|| special_next_hop.is_set
-	|| next_hop_address.is_set;
-}
-
-bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(outgoing_interface.yfilter)
-	|| ydk::is_set(special_next_hop.yfilter)
-	|| ydk::is_set(next_hop_address.yfilter);
-}
-
-std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "next-hop";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (outgoing_interface.is_set || is_set(outgoing_interface.yfilter)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
-    if (special_next_hop.is_set || is_set(special_next_hop.yfilter)) leaf_name_data.push_back(special_next_hop.get_name_leafdata());
-    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "outgoing-interface")
-    {
-        outgoing_interface = value;
-        outgoing_interface.value_namespace = name_space;
-        outgoing_interface.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "special-next-hop")
-    {
-        special_next_hop = value;
-        special_next_hop.value_namespace = name_space;
-        special_next_hop.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "next-hop-address")
-    {
-        next_hop_address = value;
-        next_hop_address.value_namespace = name_space;
-        next_hop_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "outgoing-interface")
-    {
-        outgoing_interface.yfilter = yfilter;
-    }
-    if(value_path == "special-next-hop")
-    {
-        special_next_hop.yfilter = yfilter;
-    }
-    if(value_path == "next-hop-address")
-    {
-        next_hop_address.yfilter = yfilter;
-    }
-}
-
-bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "outgoing-interface" || name == "special-next-hop" || name == "next-hop-address")
+    if(name == "ipv4" || name == "ipv6")
         return true;
     return false;
 }
@@ -17382,6 +17071,317 @@ void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::
 }
 
 bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "outgoing-interface" || name == "special-next-hop" || name == "next-hop-address")
+        return true;
+    return false;
+}
+
+Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Ipv6()
+    :
+    route(this, {"destination_prefix"})
+{
+
+    yang_name = "ipv6"; yang_parent_name = "static-routes"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::~Ipv6()
+{
+}
+
+bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<route.len(); index++)
+    {
+        if(route[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::has_operation() const
+{
+    for (std::size_t index=0; index<route.len(); index++)
+    {
+        if(route[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ietf-ipv6-unicast-routing:ipv6";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "route")
+    {
+        auto ent_ = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route>();
+        ent_->parent = this;
+        route.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : route.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "route")
+        return true;
+    return false;
+}
+
+Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::Route()
+    :
+    destination_prefix{YType::str, "destination-prefix"},
+    description{YType::str, "description"}
+        ,
+    next_hop(std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop>())
+{
+    next_hop->parent = this;
+
+    yang_name = "route"; yang_parent_name = "ipv6"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::~Route()
+{
+}
+
+bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::has_data() const
+{
+    if (is_presence_container) return true;
+    return destination_prefix.is_set
+	|| description.is_set
+	|| (next_hop !=  nullptr && next_hop->has_data());
+}
+
+bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(destination_prefix.yfilter)
+	|| ydk::is_set(description.yfilter)
+	|| (next_hop !=  nullptr && next_hop->has_operation());
+}
+
+std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "route";
+    ADD_KEY_TOKEN(destination_prefix, "destination-prefix");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (destination_prefix.is_set || is_set(destination_prefix.yfilter)) leaf_name_data.push_back(destination_prefix.get_name_leafdata());
+    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "next-hop")
+    {
+        if(next_hop == nullptr)
+        {
+            next_hop = std::make_shared<Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop>();
+        }
+        return next_hop;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(next_hop != nullptr)
+    {
+        _children["next-hop"] = next_hop;
+    }
+
+    return _children;
+}
+
+void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "destination-prefix")
+    {
+        destination_prefix = value;
+        destination_prefix.value_namespace = name_space;
+        destination_prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "description")
+    {
+        description = value;
+        description.value_namespace = name_space;
+        description.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "destination-prefix")
+    {
+        destination_prefix.yfilter = yfilter;
+    }
+    if(value_path == "description")
+    {
+        description.yfilter = yfilter;
+    }
+}
+
+bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "next-hop" || name == "destination-prefix" || name == "description")
+        return true;
+    return false;
+}
+
+Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::NextHop()
+    :
+    outgoing_interface{YType::str, "outgoing-interface"},
+    special_next_hop{YType::enumeration, "special-next-hop"},
+    next_hop_address{YType::str, "next-hop-address"}
+{
+
+    yang_name = "next-hop"; yang_parent_name = "route"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::~NextHop()
+{
+}
+
+bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::has_data() const
+{
+    if (is_presence_container) return true;
+    return outgoing_interface.is_set
+	|| special_next_hop.is_set
+	|| next_hop_address.is_set;
+}
+
+bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(outgoing_interface.yfilter)
+	|| ydk::is_set(special_next_hop.yfilter)
+	|| ydk::is_set(next_hop_address.yfilter);
+}
+
+std::string Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-hop";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (outgoing_interface.is_set || is_set(outgoing_interface.yfilter)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
+    if (special_next_hop.is_set || is_set(special_next_hop.yfilter)) leaf_name_data.push_back(special_next_hop.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "outgoing-interface")
+    {
+        outgoing_interface = value;
+        outgoing_interface.value_namespace = name_space;
+        outgoing_interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "special-next-hop")
+    {
+        special_next_hop = value;
+        special_next_hop.value_namespace = name_space;
+        special_next_hop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "outgoing-interface")
+    {
+        outgoing_interface.yfilter = yfilter;
+    }
+    if(value_path == "special-next-hop")
+    {
+        special_next_hop.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-address")
+    {
+        next_hop_address.yfilter = yfilter;
+    }
+}
+
+bool Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "outgoing-interface" || name == "special-next-hop" || name == "next-hop-address")
         return true;
@@ -23431,8 +23431,8 @@ bool FibRoute::Input::has_leaf_or_child_of_name(const std::string & name) const
 FibRoute::Input::DestinationAddress::DestinationAddress()
     :
     address_family{YType::identityref, "address-family"},
-    ietf_ipv6_unicast_routing_address{YType::str, "ietf-ipv6-unicast-routing:address"},
-    ietf_ipv4_unicast_routing_address{YType::str, "ietf-ipv4-unicast-routing:address"}
+    ietf_ipv4_unicast_routing_address{YType::str, "ietf-ipv4-unicast-routing:address"},
+    ietf_ipv6_unicast_routing_address{YType::str, "ietf-ipv6-unicast-routing:address"}
 {
 
     yang_name = "destination-address"; yang_parent_name = "input"; is_top_level_class = false; has_list_ancestor = false; 
@@ -23446,16 +23446,16 @@ bool FibRoute::Input::DestinationAddress::has_data() const
 {
     if (is_presence_container) return true;
     return address_family.is_set
-	|| ietf_ipv6_unicast_routing_address.is_set
-	|| ietf_ipv4_unicast_routing_address.is_set;
+	|| ietf_ipv4_unicast_routing_address.is_set
+	|| ietf_ipv6_unicast_routing_address.is_set;
 }
 
 bool FibRoute::Input::DestinationAddress::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(address_family.yfilter)
-	|| ydk::is_set(ietf_ipv6_unicast_routing_address.yfilter)
-	|| ydk::is_set(ietf_ipv4_unicast_routing_address.yfilter);
+	|| ydk::is_set(ietf_ipv4_unicast_routing_address.yfilter)
+	|| ydk::is_set(ietf_ipv6_unicast_routing_address.yfilter);
 }
 
 std::string FibRoute::Input::DestinationAddress::get_absolute_path() const
@@ -23477,8 +23477,8 @@ std::vector<std::pair<std::string, LeafData> > FibRoute::Input::DestinationAddre
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (address_family.is_set || is_set(address_family.yfilter)) leaf_name_data.push_back(address_family.get_name_leafdata());
-    if (ietf_ipv6_unicast_routing_address.is_set || is_set(ietf_ipv6_unicast_routing_address.yfilter)) leaf_name_data.push_back(ietf_ipv6_unicast_routing_address.get_name_leafdata());
     if (ietf_ipv4_unicast_routing_address.is_set || is_set(ietf_ipv4_unicast_routing_address.yfilter)) leaf_name_data.push_back(ietf_ipv4_unicast_routing_address.get_name_leafdata());
+    if (ietf_ipv6_unicast_routing_address.is_set || is_set(ietf_ipv6_unicast_routing_address.yfilter)) leaf_name_data.push_back(ietf_ipv6_unicast_routing_address.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -23504,17 +23504,17 @@ void FibRoute::Input::DestinationAddress::set_value(const std::string & value_pa
         address_family.value_namespace = name_space;
         address_family.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ietf-ipv6-unicast-routing:address")
-    {
-        ietf_ipv6_unicast_routing_address = value;
-        ietf_ipv6_unicast_routing_address.value_namespace = name_space;
-        ietf_ipv6_unicast_routing_address.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "ietf-ipv4-unicast-routing:address")
     {
         ietf_ipv4_unicast_routing_address = value;
         ietf_ipv4_unicast_routing_address.value_namespace = name_space;
         ietf_ipv4_unicast_routing_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ietf-ipv6-unicast-routing:address")
+    {
+        ietf_ipv6_unicast_routing_address = value;
+        ietf_ipv6_unicast_routing_address.value_namespace = name_space;
+        ietf_ipv6_unicast_routing_address.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -23526,11 +23526,11 @@ void FibRoute::Input::DestinationAddress::set_filter(const std::string & value_p
     }
     if(value_path == "address")
     {
-        ietf_ipv6_unicast_routing_address.yfilter = yfilter;
+        ietf_ipv4_unicast_routing_address.yfilter = yfilter;
     }
     if(value_path == "address")
     {
-        ietf_ipv4_unicast_routing_address.yfilter = yfilter;
+        ietf_ipv6_unicast_routing_address.yfilter = yfilter;
     }
 }
 
@@ -23636,8 +23636,8 @@ FibRoute::Output::Route::Route()
     source_protocol{YType::identityref, "source-protocol"},
     active{YType::empty, "active"},
     last_updated{YType::str, "last-updated"},
-    ietf_ipv6_unicast_routing_destination_prefix{YType::str, "ietf-ipv6-unicast-routing:destination-prefix"},
-    ietf_ipv4_unicast_routing_destination_prefix{YType::str, "ietf-ipv4-unicast-routing:destination-prefix"}
+    ietf_ipv4_unicast_routing_destination_prefix{YType::str, "ietf-ipv4-unicast-routing:destination-prefix"},
+    ietf_ipv6_unicast_routing_destination_prefix{YType::str, "ietf-ipv6-unicast-routing:destination-prefix"}
         ,
     next_hop(std::make_shared<FibRoute::Output::Route::NextHop>())
 {
@@ -23657,8 +23657,8 @@ bool FibRoute::Output::Route::has_data() const
 	|| source_protocol.is_set
 	|| active.is_set
 	|| last_updated.is_set
-	|| ietf_ipv6_unicast_routing_destination_prefix.is_set
 	|| ietf_ipv4_unicast_routing_destination_prefix.is_set
+	|| ietf_ipv6_unicast_routing_destination_prefix.is_set
 	|| (next_hop !=  nullptr && next_hop->has_data());
 }
 
@@ -23669,8 +23669,8 @@ bool FibRoute::Output::Route::has_operation() const
 	|| ydk::is_set(source_protocol.yfilter)
 	|| ydk::is_set(active.yfilter)
 	|| ydk::is_set(last_updated.yfilter)
-	|| ydk::is_set(ietf_ipv6_unicast_routing_destination_prefix.yfilter)
 	|| ydk::is_set(ietf_ipv4_unicast_routing_destination_prefix.yfilter)
+	|| ydk::is_set(ietf_ipv6_unicast_routing_destination_prefix.yfilter)
 	|| (next_hop !=  nullptr && next_hop->has_operation());
 }
 
@@ -23696,8 +23696,8 @@ std::vector<std::pair<std::string, LeafData> > FibRoute::Output::Route::get_name
     if (source_protocol.is_set || is_set(source_protocol.yfilter)) leaf_name_data.push_back(source_protocol.get_name_leafdata());
     if (active.is_set || is_set(active.yfilter)) leaf_name_data.push_back(active.get_name_leafdata());
     if (last_updated.is_set || is_set(last_updated.yfilter)) leaf_name_data.push_back(last_updated.get_name_leafdata());
-    if (ietf_ipv6_unicast_routing_destination_prefix.is_set || is_set(ietf_ipv6_unicast_routing_destination_prefix.yfilter)) leaf_name_data.push_back(ietf_ipv6_unicast_routing_destination_prefix.get_name_leafdata());
     if (ietf_ipv4_unicast_routing_destination_prefix.is_set || is_set(ietf_ipv4_unicast_routing_destination_prefix.yfilter)) leaf_name_data.push_back(ietf_ipv4_unicast_routing_destination_prefix.get_name_leafdata());
+    if (ietf_ipv6_unicast_routing_destination_prefix.is_set || is_set(ietf_ipv6_unicast_routing_destination_prefix.yfilter)) leaf_name_data.push_back(ietf_ipv6_unicast_routing_destination_prefix.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -23755,17 +23755,17 @@ void FibRoute::Output::Route::set_value(const std::string & value_path, const st
         last_updated.value_namespace = name_space;
         last_updated.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "ietf-ipv6-unicast-routing:destination-prefix")
-    {
-        ietf_ipv6_unicast_routing_destination_prefix = value;
-        ietf_ipv6_unicast_routing_destination_prefix.value_namespace = name_space;
-        ietf_ipv6_unicast_routing_destination_prefix.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "ietf-ipv4-unicast-routing:destination-prefix")
     {
         ietf_ipv4_unicast_routing_destination_prefix = value;
         ietf_ipv4_unicast_routing_destination_prefix.value_namespace = name_space;
         ietf_ipv4_unicast_routing_destination_prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ietf-ipv6-unicast-routing:destination-prefix")
+    {
+        ietf_ipv6_unicast_routing_destination_prefix = value;
+        ietf_ipv6_unicast_routing_destination_prefix.value_namespace = name_space;
+        ietf_ipv6_unicast_routing_destination_prefix.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -23789,11 +23789,11 @@ void FibRoute::Output::Route::set_filter(const std::string & value_path, YFilter
     }
     if(value_path == "destination-prefix")
     {
-        ietf_ipv6_unicast_routing_destination_prefix.yfilter = yfilter;
+        ietf_ipv4_unicast_routing_destination_prefix.yfilter = yfilter;
     }
     if(value_path == "destination-prefix")
     {
-        ietf_ipv4_unicast_routing_destination_prefix.yfilter = yfilter;
+        ietf_ipv6_unicast_routing_destination_prefix.yfilter = yfilter;
     }
 }
 
@@ -23807,9 +23807,9 @@ bool FibRoute::Output::Route::has_leaf_or_child_of_name(const std::string & name
 FibRoute::Output::Route::NextHop::NextHop()
     :
     outgoing_interface{YType::str, "outgoing-interface"},
-    ietf_routing_next_hop_address{YType::str, "next-hop-address"},
-    ietf_ipv6_unicast_routing_next_hop_address{YType::str, "ietf-ipv6-unicast-routing:next-hop-address"},
+    next_hop_address{YType::str, "next-hop-address"},
     ietf_ipv4_unicast_routing_next_hop_address{YType::str, "ietf-ipv4-unicast-routing:next-hop-address"},
+    ietf_ipv6_unicast_routing_next_hop_address{YType::str, "ietf-ipv6-unicast-routing:next-hop-address"},
     special_next_hop{YType::enumeration, "special-next-hop"}
 {
 
@@ -23824,9 +23824,9 @@ bool FibRoute::Output::Route::NextHop::has_data() const
 {
     if (is_presence_container) return true;
     return outgoing_interface.is_set
-	|| ietf_routing_next_hop_address.is_set
-	|| ietf_ipv6_unicast_routing_next_hop_address.is_set
+	|| next_hop_address.is_set
 	|| ietf_ipv4_unicast_routing_next_hop_address.is_set
+	|| ietf_ipv6_unicast_routing_next_hop_address.is_set
 	|| special_next_hop.is_set;
 }
 
@@ -23834,9 +23834,9 @@ bool FibRoute::Output::Route::NextHop::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(outgoing_interface.yfilter)
-	|| ydk::is_set(ietf_routing_next_hop_address.yfilter)
-	|| ydk::is_set(ietf_ipv6_unicast_routing_next_hop_address.yfilter)
+	|| ydk::is_set(next_hop_address.yfilter)
 	|| ydk::is_set(ietf_ipv4_unicast_routing_next_hop_address.yfilter)
+	|| ydk::is_set(ietf_ipv6_unicast_routing_next_hop_address.yfilter)
 	|| ydk::is_set(special_next_hop.yfilter);
 }
 
@@ -23859,9 +23859,9 @@ std::vector<std::pair<std::string, LeafData> > FibRoute::Output::Route::NextHop:
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (outgoing_interface.is_set || is_set(outgoing_interface.yfilter)) leaf_name_data.push_back(outgoing_interface.get_name_leafdata());
-    if (ietf_routing_next_hop_address.is_set || is_set(ietf_routing_next_hop_address.yfilter)) leaf_name_data.push_back(ietf_routing_next_hop_address.get_name_leafdata());
-    if (ietf_ipv6_unicast_routing_next_hop_address.is_set || is_set(ietf_ipv6_unicast_routing_next_hop_address.yfilter)) leaf_name_data.push_back(ietf_ipv6_unicast_routing_next_hop_address.get_name_leafdata());
+    if (next_hop_address.is_set || is_set(next_hop_address.yfilter)) leaf_name_data.push_back(next_hop_address.get_name_leafdata());
     if (ietf_ipv4_unicast_routing_next_hop_address.is_set || is_set(ietf_ipv4_unicast_routing_next_hop_address.yfilter)) leaf_name_data.push_back(ietf_ipv4_unicast_routing_next_hop_address.get_name_leafdata());
+    if (ietf_ipv6_unicast_routing_next_hop_address.is_set || is_set(ietf_ipv6_unicast_routing_next_hop_address.yfilter)) leaf_name_data.push_back(ietf_ipv6_unicast_routing_next_hop_address.get_name_leafdata());
     if (special_next_hop.is_set || is_set(special_next_hop.yfilter)) leaf_name_data.push_back(special_next_hop.get_name_leafdata());
 
     return leaf_name_data;
@@ -23890,21 +23890,21 @@ void FibRoute::Output::Route::NextHop::set_value(const std::string & value_path,
     }
     if(value_path == "next-hop-address")
     {
-        ietf_routing_next_hop_address = value;
-        ietf_routing_next_hop_address.value_namespace = name_space;
-        ietf_routing_next_hop_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ietf-ipv6-unicast-routing:next-hop-address")
-    {
-        ietf_ipv6_unicast_routing_next_hop_address = value;
-        ietf_ipv6_unicast_routing_next_hop_address.value_namespace = name_space;
-        ietf_ipv6_unicast_routing_next_hop_address.value_namespace_prefix = name_space_prefix;
+        next_hop_address = value;
+        next_hop_address.value_namespace = name_space;
+        next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "ietf-ipv4-unicast-routing:next-hop-address")
     {
         ietf_ipv4_unicast_routing_next_hop_address = value;
         ietf_ipv4_unicast_routing_next_hop_address.value_namespace = name_space;
         ietf_ipv4_unicast_routing_next_hop_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ietf-ipv6-unicast-routing:next-hop-address")
+    {
+        ietf_ipv6_unicast_routing_next_hop_address = value;
+        ietf_ipv6_unicast_routing_next_hop_address.value_namespace = name_space;
+        ietf_ipv6_unicast_routing_next_hop_address.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "special-next-hop")
     {
@@ -23922,15 +23922,15 @@ void FibRoute::Output::Route::NextHop::set_filter(const std::string & value_path
     }
     if(value_path == "next-hop-address")
     {
-        ietf_routing_next_hop_address.yfilter = yfilter;
-    }
-    if(value_path == "next-hop-address")
-    {
-        ietf_ipv6_unicast_routing_next_hop_address.yfilter = yfilter;
+        next_hop_address.yfilter = yfilter;
     }
     if(value_path == "next-hop-address")
     {
         ietf_ipv4_unicast_routing_next_hop_address.yfilter = yfilter;
+    }
+    if(value_path == "next-hop-address")
+    {
+        ietf_ipv6_unicast_routing_next_hop_address.yfilter = yfilter;
     }
     if(value_path == "special-next-hop")
     {
@@ -23943,46 +23943,6 @@ bool FibRoute::Output::Route::NextHop::has_leaf_or_child_of_name(const std::stri
     if(name == "outgoing-interface" || name == "next-hop-address" || name == "next-hop-address" || name == "next-hop-address" || name == "special-next-hop")
         return true;
     return false;
-}
-
-VrfRoutingInstance::VrfRoutingInstance()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:vrf-routing-instance")
-{
-
-}
-
-VrfRoutingInstance::~VrfRoutingInstance()
-{
-}
-
-Direct::Direct()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:direct")
-{
-
-}
-
-Direct::~Direct()
-{
-}
-
-DefaultRoutingInstance::DefaultRoutingInstance()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:default-routing-instance")
-{
-
-}
-
-DefaultRoutingInstance::~DefaultRoutingInstance()
-{
-}
-
-Static::Static()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:static")
-{
-
-}
-
-Static::~Static()
-{
 }
 
 Ipv4::Ipv4()
@@ -24005,6 +23965,46 @@ Ipv6::~Ipv6()
 {
 }
 
+DefaultRoutingInstance::DefaultRoutingInstance()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:default-routing-instance")
+{
+
+}
+
+DefaultRoutingInstance::~DefaultRoutingInstance()
+{
+}
+
+VrfRoutingInstance::VrfRoutingInstance()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:vrf-routing-instance")
+{
+
+}
+
+VrfRoutingInstance::~VrfRoutingInstance()
+{
+}
+
+Direct::Direct()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:direct")
+{
+
+}
+
+Direct::~Direct()
+{
+}
+
+Static::Static()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-routing", "ietf-routing", "ietf-routing:static")
+{
+
+}
+
+Static::~Static()
+{
+}
+
 const Enum::YLeaf RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::NetworkType::broadcast {0, "broadcast"};
 const Enum::YLeaf RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::NetworkType::non_broadcast {1, "non-broadcast"};
 const Enum::YLeaf RoutingState::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interfaces::NetworkType::point_to_multipoint {2, "point-to-multipoint"};
@@ -24022,15 +24022,15 @@ const Enum::YLeaf RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextH
 const Enum::YLeaf RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop::SpecialNextHop::prohibit {2, "prohibit"};
 const Enum::YLeaf RoutingState::RoutingInstance::Ribs::Rib::Routes::Route::NextHop::SpecialNextHop::receive {3, "receive"};
 
-const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::SpecialNextHop::blackhole {0, "blackhole"};
-const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::SpecialNextHop::unreachable {1, "unreachable"};
-const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::SpecialNextHop::prohibit {2, "prohibit"};
-const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::SpecialNextHop::receive {3, "receive"};
-
 const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::SpecialNextHop::blackhole {0, "blackhole"};
 const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::SpecialNextHop::unreachable {1, "unreachable"};
 const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::SpecialNextHop::prohibit {2, "prohibit"};
 const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv4::Route::NextHop::SpecialNextHop::receive {3, "receive"};
+
+const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::SpecialNextHop::blackhole {0, "blackhole"};
+const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::SpecialNextHop::unreachable {1, "unreachable"};
+const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::SpecialNextHop::prohibit {2, "prohibit"};
+const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::StaticRoutes::Ipv6::Route::NextHop::SpecialNextHop::receive {3, "receive"};
 
 const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::NetworkType::broadcast {0, "broadcast"};
 const Enum::YLeaf Routing::RoutingInstance::RoutingProtocols::RoutingProtocol::Ospf::Instance::Area::Interface::NetworkType::non_broadcast {1, "non-broadcast"};

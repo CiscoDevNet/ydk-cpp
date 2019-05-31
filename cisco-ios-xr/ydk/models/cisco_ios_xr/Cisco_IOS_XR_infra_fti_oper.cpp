@@ -2435,6 +2435,12 @@ bool DciFabricInterconnect::Acp::has_leaf_or_child_of_name(const std::string & n
     return false;
 }
 
+const Enum::YLeaf FtiBagFabricPeerState::fti_bag_fabric_peer_status_disconnected {0, "fti-bag-fabric-peer-status-disconnected"};
+const Enum::YLeaf FtiBagFabricPeerState::fti_bag_fabric_peer_status_connecting {1, "fti-bag-fabric-peer-status-connecting"};
+const Enum::YLeaf FtiBagFabricPeerState::fti_bag_fabric_peer_status_connected {2, "fti-bag-fabric-peer-status-connected"};
+const Enum::YLeaf FtiBagFabricPeerState::fti_bag_fabric_peer_status_ready {3, "fti-bag-fabric-peer-status-ready"};
+const Enum::YLeaf FtiBagFabricPeerState::fti_bag_fabric_peer_status_closing {4, "fti-bag-fabric-peer-status-closing"};
+
 const Enum::YLeaf FtiBagFabricState::fti_bag_fabric_state_active_down {0, "fti-bag-fabric-state-active-down"};
 const Enum::YLeaf FtiBagFabricState::fti_bag_fabric_state_active_degraded {1, "fti-bag-fabric-state-active-degraded"};
 const Enum::YLeaf FtiBagFabricState::fti_bag_fabric_state_active_healthy {2, "fti-bag-fabric-state-active-healthy"};
@@ -2442,12 +2448,6 @@ const Enum::YLeaf FtiBagFabricState::fti_bag_fabric_state_inactive {3, "fti-bag-
 
 const Enum::YLeaf FtiBagFabricConfigState::fti_bag_config_complete {0, "fti-bag-config-complete"};
 const Enum::YLeaf FtiBagFabricConfigState::fti_bag_config_incomplete {1, "fti-bag-config-incomplete"};
-
-const Enum::YLeaf FtiBagFabricPeerState::fti_bag_fabric_peer_status_disconnected {0, "fti-bag-fabric-peer-status-disconnected"};
-const Enum::YLeaf FtiBagFabricPeerState::fti_bag_fabric_peer_status_connecting {1, "fti-bag-fabric-peer-status-connecting"};
-const Enum::YLeaf FtiBagFabricPeerState::fti_bag_fabric_peer_status_connected {2, "fti-bag-fabric-peer-status-connected"};
-const Enum::YLeaf FtiBagFabricPeerState::fti_bag_fabric_peer_status_ready {3, "fti-bag-fabric-peer-status-ready"};
-const Enum::YLeaf FtiBagFabricPeerState::fti_bag_fabric_peer_status_closing {4, "fti-bag-fabric-peer-status-closing"};
 
 
 }

@@ -350,24 +350,6 @@ class StartupMode : public ydk::Enum
 
 };
 
-class ServiceRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf NONE;
-        static const ydk::Enum::YLeaf ACTIVE;
-        static const ydk::Enum::YLeaf STANDBY;
-
-};
-
-class ServiceState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf SS_IDLE;
-        static const ydk::Enum::YLeaf SS_RUNNING;
-        static const ydk::Enum::YLeaf SS_ACK_PENDING;
-
-};
-
 class ProcessState : public ydk::Enum
 {
     public:
@@ -385,6 +367,24 @@ class ServiceScope : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf SYSTEM;
         static const ydk::Enum::YLeaf RACK;
+
+};
+
+class ServiceState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf SS_IDLE;
+        static const ydk::Enum::YLeaf SS_RUNNING;
+        static const ydk::Enum::YLeaf SS_ACK_PENDING;
+
+};
+
+class ServiceRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf NONE;
+        static const ydk::Enum::YLeaf ACTIVE;
+        static const ydk::Enum::YLeaf STANDBY;
 
 };
 

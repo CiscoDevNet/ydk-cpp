@@ -3637,7 +3637,8 @@ Dot1x::Session::InterfaceSessions::InterfaceSession::InterfaceSession()
     interface_sname{YType::str, "interface-sname"},
     if_handle{YType::str, "if-handle"},
     mac{YType::str, "mac"},
-    ethertype{YType::str, "ethertype"}
+    ethertype{YType::str, "ethertype"},
+    eapol_addr{YType::str, "eapol-addr"}
         ,
     intf_info(std::make_shared<Dot1x::Session::InterfaceSessions::InterfaceSession::IntfInfo>())
     , mka_status_info(std::make_shared<Dot1x::Session::InterfaceSessions::InterfaceSession::MkaStatusInfo>())
@@ -3661,6 +3662,7 @@ bool Dot1x::Session::InterfaceSessions::InterfaceSession::has_data() const
 	|| if_handle.is_set
 	|| mac.is_set
 	|| ethertype.is_set
+	|| eapol_addr.is_set
 	|| (intf_info !=  nullptr && intf_info->has_data())
 	|| (mka_status_info !=  nullptr && mka_status_info->has_data());
 }
@@ -3674,6 +3676,7 @@ bool Dot1x::Session::InterfaceSessions::InterfaceSession::has_operation() const
 	|| ydk::is_set(if_handle.yfilter)
 	|| ydk::is_set(mac.yfilter)
 	|| ydk::is_set(ethertype.yfilter)
+	|| ydk::is_set(eapol_addr.yfilter)
 	|| (intf_info !=  nullptr && intf_info->has_operation())
 	|| (mka_status_info !=  nullptr && mka_status_info->has_operation());
 }
@@ -3703,6 +3706,7 @@ std::vector<std::pair<std::string, LeafData> > Dot1x::Session::InterfaceSessions
     if (if_handle.is_set || is_set(if_handle.yfilter)) leaf_name_data.push_back(if_handle.get_name_leafdata());
     if (mac.is_set || is_set(mac.yfilter)) leaf_name_data.push_back(mac.get_name_leafdata());
     if (ethertype.is_set || is_set(ethertype.yfilter)) leaf_name_data.push_back(ethertype.get_name_leafdata());
+    if (eapol_addr.is_set || is_set(eapol_addr.yfilter)) leaf_name_data.push_back(eapol_addr.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3786,6 +3790,12 @@ void Dot1x::Session::InterfaceSessions::InterfaceSession::set_value(const std::s
         ethertype.value_namespace = name_space;
         ethertype.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "eapol-addr")
+    {
+        eapol_addr = value;
+        eapol_addr.value_namespace = name_space;
+        eapol_addr.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Dot1x::Session::InterfaceSessions::InterfaceSession::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3814,11 +3824,15 @@ void Dot1x::Session::InterfaceSessions::InterfaceSession::set_filter(const std::
     {
         ethertype.yfilter = yfilter;
     }
+    if(value_path == "eapol-addr")
+    {
+        eapol_addr.yfilter = yfilter;
+    }
 }
 
 bool Dot1x::Session::InterfaceSessions::InterfaceSession::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "intf-info" || name == "mka-status-info" || name == "name" || name == "interface-name" || name == "interface-sname" || name == "if-handle" || name == "mac" || name == "ethertype")
+    if(name == "intf-info" || name == "mka-status-info" || name == "name" || name == "interface-name" || name == "interface-sname" || name == "if-handle" || name == "mac" || name == "ethertype" || name == "eapol-addr")
         return true;
     return false;
 }

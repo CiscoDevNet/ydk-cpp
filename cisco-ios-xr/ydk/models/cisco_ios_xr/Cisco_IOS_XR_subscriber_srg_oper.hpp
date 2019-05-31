@@ -682,24 +682,6 @@ class SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface : pub
 
 }; // SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface
 
-class SrgShowImRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf master;
-        static const ydk::Enum::YLeaf slave;
-
-};
-
-class SrgShowSessionError : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf hard;
-        static const ydk::Enum::YLeaf soft;
-
-};
-
 class SrgShowSoReason : public ydk::Enum
 {
     public:
@@ -709,16 +691,6 @@ class SrgShowSoReason : public ydk::Enum
         static const ydk::Enum::YLeaf peer_down;
         static const ydk::Enum::YLeaf object_tracking_status_change;
         static const ydk::Enum::YLeaf srg_show_so_reason_max;
-
-};
-
-class SrgShowSessionOperation : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf update;
-        static const ydk::Enum::YLeaf delete_;
-        static const ydk::Enum::YLeaf in_sync;
 
 };
 
@@ -737,21 +709,22 @@ class SrgPeerStatus : public ydk::Enum
 
 };
 
-class SrgShowRole : public ydk::Enum
+class SrgShowSessionError : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf master;
-        static const ydk::Enum::YLeaf slave;
+        static const ydk::Enum::YLeaf hard;
+        static const ydk::Enum::YLeaf soft;
 
 };
 
-class SrgShowSlaveMode : public ydk::Enum
+class SrgShowSessionOperation : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf warm;
-        static const ydk::Enum::YLeaf hot;
+        static const ydk::Enum::YLeaf update;
+        static const ydk::Enum::YLeaf delete_;
+        static const ydk::Enum::YLeaf in_sync;
 
 };
 
@@ -765,6 +738,33 @@ class SrgShowComp : public ydk::Enum
         static const ydk::Enum::YLeaf ppp;
         static const ydk::Enum::YLeaf l2tp;
         static const ydk::Enum::YLeaf iedge;
+
+};
+
+class SrgShowSlaveMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf warm;
+        static const ydk::Enum::YLeaf hot;
+
+};
+
+class SrgShowRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf slave;
+
+};
+
+class SrgShowImRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf slave;
 
 };
 

@@ -1544,12 +1544,12 @@ bool L2tp::Classes::Class::Ip::has_leaf_or_child_of_name(const std::string & nam
     return false;
 }
 
-const Enum::YLeaf L2tpDigestHashMethod::md5 {1, "md5"};
-const Enum::YLeaf L2tpDigestHashMethod::sha1 {2, "sha1"};
-
 const Enum::YLeaf L2tpHashMethod::md5 {1, "md5"};
 const Enum::YLeaf L2tpHashMethod::sha1 {2, "sha1"};
 const Enum::YLeaf L2tpHashMethod::none {3, "none"};
+
+const Enum::YLeaf L2tpDigestHashMethod::md5 {1, "md5"};
+const Enum::YLeaf L2tpDigestHashMethod::sha1 {2, "sha1"};
 
 
 }

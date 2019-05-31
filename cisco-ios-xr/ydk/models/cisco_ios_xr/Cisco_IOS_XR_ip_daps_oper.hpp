@@ -924,14 +924,6 @@ class DapsSergRole : public ydk::Enum
 
 };
 
-class IpAddr : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
 class DapsClient : public ydk::Enum
 {
     public:
@@ -940,6 +932,14 @@ class DapsClient : public ydk::Enum
         static const ydk::Enum::YLeaf dhcp;
         static const ydk::Enum::YLeaf dhcpv6;
         static const ydk::Enum::YLeaf ipv6nd;
+
+};
+
+class IpAddr : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 

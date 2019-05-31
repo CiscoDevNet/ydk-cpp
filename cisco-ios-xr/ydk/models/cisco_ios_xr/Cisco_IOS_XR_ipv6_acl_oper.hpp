@@ -721,13 +721,34 @@ class Ipv6AclAndPrefixList::Oor::AccessListSummary::Details : public ydk::Entity
 
 }; // Ipv6AclAndPrefixList::Oor::AccessListSummary::Details
 
-class AclTcpflagsOperator : public ydk::Enum
+class BagAclNhAtStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf match_none;
-        static const ydk::Enum::YLeaf match_all;
-        static const ydk::Enum::YLeaf match_any_old;
-        static const ydk::Enum::YLeaf match_any;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf not_present;
+        static const ydk::Enum::YLeaf max;
+
+};
+
+class BagAclNhStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_present;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf max;
+
+};
+
+class BagAclNh : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf nexthop_none;
+        static const ydk::Enum::YLeaf nexthop_default;
+        static const ydk::Enum::YLeaf nexthop;
 
 };
 
@@ -745,15 +766,6 @@ class AclPortOperator : public ydk::Enum
 
 };
 
-class AclAce1 : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf normal;
-        static const ydk::Enum::YLeaf remark;
-        static const ydk::Enum::YLeaf abf;
-
-};
-
 class AclPortOperator_ : public ydk::Enum
 {
     public:
@@ -768,23 +780,22 @@ class AclPortOperator_ : public ydk::Enum
 
 };
 
-class BagAclNhAtStatus : public ydk::Enum
+class AclTcpflagsOperator : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf not_present;
-        static const ydk::Enum::YLeaf max;
+        static const ydk::Enum::YLeaf match_none;
+        static const ydk::Enum::YLeaf match_all;
+        static const ydk::Enum::YLeaf match_any_old;
+        static const ydk::Enum::YLeaf match_any;
 
 };
 
-class BagAclNh : public ydk::Enum
+class AclLog : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf nexthop_none;
-        static const ydk::Enum::YLeaf nexthop_default;
-        static const ydk::Enum::YLeaf nexthop;
+        static const ydk::Enum::YLeaf log_none;
+        static const ydk::Enum::YLeaf log;
+        static const ydk::Enum::YLeaf log_input;
 
 };
 
@@ -828,23 +839,12 @@ class AclAction : public ydk::Enum
 
 };
 
-class BagAclNhStatus : public ydk::Enum
+class AclAce1 : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf not_present;
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf max;
-
-};
-
-class AclLog : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf log_none;
-        static const ydk::Enum::YLeaf log;
-        static const ydk::Enum::YLeaf log_input;
+        static const ydk::Enum::YLeaf normal;
+        static const ydk::Enum::YLeaf remark;
+        static const ydk::Enum::YLeaf abf;
 
 };
 

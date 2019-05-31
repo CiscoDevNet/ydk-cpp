@@ -222,10 +222,12 @@ SubscriberDatabase::Nodes::Node::Node()
     :
     node_name{YType::str, "node-name"}
         ,
-    association(std::make_shared<SubscriberDatabase::Nodes::Node::Association>())
+    subdb_assoc(std::make_shared<SubscriberDatabase::Nodes::Node::SubdbAssoc>())
+    , association(std::make_shared<SubscriberDatabase::Nodes::Node::Association>())
     , summary(std::make_shared<SubscriberDatabase::Nodes::Node::Summary>())
     , session(std::make_shared<SubscriberDatabase::Nodes::Node::Session>())
 {
+    subdb_assoc->parent = this;
     association->parent = this;
     summary->parent = this;
     session->parent = this;
@@ -241,6 +243,7 @@ bool SubscriberDatabase::Nodes::Node::has_data() const
 {
     if (is_presence_container) return true;
     return node_name.is_set
+	|| (subdb_assoc !=  nullptr && subdb_assoc->has_data())
 	|| (association !=  nullptr && association->has_data())
 	|| (summary !=  nullptr && summary->has_data())
 	|| (session !=  nullptr && session->has_data());
@@ -250,6 +253,7 @@ bool SubscriberDatabase::Nodes::Node::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(node_name.yfilter)
+	|| (subdb_assoc !=  nullptr && subdb_assoc->has_operation())
 	|| (association !=  nullptr && association->has_operation())
 	|| (summary !=  nullptr && summary->has_operation())
 	|| (session !=  nullptr && session->has_operation());
@@ -282,6 +286,15 @@ std::vector<std::pair<std::string, LeafData> > SubscriberDatabase::Nodes::Node::
 
 std::shared_ptr<ydk::Entity> SubscriberDatabase::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "subdb-assoc")
+    {
+        if(subdb_assoc == nullptr)
+        {
+            subdb_assoc = std::make_shared<SubscriberDatabase::Nodes::Node::SubdbAssoc>();
+        }
+        return subdb_assoc;
+    }
+
     if(child_yang_name == "association")
     {
         if(association == nullptr)
@@ -316,6 +329,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberDatabase::Nodes::N
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(subdb_assoc != nullptr)
+    {
+        _children["subdb-assoc"] = subdb_assoc;
+    }
+
     if(association != nullptr)
     {
         _children["association"] = association;
@@ -354,7 +372,536 @@ void SubscriberDatabase::Nodes::Node::set_filter(const std::string & value_path,
 
 bool SubscriberDatabase::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "association" || name == "summary" || name == "session" || name == "node-name")
+    if(name == "subdb-assoc" || name == "association" || name == "summary" || name == "session" || name == "node-name")
+        return true;
+    return false;
+}
+
+SubscriberDatabase::Nodes::Node::SubdbAssoc::SubdbAssoc()
+    :
+    labels(std::make_shared<SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels>())
+{
+    labels->parent = this;
+
+    yang_name = "subdb-assoc"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+SubscriberDatabase::Nodes::Node::SubdbAssoc::~SubdbAssoc()
+{
+}
+
+bool SubscriberDatabase::Nodes::Node::SubdbAssoc::has_data() const
+{
+    if (is_presence_container) return true;
+    return (labels !=  nullptr && labels->has_data());
+}
+
+bool SubscriberDatabase::Nodes::Node::SubdbAssoc::has_operation() const
+{
+    return is_set(yfilter)
+	|| (labels !=  nullptr && labels->has_operation());
+}
+
+std::string SubscriberDatabase::Nodes::Node::SubdbAssoc::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "subdb-assoc";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SubscriberDatabase::Nodes::Node::SubdbAssoc::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> SubscriberDatabase::Nodes::Node::SubdbAssoc::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "labels")
+    {
+        if(labels == nullptr)
+        {
+            labels = std::make_shared<SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels>();
+        }
+        return labels;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberDatabase::Nodes::Node::SubdbAssoc::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(labels != nullptr)
+    {
+        _children["labels"] = labels;
+    }
+
+    return _children;
+}
+
+void SubscriberDatabase::Nodes::Node::SubdbAssoc::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SubscriberDatabase::Nodes::Node::SubdbAssoc::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SubscriberDatabase::Nodes::Node::SubdbAssoc::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "labels")
+        return true;
+    return false;
+}
+
+SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Labels()
+    :
+    label(this, {"subscriber_label"})
+{
+
+    yang_name = "labels"; yang_parent_name = "subdb-assoc"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::~Labels()
+{
+}
+
+bool SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<label.len(); index++)
+    {
+        if(label[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::has_operation() const
+{
+    for (std::size_t index=0; index<label.len(); index++)
+    {
+        if(label[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "labels";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "label")
+    {
+        auto ent_ = std::make_shared<SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label>();
+        ent_->parent = this;
+        label.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : label.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "label")
+        return true;
+    return false;
+}
+
+SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Label()
+    :
+    subscriber_label{YType::uint32, "subscriber-label"},
+    session_id{YType::uint32, "session-id"},
+    interface_name{YType::str, "interface-name"},
+    associations{YType::uint32, "associations"},
+    varlist_id{YType::uint32, "varlist-id"}
+        ,
+    template_(std::make_shared<SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template>())
+{
+    template_->parent = this;
+
+    yang_name = "label"; yang_parent_name = "labels"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::~Label()
+{
+}
+
+bool SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::has_data() const
+{
+    if (is_presence_container) return true;
+    return subscriber_label.is_set
+	|| session_id.is_set
+	|| interface_name.is_set
+	|| associations.is_set
+	|| varlist_id.is_set
+	|| (template_ !=  nullptr && template_->has_data());
+}
+
+bool SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(subscriber_label.yfilter)
+	|| ydk::is_set(session_id.yfilter)
+	|| ydk::is_set(interface_name.yfilter)
+	|| ydk::is_set(associations.yfilter)
+	|| ydk::is_set(varlist_id.yfilter)
+	|| (template_ !=  nullptr && template_->has_operation());
+}
+
+std::string SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "label";
+    ADD_KEY_TOKEN(subscriber_label, "subscriber-label");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (subscriber_label.is_set || is_set(subscriber_label.yfilter)) leaf_name_data.push_back(subscriber_label.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
+    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
+    if (associations.is_set || is_set(associations.yfilter)) leaf_name_data.push_back(associations.get_name_leafdata());
+    if (varlist_id.is_set || is_set(varlist_id.yfilter)) leaf_name_data.push_back(varlist_id.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "template")
+    {
+        if(template_ == nullptr)
+        {
+            template_ = std::make_shared<SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template>();
+        }
+        return template_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(template_ != nullptr)
+    {
+        _children["template"] = template_;
+    }
+
+    return _children;
+}
+
+void SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "subscriber-label")
+    {
+        subscriber_label = value;
+        subscriber_label.value_namespace = name_space;
+        subscriber_label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "session-id")
+    {
+        session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name = value;
+        interface_name.value_namespace = name_space;
+        interface_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "associations")
+    {
+        associations = value;
+        associations.value_namespace = name_space;
+        associations.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "varlist-id")
+    {
+        varlist_id = value;
+        varlist_id.value_namespace = name_space;
+        varlist_id.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "subscriber-label")
+    {
+        subscriber_label.yfilter = yfilter;
+    }
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
+    if(value_path == "interface-name")
+    {
+        interface_name.yfilter = yfilter;
+    }
+    if(value_path == "associations")
+    {
+        associations.yfilter = yfilter;
+    }
+    if(value_path == "varlist-id")
+    {
+        varlist_id.yfilter = yfilter;
+    }
+}
+
+bool SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template" || name == "subscriber-label" || name == "session-id" || name == "interface-name" || name == "associations" || name == "varlist-id")
+        return true;
+    return false;
+}
+
+SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::Template()
+    :
+    associated_template(this, {})
+{
+
+    yang_name = "template"; yang_parent_name = "label"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::~Template()
+{
+}
+
+bool SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<associated_template.len(); index++)
+    {
+        if(associated_template[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::has_operation() const
+{
+    for (std::size_t index=0; index<associated_template.len(); index++)
+    {
+        if(associated_template[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "template";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "associated-template")
+    {
+        auto ent_ = std::make_shared<SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::AssociatedTemplate>();
+        ent_->parent = this;
+        associated_template.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : associated_template.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "associated-template")
+        return true;
+    return false;
+}
+
+SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::AssociatedTemplate::AssociatedTemplate()
+    :
+    template_type{YType::enumeration, "template-type"},
+    template_name{YType::str, "template-name"},
+    varlist{YType::str, "varlist"}
+{
+
+    yang_name = "associated-template"; yang_parent_name = "template"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::AssociatedTemplate::~AssociatedTemplate()
+{
+}
+
+bool SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::AssociatedTemplate::has_data() const
+{
+    if (is_presence_container) return true;
+    return template_type.is_set
+	|| template_name.is_set
+	|| varlist.is_set;
+}
+
+bool SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::AssociatedTemplate::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(template_type.yfilter)
+	|| ydk::is_set(template_name.yfilter)
+	|| ydk::is_set(varlist.yfilter);
+}
+
+std::string SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::AssociatedTemplate::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "associated-template";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::AssociatedTemplate::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (template_type.is_set || is_set(template_type.yfilter)) leaf_name_data.push_back(template_type.get_name_leafdata());
+    if (template_name.is_set || is_set(template_name.yfilter)) leaf_name_data.push_back(template_name.get_name_leafdata());
+    if (varlist.is_set || is_set(varlist.yfilter)) leaf_name_data.push_back(varlist.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::AssociatedTemplate::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::AssociatedTemplate::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::AssociatedTemplate::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "template-type")
+    {
+        template_type = value;
+        template_type.value_namespace = name_space;
+        template_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "template-name")
+    {
+        template_name = value;
+        template_name.value_namespace = name_space;
+        template_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "varlist")
+    {
+        varlist = value;
+        varlist.value_namespace = name_space;
+        varlist.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::AssociatedTemplate::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "template-type")
+    {
+        template_type.yfilter = yfilter;
+    }
+    if(value_path == "template-name")
+    {
+        template_name.yfilter = yfilter;
+    }
+    if(value_path == "varlist")
+    {
+        varlist.yfilter = yfilter;
+    }
+}
+
+bool SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::AssociatedTemplate::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "template-type" || name == "template-name" || name == "varlist")
         return true;
     return false;
 }
@@ -537,6 +1084,7 @@ bool SubscriberDatabase::Nodes::Node::Association::Labels::has_leaf_or_child_of_
 SubscriberDatabase::Nodes::Node::Association::Labels::Label::Label()
     :
     subscriber_label{YType::str, "subscriber-label"},
+    session_id{YType::uint32, "session-id"},
     interface_name{YType::str, "interface-name"},
     associations{YType::uint32, "associations"},
     varlist_id{YType::uint32, "varlist-id"}
@@ -556,6 +1104,7 @@ bool SubscriberDatabase::Nodes::Node::Association::Labels::Label::has_data() con
 {
     if (is_presence_container) return true;
     return subscriber_label.is_set
+	|| session_id.is_set
 	|| interface_name.is_set
 	|| associations.is_set
 	|| varlist_id.is_set
@@ -566,6 +1115,7 @@ bool SubscriberDatabase::Nodes::Node::Association::Labels::Label::has_operation(
 {
     return is_set(yfilter)
 	|| ydk::is_set(subscriber_label.yfilter)
+	|| ydk::is_set(session_id.yfilter)
 	|| ydk::is_set(interface_name.yfilter)
 	|| ydk::is_set(associations.yfilter)
 	|| ydk::is_set(varlist_id.yfilter)
@@ -585,6 +1135,7 @@ std::vector<std::pair<std::string, LeafData> > SubscriberDatabase::Nodes::Node::
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (subscriber_label.is_set || is_set(subscriber_label.yfilter)) leaf_name_data.push_back(subscriber_label.get_name_leafdata());
+    if (session_id.is_set || is_set(session_id.yfilter)) leaf_name_data.push_back(session_id.get_name_leafdata());
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
     if (associations.is_set || is_set(associations.yfilter)) leaf_name_data.push_back(associations.get_name_leafdata());
     if (varlist_id.is_set || is_set(varlist_id.yfilter)) leaf_name_data.push_back(varlist_id.get_name_leafdata());
@@ -627,6 +1178,12 @@ void SubscriberDatabase::Nodes::Node::Association::Labels::Label::set_value(cons
         subscriber_label.value_namespace = name_space;
         subscriber_label.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "session-id")
+    {
+        session_id = value;
+        session_id.value_namespace = name_space;
+        session_id.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "interface-name")
     {
         interface_name = value;
@@ -653,6 +1210,10 @@ void SubscriberDatabase::Nodes::Node::Association::Labels::Label::set_filter(con
     {
         subscriber_label.yfilter = yfilter;
     }
+    if(value_path == "session-id")
+    {
+        session_id.yfilter = yfilter;
+    }
     if(value_path == "interface-name")
     {
         interface_name.yfilter = yfilter;
@@ -669,7 +1230,7 @@ void SubscriberDatabase::Nodes::Node::Association::Labels::Label::set_filter(con
 
 bool SubscriberDatabase::Nodes::Node::Association::Labels::Label::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "template" || name == "subscriber-label" || name == "interface-name" || name == "associations" || name == "varlist-id")
+    if(name == "template" || name == "subscriber-label" || name == "session-id" || name == "interface-name" || name == "associations" || name == "varlist-id")
         return true;
     return false;
 }
@@ -1650,12 +2211,6 @@ bool SubscriberDatabase::Nodes::Node::Session::Labels::Label::has_leaf_or_child_
     return false;
 }
 
-const Enum::YLeaf SubdbObjectTypeData::user_profile {1, "user-profile"};
-const Enum::YLeaf SubdbObjectTypeData::service_profile {2, "service-profile"};
-const Enum::YLeaf SubdbObjectTypeData::subscriber_service {3, "subscriber-service"};
-const Enum::YLeaf SubdbObjectTypeData::ppp {4, "ppp"};
-const Enum::YLeaf SubdbObjectTypeData::ip_subscriber {5, "ip-subscriber"};
-
 const Enum::YLeaf SessionState::init {1, "init"};
 const Enum::YLeaf SessionState::destroy {2, "destroy"};
 const Enum::YLeaf SessionState::config_generate {3, "config-generate"};
@@ -1666,6 +2221,12 @@ const Enum::YLeaf SessionState::config_removed {7, "config-removed"};
 const Enum::YLeaf SessionState::config_error {8, "config-error"};
 const Enum::YLeaf SessionState::error {9, "error"};
 const Enum::YLeaf SessionState::sync {11, "sync"};
+
+const Enum::YLeaf SubdbObjectTypeData::user_profile {1, "user-profile"};
+const Enum::YLeaf SubdbObjectTypeData::service_profile {2, "service-profile"};
+const Enum::YLeaf SubdbObjectTypeData::subscriber_service {3, "subscriber-service"};
+const Enum::YLeaf SubdbObjectTypeData::ppp {4, "ppp"};
+const Enum::YLeaf SubdbObjectTypeData::ip_subscriber {5, "ip-subscriber"};
 
 
 }

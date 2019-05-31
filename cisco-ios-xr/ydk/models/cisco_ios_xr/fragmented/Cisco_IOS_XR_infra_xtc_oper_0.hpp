@@ -1456,79 +1456,15 @@ class PceTopology : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
-        class TopologySummary; //type: PceTopology::TopologySummary
         class TopologyNodes; //type: PceTopology::TopologyNodes
+        class TopologySummaries; //type: PceTopology::TopologySummaries
         class PrefixInfos; //type: PceTopology::PrefixInfos
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::PceTopology::TopologySummary> topology_summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::PceTopology::TopologyNodes> topology_nodes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::PceTopology::TopologySummaries> topology_summaries;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::PceTopology::PrefixInfos> prefix_infos;
         
 }; // PceTopology
-
-
-class PceTopology::TopologySummary : public ydk::Entity
-{
-    public:
-        TopologySummary();
-        ~TopologySummary();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf nodes; //type: uint32
-        ydk::YLeaf lookup_nodes; //type: uint32
-        ydk::YLeaf prefixes; //type: uint32
-        ydk::YLeaf prefix_sids; //type: uint32
-        ydk::YLeaf regular_prefix_sids; //type: uint32
-        ydk::YLeaf strict_prefix_sids; //type: uint32
-        ydk::YLeaf links; //type: uint32
-        ydk::YLeaf epe_links; //type: uint32
-        ydk::YLeaf adjacency_sids; //type: uint32
-        ydk::YLeaf epesids; //type: uint32
-        ydk::YLeaf protected_adjacency_sids; //type: uint32
-        ydk::YLeaf un_protected_adjacency_sids; //type: uint32
-        ydk::YLeaf topology_consistent; //type: boolean
-        class StatsTopologyUpdate; //type: PceTopology::TopologySummary::StatsTopologyUpdate
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::PceTopology::TopologySummary::StatsTopologyUpdate> stats_topology_update;
-        
-}; // PceTopology::TopologySummary
-
-
-class PceTopology::TopologySummary::StatsTopologyUpdate : public ydk::Entity
-{
-    public:
-        StatsTopologyUpdate();
-        ~StatsTopologyUpdate();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf num_nodes_added; //type: uint32
-        ydk::YLeaf num_nodes_deleted; //type: uint32
-        ydk::YLeaf num_links_added; //type: uint32
-        ydk::YLeaf num_links_deleted; //type: uint32
-        ydk::YLeaf num_prefixes_added; //type: uint32
-        ydk::YLeaf num_prefixes_deleted; //type: uint32
-
-}; // PceTopology::TopologySummary::StatsTopologyUpdate
 
 
 class PceTopology::TopologyNodes : public ydk::Entity
@@ -2619,7 +2555,7 @@ class PceTopology::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf unidirectional_min_delay; //type: uint32
+        ydk::YLeaf unidirectional_minimum_delay_microseconds; //type: uint32
 
 }; // PceTopology::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics
 
@@ -3226,6 +3162,96 @@ class PceTopology::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefi
 }; // PceTopology::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix
 
 
+class PceTopology::TopologySummaries : public ydk::Entity
+{
+    public:
+        TopologySummaries();
+        ~TopologySummaries();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class TopologySummary; //type: PceTopology::TopologySummaries::TopologySummary
+
+        ydk::YList topology_summary;
+        
+}; // PceTopology::TopologySummaries
+
+
+class PceTopology::TopologySummaries::TopologySummary : public ydk::Entity
+{
+    public:
+        TopologySummary();
+        ~TopologySummary();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf af; //type: PceAddressFamily
+        ydk::YLeaf protocol; //type: PceigpProtocol
+        ydk::YLeaf nodes; //type: uint32
+        ydk::YLeaf lookup_nodes; //type: uint32
+        ydk::YLeaf prefixes; //type: uint32
+        ydk::YLeaf prefix_sids; //type: uint32
+        ydk::YLeaf regular_prefix_sids; //type: uint32
+        ydk::YLeaf strict_prefix_sids; //type: uint32
+        ydk::YLeaf links; //type: uint32
+        ydk::YLeaf epe_links; //type: uint32
+        ydk::YLeaf adjacency_sids; //type: uint32
+        ydk::YLeaf epesids; //type: uint32
+        ydk::YLeaf protected_adjacency_sids; //type: uint32
+        ydk::YLeaf un_protected_adjacency_sids; //type: uint32
+        ydk::YLeaf topology_consistent; //type: boolean
+        class StatsTopologyUpdate; //type: PceTopology::TopologySummaries::TopologySummary::StatsTopologyUpdate
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::PceTopology::TopologySummaries::TopologySummary::StatsTopologyUpdate> stats_topology_update;
+        
+}; // PceTopology::TopologySummaries::TopologySummary
+
+
+class PceTopology::TopologySummaries::TopologySummary::StatsTopologyUpdate : public ydk::Entity
+{
+    public:
+        StatsTopologyUpdate();
+        ~StatsTopologyUpdate();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf num_nodes_added; //type: uint32
+        ydk::YLeaf num_nodes_deleted; //type: uint32
+        ydk::YLeaf num_links_added; //type: uint32
+        ydk::YLeaf num_links_deleted; //type: uint32
+        ydk::YLeaf num_prefixes_added; //type: uint32
+        ydk::YLeaf num_prefixes_deleted; //type: uint32
+
+}; // PceTopology::TopologySummaries::TopologySummary::StatsTopologyUpdate
+
+
 class PceTopology::PrefixInfos : public ydk::Entity
 {
     public:
@@ -3664,12 +3690,14 @@ class Pce : public ydk::Entity
 
         class CspfSrMpls; //type: Pce::CspfSrMpls
         class VerificationEvents; //type: Pce::VerificationEvents
+        class PeerSummaries; //type: Pce::PeerSummaries
         class AssociationInfos; //type: Pce::AssociationInfos
+        class Paths; //type: Pce::Paths
         class Cspf; //type: Pce::Cspf
-        class TopologySummary; //type: Pce::TopologySummary
         class TunnelInfos; //type: Pce::TunnelInfos
         class PeerDetailInfos; //type: Pce::PeerDetailInfos
         class TopologyNodes; //type: Pce::TopologyNodes
+        class TopologySummaries; //type: Pce::TopologySummaries
         class PrefixInfos; //type: Pce::PrefixInfos
         class LspSummary; //type: Pce::LspSummary
         class PeerInfos; //type: Pce::PeerInfos
@@ -3677,12 +3705,14 @@ class Pce : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::CspfSrMpls> cspf_sr_mpls;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::VerificationEvents> verification_events;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PeerSummaries> peer_summaries;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::AssociationInfos> association_infos;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::Paths> paths;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::Cspf> cspf;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologySummary> topology_summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TunnelInfos> tunnel_infos;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PeerDetailInfos> peer_detail_infos;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologyNodes> topology_nodes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::TopologySummaries> topology_summaries;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PrefixInfos> prefix_infos;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::LspSummary> lsp_summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::PeerInfos> peer_infos;
@@ -3857,50 +3887,41 @@ class Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Destination 
 
 }; // Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Destination
 
-
-class Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops : public ydk::Entity
+class PceigpProtocol : public ydk::Enum
 {
     public:
-        Hops();
-        ~Hops();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf sid_type; //type: PceSrSid
-        ydk::YLeaf mpls_label; //type: uint32
-        class LocalAddr; //type: Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::LocalAddr
-        class RemoteAddr; //type: Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::RemoteAddr
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::LocalAddr> local_addr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_oper::Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops::RemoteAddr> remote_addr;
-        
-}; // Pce::CspfSrMpls::CspfSrMplsPaths::CspfSrMplsPath::OutputPath::Hops
-
-class LspState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf lsp_down;
-        static const ydk::Enum::YLeaf lsp_up;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf isis;
+        static const ydk::Enum::YLeaf ospf;
+        static const ydk::Enum::YLeaf bgp;
+        static const ydk::Enum::YLeaf te;
 
 };
 
-class PceRro : public ydk::Enum
+class PceAsso : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf rro_type_ipv4_address;
-        static const ydk::Enum::YLeaf rro_type_mpls_label;
-        static const ydk::Enum::YLeaf rro_type_sripv4_node_sid;
-        static const ydk::Enum::YLeaf rro_type_sripv4_adjacency_sid;
-        static const ydk::Enum::YLeaf rro_type_sr_nai_null;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf link;
+        static const ydk::Enum::YLeaf node;
+        static const ydk::Enum::YLeaf srlg;
+
+};
+
+class PceAddressFamily : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+};
+
+class PceHeadendSwap : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf pcehs_none;
+        static const ydk::Enum::YLeaf pcehs_plain;
+        static const ydk::Enum::YLeaf pcehs_rwi;
 
 };
 
@@ -3929,34 +3950,14 @@ class PceCspfRc : public ydk::Enum
 
 };
 
-class PceSrSid : public ydk::Enum
+class Sid : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ipv4_node_sid;
-        static const ydk::Enum::YLeaf ipv4_adjacency_sid;
-        static const ydk::Enum::YLeaf ipv6_node_sid;
-        static const ydk::Enum::YLeaf ipv6_adjacency_sid;
-        static const ydk::Enum::YLeaf unknown_sid;
-
-};
-
-class PceHeadendSwap : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf pcehs_none;
-        static const ydk::Enum::YLeaf pcehs_plain;
-        static const ydk::Enum::YLeaf pcehs_rwi;
-
-};
-
-class PcepLspState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf lsp_down;
-        static const ydk::Enum::YLeaf lsp_up;
-        static const ydk::Enum::YLeaf lsp_active;
-        static const ydk::Enum::YLeaf lsp_going_down;
-        static const ydk::Enum::YLeaf lsp_being_signaled;
+        static const ydk::Enum::YLeaf sr_protected_adj_sid;
+        static const ydk::Enum::YLeaf sr_unprotected_adj_sid;
+        static const ydk::Enum::YLeaf sr_bgp_egress_peer_engineering_sid;
+        static const ydk::Enum::YLeaf sr_reqular_prefix_sid;
+        static const ydk::Enum::YLeaf sr_strict_prefix_sid;
 
 };
 
@@ -3966,14 +3967,6 @@ class PceIgpInfoId : public ydk::Enum
         static const ydk::Enum::YLeaf isis;
         static const ydk::Enum::YLeaf ospf;
         static const ydk::Enum::YLeaf bgp;
-
-};
-
-class PceProto : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf pcep;
-        static const ydk::Enum::YLeaf netconf;
 
 };
 
@@ -3989,14 +3982,52 @@ class PcepState : public ydk::Enum
 
 };
 
-class Sid : public ydk::Enum
+class PceProto : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf sr_protected_adj_sid;
-        static const ydk::Enum::YLeaf sr_unprotected_adj_sid;
-        static const ydk::Enum::YLeaf sr_bgp_egress_peer_engineering_sid;
-        static const ydk::Enum::YLeaf sr_reqular_prefix_sid;
-        static const ydk::Enum::YLeaf sr_strict_prefix_sid;
+        static const ydk::Enum::YLeaf pcep;
+        static const ydk::Enum::YLeaf netconf;
+
+};
+
+class PceRro : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rro_type_ipv4_address;
+        static const ydk::Enum::YLeaf rro_type_mpls_label;
+        static const ydk::Enum::YLeaf rro_type_sripv4_node_sid;
+        static const ydk::Enum::YLeaf rro_type_sripv4_adjacency_sid;
+        static const ydk::Enum::YLeaf rro_type_sr_nai_null;
+
+};
+
+class PceSrSid : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4_node_sid;
+        static const ydk::Enum::YLeaf ipv4_adjacency_sid;
+        static const ydk::Enum::YLeaf ipv6_node_sid;
+        static const ydk::Enum::YLeaf ipv6_adjacency_sid;
+        static const ydk::Enum::YLeaf unknown_sid;
+
+};
+
+class LspState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf lsp_down;
+        static const ydk::Enum::YLeaf lsp_up;
+
+};
+
+class PcepLspState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf lsp_down;
+        static const ydk::Enum::YLeaf lsp_up;
+        static const ydk::Enum::YLeaf lsp_active;
+        static const ydk::Enum::YLeaf lsp_going_down;
+        static const ydk::Enum::YLeaf lsp_being_signaled;
 
 };
 
@@ -4006,16 +4037,6 @@ class LspSetup : public ydk::Enum
         static const ydk::Enum::YLeaf setup_rsvp;
         static const ydk::Enum::YLeaf setup_sr;
         static const ydk::Enum::YLeaf setup_unknown;
-
-};
-
-class PceAsso : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf link;
-        static const ydk::Enum::YLeaf node;
-        static const ydk::Enum::YLeaf srlg;
 
 };
 

@@ -202,6 +202,7 @@ class Eap::EapProfile : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf profile_name; //type: string
+        ydk::YLeaf allow_eap_tls1_0; //type: empty
         ydk::YLeaf identity; //type: string
         class Eaptls; //type: Eap::EapProfile::Eaptls
 

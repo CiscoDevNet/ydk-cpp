@@ -12,6 +12,218 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_pim_oper {
 
+Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source::Source()
+    :
+    af_name{YType::enumeration, "af-name"},
+    ipv4_address{YType::str, "ipv4-address"},
+    ipv6_address{YType::str, "ipv6-address"}
+{
+
+    yang_name = "source"; yang_parent_name = "bgp-af"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source::~Source()
+{
+}
+
+bool Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source::has_data() const
+{
+    if (is_presence_container) return true;
+    return af_name.is_set
+	|| ipv4_address.is_set
+	|| ipv6_address.is_set;
+}
+
+bool Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
+}
+
+std::string Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "source";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Source::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
+}
+
+Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group::Group()
+    :
+    af_name{YType::enumeration, "af-name"},
+    ipv4_address{YType::str, "ipv4-address"},
+    ipv6_address{YType::str, "ipv6-address"}
+{
+
+    yang_name = "group"; yang_parent_name = "bgp-af"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group::~Group()
+{
+}
+
+bool Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group::has_data() const
+{
+    if (is_presence_container) return true;
+    return af_name.is_set
+	|| ipv4_address.is_set
+	|| ipv6_address.is_set;
+}
+
+bool Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
+}
+
+std::string Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "group";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::Group::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
+}
+
 Pim::Standby::Vrfs::Vrf::BgpAfs::BgpAf::NextHop::NextHop()
     :
     af_name{YType::enumeration, "af-name"},
@@ -22268,8 +22480,10 @@ Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpB
     candidate_rp_expires{YType::uint16, "candidate-rp-expires"},
     protocol{YType::enumeration, "protocol"}
         ,
-    candidate_rp_address(std::make_shared<Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress>())
+    next_candidate_rp(std::make_shared<Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp>())
+    , candidate_rp_address(std::make_shared<Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::CandidateRpAddress>())
 {
+    next_candidate_rp->parent = this;
     candidate_rp_address->parent = this;
 
     yang_name = "pim-bsr-crp-bag"; yang_parent_name = "candidate-rp-list"; is_top_level_class = false; has_list_ancestor = true; 
@@ -22287,6 +22501,7 @@ bool Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBs
 	|| candidate_rp_up_time.is_set
 	|| candidate_rp_expires.is_set
 	|| protocol.is_set
+	|| (next_candidate_rp !=  nullptr && next_candidate_rp->has_data())
 	|| (candidate_rp_address !=  nullptr && candidate_rp_address->has_data());
 }
 
@@ -22298,6 +22513,7 @@ bool Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBs
 	|| ydk::is_set(candidate_rp_up_time.yfilter)
 	|| ydk::is_set(candidate_rp_expires.yfilter)
 	|| ydk::is_set(protocol.yfilter)
+	|| (next_candidate_rp !=  nullptr && next_candidate_rp->has_operation())
 	|| (candidate_rp_address !=  nullptr && candidate_rp_address->has_operation());
 }
 
@@ -22325,6 +22541,15 @@ std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Bsr:
 
 std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "next-candidate-rp")
+    {
+        if(next_candidate_rp == nullptr)
+        {
+            next_candidate_rp = std::make_shared<Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp>();
+        }
+        return next_candidate_rp;
+    }
+
     if(child_yang_name == "candidate-rp-address")
     {
         if(candidate_rp_address == nullptr)
@@ -22341,6 +22566,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext:
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(next_candidate_rp != nullptr)
+    {
+        _children["next-candidate-rp"] = next_candidate_rp;
+    }
+
     if(candidate_rp_address != nullptr)
     {
         _children["candidate-rp-address"] = candidate_rp_address;
@@ -22409,8 +22639,70 @@ void Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBs
 
 bool Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "candidate-rp-address" || name == "candidate-rp-holdtime" || name == "candidate-rp-priority" || name == "candidate-rp-up-time" || name == "candidate-rp-expires" || name == "protocol")
+    if(name == "next-candidate-rp" || name == "candidate-rp-address" || name == "candidate-rp-holdtime" || name == "candidate-rp-priority" || name == "candidate-rp-up-time" || name == "candidate-rp-expires" || name == "protocol")
         return true;
+    return false;
+}
+
+Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::NextCandidateRp()
+{
+
+    yang_name = "next-candidate-rp"; yang_parent_name = "pim-bsr-crp-bag"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::~NextCandidateRp()
+{
+}
+
+bool Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-candidate-rp";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Pim::Active::DefaultContext::Bsr::RpCaches::RpCache::CandidateRpList::PimBsrCrpBag::NextCandidateRp::has_leaf_or_child_of_name(const std::string & name) const
+{
     return false;
 }
 
@@ -25687,385 +25979,6 @@ void Pim::Active::DefaultContext::Interfaces::Interface::InterfaceAddress::set_f
 }
 
 bool Pim::Active::DefaultContext::Interfaces::Interface::InterfaceAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "af-name" || name == "ipv4-address" || name == "ipv6-address")
-        return true;
-    return false;
-}
-
-Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnels()
-    :
-    net_io_tunnel(this, {"tunnel_name"})
-{
-
-    yang_name = "net-io-tunnels"; yang_parent_name = "default-context"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Pim::Active::DefaultContext::NetIoTunnels::~NetIoTunnels()
-{
-}
-
-bool Pim::Active::DefaultContext::NetIoTunnels::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<net_io_tunnel.len(); index++)
-    {
-        if(net_io_tunnel[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Pim::Active::DefaultContext::NetIoTunnels::has_operation() const
-{
-    for (std::size_t index=0; index<net_io_tunnel.len(); index++)
-    {
-        if(net_io_tunnel[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Pim::Active::DefaultContext::NetIoTunnels::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-pim-oper:pim/active/default-context/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Pim::Active::DefaultContext::NetIoTunnels::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "net-io-tunnels";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::NetIoTunnels::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::NetIoTunnels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "net-io-tunnel")
-    {
-        auto ent_ = std::make_shared<Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel>();
-        ent_->parent = this;
-        net_io_tunnel.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::NetIoTunnels::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : net_io_tunnel.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Pim::Active::DefaultContext::NetIoTunnels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Pim::Active::DefaultContext::NetIoTunnels::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Pim::Active::DefaultContext::NetIoTunnels::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "net-io-tunnel")
-        return true;
-    return false;
-}
-
-Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::NetIoTunnel()
-    :
-    tunnel_name{YType::str, "tunnel-name"},
-    vrf_name{YType::str, "vrf-name"}
-        ,
-    source_address(std::make_shared<Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddress>())
-    , rp_address(std::make_shared<Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::RpAddress>())
-    , source_address_netio(std::make_shared<Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddressNetio>())
-    , group_address_netio(std::make_shared<Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::GroupAddressNetio>())
-{
-    source_address->parent = this;
-    rp_address->parent = this;
-    source_address_netio->parent = this;
-    group_address_netio->parent = this;
-
-    yang_name = "net-io-tunnel"; yang_parent_name = "net-io-tunnels"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::~NetIoTunnel()
-{
-}
-
-bool Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::has_data() const
-{
-    if (is_presence_container) return true;
-    return tunnel_name.is_set
-	|| vrf_name.is_set
-	|| (source_address !=  nullptr && source_address->has_data())
-	|| (rp_address !=  nullptr && rp_address->has_data())
-	|| (source_address_netio !=  nullptr && source_address_netio->has_data())
-	|| (group_address_netio !=  nullptr && group_address_netio->has_data());
-}
-
-bool Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(tunnel_name.yfilter)
-	|| ydk::is_set(vrf_name.yfilter)
-	|| (source_address !=  nullptr && source_address->has_operation())
-	|| (rp_address !=  nullptr && rp_address->has_operation())
-	|| (source_address_netio !=  nullptr && source_address_netio->has_operation())
-	|| (group_address_netio !=  nullptr && group_address_netio->has_operation());
-}
-
-std::string Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-ipv4-pim-oper:pim/active/default-context/net-io-tunnels/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "net-io-tunnel";
-    ADD_KEY_TOKEN(tunnel_name, "tunnel-name");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (tunnel_name.is_set || is_set(tunnel_name.yfilter)) leaf_name_data.push_back(tunnel_name.get_name_leafdata());
-    if (vrf_name.is_set || is_set(vrf_name.yfilter)) leaf_name_data.push_back(vrf_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "source-address")
-    {
-        if(source_address == nullptr)
-        {
-            source_address = std::make_shared<Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddress>();
-        }
-        return source_address;
-    }
-
-    if(child_yang_name == "rp-address")
-    {
-        if(rp_address == nullptr)
-        {
-            rp_address = std::make_shared<Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::RpAddress>();
-        }
-        return rp_address;
-    }
-
-    if(child_yang_name == "source-address-netio")
-    {
-        if(source_address_netio == nullptr)
-        {
-            source_address_netio = std::make_shared<Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddressNetio>();
-        }
-        return source_address_netio;
-    }
-
-    if(child_yang_name == "group-address-netio")
-    {
-        if(group_address_netio == nullptr)
-        {
-            group_address_netio = std::make_shared<Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::GroupAddressNetio>();
-        }
-        return group_address_netio;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(source_address != nullptr)
-    {
-        _children["source-address"] = source_address;
-    }
-
-    if(rp_address != nullptr)
-    {
-        _children["rp-address"] = rp_address;
-    }
-
-    if(source_address_netio != nullptr)
-    {
-        _children["source-address-netio"] = source_address_netio;
-    }
-
-    if(group_address_netio != nullptr)
-    {
-        _children["group-address-netio"] = group_address_netio;
-    }
-
-    return _children;
-}
-
-void Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "tunnel-name")
-    {
-        tunnel_name = value;
-        tunnel_name.value_namespace = name_space;
-        tunnel_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name = value;
-        vrf_name.value_namespace = name_space;
-        vrf_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "tunnel-name")
-    {
-        tunnel_name.yfilter = yfilter;
-    }
-    if(value_path == "vrf-name")
-    {
-        vrf_name.yfilter = yfilter;
-    }
-}
-
-bool Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "source-address" || name == "rp-address" || name == "source-address-netio" || name == "group-address-netio" || name == "tunnel-name" || name == "vrf-name")
-        return true;
-    return false;
-}
-
-Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddress::SourceAddress()
-    :
-    af_name{YType::enumeration, "af-name"},
-    ipv4_address{YType::str, "ipv4-address"},
-    ipv6_address{YType::str, "ipv6-address"}
-{
-
-    yang_name = "source-address"; yang_parent_name = "net-io-tunnel"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddress::~SourceAddress()
-{
-}
-
-bool Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddress::has_data() const
-{
-    if (is_presence_container) return true;
-    return af_name.is_set
-	|| ipv4_address.is_set
-	|| ipv6_address.is_set;
-}
-
-bool Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(af_name.yfilter)
-	|| ydk::is_set(ipv4_address.yfilter)
-	|| ydk::is_set(ipv6_address.yfilter);
-}
-
-std::string Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "source-address";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "af-name")
-    {
-        af_name = value;
-        af_name.value_namespace = name_space;
-        af_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address = value;
-        ipv4_address.value_namespace = name_space;
-        ipv4_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address = value;
-        ipv6_address.value_namespace = name_space;
-        ipv6_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "af-name")
-    {
-        af_name.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address.yfilter = yfilter;
-    }
-}
-
-bool Pim::Active::DefaultContext::NetIoTunnels::NetIoTunnel::SourceAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "af-name" || name == "ipv4-address" || name == "ipv6-address")
         return true;

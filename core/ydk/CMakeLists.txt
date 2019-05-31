@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0.0)
 cmake_policy(SET CMP0048 NEW)
-project(ydk VERSION 0.8.2 LANGUAGES C CXX)
+project(ydk VERSION 0.8.3 LANGUAGES C CXX)
 
 set(YDK_DESCRIPTION "YANG Development Kit Library. The library for  YDK API.")
 
@@ -365,8 +365,8 @@ set(libnetconf_headers_location ${CMAKE_CURRENT_BINARY_DIR}/project_libnetconf/h
 include(ExternalProject)
 ExternalProject_Add(project_libnetconf
     PREFIX "${CMAKE_CURRENT_BINARY_DIR}/project_libnetconf"
-    URL "https://github.com/abhikeshav/libnetconf/archive/master.zip"
-    CONFIGURE_COMMAND "./configure"
+    URL "https://github.com/ygorelik/libnetconf/archive/master.zip"
+    CONFIGURE_COMMAND ./configure
     BUILD_COMMAND "make"
     INSTALL_DIR "${libnetconf_location}"
     INSTALL_COMMAND mkdir -p ${libnetconf_headers_location}/libnetconf && cp ${libnetconf_headers} ${libnetconf_headers_location}/libnetconf

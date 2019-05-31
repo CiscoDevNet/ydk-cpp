@@ -385,6 +385,7 @@ class Arp::Nodes::Node : public ydk::Entity
 
         ydk::YLeaf node_name; //type: string
         class ResolutionHistoryDynamic; //type: Arp::Nodes::Node::ResolutionHistoryDynamic
+        class ArpStatusInfo; //type: Arp::Nodes::Node::ArpStatusInfo
         class TrafficVrfs; //type: Arp::Nodes::Node::TrafficVrfs
         class TrafficNode; //type: Arp::Nodes::Node::TrafficNode
         class ResolutionHistoryClient; //type: Arp::Nodes::Node::ResolutionHistoryClient
@@ -392,6 +393,7 @@ class Arp::Nodes::Node : public ydk::Entity
         class TrafficInterfaces; //type: Arp::Nodes::Node::TrafficInterfaces
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_oper::Arp::Nodes::Node::ResolutionHistoryDynamic> resolution_history_dynamic;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_oper::Arp::Nodes::Node::ArpStatusInfo> arp_status_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_oper::Arp::Nodes::Node::TrafficVrfs> traffic_vrfs;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_oper::Arp::Nodes::Node::TrafficNode> traffic_node;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_arp_oper::Arp::Nodes::Node::ResolutionHistoryClient> resolution_history_client;
@@ -450,6 +452,41 @@ class Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry : public ydk::Entity
         ydk::YLeaf resolution_request_count; //type: uint32
 
 }; // Arp::Nodes::Node::ResolutionHistoryDynamic::ArpEntry
+
+
+class Arp::Nodes::Node::ArpStatusInfo : public ydk::Entity
+{
+    public:
+        ArpStatusInfo();
+        ~ArpStatusInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf process_start_time; //type: uint64
+        ydk::YLeaf issu_sync_complete_time; //type: uint64
+        ydk::YLeaf issu_ready_time; //type: uint64
+        ydk::YLeaf big_bang_time; //type: uint64
+        ydk::YLeaf primary_role_time; //type: uint64
+        ydk::YLeaf role; //type: ArpIssuRole
+        ydk::YLeaf phase; //type: ArpIssuPhase
+        ydk::YLeaf version; //type: ArpIssuVersion
+        ydk::YLeaf dynamic_entries_recovered_count; //type: uint32
+        ydk::YLeaf non_operational_entries_count; //type: uint32
+        ydk::YLeaf interface_handle_translation_failure_count; //type: uint32
+        ydk::YLeaf issu_ready_issu_mgr_connection; //type: boolean
+        ydk::YLeaf issu_ready_im; //type: boolean
+        ydk::YLeaf issu_ready_dagr_rib; //type: boolean
+        ydk::YLeaf issu_ready_entries_replicate; //type: boolean
+
+}; // Arp::Nodes::Node::ArpStatusInfo
 
 
 class Arp::Nodes::Node::TrafficVrfs : public ydk::Entity
@@ -515,6 +552,7 @@ class Arp::Nodes::Node::TrafficVrfs::TrafficVrf : public ydk::Entity
         ydk::YLeaf standby_entries; //type: uint32
         ydk::YLeaf dhcp_entries; //type: uint32
         ydk::YLeaf vxlan_entries; //type: uint32
+        ydk::YLeaf drop_adjacency_entries; //type: uint32
         ydk::YLeaf ip_packets_dropped_node; //type: uint32
         ydk::YLeaf arp_packet_node_out_of_subnet; //type: uint32
         ydk::YLeaf ip_packets_dropped_interface; //type: uint32
@@ -564,6 +602,7 @@ class Arp::Nodes::Node::TrafficNode : public ydk::Entity
         ydk::YLeaf standby_entries; //type: uint32
         ydk::YLeaf dhcp_entries; //type: uint32
         ydk::YLeaf vxlan_entries; //type: uint32
+        ydk::YLeaf drop_adjacency_entries; //type: uint32
         ydk::YLeaf ip_packets_dropped_node; //type: uint32
         ydk::YLeaf arp_packet_node_out_of_subnet; //type: uint32
         ydk::YLeaf ip_packets_dropped_interface; //type: uint32
@@ -740,6 +779,7 @@ class Arp::Nodes::Node::TrafficInterfaces::TrafficInterface : public ydk::Entity
         ydk::YLeaf standby_entries; //type: uint32
         ydk::YLeaf dhcp_entries; //type: uint32
         ydk::YLeaf vxlan_entries; //type: uint32
+        ydk::YLeaf drop_adjacency_entries; //type: uint32
         ydk::YLeaf ip_packets_dropped_node; //type: uint32
         ydk::YLeaf arp_packet_node_out_of_subnet; //type: uint32
         ydk::YLeaf ip_packets_dropped_interface; //type: uint32
@@ -749,6 +789,41 @@ class Arp::Nodes::Node::TrafficInterfaces::TrafficInterface : public ydk::Entity
 
 }; // Arp::Nodes::Node::TrafficInterfaces::TrafficInterface
 
+class ArpGmpBagEntry : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf null;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf alias;
+
+};
+
+class ArpGmpBagEncap : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf arpa;
+        static const ydk::Enum::YLeaf snap;
+        static const ydk::Enum::YLeaf ieee802_1q;
+        static const ydk::Enum::YLeaf srp;
+        static const ydk::Enum::YLeaf srpa;
+        static const ydk::Enum::YLeaf srpb;
+
+};
+
+class IpArpBagEncap : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf arpa;
+        static const ydk::Enum::YLeaf snap;
+        static const ydk::Enum::YLeaf ieee802_1q;
+        static const ydk::Enum::YLeaf srp;
+        static const ydk::Enum::YLeaf srpa;
+        static const ydk::Enum::YLeaf srpb;
+
+};
+
 class IpArpBagFlags : public ydk::Enum
 {
     public:
@@ -756,6 +831,67 @@ class IpArpBagFlags : public ydk::Enum
         static const ydk::Enum::YLeaf flag_dynamic;
         static const ydk::Enum::YLeaf flag_evpn_sync;
         static const ydk::Enum::YLeaf flag_max;
+
+};
+
+class IpArpBagState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf state_none;
+        static const ydk::Enum::YLeaf state_interface;
+        static const ydk::Enum::YLeaf state_standby;
+        static const ydk::Enum::YLeaf state_static;
+        static const ydk::Enum::YLeaf state_alias;
+        static const ydk::Enum::YLeaf state_mobile;
+        static const ydk::Enum::YLeaf state_incomplete;
+        static const ydk::Enum::YLeaf state_deleted;
+        static const ydk::Enum::YLeaf state_dynamic;
+        static const ydk::Enum::YLeaf state_probe;
+        static const ydk::Enum::YLeaf state_purge_delayed;
+        static const ydk::Enum::YLeaf state_dhcp;
+        static const ydk::Enum::YLeaf state_vxlan;
+        static const ydk::Enum::YLeaf state_evpn_sync;
+        static const ydk::Enum::YLeaf state_sat;
+        static const ydk::Enum::YLeaf state_r_sync;
+        static const ydk::Enum::YLeaf state_drop_adj;
+        static const ydk::Enum::YLeaf state_stale;
+        static const ydk::Enum::YLeaf state_max;
+
+};
+
+class IpArpBagMedia : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf media_arpa;
+        static const ydk::Enum::YLeaf media_srp;
+        static const ydk::Enum::YLeaf media_unknown;
+
+};
+
+class ArpIssuVersion : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf version1;
+        static const ydk::Enum::YLeaf version2;
+
+};
+
+class ArpIssuPhase : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf phase_not_started;
+        static const ydk::Enum::YLeaf phase_load;
+        static const ydk::Enum::YLeaf phase_run;
+        static const ydk::Enum::YLeaf phase_completed;
+        static const ydk::Enum::YLeaf phase_aborted;
+
+};
+
+class ArpIssuRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf role_primary;
+        static const ydk::Enum::YLeaf role_secondary;
 
 };
 
@@ -785,73 +921,7 @@ class ArpResolutionHistoryStatus : public ydk::Enum
         static const ydk::Enum::YLeaf status_removed_v1;
         static const ydk::Enum::YLeaf status_resolved_peer_sync;
         static const ydk::Enum::YLeaf status_dropped_unsolicited_pak;
-
-};
-
-class IpArpBagEncap : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf arpa;
-        static const ydk::Enum::YLeaf snap;
-        static const ydk::Enum::YLeaf ieee802_1q;
-        static const ydk::Enum::YLeaf srp;
-        static const ydk::Enum::YLeaf srpa;
-        static const ydk::Enum::YLeaf srpb;
-
-};
-
-class ArpGmpBagEncap : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf arpa;
-        static const ydk::Enum::YLeaf snap;
-        static const ydk::Enum::YLeaf ieee802_1q;
-        static const ydk::Enum::YLeaf srp;
-        static const ydk::Enum::YLeaf srpa;
-        static const ydk::Enum::YLeaf srpb;
-
-};
-
-class IpArpBagMedia : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf media_arpa;
-        static const ydk::Enum::YLeaf media_srp;
-        static const ydk::Enum::YLeaf media_unknown;
-
-};
-
-class ArpGmpBagEntry : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf null;
-        static const ydk::Enum::YLeaf static_;
-        static const ydk::Enum::YLeaf alias;
-
-};
-
-class IpArpBagState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf state_none;
-        static const ydk::Enum::YLeaf state_interface;
-        static const ydk::Enum::YLeaf state_standby;
-        static const ydk::Enum::YLeaf state_static;
-        static const ydk::Enum::YLeaf state_alias;
-        static const ydk::Enum::YLeaf state_mobile;
-        static const ydk::Enum::YLeaf state_incomplete;
-        static const ydk::Enum::YLeaf state_deleted;
-        static const ydk::Enum::YLeaf state_dynamic;
-        static const ydk::Enum::YLeaf state_probe;
-        static const ydk::Enum::YLeaf state_purge_delayed;
-        static const ydk::Enum::YLeaf state_dhcp;
-        static const ydk::Enum::YLeaf state_vxlan;
-        static const ydk::Enum::YLeaf state_evpn_sync;
-        static const ydk::Enum::YLeaf state_sat;
-        static const ydk::Enum::YLeaf state_r_sync;
-        static const ydk::Enum::YLeaf state_max;
+        static const ydk::Enum::YLeaf status_drop_adjacency_added;
 
 };
 

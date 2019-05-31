@@ -25,6 +25,21 @@ class VxlanUdpPortEnum : public ydk::Enum
 
 };
 
+class OverlayEncapEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf vx_lan_encapsulation;
+        static const ydk::Enum::YLeaf soft_gre_encapsulation;
+
+};
+
+class UnknownUnicastFloodingEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf suppress_uuf;
+
+};
+
 class LoadBalanceEnum : public ydk::Enum
 {
     public:
@@ -36,21 +51,6 @@ class IrProtocolEnum : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf bgp;
-
-};
-
-class UnknownUnicastFloodingEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf suppress_uuf;
-
-};
-
-class OverlayEncapEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf vx_lan_encapsulation;
-        static const ydk::Enum::YLeaf soft_gre_encapsulation;
 
 };
 

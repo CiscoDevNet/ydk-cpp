@@ -20,7 +20,6 @@
 #include <ydk/gnmi_provider.hpp>
 #include <ydk/crud_service.hpp>
 
-//#include <ydk_openconfig/openconfig_bgp.hpp>
 #include <ydk_ydktest/openconfig_bgp.hpp>
 #include <ydk_ydktest/openconfig_bgp_types.hpp>
 
@@ -45,7 +44,7 @@ int main(int argc, char* argv[])
 	    logger->set_level(spdlog::level::debug);
 	}
 
-    ydk::path::Repository repo{"/home/osboxes/ydk-gen/sdk/cpp/core/tests/models/"};
+    ydk::path::Repository repo{TEST_HOME};
     int port = stoi(sport);
     gNMIServiceProvider provider{repo, host, port, username, password};
 	CrudService crud{};

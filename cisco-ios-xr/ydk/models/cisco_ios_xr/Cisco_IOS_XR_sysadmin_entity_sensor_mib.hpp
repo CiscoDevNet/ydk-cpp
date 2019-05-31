@@ -146,25 +146,6 @@ class CISCOENTITYSENSORMIB::EntSensorThresholdTable::EntSensorThresholdEntry : p
 
 }; // CISCOENTITYSENSORMIB::EntSensorThresholdTable::EntSensorThresholdEntry
 
-class SensorThresholdSeverity : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf minor;
-        static const ydk::Enum::YLeaf major_;
-        static const ydk::Enum::YLeaf critical;
-
-};
-
-class SensorStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ok;
-        static const ydk::Enum::YLeaf unavailable;
-        static const ydk::Enum::YLeaf nonoperational;
-
-};
-
 class SensorDataType : public ydk::Enum
 {
     public:
@@ -181,18 +162,6 @@ class SensorDataType : public ydk::Enum
         static const ydk::Enum::YLeaf cmm;
         static const ydk::Enum::YLeaf truthvalue;
         static const ydk::Enum::YLeaf specialEnum;
-
-};
-
-class SensorThresholdRelation : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf lessThan;
-        static const ydk::Enum::YLeaf lessOrEqual;
-        static const ydk::Enum::YLeaf greaterThan;
-        static const ydk::Enum::YLeaf greaterOrEqual;
-        static const ydk::Enum::YLeaf equalTo;
-        static const ydk::Enum::YLeaf notEqualTo;
 
 };
 
@@ -216,6 +185,37 @@ class SensorDataScale : public ydk::Enum
         static const ydk::Enum::YLeaf peta;
         static const ydk::Enum::YLeaf zetta;
         static const ydk::Enum::YLeaf yotta;
+
+};
+
+class SensorStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ok;
+        static const ydk::Enum::YLeaf unavailable;
+        static const ydk::Enum::YLeaf nonoperational;
+
+};
+
+class SensorThresholdSeverity : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf minor;
+        static const ydk::Enum::YLeaf major_;
+        static const ydk::Enum::YLeaf critical;
+
+};
+
+class SensorThresholdRelation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf lessThan;
+        static const ydk::Enum::YLeaf lessOrEqual;
+        static const ydk::Enum::YLeaf greaterThan;
+        static const ydk::Enum::YLeaf greaterOrEqual;
+        static const ydk::Enum::YLeaf equalTo;
+        static const ydk::Enum::YLeaf notEqualTo;
 
 };
 

@@ -1440,7 +1440,8 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sen
     redundancystate{YType::int32, "redundancystate"},
     ceport{YType::boolean, "ceport"},
     xr_scoped{YType::boolean, "xr-scoped"},
-    unique_id{YType::int32, "unique-id"}
+    unique_id{YType::int32, "unique-id"},
+    allocated_power{YType::int32, "allocated-power"}
 {
 
     yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
@@ -1478,7 +1479,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 	|| redundancystate.is_set
 	|| ceport.is_set
 	|| xr_scoped.is_set
-	|| unique_id.is_set;
+	|| unique_id.is_set
+	|| allocated_power.is_set;
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::BasicInfo::has_operation() const
@@ -1509,7 +1511,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 	|| ydk::is_set(redundancystate.yfilter)
 	|| ydk::is_set(ceport.yfilter)
 	|| ydk::is_set(xr_scoped.yfilter)
-	|| ydk::is_set(unique_id.yfilter);
+	|| ydk::is_set(unique_id.yfilter)
+	|| ydk::is_set(allocated_power.yfilter);
 }
 
 std::string Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::BasicInfo::get_segment_path() const
@@ -1549,6 +1552,7 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Slots::Sl
     if (ceport.is_set || is_set(ceport.yfilter)) leaf_name_data.push_back(ceport.get_name_leafdata());
     if (xr_scoped.is_set || is_set(xr_scoped.yfilter)) leaf_name_data.push_back(xr_scoped.get_name_leafdata());
     if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
+    if (allocated_power.is_set || is_set(allocated_power.yfilter)) leaf_name_data.push_back(allocated_power.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1724,6 +1728,12 @@ void Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
         unique_id.value_namespace = name_space;
         unique_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power = value;
+        allocated_power.value_namespace = name_space;
+        allocated_power.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1832,11 +1842,15 @@ void Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
     {
         unique_id.yfilter = yfilter;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power.yfilter = yfilter;
+    }
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
+    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id" || name == "allocated-power")
         return true;
     return false;
 }
@@ -2614,7 +2628,8 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
     redundancystate{YType::int32, "redundancystate"},
     ceport{YType::boolean, "ceport"},
     xr_scoped{YType::boolean, "xr-scoped"},
-    unique_id{YType::int32, "unique-id"}
+    unique_id{YType::int32, "unique-id"},
+    allocated_power{YType::int32, "allocated-power"}
 {
 
     yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
@@ -2652,7 +2667,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 	|| redundancystate.is_set
 	|| ceport.is_set
 	|| xr_scoped.is_set
-	|| unique_id.is_set;
+	|| unique_id.is_set
+	|| allocated_power.is_set;
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo::has_operation() const
@@ -2683,7 +2699,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 	|| ydk::is_set(redundancystate.yfilter)
 	|| ydk::is_set(ceport.yfilter)
 	|| ydk::is_set(xr_scoped.yfilter)
-	|| ydk::is_set(unique_id.yfilter);
+	|| ydk::is_set(unique_id.yfilter)
+	|| ydk::is_set(allocated_power.yfilter);
 }
 
 std::string Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo::get_segment_path() const
@@ -2723,6 +2740,7 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Slots::Sl
     if (ceport.is_set || is_set(ceport.yfilter)) leaf_name_data.push_back(ceport.get_name_leafdata());
     if (xr_scoped.is_set || is_set(xr_scoped.yfilter)) leaf_name_data.push_back(xr_scoped.get_name_leafdata());
     if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
+    if (allocated_power.is_set || is_set(allocated_power.yfilter)) leaf_name_data.push_back(allocated_power.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2898,6 +2916,12 @@ void Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
         unique_id.value_namespace = name_space;
         unique_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power = value;
+        allocated_power.value_namespace = name_space;
+        allocated_power.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3006,11 +3030,15 @@ void Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
     {
         unique_id.yfilter = yfilter;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power.yfilter = yfilter;
+    }
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
+    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id" || name == "allocated-power")
         return true;
     return false;
 }
@@ -3497,7 +3525,8 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Por
     redundancystate{YType::int32, "redundancystate"},
     ceport{YType::boolean, "ceport"},
     xr_scoped{YType::boolean, "xr-scoped"},
-    unique_id{YType::int32, "unique-id"}
+    unique_id{YType::int32, "unique-id"},
+    allocated_power{YType::int32, "allocated-power"}
 {
 
     yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
@@ -3535,7 +3564,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 	|| redundancystate.is_set
 	|| ceport.is_set
 	|| xr_scoped.is_set
-	|| unique_id.is_set;
+	|| unique_id.is_set
+	|| allocated_power.is_set;
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::BasicInfo::has_operation() const
@@ -3566,7 +3596,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 	|| ydk::is_set(redundancystate.yfilter)
 	|| ydk::is_set(ceport.yfilter)
 	|| ydk::is_set(xr_scoped.yfilter)
-	|| ydk::is_set(unique_id.yfilter);
+	|| ydk::is_set(unique_id.yfilter)
+	|| ydk::is_set(allocated_power.yfilter);
 }
 
 std::string Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::BasicInfo::get_segment_path() const
@@ -3606,6 +3637,7 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Slots::Sl
     if (ceport.is_set || is_set(ceport.yfilter)) leaf_name_data.push_back(ceport.get_name_leafdata());
     if (xr_scoped.is_set || is_set(xr_scoped.yfilter)) leaf_name_data.push_back(xr_scoped.get_name_leafdata());
     if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
+    if (allocated_power.is_set || is_set(allocated_power.yfilter)) leaf_name_data.push_back(allocated_power.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3781,6 +3813,12 @@ void Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
         unique_id.value_namespace = name_space;
         unique_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power = value;
+        allocated_power.value_namespace = name_space;
+        allocated_power.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3889,11 +3927,15 @@ void Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
     {
         unique_id.yfilter = yfilter;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power.yfilter = yfilter;
+    }
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
+    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id" || name == "allocated-power")
         return true;
     return false;
 }
@@ -4380,7 +4422,8 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Bas
     redundancystate{YType::int32, "redundancystate"},
     ceport{YType::boolean, "ceport"},
     xr_scoped{YType::boolean, "xr-scoped"},
-    unique_id{YType::int32, "unique-id"}
+    unique_id{YType::int32, "unique-id"},
+    allocated_power{YType::int32, "allocated-power"}
 {
 
     yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
@@ -4418,7 +4461,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 	|| redundancystate.is_set
 	|| ceport.is_set
 	|| xr_scoped.is_set
-	|| unique_id.is_set;
+	|| unique_id.is_set
+	|| allocated_power.is_set;
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::BasicInfo::has_operation() const
@@ -4449,7 +4493,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
 	|| ydk::is_set(redundancystate.yfilter)
 	|| ydk::is_set(ceport.yfilter)
 	|| ydk::is_set(xr_scoped.yfilter)
-	|| ydk::is_set(unique_id.yfilter);
+	|| ydk::is_set(unique_id.yfilter)
+	|| ydk::is_set(allocated_power.yfilter);
 }
 
 std::string Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::BasicInfo::get_segment_path() const
@@ -4489,6 +4534,7 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Slots::Sl
     if (ceport.is_set || is_set(ceport.yfilter)) leaf_name_data.push_back(ceport.get_name_leafdata());
     if (xr_scoped.is_set || is_set(xr_scoped.yfilter)) leaf_name_data.push_back(xr_scoped.get_name_leafdata());
     if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
+    if (allocated_power.is_set || is_set(allocated_power.yfilter)) leaf_name_data.push_back(allocated_power.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4664,6 +4710,12 @@ void Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
         unique_id.value_namespace = name_space;
         unique_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power = value;
+        allocated_power.value_namespace = name_space;
+        allocated_power.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -4772,11 +4824,15 @@ void Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module
     {
         unique_id.yfilter = yfilter;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power.yfilter = yfilter;
+    }
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
+    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id" || name == "allocated-power")
         return true;
     return false;
 }
@@ -5263,7 +5319,8 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttrib
     redundancystate{YType::int32, "redundancystate"},
     ceport{YType::boolean, "ceport"},
     xr_scoped{YType::boolean, "xr-scoped"},
-    unique_id{YType::int32, "unique-id"}
+    unique_id{YType::int32, "unique-id"},
+    allocated_power{YType::int32, "allocated-power"}
 {
 
     yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
@@ -5301,7 +5358,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicA
 	|| redundancystate.is_set
 	|| ceport.is_set
 	|| xr_scoped.is_set
-	|| unique_id.is_set;
+	|| unique_id.is_set
+	|| allocated_power.is_set;
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::BasicInfo::has_operation() const
@@ -5332,7 +5390,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicA
 	|| ydk::is_set(redundancystate.yfilter)
 	|| ydk::is_set(ceport.yfilter)
 	|| ydk::is_set(xr_scoped.yfilter)
-	|| ydk::is_set(unique_id.yfilter);
+	|| ydk::is_set(unique_id.yfilter)
+	|| ydk::is_set(allocated_power.yfilter);
 }
 
 std::string Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::BasicInfo::get_segment_path() const
@@ -5372,6 +5431,7 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Slots::Sl
     if (ceport.is_set || is_set(ceport.yfilter)) leaf_name_data.push_back(ceport.get_name_leafdata());
     if (xr_scoped.is_set || is_set(xr_scoped.yfilter)) leaf_name_data.push_back(xr_scoped.get_name_leafdata());
     if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
+    if (allocated_power.is_set || is_set(allocated_power.yfilter)) leaf_name_data.push_back(allocated_power.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -5547,6 +5607,12 @@ void Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicA
         unique_id.value_namespace = name_space;
         unique_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power = value;
+        allocated_power.value_namespace = name_space;
+        allocated_power.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -5655,11 +5721,15 @@ void Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicA
     {
         unique_id.yfilter = yfilter;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power.yfilter = yfilter;
+    }
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
+    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id" || name == "allocated-power")
         return true;
     return false;
 }
@@ -6546,7 +6616,8 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sen
     redundancystate{YType::int32, "redundancystate"},
     ceport{YType::boolean, "ceport"},
     xr_scoped{YType::boolean, "xr-scoped"},
-    unique_id{YType::int32, "unique-id"}
+    unique_id{YType::int32, "unique-id"},
+    allocated_power{YType::int32, "allocated-power"}
 {
 
     yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
@@ -6584,7 +6655,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent
 	|| redundancystate.is_set
 	|| ceport.is_set
 	|| xr_scoped.is_set
-	|| unique_id.is_set;
+	|| unique_id.is_set
+	|| allocated_power.is_set;
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::BasicInfo::has_operation() const
@@ -6615,7 +6687,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent
 	|| ydk::is_set(redundancystate.yfilter)
 	|| ydk::is_set(ceport.yfilter)
 	|| ydk::is_set(xr_scoped.yfilter)
-	|| ydk::is_set(unique_id.yfilter);
+	|| ydk::is_set(unique_id.yfilter)
+	|| ydk::is_set(allocated_power.yfilter);
 }
 
 std::string Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::BasicInfo::get_segment_path() const
@@ -6655,6 +6728,7 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Slots::Sl
     if (ceport.is_set || is_set(ceport.yfilter)) leaf_name_data.push_back(ceport.get_name_leafdata());
     if (xr_scoped.is_set || is_set(xr_scoped.yfilter)) leaf_name_data.push_back(xr_scoped.get_name_leafdata());
     if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
+    if (allocated_power.is_set || is_set(allocated_power.yfilter)) leaf_name_data.push_back(allocated_power.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -6830,6 +6904,12 @@ void Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent
         unique_id.value_namespace = name_space;
         unique_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power = value;
+        allocated_power.value_namespace = name_space;
+        allocated_power.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -6938,11 +7018,15 @@ void Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent
     {
         unique_id.yfilter = yfilter;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power.yfilter = yfilter;
+    }
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
+    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id" || name == "allocated-power")
         return true;
     return false;
 }
@@ -7429,7 +7513,8 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Bas
     redundancystate{YType::int32, "redundancystate"},
     ceport{YType::boolean, "ceport"},
     xr_scoped{YType::boolean, "xr-scoped"},
-    unique_id{YType::int32, "unique-id"}
+    unique_id{YType::int32, "unique-id"},
+    allocated_power{YType::int32, "allocated-power"}
 {
 
     yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
@@ -7467,7 +7552,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent
 	|| redundancystate.is_set
 	|| ceport.is_set
 	|| xr_scoped.is_set
-	|| unique_id.is_set;
+	|| unique_id.is_set
+	|| allocated_power.is_set;
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::BasicInfo::has_operation() const
@@ -7498,7 +7584,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent
 	|| ydk::is_set(redundancystate.yfilter)
 	|| ydk::is_set(ceport.yfilter)
 	|| ydk::is_set(xr_scoped.yfilter)
-	|| ydk::is_set(unique_id.yfilter);
+	|| ydk::is_set(unique_id.yfilter)
+	|| ydk::is_set(allocated_power.yfilter);
 }
 
 std::string Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::BasicInfo::get_segment_path() const
@@ -7538,6 +7625,7 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Slots::Sl
     if (ceport.is_set || is_set(ceport.yfilter)) leaf_name_data.push_back(ceport.get_name_leafdata());
     if (xr_scoped.is_set || is_set(xr_scoped.yfilter)) leaf_name_data.push_back(xr_scoped.get_name_leafdata());
     if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
+    if (allocated_power.is_set || is_set(allocated_power.yfilter)) leaf_name_data.push_back(allocated_power.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -7713,6 +7801,12 @@ void Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent
         unique_id.value_namespace = name_space;
         unique_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power = value;
+        allocated_power.value_namespace = name_space;
+        allocated_power.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -7821,11 +7915,15 @@ void Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent
     {
         unique_id.yfilter = yfilter;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power.yfilter = yfilter;
+    }
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
+    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id" || name == "allocated-power")
         return true;
     return false;
 }
@@ -8503,7 +8601,8 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttribut
     redundancystate{YType::int32, "redundancystate"},
     ceport{YType::boolean, "ceport"},
     xr_scoped{YType::boolean, "xr-scoped"},
-    unique_id{YType::int32, "unique-id"}
+    unique_id{YType::int32, "unique-id"},
+    allocated_power{YType::int32, "allocated-power"}
 {
 
     yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
@@ -8541,7 +8640,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAtt
 	|| redundancystate.is_set
 	|| ceport.is_set
 	|| xr_scoped.is_set
-	|| unique_id.is_set;
+	|| unique_id.is_set
+	|| allocated_power.is_set;
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::BasicInfo::has_operation() const
@@ -8572,7 +8672,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAtt
 	|| ydk::is_set(redundancystate.yfilter)
 	|| ydk::is_set(ceport.yfilter)
 	|| ydk::is_set(xr_scoped.yfilter)
-	|| ydk::is_set(unique_id.yfilter);
+	|| ydk::is_set(unique_id.yfilter)
+	|| ydk::is_set(allocated_power.yfilter);
 }
 
 std::string Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::BasicInfo::get_segment_path() const
@@ -8612,6 +8713,7 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Slots::Sl
     if (ceport.is_set || is_set(ceport.yfilter)) leaf_name_data.push_back(ceport.get_name_leafdata());
     if (xr_scoped.is_set || is_set(xr_scoped.yfilter)) leaf_name_data.push_back(xr_scoped.get_name_leafdata());
     if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
+    if (allocated_power.is_set || is_set(allocated_power.yfilter)) leaf_name_data.push_back(allocated_power.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -8787,6 +8889,12 @@ void Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAtt
         unique_id.value_namespace = name_space;
         unique_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power = value;
+        allocated_power.value_namespace = name_space;
+        allocated_power.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -8895,11 +9003,15 @@ void Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAtt
     {
         unique_id.yfilter = yfilter;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power.yfilter = yfilter;
+    }
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
+    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id" || name == "allocated-power")
         return true;
     return false;
 }
@@ -9677,7 +9789,8 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::Bas
     redundancystate{YType::int32, "redundancystate"},
     ceport{YType::boolean, "ceport"},
     xr_scoped{YType::boolean, "xr-scoped"},
-    unique_id{YType::int32, "unique-id"}
+    unique_id{YType::int32, "unique-id"},
+    allocated_power{YType::int32, "allocated-power"}
 {
 
     yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
@@ -9715,7 +9828,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port
 	|| redundancystate.is_set
 	|| ceport.is_set
 	|| xr_scoped.is_set
-	|| unique_id.is_set;
+	|| unique_id.is_set
+	|| allocated_power.is_set;
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo::has_operation() const
@@ -9746,7 +9860,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port
 	|| ydk::is_set(redundancystate.yfilter)
 	|| ydk::is_set(ceport.yfilter)
 	|| ydk::is_set(xr_scoped.yfilter)
-	|| ydk::is_set(unique_id.yfilter);
+	|| ydk::is_set(unique_id.yfilter)
+	|| ydk::is_set(allocated_power.yfilter);
 }
 
 std::string Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo::get_segment_path() const
@@ -9786,6 +9901,7 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Slots::Sl
     if (ceport.is_set || is_set(ceport.yfilter)) leaf_name_data.push_back(ceport.get_name_leafdata());
     if (xr_scoped.is_set || is_set(xr_scoped.yfilter)) leaf_name_data.push_back(xr_scoped.get_name_leafdata());
     if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
+    if (allocated_power.is_set || is_set(allocated_power.yfilter)) leaf_name_data.push_back(allocated_power.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -9961,6 +10077,12 @@ void Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port
         unique_id.value_namespace = name_space;
         unique_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power = value;
+        allocated_power.value_namespace = name_space;
+        allocated_power.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -10069,11 +10191,15 @@ void Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port
     {
         unique_id.yfilter = yfilter;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power.yfilter = yfilter;
+    }
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
+    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id" || name == "allocated-power")
         return true;
     return false;
 }
@@ -10560,7 +10686,8 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttr
     redundancystate{YType::int32, "redundancystate"},
     ceport{YType::boolean, "ceport"},
     xr_scoped{YType::boolean, "xr-scoped"},
-    unique_id{YType::int32, "unique-id"}
+    unique_id{YType::int32, "unique-id"},
+    allocated_power{YType::int32, "allocated-power"}
 {
 
     yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
@@ -10598,7 +10725,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Basi
 	|| redundancystate.is_set
 	|| ceport.is_set
 	|| xr_scoped.is_set
-	|| unique_id.is_set;
+	|| unique_id.is_set
+	|| allocated_power.is_set;
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::BasicInfo::has_operation() const
@@ -10629,7 +10757,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Basi
 	|| ydk::is_set(redundancystate.yfilter)
 	|| ydk::is_set(ceport.yfilter)
 	|| ydk::is_set(xr_scoped.yfilter)
-	|| ydk::is_set(unique_id.yfilter);
+	|| ydk::is_set(unique_id.yfilter)
+	|| ydk::is_set(allocated_power.yfilter);
 }
 
 std::string Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::BasicInfo::get_segment_path() const
@@ -10669,6 +10798,7 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Slots::Sl
     if (ceport.is_set || is_set(ceport.yfilter)) leaf_name_data.push_back(ceport.get_name_leafdata());
     if (xr_scoped.is_set || is_set(xr_scoped.yfilter)) leaf_name_data.push_back(xr_scoped.get_name_leafdata());
     if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
+    if (allocated_power.is_set || is_set(allocated_power.yfilter)) leaf_name_data.push_back(allocated_power.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -10844,6 +10974,12 @@ void Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Basi
         unique_id.value_namespace = name_space;
         unique_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power = value;
+        allocated_power.value_namespace = name_space;
+        allocated_power.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -10952,11 +11088,15 @@ void Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Basi
     {
         unique_id.yfilter = yfilter;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power.yfilter = yfilter;
+    }
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
+    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id" || name == "allocated-power")
         return true;
     return false;
 }
@@ -11443,7 +11583,8 @@ Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInfo::Ba
     redundancystate{YType::int32, "redundancystate"},
     ceport{YType::boolean, "ceport"},
     xr_scoped{YType::boolean, "xr-scoped"},
-    unique_id{YType::int32, "unique-id"}
+    unique_id{YType::int32, "unique-id"},
+    allocated_power{YType::int32, "allocated-power"}
 {
 
     yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
@@ -11481,7 +11622,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInf
 	|| redundancystate.is_set
 	|| ceport.is_set
 	|| xr_scoped.is_set
-	|| unique_id.is_set;
+	|| unique_id.is_set
+	|| allocated_power.is_set;
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInfo::has_operation() const
@@ -11512,7 +11654,8 @@ bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInf
 	|| ydk::is_set(redundancystate.yfilter)
 	|| ydk::is_set(ceport.yfilter)
 	|| ydk::is_set(xr_scoped.yfilter)
-	|| ydk::is_set(unique_id.yfilter);
+	|| ydk::is_set(unique_id.yfilter)
+	|| ydk::is_set(allocated_power.yfilter);
 }
 
 std::string Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInfo::get_segment_path() const
@@ -11552,6 +11695,7 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Slots::Sl
     if (ceport.is_set || is_set(ceport.yfilter)) leaf_name_data.push_back(ceport.get_name_leafdata());
     if (xr_scoped.is_set || is_set(xr_scoped.yfilter)) leaf_name_data.push_back(xr_scoped.get_name_leafdata());
     if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
+    if (allocated_power.is_set || is_set(allocated_power.yfilter)) leaf_name_data.push_back(allocated_power.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -11727,6 +11871,12 @@ void Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInf
         unique_id.value_namespace = name_space;
         unique_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power = value;
+        allocated_power.value_namespace = name_space;
+        allocated_power.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -11835,11 +11985,15 @@ void Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInf
     {
         unique_id.yfilter = yfilter;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power.yfilter = yfilter;
+    }
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
+    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id" || name == "allocated-power")
         return true;
     return false;
 }
@@ -12326,7 +12480,8 @@ Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo::BasicInfo()
     redundancystate{YType::int32, "redundancystate"},
     ceport{YType::boolean, "ceport"},
     xr_scoped{YType::boolean, "xr-scoped"},
-    unique_id{YType::int32, "unique-id"}
+    unique_id{YType::int32, "unique-id"},
+    allocated_power{YType::int32, "allocated-power"}
 {
 
     yang_name = "basic-info"; yang_parent_name = "basic-attributes"; is_top_level_class = false; has_list_ancestor = true; 
@@ -12364,7 +12519,8 @@ bool Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo::has_data()
 	|| redundancystate.is_set
 	|| ceport.is_set
 	|| xr_scoped.is_set
-	|| unique_id.is_set;
+	|| unique_id.is_set
+	|| allocated_power.is_set;
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo::has_operation() const
@@ -12395,7 +12551,8 @@ bool Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo::has_operat
 	|| ydk::is_set(redundancystate.yfilter)
 	|| ydk::is_set(ceport.yfilter)
 	|| ydk::is_set(xr_scoped.yfilter)
-	|| ydk::is_set(unique_id.yfilter);
+	|| ydk::is_set(unique_id.yfilter)
+	|| ydk::is_set(allocated_power.yfilter);
 }
 
 std::string Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo::get_segment_path() const
@@ -12435,6 +12592,7 @@ std::vector<std::pair<std::string, LeafData> > Inventory::Racks::Rack::Slots::Sl
     if (ceport.is_set || is_set(ceport.yfilter)) leaf_name_data.push_back(ceport.get_name_leafdata());
     if (xr_scoped.is_set || is_set(xr_scoped.yfilter)) leaf_name_data.push_back(xr_scoped.get_name_leafdata());
     if (unique_id.is_set || is_set(unique_id.yfilter)) leaf_name_data.push_back(unique_id.get_name_leafdata());
+    if (allocated_power.is_set || is_set(allocated_power.yfilter)) leaf_name_data.push_back(allocated_power.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -12610,6 +12768,12 @@ void Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo::set_value(
         unique_id.value_namespace = name_space;
         unique_id.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power = value;
+        allocated_power.value_namespace = name_space;
+        allocated_power.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo::set_filter(const std::string & value_path, YFilter yfilter)
@@ -12718,11 +12882,15 @@ void Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo::set_filter
     {
         unique_id.yfilter = yfilter;
     }
+    if(value_path == "allocated-power")
+    {
+        allocated_power.yfilter = yfilter;
+    }
 }
 
 bool Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id")
+    if(name == "description" || name == "vendor-type" || name == "name" || name == "hardware-revision" || name == "firmware-revision" || name == "software-revision" || name == "chip-hardware-revision" || name == "serial-number" || name == "manufacturer-name" || name == "model-name" || name == "asset-id-str" || name == "asset-identification" || name == "is-field-replaceable-unit" || name == "manufacturer-asset-tags" || name == "composite-class-code" || name == "memory-size" || name == "environmental-monitor-path" || name == "alias" || name == "group-flag" || name == "new-deviation-number" || name == "physical-layer-interface-module-type" || name == "unrecognized-fru" || name == "redundancystate" || name == "ceport" || name == "xr-scoped" || name == "unique-id" || name == "allocated-power")
         return true;
     return false;
 }
@@ -13090,16 +13258,8 @@ const Enum::YLeaf InvResetReason::module_reset_reason_auto_reload {4, "module-re
 const Enum::YLeaf InvResetReason::module_reset_reason_environment {5, "module-reset-reason-environment"};
 const Enum::YLeaf InvResetReason::module_reset_reason_user_unpower {6, "module-reset-reason-user-unpower"};
 
-const Enum::YLeaf InvAdminState::admin_state_invalid {0, "admin-state-invalid"};
-const Enum::YLeaf InvAdminState::admin_up {1, "admin-up"};
-const Enum::YLeaf InvAdminState::admin_down {2, "admin-down"};
-
 const Enum::YLeaf InvMonitorState::unmonitored {0, "unmonitored"};
 const Enum::YLeaf InvMonitorState::monitored {1, "monitored"};
-
-const Enum::YLeaf InvPowerAdminState::admin_power_invalid {0, "admin-power-invalid"};
-const Enum::YLeaf InvPowerAdminState::admin_on {2, "admin-on"};
-const Enum::YLeaf InvPowerAdminState::admin_off {3, "admin-off"};
 
 const Enum::YLeaf InvCardState::inv_card_not_present {0, "inv-card-not-present"};
 const Enum::YLeaf InvCardState::inv_card_present {1, "inv-card-present"};
@@ -13140,6 +13300,14 @@ const Enum::YLeaf InvCardState::inv_card_fpd_hold {35, "inv-card-fpd-hold"};
 const Enum::YLeaf InvCardState::inv_card_node_prep {36, "inv-card-node-prep"};
 const Enum::YLeaf InvCardState::inv_card_updating_fpd {37, "inv-card-updating-fpd"};
 const Enum::YLeaf InvCardState::inv_card_num_states {38, "inv-card-num-states"};
+
+const Enum::YLeaf InvPowerAdminState::admin_power_invalid {0, "admin-power-invalid"};
+const Enum::YLeaf InvPowerAdminState::admin_on {2, "admin-on"};
+const Enum::YLeaf InvPowerAdminState::admin_off {3, "admin-off"};
+
+const Enum::YLeaf InvAdminState::admin_state_invalid {0, "admin-state-invalid"};
+const Enum::YLeaf InvAdminState::admin_up {1, "admin-up"};
+const Enum::YLeaf InvAdminState::admin_down {2, "admin-down"};
 
 
 }

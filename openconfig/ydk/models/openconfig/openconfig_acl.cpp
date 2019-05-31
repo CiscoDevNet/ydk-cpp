@@ -11,16 +11,6 @@ using namespace ydk;
 namespace openconfig {
 namespace openconfig_acl {
 
-FORWARDINGACTION::FORWARDINGACTION()
-     : Identity("http://openconfig.net/yang/acl", "openconfig-acl", "openconfig-acl:FORWARDING_ACTION")
-{
-
-}
-
-FORWARDINGACTION::~FORWARDINGACTION()
-{
-}
-
 ACLTYPE::ACLTYPE()
      : Identity("http://openconfig.net/yang/acl", "openconfig-acl", "openconfig-acl:ACL_TYPE")
 {
@@ -31,13 +21,13 @@ ACLTYPE::~ACLTYPE()
 {
 }
 
-ACLCOUNTERCAPABILITY::ACLCOUNTERCAPABILITY()
-     : Identity("http://openconfig.net/yang/acl", "openconfig-acl", "openconfig-acl:ACL_COUNTER_CAPABILITY")
+FORWARDINGACTION::FORWARDINGACTION()
+     : Identity("http://openconfig.net/yang/acl", "openconfig-acl", "openconfig-acl:FORWARDING_ACTION")
 {
 
 }
 
-ACLCOUNTERCAPABILITY::~ACLCOUNTERCAPABILITY()
+FORWARDINGACTION::~FORWARDINGACTION()
 {
 }
 
@@ -48,6 +38,16 @@ LOGACTION::LOGACTION()
 }
 
 LOGACTION::~LOGACTION()
+{
+}
+
+ACLCOUNTERCAPABILITY::ACLCOUNTERCAPABILITY()
+     : Identity("http://openconfig.net/yang/acl", "openconfig-acl", "openconfig-acl:ACL_COUNTER_CAPABILITY")
+{
+
+}
+
+ACLCOUNTERCAPABILITY::~ACLCOUNTERCAPABILITY()
 {
 }
 
@@ -5826,13 +5826,13 @@ bool Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEnt
     return false;
 }
 
-ACLL2::ACLL2()
-     : Identity("http://openconfig.net/yang/acl", "openconfig-acl", "openconfig-acl:ACL_L2")
+ACLIPV4::ACLIPV4()
+     : Identity("http://openconfig.net/yang/acl", "openconfig-acl", "openconfig-acl:ACL_IPV4")
 {
 
 }
 
-ACLL2::~ACLL2()
+ACLIPV4::~ACLIPV4()
 {
 }
 
@@ -5846,53 +5846,13 @@ ACLIPV6::~ACLIPV6()
 {
 }
 
-LOGNONE::LOGNONE()
-     : Identity("http://openconfig.net/yang/acl", "openconfig-acl", "openconfig-acl:LOG_NONE")
+ACLL2::ACLL2()
+     : Identity("http://openconfig.net/yang/acl", "openconfig-acl", "openconfig-acl:ACL_L2")
 {
 
 }
 
-LOGNONE::~LOGNONE()
-{
-}
-
-ACLIPV4::ACLIPV4()
-     : Identity("http://openconfig.net/yang/acl", "openconfig-acl", "openconfig-acl:ACL_IPV4")
-{
-
-}
-
-ACLIPV4::~ACLIPV4()
-{
-}
-
-DROP::DROP()
-     : Identity("http://openconfig.net/yang/acl", "openconfig-acl", "openconfig-acl:DROP")
-{
-
-}
-
-DROP::~DROP()
-{
-}
-
-ACCEPT::ACCEPT()
-     : Identity("http://openconfig.net/yang/acl", "openconfig-acl", "openconfig-acl:ACCEPT")
-{
-
-}
-
-ACCEPT::~ACCEPT()
-{
-}
-
-INTERFACEONLY::INTERFACEONLY()
-     : Identity("http://openconfig.net/yang/acl", "openconfig-acl", "openconfig-acl:INTERFACE_ONLY")
-{
-
-}
-
-INTERFACEONLY::~INTERFACEONLY()
+ACLL2::~ACLL2()
 {
 }
 
@@ -5906,13 +5866,23 @@ ACLMIXED::~ACLMIXED()
 {
 }
 
-INTERFACEAGGREGATE::INTERFACEAGGREGATE()
-     : Identity("http://openconfig.net/yang/acl", "openconfig-acl", "openconfig-acl:INTERFACE_AGGREGATE")
+ACCEPT::ACCEPT()
+     : Identity("http://openconfig.net/yang/acl", "openconfig-acl", "openconfig-acl:ACCEPT")
 {
 
 }
 
-INTERFACEAGGREGATE::~INTERFACEAGGREGATE()
+ACCEPT::~ACCEPT()
+{
+}
+
+DROP::DROP()
+     : Identity("http://openconfig.net/yang/acl", "openconfig-acl", "openconfig-acl:DROP")
+{
+
+}
+
+DROP::~DROP()
 {
 }
 
@@ -5936,6 +5906,26 @@ LOGSYSLOG::~LOGSYSLOG()
 {
 }
 
+LOGNONE::LOGNONE()
+     : Identity("http://openconfig.net/yang/acl", "openconfig-acl", "openconfig-acl:LOG_NONE")
+{
+
+}
+
+LOGNONE::~LOGNONE()
+{
+}
+
+INTERFACEONLY::INTERFACEONLY()
+     : Identity("http://openconfig.net/yang/acl", "openconfig-acl", "openconfig-acl:INTERFACE_ONLY")
+{
+
+}
+
+INTERFACEONLY::~INTERFACEONLY()
+{
+}
+
 AGGREGATEONLY::AGGREGATEONLY()
      : Identity("http://openconfig.net/yang/acl", "openconfig-acl", "openconfig-acl:AGGREGATE_ONLY")
 {
@@ -5943,6 +5933,16 @@ AGGREGATEONLY::AGGREGATEONLY()
 }
 
 AGGREGATEONLY::~AGGREGATEONLY()
+{
+}
+
+INTERFACEAGGREGATE::INTERFACEAGGREGATE()
+     : Identity("http://openconfig.net/yang/acl", "openconfig-acl", "openconfig-acl:INTERFACE_AGGREGATE")
+{
+
+}
+
+INTERFACEAGGREGATE::~INTERFACEAGGREGATE()
 {
 }
 

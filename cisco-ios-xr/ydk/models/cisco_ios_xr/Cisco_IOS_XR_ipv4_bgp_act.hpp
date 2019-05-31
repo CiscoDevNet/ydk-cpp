@@ -26402,58 +26402,6 @@ class ClearBgpVrfUpdateOutqUpdateGroup::Input : public ydk::Entity
 
 }; // ClearBgpVrfUpdateOutqUpdateGroup::Input
 
-class InstanceName : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf all;
-
-};
-
-class Vpnv6Safi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf flowspec;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf unicast;
-
-};
-
-class Afi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf all;
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-        static const ydk::Enum::YLeaf l2vpn;
-        static const ydk::Enum::YLeaf link_state;
-        static const ydk::Enum::YLeaf vpnv4;
-        static const ydk::Enum::YLeaf vpnv6;
-
-};
-
-class VrfName : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf all;
-
-};
-
-class Ipv4Safi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf all;
-        static const ydk::Enum::YLeaf flowspec;
-        static const ydk::Enum::YLeaf labeled_unicast;
-        static const ydk::Enum::YLeaf mdt;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf mvpn;
-        static const ydk::Enum::YLeaf rt_filter;
-        static const ydk::Enum::YLeaf sr_policy;
-        static const ydk::Enum::YLeaf tunnel;
-        static const ydk::Enum::YLeaf unicast;
-
-};
-
 class AfiSafiType : public ydk::Enum
 {
     public:
@@ -26502,11 +26450,31 @@ class AfiSafiType : public ydk::Enum
 
 };
 
-class Vpnv4Safi : public ydk::Enum
+class Afi : public ydk::Enum
 {
     public:
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf l2vpn;
+        static const ydk::Enum::YLeaf link_state;
+        static const ydk::Enum::YLeaf vpnv4;
+        static const ydk::Enum::YLeaf vpnv6;
+
+};
+
+class Ipv4Safi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf all;
         static const ydk::Enum::YLeaf flowspec;
+        static const ydk::Enum::YLeaf labeled_unicast;
+        static const ydk::Enum::YLeaf mdt;
         static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf mvpn;
+        static const ydk::Enum::YLeaf rt_filter;
+        static const ydk::Enum::YLeaf sr_policy;
+        static const ydk::Enum::YLeaf tunnel;
         static const ydk::Enum::YLeaf unicast;
 
 };
@@ -26520,6 +26488,41 @@ class Ipv6Safi : public ydk::Enum
         static const ydk::Enum::YLeaf multicast;
         static const ydk::Enum::YLeaf mvpn;
         static const ydk::Enum::YLeaf sr_policy;
+        static const ydk::Enum::YLeaf unicast;
+
+};
+
+class L2vpnSafi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf evpn;
+        static const ydk::Enum::YLeaf mspw;
+        static const ydk::Enum::YLeaf vpls;
+        static const ydk::Enum::YLeaf vpws;
+
+};
+
+class LinkStateSafi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf link_state;
+
+};
+
+class Vpnv4Safi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf flowspec;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf unicast;
+
+};
+
+class Vpnv6Safi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf flowspec;
+        static const ydk::Enum::YLeaf multicast;
         static const ydk::Enum::YLeaf unicast;
 
 };
@@ -26553,7 +26556,7 @@ class Ipv6Safi_ : public ydk::Enum
 
 };
 
-class L2vpnSafi : public ydk::Enum
+class L2vpnSafi_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf evpn;
@@ -26563,7 +26566,7 @@ class L2vpnSafi : public ydk::Enum
 
 };
 
-class LinkStateSafi : public ydk::Enum
+class LinkStateSafi_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf link_state;
@@ -26588,20 +26591,17 @@ class Vpnv6Safi_ : public ydk::Enum
 
 };
 
-class L2vpnSafi_ : public ydk::Enum
+class InstanceName : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf evpn;
-        static const ydk::Enum::YLeaf mspw;
-        static const ydk::Enum::YLeaf vpls;
-        static const ydk::Enum::YLeaf vpws;
+        static const ydk::Enum::YLeaf all;
 
 };
 
-class LinkStateSafi_ : public ydk::Enum
+class VrfName : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf link_state;
+        static const ydk::Enum::YLeaf all;
 
 };
 

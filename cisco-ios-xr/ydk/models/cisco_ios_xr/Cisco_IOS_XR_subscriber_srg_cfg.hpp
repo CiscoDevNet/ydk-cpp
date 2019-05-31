@@ -546,19 +546,19 @@ class SubscriberRedundancyGroupSlaveMode : public ydk::Enum
 
 };
 
-class SrgAddrFamily : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
 class SubscriberRedundancyGroupRole : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf master;
         static const ydk::Enum::YLeaf slave;
+
+};
+
+class SrgAddrFamily : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 

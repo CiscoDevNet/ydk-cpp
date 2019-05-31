@@ -6208,6 +6208,9 @@ bool EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::Un
     return false;
 }
 
+const Enum::YLeaf VlanService::vlan_service_l2 {1, "vlan-service-l2"};
+const Enum::YLeaf VlanService::vlan_service_l3 {2, "vlan-service-l3"};
+
 const Enum::YLeaf VlanEncaps::no_encapsulation {0, "no-encapsulation"};
 const Enum::YLeaf VlanEncaps::dot1q {1, "dot1q"};
 const Enum::YLeaf VlanEncaps::qinq {2, "qinq"};
@@ -6219,9 +6222,36 @@ const Enum::YLeaf VlanEncaps::service_instance {7, "service-instance"};
 const Enum::YLeaf VlanEncaps::dot1ad_dot1q {8, "dot1ad-dot1q"};
 const Enum::YLeaf VlanEncaps::dot1ad_any {9, "dot1ad-any"};
 
+const Enum::YLeaf EfpPayloadEtype::payload_ethertype_any {0, "payload-ethertype-any"};
+const Enum::YLeaf EfpPayloadEtype::payload_ethertype_ip {1, "payload-ethertype-ip"};
+const Enum::YLeaf EfpPayloadEtype::payload_ethertype_pppoe {2, "payload-ethertype-pppoe"};
+
+const Enum::YLeaf EfpTagPriority::priority0 {0, "priority0"};
+const Enum::YLeaf EfpTagPriority::priority1 {1, "priority1"};
+const Enum::YLeaf EfpTagPriority::priority2 {2, "priority2"};
+const Enum::YLeaf EfpTagPriority::priority3 {3, "priority3"};
+const Enum::YLeaf EfpTagPriority::priority4 {4, "priority4"};
+const Enum::YLeaf EfpTagPriority::priority5 {5, "priority5"};
+const Enum::YLeaf EfpTagPriority::priority6 {6, "priority6"};
+const Enum::YLeaf EfpTagPriority::priority7 {7, "priority7"};
+const Enum::YLeaf EfpTagPriority::priority_any {8, "priority-any"};
+
+const Enum::YLeaf EfpTagEtype::untagged {0, "untagged"};
+const Enum::YLeaf EfpTagEtype::dot1q {33024, "dot1q"};
+const Enum::YLeaf EfpTagEtype::dot1ad {34984, "dot1ad"};
+
 const Enum::YLeaf VlanSwitchedMode::none {0, "none"};
 const Enum::YLeaf VlanSwitchedMode::trunk_port {1, "trunk-port"};
 const Enum::YLeaf VlanSwitchedMode::access_port {2, "access-port"};
+
+const Enum::YLeaf EthFiltering::no_filtering {0, "no-filtering"};
+const Enum::YLeaf EthFiltering::dot1q_filtering {1, "dot1q-filtering"};
+const Enum::YLeaf EthFiltering::dot1ad_filtering {2, "dot1ad-filtering"};
+const Enum::YLeaf EthFiltering::two_port_mac_relay_filtering {3, "two-port-mac-relay-filtering"};
+
+const Enum::YLeaf VlanQinqOuterEtype::ether_type8100 {33024, "ether-type8100"};
+const Enum::YLeaf VlanQinqOuterEtype::ether_type9100 {37120, "ether-type9100"};
+const Enum::YLeaf VlanQinqOuterEtype::ether_type9200 {37376, "ether-type9200"};
 
 const Enum::YLeaf ImStateEnum::im_state_not_ready {0, "im-state-not-ready"};
 const Enum::YLeaf ImStateEnum::im_state_admin_down {1, "im-state-admin-down"};
@@ -6243,38 +6273,8 @@ const Enum::YLeaf ImStateEnum::im_state_not_operational {16, "im-state-not-opera
 const Enum::YLeaf ImStateEnum::im_state_unknown {17, "im-state-unknown"};
 const Enum::YLeaf ImStateEnum::im_state_last {18, "im-state-last"};
 
-const Enum::YLeaf EfpTagPriority::priority0 {0, "priority0"};
-const Enum::YLeaf EfpTagPriority::priority1 {1, "priority1"};
-const Enum::YLeaf EfpTagPriority::priority2 {2, "priority2"};
-const Enum::YLeaf EfpTagPriority::priority3 {3, "priority3"};
-const Enum::YLeaf EfpTagPriority::priority4 {4, "priority4"};
-const Enum::YLeaf EfpTagPriority::priority5 {5, "priority5"};
-const Enum::YLeaf EfpTagPriority::priority6 {6, "priority6"};
-const Enum::YLeaf EfpTagPriority::priority7 {7, "priority7"};
-const Enum::YLeaf EfpTagPriority::priority_any {8, "priority-any"};
-
-const Enum::YLeaf EfpTagEtype::untagged {0, "untagged"};
-const Enum::YLeaf EfpTagEtype::dot1q {33024, "dot1q"};
-const Enum::YLeaf EfpTagEtype::dot1ad {34984, "dot1ad"};
-
-const Enum::YLeaf VlanService::vlan_service_l2 {1, "vlan-service-l2"};
-const Enum::YLeaf VlanService::vlan_service_l3 {2, "vlan-service-l3"};
-
-const Enum::YLeaf EfpPayloadEtype::payload_ethertype_any {0, "payload-ethertype-any"};
-const Enum::YLeaf EfpPayloadEtype::payload_ethertype_ip {1, "payload-ethertype-ip"};
-const Enum::YLeaf EfpPayloadEtype::payload_ethertype_pppoe {2, "payload-ethertype-pppoe"};
-
-const Enum::YLeaf VlanQinqOuterEtype::ether_type8100 {33024, "ether-type8100"};
-const Enum::YLeaf VlanQinqOuterEtype::ether_type9100 {37120, "ether-type9100"};
-const Enum::YLeaf VlanQinqOuterEtype::ether_type9200 {37376, "ether-type9200"};
-
 const Enum::YLeaf EthCapsUcastMacMode::reserved {0, "reserved"};
 const Enum::YLeaf EthCapsUcastMacMode::permit {1, "permit"};
-
-const Enum::YLeaf EthFiltering::no_filtering {0, "no-filtering"};
-const Enum::YLeaf EthFiltering::dot1q_filtering {1, "dot1q-filtering"};
-const Enum::YLeaf EthFiltering::dot1ad_filtering {2, "dot1ad-filtering"};
-const Enum::YLeaf EthFiltering::two_port_mac_relay_filtering {3, "two-port-mac-relay-filtering"};
 
 
 }

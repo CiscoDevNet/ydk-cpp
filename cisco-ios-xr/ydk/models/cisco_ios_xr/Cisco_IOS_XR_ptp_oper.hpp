@@ -45,7 +45,6 @@ class Ptp : public ydk::Entity
         class Grandmaster; //type: Ptp::Grandmaster
         class InterfaceUnicastPeers; //type: Ptp::InterfaceUnicastPeers
         class UtcOffsetInfo; //type: Ptp::UtcOffsetInfo
-        class Platform; //type: Ptp::Platform
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::Nodes> nodes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::Summary> summary;
@@ -61,7 +60,6 @@ class Ptp : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::Grandmaster> grandmaster;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::InterfaceUnicastPeers> interface_unicast_peers;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::UtcOffsetInfo> utc_offset_info;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::Platform> platform;
         
 }; // Ptp
 
@@ -198,6 +196,7 @@ class Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster:
         ydk::YLeaf delay_asymmetry; //type: int32
         ydk::YLeaf ptsf_loss_announce; //type: boolean
         ydk::YLeaf ptsf_loss_sync; //type: boolean
+        ydk::YLeaf is_dnu; //type: boolean
         class ForeignClock_; //type: Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::ForeignClock::ForeignClock_
         class Address; //type: Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::ForeignClock::Address
         class AnnounceGrant; //type: Ptp::Nodes::Node::NodeInterfaceForeignMasters::NodeInterfaceForeignMaster::ForeignClock::AnnounceGrant
@@ -1176,8 +1175,8 @@ class Ptp::Nodes::Node::PacketCounters::DropReasons : public ydk::Entity
         ydk::YLeaf not_supported; //type: uint32
         ydk::YLeaf min_clock_class; //type: uint32
         ydk::YLeaf bad_clock_class; //type: uint32
-        ydk::YLeaf steps_removed; //type: uint32
         ydk::YLeaf reserved_clock_id; //type: uint32
+        ydk::YLeaf steps_removed; //type: uint32
         ydk::YLeaf g8265_1_incompatible; //type: uint32
         ydk::YLeaf g8275_1_incompatible; //type: uint32
         ydk::YLeaf g8275_2_incompatible; //type: uint32
@@ -1412,6 +1411,7 @@ class Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock : publi
         ydk::YLeaf delay_asymmetry; //type: int32
         ydk::YLeaf ptsf_loss_announce; //type: boolean
         ydk::YLeaf ptsf_loss_sync; //type: boolean
+        ydk::YLeaf is_dnu; //type: boolean
         class ForeignClock_; //type: Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::ForeignClock_
         class Address; //type: Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::Address
         class AnnounceGrant; //type: Ptp::InterfaceForeignMasters::InterfaceForeignMaster::ForeignClock::AnnounceGrant
@@ -1899,8 +1899,7 @@ class Ptp::LocalClock : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf domain; //type: uint8
-        ydk::YLeaf holdover; //type: boolean
-        ydk::YLeaf holdover_clock_class; //type: uint8
+        ydk::YLeaf grandmaster; //type: boolean
         class ClockProperties; //type: Ptp::LocalClock::ClockProperties
         class VirtualPort; //type: Ptp::LocalClock::VirtualPort
 
@@ -3723,329 +3722,6 @@ class Ptp::UtcOffsetInfo::ConfiguredLeapSecond : public ydk::Entity
 
 }; // Ptp::UtcOffsetInfo::ConfiguredLeapSecond
 
-
-class Ptp::Platform : public ydk::Entity
-{
-    public:
-        Platform();
-        ~Platform();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Servo; //type: Ptp::Platform::Servo
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::Platform::Servo> servo;
-        
-}; // Ptp::Platform
-
-
-class Ptp::Platform::Servo : public ydk::Entity
-{
-    public:
-        Servo();
-        ~Servo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf lock_status; //type: uint16
-        ydk::YLeaf running; //type: boolean
-        ydk::YLeaf device_status; //type: string
-        ydk::YLeaf log_level; //type: uint16
-        ydk::YLeaf phase_accuracy_last; //type: int64
-        ydk::YLeaf num_sync_timestamp; //type: uint32
-        ydk::YLeaf num_delay_timestamp; //type: uint32
-        ydk::YLeaf num_set_time; //type: uint32
-        ydk::YLeaf num_step_time; //type: uint32
-        ydk::YLeaf num_adjust_freq; //type: uint32
-        ydk::YLeaf num_adjust_freq_time; //type: uint32
-        ydk::YLeaf last_adjust_freq; //type: int32
-        ydk::YLeaf last_step_time; //type: int32
-        ydk::YLeaf num_discard_sync_timestamp; //type: uint32
-        ydk::YLeaf num_discard_delay_timestamp; //type: uint32
-        ydk::YLeaf flagof_last_set_time; //type: boolean
-        ydk::YLeaf offset_from_master; //type: int64
-        ydk::YLeaf mean_path_delay; //type: int64
-        ydk::YLeaf servo_mode; //type: int32
-        class LastSetTime; //type: Ptp::Platform::Servo::LastSetTime
-        class LastReceivedT1; //type: Ptp::Platform::Servo::LastReceivedT1
-        class LastReceivedT2; //type: Ptp::Platform::Servo::LastReceivedT2
-        class LastReceivedT3; //type: Ptp::Platform::Servo::LastReceivedT3
-        class LastReceivedT4; //type: Ptp::Platform::Servo::LastReceivedT4
-        class PreReceivedT1; //type: Ptp::Platform::Servo::PreReceivedT1
-        class PreReceivedT2; //type: Ptp::Platform::Servo::PreReceivedT2
-        class PreReceivedT3; //type: Ptp::Platform::Servo::PreReceivedT3
-        class PreReceivedT4; //type: Ptp::Platform::Servo::PreReceivedT4
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::Platform::Servo::LastSetTime> last_set_time;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::Platform::Servo::LastReceivedT1> last_received_t1;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::Platform::Servo::LastReceivedT2> last_received_t2;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::Platform::Servo::LastReceivedT3> last_received_t3;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::Platform::Servo::LastReceivedT4> last_received_t4;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::Platform::Servo::PreReceivedT1> pre_received_t1;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::Platform::Servo::PreReceivedT2> pre_received_t2;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::Platform::Servo::PreReceivedT3> pre_received_t3;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ptp_oper::Ptp::Platform::Servo::PreReceivedT4> pre_received_t4;
-        
-}; // Ptp::Platform::Servo
-
-
-class Ptp::Platform::Servo::LastSetTime : public ydk::Entity
-{
-    public:
-        LastSetTime();
-        ~LastSetTime();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf second; //type: uint32
-        ydk::YLeaf nano_second; //type: uint32
-
-}; // Ptp::Platform::Servo::LastSetTime
-
-
-class Ptp::Platform::Servo::LastReceivedT1 : public ydk::Entity
-{
-    public:
-        LastReceivedT1();
-        ~LastReceivedT1();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf second; //type: uint32
-        ydk::YLeaf nano_second; //type: uint32
-
-}; // Ptp::Platform::Servo::LastReceivedT1
-
-
-class Ptp::Platform::Servo::LastReceivedT2 : public ydk::Entity
-{
-    public:
-        LastReceivedT2();
-        ~LastReceivedT2();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf second; //type: uint32
-        ydk::YLeaf nano_second; //type: uint32
-
-}; // Ptp::Platform::Servo::LastReceivedT2
-
-
-class Ptp::Platform::Servo::LastReceivedT3 : public ydk::Entity
-{
-    public:
-        LastReceivedT3();
-        ~LastReceivedT3();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf second; //type: uint32
-        ydk::YLeaf nano_second; //type: uint32
-
-}; // Ptp::Platform::Servo::LastReceivedT3
-
-
-class Ptp::Platform::Servo::LastReceivedT4 : public ydk::Entity
-{
-    public:
-        LastReceivedT4();
-        ~LastReceivedT4();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf second; //type: uint32
-        ydk::YLeaf nano_second; //type: uint32
-
-}; // Ptp::Platform::Servo::LastReceivedT4
-
-
-class Ptp::Platform::Servo::PreReceivedT1 : public ydk::Entity
-{
-    public:
-        PreReceivedT1();
-        ~PreReceivedT1();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf second; //type: uint32
-        ydk::YLeaf nano_second; //type: uint32
-
-}; // Ptp::Platform::Servo::PreReceivedT1
-
-
-class Ptp::Platform::Servo::PreReceivedT2 : public ydk::Entity
-{
-    public:
-        PreReceivedT2();
-        ~PreReceivedT2();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf second; //type: uint32
-        ydk::YLeaf nano_second; //type: uint32
-
-}; // Ptp::Platform::Servo::PreReceivedT2
-
-
-class Ptp::Platform::Servo::PreReceivedT3 : public ydk::Entity
-{
-    public:
-        PreReceivedT3();
-        ~PreReceivedT3();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf second; //type: uint32
-        ydk::YLeaf nano_second; //type: uint32
-
-}; // Ptp::Platform::Servo::PreReceivedT3
-
-
-class Ptp::Platform::Servo::PreReceivedT4 : public ydk::Entity
-{
-    public:
-        PreReceivedT4();
-        ~PreReceivedT4();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf second; //type: uint32
-        ydk::YLeaf nano_second; //type: uint32
-
-}; // Ptp::Platform::Servo::PreReceivedT4
-
-class PtpBagRestrictPortState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf any;
-        static const ydk::Enum::YLeaf slave_only;
-        static const ydk::Enum::YLeaf master_only;
-
-};
-
-class PtpBagPortState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf initializing;
-        static const ydk::Enum::YLeaf listen;
-        static const ydk::Enum::YLeaf passive;
-        static const ydk::Enum::YLeaf pre_master;
-        static const ydk::Enum::YLeaf master;
-        static const ydk::Enum::YLeaf uncalibrated;
-        static const ydk::Enum::YLeaf slave;
-        static const ydk::Enum::YLeaf faulty;
-
-};
-
-class PtpBagEncap : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf ethernet;
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
 class PtpBagDelayMechanism : public ydk::Enum
 {
     public:
@@ -4060,6 +3736,25 @@ class PtpBagTelecomClock : public ydk::Enum
         static const ydk::Enum::YLeaf grandmaster;
         static const ydk::Enum::YLeaf boundary;
         static const ydk::Enum::YLeaf slave;
+
+};
+
+class PtpBagProfile : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf g82651;
+        static const ydk::Enum::YLeaf g82751;
+        static const ydk::Enum::YLeaf g82752;
+
+};
+
+class PtpBagRestrictPortState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf any;
+        static const ydk::Enum::YLeaf slave_only;
+        static const ydk::Enum::YLeaf master_only;
 
 };
 
@@ -4088,12 +3783,53 @@ class ImStateEnum : public ydk::Enum
 
 };
 
+class PtpBagPortState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf initializing;
+        static const ydk::Enum::YLeaf listen;
+        static const ydk::Enum::YLeaf passive;
+        static const ydk::Enum::YLeaf pre_master;
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf uncalibrated;
+        static const ydk::Enum::YLeaf slave;
+        static const ydk::Enum::YLeaf faulty;
+
+};
+
+class PtpBagEncap : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf ethernet;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+};
+
 class PtpBagCommunicationModel : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unicast;
         static const ydk::Enum::YLeaf mixed_mode;
         static const ydk::Enum::YLeaf multicast;
+
+};
+
+class PtpBagClockLeapSeconds : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf leap59;
+        static const ydk::Enum::YLeaf leap61;
+
+};
+
+class PtpBagClockTimescale : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ptp;
+        static const ydk::Enum::YLeaf arb;
 
 };
 
@@ -4109,33 +3845,6 @@ class PtpBagClockTimeSource : public ydk::Enum
         static const ydk::Enum::YLeaf hand_set;
         static const ydk::Enum::YLeaf other;
         static const ydk::Enum::YLeaf internal_oscillator;
-
-};
-
-class PtpBagClockLeapSeconds : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf leap59;
-        static const ydk::Enum::YLeaf leap61;
-
-};
-
-class PtpBagProfile : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf g82651;
-        static const ydk::Enum::YLeaf g82751;
-        static const ydk::Enum::YLeaf g82752;
-
-};
-
-class PtpBagClockTimescale : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ptp;
-        static const ydk::Enum::YLeaf arb;
 
 };
 

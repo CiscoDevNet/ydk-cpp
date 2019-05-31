@@ -12,32 +12,14 @@
 namespace cisco_ios_xe {
 namespace ATM_TC_MIB {
 
-class AtmClpTransparentNoScr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class AtmNoTrafficDescriptor : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        AtmClpTransparentNoScr();
-        ~AtmClpTransparentNoScr();
+        AtmNoTrafficDescriptor();
+        ~AtmNoTrafficDescriptor();
 
 
-}; // AtmClpTransparentNoScr
-
-class AtmNoClpScr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        AtmNoClpScr();
-        ~AtmNoClpScr();
-
-
-}; // AtmNoClpScr
-
-class AtmClpTransparentScr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        AtmClpTransparentScr();
-        ~AtmClpTransparentScr();
-
-
-}; // AtmClpTransparentScr
+}; // AtmNoTrafficDescriptor
 
 class AtmNoClpNoScr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
@@ -48,50 +30,14 @@ class AtmNoClpNoScr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk:
 
 }; // AtmNoClpNoScr
 
-class AtmClpNoTaggingScr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class AtmClpNoTaggingNoScr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        AtmClpNoTaggingScr();
-        ~AtmClpNoTaggingScr();
+        AtmClpNoTaggingNoScr();
+        ~AtmClpNoTaggingNoScr();
 
 
-}; // AtmClpNoTaggingScr
-
-class AtmNoClpTaggingNoScr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        AtmNoClpTaggingNoScr();
-        ~AtmNoClpTaggingNoScr();
-
-
-}; // AtmNoClpTaggingNoScr
-
-class AtmClpNoTaggingMcr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        AtmClpNoTaggingMcr();
-        ~AtmClpNoTaggingMcr();
-
-
-}; // AtmClpNoTaggingMcr
-
-class AtmClpNoTaggingScrCdvt : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        AtmClpNoTaggingScrCdvt();
-        ~AtmClpNoTaggingScrCdvt();
-
-
-}; // AtmClpNoTaggingScrCdvt
-
-class AtmNoTrafficDescriptor : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        AtmNoTrafficDescriptor();
-        ~AtmNoTrafficDescriptor();
-
-
-}; // AtmNoTrafficDescriptor
+}; // AtmClpNoTaggingNoScr
 
 class AtmClpTaggingNoScr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
@@ -102,23 +48,23 @@ class AtmClpTaggingNoScr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual
 
 }; // AtmClpTaggingNoScr
 
-class AtmNoClpScrCdvt : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class AtmNoClpScr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        AtmNoClpScrCdvt();
-        ~AtmNoClpScrCdvt();
+        AtmNoClpScr();
+        ~AtmNoClpScr();
 
 
-}; // AtmNoClpScrCdvt
+}; // AtmNoClpScr
 
-class AtmNoClpNoScrCdvt : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class AtmClpNoTaggingScr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        AtmNoClpNoScrCdvt();
-        ~AtmNoClpNoScrCdvt();
+        AtmClpNoTaggingScr();
+        ~AtmClpNoTaggingScr();
 
 
-}; // AtmNoClpNoScrCdvt
+}; // AtmClpNoTaggingScr
 
 class AtmClpTaggingScr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
@@ -129,14 +75,68 @@ class AtmClpTaggingScr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual y
 
 }; // AtmClpTaggingScr
 
-class AtmClpNoTaggingNoScr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class AtmClpNoTaggingMcr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        AtmClpNoTaggingNoScr();
-        ~AtmClpNoTaggingNoScr();
+        AtmClpNoTaggingMcr();
+        ~AtmClpNoTaggingMcr();
 
 
-}; // AtmClpNoTaggingNoScr
+}; // AtmClpNoTaggingMcr
+
+class AtmClpTransparentNoScr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        AtmClpTransparentNoScr();
+        ~AtmClpTransparentNoScr();
+
+
+}; // AtmClpTransparentNoScr
+
+class AtmClpTransparentScr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        AtmClpTransparentScr();
+        ~AtmClpTransparentScr();
+
+
+}; // AtmClpTransparentScr
+
+class AtmNoClpTaggingNoScr : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        AtmNoClpTaggingNoScr();
+        ~AtmNoClpTaggingNoScr();
+
+
+}; // AtmNoClpTaggingNoScr
+
+class AtmNoClpNoScrCdvt : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        AtmNoClpNoScrCdvt();
+        ~AtmNoClpNoScrCdvt();
+
+
+}; // AtmNoClpNoScrCdvt
+
+class AtmNoClpScrCdvt : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        AtmNoClpScrCdvt();
+        ~AtmNoClpScrCdvt();
+
+
+}; // AtmNoClpScrCdvt
+
+class AtmClpNoTaggingScrCdvt : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        AtmClpNoTaggingScrCdvt();
+        ~AtmClpNoTaggingScrCdvt();
+
+
+}; // AtmClpNoTaggingScrCdvt
 
 class AtmClpTaggingScrCdvt : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
@@ -147,23 +147,23 @@ class AtmClpTaggingScrCdvt : public ietf::ietf_yang_smiv2::ObjectIdentity, virtu
 
 }; // AtmClpTaggingScrCdvt
 
-class AtmVorXAdminStatus : public ydk::Enum
+class AtmConnCastType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf p2p;
+        static const ydk::Enum::YLeaf p2mpRoot;
+        static const ydk::Enum::YLeaf p2mpLeaf;
 
 };
 
-class AtmServiceCategory : public ydk::Enum
+class AtmConnKind : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf cbr;
-        static const ydk::Enum::YLeaf rtVbr;
-        static const ydk::Enum::YLeaf nrtVbr;
-        static const ydk::Enum::YLeaf abr;
-        static const ydk::Enum::YLeaf ubr;
+        static const ydk::Enum::YLeaf pvc;
+        static const ydk::Enum::YLeaf svcIncoming;
+        static const ydk::Enum::YLeaf svcOutgoing;
+        static const ydk::Enum::YLeaf spvcInitiator;
+        static const ydk::Enum::YLeaf spvcTarget;
 
 };
 
@@ -186,14 +186,23 @@ class AtmInterfaceType : public ydk::Enum
 
 };
 
-class AtmConnKind : public ydk::Enum
+class AtmServiceCategory : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf pvc;
-        static const ydk::Enum::YLeaf svcIncoming;
-        static const ydk::Enum::YLeaf svcOutgoing;
-        static const ydk::Enum::YLeaf spvcInitiator;
-        static const ydk::Enum::YLeaf spvcTarget;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf cbr;
+        static const ydk::Enum::YLeaf rtVbr;
+        static const ydk::Enum::YLeaf nrtVbr;
+        static const ydk::Enum::YLeaf abr;
+        static const ydk::Enum::YLeaf ubr;
+
+};
+
+class AtmVorXAdminStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf down;
 
 };
 
@@ -203,15 +212,6 @@ class AtmVorXOperStatus : public ydk::Enum
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf unknown;
-
-};
-
-class AtmConnCastType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf p2p;
-        static const ydk::Enum::YLeaf p2mpRoot;
-        static const ydk::Enum::YLeaf p2mpLeaf;
 
 };
 

@@ -218,16 +218,6 @@ class CtsOdmBindingSource : public ydk::Enum
 
 };
 
-class SxpConMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf con_mode_invalid;
-        static const ydk::Enum::YLeaf con_mode_speaker;
-        static const ydk::Enum::YLeaf con_mode_listener;
-        static const ydk::Enum::YLeaf con_mode_both;
-
-};
-
 class SxpConState : public ydk::Enum
 {
     public:
@@ -236,6 +226,16 @@ class SxpConState : public ydk::Enum
         static const ydk::Enum::YLeaf state_on;
         static const ydk::Enum::YLeaf state_delete_hold_down;
         static const ydk::Enum::YLeaf state_not_applicable;
+
+};
+
+class SxpConMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf con_mode_invalid;
+        static const ydk::Enum::YLeaf con_mode_speaker;
+        static const ydk::Enum::YLeaf con_mode_listener;
+        static const ydk::Enum::YLeaf con_mode_both;
 
 };
 

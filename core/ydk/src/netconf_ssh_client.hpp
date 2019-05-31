@@ -41,11 +41,9 @@ namespace ydk
 
 class NetconfSSHClient : public NetconfClient
 {
-
-public:
+  public:
     static std::map<std::pair<std::string, std::string>, std::string> password_lookup;
 
-public:
     NetconfSSHClient(
         std::string  username, 
         std::string  password,
@@ -69,7 +67,9 @@ public:
     virtual std::vector<std::string> get_capabilities();
     virtual std::string get_hostname_port();
 
-private:
+    void perform_session_check(const std::string & message);
+
+  private:
 
     static void clb_print(NC_VERB_LEVEL level, const char* msg);
     static void clb_error_print(const char* tag, const char* type,
@@ -79,15 +79,12 @@ private:
     static char* clb_set_password(const char* username, const char* hostname);
     static char* clb_set_interactive(const char *name, const char *instruction, const char *prompt, int echo);
     static char* clb_set_passphrase(const char *username, const char *hostname, const char *priv_key_file);
-    static int clb_ssh_host_authenticity_check(const char *hostname,
-            ssh_session session);
+    static int clb_ssh_host_authenticity_check(const char *hostname, ssh_session session);
 
     nc_rpc* build_rpc_request(const std::string & payload);
     std::string process_rpc_reply(int reply_type, const nc_reply* reply);
     void init_capabilities();
-    void perform_session_check(const std::string & message);
 
-private:
     struct nc_session *session;
 
     std::string username;

@@ -3090,14 +3090,6 @@ bool LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry::has_leaf_or_child_
     return false;
 }
 
-const Enum::YLeaf LldpPortIdSubtype::interfaceAlias {1, "interfaceAlias"};
-const Enum::YLeaf LldpPortIdSubtype::portComponent {2, "portComponent"};
-const Enum::YLeaf LldpPortIdSubtype::macAddress {3, "macAddress"};
-const Enum::YLeaf LldpPortIdSubtype::networkAddress {4, "networkAddress"};
-const Enum::YLeaf LldpPortIdSubtype::interfaceName {5, "interfaceName"};
-const Enum::YLeaf LldpPortIdSubtype::agentCircuitId {6, "agentCircuitId"};
-const Enum::YLeaf LldpPortIdSubtype::local {7, "local"};
-
 const Enum::YLeaf LldpChassisIdSubtype::chassisComponent {1, "chassisComponent"};
 const Enum::YLeaf LldpChassisIdSubtype::interfaceAlias {2, "interfaceAlias"};
 const Enum::YLeaf LldpChassisIdSubtype::portComponent {3, "portComponent"};
@@ -3105,6 +3097,14 @@ const Enum::YLeaf LldpChassisIdSubtype::macAddress {4, "macAddress"};
 const Enum::YLeaf LldpChassisIdSubtype::networkAddress {5, "networkAddress"};
 const Enum::YLeaf LldpChassisIdSubtype::interfaceName {6, "interfaceName"};
 const Enum::YLeaf LldpChassisIdSubtype::local {7, "local"};
+
+const Enum::YLeaf LldpPortIdSubtype::interfaceAlias {1, "interfaceAlias"};
+const Enum::YLeaf LldpPortIdSubtype::portComponent {2, "portComponent"};
+const Enum::YLeaf LldpPortIdSubtype::macAddress {3, "macAddress"};
+const Enum::YLeaf LldpPortIdSubtype::networkAddress {4, "networkAddress"};
+const Enum::YLeaf LldpPortIdSubtype::interfaceName {5, "interfaceName"};
+const Enum::YLeaf LldpPortIdSubtype::agentCircuitId {6, "agentCircuitId"};
+const Enum::YLeaf LldpPortIdSubtype::local {7, "local"};
 
 const Enum::YLeaf LldpManAddrIfSubtype::unknown {1, "unknown"};
 const Enum::YLeaf LldpManAddrIfSubtype::ifIndex {2, "ifIndex"};

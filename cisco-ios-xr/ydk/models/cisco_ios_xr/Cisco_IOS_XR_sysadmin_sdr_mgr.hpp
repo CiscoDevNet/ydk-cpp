@@ -101,7 +101,6 @@ class SdrConfig::Sdr::Resources : public ydk::Entity
 
         ydk::YLeaf fgid; //type: uint32
         ydk::YLeaf mgmt_ext_vlan; //type: uint32
-        ydk::YLeaf disk_space_size; //type: uint32
         class CardType; //type: SdrConfig::Sdr::Resources::CardType
 
         ydk::YList card_type;
@@ -149,6 +148,7 @@ class SdrConfig::Sdr::Location : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf node_location; //type: string
+        ydk::YLeafList slice; //type: list of  uint8
 
 }; // SdrConfig::Sdr::Location
 
@@ -256,6 +256,7 @@ class SdrConfig::Sdr::Detail::Location : public ydk::Entity
         ydk::YLeaf start_time; //type: string
         ydk::YLeaf reboot_count; //type: uint32
         ydk::YLeaf rh_count; //type: uint32
+        ydk::YLeafList slice; //type: list of  one of uint8, string
         class RebootHist1; //type: SdrConfig::Sdr::Detail::Location::RebootHist1
 
         ydk::YList reboot_hist1;
@@ -925,6 +926,15 @@ class PrivateSdr::SdrName::Pairing : public ydk::Entity
 
 }; // PrivateSdr::SdrName::Pairing
 
+class CardType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf RP;
+        static const ydk::Enum::YLeaf LC;
+        static const ydk::Enum::YLeaf CC;
+
+};
+
 class VmReloadReason : public ydk::Enum
 {
     public:
@@ -939,15 +949,6 @@ class VmReloadReason : public ydk::Enum
         static const ydk::Enum::YLeaf FIRST_BOOT;
         static const ydk::Enum::YLeaf SMU;
         static const ydk::Enum::YLeaf REASON_UNKNOWN;
-
-};
-
-class CardType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf RP;
-        static const ydk::Enum::YLeaf LC;
-        static const ydk::Enum::YLeaf CC;
 
 };
 

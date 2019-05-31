@@ -185,22 +185,6 @@ class CdpNeighborDetails::CdpNeighborDetail::SparePair : public ydk::Entity
 
 }; // CdpNeighborDetails::CdpNeighborDetail::SparePair
 
-class CdpEnableDisable : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cdp_disable;
-        static const ydk::Enum::YLeaf cdp_enable;
-
-};
-
-class CdpYesNo : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cdp_no;
-        static const ydk::Enum::YLeaf cdp_yes;
-
-};
-
 class CdpDuplex : public ydk::Enum
 {
     public:
@@ -209,6 +193,15 @@ class CdpDuplex : public ydk::Enum
         static const ydk::Enum::YLeaf cdp_full_duplex;
         static const ydk::Enum::YLeaf cdp_half_duplex_mismatch;
         static const ydk::Enum::YLeaf cdp_full_duplex_mismatch;
+
+};
+
+class CdpAdvVersion : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cdp_advertised_none;
+        static const ydk::Enum::YLeaf cdp_advertised_v1;
+        static const ydk::Enum::YLeaf cdp_advertised_v2;
 
 };
 
@@ -222,12 +215,19 @@ class CdpUnidirectionalMode : public ydk::Enum
 
 };
 
-class CdpAdvVersion : public ydk::Enum
+class CdpYesNo : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf cdp_advertised_none;
-        static const ydk::Enum::YLeaf cdp_advertised_v1;
-        static const ydk::Enum::YLeaf cdp_advertised_v2;
+        static const ydk::Enum::YLeaf cdp_no;
+        static const ydk::Enum::YLeaf cdp_yes;
+
+};
+
+class CdpEnableDisable : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cdp_disable;
+        static const ydk::Enum::YLeaf cdp_enable;
 
 };
 

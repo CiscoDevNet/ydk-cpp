@@ -1252,11 +1252,9 @@ class Alarms::Brief : public ydk::Entity
 
         class BriefCard; //type: Alarms::Brief::BriefCard
         class BriefSystem; //type: Alarms::Brief::BriefSystem
-        class AlarmId; //type: Alarms::Brief::AlarmId
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefCard> brief_card;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::BriefSystem> brief_system;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::AlarmId> alarm_id;
         
 }; // Alarms::Brief
 
@@ -1785,178 +1783,6 @@ class Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo : public ydk::Entit
 
 }; // Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo
 
-
-class Alarms::Brief::AlarmId : public ydk::Entity
-{
-    public:
-        AlarmId();
-        ~AlarmId();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class ActiveAlarms; //type: Alarms::Brief::AlarmId::ActiveAlarms
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::AlarmId::ActiveAlarms> active_alarms;
-        
-}; // Alarms::Brief::AlarmId
-
-
-class Alarms::Brief::AlarmId::ActiveAlarms : public ydk::Entity
-{
-    public:
-        ActiveAlarms();
-        ~ActiveAlarms();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class ActiveAlarm; //type: Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm
-
-        ydk::YList active_alarm;
-        
-}; // Alarms::Brief::AlarmId::ActiveAlarms
-
-
-class Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm : public ydk::Entity
-{
-    public:
-        ActiveAlarm();
-        ~ActiveAlarm();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf aid; //type: string
-        class Alarm; //type: Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::Alarm
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_alarmgr_server_oper::Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::Alarm> alarm;
-        
-}; // Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm
-
-
-class Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::Alarm : public ydk::Entity
-{
-    public:
-        Alarm();
-        ~Alarm();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf location; //type: string
-        ydk::YLeaf severity; //type: AlarmSeverity
-        ydk::YLeaf group; //type: AlarmGroups
-        ydk::YLeaf set_time; //type: string
-        ydk::YLeaf set_timestamp; //type: uint64
-        ydk::YLeaf clear_time; //type: string
-        ydk::YLeaf clear_timestamp; //type: uint64
-        ydk::YLeaf description; //type: string
-
-}; // Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::Alarm
-
-class TimingBucket : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_specified;
-        static const ydk::Enum::YLeaf fifteen_min;
-        static const ydk::Enum::YLeaf one_day;
-
-};
-
-class AlarmSeverity : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf not_reported;
-        static const ydk::Enum::YLeaf not_alarmed;
-        static const ydk::Enum::YLeaf minor;
-        static const ydk::Enum::YLeaf major_;
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf severity_last;
-
-};
-
-class AlarmDirection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_specified;
-        static const ydk::Enum::YLeaf send;
-        static const ydk::Enum::YLeaf receive;
-        static const ydk::Enum::YLeaf send_receive;
-
-};
-
-class AlarmStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf set;
-        static const ydk::Enum::YLeaf clear;
-        static const ydk::Enum::YLeaf suppress;
-        static const ydk::Enum::YLeaf last;
-
-};
-
-class AlarmServiceAffecting : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf not_service_affecting;
-        static const ydk::Enum::YLeaf service_affecting;
-
-};
-
-class AlarmNotificationSrc : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_specified;
-        static const ydk::Enum::YLeaf near_end;
-        static const ydk::Enum::YLeaf far_end;
-
-};
-
-class AlarmEvent : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf notification;
-        static const ydk::Enum::YLeaf condition;
-        static const ydk::Enum::YLeaf last;
-
-};
-
 class AlarmClient : public ydk::Enum
 {
     public:
@@ -1978,6 +1804,53 @@ class AlarmClientState : public ydk::Enum
         static const ydk::Enum::YLeaf registered;
         static const ydk::Enum::YLeaf disconnected;
         static const ydk::Enum::YLeaf ready;
+
+};
+
+class AlarmEvent : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf notification;
+        static const ydk::Enum::YLeaf condition;
+        static const ydk::Enum::YLeaf last;
+
+};
+
+class TimingBucket : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_specified;
+        static const ydk::Enum::YLeaf fifteen_min;
+        static const ydk::Enum::YLeaf one_day;
+
+};
+
+class AlarmNotificationSrc : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_specified;
+        static const ydk::Enum::YLeaf near_end;
+        static const ydk::Enum::YLeaf far_end;
+
+};
+
+class AlarmDirection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_specified;
+        static const ydk::Enum::YLeaf send;
+        static const ydk::Enum::YLeaf receive;
+        static const ydk::Enum::YLeaf send_receive;
+
+};
+
+class AlarmServiceAffecting : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf not_service_affecting;
+        static const ydk::Enum::YLeaf service_affecting;
 
 };
 
@@ -2003,6 +1876,30 @@ class AlarmGroups : public ydk::Enum
         static const ydk::Enum::YLeaf ots;
         static const ydk::Enum::YLeaf timing;
         static const ydk::Enum::YLeaf last;
+
+};
+
+class AlarmStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf set;
+        static const ydk::Enum::YLeaf clear;
+        static const ydk::Enum::YLeaf suppress;
+        static const ydk::Enum::YLeaf last;
+
+};
+
+class AlarmSeverity : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf not_reported;
+        static const ydk::Enum::YLeaf not_alarmed;
+        static const ydk::Enum::YLeaf minor;
+        static const ydk::Enum::YLeaf major_;
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf severity_last;
 
 };
 

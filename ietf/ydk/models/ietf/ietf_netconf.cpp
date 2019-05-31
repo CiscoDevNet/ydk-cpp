@@ -3666,9 +3666,6 @@ bool Validate::Input::Source::has_leaf_or_child_of_name(const std::string & name
     return false;
 }
 
-const Enum::YLeaf ErrorSeverityType::error {0, "error"};
-const Enum::YLeaf ErrorSeverityType::warning {1, "warning"};
-
 const Enum::YLeaf ErrorTagType::in_use {0, "in-use"};
 const Enum::YLeaf ErrorTagType::invalid_value {1, "invalid-value"};
 const Enum::YLeaf ErrorTagType::too_big {2, "too-big"};
@@ -3689,6 +3686,9 @@ const Enum::YLeaf ErrorTagType::operation_not_supported {16, "operation-not-supp
 const Enum::YLeaf ErrorTagType::operation_failed {17, "operation-failed"};
 const Enum::YLeaf ErrorTagType::partial_operation {18, "partial-operation"};
 const Enum::YLeaf ErrorTagType::malformed_message {19, "malformed-message"};
+
+const Enum::YLeaf ErrorSeverityType::error {0, "error"};
+const Enum::YLeaf ErrorSeverityType::warning {1, "warning"};
 
 const Enum::YLeaf EditOperationType::merge {0, "merge"};
 const Enum::YLeaf EditOperationType::replace {1, "replace"};

@@ -7244,11 +7244,9 @@ Alarms::Brief::Brief()
     :
     brief_card(std::make_shared<Alarms::Brief::BriefCard>())
     , brief_system(std::make_shared<Alarms::Brief::BriefSystem>())
-    , alarm_id(std::make_shared<Alarms::Brief::AlarmId>())
 {
     brief_card->parent = this;
     brief_system->parent = this;
-    alarm_id->parent = this;
 
     yang_name = "brief"; yang_parent_name = "alarms"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -7261,16 +7259,14 @@ bool Alarms::Brief::has_data() const
 {
     if (is_presence_container) return true;
     return (brief_card !=  nullptr && brief_card->has_data())
-	|| (brief_system !=  nullptr && brief_system->has_data())
-	|| (alarm_id !=  nullptr && alarm_id->has_data());
+	|| (brief_system !=  nullptr && brief_system->has_data());
 }
 
 bool Alarms::Brief::has_operation() const
 {
     return is_set(yfilter)
 	|| (brief_card !=  nullptr && brief_card->has_operation())
-	|| (brief_system !=  nullptr && brief_system->has_operation())
-	|| (alarm_id !=  nullptr && alarm_id->has_operation());
+	|| (brief_system !=  nullptr && brief_system->has_operation());
 }
 
 std::string Alarms::Brief::get_absolute_path() const
@@ -7316,15 +7312,6 @@ std::shared_ptr<ydk::Entity> Alarms::Brief::get_child_by_name(const std::string 
         return brief_system;
     }
 
-    if(child_yang_name == "alarm-id")
-    {
-        if(alarm_id == nullptr)
-        {
-            alarm_id = std::make_shared<Alarms::Brief::AlarmId>();
-        }
-        return alarm_id;
-    }
-
     return nullptr;
 }
 
@@ -7342,11 +7329,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Alarms::Brief::get_children(
         _children["brief-system"] = brief_system;
     }
 
-    if(alarm_id != nullptr)
-    {
-        _children["alarm-id"] = alarm_id;
-    }
-
     return _children;
 }
 
@@ -7360,7 +7342,7 @@ void Alarms::Brief::set_filter(const std::string & value_path, YFilter yfilter)
 
 bool Alarms::Brief::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "brief-card" || name == "brief-system" || name == "alarm-id")
+    if(name == "brief-card" || name == "brief-system")
         return true;
     return false;
 }
@@ -10072,512 +10054,6 @@ bool Alarms::Brief::BriefSystem::Suppressed::SuppressedInfo::has_leaf_or_child_o
     return false;
 }
 
-Alarms::Brief::AlarmId::AlarmId()
-    :
-    active_alarms(std::make_shared<Alarms::Brief::AlarmId::ActiveAlarms>())
-{
-    active_alarms->parent = this;
-
-    yang_name = "alarm-id"; yang_parent_name = "brief"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Alarms::Brief::AlarmId::~AlarmId()
-{
-}
-
-bool Alarms::Brief::AlarmId::has_data() const
-{
-    if (is_presence_container) return true;
-    return (active_alarms !=  nullptr && active_alarms->has_data());
-}
-
-bool Alarms::Brief::AlarmId::has_operation() const
-{
-    return is_set(yfilter)
-	|| (active_alarms !=  nullptr && active_alarms->has_operation());
-}
-
-std::string Alarms::Brief::AlarmId::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-alarmgr-server-oper:alarms/brief/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Alarms::Brief::AlarmId::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "alarm-id";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Alarms::Brief::AlarmId::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Alarms::Brief::AlarmId::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "active-alarms")
-    {
-        if(active_alarms == nullptr)
-        {
-            active_alarms = std::make_shared<Alarms::Brief::AlarmId::ActiveAlarms>();
-        }
-        return active_alarms;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Alarms::Brief::AlarmId::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(active_alarms != nullptr)
-    {
-        _children["active-alarms"] = active_alarms;
-    }
-
-    return _children;
-}
-
-void Alarms::Brief::AlarmId::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Alarms::Brief::AlarmId::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Alarms::Brief::AlarmId::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "active-alarms")
-        return true;
-    return false;
-}
-
-Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarms()
-    :
-    active_alarm(this, {"aid"})
-{
-
-    yang_name = "active-alarms"; yang_parent_name = "alarm-id"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Alarms::Brief::AlarmId::ActiveAlarms::~ActiveAlarms()
-{
-}
-
-bool Alarms::Brief::AlarmId::ActiveAlarms::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<active_alarm.len(); index++)
-    {
-        if(active_alarm[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Alarms::Brief::AlarmId::ActiveAlarms::has_operation() const
-{
-    for (std::size_t index=0; index<active_alarm.len(); index++)
-    {
-        if(active_alarm[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Alarms::Brief::AlarmId::ActiveAlarms::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-alarmgr-server-oper:alarms/brief/alarm-id/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Alarms::Brief::AlarmId::ActiveAlarms::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "active-alarms";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Alarms::Brief::AlarmId::ActiveAlarms::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Alarms::Brief::AlarmId::ActiveAlarms::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "active-alarm")
-    {
-        auto ent_ = std::make_shared<Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm>();
-        ent_->parent = this;
-        active_alarm.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Alarms::Brief::AlarmId::ActiveAlarms::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : active_alarm.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Alarms::Brief::AlarmId::ActiveAlarms::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Alarms::Brief::AlarmId::ActiveAlarms::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Alarms::Brief::AlarmId::ActiveAlarms::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "active-alarm")
-        return true;
-    return false;
-}
-
-Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::ActiveAlarm()
-    :
-    aid{YType::str, "aid"}
-        ,
-    alarm(std::make_shared<Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::Alarm>())
-{
-    alarm->parent = this;
-
-    yang_name = "active-alarm"; yang_parent_name = "active-alarms"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::~ActiveAlarm()
-{
-}
-
-bool Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::has_data() const
-{
-    if (is_presence_container) return true;
-    return aid.is_set
-	|| (alarm !=  nullptr && alarm->has_data());
-}
-
-bool Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(aid.yfilter)
-	|| (alarm !=  nullptr && alarm->has_operation());
-}
-
-std::string Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-alarmgr-server-oper:alarms/brief/alarm-id/active-alarms/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "active-alarm";
-    ADD_KEY_TOKEN(aid, "aid");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (aid.is_set || is_set(aid.yfilter)) leaf_name_data.push_back(aid.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "alarm")
-    {
-        if(alarm == nullptr)
-        {
-            alarm = std::make_shared<Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::Alarm>();
-        }
-        return alarm;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(alarm != nullptr)
-    {
-        _children["alarm"] = alarm;
-    }
-
-    return _children;
-}
-
-void Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "aid")
-    {
-        aid = value;
-        aid.value_namespace = name_space;
-        aid.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "aid")
-    {
-        aid.yfilter = yfilter;
-    }
-}
-
-bool Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "alarm" || name == "aid")
-        return true;
-    return false;
-}
-
-Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::Alarm::Alarm()
-    :
-    location{YType::str, "location"},
-    severity{YType::enumeration, "severity"},
-    group{YType::enumeration, "group"},
-    set_time{YType::str, "set-time"},
-    set_timestamp{YType::uint64, "set-timestamp"},
-    clear_time{YType::str, "clear-time"},
-    clear_timestamp{YType::uint64, "clear-timestamp"},
-    description{YType::str, "description"}
-{
-
-    yang_name = "alarm"; yang_parent_name = "active-alarm"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::Alarm::~Alarm()
-{
-}
-
-bool Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::Alarm::has_data() const
-{
-    if (is_presence_container) return true;
-    return location.is_set
-	|| severity.is_set
-	|| group.is_set
-	|| set_time.is_set
-	|| set_timestamp.is_set
-	|| clear_time.is_set
-	|| clear_timestamp.is_set
-	|| description.is_set;
-}
-
-bool Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::Alarm::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(location.yfilter)
-	|| ydk::is_set(severity.yfilter)
-	|| ydk::is_set(group.yfilter)
-	|| ydk::is_set(set_time.yfilter)
-	|| ydk::is_set(set_timestamp.yfilter)
-	|| ydk::is_set(clear_time.yfilter)
-	|| ydk::is_set(clear_timestamp.yfilter)
-	|| ydk::is_set(description.yfilter);
-}
-
-std::string Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::Alarm::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "alarm";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::Alarm::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (location.is_set || is_set(location.yfilter)) leaf_name_data.push_back(location.get_name_leafdata());
-    if (severity.is_set || is_set(severity.yfilter)) leaf_name_data.push_back(severity.get_name_leafdata());
-    if (group.is_set || is_set(group.yfilter)) leaf_name_data.push_back(group.get_name_leafdata());
-    if (set_time.is_set || is_set(set_time.yfilter)) leaf_name_data.push_back(set_time.get_name_leafdata());
-    if (set_timestamp.is_set || is_set(set_timestamp.yfilter)) leaf_name_data.push_back(set_timestamp.get_name_leafdata());
-    if (clear_time.is_set || is_set(clear_time.yfilter)) leaf_name_data.push_back(clear_time.get_name_leafdata());
-    if (clear_timestamp.is_set || is_set(clear_timestamp.yfilter)) leaf_name_data.push_back(clear_timestamp.get_name_leafdata());
-    if (description.is_set || is_set(description.yfilter)) leaf_name_data.push_back(description.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::Alarm::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::Alarm::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::Alarm::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "location")
-    {
-        location = value;
-        location.value_namespace = name_space;
-        location.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "severity")
-    {
-        severity = value;
-        severity.value_namespace = name_space;
-        severity.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "group")
-    {
-        group = value;
-        group.value_namespace = name_space;
-        group.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "set-time")
-    {
-        set_time = value;
-        set_time.value_namespace = name_space;
-        set_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "set-timestamp")
-    {
-        set_timestamp = value;
-        set_timestamp.value_namespace = name_space;
-        set_timestamp.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "clear-time")
-    {
-        clear_time = value;
-        clear_time.value_namespace = name_space;
-        clear_time.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "clear-timestamp")
-    {
-        clear_timestamp = value;
-        clear_timestamp.value_namespace = name_space;
-        clear_timestamp.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "description")
-    {
-        description = value;
-        description.value_namespace = name_space;
-        description.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::Alarm::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "location")
-    {
-        location.yfilter = yfilter;
-    }
-    if(value_path == "severity")
-    {
-        severity.yfilter = yfilter;
-    }
-    if(value_path == "group")
-    {
-        group.yfilter = yfilter;
-    }
-    if(value_path == "set-time")
-    {
-        set_time.yfilter = yfilter;
-    }
-    if(value_path == "set-timestamp")
-    {
-        set_timestamp.yfilter = yfilter;
-    }
-    if(value_path == "clear-time")
-    {
-        clear_time.yfilter = yfilter;
-    }
-    if(value_path == "clear-timestamp")
-    {
-        clear_timestamp.yfilter = yfilter;
-    }
-    if(value_path == "description")
-    {
-        description.yfilter = yfilter;
-    }
-}
-
-bool Alarms::Brief::AlarmId::ActiveAlarms::ActiveAlarm::Alarm::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "location" || name == "severity" || name == "group" || name == "set-time" || name == "set-timestamp" || name == "clear-time" || name == "clear-timestamp" || name == "description")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf TimingBucket::not_specified {0, "not-specified"};
-const Enum::YLeaf TimingBucket::fifteen_min {1, "fifteen-min"};
-const Enum::YLeaf TimingBucket::one_day {2, "one-day"};
-
-const Enum::YLeaf AlarmSeverity::unknown {0, "unknown"};
-const Enum::YLeaf AlarmSeverity::not_reported {1, "not-reported"};
-const Enum::YLeaf AlarmSeverity::not_alarmed {2, "not-alarmed"};
-const Enum::YLeaf AlarmSeverity::minor {3, "minor"};
-const Enum::YLeaf AlarmSeverity::major_ {4, "major"};
-const Enum::YLeaf AlarmSeverity::critical {5, "critical"};
-const Enum::YLeaf AlarmSeverity::severity_last {6, "severity-last"};
-
-const Enum::YLeaf AlarmDirection::not_specified {0, "not-specified"};
-const Enum::YLeaf AlarmDirection::send {1, "send"};
-const Enum::YLeaf AlarmDirection::receive {2, "receive"};
-const Enum::YLeaf AlarmDirection::send_receive {3, "send-receive"};
-
-const Enum::YLeaf AlarmStatus::unknown {0, "unknown"};
-const Enum::YLeaf AlarmStatus::set {1, "set"};
-const Enum::YLeaf AlarmStatus::clear {2, "clear"};
-const Enum::YLeaf AlarmStatus::suppress {3, "suppress"};
-const Enum::YLeaf AlarmStatus::last {4, "last"};
-
-const Enum::YLeaf AlarmServiceAffecting::unknown {0, "unknown"};
-const Enum::YLeaf AlarmServiceAffecting::not_service_affecting {1, "not-service-affecting"};
-const Enum::YLeaf AlarmServiceAffecting::service_affecting {2, "service-affecting"};
-
-const Enum::YLeaf AlarmNotificationSrc::not_specified {0, "not-specified"};
-const Enum::YLeaf AlarmNotificationSrc::near_end {1, "near-end"};
-const Enum::YLeaf AlarmNotificationSrc::far_end {2, "far-end"};
-
-const Enum::YLeaf AlarmEvent::default_ {0, "default"};
-const Enum::YLeaf AlarmEvent::notification {1, "notification"};
-const Enum::YLeaf AlarmEvent::condition {2, "condition"};
-const Enum::YLeaf AlarmEvent::last {3, "last"};
-
 const Enum::YLeaf AlarmClient::unknown {1, "unknown"};
 const Enum::YLeaf AlarmClient::producer {2, "producer"};
 const Enum::YLeaf AlarmClient::consumer {4, "consumer"};
@@ -10591,6 +10067,28 @@ const Enum::YLeaf AlarmClientState::connected {3, "connected"};
 const Enum::YLeaf AlarmClientState::registered {4, "registered"};
 const Enum::YLeaf AlarmClientState::disconnected {5, "disconnected"};
 const Enum::YLeaf AlarmClientState::ready {6, "ready"};
+
+const Enum::YLeaf AlarmEvent::default_ {0, "default"};
+const Enum::YLeaf AlarmEvent::notification {1, "notification"};
+const Enum::YLeaf AlarmEvent::condition {2, "condition"};
+const Enum::YLeaf AlarmEvent::last {3, "last"};
+
+const Enum::YLeaf TimingBucket::not_specified {0, "not-specified"};
+const Enum::YLeaf TimingBucket::fifteen_min {1, "fifteen-min"};
+const Enum::YLeaf TimingBucket::one_day {2, "one-day"};
+
+const Enum::YLeaf AlarmNotificationSrc::not_specified {0, "not-specified"};
+const Enum::YLeaf AlarmNotificationSrc::near_end {1, "near-end"};
+const Enum::YLeaf AlarmNotificationSrc::far_end {2, "far-end"};
+
+const Enum::YLeaf AlarmDirection::not_specified {0, "not-specified"};
+const Enum::YLeaf AlarmDirection::send {1, "send"};
+const Enum::YLeaf AlarmDirection::receive {2, "receive"};
+const Enum::YLeaf AlarmDirection::send_receive {3, "send-receive"};
+
+const Enum::YLeaf AlarmServiceAffecting::unknown {0, "unknown"};
+const Enum::YLeaf AlarmServiceAffecting::not_service_affecting {1, "not-service-affecting"};
+const Enum::YLeaf AlarmServiceAffecting::service_affecting {2, "service-affecting"};
 
 const Enum::YLeaf AlarmGroups::unknown {0, "unknown"};
 const Enum::YLeaf AlarmGroups::environ {1, "environ"};
@@ -10611,6 +10109,20 @@ const Enum::YLeaf AlarmGroups::mpa {15, "mpa"};
 const Enum::YLeaf AlarmGroups::ots {16, "ots"};
 const Enum::YLeaf AlarmGroups::timing {17, "timing"};
 const Enum::YLeaf AlarmGroups::last {18, "last"};
+
+const Enum::YLeaf AlarmStatus::unknown {0, "unknown"};
+const Enum::YLeaf AlarmStatus::set {1, "set"};
+const Enum::YLeaf AlarmStatus::clear {2, "clear"};
+const Enum::YLeaf AlarmStatus::suppress {3, "suppress"};
+const Enum::YLeaf AlarmStatus::last {4, "last"};
+
+const Enum::YLeaf AlarmSeverity::unknown {0, "unknown"};
+const Enum::YLeaf AlarmSeverity::not_reported {1, "not-reported"};
+const Enum::YLeaf AlarmSeverity::not_alarmed {2, "not-alarmed"};
+const Enum::YLeaf AlarmSeverity::minor {3, "minor"};
+const Enum::YLeaf AlarmSeverity::major_ {4, "major"};
+const Enum::YLeaf AlarmSeverity::critical {5, "critical"};
+const Enum::YLeaf AlarmSeverity::severity_last {6, "severity-last"};
 
 
 }

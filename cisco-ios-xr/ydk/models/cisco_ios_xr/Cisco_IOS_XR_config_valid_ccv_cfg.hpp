@@ -85,17 +85,17 @@ class Configurationvalidation::FailureTypeActions::FailureTypeAction : public yd
 
 }; // Configurationvalidation::FailureTypeActions::FailureTypeAction
 
-class Failure : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unsupported;
-
-};
-
 class FailureAction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf report;
+
+};
+
+class Failure : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unsupported;
 
 };
 

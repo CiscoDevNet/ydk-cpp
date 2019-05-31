@@ -4738,6 +4738,35 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable::I
 
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::Areas::Area::InterfaceBriefTable::InterfaceBrief
 
+class Ospfv3Lsa : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf link_lsa;
+        static const ydk::Enum::YLeaf grace_lsa;
+        static const ydk::Enum::YLeaf router;
+        static const ydk::Enum::YLeaf network;
+        static const ydk::Enum::YLeaf inter_area_prefix;
+        static const ydk::Enum::YLeaf inter_area_router;
+        static const ydk::Enum::YLeaf nssa_external;
+        static const ydk::Enum::YLeaf intra_area_prefix;
+        static const ydk::Enum::YLeaf external;
+        static const ydk::Enum::YLeaf opaque_link;
+        static const ydk::Enum::YLeaf opaque_area;
+        static const ydk::Enum::YLeaf opaque_as;
+        static const ydk::Enum::YLeaf unknown;
+
+};
+
+class OspfNsrSchedPri : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ospf_nsr_stats_sched_pri_hi;
+        static const ydk::Enum::YLeaf ospf_nsr_stats_sched_pri_med;
+        static const ydk::Enum::YLeaf ospf_nsr_stats_sched_pri_low;
+        static const ydk::Enum::YLeaf ospf_nsr_stats_sched_pri_max;
+
+};
+
 class Ospfv3GracefulShutdownState : public ydk::Enum
 {
     public:
@@ -4763,51 +4792,26 @@ class IpfrrTbrkr : public ydk::Enum
 
 };
 
-class OspfLsaSyncState : public ydk::Enum
+class StubRouterAbrOffReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf init_delay;
+        static const ydk::Enum::YLeaf no_neighbor;
+        static const ydk::Enum::YLeaf no_full_neighbor;
+        static const ydk::Enum::YLeaf new_neighbor;
+        static const ydk::Enum::YLeaf full_neighbor;
+
+};
+
+class StubRouterExitReason : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf out_of_sync;
-        static const ydk::Enum::YLeaf in_sync;
-        static const ydk::Enum::YLeaf nsr_ack_pending;
-
-};
-
-class Ospfv3Lsa1 : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf link;
-        static const ydk::Enum::YLeaf grace;
-        static const ydk::Enum::YLeaf router;
-        static const ydk::Enum::YLeaf network;
-        static const ydk::Enum::YLeaf inter_area_prefix;
-        static const ydk::Enum::YLeaf inter_area_router;
-        static const ydk::Enum::YLeaf mospf;
-        static const ydk::Enum::YLeaf type7_external;
-        static const ydk::Enum::YLeaf lsa_prefix;
-        static const ydk::Enum::YLeaf as_external;
-        static const ydk::Enum::YLeaf unknown_link;
-        static const ydk::Enum::YLeaf unknown_area;
-        static const ydk::Enum::YLeaf unknown_as;
-        static const ydk::Enum::YLeaf unknown_type;
-
-};
-
-class OspfNsrSchedPri : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ospf_nsr_stats_sched_pri_hi;
-        static const ydk::Enum::YLeaf ospf_nsr_stats_sched_pri_med;
-        static const ydk::Enum::YLeaf ospf_nsr_stats_sched_pri_low;
-        static const ydk::Enum::YLeaf ospf_nsr_stats_sched_pri_max;
-
-};
-
-class Ospfv3AreaRangeStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf advertise;
-        static const ydk::Enum::YLeaf do_not_advertise;
+        static const ydk::Enum::YLeaf bgp;
+        static const ydk::Enum::YLeaf timer;
+        static const ydk::Enum::YLeaf configuration;
+        static const ydk::Enum::YLeaf cleared;
+        static const ydk::Enum::YLeaf override;
 
 };
 
@@ -4819,6 +4823,16 @@ class StubRouterTrigger : public ydk::Enum
         static const ydk::Enum::YLeaf on_switchover;
         static const ydk::Enum::YLeaf on_startup;
         static const ydk::Enum::YLeaf always;
+        static const ydk::Enum::YLeaf none;
+
+};
+
+class StubRouterMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rbit;
+        static const ydk::Enum::YLeaf v6bit;
+        static const ydk::Enum::YLeaf max_metric;
         static const ydk::Enum::YLeaf none;
 
 };
@@ -4836,60 +4850,6 @@ class Ospfv3Interface : public ydk::Enum
         static const ydk::Enum::YLeaf loopback_interface;
         static const ydk::Enum::YLeaf mpls_traffic_engineering;
         static const ydk::Enum::YLeaf sham_link;
-
-};
-
-class Ospfv3LsaInfoTypes : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mgmt_lsa_lsasum_type;
-        static const ydk::Enum::YLeaf mgmt_lsa_link_type;
-        static const ydk::Enum::YLeaf mgmt_lsa_gr_type;
-        static const ydk::Enum::YLeaf mgmt_lsa_rtr_type;
-        static const ydk::Enum::YLeaf mgmt_lsa_net_type;
-        static const ydk::Enum::YLeaf mgmt_lsa_iapfx_type;
-        static const ydk::Enum::YLeaf mgmt_lsa_iartr_type;
-        static const ydk::Enum::YLeaf mgmt_lsa_nssaext_type;
-        static const ydk::Enum::YLeaf mgmt_lsa_prefix_type;
-        static const ydk::Enum::YLeaf mgmt_lsa_ext_type;
-        static const ydk::Enum::YLeaf mgmt_lsa_unk_link_type;
-        static const ydk::Enum::YLeaf mgmt_lsa_unk_area_type;
-        static const ydk::Enum::YLeaf mgmt_lsa_unk_as_type;
-        static const ydk::Enum::YLeaf mgmt_lsa_unk_type;
-
-};
-
-class StubRouterAbrOffReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf init_delay;
-        static const ydk::Enum::YLeaf no_neighbor;
-        static const ydk::Enum::YLeaf no_full_neighbor;
-        static const ydk::Enum::YLeaf new_neighbor;
-        static const ydk::Enum::YLeaf full_neighbor;
-
-};
-
-class Ospfv3InterfaceState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf loopback;
-        static const ydk::Enum::YLeaf waiting;
-        static const ydk::Enum::YLeaf point_to_multipoint;
-        static const ydk::Enum::YLeaf point_to_point;
-        static const ydk::Enum::YLeaf designated_router;
-        static const ydk::Enum::YLeaf backup_designated_router;
-        static const ydk::Enum::YLeaf other_designated_router;
-
-};
-
-class Ospfv3BorderRoute : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf abr;
-        static const ydk::Enum::YLeaf asbr;
-        static const ydk::Enum::YLeaf abr_asbr;
 
 };
 
@@ -4928,12 +4888,80 @@ class Ospfv3GracefulRestartReason : public ydk::Enum
 
 };
 
-class Ospfv3DefaultMetric : public ydk::Enum
+class Ospfv3Lsa1 : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf type_none;
-        static const ydk::Enum::YLeaf type1;
-        static const ydk::Enum::YLeaf type2;
+        static const ydk::Enum::YLeaf link;
+        static const ydk::Enum::YLeaf grace;
+        static const ydk::Enum::YLeaf router;
+        static const ydk::Enum::YLeaf network;
+        static const ydk::Enum::YLeaf inter_area_prefix;
+        static const ydk::Enum::YLeaf inter_area_router;
+        static const ydk::Enum::YLeaf mospf;
+        static const ydk::Enum::YLeaf type7_external;
+        static const ydk::Enum::YLeaf lsa_prefix;
+        static const ydk::Enum::YLeaf as_external;
+        static const ydk::Enum::YLeaf unknown_link;
+        static const ydk::Enum::YLeaf unknown_area;
+        static const ydk::Enum::YLeaf unknown_as;
+        static const ydk::Enum::YLeaf unknown_type;
+
+};
+
+class PrefixPriority : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf high;
+        static const ydk::Enum::YLeaf medium;
+        static const ydk::Enum::YLeaf low;
+
+};
+
+class Ospfv3Link : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf link_router;
+        static const ydk::Enum::YLeaf link_trans_net;
+        static const ydk::Enum::YLeaf link_virtual_link;
+
+};
+
+class OspfLsaSyncState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf out_of_sync;
+        static const ydk::Enum::YLeaf in_sync;
+        static const ydk::Enum::YLeaf nsr_ack_pending;
+
+};
+
+class Ospfv3LsaInfoTypes : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mgmt_lsa_lsasum_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_link_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_gr_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_rtr_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_net_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_iapfx_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_iartr_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_nssaext_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_prefix_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_ext_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_unk_link_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_unk_area_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_unk_as_type;
+        static const ydk::Enum::YLeaf mgmt_lsa_unk_type;
+
+};
+
+class Ospfv3AreaRangeStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf advertise;
+        static const ydk::Enum::YLeaf do_not_advertise;
 
 };
 
@@ -4952,63 +4980,35 @@ class Ospfv3NeighborState : public ydk::Enum
 
 };
 
-class PrefixPriority : public ydk::Enum
+class Ospfv3InterfaceState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf high;
-        static const ydk::Enum::YLeaf medium;
-        static const ydk::Enum::YLeaf low;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf loopback;
+        static const ydk::Enum::YLeaf waiting;
+        static const ydk::Enum::YLeaf point_to_multipoint;
+        static const ydk::Enum::YLeaf point_to_point;
+        static const ydk::Enum::YLeaf designated_router;
+        static const ydk::Enum::YLeaf backup_designated_router;
+        static const ydk::Enum::YLeaf other_designated_router;
 
 };
 
-class StubRouterMode : public ydk::Enum
+class Ospfv3BorderRoute : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf rbit;
-        static const ydk::Enum::YLeaf v6bit;
-        static const ydk::Enum::YLeaf max_metric;
-        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf abr;
+        static const ydk::Enum::YLeaf asbr;
+        static const ydk::Enum::YLeaf abr_asbr;
 
 };
 
-class Ospfv3Link : public ydk::Enum
+class Ospfv3DefaultMetric : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf link_router;
-        static const ydk::Enum::YLeaf link_trans_net;
-        static const ydk::Enum::YLeaf link_virtual_link;
-
-};
-
-class Ospfv3Lsa : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf link_lsa;
-        static const ydk::Enum::YLeaf grace_lsa;
-        static const ydk::Enum::YLeaf router;
-        static const ydk::Enum::YLeaf network;
-        static const ydk::Enum::YLeaf inter_area_prefix;
-        static const ydk::Enum::YLeaf inter_area_router;
-        static const ydk::Enum::YLeaf nssa_external;
-        static const ydk::Enum::YLeaf intra_area_prefix;
-        static const ydk::Enum::YLeaf external;
-        static const ydk::Enum::YLeaf opaque_link;
-        static const ydk::Enum::YLeaf opaque_area;
-        static const ydk::Enum::YLeaf opaque_as;
-        static const ydk::Enum::YLeaf unknown;
-
-};
-
-class StubRouterExitReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf bgp;
-        static const ydk::Enum::YLeaf timer;
-        static const ydk::Enum::YLeaf configuration;
-        static const ydk::Enum::YLeaf cleared;
-        static const ydk::Enum::YLeaf override;
+        static const ydk::Enum::YLeaf type_none;
+        static const ydk::Enum::YLeaf type1;
+        static const ydk::Enum::YLeaf type2;
 
 };
 

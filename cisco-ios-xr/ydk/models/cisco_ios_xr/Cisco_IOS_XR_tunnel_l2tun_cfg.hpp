@@ -354,20 +354,20 @@ class L2tp::Classes::Class::Ip : public ydk::Entity
 
 }; // L2tp::Classes::Class::Ip
 
-class L2tpDigestHashMethod : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf md5;
-        static const ydk::Enum::YLeaf sha1;
-
-};
-
 class L2tpHashMethod : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf md5;
         static const ydk::Enum::YLeaf sha1;
         static const ydk::Enum::YLeaf none;
+
+};
+
+class L2tpDigestHashMethod : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf md5;
+        static const ydk::Enum::YLeaf sha1;
 
 };
 

@@ -808,15 +808,6 @@ bool CISCOENTITYSENSORMIB::EntSensorThresholdTable::EntSensorThresholdEntry::has
     return false;
 }
 
-const Enum::YLeaf SensorThresholdSeverity::other {1, "other"};
-const Enum::YLeaf SensorThresholdSeverity::minor {10, "minor"};
-const Enum::YLeaf SensorThresholdSeverity::major_ {20, "major"};
-const Enum::YLeaf SensorThresholdSeverity::critical {30, "critical"};
-
-const Enum::YLeaf SensorStatus::ok {1, "ok"};
-const Enum::YLeaf SensorStatus::unavailable {2, "unavailable"};
-const Enum::YLeaf SensorStatus::nonoperational {3, "nonoperational"};
-
 const Enum::YLeaf SensorDataType::other {1, "other"};
 const Enum::YLeaf SensorDataType::unknown {2, "unknown"};
 const Enum::YLeaf SensorDataType::voltsAC {3, "voltsAC"};
@@ -831,13 +822,6 @@ const Enum::YLeaf SensorDataType::cmm {11, "cmm"};
 const Enum::YLeaf SensorDataType::truthvalue {12, "truthvalue"};
 const Enum::YLeaf SensorDataType::specialEnum {13, "specialEnum"};
 const Enum::YLeaf SensorDataType::dBm {14, "dBm"};
-
-const Enum::YLeaf SensorThresholdRelation::lessThan {1, "lessThan"};
-const Enum::YLeaf SensorThresholdRelation::lessOrEqual {2, "lessOrEqual"};
-const Enum::YLeaf SensorThresholdRelation::greaterThan {3, "greaterThan"};
-const Enum::YLeaf SensorThresholdRelation::greaterOrEqual {4, "greaterOrEqual"};
-const Enum::YLeaf SensorThresholdRelation::equalTo {5, "equalTo"};
-const Enum::YLeaf SensorThresholdRelation::notEqualTo {6, "notEqualTo"};
 
 const Enum::YLeaf SensorDataScale::yocto {1, "yocto"};
 const Enum::YLeaf SensorDataScale::zepto {2, "zepto"};
@@ -856,6 +840,22 @@ const Enum::YLeaf SensorDataScale::exa {14, "exa"};
 const Enum::YLeaf SensorDataScale::peta {15, "peta"};
 const Enum::YLeaf SensorDataScale::zetta {16, "zetta"};
 const Enum::YLeaf SensorDataScale::yotta {17, "yotta"};
+
+const Enum::YLeaf SensorStatus::ok {1, "ok"};
+const Enum::YLeaf SensorStatus::unavailable {2, "unavailable"};
+const Enum::YLeaf SensorStatus::nonoperational {3, "nonoperational"};
+
+const Enum::YLeaf SensorThresholdSeverity::other {1, "other"};
+const Enum::YLeaf SensorThresholdSeverity::minor {10, "minor"};
+const Enum::YLeaf SensorThresholdSeverity::major_ {20, "major"};
+const Enum::YLeaf SensorThresholdSeverity::critical {30, "critical"};
+
+const Enum::YLeaf SensorThresholdRelation::lessThan {1, "lessThan"};
+const Enum::YLeaf SensorThresholdRelation::lessOrEqual {2, "lessOrEqual"};
+const Enum::YLeaf SensorThresholdRelation::greaterThan {3, "greaterThan"};
+const Enum::YLeaf SensorThresholdRelation::greaterOrEqual {4, "greaterOrEqual"};
+const Enum::YLeaf SensorThresholdRelation::equalTo {5, "equalTo"};
+const Enum::YLeaf SensorThresholdRelation::notEqualTo {6, "notEqualTo"};
 
 
 }

@@ -638,8 +638,10 @@ class MplsLdp::DefaultVrf::Afs::Af::Neighbor : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Addresses; //type: MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses
+        class SegmentRoutingPolicies; //type: MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses> addresses;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_ldp_cfg::MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies> segment_routing_policies;
         
 }; // MplsLdp::DefaultVrf::Afs::Af::Neighbor
 
@@ -687,6 +689,51 @@ class MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::Address : public ydk::E
         ydk::YLeaf targeted; //type: empty
 
 }; // MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::Address
+
+
+class MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies : public ydk::Entity
+{
+    public:
+        SegmentRoutingPolicies();
+        ~SegmentRoutingPolicies();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SegmentRoutingPolicy; //type: MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::SegmentRoutingPolicy
+
+        ydk::YList segment_routing_policy;
+        
+}; // MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies
+
+
+class MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::SegmentRoutingPolicy : public ydk::Entity
+{
+    public:
+        SegmentRoutingPolicy();
+        ~SegmentRoutingPolicy();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf targeted; //type: empty
+
+}; // MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::SegmentRoutingPolicy
 
 
 class MplsLdp::DefaultVrf::Afs::Af::RedistributionProtocol : public ydk::Entity
@@ -3377,19 +3424,11 @@ class MplsLdp::Global::Mldp::MldpGlobal::Logging : public ydk::Entity
 
 }; // MplsLdp::Global::Mldp::MldpGlobal::Logging
 
-class MplsLdpLabelAdvertise : public ydk::Enum
+class MplsLdpNbrPassword : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf for_;
-        static const ydk::Enum::YLeaf for_to;
-
-};
-
-class MldpPolicyMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf inbound;
-        static const ydk::Enum::YLeaf outbound;
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf specified;
 
 };
 
@@ -3401,26 +3440,26 @@ class MplsLdpLabelAllocation : public ydk::Enum
 
 };
 
+class MplsLdpDownstreamOnDemand : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf peer_acl;
+
+};
+
+class MldpPolicyMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf inbound;
+        static const ydk::Enum::YLeaf outbound;
+
+};
+
 class MplsLdpTargetedAccept : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf all;
         static const ydk::Enum::YLeaf from;
-
-};
-
-class MplsLdpNbrPassword : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf specified;
-
-};
-
-class MplsLdpDownstreamOnDemand : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf peer_acl;
 
 };
 
@@ -3431,13 +3470,6 @@ class MplsLdpExpNull : public ydk::Enum
         static const ydk::Enum::YLeaf for_;
         static const ydk::Enum::YLeaf to;
         static const ydk::Enum::YLeaf for_to;
-
-};
-
-class MplsLdpAdvertiseBgpAcl : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf peer_acl;
 
 };
 
@@ -3466,6 +3498,21 @@ class MplsLdpSessionProtection : public ydk::Enum
         static const ydk::Enum::YLeaf for_with_duration;
         static const ydk::Enum::YLeaf all_with_forever;
         static const ydk::Enum::YLeaf for_with_forever;
+
+};
+
+class MplsLdpLabelAdvertise : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf for_;
+        static const ydk::Enum::YLeaf for_to;
+
+};
+
+class MplsLdpAdvertiseBgpAcl : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf peer_acl;
 
 };
 

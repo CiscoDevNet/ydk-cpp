@@ -113,6 +113,8 @@ gNMIService::get(gNMIServiceProvider& provider, Entity& filter, const string & o
 {
     YLOG_DEBUG("Executing 'get' gRPC on single entity");
 
+    shared_ptr<Entity> response = nullptr;
+
     auto top_entity = get_top_entity(&filter);
     gnmi::Path* path = new gnmi::Path;
     parse_entity_to_path(*top_entity, path);
@@ -122,17 +124,22 @@ gNMIService::get(gNMIServiceProvider& provider, Entity& filter, const string & o
     if (filter.ignore_validation && top_entity->is_top_level_class) {
         // Bypass libyang validation
         vector<string> reply = get_json_from_path(provider, path_list, operation);
-        if (reply.empty())
-            return nullptr;
-        auto reply_entity = json_codec_payload_to_entity(reply[0], top_entity->clone_ptr());
-        return get_child_entity_from_top(reply_entity, filter);
+        if (!reply.empty()) {
+            auto reply_entity = json_codec_payload_to_entity(reply[0], top_entity->clone_ptr());
+            response = get_child_entity_from_top(reply_entity, filter);
+        }
+    }
+    else {
+        auto root_dn = get_from_path(provider, path_list, operation);
+        if (root_dn) {
+            response = read_datanode(filter, root_dn->get_children()[0]);
+        }
     }
 
-    auto root_dn = get_from_path(provider, path_list, operation);
-    if (root_dn) {
-        return read_datanode(filter, root_dn->get_children()[0]);
-    }
-    return nullptr;
+    // Release allocated memory
+    delete path;
+
+    return response;
 }
 
 vector<shared_ptr<Entity>>
@@ -155,52 +162,56 @@ gNMIService::get(gNMIServiceProvider & provider, vector<Entity*> & filter_list, 
     if (bypass_validation == filter_list.size()) {
         // Bypass libyang validation
         vector<string> reply = get_json_from_path(provider, path_list, operation);
-        if (reply.empty())
-            return response_list;
-
-        // Build output list
-        for (auto filter : filter_list) {
-            auto fsp = filter->get_segment_path();
-            bool found = false;
-            for (auto r : reply) {
-                if (r.find(fsp) != string::npos) {
-                    auto top_entity = get_top_entity(filter);
-                    auto reply_entity = json_codec_payload_to_entity(r, top_entity->clone_ptr());
-                    auto child_entity = get_child_entity_from_top(reply_entity, *filter);
-                    response_list.push_back(child_entity);
-                    found = true;
-                    break;
+        if (!reply.empty()) {
+            // Build output list
+            for (auto filter : filter_list) {
+                auto fsp = filter->get_segment_path();
+                bool found = false;
+                for (auto r : reply) {
+                    if (r.find(fsp) != string::npos) {
+                        auto top_entity = get_top_entity(filter);
+                        auto reply_entity = json_codec_payload_to_entity(r, top_entity->clone_ptr());
+                        auto child_entity = get_child_entity_from_top(reply_entity, *filter);
+                        response_list.push_back(child_entity);
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    response_list.push_back((std::shared_ptr<Entity>) filter);
                 }
             }
-            if (!found) {
-                response_list.push_back((std::shared_ptr<Entity>) filter);
+        }
+    }
+    else {
+        auto root_dn = get_from_path(provider, path_list, operation);
+        if (root_dn) {
+            // Build map of data nodes in order to retain filter list order
+            map<string,std::shared_ptr<path::DataNode>> path_to_dn{};
+            for (auto dn : root_dn->get_children()) {
+                string path = dn->get_path();
+                if (path.find("/") == 0)
+                    path = path.substr(1);
+                path_to_dn[path] = dn;
+            }
+
+            // Build output list
+            for (auto filter : filter_list) {
+                auto dn = path_to_dn[filter->get_segment_path()];
+                if (dn) {
+                    auto entity = read_datanode(*filter, dn);
+                    response_list.push_back(entity);
+                }
+                else {
+                     response_list.push_back((std::shared_ptr<Entity>) filter);
+                }
             }
         }
-        return response_list;
     }
 
-    auto root_dn = get_from_path(provider, path_list, operation);
-    if (root_dn) {
-        // Build map of data nodes in order to retain filter list order
-        map<string,std::shared_ptr<path::DataNode>> path_to_dn{};
-        for (auto dn : root_dn->get_children()) {
-            string path = dn->get_path();
-            if (path.find("/") == 0)
-                path = path.substr(1);
-            path_to_dn[path] = dn;
-        }
-
-        // Build output list
-        for (auto filter : filter_list) {
-            auto dn = path_to_dn[filter->get_segment_path()];
-            if (dn) {
-                auto entity = read_datanode(*filter, dn);
-                response_list.push_back(entity);
-            }
-            else {
-                response_list.push_back((std::shared_ptr<Entity>) filter);
-            }
-        }
+    // Release allocated memory
+    for (gnmi::Path* path : path_list) {
+        delete path;
     }
     return response_list;
 }
@@ -246,19 +257,23 @@ static GnmiClientRequest build_set_request(gNMIServiceProvider& provider, Entity
 bool gNMIService::set(gNMIServiceProvider& provider, Entity& entity) const
 {
     YLOG_DEBUG("Executing get gRPC for single entity");
+    bool result;
     vector<GnmiClientRequest> set_request_list{};
     GnmiClientRequest request = build_set_request(provider, entity);
     set_request_list.push_back(request);
 
     auto & gnmi_session = dynamic_cast<const path::gNMISession&> (provider.get_session());
     auto & client = gnmi_session.get_client();
+    result = client.execute_set_operation(set_request_list);
 
-    return client.execute_set_operation(set_request_list);
+    release_allocated_memory(set_request_list);
+    return result;
 }
 
 bool gNMIService::set(gNMIServiceProvider& provider, vector<Entity*> & entity_list) const
 {
 	YLOG_DEBUG("Executing set gRPC for multiple entities");
+    bool result;
     vector<GnmiClientRequest> set_request_list{};
     int count = 1;
     for (auto entity : entity_list) {
@@ -268,8 +283,10 @@ bool gNMIService::set(gNMIServiceProvider& provider, vector<Entity*> & entity_li
     }
     auto & gnmi_session = dynamic_cast<const path::gNMISession&> (provider.get_session());
     auto & client = gnmi_session.get_client();
+    result = client.execute_set_operation(set_request_list);
 
-    return client.execute_set_operation(set_request_list);
+    release_allocated_memory(set_request_list);
+    return result;
 }
 
 static void check_subscription_params(gNMISubscription& subscription)
@@ -351,6 +368,10 @@ void gNMIService::subscribe(gNMIServiceProvider& provider,
     auto & gnmi_session = dynamic_cast<const path::gNMISession&> (provider.get_session());
     auto & client = gnmi_session.get_client();
     client.execute_subscribe_operation(sub_list, qos, list_mode, list_encoding, out_func, poll_func);
+
+    // Release allocated memory
+    delete sub.path;
+    sub.path = nullptr;
 }
 
 void gNMIService::subscribe(gNMIServiceProvider& provider,
@@ -381,6 +402,14 @@ void gNMIService::subscribe(gNMIServiceProvider& provider,
     auto & gnmi_session = dynamic_cast<const path::gNMISession&> (provider.get_session());
     auto & client = gnmi_session.get_client();
     client.execute_subscribe_operation(sub_list, qos, list_mode, list_encoding, out_func, poll_func);
+
+    // Release allocated memory
+    for (auto sub : sub_list) {
+        if (sub.path) {
+            delete sub.path;
+            sub.path = nullptr;
+        }
+    }
 }
 
 std::string

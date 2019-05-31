@@ -53,4 +53,22 @@ module ydktest-sanity-action {
     }
   }
 
+  rpc transaction {
+    description
+      "Transaction RPC";
+    input {
+      container run-request {
+        leaf out-format {
+          type string;
+        }
+      }
+    }
+    output {
+      container run-result {
+        leaf out-result {
+          type string;
+        }
+      }
+    }
+  }
 }

@@ -3666,6 +3666,64 @@ class Wred : public ydk::Enum
 
 };
 
+class PolicyParamUnit : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf policy_param_unit_invalid;
+        static const ydk::Enum::YLeaf policy_param_unit_bytes;
+        static const ydk::Enum::YLeaf policy_param_unit_kbytes;
+        static const ydk::Enum::YLeaf policy_param_unit_mbytes;
+        static const ydk::Enum::YLeaf policy_param_unit_gbytes;
+        static const ydk::Enum::YLeaf policy_param_unit_bitsps;
+        static const ydk::Enum::YLeaf policy_param_unit_kbitsps;
+        static const ydk::Enum::YLeaf policy_param_unit_mbitsps;
+        static const ydk::Enum::YLeaf policy_param_unit_gbitsps;
+        static const ydk::Enum::YLeaf policy_param_unit_cells_ps;
+        static const ydk::Enum::YLeaf policy_param_unit_packets_ps;
+        static const ydk::Enum::YLeaf policy_param_unit_us;
+        static const ydk::Enum::YLeaf policy_param_unit_ms;
+        static const ydk::Enum::YLeaf policy_param_unit_seconds;
+        static const ydk::Enum::YLeaf policy_param_unit_packets;
+        static const ydk::Enum::YLeaf policy_param_unit_cells;
+        static const ydk::Enum::YLeaf policy_param_unit_percent;
+        static const ydk::Enum::YLeaf policy_param_unit_per_thousand;
+        static const ydk::Enum::YLeaf policy_param_unit_per_million;
+        static const ydk::Enum::YLeaf policy_param_unit_hz;
+        static const ydk::Enum::YLeaf policy_param_unit_khz;
+        static const ydk::Enum::YLeaf policy_param_unit_mhz;
+        static const ydk::Enum::YLeaf policy_param_unit_ratio;
+        static const ydk::Enum::YLeaf policy_param_unit_max;
+
+};
+
+class CacState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf admit;
+        static const ydk::Enum::YLeaf redirect;
+        static const ydk::Enum::YLeaf ubrl;
+
+};
+
+class PolicyState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf suspended;
+
+};
+
+class Action : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf police_transmit;
+        static const ydk::Enum::YLeaf police_set_transmit;
+        static const ydk::Enum::YLeaf police_drop;
+        static const ydk::Enum::YLeaf police_unknown;
+
+};
+
 class ActionOpcode : public ydk::Enum
 {
     public:
@@ -3700,56 +3758,6 @@ class TbAlgorithm : public ydk::Enum
 
 };
 
-class PolicyParamUnit : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf policy_param_unit_invalid;
-        static const ydk::Enum::YLeaf policy_param_unit_bytes;
-        static const ydk::Enum::YLeaf policy_param_unit_kbytes;
-        static const ydk::Enum::YLeaf policy_param_unit_mbytes;
-        static const ydk::Enum::YLeaf policy_param_unit_gbytes;
-        static const ydk::Enum::YLeaf policy_param_unit_bitsps;
-        static const ydk::Enum::YLeaf policy_param_unit_kbitsps;
-        static const ydk::Enum::YLeaf policy_param_unit_mbitsps;
-        static const ydk::Enum::YLeaf policy_param_unit_gbitsps;
-        static const ydk::Enum::YLeaf policy_param_unit_cells_ps;
-        static const ydk::Enum::YLeaf policy_param_unit_packets_ps;
-        static const ydk::Enum::YLeaf policy_param_unit_us;
-        static const ydk::Enum::YLeaf policy_param_unit_ms;
-        static const ydk::Enum::YLeaf policy_param_unit_seconds;
-        static const ydk::Enum::YLeaf policy_param_unit_packets;
-        static const ydk::Enum::YLeaf policy_param_unit_cells;
-        static const ydk::Enum::YLeaf policy_param_unit_percent;
-        static const ydk::Enum::YLeaf policy_param_unit_per_thousand;
-        static const ydk::Enum::YLeaf policy_param_unit_per_million;
-        static const ydk::Enum::YLeaf policy_param_unit_hz;
-        static const ydk::Enum::YLeaf policy_param_unit_khz;
-        static const ydk::Enum::YLeaf policy_param_unit_mhz;
-        static const ydk::Enum::YLeaf policy_param_unit_ratio;
-        static const ydk::Enum::YLeaf policy_param_unit_max;
-
-};
-
-class Action : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf police_transmit;
-        static const ydk::Enum::YLeaf police_set_transmit;
-        static const ydk::Enum::YLeaf police_drop;
-        static const ydk::Enum::YLeaf police_unknown;
-
-};
-
-class CacState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf admit;
-        static const ydk::Enum::YLeaf redirect;
-        static const ydk::Enum::YLeaf ubrl;
-
-};
-
 class QosUnit : public ydk::Enum
 {
     public:
@@ -3770,14 +3778,6 @@ class QosUnit : public ydk::Enum
         static const ydk::Enum::YLeaf cells;
         static const ydk::Enum::YLeaf percentage;
         static const ydk::Enum::YLeaf ratio;
-
-};
-
-class PolicyState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf suspended;
 
 };
 

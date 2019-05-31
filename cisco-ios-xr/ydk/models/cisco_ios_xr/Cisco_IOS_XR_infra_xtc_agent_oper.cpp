@@ -3780,8 +3780,8 @@ Xtc::Xtc()
     , policy_summary(std::make_shared<Xtc::PolicySummary>())
     , on_demand_colors(std::make_shared<Xtc::OnDemandColors>())
     , controller(std::make_shared<Xtc::Controller>())
-    , topology_summary(std::make_shared<Xtc::TopologySummary>())
     , topology_nodes(std::make_shared<Xtc::TopologyNodes>())
+    , topology_summaries(std::make_shared<Xtc::TopologySummaries>())
     , prefix_infos(std::make_shared<Xtc::PrefixInfos>())
 {
     policies->parent = this;
@@ -3789,8 +3789,8 @@ Xtc::Xtc()
     policy_summary->parent = this;
     on_demand_colors->parent = this;
     controller->parent = this;
-    topology_summary->parent = this;
     topology_nodes->parent = this;
+    topology_summaries->parent = this;
     prefix_infos->parent = this;
 
     yang_name = "xtc"; yang_parent_name = "Cisco-IOS-XR-infra-xtc-agent-oper"; is_top_level_class = true; has_list_ancestor = false; 
@@ -3808,8 +3808,8 @@ bool Xtc::has_data() const
 	|| (policy_summary !=  nullptr && policy_summary->has_data())
 	|| (on_demand_colors !=  nullptr && on_demand_colors->has_data())
 	|| (controller !=  nullptr && controller->has_data())
-	|| (topology_summary !=  nullptr && topology_summary->has_data())
 	|| (topology_nodes !=  nullptr && topology_nodes->has_data())
+	|| (topology_summaries !=  nullptr && topology_summaries->has_data())
 	|| (prefix_infos !=  nullptr && prefix_infos->has_data());
 }
 
@@ -3821,8 +3821,8 @@ bool Xtc::has_operation() const
 	|| (policy_summary !=  nullptr && policy_summary->has_operation())
 	|| (on_demand_colors !=  nullptr && on_demand_colors->has_operation())
 	|| (controller !=  nullptr && controller->has_operation())
-	|| (topology_summary !=  nullptr && topology_summary->has_operation())
 	|| (topology_nodes !=  nullptr && topology_nodes->has_operation())
+	|| (topology_summaries !=  nullptr && topology_summaries->has_operation())
 	|| (prefix_infos !=  nullptr && prefix_infos->has_operation());
 }
 
@@ -3889,15 +3889,6 @@ std::shared_ptr<ydk::Entity> Xtc::get_child_by_name(const std::string & child_ya
         return controller;
     }
 
-    if(child_yang_name == "topology-summary")
-    {
-        if(topology_summary == nullptr)
-        {
-            topology_summary = std::make_shared<Xtc::TopologySummary>();
-        }
-        return topology_summary;
-    }
-
     if(child_yang_name == "topology-nodes")
     {
         if(topology_nodes == nullptr)
@@ -3905,6 +3896,15 @@ std::shared_ptr<ydk::Entity> Xtc::get_child_by_name(const std::string & child_ya
             topology_nodes = std::make_shared<Xtc::TopologyNodes>();
         }
         return topology_nodes;
+    }
+
+    if(child_yang_name == "topology-summaries")
+    {
+        if(topology_summaries == nullptr)
+        {
+            topology_summaries = std::make_shared<Xtc::TopologySummaries>();
+        }
+        return topology_summaries;
     }
 
     if(child_yang_name == "prefix-infos")
@@ -3948,14 +3948,14 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::get_children() const
         _children["controller"] = controller;
     }
 
-    if(topology_summary != nullptr)
-    {
-        _children["topology-summary"] = topology_summary;
-    }
-
     if(topology_nodes != nullptr)
     {
         _children["topology-nodes"] = topology_nodes;
+    }
+
+    if(topology_summaries != nullptr)
+    {
+        _children["topology-summaries"] = topology_summaries;
     }
 
     if(prefix_infos != nullptr)
@@ -4001,7 +4001,7 @@ std::map<std::pair<std::string, std::string>, std::string> Xtc::get_namespace_id
 
 bool Xtc::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "policies" || name == "policy-forwardings" || name == "policy-summary" || name == "on-demand-colors" || name == "controller" || name == "topology-summary" || name == "topology-nodes" || name == "prefix-infos")
+    if(name == "policies" || name == "policy-forwardings" || name == "policy-summary" || name == "on-demand-colors" || name == "controller" || name == "topology-nodes" || name == "topology-summaries" || name == "prefix-infos")
         return true;
     return false;
 }
@@ -4838,7 +4838,7 @@ Xtc::Policies::Policy::CandidatePath::CandidatePath()
     preference{YType::uint32, "preference"},
     protocol_originator{YType::enumeration, "protocol-originator"},
     discriminator{YType::uint32, "discriminator"},
-    is_current{YType::boolean, "is-current"},
+    is_active{YType::boolean, "is-active"},
     is_reoptimizing{YType::boolean, "is-reoptimizing"},
     shutdown{YType::boolean, "shutdown"},
     error{YType::str, "error"}
@@ -4846,12 +4846,14 @@ Xtc::Policies::Policy::CandidatePath::CandidatePath()
     originator(std::make_shared<Xtc::Policies::Policy::CandidatePath::Originator>())
     , sr_path_constraints(std::make_shared<Xtc::Policies::Policy::CandidatePath::SrPathConstraints>())
     , requested_bsid(std::make_shared<Xtc::Policies::Policy::CandidatePath::RequestedBsid>())
+    , cleanup_timer(std::make_shared<Xtc::Policies::Policy::CandidatePath::CleanupTimer>())
     , pcc_information(std::make_shared<Xtc::Policies::Policy::CandidatePath::PccInformation>())
     , segment_list(this, {})
 {
     originator->parent = this;
     sr_path_constraints->parent = this;
     requested_bsid->parent = this;
+    cleanup_timer->parent = this;
     pcc_information->parent = this;
 
     yang_name = "candidate-path"; yang_parent_name = "policy"; is_top_level_class = false; has_list_ancestor = true; 
@@ -4873,13 +4875,14 @@ bool Xtc::Policies::Policy::CandidatePath::has_data() const
 	|| preference.is_set
 	|| protocol_originator.is_set
 	|| discriminator.is_set
-	|| is_current.is_set
+	|| is_active.is_set
 	|| is_reoptimizing.is_set
 	|| shutdown.is_set
 	|| error.is_set
 	|| (originator !=  nullptr && originator->has_data())
 	|| (sr_path_constraints !=  nullptr && sr_path_constraints->has_data())
 	|| (requested_bsid !=  nullptr && requested_bsid->has_data())
+	|| (cleanup_timer !=  nullptr && cleanup_timer->has_data())
 	|| (pcc_information !=  nullptr && pcc_information->has_data());
 }
 
@@ -4895,13 +4898,14 @@ bool Xtc::Policies::Policy::CandidatePath::has_operation() const
 	|| ydk::is_set(preference.yfilter)
 	|| ydk::is_set(protocol_originator.yfilter)
 	|| ydk::is_set(discriminator.yfilter)
-	|| ydk::is_set(is_current.yfilter)
+	|| ydk::is_set(is_active.yfilter)
 	|| ydk::is_set(is_reoptimizing.yfilter)
 	|| ydk::is_set(shutdown.yfilter)
 	|| ydk::is_set(error.yfilter)
 	|| (originator !=  nullptr && originator->has_operation())
 	|| (sr_path_constraints !=  nullptr && sr_path_constraints->has_operation())
 	|| (requested_bsid !=  nullptr && requested_bsid->has_operation())
+	|| (cleanup_timer !=  nullptr && cleanup_timer->has_operation())
 	|| (pcc_information !=  nullptr && pcc_information->has_operation());
 }
 
@@ -4921,7 +4925,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::CandidateP
     if (preference.is_set || is_set(preference.yfilter)) leaf_name_data.push_back(preference.get_name_leafdata());
     if (protocol_originator.is_set || is_set(protocol_originator.yfilter)) leaf_name_data.push_back(protocol_originator.get_name_leafdata());
     if (discriminator.is_set || is_set(discriminator.yfilter)) leaf_name_data.push_back(discriminator.get_name_leafdata());
-    if (is_current.is_set || is_set(is_current.yfilter)) leaf_name_data.push_back(is_current.get_name_leafdata());
+    if (is_active.is_set || is_set(is_active.yfilter)) leaf_name_data.push_back(is_active.get_name_leafdata());
     if (is_reoptimizing.is_set || is_set(is_reoptimizing.yfilter)) leaf_name_data.push_back(is_reoptimizing.get_name_leafdata());
     if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
     if (error.is_set || is_set(error.yfilter)) leaf_name_data.push_back(error.get_name_leafdata());
@@ -4957,6 +4961,15 @@ std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::CandidatePath::get_child_by_
             requested_bsid = std::make_shared<Xtc::Policies::Policy::CandidatePath::RequestedBsid>();
         }
         return requested_bsid;
+    }
+
+    if(child_yang_name == "cleanup-timer")
+    {
+        if(cleanup_timer == nullptr)
+        {
+            cleanup_timer = std::make_shared<Xtc::Policies::Policy::CandidatePath::CleanupTimer>();
+        }
+        return cleanup_timer;
     }
 
     if(child_yang_name == "pcc-information")
@@ -4996,6 +5009,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::Candi
     if(requested_bsid != nullptr)
     {
         _children["requested-bsid"] = requested_bsid;
+    }
+
+    if(cleanup_timer != nullptr)
+    {
+        _children["cleanup-timer"] = cleanup_timer;
     }
 
     if(pcc_information != nullptr)
@@ -5041,11 +5059,11 @@ void Xtc::Policies::Policy::CandidatePath::set_value(const std::string & value_p
         discriminator.value_namespace = name_space;
         discriminator.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "is-current")
+    if(value_path == "is-active")
     {
-        is_current = value;
-        is_current.value_namespace = name_space;
-        is_current.value_namespace_prefix = name_space_prefix;
+        is_active = value;
+        is_active.value_namespace = name_space;
+        is_active.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-reoptimizing")
     {
@@ -5085,9 +5103,9 @@ void Xtc::Policies::Policy::CandidatePath::set_filter(const std::string & value_
     {
         discriminator.yfilter = yfilter;
     }
-    if(value_path == "is-current")
+    if(value_path == "is-active")
     {
-        is_current.yfilter = yfilter;
+        is_active.yfilter = yfilter;
     }
     if(value_path == "is-reoptimizing")
     {
@@ -5105,7 +5123,7 @@ void Xtc::Policies::Policy::CandidatePath::set_filter(const std::string & value_
 
 bool Xtc::Policies::Policy::CandidatePath::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "originator" || name == "sr-path-constraints" || name == "requested-bsid" || name == "pcc-information" || name == "segment-list" || name == "name" || name == "preference" || name == "protocol-originator" || name == "discriminator" || name == "is-current" || name == "is-reoptimizing" || name == "shutdown" || name == "error")
+    if(name == "originator" || name == "sr-path-constraints" || name == "requested-bsid" || name == "cleanup-timer" || name == "pcc-information" || name == "segment-list" || name == "name" || name == "preference" || name == "protocol-originator" || name == "discriminator" || name == "is-active" || name == "is-reoptimizing" || name == "shutdown" || name == "error")
         return true;
     return false;
 }
@@ -5670,7 +5688,8 @@ bool Xtc::Policies::Policy::CandidatePath::SrPathConstraints::Segments::has_leaf
 Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::AffinityConstraint()
     :
     type{YType::uint8, "type"},
-    value_{YType::uint32, "value"}
+    value_{YType::uint32, "value"},
+    extended_value{YType::uint32, "extended-value"}
         ,
     color(this, {})
 {
@@ -5690,6 +5709,11 @@ bool Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint
         if(color[index]->has_data())
             return true;
     }
+    for (auto const & leaf : extended_value.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
     return type.is_set
 	|| value_.is_set;
 }
@@ -5701,9 +5725,15 @@ bool Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint
         if(color[index]->has_operation())
             return true;
     }
+    for (auto const & leaf : extended_value.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
     return is_set(yfilter)
 	|| ydk::is_set(type.yfilter)
-	|| ydk::is_set(value_.yfilter);
+	|| ydk::is_set(value_.yfilter)
+	|| ydk::is_set(extended_value.yfilter);
 }
 
 std::string Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::get_segment_path() const
@@ -5721,6 +5751,8 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::CandidateP
     if (type.is_set || is_set(type.yfilter)) leaf_name_data.push_back(type.get_name_leafdata());
     if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
 
+    auto extended_value_name_datas = extended_value.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), extended_value_name_datas.begin(), extended_value_name_datas.end());
     return leaf_name_data;
 
 }
@@ -5768,6 +5800,10 @@ void Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint
         value_.value_namespace = name_space;
         value_.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "extended-value")
+    {
+        extended_value.append(value);
+    }
 }
 
 void Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::set_filter(const std::string & value_path, YFilter yfilter)
@@ -5780,11 +5816,15 @@ void Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint
     {
         value_.yfilter = yfilter;
     }
+    if(value_path == "extended-value")
+    {
+        extended_value.yfilter = yfilter;
+    }
 }
 
 bool Xtc::Policies::Policy::CandidatePath::SrPathConstraints::AffinityConstraint::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "color" || name == "type" || name == "value")
+    if(name == "color" || name == "type" || name == "value" || name == "extended-value")
         return true;
     return false;
 }
@@ -5970,6 +6010,112 @@ void Xtc::Policies::Policy::CandidatePath::RequestedBsid::set_filter(const std::
 bool Xtc::Policies::Policy::CandidatePath::RequestedBsid::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sid-type" || name == "label" || name == "ipv6")
+        return true;
+    return false;
+}
+
+Xtc::Policies::Policy::CandidatePath::CleanupTimer::CleanupTimer()
+    :
+    running{YType::boolean, "running"},
+    remaining_seconds{YType::int64, "remaining-seconds"},
+    remaining_nano_seconds{YType::int64, "remaining-nano-seconds"}
+{
+
+    yang_name = "cleanup-timer"; yang_parent_name = "candidate-path"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::Policies::Policy::CandidatePath::CleanupTimer::~CleanupTimer()
+{
+}
+
+bool Xtc::Policies::Policy::CandidatePath::CleanupTimer::has_data() const
+{
+    if (is_presence_container) return true;
+    return running.is_set
+	|| remaining_seconds.is_set
+	|| remaining_nano_seconds.is_set;
+}
+
+bool Xtc::Policies::Policy::CandidatePath::CleanupTimer::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(running.yfilter)
+	|| ydk::is_set(remaining_seconds.yfilter)
+	|| ydk::is_set(remaining_nano_seconds.yfilter);
+}
+
+std::string Xtc::Policies::Policy::CandidatePath::CleanupTimer::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "cleanup-timer";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::CandidatePath::CleanupTimer::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
+    if (remaining_seconds.is_set || is_set(remaining_seconds.yfilter)) leaf_name_data.push_back(remaining_seconds.get_name_leafdata());
+    if (remaining_nano_seconds.is_set || is_set(remaining_nano_seconds.yfilter)) leaf_name_data.push_back(remaining_nano_seconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::Policies::Policy::CandidatePath::CleanupTimer::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::Policies::Policy::CandidatePath::CleanupTimer::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Xtc::Policies::Policy::CandidatePath::CleanupTimer::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "running")
+    {
+        running = value;
+        running.value_namespace = name_space;
+        running.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remaining-seconds")
+    {
+        remaining_seconds = value;
+        remaining_seconds.value_namespace = name_space;
+        remaining_seconds.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "remaining-nano-seconds")
+    {
+        remaining_nano_seconds = value;
+        remaining_nano_seconds.value_namespace = name_space;
+        remaining_nano_seconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::Policies::Policy::CandidatePath::CleanupTimer::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "running")
+    {
+        running.yfilter = yfilter;
+    }
+    if(value_path == "remaining-seconds")
+    {
+        remaining_seconds.yfilter = yfilter;
+    }
+    if(value_path == "remaining-nano-seconds")
+    {
+        remaining_nano_seconds.yfilter = yfilter;
+    }
+}
+
+bool Xtc::Policies::Policy::CandidatePath::CleanupTimer::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "running" || name == "remaining-seconds" || name == "remaining-nano-seconds")
         return true;
     return false;
 }
@@ -6911,7 +7057,7 @@ Xtc::Policies::Policy::LsPs::LsPs()
     policy_id{YType::uint16, "policy-id"},
     local_label{YType::uint32, "local-label"},
     state{YType::enumeration, "state"},
-    is_current_lsp{YType::boolean, "is-current-lsp"},
+    is_active_lsp{YType::boolean, "is-active-lsp"},
     is_reoptimized_lsp{YType::boolean, "is-reoptimized-lsp"}
         ,
     binding_sid(std::make_shared<Xtc::Policies::Policy::LsPs::BindingSid>())
@@ -6936,7 +7082,7 @@ bool Xtc::Policies::Policy::LsPs::has_data() const
 	|| policy_id.is_set
 	|| local_label.is_set
 	|| state.is_set
-	|| is_current_lsp.is_set
+	|| is_active_lsp.is_set
 	|| is_reoptimized_lsp.is_set
 	|| (binding_sid !=  nullptr && binding_sid->has_data())
 	|| (install_timer !=  nullptr && install_timer->has_data())
@@ -6950,7 +7096,7 @@ bool Xtc::Policies::Policy::LsPs::has_operation() const
 	|| ydk::is_set(policy_id.yfilter)
 	|| ydk::is_set(local_label.yfilter)
 	|| ydk::is_set(state.yfilter)
-	|| ydk::is_set(is_current_lsp.yfilter)
+	|| ydk::is_set(is_active_lsp.yfilter)
 	|| ydk::is_set(is_reoptimized_lsp.yfilter)
 	|| (binding_sid !=  nullptr && binding_sid->has_operation())
 	|| (install_timer !=  nullptr && install_timer->has_operation())
@@ -6973,7 +7119,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::Policies::Policy::LsPs::get_
     if (policy_id.is_set || is_set(policy_id.yfilter)) leaf_name_data.push_back(policy_id.get_name_leafdata());
     if (local_label.is_set || is_set(local_label.yfilter)) leaf_name_data.push_back(local_label.get_name_leafdata());
     if (state.is_set || is_set(state.yfilter)) leaf_name_data.push_back(state.get_name_leafdata());
-    if (is_current_lsp.is_set || is_set(is_current_lsp.yfilter)) leaf_name_data.push_back(is_current_lsp.get_name_leafdata());
+    if (is_active_lsp.is_set || is_set(is_active_lsp.yfilter)) leaf_name_data.push_back(is_active_lsp.get_name_leafdata());
     if (is_reoptimized_lsp.is_set || is_set(is_reoptimized_lsp.yfilter)) leaf_name_data.push_back(is_reoptimized_lsp.get_name_leafdata());
 
     return leaf_name_data;
@@ -7060,11 +7206,11 @@ void Xtc::Policies::Policy::LsPs::set_value(const std::string & value_path, cons
         state.value_namespace = name_space;
         state.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "is-current-lsp")
+    if(value_path == "is-active-lsp")
     {
-        is_current_lsp = value;
-        is_current_lsp.value_namespace = name_space;
-        is_current_lsp.value_namespace_prefix = name_space_prefix;
+        is_active_lsp = value;
+        is_active_lsp.value_namespace = name_space;
+        is_active_lsp.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "is-reoptimized-lsp")
     {
@@ -7092,9 +7238,9 @@ void Xtc::Policies::Policy::LsPs::set_filter(const std::string & value_path, YFi
     {
         state.yfilter = yfilter;
     }
-    if(value_path == "is-current-lsp")
+    if(value_path == "is-active-lsp")
     {
-        is_current_lsp.yfilter = yfilter;
+        is_active_lsp.yfilter = yfilter;
     }
     if(value_path == "is-reoptimized-lsp")
     {
@@ -7104,7 +7250,7 @@ void Xtc::Policies::Policy::LsPs::set_filter(const std::string & value_path, YFi
 
 bool Xtc::Policies::Policy::LsPs::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "binding-sid" || name == "install-timer" || name == "cleanup-timer" || name == "lsp-id" || name == "policy-id" || name == "local-label" || name == "state" || name == "is-current-lsp" || name == "is-reoptimized-lsp")
+    if(name == "binding-sid" || name == "install-timer" || name == "cleanup-timer" || name == "lsp-id" || name == "policy-id" || name == "local-label" || name == "state" || name == "is-active-lsp" || name == "is-reoptimized-lsp")
         return true;
     return false;
 }
@@ -7735,6 +7881,7 @@ Xtc::PolicyForwardings::PolicyForwarding::PolicyForwarding()
     :
     name{YType::str, "name"},
     policy_name{YType::str, "policy-name"},
+    candidate_path_name{YType::str, "candidate-path-name"},
     color{YType::uint32, "color"},
     is_local_label_valid{YType::boolean, "is-local-label-valid"},
     local_label{YType::uint32, "local-label"},
@@ -7743,9 +7890,11 @@ Xtc::PolicyForwardings::PolicyForwarding::PolicyForwarding()
     forwarding_stats_bytes{YType::uint64, "forwarding-stats-bytes"}
         ,
     endpoint_address(std::make_shared<Xtc::PolicyForwardings::PolicyForwarding::EndpointAddress>())
+    , binding_sid(std::make_shared<Xtc::PolicyForwardings::PolicyForwarding::BindingSid>())
     , paths(this, {})
 {
     endpoint_address->parent = this;
+    binding_sid->parent = this;
 
     yang_name = "policy-forwarding"; yang_parent_name = "policy-forwardings"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -7764,13 +7913,15 @@ bool Xtc::PolicyForwardings::PolicyForwarding::has_data() const
     }
     return name.is_set
 	|| policy_name.is_set
+	|| candidate_path_name.is_set
 	|| color.is_set
 	|| is_local_label_valid.is_set
 	|| local_label.is_set
 	|| are_stats_valid.is_set
 	|| forwarding_stats_pkts.is_set
 	|| forwarding_stats_bytes.is_set
-	|| (endpoint_address !=  nullptr && endpoint_address->has_data());
+	|| (endpoint_address !=  nullptr && endpoint_address->has_data())
+	|| (binding_sid !=  nullptr && binding_sid->has_data());
 }
 
 bool Xtc::PolicyForwardings::PolicyForwarding::has_operation() const
@@ -7783,13 +7934,15 @@ bool Xtc::PolicyForwardings::PolicyForwarding::has_operation() const
     return is_set(yfilter)
 	|| ydk::is_set(name.yfilter)
 	|| ydk::is_set(policy_name.yfilter)
+	|| ydk::is_set(candidate_path_name.yfilter)
 	|| ydk::is_set(color.yfilter)
 	|| ydk::is_set(is_local_label_valid.yfilter)
 	|| ydk::is_set(local_label.yfilter)
 	|| ydk::is_set(are_stats_valid.yfilter)
 	|| ydk::is_set(forwarding_stats_pkts.yfilter)
 	|| ydk::is_set(forwarding_stats_bytes.yfilter)
-	|| (endpoint_address !=  nullptr && endpoint_address->has_operation());
+	|| (endpoint_address !=  nullptr && endpoint_address->has_operation())
+	|| (binding_sid !=  nullptr && binding_sid->has_operation());
 }
 
 std::string Xtc::PolicyForwardings::PolicyForwarding::get_absolute_path() const
@@ -7813,6 +7966,7 @@ std::vector<std::pair<std::string, LeafData> > Xtc::PolicyForwardings::PolicyFor
 
     if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
     if (policy_name.is_set || is_set(policy_name.yfilter)) leaf_name_data.push_back(policy_name.get_name_leafdata());
+    if (candidate_path_name.is_set || is_set(candidate_path_name.yfilter)) leaf_name_data.push_back(candidate_path_name.get_name_leafdata());
     if (color.is_set || is_set(color.yfilter)) leaf_name_data.push_back(color.get_name_leafdata());
     if (is_local_label_valid.is_set || is_set(is_local_label_valid.yfilter)) leaf_name_data.push_back(is_local_label_valid.get_name_leafdata());
     if (local_label.is_set || is_set(local_label.yfilter)) leaf_name_data.push_back(local_label.get_name_leafdata());
@@ -7835,6 +7989,15 @@ std::shared_ptr<ydk::Entity> Xtc::PolicyForwardings::PolicyForwarding::get_child
         return endpoint_address;
     }
 
+    if(child_yang_name == "binding-sid")
+    {
+        if(binding_sid == nullptr)
+        {
+            binding_sid = std::make_shared<Xtc::PolicyForwardings::PolicyForwarding::BindingSid>();
+        }
+        return binding_sid;
+    }
+
     if(child_yang_name == "paths")
     {
         auto ent_ = std::make_shared<Xtc::PolicyForwardings::PolicyForwarding::Paths>();
@@ -7853,6 +8016,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PolicyForwardings::Poli
     if(endpoint_address != nullptr)
     {
         _children["endpoint-address"] = endpoint_address;
+    }
+
+    if(binding_sid != nullptr)
+    {
+        _children["binding-sid"] = binding_sid;
     }
 
     count_ = 0;
@@ -7880,6 +8048,12 @@ void Xtc::PolicyForwardings::PolicyForwarding::set_value(const std::string & val
         policy_name = value;
         policy_name.value_namespace = name_space;
         policy_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "candidate-path-name")
+    {
+        candidate_path_name = value;
+        candidate_path_name.value_namespace = name_space;
+        candidate_path_name.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "color")
     {
@@ -7929,6 +8103,10 @@ void Xtc::PolicyForwardings::PolicyForwarding::set_filter(const std::string & va
     {
         policy_name.yfilter = yfilter;
     }
+    if(value_path == "candidate-path-name")
+    {
+        candidate_path_name.yfilter = yfilter;
+    }
     if(value_path == "color")
     {
         color.yfilter = yfilter;
@@ -7957,7 +8135,7 @@ void Xtc::PolicyForwardings::PolicyForwarding::set_filter(const std::string & va
 
 bool Xtc::PolicyForwardings::PolicyForwarding::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "endpoint-address" || name == "paths" || name == "name" || name == "policy-name" || name == "color" || name == "is-local-label-valid" || name == "local-label" || name == "are-stats-valid" || name == "forwarding-stats-pkts" || name == "forwarding-stats-bytes")
+    if(name == "endpoint-address" || name == "binding-sid" || name == "paths" || name == "name" || name == "policy-name" || name == "candidate-path-name" || name == "color" || name == "is-local-label-valid" || name == "local-label" || name == "are-stats-valid" || name == "forwarding-stats-pkts" || name == "forwarding-stats-bytes")
         return true;
     return false;
 }
@@ -8064,6 +8242,112 @@ void Xtc::PolicyForwardings::PolicyForwarding::EndpointAddress::set_filter(const
 bool Xtc::PolicyForwardings::PolicyForwarding::EndpointAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "af-name" || name == "ipv4" || name == "ipv6")
+        return true;
+    return false;
+}
+
+Xtc::PolicyForwardings::PolicyForwarding::BindingSid::BindingSid()
+    :
+    sid_type{YType::enumeration, "sid-type"},
+    label{YType::uint32, "label"},
+    ipv6{YType::str, "ipv6"}
+{
+
+    yang_name = "binding-sid"; yang_parent_name = "policy-forwarding"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::PolicyForwardings::PolicyForwarding::BindingSid::~BindingSid()
+{
+}
+
+bool Xtc::PolicyForwardings::PolicyForwarding::BindingSid::has_data() const
+{
+    if (is_presence_container) return true;
+    return sid_type.is_set
+	|| label.is_set
+	|| ipv6.is_set;
+}
+
+bool Xtc::PolicyForwardings::PolicyForwarding::BindingSid::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(sid_type.yfilter)
+	|| ydk::is_set(label.yfilter)
+	|| ydk::is_set(ipv6.yfilter);
+}
+
+std::string Xtc::PolicyForwardings::PolicyForwarding::BindingSid::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "binding-sid";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::PolicyForwardings::PolicyForwarding::BindingSid::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (sid_type.is_set || is_set(sid_type.yfilter)) leaf_name_data.push_back(sid_type.get_name_leafdata());
+    if (label.is_set || is_set(label.yfilter)) leaf_name_data.push_back(label.get_name_leafdata());
+    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::PolicyForwardings::PolicyForwarding::BindingSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PolicyForwardings::PolicyForwarding::BindingSid::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Xtc::PolicyForwardings::PolicyForwarding::BindingSid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "sid-type")
+    {
+        sid_type = value;
+        sid_type.value_namespace = name_space;
+        sid_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "label")
+    {
+        label = value;
+        label.value_namespace = name_space;
+        label.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6 = value;
+        ipv6.value_namespace = name_space;
+        ipv6.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::PolicyForwardings::PolicyForwarding::BindingSid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "sid-type")
+    {
+        sid_type.yfilter = yfilter;
+    }
+    if(value_path == "label")
+    {
+        label.yfilter = yfilter;
+    }
+    if(value_path == "ipv6")
+    {
+        ipv6.yfilter = yfilter;
+    }
+}
+
+bool Xtc::PolicyForwardings::PolicyForwarding::BindingSid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "sid-type" || name == "label" || name == "ipv6")
         return true;
     return false;
 }
@@ -8325,13 +8609,18 @@ bool Xtc::PolicyForwardings::PolicyForwarding::Paths::has_leaf_or_child_of_name(
 
 Xtc::PolicySummary::PolicySummary()
     :
-    configured_total_policy_count{YType::uint32, "configured-total-policy-count"},
-    configured_up_policy_count{YType::uint32, "configured-up-policy-count"},
-    configured_down_policy_count{YType::uint32, "configured-down-policy-count"}
-        ,
-    ipv4_source_address(std::make_shared<Xtc::PolicySummary::Ipv4SourceAddress>())
+    total_policy_count{YType::uint32, "total-policy-count"},
+    up_policy_count{YType::uint32, "up-policy-count"},
+    down_policy_count{YType::uint32, "down-policy-count"},
+    total_candidate_path_count{YType::uint32, "total-candidate-path-count"},
+    active_candidate_path_count{YType::uint32, "active-candidate-path-count"},
+    inactive_candidate_path_count{YType::uint32, "inactive-candidate-path-count"},
+    total_lsp_count{YType::uint32, "total-lsp-count"},
+    active_lsp_count{YType::uint32, "active-lsp-count"},
+    reoptimized_lsp_count{YType::uint32, "reoptimized-lsp-count"},
+    cleanup_lsp_count{YType::uint32, "cleanup-lsp-count"},
+    oor_lsp_count{YType::uint32, "oor-lsp-count"}
 {
-    ipv4_source_address->parent = this;
 
     yang_name = "policy-summary"; yang_parent_name = "xtc"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -8343,19 +8632,33 @@ Xtc::PolicySummary::~PolicySummary()
 bool Xtc::PolicySummary::has_data() const
 {
     if (is_presence_container) return true;
-    return configured_total_policy_count.is_set
-	|| configured_up_policy_count.is_set
-	|| configured_down_policy_count.is_set
-	|| (ipv4_source_address !=  nullptr && ipv4_source_address->has_data());
+    return total_policy_count.is_set
+	|| up_policy_count.is_set
+	|| down_policy_count.is_set
+	|| total_candidate_path_count.is_set
+	|| active_candidate_path_count.is_set
+	|| inactive_candidate_path_count.is_set
+	|| total_lsp_count.is_set
+	|| active_lsp_count.is_set
+	|| reoptimized_lsp_count.is_set
+	|| cleanup_lsp_count.is_set
+	|| oor_lsp_count.is_set;
 }
 
 bool Xtc::PolicySummary::has_operation() const
 {
     return is_set(yfilter)
-	|| ydk::is_set(configured_total_policy_count.yfilter)
-	|| ydk::is_set(configured_up_policy_count.yfilter)
-	|| ydk::is_set(configured_down_policy_count.yfilter)
-	|| (ipv4_source_address !=  nullptr && ipv4_source_address->has_operation());
+	|| ydk::is_set(total_policy_count.yfilter)
+	|| ydk::is_set(up_policy_count.yfilter)
+	|| ydk::is_set(down_policy_count.yfilter)
+	|| ydk::is_set(total_candidate_path_count.yfilter)
+	|| ydk::is_set(active_candidate_path_count.yfilter)
+	|| ydk::is_set(inactive_candidate_path_count.yfilter)
+	|| ydk::is_set(total_lsp_count.yfilter)
+	|| ydk::is_set(active_lsp_count.yfilter)
+	|| ydk::is_set(reoptimized_lsp_count.yfilter)
+	|| ydk::is_set(cleanup_lsp_count.yfilter)
+	|| ydk::is_set(oor_lsp_count.yfilter);
 }
 
 std::string Xtc::PolicySummary::get_absolute_path() const
@@ -8376,9 +8679,17 @@ std::vector<std::pair<std::string, LeafData> > Xtc::PolicySummary::get_name_leaf
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
-    if (configured_total_policy_count.is_set || is_set(configured_total_policy_count.yfilter)) leaf_name_data.push_back(configured_total_policy_count.get_name_leafdata());
-    if (configured_up_policy_count.is_set || is_set(configured_up_policy_count.yfilter)) leaf_name_data.push_back(configured_up_policy_count.get_name_leafdata());
-    if (configured_down_policy_count.is_set || is_set(configured_down_policy_count.yfilter)) leaf_name_data.push_back(configured_down_policy_count.get_name_leafdata());
+    if (total_policy_count.is_set || is_set(total_policy_count.yfilter)) leaf_name_data.push_back(total_policy_count.get_name_leafdata());
+    if (up_policy_count.is_set || is_set(up_policy_count.yfilter)) leaf_name_data.push_back(up_policy_count.get_name_leafdata());
+    if (down_policy_count.is_set || is_set(down_policy_count.yfilter)) leaf_name_data.push_back(down_policy_count.get_name_leafdata());
+    if (total_candidate_path_count.is_set || is_set(total_candidate_path_count.yfilter)) leaf_name_data.push_back(total_candidate_path_count.get_name_leafdata());
+    if (active_candidate_path_count.is_set || is_set(active_candidate_path_count.yfilter)) leaf_name_data.push_back(active_candidate_path_count.get_name_leafdata());
+    if (inactive_candidate_path_count.is_set || is_set(inactive_candidate_path_count.yfilter)) leaf_name_data.push_back(inactive_candidate_path_count.get_name_leafdata());
+    if (total_lsp_count.is_set || is_set(total_lsp_count.yfilter)) leaf_name_data.push_back(total_lsp_count.get_name_leafdata());
+    if (active_lsp_count.is_set || is_set(active_lsp_count.yfilter)) leaf_name_data.push_back(active_lsp_count.get_name_leafdata());
+    if (reoptimized_lsp_count.is_set || is_set(reoptimized_lsp_count.yfilter)) leaf_name_data.push_back(reoptimized_lsp_count.get_name_leafdata());
+    if (cleanup_lsp_count.is_set || is_set(cleanup_lsp_count.yfilter)) leaf_name_data.push_back(cleanup_lsp_count.get_name_leafdata());
+    if (oor_lsp_count.is_set || is_set(oor_lsp_count.yfilter)) leaf_name_data.push_back(oor_lsp_count.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -8386,15 +8697,6 @@ std::vector<std::pair<std::string, LeafData> > Xtc::PolicySummary::get_name_leaf
 
 std::shared_ptr<ydk::Entity> Xtc::PolicySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "ipv4-source-address")
-    {
-        if(ipv4_source_address == nullptr)
-        {
-            ipv4_source_address = std::make_shared<Xtc::PolicySummary::Ipv4SourceAddress>();
-        }
-        return ipv4_source_address;
-    }
-
     return nullptr;
 }
 
@@ -8402,168 +8704,130 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PolicySummary::get_chil
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    if(ipv4_source_address != nullptr)
-    {
-        _children["ipv4-source-address"] = ipv4_source_address;
-    }
-
     return _children;
 }
 
 void Xtc::PolicySummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
-    if(value_path == "configured-total-policy-count")
+    if(value_path == "total-policy-count")
     {
-        configured_total_policy_count = value;
-        configured_total_policy_count.value_namespace = name_space;
-        configured_total_policy_count.value_namespace_prefix = name_space_prefix;
+        total_policy_count = value;
+        total_policy_count.value_namespace = name_space;
+        total_policy_count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-up-policy-count")
+    if(value_path == "up-policy-count")
     {
-        configured_up_policy_count = value;
-        configured_up_policy_count.value_namespace = name_space;
-        configured_up_policy_count.value_namespace_prefix = name_space_prefix;
+        up_policy_count = value;
+        up_policy_count.value_namespace = name_space;
+        up_policy_count.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "configured-down-policy-count")
+    if(value_path == "down-policy-count")
     {
-        configured_down_policy_count = value;
-        configured_down_policy_count.value_namespace = name_space;
-        configured_down_policy_count.value_namespace_prefix = name_space_prefix;
+        down_policy_count = value;
+        down_policy_count.value_namespace = name_space;
+        down_policy_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-candidate-path-count")
+    {
+        total_candidate_path_count = value;
+        total_candidate_path_count.value_namespace = name_space;
+        total_candidate_path_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "active-candidate-path-count")
+    {
+        active_candidate_path_count = value;
+        active_candidate_path_count.value_namespace = name_space;
+        active_candidate_path_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "inactive-candidate-path-count")
+    {
+        inactive_candidate_path_count = value;
+        inactive_candidate_path_count.value_namespace = name_space;
+        inactive_candidate_path_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "total-lsp-count")
+    {
+        total_lsp_count = value;
+        total_lsp_count.value_namespace = name_space;
+        total_lsp_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "active-lsp-count")
+    {
+        active_lsp_count = value;
+        active_lsp_count.value_namespace = name_space;
+        active_lsp_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reoptimized-lsp-count")
+    {
+        reoptimized_lsp_count = value;
+        reoptimized_lsp_count.value_namespace = name_space;
+        reoptimized_lsp_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "cleanup-lsp-count")
+    {
+        cleanup_lsp_count = value;
+        cleanup_lsp_count.value_namespace = name_space;
+        cleanup_lsp_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "oor-lsp-count")
+    {
+        oor_lsp_count = value;
+        oor_lsp_count.value_namespace = name_space;
+        oor_lsp_count.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void Xtc::PolicySummary::set_filter(const std::string & value_path, YFilter yfilter)
 {
-    if(value_path == "configured-total-policy-count")
+    if(value_path == "total-policy-count")
     {
-        configured_total_policy_count.yfilter = yfilter;
+        total_policy_count.yfilter = yfilter;
     }
-    if(value_path == "configured-up-policy-count")
+    if(value_path == "up-policy-count")
     {
-        configured_up_policy_count.yfilter = yfilter;
+        up_policy_count.yfilter = yfilter;
     }
-    if(value_path == "configured-down-policy-count")
+    if(value_path == "down-policy-count")
     {
-        configured_down_policy_count.yfilter = yfilter;
+        down_policy_count.yfilter = yfilter;
+    }
+    if(value_path == "total-candidate-path-count")
+    {
+        total_candidate_path_count.yfilter = yfilter;
+    }
+    if(value_path == "active-candidate-path-count")
+    {
+        active_candidate_path_count.yfilter = yfilter;
+    }
+    if(value_path == "inactive-candidate-path-count")
+    {
+        inactive_candidate_path_count.yfilter = yfilter;
+    }
+    if(value_path == "total-lsp-count")
+    {
+        total_lsp_count.yfilter = yfilter;
+    }
+    if(value_path == "active-lsp-count")
+    {
+        active_lsp_count.yfilter = yfilter;
+    }
+    if(value_path == "reoptimized-lsp-count")
+    {
+        reoptimized_lsp_count.yfilter = yfilter;
+    }
+    if(value_path == "cleanup-lsp-count")
+    {
+        cleanup_lsp_count.yfilter = yfilter;
+    }
+    if(value_path == "oor-lsp-count")
+    {
+        oor_lsp_count.yfilter = yfilter;
     }
 }
 
 bool Xtc::PolicySummary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv4-source-address" || name == "configured-total-policy-count" || name == "configured-up-policy-count" || name == "configured-down-policy-count")
-        return true;
-    return false;
-}
-
-Xtc::PolicySummary::Ipv4SourceAddress::Ipv4SourceAddress()
-    :
-    af_name{YType::enumeration, "af-name"},
-    ipv4{YType::str, "ipv4"},
-    ipv6{YType::str, "ipv6"}
-{
-
-    yang_name = "ipv4-source-address"; yang_parent_name = "policy-summary"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Xtc::PolicySummary::Ipv4SourceAddress::~Ipv4SourceAddress()
-{
-}
-
-bool Xtc::PolicySummary::Ipv4SourceAddress::has_data() const
-{
-    if (is_presence_container) return true;
-    return af_name.is_set
-	|| ipv4.is_set
-	|| ipv6.is_set;
-}
-
-bool Xtc::PolicySummary::Ipv4SourceAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(af_name.yfilter)
-	|| ydk::is_set(ipv4.yfilter)
-	|| ydk::is_set(ipv6.yfilter);
-}
-
-std::string Xtc::PolicySummary::Ipv4SourceAddress::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-xtc-agent-oper:xtc/policy-summary/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Xtc::PolicySummary::Ipv4SourceAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "ipv4-source-address";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Xtc::PolicySummary::Ipv4SourceAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
-    if (ipv4.is_set || is_set(ipv4.yfilter)) leaf_name_data.push_back(ipv4.get_name_leafdata());
-    if (ipv6.is_set || is_set(ipv6.yfilter)) leaf_name_data.push_back(ipv6.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Xtc::PolicySummary::Ipv4SourceAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::PolicySummary::Ipv4SourceAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Xtc::PolicySummary::Ipv4SourceAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "af-name")
-    {
-        af_name = value;
-        af_name.value_namespace = name_space;
-        af_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4")
-    {
-        ipv4 = value;
-        ipv4.value_namespace = name_space;
-        ipv4.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6")
-    {
-        ipv6 = value;
-        ipv6.value_namespace = name_space;
-        ipv6.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Xtc::PolicySummary::Ipv4SourceAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "af-name")
-    {
-        af_name.yfilter = yfilter;
-    }
-    if(value_path == "ipv4")
-    {
-        ipv4.yfilter = yfilter;
-    }
-    if(value_path == "ipv6")
-    {
-        ipv6.yfilter = yfilter;
-    }
-}
-
-bool Xtc::PolicySummary::Ipv4SourceAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "af-name" || name == "ipv4" || name == "ipv6")
+    if(name == "total-policy-count" || name == "up-policy-count" || name == "down-policy-count" || name == "total-candidate-path-count" || name == "active-candidate-path-count" || name == "inactive-candidate-path-count" || name == "total-lsp-count" || name == "active-lsp-count" || name == "reoptimized-lsp-count" || name == "cleanup-lsp-count" || name == "oor-lsp-count")
         return true;
     return false;
 }
@@ -10221,147 +10485,6 @@ bool Xtc::Controller::PolicyRequests::PolicyRequest::SegmentList::Hops::RemoteAd
     return false;
 }
 
-Xtc::TopologySummary::TopologySummary()
-    :
-    nodes{YType::uint32, "nodes"},
-    prefixes{YType::uint32, "prefixes"},
-    prefix_sids{YType::uint32, "prefix-sids"},
-    links{YType::uint32, "links"},
-    adjacency_sids{YType::uint32, "adjacency-sids"}
-{
-
-    yang_name = "topology-summary"; yang_parent_name = "xtc"; is_top_level_class = false; has_list_ancestor = false; 
-}
-
-Xtc::TopologySummary::~TopologySummary()
-{
-}
-
-bool Xtc::TopologySummary::has_data() const
-{
-    if (is_presence_container) return true;
-    return nodes.is_set
-	|| prefixes.is_set
-	|| prefix_sids.is_set
-	|| links.is_set
-	|| adjacency_sids.is_set;
-}
-
-bool Xtc::TopologySummary::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(nodes.yfilter)
-	|| ydk::is_set(prefixes.yfilter)
-	|| ydk::is_set(prefix_sids.yfilter)
-	|| ydk::is_set(links.yfilter)
-	|| ydk::is_set(adjacency_sids.yfilter);
-}
-
-std::string Xtc::TopologySummary::get_absolute_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "Cisco-IOS-XR-infra-xtc-agent-oper:xtc/" << get_segment_path();
-    return path_buffer.str();
-}
-
-std::string Xtc::TopologySummary::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "topology-summary";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Xtc::TopologySummary::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (nodes.is_set || is_set(nodes.yfilter)) leaf_name_data.push_back(nodes.get_name_leafdata());
-    if (prefixes.is_set || is_set(prefixes.yfilter)) leaf_name_data.push_back(prefixes.get_name_leafdata());
-    if (prefix_sids.is_set || is_set(prefix_sids.yfilter)) leaf_name_data.push_back(prefix_sids.get_name_leafdata());
-    if (links.is_set || is_set(links.yfilter)) leaf_name_data.push_back(links.get_name_leafdata());
-    if (adjacency_sids.is_set || is_set(adjacency_sids.yfilter)) leaf_name_data.push_back(adjacency_sids.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Xtc::TopologySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologySummary::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Xtc::TopologySummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "nodes")
-    {
-        nodes = value;
-        nodes.value_namespace = name_space;
-        nodes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefixes")
-    {
-        prefixes = value;
-        prefixes.value_namespace = name_space;
-        prefixes.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "prefix-sids")
-    {
-        prefix_sids = value;
-        prefix_sids.value_namespace = name_space;
-        prefix_sids.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "links")
-    {
-        links = value;
-        links.value_namespace = name_space;
-        links.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "adjacency-sids")
-    {
-        adjacency_sids = value;
-        adjacency_sids.value_namespace = name_space;
-        adjacency_sids.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Xtc::TopologySummary::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "nodes")
-    {
-        nodes.yfilter = yfilter;
-    }
-    if(value_path == "prefixes")
-    {
-        prefixes.yfilter = yfilter;
-    }
-    if(value_path == "prefix-sids")
-    {
-        prefix_sids.yfilter = yfilter;
-    }
-    if(value_path == "links")
-    {
-        links.yfilter = yfilter;
-    }
-    if(value_path == "adjacency-sids")
-    {
-        adjacency_sids.yfilter = yfilter;
-    }
-}
-
-bool Xtc::TopologySummary::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "nodes" || name == "prefixes" || name == "prefix-sids" || name == "links" || name == "adjacency-sids")
-        return true;
-    return false;
-}
-
 Xtc::TopologyNodes::TopologyNodes()
     :
     topology_node(this, {"node_identifier"})
@@ -11576,14 +11699,17 @@ Xtc::TopologyNodes::TopologyNode::Ipv4Link::Ipv4Link()
     maximum_link_bandwidth{YType::uint64, "maximum-link-bandwidth"},
     max_reservable_bandwidth{YType::uint64, "max-reservable-bandwidth"},
     administrative_groups{YType::uint32, "administrative-groups"},
+    extended_administrative_group{YType::uint32, "extended-administrative-group"},
     srlgs{YType::uint32, "srlgs"}
         ,
     local_igp_information(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::LocalIgpInformation>())
     , remote_node_protocol_identifier(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier>())
+    , performance_metrics(std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics>())
     , adjacency_sid(this, {})
 {
     local_igp_information->parent = this;
     remote_node_protocol_identifier->parent = this;
+    performance_metrics->parent = this;
 
     yang_name = "ipv4-link"; yang_parent_name = "topology-node"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -11600,6 +11726,11 @@ bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::has_data() const
         if(adjacency_sid[index]->has_data())
             return true;
     }
+    for (auto const & leaf : extended_administrative_group.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
     for (auto const & leaf : srlgs.getYLeafs())
     {
         if(leaf.is_set)
@@ -11613,7 +11744,8 @@ bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::has_data() const
 	|| max_reservable_bandwidth.is_set
 	|| administrative_groups.is_set
 	|| (local_igp_information !=  nullptr && local_igp_information->has_data())
-	|| (remote_node_protocol_identifier !=  nullptr && remote_node_protocol_identifier->has_data());
+	|| (remote_node_protocol_identifier !=  nullptr && remote_node_protocol_identifier->has_data())
+	|| (performance_metrics !=  nullptr && performance_metrics->has_data());
 }
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::has_operation() const
@@ -11621,6 +11753,11 @@ bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::has_operation() const
     for (std::size_t index=0; index<adjacency_sid.len(); index++)
     {
         if(adjacency_sid[index]->has_operation())
+            return true;
+    }
+    for (auto const & leaf : extended_administrative_group.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
             return true;
     }
     for (auto const & leaf : srlgs.getYLeafs())
@@ -11636,9 +11773,11 @@ bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::has_operation() const
 	|| ydk::is_set(maximum_link_bandwidth.yfilter)
 	|| ydk::is_set(max_reservable_bandwidth.yfilter)
 	|| ydk::is_set(administrative_groups.yfilter)
+	|| ydk::is_set(extended_administrative_group.yfilter)
 	|| ydk::is_set(srlgs.yfilter)
 	|| (local_igp_information !=  nullptr && local_igp_information->has_operation())
-	|| (remote_node_protocol_identifier !=  nullptr && remote_node_protocol_identifier->has_operation());
+	|| (remote_node_protocol_identifier !=  nullptr && remote_node_protocol_identifier->has_operation())
+	|| (performance_metrics !=  nullptr && performance_metrics->has_operation());
 }
 
 std::string Xtc::TopologyNodes::TopologyNode::Ipv4Link::get_segment_path() const
@@ -11661,6 +11800,8 @@ std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode:
     if (max_reservable_bandwidth.is_set || is_set(max_reservable_bandwidth.yfilter)) leaf_name_data.push_back(max_reservable_bandwidth.get_name_leafdata());
     if (administrative_groups.is_set || is_set(administrative_groups.yfilter)) leaf_name_data.push_back(administrative_groups.get_name_leafdata());
 
+    auto extended_administrative_group_name_datas = extended_administrative_group.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), extended_administrative_group_name_datas.begin(), extended_administrative_group_name_datas.end());
     auto srlgs_name_datas = srlgs.get_name_leafdata();
     leaf_name_data.insert(leaf_name_data.end(), srlgs_name_datas.begin(), srlgs_name_datas.end());
     return leaf_name_data;
@@ -11687,6 +11828,15 @@ std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::get_chi
         return remote_node_protocol_identifier;
     }
 
+    if(child_yang_name == "performance-metrics")
+    {
+        if(performance_metrics == nullptr)
+        {
+            performance_metrics = std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics>();
+        }
+        return performance_metrics;
+    }
+
     if(child_yang_name == "adjacency-sid")
     {
         auto ent_ = std::make_shared<Xtc::TopologyNodes::TopologyNode::Ipv4Link::AdjacencySid>();
@@ -11710,6 +11860,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::Topology
     if(remote_node_protocol_identifier != nullptr)
     {
         _children["remote-node-protocol-identifier"] = remote_node_protocol_identifier;
+    }
+
+    if(performance_metrics != nullptr)
+    {
+        _children["performance-metrics"] = performance_metrics;
     }
 
     count_ = 0;
@@ -11768,6 +11923,10 @@ void Xtc::TopologyNodes::TopologyNode::Ipv4Link::set_value(const std::string & v
         administrative_groups.value_namespace = name_space;
         administrative_groups.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "extended-administrative-group")
+    {
+        extended_administrative_group.append(value);
+    }
     if(value_path == "srlgs")
     {
         srlgs.append(value);
@@ -11804,6 +11963,10 @@ void Xtc::TopologyNodes::TopologyNode::Ipv4Link::set_filter(const std::string & 
     {
         administrative_groups.yfilter = yfilter;
     }
+    if(value_path == "extended-administrative-group")
+    {
+        extended_administrative_group.yfilter = yfilter;
+    }
     if(value_path == "srlgs")
     {
         srlgs.yfilter = yfilter;
@@ -11812,7 +11975,7 @@ void Xtc::TopologyNodes::TopologyNode::Ipv4Link::set_filter(const std::string & 
 
 bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "local-igp-information" || name == "remote-node-protocol-identifier" || name == "adjacency-sid" || name == "local-ipv4-address" || name == "remote-ipv4-address" || name == "igp-metric" || name == "te-metric" || name == "maximum-link-bandwidth" || name == "max-reservable-bandwidth" || name == "administrative-groups" || name == "srlgs")
+    if(name == "local-igp-information" || name == "remote-node-protocol-identifier" || name == "performance-metrics" || name == "adjacency-sid" || name == "local-ipv4-address" || name == "remote-ipv4-address" || name == "igp-metric" || name == "te-metric" || name == "maximum-link-bandwidth" || name == "max-reservable-bandwidth" || name == "administrative-groups" || name == "extended-administrative-group" || name == "srlgs")
         return true;
     return false;
 }
@@ -12961,6 +13124,84 @@ void Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::I
 bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::RemoteNodeProtocolIdentifier::IgpInformation::Igp::Bgp::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "router-id")
+        return true;
+    return false;
+}
+
+Xtc::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics::PerformanceMetrics()
+    :
+    unidirectional_minimum_delay_microseconds{YType::uint32, "unidirectional-minimum-delay-microseconds"}
+{
+
+    yang_name = "performance-metrics"; yang_parent_name = "ipv4-link"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Xtc::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics::~PerformanceMetrics()
+{
+}
+
+bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics::has_data() const
+{
+    if (is_presence_container) return true;
+    return unidirectional_minimum_delay_microseconds.is_set;
+}
+
+bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(unidirectional_minimum_delay_microseconds.yfilter);
+}
+
+std::string Xtc::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "performance-metrics";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (unidirectional_minimum_delay_microseconds.is_set || is_set(unidirectional_minimum_delay_microseconds.yfilter)) leaf_name_data.push_back(unidirectional_minimum_delay_microseconds.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Xtc::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "unidirectional-minimum-delay-microseconds")
+    {
+        unidirectional_minimum_delay_microseconds = value;
+        unidirectional_minimum_delay_microseconds.value_namespace = name_space;
+        unidirectional_minimum_delay_microseconds.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "unidirectional-minimum-delay-microseconds")
+    {
+        unidirectional_minimum_delay_microseconds.yfilter = yfilter;
+    }
+}
+
+bool Xtc::TopologyNodes::TopologyNode::Ipv4Link::PerformanceMetrics::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "unidirectional-minimum-delay-microseconds")
         return true;
     return false;
 }
@@ -14791,6 +15032,276 @@ bool Xtc::TopologyNodes::TopologyNode::Ipv6Link::AdjacencySid::SidPrefix::has_le
     return false;
 }
 
+Xtc::TopologySummaries::TopologySummaries()
+    :
+    topology_summary(this, {})
+{
+
+    yang_name = "topology-summaries"; yang_parent_name = "xtc"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Xtc::TopologySummaries::~TopologySummaries()
+{
+}
+
+bool Xtc::TopologySummaries::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<topology_summary.len(); index++)
+    {
+        if(topology_summary[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Xtc::TopologySummaries::has_operation() const
+{
+    for (std::size_t index=0; index<topology_summary.len(); index++)
+    {
+        if(topology_summary[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Xtc::TopologySummaries::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-agent-oper:xtc/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Xtc::TopologySummaries::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "topology-summaries";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::TopologySummaries::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::TopologySummaries::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "topology-summary")
+    {
+        auto ent_ = std::make_shared<Xtc::TopologySummaries::TopologySummary>();
+        ent_->parent = this;
+        topology_summary.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologySummaries::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : topology_summary.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Xtc::TopologySummaries::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Xtc::TopologySummaries::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Xtc::TopologySummaries::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "topology-summary")
+        return true;
+    return false;
+}
+
+Xtc::TopologySummaries::TopologySummary::TopologySummary()
+    :
+    af{YType::enumeration, "af"},
+    protocol{YType::enumeration, "protocol"},
+    nodes{YType::uint32, "nodes"},
+    prefixes{YType::uint32, "prefixes"},
+    prefix_sids{YType::uint32, "prefix-sids"},
+    links{YType::uint32, "links"},
+    adjacency_sids{YType::uint32, "adjacency-sids"}
+{
+
+    yang_name = "topology-summary"; yang_parent_name = "topology-summaries"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Xtc::TopologySummaries::TopologySummary::~TopologySummary()
+{
+}
+
+bool Xtc::TopologySummaries::TopologySummary::has_data() const
+{
+    if (is_presence_container) return true;
+    return af.is_set
+	|| protocol.is_set
+	|| nodes.is_set
+	|| prefixes.is_set
+	|| prefix_sids.is_set
+	|| links.is_set
+	|| adjacency_sids.is_set;
+}
+
+bool Xtc::TopologySummaries::TopologySummary::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(nodes.yfilter)
+	|| ydk::is_set(prefixes.yfilter)
+	|| ydk::is_set(prefix_sids.yfilter)
+	|| ydk::is_set(links.yfilter)
+	|| ydk::is_set(adjacency_sids.yfilter);
+}
+
+std::string Xtc::TopologySummaries::TopologySummary::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-agent-oper:xtc/topology-summaries/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Xtc::TopologySummaries::TopologySummary::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "topology-summary";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Xtc::TopologySummaries::TopologySummary::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af.is_set || is_set(af.yfilter)) leaf_name_data.push_back(af.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (nodes.is_set || is_set(nodes.yfilter)) leaf_name_data.push_back(nodes.get_name_leafdata());
+    if (prefixes.is_set || is_set(prefixes.yfilter)) leaf_name_data.push_back(prefixes.get_name_leafdata());
+    if (prefix_sids.is_set || is_set(prefix_sids.yfilter)) leaf_name_data.push_back(prefix_sids.get_name_leafdata());
+    if (links.is_set || is_set(links.yfilter)) leaf_name_data.push_back(links.get_name_leafdata());
+    if (adjacency_sids.is_set || is_set(adjacency_sids.yfilter)) leaf_name_data.push_back(adjacency_sids.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Xtc::TopologySummaries::TopologySummary::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Xtc::TopologySummaries::TopologySummary::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Xtc::TopologySummaries::TopologySummary::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af")
+    {
+        af = value;
+        af.value_namespace = name_space;
+        af.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "protocol")
+    {
+        protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "nodes")
+    {
+        nodes = value;
+        nodes.value_namespace = name_space;
+        nodes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefixes")
+    {
+        prefixes = value;
+        prefixes.value_namespace = name_space;
+        prefixes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix-sids")
+    {
+        prefix_sids = value;
+        prefix_sids.value_namespace = name_space;
+        prefix_sids.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "links")
+    {
+        links = value;
+        links.value_namespace = name_space;
+        links.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "adjacency-sids")
+    {
+        adjacency_sids = value;
+        adjacency_sids.value_namespace = name_space;
+        adjacency_sids.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Xtc::TopologySummaries::TopologySummary::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af")
+    {
+        af.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "nodes")
+    {
+        nodes.yfilter = yfilter;
+    }
+    if(value_path == "prefixes")
+    {
+        prefixes.yfilter = yfilter;
+    }
+    if(value_path == "prefix-sids")
+    {
+        prefix_sids.yfilter = yfilter;
+    }
+    if(value_path == "links")
+    {
+        links.yfilter = yfilter;
+    }
+    if(value_path == "adjacency-sids")
+    {
+        adjacency_sids.yfilter = yfilter;
+    }
+}
+
+bool Xtc::TopologySummaries::TopologySummary::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af" || name == "protocol" || name == "nodes" || name == "prefixes" || name == "prefix-sids" || name == "links" || name == "adjacency-sids")
+        return true;
+    return false;
+}
+
 Xtc::PrefixInfos::PrefixInfos()
     :
     prefix_info(this, {"node_identifier"})
@@ -15883,17 +16394,14 @@ bool Xtc::PrefixInfos::PrefixInfo::Address::IpAddress::has_leaf_or_child_of_name
     return false;
 }
 
-const Enum::YLeaf XtcSrSid::ipv4_node_sid {0, "ipv4-node-sid"};
-const Enum::YLeaf XtcSrSid::ipv4_adjacency_sid {1, "ipv4-adjacency-sid"};
-const Enum::YLeaf XtcSrSid::unknown_sid {2, "unknown-sid"};
+const Enum::YLeaf XtcigpProtocol::unknown {0, "unknown"};
+const Enum::YLeaf XtcigpProtocol::isis {1, "isis"};
+const Enum::YLeaf XtcigpProtocol::ospf {2, "ospf"};
+const Enum::YLeaf XtcigpProtocol::bgp {4, "bgp"};
+const Enum::YLeaf XtcigpProtocol::te {8, "te"};
 
-const Enum::YLeaf XtcIgpInfoId::isis {1, "isis"};
-const Enum::YLeaf XtcIgpInfoId::ospf {2, "ospf"};
-const Enum::YLeaf XtcIgpInfoId::bgp {3, "bgp"};
-
-const Enum::YLeaf XtcAfId::none {0, "none"};
-const Enum::YLeaf XtcAfId::ipv4 {1, "ipv4"};
-const Enum::YLeaf XtcAfId::ipv6 {2, "ipv6"};
+const Enum::YLeaf XtcAddressFamily::ipv4 {1, "ipv4"};
+const Enum::YLeaf XtcAddressFamily::ipv6 {2, "ipv6"};
 
 const Enum::YLeaf XtcSid1::sr_protected_adj_sid {1, "sr-protected-adj-sid"};
 const Enum::YLeaf XtcSid1::sr_unprotected_adj_sid {2, "sr-unprotected-adj-sid"};
@@ -15901,10 +16409,9 @@ const Enum::YLeaf XtcSid1::sr_bgp_egress_peer_engineering_sid {3, "sr-bgp-egress
 const Enum::YLeaf XtcSid1::sr_reqular_prefix_sid {4, "sr-reqular-prefix-sid"};
 const Enum::YLeaf XtcSid1::sr_strict_prefix_sid {5, "sr-strict-prefix-sid"};
 
-const Enum::YLeaf XtcPolicyCpathProtoOrigin::unknown {0, "unknown"};
-const Enum::YLeaf XtcPolicyCpathProtoOrigin::pcep {10, "pcep"};
-const Enum::YLeaf XtcPolicyCpathProtoOrigin::bgp {20, "bgp"};
-const Enum::YLeaf XtcPolicyCpathProtoOrigin::configuration {30, "configuration"};
+const Enum::YLeaf XtcIgpInfoId::isis {1, "isis"};
+const Enum::YLeaf XtcIgpInfoId::ospf {2, "ospf"};
+const Enum::YLeaf XtcIgpInfoId::bgp {3, "bgp"};
 
 const Enum::YLeaf XtcDisjointness::no_disjointness {0, "no-disjointness"};
 const Enum::YLeaf XtcDisjointness::link_disjointness {1, "link-disjointness"};
@@ -15917,29 +16424,40 @@ const Enum::YLeaf XtcPolicyLspSmState::initialized {1, "initialized"};
 const Enum::YLeaf XtcPolicyLspSmState::deleted {2, "deleted"};
 const Enum::YLeaf XtcPolicyLspSmState::programmed {3, "programmed"};
 const Enum::YLeaf XtcPolicyLspSmState::egress_paths_pending {4, "egress-paths-pending"};
-const Enum::YLeaf XtcPolicyLspSmState::label_allocation_pending {5, "label-allocation-pending"};
-const Enum::YLeaf XtcPolicyLspSmState::label_allocation_cleanup_pending {6, "label-allocation-cleanup-pending"};
-const Enum::YLeaf XtcPolicyLspSmState::label_rewrite_pending {7, "label-rewrite-pending"};
-const Enum::YLeaf XtcPolicyLspSmState::label_rewrite_cleanup_pending {8, "label-rewrite-cleanup-pending"};
-const Enum::YLeaf XtcPolicyLspSmState::bsid_allocation_pending {9, "bsid-allocation-pending"};
-const Enum::YLeaf XtcPolicyLspSmState::bsid_allocation_cleanup_pending {10, "bsid-allocation-cleanup-pending"};
-const Enum::YLeaf XtcPolicyLspSmState::bsid_rewrite_pending {11, "bsid-rewrite-pending"};
-const Enum::YLeaf XtcPolicyLspSmState::bsid_rewrite_cleanup_pending {12, "bsid-rewrite-cleanup-pending"};
-const Enum::YLeaf XtcPolicyLspSmState::tunnel_rewrite_pending {13, "tunnel-rewrite-pending"};
-const Enum::YLeaf XtcPolicyLspSmState::tunnel_rewrite_cleanup_pending {14, "tunnel-rewrite-cleanup-pending"};
-const Enum::YLeaf XtcPolicyLspSmState::install_timer_pending {15, "install-timer-pending"};
-const Enum::YLeaf XtcPolicyLspSmState::cleanup_timer_pending {16, "cleanup-timer-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::out_of_resources_pending {5, "out-of-resources-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::label_allocation_pending {6, "label-allocation-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::label_allocation_cleanup_pending {7, "label-allocation-cleanup-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::label_rewrite_pending {8, "label-rewrite-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::label_rewrite_cleanup_pending {9, "label-rewrite-cleanup-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::bsid_allocation_pending {10, "bsid-allocation-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::bsid_allocation_cleanup_pending {11, "bsid-allocation-cleanup-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::bsid_rewrite_pending {12, "bsid-rewrite-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::bsid_rewrite_cleanup_pending {13, "bsid-rewrite-cleanup-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::tunnel_rewrite_pending {14, "tunnel-rewrite-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::tunnel_rewrite_cleanup_pending {15, "tunnel-rewrite-cleanup-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::install_timer_pending {16, "install-timer-pending"};
+const Enum::YLeaf XtcPolicyLspSmState::cleanup_timer_pending {17, "cleanup-timer-pending"};
+
+const Enum::YLeaf XtcSrSid::ipv4_node_sid {0, "ipv4-node-sid"};
+const Enum::YLeaf XtcSrSid::ipv4_adjacency_sid {1, "ipv4-adjacency-sid"};
+const Enum::YLeaf XtcSrSid::unknown_sid {2, "unknown-sid"};
 
 const Enum::YLeaf XtcPolicyPath::explicit_ {0, "explicit"};
 const Enum::YLeaf XtcPolicyPath::dynamic {1, "dynamic"};
 const Enum::YLeaf XtcPolicyPath::dynamic_pce {2, "dynamic-pce"};
 
+const Enum::YLeaf XtcPolicyCpathProtoOrigin::unknown {0, "unknown"};
+const Enum::YLeaf XtcPolicyCpathProtoOrigin::pcep {10, "pcep"};
+const Enum::YLeaf XtcPolicyCpathProtoOrigin::bgp {20, "bgp"};
+const Enum::YLeaf XtcPolicyCpathProtoOrigin::configuration {30, "configuration"};
+
 const Enum::YLeaf XtcSid::none {0, "none"};
 const Enum::YLeaf XtcSid::mpls {1, "mpls"};
 const Enum::YLeaf XtcSid::ipv6 {2, "ipv6"};
 
-const Enum::YLeaf XtcAddressFamily::ipv4 {1, "ipv4"};
-const Enum::YLeaf XtcAddressFamily::ipv6 {2, "ipv6"};
+const Enum::YLeaf XtcAfId::none {0, "none"};
+const Enum::YLeaf XtcAfId::ipv4 {1, "ipv4"};
+const Enum::YLeaf XtcAfId::ipv6 {2, "ipv6"};
 
 
 }

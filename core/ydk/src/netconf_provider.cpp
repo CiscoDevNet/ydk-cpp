@@ -138,7 +138,8 @@ NetconfServiceProvider::execute_operation(const string & operation, Entity & ent
         DataStore target = (is_candidate_supported(session.get_capabilities())) ?
                            DataStore::candidate : DataStore::running;
         if (ns.edit_config(*this, target, entity)) {
-            ns.commit(*this);
+            if (target == DataStore::candidate)
+                ns.commit(*this);
         }
         else {
             ns.discard_changes(*this);
@@ -177,7 +178,8 @@ NetconfServiceProvider::execute_operation(const string & operation, vector<Entit
         DataStore target = (is_candidate_supported(session.get_capabilities())) ?
                            DataStore::candidate : DataStore::running;
         if (ns.edit_config(*this, target, entity_list)) {
-            ns.commit(*this);
+            if (target == DataStore::candidate)
+                ns.commit(*this);
         }
         else {
             ns.discard_changes(*this);

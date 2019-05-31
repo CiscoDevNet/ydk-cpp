@@ -11,16 +11,6 @@ using namespace ydk;
 namespace ietf {
 namespace ietf_netconf_monitoring {
 
-SchemaFormat::SchemaFormat()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:schema-format")
-{
-
-}
-
-SchemaFormat::~SchemaFormat()
-{
-}
-
 Transport::Transport()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:transport")
 {
@@ -28,6 +18,16 @@ Transport::Transport()
 }
 
 Transport::~Transport()
+{
+}
+
+SchemaFormat::SchemaFormat()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:schema-format")
+{
+
+}
+
+SchemaFormat::~SchemaFormat()
 {
 }
 
@@ -1917,16 +1917,6 @@ bool NetconfState::Statistics::has_leaf_or_child_of_name(const std::string & nam
     return false;
 }
 
-NetconfBeep::NetconfBeep()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-beep")
-{
-
-}
-
-NetconfBeep::~NetconfBeep()
-{
-}
-
 NetconfSsh::NetconfSsh()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-ssh")
 {
@@ -1937,13 +1927,63 @@ NetconfSsh::~NetconfSsh()
 {
 }
 
-Rnc::Rnc()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:rnc")
+NetconfSoapOverBeep::NetconfSoapOverBeep()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-soap-over-beep")
 {
 
 }
 
-Rnc::~Rnc()
+NetconfSoapOverBeep::~NetconfSoapOverBeep()
+{
+}
+
+NetconfSoapOverHttps::NetconfSoapOverHttps()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-soap-over-https")
+{
+
+}
+
+NetconfSoapOverHttps::~NetconfSoapOverHttps()
+{
+}
+
+NetconfBeep::NetconfBeep()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-beep")
+{
+
+}
+
+NetconfBeep::~NetconfBeep()
+{
+}
+
+NetconfTls::NetconfTls()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-tls")
+{
+
+}
+
+NetconfTls::~NetconfTls()
+{
+}
+
+Xsd::Xsd()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:xsd")
+{
+
+}
+
+Xsd::~Xsd()
+{
+}
+
+Yang::Yang()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:yang")
+{
+
+}
+
+Yang::~Yang()
 {
 }
 
@@ -1967,53 +2007,13 @@ Rng::~Rng()
 {
 }
 
-Xsd::Xsd()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:xsd")
+Rnc::Rnc()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:rnc")
 {
 
 }
 
-Xsd::~Xsd()
-{
-}
-
-NetconfSoapOverBeep::NetconfSoapOverBeep()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-soap-over-beep")
-{
-
-}
-
-NetconfSoapOverBeep::~NetconfSoapOverBeep()
-{
-}
-
-NetconfTls::NetconfTls()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-tls")
-{
-
-}
-
-NetconfTls::~NetconfTls()
-{
-}
-
-Yang::Yang()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:yang")
-{
-
-}
-
-Yang::~Yang()
-{
-}
-
-NetconfSoapOverHttps::NetconfSoapOverHttps()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-netconf-monitoring", "ietf-netconf-monitoring", "ietf-netconf-monitoring:netconf-soap-over-https")
-{
-
-}
-
-NetconfSoapOverHttps::~NetconfSoapOverHttps()
+Rnc::~Rnc()
 {
 }
 

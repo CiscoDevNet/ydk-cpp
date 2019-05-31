@@ -381,6 +381,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
         ydk::YLeaf ceport; //type: boolean
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
+        ydk::YLeaf allocated_power; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::Sensors::Sensor::BasicAttributes::BasicInfo
 
@@ -598,6 +599,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
         ydk::YLeaf ceport; //type: boolean
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
+        ydk::YLeaf allocated_power; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo
 
@@ -743,6 +745,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
         ydk::YLeaf ceport; //type: boolean
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
+        ydk::YLeaf allocated_power; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::PortSlots::PortSlot::BasicAttributes::BasicInfo
 
@@ -888,6 +891,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Modul
         ydk::YLeaf ceport; //type: boolean
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
+        ydk::YLeaf allocated_power; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Module::BasicAttributes::BasicInfo
 
@@ -1033,6 +1037,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::Basic
         ydk::YLeaf ceport; //type: boolean
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
+        ydk::YLeaf allocated_power; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::SubSlots::SubSlot::BasicAttributes::BasicInfo
 
@@ -1274,6 +1279,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
         ydk::YLeaf ceport; //type: boolean
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
+        ydk::YLeaf allocated_power; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::Sensors::Sensor::BasicAttributes::BasicInfo
 
@@ -1419,6 +1425,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponen
         ydk::YLeaf ceport; //type: boolean
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
+        ydk::YLeaf allocated_power; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::HwComponents::HwComponent::BasicAttributes::BasicInfo
 
@@ -1611,6 +1618,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAt
         ydk::YLeaf ceport; //type: boolean
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
+        ydk::YLeaf allocated_power; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::Sensors::Sensor::BasicAttributes::BasicInfo
 
@@ -1828,6 +1836,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Por
         ydk::YLeaf ceport; //type: boolean
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
+        ydk::YLeaf allocated_power; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Port::BasicAttributes::BasicInfo
 
@@ -1973,6 +1982,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::Bas
         ydk::YLeaf ceport; //type: boolean
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
+        ydk::YLeaf allocated_power; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSlot::BasicAttributes::BasicInfo
 
@@ -2118,6 +2128,7 @@ class Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicIn
         ydk::YLeaf ceport; //type: boolean
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
+        ydk::YLeaf allocated_power; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::Cards::Card::BasicAttributes::BasicInfo
 
@@ -2263,6 +2274,7 @@ class Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo : public y
         ydk::YLeaf ceport; //type: boolean
         ydk::YLeaf xr_scoped; //type: boolean
         ydk::YLeaf unique_id; //type: int32
+        ydk::YLeaf allocated_power; //type: int32
 
 }; // Inventory::Racks::Rack::Slots::Slot::BasicAttributes::BasicInfo
 
@@ -2353,29 +2365,11 @@ class InvResetReason : public ydk::Enum
 
 };
 
-class InvAdminState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf admin_state_invalid;
-        static const ydk::Enum::YLeaf admin_up;
-        static const ydk::Enum::YLeaf admin_down;
-
-};
-
 class InvMonitorState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unmonitored;
         static const ydk::Enum::YLeaf monitored;
-
-};
-
-class InvPowerAdminState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf admin_power_invalid;
-        static const ydk::Enum::YLeaf admin_on;
-        static const ydk::Enum::YLeaf admin_off;
 
 };
 
@@ -2421,6 +2415,24 @@ class InvCardState : public ydk::Enum
         static const ydk::Enum::YLeaf inv_card_node_prep;
         static const ydk::Enum::YLeaf inv_card_updating_fpd;
         static const ydk::Enum::YLeaf inv_card_num_states;
+
+};
+
+class InvPowerAdminState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf admin_power_invalid;
+        static const ydk::Enum::YLeaf admin_on;
+        static const ydk::Enum::YLeaf admin_off;
+
+};
+
+class InvAdminState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf admin_state_invalid;
+        static const ydk::Enum::YLeaf admin_up;
+        static const ydk::Enum::YLeaf admin_down;
 
 };
 

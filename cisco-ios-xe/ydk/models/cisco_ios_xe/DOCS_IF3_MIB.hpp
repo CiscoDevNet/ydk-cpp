@@ -1942,50 +1942,6 @@ class DOCSIF3MIB::DocsIf3CmEm1x1StatsTable::DocsIf3CmEm1x1StatsEntry : public yd
 
 }; // DOCSIF3MIB::DocsIf3CmEm1x1StatsTable::DocsIf3CmEm1x1StatsEntry
 
-class CmtsCmRegState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf initialRanging;
-        static const ydk::Enum::YLeaf rangingAutoAdjComplete;
-        static const ydk::Enum::YLeaf dhcpv4Complete;
-        static const ydk::Enum::YLeaf registrationComplete;
-        static const ydk::Enum::YLeaf operational;
-        static const ydk::Enum::YLeaf bpiInit;
-        static const ydk::Enum::YLeaf startEae;
-        static const ydk::Enum::YLeaf startDhcpv4;
-        static const ydk::Enum::YLeaf startDhcpv6;
-        static const ydk::Enum::YLeaf dhcpv6Complete;
-        static const ydk::Enum::YLeaf startConfigFileDownload;
-        static const ydk::Enum::YLeaf configFileDownloadComplete;
-        static const ydk::Enum::YLeaf startRegistration;
-        static const ydk::Enum::YLeaf forwardingDisabled;
-        static const ydk::Enum::YLeaf rfMuteAll;
-
-};
-
-class IfDirection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf downstream;
-        static const ydk::Enum::YLeaf upstream;
-
-};
-
-class SpectrumAnalysisWindowFunction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf hann;
-        static const ydk::Enum::YLeaf blackmanHarris;
-        static const ydk::Enum::YLeaf rectangular;
-        static const ydk::Enum::YLeaf hamming;
-        static const ydk::Enum::YLeaf flatTop;
-        static const ydk::Enum::YLeaf gaussian;
-        static const ydk::Enum::YLeaf chebyshev;
-
-};
-
 class CmRegState : public ydk::Enum
 {
     public:
@@ -2015,6 +1971,42 @@ class CmRegState : public ydk::Enum
 
 };
 
+class CmtsCmRegState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf initialRanging;
+        static const ydk::Enum::YLeaf rangingAutoAdjComplete;
+        static const ydk::Enum::YLeaf dhcpv4Complete;
+        static const ydk::Enum::YLeaf registrationComplete;
+        static const ydk::Enum::YLeaf operational;
+        static const ydk::Enum::YLeaf bpiInit;
+        static const ydk::Enum::YLeaf startEae;
+        static const ydk::Enum::YLeaf startDhcpv4;
+        static const ydk::Enum::YLeaf startDhcpv6;
+        static const ydk::Enum::YLeaf dhcpv6Complete;
+        static const ydk::Enum::YLeaf startConfigFileDownload;
+        static const ydk::Enum::YLeaf configFileDownloadComplete;
+        static const ydk::Enum::YLeaf startRegistration;
+        static const ydk::Enum::YLeaf forwardingDisabled;
+        static const ydk::Enum::YLeaf rfMuteAll;
+
+};
+
+class SpectrumAnalysisWindowFunction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf hann;
+        static const ydk::Enum::YLeaf blackmanHarris;
+        static const ydk::Enum::YLeaf rectangular;
+        static const ydk::Enum::YLeaf hamming;
+        static const ydk::Enum::YLeaf flatTop;
+        static const ydk::Enum::YLeaf gaussian;
+        static const ydk::Enum::YLeaf chebyshev;
+
+};
+
 class RangingState : public ydk::Enum
 {
     public:
@@ -2024,6 +2016,14 @@ class RangingState : public ydk::Enum
         static const ydk::Enum::YLeaf success;
         static const ydk::Enum::YLeaf continue_;
         static const ydk::Enum::YLeaf timeoutT4;
+
+};
+
+class IfDirection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf downstream;
+        static const ydk::Enum::YLeaf upstream;
 
 };
 

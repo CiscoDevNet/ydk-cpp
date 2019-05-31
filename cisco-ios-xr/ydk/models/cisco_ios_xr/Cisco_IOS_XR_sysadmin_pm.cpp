@@ -1817,14 +1817,6 @@ const Enum::YLeaf StartupMode::ON_BOOTUP {0, "ON-BOOTUP"};
 const Enum::YLeaf StartupMode::ON_SELECTION {1, "ON-SELECTION"};
 const Enum::YLeaf StartupMode::ON_DEMAND {2, "ON-DEMAND"};
 
-const Enum::YLeaf ServiceRole::NONE {0, "NONE"};
-const Enum::YLeaf ServiceRole::ACTIVE {1, "ACTIVE"};
-const Enum::YLeaf ServiceRole::STANDBY {2, "STANDBY"};
-
-const Enum::YLeaf ServiceState::SS_IDLE {0, "SS_IDLE"};
-const Enum::YLeaf ServiceState::SS_RUNNING {1, "SS_RUNNING"};
-const Enum::YLeaf ServiceState::SS_ACK_PENDING {2, "SS_ACK_PENDING"};
-
 const Enum::YLeaf ProcessState::IDLE {0, "IDLE"};
 const Enum::YLeaf ProcessState::RUNNING {1, "RUNNING"};
 const Enum::YLeaf ProcessState::STOPPING {2, "STOPPING"};
@@ -1834,6 +1826,14 @@ const Enum::YLeaf ProcessState::DESELECTED {5, "DESELECTED"};
 
 const Enum::YLeaf ServiceScope::SYSTEM {0, "SYSTEM"};
 const Enum::YLeaf ServiceScope::RACK {1, "RACK"};
+
+const Enum::YLeaf ServiceState::SS_IDLE {0, "SS_IDLE"};
+const Enum::YLeaf ServiceState::SS_RUNNING {1, "SS_RUNNING"};
+const Enum::YLeaf ServiceState::SS_ACK_PENDING {2, "SS_ACK_PENDING"};
+
+const Enum::YLeaf ServiceRole::NONE {0, "NONE"};
+const Enum::YLeaf ServiceRole::ACTIVE {1, "ACTIVE"};
+const Enum::YLeaf ServiceRole::STANDBY {2, "STANDBY"};
 
 
 }

@@ -11,15 +11,6 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace CISCO_TC {
 
-const Enum::YLeaf CiscoPortListRange::oneto2k {1, "oneto2k"};
-const Enum::YLeaf CiscoPortListRange::twoKto4K {2, "twoKto4K"};
-const Enum::YLeaf CiscoPortListRange::fourKto6K {3, "fourKto6K"};
-const Enum::YLeaf CiscoPortListRange::sixKto8K {4, "sixKto8K"};
-const Enum::YLeaf CiscoPortListRange::eightKto10K {5, "eightKto10K"};
-const Enum::YLeaf CiscoPortListRange::tenKto12K {6, "tenKto12K"};
-const Enum::YLeaf CiscoPortListRange::twelveKto14K {7, "twelveKto14K"};
-const Enum::YLeaf CiscoPortListRange::fourteenKto16K {8, "fourteenKto16K"};
-
 const Enum::YLeaf CiscoNetworkProtocol::ip {1, "ip"};
 const Enum::YLeaf CiscoNetworkProtocol::decnet {2, "decnet"};
 const Enum::YLeaf CiscoNetworkProtocol::pup {3, "pup"};
@@ -60,6 +51,23 @@ const Enum::YLeaf CiscoLocationClass::port {5, "port"};
 const Enum::YLeaf CiscoLocationClass::subPort {6, "subPort"};
 const Enum::YLeaf CiscoLocationClass::channel {7, "channel"};
 const Enum::YLeaf CiscoLocationClass::subChannel {8, "subChannel"};
+
+const Enum::YLeaf CiscoAlarmSeverity::cleared {1, "cleared"};
+const Enum::YLeaf CiscoAlarmSeverity::indeterminate {2, "indeterminate"};
+const Enum::YLeaf CiscoAlarmSeverity::critical {3, "critical"};
+const Enum::YLeaf CiscoAlarmSeverity::major_ {4, "major"};
+const Enum::YLeaf CiscoAlarmSeverity::minor {5, "minor"};
+const Enum::YLeaf CiscoAlarmSeverity::warning {6, "warning"};
+const Enum::YLeaf CiscoAlarmSeverity::info {7, "info"};
+
+const Enum::YLeaf CiscoPortListRange::oneto2k {1, "oneto2k"};
+const Enum::YLeaf CiscoPortListRange::twoKto4K {2, "twoKto4K"};
+const Enum::YLeaf CiscoPortListRange::fourKto6K {3, "fourKto6K"};
+const Enum::YLeaf CiscoPortListRange::sixKto8K {4, "sixKto8K"};
+const Enum::YLeaf CiscoPortListRange::eightKto10K {5, "eightKto10K"};
+const Enum::YLeaf CiscoPortListRange::tenKto12K {6, "tenKto12K"};
+const Enum::YLeaf CiscoPortListRange::twelveKto14K {7, "twelveKto14K"};
+const Enum::YLeaf CiscoPortListRange::fourteenKto16K {8, "fourteenKto16K"};
 
 const Enum::YLeaf IfOperStatusReason::other {1, "other"};
 const Enum::YLeaf IfOperStatusReason::none {2, "none"};
@@ -329,14 +337,6 @@ const Enum::YLeaf IfOperStatusReason::sfpFcCompliantErr {265, "sfpFcCompliantErr
 const Enum::YLeaf IfOperStatusReason::ethIntfNotLicensed {266, "ethIntfNotLicensed"};
 const Enum::YLeaf IfOperStatusReason::domainIdsInvalid {267, "domainIdsInvalid"};
 const Enum::YLeaf IfOperStatusReason::fabricNameInvalid {268, "fabricNameInvalid"};
-
-const Enum::YLeaf CiscoAlarmSeverity::cleared {1, "cleared"};
-const Enum::YLeaf CiscoAlarmSeverity::indeterminate {2, "indeterminate"};
-const Enum::YLeaf CiscoAlarmSeverity::critical {3, "critical"};
-const Enum::YLeaf CiscoAlarmSeverity::major_ {4, "major"};
-const Enum::YLeaf CiscoAlarmSeverity::minor {5, "minor"};
-const Enum::YLeaf CiscoAlarmSeverity::warning {6, "warning"};
-const Enum::YLeaf CiscoAlarmSeverity::info {7, "info"};
 
 
 }

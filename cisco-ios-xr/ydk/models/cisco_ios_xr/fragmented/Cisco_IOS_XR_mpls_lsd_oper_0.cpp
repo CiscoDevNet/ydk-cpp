@@ -19953,15 +19953,21 @@ bool MplsLsdNodes::MplsLsdNode::Rewrite::RewriteLabelRangeCnts::RewriteLabelRang
     return false;
 }
 
-const Enum::YLeaf MgmtLsdClient::mgmt_lsd_client_type_app {0, "mgmt-lsd-client-type-app"};
-const Enum::YLeaf MgmtLsdClient::mgmt_lsd_client_type_ba {1, "mgmt-lsd-client-type-ba"};
+const Enum::YLeaf MgmtLsdIntfState::mgmt_lsd_intf_state_unknown {0, "mgmt-lsd-intf-state-unknown"};
+const Enum::YLeaf MgmtLsdIntfState::mgmt_lsd_intf_state_up {1, "mgmt-lsd-intf-state-up"};
+const Enum::YLeaf MgmtLsdIntfState::mgmt_lsd_intf_state_down {2, "mgmt-lsd-intf-state-down"};
 
-const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_partial {0, "mgmt-lsd-frr-state-partial"};
-const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_active {1, "mgmt-lsd-frr-state-active"};
-const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_ready {2, "mgmt-lsd-frr-state-ready"};
-const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_complete {3, "mgmt-lsd-frr-state-complete"};
-const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_any {4, "mgmt-lsd-frr-state-any"};
-const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_igp {5, "mgmt-lsd-frr-state-igp"};
+const Enum::YLeaf MgmtLsdAppState::mgmt_lsd_app_state_active {0, "mgmt-lsd-app-state-active"};
+const Enum::YLeaf MgmtLsdAppState::mgmt_lsd_app_state_zombie {1, "mgmt-lsd-app-state-zombie"};
+const Enum::YLeaf MgmtLsdAppState::mgmt_lsd_app_state_recover {2, "mgmt-lsd-app-state-recover"};
+
+const Enum::YLeaf MgmtLsdRwId::mgmt_lsd_rw_id_type_none {0, "mgmt-lsd-rw-id-type-none"};
+const Enum::YLeaf MgmtLsdRwId::mgmt_lsd_rw_id_type_lbl_ctx {1, "mgmt-lsd-rw-id-type-lbl-ctx"};
+const Enum::YLeaf MgmtLsdRwId::mgmt_lsd_rw_id_type_loc_lbl {2, "mgmt-lsd-rw-id-type-loc-lbl"};
+
+const Enum::YLeaf MplsLsdNnh::none {0, "none"};
+const Enum::YLeaf MplsLsdNnh::ipv4_address {1, "ipv4-address"};
+const Enum::YLeaf MplsLsdNnh::interface_name {2, "interface-name"};
 
 const Enum::YLeaf MgmtLsdMoi::mgmt_lsd_moi_type_pop_and_lkup_ipv4 {0, "mgmt-lsd-moi-type-pop-and-lkup-ipv4"};
 const Enum::YLeaf MgmtLsdMoi::mgmt_lsd_moi_type_ipv4 {1, "mgmt-lsd-moi-type-ipv4"};
@@ -19989,6 +19995,21 @@ const Enum::YLeaf MgmtLsdFpi::mgmt_lsd_fpi_type_pw_list {4, "mgmt-lsd-fpi-type-p
 const Enum::YLeaf MgmtLsdFpi::mgmt_lsd_fpi_type_te_v2 {5, "mgmt-lsd-fpi-type-te-v2"};
 const Enum::YLeaf MgmtLsdFpi::mgmt_lsd_fpi_type_dmtc_ext_intf {6, "mgmt-lsd-fpi-type-dmtc-ext-intf"};
 const Enum::YLeaf MgmtLsdFpi::mgmt_lsd_fpi_type_label_range {7, "mgmt-lsd-fpi-type-label-range"};
+
+const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_partial {0, "mgmt-lsd-frr-state-partial"};
+const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_active {1, "mgmt-lsd-frr-state-active"};
+const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_ready {2, "mgmt-lsd-frr-state-ready"};
+const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_complete {3, "mgmt-lsd-frr-state-complete"};
+const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_any {4, "mgmt-lsd-frr-state-any"};
+const Enum::YLeaf MgmtLsdFrrState::mgmt_lsd_frr_state_igp {5, "mgmt-lsd-frr-state-igp"};
+
+const Enum::YLeaf MgmtLsdLspRole::mgmt_lsd_lsp_role_head {0, "mgmt-lsd-lsp-role-head"};
+const Enum::YLeaf MgmtLsdLspRole::mgmt_lsd_lsp_role_mid {1, "mgmt-lsd-lsp-role-mid"};
+
+const Enum::YLeaf MgmtLsdTeBinding::mgmt_lsd_ident_p2p_tun_id {0, "mgmt-lsd-ident-p2p-tun-id"};
+const Enum::YLeaf MgmtLsdTeBinding::mgmt_lsd_ident_p2p_grp_id {1, "mgmt-lsd-ident-p2p-grp-id"};
+const Enum::YLeaf MgmtLsdTeBinding::mgmt_lsd_ident_p2mp_tun_id {2, "mgmt-lsd-ident-p2mp-tun-id"};
+const Enum::YLeaf MgmtLsdTeBinding::mgmt_lsd_ident_p2mp_grp_id {3, "mgmt-lsd-ident-p2mp-grp-id"};
 
 const Enum::YLeaf MgmtLsdLblCtx::mgmt_lsd_lbl_ctx_type_none {0, "mgmt-lsd-lbl-ctx-type-none"};
 const Enum::YLeaf MgmtLsdLblCtx::mgmt_lsd_lbl_ctx_type_ipv4 {1, "mgmt-lsd-lbl-ctx-type-ipv4"};
@@ -20022,16 +20043,9 @@ const Enum::YLeaf MgmtLsdLblCtx::mgmt_lsd_lbl_ctx_type_gre_ipv6 {28, "mgmt-lsd-l
 const Enum::YLeaf MgmtLsdLblCtx::mgmt_lsd_lbl_ctx_type_any {29, "mgmt-lsd-lbl-ctx-type-any"};
 const Enum::YLeaf MgmtLsdLblCtx::mgmt_lsd_lbl_ctx_type_lbl_blk_srlb {30, "mgmt-lsd-lbl-ctx-type-lbl-blk-srlb"};
 
-const Enum::YLeaf MgmtLsdLspRole::mgmt_lsd_lsp_role_head {0, "mgmt-lsd-lsp-role-head"};
-const Enum::YLeaf MgmtLsdLspRole::mgmt_lsd_lsp_role_mid {1, "mgmt-lsd-lsp-role-mid"};
-
 const Enum::YLeaf MgmtLsdAppRsrcState::mgmt_lsd_app_rsrc_state_active {0, "mgmt-lsd-app-rsrc-state-active"};
 const Enum::YLeaf MgmtLsdAppRsrcState::mgmt_lsd_app_rsrc_state_pnd {1, "mgmt-lsd-app-rsrc-state-pnd"};
 const Enum::YLeaf MgmtLsdAppRsrcState::mgmt_lsd_app_rsrc_state_pnd_svr {2, "mgmt-lsd-app-rsrc-state-pnd-svr"};
-
-const Enum::YLeaf MplsLsdNnh::none {0, "none"};
-const Enum::YLeaf MplsLsdNnh::ipv4_address {1, "ipv4-address"};
-const Enum::YLeaf MplsLsdNnh::interface_name {2, "interface-name"};
 
 const Enum::YLeaf MgmtLsdApp::mgmt_lsd_app_type_none {0, "mgmt-lsd-app-type-none"};
 const Enum::YLeaf MgmtLsdApp::mgmt_lsd_app_type_int {1, "mgmt-lsd-app-type-int"};
@@ -20052,25 +20066,10 @@ const Enum::YLeaf MgmtLsdApp::mgmt_lsd_app_type_isis {15, "mgmt-lsd-app-type-isi
 const Enum::YLeaf MgmtLsdApp::mgmt_lsd_app_type_ospf {16, "mgmt-lsd-app-type-ospf"};
 const Enum::YLeaf MgmtLsdApp::mgmt_lsd_app_type_cgn {17, "mgmt-lsd-app-type-cgn"};
 const Enum::YLeaf MgmtLsdApp::mgmt_lsd_app_type_dmtc {18, "mgmt-lsd-app-type-dmtc"};
-const Enum::YLeaf MgmtLsdApp::mgmt_lsd_app_type_cofo_sync_lib {19, "mgmt-lsd-app-type-cofo-sync-lib"};
-const Enum::YLeaf MgmtLsdApp::mgmt_lsd_app_type_any {20, "mgmt-lsd-app-type-any"};
+const Enum::YLeaf MgmtLsdApp::mgmt_lsd_app_type_any {19, "mgmt-lsd-app-type-any"};
 
-const Enum::YLeaf MgmtLsdTeBinding::mgmt_lsd_ident_p2p_tun_id {0, "mgmt-lsd-ident-p2p-tun-id"};
-const Enum::YLeaf MgmtLsdTeBinding::mgmt_lsd_ident_p2p_grp_id {1, "mgmt-lsd-ident-p2p-grp-id"};
-const Enum::YLeaf MgmtLsdTeBinding::mgmt_lsd_ident_p2mp_tun_id {2, "mgmt-lsd-ident-p2mp-tun-id"};
-const Enum::YLeaf MgmtLsdTeBinding::mgmt_lsd_ident_p2mp_grp_id {3, "mgmt-lsd-ident-p2mp-grp-id"};
-
-const Enum::YLeaf MgmtLsdAppState::mgmt_lsd_app_state_active {0, "mgmt-lsd-app-state-active"};
-const Enum::YLeaf MgmtLsdAppState::mgmt_lsd_app_state_zombie {1, "mgmt-lsd-app-state-zombie"};
-const Enum::YLeaf MgmtLsdAppState::mgmt_lsd_app_state_recover {2, "mgmt-lsd-app-state-recover"};
-
-const Enum::YLeaf MgmtLsdIntfState::mgmt_lsd_intf_state_unknown {0, "mgmt-lsd-intf-state-unknown"};
-const Enum::YLeaf MgmtLsdIntfState::mgmt_lsd_intf_state_up {1, "mgmt-lsd-intf-state-up"};
-const Enum::YLeaf MgmtLsdIntfState::mgmt_lsd_intf_state_down {2, "mgmt-lsd-intf-state-down"};
-
-const Enum::YLeaf MgmtLsdRwId::mgmt_lsd_rw_id_type_none {0, "mgmt-lsd-rw-id-type-none"};
-const Enum::YLeaf MgmtLsdRwId::mgmt_lsd_rw_id_type_lbl_ctx {1, "mgmt-lsd-rw-id-type-lbl-ctx"};
-const Enum::YLeaf MgmtLsdRwId::mgmt_lsd_rw_id_type_loc_lbl {2, "mgmt-lsd-rw-id-type-loc-lbl"};
+const Enum::YLeaf MgmtLsdClient::mgmt_lsd_client_type_app {0, "mgmt-lsd-client-type-app"};
+const Enum::YLeaf MgmtLsdClient::mgmt_lsd_client_type_ba {1, "mgmt-lsd-client-type-ba"};
 
 
 }

@@ -89,7 +89,7 @@ IetfCapabilitiesXmlParser::~IetfCapabilitiesXmlParser()
 vector<string> IetfCapabilitiesXmlParser::parse_yang_1_1(const std::string & buffer)
 {
     vector<string> capabilities{};
-
+    if(doc != NULL) xmlFreeDoc(doc);
     doc = xmlReadMemory(buffer.c_str(), buffer.size(), "noname.xml", NULL, 0);
     xmlNodePtr cur = check_and_return_root(doc);
     if(cur == NULL)
@@ -192,7 +192,7 @@ vector<string> IetfCapabilitiesXmlParser::parse_yang_1_1(const std::string & buf
 vector<string> IetfCapabilitiesXmlParser::parse(const string & capabilities_buffer)
 {
     vector<string> capabilities{};
-
+    if(doc != NULL) xmlFreeDoc(doc);
     doc = xmlReadMemory(capabilities_buffer.c_str(), capabilities_buffer.size(), "noname.xml", NULL, 0);
     xmlNodePtr cur = check_and_return_root(doc);
     if(cur == NULL)

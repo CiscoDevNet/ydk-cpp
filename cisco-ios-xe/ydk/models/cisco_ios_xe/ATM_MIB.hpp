@@ -139,9 +139,6 @@ class ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry : public ydk::Entity
         ydk::YLeaf atminterfacecurrentmaxvpibits; //type: int32
         ydk::YLeaf atminterfacecurrentmaxvcibits; //type: int32
         ydk::YLeaf atminterfacesubscraddress; //type: string
-        ydk::YLeaf atmintfcurrentlydowntouppvcls; //type: uint32
-        ydk::YLeaf atmintfoamfailedpvcls; //type: uint32
-        ydk::YLeaf atmintfcurrentlyoamfailingpvcls; //type: uint32
         ydk::YLeaf atmintfpvcfailures; //type: uint32
         ydk::YLeaf atmintfcurrentlyfailingpvcls; //type: uint32
         ydk::YLeaf atmintfpvcfailurestrapenable; //type: boolean
@@ -170,6 +167,9 @@ class ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry : public ydk::Entity
         ydk::YLeaf catmintfanyoamrcovedpvcls; //type: uint32
         ydk::YLeaf catmintfcuranyoamrcovingpvcls; //type: uint32
         ydk::YLeaf catmintftypeofoamrecover; //type: CatmOAMRecoveryType
+        ydk::YLeaf atmintfcurrentlydowntouppvcls; //type: uint32
+        ydk::YLeaf atmintfoamfailedpvcls; //type: uint32
+        ydk::YLeaf atmintfcurrentlyoamfailingpvcls; //type: uint32
         class AtmInterfaceAddressType;
 
 }; // ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry

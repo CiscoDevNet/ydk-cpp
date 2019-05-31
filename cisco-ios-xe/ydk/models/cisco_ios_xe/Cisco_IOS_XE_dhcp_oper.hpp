@@ -150,6 +150,16 @@ class DhcpOperData::Dhcpv4ClientOper::LeaseExpiry : public ydk::Entity
 
 }; // DhcpOperData::Dhcpv4ClientOper::LeaseExpiry
 
+class DhcpServerBindingState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf dhcp_server_binding_state_selecting;
+        static const ydk::Enum::YLeaf dhcp_server_binding_state_active;
+        static const ydk::Enum::YLeaf dhcp_server_binding_state_terminated;
+        static const ydk::Enum::YLeaf dhcp_server_binding_state_unknown;
+
+};
+
 class DhcpServerBindingType : public ydk::Enum
 {
     public:
@@ -160,24 +170,6 @@ class DhcpServerBindingType : public ydk::Enum
         static const ydk::Enum::YLeaf dhcp_server_binding_type_odap;
         static const ydk::Enum::YLeaf dhcp_server_binding_type_from_aaa;
         static const ydk::Enum::YLeaf dhcp_server_binding_type_remembered;
-
-};
-
-class DhcpExpiryOption : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf dhcp_expiration_time;
-        static const ydk::Enum::YLeaf dhcp_expiration_infinite;
-
-};
-
-class DhcpClientIdType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf dhcp_htype_ethernet;
-        static const ydk::Enum::YLeaf dhcp_htype_ieee802;
-        static const ydk::Enum::YLeaf dhcp_htype_rfclimit;
-        static const ydk::Enum::YLeaf dhcp_htype_clientid;
 
 };
 
@@ -201,13 +193,21 @@ class DhcpClientState : public ydk::Enum
 
 };
 
-class DhcpServerBindingState : public ydk::Enum
+class DhcpExpiryOption : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf dhcp_server_binding_state_selecting;
-        static const ydk::Enum::YLeaf dhcp_server_binding_state_active;
-        static const ydk::Enum::YLeaf dhcp_server_binding_state_terminated;
-        static const ydk::Enum::YLeaf dhcp_server_binding_state_unknown;
+        static const ydk::Enum::YLeaf dhcp_expiration_time;
+        static const ydk::Enum::YLeaf dhcp_expiration_infinite;
+
+};
+
+class DhcpClientIdType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf dhcp_htype_ethernet;
+        static const ydk::Enum::YLeaf dhcp_htype_ieee802;
+        static const ydk::Enum::YLeaf dhcp_htype_rfclimit;
+        static const ydk::Enum::YLeaf dhcp_htype_clientid;
 
 };
 

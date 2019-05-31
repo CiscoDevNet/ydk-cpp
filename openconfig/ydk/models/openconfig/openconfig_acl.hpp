@@ -11,15 +11,6 @@
 namespace openconfig {
 namespace openconfig_acl {
 
-class FORWARDINGACTION : public virtual ydk::Identity
-{
-    public:
-        FORWARDINGACTION();
-        ~FORWARDINGACTION();
-
-
-}; // FORWARDINGACTION
-
 class ACLTYPE : public virtual ydk::Identity
 {
     public:
@@ -29,14 +20,14 @@ class ACLTYPE : public virtual ydk::Identity
 
 }; // ACLTYPE
 
-class ACLCOUNTERCAPABILITY : public virtual ydk::Identity
+class FORWARDINGACTION : public virtual ydk::Identity
 {
     public:
-        ACLCOUNTERCAPABILITY();
-        ~ACLCOUNTERCAPABILITY();
+        FORWARDINGACTION();
+        ~FORWARDINGACTION();
 
 
-}; // ACLCOUNTERCAPABILITY
+}; // FORWARDINGACTION
 
 class LOGACTION : public virtual ydk::Identity
 {
@@ -46,6 +37,15 @@ class LOGACTION : public virtual ydk::Identity
 
 
 }; // LOGACTION
+
+class ACLCOUNTERCAPABILITY : public virtual ydk::Identity
+{
+    public:
+        ACLCOUNTERCAPABILITY();
+        ~ACLCOUNTERCAPABILITY();
+
+
+}; // ACLCOUNTERCAPABILITY
 
 class Acl : public ydk::Entity
 {
@@ -378,7 +378,7 @@ class Acl::AclSets::AclSet::AclEntries::AclEntry::L2::Config : public ydk::Entit
         ydk::YLeaf source_mac_mask; //type: string
         ydk::YLeaf destination_mac; //type: string
         ydk::YLeaf destination_mac_mask; //type: string
-        ydk::YLeaf ethertype; //type: one of identityref, uint16
+        ydk::YLeaf ethertype; //type: one of uint16, identityref
 
 }; // Acl::AclSets::AclSet::AclEntries::AclEntry::L2::Config
 
@@ -403,7 +403,7 @@ class Acl::AclSets::AclSet::AclEntries::AclEntry::L2::State : public ydk::Entity
         ydk::YLeaf source_mac_mask; //type: string
         ydk::YLeaf destination_mac; //type: string
         ydk::YLeaf destination_mac_mask; //type: string
-        ydk::YLeaf ethertype; //type: one of identityref, uint16
+        ydk::YLeaf ethertype; //type: one of uint16, identityref
 
 }; // Acl::AclSets::AclSet::AclEntries::AclEntry::L2::State
 
@@ -452,7 +452,7 @@ class Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv4::Config : public ydk::Ent
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf dscp; //type: uint8
-        ydk::YLeaf protocol; //type: one of identityref, uint8
+        ydk::YLeaf protocol; //type: one of uint8, identityref
         ydk::YLeaf hop_limit; //type: uint8
 
 }; // Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv4::Config
@@ -477,7 +477,7 @@ class Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv4::State : public ydk::Enti
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf dscp; //type: uint8
-        ydk::YLeaf protocol; //type: one of identityref, uint8
+        ydk::YLeaf protocol; //type: one of uint8, identityref
         ydk::YLeaf hop_limit; //type: uint8
 
 }; // Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv4::State
@@ -529,7 +529,7 @@ class Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv6::Config : public ydk::Ent
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf destination_flow_label; //type: uint32
         ydk::YLeaf dscp; //type: uint8
-        ydk::YLeaf protocol; //type: one of identityref, uint8
+        ydk::YLeaf protocol; //type: one of uint8, identityref
         ydk::YLeaf hop_limit; //type: uint8
 
 }; // Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv6::Config
@@ -556,7 +556,7 @@ class Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv6::State : public ydk::Enti
         ydk::YLeaf destination_address; //type: string
         ydk::YLeaf destination_flow_label; //type: uint32
         ydk::YLeaf dscp; //type: uint8
-        ydk::YLeaf protocol; //type: one of identityref, uint8
+        ydk::YLeaf protocol; //type: one of uint8, identityref
         ydk::YLeaf hop_limit; //type: uint8
 
 }; // Acl::AclSets::AclSet::AclEntries::AclEntry::Ipv6::State
@@ -1356,14 +1356,14 @@ class Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEn
 
 }; // Acl::Interfaces::Interface::EgressAclSets::EgressAclSet::AclEntries::AclEntry::State
 
-class ACLL2 : public openconfig::openconfig_acl::ACLTYPE, virtual ydk::Identity
+class ACLIPV4 : public openconfig::openconfig_acl::ACLTYPE, virtual ydk::Identity
 {
     public:
-        ACLL2();
-        ~ACLL2();
+        ACLIPV4();
+        ~ACLIPV4();
 
 
-}; // ACLL2
+}; // ACLIPV4
 
 class ACLIPV6 : public openconfig::openconfig_acl::ACLTYPE, virtual ydk::Identity
 {
@@ -1374,50 +1374,14 @@ class ACLIPV6 : public openconfig::openconfig_acl::ACLTYPE, virtual ydk::Identit
 
 }; // ACLIPV6
 
-class LOGNONE : public openconfig::openconfig_acl::LOGACTION, virtual ydk::Identity
+class ACLL2 : public openconfig::openconfig_acl::ACLTYPE, virtual ydk::Identity
 {
     public:
-        LOGNONE();
-        ~LOGNONE();
+        ACLL2();
+        ~ACLL2();
 
 
-}; // LOGNONE
-
-class ACLIPV4 : public openconfig::openconfig_acl::ACLTYPE, virtual ydk::Identity
-{
-    public:
-        ACLIPV4();
-        ~ACLIPV4();
-
-
-}; // ACLIPV4
-
-class DROP : public openconfig::openconfig_acl::FORWARDINGACTION, virtual ydk::Identity
-{
-    public:
-        DROP();
-        ~DROP();
-
-
-}; // DROP
-
-class ACCEPT : public openconfig::openconfig_acl::FORWARDINGACTION, virtual ydk::Identity
-{
-    public:
-        ACCEPT();
-        ~ACCEPT();
-
-
-}; // ACCEPT
-
-class INTERFACEONLY : public openconfig::openconfig_acl::ACLCOUNTERCAPABILITY, virtual ydk::Identity
-{
-    public:
-        INTERFACEONLY();
-        ~INTERFACEONLY();
-
-
-}; // INTERFACEONLY
+}; // ACLL2
 
 class ACLMIXED : public openconfig::openconfig_acl::ACLTYPE, virtual ydk::Identity
 {
@@ -1428,14 +1392,23 @@ class ACLMIXED : public openconfig::openconfig_acl::ACLTYPE, virtual ydk::Identi
 
 }; // ACLMIXED
 
-class INTERFACEAGGREGATE : public openconfig::openconfig_acl::ACLCOUNTERCAPABILITY, virtual ydk::Identity
+class ACCEPT : public openconfig::openconfig_acl::FORWARDINGACTION, virtual ydk::Identity
 {
     public:
-        INTERFACEAGGREGATE();
-        ~INTERFACEAGGREGATE();
+        ACCEPT();
+        ~ACCEPT();
 
 
-}; // INTERFACEAGGREGATE
+}; // ACCEPT
+
+class DROP : public openconfig::openconfig_acl::FORWARDINGACTION, virtual ydk::Identity
+{
+    public:
+        DROP();
+        ~DROP();
+
+
+}; // DROP
 
 class REJECT : public openconfig::openconfig_acl::FORWARDINGACTION, virtual ydk::Identity
 {
@@ -1455,6 +1428,24 @@ class LOGSYSLOG : public openconfig::openconfig_acl::LOGACTION, virtual ydk::Ide
 
 }; // LOGSYSLOG
 
+class LOGNONE : public openconfig::openconfig_acl::LOGACTION, virtual ydk::Identity
+{
+    public:
+        LOGNONE();
+        ~LOGNONE();
+
+
+}; // LOGNONE
+
+class INTERFACEONLY : public openconfig::openconfig_acl::ACLCOUNTERCAPABILITY, virtual ydk::Identity
+{
+    public:
+        INTERFACEONLY();
+        ~INTERFACEONLY();
+
+
+}; // INTERFACEONLY
+
 class AGGREGATEONLY : public openconfig::openconfig_acl::ACLCOUNTERCAPABILITY, virtual ydk::Identity
 {
     public:
@@ -1463,6 +1454,15 @@ class AGGREGATEONLY : public openconfig::openconfig_acl::ACLCOUNTERCAPABILITY, v
 
 
 }; // AGGREGATEONLY
+
+class INTERFACEAGGREGATE : public openconfig::openconfig_acl::ACLCOUNTERCAPABILITY, virtual ydk::Identity
+{
+    public:
+        INTERFACEAGGREGATE();
+        ~INTERFACEAGGREGATE();
+
+
+}; // INTERFACEAGGREGATE
 
 
 }

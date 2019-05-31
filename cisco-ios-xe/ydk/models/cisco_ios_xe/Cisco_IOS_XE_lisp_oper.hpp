@@ -805,11 +805,14 @@ class LispAddressFamilyType : public ydk::Enum
 
 };
 
-class LispRlocStateType : public ydk::Enum
+class LispIaftypeType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf lisp_rloc_state_down;
-        static const ydk::Enum::YLeaf lisp_rloc_state_up;
+        static const ydk::Enum::YLeaf iaf_ipv4;
+        static const ydk::Enum::YLeaf iaf_ipv6;
+        static const ydk::Enum::YLeaf iaf_mac;
+        static const ydk::Enum::YLeaf iaf_ar;
+        static const ydk::Enum::YLeaf iaf_rar;
 
 };
 
@@ -823,14 +826,11 @@ class LispMapReplyActionType : public ydk::Enum
 
 };
 
-class LispIaftypeType : public ydk::Enum
+class LispRlocStateType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf iaf_ipv4;
-        static const ydk::Enum::YLeaf iaf_ipv6;
-        static const ydk::Enum::YLeaf iaf_mac;
-        static const ydk::Enum::YLeaf iaf_ar;
-        static const ydk::Enum::YLeaf iaf_rar;
+        static const ydk::Enum::YLeaf lisp_rloc_state_down;
+        static const ydk::Enum::YLeaf lisp_rloc_state_up;
 
 };
 

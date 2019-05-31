@@ -793,7 +793,7 @@ class ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts::Host : public yd
 
 }; // ObjectGroup::Network::Ipv4::UdfObjects::UdfObject::Hosts::Host
 
-class EndPort : public ydk::Enum
+class StartPort : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf echo;
@@ -883,7 +883,7 @@ class Port : public ydk::Enum
 
 };
 
-class StartPort : public ydk::Enum
+class EndPort : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf echo;

@@ -21,16 +21,6 @@ OPTICALAMPLIFIERTYPE::~OPTICALAMPLIFIERTYPE()
 {
 }
 
-OPTICALAMPLIFIERMODE::OPTICALAMPLIFIERMODE()
-     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:OPTICAL_AMPLIFIER_MODE")
-{
-
-}
-
-OPTICALAMPLIFIERMODE::~OPTICALAMPLIFIERMODE()
-{
-}
-
 GAINRANGE::GAINRANGE()
      : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:GAIN_RANGE")
 {
@@ -38,6 +28,16 @@ GAINRANGE::GAINRANGE()
 }
 
 GAINRANGE::~GAINRANGE()
+{
+}
+
+OPTICALAMPLIFIERMODE::OPTICALAMPLIFIERMODE()
+     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:OPTICAL_AMPLIFIER_MODE")
+{
+
+}
+
+OPTICALAMPLIFIERMODE::~OPTICALAMPLIFIERMODE()
 {
 }
 
@@ -2961,13 +2961,23 @@ bool OpticalAmplifier::SupervisoryChannels::SupervisoryChannel::State::LaserBias
     return false;
 }
 
-LOWGAINRANGE::LOWGAINRANGE()
-     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:LOW_GAIN_RANGE")
+EDFA::EDFA()
+     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:EDFA")
 {
 
 }
 
-LOWGAINRANGE::~LOWGAINRANGE()
+EDFA::~EDFA()
+{
+}
+
+FORWARDRAMAN::FORWARDRAMAN()
+     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:FORWARD_RAMAN")
+{
+
+}
+
+FORWARDRAMAN::~FORWARDRAMAN()
 {
 }
 
@@ -2981,23 +2991,23 @@ BACKWARDRAMAN::~BACKWARDRAMAN()
 {
 }
 
-CONSTANTGAIN::CONSTANTGAIN()
-     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:CONSTANT_GAIN")
+HYBRID::HYBRID()
+     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:HYBRID")
 {
 
 }
 
-CONSTANTGAIN::~CONSTANTGAIN()
+HYBRID::~HYBRID()
 {
 }
 
-FIXEDGAINRANGE::FIXEDGAINRANGE()
-     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:FIXED_GAIN_RANGE")
+LOWGAINRANGE::LOWGAINRANGE()
+     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:LOW_GAIN_RANGE")
 {
 
 }
 
-FIXEDGAINRANGE::~FIXEDGAINRANGE()
+LOWGAINRANGE::~LOWGAINRANGE()
 {
 }
 
@@ -3021,33 +3031,13 @@ HIGHGAINRANGE::~HIGHGAINRANGE()
 {
 }
 
-HYBRID::HYBRID()
-     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:HYBRID")
+FIXEDGAINRANGE::FIXEDGAINRANGE()
+     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:FIXED_GAIN_RANGE")
 {
 
 }
 
-HYBRID::~HYBRID()
-{
-}
-
-FORWARDRAMAN::FORWARDRAMAN()
-     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:FORWARD_RAMAN")
-{
-
-}
-
-FORWARDRAMAN::~FORWARDRAMAN()
-{
-}
-
-EDFA::EDFA()
-     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:EDFA")
-{
-
-}
-
-EDFA::~EDFA()
+FIXEDGAINRANGE::~FIXEDGAINRANGE()
 {
 }
 
@@ -3058,6 +3048,16 @@ CONSTANTPOWER::CONSTANTPOWER()
 }
 
 CONSTANTPOWER::~CONSTANTPOWER()
+{
+}
+
+CONSTANTGAIN::CONSTANTGAIN()
+     : Identity("http://openconfig.net/yang/optical-amplfier", "openconfig-optical-amplifier", "openconfig-optical-amplifier:CONSTANT_GAIN")
+{
+
+}
+
+CONSTANTGAIN::~CONSTANTGAIN()
 {
 }
 

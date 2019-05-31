@@ -937,7 +937,7 @@ class Native::Interface::ServiceEngine::Standby::StandbyList : public ydk::Entit
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of string, enumeration
+        ydk::YLeaf ipv6; //type: one of enumeration, string
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -2133,8 +2133,8 @@ class Native::Interface::GigabitEthernet : public ydk::Entity
         ydk::YLeaf channel_protocol; //type: ChannelProtocol
         ydk::YLeaf duplex; //type: Duplex
         ydk::YLeaf cisco_ios_xe_ethernet_macsec; //type: empty
-        ydk::YLeaf cisco_ios_xe_switch_macsec; //type: empty
         ydk::YLeaf nat66; //type: Nat66
+        ydk::YLeaf cisco_ios_xe_switch_macsec; //type: empty
         class SwitchportConf; //type: Native::Interface::GigabitEthernet::SwitchportConf
         class Switchport; //type: Native::Interface::GigabitEthernet::Switchport
         class StackwiseVirtual; //type: Native::Interface::GigabitEthernet::StackwiseVirtual
@@ -2173,7 +2173,6 @@ class Native::Interface::GigabitEthernet : public ydk::Entity
         class Peer; //type: Native::Interface::GigabitEthernet::Peer
         class PmPath; //type: Native::Interface::GigabitEthernet::PmPath
         class SwitchportWrapper; //type: Native::Interface::GigabitEthernet::SwitchportWrapper
-        class Power; //type: Native::Interface::GigabitEthernet::Power
         class CarrierDelay; //type: Native::Interface::GigabitEthernet::CarrierDelay
         class ChannelGroup; //type: Native::Interface::GigabitEthernet::ChannelGroup
         class Ethernet; //type: Native::Interface::GigabitEthernet::Ethernet
@@ -2186,11 +2185,28 @@ class Native::Interface::GigabitEthernet : public ydk::Entity
         class Service; //type: Native::Interface::GigabitEthernet::Service
         class Lacp; //type: Native::Interface::GigabitEthernet::Lacp
         class CiscoIOSXEEthernetMacsecOption; //type: Native::Interface::GigabitEthernet::CiscoIOSXEEthernetMacsecOption
+        class Xconnect; //type: Native::Interface::GigabitEthernet::Xconnect
+        class Evpn; //type: Native::Interface::GigabitEthernet::Evpn
         class Snmp; //type: Native::Interface::GigabitEthernet::Snmp
+        class Ospfv3; //type: Native::Interface::GigabitEthernet::Ospfv3
+        class Cdp; //type: Native::Interface::GigabitEthernet::Cdp
+        class Crypto; //type: Native::Interface::GigabitEthernet::Crypto
+        class Cts; //type: Native::Interface::GigabitEthernet::Cts
+        class Dot1x; //type: Native::Interface::GigabitEthernet::Dot1x
+        class EtAnalytics; //type: Native::Interface::GigabitEthernet::EtAnalytics
+        class Performance; //type: Native::Interface::GigabitEthernet::Performance
+        class ServicePolicy; //type: Native::Interface::GigabitEthernet::ServicePolicy
+        class FabricDomain; //type: Native::Interface::GigabitEthernet::FabricDomain
+        class Lisp; //type: Native::Interface::GigabitEthernet::Lisp
+        class Lldp; //type: Native::Interface::GigabitEthernet::Lldp
+        class Mka; //type: Native::Interface::GigabitEthernet::Mka
+        class Mvrp; //type: Native::Interface::GigabitEthernet::Mvrp
+        class AnalysisModule; //type: Native::Interface::GigabitEthernet::AnalysisModule
+        class Ntp; //type: Native::Interface::GigabitEthernet::Ntp
+        class Power; //type: Native::Interface::GigabitEthernet::Power
         class Authentication; //type: Native::Interface::GigabitEthernet::Authentication
         class Mab; //type: Native::Interface::GigabitEthernet::Mab
-        class EtAnalytics; //type: Native::Interface::GigabitEthernet::EtAnalytics
-        class ServicePolicy; //type: Native::Interface::GigabitEthernet::ServicePolicy
+        class SpanningTree; //type: Native::Interface::GigabitEthernet::SpanningTree
         class Auto; //type: Native::Interface::GigabitEthernet::Auto
         class Datalink; //type: Native::Interface::GigabitEthernet::Datalink
         class Energywise; //type: Native::Interface::GigabitEthernet::Energywise
@@ -2204,27 +2220,11 @@ class Native::Interface::GigabitEthernet : public ydk::Entity
         class SrrQueue; //type: Native::Interface::GigabitEthernet::SrrQueue
         class CiscoIOSXESwitchMacsecOption; //type: Native::Interface::GigabitEthernet::CiscoIOSXESwitchMacsecOption
         class DeviceTracking; //type: Native::Interface::GigabitEthernet::DeviceTracking
-        class Ospfv3; //type: Native::Interface::GigabitEthernet::Ospfv3
-        class Performance; //type: Native::Interface::GigabitEthernet::Performance
-        class Lisp; //type: Native::Interface::GigabitEthernet::Lisp
-        class SpanningTree; //type: Native::Interface::GigabitEthernet::SpanningTree
-        class Mka; //type: Native::Interface::GigabitEthernet::Mka
-        class Umbrella; //type: Native::Interface::GigabitEthernet::Umbrella
-        class Xconnect; //type: Native::Interface::GigabitEthernet::Xconnect
-        class Evpn; //type: Native::Interface::GigabitEthernet::Evpn
-        class Dot1x; //type: Native::Interface::GigabitEthernet::Dot1x
-        class Crypto; //type: Native::Interface::GigabitEthernet::Crypto
-        class Lldp; //type: Native::Interface::GigabitEthernet::Lldp
-        class ZoneMember; //type: Native::Interface::GigabitEthernet::ZoneMember
-        class Vrrp; //type: Native::Interface::GigabitEthernet::Vrrp
-        class FabricDomain; //type: Native::Interface::GigabitEthernet::FabricDomain
-        class AnalysisModule; //type: Native::Interface::GigabitEthernet::AnalysisModule
-        class Cts; //type: Native::Interface::GigabitEthernet::Cts
         class Udld; //type: Native::Interface::GigabitEthernet::Udld
-        class Cdp; //type: Native::Interface::GigabitEthernet::Cdp
-        class Mvrp; //type: Native::Interface::GigabitEthernet::Mvrp
-        class Ntp; //type: Native::Interface::GigabitEthernet::Ntp
+        class Umbrella; //type: Native::Interface::GigabitEthernet::Umbrella
         class Utd; //type: Native::Interface::GigabitEthernet::Utd
+        class Vrrp; //type: Native::Interface::GigabitEthernet::Vrrp
+        class ZoneMember; //type: Native::Interface::GigabitEthernet::ZoneMember
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::SwitchportConf> switchport_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Switchport> switchport;
@@ -2264,7 +2264,6 @@ class Native::Interface::GigabitEthernet : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Peer> peer;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::PmPath> pm_path;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::SwitchportWrapper> switchport_wrapper;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Power> power;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::CarrierDelay> carrier_delay;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::ChannelGroup> channel_group;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Ethernet> ethernet;
@@ -2277,11 +2276,28 @@ class Native::Interface::GigabitEthernet : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Service> service;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Lacp> lacp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::CiscoIOSXEEthernetMacsecOption> cisco_ios_xe_ethernet_macsec_option;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Xconnect> xconnect;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Evpn> evpn;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Snmp> snmp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Ospfv3> ospfv3;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Cdp> cdp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Crypto> crypto;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Cts> cts;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Dot1x> dot1x;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::EtAnalytics> et_analytics;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Performance> performance;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::ServicePolicy> service_policy;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::FabricDomain> fabric_domain;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Lisp> lisp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Lldp> lldp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Mka> mka;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Mvrp> mvrp; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::AnalysisModule> analysis_module;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Ntp> ntp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Power> power;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Authentication> authentication;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Mab> mab; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::EtAnalytics> et_analytics;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::ServicePolicy> service_policy;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::SpanningTree> spanning_tree;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Auto> auto_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Datalink> datalink;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Energywise> energywise; // presence node
@@ -2293,29 +2309,13 @@ class Native::Interface::GigabitEthernet : public ydk::Entity
         ydk::YList vlan_range;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Switch> switch_;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::SrrQueue> srr_queue;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::CiscoIOSXESwitchMacsecOption> cisco_ios_xe_switch_macsec_option_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::CiscoIOSXESwitchMacsecOption> cisco_ios_xe_switch_macsec_option;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::DeviceTracking> device_tracking;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Ospfv3> ospfv3;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Performance> performance;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Lisp> lisp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::SpanningTree> spanning_tree;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Mka> mka;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Umbrella> umbrella;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Xconnect> xconnect;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Evpn> evpn;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Dot1x> dot1x;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Crypto> crypto;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Lldp> lldp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::ZoneMember> zone_member;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Vrrp> vrrp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::FabricDomain> fabric_domain;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::AnalysisModule> analysis_module;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Cts> cts;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Udld> udld;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Cdp> cdp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Mvrp> mvrp; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Ntp> ntp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Umbrella> umbrella;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Utd> utd;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::Vrrp> vrrp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::GigabitEthernet::ZoneMember> zone_member;
                 class MediaType;
         class PortType;
         class IfState;
@@ -2433,7 +2433,7 @@ class Native::Interface::GigabitEthernet::Switchport::Access::Vlan : public ydk:
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of uint16, enumeration
+        ydk::YLeaf vlan; //type: one of enumeration, uint16
         ydk::YLeaf name; //type: string
         class Vlan_;
 
@@ -2767,7 +2767,7 @@ class Native::Interface::GigabitEthernet::Switchport::Trunk::Native_ : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of uint16, enumeration
+        ydk::YLeaf vlan; //type: one of enumeration, uint16
         class Vlan;
 
 }; // Native::Interface::GigabitEthernet::Switchport::Trunk::Native_
@@ -2862,7 +2862,7 @@ class Native::Interface::GigabitEthernet::Switchport::Voice::Vlan : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf vlan; //type: one of uint16, string, enumeration
+        ydk::YLeaf vlan; //type: one of enumeration, uint16, string
         ydk::YLeaf name; //type: string
         class Vlan_;
 
@@ -3251,8 +3251,8 @@ class Native::Interface::GigabitEthernet::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -3421,8 +3421,8 @@ class Native::Interface::GigabitEthernet::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 

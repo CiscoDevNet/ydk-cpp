@@ -95,7 +95,7 @@ class NetFlow::FlowExporterMaps::FlowExporterMap : public ydk::Entity
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowExporterMaps::FlowExporterMap::Udp> udp;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowExporterMaps::FlowExporterMap::Destination> destination;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowExporterMaps::FlowExporterMap::Version> version;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_traffmon_netflow_cfg::NetFlow::FlowExporterMaps::FlowExporterMap::Version> version; // presence node
         
 }; // NetFlow::FlowExporterMaps::FlowExporterMap
 
@@ -160,7 +160,7 @@ class NetFlow::FlowExporterMaps::FlowExporterMap::Version : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf version_type; //type: uint32
+        ydk::YLeaf version_type; //type: NfExportVersion
         ydk::YLeaf options_template_timeout; //type: uint32
         ydk::YLeaf common_template_timeout; //type: uint32
         ydk::YLeaf data_template_timeout; //type: uint32
@@ -432,7 +432,7 @@ class NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf record_name; //type: string
+        ydk::YLeaf record_format; //type: NfRecordFormat
         ydk::YLeaf label; //type: uint32
 
 }; // NetFlow::FlowMonitorMapTable::FlowMonitorMap::Record
@@ -581,15 +581,40 @@ class NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf record_name; //type: string
+        ydk::YLeaf record_format; //type: NfRecordFormat
         ydk::YLeaf label; //type: uint32
 
 }; // NetFlow::FlowMonitorMapPerformanceTable::FlowMonitorMap::Record
 
-class NfSamplingMode : public ydk::Enum
+class NfRecordFormat : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf random;
+        static const ydk::Enum::YLeaf datalinkframesections_any;
+        static const ydk::Enum::YLeaf default_mdi;
+        static const ydk::Enum::YLeaf default_rtp;
+        static const ydk::Enum::YLeaf ipv4_as_agg;
+        static const ydk::Enum::YLeaf ipv4_as_tos_agg;
+        static const ydk::Enum::YLeaf ipv4_bgp_nexthop_tos_agg;
+        static const ydk::Enum::YLeaf ipv4_destination;
+        static const ydk::Enum::YLeaf ipv4_destination_tos_agg;
+        static const ydk::Enum::YLeaf ipv4_destination_prefix_agg;
+        static const ydk::Enum::YLeaf ipv4_destination_prefix_tos_agg;
+        static const ydk::Enum::YLeaf ipv4_peer_as;
+        static const ydk::Enum::YLeaf ipv4_prefix_agg;
+        static const ydk::Enum::YLeaf ipv4_prefix_port_agg;
+        static const ydk::Enum::YLeaf ipv4_prefix_tos_agg;
+        static const ydk::Enum::YLeaf ipv4_protocol_port_agg;
+        static const ydk::Enum::YLeaf ipv4_protocol_port_tos_agg;
+        static const ydk::Enum::YLeaf ipv4_raw;
+        static const ydk::Enum::YLeaf ipv4_source_prefix_agg;
+        static const ydk::Enum::YLeaf ipv4_source_prefix_tos_agg;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf ipv6_destination;
+        static const ydk::Enum::YLeaf ipv6_peer_as;
+        static const ydk::Enum::YLeaf mpls;
+        static const ydk::Enum::YLeaf mpls_ipv4;
+        static const ydk::Enum::YLeaf mpls_ipv4_ipv6;
+        static const ydk::Enum::YLeaf mpls_ipv6;
 
 };
 
@@ -599,6 +624,39 @@ class NfCacheAgingMode : public ydk::Enum
         static const ydk::Enum::YLeaf normal;
         static const ydk::Enum::YLeaf permanent;
         static const ydk::Enum::YLeaf immediate;
+
+};
+
+class NfSamplingMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf random;
+
+};
+
+class NfExportVersion : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf v9;
+        static const ydk::Enum::YLeaf ipfix;
+
+};
+
+class NfFlowDirection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ingress;
+        static const ydk::Enum::YLeaf egress;
+
+};
+
+class NfFlowProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf mpls;
+        static const ydk::Enum::YLeaf data_link_frame_section;
 
 };
 

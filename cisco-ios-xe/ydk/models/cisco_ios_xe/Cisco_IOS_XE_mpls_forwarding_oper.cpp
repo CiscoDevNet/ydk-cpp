@@ -962,20 +962,14 @@ bool MplsForwardingOperData::MplsLocalLabelStatistics::has_leaf_or_child_of_name
     return false;
 }
 
-const Enum::YLeaf ForwardingNextHopType::point2point {0, "point2point"};
-const Enum::YLeaf ForwardingNextHopType::next_hop_ip_address {1, "next-hop-ip-address"};
-
-const Enum::YLeaf OutgoingInterfaceDescriptionType::interface_type {0, "interface-type"};
-const Enum::YLeaf OutgoingInterfaceDescriptionType::interface_value {1, "interface-value"};
-
-const Enum::YLeaf ConnectionInfoType::information_string {0, "information-string"};
-const Enum::YLeaf ConnectionInfoType::ip_prefix {1, "ip-prefix"};
-
 const Enum::YLeaf OutgoingInterfaceType::drop {0, "drop"};
 const Enum::YLeaf OutgoingInterfaceType::punt {1, "punt"};
 const Enum::YLeaf OutgoingInterfaceType::aggregate {2, "aggregate"};
 const Enum::YLeaf OutgoingInterfaceType::exception {3, "exception"};
 const Enum::YLeaf OutgoingInterfaceType::none {4, "none"};
+
+const Enum::YLeaf OutgoingInterfaceDescriptionType::interface_type {0, "interface-type"};
+const Enum::YLeaf OutgoingInterfaceDescriptionType::interface_value {1, "interface-value"};
 
 const Enum::YLeaf OutgoingLabelType::no_label {0, "no-label"};
 const Enum::YLeaf OutgoingLabelType::pop_label {1, "pop-label"};
@@ -983,6 +977,12 @@ const Enum::YLeaf OutgoingLabelType::ipv4_explicit_null {2, "ipv4-explicit-null"
 const Enum::YLeaf OutgoingLabelType::ipv6_explicit_null {3, "ipv6-explicit-null"};
 const Enum::YLeaf OutgoingLabelType::regular_label {4, "regular-label"};
 const Enum::YLeaf OutgoingLabelType::invalid_label {5, "invalid-label"};
+
+const Enum::YLeaf ConnectionInfoType::information_string {0, "information-string"};
+const Enum::YLeaf ConnectionInfoType::ip_prefix {1, "ip-prefix"};
+
+const Enum::YLeaf ForwardingNextHopType::point2point {0, "point2point"};
+const Enum::YLeaf ForwardingNextHopType::next_hop_ip_address {1, "next-hop-ip-address"};
 
 
 }

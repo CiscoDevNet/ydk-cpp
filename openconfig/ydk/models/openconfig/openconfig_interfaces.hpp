@@ -1802,7 +1802,7 @@ class Interfaces::Interface::Ethernet::SwitchedVlan::Config : public ydk::Entity
         ydk::YLeaf interface_mode; //type: VlanModeType
         ydk::YLeaf native_vlan; //type: one of uint16, string
         ydk::YLeaf access_vlan; //type: one of uint16, string
-        ydk::YLeafList trunk_vlans; //type: list of  one of union, uint16, string
+        ydk::YLeafList trunk_vlans; //type: list of  one of uint16, string, union
 
 }; // Interfaces::Interface::Ethernet::SwitchedVlan::Config
 
@@ -1826,7 +1826,7 @@ class Interfaces::Interface::Ethernet::SwitchedVlan::State : public ydk::Entity
         ydk::YLeaf interface_mode; //type: VlanModeType
         ydk::YLeaf native_vlan; //type: one of uint16, string
         ydk::YLeaf access_vlan; //type: one of uint16, string
-        ydk::YLeafList trunk_vlans; //type: list of  one of union, uint16, string
+        ydk::YLeafList trunk_vlans; //type: list of  one of uint16, string, union
 
 }; // Interfaces::Interface::Ethernet::SwitchedVlan::State
 
@@ -1949,7 +1949,7 @@ class Interfaces::Interface::Aggregation::SwitchedVlan::Config : public ydk::Ent
         ydk::YLeaf interface_mode; //type: VlanModeType
         ydk::YLeaf native_vlan; //type: one of uint16, string
         ydk::YLeaf access_vlan; //type: one of uint16, string
-        ydk::YLeafList trunk_vlans; //type: list of  one of union, uint16, string
+        ydk::YLeafList trunk_vlans; //type: list of  one of uint16, string, union
 
 }; // Interfaces::Interface::Aggregation::SwitchedVlan::Config
 
@@ -1973,7 +1973,7 @@ class Interfaces::Interface::Aggregation::SwitchedVlan::State : public ydk::Enti
         ydk::YLeaf interface_mode; //type: VlanModeType
         ydk::YLeaf native_vlan; //type: one of uint16, string
         ydk::YLeaf access_vlan; //type: one of uint16, string
-        ydk::YLeafList trunk_vlans; //type: list of  one of union, uint16, string
+        ydk::YLeafList trunk_vlans; //type: list of  one of uint16, string, union
 
 }; // Interfaces::Interface::Aggregation::SwitchedVlan::State
 

@@ -5,8 +5,8 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_NX_OS_device_28.hpp"
-#include "Cisco_NX_OS_device_30.hpp"
 #include "Cisco_NX_OS_device_29.hpp"
+#include "Cisco_NX_OS_device_30.hpp"
 
 using namespace ydk;
 

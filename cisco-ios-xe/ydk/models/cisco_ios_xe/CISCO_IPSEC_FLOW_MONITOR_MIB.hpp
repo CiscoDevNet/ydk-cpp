@@ -1163,11 +1163,19 @@ class CISCOIPSECFLOWMONITORMIB::CipSecFailTable::CipSecFailEntry : public ydk::E
 
 }; // CISCOIPSECFLOWMONITORMIB::CipSecFailTable::CipSecFailEntry
 
-class TunnelStatus : public ydk::Enum
+class IkePeerType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf destroy;
+        static const ydk::Enum::YLeaf ipAddrPeer;
+        static const ydk::Enum::YLeaf namePeer;
+
+};
+
+class IkeNegoMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf main;
+        static const ydk::Enum::YLeaf aggressive;
 
 };
 
@@ -1191,6 +1199,15 @@ class IkeAuthMethod : public ydk::Enum
 
 };
 
+class DiffHellmanGrp : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf dhGroup1;
+        static const ydk::Enum::YLeaf dhGroup2;
+
+};
+
 class KeyType : public ydk::Enum
 {
     public:
@@ -1199,19 +1216,11 @@ class KeyType : public ydk::Enum
 
 };
 
-class TrapStatus : public ydk::Enum
+class EncapMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf enabled;
-        static const ydk::Enum::YLeaf disabled;
-
-};
-
-class CompAlgo : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf ldf;
+        static const ydk::Enum::YLeaf tunnel;
+        static const ydk::Enum::YLeaf transport;
 
 };
 
@@ -1224,36 +1233,20 @@ class EncryptAlgo : public ydk::Enum
 
 };
 
-class IkePeerType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipAddrPeer;
-        static const ydk::Enum::YLeaf namePeer;
-
-};
-
-class IkeNegoMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf main;
-        static const ydk::Enum::YLeaf aggressive;
-
-};
-
-class EncapMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf tunnel;
-        static const ydk::Enum::YLeaf transport;
-
-};
-
 class AuthAlgo : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf hmacMd5;
         static const ydk::Enum::YLeaf hmacSha;
+
+};
+
+class CompAlgo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf ldf;
 
 };
 
@@ -1266,12 +1259,19 @@ class EndPtType : public ydk::Enum
 
 };
 
-class DiffHellmanGrp : public ydk::Enum
+class TunnelStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf dhGroup1;
-        static const ydk::Enum::YLeaf dhGroup2;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf destroy;
+
+};
+
+class TrapStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
 
 };
 

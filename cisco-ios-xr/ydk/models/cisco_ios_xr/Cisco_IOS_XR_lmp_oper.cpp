@@ -6464,11 +6464,18 @@ bool Lmp::ComponentLinkIds::ComponentLinkId::has_leaf_or_child_of_name(const std
     return false;
 }
 
-const Enum::YLeaf OlmCompLinkImState::comp_link_im_state_oir {0, "comp-link-im-state-oir"};
-const Enum::YLeaf OlmCompLinkImState::comp_link_im_state_down {1, "comp-link-im-state-down"};
-const Enum::YLeaf OlmCompLinkImState::comp_link_im_state_admin_down {2, "comp-link-im-state-admin-down"};
-const Enum::YLeaf OlmCompLinkImState::comp_link_im_state_up {3, "comp-link-im-state-up"};
-const Enum::YLeaf OlmCompLinkImState::comp_link_im_state_unknown {4, "comp-link-im-state-unknown"};
+const Enum::YLeaf OlmipccState::ipcc_state_oir_removed {0, "ipcc-state-oir-removed"};
+const Enum::YLeaf OlmipccState::ipcc_state_admin_down {1, "ipcc-state-admin-down"};
+const Enum::YLeaf OlmipccState::ipcc_state_down {2, "ipcc-state-down"};
+const Enum::YLeaf OlmipccState::ipcc_state_cfg_send {3, "ipcc-state-cfg-send"};
+const Enum::YLeaf OlmipccState::ipcc_state_cfg_rcv {4, "ipcc-state-cfg-rcv"};
+const Enum::YLeaf OlmipccState::ipcc_state_active {5, "ipcc-state-active"};
+const Enum::YLeaf OlmipccState::ipcc_state_up {6, "ipcc-state-up"};
+const Enum::YLeaf OlmipccState::ipcc_state_going_down {7, "ipcc-state-going-down"};
+const Enum::YLeaf OlmipccState::ipcc_state_unknown {8, "ipcc-state-unknown"};
+
+const Enum::YLeaf OlmCompLinkLmpStatus::comp_link_lmp_status_if_id_mismatch {0, "comp-link-lmp-status-if-id-mismatch"};
+const Enum::YLeaf OlmCompLinkLmpStatus::comp_link_lmp_status_switch_cap_mismatch {1, "comp-link-lmp-status-switch-cap-mismatch"};
 
 const Enum::YLeaf OlmLinkEncoding::none {0, "none"};
 const Enum::YLeaf OlmLinkEncoding::packet {1, "packet"};
@@ -6484,6 +6491,25 @@ const Enum::YLeaf OlmLinkEncoding::reserved3 {10, "reserved3"};
 const Enum::YLeaf OlmLinkEncoding::fiber_channel {11, "fiber-channel"};
 const Enum::YLeaf OlmLinkEncoding::lencode_unknown {12, "lencode-unknown"};
 
+const Enum::YLeaf OlmteLinkLmpState::te_link_lmp_state_down {0, "te-link-lmp-state-down"};
+const Enum::YLeaf OlmteLinkLmpState::te_link_lmp_state_init {1, "te-link-lmp-state-init"};
+const Enum::YLeaf OlmteLinkLmpState::te_link_lmp_state_up {2, "te-link-lmp-state-up"};
+const Enum::YLeaf OlmteLinkLmpState::te_link_lmp_state_degraded {3, "te-link-lmp-state-degraded"};
+const Enum::YLeaf OlmteLinkLmpState::te_link_lmp_state_unknown {4, "te-link-lmp-state-unknown"};
+
+const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_down {0, "comp-link-lmp-state-down"};
+const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_test {1, "comp-link-lmp-state-test"};
+const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_passive_test {2, "comp-link-lmp-state-passive-test"};
+const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_up_free {3, "comp-link-lmp-state-up-free"};
+const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_up_allocated {4, "comp-link-lmp-state-up-allocated"};
+const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_unknown {5, "comp-link-lmp-state-unknown"};
+
+const Enum::YLeaf OlmCompLinkImState::comp_link_im_state_oir {0, "comp-link-im-state-oir"};
+const Enum::YLeaf OlmCompLinkImState::comp_link_im_state_down {1, "comp-link-im-state-down"};
+const Enum::YLeaf OlmCompLinkImState::comp_link_im_state_admin_down {2, "comp-link-im-state-admin-down"};
+const Enum::YLeaf OlmCompLinkImState::comp_link_im_state_up {3, "comp-link-im-state-up"};
+const Enum::YLeaf OlmCompLinkImState::comp_link_im_state_unknown {4, "comp-link-im-state-unknown"};
+
 const Enum::YLeaf OlmMuxCap::psc1 {0, "psc1"};
 const Enum::YLeaf OlmMuxCap::psc2 {1, "psc2"};
 const Enum::YLeaf OlmMuxCap::psc3 {2, "psc3"};
@@ -6494,46 +6520,15 @@ const Enum::YLeaf OlmMuxCap::lsc {6, "lsc"};
 const Enum::YLeaf OlmMuxCap::fsc {7, "fsc"};
 const Enum::YLeaf OlmMuxCap::unknown_mux_cap {8, "unknown-mux-cap"};
 
-const Enum::YLeaf OlmCompLinkLmpStatus::comp_link_lmp_status_if_id_mismatch {0, "comp-link-lmp-status-if-id-mismatch"};
-const Enum::YLeaf OlmCompLinkLmpStatus::comp_link_lmp_status_switch_cap_mismatch {1, "comp-link-lmp-status-switch-cap-mismatch"};
-
-const Enum::YLeaf OlmAddrTypeId::unknown_address {0, "unknown-address"};
-const Enum::YLeaf OlmAddrTypeId::ipv4 {101, "ipv4"};
-const Enum::YLeaf OlmAddrTypeId::ipv6 {102, "ipv6"};
-const Enum::YLeaf OlmAddrTypeId::unnumbered {103, "unnumbered"};
-
-const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_down {0, "comp-link-lmp-state-down"};
-const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_test {1, "comp-link-lmp-state-test"};
-const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_passive_test {2, "comp-link-lmp-state-passive-test"};
-const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_up_free {3, "comp-link-lmp-state-up-free"};
-const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_up_allocated {4, "comp-link-lmp-state-up-allocated"};
-const Enum::YLeaf OlmCompLinkLmpState::comp_link_lmp_state_unknown {5, "comp-link-lmp-state-unknown"};
-
-const Enum::YLeaf OlmObjectOwner::unknown {0, "unknown"};
-const Enum::YLeaf OlmObjectOwner::ouni {1, "ouni"};
-const Enum::YLeaf OlmObjectOwner::gmpls_nni {2, "gmpls-nni"};
-const Enum::YLeaf OlmObjectOwner::gmpls_uni {3, "gmpls-uni"};
-
-const Enum::YLeaf OlmteLinkLmpState::te_link_lmp_state_down {0, "te-link-lmp-state-down"};
-const Enum::YLeaf OlmteLinkLmpState::te_link_lmp_state_init {1, "te-link-lmp-state-init"};
-const Enum::YLeaf OlmteLinkLmpState::te_link_lmp_state_up {2, "te-link-lmp-state-up"};
-const Enum::YLeaf OlmteLinkLmpState::te_link_lmp_state_degraded {3, "te-link-lmp-state-degraded"};
-const Enum::YLeaf OlmteLinkLmpState::te_link_lmp_state_unknown {4, "te-link-lmp-state-unknown"};
-
 const Enum::YLeaf Olmipcc::ipcc_type_global_routed {0, "ipcc-type-global-routed"};
 const Enum::YLeaf Olmipcc::ipcc_type_global_if_bound {1, "ipcc-type-global-if-bound"};
 const Enum::YLeaf Olmipcc::ipcc_type_ldcc_sdcc {2, "ipcc-type-ldcc-sdcc"};
 const Enum::YLeaf Olmipcc::ipcc_type_unknown {3, "ipcc-type-unknown"};
 
-const Enum::YLeaf OlmipccState::ipcc_state_oir_removed {0, "ipcc-state-oir-removed"};
-const Enum::YLeaf OlmipccState::ipcc_state_admin_down {1, "ipcc-state-admin-down"};
-const Enum::YLeaf OlmipccState::ipcc_state_down {2, "ipcc-state-down"};
-const Enum::YLeaf OlmipccState::ipcc_state_cfg_send {3, "ipcc-state-cfg-send"};
-const Enum::YLeaf OlmipccState::ipcc_state_cfg_rcv {4, "ipcc-state-cfg-rcv"};
-const Enum::YLeaf OlmipccState::ipcc_state_active {5, "ipcc-state-active"};
-const Enum::YLeaf OlmipccState::ipcc_state_up {6, "ipcc-state-up"};
-const Enum::YLeaf OlmipccState::ipcc_state_going_down {7, "ipcc-state-going-down"};
-const Enum::YLeaf OlmipccState::ipcc_state_unknown {8, "ipcc-state-unknown"};
+const Enum::YLeaf OlmObjectOwner::unknown {0, "unknown"};
+const Enum::YLeaf OlmObjectOwner::ouni {1, "ouni"};
+const Enum::YLeaf OlmObjectOwner::gmpls_nni {2, "gmpls-nni"};
+const Enum::YLeaf OlmObjectOwner::gmpls_uni {3, "gmpls-uni"};
 
 const Enum::YLeaf OlmRouterId::not_configured {0, "not-configured"};
 const Enum::YLeaf OlmRouterId::global {1, "global"};
@@ -6541,6 +6536,11 @@ const Enum::YLeaf OlmRouterId::protocol_based_address {2, "protocol-based-addres
 const Enum::YLeaf OlmRouterId::interface {3, "interface"};
 const Enum::YLeaf OlmRouterId::network_element {4, "network-element"};
 const Enum::YLeaf OlmRouterId::unknown_type {5, "unknown-type"};
+
+const Enum::YLeaf OlmAddrTypeId::unknown_address {0, "unknown-address"};
+const Enum::YLeaf OlmAddrTypeId::ipv4 {101, "ipv4"};
+const Enum::YLeaf OlmAddrTypeId::ipv6 {102, "ipv6"};
+const Enum::YLeaf OlmAddrTypeId::unnumbered {103, "unnumbered"};
 
 
 }

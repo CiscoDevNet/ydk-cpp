@@ -21,12 +21,15 @@ ConfdState::ConfdState()
         ,
     smp(nullptr) // presence node
     , ha(nullptr) // presence node
+    , loaded_data_models(std::make_shared<ConfdState::LoadedDataModels>())
     , netconf(nullptr) // presence node
     , cli(nullptr) // presence node
     , webui(nullptr) // presence node
+    , rest(nullptr) // presence node
     , snmp(nullptr) // presence node
     , internal(std::make_shared<ConfdState::Internal>())
 {
+    loaded_data_models->parent = this;
     internal->parent = this;
 
     yang_name = "confd-state"; yang_parent_name = "tailf-confd-monitoring"; is_top_level_class = true; has_list_ancestor = false; 
@@ -46,9 +49,11 @@ bool ConfdState::has_data() const
 	|| upgrade_mode.is_set
 	|| (smp !=  nullptr && smp->has_data())
 	|| (ha !=  nullptr && ha->has_data())
+	|| (loaded_data_models !=  nullptr && loaded_data_models->has_data())
 	|| (netconf !=  nullptr && netconf->has_data())
 	|| (cli !=  nullptr && cli->has_data())
 	|| (webui !=  nullptr && webui->has_data())
+	|| (rest !=  nullptr && rest->has_data())
 	|| (snmp !=  nullptr && snmp->has_data())
 	|| (internal !=  nullptr && internal->has_data());
 }
@@ -63,9 +68,11 @@ bool ConfdState::has_operation() const
 	|| ydk::is_set(upgrade_mode.yfilter)
 	|| (smp !=  nullptr && smp->has_operation())
 	|| (ha !=  nullptr && ha->has_operation())
+	|| (loaded_data_models !=  nullptr && loaded_data_models->has_operation())
 	|| (netconf !=  nullptr && netconf->has_operation())
 	|| (cli !=  nullptr && cli->has_operation())
 	|| (webui !=  nullptr && webui->has_operation())
+	|| (rest !=  nullptr && rest->has_operation())
 	|| (snmp !=  nullptr && snmp->has_operation())
 	|| (internal !=  nullptr && internal->has_operation());
 }
@@ -111,6 +118,15 @@ std::shared_ptr<ydk::Entity> ConfdState::get_child_by_name(const std::string & c
         return ha;
     }
 
+    if(child_yang_name == "loaded-data-models")
+    {
+        if(loaded_data_models == nullptr)
+        {
+            loaded_data_models = std::make_shared<ConfdState::LoadedDataModels>();
+        }
+        return loaded_data_models;
+    }
+
     if(child_yang_name == "netconf")
     {
         if(netconf == nullptr)
@@ -136,6 +152,15 @@ std::shared_ptr<ydk::Entity> ConfdState::get_child_by_name(const std::string & c
             webui = std::make_shared<ConfdState::Webui>();
         }
         return webui;
+    }
+
+    if(child_yang_name == "rest")
+    {
+        if(rest == nullptr)
+        {
+            rest = std::make_shared<ConfdState::Rest>();
+        }
+        return rest;
     }
 
     if(child_yang_name == "snmp")
@@ -173,6 +198,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::get_children() c
         _children["ha"] = ha;
     }
 
+    if(loaded_data_models != nullptr)
+    {
+        _children["loaded-data-models"] = loaded_data_models;
+    }
+
     if(netconf != nullptr)
     {
         _children["netconf"] = netconf;
@@ -186,6 +216,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::get_children() c
     if(webui != nullptr)
     {
         _children["webui"] = webui;
+    }
+
+    if(rest != nullptr)
+    {
+        _children["rest"] = rest;
     }
 
     if(snmp != nullptr)
@@ -286,7 +321,7 @@ std::map<std::pair<std::string, std::string>, std::string> ConfdState::get_names
 
 bool ConfdState::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "smp" || name == "ha" || name == "netconf" || name == "cli" || name == "webui" || name == "snmp" || name == "internal" || name == "version" || name == "epoll" || name == "daemon-status" || name == "read-only-mode" || name == "upgrade-mode")
+    if(name == "smp" || name == "ha" || name == "loaded-data-models" || name == "netconf" || name == "cli" || name == "webui" || name == "rest" || name == "snmp" || name == "internal" || name == "version" || name == "epoll" || name == "daemon-status" || name == "read-only-mode" || name == "upgrade-mode")
         return true;
     return false;
 }
@@ -529,6 +564,270 @@ void ConfdState::Ha::set_filter(const std::string & value_path, YFilter yfilter)
 bool ConfdState::Ha::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "mode" || name == "node-id" || name == "master-node-id" || name == "connected-slave" || name == "pending-slave")
+        return true;
+    return false;
+}
+
+ConfdState::LoadedDataModels::LoadedDataModels()
+    :
+    data_model(this, {"name"})
+{
+
+    yang_name = "loaded-data-models"; yang_parent_name = "confd-state"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+ConfdState::LoadedDataModels::~LoadedDataModels()
+{
+}
+
+bool ConfdState::LoadedDataModels::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<data_model.len(); index++)
+    {
+        if(data_model[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ConfdState::LoadedDataModels::has_operation() const
+{
+    for (std::size_t index=0; index<data_model.len(); index++)
+    {
+        if(data_model[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ConfdState::LoadedDataModels::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::LoadedDataModels::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "loaded-data-models";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::LoadedDataModels::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> ConfdState::LoadedDataModels::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "data-model")
+    {
+        auto ent_ = std::make_shared<ConfdState::LoadedDataModels::DataModel>();
+        ent_->parent = this;
+        data_model.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::LoadedDataModels::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : data_model.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void ConfdState::LoadedDataModels::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ConfdState::LoadedDataModels::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ConfdState::LoadedDataModels::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "data-model")
+        return true;
+    return false;
+}
+
+ConfdState::LoadedDataModels::DataModel::DataModel()
+    :
+    name{YType::str, "name"},
+    revision{YType::str, "revision"},
+    namespace_{YType::str, "namespace"},
+    prefix{YType::str, "prefix"},
+    exported_to_all{YType::empty, "exported-to-all"},
+    exported_to{YType::str, "exported-to"}
+{
+
+    yang_name = "data-model"; yang_parent_name = "loaded-data-models"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+ConfdState::LoadedDataModels::DataModel::~DataModel()
+{
+}
+
+bool ConfdState::LoadedDataModels::DataModel::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : exported_to.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return name.is_set
+	|| revision.is_set
+	|| namespace_.is_set
+	|| prefix.is_set
+	|| exported_to_all.is_set;
+}
+
+bool ConfdState::LoadedDataModels::DataModel::has_operation() const
+{
+    for (auto const & leaf : exported_to.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(revision.yfilter)
+	|| ydk::is_set(namespace_.yfilter)
+	|| ydk::is_set(prefix.yfilter)
+	|| ydk::is_set(exported_to_all.yfilter)
+	|| ydk::is_set(exported_to.yfilter);
+}
+
+std::string ConfdState::LoadedDataModels::DataModel::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/loaded-data-models/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::LoadedDataModels::DataModel::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "data-model";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::LoadedDataModels::DataModel::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (revision.is_set || is_set(revision.yfilter)) leaf_name_data.push_back(revision.get_name_leafdata());
+    if (namespace_.is_set || is_set(namespace_.yfilter)) leaf_name_data.push_back(namespace_.get_name_leafdata());
+    if (prefix.is_set || is_set(prefix.yfilter)) leaf_name_data.push_back(prefix.get_name_leafdata());
+    if (exported_to_all.is_set || is_set(exported_to_all.yfilter)) leaf_name_data.push_back(exported_to_all.get_name_leafdata());
+
+    auto exported_to_name_datas = exported_to.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), exported_to_name_datas.begin(), exported_to_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> ConfdState::LoadedDataModels::DataModel::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::LoadedDataModels::DataModel::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void ConfdState::LoadedDataModels::DataModel::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "revision")
+    {
+        revision = value;
+        revision.value_namespace = name_space;
+        revision.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "namespace")
+    {
+        namespace_ = value;
+        namespace_.value_namespace = name_space;
+        namespace_.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "prefix")
+    {
+        prefix = value;
+        prefix.value_namespace = name_space;
+        prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "exported-to-all")
+    {
+        exported_to_all = value;
+        exported_to_all.value_namespace = name_space;
+        exported_to_all.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "exported-to")
+    {
+        exported_to.append(value);
+    }
+}
+
+void ConfdState::LoadedDataModels::DataModel::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "revision")
+    {
+        revision.yfilter = yfilter;
+    }
+    if(value_path == "namespace")
+    {
+        namespace_.yfilter = yfilter;
+    }
+    if(value_path == "prefix")
+    {
+        prefix.yfilter = yfilter;
+    }
+    if(value_path == "exported-to-all")
+    {
+        exported_to_all.yfilter = yfilter;
+    }
+    if(value_path == "exported-to")
+    {
+        exported_to.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::LoadedDataModels::DataModel::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "revision" || name == "namespace" || name == "prefix" || name == "exported-to-all" || name == "exported-to")
         return true;
     return false;
 }
@@ -1650,6 +1949,423 @@ void ConfdState::Webui::Listen::Ssl::set_filter(const std::string & value_path, 
 }
 
 bool ConfdState::Webui::Listen::Ssl::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip" || name == "port")
+        return true;
+    return false;
+}
+
+ConfdState::Rest::Rest()
+    :
+    listen(std::make_shared<ConfdState::Rest::Listen>())
+{
+    listen->parent = this;
+
+    yang_name = "rest"; yang_parent_name = "confd-state"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
+}
+
+ConfdState::Rest::~Rest()
+{
+}
+
+bool ConfdState::Rest::has_data() const
+{
+    if (is_presence_container) return true;
+    return (listen !=  nullptr && listen->has_data());
+}
+
+bool ConfdState::Rest::has_operation() const
+{
+    return is_set(yfilter)
+	|| (listen !=  nullptr && listen->has_operation());
+}
+
+std::string ConfdState::Rest::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Rest::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rest";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Rest::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> ConfdState::Rest::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "listen")
+    {
+        if(listen == nullptr)
+        {
+            listen = std::make_shared<ConfdState::Rest::Listen>();
+        }
+        return listen;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Rest::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(listen != nullptr)
+    {
+        _children["listen"] = listen;
+    }
+
+    return _children;
+}
+
+void ConfdState::Rest::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ConfdState::Rest::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ConfdState::Rest::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "listen")
+        return true;
+    return false;
+}
+
+ConfdState::Rest::Listen::Listen()
+    :
+    tcp(this, {})
+    , ssl(this, {})
+{
+
+    yang_name = "listen"; yang_parent_name = "rest"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+ConfdState::Rest::Listen::~Listen()
+{
+}
+
+bool ConfdState::Rest::Listen::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<tcp.len(); index++)
+    {
+        if(tcp[index]->has_data())
+            return true;
+    }
+    for (std::size_t index=0; index<ssl.len(); index++)
+    {
+        if(ssl[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool ConfdState::Rest::Listen::has_operation() const
+{
+    for (std::size_t index=0; index<tcp.len(); index++)
+    {
+        if(tcp[index]->has_operation())
+            return true;
+    }
+    for (std::size_t index=0; index<ssl.len(); index++)
+    {
+        if(ssl[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string ConfdState::Rest::Listen::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/rest/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Rest::Listen::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "listen";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Rest::Listen::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> ConfdState::Rest::Listen::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "tcp")
+    {
+        auto ent_ = std::make_shared<ConfdState::Rest::Listen::Tcp>();
+        ent_->parent = this;
+        tcp.append(ent_);
+        return ent_;
+    }
+
+    if(child_yang_name == "ssl")
+    {
+        auto ent_ = std::make_shared<ConfdState::Rest::Listen::Ssl>();
+        ent_->parent = this;
+        ssl.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Rest::Listen::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : tcp.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    count_ = 0;
+    for (auto ent_ : ssl.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void ConfdState::Rest::Listen::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void ConfdState::Rest::Listen::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool ConfdState::Rest::Listen::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "tcp" || name == "ssl")
+        return true;
+    return false;
+}
+
+ConfdState::Rest::Listen::Tcp::Tcp()
+    :
+    ip{YType::str, "ip"},
+    port{YType::uint16, "port"}
+{
+
+    yang_name = "tcp"; yang_parent_name = "listen"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+ConfdState::Rest::Listen::Tcp::~Tcp()
+{
+}
+
+bool ConfdState::Rest::Listen::Tcp::has_data() const
+{
+    if (is_presence_container) return true;
+    return ip.is_set
+	|| port.is_set;
+}
+
+bool ConfdState::Rest::Listen::Tcp::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(port.yfilter);
+}
+
+std::string ConfdState::Rest::Listen::Tcp::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/rest/listen/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Rest::Listen::Tcp::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tcp";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Rest::Listen::Tcp::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> ConfdState::Rest::Listen::Tcp::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Rest::Listen::Tcp::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void ConfdState::Rest::Listen::Tcp::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ip")
+    {
+        ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Rest::Listen::Tcp::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip")
+    {
+        ip.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Rest::Listen::Tcp::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ip" || name == "port")
+        return true;
+    return false;
+}
+
+ConfdState::Rest::Listen::Ssl::Ssl()
+    :
+    ip{YType::str, "ip"},
+    port{YType::uint16, "port"}
+{
+
+    yang_name = "ssl"; yang_parent_name = "listen"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+ConfdState::Rest::Listen::Ssl::~Ssl()
+{
+}
+
+bool ConfdState::Rest::Listen::Ssl::has_data() const
+{
+    if (is_presence_container) return true;
+    return ip.is_set
+	|| port.is_set;
+}
+
+bool ConfdState::Rest::Listen::Ssl::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ip.yfilter)
+	|| ydk::is_set(port.yfilter);
+}
+
+std::string ConfdState::Rest::Listen::Ssl::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "tailf-confd-monitoring:confd-state/rest/listen/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string ConfdState::Rest::Listen::Ssl::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ssl";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > ConfdState::Rest::Listen::Ssl::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ip.is_set || is_set(ip.yfilter)) leaf_name_data.push_back(ip.get_name_leafdata());
+    if (port.is_set || is_set(port.yfilter)) leaf_name_data.push_back(port.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> ConfdState::Rest::Listen::Ssl::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> ConfdState::Rest::Listen::Ssl::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void ConfdState::Rest::Listen::Ssl::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ip")
+    {
+        ip = value;
+        ip.value_namespace = name_space;
+        ip.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "port")
+    {
+        port = value;
+        port.value_namespace = name_space;
+        port.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void ConfdState::Rest::Listen::Ssl::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ip")
+    {
+        ip.yfilter = yfilter;
+    }
+    if(value_path == "port")
+    {
+        port.yfilter = yfilter;
+    }
+}
+
+bool ConfdState::Rest::Listen::Ssl::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ip" || name == "port")
         return true;
@@ -8886,6 +9602,13 @@ const Enum::YLeaf ConfdState::DaemonStatus::stopping {4, "stopping"};
 const Enum::YLeaf ConfdState::Ha::Mode::none {0, "none"};
 const Enum::YLeaf ConfdState::Ha::Mode::slave {1, "slave"};
 const Enum::YLeaf ConfdState::Ha::Mode::master {2, "master"};
+const Enum::YLeaf ConfdState::Ha::Mode::relay_slave {3, "relay-slave"};
+
+const Enum::YLeaf ConfdState::LoadedDataModels::DataModel::ExportedTo::netconf {0, "netconf"};
+const Enum::YLeaf ConfdState::LoadedDataModels::DataModel::ExportedTo::cli {1, "cli"};
+const Enum::YLeaf ConfdState::LoadedDataModels::DataModel::ExportedTo::webui {2, "webui"};
+const Enum::YLeaf ConfdState::LoadedDataModels::DataModel::ExportedTo::rest {3, "rest"};
+const Enum::YLeaf ConfdState::LoadedDataModels::DataModel::ExportedTo::snmp {4, "snmp"};
 
 const Enum::YLeaf ConfdState::Internal::DatastoreName::running {0, "running"};
 const Enum::YLeaf ConfdState::Internal::DatastoreName::startup {1, "startup"};

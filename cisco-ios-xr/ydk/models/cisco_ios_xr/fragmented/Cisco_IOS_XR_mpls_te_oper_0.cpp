@@ -5,13 +5,12 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_mpls_te_oper_0.hpp"
-#include "Cisco_IOS_XR_mpls_te_oper_34.hpp"
-#include "Cisco_IOS_XR_mpls_te_oper_16.hpp"
-#include "Cisco_IOS_XR_mpls_te_oper_31.hpp"
-#include "Cisco_IOS_XR_mpls_te_oper_32.hpp"
 #include "Cisco_IOS_XR_mpls_te_oper_2.hpp"
-#include "Cisco_IOS_XR_mpls_te_oper_33.hpp"
 #include "Cisco_IOS_XR_mpls_te_oper_1.hpp"
+#include "Cisco_IOS_XR_mpls_te_oper_16.hpp"
+#include "Cisco_IOS_XR_mpls_te_oper_32.hpp"
+#include "Cisco_IOS_XR_mpls_te_oper_33.hpp"
+#include "Cisco_IOS_XR_mpls_te_oper_31.hpp"
 
 using namespace ydk;
 
@@ -7820,7 +7819,8 @@ MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::TunnelRemote()
     is_interface{YType::boolean, "is-interface"},
     last_path_change{YType::uint32, "last-path-change"},
     persistent_bytes{YType::uint64, "persistent-bytes"},
-    persistent_packets{YType::uint64, "persistent-packets"}
+    persistent_packets{YType::uint64, "persistent-packets"},
+    protection_role{YType::enumeration, "protection-role"}
         ,
     lsp_fec(std::make_shared<MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::LspFec>())
     , s2l(this, {})
@@ -7871,6 +7871,7 @@ bool MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::has_data() const
 	|| last_path_change.is_set
 	|| persistent_bytes.is_set
 	|| persistent_packets.is_set
+	|| protection_role.is_set
 	|| (lsp_fec !=  nullptr && lsp_fec->has_data());
 }
 
@@ -7911,6 +7912,7 @@ bool MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::has_operation() const
 	|| ydk::is_set(last_path_change.yfilter)
 	|| ydk::is_set(persistent_bytes.yfilter)
 	|| ydk::is_set(persistent_packets.yfilter)
+	|| ydk::is_set(protection_role.yfilter)
 	|| (lsp_fec !=  nullptr && lsp_fec->has_operation());
 }
 
@@ -7968,6 +7970,7 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::P2pP2mpTunnel::TunnelRemo
     if (last_path_change.is_set || is_set(last_path_change.yfilter)) leaf_name_data.push_back(last_path_change.get_name_leafdata());
     if (persistent_bytes.is_set || is_set(persistent_bytes.yfilter)) leaf_name_data.push_back(persistent_bytes.get_name_leafdata());
     if (persistent_packets.is_set || is_set(persistent_packets.yfilter)) leaf_name_data.push_back(persistent_packets.get_name_leafdata());
+    if (protection_role.is_set || is_set(protection_role.yfilter)) leaf_name_data.push_back(protection_role.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -8192,6 +8195,12 @@ void MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::set_value(const std::st
         persistent_packets.value_namespace = name_space;
         persistent_packets.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "protection-role")
+    {
+        protection_role = value;
+        protection_role.value_namespace = name_space;
+        protection_role.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::set_filter(const std::string & value_path, YFilter yfilter)
@@ -8312,11 +8321,15 @@ void MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::set_filter(const std::s
     {
         persistent_packets.yfilter = yfilter;
     }
+    if(value_path == "protection-role")
+    {
+        protection_role.yfilter = yfilter;
+    }
 }
 
 bool MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "lsp-fec" || name == "s2l" || name == "lsp-id" || name == "tunnel-id" || name == "extended-tunnel-id" || name == "source-address" || name == "ctype" || name == "destination-address" || name == "p2mp-id" || name == "signaled-name" || name == "is-frr-failed" || name == "frr-active-reason" || name == "lsp-bandwidth" || name == "lsp-setup-priority" || name == "lsp-hold-priority" || name == "lsp-bandwidth-type" || name == "dste-class-match" || name == "dste-class-index" || name == "type" || name == "uptime" || name == "s2-ls-up" || name == "s2-ls-proceeding" || name == "s2-ls-down" || name == "reoptimize-reason" || name == "reoptimize-trigger" || name == "timer-left" || name == "is-passive" || name == "is-interface" || name == "last-path-change" || name == "persistent-bytes" || name == "persistent-packets")
+    if(name == "lsp-fec" || name == "s2l" || name == "lsp-id" || name == "tunnel-id" || name == "extended-tunnel-id" || name == "source-address" || name == "ctype" || name == "destination-address" || name == "p2mp-id" || name == "signaled-name" || name == "is-frr-failed" || name == "frr-active-reason" || name == "lsp-bandwidth" || name == "lsp-setup-priority" || name == "lsp-hold-priority" || name == "lsp-bandwidth-type" || name == "dste-class-match" || name == "dste-class-index" || name == "type" || name == "uptime" || name == "s2-ls-up" || name == "s2-ls-proceeding" || name == "s2-ls-down" || name == "reoptimize-reason" || name == "reoptimize-trigger" || name == "timer-left" || name == "is-passive" || name == "is-interface" || name == "last-path-change" || name == "persistent-bytes" || name == "persistent-packets" || name == "protection-role")
         return true;
     return false;
 }
@@ -24192,83 +24205,19 @@ bool MplsTe::P2pP2mpTunnel::TunnelRemotes::TunnelRemote::S2l::ActivePathOption::
     return false;
 }
 
-const Enum::YLeaf MplsTeLspMode::mpls_te_lsp_mode_not_set {0, "mpls-te-lsp-mode-not-set"};
-const Enum::YLeaf MplsTeLspMode::mpls_te_lsp_mode_current {1, "mpls-te-lsp-mode-current"};
-const Enum::YLeaf MplsTeLspMode::mpls_te_lsp_mode_reopt {2, "mpls-te-lsp-mode-reopt"};
-const Enum::YLeaf MplsTeLspMode::mpls_te_lsp_mode_clean {3, "mpls-te-lsp-mode-clean"};
-const Enum::YLeaf MplsTeLspMode::mpls_te_lsp_mode_standby {4, "mpls-te-lsp-mode-standby"};
-const Enum::YLeaf MplsTeLspMode::mpls_te_lsp_mode_pp_clean {5, "mpls-te-lsp-mode-pp-clean"};
-const Enum::YLeaf MplsTeLspMode::mpls_te_lsp_mode_restore {6, "mpls-te-lsp-mode-restore"};
-const Enum::YLeaf MplsTeLspMode::mpls_te_lsp_mode_reopt_standby {7, "mpls-te-lsp-mode-reopt-standby"};
+const Enum::YLeaf MplsTePathSelectionMetric::igp {1, "igp"};
+const Enum::YLeaf MplsTePathSelectionMetric::te {2, "te"};
+const Enum::YLeaf MplsTePathSelectionMetric::delay {4, "delay"};
 
-const Enum::YLeaf MteReoptTrigger::no_trigger {0, "no-trigger"};
-const Enum::YLeaf MteReoptTrigger::timer_trigger {1, "timer-trigger"};
-const Enum::YLeaf MteReoptTrigger::bandwidth_change_trigger {2, "bandwidth-change-trigger"};
-const Enum::YLeaf MteReoptTrigger::auto_bandwidth_overflow_trigger {3, "auto-bandwidth-overflow-trigger"};
-const Enum::YLeaf MteReoptTrigger::auto_bandwidth_underflow_trigger {4, "auto-bandwidth-underflow-trigger"};
-const Enum::YLeaf MteReoptTrigger::auto_bandwidth_adjustment_trigger {5, "auto-bandwidth-adjustment-trigger"};
-const Enum::YLeaf MteReoptTrigger::metric_type_change_trigger {6, "metric-type-change-trigger"};
-const Enum::YLeaf MteReoptTrigger::user_trigger {7, "user-trigger"};
-const Enum::YLeaf MteReoptTrigger::frr_trigger {8, "frr-trigger"};
-const Enum::YLeaf MteReoptTrigger::remerge_error_trigger {9, "remerge-error-trigger"};
-const Enum::YLeaf MteReoptTrigger::preferred_path_trigger {10, "preferred-path-trigger"};
-const Enum::YLeaf MteReoptTrigger::preferred_tree_trigger {11, "preferred-tree-trigger"};
-const Enum::YLeaf MteReoptTrigger::due_to_maximum_metric {12, "due-to-maximum-metric"};
-const Enum::YLeaf MteReoptTrigger::path_option_switchover_trigger {13, "path-option-switchover-trigger"};
-const Enum::YLeaf MteReoptTrigger::path_protection_switchover_trigger {14, "path-protection-switchover-trigger"};
-const Enum::YLeaf MteReoptTrigger::iep_enable_reoptimization_trigger {15, "iep-enable-reoptimization-trigger"};
-const Enum::YLeaf MteReoptTrigger::affinity_path_verification_fail_trigger {16, "affinity-path-verification-fail-trigger"};
-const Enum::YLeaf MteReoptTrigger::cost_limit_path_verification_fail_trigger {17, "cost-limit-path-verification-fail-trigger"};
-const Enum::YLeaf MteReoptTrigger::delay_limit_path_verification_fail_trigger {18, "delay-limit-path-verification-fail-trigger"};
-const Enum::YLeaf MteReoptTrigger::soft_preemption_trigger {19, "soft-preemption-trigger"};
-const Enum::YLeaf MteReoptTrigger::iep_changed {20, "iep-changed"};
-const Enum::YLeaf MteReoptTrigger::po_changed {21, "po-changed"};
-const Enum::YLeaf MteReoptTrigger::dest_changed {22, "dest-changed"};
-const Enum::YLeaf MteReoptTrigger::reopt_try_to_force_it {23, "reopt-try-to-force-it"};
-const Enum::YLeaf MteReoptTrigger::topology_change_trigger {24, "topology-change-trigger"};
-const Enum::YLeaf MteReoptTrigger::reopt_link_up_event {25, "reopt-link-up-event"};
-const Enum::YLeaf MteReoptTrigger::bfd_session_down_trigger {26, "bfd-session-down-trigger"};
-const Enum::YLeaf MteReoptTrigger::reverse_assoc_s2l_received_trigger {27, "reverse-assoc-s2l-received-trigger"};
-const Enum::YLeaf MteReoptTrigger::gmpls_uni_multilayer_trigger {28, "gmpls-uni-multilayer-trigger"};
-const Enum::YLeaf MteReoptTrigger::gmpls_uni_user_trigger {29, "gmpls-uni-user-trigger"};
-const Enum::YLeaf MteReoptTrigger::path_selection_tiebreaker_change_trigger {30, "path-selection-tiebreaker-change-trigger"};
-const Enum::YLeaf MteReoptTrigger::sr_egress_path_change_trigger {31, "sr-egress-path-change-trigger"};
-const Enum::YLeaf MteReoptTrigger::overload_bit_trigger {32, "overload-bit-trigger"};
-const Enum::YLeaf MteReoptTrigger::pce_trigger {33, "pce-trigger"};
-const Enum::YLeaf MteReoptTrigger::lockout_metric_trigger {34, "lockout-metric-trigger"};
-const Enum::YLeaf MteReoptTrigger::bfd_session_config_change_trigger {35, "bfd-session-config-change-trigger"};
-const Enum::YLeaf MteReoptTrigger::higher_priority_po_change_trigger {36, "higher-priority-po-change-trigger"};
-const Enum::YLeaf MteReoptTrigger::sr_area_spf_support_change_trigger {37, "sr-area-spf-support-change-trigger"};
-const Enum::YLeaf MteReoptTrigger::path_protection_non_revertive_config_change {38, "path-protection-non-revertive-config-change"};
-const Enum::YLeaf MteReoptTrigger::trigger_not_used {39, "trigger-not-used"};
+const Enum::YLeaf MplsTePath::not_set {0, "not-set"};
+const Enum::YLeaf MplsTePath::dynamic {1, "dynamic"};
+const Enum::YLeaf MplsTePath::explicit_name {3, "explicit-name"};
+const Enum::YLeaf MplsTePath::explicit_id {4, "explicit-id"};
+const Enum::YLeaf MplsTePath::no_ero {5, "no-ero"};
+const Enum::YLeaf MplsTePath::segment_routing {6, "segment-routing"};
 
-const Enum::YLeaf MplsTpLspBfdState::down {0, "down"};
-const Enum::YLeaf MplsTpLspBfdState::up {1, "up"};
-
-const Enum::YLeaf FlexLspLockoutOrigination::lockout_origination_none {0, "lockout-origination-none"};
-const Enum::YLeaf FlexLspLockoutOrigination::lockout_origination_local {1, "lockout-origination-local"};
-const Enum::YLeaf FlexLspLockoutOrigination::lockout_origination_remote {2, "lockout-origination-remote"};
-
-const Enum::YLeaf MplsTeMetricQualifier::metric_default {0, "metric-default"};
-const Enum::YLeaf MplsTeMetricQualifier::metric_global {1, "metric-global"};
-const Enum::YLeaf MplsTeMetricQualifier::metric_interface {2, "metric-interface"};
-
-const Enum::YLeaf TeSyncStatusShow::master_sync_status_show {0, "master-sync-status-show"};
-const Enum::YLeaf TeSyncStatusShow::slave_sync_status_show {1, "slave-sync-status-show"};
-
-const Enum::YLeaf MplsTeTunnelsProcessStatus::not_running {0, "not-running"};
-const Enum::YLeaf MplsTeTunnelsProcessStatus::running {1, "running"};
-const Enum::YLeaf MplsTeTunnelsProcessStatus::not_registered_with_rsvp {2, "not-registered-with-rsvp"};
-
-const Enum::YLeaf MplsTeUni::none {0, "none"};
-const Enum::YLeaf MplsTeUni::xc {1, "xc"};
-const Enum::YLeaf MplsTeUni::term {2, "term"};
-
-const Enum::YLeaf TeStatsSigFilter::te_stat_sig_filter_vif {0, "te-stat-sig-filter-vif"};
-const Enum::YLeaf TeStatsSigFilter::te_stat_sig_filter_lsp {1, "te-stat-sig-filter-lsp"};
-
-const Enum::YLeaf RsvpMgmtEroSubobj::rsvp_mgmt_ero_type_ipv4 {1, "rsvp-mgmt-ero-type-ipv4"};
-const Enum::YLeaf RsvpMgmtEroSubobj::rsvp_mgmt_ero_type_un_num {4, "rsvp-mgmt-ero-type-un-num"};
+const Enum::YLeaf MplsTeNode::router {1, "router"};
+const Enum::YLeaf MplsTeNode::network {2, "network"};
 
 const Enum::YLeaf Ctype::ctype_null {0, "ctype-null"};
 const Enum::YLeaf Ctype::ctype_ipv4 {1, "ctype-ipv4"};
@@ -24278,83 +24227,69 @@ const Enum::YLeaf Ctype::ctype_ipv4_uni {9, "ctype-ipv4-uni"};
 const Enum::YLeaf Ctype::ctype_ipv4_p2mp_tunnel {13, "ctype-ipv4-p2mp-tunnel"};
 const Enum::YLeaf Ctype::ctype_ipv6_p2mp_tunnel {14, "ctype-ipv6-p2mp-tunnel"};
 
-const Enum::YLeaf IgpProtocol::none {0, "none"};
-const Enum::YLeaf IgpProtocol::isis {1, "isis"};
-const Enum::YLeaf IgpProtocol::ospf {2, "ospf"};
+const Enum::YLeaf MplsTeNextHop::egress_resolve {0, "egress-resolve"};
+const Enum::YLeaf MplsTeNextHop::autoroute_dest {1, "autoroute-dest"};
 
-const Enum::YLeaf MplsTePathoption::path_option_unknown {0, "path-option-unknown"};
-const Enum::YLeaf MplsTePathoption::path_option_dynamic {1, "path-option-dynamic"};
-const Enum::YLeaf MplsTePathoption::path_option_explicit_name {2, "path-option-explicit-name"};
-const Enum::YLeaf MplsTePathoption::path_option_explicit_id {3, "path-option-explicit-id"};
-const Enum::YLeaf MplsTePathoption::path_option_pce {4, "path-option-pce"};
-const Enum::YLeaf MplsTePathoption::path_option_no_ero {5, "path-option-no-ero"};
-const Enum::YLeaf MplsTePathoption::path_option_segment_routing {6, "path-option-segment-routing"};
+const Enum::YLeaf MplsTeAttrSet::not_used {0, "not-used"};
+const Enum::YLeaf MplsTeAttrSet::static_ {1, "static"};
+const Enum::YLeaf MplsTeAttrSet::lsp {2, "lsp"};
+const Enum::YLeaf MplsTeAttrSet::unassigned {3, "unassigned"};
+const Enum::YLeaf MplsTeAttrSet::auto_backup {4, "auto-backup"};
+const Enum::YLeaf MplsTeAttrSet::auto_mesh {5, "auto-mesh"};
+const Enum::YLeaf MplsTeAttrSet::xro {6, "xro"};
+const Enum::YLeaf MplsTeAttrSet::p2mp_te {7, "p2mp-te"};
+const Enum::YLeaf MplsTeAttrSet::otn_pp {8, "otn-pp"};
+const Enum::YLeaf MplsTeAttrSet::p2p_te {9, "p2p-te"};
 
-const Enum::YLeaf BandwidthUnitEnum::kilo_bits_per_second {0, "kilo-bits-per-second"};
-const Enum::YLeaf BandwidthUnitEnum::kilo_bytes_per_second {1, "kilo-bytes-per-second"};
+const Enum::YLeaf MplsTeIgpProtocol::none {0, "none"};
+const Enum::YLeaf MplsTeIgpProtocol::isis {1, "isis"};
+const Enum::YLeaf MplsTeIgpProtocol::ospf {2, "ospf"};
 
-const Enum::YLeaf MteTunnelAdminState::tunnel_state_admin_unknown {0, "tunnel-state-admin-unknown"};
-const Enum::YLeaf MteTunnelAdminState::admin_shutdown {1, "admin-shutdown"};
-const Enum::YLeaf MteTunnelAdminState::admin_up {2, "admin-up"};
+const Enum::YLeaf TeStatsSigFilter::te_stat_sig_filter_vif {0, "te-stat-sig-filter-vif"};
+const Enum::YLeaf TeStatsSigFilter::te_stat_sig_filter_lsp {1, "te-stat-sig-filter-lsp"};
 
-const Enum::YLeaf TeApsSncMode::snc_mode_not_set {0, "snc-mode-not-set"};
-const Enum::YLeaf TeApsSncMode::snc_mode_n {1, "snc-mode-n"};
-const Enum::YLeaf TeApsSncMode::snc_mode_i {2, "snc-mode-i"};
-const Enum::YLeaf TeApsSncMode::snc_mode_s {3, "snc-mode-s"};
+const Enum::YLeaf TunnelStateEnum::tunnel_state_unknown {0, "tunnel-state-unknown"};
+const Enum::YLeaf TunnelStateEnum::new_ {1, "new"};
+const Enum::YLeaf TunnelStateEnum::preempting {2, "preempting"};
+const Enum::YLeaf TunnelStateEnum::admitting {3, "admitting"};
+const Enum::YLeaf TunnelStateEnum::half_admitted {4, "half-admitted"};
+const Enum::YLeaf TunnelStateEnum::admitted {5, "admitted"};
+const Enum::YLeaf TunnelStateEnum::reservation_admitting {6, "reservation-admitting"};
+const Enum::YLeaf TunnelStateEnum::reservation_half_admitted {7, "reservation-half-admitted"};
+const Enum::YLeaf TunnelStateEnum::reservation_admitted {8, "reservation-admitted"};
 
-const Enum::YLeaf TeAutobwAppRej::application_allowed {0, "application-allowed"};
-const Enum::YLeaf TeAutobwAppRej::auto_bw_disabled {1, "auto-bw-disabled"};
-const Enum::YLeaf TeAutobwAppRej::tunnel_is_down {2, "tunnel-is-down"};
-const Enum::YLeaf TeAutobwAppRej::tunnel_is_frr {3, "tunnel-is-frr"};
-const Enum::YLeaf TeAutobwAppRej::tunnel_is_backup {4, "tunnel-is-backup"};
-const Enum::YLeaf TeAutobwAppRej::tunnel_is_lock_down {5, "tunnel-is-lock-down"};
+const Enum::YLeaf BandwidthStateEnum::bandwidth_held {0, "bandwidth-held"};
+const Enum::YLeaf BandwidthStateEnum::bandwidth_reserved {1, "bandwidth-reserved"};
+const Enum::YLeaf BandwidthStateEnum::bandwidth_unknown {2, "bandwidth-unknown"};
 
-const Enum::YLeaf TeSyncNotReadyReason::idt_in_progress {0, "idt-in-progress"};
-const Enum::YLeaf TeSyncNotReadyReason::standby_not_connected {1, "standby-not-connected"};
-const Enum::YLeaf TeSyncNotReadyReason::collaborator_disconnected {2, "collaborator-disconnected"};
-const Enum::YLeaf TeSyncNotReadyReason::collaborator_timeout {3, "collaborator-timeout"};
-const Enum::YLeaf TeSyncNotReadyReason::unknown {4, "unknown"};
+const Enum::YLeaf BandwidthAccountingCollection::rsvp_te {0, "rsvp-te"};
+const Enum::YLeaf BandwidthAccountingCollection::segment_routing {1, "segment-routing"};
 
-const Enum::YLeaf TunnelAttributeSet::tunnel_attribute_set_none {0, "tunnel-attribute-set-none"};
-const Enum::YLeaf TunnelAttributeSet::tunnel_attribute_set_static {1, "tunnel-attribute-set-static"};
-const Enum::YLeaf TunnelAttributeSet::tunnel_attribute_set_path_option {2, "tunnel-attribute-set-path-option"};
-const Enum::YLeaf TunnelAttributeSet::tunnel_attribute_set_not_used {3, "tunnel-attribute-set-not-used"};
-const Enum::YLeaf TunnelAttributeSet::tunnel_attribute_set_auto_backup {4, "tunnel-attribute-set-auto-backup"};
-const Enum::YLeaf TunnelAttributeSet::tunnel_attribute_set_auto_mesh {5, "tunnel-attribute-set-auto-mesh"};
-const Enum::YLeaf TunnelAttributeSet::tunnel_attribute_set_xro {6, "tunnel-attribute-set-xro"};
-const Enum::YLeaf TunnelAttributeSet::tunnel_attribute_set_p2mpte {7, "tunnel-attribute-set-p2mpte"};
-const Enum::YLeaf TunnelAttributeSet::tunnel_attribute_aps_pp {8, "tunnel-attribute-aps-pp"};
-const Enum::YLeaf TunnelAttributeSet::tunnel_attribute_set_p2p_te {9, "tunnel-attribute-set-p2p-te"};
+const Enum::YLeaf BandwidthTypeEnum::pool0 {0, "pool0"};
+const Enum::YLeaf BandwidthTypeEnum::pool1 {1, "pool1"};
+const Enum::YLeaf BandwidthTypeEnum::unknown {2, "unknown"};
 
-const Enum::YLeaf TeBfdLspSessionState::bfd_over_lsp_session_state_none {0, "bfd-over-lsp-session-state-none"};
-const Enum::YLeaf TeBfdLspSessionState::bfd_over_lsp_session_state_created {1, "bfd-over-lsp-session-state-created"};
-const Enum::YLeaf TeBfdLspSessionState::bfd_over_lsp_session_state_up {2, "bfd-over-lsp-session-state-up"};
-const Enum::YLeaf TeBfdLspSessionState::bfd_over_lsp_session_state_down {3, "bfd-over-lsp-session-state-down"};
-const Enum::YLeaf TeBfdLspSessionState::bfd_over_lsp_session_state_admin_down {4, "bfd-over-lsp-session-state-admin-down"};
-const Enum::YLeaf TeBfdLspSessionState::bfd_over_lsp_session_state_deleted {5, "bfd-over-lsp-session-state-deleted"};
-const Enum::YLeaf TeBfdLspSessionState::bfd_over_lsp_session_state_create_failed {6, "bfd-over-lsp-session-state-create-failed"};
+const Enum::YLeaf AdmissionPolicy::reject_all {0, "reject-all"};
+const Enum::YLeaf AdmissionPolicy::allow_all {1, "allow-all"};
+const Enum::YLeaf AdmissionPolicy::reject_huge {2, "reject-huge"};
+const Enum::YLeaf AdmissionPolicy::allow_if_room {3, "allow-if-room"};
 
-const Enum::YLeaf MplsTpLspOamState::none {0, "none"};
-const Enum::YLeaf MplsTpLspOamState::ldi {1, "ldi"};
-const Enum::YLeaf MplsTpLspOamState::lkr {2, "lkr"};
-const Enum::YLeaf MplsTpLspOamState::ais {3, "ais"};
+const Enum::YLeaf SignalingAgentEnum::no_signaling {0, "no-signaling"};
+const Enum::YLeaf SignalingAgentEnum::rsvp_signaling {1, "rsvp-signaling"};
 
-const Enum::YLeaf TePpDiversity::diversity_none {0, "diversity-none"};
-const Enum::YLeaf TePpDiversity::link {1, "link"};
-const Enum::YLeaf TePpDiversity::node {2, "node"};
-const Enum::YLeaf TePpDiversity::node_link {3, "node-link"};
-const Enum::YLeaf TePpDiversity::srlg {4, "srlg"};
-const Enum::YLeaf TePpDiversity::node_srlg {5, "node-srlg"};
-const Enum::YLeaf TePpDiversity::node_link_srlg {6, "node-link-srlg"};
-const Enum::YLeaf TePpDiversity::diversity_user {7, "diversity-user"};
-const Enum::YLeaf TePpDiversity::diversity_reverse_ero {8, "diversity-reverse-ero"};
+const Enum::YLeaf ResourceProvider::resource_provider_none {0, "resource-provider-none"};
+const Enum::YLeaf ResourceProvider::packet_switch_capable {1, "packet-switch-capable"};
+const Enum::YLeaf ResourceProvider::time_division_multiplex {2, "time-division-multiplex"};
+const Enum::YLeaf ResourceProvider::lambda_switch_capable {3, "lambda-switch-capable"};
+const Enum::YLeaf ResourceProvider::fiber_switch_capable {4, "fiber-switch-capable"};
+const Enum::YLeaf ResourceProvider::g709odu_capable {5, "g709odu-capable"};
 
 const Enum::YLeaf LinkDirectionEnum::link_direction_up_stream {0, "link-direction-up-stream"};
 const Enum::YLeaf LinkDirectionEnum::link_direction_down_stream {1, "link-direction-down-stream"};
 const Enum::YLeaf LinkDirectionEnum::link_direction_unknown {2, "link-direction-unknown"};
 
-const Enum::YLeaf MplsTeBackupUsage::backup_not_protecting {0, "backup-not-protecting"};
-const Enum::YLeaf MplsTeBackupUsage::backup_protecting {1, "backup-protecting"};
+const Enum::YLeaf BandwidthUnitEnum::kilo_bits_per_second {0, "kilo-bits-per-second"};
+const Enum::YLeaf BandwidthUnitEnum::kilo_bytes_per_second {1, "kilo-bytes-per-second"};
 
 const Enum::YLeaf FloodingTrigger::flooding_reason_unknown {0, "flooding-reason-unknown"};
 const Enum::YLeaf FloodingTrigger::link_up {1, "link-up"};
@@ -24381,124 +24316,36 @@ const Enum::YLeaf FloodingTrigger::lsp_oor_recovery_duration_expired {21, "lsp-o
 const Enum::YLeaf FloodingTrigger::max_res_bandwidth_threshold_up {22, "max-res-bandwidth-threshold-up"};
 const Enum::YLeaf FloodingTrigger::max_res_bandwidth_threshold_down {23, "max-res-bandwidth-threshold-down"};
 
-const Enum::YLeaf MplsTeTunnelState::state_down {0, "state-down"};
-const Enum::YLeaf MplsTeTunnelState::state_up {1, "state-up"};
-const Enum::YLeaf MplsTeTunnelState::state_down_policy {2, "state-down-policy"};
-const Enum::YLeaf MplsTeTunnelState::state_lockout {3, "state-lockout"};
+const Enum::YLeaf TeAutoTunExpPathHop::ipv4_address_type {0, "ipv4-address-type"};
+const Enum::YLeaf TeAutoTunExpPathHop::mpls_label_type {1, "mpls-label-type"};
+const Enum::YLeaf TeAutoTunExpPathHop::ipv4_and_label_type {2, "ipv4-and-label-type"};
 
-const Enum::YLeaf TeVifBfdEncapMode::ip {0, "ip"};
-const Enum::YLeaf TeVifBfdEncapMode::gal {1, "gal"};
+const Enum::YLeaf LspOorState::lsp_oor_green {0, "lsp-oor-green"};
+const Enum::YLeaf LspOorState::lsp_oor_yellow {1, "lsp-oor-yellow"};
+const Enum::YLeaf LspOorState::lsp_oor_red {2, "lsp-oor-red"};
 
-const Enum::YLeaf IgpteLibBwModel::rdm {0, "rdm"};
-const Enum::YLeaf IgpteLibBwModel::mam {1, "mam"};
-const Enum::YLeaf IgpteLibBwModel::not_set {2, "not-set"};
+const Enum::YLeaf TeS2lOutputRwExplicitNull::tes2l_output_rw_exp_null {0, "tes2l-output-rw-exp-null"};
+const Enum::YLeaf TeS2lOutputRwExplicitNull::tes2l_output_rw_exp_null_v4 {1, "tes2l-output-rw-exp-null-v4"};
+const Enum::YLeaf TeS2lOutputRwExplicitNull::tes2l_output_rw_exp_null_v6 {2, "tes2l-output-rw-exp-null-v6"};
+
+const Enum::YLeaf MplsTeTunnelsProcessStatus::not_running {0, "not-running"};
+const Enum::YLeaf MplsTeTunnelsProcessStatus::running {1, "running"};
+const Enum::YLeaf MplsTeTunnelsProcessStatus::not_registered_with_rsvp {2, "not-registered-with-rsvp"};
+
+const Enum::YLeaf MplsTeFrrSharing::sharing_none {0, "sharing-none"};
+const Enum::YLeaf MplsTeFrrSharing::sharing_pri_oi_backup_oi_parent {1, "sharing-pri-oi-backup-oi-parent"};
+const Enum::YLeaf MplsTeFrrSharing::sharing_pri_oi_parent_backup_oi {2, "sharing-pri-oi-parent-backup-oi"};
+const Enum::YLeaf MplsTeFrrSharing::sharing_pri_oi_parent_backup_oi_parent {3, "sharing-pri-oi-parent-backup-oi-parent"};
+
+const Enum::YLeaf MplsTeBwLimit::bandwidth_limited {0, "bandwidth-limited"};
+const Enum::YLeaf MplsTeBwLimit::bandwidth_unlimited {1, "bandwidth-unlimited"};
+const Enum::YLeaf MplsTeBwLimit::bandwidth_none {2, "bandwidth-none"};
+
+const Enum::YLeaf MplsTeBackupUsage::backup_not_protecting {0, "backup-not-protecting"};
+const Enum::YLeaf MplsTeBackupUsage::backup_protecting {1, "backup-protecting"};
 
 const Enum::YLeaf MplsTeBackup::backup_static {0, "backup-static"};
 const Enum::YLeaf MplsTeBackup::backup_auto {1, "backup-auto"};
-
-const Enum::YLeaf SignalingAgentEnum::no_signaling {0, "no-signaling"};
-const Enum::YLeaf SignalingAgentEnum::rsvp_signaling {1, "rsvp-signaling"};
-
-const Enum::YLeaf RrrDsteMigrationMode::rrr_dste_mode_none {0, "rrr-dste-mode-none"};
-const Enum::YLeaf RrrDsteMigrationMode::rrr_dste_mode_prestandard {1, "rrr-dste-mode-prestandard"};
-const Enum::YLeaf RrrDsteMigrationMode::rrr_dste_mode_standard {3, "rrr-dste-mode-standard"};
-
-const Enum::YLeaf TeXroSubobj::ipv4 {1, "ipv4"};
-const Enum::YLeaf TeXroSubobj::ipv6 {2, "ipv6"};
-const Enum::YLeaf TeXroSubobj::unnumbered {6, "unnumbered"};
-const Enum::YLeaf TeXroSubobj::as {32, "as"};
-const Enum::YLeaf TeXroSubobj::srlg {34, "srlg"};
-const Enum::YLeaf TeXroSubobj::p2p_lsp {36, "p2p-lsp"};
-
-const Enum::YLeaf TePathInvalAction::none {0, "none"};
-const Enum::YLeaf TePathInvalAction::tear {1, "tear"};
-const Enum::YLeaf TePathInvalAction::drop {2, "drop"};
-
-const Enum::YLeaf AdmissionPolicy::reject_all {0, "reject-all"};
-const Enum::YLeaf AdmissionPolicy::allow_all {1, "allow-all"};
-const Enum::YLeaf AdmissionPolicy::reject_huge {2, "reject-huge"};
-const Enum::YLeaf AdmissionPolicy::allow_if_room {3, "allow-if-room"};
-
-const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_unapplicable {0, "mtunnel-fail-reason-unapplicable"};
-const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_shutdown {1, "mtunnel-fail-reason-shutdown"};
-const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_no_destination {2, "mtunnel-fail-reason-no-destination"};
-const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_no_path_option {3, "mtunnel-fail-reason-no-path-option"};
-const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_no_source {4, "mtunnel-fail-reason-no-source"};
-const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_collaborator_disc {5, "mtunnel-fail-reason-collaborator-disc"};
-const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_unmatched_class_type_priority {6, "mtunnel-fail-reason-unmatched-class-type-priority"};
-const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_invalid_bidir_cfg {7, "mtunnel-fail-reason-invalid-bidir-cfg"};
-const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_po_switchover {8, "mtunnel-fail-reason-po-switchover"};
-const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_no_tunnel_id {9, "mtunnel-fail-reason-no-tunnel-id"};
-const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_no_link {10, "mtunnel-fail-reason-no-link"};
-const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_link_shutdown {11, "mtunnel-fail-reason-link-shutdown"};
-const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_link_lmp_down {12, "mtunnel-fail-reason-link-lmp-down"};
-const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_source_destination_same {13, "mtunnel-fail-reason-source-destination-same"};
-const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_otn_no_odu_level {14, "mtunnel-fail-reason-otn-no-odu-level"};
-const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_bidir_assoc_id_missing {15, "mtunnel-fail-reason-bidir-assoc-id-missing"};
-const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_bfdgal_on_unidirectional {16, "mtunnel-fail-reason-bfdgal-on-unidirectional"};
-const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_destination_invalid {17, "mtunnel-fail-reason-destination-invalid"};
-const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_termination_bandwidth_mismatch {18, "mtunnel-fail-reason-termination-bandwidth-mismatch"};
-const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_termination_has_protection {19, "mtunnel-fail-reason-termination-has-protection"};
-const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_termination_has_invalid_src_dest_ifindex {20, "mtunnel-fail-reason-termination-has-invalid-src-dest-ifindex"};
-const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_termination_has_invalid_payload_type {21, "mtunnel-fail-reason-termination-has-invalid-payload-type"};
-
-const Enum::YLeaf TeAcl::acl_type_unknown {0, "acl-type-unknown"};
-const Enum::YLeaf TeAcl::acl_type_access_list {1, "acl-type-access-list"};
-const Enum::YLeaf TeAcl::acl_type_prefix_list {2, "acl-type-prefix-list"};
-const Enum::YLeaf TeAcl::acl_type_unregistered {3, "acl-type-unregistered"};
-
-const Enum::YLeaf TeSigNameAppend::none {0, "none"};
-const Enum::YLeaf TeSigNameAppend::address {1, "address"};
-const Enum::YLeaf TeSigNameAppend::name {2, "name"};
-
-const Enum::YLeaf BandwidthTypeEnum::pool0 {0, "pool0"};
-const Enum::YLeaf BandwidthTypeEnum::pool1 {1, "pool1"};
-const Enum::YLeaf BandwidthTypeEnum::unknown {2, "unknown"};
-
-const Enum::YLeaf TeBfdReversePath::bfd_reverse_path_none {0, "bfd-reverse-path-none"};
-const Enum::YLeaf TeBfdReversePath::bfd_reverse_path_binding_label {1, "bfd-reverse-path-binding-label"};
-
-const Enum::YLeaf TeSchFreq::sch_freq_not_set {0, "sch-freq-not-set"};
-const Enum::YLeaf TeSchFreq::sch_freq_set_once {1, "sch-freq-set-once"};
-const Enum::YLeaf TeSchFreq::sch_freq_set_daily {2, "sch-freq-set-daily"};
-const Enum::YLeaf TeSchFreq::sch_freq_set_weekly {3, "sch-freq-set-weekly"};
-
-const Enum::YLeaf MplsTeBwPool::te_bandwidth_pool0 {0, "te-bandwidth-pool0"};
-const Enum::YLeaf MplsTeBwPool::te_bandwidth_pool1 {1, "te-bandwidth-pool1"};
-const Enum::YLeaf MplsTeBwPool::te_bandwidth_any_pool {2, "te-bandwidth-any-pool"};
-
-const Enum::YLeaf MplsTeMgmtGmplsLabelOrigin::not_set {0, "not-set"};
-const Enum::YLeaf MplsTeMgmtGmplsLabelOrigin::uni_c {1, "uni-c"};
-const Enum::YLeaf MplsTeMgmtGmplsLabelOrigin::uni_n {2, "uni-n"};
-
-const Enum::YLeaf PceSrSid::unknown_segment_id {0, "unknown-segment-id"};
-const Enum::YLeaf PceSrSid::ipv4_node_segment_id {1, "ipv4-node-segment-id"};
-const Enum::YLeaf PceSrSid::ipv4_adjacency_segment_id {2, "ipv4-adjacency-segment-id"};
-
-const Enum::YLeaf MplsTpTunnelSwitchoverTrig::none {0, "none"};
-const Enum::YLeaf MplsTpTunnelSwitchoverTrig::bfd {1, "bfd"};
-const Enum::YLeaf MplsTpTunnelSwitchoverTrig::local_lockout {2, "local-lockout"};
-const Enum::YLeaf MplsTpTunnelSwitchoverTrig::remote_lockout {3, "remote-lockout"};
-const Enum::YLeaf MplsTpTunnelSwitchoverTrig::ais {4, "ais"};
-const Enum::YLeaf MplsTpTunnelSwitchoverTrig::ldi {5, "ldi"};
-const Enum::YLeaf MplsTpTunnelSwitchoverTrig::lkr {6, "lkr"};
-const Enum::YLeaf MplsTpTunnelSwitchoverTrig::link_down {7, "link-down"};
-
-const Enum::YLeaf MplsTeLoadshare::loadshare_equal {0, "loadshare-equal"};
-const Enum::YLeaf MplsTeLoadshare::loadshare_bandwidth_based {1, "loadshare-bandwidth-based"};
-const Enum::YLeaf MplsTeLoadshare::loadshare_configured {2, "loadshare-configured"};
-
-const Enum::YLeaf MplsTpTunnelActiveLsp::working {0, "working"};
-const Enum::YLeaf MplsTpTunnelActiveLsp::protect {1, "protect"};
-const Enum::YLeaf MplsTpTunnelActiveLsp::none {2, "none"};
-
-const Enum::YLeaf TePnrRevertOptions::pnr_optionnot_set {0, "pnr-optionnot-set"};
-const Enum::YLeaf TePnrRevertOptions::pnr_option_revertive {1, "pnr-option-revertive"};
-const Enum::YLeaf TePnrRevertOptions::pnr_option_non_revertive {2, "pnr-option-non-revertive"};
-
-const Enum::YLeaf PceLspAutorouteMetric::none {0, "none"};
-const Enum::YLeaf PceLspAutorouteMetric::relative {1, "relative"};
-const Enum::YLeaf PceLspAutorouteMetric::absolute {2, "absolute"};
 
 const Enum::YLeaf MplsTeBackupStatus::backup_none {0, "backup-none"};
 const Enum::YLeaf MplsTeBackupStatus::backup_unused {1, "backup-unused"};
@@ -24507,71 +24354,44 @@ const Enum::YLeaf MplsTeBackupStatus::backup_next_hop {3, "backup-next-hop"};
 const Enum::YLeaf MplsTeBackupStatus::backup_next_next_hop_srlg {4, "backup-next-next-hop-srlg"};
 const Enum::YLeaf MplsTeBackupStatus::backup_next_hop_srlg {5, "backup-next-hop-srlg"};
 
-const Enum::YLeaf MplsTeMgmtGmplsLabel::not_set {0, "not-set"};
-const Enum::YLeaf MplsTeMgmtGmplsLabel::fixed_wdm {1, "fixed-wdm"};
-const Enum::YLeaf MplsTeMgmtGmplsLabel::fixed_g709otn {2, "fixed-g709otn"};
+const Enum::YLeaf TeSyncPendingReason::current_lspoos {0, "current-lspoos"};
+const Enum::YLeaf TeSyncPendingReason::reopt_lspoos {1, "reopt-lspoos"};
+const Enum::YLeaf TeSyncPendingReason::standby_lspoos {2, "standby-lspoos"};
+const Enum::YLeaf TeSyncPendingReason::standby_reopt_lspoos {3, "standby-reopt-lspoos"};
+const Enum::YLeaf TeSyncPendingReason::restore_lspoos {4, "restore-lspoos"};
+const Enum::YLeaf TeSyncPendingReason::invalid_sync_id {5, "invalid-sync-id"};
+const Enum::YLeaf TeSyncPendingReason::null_pointer {6, "null-pointer"};
+const Enum::YLeaf TeSyncPendingReason::pending_flag {7, "pending-flag"};
+const Enum::YLeaf TeSyncPendingReason::del_from_act_flag {8, "del-from-act-flag"};
+const Enum::YLeaf TeSyncPendingReason::oos_from_act_flag {9, "oos-from-act-flag"};
+const Enum::YLeaf TeSyncPendingReason::unknown {10, "unknown"};
 
-const Enum::YLeaf TeAutoTunExpPathHop::ipv4_address_type {0, "ipv4-address-type"};
-const Enum::YLeaf TeAutoTunExpPathHop::mpls_label_type {1, "mpls-label-type"};
-const Enum::YLeaf TeAutoTunExpPathHop::ipv4_and_label_type {2, "ipv4-and-label-type"};
+const Enum::YLeaf TeSyncNotReadyReason::idt_in_progress {0, "idt-in-progress"};
+const Enum::YLeaf TeSyncNotReadyReason::standby_not_connected {1, "standby-not-connected"};
+const Enum::YLeaf TeSyncNotReadyReason::collaborator_disconnected {2, "collaborator-disconnected"};
+const Enum::YLeaf TeSyncNotReadyReason::collaborator_timeout {3, "collaborator-timeout"};
+const Enum::YLeaf TeSyncNotReadyReason::unknown {4, "unknown"};
 
-const Enum::YLeaf TeVifBfd::bfd_disabled {0, "bfd-disabled"};
-const Enum::YLeaf TeVifBfd::bfd_enabled {1, "bfd-enabled"};
-const Enum::YLeaf TeVifBfd::sbfd_enabled {2, "sbfd-enabled"};
+const Enum::YLeaf TeSyncStatusShow::master_sync_status_show {0, "master-sync-status-show"};
+const Enum::YLeaf TeSyncStatusShow::slave_sync_status_show {1, "slave-sync-status-show"};
 
-const Enum::YLeaf MplsTpTunnelState::admin_down {0, "admin-down"};
-const Enum::YLeaf MplsTpTunnelState::admin_up {1, "admin-up"};
-const Enum::YLeaf MplsTpTunnelState::oper_up {2, "oper-up"};
-const Enum::YLeaf MplsTpTunnelState::oper_down {3, "oper-down"};
+const Enum::YLeaf MplsTeDsteClassStatus::configured {0, "configured"};
+const Enum::YLeaf MplsTeDsteClassStatus::default_ {1, "default"};
+const Enum::YLeaf MplsTeDsteClassStatus::unused {2, "unused"};
 
-const Enum::YLeaf PceTunnelState::tunnel_state_none {0, "tunnel-state-none"};
-const Enum::YLeaf PceTunnelState::tunnel_state_admin_down {1, "tunnel-state-admin-down"};
-const Enum::YLeaf PceTunnelState::tunnel_state_down {2, "tunnel-state-down"};
-const Enum::YLeaf PceTunnelState::tunnel_state_up {3, "tunnel-state-up"};
+const Enum::YLeaf TeProcRole::unknown {0, "unknown"};
+const Enum::YLeaf TeProcRole::v1_active {1, "v1-active"};
+const Enum::YLeaf TeProcRole::v2_active {2, "v2-active"};
+const Enum::YLeaf TeProcRole::v1_standby {3, "v1-standby"};
+const Enum::YLeaf TeProcRole::v2_standby {4, "v2-standby"};
+const Enum::YLeaf TeProcRole::v1_active_post_big_bang {5, "v1-active-post-big-bang"};
+const Enum::YLeaf TeProcRole::v1_standby_post_big_bang {6, "v1-standby-post-big-bang"};
+const Enum::YLeaf TeProcRole::number_of_role {7, "number-of-role"};
 
-const Enum::YLeaf MplsTeSoftPreemptionResolution::soft_preemption_resolution_none {0, "soft-preemption-resolution-none"};
-const Enum::YLeaf MplsTeSoftPreemptionResolution::soft_preemption_resolution_pending {1, "soft-preemption-resolution-pending"};
-const Enum::YLeaf MplsTeSoftPreemptionResolution::soft_preemption_resolution_reopt_completed {2, "soft-preemption-resolution-reopt-completed"};
-const Enum::YLeaf MplsTeSoftPreemptionResolution::soft_preemption_resolution_teardown {3, "soft-preemption-resolution-teardown"};
-const Enum::YLeaf MplsTeSoftPreemptionResolution::soft_preemption_resolution_frr_triggered {4, "soft-preemption-resolution-frr-triggered"};
-const Enum::YLeaf MplsTeSoftPreemptionResolution::soft_preemption_resolution_path_protetion_switchover {5, "soft-preemption-resolution-path-protetion-switchover"};
-
-const Enum::YLeaf MplsTeSoftPreemptionState::soft_preemption_not_pending {0, "soft-preemption-not-pending"};
-const Enum::YLeaf MplsTeSoftPreemptionState::soft_preemption_pending {1, "soft-preemption-pending"};
-
-const Enum::YLeaf GmplsUniMgmtDwdmCs::not_set {0, "not-set"};
-const Enum::YLeaf GmplsUniMgmtDwdmCs::dwdm100g_hz {1, "dwdm100g-hz"};
-const Enum::YLeaf GmplsUniMgmtDwdmCs::dwdm50g_hz {2, "dwdm50g-hz"};
-const Enum::YLeaf GmplsUniMgmtDwdmCs::dwdm25g_hz {3, "dwdm25g-hz"};
-const Enum::YLeaf GmplsUniMgmtDwdmCs::dwdm12g_hz {4, "dwdm12g-hz"};
-const Enum::YLeaf GmplsUniMgmtDwdmCs::dwdm6g_hz {5, "dwdm6g-hz"};
-
-const Enum::YLeaf TeSrSid::srsid_not_set {0, "srsid-not-set"};
-const Enum::YLeaf TeSrSid::srsid_node {1, "srsid-node"};
-const Enum::YLeaf TeSrSid::srsid_adj {2, "srsid-adj"};
-const Enum::YLeaf TeSrSid::srsid_unknown {3, "srsid-unknown"};
-
-const Enum::YLeaf TeS2lSrPathSelection::te_s2l_sr_path_selection_any {0, "te-s2l-sr-path-selection-any"};
-const Enum::YLeaf TeS2lSrPathSelection::te_s2l_sr_path_selection_adj_unprotected {1, "te-s2l-sr-path-selection-adj-unprotected"};
-const Enum::YLeaf TeS2lSrPathSelection::te_s2l_sr_path_selection_adj_protected {2, "te-s2l-sr-path-selection-adj-protected"};
-
-const Enum::YLeaf ResourceProvider::resource_provider_none {0, "resource-provider-none"};
-const Enum::YLeaf ResourceProvider::packet_switch_capable {1, "packet-switch-capable"};
-const Enum::YLeaf ResourceProvider::time_division_multiplex {2, "time-division-multiplex"};
-const Enum::YLeaf ResourceProvider::lambda_switch_capable {3, "lambda-switch-capable"};
-const Enum::YLeaf ResourceProvider::fiber_switch_capable {4, "fiber-switch-capable"};
-const Enum::YLeaf ResourceProvider::g709odu_capable {5, "g709odu-capable"};
-
-const Enum::YLeaf AutoBackupProtection::protection_none {0, "protection-none"};
-const Enum::YLeaf AutoBackupProtection::protection_next_hop {1, "protection-next-hop"};
-const Enum::YLeaf AutoBackupProtection::protection_next_next_hop {2, "protection-next-next-hop"};
-
-const Enum::YLeaf MplsTeFrrState::frr_inactive {0, "frr-inactive"};
-const Enum::YLeaf MplsTeFrrState::frr_active {1, "frr-active"};
-const Enum::YLeaf MplsTeFrrState::frr_ready {2, "frr-ready"};
-
-const Enum::YLeaf MplsTeBfdSessionDownAction1::reopt {0, "reopt"};
-const Enum::YLeaf MplsTeBfdSessionDownAction1::re_setup {1, "re-setup"};
+const Enum::YLeaf TeAcl::acl_type_unknown {0, "acl-type-unknown"};
+const Enum::YLeaf TeAcl::acl_type_access_list {1, "acl-type-access-list"};
+const Enum::YLeaf TeAcl::acl_type_prefix_list {2, "acl-type-prefix-list"};
+const Enum::YLeaf TeAcl::acl_type_unregistered {3, "acl-type-unregistered"};
 
 const Enum::YLeaf MplsTeP2mpTimer::lmrib_restart {0, "lmrib-restart"};
 const Enum::YLeaf MplsTeP2mpTimer::lmrib_recovery {1, "lmrib-recovery"};
@@ -24605,46 +24425,22 @@ const Enum::YLeaf MplsTeP2mpTimer::tunnel_service_binding_sid_allocation_retry {
 const Enum::YLeaf MplsTeP2mpTimer::im_sync_delay {29, "im-sync-delay"};
 const Enum::YLeaf MplsTeP2mpTimer::timer_not_used {30, "timer-not-used"};
 
-const Enum::YLeaf PceState::tcp_close {0, "tcp-close"};
-const Enum::YLeaf PceState::tcp_listen {1, "tcp-listen"};
-const Enum::YLeaf PceState::tcp_connect {2, "tcp-connect"};
-const Enum::YLeaf PceState::pcep_closed {3, "pcep-closed"};
-const Enum::YLeaf PceState::pcep_opening {4, "pcep-opening"};
-const Enum::YLeaf PceState::pcep_open {5, "pcep-open"};
+const Enum::YLeaf MplsTeAfi::ipv4_unicast {0, "ipv4-unicast"};
+const Enum::YLeaf MplsTeAfi::ipv4_multicast {1, "ipv4-multicast"};
+const Enum::YLeaf MplsTeAfi::ipv6_unicast {2, "ipv6-unicast"};
+const Enum::YLeaf MplsTeAfi::ipv6_multicast {3, "ipv6-multicast"};
 
-const Enum::YLeaf TeOduLevel::te_odu_level_not_set {0, "te-odu-level-not-set"};
-const Enum::YLeaf TeOduLevel::te_odu_level_one {1, "te-odu-level-one"};
-const Enum::YLeaf TeOduLevel::te_odu_level_two {2, "te-odu-level-two"};
-const Enum::YLeaf TeOduLevel::te_odu_level_three {3, "te-odu-level-three"};
-const Enum::YLeaf TeOduLevel::te_odu_level_four {4, "te-odu-level-four"};
-const Enum::YLeaf TeOduLevel::te_odu_zero {10, "te-odu-zero"};
-const Enum::YLeaf TeOduLevel::te_odu_level_two_e {11, "te-odu-level-two-e"};
-const Enum::YLeaf TeOduLevel::te_odu_level_flex_cbr {20, "te-odu-level-flex-cbr"};
-const Enum::YLeaf TeOduLevel::te_odu_level_flex_gfpf_resizeable {21, "te-odu-level-flex-gfpf-resizeable"};
-const Enum::YLeaf TeOduLevel::te_odu_level_flex_gfpf_non_resizable {22, "te-odu-level-flex-gfpf-non-resizable"};
-const Enum::YLeaf TeOduLevel::te_odu_level_one_e {23, "te-odu-level-one-e"};
-const Enum::YLeaf TeOduLevel::te_odu_level_one_f {24, "te-odu-level-one-f"};
-const Enum::YLeaf TeOduLevel::te_odu_level_two_f {25, "te-odu-level-two-f"};
-const Enum::YLeaf TeOduLevel::te_odu_level_three_e_one {26, "te-odu-level-three-e-one"};
-const Enum::YLeaf TeOduLevel::te_odu_level_three_e_two {27, "te-odu-level-three-e-two"};
-const Enum::YLeaf TeOduLevel::te_odu_level_c_two {38, "te-odu-level-c-two"};
-const Enum::YLeaf TeOduLevel::te_odu_level_c_three {39, "te-odu-level-c-three"};
-const Enum::YLeaf TeOduLevel::te_odu_level_c_four {40, "te-odu-level-c-four"};
+const Enum::YLeaf MplsTeTunnelAnnounce::announce_type_not_set {0, "announce-type-not-set"};
+const Enum::YLeaf MplsTeTunnelAnnounce::autoroute {1, "autoroute"};
+const Enum::YLeaf MplsTeTunnelAnnounce::forward_adjacency {2, "forward-adjacency"};
 
-const Enum::YLeaf IgpOspfAreaFormat::igp_area_format_number {0, "igp-area-format-number"};
-const Enum::YLeaf IgpOspfAreaFormat::igp_area_format_ip_addr {1, "igp-area-format-ip-addr"};
+const Enum::YLeaf TeTargetAddr::invalid_te_target_type {0, "invalid-te-target-type"};
+const Enum::YLeaf TeTargetAddr::te_target_type_ipv4 {1, "te-target-type-ipv4"};
+const Enum::YLeaf TeTargetAddr::te_target_type_label {2, "te-target-type-label"};
 
-const Enum::YLeaf PceTunPathState::state_none {0, "state-none"};
-const Enum::YLeaf PceTunPathState::state_pending {1, "state-pending"};
-const Enum::YLeaf PceTunPathState::state_received_path {2, "state-received-path"};
-const Enum::YLeaf PceTunPathState::state_no_peer {3, "state-no-peer"};
-const Enum::YLeaf PceTunPathState::state_pcep_down {4, "state-pcep-down"};
-const Enum::YLeaf PceTunPathState::state_received_no_path {5, "state-received-no-path"};
-
-const Enum::YLeaf AutoBackupSrlgMode::srlg_not_set {0, "srlg-not-set"};
-const Enum::YLeaf AutoBackupSrlgMode::srlg_strict {1, "srlg-strict"};
-const Enum::YLeaf AutoBackupSrlgMode::srlg_preferred {2, "srlg-preferred"};
-const Enum::YLeaf AutoBackupSrlgMode::srlg_weighted {3, "srlg-weighted"};
+const Enum::YLeaf FlexLspLockoutOrigination::lockout_origination_none {0, "lockout-origination-none"};
+const Enum::YLeaf FlexLspLockoutOrigination::lockout_origination_local {1, "lockout-origination-local"};
+const Enum::YLeaf FlexLspLockoutOrigination::lockout_origination_remote {2, "lockout-origination-remote"};
 
 const Enum::YLeaf TeRevEroRejectReasons::none {0, "none"};
 const Enum::YLeaf TeRevEroRejectReasons::bad_reverse_ero {1, "bad-reverse-ero"};
@@ -24655,16 +24451,37 @@ const Enum::YLeaf TeRevEroRejectReasons::priority {5, "priority"};
 const Enum::YLeaf TeRevEroRejectReasons::class_type {6, "class-type"};
 const Enum::YLeaf TeRevEroRejectReasons::bad_association {7, "bad-association"};
 
-const Enum::YLeaf TeProtect::protect_type1_plus1_unidir_no_aps {4, "protect-type1-plus1-unidir-no-aps"};
-const Enum::YLeaf TeProtect::protect_type1_plus1_unidir_aps {8, "protect-type1-plus1-unidir-aps"};
-const Enum::YLeaf TeProtect::protect_type1_plus1_bidir_aps {16, "protect-type1-plus1-bidir-aps"};
-const Enum::YLeaf TeProtect::protect_type_not_set {255, "protect-type-not-set"};
+const Enum::YLeaf MtePathOption::none {0, "none"};
+const Enum::YLeaf MtePathOption::dynamic {1, "dynamic"};
+const Enum::YLeaf MtePathOption::explicit_ {2, "explicit"};
+const Enum::YLeaf MtePathOption::no_ero {3, "no-ero"};
+const Enum::YLeaf MtePathOption::segment_routing {4, "segment-routing"};
+const Enum::YLeaf MtePathOption::po_count {5, "po-count"};
 
-const Enum::YLeaf TePathProtProfile::path_prot_profile_type1_plus0 {0, "path-prot-profile-type1-plus0"};
-const Enum::YLeaf TePathProtProfile::path_prot_profile_type1_plus_r {1, "path-prot-profile-type1-plus-r"};
-const Enum::YLeaf TePathProtProfile::path_prot_profile_type1_plus1 {16, "path-prot-profile-type1-plus1"};
-const Enum::YLeaf TePathProtProfile::path_prot_profile_type1_plus1_plus_r {32, "path-prot-profile-type1-plus1-plus-r"};
-const Enum::YLeaf TePathProtProfile::path_prot_profile_type_invalid {255, "path-prot-profile-type-invalid"};
+const Enum::YLeaf MplsTeMgmtGmplsLabelOrigin::not_set {0, "not-set"};
+const Enum::YLeaf MplsTeMgmtGmplsLabelOrigin::uni_c {1, "uni-c"};
+const Enum::YLeaf MplsTeMgmtGmplsLabelOrigin::uni_n {2, "uni-n"};
+
+const Enum::YLeaf MplsTeTunnelState::state_down {0, "state-down"};
+const Enum::YLeaf MplsTeTunnelState::state_up {1, "state-up"};
+const Enum::YLeaf MplsTeTunnelState::state_down_policy {2, "state-down-policy"};
+const Enum::YLeaf MplsTeTunnelState::state_lockout {3, "state-lockout"};
+
+const Enum::YLeaf MplsTeSoftPreemptionResolution::soft_preemption_resolution_none {0, "soft-preemption-resolution-none"};
+const Enum::YLeaf MplsTeSoftPreemptionResolution::soft_preemption_resolution_pending {1, "soft-preemption-resolution-pending"};
+const Enum::YLeaf MplsTeSoftPreemptionResolution::soft_preemption_resolution_reopt_completed {2, "soft-preemption-resolution-reopt-completed"};
+const Enum::YLeaf MplsTeSoftPreemptionResolution::soft_preemption_resolution_teardown {3, "soft-preemption-resolution-teardown"};
+const Enum::YLeaf MplsTeSoftPreemptionResolution::soft_preemption_resolution_frr_triggered {4, "soft-preemption-resolution-frr-triggered"};
+const Enum::YLeaf MplsTeSoftPreemptionResolution::soft_preemption_resolution_path_protetion_switchover {5, "soft-preemption-resolution-path-protetion-switchover"};
+
+const Enum::YLeaf MplsTeIepHop::iep_hop_type_unknown {0, "iep-hop-type-unknown"};
+const Enum::YLeaf MplsTeIepHop::iep_hop_type_strict_next {1, "iep-hop-type-strict-next"};
+const Enum::YLeaf MplsTeIepHop::iep_hop_type_exclude {2, "iep-hop-type-exclude"};
+const Enum::YLeaf MplsTeIepHop::iep_hop_type_exclude_node {3, "iep-hop-type-exclude-node"};
+const Enum::YLeaf MplsTeIepHop::iep_hop_type_exclude_srlg {4, "iep-hop-type-exclude-srlg"};
+const Enum::YLeaf MplsTeIepHop::iep_hop_type_loose_next {5, "iep-hop-type-loose-next"};
+const Enum::YLeaf MplsTeIepHop::iep_hop_type_next {6, "iep-hop-type-next"};
+const Enum::YLeaf MplsTeIepHop::iep_hop_type_share_srlg {7, "iep-hop-type-share-srlg"};
 
 const Enum::YLeaf MplsTePceFailReasons::te_pce_fail_no_reason {0, "te-pce-fail-no-reason"};
 const Enum::YLeaf MplsTePceFailReasons::te_pce_fail_no_pce {1, "te-pce-fail-no-pce"};
@@ -24677,49 +24494,363 @@ const Enum::YLeaf MplsTePceFailReasons::te_pce_fail_bidirectional {7, "te-pce-fa
 const Enum::YLeaf MplsTePceFailReasons::te_pce_fail_no_path {8, "te-pce-fail-no-path"};
 const Enum::YLeaf MplsTePceFailReasons::te_pce_fail_request_timeout {9, "te-pce-fail-request-timeout"};
 
-const Enum::YLeaf MplsTeFrrSharing::sharing_none {0, "sharing-none"};
-const Enum::YLeaf MplsTeFrrSharing::sharing_pri_oi_backup_oi_parent {1, "sharing-pri-oi-backup-oi-parent"};
-const Enum::YLeaf MplsTeFrrSharing::sharing_pri_oi_parent_backup_oi {2, "sharing-pri-oi-parent-backup-oi"};
-const Enum::YLeaf MplsTeFrrSharing::sharing_pri_oi_parent_backup_oi_parent {3, "sharing-pri-oi-parent-backup-oi-parent"};
+const Enum::YLeaf TeAutobwAppRej::application_allowed {0, "application-allowed"};
+const Enum::YLeaf TeAutobwAppRej::auto_bw_disabled {1, "auto-bw-disabled"};
+const Enum::YLeaf TeAutobwAppRej::tunnel_is_down {2, "tunnel-is-down"};
+const Enum::YLeaf TeAutobwAppRej::tunnel_is_frr {3, "tunnel-is-frr"};
+const Enum::YLeaf TeAutobwAppRej::tunnel_is_backup {4, "tunnel-is-backup"};
+const Enum::YLeaf TeAutobwAppRej::tunnel_is_lock_down {5, "tunnel-is-lock-down"};
 
-const Enum::YLeaf TeSrlgCollectRequest::none {0, "none"};
-const Enum::YLeaf TeSrlgCollectRequest::mandatory {1, "mandatory"};
-const Enum::YLeaf TeSrlgCollectRequest::optional {2, "optional"};
+const Enum::YLeaf TeAutobwAppTrigger::application_none {0, "application-none"};
+const Enum::YLeaf TeAutobwAppTrigger::application_periodic {1, "application-periodic"};
+const Enum::YLeaf TeAutobwAppTrigger::application_manual {2, "application-manual"};
+const Enum::YLeaf TeAutobwAppTrigger::application_overflow {3, "application-overflow"};
+const Enum::YLeaf TeAutobwAppTrigger::application_underflow {4, "application-underflow"};
 
-const Enum::YLeaf TeAttributeSetSrPrepend::te_attribute_set_sr_prepend_not_set {0, "te-attribute-set-sr-prepend-not-set"};
-const Enum::YLeaf TeAttributeSetSrPrepend::te_attribute_set_sr_prepend_next_label {1, "te-attribute-set-sr-prepend-next-label"};
-const Enum::YLeaf TeAttributeSetSrPrepend::te_attribute_set_sr_prepend_bgp_nhop {2, "te-attribute-set-sr-prepend-bgp-nhop"};
+const Enum::YLeaf TeHopLimitIgnore::ignore_unknown {0, "ignore-unknown"};
+const Enum::YLeaf TeHopLimitIgnore::ignore_explicit {1, "ignore-explicit"};
+const Enum::YLeaf TeHopLimitIgnore::ignore_pce {2, "ignore-pce"};
 
-const Enum::YLeaf BandwidthStateEnum::bandwidth_held {0, "bandwidth-held"};
-const Enum::YLeaf BandwidthStateEnum::bandwidth_reserved {1, "bandwidth-reserved"};
-const Enum::YLeaf BandwidthStateEnum::bandwidth_unknown {2, "bandwidth-unknown"};
+const Enum::YLeaf MplsTeMetricQualifier::metric_default {0, "metric-default"};
+const Enum::YLeaf MplsTeMetricQualifier::metric_global {1, "metric-global"};
+const Enum::YLeaf MplsTeMetricQualifier::metric_interface {2, "metric-interface"};
 
-const Enum::YLeaf TeAffinityTable::affinity_table_mapping {0, "affinity-table-mapping"};
-const Enum::YLeaf TeAffinityTable::affinity_table_forward_reference {1, "affinity-table-forward-reference"};
-const Enum::YLeaf TeAffinityTable::affinity_table_count {2, "affinity-table-count"};
+const Enum::YLeaf TePathSelectionTiebreaker::min_fill {1, "min-fill"};
+const Enum::YLeaf TePathSelectionTiebreaker::max_fill {2, "max-fill"};
+const Enum::YLeaf TePathSelectionTiebreaker::random {3, "random"};
 
-const Enum::YLeaf MplsTeNode::router {1, "router"};
-const Enum::YLeaf MplsTeNode::network {2, "network"};
+const Enum::YLeaf MplsTeLoadshare::loadshare_equal {0, "loadshare-equal"};
+const Enum::YLeaf MplsTeLoadshare::loadshare_bandwidth_based {1, "loadshare-bandwidth-based"};
+const Enum::YLeaf MplsTeLoadshare::loadshare_configured {2, "loadshare-configured"};
+
+const Enum::YLeaf TeDestinationState::destination_disabled {0, "destination-disabled"};
+const Enum::YLeaf TeDestinationState::destination_down {1, "destination-down"};
+const Enum::YLeaf TeDestinationState::destination_up {2, "destination-up"};
+
+const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_unapplicable {0, "mtunnel-fail-reason-unapplicable"};
+const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_shutdown {1, "mtunnel-fail-reason-shutdown"};
+const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_no_destination {2, "mtunnel-fail-reason-no-destination"};
+const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_no_path_option {3, "mtunnel-fail-reason-no-path-option"};
+const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_no_source {4, "mtunnel-fail-reason-no-source"};
+const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_collaborator_disc {5, "mtunnel-fail-reason-collaborator-disc"};
+const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_unmatched_class_type_priority {6, "mtunnel-fail-reason-unmatched-class-type-priority"};
+const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_invalid_bidir_cfg {7, "mtunnel-fail-reason-invalid-bidir-cfg"};
+const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_po_switchover {8, "mtunnel-fail-reason-po-switchover"};
+const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_no_tunnel_id {9, "mtunnel-fail-reason-no-tunnel-id"};
+const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_no_link {10, "mtunnel-fail-reason-no-link"};
+const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_link_shutdown {11, "mtunnel-fail-reason-link-shutdown"};
+const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_link_lmp_down {12, "mtunnel-fail-reason-link-lmp-down"};
+const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_source_destination_same {13, "mtunnel-fail-reason-source-destination-same"};
+const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_otn_no_odu_level {14, "mtunnel-fail-reason-otn-no-odu-level"};
+const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_bidir_assoc_id_missing {15, "mtunnel-fail-reason-bidir-assoc-id-missing"};
+const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_bfdgal_on_unidirectional {16, "mtunnel-fail-reason-bfdgal-on-unidirectional"};
+const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_destination_invalid {17, "mtunnel-fail-reason-destination-invalid"};
+const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_termination_bandwidth_mismatch {18, "mtunnel-fail-reason-termination-bandwidth-mismatch"};
+const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_termination_has_protection {19, "mtunnel-fail-reason-termination-has-protection"};
+const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_termination_has_invalid_src_dest_ifindex {20, "mtunnel-fail-reason-termination-has-invalid-src-dest-ifindex"};
+const Enum::YLeaf MplsMteTunnelFailReason::mtunnel_fail_reason_termination_has_invalid_payload_type {21, "mtunnel-fail-reason-termination-has-invalid-payload-type"};
+
+const Enum::YLeaf MteTunnelOperState::tunnel_state_oper_unknown {0, "tunnel-state-oper-unknown"};
+const Enum::YLeaf MteTunnelOperState::operational_down {1, "operational-down"};
+const Enum::YLeaf MteTunnelOperState::operational_up {2, "operational-up"};
+
+const Enum::YLeaf MteTunnelAdminState::tunnel_state_admin_unknown {0, "tunnel-state-admin-unknown"};
+const Enum::YLeaf MteTunnelAdminState::admin_shutdown {1, "admin-shutdown"};
+const Enum::YLeaf MteTunnelAdminState::admin_up {2, "admin-up"};
+
+const Enum::YLeaf TeVifBfdEncapMode::ip {0, "ip"};
+const Enum::YLeaf TeVifBfdEncapMode::gal {1, "gal"};
+
+const Enum::YLeaf MplsTeBfdSessionDownAction1::reopt {0, "reopt"};
+const Enum::YLeaf MplsTeBfdSessionDownAction1::re_setup {1, "re-setup"};
+
+const Enum::YLeaf TeLspPathProtectionRole::protection_role_not_set {0, "protection-role-not-set"};
+const Enum::YLeaf TeLspPathProtectionRole::protection_role_working {1, "protection-role-working"};
+const Enum::YLeaf TeLspPathProtectionRole::protection_role_protecting {2, "protection-role-protecting"};
+const Enum::YLeaf TeLspPathProtectionRole::protection_role_pending {3, "protection-role-pending"};
+
+const Enum::YLeaf MteReoptTrigger::no_trigger {0, "no-trigger"};
+const Enum::YLeaf MteReoptTrigger::timer_trigger {1, "timer-trigger"};
+const Enum::YLeaf MteReoptTrigger::bandwidth_change_trigger {2, "bandwidth-change-trigger"};
+const Enum::YLeaf MteReoptTrigger::auto_bandwidth_overflow_trigger {3, "auto-bandwidth-overflow-trigger"};
+const Enum::YLeaf MteReoptTrigger::auto_bandwidth_underflow_trigger {4, "auto-bandwidth-underflow-trigger"};
+const Enum::YLeaf MteReoptTrigger::auto_bandwidth_adjustment_trigger {5, "auto-bandwidth-adjustment-trigger"};
+const Enum::YLeaf MteReoptTrigger::metric_type_change_trigger {6, "metric-type-change-trigger"};
+const Enum::YLeaf MteReoptTrigger::user_trigger {7, "user-trigger"};
+const Enum::YLeaf MteReoptTrigger::frr_trigger {8, "frr-trigger"};
+const Enum::YLeaf MteReoptTrigger::remerge_error_trigger {9, "remerge-error-trigger"};
+const Enum::YLeaf MteReoptTrigger::preferred_path_trigger {10, "preferred-path-trigger"};
+const Enum::YLeaf MteReoptTrigger::preferred_tree_trigger {11, "preferred-tree-trigger"};
+const Enum::YLeaf MteReoptTrigger::due_to_maximum_metric {12, "due-to-maximum-metric"};
+const Enum::YLeaf MteReoptTrigger::path_option_switchover_trigger {13, "path-option-switchover-trigger"};
+const Enum::YLeaf MteReoptTrigger::path_protection_switchover_trigger {14, "path-protection-switchover-trigger"};
+const Enum::YLeaf MteReoptTrigger::reroute_sticky_path_trigger {15, "reroute-sticky-path-trigger"};
+const Enum::YLeaf MteReoptTrigger::iep_enable_reoptimization_trigger {16, "iep-enable-reoptimization-trigger"};
+const Enum::YLeaf MteReoptTrigger::affinity_path_verification_fail_trigger {17, "affinity-path-verification-fail-trigger"};
+const Enum::YLeaf MteReoptTrigger::cost_limit_path_verification_fail_trigger {18, "cost-limit-path-verification-fail-trigger"};
+const Enum::YLeaf MteReoptTrigger::delay_limit_path_verification_fail_trigger {19, "delay-limit-path-verification-fail-trigger"};
+const Enum::YLeaf MteReoptTrigger::soft_preemption_trigger {20, "soft-preemption-trigger"};
+const Enum::YLeaf MteReoptTrigger::iep_changed {21, "iep-changed"};
+const Enum::YLeaf MteReoptTrigger::po_changed {22, "po-changed"};
+const Enum::YLeaf MteReoptTrigger::dest_changed {23, "dest-changed"};
+const Enum::YLeaf MteReoptTrigger::reopt_try_to_force_it {24, "reopt-try-to-force-it"};
+const Enum::YLeaf MteReoptTrigger::topology_change_trigger {25, "topology-change-trigger"};
+const Enum::YLeaf MteReoptTrigger::reopt_link_up_event {26, "reopt-link-up-event"};
+const Enum::YLeaf MteReoptTrigger::bfd_session_down_trigger {27, "bfd-session-down-trigger"};
+const Enum::YLeaf MteReoptTrigger::reverse_assoc_s2l_received_trigger {28, "reverse-assoc-s2l-received-trigger"};
+const Enum::YLeaf MteReoptTrigger::gmpls_uni_multilayer_trigger {29, "gmpls-uni-multilayer-trigger"};
+const Enum::YLeaf MteReoptTrigger::gmpls_uni_user_trigger {30, "gmpls-uni-user-trigger"};
+const Enum::YLeaf MteReoptTrigger::path_selection_tiebreaker_change_trigger {31, "path-selection-tiebreaker-change-trigger"};
+const Enum::YLeaf MteReoptTrigger::sr_egress_path_change_trigger {32, "sr-egress-path-change-trigger"};
+const Enum::YLeaf MteReoptTrigger::overload_bit_trigger {33, "overload-bit-trigger"};
+const Enum::YLeaf MteReoptTrigger::pce_trigger {34, "pce-trigger"};
+const Enum::YLeaf MteReoptTrigger::lockout_metric_trigger {35, "lockout-metric-trigger"};
+const Enum::YLeaf MteReoptTrigger::bfd_session_config_change_trigger {36, "bfd-session-config-change-trigger"};
+const Enum::YLeaf MteReoptTrigger::higher_priority_po_change_trigger {37, "higher-priority-po-change-trigger"};
+const Enum::YLeaf MteReoptTrigger::sr_area_spf_support_change_trigger {38, "sr-area-spf-support-change-trigger"};
+const Enum::YLeaf MteReoptTrigger::trigger_not_used {39, "trigger-not-used"};
+
+const Enum::YLeaf MplsTeReoptDecisionReason::decision_reason_none {0, "decision-reason-none"};
+const Enum::YLeaf MplsTeReoptDecisionReason::not_superset {1, "not-superset"};
+const Enum::YLeaf MplsTeReoptDecisionReason::superset {2, "superset"};
+const Enum::YLeaf MplsTeReoptDecisionReason::lsp_frr_active {3, "lsp-frr-active"};
+const Enum::YLeaf MplsTeReoptDecisionReason::bandwidth_change {4, "bandwidth-change"};
+const Enum::YLeaf MplsTeReoptDecisionReason::metric_type_change {5, "metric-type-change"};
+const Enum::YLeaf MplsTeReoptDecisionReason::better_path_option_indexes {6, "better-path-option-indexes"};
+const Enum::YLeaf MplsTeReoptDecisionReason::inter_area_preferred_path_exists {7, "inter-area-preferred-path-exists"};
+const Enum::YLeaf MplsTeReoptDecisionReason::inter_area_preferred_tree_exists {8, "inter-area-preferred-tree-exists"};
+const Enum::YLeaf MplsTeReoptDecisionReason::worse_path_option_indexes {9, "worse-path-option-indexes"};
+const Enum::YLeaf MplsTeReoptDecisionReason::better_cumulative_metric {10, "better-cumulative-metric"};
+const Enum::YLeaf MplsTeReoptDecisionReason::worse_cumulative_metric {11, "worse-cumulative-metric"};
+const Enum::YLeaf MplsTeReoptDecisionReason::identical {12, "identical"};
+const Enum::YLeaf MplsTeReoptDecisionReason::no_s2_ls {13, "no-s2-ls"};
+const Enum::YLeaf MplsTeReoptDecisionReason::no_current_lsp {14, "no-current-lsp"};
+const Enum::YLeaf MplsTeReoptDecisionReason::user_path_option_switchover {15, "user-path-option-switchover"};
+const Enum::YLeaf MplsTeReoptDecisionReason::better_hops {16, "better-hops"};
+const Enum::YLeaf MplsTeReoptDecisionReason::worse_hops {17, "worse-hops"};
+const Enum::YLeaf MplsTeReoptDecisionReason::pce_force {18, "pce-force"};
+const Enum::YLeaf MplsTeReoptDecisionReason::affinity_changed {19, "affinity-changed"};
+const Enum::YLeaf MplsTeReoptDecisionReason::cost_limit {20, "cost-limit"};
+const Enum::YLeaf MplsTeReoptDecisionReason::sig_timeout {21, "sig-timeout"};
+const Enum::YLeaf MplsTeReoptDecisionReason::not_superset_inst_timer_expired {22, "not-superset-inst-timer-expired"};
+const Enum::YLeaf MplsTeReoptDecisionReason::path_verifiction_failed {23, "path-verifiction-failed"};
+const Enum::YLeaf MplsTeReoptDecisionReason::soft_preemption_recovery {24, "soft-preemption-recovery"};
+const Enum::YLeaf MplsTeReoptDecisionReason::iep_changed {25, "iep-changed"};
+const Enum::YLeaf MplsTeReoptDecisionReason::po_changed {26, "po-changed"};
+const Enum::YLeaf MplsTeReoptDecisionReason::dest_changed {27, "dest-changed"};
+const Enum::YLeaf MplsTeReoptDecisionReason::better_igp_area {28, "better-igp-area"};
+const Enum::YLeaf MplsTeReoptDecisionReason::worse_igp_area {29, "worse-igp-area"};
+const Enum::YLeaf MplsTeReoptDecisionReason::better_bandwidth_load_balancing {30, "better-bandwidth-load-balancing"};
+const Enum::YLeaf MplsTeReoptDecisionReason::worse_bandwidth_load_balancing {31, "worse-bandwidth-load-balancing"};
+const Enum::YLeaf MplsTeReoptDecisionReason::bfd_session_down {32, "bfd-session-down"};
+const Enum::YLeaf MplsTeReoptDecisionReason::auto_pcc_reopt {33, "auto-pcc-reopt"};
+const Enum::YLeaf MplsTeReoptDecisionReason::sr_egress_path_changed {34, "sr-egress-path-changed"};
+const Enum::YLeaf MplsTeReoptDecisionReason::overload_bit_set {35, "overload-bit-set"};
+const Enum::YLeaf MplsTeReoptDecisionReason::better_diversity {36, "better-diversity"};
+const Enum::YLeaf MplsTeReoptDecisionReason::worse_diversity {37, "worse-diversity"};
+const Enum::YLeaf MplsTeReoptDecisionReason::bfd_session_type_changed {38, "bfd-session-type-changed"};
+const Enum::YLeaf MplsTeReoptDecisionReason::lsp_drop_mode {39, "lsp-drop-mode"};
+const Enum::YLeaf MplsTeReoptDecisionReason::strict_spf {40, "strict-spf"};
+const Enum::YLeaf MplsTeReoptDecisionReason::delay_limit {41, "delay-limit"};
+const Enum::YLeaf MplsTeReoptDecisionReason::lockout_metric {42, "lockout-metric"};
+const Enum::YLeaf MplsTeReoptDecisionReason::intra_area {43, "intra-area"};
+const Enum::YLeaf MplsTeReoptDecisionReason::clear_sticky {44, "clear-sticky"};
+const Enum::YLeaf MplsTeReoptDecisionReason::not_used {45, "not-used"};
+
+const Enum::YLeaf MplsTeLspWrapState::lsp_wrap_not_ready {0, "lsp-wrap-not-ready"};
+const Enum::YLeaf MplsTeLspWrapState::lsp_wrap_active {1, "lsp-wrap-active"};
+const Enum::YLeaf MplsTeLspWrapState::lsp_wrap_ready {2, "lsp-wrap-ready"};
+
+const Enum::YLeaf TeSrSid::srsid_not_set {0, "srsid-not-set"};
+const Enum::YLeaf TeSrSid::srsid_node {1, "srsid-node"};
+const Enum::YLeaf TeSrSid::srsid_adj {2, "srsid-adj"};
+const Enum::YLeaf TeSrSid::srsid_unknown {3, "srsid-unknown"};
+
+const Enum::YLeaf TeAssociationTieRole::none {0, "none"};
+const Enum::YLeaf TeAssociationTieRole::master {1, "master"};
+const Enum::YLeaf TeAssociationTieRole::slave {2, "slave"};
+
+const Enum::YLeaf TeVifBfd::bfd_disabled {0, "bfd-disabled"};
+const Enum::YLeaf TeVifBfd::bfd_enabled {1, "bfd-enabled"};
+const Enum::YLeaf TeVifBfd::sbfd_enabled {2, "sbfd-enabled"};
+
+const Enum::YLeaf TeBfdLspSessionState::bfd_over_lsp_session_state_none {0, "bfd-over-lsp-session-state-none"};
+const Enum::YLeaf TeBfdLspSessionState::bfd_over_lsp_session_state_created {1, "bfd-over-lsp-session-state-created"};
+const Enum::YLeaf TeBfdLspSessionState::bfd_over_lsp_session_state_up {2, "bfd-over-lsp-session-state-up"};
+const Enum::YLeaf TeBfdLspSessionState::bfd_over_lsp_session_state_down {3, "bfd-over-lsp-session-state-down"};
+const Enum::YLeaf TeBfdLspSessionState::bfd_over_lsp_session_state_admin_down {4, "bfd-over-lsp-session-state-admin-down"};
+const Enum::YLeaf TeBfdLspSessionState::bfd_over_lsp_session_state_deleted {5, "bfd-over-lsp-session-state-deleted"};
+const Enum::YLeaf TeBfdLspSessionState::bfd_over_lsp_session_state_create_failed {6, "bfd-over-lsp-session-state-create-failed"};
+
+const Enum::YLeaf GmplsUniMgmtDwdmCs::not_set {0, "not-set"};
+const Enum::YLeaf GmplsUniMgmtDwdmCs::dwdm100g_hz {1, "dwdm100g-hz"};
+const Enum::YLeaf GmplsUniMgmtDwdmCs::dwdm50g_hz {2, "dwdm50g-hz"};
+const Enum::YLeaf GmplsUniMgmtDwdmCs::dwdm25g_hz {3, "dwdm25g-hz"};
+const Enum::YLeaf GmplsUniMgmtDwdmCs::dwdm12g_hz {4, "dwdm12g-hz"};
+const Enum::YLeaf GmplsUniMgmtDwdmCs::dwdm6g_hz {5, "dwdm6g-hz"};
+
+const Enum::YLeaf GmplsUniMgmtWdmGrid::not_set {0, "not-set"};
+const Enum::YLeaf GmplsUniMgmtWdmGrid::dwdm {1, "dwdm"};
+const Enum::YLeaf GmplsUniMgmtWdmGrid::cwdm {2, "cwdm"};
+
+const Enum::YLeaf MplsTeMgmtGmplsLabel::not_set {0, "not-set"};
+const Enum::YLeaf MplsTeMgmtGmplsLabel::fixed_wdm {1, "fixed-wdm"};
+const Enum::YLeaf MplsTeMgmtGmplsLabel::fixed_g709otn {2, "fixed-g709otn"};
+
+const Enum::YLeaf MplsTeSoftPreemptionState::soft_preemption_not_pending {0, "soft-preemption-not-pending"};
+const Enum::YLeaf MplsTeSoftPreemptionState::soft_preemption_pending {1, "soft-preemption-pending"};
+
+const Enum::YLeaf MplsTeTunnelsSignalingStatus::down {0, "down"};
+const Enum::YLeaf MplsTeTunnelsSignalingStatus::recovering {1, "recovering"};
+const Enum::YLeaf MplsTeTunnelsSignalingStatus::recovered {2, "recovered"};
+const Enum::YLeaf MplsTeTunnelsSignalingStatus::connected {3, "connected"};
+const Enum::YLeaf MplsTeTunnelsSignalingStatus::disabled {4, "disabled"};
+const Enum::YLeaf MplsTeTunnelsSignalingStatus::proceeding {5, "proceeding"};
+const Enum::YLeaf MplsTeTunnelsSignalingStatus::wait_bfd_session_up {6, "wait-bfd-session-up"};
+const Enum::YLeaf MplsTeTunnelsSignalingStatus::wait_sr_segment_path_up {7, "wait-sr-segment-path-up"};
+const Enum::YLeaf MplsTeTunnelsSignalingStatus::wait_local_label {8, "wait-local-label"};
+const Enum::YLeaf MplsTeTunnelsSignalingStatus::wait_local_label_rewrite {9, "wait-local-label-rewrite"};
+
+const Enum::YLeaf MplsTeFrrState::frr_inactive {0, "frr-inactive"};
+const Enum::YLeaf MplsTeFrrState::frr_active {1, "frr-active"};
+const Enum::YLeaf MplsTeFrrState::frr_ready {2, "frr-ready"};
+
+const Enum::YLeaf TeControllerState::notready {0, "notready"};
+const Enum::YLeaf TeControllerState::admin_down {1, "admin-down"};
+const Enum::YLeaf TeControllerState::down {2, "down"};
+const Enum::YLeaf TeControllerState::shutdown {3, "shutdown"};
+const Enum::YLeaf TeControllerState::error_disabled {4, "error-disabled"};
+const Enum::YLeaf TeControllerState::up {5, "up"};
+const Enum::YLeaf TeControllerState::unknown {6, "unknown"};
+
+const Enum::YLeaf TeMgmtGenericFspec::te_generic_fspec_type_g709otn {0, "te-generic-fspec-type-g709otn"};
 
 const Enum::YLeaf TeMgmtGenericTspec::te_generic_tspec_type_g709otn {0, "te-generic-tspec-type-g709otn"};
 
-const Enum::YLeaf LspOorState::lsp_oor_green {0, "lsp-oor-green"};
-const Enum::YLeaf LspOorState::lsp_oor_yellow {1, "lsp-oor-yellow"};
-const Enum::YLeaf LspOorState::lsp_oor_red {2, "lsp-oor-red"};
+const Enum::YLeaf RsvpMgmtRroSubobj::ipv4rro_type {1, "ipv4rro-type"};
+const Enum::YLeaf RsvpMgmtRroSubobj::label_rro_type {3, "label-rro-type"};
+const Enum::YLeaf RsvpMgmtRroSubobj::unnumbered_rro_type {4, "unnumbered-rro-type"};
+const Enum::YLeaf RsvpMgmtRroSubobj::srlg_rro_type {34, "srlg-rro-type"};
 
-const Enum::YLeaf HwOorState::oor_green {0, "oor-green"};
-const Enum::YLeaf HwOorState::oor_yellow {1, "oor-yellow"};
-const Enum::YLeaf HwOorState::oor_red {2, "oor-red"};
+const Enum::YLeaf RsvpMgmtEroSubobjStatus::rsvp_mgmt_ero_status_not_available {0, "rsvp-mgmt-ero-status-not-available"};
+const Enum::YLeaf RsvpMgmtEroSubobjStatus::rsvp_mgmt_ero_status_available {1, "rsvp-mgmt-ero-status-available"};
+const Enum::YLeaf RsvpMgmtEroSubobjStatus::rsvp_mgmt_ero_status_bw_not_available {2, "rsvp-mgmt-ero-status-bw-not-available"};
+
+const Enum::YLeaf RsvpMgmtEroSubobj::rsvp_mgmt_ero_type_ipv4 {1, "rsvp-mgmt-ero-type-ipv4"};
+const Enum::YLeaf RsvpMgmtEroSubobj::rsvp_mgmt_ero_type_un_num {4, "rsvp-mgmt-ero-type-un-num"};
 
 const Enum::YLeaf MplsTeMetric::metric_not_set {0, "metric-not-set"};
 const Enum::YLeaf MplsTeMetric::metric_igp {1, "metric-igp"};
 const Enum::YLeaf MplsTeMetric::metric_te {2, "metric-te"};
 const Enum::YLeaf MplsTeMetric::metric_delay {3, "metric-delay"};
 
-const Enum::YLeaf TpLinkState::down {0, "down"};
-const Enum::YLeaf TpLinkState::admin_down {1, "admin-down"};
-const Enum::YLeaf TpLinkState::up {2, "up"};
-const Enum::YLeaf TpLinkState::unknown {3, "unknown"};
+const Enum::YLeaf TePathInvalAction::none {0, "none"};
+const Enum::YLeaf TePathInvalAction::tear {1, "tear"};
+const Enum::YLeaf TePathInvalAction::drop {2, "drop"};
+
+const Enum::YLeaf TeS2lSrPathSelection::te_s2l_sr_path_selection_any {0, "te-s2l-sr-path-selection-any"};
+const Enum::YLeaf TeS2lSrPathSelection::te_s2l_sr_path_selection_adj_unprotected {1, "te-s2l-sr-path-selection-adj-unprotected"};
+const Enum::YLeaf TeS2lSrPathSelection::te_s2l_sr_path_selection_adj_protected {2, "te-s2l-sr-path-selection-adj-protected"};
+
+const Enum::YLeaf TeBfdReversePath::bfd_reverse_path_none {0, "bfd-reverse-path-none"};
+const Enum::YLeaf TeBfdReversePath::bfd_reverse_path_binding_label {1, "bfd-reverse-path-binding-label"};
+
+const Enum::YLeaf TePceDisjoint::none {0, "none"};
+const Enum::YLeaf TePceDisjoint::link {1, "link"};
+const Enum::YLeaf TePceDisjoint::node {2, "node"};
+const Enum::YLeaf TePceDisjoint::srlg {3, "srlg"};
+
+const Enum::YLeaf TunnelAttributeSet::tunnel_attribute_set_none {0, "tunnel-attribute-set-none"};
+const Enum::YLeaf TunnelAttributeSet::tunnel_attribute_set_static {1, "tunnel-attribute-set-static"};
+const Enum::YLeaf TunnelAttributeSet::tunnel_attribute_set_path_option {2, "tunnel-attribute-set-path-option"};
+const Enum::YLeaf TunnelAttributeSet::tunnel_attribute_set_not_used {3, "tunnel-attribute-set-not-used"};
+const Enum::YLeaf TunnelAttributeSet::tunnel_attribute_set_auto_backup {4, "tunnel-attribute-set-auto-backup"};
+const Enum::YLeaf TunnelAttributeSet::tunnel_attribute_set_auto_mesh {5, "tunnel-attribute-set-auto-mesh"};
+const Enum::YLeaf TunnelAttributeSet::tunnel_attribute_set_xro {6, "tunnel-attribute-set-xro"};
+const Enum::YLeaf TunnelAttributeSet::tunnel_attribute_set_p2mpte {7, "tunnel-attribute-set-p2mpte"};
+const Enum::YLeaf TunnelAttributeSet::tunnel_attribute_aps_pp {8, "tunnel-attribute-aps-pp"};
+const Enum::YLeaf TunnelAttributeSet::tunnel_attribute_set_p2p_te {9, "tunnel-attribute-set-p2p-te"};
+
+const Enum::YLeaf MplsTePathoption::path_option_unknown {0, "path-option-unknown"};
+const Enum::YLeaf MplsTePathoption::path_option_dynamic {1, "path-option-dynamic"};
+const Enum::YLeaf MplsTePathoption::path_option_explicit_name {2, "path-option-explicit-name"};
+const Enum::YLeaf MplsTePathoption::path_option_explicit_id {3, "path-option-explicit-id"};
+const Enum::YLeaf MplsTePathoption::path_option_pce {4, "path-option-pce"};
+const Enum::YLeaf MplsTePathoption::path_option_no_ero {5, "path-option-no-ero"};
+const Enum::YLeaf MplsTePathoption::path_option_segment_routing {6, "path-option-segment-routing"};
+
+const Enum::YLeaf MplsTeBwPool::te_bandwidth_pool0 {0, "te-bandwidth-pool0"};
+const Enum::YLeaf MplsTeBwPool::te_bandwidth_pool1 {1, "te-bandwidth-pool1"};
+const Enum::YLeaf MplsTeBwPool::te_bandwidth_any_pool {2, "te-bandwidth-any-pool"};
+
+const Enum::YLeaf HwOorState::oor_green {0, "oor-green"};
+const Enum::YLeaf HwOorState::oor_yellow {1, "oor-yellow"};
+const Enum::YLeaf HwOorState::oor_red {2, "oor-red"};
+
+const Enum::YLeaf TeAffinityTable::affinity_table_mapping {0, "affinity-table-mapping"};
+const Enum::YLeaf TeAffinityTable::affinity_table_forward_reference {1, "affinity-table-forward-reference"};
+const Enum::YLeaf TeAffinityTable::affinity_table_count {2, "affinity-table-count"};
+
+const Enum::YLeaf TeServTunClient::te_serv_auto_tun_client_invalid {0, "te-serv-auto-tun-client-invalid"};
+const Enum::YLeaf TeServTunClient::te_serv_p2mp_tun_client_mvpn {1, "te-serv-p2mp-tun-client-mvpn"};
+const Enum::YLeaf TeServTunClient::te_serv_p2mp_tun_client_vpls {2, "te-serv-p2mp-tun-client-vpls"};
+const Enum::YLeaf TeServTunClient::te_serv_p2mp_tun_client_mvpn6 {3, "te-serv-p2mp-tun-client-mvpn6"};
+const Enum::YLeaf TeServTunClient::te_serv_p2p_tun_client_bgp {4, "te-serv-p2p-tun-client-bgp"};
+const Enum::YLeaf TeServTunClient::te_serv_p2p_tun_client_staticv4 {5, "te-serv-p2p-tun-client-staticv4"};
+const Enum::YLeaf TeServTunClient::te_serv_p2p_tun_client_staticv6 {6, "te-serv-p2p-tun-client-staticv6"};
+const Enum::YLeaf TeServTunClient::te_serv_p2p_tun_client_isis {7, "te-serv-p2p-tun-client-isis"};
+const Enum::YLeaf TeServTunClient::te_serv_p2p_tun_client_ospf {8, "te-serv-p2p-tun-client-ospf"};
+const Enum::YLeaf TeServTunClient::te_serv_auto_tun_client_count {9, "te-serv-auto-tun-client-count"};
+
+const Enum::YLeaf IgpteAaMetricMode::metric_mode_none {0, "metric-mode-none"};
+const Enum::YLeaf IgpteAaMetricMode::relative {1, "relative"};
+const Enum::YLeaf IgpteAaMetricMode::absolute {2, "absolute"};
+const Enum::YLeaf IgpteAaMetricMode::constant {3, "constant"};
+
+const Enum::YLeaf TeOduCapability::not_set {0, "not-set"};
+const Enum::YLeaf TeOduCapability::fixed {1, "fixed"};
+const Enum::YLeaf TeOduCapability::flex {2, "flex"};
+
+const Enum::YLeaf RrrDsteMigrationMode::rrr_dste_mode_none {0, "rrr-dste-mode-none"};
+const Enum::YLeaf RrrDsteMigrationMode::rrr_dste_mode_prestandard {1, "rrr-dste-mode-prestandard"};
+const Enum::YLeaf RrrDsteMigrationMode::rrr_dste_mode_standard {3, "rrr-dste-mode-standard"};
+
+const Enum::YLeaf IgpteLibBwModel::rdm {0, "rdm"};
+const Enum::YLeaf IgpteLibBwModel::mam {1, "mam"};
+const Enum::YLeaf IgpteLibBwModel::not_set {2, "not-set"};
+
+const Enum::YLeaf IgpSubnet::igp_subnet_type_none {0, "igp-subnet-type-none"};
+const Enum::YLeaf IgpSubnet::p2p {1, "p2p"};
+const Enum::YLeaf IgpSubnet::broadcast {2, "broadcast"};
+const Enum::YLeaf IgpSubnet::non_broadcast_multiaccess {3, "non-broadcast-multiaccess"};
+const Enum::YLeaf IgpSubnet::p2mp {4, "p2mp"};
+const Enum::YLeaf IgpSubnet::loopback {5, "loopback"};
+
+const Enum::YLeaf IgpOspfAreaFormat::igp_area_format_number {0, "igp-area-format-number"};
+const Enum::YLeaf IgpOspfAreaFormat::igp_area_format_ip_addr {1, "igp-area-format-ip-addr"};
+
+const Enum::YLeaf IgpProtocol::none {0, "none"};
+const Enum::YLeaf IgpProtocol::isis {1, "isis"};
+const Enum::YLeaf IgpProtocol::ospf {2, "ospf"};
+
+const Enum::YLeaf MplsTeUni::none {0, "none"};
+const Enum::YLeaf MplsTeUni::xc {1, "xc"};
+const Enum::YLeaf MplsTeUni::term {2, "term"};
+
+const Enum::YLeaf MplsTeTermination::none {0, "none"};
+const Enum::YLeaf MplsTeTermination::ether {1, "ether"};
+
+const Enum::YLeaf TeMeshgroup::meshgroup_type_automesh {0, "meshgroup-type-automesh"};
+const Enum::YLeaf TeMeshgroup::meshgroup_type_onehop {1, "meshgroup-type-onehop"};
+
+const Enum::YLeaf AutoBackupSrlgMode::srlg_not_set {0, "srlg-not-set"};
+const Enum::YLeaf AutoBackupSrlgMode::srlg_strict {1, "srlg-strict"};
+const Enum::YLeaf AutoBackupSrlgMode::srlg_preferred {2, "srlg-preferred"};
+const Enum::YLeaf AutoBackupSrlgMode::srlg_weighted {3, "srlg-weighted"};
+
+const Enum::YLeaf AutoBackupProtection::protection_none {0, "protection-none"};
+const Enum::YLeaf AutoBackupProtection::protection_next_hop {1, "protection-next-hop"};
+const Enum::YLeaf AutoBackupProtection::protection_next_next_hop {2, "protection-next-next-hop"};
 
 const Enum::YLeaf TeP2mpS2lDeletionSubcause::no_subcause {0, "no-subcause"};
 const Enum::YLeaf TeP2mpS2lDeletionSubcause::cleanup_req {1, "cleanup-req"};
@@ -24964,36 +25095,11 @@ const Enum::YLeaf TeP2mpS2lDeletionSubcause::lsp_wrap_rewrite_error {239, "lsp-w
 const Enum::YLeaf TeP2mpS2lDeletionSubcause::transit_lsp_out_of_resources {240, "transit-lsp-out-of-resources"};
 const Enum::YLeaf TeP2mpS2lDeletionSubcause::path_protection_configuration_change {241, "path-protection-configuration-change"};
 const Enum::YLeaf TeP2mpS2lDeletionSubcause::better_standby_path {242, "better-standby-path"};
-const Enum::YLeaf TeP2mpS2lDeletionSubcause::path_protection_non_revertive_config_changed {243, "path-protection-non-revertive-config-changed"};
-const Enum::YLeaf TeP2mpS2lDeletionSubcause::fsm_sc_must_be_last {244, "fsm-sc-must-be-last"};
-
-const Enum::YLeaf TeProcRole::unknown {0, "unknown"};
-const Enum::YLeaf TeProcRole::v1_active {1, "v1-active"};
-const Enum::YLeaf TeProcRole::v2_active {2, "v2-active"};
-const Enum::YLeaf TeProcRole::v1_standby {3, "v1-standby"};
-const Enum::YLeaf TeProcRole::v2_standby {4, "v2-standby"};
-const Enum::YLeaf TeProcRole::v1_active_post_big_bang {5, "v1-active-post-big-bang"};
-const Enum::YLeaf TeProcRole::v1_standby_post_big_bang {6, "v1-standby-post-big-bang"};
-const Enum::YLeaf TeProcRole::number_of_role {7, "number-of-role"};
-
-const Enum::YLeaf TeControllerState::notready {0, "notready"};
-const Enum::YLeaf TeControllerState::admin_down {1, "admin-down"};
-const Enum::YLeaf TeControllerState::down {2, "down"};
-const Enum::YLeaf TeControllerState::shutdown {3, "shutdown"};
-const Enum::YLeaf TeControllerState::error_disabled {4, "error-disabled"};
-const Enum::YLeaf TeControllerState::up {5, "up"};
-const Enum::YLeaf TeControllerState::unknown {6, "unknown"};
-
-const Enum::YLeaf MtePathOption::none {0, "none"};
-const Enum::YLeaf MtePathOption::dynamic {1, "dynamic"};
-const Enum::YLeaf MtePathOption::explicit_ {2, "explicit"};
-const Enum::YLeaf MtePathOption::no_ero {3, "no-ero"};
-const Enum::YLeaf MtePathOption::segment_routing {4, "segment-routing"};
-const Enum::YLeaf MtePathOption::po_count {5, "po-count"};
-
-const Enum::YLeaf MplsTePathSelectionMetric::igp {1, "igp"};
-const Enum::YLeaf MplsTePathSelectionMetric::te {2, "te"};
-const Enum::YLeaf MplsTePathSelectionMetric::delay {4, "delay"};
+const Enum::YLeaf TeP2mpS2lDeletionSubcause::path_option_config_change {243, "path-option-config-change"};
+const Enum::YLeaf TeP2mpS2lDeletionSubcause::path_protection_non_revertive_config_changed {244, "path-protection-non-revertive-config-changed"};
+const Enum::YLeaf TeP2mpS2lDeletionSubcause::manually_triggered_non_revertive_recovery {245, "manually-triggered-non-revertive-recovery"};
+const Enum::YLeaf TeP2mpS2lDeletionSubcause::remote_node_triggered_non_revertive_recovery {246, "remote-node-triggered-non-revertive-recovery"};
+const Enum::YLeaf TeP2mpS2lDeletionSubcause::fsm_sc_must_be_last {247, "fsm-sc-must-be-last"};
 
 const Enum::YLeaf TeP2mpS2lDeletionCause::no_cause {0, "no-cause"};
 const Enum::YLeaf TeP2mpS2lDeletionCause::hpath_cr_err {1, "hpath-cr-err"};
@@ -25060,160 +25166,118 @@ const Enum::YLeaf TeP2mpS2lDeletionCause::lsp_wrap_act_err {61, "lsp-wrap-act-er
 const Enum::YLeaf TeP2mpS2lDeletionCause::lsp_wrap_rw_err {62, "lsp-wrap-rw-err"};
 const Enum::YLeaf TeP2mpS2lDeletionCause::fsm_cause_must_be_last {63, "fsm-cause-must-be-last"};
 
-const Enum::YLeaf TePathSelectionTiebreaker::min_fill {1, "min-fill"};
-const Enum::YLeaf TePathSelectionTiebreaker::max_fill {2, "max-fill"};
-const Enum::YLeaf TePathSelectionTiebreaker::random {3, "random"};
+const Enum::YLeaf TePpDiversity::diversity_none {0, "diversity-none"};
+const Enum::YLeaf TePpDiversity::link {1, "link"};
+const Enum::YLeaf TePpDiversity::node {2, "node"};
+const Enum::YLeaf TePpDiversity::node_link {3, "node-link"};
+const Enum::YLeaf TePpDiversity::srlg {4, "srlg"};
+const Enum::YLeaf TePpDiversity::node_srlg {5, "node-srlg"};
+const Enum::YLeaf TePpDiversity::node_link_srlg {6, "node-link-srlg"};
+const Enum::YLeaf TePpDiversity::diversity_sticky {7, "diversity-sticky"};
+const Enum::YLeaf TePpDiversity::diversity_user {8, "diversity-user"};
+const Enum::YLeaf TePpDiversity::diversity_reverse_ero {9, "diversity-reverse-ero"};
 
-const Enum::YLeaf MplsTeTunnelAnnounce::announce_type_not_set {0, "announce-type-not-set"};
-const Enum::YLeaf MplsTeTunnelAnnounce::autoroute {1, "autoroute"};
-const Enum::YLeaf MplsTeTunnelAnnounce::forward_adjacency {2, "forward-adjacency"};
+const Enum::YLeaf TeSrlgCollectRequest::none {0, "none"};
+const Enum::YLeaf TeSrlgCollectRequest::mandatory {1, "mandatory"};
+const Enum::YLeaf TeSrlgCollectRequest::optional {2, "optional"};
 
-const Enum::YLeaf GmplsUniMgmtWdmGrid::not_set {0, "not-set"};
-const Enum::YLeaf GmplsUniMgmtWdmGrid::dwdm {1, "dwdm"};
-const Enum::YLeaf GmplsUniMgmtWdmGrid::cwdm {2, "cwdm"};
-
-const Enum::YLeaf MplsTeAfi::ipv4_unicast {0, "ipv4-unicast"};
-const Enum::YLeaf MplsTeAfi::ipv4_multicast {1, "ipv4-multicast"};
-const Enum::YLeaf MplsTeAfi::ipv6_unicast {2, "ipv6-unicast"};
-const Enum::YLeaf MplsTeAfi::ipv6_multicast {3, "ipv6-multicast"};
-
-const Enum::YLeaf IgpSubnet::igp_subnet_type_none {0, "igp-subnet-type-none"};
-const Enum::YLeaf IgpSubnet::p2p {1, "p2p"};
-const Enum::YLeaf IgpSubnet::broadcast {2, "broadcast"};
-const Enum::YLeaf IgpSubnet::non_broadcast_multiaccess {3, "non-broadcast-multiaccess"};
-const Enum::YLeaf IgpSubnet::p2mp {4, "p2mp"};
-const Enum::YLeaf IgpSubnet::loopback {5, "loopback"};
-
-const Enum::YLeaf MteTunnelOperState::tunnel_state_oper_unknown {0, "tunnel-state-oper-unknown"};
-const Enum::YLeaf MteTunnelOperState::operational_down {1, "operational-down"};
-const Enum::YLeaf MteTunnelOperState::operational_up {2, "operational-up"};
-
-const Enum::YLeaf BandwidthAccountingCollection::rsvp_te {0, "rsvp-te"};
-const Enum::YLeaf BandwidthAccountingCollection::segment_routing {1, "segment-routing"};
-
-const Enum::YLeaf TeServTunClient::te_serv_auto_tun_client_invalid {0, "te-serv-auto-tun-client-invalid"};
-const Enum::YLeaf TeServTunClient::te_serv_p2mp_tun_client_mvpn {1, "te-serv-p2mp-tun-client-mvpn"};
-const Enum::YLeaf TeServTunClient::te_serv_p2mp_tun_client_vpls {2, "te-serv-p2mp-tun-client-vpls"};
-const Enum::YLeaf TeServTunClient::te_serv_p2mp_tun_client_mvpn6 {3, "te-serv-p2mp-tun-client-mvpn6"};
-const Enum::YLeaf TeServTunClient::te_serv_p2p_tun_client_bgp {4, "te-serv-p2p-tun-client-bgp"};
-const Enum::YLeaf TeServTunClient::te_serv_p2p_tun_client_staticv4 {5, "te-serv-p2p-tun-client-staticv4"};
-const Enum::YLeaf TeServTunClient::te_serv_p2p_tun_client_staticv6 {6, "te-serv-p2p-tun-client-staticv6"};
-const Enum::YLeaf TeServTunClient::te_serv_p2p_tun_client_isis {7, "te-serv-p2p-tun-client-isis"};
-const Enum::YLeaf TeServTunClient::te_serv_p2p_tun_client_ospf {8, "te-serv-p2p-tun-client-ospf"};
-const Enum::YLeaf TeServTunClient::te_serv_auto_tun_client_count {9, "te-serv-auto-tun-client-count"};
-
-const Enum::YLeaf MplsTePath::not_set {0, "not-set"};
-const Enum::YLeaf MplsTePath::dynamic {1, "dynamic"};
-const Enum::YLeaf MplsTePath::explicit_name {3, "explicit-name"};
-const Enum::YLeaf MplsTePath::explicit_id {4, "explicit-id"};
-const Enum::YLeaf MplsTePath::no_ero {5, "no-ero"};
-const Enum::YLeaf MplsTePath::segment_routing {6, "segment-routing"};
-
-const Enum::YLeaf TeS2lOutputRwExplicitNull::tes2l_output_rw_exp_null {0, "tes2l-output-rw-exp-null"};
-const Enum::YLeaf TeS2lOutputRwExplicitNull::tes2l_output_rw_exp_null_v4 {1, "tes2l-output-rw-exp-null-v4"};
-const Enum::YLeaf TeS2lOutputRwExplicitNull::tes2l_output_rw_exp_null_v6 {2, "tes2l-output-rw-exp-null-v6"};
-
-const Enum::YLeaf RsvpMgmtEroSubobjStatus::rsvp_mgmt_ero_status_not_available {0, "rsvp-mgmt-ero-status-not-available"};
-const Enum::YLeaf RsvpMgmtEroSubobjStatus::rsvp_mgmt_ero_status_available {1, "rsvp-mgmt-ero-status-available"};
-const Enum::YLeaf RsvpMgmtEroSubobjStatus::rsvp_mgmt_ero_status_bw_not_available {2, "rsvp-mgmt-ero-status-bw-not-available"};
-
-const Enum::YLeaf TeHopLimitIgnore::ignore_unknown {0, "ignore-unknown"};
-const Enum::YLeaf TeHopLimitIgnore::ignore_explicit {1, "ignore-explicit"};
-const Enum::YLeaf TeHopLimitIgnore::ignore_pce {2, "ignore-pce"};
-
-const Enum::YLeaf MplsTeReoptDecisionReason::decision_reason_none {0, "decision-reason-none"};
-const Enum::YLeaf MplsTeReoptDecisionReason::not_superset {1, "not-superset"};
-const Enum::YLeaf MplsTeReoptDecisionReason::superset {2, "superset"};
-const Enum::YLeaf MplsTeReoptDecisionReason::lsp_frr_active {3, "lsp-frr-active"};
-const Enum::YLeaf MplsTeReoptDecisionReason::bandwidth_change {4, "bandwidth-change"};
-const Enum::YLeaf MplsTeReoptDecisionReason::metric_type_change {5, "metric-type-change"};
-const Enum::YLeaf MplsTeReoptDecisionReason::better_path_option_indexes {6, "better-path-option-indexes"};
-const Enum::YLeaf MplsTeReoptDecisionReason::inter_area_preferred_path_exists {7, "inter-area-preferred-path-exists"};
-const Enum::YLeaf MplsTeReoptDecisionReason::inter_area_preferred_tree_exists {8, "inter-area-preferred-tree-exists"};
-const Enum::YLeaf MplsTeReoptDecisionReason::worse_path_option_indexes {9, "worse-path-option-indexes"};
-const Enum::YLeaf MplsTeReoptDecisionReason::better_cumulative_metric {10, "better-cumulative-metric"};
-const Enum::YLeaf MplsTeReoptDecisionReason::worse_cumulative_metric {11, "worse-cumulative-metric"};
-const Enum::YLeaf MplsTeReoptDecisionReason::identical {12, "identical"};
-const Enum::YLeaf MplsTeReoptDecisionReason::no_s2_ls {13, "no-s2-ls"};
-const Enum::YLeaf MplsTeReoptDecisionReason::no_current_lsp {14, "no-current-lsp"};
-const Enum::YLeaf MplsTeReoptDecisionReason::user_path_option_switchover {15, "user-path-option-switchover"};
-const Enum::YLeaf MplsTeReoptDecisionReason::better_hops {16, "better-hops"};
-const Enum::YLeaf MplsTeReoptDecisionReason::worse_hops {17, "worse-hops"};
-const Enum::YLeaf MplsTeReoptDecisionReason::pce_force {18, "pce-force"};
-const Enum::YLeaf MplsTeReoptDecisionReason::affinity_changed {19, "affinity-changed"};
-const Enum::YLeaf MplsTeReoptDecisionReason::cost_limit {20, "cost-limit"};
-const Enum::YLeaf MplsTeReoptDecisionReason::sig_timeout {21, "sig-timeout"};
-const Enum::YLeaf MplsTeReoptDecisionReason::not_superset_inst_timer_expired {22, "not-superset-inst-timer-expired"};
-const Enum::YLeaf MplsTeReoptDecisionReason::path_verifiction_failed {23, "path-verifiction-failed"};
-const Enum::YLeaf MplsTeReoptDecisionReason::soft_preemption_recovery {24, "soft-preemption-recovery"};
-const Enum::YLeaf MplsTeReoptDecisionReason::iep_changed {25, "iep-changed"};
-const Enum::YLeaf MplsTeReoptDecisionReason::po_changed {26, "po-changed"};
-const Enum::YLeaf MplsTeReoptDecisionReason::dest_changed {27, "dest-changed"};
-const Enum::YLeaf MplsTeReoptDecisionReason::better_igp_area {28, "better-igp-area"};
-const Enum::YLeaf MplsTeReoptDecisionReason::worse_igp_area {29, "worse-igp-area"};
-const Enum::YLeaf MplsTeReoptDecisionReason::better_bandwidth_load_balancing {30, "better-bandwidth-load-balancing"};
-const Enum::YLeaf MplsTeReoptDecisionReason::worse_bandwidth_load_balancing {31, "worse-bandwidth-load-balancing"};
-const Enum::YLeaf MplsTeReoptDecisionReason::bfd_session_down {32, "bfd-session-down"};
-const Enum::YLeaf MplsTeReoptDecisionReason::auto_pcc_reopt {33, "auto-pcc-reopt"};
-const Enum::YLeaf MplsTeReoptDecisionReason::sr_egress_path_changed {34, "sr-egress-path-changed"};
-const Enum::YLeaf MplsTeReoptDecisionReason::overload_bit_set {35, "overload-bit-set"};
-const Enum::YLeaf MplsTeReoptDecisionReason::better_diversity {36, "better-diversity"};
-const Enum::YLeaf MplsTeReoptDecisionReason::worse_diversity {37, "worse-diversity"};
-const Enum::YLeaf MplsTeReoptDecisionReason::bfd_session_type_changed {38, "bfd-session-type-changed"};
-const Enum::YLeaf MplsTeReoptDecisionReason::lsp_drop_mode {39, "lsp-drop-mode"};
-const Enum::YLeaf MplsTeReoptDecisionReason::strict_spf {40, "strict-spf"};
-const Enum::YLeaf MplsTeReoptDecisionReason::delay_limit {41, "delay-limit"};
-const Enum::YLeaf MplsTeReoptDecisionReason::lockout_metric {42, "lockout-metric"};
-const Enum::YLeaf MplsTeReoptDecisionReason::intra_area {43, "intra-area"};
-const Enum::YLeaf MplsTeReoptDecisionReason::not_used {44, "not-used"};
-
-const Enum::YLeaf TeAutobwAppTrigger::application_none {0, "application-none"};
-const Enum::YLeaf TeAutobwAppTrigger::application_periodic {1, "application-periodic"};
-const Enum::YLeaf TeAutobwAppTrigger::application_manual {2, "application-manual"};
-const Enum::YLeaf TeAutobwAppTrigger::application_overflow {3, "application-overflow"};
-const Enum::YLeaf TeAutobwAppTrigger::application_underflow {4, "application-underflow"};
-
-const Enum::YLeaf TeDestinationState::destination_disabled {0, "destination-disabled"};
-const Enum::YLeaf TeDestinationState::destination_down {1, "destination-down"};
-const Enum::YLeaf TeDestinationState::destination_up {2, "destination-up"};
-
-const Enum::YLeaf MplsTeIepHop::iep_hop_type_unknown {0, "iep-hop-type-unknown"};
-const Enum::YLeaf MplsTeIepHop::iep_hop_type_strict_next {1, "iep-hop-type-strict-next"};
-const Enum::YLeaf MplsTeIepHop::iep_hop_type_exclude {2, "iep-hop-type-exclude"};
-const Enum::YLeaf MplsTeIepHop::iep_hop_type_exclude_node {3, "iep-hop-type-exclude-node"};
-const Enum::YLeaf MplsTeIepHop::iep_hop_type_exclude_srlg {4, "iep-hop-type-exclude-srlg"};
-const Enum::YLeaf MplsTeIepHop::iep_hop_type_loose_next {5, "iep-hop-type-loose-next"};
-const Enum::YLeaf MplsTeIepHop::iep_hop_type_next {6, "iep-hop-type-next"};
-const Enum::YLeaf MplsTeIepHop::iep_hop_type_share_srlg {7, "iep-hop-type-share-srlg"};
-
-const Enum::YLeaf TunnelStateEnum::tunnel_state_unknown {0, "tunnel-state-unknown"};
-const Enum::YLeaf TunnelStateEnum::new_ {1, "new"};
-const Enum::YLeaf TunnelStateEnum::preempting {2, "preempting"};
-const Enum::YLeaf TunnelStateEnum::admitting {3, "admitting"};
-const Enum::YLeaf TunnelStateEnum::half_admitted {4, "half-admitted"};
-const Enum::YLeaf TunnelStateEnum::admitted {5, "admitted"};
-const Enum::YLeaf TunnelStateEnum::reservation_admitting {6, "reservation-admitting"};
-const Enum::YLeaf TunnelStateEnum::reservation_half_admitted {7, "reservation-half-admitted"};
-const Enum::YLeaf TunnelStateEnum::reservation_admitted {8, "reservation-admitted"};
-
-const Enum::YLeaf MplsTeTunnelsSignalingStatus::down {0, "down"};
-const Enum::YLeaf MplsTeTunnelsSignalingStatus::recovering {1, "recovering"};
-const Enum::YLeaf MplsTeTunnelsSignalingStatus::recovered {2, "recovered"};
-const Enum::YLeaf MplsTeTunnelsSignalingStatus::connected {3, "connected"};
-const Enum::YLeaf MplsTeTunnelsSignalingStatus::disabled {4, "disabled"};
-const Enum::YLeaf MplsTeTunnelsSignalingStatus::proceeding {5, "proceeding"};
-const Enum::YLeaf MplsTeTunnelsSignalingStatus::wait_bfd_session_up {6, "wait-bfd-session-up"};
-const Enum::YLeaf MplsTeTunnelsSignalingStatus::wait_sr_segment_path_up {7, "wait-sr-segment-path-up"};
-const Enum::YLeaf MplsTeTunnelsSignalingStatus::wait_local_label {8, "wait-local-label"};
-const Enum::YLeaf MplsTeTunnelsSignalingStatus::wait_local_label_rewrite {9, "wait-local-label-rewrite"};
+const Enum::YLeaf TeOduLevel::te_odu_level_not_set {0, "te-odu-level-not-set"};
+const Enum::YLeaf TeOduLevel::te_odu_level_one {1, "te-odu-level-one"};
+const Enum::YLeaf TeOduLevel::te_odu_level_two {2, "te-odu-level-two"};
+const Enum::YLeaf TeOduLevel::te_odu_level_three {3, "te-odu-level-three"};
+const Enum::YLeaf TeOduLevel::te_odu_level_four {4, "te-odu-level-four"};
+const Enum::YLeaf TeOduLevel::te_odu_zero {10, "te-odu-zero"};
+const Enum::YLeaf TeOduLevel::te_odu_level_two_e {11, "te-odu-level-two-e"};
+const Enum::YLeaf TeOduLevel::te_odu_level_flex_cbr {20, "te-odu-level-flex-cbr"};
+const Enum::YLeaf TeOduLevel::te_odu_level_flex_gfpf_resizeable {21, "te-odu-level-flex-gfpf-resizeable"};
+const Enum::YLeaf TeOduLevel::te_odu_level_flex_gfpf_non_resizable {22, "te-odu-level-flex-gfpf-non-resizable"};
+const Enum::YLeaf TeOduLevel::te_odu_level_one_e {23, "te-odu-level-one-e"};
+const Enum::YLeaf TeOduLevel::te_odu_level_one_f {24, "te-odu-level-one-f"};
+const Enum::YLeaf TeOduLevel::te_odu_level_two_f {25, "te-odu-level-two-f"};
+const Enum::YLeaf TeOduLevel::te_odu_level_three_e_one {26, "te-odu-level-three-e-one"};
+const Enum::YLeaf TeOduLevel::te_odu_level_three_e_two {27, "te-odu-level-three-e-two"};
+const Enum::YLeaf TeOduLevel::te_odu_level_c_two {38, "te-odu-level-c-two"};
+const Enum::YLeaf TeOduLevel::te_odu_level_c_three {39, "te-odu-level-c-three"};
+const Enum::YLeaf TeOduLevel::te_odu_level_c_four {40, "te-odu-level-c-four"};
 
 const Enum::YLeaf TeAddr::not_set {0, "not-set"};
 const Enum::YLeaf TeAddr::ipv4 {1, "ipv4"};
 const Enum::YLeaf TeAddr::ipv4_unnumbered {2, "ipv4-unnumbered"};
 
-const Enum::YLeaf MplsTeBwLimit::bandwidth_limited {0, "bandwidth-limited"};
-const Enum::YLeaf MplsTeBwLimit::bandwidth_unlimited {1, "bandwidth-unlimited"};
-const Enum::YLeaf MplsTeBwLimit::bandwidth_none {2, "bandwidth-none"};
+const Enum::YLeaf MplsTeLspMode::mpls_te_lsp_mode_not_set {0, "mpls-te-lsp-mode-not-set"};
+const Enum::YLeaf MplsTeLspMode::mpls_te_lsp_mode_current {1, "mpls-te-lsp-mode-current"};
+const Enum::YLeaf MplsTeLspMode::mpls_te_lsp_mode_reopt {2, "mpls-te-lsp-mode-reopt"};
+const Enum::YLeaf MplsTeLspMode::mpls_te_lsp_mode_clean {3, "mpls-te-lsp-mode-clean"};
+const Enum::YLeaf MplsTeLspMode::mpls_te_lsp_mode_standby {4, "mpls-te-lsp-mode-standby"};
+const Enum::YLeaf MplsTeLspMode::mpls_te_lsp_mode_pp_clean {5, "mpls-te-lsp-mode-pp-clean"};
+const Enum::YLeaf MplsTeLspMode::mpls_te_lsp_mode_restore {6, "mpls-te-lsp-mode-restore"};
+const Enum::YLeaf MplsTeLspMode::mpls_te_lsp_mode_reopt_standby {7, "mpls-te-lsp-mode-reopt-standby"};
+
+const Enum::YLeaf TeAttributeSetSrPrepend::te_attribute_set_sr_prepend_not_set {0, "te-attribute-set-sr-prepend-not-set"};
+const Enum::YLeaf TeAttributeSetSrPrepend::te_attribute_set_sr_prepend_next_label {1, "te-attribute-set-sr-prepend-next-label"};
+const Enum::YLeaf TeAttributeSetSrPrepend::te_attribute_set_sr_prepend_bgp_nhop {2, "te-attribute-set-sr-prepend-bgp-nhop"};
+
+const Enum::YLeaf TeRestorationStyle::restoration_style_not_set {0, "restoration-style-not-set"};
+const Enum::YLeaf TeRestorationStyle::restoration_style_keep_failed_lsp {1, "restoration-style-keep-failed-lsp"};
+const Enum::YLeaf TeRestorationStyle::restoration_style_delete_failed_lsp {2, "restoration-style-delete-failed-lsp"};
+
+const Enum::YLeaf TePathProtProfile::path_prot_profile_type1_plus0 {0, "path-prot-profile-type1-plus0"};
+const Enum::YLeaf TePathProtProfile::path_prot_profile_type1_plus_r {1, "path-prot-profile-type1-plus-r"};
+const Enum::YLeaf TePathProtProfile::path_prot_profile_type1_plus1 {16, "path-prot-profile-type1-plus1"};
+const Enum::YLeaf TePathProtProfile::path_prot_profile_type1_plus1_plus_r {32, "path-prot-profile-type1-plus1-plus-r"};
+const Enum::YLeaf TePathProtProfile::path_prot_profile_type_invalid {255, "path-prot-profile-type-invalid"};
+
+const Enum::YLeaf TeSchFreq::sch_freq_not_set {0, "sch-freq-not-set"};
+const Enum::YLeaf TeSchFreq::sch_freq_set_once {1, "sch-freq-set-once"};
+const Enum::YLeaf TeSchFreq::sch_freq_set_daily {2, "sch-freq-set-daily"};
+const Enum::YLeaf TeSchFreq::sch_freq_set_weekly {3, "sch-freq-set-weekly"};
+
+const Enum::YLeaf TePnrRevertOptions::pnr_optionnot_set {0, "pnr-optionnot-set"};
+const Enum::YLeaf TePnrRevertOptions::pnr_option_revertive {1, "pnr-option-revertive"};
+const Enum::YLeaf TePnrRevertOptions::pnr_option_non_revertive {2, "pnr-option-non-revertive"};
+
+const Enum::YLeaf TeProtect::protect_type1_plus1_unidir_no_aps {4, "protect-type1-plus1-unidir-no-aps"};
+const Enum::YLeaf TeProtect::protect_type1_plus1_unidir_aps {8, "protect-type1-plus1-unidir-aps"};
+const Enum::YLeaf TeProtect::protect_type1_plus1_bidir_aps {16, "protect-type1-plus1-bidir-aps"};
+const Enum::YLeaf TeProtect::protect_type_not_set {255, "protect-type-not-set"};
+
+const Enum::YLeaf TeApsSncMode::snc_mode_not_set {0, "snc-mode-not-set"};
+const Enum::YLeaf TeApsSncMode::snc_mode_n {1, "snc-mode-n"};
+const Enum::YLeaf TeApsSncMode::snc_mode_i {2, "snc-mode-i"};
+const Enum::YLeaf TeApsSncMode::snc_mode_s {3, "snc-mode-s"};
+
+const Enum::YLeaf TeXroExclusion::mandatory {0, "mandatory"};
+const Enum::YLeaf TeXroExclusion::best_effort {1, "best-effort"};
+
+const Enum::YLeaf TeXroAttribute::interface {0, "interface"};
+const Enum::YLeaf TeXroAttribute::node {1, "node"};
+const Enum::YLeaf TeXroAttribute::srl_gs {2, "srl-gs"};
+
+const Enum::YLeaf TeXroSubobj::ipv4 {1, "ipv4"};
+const Enum::YLeaf TeXroSubobj::ipv6 {2, "ipv6"};
+const Enum::YLeaf TeXroSubobj::unnumbered {6, "unnumbered"};
+const Enum::YLeaf TeXroSubobj::as {32, "as"};
+const Enum::YLeaf TeXroSubobj::srlg {34, "srlg"};
+const Enum::YLeaf TeXroSubobj::p2p_lsp {36, "p2p-lsp"};
+
+const Enum::YLeaf TeSigNameAppend::none {0, "none"};
+const Enum::YLeaf TeSigNameAppend::address {1, "address"};
+const Enum::YLeaf TeSigNameAppend::name {2, "name"};
+
+const Enum::YLeaf MplsTeLsp::mpls_te_lsp_type_not_set {0, "mpls-te-lsp-type-not-set"};
+const Enum::YLeaf MplsTeLsp::mpls_te_lsp_type_p2p {1, "mpls-te-lsp-type-p2p"};
+const Enum::YLeaf MplsTeLsp::mpls_te_lsp_type_p2mp {2, "mpls-te-lsp-type-p2mp"};
+const Enum::YLeaf MplsTeLsp::mpls_te_lsp_type_gmpls_ouni {3, "mpls-te-lsp-type-gmpls-ouni"};
+const Enum::YLeaf MplsTeLsp::mpls_te_lsp_type_gmpls_nni {4, "mpls-te-lsp-type-gmpls-nni"};
+const Enum::YLeaf MplsTeLsp::mpls_te_lsp_type_p2p_bidir {5, "mpls-te-lsp-type-p2p-bidir"};
+const Enum::YLeaf MplsTeLsp::mpls_te_lsp_type_gmpls_tp {6, "mpls-te-lsp-type-gmpls-tp"};
+const Enum::YLeaf MplsTeLsp::mpls_te_lsp_type_gmpls_nni_otn {7, "mpls-te-lsp-type-gmpls-nni-otn"};
+const Enum::YLeaf MplsTeLsp::mpls_te_lsp_type_segment_routing_p2p {8, "mpls-te-lsp-type-segment-routing-p2p"};
+
+const Enum::YLeaf MplsTeTunnelRole::tunnel_unknown {0, "tunnel-unknown"};
+const Enum::YLeaf MplsTeTunnelRole::tunnel_head {1, "tunnel-head"};
+const Enum::YLeaf MplsTeTunnelRole::tunnel_mid {2, "tunnel-mid"};
+const Enum::YLeaf MplsTeTunnelRole::tunnel_tail {3, "tunnel-tail"};
 
 const Enum::YLeaf MplsLibC::mpls_lib_c_type_null {0, "mpls-lib-c-type-null"};
 const Enum::YLeaf MplsLibC::mpls_lib_c_type_ipv4 {1, "mpls-lib-c-type-ipv4"};
@@ -25226,75 +25290,32 @@ const Enum::YLeaf MplsLibC::mpls_lib_c_type_ipv4_tp_tunnel {15, "mpls-lib-c-type
 const Enum::YLeaf MplsLibC::mpls_lib_c_type_ipv6_tp_tunnel {16, "mpls-lib-c-type-ipv6-tp-tunnel"};
 const Enum::YLeaf MplsLibC::mpls_lib_c_type_p2p_binding_label {17, "mpls-lib-c-type-p2p-binding-label"};
 
-const Enum::YLeaf MplsTeAttrSet::not_used {0, "not-used"};
-const Enum::YLeaf MplsTeAttrSet::static_ {1, "static"};
-const Enum::YLeaf MplsTeAttrSet::lsp {2, "lsp"};
-const Enum::YLeaf MplsTeAttrSet::unassigned {3, "unassigned"};
-const Enum::YLeaf MplsTeAttrSet::auto_backup {4, "auto-backup"};
-const Enum::YLeaf MplsTeAttrSet::auto_mesh {5, "auto-mesh"};
-const Enum::YLeaf MplsTeAttrSet::xro {6, "xro"};
-const Enum::YLeaf MplsTeAttrSet::p2mp_te {7, "p2mp-te"};
-const Enum::YLeaf MplsTeAttrSet::otn_pp {8, "otn-pp"};
-const Enum::YLeaf MplsTeAttrSet::p2p_te {9, "p2p-te"};
+const Enum::YLeaf PceTunnelState::tunnel_state_none {0, "tunnel-state-none"};
+const Enum::YLeaf PceTunnelState::tunnel_state_admin_down {1, "tunnel-state-admin-down"};
+const Enum::YLeaf PceTunnelState::tunnel_state_down {2, "tunnel-state-down"};
+const Enum::YLeaf PceTunnelState::tunnel_state_up {3, "tunnel-state-up"};
 
-const Enum::YLeaf TePceDisjoint::none {0, "none"};
-const Enum::YLeaf TePceDisjoint::link {1, "link"};
-const Enum::YLeaf TePceDisjoint::node {2, "node"};
-const Enum::YLeaf TePceDisjoint::srlg {3, "srlg"};
+const Enum::YLeaf PceTunPathState::state_none {0, "state-none"};
+const Enum::YLeaf PceTunPathState::state_pending {1, "state-pending"};
+const Enum::YLeaf PceTunPathState::state_received_path {2, "state-received-path"};
+const Enum::YLeaf PceTunPathState::state_no_peer {3, "state-no-peer"};
+const Enum::YLeaf PceTunPathState::state_pcep_down {4, "state-pcep-down"};
+const Enum::YLeaf PceTunPathState::state_received_no_path {5, "state-received-no-path"};
 
-const Enum::YLeaf IgpteAaMetricMode::metric_mode_none {0, "metric-mode-none"};
-const Enum::YLeaf IgpteAaMetricMode::relative {1, "relative"};
-const Enum::YLeaf IgpteAaMetricMode::absolute {2, "absolute"};
-const Enum::YLeaf IgpteAaMetricMode::constant {3, "constant"};
+const Enum::YLeaf PceState::tcp_close {0, "tcp-close"};
+const Enum::YLeaf PceState::tcp_listen {1, "tcp-listen"};
+const Enum::YLeaf PceState::tcp_connect {2, "tcp-connect"};
+const Enum::YLeaf PceState::pcep_closed {3, "pcep-closed"};
+const Enum::YLeaf PceState::pcep_opening {4, "pcep-opening"};
+const Enum::YLeaf PceState::pcep_open {5, "pcep-open"};
 
-const Enum::YLeaf TeXroExclusion::mandatory {0, "mandatory"};
-const Enum::YLeaf TeXroExclusion::best_effort {1, "best-effort"};
+const Enum::YLeaf PceLspAutorouteMetric::none {0, "none"};
+const Enum::YLeaf PceLspAutorouteMetric::relative {1, "relative"};
+const Enum::YLeaf PceLspAutorouteMetric::absolute {2, "absolute"};
 
-const Enum::YLeaf RsvpMgmtRroSubobj::ipv4rro_type {1, "ipv4rro-type"};
-const Enum::YLeaf RsvpMgmtRroSubobj::label_rro_type {3, "label-rro-type"};
-const Enum::YLeaf RsvpMgmtRroSubobj::unnumbered_rro_type {4, "unnumbered-rro-type"};
-const Enum::YLeaf RsvpMgmtRroSubobj::srlg_rro_type {34, "srlg-rro-type"};
-
-const Enum::YLeaf TpMidLspStatus::up {0, "up"};
-const Enum::YLeaf TpMidLspStatus::down {1, "down"};
-
-const Enum::YLeaf MplsTeLsp::mpls_te_lsp_type_not_set {0, "mpls-te-lsp-type-not-set"};
-const Enum::YLeaf MplsTeLsp::mpls_te_lsp_type_p2p {1, "mpls-te-lsp-type-p2p"};
-const Enum::YLeaf MplsTeLsp::mpls_te_lsp_type_p2mp {2, "mpls-te-lsp-type-p2mp"};
-const Enum::YLeaf MplsTeLsp::mpls_te_lsp_type_gmpls_ouni {3, "mpls-te-lsp-type-gmpls-ouni"};
-const Enum::YLeaf MplsTeLsp::mpls_te_lsp_type_gmpls_nni {4, "mpls-te-lsp-type-gmpls-nni"};
-const Enum::YLeaf MplsTeLsp::mpls_te_lsp_type_p2p_bidir {5, "mpls-te-lsp-type-p2p-bidir"};
-const Enum::YLeaf MplsTeLsp::mpls_te_lsp_type_gmpls_tp {6, "mpls-te-lsp-type-gmpls-tp"};
-const Enum::YLeaf MplsTeLsp::mpls_te_lsp_type_gmpls_nni_otn {7, "mpls-te-lsp-type-gmpls-nni-otn"};
-const Enum::YLeaf MplsTeLsp::mpls_te_lsp_type_segment_routing_p2p {8, "mpls-te-lsp-type-segment-routing-p2p"};
-
-const Enum::YLeaf MplsTeIgpProtocol::none {0, "none"};
-const Enum::YLeaf MplsTeIgpProtocol::isis {1, "isis"};
-const Enum::YLeaf MplsTeIgpProtocol::ospf {2, "ospf"};
-
-const Enum::YLeaf MplsTeNextHop::egress_resolve {0, "egress-resolve"};
-const Enum::YLeaf MplsTeNextHop::autoroute_dest {1, "autoroute-dest"};
-
-const Enum::YLeaf TeTargetAddr::invalid_te_target_type {0, "invalid-te-target-type"};
-const Enum::YLeaf TeTargetAddr::te_target_type_ipv4 {1, "te-target-type-ipv4"};
-const Enum::YLeaf TeTargetAddr::te_target_type_label {2, "te-target-type-label"};
-
-const Enum::YLeaf TeRestorationStyle::restoration_style_not_set {0, "restoration-style-not-set"};
-const Enum::YLeaf TeRestorationStyle::restoration_style_keep_failed_lsp {1, "restoration-style-keep-failed-lsp"};
-const Enum::YLeaf TeRestorationStyle::restoration_style_delete_failed_lsp {2, "restoration-style-delete-failed-lsp"};
-
-const Enum::YLeaf MplsTeDsteClassStatus::configured {0, "configured"};
-const Enum::YLeaf MplsTeDsteClassStatus::default_ {1, "default"};
-const Enum::YLeaf MplsTeDsteClassStatus::unused {2, "unused"};
-
-const Enum::YLeaf MplsTeTunnelRole::tunnel_unknown {0, "tunnel-unknown"};
-const Enum::YLeaf MplsTeTunnelRole::tunnel_head {1, "tunnel-head"};
-const Enum::YLeaf MplsTeTunnelRole::tunnel_mid {2, "tunnel-mid"};
-const Enum::YLeaf MplsTeTunnelRole::tunnel_tail {3, "tunnel-tail"};
-
-const Enum::YLeaf TeAssociationTieRole::none {0, "none"};
-const Enum::YLeaf TeAssociationTieRole::master {1, "master"};
-const Enum::YLeaf TeAssociationTieRole::slave {2, "slave"};
+const Enum::YLeaf PceSrSid::unknown_segment_id {0, "unknown-segment-id"};
+const Enum::YLeaf PceSrSid::ipv4_node_segment_id {1, "ipv4-node-segment-id"};
+const Enum::YLeaf PceSrSid::ipv4_adjacency_segment_id {2, "ipv4-adjacency-segment-id"};
 
 const Enum::YLeaf PceLspOperState::down {0, "down"};
 const Enum::YLeaf PceLspOperState::up {1, "up"};
@@ -25302,42 +25323,44 @@ const Enum::YLeaf PceLspOperState::active {2, "active"};
 const Enum::YLeaf PceLspOperState::going_down {3, "going-down"};
 const Enum::YLeaf PceLspOperState::going_up {4, "going-up"};
 
-const Enum::YLeaf TeMeshgroup::meshgroup_type_automesh {0, "meshgroup-type-automesh"};
-const Enum::YLeaf TeMeshgroup::meshgroup_type_onehop {1, "meshgroup-type-onehop"};
+const Enum::YLeaf TpLinkState::down {0, "down"};
+const Enum::YLeaf TpLinkState::admin_down {1, "admin-down"};
+const Enum::YLeaf TpLinkState::up {2, "up"};
+const Enum::YLeaf TpLinkState::unknown {3, "unknown"};
 
-const Enum::YLeaf TeMgmtGenericFspec::te_generic_fspec_type_g709otn {0, "te-generic-fspec-type-g709otn"};
+const Enum::YLeaf TpMidLspStatus::up {0, "up"};
+const Enum::YLeaf TpMidLspStatus::down {1, "down"};
 
-const Enum::YLeaf MplsTeTermination::none {0, "none"};
-const Enum::YLeaf MplsTeTermination::ether {1, "ether"};
+const Enum::YLeaf MplsTpTunnelSwitchoverTrig::none {0, "none"};
+const Enum::YLeaf MplsTpTunnelSwitchoverTrig::bfd {1, "bfd"};
+const Enum::YLeaf MplsTpTunnelSwitchoverTrig::local_lockout {2, "local-lockout"};
+const Enum::YLeaf MplsTpTunnelSwitchoverTrig::remote_lockout {3, "remote-lockout"};
+const Enum::YLeaf MplsTpTunnelSwitchoverTrig::ais {4, "ais"};
+const Enum::YLeaf MplsTpTunnelSwitchoverTrig::ldi {5, "ldi"};
+const Enum::YLeaf MplsTpTunnelSwitchoverTrig::lkr {6, "lkr"};
+const Enum::YLeaf MplsTpTunnelSwitchoverTrig::link_down {7, "link-down"};
 
-const Enum::YLeaf MplsTeLspWrapState::lsp_wrap_not_ready {0, "lsp-wrap-not-ready"};
-const Enum::YLeaf MplsTeLspWrapState::lsp_wrap_active {1, "lsp-wrap-active"};
-const Enum::YLeaf MplsTeLspWrapState::lsp_wrap_ready {2, "lsp-wrap-ready"};
+const Enum::YLeaf MplsTpTunnelActiveLsp::working {0, "working"};
+const Enum::YLeaf MplsTpTunnelActiveLsp::protect {1, "protect"};
+const Enum::YLeaf MplsTpTunnelActiveLsp::none {2, "none"};
 
-const Enum::YLeaf TeOduCapability::not_set {0, "not-set"};
-const Enum::YLeaf TeOduCapability::fixed {1, "fixed"};
-const Enum::YLeaf TeOduCapability::flex {2, "flex"};
+const Enum::YLeaf MplsTpLspBfdState::down {0, "down"};
+const Enum::YLeaf MplsTpLspBfdState::up {1, "up"};
 
-const Enum::YLeaf TeSyncPendingReason::current_lspoos {0, "current-lspoos"};
-const Enum::YLeaf TeSyncPendingReason::reopt_lspoos {1, "reopt-lspoos"};
-const Enum::YLeaf TeSyncPendingReason::standby_lspoos {2, "standby-lspoos"};
-const Enum::YLeaf TeSyncPendingReason::standby_reopt_lspoos {3, "standby-reopt-lspoos"};
-const Enum::YLeaf TeSyncPendingReason::restore_lspoos {4, "restore-lspoos"};
-const Enum::YLeaf TeSyncPendingReason::invalid_sync_id {5, "invalid-sync-id"};
-const Enum::YLeaf TeSyncPendingReason::null_pointer {6, "null-pointer"};
-const Enum::YLeaf TeSyncPendingReason::pending_flag {7, "pending-flag"};
-const Enum::YLeaf TeSyncPendingReason::del_from_act_flag {8, "del-from-act-flag"};
-const Enum::YLeaf TeSyncPendingReason::oos_from_act_flag {9, "oos-from-act-flag"};
-const Enum::YLeaf TeSyncPendingReason::unknown {10, "unknown"};
+const Enum::YLeaf MplsTpLspOamState::none {0, "none"};
+const Enum::YLeaf MplsTpLspOamState::ldi {1, "ldi"};
+const Enum::YLeaf MplsTpLspOamState::lkr {2, "lkr"};
+const Enum::YLeaf MplsTpLspOamState::ais {3, "ais"};
 
 const Enum::YLeaf MplsTpLspState::down {0, "down"};
 const Enum::YLeaf MplsTpLspState::up {1, "up"};
 const Enum::YLeaf MplsTpLspState::active {2, "active"};
 const Enum::YLeaf MplsTpLspState::unknown {3, "unknown"};
 
-const Enum::YLeaf TeXroAttribute::interface {0, "interface"};
-const Enum::YLeaf TeXroAttribute::node {1, "node"};
-const Enum::YLeaf TeXroAttribute::srl_gs {2, "srl-gs"};
+const Enum::YLeaf MplsTpTunnelState::admin_down {0, "admin-down"};
+const Enum::YLeaf MplsTpTunnelState::admin_up {1, "admin-up"};
+const Enum::YLeaf MplsTpTunnelState::oper_up {2, "oper-up"};
+const Enum::YLeaf MplsTpTunnelState::oper_down {3, "oper-down"};
 
 
 }

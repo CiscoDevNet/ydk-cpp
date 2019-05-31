@@ -155,7 +155,7 @@ class ConfdState::LoadedDataModels::DataModel : public ydk::Entity
         ydk::YLeaf namespace_; //type: string
         ydk::YLeaf prefix; //type: string
         ydk::YLeaf exported_to_all; //type: empty
-        ydk::YLeafList exported_to; //type: list of  one of string, enumeration
+        ydk::YLeafList exported_to; //type: list of  one of enumeration, string
         class ExportedTo;
 
 }; // ConfdState::LoadedDataModels::DataModel
@@ -1825,7 +1825,7 @@ class ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf priority; //type: int32
-        ydk::YLeaf time_remaining; //type: one of uint64, enumeration
+        ydk::YLeaf time_remaining; //type: one of enumeration, uint64
         class Notification; //type: ConfdState::Internal::Cdb::Datastore::PendingSubscriptionSync::Notification
 
         ydk::YList notification;

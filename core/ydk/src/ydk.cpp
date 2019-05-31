@@ -144,7 +144,7 @@ static ydk::Protocol get_real_protocol(Protocol protocol)
 
 static const char* string_to_array(const string & str)
 {
-    char * cstr = new char [str.length()+1];
+    char * cstr = (char*) calloc(str.length()+1, sizeof(char));
     std::strcpy (cstr, str.c_str());
     return cstr;
 }

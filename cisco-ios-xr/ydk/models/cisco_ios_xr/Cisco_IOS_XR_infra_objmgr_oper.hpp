@@ -948,7 +948,7 @@ class ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host : public ydk::Ent
 
 }; // ObjectGroup::Network::Ipv4::Objects::Object::Hosts::Host
 
-class EndPort : public ydk::Enum
+class StartPort : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf echo;
@@ -1038,7 +1038,7 @@ class Port : public ydk::Enum
 
 };
 
-class StartPort : public ydk::Enum
+class EndPort : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf echo;

@@ -32,7 +32,7 @@ class Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Dscp : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf dscp_val; //type: one of uint8, enumeration
+        ydk::YLeaf dscp_val; //type: one of enumeration, uint8
         ydk::YLeaf min_threshold; //type: uint32
         ydk::YLeaf min_threshold_unit; //type: BytesMsUsType
         ydk::YLeaf max_threshold; //type: uint32
@@ -58,7 +58,7 @@ class Native::Policy::PolicyMap::Class::ActionList::RandomDetect::Precedence : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf prec; //type: one of uint8, enumeration
+        ydk::YLeaf prec; //type: one of enumeration, uint8
         ydk::YLeaf min_threshold; //type: uint32
         ydk::YLeaf min_threshold_unit; //type: BytesMsUsType
         ydk::YLeaf max_threshold; //type: uint32
@@ -144,7 +144,7 @@ class Native::Policy::PolicyMap::Class::ActionList::Set::Dscp : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf tunnel; //type: empty
-        ydk::YLeaf dscp_val; //type: one of uint8, enumeration
+        ydk::YLeaf dscp_val; //type: one of enumeration, uint8
         class Dscp_; //type: Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::Dscp_
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Policy::PolicyMap::Class::ActionList::Set::Dscp::Dscp_> dscp; // presence node
@@ -215,7 +215,7 @@ class Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Dscp : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf tunnel; //type: empty
-        ydk::YLeaf dscp_val; //type: one of uint8, enumeration
+        ydk::YLeaf dscp_val; //type: one of enumeration, uint8
 
 }; // Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Dscp
 
@@ -236,7 +236,7 @@ class Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Precedence : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf precedence_val; //type: one of uint8, enumeration
+        ydk::YLeaf precedence_val; //type: one of enumeration, uint8
 
 }; // Native::Policy::PolicyMap::Class::ActionList::Set::Ip::Precedence
 
@@ -815,8 +815,8 @@ class Native::Interface::AppNavCompress::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -985,8 +985,8 @@ class Native::Interface::AppNavCompress::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 
@@ -3475,7 +3475,7 @@ class Native::Interface::AppNavCompress::Standby::StandbyList : public ydk::Enti
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of string, enumeration
+        ydk::YLeaf ipv6; //type: one of enumeration, string
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8

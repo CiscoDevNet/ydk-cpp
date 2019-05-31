@@ -397,7 +397,7 @@ class Native::Cts::RoleBased::Enforcement::VlanList : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf id; //type: one of string, enumeration
+        ydk::YLeaf id; //type: one of enumeration, string
         class Id;
 
 }; // Native::Cts::RoleBased::Enforcement::VlanList
@@ -491,7 +491,7 @@ class Native::Cts::RoleBased::SgtMapVlanList::SgtMap : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf vlan_list; //type: one of string, enumeration
+        ydk::YLeaf vlan_list; //type: one of enumeration, string
         ydk::YLeaf sgt; //type: int16
         class VlanList;
 

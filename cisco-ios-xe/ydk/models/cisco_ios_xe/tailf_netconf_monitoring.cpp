@@ -11,13 +11,13 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace tailf_netconf_monitoring {
 
-RestHttps::RestHttps()
-     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:rest-https")
+CliConsole::CliConsole()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:cli-console")
 {
 
 }
 
-RestHttps::~RestHttps()
+CliConsole::~CliConsole()
 {
 }
 
@@ -31,33 +31,13 @@ CliSsh::~CliSsh()
 {
 }
 
-CliConsole::CliConsole()
-     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:cli-console")
+CliTcp::CliTcp()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:cli-tcp")
 {
 
 }
 
-CliConsole::~CliConsole()
-{
-}
-
-WebuiHttps::WebuiHttps()
-     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:webui-https")
-{
-
-}
-
-WebuiHttps::~WebuiHttps()
-{
-}
-
-SnmpUdp::SnmpUdp()
-     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:snmp-udp")
-{
-
-}
-
-SnmpUdp::~SnmpUdp()
+CliTcp::~CliTcp()
 {
 }
 
@@ -71,13 +51,13 @@ WebuiHttp::~WebuiHttp()
 {
 }
 
-RestHttp::RestHttp()
-     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:rest-http")
+WebuiHttps::WebuiHttps()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:webui-https")
 {
 
 }
 
-RestHttp::~RestHttp()
+WebuiHttps::~WebuiHttps()
 {
 }
 
@@ -91,13 +71,33 @@ NetconfTcp::~NetconfTcp()
 {
 }
 
-CliTcp::CliTcp()
-     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:cli-tcp")
+SnmpUdp::SnmpUdp()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:snmp-udp")
 {
 
 }
 
-CliTcp::~CliTcp()
+SnmpUdp::~SnmpUdp()
+{
+}
+
+RestHttp::RestHttp()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:rest-http")
+{
+
+}
+
+RestHttp::~RestHttp()
+{
+}
+
+RestHttps::RestHttps()
+     : Identity("http://tail-f.com/yang/netconf-monitoring", "tailf-netconf-monitoring", "tailf-netconf-monitoring:rest-https")
+{
+
+}
+
+RestHttps::~RestHttps()
 {
 }
 

@@ -18615,14 +18615,14 @@ bool Pim::DefaultContext::Ipv4::Mofrr::CloneSources::has_leaf_or_child_of_name(c
     return false;
 }
 
-const Enum::YLeaf PimProtocolMode::sm {0, "sm"};
-const Enum::YLeaf PimProtocolMode::bidir {1, "bidir"};
-
 const Enum::YLeaf PimMultipath::enable {0, "enable"};
 const Enum::YLeaf PimMultipath::interface_hash {1, "interface-hash"};
 const Enum::YLeaf PimMultipath::source_hash {2, "source-hash"};
 const Enum::YLeaf PimMultipath::source_next_hop_hash {3, "source-next-hop-hash"};
 const Enum::YLeaf PimMultipath::source_group_hash {4, "source-group-hash"};
+
+const Enum::YLeaf PimProtocolMode::sm {0, "sm"};
+const Enum::YLeaf PimProtocolMode::bidir {1, "bidir"};
 
 
 }

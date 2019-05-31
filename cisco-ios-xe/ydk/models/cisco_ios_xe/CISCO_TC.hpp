@@ -10,20 +10,6 @@
 namespace cisco_ios_xe {
 namespace CISCO_TC {
 
-class CiscoPortListRange : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf oneto2k;
-        static const ydk::Enum::YLeaf twoKto4K;
-        static const ydk::Enum::YLeaf fourKto6K;
-        static const ydk::Enum::YLeaf sixKto8K;
-        static const ydk::Enum::YLeaf eightKto10K;
-        static const ydk::Enum::YLeaf tenKto12K;
-        static const ydk::Enum::YLeaf twelveKto14K;
-        static const ydk::Enum::YLeaf fourteenKto16K;
-
-};
-
 class CiscoNetworkProtocol : public ydk::Enum
 {
     public:
@@ -77,6 +63,33 @@ class CiscoLocationClass : public ydk::Enum
         static const ydk::Enum::YLeaf subPort;
         static const ydk::Enum::YLeaf channel;
         static const ydk::Enum::YLeaf subChannel;
+
+};
+
+class CiscoAlarmSeverity : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cleared;
+        static const ydk::Enum::YLeaf indeterminate;
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf major_;
+        static const ydk::Enum::YLeaf minor;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf info;
+
+};
+
+class CiscoPortListRange : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf oneto2k;
+        static const ydk::Enum::YLeaf twoKto4K;
+        static const ydk::Enum::YLeaf fourKto6K;
+        static const ydk::Enum::YLeaf sixKto8K;
+        static const ydk::Enum::YLeaf eightKto10K;
+        static const ydk::Enum::YLeaf tenKto12K;
+        static const ydk::Enum::YLeaf twelveKto14K;
+        static const ydk::Enum::YLeaf fourteenKto16K;
 
 };
 
@@ -351,19 +364,6 @@ class IfOperStatusReason : public ydk::Enum
         static const ydk::Enum::YLeaf ethIntfNotLicensed;
         static const ydk::Enum::YLeaf domainIdsInvalid;
         static const ydk::Enum::YLeaf fabricNameInvalid;
-
-};
-
-class CiscoAlarmSeverity : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cleared;
-        static const ydk::Enum::YLeaf indeterminate;
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf major_;
-        static const ydk::Enum::YLeaf minor;
-        static const ydk::Enum::YLeaf warning;
-        static const ydk::Enum::YLeaf info;
 
 };
 

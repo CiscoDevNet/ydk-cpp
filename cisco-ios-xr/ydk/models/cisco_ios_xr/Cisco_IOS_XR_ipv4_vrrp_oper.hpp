@@ -1030,6 +1030,16 @@ class Vrrp::MgoSessions::MgoSession::Slave : public ydk::Entity
 
 }; // Vrrp::MgoSessions::MgoSession::Slave
 
+class VrrpVmacState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf stored;
+        static const ydk::Enum::YLeaf reserved;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf reserving;
+
+};
+
 class VrrpStateChangeReason : public ydk::Enum
 {
     public:
@@ -1049,30 +1059,13 @@ class VrrpStateChangeReason : public ydk::Enum
 
 };
 
-class VrrpVmacState : public ydk::Enum
+class VrrpBfdSessionState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf stored;
-        static const ydk::Enum::YLeaf reserved;
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf reserving;
-
-};
-
-class VrrpBAf : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf address_family_ipv4;
-        static const ydk::Enum::YLeaf address_family_ipv6;
-        static const ydk::Enum::YLeaf vrrp_baf_count;
-
-};
-
-class VrrpVipState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf virtual_ip_state_down;
-        static const ydk::Enum::YLeaf virtual_ip_state_up;
+        static const ydk::Enum::YLeaf bfd_state_none;
+        static const ydk::Enum::YLeaf bfd_state_inactive;
+        static const ydk::Enum::YLeaf bfd_state_up;
+        static const ydk::Enum::YLeaf bfd_state_down;
 
 };
 
@@ -1085,22 +1078,29 @@ class VrrpProtAuth : public ydk::Enum
 
 };
 
-class VrrpBfdSessionState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bfd_state_none;
-        static const ydk::Enum::YLeaf bfd_state_inactive;
-        static const ydk::Enum::YLeaf bfd_state_up;
-        static const ydk::Enum::YLeaf bfd_state_down;
-
-};
-
 class VrrpBagProtocolState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf state_initial;
         static const ydk::Enum::YLeaf state_backup;
         static const ydk::Enum::YLeaf state_master;
+
+};
+
+class VrrpVipState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf virtual_ip_state_down;
+        static const ydk::Enum::YLeaf virtual_ip_state_up;
+
+};
+
+class VrrpBAf : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf address_family_ipv4;
+        static const ydk::Enum::YLeaf address_family_ipv6;
+        static const ydk::Enum::YLeaf vrrp_baf_count;
 
 };
 

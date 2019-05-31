@@ -10,6 +10,15 @@
 namespace openconfig {
 namespace openconfig_rib_bgp_types {
 
+class INVALIDROUTEREASON : public virtual ydk::Identity
+{
+    public:
+        INVALIDROUTEREASON();
+        ~INVALIDROUTEREASON();
+
+
+}; // INVALIDROUTEREASON
+
 class BGPNOTSELECTEDBESTPATH : public virtual ydk::Identity
 {
     public:
@@ -28,14 +37,23 @@ class BGPNOTSELECTEDPOLICY : public virtual ydk::Identity
 
 }; // BGPNOTSELECTEDPOLICY
 
-class INVALIDROUTEREASON : public virtual ydk::Identity
+class INVALIDCLUSTERLOOP : public openconfig::openconfig_rib_bgp_types::INVALIDROUTEREASON, virtual ydk::Identity
 {
     public:
-        INVALIDROUTEREASON();
-        ~INVALIDROUTEREASON();
+        INVALIDCLUSTERLOOP();
+        ~INVALIDCLUSTERLOOP();
 
 
-}; // INVALIDROUTEREASON
+}; // INVALIDCLUSTERLOOP
+
+class INVALIDASLOOP : public openconfig::openconfig_rib_bgp_types::INVALIDROUTEREASON, virtual ydk::Identity
+{
+    public:
+        INVALIDASLOOP();
+        ~INVALIDASLOOP();
+
+
+}; // INVALIDASLOOP
 
 class INVALIDORIGINATOR : public openconfig::openconfig_rib_bgp_types::INVALIDROUTEREASON, virtual ydk::Identity
 {
@@ -46,32 +64,32 @@ class INVALIDORIGINATOR : public openconfig::openconfig_rib_bgp_types::INVALIDRO
 
 }; // INVALIDORIGINATOR
 
-class HIGHERROUTERID : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDBESTPATH, virtual ydk::Identity
+class INVALIDCONFED : public openconfig::openconfig_rib_bgp_types::INVALIDROUTEREASON, virtual ydk::Identity
 {
     public:
-        HIGHERROUTERID();
-        ~HIGHERROUTERID();
+        INVALIDCONFED();
+        ~INVALIDCONFED();
 
 
-}; // HIGHERROUTERID
+}; // INVALIDCONFED
 
-class INVALIDCLUSTERLOOP : public openconfig::openconfig_rib_bgp_types::INVALIDROUTEREASON, virtual ydk::Identity
+class LOCALPREFLOWER : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDBESTPATH, virtual ydk::Identity
 {
     public:
-        INVALIDCLUSTERLOOP();
-        ~INVALIDCLUSTERLOOP();
+        LOCALPREFLOWER();
+        ~LOCALPREFLOWER();
 
 
-}; // INVALIDCLUSTERLOOP
+}; // LOCALPREFLOWER
 
-class REJECTEDIMPORTPOLICY : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDPOLICY, virtual ydk::Identity
+class ASPATHLONGER : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDBESTPATH, virtual ydk::Identity
 {
     public:
-        REJECTEDIMPORTPOLICY();
-        ~REJECTEDIMPORTPOLICY();
+        ASPATHLONGER();
+        ~ASPATHLONGER();
 
 
-}; // REJECTEDIMPORTPOLICY
+}; // ASPATHLONGER
 
 class ORIGINTYPEHIGHER : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDBESTPATH, virtual ydk::Identity
 {
@@ -91,50 +109,14 @@ class MEDHIGHER : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDBES
 
 }; // MEDHIGHER
 
-class INVALIDASLOOP : public openconfig::openconfig_rib_bgp_types::INVALIDROUTEREASON, virtual ydk::Identity
+class PREFEREXTERNAL : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDBESTPATH, virtual ydk::Identity
 {
     public:
-        INVALIDASLOOP();
-        ~INVALIDASLOOP();
+        PREFEREXTERNAL();
+        ~PREFEREXTERNAL();
 
 
-}; // INVALIDASLOOP
-
-class LOCALPREFLOWER : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDBESTPATH, virtual ydk::Identity
-{
-    public:
-        LOCALPREFLOWER();
-        ~LOCALPREFLOWER();
-
-
-}; // LOCALPREFLOWER
-
-class INVALIDCONFED : public openconfig::openconfig_rib_bgp_types::INVALIDROUTEREASON, virtual ydk::Identity
-{
-    public:
-        INVALIDCONFED();
-        ~INVALIDCONFED();
-
-
-}; // INVALIDCONFED
-
-class ASPATHLONGER : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDBESTPATH, virtual ydk::Identity
-{
-    public:
-        ASPATHLONGER();
-        ~ASPATHLONGER();
-
-
-}; // ASPATHLONGER
-
-class HIGHERPEERADDRESS : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDBESTPATH, virtual ydk::Identity
-{
-    public:
-        HIGHERPEERADDRESS();
-        ~HIGHERPEERADDRESS();
-
-
-}; // HIGHERPEERADDRESS
+}; // PREFEREXTERNAL
 
 class NEXTHOPCOSTHIGHER : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDBESTPATH, virtual ydk::Identity
 {
@@ -145,14 +127,32 @@ class NEXTHOPCOSTHIGHER : public openconfig::openconfig_rib_bgp_types::BGPNOTSEL
 
 }; // NEXTHOPCOSTHIGHER
 
-class PREFEREXTERNAL : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDBESTPATH, virtual ydk::Identity
+class HIGHERROUTERID : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDBESTPATH, virtual ydk::Identity
 {
     public:
-        PREFEREXTERNAL();
-        ~PREFEREXTERNAL();
+        HIGHERROUTERID();
+        ~HIGHERROUTERID();
 
 
-}; // PREFEREXTERNAL
+}; // HIGHERROUTERID
+
+class HIGHERPEERADDRESS : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDBESTPATH, virtual ydk::Identity
+{
+    public:
+        HIGHERPEERADDRESS();
+        ~HIGHERPEERADDRESS();
+
+
+}; // HIGHERPEERADDRESS
+
+class REJECTEDIMPORTPOLICY : public openconfig::openconfig_rib_bgp_types::BGPNOTSELECTEDPOLICY, virtual ydk::Identity
+{
+    public:
+        REJECTEDIMPORTPOLICY();
+        ~REJECTEDIMPORTPOLICY();
+
+
+}; // REJECTEDIMPORTPOLICY
 
 
 }

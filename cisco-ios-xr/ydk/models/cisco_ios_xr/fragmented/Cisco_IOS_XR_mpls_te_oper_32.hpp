@@ -4278,28 +4278,15 @@ class MplsTe::Tunnels::Summary::CurrentTunnelConvergenceSummary : public ydk::En
         ydk::YLeaf tunnel_frr_total_count; //type: uint32
         ydk::YLeaf tunnel_converged_count; //type: uint32
         ydk::YLeaf tunnel_total_convergence_complete_time; //type: uint64
-        class TablePathOut; //type: MplsTe::Tunnels::Summary::CurrentTunnelConvergenceSummary::TablePathOut
-        class TableResvIn; //type: MplsTe::Tunnels::Summary::CurrentTunnelConvergenceSummary::TableResvIn
-        class TableLabelRewrite; //type: MplsTe::Tunnels::Summary::CurrentTunnelConvergenceSummary::TableLabelRewrite
-        class TablePcalc; //type: MplsTe::Tunnels::Summary::CurrentTunnelConvergenceSummary::TablePcalc
-        class TableTunnelRewrite; //type: MplsTe::Tunnels::Summary::CurrentTunnelConvergenceSummary::TableTunnelRewrite
-        class TableFrrTrigger; //type: MplsTe::Tunnels::Summary::CurrentTunnelConvergenceSummary::TableFrrTrigger
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::Tunnels::Summary::CurrentTunnelConvergenceSummary::TablePathOut> table_path_out;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::Tunnels::Summary::CurrentTunnelConvergenceSummary::TableResvIn> table_resv_in;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::Tunnels::Summary::CurrentTunnelConvergenceSummary::TableLabelRewrite> table_label_rewrite;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::Tunnels::Summary::CurrentTunnelConvergenceSummary::TablePcalc> table_pcalc;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::Tunnels::Summary::CurrentTunnelConvergenceSummary::TableTunnelRewrite> table_tunnel_rewrite;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::Tunnels::Summary::CurrentTunnelConvergenceSummary::TableFrrTrigger> table_frr_trigger;
-        
 }; // MplsTe::Tunnels::Summary::CurrentTunnelConvergenceSummary
 
 
-class MplsTe::Tunnels::Summary::CurrentTunnelConvergenceSummary::TablePathOut : public ydk::Entity
+class MplsTe::Tunnels::Summary::LastTunnelConvergenceSummary : public ydk::Entity
 {
     public:
-        TablePathOut();
-        ~TablePathOut();
+        LastTunnelConvergenceSummary();
+        ~LastTunnelConvergenceSummary();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -4312,15 +4299,19 @@ class MplsTe::Tunnels::Summary::CurrentTunnelConvergenceSummary::TablePathOut : 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
+        ydk::YLeaf tunnel_frr_active_count; //type: uint32
+        ydk::YLeaf tunnel_frr_total_count; //type: uint32
+        ydk::YLeaf tunnel_converged_count; //type: uint32
+        ydk::YLeaf tunnel_total_convergence_complete_time; //type: uint64
 
-}; // MplsTe::Tunnels::Summary::CurrentTunnelConvergenceSummary::TablePathOut
+}; // MplsTe::Tunnels::Summary::LastTunnelConvergenceSummary
 
 
-class MplsTe::Tunnels::Summary::CurrentTunnelConvergenceSummary::TableResvIn : public ydk::Entity
+class MplsTe::Tunnels::Summary::AutoTunServerSummary : public ydk::Entity
 {
     public:
-        TableResvIn();
-        ~TableResvIn();
+        AutoTunServerSummary();
+        ~AutoTunServerSummary();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -4333,8 +4324,15 @@ class MplsTe::Tunnels::Summary::CurrentTunnelConvergenceSummary::TableResvIn : p
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
+        class TotalAutoP2mpTunnels; //type: MplsTe::Tunnels::Summary::AutoTunServerSummary::TotalAutoP2mpTunnels
+        class TotalAutoP2pTunnels; //type: MplsTe::Tunnels::Summary::AutoTunServerSummary::TotalAutoP2pTunnels
+        class ClientsSummary; //type: MplsTe::Tunnels::Summary::AutoTunServerSummary::ClientsSummary
 
-}; // MplsTe::Tunnels::Summary::CurrentTunnelConvergenceSummary::TableResvIn
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::Tunnels::Summary::AutoTunServerSummary::TotalAutoP2mpTunnels> total_auto_p2mp_tunnels;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_mpls_te_oper::MplsTe::Tunnels::Summary::AutoTunServerSummary::TotalAutoP2pTunnels> total_auto_p2p_tunnels;
+        ydk::YList clients_summary;
+        
+}; // MplsTe::Tunnels::Summary::AutoTunServerSummary
 
 
 }

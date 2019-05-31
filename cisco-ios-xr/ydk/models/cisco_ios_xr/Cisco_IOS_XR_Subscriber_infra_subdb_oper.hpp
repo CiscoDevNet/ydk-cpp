@@ -80,15 +80,137 @@ class SubscriberDatabase::Nodes::Node : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf node_name; //type: string
+        class SubdbAssoc; //type: SubscriberDatabase::Nodes::Node::SubdbAssoc
         class Association; //type: SubscriberDatabase::Nodes::Node::Association
         class Summary; //type: SubscriberDatabase::Nodes::Node::Summary
         class Session; //type: SubscriberDatabase::Nodes::Node::Session
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Subscriber_infra_subdb_oper::SubscriberDatabase::Nodes::Node::SubdbAssoc> subdb_assoc;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Subscriber_infra_subdb_oper::SubscriberDatabase::Nodes::Node::Association> association;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Subscriber_infra_subdb_oper::SubscriberDatabase::Nodes::Node::Summary> summary;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Subscriber_infra_subdb_oper::SubscriberDatabase::Nodes::Node::Session> session;
         
 }; // SubscriberDatabase::Nodes::Node
+
+
+class SubscriberDatabase::Nodes::Node::SubdbAssoc : public ydk::Entity
+{
+    public:
+        SubdbAssoc();
+        ~SubdbAssoc();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Labels; //type: SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Subscriber_infra_subdb_oper::SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels> labels;
+        
+}; // SubscriberDatabase::Nodes::Node::SubdbAssoc
+
+
+class SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels : public ydk::Entity
+{
+    public:
+        Labels();
+        ~Labels();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Label; //type: SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label
+
+        ydk::YList label;
+        
+}; // SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels
+
+
+class SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label : public ydk::Entity
+{
+    public:
+        Label();
+        ~Label();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf subscriber_label; //type: uint32
+        ydk::YLeaf session_id; //type: uint32
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf associations; //type: uint32
+        ydk::YLeaf varlist_id; //type: uint32
+        class Template; //type: SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Subscriber_infra_subdb_oper::SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template> template_;
+        
+}; // SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label
+
+
+class SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template : public ydk::Entity
+{
+    public:
+        Template();
+        ~Template();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class AssociatedTemplate; //type: SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::AssociatedTemplate
+
+        ydk::YList associated_template;
+        
+}; // SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template
+
+
+class SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::AssociatedTemplate : public ydk::Entity
+{
+    public:
+        AssociatedTemplate();
+        ~AssociatedTemplate();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf template_type; //type: SubdbObjectTypeData
+        ydk::YLeaf template_name; //type: string
+        ydk::YLeaf varlist; //type: string
+
+}; // SubscriberDatabase::Nodes::Node::SubdbAssoc::Labels::Label::Template::AssociatedTemplate
 
 
 class SubscriberDatabase::Nodes::Node::Association : public ydk::Entity
@@ -154,6 +276,7 @@ class SubscriberDatabase::Nodes::Node::Association::Labels::Label : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf subscriber_label; //type: string
+        ydk::YLeaf session_id; //type: uint32
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf associations; //type: uint32
         ydk::YLeaf varlist_id; //type: uint32
@@ -327,17 +450,6 @@ class SubscriberDatabase::Nodes::Node::Session::Labels::Label : public ydk::Enti
 
 }; // SubscriberDatabase::Nodes::Node::Session::Labels::Label
 
-class SubdbObjectTypeData : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf user_profile;
-        static const ydk::Enum::YLeaf service_profile;
-        static const ydk::Enum::YLeaf subscriber_service;
-        static const ydk::Enum::YLeaf ppp;
-        static const ydk::Enum::YLeaf ip_subscriber;
-
-};
-
 class SessionState : public ydk::Enum
 {
     public:
@@ -351,6 +463,17 @@ class SessionState : public ydk::Enum
         static const ydk::Enum::YLeaf config_error;
         static const ydk::Enum::YLeaf error;
         static const ydk::Enum::YLeaf sync;
+
+};
+
+class SubdbObjectTypeData : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf user_profile;
+        static const ydk::Enum::YLeaf service_profile;
+        static const ydk::Enum::YLeaf subscriber_service;
+        static const ydk::Enum::YLeaf ppp;
+        static const ydk::Enum::YLeaf ip_subscriber;
 
 };
 

@@ -652,6 +652,14 @@ class EtherLinkOam::StatsInterfaces::StatsInterface : public ydk::Entity
 
 }; // EtherLinkOam::StatsInterfaces::StatsInterface
 
+class LogLocation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf log_location_local;
+        static const ydk::Enum::YLeaf log_location_remote;
+
+};
+
 class Log : public ydk::Enum
 {
     public:
@@ -665,11 +673,35 @@ class Log : public ydk::Enum
 
 };
 
-class LogLocation : public ydk::Enum
+class Action : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf log_location_local;
-        static const ydk::Enum::YLeaf log_location_remote;
+        static const ydk::Enum::YLeaf no_action;
+        static const ydk::Enum::YLeaf disable_interface;
+        static const ydk::Enum::YLeaf log;
+        static const ydk::Enum::YLeaf efd;
+
+};
+
+class ProtocolState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf protocol_state_inactive;
+        static const ydk::Enum::YLeaf protocol_state_fault;
+        static const ydk::Enum::YLeaf protocol_state_active_send_local;
+        static const ydk::Enum::YLeaf protocol_state_passive_wait;
+        static const ydk::Enum::YLeaf protocol_state_send_local_remote;
+        static const ydk::Enum::YLeaf protocol_state_send_local_remote_ok;
+        static const ydk::Enum::YLeaf protocol_state_send_any;
+
+};
+
+class Mode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf passive;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf dont_care;
 
 };
 
@@ -698,38 +730,6 @@ class OperationalState : public ydk::Enum
         static const ydk::Enum::YLeaf peering_remotely_rejected;
         static const ydk::Enum::YLeaf operational;
         static const ydk::Enum::YLeaf operational_half_duplex;
-
-};
-
-class Mode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf passive;
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf dont_care;
-
-};
-
-class Action : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_action;
-        static const ydk::Enum::YLeaf disable_interface;
-        static const ydk::Enum::YLeaf log;
-        static const ydk::Enum::YLeaf efd;
-
-};
-
-class ProtocolState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf protocol_state_inactive;
-        static const ydk::Enum::YLeaf protocol_state_fault;
-        static const ydk::Enum::YLeaf protocol_state_active_send_local;
-        static const ydk::Enum::YLeaf protocol_state_passive_wait;
-        static const ydk::Enum::YLeaf protocol_state_send_local_remote;
-        static const ydk::Enum::YLeaf protocol_state_send_local_remote_ok;
-        static const ydk::Enum::YLeaf protocol_state_send_any;
 
 };
 

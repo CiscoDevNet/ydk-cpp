@@ -280,14 +280,6 @@ class FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy : public ydk:
 
 }; // FlowSpec::Vrfs::Vrf::Afs::Af::ServicePolicies::ServicePolicy
 
-class FsAddf : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
 class FsVrfAf : public ydk::Enum
 {
     public:
@@ -296,14 +288,22 @@ class FsVrfAf : public ydk::Enum
 
 };
 
-class FsVrfAfP : public ydk::Enum
+class FsAfP : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf pbr;
 
 };
 
-class FsAfP : public ydk::Enum
+class FsAddf : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+};
+
+class FsVrfAfP : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf pbr;

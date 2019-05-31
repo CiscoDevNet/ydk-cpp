@@ -190,6 +190,7 @@ class Vrfs::Vrf::Afs::Af::Bgp : public ydk::Entity
         ydk::YLeaf export_route_policy; //type: string
         ydk::YLeaf import_route_policy; //type: string
         ydk::YLeaf import_vrf_options; //type: boolean
+        ydk::YLeaf import_from_bridge_domain; //type: boolean
         class ImportRouteTargets; //type: Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets
         class ExportRouteTargets; //type: Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets
         class VrfToGlobalExportRoutePolicy; //type: Vrfs::Vrf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy
@@ -747,6 +748,7 @@ class GlobalAf::Afs::Af::Bgp : public ydk::Entity
         ydk::YLeaf export_route_policy; //type: string
         ydk::YLeaf import_route_policy; //type: string
         ydk::YLeaf import_vrf_options; //type: boolean
+        ydk::YLeaf import_from_bridge_domain; //type: boolean
         class ImportRouteTargets; //type: GlobalAf::Afs::Af::Bgp::ImportRouteTargets
         class ExportRouteTargets; //type: GlobalAf::Afs::Af::Bgp::ExportRouteTargets
         class VrfToGlobalExportRoutePolicy; //type: GlobalAf::Afs::Af::Bgp::VrfToGlobalExportRoutePolicy
@@ -1698,6 +1700,15 @@ class SelectiveVrfDownload : public ydk::Entity
 
 }; // SelectiveVrfDownload
 
+class VrfSubAddressFamily : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf flow_spec;
+
+};
+
 class VrfAddressFamily : public ydk::Enum
 {
     public:
@@ -1714,15 +1725,6 @@ class SrlgPriority : public ydk::Enum
         static const ydk::Enum::YLeaf default_;
         static const ydk::Enum::YLeaf low;
         static const ydk::Enum::YLeaf very_low;
-
-};
-
-class VrfSubAddressFamily : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unicast;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf flow_spec;
 
 };
 

@@ -716,10 +716,6 @@ bool DeviceHardwareData::DeviceHardware::DeviceSystemData::has_leaf_or_child_of_
     return false;
 }
 
-const Enum::YLeaf AlarmSeverity::alarm_severity_critical {0, "alarm-severity-critical"};
-const Enum::YLeaf AlarmSeverity::alarm_severity_major {1, "alarm-severity-major"};
-const Enum::YLeaf AlarmSeverity::alarm_severity_minor {2, "alarm-severity-minor"};
-
 const Enum::YLeaf HwType::hw_type_unknown {0, "hw-type-unknown"};
 const Enum::YLeaf HwType::hw_type_chassis {1, "hw-type-chassis"};
 const Enum::YLeaf HwType::hw_type_cpu {2, "hw-type-cpu"};
@@ -732,6 +728,10 @@ const Enum::YLeaf HwType::hw_type_pim {8, "hw-type-pim"};
 const Enum::YLeaf HwType::hw_type_transceiver {9, "hw-type-transceiver"};
 const Enum::YLeaf HwType::hw_type_fantray {10, "hw-type-fantray"};
 const Enum::YLeaf HwType::hw_type_pem {11, "hw-type-pem"};
+
+const Enum::YLeaf AlarmSeverity::alarm_severity_critical {0, "alarm-severity-critical"};
+const Enum::YLeaf AlarmSeverity::alarm_severity_major {1, "alarm-severity-major"};
+const Enum::YLeaf AlarmSeverity::alarm_severity_minor {2, "alarm-severity-minor"};
 
 
 }

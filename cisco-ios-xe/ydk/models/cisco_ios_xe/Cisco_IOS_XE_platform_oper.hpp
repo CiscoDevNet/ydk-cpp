@@ -237,17 +237,6 @@ class Components::Component::PlatformSubcomponents::PlatformSubcomponent : publi
 
 }; // Components::Component::PlatformSubcomponents::PlatformSubcomponent
 
-class PlatformPropValueType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf property_string;
-        static const ydk::Enum::YLeaf property_boolean;
-        static const ydk::Enum::YLeaf property_int64;
-        static const ydk::Enum::YLeaf property_uint64;
-        static const ydk::Enum::YLeaf property_decimal64;
-
-};
-
 class PlatformCompType : public ydk::Enum
 {
     public:
@@ -263,6 +252,17 @@ class PlatformCompType : public ydk::Enum
         static const ydk::Enum::YLeaf comp_operating_system;
         static const ydk::Enum::YLeaf comp_optical_channel;
         static const ydk::Enum::YLeaf comp_container;
+
+};
+
+class PlatformPropValueType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf property_string;
+        static const ydk::Enum::YLeaf property_boolean;
+        static const ydk::Enum::YLeaf property_int64;
+        static const ydk::Enum::YLeaf property_uint64;
+        static const ydk::Enum::YLeaf property_decimal64;
 
 };
 

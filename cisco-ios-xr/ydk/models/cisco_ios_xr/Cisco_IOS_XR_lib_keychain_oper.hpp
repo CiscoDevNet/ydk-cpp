@@ -212,14 +212,6 @@ class Keychain::Keys::Key::Key_::KeyId::AcceptLifetime : public ydk::Entity
 
 }; // Keychain::Keys::Key::Key_::KeyId::AcceptLifetime
 
-class Enc : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf password_type7;
-        static const ydk::Enum::YLeaf password_type6;
-
-};
-
 class CrytoAlgo : public ydk::Enum
 {
     public:
@@ -234,6 +226,14 @@ class CrytoAlgo : public ydk::Enum
         static const ydk::Enum::YLeaf aes_256_cmac;
         static const ydk::Enum::YLeaf hmac_sha1_96;
         static const ydk::Enum::YLeaf hmac_sha_256;
+
+};
+
+class Enc : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf password_type7;
+        static const ydk::Enum::YLeaf password_type6;
 
 };
 

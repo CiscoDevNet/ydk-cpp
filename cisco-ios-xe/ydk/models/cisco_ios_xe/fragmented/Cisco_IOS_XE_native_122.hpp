@@ -2349,37 +2349,13 @@ class Native::Ppp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        class Packet; //type: Native::Ppp::Packet
         class AnalysisModule; //type: Native::Ppp::AnalysisModule
+        class Packet; //type: Native::Ppp::Packet
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ppp::Packet> packet;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ppp::AnalysisModule> analysis_module;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Ppp::Packet> packet;
         
 }; // Native::Ppp
-
-
-class Native::Ppp::Packet : public ydk::Entity
-{
-    public:
-        Packet();
-        ~Packet();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf throttle; //type: uint32
-        ydk::YLeaf allow_time; //type: uint32
-        ydk::YLeaf block_time; //type: uint32
-
-}; // Native::Ppp::Packet
 
 
 class Native::Ppp::AnalysisModule : public ydk::Entity
@@ -2426,6 +2402,30 @@ class Native::Ppp::AnalysisModule::Monitoring : public ydk::Entity
         ydk::YLeaf interface_name; //type: string
 
 }; // Native::Ppp::AnalysisModule::Monitoring
+
+
+class Native::Ppp::Packet : public ydk::Entity
+{
+    public:
+        Packet();
+        ~Packet();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf throttle; //type: uint32
+        ydk::YLeaf allow_time; //type: uint32
+        ydk::YLeaf block_time; //type: uint32
+
+}; // Native::Ppp::Packet
 
 
 class Native::Mac : public ydk::Entity
@@ -2871,7 +2871,7 @@ class Native::TacacsServer::Host : public ydk::Entity
 
         ydk::YLeaf name; //type: one of union, string
         ydk::YLeaf port; //type: uint16
-        ydk::YLeaf key; //type: one of string, enumeration
+        ydk::YLeaf key; //type: one of enumeration, string
         ydk::YLeaf encryption_key; //type: string
         ydk::YLeaf timeout; //type: uint16
         class Key;

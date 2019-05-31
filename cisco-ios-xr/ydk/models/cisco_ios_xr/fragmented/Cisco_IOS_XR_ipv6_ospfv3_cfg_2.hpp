@@ -618,9 +618,9 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter : public ydk::Entity
         class V6bit; //type: Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit
         class MaxMetric; //type: Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit> rbit;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit> v6bit;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric> max_metric;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit> rbit; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit> v6bit; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric> max_metric; // presence node
         
 }; // Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter
 
@@ -644,7 +644,6 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit : public ydk::Enti
         ydk::YLeaf on_switchover; //type: uint32
         ydk::YLeaf always; //type: empty
         ydk::YLeaf include_stub; //type: empty
-        ydk::YLeaf enable; //type: empty
         ydk::YLeaf on_proc_migration; //type: uint32
         ydk::YLeaf on_proc_restart; //type: uint32
         class OnStartup; //type: Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::OnStartup
@@ -694,7 +693,6 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit : public ydk::Ent
 
         ydk::YLeaf on_switchover; //type: uint32
         ydk::YLeaf always; //type: empty
-        ydk::YLeaf enable; //type: empty
         ydk::YLeaf on_proc_migration; //type: uint32
         ydk::YLeaf on_proc_restart; //type: uint32
         class OnStartup; //type: Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit::OnStartup
@@ -747,7 +745,6 @@ class Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric : public ydk:
         ydk::YLeaf on_switchover; //type: uint32
         ydk::YLeaf always; //type: empty
         ydk::YLeaf include_stub; //type: empty
-        ydk::YLeaf enable; //type: empty
         ydk::YLeaf on_proc_migration; //type: uint32
         ydk::YLeaf on_proc_restart; //type: uint32
         class OnStartup; //type: Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::OnStartup

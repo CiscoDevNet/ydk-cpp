@@ -813,6 +813,16 @@ class DOCSIETFBPI2MIB::DocsIetfBpi2CmtsCACertTable::DocsIetfBpi2CmtsCACertEntry 
 
 }; // DOCSIETFBPI2MIB::DocsIetfBpi2CmtsCACertTable::DocsIetfBpi2CmtsCACertEntry
 
+class DocsBpkmSAType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf primary;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf dynamic;
+
+};
+
 class DocsBpkmDataEncryptAlg : public ydk::Enum
 {
     public:
@@ -830,16 +840,6 @@ class DocsBpkmDataAuthentAlg : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf hmacSha196;
-
-};
-
-class DocsBpkmSAType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf primary;
-        static const ydk::Enum::YLeaf static_;
-        static const ydk::Enum::YLeaf dynamic;
 
 };
 

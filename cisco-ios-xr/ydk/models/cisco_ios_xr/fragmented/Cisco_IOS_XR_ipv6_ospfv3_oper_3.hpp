@@ -14,6 +14,36 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv6_ospfv3_oper {
 
 
+class Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType : public ydk::Entity
+{
+    public:
+        UnknownLsaType();
+        ~UnknownLsaType();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_name; //type: string
+        ydk::YLeaf is_virtual_link; //type: boolean
+        ydk::YLeaf virtual_link_id; //type: uint32
+        ydk::YLeaf is_sham_link; //type: boolean
+        ydk::YLeaf sham_link_id; //type: uint32
+        class LsaHeader; //type: Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader
+        class LsaDetail; //type: Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader> lsa_header;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_oper::Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaDetail> lsa_detail;
+        
+}; // Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType
+
+
 class Ospfv3::Processes::Process::DefaultVrf::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLsaType::LsaHeader : public ydk::Entity
 {
     public:
@@ -4642,45 +4672,6 @@ class Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTab
         ydk::YLeaf is_graceful_restart_active; //type: boolean
 
 }; // Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaHeader
-
-
-class Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail : public ydk::Entity
-{
-    public:
-        LsaDetail();
-        ~LsaDetail();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf second_table_index; //type: uint8
-        ydk::YLeaf minute_table_index; //type: uint8
-        ydk::YLeaf free_time; //type: uint32
-        ydk::YLeaf is_deleted; //type: boolean
-        ydk::YLeaf is_routing_bit; //type: boolean
-        ydk::YLeaf is_advertising_router_reachable; //type: boolean
-        ydk::YLeaf is_no_delete; //type: boolean
-        ydk::YLeaf is_neighbor_exchange; //type: boolean
-        ydk::YLeaf is_routing_table; //type: boolean
-        ydk::YLeaf is_acknowledged; //type: boolean
-        ydk::YLeaf is_maximum_aged; //type: boolean
-        ydk::YLeaf is_partial_spf; //type: boolean
-        ydk::YLeaf is_flood_pending; //type: boolean
-        ydk::YLeaf rate_limit; //type: boolean
-        ydk::YLeaf is_nsr_ack_pending; //type: boolean
-        ydk::YLeaf nsr_flood_required; //type: boolean
-        ydk::YLeaf lsa_flood_required_post_fail_over; //type: boolean
-        ydk::YLeaf lsa_length; //type: uint16
-        ydk::YLeaf lsa_sync_state; //type: OspfLsaSyncState
-
-}; // Ospfv3::Processes::Process::DefaultVrf::Areas::Area::DatabaseTable::LsaTable::Lsa::LsaInfo::UnknownLinkLsaType::LsaDetail
 
 
 }

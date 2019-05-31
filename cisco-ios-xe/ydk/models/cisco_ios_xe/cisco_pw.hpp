@@ -10,24 +10,6 @@
 namespace cisco_ios_xe {
 namespace cisco_pw {
 
-class PwSignalingProtocolType : public virtual ydk::Identity
-{
-    public:
-        PwSignalingProtocolType();
-        ~PwSignalingProtocolType();
-
-
-}; // PwSignalingProtocolType
-
-class PwLoadBalanceType : public virtual ydk::Identity
-{
-    public:
-        PwLoadBalanceType();
-        ~PwLoadBalanceType();
-
-
-}; // PwLoadBalanceType
-
 class PwEncapsulationType : public virtual ydk::Identity
 {
     public:
@@ -45,6 +27,24 @@ class PwVcType : public virtual ydk::Identity
 
 
 }; // PwVcType
+
+class PwLoadBalanceType : public virtual ydk::Identity
+{
+    public:
+        PwLoadBalanceType();
+        ~PwLoadBalanceType();
+
+
+}; // PwLoadBalanceType
+
+class PwSignalingProtocolType : public virtual ydk::Identity
+{
+    public:
+        PwSignalingProtocolType();
+        ~PwSignalingProtocolType();
+
+
+}; // PwSignalingProtocolType
 
 class PwSequencingType : public virtual ydk::Identity
 {
@@ -526,33 +526,6 @@ class PseudowireState::Pseudowires::Statistics : public ydk::Entity
 
 }; // PseudowireState::Pseudowires::Statistics
 
-class PwVcTypeEther : public cisco_ios_xe::cisco_pw::PwVcType, virtual ydk::Identity
-{
-    public:
-        PwVcTypeEther();
-        ~PwVcTypeEther();
-
-
-}; // PwVcTypeEther
-
-class PwSequencingTransmit : public cisco_ios_xe::cisco_pw::PwSequencingType, virtual ydk::Identity
-{
-    public:
-        PwSequencingTransmit();
-        ~PwSequencingTransmit();
-
-
-}; // PwSequencingTransmit
-
-class PwVcTypeVlanPassthrough : public cisco_ios_xe::cisco_pw::PwVcType, virtual ydk::Identity
-{
-    public:
-        PwVcTypeVlanPassthrough();
-        ~PwVcTypeVlanPassthrough();
-
-
-}; // PwVcTypeVlanPassthrough
-
 class PwEncapMpls : public cisco_ios_xe::cisco_pw::PwEncapsulationType, virtual ydk::Identity
 {
     public:
@@ -562,50 +535,14 @@ class PwEncapMpls : public cisco_ios_xe::cisco_pw::PwEncapsulationType, virtual 
 
 }; // PwEncapMpls
 
-class PwLbIpDstIp : public cisco_ios_xe::cisco_pw::PwLoadBalanceType, virtual ydk::Identity
+class PwVcTypeEther : public cisco_ios_xe::cisco_pw::PwVcType, virtual ydk::Identity
 {
     public:
-        PwLbIpDstIp();
-        ~PwLbIpDstIp();
+        PwVcTypeEther();
+        ~PwVcTypeEther();
 
 
-}; // PwLbIpDstIp
-
-class PwSequencingReceive : public cisco_ios_xe::cisco_pw::PwSequencingType, virtual ydk::Identity
-{
-    public:
-        PwSequencingReceive();
-        ~PwSequencingReceive();
-
-
-}; // PwSequencingReceive
-
-class PwLbEthernetType : public cisco_ios_xe::cisco_pw::PwLoadBalanceType, virtual ydk::Identity
-{
-    public:
-        PwLbEthernetType();
-        ~PwLbEthernetType();
-
-
-}; // PwLbEthernetType
-
-class PwSignalingProtocolLdp : public cisco_ios_xe::cisco_pw::PwSignalingProtocolType, virtual ydk::Identity
-{
-    public:
-        PwSignalingProtocolLdp();
-        ~PwSignalingProtocolLdp();
-
-
-}; // PwSignalingProtocolLdp
-
-class PwSequencingBoth : public cisco_ios_xe::cisco_pw::PwSequencingType, virtual ydk::Identity
-{
-    public:
-        PwSequencingBoth();
-        ~PwSequencingBoth();
-
-
-}; // PwSequencingBoth
+}; // PwVcTypeEther
 
 class PwVcTypeVlan : public cisco_ios_xe::cisco_pw::PwVcType, virtual ydk::Identity
 {
@@ -616,50 +553,32 @@ class PwVcTypeVlan : public cisco_ios_xe::cisco_pw::PwVcType, virtual ydk::Ident
 
 }; // PwVcTypeVlan
 
-class PwLbIpType : public cisco_ios_xe::cisco_pw::PwLoadBalanceType, virtual ydk::Identity
+class PwVcTypeVlanPassthrough : public cisco_ios_xe::cisco_pw::PwVcType, virtual ydk::Identity
 {
     public:
-        PwLbIpType();
-        ~PwLbIpType();
+        PwVcTypeVlanPassthrough();
+        ~PwVcTypeVlanPassthrough();
 
 
-}; // PwLbIpType
+}; // PwVcTypeVlanPassthrough
 
-class PwSignalingProtocolNone : public cisco_ios_xe::cisco_pw::PwSignalingProtocolType, virtual ydk::Identity
+class PwLbEthernetType : public cisco_ios_xe::cisco_pw::PwLoadBalanceType, virtual ydk::Identity
 {
     public:
-        PwSignalingProtocolNone();
-        ~PwSignalingProtocolNone();
+        PwLbEthernetType();
+        ~PwLbEthernetType();
 
 
-}; // PwSignalingProtocolNone
+}; // PwLbEthernetType
 
-class PwSignalingProtocolBgp : public cisco_ios_xe::cisco_pw::PwSignalingProtocolType, virtual ydk::Identity
+class PwLbEthSrcMac : public cisco_ios_xe::cisco_pw::PwLbEthernetType, virtual ydk::Identity
 {
     public:
-        PwSignalingProtocolBgp();
-        ~PwSignalingProtocolBgp();
+        PwLbEthSrcMac();
+        ~PwLbEthSrcMac();
 
 
-}; // PwSignalingProtocolBgp
-
-class PwLbIpSrcIp : public cisco_ios_xe::cisco_pw::PwLbIpType, virtual ydk::Identity
-{
-    public:
-        PwLbIpSrcIp();
-        ~PwLbIpSrcIp();
-
-
-}; // PwLbIpSrcIp
-
-class PwLbEthSrcDstMac : public cisco_ios_xe::cisco_pw::PwLbEthernetType, virtual ydk::Identity
-{
-    public:
-        PwLbEthSrcDstMac();
-        ~PwLbEthSrcDstMac();
-
-
-}; // PwLbEthSrcDstMac
+}; // PwLbEthSrcMac
 
 class PwLbEthDstMac : public cisco_ios_xe::cisco_pw::PwLbEthernetType, virtual ydk::Identity
 {
@@ -670,6 +589,42 @@ class PwLbEthDstMac : public cisco_ios_xe::cisco_pw::PwLbEthernetType, virtual y
 
 }; // PwLbEthDstMac
 
+class PwLbEthSrcDstMac : public cisco_ios_xe::cisco_pw::PwLbEthernetType, virtual ydk::Identity
+{
+    public:
+        PwLbEthSrcDstMac();
+        ~PwLbEthSrcDstMac();
+
+
+}; // PwLbEthSrcDstMac
+
+class PwLbIpType : public cisco_ios_xe::cisco_pw::PwLoadBalanceType, virtual ydk::Identity
+{
+    public:
+        PwLbIpType();
+        ~PwLbIpType();
+
+
+}; // PwLbIpType
+
+class PwLbIpSrcIp : public cisco_ios_xe::cisco_pw::PwLbIpType, virtual ydk::Identity
+{
+    public:
+        PwLbIpSrcIp();
+        ~PwLbIpSrcIp();
+
+
+}; // PwLbIpSrcIp
+
+class PwLbIpDstIp : public cisco_ios_xe::cisco_pw::PwLoadBalanceType, virtual ydk::Identity
+{
+    public:
+        PwLbIpDstIp();
+        ~PwLbIpDstIp();
+
+
+}; // PwLbIpDstIp
+
 class PwLbIpSrcDstIp : public cisco_ios_xe::cisco_pw::PwLbIpType, virtual ydk::Identity
 {
     public:
@@ -679,14 +634,59 @@ class PwLbIpSrcDstIp : public cisco_ios_xe::cisco_pw::PwLbIpType, virtual ydk::I
 
 }; // PwLbIpSrcDstIp
 
-class PwLbEthSrcMac : public cisco_ios_xe::cisco_pw::PwLbEthernetType, virtual ydk::Identity
+class PwSignalingProtocolNone : public cisco_ios_xe::cisco_pw::PwSignalingProtocolType, virtual ydk::Identity
 {
     public:
-        PwLbEthSrcMac();
-        ~PwLbEthSrcMac();
+        PwSignalingProtocolNone();
+        ~PwSignalingProtocolNone();
 
 
-}; // PwLbEthSrcMac
+}; // PwSignalingProtocolNone
+
+class PwSignalingProtocolLdp : public cisco_ios_xe::cisco_pw::PwSignalingProtocolType, virtual ydk::Identity
+{
+    public:
+        PwSignalingProtocolLdp();
+        ~PwSignalingProtocolLdp();
+
+
+}; // PwSignalingProtocolLdp
+
+class PwSignalingProtocolBgp : public cisco_ios_xe::cisco_pw::PwSignalingProtocolType, virtual ydk::Identity
+{
+    public:
+        PwSignalingProtocolBgp();
+        ~PwSignalingProtocolBgp();
+
+
+}; // PwSignalingProtocolBgp
+
+class PwSequencingReceive : public cisco_ios_xe::cisco_pw::PwSequencingType, virtual ydk::Identity
+{
+    public:
+        PwSequencingReceive();
+        ~PwSequencingReceive();
+
+
+}; // PwSequencingReceive
+
+class PwSequencingTransmit : public cisco_ios_xe::cisco_pw::PwSequencingType, virtual ydk::Identity
+{
+    public:
+        PwSequencingTransmit();
+        ~PwSequencingTransmit();
+
+
+}; // PwSequencingTransmit
+
+class PwSequencingBoth : public cisco_ios_xe::cisco_pw::PwSequencingType, virtual ydk::Identity
+{
+    public:
+        PwSequencingBoth();
+        ~PwSequencingBoth();
+
+
+}; // PwSequencingBoth
 
 class PwOperStateType : public ydk::Enum
 {

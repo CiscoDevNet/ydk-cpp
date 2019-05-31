@@ -9588,6 +9588,9 @@ bool BgpStateData::BgpRouteRds::BgpRouteRd::BgpRdRouteAfs::BgpRdRouteAf::BgpRdRo
     return false;
 }
 
+const Enum::YLeaf BgpLink::internal {0, "internal"};
+const Enum::YLeaf BgpLink::external {1, "external"};
+
 const Enum::YLeaf BgpFsmState::fsm_idle {0, "fsm-idle"};
 const Enum::YLeaf BgpFsmState::fsm_connect {1, "fsm-connect"};
 const Enum::YLeaf BgpFsmState::fsm_active {2, "fsm-active"};
@@ -9595,9 +9598,6 @@ const Enum::YLeaf BgpFsmState::fsm_opensent {3, "fsm-opensent"};
 const Enum::YLeaf BgpFsmState::fsm_openconfirm {4, "fsm-openconfirm"};
 const Enum::YLeaf BgpFsmState::fsm_established {5, "fsm-established"};
 const Enum::YLeaf BgpFsmState::fsm_nonnegotiated {6, "fsm-nonnegotiated"};
-
-const Enum::YLeaf BgpLink::internal {0, "internal"};
-const Enum::YLeaf BgpLink::external {1, "external"};
 
 const Enum::YLeaf BgpMode::mode_active {0, "mode-active"};
 const Enum::YLeaf BgpMode::mode_passive {1, "mode-passive"};

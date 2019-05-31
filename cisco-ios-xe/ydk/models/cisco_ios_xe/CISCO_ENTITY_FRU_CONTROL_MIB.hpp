@@ -922,21 +922,16 @@ class CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePower
 
 }; // CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerConsumptionEntry
 
-class ModuleAdminType : public ydk::Enum
+class PowerRedundancyType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf enabled;
-        static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf reset;
-        static const ydk::Enum::YLeaf outOfServiceAdmin;
-
-};
-
-class FRUCoolingUnit : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cfm;
-        static const ydk::Enum::YLeaf watts;
+        static const ydk::Enum::YLeaf notsupported;
+        static const ydk::Enum::YLeaf redundant;
+        static const ydk::Enum::YLeaf combined;
+        static const ydk::Enum::YLeaf nonRedundant;
+        static const ydk::Enum::YLeaf psRedundant;
+        static const ydk::Enum::YLeaf inPwrSrcRedundant;
+        static const ydk::Enum::YLeaf psRedundantSingleInput;
 
 };
 
@@ -948,6 +943,34 @@ class PowerAdminType : public ydk::Enum
         static const ydk::Enum::YLeaf inlineAuto;
         static const ydk::Enum::YLeaf inlineOn;
         static const ydk::Enum::YLeaf powerCycle;
+
+};
+
+class PowerOperType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf offEnvOther;
+        static const ydk::Enum::YLeaf on;
+        static const ydk::Enum::YLeaf offAdmin;
+        static const ydk::Enum::YLeaf offDenied;
+        static const ydk::Enum::YLeaf offEnvPower;
+        static const ydk::Enum::YLeaf offEnvTemp;
+        static const ydk::Enum::YLeaf offEnvFan;
+        static const ydk::Enum::YLeaf failed;
+        static const ydk::Enum::YLeaf onButFanFail;
+        static const ydk::Enum::YLeaf offCooling;
+        static const ydk::Enum::YLeaf offConnectorRating;
+        static const ydk::Enum::YLeaf onButInlinePowerFail;
+
+};
+
+class ModuleAdminType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf reset;
+        static const ydk::Enum::YLeaf outOfServiceAdmin;
 
 };
 
@@ -1013,34 +1036,11 @@ class ModuleResetReasonType : public ydk::Enum
 
 };
 
-class PowerRedundancyType : public ydk::Enum
+class FRUCoolingUnit : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf notsupported;
-        static const ydk::Enum::YLeaf redundant;
-        static const ydk::Enum::YLeaf combined;
-        static const ydk::Enum::YLeaf nonRedundant;
-        static const ydk::Enum::YLeaf psRedundant;
-        static const ydk::Enum::YLeaf inPwrSrcRedundant;
-        static const ydk::Enum::YLeaf psRedundantSingleInput;
-
-};
-
-class PowerOperType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf offEnvOther;
-        static const ydk::Enum::YLeaf on;
-        static const ydk::Enum::YLeaf offAdmin;
-        static const ydk::Enum::YLeaf offDenied;
-        static const ydk::Enum::YLeaf offEnvPower;
-        static const ydk::Enum::YLeaf offEnvTemp;
-        static const ydk::Enum::YLeaf offEnvFan;
-        static const ydk::Enum::YLeaf failed;
-        static const ydk::Enum::YLeaf onButFanFail;
-        static const ydk::Enum::YLeaf offCooling;
-        static const ydk::Enum::YLeaf offConnectorRating;
-        static const ydk::Enum::YLeaf onButInlinePowerFail;
+        static const ydk::Enum::YLeaf cfm;
+        static const ydk::Enum::YLeaf watts;
 
 };
 

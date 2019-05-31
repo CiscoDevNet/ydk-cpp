@@ -1886,7 +1886,7 @@ class InstallRemove::Input : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf remove; //type: one of identityref, string
+        ydk::YLeaf remove; //type: one of string, identityref
         ydk::YLeaf inactive; //type: empty
         ydk::YLeaf forced; //type: empty
 

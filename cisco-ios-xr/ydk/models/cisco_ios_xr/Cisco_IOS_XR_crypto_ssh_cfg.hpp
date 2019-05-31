@@ -62,17 +62,66 @@ class Ssh::Client : public ydk::Entity
         ydk::YLeaf rekey_volume; //type: uint32
         ydk::YLeaf host_public_key; //type: string
         ydk::YLeaf client_vrf; //type: string
+        ydk::YLeaf v2; //type: empty
         ydk::YLeaf tcp_window_scale; //type: uint32
         ydk::YLeaf rekey_time; //type: uint32
         ydk::YLeaf source_interface; //type: string
         ydk::YLeaf dscp; //type: uint32
+        class ClientDisable; //type: Ssh::Client::ClientDisable
         class ClientAlgo; //type: Ssh::Client::ClientAlgo
         class ClientEnable; //type: Ssh::Client::ClientEnable
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_cfg::Ssh::Client::ClientDisable> client_disable;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_cfg::Ssh::Client::ClientAlgo> client_algo;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_cfg::Ssh::Client::ClientEnable> client_enable;
         
 }; // Ssh::Client
+
+
+class Ssh::Client::ClientDisable : public ydk::Entity
+{
+    public:
+        ClientDisable();
+        ~ClientDisable();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class ClientHmac; //type: Ssh::Client::ClientDisable::ClientHmac
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_crypto_ssh_cfg::Ssh::Client::ClientDisable::ClientHmac> client_hmac;
+        
+}; // Ssh::Client::ClientDisable
+
+
+class Ssh::Client::ClientDisable::ClientHmac : public ydk::Entity
+{
+    public:
+        ClientHmac();
+        ~ClientHmac();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf client_hmac_sha1; //type: boolean
+
+}; // Ssh::Client::ClientDisable::ClientHmac
 
 
 class Ssh::Client::ClientAlgo : public ydk::Entity
@@ -254,6 +303,7 @@ class Ssh::Server::Disable::Hmac : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf hmac_sha512; //type: boolean
+        ydk::YLeaf hmac_sha1; //type: boolean
 
 }; // Ssh::Server::Disable::Hmac
 

@@ -984,14 +984,14 @@ bool EventManager::Environments::Environment::has_leaf_or_child_of_name(const st
     return false;
 }
 
+const Enum::YLeaf EventManagerChecksum::sha_1 {1, "sha-1"};
+const Enum::YLeaf EventManagerChecksum::md5 {2, "md5"};
+
 const Enum::YLeaf EventManagerPolicySec::rsa_2048 {2, "rsa-2048"};
 const Enum::YLeaf EventManagerPolicySec::trust {3, "trust"};
 
 const Enum::YLeaf EventManagerPolicyMode::cisco {1, "cisco"};
 const Enum::YLeaf EventManagerPolicyMode::trust {2, "trust"};
-
-const Enum::YLeaf EventManagerChecksum::sha_1 {1, "sha-1"};
-const Enum::YLeaf EventManagerChecksum::md5 {2, "md5"};
 
 const Enum::YLeaf EventManagerPolicy::system {0, "system"};
 const Enum::YLeaf EventManagerPolicy::user {1, "user"};

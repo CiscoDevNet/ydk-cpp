@@ -1631,18 +1631,6 @@ class Pmipv6::Lma::ConfigVariables::GlobalVariables::Cust : public ydk::Entity
 
 }; // Pmipv6::Lma::ConfigVariables::GlobalVariables::Cust
 
-class Pmipv6Role : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf wlan;
-        static const ydk::Enum::YLeaf gpp;
-        static const ydk::Enum::YLeaf lte;
-        static const ydk::Enum::YLeaf wi_max;
-        static const ydk::Enum::YLeaf gma;
-        static const ydk::Enum::YLeaf rmax;
-
-};
-
 class Pmipv6Encap : public ydk::Enum
 {
     public:
@@ -1668,6 +1656,18 @@ class Pmipv6Addr : public ydk::Enum
         static const ydk::Enum::YLeaf ipv4;
         static const ydk::Enum::YLeaf ipv6;
         static const ydk::Enum::YLeaf pmipv6_addr_ipv4_ipv6;
+
+};
+
+class Pmipv6Role : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf wlan;
+        static const ydk::Enum::YLeaf gpp;
+        static const ydk::Enum::YLeaf lte;
+        static const ydk::Enum::YLeaf wi_max;
+        static const ydk::Enum::YLeaf gma;
+        static const ydk::Enum::YLeaf rmax;
 
 };
 

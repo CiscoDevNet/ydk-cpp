@@ -29,6 +29,7 @@ Pce::Pce()
     , netconf(std::make_shared<Pce::Netconf>())
     , disjoint_path(std::make_shared<Pce::DisjointPath>())
     , explicit_paths(std::make_shared<Pce::ExplicitPaths>())
+    , peer_filter(std::make_shared<Pce::PeerFilter>())
 {
     ipv6_state_syncs->parent = this;
     pcc_addresses->parent = this;
@@ -39,6 +40,7 @@ Pce::Pce()
     netconf->parent = this;
     disjoint_path->parent = this;
     explicit_paths->parent = this;
+    peer_filter->parent = this;
 
     yang_name = "pce"; yang_parent_name = "Cisco-IOS-XR-infra-xtc-cfg"; is_top_level_class = true; has_list_ancestor = false; 
 }
@@ -64,7 +66,8 @@ bool Pce::has_data() const
 	|| (timers !=  nullptr && timers->has_data())
 	|| (netconf !=  nullptr && netconf->has_data())
 	|| (disjoint_path !=  nullptr && disjoint_path->has_data())
-	|| (explicit_paths !=  nullptr && explicit_paths->has_data());
+	|| (explicit_paths !=  nullptr && explicit_paths->has_data())
+	|| (peer_filter !=  nullptr && peer_filter->has_data());
 }
 
 bool Pce::has_operation() const
@@ -84,7 +87,8 @@ bool Pce::has_operation() const
 	|| (timers !=  nullptr && timers->has_operation())
 	|| (netconf !=  nullptr && netconf->has_operation())
 	|| (disjoint_path !=  nullptr && disjoint_path->has_operation())
-	|| (explicit_paths !=  nullptr && explicit_paths->has_operation());
+	|| (explicit_paths !=  nullptr && explicit_paths->has_operation())
+	|| (peer_filter !=  nullptr && peer_filter->has_operation());
 }
 
 std::string Pce::get_segment_path() const
@@ -208,6 +212,15 @@ std::shared_ptr<ydk::Entity> Pce::get_child_by_name(const std::string & child_ya
         return explicit_paths;
     }
 
+    if(child_yang_name == "peer-filter")
+    {
+        if(peer_filter == nullptr)
+        {
+            peer_filter = std::make_shared<Pce::PeerFilter>();
+        }
+        return peer_filter;
+    }
+
     return nullptr;
 }
 
@@ -268,6 +281,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::get_children() const
     if(explicit_paths != nullptr)
     {
         _children["explicit-paths"] = explicit_paths;
+    }
+
+    if(peer_filter != nullptr)
+    {
+        _children["peer-filter"] = peer_filter;
     }
 
     return _children;
@@ -348,7 +366,7 @@ std::map<std::pair<std::string, std::string>, std::string> Pce::get_namespace_id
 
 bool Pce::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipv6-state-syncs" || name == "pcc-addresses" || name == "logging" || name == "backoff" || name == "rest" || name == "state-syncs" || name == "segment-routing" || name == "timers" || name == "netconf" || name == "disjoint-path" || name == "explicit-paths" || name == "server-address" || name == "ipv6-server-address" || name == "password" || name == "enable")
+    if(name == "ipv6-state-syncs" || name == "pcc-addresses" || name == "logging" || name == "backoff" || name == "rest" || name == "state-syncs" || name == "segment-routing" || name == "timers" || name == "netconf" || name == "disjoint-path" || name == "explicit-paths" || name == "peer-filter" || name == "server-address" || name == "ipv6-server-address" || name == "password" || name == "enable")
         return true;
     return false;
 }
@@ -5786,38 +5804,123 @@ bool Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop::has_leaf_or_child_of_n
     return false;
 }
 
+Pce::PeerFilter::PeerFilter()
+    :
+    ipv4_acl{YType::str, "ipv4-acl"}
+{
+
+    yang_name = "peer-filter"; yang_parent_name = "pce"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Pce::PeerFilter::~PeerFilter()
+{
+}
+
+bool Pce::PeerFilter::has_data() const
+{
+    if (is_presence_container) return true;
+    return ipv4_acl.is_set;
+}
+
+bool Pce::PeerFilter::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4_acl.yfilter);
+}
+
+std::string Pce::PeerFilter::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-infra-xtc-cfg:pce/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Pce::PeerFilter::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "peer-filter";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Pce::PeerFilter::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipv4_acl.is_set || is_set(ipv4_acl.yfilter)) leaf_name_data.push_back(ipv4_acl.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Pce::PeerFilter::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Pce::PeerFilter::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Pce::PeerFilter::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipv4-acl")
+    {
+        ipv4_acl = value;
+        ipv4_acl.value_namespace = name_space;
+        ipv4_acl.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Pce::PeerFilter::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4-acl")
+    {
+        ipv4_acl.yfilter = yfilter;
+    }
+}
+
+bool Pce::PeerFilter::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-acl")
+        return true;
+    return false;
+}
+
 const Enum::YLeaf PceSegment::ipv4_address {1, "ipv4-address"};
 const Enum::YLeaf PceSegment::mpls_label {3, "mpls-label"};
 
-const Enum::YLeaf PceBindingSid::mpls_label_specified {1, "mpls-label-specified"};
-const Enum::YLeaf PceBindingSid::mpls_label_any {2, "mpls-label-any"};
-
-const Enum::YLeaf PceExplicitPathHop::address {1, "address"};
-const Enum::YLeaf PceExplicitPathHop::sid_node {2, "sid-node"};
-const Enum::YLeaf PceExplicitPathHop::sid_adjancency {3, "sid-adjancency"};
-const Enum::YLeaf PceExplicitPathHop::binding_sid {4, "binding-sid"};
+const Enum::YLeaf PcePathHop::mpls {1, "mpls"};
+const Enum::YLeaf PcePathHop::srv6 {2, "srv6"};
 
 const Enum::YLeaf PcePath::explicit_ {1, "explicit"};
 const Enum::YLeaf PcePath::dynamic {2, "dynamic"};
 
+const Enum::YLeaf PceDisjointPath::link {1, "link"};
+const Enum::YLeaf PceDisjointPath::node {2, "node"};
+const Enum::YLeaf PceDisjointPath::srlg {3, "srlg"};
+const Enum::YLeaf PceDisjointPath::srlg_node {4, "srlg-node"};
+
 const Enum::YLeaf PceEndPoint::end_point_type_ipv4 {1, "end-point-type-ipv4"};
 const Enum::YLeaf PceEndPoint::end_point_type_ipv6 {2, "end-point-type-ipv6"};
 
-const Enum::YLeaf PcerestAuthentication::basic {1, "basic"};
-const Enum::YLeaf PcerestAuthentication::digest {2, "digest"};
-
-const Enum::YLeaf PcePathHop::mpls {1, "mpls"};
-const Enum::YLeaf PcePathHop::srv6 {2, "srv6"};
+const Enum::YLeaf PceBindingSid::mpls_label_specified {1, "mpls-label-specified"};
+const Enum::YLeaf PceBindingSid::mpls_label_any {2, "mpls-label-any"};
 
 const Enum::YLeaf PceMetric::igp {1, "igp"};
 const Enum::YLeaf PceMetric::te {2, "te"};
 const Enum::YLeaf PceMetric::hopcount {3, "hopcount"};
 const Enum::YLeaf PceMetric::latency {12, "latency"};
 
-const Enum::YLeaf PceDisjointPath::link {1, "link"};
-const Enum::YLeaf PceDisjointPath::node {2, "node"};
-const Enum::YLeaf PceDisjointPath::srlg {3, "srlg"};
-const Enum::YLeaf PceDisjointPath::srlg_node {4, "srlg-node"};
+const Enum::YLeaf PcerestAuthentication::basic {1, "basic"};
+const Enum::YLeaf PcerestAuthentication::digest {2, "digest"};
+
+const Enum::YLeaf PceExplicitPathHop::address {1, "address"};
+const Enum::YLeaf PceExplicitPathHop::sid_node {2, "sid-node"};
+const Enum::YLeaf PceExplicitPathHop::sid_adjancency {3, "sid-adjancency"};
+const Enum::YLeaf PceExplicitPathHop::binding_sid {4, "binding-sid"};
 
 
 }

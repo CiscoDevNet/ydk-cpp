@@ -3533,7 +3533,7 @@ class Native::Ip::Route::IpRouteInterfaceForwardingList::FwdList : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf fwd; //type: one of string, enumeration
+        ydk::YLeaf fwd; //type: one of enumeration, string
         ydk::YLeaf dhcp; //type: empty
         ydk::YLeaf metric; //type: uint8
         ydk::YLeaf global; //type: empty
@@ -3651,7 +3651,7 @@ class Native::Ip::Route::Static::Bfd::IfaceName : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf interface; //type: one of string, enumeration
+        ydk::YLeaf interface; //type: one of enumeration, string
         ydk::YLeaf ipv4_source; //type: string
         ydk::YLeaf group; //type: string
         ydk::YLeaf passive; //type: empty

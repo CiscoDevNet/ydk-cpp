@@ -340,26 +340,6 @@ class BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr : public ydk::E
 
 }; // BfdState::Sessions::Session::BfdMhopVrfNbrs::BfdMhopVrfNbr
 
-class BfdRemoteStateType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf remote_up;
-        static const ydk::Enum::YLeaf remote_down;
-        static const ydk::Enum::YLeaf remote_init;
-        static const ydk::Enum::YLeaf remote_admindown;
-        static const ydk::Enum::YLeaf remote_invalid;
-
-};
-
-class BfdLspType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf working;
-        static const ydk::Enum::YLeaf protect;
-        static const ydk::Enum::YLeaf unknown;
-
-};
-
 class BfdOperSessionType : public ydk::Enum
 {
     public:
@@ -372,6 +352,17 @@ class BfdOperSessionType : public ydk::Enum
 
 };
 
+class BfdRemoteStateType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf remote_up;
+        static const ydk::Enum::YLeaf remote_down;
+        static const ydk::Enum::YLeaf remote_init;
+        static const ydk::Enum::YLeaf remote_admindown;
+        static const ydk::Enum::YLeaf remote_invalid;
+
+};
+
 class BfdStateType : public ydk::Enum
 {
     public:
@@ -381,6 +372,15 @@ class BfdStateType : public ydk::Enum
         static const ydk::Enum::YLeaf init;
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf invalid;
+
+};
+
+class BfdLspType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf working;
+        static const ydk::Enum::YLeaf protect;
+        static const ydk::Enum::YLeaf unknown;
 
 };
 

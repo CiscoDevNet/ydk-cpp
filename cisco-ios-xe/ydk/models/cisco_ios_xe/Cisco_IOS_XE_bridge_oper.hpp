@@ -179,19 +179,19 @@ class BridgeInstances::BridgeEntry::BridgeMatmEntries::BridgeMatmEntry : public 
 
 }; // BridgeInstances::BridgeEntry::BridgeMatmEntries::BridgeMatmEntry
 
-class BridgeMacType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bridge_mac_type_static;
-        static const ydk::Enum::YLeaf bridge_mac_type_dynamic;
-
-};
-
 class IntfStatusType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf up;
         static const ydk::Enum::YLeaf down;
+
+};
+
+class BridgeMacType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bridge_mac_type_static;
+        static const ydk::Enum::YLeaf bridge_mac_type_dynamic;
 
 };
 

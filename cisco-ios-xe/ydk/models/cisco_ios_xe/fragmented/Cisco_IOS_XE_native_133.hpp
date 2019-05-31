@@ -2507,7 +2507,7 @@ class Native::Mpls::TrafficEng::Signalling::Advertise::ExplicitNull : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf access_list; //type: one of uint8, string
+        ydk::YLeaf access_list; //type: one of string, uint8
 
 }; // Native::Mpls::TrafficEng::Signalling::Advertise::ExplicitNull
 
@@ -2695,9 +2695,9 @@ class Native::Router : public ydk::Entity
         class Ospf; //type: Native::Router::Ospf
         class Ospfv3; //type: Native::Router::Ospfv3
         class Bgp; //type: Native::Router::Bgp
+        class Eigrp; //type: Native::Router::Eigrp
         class Lisp; //type: Native::Router::Lisp
         class LispList; //type: Native::Router::LispList
-        class Eigrp; //type: Native::Router::Eigrp
         class Rip; //type: Native::Router::Rip
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Isis> isis; // presence node
@@ -2705,9 +2705,9 @@ class Native::Router : public ydk::Entity
         ydk::YList ospf;
         ydk::YList ospfv3;
         ydk::YList bgp;
+        ydk::YList eigrp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Lisp> lisp; // presence node
         ydk::YList lisp_list;
-        ydk::YList eigrp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Rip> rip; // presence node
         
 }; // Native::Router
@@ -3486,7 +3486,7 @@ class Native::Router::Isis::AddressFamily::Ipv4::Topology::Redistribute::Bgp : p
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_number; //type: one of uint32, string
+        ydk::YLeaf as_number; //type: one of string, uint32
         ydk::YLeaf levels; //type: IsisRoutesLevelType
         ydk::YLeaf metric; //type: uint32
         ydk::YLeaf metric_type; //type: MetricType

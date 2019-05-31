@@ -1127,7 +1127,7 @@ class Native::Otv : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf site_identifier; //type: one of uint32, string
+        ydk::YLeaf site_identifier; //type: one of string, uint32
         class Fragmentation; //type: Native::Otv::Fragmentation
         class Isis; //type: Native::Otv::Isis
         class Site; //type: Native::Otv::Site
@@ -2764,7 +2764,7 @@ class Native::SnmpServer : public ydk::Entity
         ydk::YLeaf packetsize; //type: uint32
         ydk::YLeaf queue_length; //type: uint16
         ydk::YLeaf system_shutdown; //type: empty
-        ydk::YLeaf tftp_server_list; //type: one of uint8, string
+        ydk::YLeaf tftp_server_list; //type: one of string, uint8
         class Community; //type: Native::SnmpServer::Community
         class Context; //type: Native::SnmpServer::Context
         class Enable; //type: Native::SnmpServer::Enable
@@ -3641,7 +3641,7 @@ class Native::SnmpServer::Enable::EnableChoice::Traps::Alarms : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf alarm_type; //type: one of uint8, enumeration
+        ydk::YLeaf alarm_type; //type: one of enumeration, uint8
         class AlarmType;
 
 }; // Native::SnmpServer::Enable::EnableChoice::Traps::Alarms

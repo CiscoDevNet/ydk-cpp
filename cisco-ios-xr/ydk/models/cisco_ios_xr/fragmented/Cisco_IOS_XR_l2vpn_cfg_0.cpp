@@ -8495,6 +8495,8 @@ L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDom
     coupled_mode{YType::empty, "coupled-mode"},
     shutdown{YType::empty, "shutdown"},
     flooding_unknown_unicast{YType::empty, "flooding-unknown-unicast"},
+    efp_visibility{YType::empty, "efp-visibility"},
+    l2_multicast_source{YType::enumeration, "l2-multicast-source"},
     igmp_snooping_disable{YType::empty, "igmp-snooping-disable"},
     transport_mode{YType::enumeration, "transport-mode"},
     mld_snooping{YType::str, "mld-snooping"},
@@ -8550,6 +8552,8 @@ bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| coupled_mode.is_set
 	|| shutdown.is_set
 	|| flooding_unknown_unicast.is_set
+	|| efp_visibility.is_set
+	|| l2_multicast_source.is_set
 	|| igmp_snooping_disable.is_set
 	|| transport_mode.is_set
 	|| mld_snooping.is_set
@@ -8582,6 +8586,8 @@ bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 	|| ydk::is_set(coupled_mode.yfilter)
 	|| ydk::is_set(shutdown.yfilter)
 	|| ydk::is_set(flooding_unknown_unicast.yfilter)
+	|| ydk::is_set(efp_visibility.yfilter)
+	|| ydk::is_set(l2_multicast_source.yfilter)
 	|| ydk::is_set(igmp_snooping_disable.yfilter)
 	|| ydk::is_set(transport_mode.yfilter)
 	|| ydk::is_set(mld_snooping.yfilter)
@@ -8623,6 +8629,8 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
     if (coupled_mode.is_set || is_set(coupled_mode.yfilter)) leaf_name_data.push_back(coupled_mode.get_name_leafdata());
     if (shutdown.is_set || is_set(shutdown.yfilter)) leaf_name_data.push_back(shutdown.get_name_leafdata());
     if (flooding_unknown_unicast.is_set || is_set(flooding_unknown_unicast.yfilter)) leaf_name_data.push_back(flooding_unknown_unicast.get_name_leafdata());
+    if (efp_visibility.is_set || is_set(efp_visibility.yfilter)) leaf_name_data.push_back(efp_visibility.get_name_leafdata());
+    if (l2_multicast_source.is_set || is_set(l2_multicast_source.yfilter)) leaf_name_data.push_back(l2_multicast_source.get_name_leafdata());
     if (igmp_snooping_disable.is_set || is_set(igmp_snooping_disable.yfilter)) leaf_name_data.push_back(igmp_snooping_disable.get_name_leafdata());
     if (transport_mode.is_set || is_set(transport_mode.yfilter)) leaf_name_data.push_back(transport_mode.get_name_leafdata());
     if (mld_snooping.is_set || is_set(mld_snooping.yfilter)) leaf_name_data.push_back(mld_snooping.get_name_leafdata());
@@ -8884,6 +8892,18 @@ void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
         flooding_unknown_unicast.value_namespace = name_space;
         flooding_unknown_unicast.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "efp-visibility")
+    {
+        efp_visibility = value;
+        efp_visibility.value_namespace = name_space;
+        efp_visibility.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "l2-multicast-source")
+    {
+        l2_multicast_source = value;
+        l2_multicast_source.value_namespace = name_space;
+        l2_multicast_source.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "igmp-snooping-disable")
     {
         igmp_snooping_disable = value;
@@ -8952,6 +8972,14 @@ void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     {
         flooding_unknown_unicast.yfilter = yfilter;
     }
+    if(value_path == "efp-visibility")
+    {
+        efp_visibility.yfilter = yfilter;
+    }
+    if(value_path == "l2-multicast-source")
+    {
+        l2_multicast_source.yfilter = yfilter;
+    }
     if(value_path == "igmp-snooping-disable")
     {
         igmp_snooping_disable.yfilter = yfilter;
@@ -8988,7 +9016,7 @@ void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 
 bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "bd-storm-controls" || name == "member-vnis" || name == "bridge-domain-mac" || name == "nv-satellite" || name == "bridge-domain-pbb" || name == "bridge-domain-evis" || name == "access-vfis" || name == "bd-pseudowires" || name == "vfis" || name == "bridge-domainvnis" || name == "bd-attachment-circuits" || name == "bd-pseudowire-evpns" || name == "ip-source-guard" || name == "dai" || name == "routed-interfaces" || name == "name" || name == "coupled-mode" || name == "shutdown" || name == "flooding-unknown-unicast" || name == "igmp-snooping-disable" || name == "transport-mode" || name == "mld-snooping" || name == "bridge-domain-mtu" || name == "dhcp" || name == "bridge-description" || name == "igmp-snooping" || name == "flooding")
+    if(name == "bd-storm-controls" || name == "member-vnis" || name == "bridge-domain-mac" || name == "nv-satellite" || name == "bridge-domain-pbb" || name == "bridge-domain-evis" || name == "access-vfis" || name == "bd-pseudowires" || name == "vfis" || name == "bridge-domainvnis" || name == "bd-attachment-circuits" || name == "bd-pseudowire-evpns" || name == "ip-source-guard" || name == "dai" || name == "routed-interfaces" || name == "name" || name == "coupled-mode" || name == "shutdown" || name == "flooding-unknown-unicast" || name == "efp-visibility" || name == "l2-multicast-source" || name == "igmp-snooping-disable" || name == "transport-mode" || name == "mld-snooping" || name == "bridge-domain-mtu" || name == "dhcp" || name == "bridge-description" || name == "igmp-snooping" || name == "flooding")
         return true;
     return false;
 }
@@ -10169,9 +10197,10 @@ bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainMac::MacSecure::MacSecure()
     :
     logging{YType::empty, "logging"},
-    action{YType::enumeration, "action"},
     enable{YType::empty, "enable"},
-    threshold{YType::empty, "threshold"}
+    threshold{YType::empty, "threshold"},
+    action{YType::enumeration, "action"},
+    shutdown_recovery_timer{YType::uint32, "shutdown-recovery-timer"}
 {
 
     yang_name = "mac-secure"; yang_parent_name = "bridge-domain-mac"; is_top_level_class = false; has_list_ancestor = true; 
@@ -10185,18 +10214,20 @@ bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 {
     if (is_presence_container) return true;
     return logging.is_set
-	|| action.is_set
 	|| enable.is_set
-	|| threshold.is_set;
+	|| threshold.is_set
+	|| action.is_set
+	|| shutdown_recovery_timer.is_set;
 }
 
 bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainMac::MacSecure::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(logging.yfilter)
-	|| ydk::is_set(action.yfilter)
 	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(threshold.yfilter);
+	|| ydk::is_set(threshold.yfilter)
+	|| ydk::is_set(action.yfilter)
+	|| ydk::is_set(shutdown_recovery_timer.yfilter);
 }
 
 std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainMac::MacSecure::get_segment_path() const
@@ -10211,9 +10242,10 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (logging.is_set || is_set(logging.yfilter)) leaf_name_data.push_back(logging.get_name_leafdata());
-    if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
     if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (threshold.is_set || is_set(threshold.yfilter)) leaf_name_data.push_back(threshold.get_name_leafdata());
+    if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
+    if (shutdown_recovery_timer.is_set || is_set(shutdown_recovery_timer.yfilter)) leaf_name_data.push_back(shutdown_recovery_timer.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -10239,12 +10271,6 @@ void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
         logging.value_namespace = name_space;
         logging.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "action")
-    {
-        action = value;
-        action.value_namespace = name_space;
-        action.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "enable")
     {
         enable = value;
@@ -10257,6 +10283,18 @@ void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
         threshold.value_namespace = name_space;
         threshold.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "action")
+    {
+        action = value;
+        action.value_namespace = name_space;
+        action.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "shutdown-recovery-timer")
+    {
+        shutdown_recovery_timer = value;
+        shutdown_recovery_timer.value_namespace = name_space;
+        shutdown_recovery_timer.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainMac::MacSecure::set_filter(const std::string & value_path, YFilter yfilter)
@@ -10264,10 +10302,6 @@ void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     if(value_path == "logging")
     {
         logging.yfilter = yfilter;
-    }
-    if(value_path == "action")
-    {
-        action.yfilter = yfilter;
     }
     if(value_path == "enable")
     {
@@ -10277,11 +10311,19 @@ void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     {
         threshold.yfilter = yfilter;
     }
+    if(value_path == "action")
+    {
+        action.yfilter = yfilter;
+    }
+    if(value_path == "shutdown-recovery-timer")
+    {
+        shutdown_recovery_timer.yfilter = yfilter;
+    }
 }
 
 bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainMac::MacSecure::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "logging" || name == "action" || name == "enable" || name == "threshold")
+    if(name == "logging" || name == "enable" || name == "threshold" || name == "action" || name == "shutdown-recovery-timer")
         return true;
     return false;
 }
@@ -11547,11 +11589,11 @@ bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 
 L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure::PbbEdgeMacSecure()
     :
+    enable{YType::empty, "enable"},
+    accept_shutdown{YType::empty, "accept-shutdown"},
     logging{YType::enumeration, "logging"},
     disable{YType::empty, "disable"},
-    action{YType::enumeration, "action"},
-    enable{YType::empty, "enable"},
-    accept_shutdown{YType::empty, "accept-shutdown"}
+    action{YType::enumeration, "action"}
 {
 
     yang_name = "pbb-edge-mac-secure"; yang_parent_name = "pbb-edge-mac"; is_top_level_class = false; has_list_ancestor = true; 
@@ -11564,21 +11606,21 @@ L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDom
 bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure::has_data() const
 {
     if (is_presence_container) return true;
-    return logging.is_set
+    return enable.is_set
+	|| accept_shutdown.is_set
+	|| logging.is_set
 	|| disable.is_set
-	|| action.is_set
-	|| enable.is_set
-	|| accept_shutdown.is_set;
+	|| action.is_set;
 }
 
 bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
+	|| ydk::is_set(accept_shutdown.yfilter)
 	|| ydk::is_set(logging.yfilter)
 	|| ydk::is_set(disable.yfilter)
-	|| ydk::is_set(action.yfilter)
-	|| ydk::is_set(enable.yfilter)
-	|| ydk::is_set(accept_shutdown.yfilter);
+	|| ydk::is_set(action.yfilter);
 }
 
 std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure::get_segment_path() const
@@ -11592,11 +11634,11 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (accept_shutdown.is_set || is_set(accept_shutdown.yfilter)) leaf_name_data.push_back(accept_shutdown.get_name_leafdata());
     if (logging.is_set || is_set(logging.yfilter)) leaf_name_data.push_back(logging.get_name_leafdata());
     if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
     if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
-    if (accept_shutdown.is_set || is_set(accept_shutdown.yfilter)) leaf_name_data.push_back(accept_shutdown.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -11616,6 +11658,18 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomai
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "accept-shutdown")
+    {
+        accept_shutdown = value;
+        accept_shutdown.value_namespace = name_space;
+        accept_shutdown.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "logging")
     {
         logging = value;
@@ -11634,22 +11688,18 @@ void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
         action.value_namespace = name_space;
         action.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "accept-shutdown")
-    {
-        accept_shutdown = value;
-        accept_shutdown.value_namespace = name_space;
-        accept_shutdown.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
+    if(value_path == "accept-shutdown")
+    {
+        accept_shutdown.yfilter = yfilter;
+    }
     if(value_path == "logging")
     {
         logging.yfilter = yfilter;
@@ -11662,19 +11712,11 @@ void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     {
         action.yfilter = yfilter;
     }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
-    if(value_path == "accept-shutdown")
-    {
-        accept_shutdown.yfilter = yfilter;
-    }
 }
 
 bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BridgeDomainPbb::PbbEdges::PbbEdge::PbbEdgeMac::PbbEdgeMacSecure::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "logging" || name == "disable" || name == "action" || name == "enable" || name == "accept-shutdown")
+    if(name == "enable" || name == "accept-shutdown" || name == "logging" || name == "disable" || name == "action")
         return true;
     return false;
 }
@@ -14667,10 +14709,11 @@ bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
 
 L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure::PseudowireMacSecure()
     :
+    enable{YType::empty, "enable"},
     logging{YType::enumeration, "logging"},
     disable{YType::empty, "disable"},
     action{YType::enumeration, "action"},
-    enable{YType::empty, "enable"}
+    shutdown_recovery_timer{YType::uint32, "shutdown-recovery-timer"}
 {
 
     yang_name = "pseudowire-mac-secure"; yang_parent_name = "pseudowire-mac"; is_top_level_class = false; has_list_ancestor = true; 
@@ -14683,19 +14726,21 @@ L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDom
 bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure::has_data() const
 {
     if (is_presence_container) return true;
-    return logging.is_set
+    return enable.is_set
+	|| logging.is_set
 	|| disable.is_set
 	|| action.is_set
-	|| enable.is_set;
+	|| shutdown_recovery_timer.is_set;
 }
 
 bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure::has_operation() const
 {
     return is_set(yfilter)
+	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(logging.yfilter)
 	|| ydk::is_set(disable.yfilter)
 	|| ydk::is_set(action.yfilter)
-	|| ydk::is_set(enable.yfilter);
+	|| ydk::is_set(shutdown_recovery_timer.yfilter);
 }
 
 std::string L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure::get_segment_path() const
@@ -14709,10 +14754,11 @@ std::vector<std::pair<std::string, LeafData> > L2vpn::Database::BridgeDomainGrou
 {
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
+    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (logging.is_set || is_set(logging.yfilter)) leaf_name_data.push_back(logging.get_name_leafdata());
     if (disable.is_set || is_set(disable.yfilter)) leaf_name_data.push_back(disable.get_name_leafdata());
     if (action.is_set || is_set(action.yfilter)) leaf_name_data.push_back(action.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
+    if (shutdown_recovery_timer.is_set || is_set(shutdown_recovery_timer.yfilter)) leaf_name_data.push_back(shutdown_recovery_timer.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -14732,6 +14778,12 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> L2vpn::Database::BridgeDomai
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
 {
+    if(value_path == "enable")
+    {
+        enable = value;
+        enable.value_namespace = name_space;
+        enable.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "logging")
     {
         logging = value;
@@ -14750,16 +14802,20 @@ void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
         action.value_namespace = name_space;
         action.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "enable")
+    if(value_path == "shutdown-recovery-timer")
     {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
+        shutdown_recovery_timer = value;
+        shutdown_recovery_timer.value_namespace = name_space;
+        shutdown_recovery_timer.value_namespace_prefix = name_space_prefix;
     }
 }
 
 void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "enable")
+    {
+        enable.yfilter = yfilter;
+    }
     if(value_path == "logging")
     {
         logging.yfilter = yfilter;
@@ -14772,15 +14828,15 @@ void L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     {
         action.yfilter = yfilter;
     }
-    if(value_path == "enable")
+    if(value_path == "shutdown-recovery-timer")
     {
-        enable.yfilter = yfilter;
+        shutdown_recovery_timer.yfilter = yfilter;
     }
 }
 
 bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::BridgeDomain::BdPseudowires::BdPseudowire::PseudowireMac::PseudowireMacSecure::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "logging" || name == "disable" || name == "action" || name == "enable")
+    if(name == "enable" || name == "logging" || name == "disable" || name == "action" || name == "shutdown-recovery-timer")
         return true;
     return false;
 }
@@ -17250,78 +17306,129 @@ bool L2vpn::Database::BridgeDomainGroups::BridgeDomainGroup::BridgeDomains::Brid
     return false;
 }
 
-const Enum::YLeaf FlowLabelTlvCode::Y_17 {4, "17"};
-const Enum::YLeaf FlowLabelTlvCode::disable {8, "disable"};
-
-const Enum::YLeaf MacAging::absolute {1, "absolute"};
-const Enum::YLeaf MacAging::inactivity {2, "inactivity"};
-
-const Enum::YLeaf MacLimitAction::none {0, "none"};
-const Enum::YLeaf MacLimitAction::flood {1, "flood"};
-const Enum::YLeaf MacLimitAction::no_flood {2, "no-flood"};
-const Enum::YLeaf MacLimitAction::shutdown {3, "shutdown"};
-
-const Enum::YLeaf BdmacLearn::disable_learning {2, "disable-learning"};
+const Enum::YLeaf EvpnEncapsulation::evpn_encapsulationvxlan {8, "evpn-encapsulationvxlan"};
+const Enum::YLeaf EvpnEncapsulation::evpn_encapsulation_mpls {10, "evpn-encapsulation-mpls"};
 
 const Enum::YLeaf Interworking::ethernet {1, "ethernet"};
 const Enum::YLeaf Interworking::ipv4 {3, "ipv4"};
 
-const Enum::YLeaf PwSwitchingPointTlv::hide {2, "hide"};
+const Enum::YLeaf L2vpnCapabilityMode::high_mode {1, "high-mode"};
+const Enum::YLeaf L2vpnCapabilityMode::single_mode {2, "single-mode"};
 
-const Enum::YLeaf L2tpv3Sequencing::off {0, "off"};
-const Enum::YLeaf L2tpv3Sequencing::both {4, "both"};
+const Enum::YLeaf EvpnSide::evpn_side_regular {1, "evpn-side-regular"};
+const Enum::YLeaf EvpnSide::evpn_side_stitching {2, "evpn-side-stitching"};
 
-const Enum::YLeaf InterfaceProfile::snoop {1, "snoop"};
-const Enum::YLeaf InterfaceProfile::dhcp_protocol {2, "dhcp-protocol"};
+const Enum::YLeaf BridgeDomainTransportMode::vlan_passthrough {3, "vlan-passthrough"};
 
-const Enum::YLeaf BgpRouteTargetRole::both {0, "both"};
-const Enum::YLeaf BgpRouteTargetRole::import {1, "import"};
-const Enum::YLeaf BgpRouteTargetRole::export_ {2, "export"};
+const Enum::YLeaf PreferredPath::te_tunnel {2, "te-tunnel"};
+const Enum::YLeaf PreferredPath::ip_tunnel {3, "ip-tunnel"};
+const Enum::YLeaf PreferredPath::tp_tunnel {4, "tp-tunnel"};
+const Enum::YLeaf PreferredPath::sr_te_policy {5, "sr-te-policy"};
+const Enum::YLeaf PreferredPath::named_te_tunnel {8, "named-te-tunnel"};
 
-const Enum::YLeaf ErpPort::none {1, "none"};
-const Enum::YLeaf ErpPort::virtual_ {2, "virtual"};
-const Enum::YLeaf ErpPort::interface {3, "interface"};
+const Enum::YLeaf VccvVerification::none {0, "none"};
+const Enum::YLeaf VccvVerification::lsp_ping {2, "lsp-ping"};
 
-const Enum::YLeaf BgpRouteTarget::no_stitching {0, "no-stitching"};
-const Enum::YLeaf BgpRouteTarget::stitching {1, "stitching"};
+const Enum::YLeaf MacWithdrawBehavior::legacy {1, "legacy"};
+const Enum::YLeaf MacWithdrawBehavior::optimized {2, "optimized"};
 
-const Enum::YLeaf FlowLabelLoadBalance::off {0, "off"};
-const Enum::YLeaf FlowLabelLoadBalance::receive {1, "receive"};
-const Enum::YLeaf FlowLabelLoadBalance::transmit {2, "transmit"};
-const Enum::YLeaf FlowLabelLoadBalance::both {3, "both"};
+const Enum::YLeaf PortDownFlush::port_down_flush {0, "port-down-flush"};
+const Enum::YLeaf PortDownFlush::enable_port_down_flush {1, "enable-port-down-flush"};
+const Enum::YLeaf PortDownFlush::disable_port_down_flush {2, "disable-port-down-flush"};
 
-const Enum::YLeaf L2vpnVerification::enable {1, "enable"};
-const Enum::YLeaf L2vpnVerification::disable {2, "disable"};
+const Enum::YLeaf TypeOfServiceMode::none {0, "none"};
+const Enum::YLeaf TypeOfServiceMode::reflect {1, "reflect"};
 
-const Enum::YLeaf MacLearn::default_learning {0, "default-learning"};
-const Enum::YLeaf MacLearn::enable_learning {1, "enable-learning"};
-const Enum::YLeaf MacLearn::disable_learning {2, "disable-learning"};
+const Enum::YLeaf EthernetSegmentLoadBalance::single_active {1, "single-active"};
+const Enum::YLeaf EthernetSegmentLoadBalance::port_active {2, "port-active"};
+
+const Enum::YLeaf MplsSignalingProtocol::none {1, "none"};
+const Enum::YLeaf MplsSignalingProtocol::ldp {4, "ldp"};
 
 const Enum::YLeaf Erpaps::interface {1, "interface"};
 const Enum::YLeaf Erpaps::bridge_domain {2, "bridge-domain"};
 const Enum::YLeaf Erpaps::xconnect {3, "xconnect"};
 const Enum::YLeaf Erpaps::none {4, "none"};
 
-const Enum::YLeaf VccvVerification::none {0, "none"};
-const Enum::YLeaf VccvVerification::lsp_ping {2, "lsp-ping"};
+const Enum::YLeaf MacSecureAction::restrict {1, "restrict"};
+const Enum::YLeaf MacSecureAction::none {2, "none"};
+const Enum::YLeaf MacSecureAction::shutdown {3, "shutdown"};
+
+const Enum::YLeaf ErpPort::none {1, "none"};
+const Enum::YLeaf ErpPort::virtual_ {2, "virtual"};
+const Enum::YLeaf ErpPort::interface {3, "interface"};
+
+const Enum::YLeaf BgpRouteTargetRole::both {0, "both"};
+const Enum::YLeaf BgpRouteTargetRole::import {1, "import"};
+const Enum::YLeaf BgpRouteTargetRole::export_ {2, "export"};
+
+const Enum::YLeaf BackupDisable::never {0, "never"};
+const Enum::YLeaf BackupDisable::delay {1, "delay"};
 
 const Enum::YLeaf TransportMode::ethernet {1, "ethernet"};
 const Enum::YLeaf TransportMode::vlan {2, "vlan"};
 const Enum::YLeaf TransportMode::vlan_passthrough {3, "vlan-passthrough"};
 
-const Enum::YLeaf BackupDisable::never {0, "never"};
-const Enum::YLeaf BackupDisable::delay {1, "delay"};
+const Enum::YLeaf FlowLabelTlvCode::Y_17 {4, "17"};
+const Enum::YLeaf FlowLabelTlvCode::disable {8, "disable"};
+
+const Enum::YLeaf BgpRouteTarget::no_stitching {0, "no-stitching"};
+const Enum::YLeaf BgpRouteTarget::stitching {1, "stitching"};
+
+const Enum::YLeaf InterfaceProfile::snoop {1, "snoop"};
+const Enum::YLeaf InterfaceProfile::dhcp_protocol {2, "dhcp-protocol"};
+
+const Enum::YLeaf EthernetSegmentIdentifier::type0 {0, "type0"};
+const Enum::YLeaf EthernetSegmentIdentifier::legacy {128, "legacy"};
+const Enum::YLeaf EthernetSegmentIdentifier::override {129, "override"};
+
+const Enum::YLeaf RplRole::owner {1, "owner"};
+const Enum::YLeaf RplRole::neighbor {2, "neighbor"};
+const Enum::YLeaf RplRole::next_neighbor {3, "next-neighbor"};
+
+const Enum::YLeaf PwSwitchingPointTlv::hide {2, "hide"};
+
+const Enum::YLeaf StormControl::unicast {1, "unicast"};
+const Enum::YLeaf StormControl::multicast {2, "multicast"};
+const Enum::YLeaf StormControl::broadcast {4, "broadcast"};
+
+const Enum::YLeaf EthernetSegmentServiceCarving::mod_n {0, "mod-n"};
+const Enum::YLeaf EthernetSegmentServiceCarving::manual {1, "manual"};
+const Enum::YLeaf EthernetSegmentServiceCarving::hrw {2, "hrw"};
+
+const Enum::YLeaf MacLearn::default_learning {0, "default-learning"};
+const Enum::YLeaf MacLearn::enable_learning {1, "enable-learning"};
+const Enum::YLeaf MacLearn::disable_learning {2, "disable-learning"};
+
+const Enum::YLeaf L2tpv3Sequencing::off {0, "off"};
+const Enum::YLeaf L2tpv3Sequencing::both {4, "both"};
 
 const Enum::YLeaf LoadBalance::source_dest_mac {1, "source-dest-mac"};
 const Enum::YLeaf LoadBalance::source_dest_ip {2, "source-dest-ip"};
 const Enum::YLeaf LoadBalance::pseudowire_label {4, "pseudowire-label"};
 
-const Enum::YLeaf ErpPort1::port0 {0, "port0"};
-const Enum::YLeaf ErpPort1::port1 {1, "port1"};
+const Enum::YLeaf L2tpSignalingProtocol::none {1, "none"};
+const Enum::YLeaf L2tpSignalingProtocol::l2tpv3 {2, "l2tpv3"};
+
+const Enum::YLeaf BdmacLearn::disable_learning {2, "disable-learning"};
+
+const Enum::YLeaf L2mcSrcTrafficEnabled::l2mc_none {0, "l2mc-none"};
+const Enum::YLeaf L2mcSrcTrafficEnabled::l2mc_ipv4 {1, "l2mc-ipv4"};
+const Enum::YLeaf L2mcSrcTrafficEnabled::l2mc_ipv6 {2, "l2mc-ipv6"};
+const Enum::YLeaf L2mcSrcTrafficEnabled::l2mc_ipv4_ipv6 {3, "l2mc-ipv4-ipv6"};
+
+const Enum::YLeaf L2vpnVerification::enable {1, "enable"};
+const Enum::YLeaf L2vpnVerification::disable {2, "disable"};
 
 const Enum::YLeaf InterfaceTrafficFlood::traffic_flooding {0, "traffic-flooding"};
 const Enum::YLeaf InterfaceTrafficFlood::enable_flooding {1, "enable-flooding"};
 const Enum::YLeaf InterfaceTrafficFlood::disable_flooding {2, "disable-flooding"};
+
+const Enum::YLeaf L2Encapsulation::vlan {4, "vlan"};
+const Enum::YLeaf L2Encapsulation::ethernet {5, "ethernet"};
+
+const Enum::YLeaf L2vpnLogging::enable {1, "enable"};
+const Enum::YLeaf L2vpnLogging::disable {2, "disable"};
 
 const Enum::YLeaf MacFlushMode::mvrp {1, "mvrp"};
 
@@ -17329,19 +17436,35 @@ const Enum::YLeaf L2tpCookieSize::zero {0, "zero"};
 const Enum::YLeaf L2tpCookieSize::four {4, "four"};
 const Enum::YLeaf L2tpCookieSize::eight {8, "eight"};
 
-const Enum::YLeaf StormControl::unicast {1, "unicast"};
-const Enum::YLeaf StormControl::multicast {2, "multicast"};
-const Enum::YLeaf StormControl::broadcast {4, "broadcast"};
+const Enum::YLeaf MplsSequencing::off {0, "off"};
+const Enum::YLeaf MplsSequencing::transmit {1, "transmit"};
+const Enum::YLeaf MplsSequencing::receive {2, "receive"};
+const Enum::YLeaf MplsSequencing::both {4, "both"};
 
-const Enum::YLeaf BgpRouteDistinguisher::auto_ {1, "auto"};
-const Enum::YLeaf BgpRouteDistinguisher::two_byte_as {2, "two-byte-as"};
-const Enum::YLeaf BgpRouteDistinguisher::four_byte_as {3, "four-byte-as"};
-const Enum::YLeaf BgpRouteDistinguisher::ipv4_address {4, "ipv4-address"};
+const Enum::YLeaf EthernetSegmentServiceCarvingMcast::disabled {0, "disabled"};
+const Enum::YLeaf EthernetSegmentServiceCarvingMcast::hrw_s_g {1, "hrw-s-g"};
+const Enum::YLeaf EthernetSegmentServiceCarvingMcast::hrw_g {2, "hrw-g"};
+
+const Enum::YLeaf MacLimitAction::none {0, "none"};
+const Enum::YLeaf MacLimitAction::flood {1, "flood"};
+const Enum::YLeaf MacLimitAction::no_flood {2, "no-flood"};
+const Enum::YLeaf MacLimitAction::shutdown {3, "shutdown"};
+
+const Enum::YLeaf ErpPort1::port0 {0, "port0"};
+const Enum::YLeaf ErpPort1::port1 {1, "port1"};
 
 const Enum::YLeaf MacNotification::no_notif {0, "no-notif"};
 const Enum::YLeaf MacNotification::syslog {1, "syslog"};
 const Enum::YLeaf MacNotification::trap {2, "trap"};
 const Enum::YLeaf MacNotification::syslog_snmp {3, "syslog-snmp"};
+
+const Enum::YLeaf ControlWord::enable {1, "enable"};
+const Enum::YLeaf ControlWord::disable {2, "disable"};
+
+const Enum::YLeaf BgpRouteDistinguisher::auto_ {1, "auto"};
+const Enum::YLeaf BgpRouteDistinguisher::two_byte_as {2, "two-byte-as"};
+const Enum::YLeaf BgpRouteDistinguisher::four_byte_as {3, "four-byte-as"};
+const Enum::YLeaf BgpRouteDistinguisher::ipv4_address {4, "ipv4-address"};
 
 const Enum::YLeaf BgpRouteTargetFormat::none {0, "none"};
 const Enum::YLeaf BgpRouteTargetFormat::two_byte_as {1, "two-byte-as"};
@@ -17349,70 +17472,16 @@ const Enum::YLeaf BgpRouteTargetFormat::four_byte_as {2, "four-byte-as"};
 const Enum::YLeaf BgpRouteTargetFormat::ipv4_address {3, "ipv4-address"};
 const Enum::YLeaf BgpRouteTargetFormat::es_import {1538, "es-import"};
 
-const Enum::YLeaf MplsSignalingProtocol::none {1, "none"};
-const Enum::YLeaf MplsSignalingProtocol::ldp {4, "ldp"};
-
-const Enum::YLeaf EvpnSide::evpn_side_regular {1, "evpn-side-regular"};
-const Enum::YLeaf EvpnSide::evpn_side_stitching {2, "evpn-side-stitching"};
-
-const Enum::YLeaf ControlWord::enable {1, "enable"};
-const Enum::YLeaf ControlWord::disable {2, "disable"};
-
-const Enum::YLeaf PreferredPath::te_tunnel {2, "te-tunnel"};
-const Enum::YLeaf PreferredPath::ip_tunnel {3, "ip-tunnel"};
-const Enum::YLeaf PreferredPath::tp_tunnel {4, "tp-tunnel"};
-const Enum::YLeaf PreferredPath::sr_te_policy {5, "sr-te-policy"};
-
-const Enum::YLeaf EvpnEncapsulation::evpn_encapsulationvxlan {8, "evpn-encapsulationvxlan"};
-const Enum::YLeaf EvpnEncapsulation::evpn_encapsulation_mpls {10, "evpn-encapsulation-mpls"};
-
-const Enum::YLeaf MplsSequencing::off {0, "off"};
-const Enum::YLeaf MplsSequencing::transmit {1, "transmit"};
-const Enum::YLeaf MplsSequencing::receive {2, "receive"};
-const Enum::YLeaf MplsSequencing::both {4, "both"};
-
-const Enum::YLeaf EthernetSegmentLoadBalance::single_active {1, "single-active"};
-
-const Enum::YLeaf L2tpSignalingProtocol::none {1, "none"};
-const Enum::YLeaf L2tpSignalingProtocol::l2tpv3 {2, "l2tpv3"};
-
-const Enum::YLeaf EthernetSegmentIdentifier::type0 {0, "type0"};
-const Enum::YLeaf EthernetSegmentIdentifier::legacy {128, "legacy"};
-const Enum::YLeaf EthernetSegmentIdentifier::override {129, "override"};
-
-const Enum::YLeaf BridgeDomainTransportMode::vlan_passthrough {3, "vlan-passthrough"};
-
 const Enum::YLeaf LdpVplsId::two_byte_as {10, "two-byte-as"};
 const Enum::YLeaf LdpVplsId::ipv4_address {266, "ipv4-address"};
 
-const Enum::YLeaf L2Encapsulation::vlan {4, "vlan"};
-const Enum::YLeaf L2Encapsulation::ethernet {5, "ethernet"};
+const Enum::YLeaf MacAging::absolute {1, "absolute"};
+const Enum::YLeaf MacAging::inactivity {2, "inactivity"};
 
-const Enum::YLeaf EthernetSegmentServiceCarving::hrw {2, "hrw"};
-
-const Enum::YLeaf L2vpnLogging::enable {1, "enable"};
-const Enum::YLeaf L2vpnLogging::disable {2, "disable"};
-
-const Enum::YLeaf MacWithdrawBehavior::legacy {1, "legacy"};
-const Enum::YLeaf MacWithdrawBehavior::optimized {2, "optimized"};
-
-const Enum::YLeaf RplRole::owner {1, "owner"};
-const Enum::YLeaf RplRole::neighbor {2, "neighbor"};
-const Enum::YLeaf RplRole::next_neighbor {3, "next-neighbor"};
-
-const Enum::YLeaf TypeOfServiceMode::none {0, "none"};
-const Enum::YLeaf TypeOfServiceMode::reflect {1, "reflect"};
-
-const Enum::YLeaf PortDownFlush::port_down_flush {0, "port-down-flush"};
-const Enum::YLeaf PortDownFlush::enable_port_down_flush {1, "enable-port-down-flush"};
-const Enum::YLeaf PortDownFlush::disable_port_down_flush {2, "disable-port-down-flush"};
-
-const Enum::YLeaf L2vpnCapabilityMode::high_mode {1, "high-mode"};
-const Enum::YLeaf L2vpnCapabilityMode::single_mode {2, "single-mode"};
-
-const Enum::YLeaf MacSecureAction::restrict {1, "restrict"};
-const Enum::YLeaf MacSecureAction::none {2, "none"};
-const Enum::YLeaf MacSecureAction::shutdown {3, "shutdown"};
+const Enum::YLeaf FlowLabelLoadBalance::off {0, "off"};
+const Enum::YLeaf FlowLabelLoadBalance::receive {1, "receive"};
+const Enum::YLeaf FlowLabelLoadBalance::transmit {2, "transmit"};
+const Enum::YLeaf FlowLabelLoadBalance::both {3, "both"};
 
 
 }

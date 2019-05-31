@@ -765,9 +765,11 @@ SessionRedundancyManager::Summary::Summary()
     disabled_group_count{YType::uint32, "disabled-group-count"},
     master_group_count{YType::uint32, "master-group-count"},
     slave_group_count{YType::uint32, "slave-group-count"},
+    active_group_count{YType::uint32, "active-group-count"},
     interface_count{YType::uint32, "interface-count"},
     master_interface_count{YType::uint32, "master-interface-count"},
     slave_interface_count{YType::uint32, "slave-interface-count"},
+    active_interface_count{YType::uint32, "active-interface-count"},
     pool_count{YType::uint32, "pool-count"}
 {
 
@@ -794,9 +796,11 @@ bool SessionRedundancyManager::Summary::has_data() const
 	|| disabled_group_count.is_set
 	|| master_group_count.is_set
 	|| slave_group_count.is_set
+	|| active_group_count.is_set
 	|| interface_count.is_set
 	|| master_interface_count.is_set
 	|| slave_interface_count.is_set
+	|| active_interface_count.is_set
 	|| pool_count.is_set;
 }
 
@@ -816,9 +820,11 @@ bool SessionRedundancyManager::Summary::has_operation() const
 	|| ydk::is_set(disabled_group_count.yfilter)
 	|| ydk::is_set(master_group_count.yfilter)
 	|| ydk::is_set(slave_group_count.yfilter)
+	|| ydk::is_set(active_group_count.yfilter)
 	|| ydk::is_set(interface_count.yfilter)
 	|| ydk::is_set(master_interface_count.yfilter)
 	|| ydk::is_set(slave_interface_count.yfilter)
+	|| ydk::is_set(active_interface_count.yfilter)
 	|| ydk::is_set(pool_count.yfilter);
 }
 
@@ -853,9 +859,11 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyManager::Summary
     if (disabled_group_count.is_set || is_set(disabled_group_count.yfilter)) leaf_name_data.push_back(disabled_group_count.get_name_leafdata());
     if (master_group_count.is_set || is_set(master_group_count.yfilter)) leaf_name_data.push_back(master_group_count.get_name_leafdata());
     if (slave_group_count.is_set || is_set(slave_group_count.yfilter)) leaf_name_data.push_back(slave_group_count.get_name_leafdata());
+    if (active_group_count.is_set || is_set(active_group_count.yfilter)) leaf_name_data.push_back(active_group_count.get_name_leafdata());
     if (interface_count.is_set || is_set(interface_count.yfilter)) leaf_name_data.push_back(interface_count.get_name_leafdata());
     if (master_interface_count.is_set || is_set(master_interface_count.yfilter)) leaf_name_data.push_back(master_interface_count.get_name_leafdata());
     if (slave_interface_count.is_set || is_set(slave_interface_count.yfilter)) leaf_name_data.push_back(slave_interface_count.get_name_leafdata());
+    if (active_interface_count.is_set || is_set(active_interface_count.yfilter)) leaf_name_data.push_back(active_interface_count.get_name_leafdata());
     if (pool_count.is_set || is_set(pool_count.yfilter)) leaf_name_data.push_back(pool_count.get_name_leafdata());
 
     return leaf_name_data;
@@ -954,6 +962,12 @@ void SessionRedundancyManager::Summary::set_value(const std::string & value_path
         slave_group_count.value_namespace = name_space;
         slave_group_count.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "active-group-count")
+    {
+        active_group_count = value;
+        active_group_count.value_namespace = name_space;
+        active_group_count.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "interface-count")
     {
         interface_count = value;
@@ -971,6 +985,12 @@ void SessionRedundancyManager::Summary::set_value(const std::string & value_path
         slave_interface_count = value;
         slave_interface_count.value_namespace = name_space;
         slave_interface_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "active-interface-count")
+    {
+        active_interface_count = value;
+        active_interface_count.value_namespace = name_space;
+        active_interface_count.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "pool-count")
     {
@@ -1034,6 +1054,10 @@ void SessionRedundancyManager::Summary::set_filter(const std::string & value_pat
     {
         slave_group_count.yfilter = yfilter;
     }
+    if(value_path == "active-group-count")
+    {
+        active_group_count.yfilter = yfilter;
+    }
     if(value_path == "interface-count")
     {
         interface_count.yfilter = yfilter;
@@ -1046,6 +1070,10 @@ void SessionRedundancyManager::Summary::set_filter(const std::string & value_pat
     {
         slave_interface_count.yfilter = yfilter;
     }
+    if(value_path == "active-interface-count")
+    {
+        active_interface_count.yfilter = yfilter;
+    }
     if(value_path == "pool-count")
     {
         pool_count.yfilter = yfilter;
@@ -1054,7 +1082,7 @@ void SessionRedundancyManager::Summary::set_filter(const std::string & value_pat
 
 bool SessionRedundancyManager::Summary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "disabled" || name == "active-state" || name == "preferred-role" || name == "slave-mode" || name == "hold-timer" || name == "source-interface-name" || name == "vrf-name" || name == "source-interface-ipv4-address" || name == "source-interface-ipv6-address" || name == "group-count" || name == "disabled-group-count" || name == "master-group-count" || name == "slave-group-count" || name == "interface-count" || name == "master-interface-count" || name == "slave-interface-count" || name == "pool-count")
+    if(name == "disabled" || name == "active-state" || name == "preferred-role" || name == "slave-mode" || name == "hold-timer" || name == "source-interface-name" || name == "vrf-name" || name == "source-interface-ipv4-address" || name == "source-interface-ipv6-address" || name == "group-count" || name == "disabled-group-count" || name == "master-group-count" || name == "slave-group-count" || name == "active-group-count" || name == "interface-count" || name == "master-interface-count" || name == "slave-interface-count" || name == "active-interface-count" || name == "pool-count")
         return true;
     return false;
 }
@@ -1579,7 +1607,9 @@ SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::GroupId()
     interface_name{YType::str, "interface-name"},
     key_index{YType::str, "key-index"},
     role_master{YType::boolean, "role-master"},
-    negative_acknowledgement_update_all{YType::boolean, "negative-acknowledgement-update-all"}
+    role_active{YType::boolean, "role-active"},
+    negative_acknowledgement_update_all{YType::boolean, "negative-acknowledgement-update-all"},
+    entry_type{YType::boolean, "entry-type"}
         ,
     session_detailed_information(this, {})
     , session_sync_error_information(this, {})
@@ -1610,7 +1640,9 @@ bool SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::has_data() const
 	|| interface_name.is_set
 	|| key_index.is_set
 	|| role_master.is_set
-	|| negative_acknowledgement_update_all.is_set;
+	|| role_active.is_set
+	|| negative_acknowledgement_update_all.is_set
+	|| entry_type.is_set;
 }
 
 bool SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::has_operation() const
@@ -1631,7 +1663,9 @@ bool SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::has_operation() co
 	|| ydk::is_set(interface_name.yfilter)
 	|| ydk::is_set(key_index.yfilter)
 	|| ydk::is_set(role_master.yfilter)
-	|| ydk::is_set(negative_acknowledgement_update_all.yfilter);
+	|| ydk::is_set(role_active.yfilter)
+	|| ydk::is_set(negative_acknowledgement_update_all.yfilter)
+	|| ydk::is_set(entry_type.yfilter);
 }
 
 std::string SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::get_segment_path() const
@@ -1651,7 +1685,9 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
     if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
     if (key_index.is_set || is_set(key_index.yfilter)) leaf_name_data.push_back(key_index.get_name_leafdata());
     if (role_master.is_set || is_set(role_master.yfilter)) leaf_name_data.push_back(role_master.get_name_leafdata());
+    if (role_active.is_set || is_set(role_active.yfilter)) leaf_name_data.push_back(role_active.get_name_leafdata());
     if (negative_acknowledgement_update_all.is_set || is_set(negative_acknowledgement_update_all.yfilter)) leaf_name_data.push_back(negative_acknowledgement_update_all.get_name_leafdata());
+    if (entry_type.is_set || is_set(entry_type.yfilter)) leaf_name_data.push_back(entry_type.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1735,11 +1771,23 @@ void SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::set_value(const st
         role_master.value_namespace = name_space;
         role_master.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "role-active")
+    {
+        role_active = value;
+        role_active.value_namespace = name_space;
+        role_active.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "negative-acknowledgement-update-all")
     {
         negative_acknowledgement_update_all = value;
         negative_acknowledgement_update_all.value_namespace = name_space;
         negative_acknowledgement_update_all.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "entry-type")
+    {
+        entry_type = value;
+        entry_type.value_namespace = name_space;
+        entry_type.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -1765,15 +1813,23 @@ void SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::set_filter(const s
     {
         role_master.yfilter = yfilter;
     }
+    if(value_path == "role-active")
+    {
+        role_active.yfilter = yfilter;
+    }
     if(value_path == "negative-acknowledgement-update-all")
     {
         negative_acknowledgement_update_all.yfilter = yfilter;
+    }
+    if(value_path == "entry-type")
+    {
+        entry_type.yfilter = yfilter;
     }
 }
 
 bool SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "session-detailed-information" || name == "session-sync-error-information" || name == "group-id" || name == "group-id-xr" || name == "interface-name" || name == "key-index" || name == "role-master" || name == "negative-acknowledgement-update-all")
+    if(name == "session-detailed-information" || name == "session-sync-error-information" || name == "group-id" || name == "group-id-xr" || name == "interface-name" || name == "key-index" || name == "role-master" || name == "role-active" || name == "negative-acknowledgement-update-all" || name == "entry-type")
         return true;
     return false;
 }
@@ -2149,6 +2205,8 @@ SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::ClientId()
     tx_list_receive_session_session_sod_selected{YType::uint32, "tx-list-receive-session-session-sod-selected"},
     tx_list_receive_session_session_eod_all{YType::uint32, "tx-list-receive-session-session-eod-all"},
     tx_list_receive_session_session_eod_selected{YType::uint32, "tx-list-receive-session-session-eod-selected"},
+    tx_list_rx_tcp_restart_start_of_download{YType::uint32, "tx-list-rx-tcp-restart-start-of-download"},
+    tx_list_rx_tcp_restart_end_of_download{YType::uint32, "tx-list-rx-tcp-restart-end-of-download"},
     tx_list_receive_session_session_eoms{YType::uint32, "tx-list-receive-session-session-eoms"},
     tx_list_receive_session_session_clear_all{YType::uint32, "tx-list-receive-session-session-clear-all"},
     tx_list_receive_session_session_clear_selected{YType::uint32, "tx-list-receive-session-session-clear-selected"},
@@ -2214,6 +2272,8 @@ bool SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::has_data() const
 	|| tx_list_receive_session_session_sod_selected.is_set
 	|| tx_list_receive_session_session_eod_all.is_set
 	|| tx_list_receive_session_session_eod_selected.is_set
+	|| tx_list_rx_tcp_restart_start_of_download.is_set
+	|| tx_list_rx_tcp_restart_end_of_download.is_set
 	|| tx_list_receive_session_session_eoms.is_set
 	|| tx_list_receive_session_session_clear_all.is_set
 	|| tx_list_receive_session_session_clear_selected.is_set
@@ -2272,6 +2332,8 @@ bool SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::has_operation() c
 	|| ydk::is_set(tx_list_receive_session_session_sod_selected.yfilter)
 	|| ydk::is_set(tx_list_receive_session_session_eod_all.yfilter)
 	|| ydk::is_set(tx_list_receive_session_session_eod_selected.yfilter)
+	|| ydk::is_set(tx_list_rx_tcp_restart_start_of_download.yfilter)
+	|| ydk::is_set(tx_list_rx_tcp_restart_end_of_download.yfilter)
 	|| ydk::is_set(tx_list_receive_session_session_eoms.yfilter)
 	|| ydk::is_set(tx_list_receive_session_session_clear_all.yfilter)
 	|| ydk::is_set(tx_list_receive_session_session_clear_selected.yfilter)
@@ -2339,6 +2401,8 @@ std::vector<std::pair<std::string, LeafData> > SessionRedundancyAgent::Nodes::No
     if (tx_list_receive_session_session_sod_selected.is_set || is_set(tx_list_receive_session_session_sod_selected.yfilter)) leaf_name_data.push_back(tx_list_receive_session_session_sod_selected.get_name_leafdata());
     if (tx_list_receive_session_session_eod_all.is_set || is_set(tx_list_receive_session_session_eod_all.yfilter)) leaf_name_data.push_back(tx_list_receive_session_session_eod_all.get_name_leafdata());
     if (tx_list_receive_session_session_eod_selected.is_set || is_set(tx_list_receive_session_session_eod_selected.yfilter)) leaf_name_data.push_back(tx_list_receive_session_session_eod_selected.get_name_leafdata());
+    if (tx_list_rx_tcp_restart_start_of_download.is_set || is_set(tx_list_rx_tcp_restart_start_of_download.yfilter)) leaf_name_data.push_back(tx_list_rx_tcp_restart_start_of_download.get_name_leafdata());
+    if (tx_list_rx_tcp_restart_end_of_download.is_set || is_set(tx_list_rx_tcp_restart_end_of_download.yfilter)) leaf_name_data.push_back(tx_list_rx_tcp_restart_end_of_download.get_name_leafdata());
     if (tx_list_receive_session_session_eoms.is_set || is_set(tx_list_receive_session_session_eoms.yfilter)) leaf_name_data.push_back(tx_list_receive_session_session_eoms.get_name_leafdata());
     if (tx_list_receive_session_session_clear_all.is_set || is_set(tx_list_receive_session_session_clear_all.yfilter)) leaf_name_data.push_back(tx_list_receive_session_session_clear_all.get_name_leafdata());
     if (tx_list_receive_session_session_clear_selected.is_set || is_set(tx_list_receive_session_session_clear_selected.yfilter)) leaf_name_data.push_back(tx_list_receive_session_session_clear_selected.get_name_leafdata());
@@ -2580,6 +2644,18 @@ void SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::set_value(const s
         tx_list_receive_session_session_eod_selected = value;
         tx_list_receive_session_session_eod_selected.value_namespace = name_space;
         tx_list_receive_session_session_eod_selected.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-list-rx-tcp-restart-start-of-download")
+    {
+        tx_list_rx_tcp_restart_start_of_download = value;
+        tx_list_rx_tcp_restart_start_of_download.value_namespace = name_space;
+        tx_list_rx_tcp_restart_start_of_download.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tx-list-rx-tcp-restart-end-of-download")
+    {
+        tx_list_rx_tcp_restart_end_of_download = value;
+        tx_list_rx_tcp_restart_end_of_download.value_namespace = name_space;
+        tx_list_rx_tcp_restart_end_of_download.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "tx-list-receive-session-session-eoms")
     {
@@ -2835,6 +2911,14 @@ void SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::set_filter(const 
     {
         tx_list_receive_session_session_eod_selected.yfilter = yfilter;
     }
+    if(value_path == "tx-list-rx-tcp-restart-start-of-download")
+    {
+        tx_list_rx_tcp_restart_start_of_download.yfilter = yfilter;
+    }
+    if(value_path == "tx-list-rx-tcp-restart-end-of-download")
+    {
+        tx_list_rx_tcp_restart_end_of_download.yfilter = yfilter;
+    }
     if(value_path == "tx-list-receive-session-session-eoms")
     {
         tx_list_receive_session_session_eoms.yfilter = yfilter;
@@ -2915,7 +2999,7 @@ void SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::set_filter(const 
 
 bool SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "stats-client-id" || name == "tx-list-start-of-download-add-ok" || name == "tx-list-start-of-download-add-not-ok" || name == "tx-list-end-of-download-add-ok" || name == "tx-list-end-of-download-add-not-ok" || name == "tx-list-end-of-message-add-ok" || name == "tx-list-end-of-message-add-not-ok" || name == "tx-list-clear-all-add-ok" || name == "tx-list-clear-all-add-not-ok" || name == "tx-list-clear-selected-add-ok" || name == "tx-list-clear-selected-add-not-ok" || name == "tx-list-replay-all-add-ok" || name == "tx-list-replay-all-add-not-ok" || name == "tx-list-replay-selected-add-ok" || name == "tx-list-replay-selected-add-not-ok" || name == "tx-list-session-session-add-ok" || name == "tx-list-session-session-add-not-ok" || name == "tx-list-session-session-update-ok" || name == "tx-list-session-session-update-not-ok" || name == "tx-list-session-session-delete" || name == "clean-call-back" || name == "tx-list-encode-session-session-ok" || name == "tx-list-encode-session-session-partial-write" || name == "last-replay-all-count" || name == "tx-list-receive-command-replay-all" || name == "tx-list-receive-command-replay-selected" || name == "tx-list-receive-session-session-delete-valid" || name == "tx-list-receive-session-session-delete-invalid" || name == "tx-list-receive-session-session-update-valid" || name == "tx-list-receive-session-session-update-invalid" || name == "tx-list-receive-session-session-sod-all" || name == "tx-list-receive-session-session-sod-selected" || name == "tx-list-receive-session-session-eod-all" || name == "tx-list-receive-session-session-eod-selected" || name == "tx-list-receive-session-session-eoms" || name == "tx-list-receive-session-session-clear-all" || name == "tx-list-receive-session-session-clear-selected" || name == "tx-list-receive-session-session-neg-ack" || name == "tx-list-receive-session-session-neg-ack-not-ok" || name == "tx-list-client-registration-ok" || name == "tx-list-client-registration-not-ok" || name == "tx-list-client-de-registration" || name == "tx-list-client-connection-down" || name == "tx-list-client-cleanup" || name == "tx-list-active-ok" || name == "tx-list-active-not-ok" || name == "tx-list-de-active-ok" || name == "tx-list-de-active-not-ok" || name == "tx-list-send-pool-role-ok" || name == "tx-list-send-pool-role-not-ok" || name == "tx-list-send-pool-update-ok" || name == "tx-list-send-pool-update-not-ok" || name == "tx-list-recv-pool-update-ok")
+    if(name == "stats-client-id" || name == "tx-list-start-of-download-add-ok" || name == "tx-list-start-of-download-add-not-ok" || name == "tx-list-end-of-download-add-ok" || name == "tx-list-end-of-download-add-not-ok" || name == "tx-list-end-of-message-add-ok" || name == "tx-list-end-of-message-add-not-ok" || name == "tx-list-clear-all-add-ok" || name == "tx-list-clear-all-add-not-ok" || name == "tx-list-clear-selected-add-ok" || name == "tx-list-clear-selected-add-not-ok" || name == "tx-list-replay-all-add-ok" || name == "tx-list-replay-all-add-not-ok" || name == "tx-list-replay-selected-add-ok" || name == "tx-list-replay-selected-add-not-ok" || name == "tx-list-session-session-add-ok" || name == "tx-list-session-session-add-not-ok" || name == "tx-list-session-session-update-ok" || name == "tx-list-session-session-update-not-ok" || name == "tx-list-session-session-delete" || name == "clean-call-back" || name == "tx-list-encode-session-session-ok" || name == "tx-list-encode-session-session-partial-write" || name == "last-replay-all-count" || name == "tx-list-receive-command-replay-all" || name == "tx-list-receive-command-replay-selected" || name == "tx-list-receive-session-session-delete-valid" || name == "tx-list-receive-session-session-delete-invalid" || name == "tx-list-receive-session-session-update-valid" || name == "tx-list-receive-session-session-update-invalid" || name == "tx-list-receive-session-session-sod-all" || name == "tx-list-receive-session-session-sod-selected" || name == "tx-list-receive-session-session-eod-all" || name == "tx-list-receive-session-session-eod-selected" || name == "tx-list-rx-tcp-restart-start-of-download" || name == "tx-list-rx-tcp-restart-end-of-download" || name == "tx-list-receive-session-session-eoms" || name == "tx-list-receive-session-session-clear-all" || name == "tx-list-receive-session-session-clear-selected" || name == "tx-list-receive-session-session-neg-ack" || name == "tx-list-receive-session-session-neg-ack-not-ok" || name == "tx-list-client-registration-ok" || name == "tx-list-client-registration-not-ok" || name == "tx-list-client-de-registration" || name == "tx-list-client-connection-down" || name == "tx-list-client-cleanup" || name == "tx-list-active-ok" || name == "tx-list-active-not-ok" || name == "tx-list-de-active-ok" || name == "tx-list-de-active-not-ok" || name == "tx-list-send-pool-role-ok" || name == "tx-list-send-pool-role-not-ok" || name == "tx-list-send-pool-update-ok" || name == "tx-list-send-pool-update-not-ok" || name == "tx-list-recv-pool-update-ok")
         return true;
     return false;
 }
@@ -7346,13 +7430,12 @@ bool SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary::has_leaf
     return false;
 }
 
-const Enum::YLeaf SergShowSessionError::none {0, "none"};
-const Enum::YLeaf SergShowSessionError::hard {1, "hard"};
-const Enum::YLeaf SergShowSessionError::soft {2, "soft"};
-
-const Enum::YLeaf SergShowSlaveMode::none {0, "none"};
-const Enum::YLeaf SergShowSlaveMode::warm {1, "warm"};
-const Enum::YLeaf SergShowSlaveMode::hot {2, "hot"};
+const Enum::YLeaf SergShowMem::standard {0, "standard"};
+const Enum::YLeaf SergShowMem::chunk {1, "chunk"};
+const Enum::YLeaf SergShowMem::edm {2, "edm"};
+const Enum::YLeaf SergShowMem::string {3, "string"};
+const Enum::YLeaf SergShowMem::static_ {4, "static"};
+const Enum::YLeaf SergShowMem::unknown {5, "unknown"};
 
 const Enum::YLeaf SergShowSoReason::internal {0, "internal"};
 const Enum::YLeaf SergShowSoReason::admin {1, "admin"};
@@ -7360,13 +7443,6 @@ const Enum::YLeaf SergShowSoReason::peer_up {2, "peer-up"};
 const Enum::YLeaf SergShowSoReason::peer_down {3, "peer-down"};
 const Enum::YLeaf SergShowSoReason::object_tracking_status_change {4, "object-tracking-status-change"};
 const Enum::YLeaf SergShowSoReason::serg_show_so_reason_max {5, "serg-show-so-reason-max"};
-
-const Enum::YLeaf SergShowMem::standard {0, "standard"};
-const Enum::YLeaf SergShowMem::chunk {1, "chunk"};
-const Enum::YLeaf SergShowMem::edm {2, "edm"};
-const Enum::YLeaf SergShowMem::string {3, "string"};
-const Enum::YLeaf SergShowMem::static_ {4, "static"};
-const Enum::YLeaf SergShowMem::unknown {5, "unknown"};
 
 const Enum::YLeaf SergPeerStatus::not_configured {0, "not-configured"};
 const Enum::YLeaf SergPeerStatus::initialize {1, "initialize"};
@@ -7378,23 +7454,33 @@ const Enum::YLeaf SergPeerStatus::cleanup {6, "cleanup"};
 const Enum::YLeaf SergPeerStatus::connected {7, "connected"};
 const Enum::YLeaf SergPeerStatus::established {8, "established"};
 
-const Enum::YLeaf SergShowImRole::none {0, "none"};
-const Enum::YLeaf SergShowImRole::master {1, "master"};
-const Enum::YLeaf SergShowImRole::slave {2, "slave"};
-
-const Enum::YLeaf SergShowComp::serga {0, "serga"};
-const Enum::YLeaf SergShowComp::ipv6nd {1, "ipv6nd"};
-const Enum::YLeaf SergShowComp::dhcpv6 {2, "dhcpv6"};
-const Enum::YLeaf SergShowComp::daps {3, "daps"};
+const Enum::YLeaf SergShowSessionError::none {0, "none"};
+const Enum::YLeaf SergShowSessionError::hard {1, "hard"};
+const Enum::YLeaf SergShowSessionError::soft {2, "soft"};
 
 const Enum::YLeaf SergShowSessionOperation::none {0, "none"};
 const Enum::YLeaf SergShowSessionOperation::update {1, "update"};
 const Enum::YLeaf SergShowSessionOperation::delete_ {2, "delete"};
 const Enum::YLeaf SergShowSessionOperation::in_sync {3, "in-sync"};
 
+const Enum::YLeaf SergShowComp::serga {0, "serga"};
+const Enum::YLeaf SergShowComp::ipv6nd {1, "ipv6nd"};
+const Enum::YLeaf SergShowComp::dhcpv6 {2, "dhcpv6"};
+const Enum::YLeaf SergShowComp::daps {3, "daps"};
+
+const Enum::YLeaf SergShowSlaveMode::none {0, "none"};
+const Enum::YLeaf SergShowSlaveMode::warm {1, "warm"};
+const Enum::YLeaf SergShowSlaveMode::hot {2, "hot"};
+
 const Enum::YLeaf SergShowRole::none {0, "none"};
 const Enum::YLeaf SergShowRole::master {1, "master"};
 const Enum::YLeaf SergShowRole::slave {2, "slave"};
+const Enum::YLeaf SergShowRole::active {3, "active"};
+
+const Enum::YLeaf SergShowImRole::none {0, "none"};
+const Enum::YLeaf SergShowImRole::master {1, "master"};
+const Enum::YLeaf SergShowImRole::slave {2, "slave"};
+const Enum::YLeaf SergShowImRole::active {3, "active"};
 
 
 }

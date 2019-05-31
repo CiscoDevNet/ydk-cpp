@@ -114,6 +114,7 @@ class SoftwareInstall::Superseded::SupersededPackageInfo : public ydk::Entity
         ydk::YLeaf node_type; //type: string
         ydk::YLeaf boot_partition_name; //type: string
         ydk::YLeaf superseded_packages; //type: string
+        ydk::YLeaf number_of_packages; //type: uint32
 
 }; // SoftwareInstall::Superseded::SupersededPackageInfo
 
@@ -1042,34 +1043,6 @@ class SoftwareInstall::Repository::All : public ydk::Entity
 
 }; // SoftwareInstall::Repository::All
 
-class IsdErrorEt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf not_compatible;
-        static const ydk::Enum::YLeaf not_enough_resource;
-        static const ydk::Enum::YLeaf not_nsr_ready;
-        static const ydk::Enum::YLeaf not_conn_sdrsm;
-        static const ydk::Enum::YLeaf cmd_invalid;
-        static const ydk::Enum::YLeaf load_prep_fail;
-        static const ydk::Enum::YLeaf error_timeout;
-        static const ydk::Enum::YLeaf err_node_down;
-        static const ydk::Enum::YLeaf node_not_ready;
-        static const ydk::Enum::YLeaf err_node_new;
-        static const ydk::Enum::YLeaf err_card_oir;
-        static const ydk::Enum::YLeaf invalid_evt;
-        static const ydk::Enum::YLeaf disconn_from_calv;
-        static const ydk::Enum::YLeaf gsp_down;
-        static const ydk::Enum::YLeaf abort_by_ism;
-        static const ydk::Enum::YLeaf rpfo;
-        static const ydk::Enum::YLeaf pkg_null;
-        static const ydk::Enum::YLeaf error_general;
-        static const ydk::Enum::YLeaf fsa_error;
-        static const ydk::Enum::YLeaf err_post_issu;
-        static const ydk::Enum::YLeaf err_issu_dir_restart;
-
-};
-
 class NodeRoleEt : public ydk::Enum
 {
     public:
@@ -1077,45 +1050,6 @@ class NodeRoleEt : public ydk::Enum
         static const ydk::Enum::YLeaf node_active;
         static const ydk::Enum::YLeaf node_standby;
         static const ydk::Enum::YLeaf node_unusable;
-
-};
-
-class IsdStateEt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf idle;
-        static const ydk::Enum::YLeaf init;
-        static const ydk::Enum::YLeaf init_done;
-        static const ydk::Enum::YLeaf load_prep;
-        static const ydk::Enum::YLeaf load_exec;
-        static const ydk::Enum::YLeaf load_issu_go;
-        static const ydk::Enum::YLeaf load_done;
-        static const ydk::Enum::YLeaf run_prep_isd;
-        static const ydk::Enum::YLeaf run_prep_ism;
-        static const ydk::Enum::YLeaf big_bang;
-        static const ydk::Enum::YLeaf run_done;
-        static const ydk::Enum::YLeaf cleanup;
-        static const ydk::Enum::YLeaf cleanup_done;
-        static const ydk::Enum::YLeaf abort;
-        static const ydk::Enum::YLeaf abort_done;
-        static const ydk::Enum::YLeaf abort_cleanup;
-        static const ydk::Enum::YLeaf unknown_state;
-
-};
-
-class IsdIssuStatusEt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ok;
-        static const ydk::Enum::YLeaf prep_done;
-        static const ydk::Enum::YLeaf big_bang;
-        static const ydk::Enum::YLeaf done;
-        static const ydk::Enum::YLeaf abort;
-        static const ydk::Enum::YLeaf cmd_reject;
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf abort_cleanup;
-        static const ydk::Enum::YLeaf abort_cmd_reject;
 
 };
 
@@ -1148,6 +1082,73 @@ class CardTypeEt : public ydk::Enum
         static const ydk::Enum::YLeaf card_sc;
         static const ydk::Enum::YLeaf card_sp;
         static const ydk::Enum::YLeaf card_other;
+
+};
+
+class IsdErrorEt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf not_compatible;
+        static const ydk::Enum::YLeaf not_enough_resource;
+        static const ydk::Enum::YLeaf not_nsr_ready;
+        static const ydk::Enum::YLeaf not_conn_sdrsm;
+        static const ydk::Enum::YLeaf cmd_invalid;
+        static const ydk::Enum::YLeaf load_prep_fail;
+        static const ydk::Enum::YLeaf error_timeout;
+        static const ydk::Enum::YLeaf err_node_down;
+        static const ydk::Enum::YLeaf node_not_ready;
+        static const ydk::Enum::YLeaf err_node_new;
+        static const ydk::Enum::YLeaf err_card_oir;
+        static const ydk::Enum::YLeaf invalid_evt;
+        static const ydk::Enum::YLeaf disconn_from_calv;
+        static const ydk::Enum::YLeaf gsp_down;
+        static const ydk::Enum::YLeaf abort_by_ism;
+        static const ydk::Enum::YLeaf rpfo;
+        static const ydk::Enum::YLeaf pkg_null;
+        static const ydk::Enum::YLeaf error_general;
+        static const ydk::Enum::YLeaf fsa_error;
+        static const ydk::Enum::YLeaf err_post_issu;
+        static const ydk::Enum::YLeaf err_issu_dir_restart;
+
+};
+
+class IsdIssuStatusEt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ok;
+        static const ydk::Enum::YLeaf prep_done;
+        static const ydk::Enum::YLeaf big_bang;
+        static const ydk::Enum::YLeaf done;
+        static const ydk::Enum::YLeaf abort;
+        static const ydk::Enum::YLeaf cmd_reject;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf abort_cleanup;
+        static const ydk::Enum::YLeaf abort_cmd_reject;
+
+};
+
+class IsdStateEt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf init;
+        static const ydk::Enum::YLeaf init_done;
+        static const ydk::Enum::YLeaf load_prep;
+        static const ydk::Enum::YLeaf load_exec;
+        static const ydk::Enum::YLeaf load_issu_go;
+        static const ydk::Enum::YLeaf load_done;
+        static const ydk::Enum::YLeaf run_prep_isd;
+        static const ydk::Enum::YLeaf run_prep_ism;
+        static const ydk::Enum::YLeaf big_bang;
+        static const ydk::Enum::YLeaf run_done;
+        static const ydk::Enum::YLeaf cleanup;
+        static const ydk::Enum::YLeaf cleanup_done;
+        static const ydk::Enum::YLeaf abort;
+        static const ydk::Enum::YLeaf abort_done;
+        static const ydk::Enum::YLeaf abort_cleanup;
+        static const ydk::Enum::YLeaf unknown_state;
 
 };
 

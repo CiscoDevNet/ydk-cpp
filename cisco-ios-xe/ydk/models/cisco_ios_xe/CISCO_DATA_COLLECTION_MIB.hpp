@@ -408,6 +408,15 @@ class CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry : publi
 
 }; // CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry
 
+class CdcFileFormat : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cdcBulkASCII;
+        static const ydk::Enum::YLeaf cdcBulkBinary;
+        static const ydk::Enum::YLeaf cdcSchemaASCII;
+
+};
+
 class CdcFileXferStatus : public ydk::Enum
 {
     public:
@@ -420,15 +429,6 @@ class CdcFileXferStatus : public ydk::Enum
         static const ydk::Enum::YLeaf networkFailed;
         static const ydk::Enum::YLeaf fileWriteFailed;
         static const ydk::Enum::YLeaf authFailed;
-
-};
-
-class CdcFileFormat : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cdcBulkASCII;
-        static const ydk::Enum::YLeaf cdcBulkBinary;
-        static const ydk::Enum::YLeaf cdcSchemaASCII;
 
 };
 

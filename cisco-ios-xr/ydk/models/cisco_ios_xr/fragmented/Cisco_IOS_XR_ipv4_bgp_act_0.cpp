@@ -15387,33 +15387,6 @@ bool ClearBgpBestpathAfiSafi::Input::has_leaf_or_child_of_name(const std::string
     return false;
 }
 
-const Enum::YLeaf InstanceName::all {0, "all"};
-
-const Enum::YLeaf Vpnv6Safi::flowspec {0, "flowspec"};
-const Enum::YLeaf Vpnv6Safi::multicast {1, "multicast"};
-const Enum::YLeaf Vpnv6Safi::unicast {2, "unicast"};
-
-const Enum::YLeaf Afi::all {0, "all"};
-const Enum::YLeaf Afi::ipv4 {1, "ipv4"};
-const Enum::YLeaf Afi::ipv6 {2, "ipv6"};
-const Enum::YLeaf Afi::l2vpn {3, "l2vpn"};
-const Enum::YLeaf Afi::link_state {4, "link-state"};
-const Enum::YLeaf Afi::vpnv4 {5, "vpnv4"};
-const Enum::YLeaf Afi::vpnv6 {6, "vpnv6"};
-
-const Enum::YLeaf VrfName::all {0, "all"};
-
-const Enum::YLeaf Ipv4Safi::all {0, "all"};
-const Enum::YLeaf Ipv4Safi::flowspec {1, "flowspec"};
-const Enum::YLeaf Ipv4Safi::labeled_unicast {2, "labeled-unicast"};
-const Enum::YLeaf Ipv4Safi::mdt {3, "mdt"};
-const Enum::YLeaf Ipv4Safi::multicast {4, "multicast"};
-const Enum::YLeaf Ipv4Safi::mvpn {5, "mvpn"};
-const Enum::YLeaf Ipv4Safi::rt_filter {6, "rt-filter"};
-const Enum::YLeaf Ipv4Safi::sr_policy {7, "sr-policy"};
-const Enum::YLeaf Ipv4Safi::tunnel {8, "tunnel"};
-const Enum::YLeaf Ipv4Safi::unicast {9, "unicast"};
-
 const Enum::YLeaf AfiSafiType::all_all {0, "all-all"};
 const Enum::YLeaf AfiSafiType::all_evpn {1, "all-evpn"};
 const Enum::YLeaf AfiSafiType::all_flowspec {2, "all-flowspec"};
@@ -15457,9 +15430,24 @@ const Enum::YLeaf AfiSafiType::vpnv6_flowspec {39, "vpnv6-flowspec"};
 const Enum::YLeaf AfiSafiType::vpnv6_multicast {40, "vpnv6-multicast"};
 const Enum::YLeaf AfiSafiType::vpnv6_unicast {41, "vpnv6-unicast"};
 
-const Enum::YLeaf Vpnv4Safi::flowspec {0, "flowspec"};
-const Enum::YLeaf Vpnv4Safi::multicast {1, "multicast"};
-const Enum::YLeaf Vpnv4Safi::unicast {2, "unicast"};
+const Enum::YLeaf Afi::all {0, "all"};
+const Enum::YLeaf Afi::ipv4 {1, "ipv4"};
+const Enum::YLeaf Afi::ipv6 {2, "ipv6"};
+const Enum::YLeaf Afi::l2vpn {3, "l2vpn"};
+const Enum::YLeaf Afi::link_state {4, "link-state"};
+const Enum::YLeaf Afi::vpnv4 {5, "vpnv4"};
+const Enum::YLeaf Afi::vpnv6 {6, "vpnv6"};
+
+const Enum::YLeaf Ipv4Safi::all {0, "all"};
+const Enum::YLeaf Ipv4Safi::flowspec {1, "flowspec"};
+const Enum::YLeaf Ipv4Safi::labeled_unicast {2, "labeled-unicast"};
+const Enum::YLeaf Ipv4Safi::mdt {3, "mdt"};
+const Enum::YLeaf Ipv4Safi::multicast {4, "multicast"};
+const Enum::YLeaf Ipv4Safi::mvpn {5, "mvpn"};
+const Enum::YLeaf Ipv4Safi::rt_filter {6, "rt-filter"};
+const Enum::YLeaf Ipv4Safi::sr_policy {7, "sr-policy"};
+const Enum::YLeaf Ipv4Safi::tunnel {8, "tunnel"};
+const Enum::YLeaf Ipv4Safi::unicast {9, "unicast"};
 
 const Enum::YLeaf Ipv6Safi::all {0, "all"};
 const Enum::YLeaf Ipv6Safi::flowspec {1, "flowspec"};
@@ -15468,6 +15456,21 @@ const Enum::YLeaf Ipv6Safi::multicast {3, "multicast"};
 const Enum::YLeaf Ipv6Safi::mvpn {4, "mvpn"};
 const Enum::YLeaf Ipv6Safi::sr_policy {5, "sr-policy"};
 const Enum::YLeaf Ipv6Safi::unicast {6, "unicast"};
+
+const Enum::YLeaf L2vpnSafi::evpn {0, "evpn"};
+const Enum::YLeaf L2vpnSafi::mspw {1, "mspw"};
+const Enum::YLeaf L2vpnSafi::vpls {2, "vpls"};
+const Enum::YLeaf L2vpnSafi::vpws {3, "vpws"};
+
+const Enum::YLeaf LinkStateSafi::link_state {0, "link-state"};
+
+const Enum::YLeaf Vpnv4Safi::flowspec {0, "flowspec"};
+const Enum::YLeaf Vpnv4Safi::multicast {1, "multicast"};
+const Enum::YLeaf Vpnv4Safi::unicast {2, "unicast"};
+
+const Enum::YLeaf Vpnv6Safi::flowspec {0, "flowspec"};
+const Enum::YLeaf Vpnv6Safi::multicast {1, "multicast"};
+const Enum::YLeaf Vpnv6Safi::unicast {2, "unicast"};
 
 const Enum::YLeaf Ipv4Safi_::all {0, "all"};
 const Enum::YLeaf Ipv4Safi_::flowspec {1, "flowspec"};
@@ -15488,12 +15491,12 @@ const Enum::YLeaf Ipv6Safi_::mvpn {4, "mvpn"};
 const Enum::YLeaf Ipv6Safi_::sr_policy {5, "sr-policy"};
 const Enum::YLeaf Ipv6Safi_::unicast {6, "unicast"};
 
-const Enum::YLeaf L2vpnSafi::evpn {0, "evpn"};
-const Enum::YLeaf L2vpnSafi::mspw {1, "mspw"};
-const Enum::YLeaf L2vpnSafi::vpls {2, "vpls"};
-const Enum::YLeaf L2vpnSafi::vpws {3, "vpws"};
+const Enum::YLeaf L2vpnSafi_::evpn {0, "evpn"};
+const Enum::YLeaf L2vpnSafi_::mspw {1, "mspw"};
+const Enum::YLeaf L2vpnSafi_::vpls {2, "vpls"};
+const Enum::YLeaf L2vpnSafi_::vpws {3, "vpws"};
 
-const Enum::YLeaf LinkStateSafi::link_state {0, "link-state"};
+const Enum::YLeaf LinkStateSafi_::link_state {0, "link-state"};
 
 const Enum::YLeaf Vpnv4Safi_::flowspec {0, "flowspec"};
 const Enum::YLeaf Vpnv4Safi_::multicast {1, "multicast"};
@@ -15503,12 +15506,9 @@ const Enum::YLeaf Vpnv6Safi_::flowspec {0, "flowspec"};
 const Enum::YLeaf Vpnv6Safi_::multicast {1, "multicast"};
 const Enum::YLeaf Vpnv6Safi_::unicast {2, "unicast"};
 
-const Enum::YLeaf L2vpnSafi_::evpn {0, "evpn"};
-const Enum::YLeaf L2vpnSafi_::mspw {1, "mspw"};
-const Enum::YLeaf L2vpnSafi_::vpls {2, "vpls"};
-const Enum::YLeaf L2vpnSafi_::vpws {3, "vpws"};
+const Enum::YLeaf InstanceName::all {0, "all"};
 
-const Enum::YLeaf LinkStateSafi_::link_state {0, "link-state"};
+const Enum::YLeaf VrfName::all {0, "all"};
 
 
 }
