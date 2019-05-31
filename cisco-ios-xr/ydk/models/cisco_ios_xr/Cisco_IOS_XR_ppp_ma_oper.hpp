@@ -1363,32 +1363,6 @@ class Ppp::Nodes::Node::Summary::LcpAuthPhases : public ydk::Entity
 
 }; // Ppp::Nodes::Node::Summary::LcpAuthPhases
 
-class NcpIdent : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cdpcp;
-        static const ydk::Enum::YLeaf ipcp;
-        static const ydk::Enum::YLeaf ipcpiw;
-        static const ydk::Enum::YLeaf ipv6cp;
-        static const ydk::Enum::YLeaf mplscp;
-        static const ydk::Enum::YLeaf osicp;
-
-};
-
-class PppSsoFsmState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ppp_sso_state_not_ready_0;
-        static const ydk::Enum::YLeaf ppp_sso_state_standby_unnegd_1;
-        static const ydk::Enum::YLeaf ppp_sso_state_active_down_2;
-        static const ydk::Enum::YLeaf ppp_sso_state_deactivating_3;
-        static const ydk::Enum::YLeaf ppp_sso_state_active_unnegd_4;
-        static const ydk::Enum::YLeaf ppp_sso_state_standby_negd_5;
-        static const ydk::Enum::YLeaf ppp_sso_state_activating_6;
-        static const ydk::Enum::YLeaf ppp_sso_state_active_negd_7;
-
-};
-
 class PppIphcCompression : public ydk::Enum
 {
     public:
@@ -1397,22 +1371,6 @@ class PppIphcCompression : public ydk::Enum
         static const ydk::Enum::YLeaf ppp_iphc_compression_fmt_ietf;
         static const ydk::Enum::YLeaf ppp_iphc_compression_fmt_iphc;
         static const ydk::Enum::YLeaf ppp_iphc_compression_fmt_cisco;
-
-};
-
-class PppFsmState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ppp_fsm_state_initial_0;
-        static const ydk::Enum::YLeaf ppp_fsm_state_starting_1;
-        static const ydk::Enum::YLeaf ppp_fsm_state_closed_2;
-        static const ydk::Enum::YLeaf ppp_fsm_state_stopped_3;
-        static const ydk::Enum::YLeaf ppp_fsm_state_closing_4;
-        static const ydk::Enum::YLeaf ppp_fsm_state_stopping_5;
-        static const ydk::Enum::YLeaf ppp_fsm_state_req_sent_6;
-        static const ydk::Enum::YLeaf ppp_fsm_state_ack_rcvd_7;
-        static const ydk::Enum::YLeaf ppp_fsm_state_ack_sent_8;
-        static const ydk::Enum::YLeaf ppp_fsm_state_opened_9;
 
 };
 
@@ -1433,6 +1391,48 @@ class PppLcpMpMbrState : public ydk::Enum
         static const ydk::Enum::YLeaf ppp_lcp_mp_mbr_state_mcmp_peer_mismatch;
         static const ydk::Enum::YLeaf ppp_lcp_mp_mbr_state_standby_up;
         static const ydk::Enum::YLeaf ppp_lcp_mp_mbr_state_active;
+
+};
+
+class PppSsoFsmState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ppp_sso_state_not_ready_0;
+        static const ydk::Enum::YLeaf ppp_sso_state_standby_unnegd_1;
+        static const ydk::Enum::YLeaf ppp_sso_state_active_down_2;
+        static const ydk::Enum::YLeaf ppp_sso_state_deactivating_3;
+        static const ydk::Enum::YLeaf ppp_sso_state_active_unnegd_4;
+        static const ydk::Enum::YLeaf ppp_sso_state_standby_negd_5;
+        static const ydk::Enum::YLeaf ppp_sso_state_activating_6;
+        static const ydk::Enum::YLeaf ppp_sso_state_active_negd_7;
+
+};
+
+class PppFsmState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ppp_fsm_state_initial_0;
+        static const ydk::Enum::YLeaf ppp_fsm_state_starting_1;
+        static const ydk::Enum::YLeaf ppp_fsm_state_closed_2;
+        static const ydk::Enum::YLeaf ppp_fsm_state_stopped_3;
+        static const ydk::Enum::YLeaf ppp_fsm_state_closing_4;
+        static const ydk::Enum::YLeaf ppp_fsm_state_stopping_5;
+        static const ydk::Enum::YLeaf ppp_fsm_state_req_sent_6;
+        static const ydk::Enum::YLeaf ppp_fsm_state_ack_rcvd_7;
+        static const ydk::Enum::YLeaf ppp_fsm_state_ack_sent_8;
+        static const ydk::Enum::YLeaf ppp_fsm_state_opened_9;
+
+};
+
+class NcpIdent : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cdpcp;
+        static const ydk::Enum::YLeaf ipcp;
+        static const ydk::Enum::YLeaf ipcpiw;
+        static const ydk::Enum::YLeaf ipv6cp;
+        static const ydk::Enum::YLeaf mplscp;
+        static const ydk::Enum::YLeaf osicp;
 
 };
 

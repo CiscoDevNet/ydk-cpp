@@ -5,45 +5,45 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_NX_OS_device_0.hpp"
-#include "Cisco_NX_OS_device_15.hpp"
-#include "Cisco_NX_OS_device_1.hpp"
-#include "Cisco_NX_OS_device_2.hpp"
-#include "Cisco_NX_OS_device_18.hpp"
-#include "Cisco_NX_OS_device_33.hpp"
-#include "Cisco_NX_OS_device_7.hpp"
-#include "Cisco_NX_OS_device_23.hpp"
 #include "Cisco_NX_OS_device_19.hpp"
-#include "Cisco_NX_OS_device_41.hpp"
-#include "Cisco_NX_OS_device_21.hpp"
-#include "Cisco_NX_OS_device_24.hpp"
-#include "Cisco_NX_OS_device_31.hpp"
-#include "Cisco_NX_OS_device_36.hpp"
-#include "Cisco_NX_OS_device_28.hpp"
-#include "Cisco_NX_OS_device_35.hpp"
-#include "Cisco_NX_OS_device_14.hpp"
-#include "Cisco_NX_OS_device_8.hpp"
-#include "Cisco_NX_OS_device_39.hpp"
-#include "Cisco_NX_OS_device_43.hpp"
-#include "Cisco_NX_OS_device_17.hpp"
-#include "Cisco_NX_OS_device_3.hpp"
-#include "Cisco_NX_OS_device_5.hpp"
-#include "Cisco_NX_OS_device_4.hpp"
-#include "Cisco_NX_OS_device_20.hpp"
-#include "Cisco_NX_OS_device_6.hpp"
-#include "Cisco_NX_OS_device_42.hpp"
-#include "Cisco_NX_OS_device_30.hpp"
-#include "Cisco_NX_OS_device_34.hpp"
-#include "Cisco_NX_OS_device_32.hpp"
-#include "Cisco_NX_OS_device_37.hpp"
-#include "Cisco_NX_OS_device_45.hpp"
-#include "Cisco_NX_OS_device_22.hpp"
-#include "Cisco_NX_OS_device_25.hpp"
-#include "Cisco_NX_OS_device_11.hpp"
 #include "Cisco_NX_OS_device_27.hpp"
-#include "Cisco_NX_OS_device_46.hpp"
-#include "Cisco_NX_OS_device_40.hpp"
+#include "Cisco_NX_OS_device_21.hpp"
+#include "Cisco_NX_OS_device_45.hpp"
+#include "Cisco_NX_OS_device_25.hpp"
+#include "Cisco_NX_OS_device_23.hpp"
+#include "Cisco_NX_OS_device_35.hpp"
+#include "Cisco_NX_OS_device_8.hpp"
+#include "Cisco_NX_OS_device_5.hpp"
+#include "Cisco_NX_OS_device_6.hpp"
+#include "Cisco_NX_OS_device_2.hpp"
+#include "Cisco_NX_OS_device_3.hpp"
+#include "Cisco_NX_OS_device_28.hpp"
+#include "Cisco_NX_OS_device_36.hpp"
+#include "Cisco_NX_OS_device_33.hpp"
+#include "Cisco_NX_OS_device_34.hpp"
+#include "Cisco_NX_OS_device_42.hpp"
+#include "Cisco_NX_OS_device_4.hpp"
 #include "Cisco_NX_OS_device_38.hpp"
 #include "Cisco_NX_OS_device_44.hpp"
+#include "Cisco_NX_OS_device_46.hpp"
+#include "Cisco_NX_OS_device_14.hpp"
+#include "Cisco_NX_OS_device_31.hpp"
+#include "Cisco_NX_OS_device_30.hpp"
+#include "Cisco_NX_OS_device_37.hpp"
+#include "Cisco_NX_OS_device_22.hpp"
+#include "Cisco_NX_OS_device_41.hpp"
+#include "Cisco_NX_OS_device_7.hpp"
+#include "Cisco_NX_OS_device_24.hpp"
+#include "Cisco_NX_OS_device_17.hpp"
+#include "Cisco_NX_OS_device_43.hpp"
+#include "Cisco_NX_OS_device_20.hpp"
+#include "Cisco_NX_OS_device_40.hpp"
+#include "Cisco_NX_OS_device_39.hpp"
+#include "Cisco_NX_OS_device_11.hpp"
+#include "Cisco_NX_OS_device_18.hpp"
+#include "Cisco_NX_OS_device_32.hpp"
+#include "Cisco_NX_OS_device_15.hpp"
+#include "Cisco_NX_OS_device_1.hpp"
 
 using namespace ydk;
 
@@ -23394,78 +23394,495 @@ bool System::BgpItems::InstItems::DomItems::DomList::AfItems::DomAfList::Importe
     return false;
 }
 
-const Enum::YLeaf VrrpPreempt::enabled {1, "enabled"};
-const Enum::YLeaf VrrpPreempt::disabled {2, "disabled"};
+const Enum::YLeaf AaaAccountStatus::active {0, "active"};
+const Enum::YLeaf AaaAccountStatus::inactive {1, "inactive"};
 
-const Enum::YLeaf FlowSamplerMode::unspecified {0, "unspecified"};
-const Enum::YLeaf FlowSamplerMode::flow {1, "flow"};
-const Enum::YLeaf FlowSamplerMode::pkts {2, "pkts"};
+const Enum::YLeaf AaaBoolean::no {0, "no"};
+const Enum::YLeaf AaaBoolean::yes {1, "yes"};
 
-const Enum::YLeaf NgmvpnAfT::ipv4 {0, "ipv4"};
-const Enum::YLeaf NgmvpnAfT::ipv6 {1, "ipv6"};
+const Enum::YLeaf AaaClear::no {0, "no"};
+const Enum::YLeaf AaaClear::yes {1, "yes"};
 
-const Enum::YLeaf AaaKeyEncLdapProviderKeyEnc::Y_0 {0, "0"};
-const Enum::YLeaf AaaKeyEncLdapProviderKeyEnc::Y_6 {6, "6"};
-const Enum::YLeaf AaaKeyEncLdapProviderKeyEnc::Y_7 {7, "7"};
-const Enum::YLeaf AaaKeyEncLdapProviderKeyEnc::inherit_from_global {255, "inherit-from-global"};
+const Enum::YLeaf AaaCmdType::config {0, "config"};
+const Enum::YLeaf AaaCmdType::exec {1, "exec"};
 
-const Enum::YLeaf RelnStateQual::none {0, "none"};
-const Enum::YLeaf RelnStateQual::mismatch_target {1, "mismatch-target"};
-const Enum::YLeaf RelnStateQual::default_target {2, "default-target"};
+const Enum::YLeaf AaaKeyEnc::Y_0 {0, "0"};
+const Enum::YLeaf AaaKeyEnc::Y_6 {6, "6"};
+const Enum::YLeaf AaaKeyEnc::Y_7 {7, "7"};
+
+const Enum::YLeaf AaaKeyEncUserPass::unspecified {255, "unspecified"};
+const Enum::YLeaf AaaKeyEncUserPass::clear {0, "clear"};
+const Enum::YLeaf AaaKeyEncUserPass::Encrypt {5, "Encrypt"};
+
+const Enum::YLeaf AaaLdapSSLStrictnessLevel::strict {0, "strict"};
+const Enum::YLeaf AaaLdapSSLStrictnessLevel::permissive {1, "permissive"};
+
+const Enum::YLeaf AaaLoggingLevel::Emergency {0, "Emergency"};
+const Enum::YLeaf AaaLoggingLevel::Alert {1, "Alert"};
+const Enum::YLeaf AaaLoggingLevel::Critical {2, "Critical"};
+const Enum::YLeaf AaaLoggingLevel::Error {3, "Error"};
+const Enum::YLeaf AaaLoggingLevel::Warning {4, "Warning"};
+const Enum::YLeaf AaaLoggingLevel::Notif {5, "Notif"};
+const Enum::YLeaf AaaLoggingLevel::Inform {6, "Inform"};
+const Enum::YLeaf AaaLoggingLevel::Debug {7, "Debug"};
+
+const Enum::YLeaf AaaMonitorServerType::disabled {0, "disabled"};
+const Enum::YLeaf AaaMonitorServerType::enabled {1, "enabled"};
+
+const Enum::YLeaf AaaNoRolePolicy::no_login {0, "no-login"};
+const Enum::YLeaf AaaNoRolePolicy::assign_default_role {1, "assign-default-role"};
+
+const Enum::YLeaf AaaProviderGroupProtocol::tacacs {0, "tacacs"};
+const Enum::YLeaf AaaProviderGroupProtocol::radius {1, "radius"};
+const Enum::YLeaf AaaProviderGroupProtocol::ldap {2, "ldap"};
+
+const Enum::YLeaf AaaProviderState::unknown {0, "unknown"};
+const Enum::YLeaf AaaProviderState::operable {1, "operable"};
+const Enum::YLeaf AaaProviderState::inoperable {2, "inoperable"};
+
+const Enum::YLeaf AaaPwdPolicy::enable {0, "enable"};
+const Enum::YLeaf AaaPwdPolicy::disable {1, "disable"};
+
+const Enum::YLeaf AaaRadSrvUseType::Auth {0, "Auth"};
+const Enum::YLeaf AaaRadSrvUseType::Author {1, "Author"};
+const Enum::YLeaf AaaRadSrvUseType::Acc {2, "Acc"};
+const Enum::YLeaf AaaRadSrvUseType::All {3, "All"};
+
+const Enum::YLeaf AaaRealm::local {0, "local"};
+const Enum::YLeaf AaaRealm::radius {1, "radius"};
+const Enum::YLeaf AaaRealm::tacacs {2, "tacacs"};
+const Enum::YLeaf AaaRealm::ldap {3, "ldap"};
+
+const Enum::YLeaf AaaRuleAccessType::none {0, "none"};
+const Enum::YLeaf AaaRuleAccessType::read {1, "read"};
+const Enum::YLeaf AaaRuleAccessType::read_write {2, "read-write"};
+const Enum::YLeaf AaaRuleAccessType::command {3, "command"};
+
+const Enum::YLeaf AaaRulePermissionType::none {0, "none"};
+const Enum::YLeaf AaaRulePermissionType::permit {1, "permit"};
+const Enum::YLeaf AaaRulePermissionType::deny {2, "deny"};
+
+const Enum::YLeaf AaaRuleScopeType::none {0, "none"};
+const Enum::YLeaf AaaRuleScopeType::feature {2, "feature"};
+const Enum::YLeaf AaaRuleScopeType::feature_group {3, "feature-group"};
+const Enum::YLeaf AaaRuleScopeType::oid {21, "oid"};
+
+const Enum::YLeaf AaaUserRolePrivType::noDataPriv {0, "noDataPriv"};
+const Enum::YLeaf AaaUserRolePrivType::readPriv {1, "readPriv"};
+const Enum::YLeaf AaaUserRolePrivType::writePriv {2, "writePriv"};
+
+const Enum::YLeaf AaaAuthenticationProtocol::pap {0, "pap"};
+const Enum::YLeaf AaaAuthenticationProtocol::chap {1, "chap"};
+const Enum::YLeaf AaaAuthenticationProtocol::mschap {2, "mschap"};
+const Enum::YLeaf AaaAuthenticationProtocol::mschapv2 {3, "mschapv2"};
+const Enum::YLeaf AaaAuthenticationProtocol::ascii {4, "ascii"};
+
+const Enum::YLeaf AcBankT::even {1, "even"};
+const Enum::YLeaf AcBankT::Odd {2, "Odd"};
+
+const Enum::YLeaf AclActionType::invalid {0, "invalid"};
+const Enum::YLeaf AclActionType::permit {1, "permit"};
+const Enum::YLeaf AclActionType::deny {2, "deny"};
+const Enum::YLeaf AclActionType::copy {3, "copy"};
+const Enum::YLeaf AclActionType::divert {4, "divert"};
+const Enum::YLeaf AclActionType::redirect {5, "redirect"};
+
+const Enum::YLeaf AclHttpOptionType::get {1, "get"};
+const Enum::YLeaf AclHttpOptionType::put {2, "put"};
+const Enum::YLeaf AclHttpOptionType::head {3, "head"};
+const Enum::YLeaf AclHttpOptionType::post {4, "post"};
+const Enum::YLeaf AclHttpOptionType::delete_ {5, "delete"};
+const Enum::YLeaf AclHttpOptionType::trace {6, "trace"};
+const Enum::YLeaf AclHttpOptionType::connect {7, "connect"};
+const Enum::YLeaf AclHttpOptionType::invalid {0, "invalid"};
+
+const Enum::YLeaf AclVAclActionType::invalid {0, "invalid"};
+const Enum::YLeaf AclVAclActionType::forward {1, "forward"};
+const Enum::YLeaf AclVAclActionType::drop {2, "drop"};
+const Enum::YLeaf AclVAclActionType::redirect {3, "redirect"};
+
+const Enum::YLeaf ActionAdminSt::unknown {0, "unknown"};
+const Enum::YLeaf ActionAdminSt::start {1, "start"};
+const Enum::YLeaf ActionAdminSt::stop {2, "stop"};
+const Enum::YLeaf ActionAdminSt::suspend {3, "suspend"};
+
+const Enum::YLeaf ActionOperSt::scheduled {0, "scheduled"};
+const Enum::YLeaf ActionOperSt::processing {1, "processing"};
+const Enum::YLeaf ActionOperSt::completed {2, "completed"};
+const Enum::YLeaf ActionOperSt::cancelled {3, "cancelled"};
+const Enum::YLeaf ActionOperSt::failed {4, "failed"};
+const Enum::YLeaf ActionOperSt::indeterminate {5, "indeterminate"};
+const Enum::YLeaf ActionOperSt::suspended {6, "suspended"};
+const Enum::YLeaf ActionOperSt::crashsuspect {7, "crashsuspect"};
+
+const Enum::YLeaf ActionType::clear {1, "clear"};
+const Enum::YLeaf ActionType::reset {2, "reset"};
+const Enum::YLeaf ActionType::reload {3, "reload"};
+const Enum::YLeaf ActionType::locate {4, "locate"};
+const Enum::YLeaf ActionType::install {5, "install"};
+const Enum::YLeaf ActionType::test {6, "test"};
+const Enum::YLeaf ActionType::collect {7, "collect"};
+const Enum::YLeaf ActionType::interface_in_service {8, "interface-in-service"};
+
+const Enum::YLeaf ActrlDirection::uni_dir {1, "uni-dir"};
+const Enum::YLeaf ActrlDirection::bi_dir {2, "bi-dir"};
+
+const Enum::YLeaf ActrlOperSt::enabled {1, "enabled"};
+const Enum::YLeaf ActrlOperSt::disabled {2, "disabled"};
+
+const Enum::YLeaf ActrlRuleT::tenant {1, "tenant"};
+const Enum::YLeaf ActrlRuleT::mgmt {2, "mgmt"};
+const Enum::YLeaf ActrlRuleT::snmp {3, "snmp"};
+const Enum::YLeaf ActrlRuleT::bd_flood {4, "bd_flood"};
+const Enum::YLeaf ActrlRuleT::vrf_default {5, "vrf_default"};
+const Enum::YLeaf ActrlRuleT::infra {6, "infra"};
+
+const Enum::YLeaf ActrlcapSubj::unknown {0, "unknown"};
+const Enum::YLeaf ActrlcapSubj::rule_namespace {1, "rule-namespace"};
+const Enum::YLeaf ActrlcapSubj::scope_namespace {2, "scope-namespace"};
+
+const Enum::YLeaf AdjacencyAdjOperSt::unspecified {0, "unspecified"};
+const Enum::YLeaf AdjacencyAdjOperSt::incomplete {1, "incomplete"};
+const Enum::YLeaf AdjacencyAdjOperSt::normal {2, "normal"};
+
+const Enum::YLeaf AdjacencyDbT::ip {1, "ip"};
+const Enum::YLeaf AdjacencyDbT::ipv6 {2, "ipv6"};
+
+const Enum::YLeaf AggregateAdminState::unknown {0, "unknown"};
+const Enum::YLeaf AggregateAdminState::up {1, "up"};
+const Enum::YLeaf AggregateAdminState::down {2, "down"};
+
+const Enum::YLeaf AggregateAfT::ipv4_ucast {0, "ipv4-ucast"};
+const Enum::YLeaf AggregateAfT::vpnv4_ucast {1, "vpnv4-ucast"};
+const Enum::YLeaf AggregateAfT::ipv6_ucast {2, "ipv6-ucast"};
+const Enum::YLeaf AggregateAfT::vpnv6_ucast {3, "vpnv6-ucast"};
+const Enum::YLeaf AggregateAfT::l2_evpn {4, "l2-evpn"};
+
+const Enum::YLeaf AggregateBfdStatus::unknown {0, "unknown"};
+const Enum::YLeaf AggregateBfdStatus::admin_down {1, "admin_down"};
+const Enum::YLeaf AggregateBfdStatus::down {2, "down"};
+const Enum::YLeaf AggregateBfdStatus::init {3, "init"};
+const Enum::YLeaf AggregateBfdStatus::up {4, "up"};
+
+const Enum::YLeaf AggregateBooleanFlag::no {0, "no"};
+const Enum::YLeaf AggregateBooleanFlag::yes {1, "yes"};
+
+const Enum::YLeaf AggregateConfTmplStatus::inactive {0, "inactive"};
+const Enum::YLeaf AggregateConfTmplStatus::active {1, "active"};
+const Enum::YLeaf AggregateConfTmplStatus::failed {2, "failed"};
+
+const Enum::YLeaf AggregateConfigSourceType::unknown {0, "unknown"};
+const Enum::YLeaf AggregateConfigSourceType::cli {1, "cli"};
+const Enum::YLeaf AggregateConfigSourceType::controller {2, "controller"};
+
+const Enum::YLeaf AggregateConfigStatus::unknown {0, "unknown"};
+const Enum::YLeaf AggregateConfigStatus::configReady {1, "configReady"};
+const Enum::YLeaf AggregateConfigStatus::configNotReady {2, "configNotReady"};
+const Enum::YLeaf AggregateConfigStatus::configPurgeInProgress {4, "configPurgeInProgress"};
+
+const Enum::YLeaf AggregateCtrlrType::unknown {0, "unknown"};
+const Enum::YLeaf AggregateCtrlrType::l2_vxlan {1, "l2-vxlan"};
+const Enum::YLeaf AggregateCtrlrType::vxlan {2, "vxlan"};
+
+const Enum::YLeaf AggregateHostReachabilityMode::unknown {0, "unknown"};
+const Enum::YLeaf AggregateHostReachabilityMode::floodAndLearn {1, "floodAndLearn"};
+const Enum::YLeaf AggregateHostReachabilityMode::controller {2, "controller"};
+const Enum::YLeaf AggregateHostReachabilityMode::bgp {3, "bgp"};
+
+const Enum::YLeaf AggregateIngressRepProtocolType::unknown {0, "unknown"};
+const Enum::YLeaf AggregateIngressRepProtocolType::static_ {1, "static"};
+const Enum::YLeaf AggregateIngressRepProtocolType::bgp {2, "bgp"};
+
+const Enum::YLeaf AggregateIntfAssignMode::dedicated {0, "dedicated"};
+const Enum::YLeaf AggregateIntfAssignMode::shared {1, "shared"};
+
+const Enum::YLeaf AggregateIntfType::unknown {0, "unknown"};
+const Enum::YLeaf AggregateIntfType::port {1, "port"};
+const Enum::YLeaf AggregateIntfType::port_channel {2, "port-channel"};
+const Enum::YLeaf AggregateIntfType::tunnel {3, "tunnel"};
+const Enum::YLeaf AggregateIntfType::loopback {4, "loopback"};
+const Enum::YLeaf AggregateIntfType::svi {5, "svi"};
+
+const Enum::YLeaf AggregateMacType::unknown {0, "unknown"};
+const Enum::YLeaf AggregateMacType::unicast {1, "unicast"};
+const Enum::YLeaf AggregateMacType::multicast {2, "multicast"};
+
+const Enum::YLeaf AggregateOperState::unknown {0, "unknown"};
+const Enum::YLeaf AggregateOperState::up {1, "up"};
+const Enum::YLeaf AggregateOperState::down {2, "down"};
+
+const Enum::YLeaf AggregateReplicationModeType::unknown {0, "unknown"};
+const Enum::YLeaf AggregateReplicationModeType::replicationServer {1, "replicationServer"};
+const Enum::YLeaf AggregateReplicationModeType::ingressReplication {2, "ingressReplication"};
+const Enum::YLeaf AggregateReplicationModeType::ipMulticast {3, "ipMulticast"};
+
+const Enum::YLeaf AggregateResourceStatus::unknown {0, "unknown"};
+const Enum::YLeaf AggregateResourceStatus::vlanCreated {1, "vlanCreated"};
+const Enum::YLeaf AggregateResourceStatus::vlanFailed {2, "vlanFailed"};
+const Enum::YLeaf AggregateResourceStatus::vnidCreated {3, "vnidCreated"};
+const Enum::YLeaf AggregateResourceStatus::vnidFailed {4, "vnidFailed"};
+const Enum::YLeaf AggregateResourceStatus::vlansCarved {5, "vlansCarved"};
+const Enum::YLeaf AggregateResourceStatus::vlansNotCarved {6, "vlansNotCarved"};
+const Enum::YLeaf AggregateResourceStatus::vnidCreationReceived {7, "vnidCreationReceived"};
+const Enum::YLeaf AggregateResourceStatus::myTEPIPPublished {101, "myTEPIPPublished"};
+const Enum::YLeaf AggregateResourceStatus::controllerIntfNotCarved {201, "controllerIntfNotCarved"};
+const Enum::YLeaf AggregateResourceStatus::controllerIntfCarved {202, "controllerIntfCarved"};
+
+const Enum::YLeaf AggregateRttPType::import {1, "import"};
+const Enum::YLeaf AggregateRttPType::export_ {2, "export"};
+
+const Enum::YLeaf AggregateTunnelType::unknown {0, "unknown"};
+const Enum::YLeaf AggregateTunnelType::vxlanipv4 {1, "vxlanipv4"};
+const Enum::YLeaf AggregateTunnelType::vxlanipv6 {2, "vxlanipv6"};
+const Enum::YLeaf AggregateTunnelType::nvgre {3, "nvgre"};
+
+const Enum::YLeaf AggregateVpcKeepaliveStatus::VpcOobUnknown {0, "VpcOobUnknown"};
+const Enum::YLeaf AggregateVpcKeepaliveStatus::VpcOobDisabled {1, "VpcOobDisabled"};
+const Enum::YLeaf AggregateVpcKeepaliveStatus::VpcOobPeerAlive {2, "VpcOobPeerAlive"};
+const Enum::YLeaf AggregateVpcKeepaliveStatus::VpcOobPeerNotAlive {3, "VpcOobPeerNotAlive"};
+const Enum::YLeaf AggregateVpcKeepaliveStatus::VpcOobPeerAliveDomainMismatch {4, "VpcOobPeerAliveDomainMismatch"};
+const Enum::YLeaf AggregateVpcKeepaliveStatus::VpcOobSuspended {5, "VpcOobSuspended"};
+const Enum::YLeaf AggregateVpcKeepaliveStatus::VpcOobNotOperational {6, "VpcOobNotOperational"};
+const Enum::YLeaf AggregateVpcKeepaliveStatus::VpcOobSuspendedVrf {7, "VpcOobSuspendedVrf"};
+const Enum::YLeaf AggregateVpcKeepaliveStatus::VpcOobMisconfig {8, "VpcOobMisconfig"};
+
+const Enum::YLeaf AggregateVpcOperStatus::down {0, "down"};
+const Enum::YLeaf AggregateVpcOperStatus::up {1, "up"};
+
+const Enum::YLeaf AggregateVpcPeerLinkStatus::VpcPeerNolink {0, "VpcPeerNolink"};
+const Enum::YLeaf AggregateVpcPeerLinkStatus::VpcPeerLinkDown {1, "VpcPeerLinkDown"};
+const Enum::YLeaf AggregateVpcPeerLinkStatus::VpcPeerOk {2, "VpcPeerOk"};
+const Enum::YLeaf AggregateVpcPeerLinkStatus::VpcPeerNotfound {3, "VpcPeerNotfound"};
+
+const Enum::YLeaf AggregateFabFwdMode::standard {0, "standard"};
+const Enum::YLeaf AggregateFabFwdMode::anycastgw {1, "anycastgw"};
+const Enum::YLeaf AggregateFabFwdMode::proxygw {2, "proxygw"};
+
+const Enum::YLeaf AnalyticsCModeT::aci {0, "aci"};
+const Enum::YLeaf AnalyticsCModeT::standalone {1, "standalone"};
+
+const Enum::YLeaf AnalyticsCollVersion::v5 {1, "v5"};
+const Enum::YLeaf AnalyticsCollVersion::v9 {2, "v9"};
+const Enum::YLeaf AnalyticsCollVersion::cisco_v1 {3, "cisco-v1"};
+
+const Enum::YLeaf AnalyticsDefPolicyT::permit {0, "permit"};
+const Enum::YLeaf AnalyticsDefPolicyT::deny {1, "deny"};
+
+const Enum::YLeaf AnalyticsDirectionT::in {1, "in"};
+const Enum::YLeaf AnalyticsDirectionT::out {2, "out"};
+const Enum::YLeaf AnalyticsDirectionT::both {3, "both"};
 
 const Enum::YLeaf AnalyticsFltType::ipv4 {1, "ipv4"};
 const Enum::YLeaf AnalyticsFltType::ipv6 {2, "ipv6"};
 const Enum::YLeaf AnalyticsFltType::ce {3, "ce"};
 
-const Enum::YLeaf SatmOperSt::unknown {0, "unknown"};
-const Enum::YLeaf SatmOperSt::up {1, "up"};
-const Enum::YLeaf SatmOperSt::down {2, "down"};
-const Enum::YLeaf SatmOperSt::failed {3, "failed"};
+const Enum::YLeaf AnalyticsModeT::analytics {0, "analytics"};
+const Enum::YLeaf AnalyticsModeT::netflow {1, "netflow"};
 
-const Enum::YLeaf MribMultipathMode::none {1, "none"};
-const Enum::YLeaf MribMultipathMode::nbm {2, "nbm"};
-const Enum::YLeaf MribMultipathMode::null {3, "null"};
-const Enum::YLeaf MribMultipathMode::s_g_hash {4, "s-g-hash"};
-const Enum::YLeaf MribMultipathMode::legacy {5, "legacy"};
-const Enum::YLeaf MribMultipathMode::resilient {6, "resilient"};
-const Enum::YLeaf MribMultipathMode::s_g_hash_next_hop {7, "s-g-hash-next-hop"};
+const Enum::YLeaf AnalyticsOperSt::enabled {1, "enabled"};
+const Enum::YLeaf AnalyticsOperSt::disabled {2, "disabled"};
+
+const Enum::YLeaf AnalyticsConfigLatencyResFactorT::enable {1, "enable"};
+const Enum::YLeaf AnalyticsConfigLatencyResFactorT::disable {0, "disable"};
+
+const Enum::YLeaf AnalyticsOportSupportT::enable {1, "enable"};
+const Enum::YLeaf AnalyticsOportSupportT::disable {0, "disable"};
+
+const Enum::YLeaf ArpAdjOperSt::unspecified {0, "unspecified"};
+const Enum::YLeaf ArpAdjOperSt::incomplete {1, "incomplete"};
+const Enum::YLeaf ArpAdjOperSt::normal {2, "normal"};
+
+const Enum::YLeaf ArpDbT::ip {1, "ip"};
+const Enum::YLeaf ArpDbT::supcache {2, "supcache"};
+
+const Enum::YLeaf ArpEventLogSize::disabled {0, "disabled"};
+const Enum::YLeaf ArpEventLogSize::small {1, "small"};
+const Enum::YLeaf ArpEventLogSize::medium {2, "medium"};
+const Enum::YLeaf ArpEventLogSize::large {3, "large"};
+
+const Enum::YLeaf ArpEventType::cli {0, "cli"};
+const Enum::YLeaf ArpEventType::client_events {1, "client-events"};
+const Enum::YLeaf ArpEventType::client_errors {2, "client-errors"};
+const Enum::YLeaf ArpEventType::control_events {3, "control-events"};
+const Enum::YLeaf ArpEventType::internal_events {4, "internal-events"};
+const Enum::YLeaf ArpEventType::internal_errors {5, "internal-errors"};
+const Enum::YLeaf ArpEventType::high_availability {6, "high-availability"};
+const Enum::YLeaf ArpEventType::ip_sync {7, "ip-sync"};
+const Enum::YLeaf ArpEventType::local_cache_events {8, "local-cache-events"};
+const Enum::YLeaf ArpEventType::local_cache_errors {9, "local-cache-errors"};
+const Enum::YLeaf ArpEventType::pkt_messages {10, "pkt-messages"};
+const Enum::YLeaf ArpEventType::snmp {11, "snmp"};
+const Enum::YLeaf ArpEventType::suppress_events {12, "suppress-events"};
+const Enum::YLeaf ArpEventType::suppress_errors {13, "suppress-errors"};
+const Enum::YLeaf ArpEventType::sync {14, "sync"};
+const Enum::YLeaf ArpEventType::arp_controller_errors {15, "arp-controller-errors"};
+const Enum::YLeaf ArpEventType::arp_dme_event {16, "arp-dme-event"};
+const Enum::YLeaf ArpEventType::adjacency_control {101, "adjacency-control"};
+const Enum::YLeaf ArpEventType::adjacency_errors {102, "adjacency-errors"};
+const Enum::YLeaf ArpEventType::adjacency_ipc_events {103, "adjacency-ipc-events"};
+const Enum::YLeaf ArpEventType::adjacency_stats {104, "adjacency-stats"};
+const Enum::YLeaf ArpEventType::adjacency_high_availability {105, "adjacency-high-availability"};
+const Enum::YLeaf ArpEventType::adjacency_cli {106, "adjacency-cli"};
+const Enum::YLeaf ArpEventType::adjacency_sdb {107, "adjacency-sdb"};
+const Enum::YLeaf ArpEventType::adjacency_snmp {108, "adjacency-snmp"};
+const Enum::YLeaf ArpEventType::adjacency_netbroker {109, "adjacency-netbroker"};
+const Enum::YLeaf ArpEventType::am_dme_event {110, "am-dme-event"};
+const Enum::YLeaf ArpEventType::am_event {111, "am-event"};
+
+const Enum::YLeaf ArpLoggingLevel::emergency {0, "emergency"};
+const Enum::YLeaf ArpLoggingLevel::alert {1, "alert"};
+const Enum::YLeaf ArpLoggingLevel::critical {2, "critical"};
+const Enum::YLeaf ArpLoggingLevel::error {3, "error"};
+const Enum::YLeaf ArpLoggingLevel::warning {4, "warning"};
+const Enum::YLeaf ArpLoggingLevel::notification {5, "notification"};
+const Enum::YLeaf ArpLoggingLevel::informational {6, "informational"};
+const Enum::YLeaf ArpLoggingLevel::debug {7, "debug"};
+
+const Enum::YLeaf ArpOpcode::unspecified {0, "unspecified"};
+const Enum::YLeaf ArpOpcode::req {1, "req"};
+const Enum::YLeaf ArpOpcode::reply {2, "reply"};
+
+const Enum::YLeaf ArpStAdjOperSt::down {0, "down"};
+const Enum::YLeaf ArpStAdjOperSt::up {1, "up"};
+const Enum::YLeaf ArpStAdjOperSt::unspecified {10, "unspecified"};
+
+const Enum::YLeaf ArpStAdjOperStQual::unspecified {0, "unspecified"};
+const Enum::YLeaf ArpStAdjOperStQual::subnet_mismatch {1, "subnet-mismatch"};
+const Enum::YLeaf ArpStAdjOperStQual::invalid_mac {2, "invalid-mac"};
+const Enum::YLeaf ArpStAdjOperStQual::invalid_ip {3, "invalid-ip"};
+const Enum::YLeaf ArpStAdjOperStQual::invalid_vrf {4, "invalid-vrf"};
+const Enum::YLeaf ArpStAdjOperStQual::own_mac {5, "own-mac"};
+const Enum::YLeaf ArpStAdjOperStQual::if_down {6, "if-down"};
+const Enum::YLeaf ArpStAdjOperStQual::up {7, "up"};
+const Enum::YLeaf ArpStAdjOperStQual::invalid_if {8, "invalid-if"};
+const Enum::YLeaf ArpStAdjOperStQual::invalid_clidata {9, "invalid-clidata"};
+const Enum::YLeaf ArpStAdjOperStQual::no_memory {10, "no-memory"};
+
+const Enum::YLeaf ArpSuppressArpMode::disabled {0, "disabled"};
+const Enum::YLeaf ArpSuppressArpMode::l2suppressarp {1, "l2suppressarp"};
+const Enum::YLeaf ArpSuppressArpMode::l2l3suppressarp {2, "l2l3suppressarp"};
+const Enum::YLeaf ArpSuppressArpMode::invalid {3, "invalid"};
+
+const Enum::YLeaf BdDefaultSVIAutoState::disable {0, "disable"};
+const Enum::YLeaf BdDefaultSVIAutoState::enable {1, "enable"};
+
+const Enum::YLeaf BfdAfT::ipv4 {1, "ipv4"};
+const Enum::YLeaf BfdAfT::ipv6 {2, "ipv6"};
 
 const Enum::YLeaf BfdAuthInterop::enable {1, "enable"};
 const Enum::YLeaf BfdAuthInterop::disable {0, "disable"};
 
-const Enum::YLeaf IgmpsnoopEhType::igmp_snoop_internal {0, "igmp-snoop-internal"};
-const Enum::YLeaf IgmpsnoopEhType::mfdm {1, "mfdm"};
-const Enum::YLeaf IgmpsnoopEhType::mfdm_sum {2, "mfdm-sum"};
-const Enum::YLeaf IgmpsnoopEhType::rib {3, "rib"};
-const Enum::YLeaf IgmpsnoopEhType::vlan {4, "vlan"};
-const Enum::YLeaf IgmpsnoopEhType::vlan_events {5, "vlan-events"};
-const Enum::YLeaf IgmpsnoopEhType::vpc {6, "vpc"};
+const Enum::YLeaf BfdAuthT::none {0, "none"};
+const Enum::YLeaf BfdAuthT::sha1 {4, "sha1"};
+const Enum::YLeaf BfdAuthT::met_sha1 {5, "met-sha1"};
 
-const Enum::YLeaf StpSimulate::enabled {1, "enabled"};
-const Enum::YLeaf StpSimulate::disabled {2, "disabled"};
+const Enum::YLeaf BfdDiagCode::none {0, "none"};
+const Enum::YLeaf BfdDiagCode::detect_timeout {1, "detect-timeout"};
+const Enum::YLeaf BfdDiagCode::echo_fail {2, "echo-fail"};
+const Enum::YLeaf BfdDiagCode::nbr_signal_down {3, "nbr-signal-down"};
+const Enum::YLeaf BfdDiagCode::fwd_plane_reset {4, "fwd-plane-reset"};
+const Enum::YLeaf BfdDiagCode::path_down {5, "path-down"};
+const Enum::YLeaf BfdDiagCode::concat_path_down {6, "concat-path-down"};
+const Enum::YLeaf BfdDiagCode::admin_down {7, "admin-down"};
+const Enum::YLeaf BfdDiagCode::rev_concat_path_down {8, "rev-concat-path-down"};
 
-const Enum::YLeaf NwAdminStIfStatIcmpRedirect::enabled {1, "enabled"};
-const Enum::YLeaf NwAdminStIfStatIcmpRedirect::disabled {2, "disabled"};
+const Enum::YLeaf BfdOperSt::admin_down {0, "admin-down"};
+const Enum::YLeaf BfdOperSt::down {1, "down"};
+const Enum::YLeaf BfdOperSt::init {2, "init"};
+const Enum::YLeaf BfdOperSt::up {3, "up"};
 
-const Enum::YLeaf FsetAdminState::none {0, "none"};
-const Enum::YLeaf FsetAdminState::enabled {1, "enabled"};
-const Enum::YLeaf FsetAdminState::disabled {2, "disabled"};
-const Enum::YLeaf FsetAdminState::installed {3, "installed"};
-const Enum::YLeaf FsetAdminState::uninstalled {4, "uninstalled"};
+const Enum::YLeaf BfdTrkMbrLnk::enable {1, "enable"};
+const Enum::YLeaf BfdTrkMbrLnk::disable {0, "disable"};
 
-const Enum::YLeaf L2EnfPref::sw {1, "sw"};
-const Enum::YLeaf L2EnfPref::hw {2, "hw"};
+const Enum::YLeaf BgpAdminSt::enabled {1, "enabled"};
+const Enum::YLeaf BgpAdminSt::disabled {2, "disabled"};
 
-const Enum::YLeaf SatmFpFsmSt::unknown {0, "unknown"};
-const Enum::YLeaf SatmFpFsmSt::created {1, "created"};
-const Enum::YLeaf SatmFpFsmSt::discovered {2, "discovered"};
-const Enum::YLeaf SatmFpFsmSt::configured {3, "configured"};
-const Enum::YLeaf SatmFpFsmSt::up {4, "up"};
-const Enum::YLeaf SatmFpFsmSt::connecting {5, "connecting"};
-const Enum::YLeaf SatmFpFsmSt::active {6, "active"};
-const Enum::YLeaf SatmFpFsmSt::incompatible {7, "incompatible"};
-const Enum::YLeaf SatmFpFsmSt::disconnected {8, "disconnected"};
-const Enum::YLeaf SatmFpFsmSt::id_mismatch {9, "id-mismatch"};
+const Enum::YLeaf BgpAdvertL2vpnEvpn::enabled {1, "enabled"};
+const Enum::YLeaf BgpAdvertL2vpnEvpn::disabled {0, "disabled"};
+
+const Enum::YLeaf BgpAdvtMapCondition::none {0, "none"};
+const Enum::YLeaf BgpAdvtMapCondition::exist {1, "exist"};
+const Enum::YLeaf BgpAdvtMapCondition::non_exist {2, "non-exist"};
+
+const Enum::YLeaf BgpAfT::ipv4_ucast {1, "ipv4-ucast"};
+const Enum::YLeaf BgpAfT::ipv4_mcast {2, "ipv4-mcast"};
+const Enum::YLeaf BgpAfT::vpnv4_ucast {3, "vpnv4-ucast"};
+const Enum::YLeaf BgpAfT::ipv6_ucast {5, "ipv6-ucast"};
+const Enum::YLeaf BgpAfT::ipv6_mcast {6, "ipv6-mcast"};
+const Enum::YLeaf BgpAfT::vpnv6_ucast {7, "vpnv6-ucast"};
+const Enum::YLeaf BgpAfT::l2vpn_evpn {9, "l2vpn-evpn"};
+const Enum::YLeaf BgpAfT::ipv4_lucast {10, "ipv4-lucast"};
+const Enum::YLeaf BgpAfT::ipv6_lucast {11, "ipv6-lucast"};
+const Enum::YLeaf BgpAfT::lnkstate {12, "lnkstate"};
+const Enum::YLeaf BgpAfT::ipv4_mvpn {13, "ipv4-mvpn"};
+const Enum::YLeaf BgpAfT::ipv6_mvpn {14, "ipv6-mvpn"};
+const Enum::YLeaf BgpAfT::l2vpn_vpls {15, "l2vpn-vpls"};
+const Enum::YLeaf BgpAfT::ipv4_mdt {16, "ipv4-mdt"};
+const Enum::YLeaf BgpAfT::vpnv6_mcast {8, "vpnv6-mcast"};
+
+const Enum::YLeaf BgpAsSegT::sequence {1, "sequence"};
+const Enum::YLeaf BgpAsSegT::set {2, "set"};
+
+const Enum::YLeaf BgpAsSet::enabled {1, "enabled"};
+const Enum::YLeaf BgpAsSet::disabled {0, "disabled"};
+
+const Enum::YLeaf BgpAsnPropagation::none {0, "none"};
+const Enum::YLeaf BgpAsnPropagation::no_prepend {1, "no-prepend"};
+const Enum::YLeaf BgpAsnPropagation::replace_as {2, "replace-as"};
+const Enum::YLeaf BgpAsnPropagation::dual_as {3, "dual-as"};
+
+const Enum::YLeaf BgpBmpSt::enabled {0, "enabled"};
+const Enum::YLeaf BgpBmpSt::disabled {1, "disabled"};
+
+const Enum::YLeaf BgpDomOperSt::unknown {0, "unknown"};
+const Enum::YLeaf BgpDomOperSt::up {1, "up"};
+const Enum::YLeaf BgpDomOperSt::down {2, "down"};
+
+const Enum::YLeaf BgpEgressPeerEng::none {0, "none"};
+const Enum::YLeaf BgpEgressPeerEng::enabled {1, "enabled"};
+const Enum::YLeaf BgpEgressPeerEng::enabled_adj_sid {2, "enabled-adj-sid"};
+
+const Enum::YLeaf BgpEhType::none {0, "none"};
+const Enum::YLeaf BgpEhType::cli {1, "cli"};
+const Enum::YLeaf BgpEhType::events {2, "events"};
+const Enum::YLeaf BgpEhType::periodic {3, "periodic"};
+const Enum::YLeaf BgpEhType::detail {4, "detail"};
+const Enum::YLeaf BgpEhType::errors {5, "errors"};
+const Enum::YLeaf BgpEhType::objstore {6, "objstore"};
+
+const Enum::YLeaf BgpEvpnRtType::none {0, "none"};
+const Enum::YLeaf BgpEvpnRtType::a_d {1, "a-d"};
+const Enum::YLeaf BgpEvpnRtType::mac_ip {2, "mac-ip"};
+const Enum::YLeaf BgpEvpnRtType::imet {3, "imet"};
+const Enum::YLeaf BgpEvpnRtType::eth_seg {4, "eth-seg"};
+const Enum::YLeaf BgpEvpnRtType::ip_pfx {5, "ip-pfx"};
+
+const Enum::YLeaf BgpLogNbrSt::none {0, "none"};
+const Enum::YLeaf BgpLogNbrSt::enable {1, "enable"};
+const Enum::YLeaf BgpLogNbrSt::disable {2, "disable"};
+
+const Enum::YLeaf BgpLsAdminSt::inactive {0, "inactive"};
+const Enum::YLeaf BgpLsAdminSt::active {1, "active"};
+
+const Enum::YLeaf BgpLsAttrEntryType::none {0, "none"};
+const Enum::YLeaf BgpLsAttrEntryType::peer_node_sid {1101, "peer-node-sid"};
+const Enum::YLeaf BgpLsAttrEntryType::peer_adj_sid {1102, "peer-adj-sid"};
+const Enum::YLeaf BgpLsAttrEntryType::peer_set_sid {1103, "peer-set-sid"};
+
+const Enum::YLeaf BgpLsNlriType::none {0, "none"};
+const Enum::YLeaf BgpLsNlriType::node {1, "node"};
+const Enum::YLeaf BgpLsNlriType::link {2, "link"};
+const Enum::YLeaf BgpLsNlriType::ipv4_topo {3, "ipv4-topo"};
+const Enum::YLeaf BgpLsNlriType::ipv6_topo {4, "ipv6-topo"};
+
+const Enum::YLeaf BgpLsProtoId::none {0, "none"};
+const Enum::YLeaf BgpLsProtoId::isis_l1 {1, "isis-l1"};
+const Enum::YLeaf BgpLsProtoId::isis_l2 {2, "isis-l2"};
+const Enum::YLeaf BgpLsProtoId::ospf_v2 {3, "ospf-v2"};
+const Enum::YLeaf BgpLsProtoId::direct {4, "direct"};
+const Enum::YLeaf BgpLsProtoId::static_ {5, "static"};
+const Enum::YLeaf BgpLsProtoId::ospf_v3 {6, "ospf-v3"};
+const Enum::YLeaf BgpLsProtoId::epe {7, "epe"};
 
 const Enum::YLeaf BgpMajNotifErr::none {0, "none"};
 const Enum::YLeaf BgpMajNotifErr::hdr_err {1, "hdr-err"};
@@ -23483,105 +23900,9 @@ const Enum::YLeaf BgpMajNotifErr::rcvd_notif_err {105, "rcvd-notif-err"};
 const Enum::YLeaf BgpMajNotifErr::rcvd_dup_conn_req {106, "rcvd-dup-conn-req"};
 const Enum::YLeaf BgpMajNotifErr::dyn_cap_no_buf {107, "dyn-cap-no-buf"};
 
-const Enum::YLeaf IpHardwareEcmpHashPolynomialT::CRC16 {0, "CRC16"};
-const Enum::YLeaf IpHardwareEcmpHashPolynomialT::CRC32HI {1, "CRC32HI"};
-
-const Enum::YLeaf AggregateAdminState::unknown {0, "unknown"};
-const Enum::YLeaf AggregateAdminState::up {1, "up"};
-const Enum::YLeaf AggregateAdminState::down {2, "down"};
-
-const Enum::YLeaf NdStAdjOperStQual::subnet_mismatch {1, "subnet-mismatch"};
-const Enum::YLeaf NdStAdjOperStQual::invalid_mac {2, "invalid-mac"};
-const Enum::YLeaf NdStAdjOperStQual::invalid_ip {3, "invalid-ip"};
-const Enum::YLeaf NdStAdjOperStQual::invalid_vrf {4, "invalid-vrf"};
-const Enum::YLeaf NdStAdjOperStQual::own_mac {5, "own-mac"};
-const Enum::YLeaf NdStAdjOperStQual::if_down {6, "if-down"};
-const Enum::YLeaf NdStAdjOperStQual::up {7, "up"};
-
-const Enum::YLeaf SnmpTcpSessionAuthT::no {0, "no"};
-const Enum::YLeaf SnmpTcpSessionAuthT::tcpSess {1, "tcpSess"};
-const Enum::YLeaf SnmpTcpSessionAuthT::tcpSessAuth {2, "tcpSessAuth"};
-
-const Enum::YLeaf NvoEncapT::unknown {0, "unknown"};
-const Enum::YLeaf NvoEncapT::vxlan {1, "vxlan"};
-const Enum::YLeaf NvoEncapT::vxlan_tun_ctrl_frame {2, "vxlan-tun-ctrl-frame"};
-const Enum::YLeaf NvoEncapT::vxlan_tun_ctrl_frame_lacp {3, "vxlan-tun-ctrl-frame-lacp"};
-const Enum::YLeaf NvoEncapT::vxlan_tun_ctrl_frame_stp {4, "vxlan-tun-ctrl-frame-stp"};
-const Enum::YLeaf NvoEncapT::dot1q {5, "dot1q"};
-const Enum::YLeaf NvoEncapT::dot1q_tun_ctrl_frame {6, "dot1q-tun-ctrl-frame"};
-const Enum::YLeaf NvoEncapT::dot1q_tun_ctrl_frame_lacp {7, "dot1q-tun-ctrl-frame-lacp"};
-const Enum::YLeaf NvoEncapT::dot1q_tun_ctrl_frame_stp {8, "dot1q-tun-ctrl-frame-stp"};
-
-const Enum::YLeaf EqptcapConnT::unspecified {0, "unspecified"};
-const Enum::YLeaf EqptcapConnT::sc {1, "sc"};
-const Enum::YLeaf EqptcapConnT::fc1_copper {2, "fc1-copper"};
-const Enum::YLeaf EqptcapConnT::fc2_copper {3, "fc2-copper"};
-const Enum::YLeaf EqptcapConnT::bnc_tnc {4, "bnc-tnc"};
-const Enum::YLeaf EqptcapConnT::fc_coax {5, "fc-coax"};
-const Enum::YLeaf EqptcapConnT::fiber_jack {6, "fiber-jack"};
-const Enum::YLeaf EqptcapConnT::lc {7, "lc"};
-const Enum::YLeaf EqptcapConnT::mt_rj {8, "mt-rj"};
-const Enum::YLeaf EqptcapConnT::mu {9, "mu"};
-const Enum::YLeaf EqptcapConnT::sg {10, "sg"};
-const Enum::YLeaf EqptcapConnT::optical_pigtail {11, "optical-pigtail"};
-const Enum::YLeaf EqptcapConnT::mpo {12, "mpo"};
-const Enum::YLeaf EqptcapConnT::hssdc_2 {32, "hssdc-2"};
-const Enum::YLeaf EqptcapConnT::copper_pigtail {33, "copper-pigtail"};
-const Enum::YLeaf EqptcapConnT::rj45 {34, "rj45"};
-
-const Enum::YLeaf EpmEpOperSt::down {0, "down"};
-const Enum::YLeaf EpmEpOperSt::up {1, "up"};
-
-const Enum::YLeaf TelemetryProtocol::UDP {1, "UDP"};
-const Enum::YLeaf TelemetryProtocol::TCP {2, "TCP"};
-const Enum::YLeaf TelemetryProtocol::gRPC {3, "gRPC"};
-const Enum::YLeaf TelemetryProtocol::HTTP {4, "HTTP"};
-
-const Enum::YLeaf IpAddrT::primary {1, "primary"};
-const Enum::YLeaf IpAddrT::secondary {2, "secondary"};
-
-const Enum::YLeaf TunnelifTunnelOperSt::up {1, "up"};
-const Enum::YLeaf TunnelifTunnelOperSt::down {2, "down"};
-
-const Enum::YLeaf IsisLvlT::p2p {0, "p2p"};
-const Enum::YLeaf IsisLvlT::l1 {1, "l1"};
-const Enum::YLeaf IsisLvlT::l2 {2, "l2"};
-
-const Enum::YLeaf TunnelTunnelQual::unknown {0, "unknown"};
-const Enum::YLeaf TunnelTunnelQual::ivxlan {1, "ivxlan"};
-const Enum::YLeaf TunnelTunnelQual::vxlan {2, "vxlan"};
-
-const Enum::YLeaf NdConfigErr::noerror {0, "noerror"};
-const Enum::YLeaf NdConfigErr::managedConfigFlag {1, "managedConfigFlag"};
-const Enum::YLeaf NdConfigErr::otherConfigFlag {2, "otherConfigFlag"};
-const Enum::YLeaf NdConfigErr::raIntvl {3, "raIntvl"};
-const Enum::YLeaf NdConfigErr::raLifetime {4, "raLifetime"};
-const Enum::YLeaf NdConfigErr::suppressRa {5, "suppressRa"};
-const Enum::YLeaf NdConfigErr::macExtract {6, "macExtract"};
-
-const Enum::YLeaf OpflexDirection::in {0, "in"};
-const Enum::YLeaf OpflexDirection::out {1, "out"};
-
-const Enum::YLeaf ActrlOperSt::enabled {1, "enabled"};
-const Enum::YLeaf ActrlOperSt::disabled {2, "disabled"};
-
-const Enum::YLeaf IgmpDbT::route {1, "route"};
-
-const Enum::YLeaf InbandTelemetryFltType::ipv4 {1, "ipv4"};
-const Enum::YLeaf InbandTelemetryFltType::ipv6 {2, "ipv6"};
-const Enum::YLeaf InbandTelemetryFltType::ce {3, "ce"};
-
-const Enum::YLeaf VpcTosCfgType::noCfg {0, "noCfg"};
-const Enum::YLeaf VpcTosCfgType::tos_byte {1, "tos-byte"};
-const Enum::YLeaf VpcTosCfgType::tos_value {2, "tos-value"};
-const Enum::YLeaf VpcTosCfgType::tos_type {3, "tos-type"};
-const Enum::YLeaf VpcTosCfgType::precedence_type {4, "precedence-type"};
-const Enum::YLeaf VpcTosCfgType::precedence_value {5, "precedence-value"};
-
-const Enum::YLeaf AggregateHostReachabilityMode::unknown {0, "unknown"};
-const Enum::YLeaf AggregateHostReachabilityMode::floodAndLearn {1, "floodAndLearn"};
-const Enum::YLeaf AggregateHostReachabilityMode::controller {2, "controller"};
-const Enum::YLeaf AggregateHostReachabilityMode::bgp {3, "bgp"};
+const Enum::YLeaf BgpMaxPfxAct::log {1, "log"};
+const Enum::YLeaf BgpMaxPfxAct::shut {2, "shut"};
+const Enum::YLeaf BgpMaxPfxAct::restart {3, "restart"};
 
 const Enum::YLeaf BgpMinNotifErr::none {0, "none"};
 const Enum::YLeaf BgpMinNotifErr::unspecified_msg_hdr_err {1, "unspecified-msg-hdr-err"};
@@ -23641,124 +23962,199 @@ const Enum::YLeaf BgpMinNotifErr::bad_cap_val {54, "bad-cap-val"};
 const Enum::YLeaf BgpMinNotifErr::unsupp_cap_code {55, "unsupp-cap-code"};
 const Enum::YLeaf BgpMinNotifErr::unknown_cap_err {56, "unknown-cap-err"};
 
-const Enum::YLeaf AaaAuthenticationProtocol::pap {0, "pap"};
-const Enum::YLeaf AaaAuthenticationProtocol::chap {1, "chap"};
-const Enum::YLeaf AaaAuthenticationProtocol::mschap {2, "mschap"};
-const Enum::YLeaf AaaAuthenticationProtocol::mschapv2 {3, "mschapv2"};
-const Enum::YLeaf AaaAuthenticationProtocol::ascii {4, "ascii"};
+const Enum::YLeaf BgpMode::fabric {1, "fabric"};
+const Enum::YLeaf BgpMode::external {2, "external"};
 
-const Enum::YLeaf EqptSlotLoc::unknown {0, "unknown"};
-const Enum::YLeaf EqptSlotLoc::front {1, "front"};
-const Enum::YLeaf EqptSlotLoc::rear {2, "rear"};
+const Enum::YLeaf BgpMvpnRtType::none {0, "none"};
+const Enum::YLeaf BgpMvpnRtType::interas_ipmsi_ad {1, "interas-ipmsi-ad"};
+const Enum::YLeaf BgpMvpnRtType::intraas_ipmsi_ad {2, "intraas-ipmsi-ad"};
+const Enum::YLeaf BgpMvpnRtType::spmsi_ad {3, "spmsi-ad"};
+const Enum::YLeaf BgpMvpnRtType::leaf_ad {4, "leaf-ad"};
+const Enum::YLeaf BgpMvpnRtType::sa_ad {5, "sa-ad"};
+const Enum::YLeaf BgpMvpnRtType::shared_c_mcast {6, "shared-c-mcast"};
+const Enum::YLeaf BgpMvpnRtType::source_c_mcast {7, "source-c-mcast"};
 
-const Enum::YLeaf AggregateTunnelType::unknown {0, "unknown"};
-const Enum::YLeaf AggregateTunnelType::vxlanipv4 {1, "vxlanipv4"};
-const Enum::YLeaf AggregateTunnelType::vxlanipv6 {2, "vxlanipv6"};
-const Enum::YLeaf AggregateTunnelType::nvgre {3, "nvgre"};
+const Enum::YLeaf BgpOrigin::igp {1, "igp"};
+const Enum::YLeaf BgpOrigin::egp {2, "egp"};
+const Enum::YLeaf BgpOrigin::incomplete {3, "incomplete"};
 
-const Enum::YLeaf SnmpAuthType::hmac_md5_96 {1, "hmac-md5-96"};
-const Enum::YLeaf SnmpAuthType::hmac_sha1_96 {2, "hmac-sha1-96"};
+const Enum::YLeaf BgpPasswdSet::enabled {1, "enabled"};
+const Enum::YLeaf BgpPasswdSet::disabled {0, "disabled"};
 
-const Enum::YLeaf QospCtrlMeth::static_ {0, "static"};
-const Enum::YLeaf QospCtrlMeth::dynamic {1, "dynamic"};
+const Enum::YLeaf BgpPathSt::deleted {0, "deleted"};
+const Enum::YLeaf BgpPathSt::staled {1, "staled"};
+const Enum::YLeaf BgpPathSt::valid {2, "valid"};
+const Enum::YLeaf BgpPathSt::invalid {3, "invalid"};
+const Enum::YLeaf BgpPathSt::history {4, "history"};
+const Enum::YLeaf BgpPathSt::suppressed {5, "suppressed"};
+const Enum::YLeaf BgpPathSt::dampened {6, "dampened"};
 
-const Enum::YLeaf BgpAsSet::enabled {1, "enabled"};
-const Enum::YLeaf BgpAsSet::disabled {0, "disabled"};
+const Enum::YLeaf BgpPathT::internal {1, "internal"};
+const Enum::YLeaf BgpPathT::external {2, "external"};
+const Enum::YLeaf BgpPathT::confederation {3, "confederation"};
+const Enum::YLeaf BgpPathT::local {4, "local"};
+const Enum::YLeaf BgpPathT::aggregate {5, "aggregate"};
+const Enum::YLeaf BgpPathT::redistribute {6, "redistribute"};
+const Enum::YLeaf BgpPathT::injected {7, "injected"};
 
-const Enum::YLeaf McastVer::unspecified {0, "unspecified"};
+const Enum::YLeaf BgpPeerFabType::fabric_internal {0, "fabric-internal"};
+const Enum::YLeaf BgpPeerFabType::fabric_external {1, "fabric-external"};
+const Enum::YLeaf BgpPeerFabType::fabric_border_leaf {2, "fabric-border-leaf"};
 
-const Enum::YLeaf NgmvpnDbT::mroute {0, "mroute"};
-const Enum::YLeaf NgmvpnDbT::saroute {1, "saroute"};
-const Enum::YLeaf NgmvpnDbT::l2route {2, "l2route"};
+const Enum::YLeaf BgpPeerGrSt::na {1, "na"};
+const Enum::YLeaf BgpPeerGrSt::reset {2, "reset"};
+const Enum::YLeaf BgpPeerGrSt::up {3, "up"};
 
-const Enum::YLeaf AaaRealm::local {0, "local"};
-const Enum::YLeaf AaaRealm::radius {1, "radius"};
-const Enum::YLeaf AaaRealm::tacacs {2, "tacacs"};
-const Enum::YLeaf AaaRealm::ldap {3, "ldap"};
+const Enum::YLeaf BgpPeerOperSt::unspecified {0, "unspecified"};
+const Enum::YLeaf BgpPeerOperSt::illegal {1, "illegal"};
+const Enum::YLeaf BgpPeerOperSt::shut {2, "shut"};
+const Enum::YLeaf BgpPeerOperSt::idle {3, "idle"};
+const Enum::YLeaf BgpPeerOperSt::connect {4, "connect"};
+const Enum::YLeaf BgpPeerOperSt::active {5, "active"};
+const Enum::YLeaf BgpPeerOperSt::open_sent {6, "open-sent"};
+const Enum::YLeaf BgpPeerOperSt::open_confirm {7, "open-confirm"};
+const Enum::YLeaf BgpPeerOperSt::established {8, "established"};
+const Enum::YLeaf BgpPeerOperSt::closing {9, "closing"};
+const Enum::YLeaf BgpPeerOperSt::error {10, "error"};
+const Enum::YLeaf BgpPeerOperSt::unknown {11, "unknown"};
 
-const Enum::YLeaf PlatformPfcMmuBufferSt::disable {0, "disable"};
-const Enum::YLeaf PlatformPfcMmuBufferSt::enable {1, "enable"};
+const Enum::YLeaf BgpPeerType::ibgp {1, "ibgp"};
+const Enum::YLeaf BgpPeerType::ebgp {2, "ebgp"};
 
-const Enum::YLeaf IpqosPrec::routine {0, "routine"};
-const Enum::YLeaf IpqosPrec::priority {1, "priority"};
-const Enum::YLeaf IpqosPrec::immediate {2, "immediate"};
-const Enum::YLeaf IpqosPrec::flash {3, "flash"};
-const Enum::YLeaf IpqosPrec::flash_override {4, "flash-override"};
-const Enum::YLeaf IpqosPrec::critical {5, "critical"};
-const Enum::YLeaf IpqosPrec::internet {6, "internet"};
-const Enum::YLeaf IpqosPrec::network {7, "network"};
+const Enum::YLeaf BgpPfxSidAttrEntryType::none {0, "none"};
+const Enum::YLeaf BgpPfxSidAttrEntryType::label_index {1, "label-index"};
+const Enum::YLeaf BgpPfxSidAttrEntryType::ipv6_sid {2, "ipv6-sid"};
+const Enum::YLeaf BgpPfxSidAttrEntryType::origin_srgb {3, "origin-srgb"};
 
-const Enum::YLeaf PcChannelingSt::unknown {0, "unknown"};
-const Enum::YLeaf PcChannelingSt::channeling {1, "channeling"};
-const Enum::YLeaf PcChannelingSt::individual {2, "individual"};
-const Enum::YLeaf PcChannelingSt::failed {3, "failed"};
-const Enum::YLeaf PcChannelingSt::suspended {4, "suspended"};
-const Enum::YLeaf PcChannelingSt::hot_standby {5, "hot-standby"};
+const Enum::YLeaf BgpPmsiTunType::none {0, "none"};
+const Enum::YLeaf BgpPmsiTunType::ingress_repl {1, "ingress-repl"};
 
-const Enum::YLeaf PcPoType::none {0, "none"};
-const Enum::YLeaf PcPoType::hif_pc {1, "hif-pc"};
-const Enum::YLeaf PcPoType::non_hif_pc {2, "non-hif-pc"};
+const Enum::YLeaf BgpPrivateASControl::none {0, "none"};
+const Enum::YLeaf BgpPrivateASControl::remove_exclusive {1, "remove-exclusive"};
+const Enum::YLeaf BgpPrivateASControl::remove_all {2, "remove-all"};
+const Enum::YLeaf BgpPrivateASControl::replace_as {3, "replace-as"};
 
-const Enum::YLeaf SpanDestEncapT::gre {1, "gre"};
+const Enum::YLeaf BgpPwdType::Y_0 {0, "0"};
+const Enum::YLeaf BgpPwdType::Y_3 {3, "3"};
+const Enum::YLeaf BgpPwdType::Y_7 {7, "7"};
+const Enum::YLeaf BgpPwdType::LINE {5, "LINE"};
 
-const Enum::YLeaf EqptdiagAllGrpsT::none {0, "none"};
-const Enum::YLeaf EqptdiagAllGrpsT::sys_mem {1, "sys-mem"};
-const Enum::YLeaf EqptdiagAllGrpsT::cpu {2, "cpu"};
-const Enum::YLeaf EqptdiagAllGrpsT::peripherals {3, "peripherals"};
-const Enum::YLeaf EqptdiagAllGrpsT::internal_conn {4, "internal-conn"};
-const Enum::YLeaf EqptdiagAllGrpsT::asic {5, "asic"};
-const Enum::YLeaf EqptdiagAllGrpsT::port {6, "port"};
+const Enum::YLeaf BgpRtCtrlDir::in {1, "in"};
+const Enum::YLeaf BgpRtCtrlDir::out {2, "out"};
 
-const Enum::YLeaf L3VrfOperStateQual::admin_down {1, "admin-down"};
-const Enum::YLeaf L3VrfOperStateQual::admin_down_pending {2, "admin-down-pending"};
-const Enum::YLeaf L3VrfOperStateQual::delete_holddown {3, "delete-holddown"};
-const Enum::YLeaf L3VrfOperStateQual::delete_pending {4, "delete-pending"};
-const Enum::YLeaf L3VrfOperStateQual::invalid {5, "invalid"};
-const Enum::YLeaf L3VrfOperStateQual::create_pending {6, "create-pending"};
+const Enum::YLeaf BgpRtCtrlOperSt::unresolved {1, "unresolved"};
+const Enum::YLeaf BgpRtCtrlOperSt::resolved {2, "resolved"};
 
-const Enum::YLeaf AaaLoggingLevel::Emergency {0, "Emergency"};
-const Enum::YLeaf AaaLoggingLevel::Alert {1, "Alert"};
-const Enum::YLeaf AaaLoggingLevel::Critical {2, "Critical"};
-const Enum::YLeaf AaaLoggingLevel::Error {3, "Error"};
-const Enum::YLeaf AaaLoggingLevel::Warning {4, "Warning"};
-const Enum::YLeaf AaaLoggingLevel::Notif {5, "Notif"};
-const Enum::YLeaf AaaLoggingLevel::Inform {6, "Inform"};
-const Enum::YLeaf AaaLoggingLevel::Debug {7, "Debug"};
+const Enum::YLeaf BgpShutStQual::unspecified {0, "unspecified"};
+const Enum::YLeaf BgpShutStQual::admin {1, "admin"};
+const Enum::YLeaf BgpShutStQual::no_mem {2, "no-mem"};
+const Enum::YLeaf BgpShutStQual::exceeded_pfxlimit {3, "exceeded-pfxlimit"};
+const Enum::YLeaf BgpShutStQual::admin_up {4, "admin-up"};
+const Enum::YLeaf BgpShutStQual::no_affinity {5, "no-affinity"};
 
-const Enum::YLeaf NwAdminSt::enabled {1, "enabled"};
-const Enum::YLeaf NwAdminSt::disabled {2, "disabled"};
+const Enum::YLeaf BgpSoftReconfigBackup::none {0, "none"};
+const Enum::YLeaf BgpSoftReconfigBackup::inbound {1, "inbound"};
+const Enum::YLeaf BgpSoftReconfigBackup::inbound_always {2, "inbound-always"};
 
-const Enum::YLeaf PkiCsyncActivationStateType::disabled {0, "disabled"};
-const Enum::YLeaf PkiCsyncActivationStateType::enabled {1, "enabled"};
+const Enum::YLeaf BgpStReason::none {0, "none"};
+const Enum::YLeaf BgpStReason::no_mem {1, "no-mem"};
 
-const Enum::YLeaf EqptLedOpSt::unknown {0, "unknown"};
-const Enum::YLeaf EqptLedOpSt::off {1, "off"};
-const Enum::YLeaf EqptLedOpSt::on {2, "on"};
-const Enum::YLeaf EqptLedOpSt::blinking {3, "blinking"};
-const Enum::YLeaf EqptLedOpSt::fail {4, "fail"};
+const Enum::YLeaf BgpSummaryOnly::enabled {1, "enabled"};
+const Enum::YLeaf BgpSummaryOnly::disabled {0, "disabled"};
 
-const Enum::YLeaf L1LinkTransmitReset::enable {1, "enable"};
-const Enum::YLeaf L1LinkTransmitReset::disable {0, "disable"};
+const Enum::YLeaf BgpTblSt::unknown {0, "unknown"};
+const Enum::YLeaf BgpTblSt::up {1, "up"};
+const Enum::YLeaf BgpTblSt::down {2, "down"};
 
-const Enum::YLeaf L1SpanMode::not_a_span_dest {1, "not-a-span-dest"};
-const Enum::YLeaf L1SpanMode::span_dest {2, "span-dest"};
-const Enum::YLeaf L1SpanMode::span_dest_fwd {3, "span-dest-fwd"};
-const Enum::YLeaf L1SpanMode::span_dest_fwd_learn {4, "span-dest-fwd-learn"};
+const Enum::YLeaf BootImageVerify::enable {1, "enable"};
+const Enum::YLeaf BootImageVerify::disable {0, "disable"};
 
-const Enum::YLeaf NbmNbmOperationalMode::UNDEFINED {0, "UNDEFINED"};
-const Enum::YLeaf NbmNbmOperationalMode::PIM_ACTIVE {1, "PIM_ACTIVE"};
+const Enum::YLeaf BootPoap::enable {1, "enable"};
+const Enum::YLeaf BootPoap::disable {0, "disable"};
 
-const Enum::YLeaf SnmpVersion::v1 {1, "v1"};
-const Enum::YLeaf SnmpVersion::v2c {2, "v2c"};
-const Enum::YLeaf SnmpVersion::v3 {3, "v3"};
+const Enum::YLeaf CapRaiseFaultState::nominal {0, "nominal"};
+const Enum::YLeaf CapRaiseFaultState::ruleHasLess {1, "ruleHasLess"};
+const Enum::YLeaf CapRaiseFaultState::ruleHasMore {2, "ruleHasMore"};
 
-const Enum::YLeaf ActrlcapSubj::unknown {0, "unknown"};
-const Enum::YLeaf ActrlcapSubj::rule_namespace {1, "rule-namespace"};
-const Enum::YLeaf ActrlcapSubj::scope_namespace {2, "scope-namespace"};
+const Enum::YLeaf CapRuleT::limit {1, "limit"};
 
-const Enum::YLeaf TerminalTermParity::none {0, "none"};
-const Enum::YLeaf TerminalTermParity::odd {1, "odd"};
-const Enum::YLeaf TerminalTermParity::even {2, "even"};
+const Enum::YLeaf CapScope::node {0, "node"};
+const Enum::YLeaf CapScope::policy_domain {1, "policy-domain"};
+const Enum::YLeaf CapScope::fabric {2, "fabric"};
+
+const Enum::YLeaf CdpDevIdT::none {0, "none"};
+const Enum::YLeaf CdpDevIdT::mac {1, "mac"};
+const Enum::YLeaf CdpDevIdT::serialNum {2, "serialNum"};
+const Enum::YLeaf CdpDevIdT::sysName {3, "sysName"};
+
+const Enum::YLeaf CdpDuplex::unknown {0, "unknown"};
+const Enum::YLeaf CdpDuplex::half {1, "half"};
+const Enum::YLeaf CdpDuplex::full {2, "full"};
+
+const Enum::YLeaf CdpOperSt::up {1, "up"};
+const Enum::YLeaf CdpOperSt::down {2, "down"};
+
+const Enum::YLeaf CdpOperStQual::up {1, "up"};
+const Enum::YLeaf CdpOperStQual::admin_down {2, "admin-down"};
+const Enum::YLeaf CdpOperStQual::if_down {3, "if-down"};
+const Enum::YLeaf CdpOperStQual::unsupported {4, "unsupported"};
+
+const Enum::YLeaf CdpVer::v1 {1, "v1"};
+const Enum::YLeaf CdpVer::v2 {2, "v2"};
+
+const Enum::YLeaf CfsAdminSt::enabled {1, "enabled"};
+const Enum::YLeaf CfsAdminSt::disabled {2, "disabled"};
+
+const Enum::YLeaf CompHostState::maintenance {0, "maintenance"};
+const Enum::YLeaf CompHostState::connected {1, "connected"};
+const Enum::YLeaf CompHostState::noresponse {2, "noresponse"};
+const Enum::YLeaf CompHostState::disconnected {3, "disconnected"};
+const Enum::YLeaf CompHostState::poweredOn {4, "poweredOn"};
+const Enum::YLeaf CompHostState::poweredOff {5, "poweredOff"};
+const Enum::YLeaf CompHostState::standBy {6, "standBy"};
+const Enum::YLeaf CompHostState::suspended {7, "suspended"};
+const Enum::YLeaf CompHostState::unknown {8, "unknown"};
+
+const Enum::YLeaf CompInstType::unknown {0, "unknown"};
+const Enum::YLeaf CompInstType::phys {1, "phys"};
+const Enum::YLeaf CompInstType::virt {2, "virt"};
+const Enum::YLeaf CompInstType::hv {3, "hv"};
+
+const Enum::YLeaf CompInstType_::unknown {0, "unknown"};
+const Enum::YLeaf CompInstType_::phys {1, "phys"};
+const Enum::YLeaf CompInstType_::virt {2, "virt"};
+const Enum::YLeaf CompInstType_::hv {3, "hv"};
+
+const Enum::YLeaf CompNicState::down {0, "down"};
+const Enum::YLeaf CompNicState::up {1, "up"};
+
+const Enum::YLeaf ConftmplOperationType::create {1, "create"};
+const Enum::YLeaf ConftmplOperationType::delete_ {2, "delete"};
+
+const Enum::YLeaf ConftmplTemplateType::unknown {0, "unknown"};
+const Enum::YLeaf ConftmplTemplateType::vrf {1, "vrf"};
+const Enum::YLeaf ConftmplTemplateType::vlan {2, "vlan"};
+const Enum::YLeaf ConftmplTemplateType::intf {3, "intf"};
+
+const Enum::YLeaf CoppAffix::unknown {0, "unknown"};
+const Enum::YLeaf CoppAffix::prefix {1, "prefix"};
+const Enum::YLeaf CoppAffix::suffix {2, "suffix"};
+
+const Enum::YLeaf CoppBurstUnit::Unknown {0, "Unknown"};
+const Enum::YLeaf CoppBurstUnit::bytes {1, "bytes"};
+const Enum::YLeaf CoppBurstUnit::kbytes {2, "kbytes"};
+const Enum::YLeaf CoppBurstUnit::mbytes {3, "mbytes"};
+const Enum::YLeaf CoppBurstUnit::packets {4, "packets"};
+const Enum::YLeaf CoppBurstUnit::us {5, "us"};
+const Enum::YLeaf CoppBurstUnit::ms {6, "ms"};
+
+const Enum::YLeaf CoppConformAction::Undefined {0, "Undefined"};
+const Enum::YLeaf CoppConformAction::transmit {1, "transmit"};
+const Enum::YLeaf CoppConformAction::drop {2, "drop"};
+
+const Enum::YLeaf CoppExceedAction::Undefined {0, "Undefined"};
+const Enum::YLeaf CoppExceedAction::transmit {1, "transmit"};
+const Enum::YLeaf CoppExceedAction::drop {2, "drop"};
 
 const Enum::YLeaf CoppExcep::Undefined {0, "Undefined"};
 const Enum::YLeaf CoppExcep::glean {1, "glean"};
@@ -23767,91 +24163,151 @@ const Enum::YLeaf CoppExcep::ttl_failure {3, "ttl-failure"};
 const Enum::YLeaf CoppExcep::nat_flow {4, "nat-flow"};
 const Enum::YLeaf CoppExcep::sflow {5, "sflow"};
 
-const Enum::YLeaf NwAdminStProcessStatStaticDisc::enabled {1, "enabled"};
-const Enum::YLeaf NwAdminStProcessStatStaticDisc::disabled {2, "disabled"};
+const Enum::YLeaf CoppIcmp::Undefined {0, "Undefined"};
+const Enum::YLeaf CoppIcmp::redirect {1, "redirect"};
+const Enum::YLeaf CoppIcmp::unreachable {2, "unreachable"};
 
-const Enum::YLeaf BgpPasswdSet::enabled {1, "enabled"};
-const Enum::YLeaf BgpPasswdSet::disabled {0, "disabled"};
+const Enum::YLeaf CoppIrUnit::Unknown {0, "Unknown"};
+const Enum::YLeaf CoppIrUnit::bps {1, "bps"};
+const Enum::YLeaf CoppIrUnit::pps {2, "pps"};
+const Enum::YLeaf CoppIrUnit::kbps {3, "kbps"};
+const Enum::YLeaf CoppIrUnit::mbps {4, "mbps"};
+const Enum::YLeaf CoppIrUnit::gbps {5, "gbps"};
 
-const Enum::YLeaf SpanErSpanVer::ver1 {1, "ver1"};
-const Enum::YLeaf SpanErSpanVer::ver2 {2, "ver2"};
+const Enum::YLeaf CoppMatchOption::Unknown {0, "Unknown"};
+const Enum::YLeaf CoppMatchOption::MatchAny {1, "MatchAny"};
+const Enum::YLeaf CoppMatchOption::MatchAll {2, "MatchAll"};
 
-const Enum::YLeaf IsisAdjOperSt::init {1, "init"};
-const Enum::YLeaf IsisAdjOperSt::up {2, "up"};
-const Enum::YLeaf IsisAdjOperSt::down {3, "down"};
-const Enum::YLeaf IsisAdjOperSt::gr_init {4, "gr-init"};
+const Enum::YLeaf CoppMatchT::Undefined {0, "Undefined"};
+const Enum::YLeaf CoppMatchT::access_group {1, "access-group"};
+const Enum::YLeaf CoppMatchT::redirect {2, "redirect"};
+const Enum::YLeaf CoppMatchT::exception {3, "exception"};
+const Enum::YLeaf CoppMatchT::protocol {4, "protocol"};
 
-const Enum::YLeaf Ipv6IPv6EventLogSize::disabled {0, "disabled"};
-const Enum::YLeaf Ipv6IPv6EventLogSize::small {1, "small"};
-const Enum::YLeaf Ipv6IPv6EventLogSize::medium {2, "medium"};
-const Enum::YLeaf Ipv6IPv6EventLogSize::large {3, "large"};
+const Enum::YLeaf CoppMcast::Undefined {0, "Undefined"};
+const Enum::YLeaf CoppMcast::dest_miss {1, "dest-miss"};
+const Enum::YLeaf CoppMcast::rpf_failure {2, "rpf-failure"};
+const Enum::YLeaf CoppMcast::sg_rpf_failure {3, "sg-rpf-failure"};
+const Enum::YLeaf CoppMcast::ipv6_dest_miss {4, "ipv6-dest-miss"};
+const Enum::YLeaf CoppMcast::ipv6_rpf_failure {5, "ipv6-rpf-failure"};
+const Enum::YLeaf CoppMcast::ipv6_sg_rpf_failure {6, "ipv6-sg-rpf-failure"};
 
-const Enum::YLeaf RtextcomType::rttarget {1, "rttarget"};
-const Enum::YLeaf RtextcomType::generic {2, "generic"};
+const Enum::YLeaf CoppProfT::unknown {0, "unknown"};
+const Enum::YLeaf CoppProfT::strict {1, "strict"};
+const Enum::YLeaf CoppProfT::moderate {2, "moderate"};
+const Enum::YLeaf CoppProfT::dense {4, "dense"};
+const Enum::YLeaf CoppProfT::lenient {3, "lenient"};
 
-const Enum::YLeaf TunnelLayerT::l2 {1, "l2"};
-const Enum::YLeaf TunnelLayerT::l3 {2, "l3"};
+const Enum::YLeaf CoppRdrct::Undefined {0, "Undefined"};
+const Enum::YLeaf CoppRdrct::arp_inspect {1, "arp-inspect"};
+const Enum::YLeaf CoppRdrct::dhcp_snoop {2, "dhcp-snoop"};
 
-const Enum::YLeaf VpcDualActiveSt::false_ {0, "false"};
-const Enum::YLeaf VpcDualActiveSt::true_ {1, "true"};
+const Enum::YLeaf CoppViolateAction::Undefined {0, "Undefined"};
+const Enum::YLeaf CoppViolateAction::transmit {1, "transmit"};
+const Enum::YLeaf CoppViolateAction::drop {2, "drop"};
 
-const Enum::YLeaf SatmHpOperSt::unknown {0, "unknown"};
-const Enum::YLeaf SatmHpOperSt::up {1, "up"};
-const Enum::YLeaf SatmHpOperSt::down {2, "down"};
-const Enum::YLeaf SatmHpOperSt::fail {3, "fail"};
+const Enum::YLeaf DatetimeAdminState::enabled {1, "enabled"};
+const Enum::YLeaf DatetimeAdminState::disabled {2, "disabled"};
 
-const Enum::YLeaf TunnelifSnmpTrapSt::enabled {1, "enabled"};
-const Enum::YLeaf TunnelifSnmpTrapSt::disabled {2, "disabled"};
+const Enum::YLeaf DatetimeClockFormat::Y_24hours {0, "24hours"};
+const Enum::YLeaf DatetimeClockFormat::Y_12hours {1, "12hours"};
 
-const Enum::YLeaf AaaNoRolePolicy::no_login {0, "no-login"};
-const Enum::YLeaf AaaNoRolePolicy::assign_default_role {1, "assign-default-role"};
+const Enum::YLeaf DatetimeClockProtocol::unspecified {0, "unspecified"};
+const Enum::YLeaf DatetimeClockProtocol::ptp {1, "ptp"};
+const Enum::YLeaf DatetimeClockProtocol::ntp {2, "ntp"};
+const Enum::YLeaf DatetimeClockProtocol::none {3, "none"};
 
-const Enum::YLeaf MonitorDestEncapT::gre {1, "gre"};
+const Enum::YLeaf DatetimeLoggingLevel::emergency {0, "emergency"};
+const Enum::YLeaf DatetimeLoggingLevel::alert {1, "alert"};
+const Enum::YLeaf DatetimeLoggingLevel::critical {2, "critical"};
+const Enum::YLeaf DatetimeLoggingLevel::error {3, "error"};
+const Enum::YLeaf DatetimeLoggingLevel::warning {4, "warning"};
+const Enum::YLeaf DatetimeLoggingLevel::notif {5, "notif"};
+const Enum::YLeaf DatetimeLoggingLevel::inform {6, "inform"};
+const Enum::YLeaf DatetimeLoggingLevel::debug {7, "debug"};
 
-const Enum::YLeaf L2MacType::unknown {0, "unknown"};
-const Enum::YLeaf L2MacType::primary {1, "primary"};
-const Enum::YLeaf L2MacType::gateway {2, "gateway"};
-const Enum::YLeaf L2MacType::overlay {4, "overlay"};
-const Enum::YLeaf L2MacType::primary_vpc_peer {5, "primary-vpc-peer"};
-const Enum::YLeaf L2MacType::control_plane {6, "control-plane"};
-const Enum::YLeaf L2MacType::vsan {7, "vsan"};
+const Enum::YLeaf DatetimeMonth::january {0, "january"};
+const Enum::YLeaf DatetimeMonth::february {1, "february"};
+const Enum::YLeaf DatetimeMonth::march {2, "march"};
+const Enum::YLeaf DatetimeMonth::april {3, "april"};
+const Enum::YLeaf DatetimeMonth::may {4, "may"};
+const Enum::YLeaf DatetimeMonth::june {5, "june"};
+const Enum::YLeaf DatetimeMonth::july {6, "july"};
+const Enum::YLeaf DatetimeMonth::august {7, "august"};
+const Enum::YLeaf DatetimeMonth::september {8, "september"};
+const Enum::YLeaf DatetimeMonth::october {9, "october"};
+const Enum::YLeaf DatetimeMonth::november {10, "november"};
+const Enum::YLeaf DatetimeMonth::december {11, "december"};
 
-const Enum::YLeaf RtleakScope::intra {1, "intra"};
-const Enum::YLeaf RtleakScope::inter {2, "inter"};
-const Enum::YLeaf RtleakScope::defrt {3, "defrt"};
+const Enum::YLeaf DatetimeNTPPeerMode::unspecified {0, "unspecified"};
+const Enum::YLeaf DatetimeNTPPeerMode::symmetricActive {1, "symmetricActive"};
+const Enum::YLeaf DatetimeNTPPeerMode::symmetricPassive {2, "symmetricPassive"};
+const Enum::YLeaf DatetimeNTPPeerMode::client {3, "client"};
+const Enum::YLeaf DatetimeNTPPeerMode::server {4, "server"};
+const Enum::YLeaf DatetimeNTPPeerMode::broadcast {5, "broadcast"};
+const Enum::YLeaf DatetimeNTPPeerMode::reservedControl {6, "reservedControl"};
+const Enum::YLeaf DatetimeNTPPeerMode::reservedPrivate {7, "reservedPrivate"};
 
-const Enum::YLeaf Ipv6ConfigErr::noerror {0, "noerror"};
-const Enum::YLeaf Ipv6ConfigErr::nghbrAddress {1, "nghbrAddress"};
-const Enum::YLeaf Ipv6ConfigErr::useLinkLocalOnly {2, "useLinkLocalOnly"};
-const Enum::YLeaf Ipv6ConfigErr::forward {3, "forward"};
+const Enum::YLeaf DatetimeNtpSrvStatus::unknown {1, "unknown"};
+const Enum::YLeaf DatetimeNtpSrvStatus::not_running {2, "not_running"};
+const Enum::YLeaf DatetimeNtpSrvStatus::not_synchronized {3, "not_synchronized"};
+const Enum::YLeaf DatetimeNtpSrvStatus::synced_local_clock {4, "synced_local_clock"};
+const Enum::YLeaf DatetimeNtpSrvStatus::synced_local_hw_refclk {5, "synced_local_hw_refclk"};
+const Enum::YLeaf DatetimeNtpSrvStatus::synced_remote_server {6, "synced_remote_server"};
 
-const Enum::YLeaf PkiKeyringState::started {1, "started"};
-const Enum::YLeaf PkiKeyringState::created {2, "created"};
-const Enum::YLeaf PkiKeyringState::reqCreated {3, "reqCreated"};
-const Enum::YLeaf PkiKeyringState::tpSet {4, "tpSet"};
-const Enum::YLeaf PkiKeyringState::completed {5, "completed"};
+const Enum::YLeaf DatetimeProvT::peer {0, "peer"};
+const Enum::YLeaf DatetimeProvT::server {1, "server"};
+const Enum::YLeaf DatetimeProvT::invalid {2, "invalid"};
 
-const Enum::YLeaf InstallerUpgStatusType::pre_upgrade {0, "pre-upgrade"};
-const Enum::YLeaf InstallerUpgStatusType::in_progress {1, "in-progress"};
-const Enum::YLeaf InstallerUpgStatusType::success {2, "success"};
-const Enum::YLeaf InstallerUpgStatusType::failed {3, "failed"};
-const Enum::YLeaf InstallerUpgStatusType::not_compatible {4, "not-compatible"};
-const Enum::YLeaf InstallerUpgStatusType::none {5, "none"};
+const Enum::YLeaf DhcpClIfOperSt::unspecified {0, "unspecified"};
+const Enum::YLeaf DhcpClIfOperSt::init {1, "init"};
+const Enum::YLeaf DhcpClIfOperSt::discover {2, "discover"};
+const Enum::YLeaf DhcpClIfOperSt::requesting {3, "requesting"};
+const Enum::YLeaf DhcpClIfOperSt::addr_rcvd {4, "addr-rcvd"};
+const Enum::YLeaf DhcpClIfOperSt::failed {5, "failed"};
+const Enum::YLeaf DhcpClIfOperSt::request_timedout {6, "request-timedout"};
+const Enum::YLeaf DhcpClIfOperSt::down {7, "down"};
 
-const Enum::YLeaf NwAdminSt_::enabled {1, "enabled"};
-const Enum::YLeaf NwAdminSt_::disabled {2, "disabled"};
+const Enum::YLeaf DhcpDAILogType::deny {1, "deny"};
+const Enum::YLeaf DhcpDAILogType::permit {2, "permit"};
+const Enum::YLeaf DhcpDAILogType::all {3, "all"};
+const Enum::YLeaf DhcpDAILogType::inone {5, "inone"};
 
-const Enum::YLeaf VrrpAuthType::none {1, "none"};
-const Enum::YLeaf VrrpAuthType::simple {2, "simple"};
+const Enum::YLeaf EpmDbT::ep {1, "ep"};
 
-const Enum::YLeaf AggregateMacType::unknown {0, "unknown"};
-const Enum::YLeaf AggregateMacType::unicast {1, "unicast"};
-const Enum::YLeaf AggregateMacType::multicast {2, "multicast"};
+const Enum::YLeaf EpmEpOperSt::down {0, "down"};
+const Enum::YLeaf EpmEpOperSt::up {1, "up"};
 
-const Enum::YLeaf StpGuard::default_ {0, "default"};
-const Enum::YLeaf StpGuard::root {1, "root"};
-const Enum::YLeaf StpGuard::loop {2, "loop"};
-const Enum::YLeaf StpGuard::none {3, "none"};
+const Enum::YLeaf EqptAcc::read_only {0, "read-only"};
+const Enum::YLeaf EqptAcc::read_write {1, "read-write"};
+
+const Enum::YLeaf EqptAdSt::unknown {0, "unknown"};
+const Enum::YLeaf EqptAdSt::enabled {1, "enabled"};
+const Enum::YLeaf EqptAdSt::disabled {2, "disabled"};
+
+const Enum::YLeaf EqptAirDir::unknown {0, "unknown"};
+const Enum::YLeaf EqptAirDir::front2back {1, "front2back"};
+const Enum::YLeaf EqptAirDir::back2front {2, "back2front"};
+
+const Enum::YLeaf EqptAirFilter::absent {0, "absent"};
+const Enum::YLeaf EqptAirFilter::present {1, "present"};
+const Enum::YLeaf EqptAirFilter::notsupported {2, "notsupported"};
+
+const Enum::YLeaf EqptAsicT::northstar {1, "northstar"};
+const Enum::YLeaf EqptAsicT::alpine {2, "alpine"};
+const Enum::YLeaf EqptAsicT::bcm {3, "bcm"};
+const Enum::YLeaf EqptAsicT::davos {4, "davos"};
+const Enum::YLeaf EqptAsicT::sugarbowl {5, "sugarbowl"};
+const Enum::YLeaf EqptAsicT::homewood {6, "homewood"};
+
+const Enum::YLeaf EqptBaudRate::Y_300 {1, "300"};
+const Enum::YLeaf EqptBaudRate::Y_1200 {2, "1200"};
+const Enum::YLeaf EqptBaudRate::Y_2400 {3, "2400"};
+const Enum::YLeaf EqptBaudRate::Y_4800 {4, "4800"};
+const Enum::YLeaf EqptBaudRate::Y_9600 {5, "9600"};
+const Enum::YLeaf EqptBaudRate::Y_38400 {6, "38400"};
+const Enum::YLeaf EqptBaudRate::Y_57600 {7, "57600"};
+const Enum::YLeaf EqptBaudRate::Y_115200 {8, "115200"};
 
 const Enum::YLeaf EqptCOpSt::unknown {0, "unknown"};
 const Enum::YLeaf EqptCOpSt::inserted {1, "inserted"};
@@ -23873,207 +24329,241 @@ const Enum::YLeaf EqptCOpSt::upg {16, "upg"};
 const Enum::YLeaf EqptCOpSt::srg_fail {17, "srg-fail"};
 const Enum::YLeaf EqptCOpSt::ha_seq_fail {18, "ha-seq-fail"};
 
-const Enum::YLeaf OpflexEpTransitionStatus::unknown {0, "unknown"};
-const Enum::YLeaf OpflexEpTransitionStatus::attached {1, "attached"};
-const Enum::YLeaf OpflexEpTransitionStatus::detached {2, "detached"};
+const Enum::YLeaf EqptCardT::unknown {0, "unknown"};
+const Enum::YLeaf EqptCardT::supervisor {1, "supervisor"};
+const Enum::YLeaf EqptCardT::linecard {2, "linecard"};
+const Enum::YLeaf EqptCardT::fabriccard {3, "fabriccard"};
+const Enum::YLeaf EqptCardT::sysctrlcard {4, "sysctrlcard"};
+const Enum::YLeaf EqptCardT::extchcard {5, "extchcard"};
+const Enum::YLeaf EqptCardT::fan_tray {6, "fan-tray"};
+const Enum::YLeaf EqptCardT::power_supply {7, "power-supply"};
 
-const Enum::YLeaf VpcPrecType::network {0, "network"};
-const Enum::YLeaf VpcPrecType::internet {1, "internet"};
-const Enum::YLeaf VpcPrecType::critical {2, "critical"};
-const Enum::YLeaf VpcPrecType::flash_override {3, "flash-override"};
-const Enum::YLeaf VpcPrecType::flash {4, "flash"};
-const Enum::YLeaf VpcPrecType::immediate {5, "immediate"};
-const Enum::YLeaf VpcPrecType::priority {6, "priority"};
-const Enum::YLeaf VpcPrecType::routine {7, "routine"};
+const Enum::YLeaf EqptChOperSt::not_operational {0, "not-operational"};
+const Enum::YLeaf EqptChOperSt::failed {1, "failed"};
+const Enum::YLeaf EqptChOperSt::online {2, "online"};
 
-const Enum::YLeaf BgpMaxPfxAct::log {1, "log"};
-const Enum::YLeaf BgpMaxPfxAct::shut {2, "shut"};
-const Enum::YLeaf BgpMaxPfxAct::restart {3, "restart"};
+const Enum::YLeaf EqptColor::no_color {0, "no-color"};
+const Enum::YLeaf EqptColor::green {1, "green"};
+const Enum::YLeaf EqptColor::yellow {2, "yellow"};
+const Enum::YLeaf EqptColor::amber {3, "amber"};
+const Enum::YLeaf EqptColor::red {4, "red"};
+const Enum::YLeaf EqptColor::blue {5, "blue"};
 
-const Enum::YLeaf AggregateVpcKeepaliveStatus::VpcOobUnknown {0, "VpcOobUnknown"};
-const Enum::YLeaf AggregateVpcKeepaliveStatus::VpcOobDisabled {1, "VpcOobDisabled"};
-const Enum::YLeaf AggregateVpcKeepaliveStatus::VpcOobPeerAlive {2, "VpcOobPeerAlive"};
-const Enum::YLeaf AggregateVpcKeepaliveStatus::VpcOobPeerNotAlive {3, "VpcOobPeerNotAlive"};
-const Enum::YLeaf AggregateVpcKeepaliveStatus::VpcOobPeerAliveDomainMismatch {4, "VpcOobPeerAliveDomainMismatch"};
-const Enum::YLeaf AggregateVpcKeepaliveStatus::VpcOobSuspended {5, "VpcOobSuspended"};
-const Enum::YLeaf AggregateVpcKeepaliveStatus::VpcOobNotOperational {6, "VpcOobNotOperational"};
-const Enum::YLeaf AggregateVpcKeepaliveStatus::VpcOobSuspendedVrf {7, "VpcOobSuspendedVrf"};
-const Enum::YLeaf AggregateVpcKeepaliveStatus::VpcOobMisconfig {8, "VpcOobMisconfig"};
+const Enum::YLeaf EqptEjSt::open {0, "open"};
+const Enum::YLeaf EqptEjSt::closed {1, "closed"};
 
-const Enum::YLeaf L2EtherType::unspecified {0, "unspecified"};
-const Enum::YLeaf L2EtherType::arp {2054, "arp"};
-const Enum::YLeaf L2EtherType::trill {8947, "trill"};
-const Enum::YLeaf L2EtherType::mpls_ucast {34887, "mpls_ucast"};
-const Enum::YLeaf L2EtherType::mac_security {35045, "mac_security"};
-const Enum::YLeaf L2EtherType::fcoe {35078, "fcoe"};
-const Enum::YLeaf L2EtherType::ip {43981, "ip"};
+const Enum::YLeaf EqptExtChSt::unknown {0, "unknown"};
+const Enum::YLeaf EqptExtChSt::initializing {1, "initializing"};
+const Enum::YLeaf EqptExtChSt::discovered {2, "discovered"};
+const Enum::YLeaf EqptExtChSt::connected {3, "connected"};
+const Enum::YLeaf EqptExtChSt::reg {4, "reg"};
+const Enum::YLeaf EqptExtChSt::regDone {5, "regDone"};
+const Enum::YLeaf EqptExtChSt::ready {6, "ready"};
+const Enum::YLeaf EqptExtChSt::onlSeq {7, "onlSeq"};
+const Enum::YLeaf EqptExtChSt::online {8, "online"};
+const Enum::YLeaf EqptExtChSt::offReq {9, "offReq"};
+const Enum::YLeaf EqptExtChSt::offSeq {10, "offSeq"};
+const Enum::YLeaf EqptExtChSt::offline {11, "offline"};
+const Enum::YLeaf EqptExtChSt::imgDld {12, "imgDld"};
+const Enum::YLeaf EqptExtChSt::failed {13, "failed"};
+const Enum::YLeaf EqptExtChSt::removed {14, "removed"};
+const Enum::YLeaf EqptExtChSt::hlUpgSeq {15, "hlUpgSeq"};
+const Enum::YLeaf EqptExtChSt::chkUpgSeq {16, "chkUpgSeq"};
+const Enum::YLeaf EqptExtChSt::svStates {17, "svStates"};
+const Enum::YLeaf EqptExtChSt::hlUpgIdle {18, "hlUpgIdle"};
+const Enum::YLeaf EqptExtChSt::chkInsSeq {19, "chkInsSeq"};
+const Enum::YLeaf EqptExtChSt::hlUpgFail {20, "hlUpgFail"};
+const Enum::YLeaf EqptExtChSt::aaUpgRdy {21, "aaUpgRdy"};
+const Enum::YLeaf EqptExtChSt::aaUpgIdle {22, "aaUpgIdle"};
+const Enum::YLeaf EqptExtChSt::aaUpgOver {23, "aaUpgOver"};
+const Enum::YLeaf EqptExtChSt::aaUpgFail {24, "aaUpgFail"};
+const Enum::YLeaf EqptExtChSt::aaVersMismatch {25, "aaVersMismatch"};
+const Enum::YLeaf EqptExtChSt::ExtChTypeMismatch {26, "ExtChTypeMismatch"};
 
-const Enum::YLeaf CdpOperStQual::up {1, "up"};
-const Enum::YLeaf CdpOperStQual::admin_down {2, "admin-down"};
-const Enum::YLeaf CdpOperStQual::if_down {3, "if-down"};
-const Enum::YLeaf CdpOperStQual::unsupported {4, "unsupported"};
+const Enum::YLeaf EqptLedOpSt::unknown {0, "unknown"};
+const Enum::YLeaf EqptLedOpSt::off {1, "off"};
+const Enum::YLeaf EqptLedOpSt::on {2, "on"};
+const Enum::YLeaf EqptLedOpSt::blinking {3, "blinking"};
+const Enum::YLeaf EqptLedOpSt::fail {4, "fail"};
 
-const Enum::YLeaf CdpVer::v1 {1, "v1"};
-const Enum::YLeaf CdpVer::v2 {2, "v2"};
+const Enum::YLeaf EqptLedType::unknown {0, "unknown"};
+const Enum::YLeaf EqptLedType::status {1, "status"};
+const Enum::YLeaf EqptLedType::system {2, "system"};
+const Enum::YLeaf EqptLedType::active {3, "active"};
+const Enum::YLeaf EqptLedType::power {4, "power"};
+const Enum::YLeaf EqptLedType::battery {5, "battery"};
+const Enum::YLeaf EqptLedType::lc_status {6, "lc-status"};
+const Enum::YLeaf EqptLedType::sup_status {7, "sup-status"};
+const Enum::YLeaf EqptLedType::fc_status {8, "fc-status"};
+const Enum::YLeaf EqptLedType::fan_status {9, "fan-status"};
+const Enum::YLeaf EqptLedType::pwr_status {10, "pwr-status"};
 
-const Enum::YLeaf NwAdminStProcessStatAutoDiscAdd::enabled {1, "enabled"};
-const Enum::YLeaf NwAdminStProcessStatAutoDiscAdd::disabled {2, "disabled"};
+const Enum::YLeaf EqptMemT::unk {0, "unk"};
+const Enum::YLeaf EqptMemT::dimm {1, "dimm"};
+const Enum::YLeaf EqptMemT::flash {2, "flash"};
+const Enum::YLeaf EqptMemT::sprom {3, "sprom"};
+
+const Enum::YLeaf EqptOpSt::unknown {0, "unknown"};
+const Enum::YLeaf EqptOpSt::ok {1, "ok"};
+const Enum::YLeaf EqptOpSt::fail {2, "fail"};
+const Enum::YLeaf EqptOpSt::absent {3, "absent"};
+const Enum::YLeaf EqptOpSt::shut {4, "shut"};
+const Enum::YLeaf EqptOpSt::mismatch {5, "mismatch"};
+
+const Enum::YLeaf EqptParity::none {0, "none"};
+const Enum::YLeaf EqptParity::even {1, "even"};
+const Enum::YLeaf EqptParity::odd {2, "odd"};
+
+const Enum::YLeaf EqptPortT::unknown {0, "unknown"};
+const Enum::YLeaf EqptPortT::eobc {1, "eobc"};
+const Enum::YLeaf EqptPortT::mgmt {2, "mgmt"};
+const Enum::YLeaf EqptPortT::fab {3, "fab"};
+const Enum::YLeaf EqptPortT::leaf {4, "leaf"};
+const Enum::YLeaf EqptPortT::extchhp {5, "extchhp"};
+const Enum::YLeaf EqptPortT::extchfp {6, "extchfp"};
+
+const Enum::YLeaf EqptPoweroffSt::no {0, "no"};
+const Enum::YLeaf EqptPoweroffSt::yes {1, "yes"};
+
+const Enum::YLeaf EqptPsRdnM::unknown {0, "unknown"};
+const Enum::YLeaf EqptPsRdnM::not_supp {1, "not-supp"};
+const Enum::YLeaf EqptPsRdnM::rdn {2, "rdn"};
+const Enum::YLeaf EqptPsRdnM::comb {3, "comb"};
+const Enum::YLeaf EqptPsRdnM::n_rdn {4, "n-rdn"};
+const Enum::YLeaf EqptPsRdnM::ps_rdn {5, "ps-rdn"};
+const Enum::YLeaf EqptPsRdnM::insrc_rdn {6, "insrc-rdn"};
+const Enum::YLeaf EqptPsRdnM::sinin_rdn {7, "sinin-rdn"};
+const Enum::YLeaf EqptPsRdnM::comb_force {8, "comb-force"};
+
+const Enum::YLeaf EqptPsuFanDir::front2back {0, "front2back"};
+const Enum::YLeaf EqptPsuFanDir::back2front {1, "back2front"};
+const Enum::YLeaf EqptPsuFanDir::notused {2, "notused"};
+
+const Enum::YLeaf EqptPwrState::unknown {0, "unknown"};
+const Enum::YLeaf EqptPwrState::off {1, "off"};
+const Enum::YLeaf EqptPwrState::on {2, "on"};
+const Enum::YLeaf EqptPwrState::deny {3, "deny"};
+const Enum::YLeaf EqptPwrState::multi_boot_fail {4, "multi-boot-fail"};
+
+const Enum::YLeaf EqptRdSt::unknown {0, "unknown"};
+const Enum::YLeaf EqptRdSt::active {1, "active"};
+const Enum::YLeaf EqptRdSt::standby {2, "standby"};
+
+const Enum::YLeaf EqptSensorOpSt::fail {0, "fail"};
+const Enum::YLeaf EqptSensorOpSt::normal {1, "normal"};
+const Enum::YLeaf EqptSensorOpSt::minor {2, "minor"};
+const Enum::YLeaf EqptSensorOpSt::major_ {3, "major"};
+const Enum::YLeaf EqptSensorOpSt::absent {4, "absent"};
+const Enum::YLeaf EqptSensorOpSt::bad_asic {5, "bad-asic"};
+
+const Enum::YLeaf EqptSensorT::cpu {1, "cpu"};
+const Enum::YLeaf EqptSensorT::inlet {2, "inlet"};
+const Enum::YLeaf EqptSensorT::outlet {3, "outlet"};
+const Enum::YLeaf EqptSensorT::hotswap {4, "hotswap"};
+const Enum::YLeaf EqptSensorT::dimm {5, "dimm"};
+const Enum::YLeaf EqptSensorT::phy {6, "phy"};
+const Enum::YLeaf EqptSensorT::sfp {7, "sfp"};
+const Enum::YLeaf EqptSensorT::qsfp {8, "qsfp"};
+const Enum::YLeaf EqptSensorT::asic {9, "asic"};
+const Enum::YLeaf EqptSensorT::pch {10, "pch"};
+const Enum::YLeaf EqptSensorT::cpu_crm {11, "cpu-crm"};
+const Enum::YLeaf EqptSensorT::asic_vrm {12, "asic-vrm"};
+const Enum::YLeaf EqptSensorT::x86 {18, "x86"};
+const Enum::YLeaf EqptSensorT::arm {19, "arm"};
+const Enum::YLeaf EqptSensorT::die {20, "die"};
+
+const Enum::YLeaf EqptSlotLoc::unknown {0, "unknown"};
+const Enum::YLeaf EqptSlotLoc::front {1, "front"};
+const Enum::YLeaf EqptSlotLoc::rear {2, "rear"};
+
+const Enum::YLeaf EqptSlotOpSt::empty {0, "empty"};
+const Enum::YLeaf EqptSlotOpSt::inserted {1, "inserted"};
+
+const Enum::YLeaf EqptSlotT::unknown {0, "unknown"};
+const Enum::YLeaf EqptSlotT::supslot {1, "supslot"};
+const Enum::YLeaf EqptSlotT::lcslot {2, "lcslot"};
+const Enum::YLeaf EqptSlotT::fcslot {3, "fcslot"};
+const Enum::YLeaf EqptSlotT::scslot {4, "scslot"};
+const Enum::YLeaf EqptSlotT::extchslot {5, "extchslot"};
+const Enum::YLeaf EqptSlotT::psuslot {6, "psuslot"};
+const Enum::YLeaf EqptSlotT::fantray {7, "fantray"};
+const Enum::YLeaf EqptSlotT::bslot {8, "bslot"};
+const Enum::YLeaf EqptSlotT::nslot {9, "nslot"};
+
+const Enum::YLeaf EqptSock::unspecified {0, "unspecified"};
+
+const Enum::YLeaf EqptVSrc::unknown {0, "unknown"};
+const Enum::YLeaf EqptVSrc::Y_110v {1, "110v"};
+const Enum::YLeaf EqptVSrc::Y_220v {2, "220v"};
 
 const Enum::YLeaf EqptFcotDomLane::basic {0, "basic"};
 const Enum::YLeaf EqptFcotDomLane::extGlobal {1, "extGlobal"};
 const Enum::YLeaf EqptFcotDomLane::extOptical {2, "extOptical"};
 
-const Enum::YLeaf IpOperSt::unspecified {0, "unspecified"};
-const Enum::YLeaf IpOperSt::down {1, "down"};
-const Enum::YLeaf IpOperSt::up {2, "up"};
-const Enum::YLeaf IpOperSt::failed {3, "failed"};
+const Enum::YLeaf EqptcapConnT::unspecified {0, "unspecified"};
+const Enum::YLeaf EqptcapConnT::sc {1, "sc"};
+const Enum::YLeaf EqptcapConnT::fc1_copper {2, "fc1-copper"};
+const Enum::YLeaf EqptcapConnT::fc2_copper {3, "fc2-copper"};
+const Enum::YLeaf EqptcapConnT::bnc_tnc {4, "bnc-tnc"};
+const Enum::YLeaf EqptcapConnT::fc_coax {5, "fc-coax"};
+const Enum::YLeaf EqptcapConnT::fiber_jack {6, "fiber-jack"};
+const Enum::YLeaf EqptcapConnT::lc {7, "lc"};
+const Enum::YLeaf EqptcapConnT::mt_rj {8, "mt-rj"};
+const Enum::YLeaf EqptcapConnT::mu {9, "mu"};
+const Enum::YLeaf EqptcapConnT::sg {10, "sg"};
+const Enum::YLeaf EqptcapConnT::optical_pigtail {11, "optical-pigtail"};
+const Enum::YLeaf EqptcapConnT::mpo {12, "mpo"};
+const Enum::YLeaf EqptcapConnT::hssdc_2 {32, "hssdc-2"};
+const Enum::YLeaf EqptcapConnT::copper_pigtail {33, "copper-pigtail"};
+const Enum::YLeaf EqptcapConnT::rj45 {34, "rj45"};
 
-const Enum::YLeaf L2TrafficMapCfgSt::config_success {0, "config-success"};
-const Enum::YLeaf L2TrafficMapCfgSt::config_failure {1, "config-failure"};
+const Enum::YLeaf EqptcapXcvrT::unspecified {0, "unspecified"};
+const Enum::YLeaf EqptcapXcvrT::gbic {1, "gbic"};
+const Enum::YLeaf EqptcapXcvrT::solder {2, "solder"};
+const Enum::YLeaf EqptcapXcvrT::sfp {3, "sfp"};
+const Enum::YLeaf EqptcapXcvrT::xbi {4, "xbi"};
+const Enum::YLeaf EqptcapXcvrT::xenpak {5, "xenpak"};
+const Enum::YLeaf EqptcapXcvrT::xfp {6, "xfp"};
+const Enum::YLeaf EqptcapXcvrT::xff {7, "xff"};
+const Enum::YLeaf EqptcapXcvrT::xfp_e {8, "xfp-e"};
+const Enum::YLeaf EqptcapXcvrT::xpak {9, "xpak"};
+const Enum::YLeaf EqptcapXcvrT::x2 {10, "x2"};
+const Enum::YLeaf EqptcapXcvrT::dwdm_sfp {11, "dwdm-sfp"};
+const Enum::YLeaf EqptcapXcvrT::qsfp {12, "qsfp"};
 
-const Enum::YLeaf FlowExportVersion::unspecified {0, "unspecified"};
-const Enum::YLeaf FlowExportVersion::v5 {1, "v5"};
-const Enum::YLeaf FlowExportVersion::v9 {2, "v9"};
-const Enum::YLeaf FlowExportVersion::cisco1 {3, "cisco1"};
+const Enum::YLeaf EqptdiagAllGrpsT::none {0, "none"};
+const Enum::YLeaf EqptdiagAllGrpsT::sys_mem {1, "sys-mem"};
+const Enum::YLeaf EqptdiagAllGrpsT::cpu {2, "cpu"};
+const Enum::YLeaf EqptdiagAllGrpsT::peripherals {3, "peripherals"};
+const Enum::YLeaf EqptdiagAllGrpsT::internal_conn {4, "internal-conn"};
+const Enum::YLeaf EqptdiagAllGrpsT::asic {5, "asic"};
+const Enum::YLeaf EqptdiagAllGrpsT::port {6, "port"};
 
-const Enum::YLeaf BgpLogNbrSt::none {0, "none"};
-const Enum::YLeaf BgpLogNbrSt::enable {1, "enable"};
-const Enum::YLeaf BgpLogNbrSt::disable {2, "disable"};
-
-const Enum::YLeaf LldpPortIdSubType::long_ {0, "long"};
-const Enum::YLeaf LldpPortIdSubType::short_ {1, "short"};
-
-const Enum::YLeaf ActionType::clear {1, "clear"};
-const Enum::YLeaf ActionType::reset {2, "reset"};
-const Enum::YLeaf ActionType::reload {3, "reload"};
-const Enum::YLeaf ActionType::locate {4, "locate"};
-const Enum::YLeaf ActionType::install {5, "install"};
-const Enum::YLeaf ActionType::test {6, "test"};
-const Enum::YLeaf ActionType::collect {7, "collect"};
-const Enum::YLeaf ActionType::interface_in_service {8, "interface-in-service"};
-
-const Enum::YLeaf L1DiagsT::none {0, "none"};
-const Enum::YLeaf L1DiagsT::dom {1, "dom"};
-const Enum::YLeaf L1DiagsT::ddm {2, "ddm"};
-
-const Enum::YLeaf IsisAuthT::clear {1, "clear"};
-const Enum::YLeaf IsisAuthT::md5 {2, "md5"};
-
-const Enum::YLeaf CoppMcast::Undefined {0, "Undefined"};
-const Enum::YLeaf CoppMcast::dest_miss {1, "dest-miss"};
-const Enum::YLeaf CoppMcast::rpf_failure {2, "rpf-failure"};
-const Enum::YLeaf CoppMcast::sg_rpf_failure {3, "sg-rpf-failure"};
-const Enum::YLeaf CoppMcast::ipv6_dest_miss {4, "ipv6-dest-miss"};
-const Enum::YLeaf CoppMcast::ipv6_rpf_failure {5, "ipv6-rpf-failure"};
-const Enum::YLeaf CoppMcast::ipv6_sg_rpf_failure {6, "ipv6-sg-rpf-failure"};
-
-const Enum::YLeaf AnalyticsOportSupportT::enable {1, "enable"};
-const Enum::YLeaf AnalyticsOportSupportT::disable {0, "disable"};
-
-const Enum::YLeaf IpUrpfT::disabled {0, "disabled"};
-const Enum::YLeaf IpUrpfT::strict {1, "strict"};
-const Enum::YLeaf IpUrpfT::loose {2, "loose"};
-const Enum::YLeaf IpUrpfT::loose_allow_default {3, "loose-allow-default"};
-
-const Enum::YLeaf NbmNbmOifOrigin::UNDEFINED {0, "UNDEFINED"};
-const Enum::YLeaf NbmNbmOifOrigin::PROTOCOL {1, "PROTOCOL"};
-const Enum::YLeaf NbmNbmOifOrigin::API {2, "API"};
-const Enum::YLeaf NbmNbmOifOrigin::API_PROTOCOL {3, "API_PROTOCOL"};
-
-const Enum::YLeaf OspfAlways::no {0, "no"};
-const Enum::YLeaf OspfAlways::yes {1, "yes"};
-
-const Enum::YLeaf NgmvpnEhType::bgp {0, "bgp"};
-const Enum::YLeaf NgmvpnEhType::mrib {1, "mrib"};
-const Enum::YLeaf NgmvpnEhType::m2rib {2, "m2rib"};
-const Enum::YLeaf NgmvpnEhType::m6rib {3, "m6rib"};
-const Enum::YLeaf NgmvpnEhType::pim {4, "pim"};
-const Enum::YLeaf NgmvpnEhType::pim6 {5, "pim6"};
-const Enum::YLeaf NgmvpnEhType::hmm {6, "hmm"};
-const Enum::YLeaf NgmvpnEhType::isis {7, "isis"};
-const Enum::YLeaf NgmvpnEhType::ha {8, "ha"};
-
-const Enum::YLeaf SpanSrcT::port {1, "port"};
-const Enum::YLeaf SpanSrcT::encap {2, "encap"};
-const Enum::YLeaf SpanSrcT::port_encap {3, "port-encap"};
-
-const Enum::YLeaf CapRuleT::limit {1, "limit"};
-
-const Enum::YLeaf NdMacExtract::none {0, "none"};
-const Enum::YLeaf NdMacExtract::nud_phase {1, "nud-phase"};
-const Enum::YLeaf NdMacExtract::exclude_nud_phase {2, "exclude-nud-phase"};
-
-const Enum::YLeaf SisfRaGuardDeviceRole::host {1, "host"};
-const Enum::YLeaf SisfRaGuardDeviceRole::router {2, "router"};
-const Enum::YLeaf SisfRaGuardDeviceRole::switch_ {3, "switch"};
-const Enum::YLeaf SisfRaGuardDeviceRole::monitor {4, "monitor"};
-
-const Enum::YLeaf L1AllowMultiTag::enable {1, "enable"};
-const Enum::YLeaf L1AllowMultiTag::disable {0, "disable"};
-
-const Enum::YLeaf NwAdminStProcessStatAutoPuntBcast::enabled {1, "enabled"};
-const Enum::YLeaf NwAdminStProcessStatAutoPuntBcast::disabled {2, "disabled"};
-
-const Enum::YLeaf Icmpv6EventLogSize::disabled {0, "disabled"};
-const Enum::YLeaf Icmpv6EventLogSize::small {1, "small"};
-const Enum::YLeaf Icmpv6EventLogSize::medium {2, "medium"};
-const Enum::YLeaf Icmpv6EventLogSize::large {3, "large"};
-
-const Enum::YLeaf HmmFwdMode::standard {0, "standard"};
-const Enum::YLeaf HmmFwdMode::anycastGW {1, "anycastGW"};
-const Enum::YLeaf HmmFwdMode::proxyGW {2, "proxyGW"};
-
-const Enum::YLeaf SegrtAfType::ipv4 {1, "ipv4"};
-const Enum::YLeaf SegrtAfType::ipv6 {2, "ipv6"};
-
-const Enum::YLeaf DhcpDAILogType::deny {1, "deny"};
-const Enum::YLeaf DhcpDAILogType::permit {2, "permit"};
-const Enum::YLeaf DhcpDAILogType::all {3, "all"};
-const Enum::YLeaf DhcpDAILogType::inone {5, "inone"};
-
-const Enum::YLeaf OspfNwT::unspecified {0, "unspecified"};
-const Enum::YLeaf OspfNwT::p2p {1, "p2p"};
-const Enum::YLeaf OspfNwT::bcast {2, "bcast"};
-
-const Enum::YLeaf RtmapRoutePervasive::non_pervasive {0, "non-pervasive"};
-const Enum::YLeaf RtmapRoutePervasive::pervasive {1, "pervasive"};
-const Enum::YLeaf RtmapRoutePervasive::pervasive_non_ext_bd {2, "pervasive-non-ext-bd"};
-
-const Enum::YLeaf RtmapMetricT::type_1 {1, "type-1"};
-const Enum::YLeaf RtmapMetricT::type_2 {2, "type-2"};
-const Enum::YLeaf RtmapMetricT::internal {3, "internal"};
-const Enum::YLeaf RtmapMetricT::external {4, "external"};
-
-const Enum::YLeaf BgpPeerFabType::fabric_internal {0, "fabric-internal"};
-const Enum::YLeaf BgpPeerFabType::fabric_external {1, "fabric-external"};
-const Enum::YLeaf BgpPeerFabType::fabric_border_leaf {2, "fabric-border-leaf"};
-
-const Enum::YLeaf EqptSock::unspecified {0, "unspecified"};
-
-const Enum::YLeaf MonitorOperSt::up {1, "up"};
-const Enum::YLeaf MonitorOperSt::down {2, "down"};
-const Enum::YLeaf MonitorOperSt::failed {3, "failed"};
-
-const Enum::YLeaf RtpfxCriteria::exact {0, "exact"};
-const Enum::YLeaf RtpfxCriteria::inexact {1, "inexact"};
-
-const Enum::YLeaf PcSummOperSt::up {0, "up"};
-const Enum::YLeaf PcSummOperSt::down {1, "down"};
-const Enum::YLeaf PcSummOperSt::module_removed {2, "module-removed"};
-const Enum::YLeaf PcSummOperSt::individual {3, "individual"};
-const Enum::YLeaf PcSummOperSt::suspended {4, "suspended"};
-const Enum::YLeaf PcSummOperSt::hot_standby {5, "hot-standby"};
-
-const Enum::YLeaf BgpPathSt::deleted {0, "deleted"};
-const Enum::YLeaf BgpPathSt::staled {1, "staled"};
-const Enum::YLeaf BgpPathSt::valid {2, "valid"};
-const Enum::YLeaf BgpPathSt::invalid {3, "invalid"};
-const Enum::YLeaf BgpPathSt::history {4, "history"};
-const Enum::YLeaf BgpPathSt::suppressed {5, "suppressed"};
-const Enum::YLeaf BgpPathSt::dampened {6, "dampened"};
-
-const Enum::YLeaf SegrtSrDpType::mpls {1, "mpls"};
-const Enum::YLeaf SegrtSrDpType::ipv6 {2, "ipv6"};
+const Enum::YLeaf EthpmErrDisEvent::event_link_flap {0, "event-link-flap"};
+const Enum::YLeaf EthpmErrDisEvent::event_udld {1, "event-udld"};
+const Enum::YLeaf EthpmErrDisEvent::event_bpduguard {2, "event-bpduguard"};
+const Enum::YLeaf EthpmErrDisEvent::event_loopback {3, "event-loopback"};
+const Enum::YLeaf EthpmErrDisEvent::event_storm_ctrl {4, "event-storm-ctrl"};
+const Enum::YLeaf EthpmErrDisEvent::event_dhcp_rate_lim {5, "event-dhcp-rate-lim"};
+const Enum::YLeaf EthpmErrDisEvent::event_arp_inspection {6, "event-arp-inspection"};
+const Enum::YLeaf EthpmErrDisEvent::event_sec_violation {7, "event-sec-violation"};
+const Enum::YLeaf EthpmErrDisEvent::event_psec_violation {8, "event-psec-violation"};
+const Enum::YLeaf EthpmErrDisEvent::event_stp_inconsist_vpc_peerlink {9, "event-stp-inconsist-vpc-peerlink"};
+const Enum::YLeaf EthpmErrDisEvent::event_set_port_state_failed {10, "event-set-port-state-failed"};
+const Enum::YLeaf EthpmErrDisEvent::event_debug_1 {11, "event-debug-1"};
+const Enum::YLeaf EthpmErrDisEvent::event_debug_2 {12, "event-debug-2"};
+const Enum::YLeaf EthpmErrDisEvent::event_debug_3 {13, "event-debug-3"};
+const Enum::YLeaf EthpmErrDisEvent::event_debug_4 {14, "event-debug-4"};
+const Enum::YLeaf EthpmErrDisEvent::event_debug_5 {15, "event-debug-5"};
+const Enum::YLeaf EthpmErrDisEvent::event_ip_addr_conflict {16, "event-ip-addr-conflict"};
+const Enum::YLeaf EthpmErrDisEvent::event_ipqos_mgr_error {17, "event-ipqos-mgr-error"};
+const Enum::YLeaf EthpmErrDisEvent::event_ethpm {18, "event-ethpm"};
+const Enum::YLeaf EthpmErrDisEvent::event_ipqos_dcbxp_compat_failure {19, "event-ipqos-dcbxp-compat-failure"};
+const Enum::YLeaf EthpmErrDisEvent::event_syserr_based {20, "event-syserr-based"};
+const Enum::YLeaf EthpmErrDisEvent::unknown {21, "unknown"};
+const Enum::YLeaf EthpmErrDisEvent::event_mcp_loop {22, "event-mcp-loop"};
+const Enum::YLeaf EthpmErrDisEvent::event_ep_move {23, "event-ep-move"};
+const Enum::YLeaf EthpmErrDisEvent::event_dcbx_no_ack {24, "event-dcbx-no-ack"};
 
 const Enum::YLeaf EthpmFcotFlags::unknown {0, "unknown"};
 const Enum::YLeaf EthpmFcotFlags::access_failed {1, "access-failed"};
@@ -24091,474 +24581,174 @@ const Enum::YLeaf EthpmFcotFlags::delayed_auth_failed {12, "delayed-auth-failed"
 const Enum::YLeaf EthpmFcotFlags::ok_no_md5 {13, "ok-no-md5"};
 const Enum::YLeaf EthpmFcotFlags::ok {14, "ok"};
 
-const Enum::YLeaf SatmExtChOperSt::unknown {0, "unknown"};
-const Enum::YLeaf SatmExtChOperSt::initializing {1, "initializing"};
-const Enum::YLeaf SatmExtChOperSt::discovered {2, "discovered"};
-const Enum::YLeaf SatmExtChOperSt::connected {3, "connected"};
-const Enum::YLeaf SatmExtChOperSt::registering {4, "registering"};
-const Enum::YLeaf SatmExtChOperSt::registered {5, "registered"};
-const Enum::YLeaf SatmExtChOperSt::ready {6, "ready"};
-const Enum::YLeaf SatmExtChOperSt::online_seq {7, "online-seq"};
-const Enum::YLeaf SatmExtChOperSt::online {8, "online"};
-const Enum::YLeaf SatmExtChOperSt::offline_req {9, "offline-req"};
-const Enum::YLeaf SatmExtChOperSt::offline_seq {10, "offline-seq"};
-const Enum::YLeaf SatmExtChOperSt::offline {11, "offline"};
-const Enum::YLeaf SatmExtChOperSt::img_download {12, "img-download"};
-const Enum::YLeaf SatmExtChOperSt::failed {13, "failed"};
-const Enum::YLeaf SatmExtChOperSt::removed {14, "removed"};
-const Enum::YLeaf SatmExtChOperSt::hl_upg_seq {15, "hl-upg-seq"};
-const Enum::YLeaf SatmExtChOperSt::chk_upg_seq {16, "chk-upg-seq"};
-const Enum::YLeaf SatmExtChOperSt::upg_start {17, "upg-start"};
-const Enum::YLeaf SatmExtChOperSt::hl_upg_idle {18, "hl-upg-idle"};
-const Enum::YLeaf SatmExtChOperSt::chk_ins_seq {19, "chk-ins-seq"};
-const Enum::YLeaf SatmExtChOperSt::hl_upg_fail {20, "hl-upg-fail"};
-const Enum::YLeaf SatmExtChOperSt::aa_upg_rdy {21, "aa-upg-rdy"};
-const Enum::YLeaf SatmExtChOperSt::aa_upg_idle {22, "aa-upg-idle"};
-const Enum::YLeaf SatmExtChOperSt::aa_upg_done {23, "aa-upg-done"};
-const Enum::YLeaf SatmExtChOperSt::aa_upg_fail {24, "aa-upg-fail"};
-const Enum::YLeaf SatmExtChOperSt::aa_ver_mismatch {25, "aa-ver-mismatch"};
-const Enum::YLeaf SatmExtChOperSt::ch_type_mismatch {26, "ch-type-mismatch"};
-
-const Enum::YLeaf EqptAirDir::unknown {0, "unknown"};
-const Enum::YLeaf EqptAirDir::front2back {1, "front2back"};
-const Enum::YLeaf EqptAirDir::back2front {2, "back2front"};
-
-const Enum::YLeaf SysmgrFwMode::recovery {1, "recovery"};
-const Enum::YLeaf SysmgrFwMode::regular {2, "regular"};
-
-const Enum::YLeaf Icmpv6OperSt::down {0, "down"};
-const Enum::YLeaf Icmpv6OperSt::up {1, "up"};
-const Enum::YLeaf Icmpv6OperSt::failed {2, "failed"};
-
-const Enum::YLeaf VsanOperSt::up {1, "up"};
-const Enum::YLeaf VsanOperSt::down {2, "down"};
-
-const Enum::YLeaf AggregateBfdStatus::unknown {0, "unknown"};
-const Enum::YLeaf AggregateBfdStatus::admin_down {1, "admin_down"};
-const Enum::YLeaf AggregateBfdStatus::down {2, "down"};
-const Enum::YLeaf AggregateBfdStatus::init {3, "init"};
-const Enum::YLeaf AggregateBfdStatus::up {4, "up"};
-
-const Enum::YLeaf EqptAsicT::northstar {1, "northstar"};
-const Enum::YLeaf EqptAsicT::alpine {2, "alpine"};
-const Enum::YLeaf EqptAsicT::bcm {3, "bcm"};
-const Enum::YLeaf EqptAsicT::davos {4, "davos"};
-const Enum::YLeaf EqptAsicT::sugarbowl {5, "sugarbowl"};
-const Enum::YLeaf EqptAsicT::homewood {6, "homewood"};
-
-const Enum::YLeaf ImBreakoutProfile::disabled {0, "disabled"};
-const Enum::YLeaf ImBreakoutProfile::Y_50g_2x_only {1, "50g-2x-only"};
-
-const Enum::YLeaf OspfHelperSt::not_helping {1, "not-helping"};
-const Enum::YLeaf OspfHelperSt::helping {2, "helping"};
-
-const Enum::YLeaf CoppBurstUnit::Unknown {0, "Unknown"};
-const Enum::YLeaf CoppBurstUnit::bytes {1, "bytes"};
-const Enum::YLeaf CoppBurstUnit::kbytes {2, "kbytes"};
-const Enum::YLeaf CoppBurstUnit::mbytes {3, "mbytes"};
-const Enum::YLeaf CoppBurstUnit::packets {4, "packets"};
-const Enum::YLeaf CoppBurstUnit::us {5, "us"};
-const Enum::YLeaf CoppBurstUnit::ms {6, "ms"};
-
-const Enum::YLeaf FvImmediacy::immediate {1, "immediate"};
-const Enum::YLeaf FvImmediacy::lazy {2, "lazy"};
-
-const Enum::YLeaf Pim6EhType::assertRcv {0, "assertRcv"};
-const Enum::YLeaf Pim6EhType::bidir {1, "bidir"};
-const Enum::YLeaf Pim6EhType::hello {2, "hello"};
-const Enum::YLeaf Pim6EhType::joinPrune {3, "joinPrune"};
-const Enum::YLeaf Pim6EhType::nullReg {4, "nullReg"};
-const Enum::YLeaf Pim6EhType::packet {5, "packet"};
-const Enum::YLeaf Pim6EhType::pim6Internal {6, "pim6Internal"};
-const Enum::YLeaf Pim6EhType::rp {7, "rp"};
-const Enum::YLeaf Pim6EhType::vrf {8, "vrf"};
-const Enum::YLeaf Pim6EhType::jpSum {9, "jpSum"};
-
-const Enum::YLeaf L1VoiceVlanType::none {0, "none"};
-const Enum::YLeaf L1VoiceVlanType::tagged {1, "tagged"};
-const Enum::YLeaf L1VoiceVlanType::dot1p {2, "dot1p"};
-const Enum::YLeaf L1VoiceVlanType::untagged {3, "untagged"};
-
-const Enum::YLeaf IsisBwRefUnit::mbps {0, "mbps"};
-const Enum::YLeaf IsisBwRefUnit::gbps {1, "gbps"};
-
-const Enum::YLeaf AaaMonitorServerType::disabled {0, "disabled"};
-const Enum::YLeaf AaaMonitorServerType::enabled {1, "enabled"};
-
-const Enum::YLeaf OspfAdjChangeLogLevel::none {0, "none"};
-const Enum::YLeaf OspfAdjChangeLogLevel::brief {1, "brief"};
-const Enum::YLeaf OspfAdjChangeLogLevel::detail {2, "detail"};
-
-const Enum::YLeaf StpLinkType::auto_ {1, "auto"};
-const Enum::YLeaf StpLinkType::p2p {2, "p2p"};
-const Enum::YLeaf StpLinkType::shared {3, "shared"};
-
-const Enum::YLeaf NwMemAlertLevel::normal {0, "normal"};
-const Enum::YLeaf NwMemAlertLevel::minor {1, "minor"};
-const Enum::YLeaf NwMemAlertLevel::major_ {2, "major"};
-const Enum::YLeaf NwMemAlertLevel::critical {3, "critical"};
-
-const Enum::YLeaf RelnTargetType::name {0, "name"};
-const Enum::YLeaf RelnTargetType::mo {1, "mo"};
-const Enum::YLeaf RelnTargetType::all {2, "all"};
-
-const Enum::YLeaf QospSchedAlgo::wrr {0, "wrr"};
-const Enum::YLeaf QospSchedAlgo::sp {1, "sp"};
-
-const Enum::YLeaf HsrpGrpIpObtainMode::admin {0, "admin"};
-const Enum::YLeaf HsrpGrpIpObtainMode::auto_ {1, "auto"};
-const Enum::YLeaf HsrpGrpIpObtainMode::learn {2, "learn"};
-
-const Enum::YLeaf ArpAdjOperSt::unspecified {0, "unspecified"};
-const Enum::YLeaf ArpAdjOperSt::incomplete {1, "incomplete"};
-const Enum::YLeaf ArpAdjOperSt::normal {2, "normal"};
-
-const Enum::YLeaf OspfGrCtrl::planned_only {1, "planned-only"};
-const Enum::YLeaf OspfGrCtrl::complete {2, "complete"};
-const Enum::YLeaf OspfGrCtrl::disabled {3, "disabled"};
-
-const Enum::YLeaf AaaRuleScopeType::none {0, "none"};
-const Enum::YLeaf AaaRuleScopeType::feature {2, "feature"};
-const Enum::YLeaf AaaRuleScopeType::feature_group {3, "feature-group"};
-const Enum::YLeaf AaaRuleScopeType::oid {21, "oid"};
-
-const Enum::YLeaf AggregateIntfType::unknown {0, "unknown"};
-const Enum::YLeaf AggregateIntfType::port {1, "port"};
-const Enum::YLeaf AggregateIntfType::port_channel {2, "port-channel"};
-const Enum::YLeaf AggregateIntfType::tunnel {3, "tunnel"};
-const Enum::YLeaf AggregateIntfType::loopback {4, "loopback"};
-const Enum::YLeaf AggregateIntfType::svi {5, "svi"};
-
-const Enum::YLeaf CoppAffix::unknown {0, "unknown"};
-const Enum::YLeaf CoppAffix::prefix {1, "prefix"};
-const Enum::YLeaf CoppAffix::suffix {2, "suffix"};
-
-const Enum::YLeaf M6ribHoldAdminSt::enabled {1, "enabled"};
-const Enum::YLeaf M6ribHoldAdminSt::disabled {2, "disabled"};
-
-const Enum::YLeaf PlatformPstatCfg::PSTAT_DISABLE {0, "PSTAT_DISABLE"};
-const Enum::YLeaf PlatformPstatCfg::PSTAT_ENABLE {1, "PSTAT_ENABLE"};
-const Enum::YLeaf PlatformPstatCfg::PSTAT_ENABLE_PEAK {2, "PSTAT_ENABLE_PEAK"};
-
-const Enum::YLeaf SisfRaGuardRouterPreferenceMaximum::low {1, "low"};
-const Enum::YLeaf SisfRaGuardRouterPreferenceMaximum::medium {2, "medium"};
-const Enum::YLeaf SisfRaGuardRouterPreferenceMaximum::high {3, "high"};
-const Enum::YLeaf SisfRaGuardRouterPreferenceMaximum::nocheck {4, "nocheck"};
-
-const Enum::YLeaf DatetimeMonth::january {0, "january"};
-const Enum::YLeaf DatetimeMonth::february {1, "february"};
-const Enum::YLeaf DatetimeMonth::march {2, "march"};
-const Enum::YLeaf DatetimeMonth::april {3, "april"};
-const Enum::YLeaf DatetimeMonth::may {4, "may"};
-const Enum::YLeaf DatetimeMonth::june {5, "june"};
-const Enum::YLeaf DatetimeMonth::july {6, "july"};
-const Enum::YLeaf DatetimeMonth::august {7, "august"};
-const Enum::YLeaf DatetimeMonth::september {8, "september"};
-const Enum::YLeaf DatetimeMonth::october {9, "october"};
-const Enum::YLeaf DatetimeMonth::november {10, "november"};
-const Enum::YLeaf DatetimeMonth::december {11, "december"};
-
-const Enum::YLeaf L3VrfAdminState::shutdown {1, "shutdown"};
-const Enum::YLeaf L3VrfAdminState::admin_up {2, "admin-up"};
-
-const Enum::YLeaf CoppIrUnit::Unknown {0, "Unknown"};
-const Enum::YLeaf CoppIrUnit::bps {1, "bps"};
-const Enum::YLeaf CoppIrUnit::pps {2, "pps"};
-const Enum::YLeaf CoppIrUnit::kbps {3, "kbps"};
-const Enum::YLeaf CoppIrUnit::mbps {4, "mbps"};
-const Enum::YLeaf CoppIrUnit::gbps {5, "gbps"};
-
-const Enum::YLeaf EqptChOperSt::not_operational {0, "not-operational"};
-const Enum::YLeaf EqptChOperSt::failed {1, "failed"};
-const Enum::YLeaf EqptChOperSt::online {2, "online"};
-
-const Enum::YLeaf BgpAdminSt::enabled {1, "enabled"};
-const Enum::YLeaf BgpAdminSt::disabled {2, "disabled"};
-
-const Enum::YLeaf EqptSlotOpSt::empty {0, "empty"};
-const Enum::YLeaf EqptSlotOpSt::inserted {1, "inserted"};
-
-const Enum::YLeaf UdldAdminSt::enabled {1, "enabled"};
-const Enum::YLeaf UdldAdminSt::disabled {2, "disabled"};
-
-const Enum::YLeaf AaaAccountStatus::active {0, "active"};
-const Enum::YLeaf AaaAccountStatus::inactive {1, "inactive"};
-
-const Enum::YLeaf EqptParity::none {0, "none"};
-const Enum::YLeaf EqptParity::even {1, "even"};
-const Enum::YLeaf EqptParity::odd {2, "odd"};
-
-const Enum::YLeaf SnmpBoolean::no {0, "no"};
-const Enum::YLeaf SnmpBoolean::yes {1, "yes"};
-
-const Enum::YLeaf RtextcomScope::transitive {0, "transitive"};
-const Enum::YLeaf RtextcomScope::non_transitive {1, "non-transitive"};
-
-const Enum::YLeaf L2Disablefka::not_set {0, "not_set"};
-const Enum::YLeaf L2Disablefka::set {1, "set"};
-
-const Enum::YLeaf OspfMaxLsaAct::reject {0, "reject"};
-const Enum::YLeaf OspfMaxLsaAct::restart {1, "restart"};
-const Enum::YLeaf OspfMaxLsaAct::log {2, "log"};
-
-const Enum::YLeaf DatetimeNtpSrvStatus::unknown {1, "unknown"};
-const Enum::YLeaf DatetimeNtpSrvStatus::not_running {2, "not_running"};
-const Enum::YLeaf DatetimeNtpSrvStatus::not_synchronized {3, "not_synchronized"};
-const Enum::YLeaf DatetimeNtpSrvStatus::synced_local_clock {4, "synced_local_clock"};
-const Enum::YLeaf DatetimeNtpSrvStatus::synced_local_hw_refclk {5, "synced_local_hw_refclk"};
-const Enum::YLeaf DatetimeNtpSrvStatus::synced_remote_server {6, "synced_remote_server"};
-
-const Enum::YLeaf CompHostState::maintenance {0, "maintenance"};
-const Enum::YLeaf CompHostState::connected {1, "connected"};
-const Enum::YLeaf CompHostState::noresponse {2, "noresponse"};
-const Enum::YLeaf CompHostState::disconnected {3, "disconnected"};
-const Enum::YLeaf CompHostState::poweredOn {4, "poweredOn"};
-const Enum::YLeaf CompHostState::poweredOff {5, "poweredOff"};
-const Enum::YLeaf CompHostState::standBy {6, "standBy"};
-const Enum::YLeaf CompHostState::suspended {7, "suspended"};
-const Enum::YLeaf CompHostState::unknown {8, "unknown"};
-
-const Enum::YLeaf BootPoap::enable {1, "enable"};
-const Enum::YLeaf BootPoap::disable {0, "disable"};
-
-const Enum::YLeaf SnmpSnmpTrapSt::enable {1, "enable"};
-const Enum::YLeaf SnmpSnmpTrapSt::disable {2, "disable"};
-
-const Enum::YLeaf ImModeHwProfile::undefined {0, "undefined"};
-const Enum::YLeaf ImModeHwProfile::Y_4C {1, "4C"};
-const Enum::YLeaf ImModeHwProfile::Y_2C__PLUS__4Q {2, "2C+4Q"};
-const Enum::YLeaf ImModeHwProfile::Y_18C {3, "18C"};
-const Enum::YLeaf ImModeHwProfile::Y_4C__PLUS__28Q {4, "4C+28Q"};
-const Enum::YLeaf ImModeHwProfile::Y_6C__PLUS__24Q {5, "6C+24Q"};
-
-const Enum::YLeaf OspfSgmntRtgMplsOperSt::Disabled {0, "Disabled"};
-const Enum::YLeaf OspfSgmntRtgMplsOperSt::Enabled {1, "Enabled"};
-
-const Enum::YLeaf OspfHelperExitQual::none {1, "none"};
-const Enum::YLeaf OspfHelperExitQual::in_progress {2, "in-progress"};
-const Enum::YLeaf OspfHelperExitQual::completed {3, "completed"};
-const Enum::YLeaf OspfHelperExitQual::timed_out {4, "timed-out"};
-const Enum::YLeaf OspfHelperExitQual::topology_changed {5, "topology-changed"};
-
-const Enum::YLeaf EqptOpSt::unknown {0, "unknown"};
-const Enum::YLeaf EqptOpSt::ok {1, "ok"};
-const Enum::YLeaf EqptOpSt::fail {2, "fail"};
-const Enum::YLeaf EqptOpSt::absent {3, "absent"};
-const Enum::YLeaf EqptOpSt::shut {4, "shut"};
-const Enum::YLeaf EqptOpSt::mismatch {5, "mismatch"};
-
-const Enum::YLeaf SyslogTimeStampFormat::microseconds {0, "microseconds"};
-const Enum::YLeaf SyslogTimeStampFormat::milliseconds {1, "milliseconds"};
-const Enum::YLeaf SyslogTimeStampFormat::seconds {2, "seconds"};
-
-const Enum::YLeaf CoppExceedAction::Undefined {0, "Undefined"};
-const Enum::YLeaf CoppExceedAction::transmit {1, "transmit"};
-const Enum::YLeaf CoppExceedAction::drop {2, "drop"};
-
-const Enum::YLeaf L2DomType::bd_regular {1, "bd-regular"};
-const Enum::YLeaf L2DomType::bd_reserved {2, "bd-reserved"};
-const Enum::YLeaf L2DomType::bd_control {3, "bd-control"};
-const Enum::YLeaf L2DomType::bd_external {4, "bd-external"};
-const Enum::YLeaf L2DomType::ckt_vlan {5, "ckt-vlan"};
-const Enum::YLeaf L2DomType::ckt_vxlan {6, "ckt-vxlan"};
-
-const Enum::YLeaf StpProtocol::unknown {0, "unknown"};
-const Enum::YLeaf StpProtocol::mstp {1, "mstp"};
-const Enum::YLeaf StpProtocol::rstp {2, "rstp"};
-
-const Enum::YLeaf MsdpDbT::route {0, "route"};
-const Enum::YLeaf MsdpDbT::source {1, "source"};
-
-const Enum::YLeaf AggregateVpcPeerLinkStatus::VpcPeerNolink {0, "VpcPeerNolink"};
-const Enum::YLeaf AggregateVpcPeerLinkStatus::VpcPeerLinkDown {1, "VpcPeerLinkDown"};
-const Enum::YLeaf AggregateVpcPeerLinkStatus::VpcPeerOk {2, "VpcPeerOk"};
-const Enum::YLeaf AggregateVpcPeerLinkStatus::VpcPeerNotfound {3, "VpcPeerNotfound"};
-
-const Enum::YLeaf CoppViolateAction::Undefined {0, "Undefined"};
-const Enum::YLeaf CoppViolateAction::transmit {1, "transmit"};
-const Enum::YLeaf CoppViolateAction::drop {2, "drop"};
-
-const Enum::YLeaf L1VdcSt::not_created {0, "not-created"};
-const Enum::YLeaf L1VdcSt::created {1, "created"};
-const Enum::YLeaf L1VdcSt::cleanup {2, "cleanup"};
-
-const Enum::YLeaf PcHashDist::none {0, "none"};
-const Enum::YLeaf PcHashDist::adaptive {1, "adaptive"};
-const Enum::YLeaf PcHashDist::fixed {2, "fixed"};
-
-const Enum::YLeaf OspfAuthT::none {0, "none"};
-const Enum::YLeaf OspfAuthT::simple {1, "simple"};
-const Enum::YLeaf OspfAuthT::md5 {2, "md5"};
-const Enum::YLeaf OspfAuthT::unspecified {3, "unspecified"};
-
-const Enum::YLeaf OspfMaxLsaOperStQual::ok {0, "ok"};
-const Enum::YLeaf OspfMaxLsaOperStQual::warning {1, "warning"};
-const Enum::YLeaf OspfMaxLsaOperStQual::overload {2, "overload"};
-const Enum::YLeaf OspfMaxLsaOperStQual::sleep {3, "sleep"};
-const Enum::YLeaf OspfMaxLsaOperStQual::reset {4, "reset"};
-const Enum::YLeaf OspfMaxLsaOperStQual::perm_sleep {5, "perm-sleep"};
-
-const Enum::YLeaf VpcSummRole::election_not_done {0, "election-not-done"};
-const Enum::YLeaf VpcSummRole::cfg_master_oper_master {1, "cfg-master-oper-master"};
-const Enum::YLeaf VpcSummRole::cfg_master_oper_slave {2, "cfg-master-oper-slave"};
-const Enum::YLeaf VpcSummRole::cfg_slave_oper_master {3, "cfg-slave-oper-master"};
-const Enum::YLeaf VpcSummRole::cfg_slave_oper_slave {4, "cfg-slave-oper-slave"};
-
-const Enum::YLeaf BgpEvpnRtType::none {0, "none"};
-const Enum::YLeaf BgpEvpnRtType::a_d {1, "a-d"};
-const Enum::YLeaf BgpEvpnRtType::mac_ip {2, "mac-ip"};
-const Enum::YLeaf BgpEvpnRtType::imet {3, "imet"};
-const Enum::YLeaf BgpEvpnRtType::eth_seg {4, "eth-seg"};
-const Enum::YLeaf BgpEvpnRtType::ip_pfx {5, "ip-pfx"};
-
-const Enum::YLeaf LacpTxRate::normal {1, "normal"};
-const Enum::YLeaf LacpTxRate::fast {2, "fast"};
-
-const Enum::YLeaf L1FECModePhysIfOperFECMode::auto_ {4, "auto"};
-const Enum::YLeaf L1FECModePhysIfOperFECMode::rs_fec {2, "rs-fec"};
-const Enum::YLeaf L1FECModePhysIfOperFECMode::fc_fec {1, "fc-fec"};
-const Enum::YLeaf L1FECModePhysIfOperFECMode::fec_off {3, "fec-off"};
-const Enum::YLeaf L1FECModePhysIfOperFECMode::rs_ieee {5, "rs-ieee"};
-const Enum::YLeaf L1FECModePhysIfOperFECMode::rs_cons16 {6, "rs-cons16"};
-const Enum::YLeaf L1FECModePhysIfOperFECMode::not_available {20, "not-available"};
-
-const Enum::YLeaf PlatformBufferMonitorMd::None {0, "None"};
-const Enum::YLeaf PlatformBufferMonitorMd::Unicast {2, "Unicast"};
-const Enum::YLeaf PlatformBufferMonitorMd::Multicast {3, "Multicast"};
-
-const Enum::YLeaf StpRootType::none {0, "none"};
-const Enum::YLeaf StpRootType::primary {1, "primary"};
-const Enum::YLeaf StpRootType::secondary {2, "secondary"};
-
-const Enum::YLeaf ActrlRuleT::tenant {1, "tenant"};
-const Enum::YLeaf ActrlRuleT::mgmt {2, "mgmt"};
-const Enum::YLeaf ActrlRuleT::snmp {3, "snmp"};
-const Enum::YLeaf ActrlRuleT::bd_flood {4, "bd_flood"};
-const Enum::YLeaf ActrlRuleT::vrf_default {5, "vrf_default"};
-const Enum::YLeaf ActrlRuleT::infra {6, "infra"};
-
-const Enum::YLeaf AggregateConfigSourceType::unknown {0, "unknown"};
-const Enum::YLeaf AggregateConfigSourceType::cli {1, "cli"};
-const Enum::YLeaf AggregateConfigSourceType::controller {2, "controller"};
-
-const Enum::YLeaf RtmapSetT::reg_community {1, "reg-community"};
-const Enum::YLeaf RtmapSetT::ext_gen_community {2, "ext-gen-community"};
-const Enum::YLeaf RtmapSetT::rtt_community {3, "rtt-community"};
-const Enum::YLeaf RtmapSetT::rt_tag {4, "rt-tag"};
-const Enum::YLeaf RtmapSetT::rt_weight {5, "rt-weight"};
-const Enum::YLeaf RtmapSetT::local_pref {6, "local-pref"};
-const Enum::YLeaf RtmapSetT::metric {7, "metric"};
-const Enum::YLeaf RtmapSetT::ospf_nssa {8, "ospf-nssa"};
-const Enum::YLeaf RtmapSetT::ospf_fwd_addr {9, "ospf-fwd-addr"};
-const Enum::YLeaf RtmapSetT::ip_nh {10, "ip-nh"};
-const Enum::YLeaf RtmapSetT::metric_type {11, "metric-type"};
-const Enum::YLeaf RtmapSetT::rt_dist {12, "rt-dist"};
-const Enum::YLeaf RtmapSetT::nh_pa {13, "nh-pa"};
-const Enum::YLeaf RtmapSetT::origin {14, "origin"};
-const Enum::YLeaf RtmapSetT::list_community {15, "list-community"};
-const Enum::YLeaf RtmapSetT::dampening {16, "dampening"};
-const Enum::YLeaf RtmapSetT::extcommunity_cost {17, "extcommunity-cost"};
-const Enum::YLeaf RtmapSetT::ip_prec {18, "ip-prec"};
-const Enum::YLeaf RtmapSetT::continue_ {19, "continue"};
-const Enum::YLeaf RtmapSetT::rt_index {20, "rt-index"};
-const Enum::YLeaf RtmapSetT::list_extcommunity {21, "list-extcommunity"};
-const Enum::YLeaf RtmapSetT::ipv6_prec {22, "ipv6-prec"};
-const Enum::YLeaf RtmapSetT::prepend {23, "prepend"};
-const Enum::YLeaf RtmapSetT::lastas {24, "lastas"};
-const Enum::YLeaf RtmapSetT::as_pathtag {25, "as-pathtag"};
-
 const Enum::YLeaf EthpmFcotState::unknown {0, "unknown"};
 const Enum::YLeaf EthpmFcotState::inserted {1, "inserted"};
 const Enum::YLeaf EthpmFcotState::removed {2, "removed"};
 const Enum::YLeaf EthpmFcotState::hw_failure {3, "hw-failure"};
 const Enum::YLeaf EthpmFcotState::inserted_initializing {4, "inserted-initializing"};
 
-const Enum::YLeaf BgpAdvtMapCondition::none {0, "none"};
-const Enum::YLeaf BgpAdvtMapCondition::exist {1, "exist"};
-const Enum::YLeaf BgpAdvtMapCondition::non_exist {2, "non-exist"};
+const Enum::YLeaf EthpmFcotType::unknown {0, "unknown"};
+const Enum::YLeaf EthpmFcotType::xfp {1, "xfp"};
+const Enum::YLeaf EthpmFcotType::x2 {2, "x2"};
+const Enum::YLeaf EthpmFcotType::dummy {3, "dummy"};
+const Enum::YLeaf EthpmFcotType::sfp {4, "sfp"};
+const Enum::YLeaf EthpmFcotType::qsfp {5, "qsfp"};
+const Enum::YLeaf EthpmFcotType::cfp_40g {6, "cfp-40g"};
+const Enum::YLeaf EthpmFcotType::cfp_100g {7, "cfp-100g"};
+const Enum::YLeaf EthpmFcotType::cfp {8, "cfp"};
+const Enum::YLeaf EthpmFcotType::qsfp28 {9, "qsfp28"};
 
-const Enum::YLeaf SwpkgsPackageAction::init {0, "init"};
-const Enum::YLeaf SwpkgsPackageAction::add {1, "add"};
-const Enum::YLeaf SwpkgsPackageAction::activate {2, "activate"};
-const Enum::YLeaf SwpkgsPackageAction::add_activate {3, "add-activate"};
-const Enum::YLeaf SwpkgsPackageAction::deactivate {4, "deactivate"};
-const Enum::YLeaf SwpkgsPackageAction::commit {5, "commit"};
-const Enum::YLeaf SwpkgsPackageAction::remove {6, "remove"};
+const Enum::YLeaf EthpmShareState::dedicated {0, "dedicated"};
+const Enum::YLeaf EthpmShareState::shared {1, "shared"};
 
-const Enum::YLeaf CompInstType::unknown {0, "unknown"};
-const Enum::YLeaf CompInstType::phys {1, "phys"};
-const Enum::YLeaf CompInstType::virt {2, "virt"};
-const Enum::YLeaf CompInstType::hv {3, "hv"};
+const Enum::YLeaf EthpmSyslogInfo::default_ {0, "default"};
+const Enum::YLeaf EthpmSyslogInfo::info_1 {1, "info-1"};
 
-const Enum::YLeaf AaaUserRolePrivType::noDataPriv {0, "noDataPriv"};
-const Enum::YLeaf AaaUserRolePrivType::readPriv {1, "readPriv"};
-const Enum::YLeaf AaaUserRolePrivType::writePriv {2, "writePriv"};
+const Enum::YLeaf EthpmTrunkStatus::unknown {0, "unknown"};
+const Enum::YLeaf EthpmTrunkStatus::trunking {1, "trunking"};
+const Enum::YLeaf EthpmTrunkStatus::fabricpath {2, "fabricpath"};
+const Enum::YLeaf EthpmTrunkStatus::not_trunking {3, "not-trunking"};
+const Enum::YLeaf EthpmTrunkStatus::trunk_bundle {4, "trunk-bundle"};
+const Enum::YLeaf EthpmTrunkStatus::fabric_bundle {5, "fabric-bundle"};
+const Enum::YLeaf EthpmTrunkStatus::no_trunk_bundle {6, "no-trunk-bundle"};
 
-const Enum::YLeaf ActionOperSt::scheduled {0, "scheduled"};
-const Enum::YLeaf ActionOperSt::processing {1, "processing"};
-const Enum::YLeaf ActionOperSt::completed {2, "completed"};
-const Enum::YLeaf ActionOperSt::cancelled {3, "cancelled"};
-const Enum::YLeaf ActionOperSt::failed {4, "failed"};
-const Enum::YLeaf ActionOperSt::indeterminate {5, "indeterminate"};
-const Enum::YLeaf ActionOperSt::suspended {6, "suspended"};
-const Enum::YLeaf ActionOperSt::crashsuspect {7, "crashsuspect"};
+const Enum::YLeaf FcAdminSt::down {1, "down"};
+const Enum::YLeaf FcAdminSt::up {2, "up"};
 
-const Enum::YLeaf M6ribEhType::cli {0, "cli"};
-const Enum::YLeaf M6ribEhType::mdt {1, "mdt"};
-const Enum::YLeaf M6ribEhType::mfdmDebugs {2, "mfdmDebugs"};
-const Enum::YLeaf M6ribEhType::mfdmEvents {3, "mfdmEvents"};
-const Enum::YLeaf M6ribEhType::mfdmStats {4, "mfdmStats"};
-const Enum::YLeaf M6ribEhType::notyClients {5, "notyClients"};
-const Enum::YLeaf M6ribEhType::rib {6, "rib"};
-const Enum::YLeaf M6ribEhType::ribSum {7, "ribSum"};
-const Enum::YLeaf M6ribEhType::urib {8, "urib"};
-const Enum::YLeaf M6ribEhType::vrf {9, "vrf"};
+const Enum::YLeaf FcCreateState::created {0, "created"};
+const Enum::YLeaf FcCreateState::removed {1, "removed"};
 
-const Enum::YLeaf NdSolicitAcceptValue::none {0, "none"};
-const Enum::YLeaf NdSolicitAcceptValue::accept {1, "accept"};
-const Enum::YLeaf NdSolicitAcceptValue::no_accept {2, "no-accept"};
+const Enum::YLeaf FcoeAdminSt::enabled {1, "enabled"};
+const Enum::YLeaf FcoeAdminSt::disabled {2, "disabled"};
 
-const Enum::YLeaf SegrtOperStQual::none {0, "none"};
-const Enum::YLeaf SegrtOperStQual::shut {1, "shut"};
-const Enum::YLeaf SegrtOperStQual::srgb_cleanup_in_progress {2, "srgb-cleanup-in-progress"};
-const Enum::YLeaf SegrtOperStQual::srgb_cleanup_failed {3, "srgb-cleanup-failed"};
-const Enum::YLeaf SegrtOperStQual::srgb_alloc_in_progress {4, "srgb-alloc-in-progress"};
-const Enum::YLeaf SegrtOperStQual::srgb_alloc_failed {5, "srgb-alloc-failed"};
+const Enum::YLeaf FirmwareRunningMode::normal {0, "normal"};
+const Enum::YLeaf FirmwareRunningMode::recovery {1, "recovery"};
 
-const Enum::YLeaf BgpPathT::internal {1, "internal"};
-const Enum::YLeaf BgpPathT::external {2, "external"};
-const Enum::YLeaf BgpPathT::confederation {3, "confederation"};
-const Enum::YLeaf BgpPathT::local {4, "local"};
-const Enum::YLeaf BgpPathT::aggregate {5, "aggregate"};
-const Enum::YLeaf BgpPathT::redistribute {6, "redistribute"};
-const Enum::YLeaf BgpPathT::injected {7, "injected"};
+const Enum::YLeaf FirmwareRunningOperSt::ok {0, "ok"};
+const Enum::YLeaf FirmwareRunningOperSt::ver_mismatch {1, "ver-mismatch"};
 
-const Enum::YLeaf ProcOperState::up {0, "up"};
-const Enum::YLeaf ProcOperState::down {1, "down"};
+const Enum::YLeaf FirmwareType::controller {0, "controller"};
+const Enum::YLeaf FirmwareType::switch_ {1, "switch"};
+const Enum::YLeaf FirmwareType::catalog {2, "catalog"};
 
-const Enum::YLeaf NdRtPrefForCmd::unspecified {0, "unspecified"};
-const Enum::YLeaf NdRtPrefForCmd::low {1, "low"};
-const Enum::YLeaf NdRtPrefForCmd::medium {2, "medium"};
-const Enum::YLeaf NdRtPrefForCmd::high {3, "high"};
+const Enum::YLeaf FlowDirection::unspecified {0, "unspecified"};
+const Enum::YLeaf FlowDirection::in {1, "in"};
+const Enum::YLeaf FlowDirection::out {2, "out"};
+const Enum::YLeaf FlowDirection::both {3, "both"};
 
-const Enum::YLeaf SnmpCommAcessT::ro {0, "ro"};
-const Enum::YLeaf SnmpCommAcessT::rw {1, "rw"};
-const Enum::YLeaf SnmpCommAcessT::unspecified {2, "unspecified"};
+const Enum::YLeaf FlowExportVersion::unspecified {0, "unspecified"};
+const Enum::YLeaf FlowExportVersion::v5 {1, "v5"};
+const Enum::YLeaf FlowExportVersion::v9 {2, "v9"};
+const Enum::YLeaf FlowExportVersion::cisco1 {3, "cisco1"};
 
-const Enum::YLeaf SegrtSRGBOperSt::none {0, "none"};
-const Enum::YLeaf SegrtSRGBOperSt::in_use {1, "in-use"};
-const Enum::YLeaf SegrtSRGBOperSt::alloc_in_progress {2, "alloc-in-progress"};
-const Enum::YLeaf SegrtSRGBOperSt::alloc_failed {3, "alloc-failed"};
-const Enum::YLeaf SegrtSRGBOperSt::cleanup_in_progress {4, "cleanup-in-progress"};
-const Enum::YLeaf SegrtSRGBOperSt::cleanup_failed {5, "cleanup-failed"};
+const Enum::YLeaf FlowSamplerMode::unspecified {0, "unspecified"};
+const Enum::YLeaf FlowSamplerMode::flow {1, "flow"};
+const Enum::YLeaf FlowSamplerMode::pkts {2, "pkts"};
 
-const Enum::YLeaf UdldPortEnable::port_enabled {0, "port-enabled"};
-const Enum::YLeaf UdldPortEnable::port_fiber_disabled {1, "port-fiber-disabled"};
-const Enum::YLeaf UdldPortEnable::port_default {2, "port-default"};
-const Enum::YLeaf UdldPortEnable::port_default_disable {3, "port-default-disable"};
+const Enum::YLeaf FmAdminState::enabled {1, "enabled"};
+const Enum::YLeaf FmAdminState::disabled {2, "disabled"};
 
-const Enum::YLeaf AnalyticsModeT::analytics {0, "analytics"};
-const Enum::YLeaf AnalyticsModeT::netflow {1, "netflow"};
+const Enum::YLeaf FmInstOperState::enabled {1, "enabled"};
+const Enum::YLeaf FmInstOperState::disabled {2, "disabled"};
+const Enum::YLeaf FmInstOperState::enabled_not_running {3, "enabled-not-running"};
+
+const Enum::YLeaf FmOperState::enabled {1, "enabled"};
+const Enum::YLeaf FmOperState::disabled {2, "disabled"};
+
+const Enum::YLeaf FmcastOperSt::active {1, "active"};
+const Enum::YLeaf FmcastOperSt::inactive {2, "inactive"};
+
+const Enum::YLeaf FsetAdminState::none {0, "none"};
+const Enum::YLeaf FsetAdminState::enabled {1, "enabled"};
+const Enum::YLeaf FsetAdminState::disabled {2, "disabled"};
+const Enum::YLeaf FsetAdminState::installed {3, "installed"};
+const Enum::YLeaf FsetAdminState::uninstalled {4, "uninstalled"};
+
+const Enum::YLeaf FsetOperState::none {0, "none"};
+const Enum::YLeaf FsetOperState::enabled {1, "enabled"};
+const Enum::YLeaf FsetOperState::disabled {2, "disabled"};
+const Enum::YLeaf FsetOperState::installed {3, "installed"};
+const Enum::YLeaf FsetOperState::uninstalled {4, "uninstalled"};
+
+const Enum::YLeaf FvImmediacy::immediate {1, "immediate"};
+const Enum::YLeaf FvImmediacy::lazy {2, "lazy"};
+
+const Enum::YLeaf FvImmediacy_::immediate {1, "immediate"};
+const Enum::YLeaf FvImmediacy_::lazy {2, "lazy"};
+
+const Enum::YLeaf FvPcEnfPref::enforced {1, "enforced"};
+const Enum::YLeaf FvPcEnfPref::unenforced {2, "unenforced"};
+
+const Enum::YLeaf GoldResult::untested {1, "untested"};
+const Enum::YLeaf GoldResult::failure {2, "failure"};
+const Enum::YLeaf GoldResult::not_complete {3, "not-complete"};
+const Enum::YLeaf GoldResult::aborted {4, "aborted"};
+const Enum::YLeaf GoldResult::success {5, "success"};
+const Enum::YLeaf GoldResult::error_disabled {6, "error-disabled"};
+const Enum::YLeaf GoldResult::error_ignore {7, "error-ignore"};
+const Enum::YLeaf GoldResult::error_disabled_w_no {8, "error-disabled-w-no"};
+const Enum::YLeaf GoldResult::unavailable {9, "unavailable"};
+
+const Enum::YLeaf GoldBootLevel::bypass {0, "bypass"};
+const Enum::YLeaf GoldBootLevel::complete {1, "complete"};
+
+const Enum::YLeaf GoldModuleDiagStatus::fail {0, "fail"};
+const Enum::YLeaf GoldModuleDiagStatus::pass {1, "pass"};
+const Enum::YLeaf GoldModuleDiagStatus::untested {2, "untested"};
+
+const Enum::YLeaf HmmBoolean::no {0, "no"};
+const Enum::YLeaf HmmBoolean::yes {1, "yes"};
+
+const Enum::YLeaf HmmFwdMode::standard {0, "standard"};
+const Enum::YLeaf HmmFwdMode::anycastGW {1, "anycastGW"};
+const Enum::YLeaf HmmFwdMode::proxyGW {2, "proxyGW"};
+
+const Enum::YLeaf HsrpAuthT::simple {1, "simple"};
+const Enum::YLeaf HsrpAuthT::md5 {2, "md5"};
+
+const Enum::YLeaf HsrpBiaScopeType::global {1, "global"};
+const Enum::YLeaf HsrpBiaScopeType::local {2, "local"};
+
+const Enum::YLeaf HsrpGroupAf::ipv4 {1, "ipv4"};
+const Enum::YLeaf HsrpGroupAf::ipv6 {2, "ipv6"};
+
+const Enum::YLeaf HsrpGrpIpObtainMode::admin {0, "admin"};
+const Enum::YLeaf HsrpGrpIpObtainMode::auto_ {1, "auto"};
+const Enum::YLeaf HsrpGrpIpObtainMode::learn {2, "learn"};
+
+const Enum::YLeaf HsrpHsrpVersion::v1 {1, "v1"};
+const Enum::YLeaf HsrpHsrpVersion::v2 {2, "v2"};
+
+const Enum::YLeaf Icmpv6EventLogSize::disabled {0, "disabled"};
+const Enum::YLeaf Icmpv6EventLogSize::small {1, "small"};
+const Enum::YLeaf Icmpv6EventLogSize::medium {2, "medium"};
+const Enum::YLeaf Icmpv6EventLogSize::large {3, "large"};
+
+const Enum::YLeaf Icmpv6EventType::cli {0, "cli"};
+const Enum::YLeaf Icmpv6EventType::errors {1, "errors"};
+const Enum::YLeaf Icmpv6EventType::highAvailability {2, "highAvailability"};
+const Enum::YLeaf Icmpv6EventType::icmpv6_internal {3, "icmpv6-internal"};
+const Enum::YLeaf Icmpv6EventType::ipv6SyncEvent {4, "ipv6SyncEvent"};
+const Enum::YLeaf Icmpv6EventType::mldDebug {5, "mldDebug"};
+const Enum::YLeaf Icmpv6EventType::mldEvent {6, "mldEvent"};
+const Enum::YLeaf Icmpv6EventType::nd {7, "nd"};
+const Enum::YLeaf Icmpv6EventType::sync_event {8, "sync-event"};
+const Enum::YLeaf Icmpv6EventType::vrf {9, "vrf"};
+
+const Enum::YLeaf Icmpv6LoggingLevel::Emergency {0, "Emergency"};
+const Enum::YLeaf Icmpv6LoggingLevel::Alert {1, "Alert"};
+const Enum::YLeaf Icmpv6LoggingLevel::Critical {2, "Critical"};
+const Enum::YLeaf Icmpv6LoggingLevel::Error {3, "Error"};
+const Enum::YLeaf Icmpv6LoggingLevel::Warning {4, "Warning"};
+const Enum::YLeaf Icmpv6LoggingLevel::Notice {5, "Notice"};
+const Enum::YLeaf Icmpv6LoggingLevel::Informational {6, "Informational"};
+const Enum::YLeaf Icmpv6LoggingLevel::Debug {7, "Debug"};
+
+const Enum::YLeaf Icmpv6OperSt::down {0, "down"};
+const Enum::YLeaf Icmpv6OperSt::up {1, "up"};
+const Enum::YLeaf Icmpv6OperSt::failed {2, "failed"};
+
+const Enum::YLeaf IgmpDbT::route {1, "route"};
 
 const Enum::YLeaf IgmpEhType::igmpInternal {0, "igmpInternal"};
 const Enum::YLeaf IgmpEhType::cli {1, "cli"};
@@ -24573,15 +24763,161 @@ const Enum::YLeaf IgmpEhType::policy {9, "policy"};
 const Enum::YLeaf IgmpEhType::vrf {10, "vrf"};
 const Enum::YLeaf IgmpEhType::nbm {11, "nbm"};
 
-const Enum::YLeaf L1LayerAggrIfLayer::Layer2 {1, "Layer2"};
-const Enum::YLeaf L1LayerAggrIfLayer::Layer3 {2, "Layer3"};
-const Enum::YLeaf L1LayerAggrIfLayer::pltfmDfltLayer {3, "pltfmDfltLayer"};
+const Enum::YLeaf IgmpLimitSt::below_thresh {0, "below-thresh"};
+const Enum::YLeaf IgmpLimitSt::above_thresh {1, "above-thresh"};
+const Enum::YLeaf IgmpLimitSt::exhausted {2, "exhausted"};
 
-const Enum::YLeaf L2capSubj::unknown {0, "unknown"};
-const Enum::YLeaf L2capSubj::vxlan_namespace {1, "vxlan-namespace"};
-const Enum::YLeaf L2capSubj::nvgre_namespace {2, "nvgre-namespace"};
-const Enum::YLeaf L2capSubj::domain_namespace {3, "domain-namespace"};
-const Enum::YLeaf L2capSubj::tunnel_namespace {4, "tunnel-namespace"};
+const Enum::YLeaf IgmpsnoopEhType::igmp_snoop_internal {0, "igmp-snoop-internal"};
+const Enum::YLeaf IgmpsnoopEhType::mfdm {1, "mfdm"};
+const Enum::YLeaf IgmpsnoopEhType::mfdm_sum {2, "mfdm-sum"};
+const Enum::YLeaf IgmpsnoopEhType::rib {3, "rib"};
+const Enum::YLeaf IgmpsnoopEhType::vlan {4, "vlan"};
+const Enum::YLeaf IgmpsnoopEhType::vlan_events {5, "vlan-events"};
+const Enum::YLeaf IgmpsnoopEhType::vpc {6, "vpc"};
+
+const Enum::YLeaf ImBreakoutMapT::no_breakout {0, "no-breakout"};
+const Enum::YLeaf ImBreakoutMapT::Y_10g_4x {5, "10g-4x"};
+const Enum::YLeaf ImBreakoutMapT::Y_10g_2x {9, "10g-2x"};
+const Enum::YLeaf ImBreakoutMapT::Y_25g_4x {8, "25g-4x"};
+const Enum::YLeaf ImBreakoutMapT::Y_50g_2x {7, "50g-2x"};
+
+const Enum::YLeaf ImBreakoutProfile::disabled {0, "disabled"};
+const Enum::YLeaf ImBreakoutProfile::Y_50g_2x_only {1, "50g-2x-only"};
+
+const Enum::YLeaf ImMode100M::disabled {0, "disabled"};
+const Enum::YLeaf ImMode100M::enabled {1, "enabled"};
+
+const Enum::YLeaf ImModeHwProfile::undefined {0, "undefined"};
+const Enum::YLeaf ImModeHwProfile::Y_4C {1, "4C"};
+const Enum::YLeaf ImModeHwProfile::Y_2C__PLUS__4Q {2, "2C+4Q"};
+const Enum::YLeaf ImModeHwProfile::Y_18C {3, "18C"};
+const Enum::YLeaf ImModeHwProfile::Y_4C__PLUS__28Q {4, "4C+28Q"};
+const Enum::YLeaf ImModeHwProfile::Y_6C__PLUS__24Q {5, "6C+24Q"};
+
+const Enum::YLeaf InbandTelemetryFltType::ipv4 {1, "ipv4"};
+const Enum::YLeaf InbandTelemetryFltType::ipv6 {2, "ipv6"};
+const Enum::YLeaf InbandTelemetryFltType::ce {3, "ce"};
+
+const Enum::YLeaf InbandTelemetryModeT::inbandtelemetry {0, "inbandtelemetry"};
+const Enum::YLeaf InbandTelemetryModeT::postcard {1, "postcard"};
+
+const Enum::YLeaf InbandTelemetryProfile::endpoint {0, "endpoint"};
+const Enum::YLeaf InbandTelemetryProfile::transit {1, "transit"};
+
+const Enum::YLeaf InstallerInstEnum::yes {0, "yes"};
+const Enum::YLeaf InstallerInstEnum::no {1, "no"};
+
+const Enum::YLeaf InstallerInstErr::none {0, "none"};
+const Enum::YLeaf InstallerInstErr::preupg_err1 {1, "preupg-err1"};
+const Enum::YLeaf InstallerInstErr::preupg_err2 {2, "preupg-err2"};
+const Enum::YLeaf InstallerInstErr::user_abort {3, "user-abort"};
+
+const Enum::YLeaf InstallerInstModType::nxos_supervisor {0, "nxos-supervisor"};
+const Enum::YLeaf InstallerInstModType::lc {1, "lc"};
+const Enum::YLeaf InstallerInstModType::fex {2, "fex"};
+const Enum::YLeaf InstallerInstModType::bios {3, "bios"};
+const Enum::YLeaf InstallerInstModType::lcn9k {4, "lcn9k"};
+const Enum::YLeaf InstallerInstModType::unknown {-1, "unknown"};
+
+const Enum::YLeaf InstallerInstOper::none {0, "none"};
+const Enum::YLeaf InstallerInstOper::install {1, "install"};
+const Enum::YLeaf InstallerInstOper::impact {2, "impact"};
+const Enum::YLeaf InstallerInstOper::abort {3, "abort"};
+
+const Enum::YLeaf InstallerInstType::none {-1, "none"};
+const Enum::YLeaf InstallerInstType::disruptive {0, "disruptive"};
+const Enum::YLeaf InstallerInstType::non_disruptive {1, "non-disruptive"};
+
+const Enum::YLeaf InstallerStage::preupg_copy_image {0, "preupg-copy-image"};
+const Enum::YLeaf InstallerStage::preupg_initializing {1, "preupg-initializing"};
+const Enum::YLeaf InstallerStage::preupg_verifying_images {3, "preupg-verifying_images"};
+const Enum::YLeaf InstallerStage::preupg_runtime_check {6, "preupg-runtime-check"};
+const Enum::YLeaf InstallerStage::preupg_sync_image {7, "preupg-sync-image"};
+const Enum::YLeaf InstallerStage::upgrade_upg_fex {9, "upgrade-upg-fex"};
+const Enum::YLeaf InstallerStage::upgrade_upg_lc {10, "upgrade-upg-lc"};
+const Enum::YLeaf InstallerStage::preupg_conf_sync {11, "preupg-conf-sync"};
+const Enum::YLeaf InstallerStage::preupg_set_boot {12, "preupg-set-boot"};
+const Enum::YLeaf InstallerStage::preupg_force_dnld {13, "preupg-force-dnld"};
+const Enum::YLeaf InstallerStage::preupg_wait_mod {14, "preupg-wait-mod"};
+const Enum::YLeaf InstallerStage::preupg_convert_startup {15, "preupg-convert-startup"};
+const Enum::YLeaf InstallerStage::preupg_save_sup_state {16, "preupg-save-sup-state"};
+const Enum::YLeaf InstallerStage::upgrade_kexec {17, "upgrade-kexec"};
+const Enum::YLeaf InstallerStage::preupg_pre_upg_notif {19, "preupg-pre-upg-notif"};
+const Enum::YLeaf InstallerStage::preupg_mod_support_check {20, "preupg-mod-support-check"};
+const Enum::YLeaf InstallerStage::preupg_Checks {21, "preupg-Checks"};
+const Enum::YLeaf InstallerStage::upgrade_upg_bios {22, "upgrade-upg-bios"};
+const Enum::YLeaf InstallerStage::upgrade_upg_cmp {23, "upgrade-upg-cmp"};
+const Enum::YLeaf InstallerStage::upgrade_notification {24, "upgrade-notification"};
+const Enum::YLeaf InstallerStage::preupg_save_mts_state {25, "preupg-save-mts-state"};
+const Enum::YLeaf InstallerStage::success {26, "success"};
+const Enum::YLeaf InstallerStage::failed {27, "failed"};
+const Enum::YLeaf InstallerStage::not_started {28, "not-started"};
+const Enum::YLeaf InstallerStage::upgrade_sup_state_verification {29, "upgrade-sup-state-verification"};
+const Enum::YLeaf InstallerStage::upgrade_switchover_notif {30, "upgrade-switchover-notif"};
+const Enum::YLeaf InstallerStage::upgrade_standby_container_start {31, "upgrade-standby-container-start"};
+const Enum::YLeaf InstallerStage::user_abort {32, "user-abort"};
+
+const Enum::YLeaf InstallerUpgStatusType::pre_upgrade {0, "pre-upgrade"};
+const Enum::YLeaf InstallerUpgStatusType::in_progress {1, "in-progress"};
+const Enum::YLeaf InstallerUpgStatusType::success {2, "success"};
+const Enum::YLeaf InstallerUpgStatusType::failed {3, "failed"};
+const Enum::YLeaf InstallerUpgStatusType::not_compatible {4, "not-compatible"};
+const Enum::YLeaf InstallerUpgStatusType::none {5, "none"};
+
+const Enum::YLeaf IpAddrOperStQual::unspecified {0, "unspecified"};
+const Enum::YLeaf IpAddrOperStQual::up {1, "up"};
+const Enum::YLeaf IpAddrOperStQual::subnet_overlap {2, "subnet-overlap"};
+const Enum::YLeaf IpAddrOperStQual::no_primary {3, "no-primary"};
+const Enum::YLeaf IpAddrOperStQual::if_down {4, "if-down"};
+const Enum::YLeaf IpAddrOperStQual::addr_exists {5, "addr-exists"};
+const Enum::YLeaf IpAddrOperStQual::invalid_vrf {6, "invalid-vrf"};
+const Enum::YLeaf IpAddrOperStQual::static_rt_nh {7, "static-rt-nh"};
+const Enum::YLeaf IpAddrOperStQual::lb_addr {8, "lb-addr"};
+const Enum::YLeaf IpAddrOperStQual::invalid_ll_use {9, "invalid-ll-use"};
+const Enum::YLeaf IpAddrOperStQual::no_glbl_addr {10, "no-glbl-addr"};
+const Enum::YLeaf IpAddrOperStQual::no_ll_addr {11, "no-ll-addr"};
+const Enum::YLeaf IpAddrOperStQual::dad_in_progress {12, "dad-in-progress"};
+const Enum::YLeaf IpAddrOperStQual::dad_failed {13, "dad-failed"};
+const Enum::YLeaf IpAddrOperStQual::invalid_mask_len {14, "invalid-mask-len"};
+const Enum::YLeaf IpAddrOperStQual::l2_intf_err {15, "l2-intf-err"};
+const Enum::YLeaf IpAddrOperStQual::super_intf_err {16, "super-intf-err"};
+const Enum::YLeaf IpAddrOperStQual::invalid_ll {17, "invalid-ll"};
+const Enum::YLeaf IpAddrOperStQual::if_init_err {18, "if-init-err"};
+const Enum::YLeaf IpAddrOperStQual::ifindex_err {19, "ifindex-err"};
+const Enum::YLeaf IpAddrOperStQual::invalid_eui64 {20, "invalid-eui64"};
+const Enum::YLeaf IpAddrOperStQual::lladdr_create_fail {21, "lladdr-create-fail"};
+const Enum::YLeaf IpAddrOperStQual::DAD_tentative {22, "DAD-tentative"};
+const Enum::YLeaf IpAddrOperStQual::DAD_lcl_duplicate {23, "DAD-lcl-duplicate"};
+const Enum::YLeaf IpAddrOperStQual::DAD_duplicate {24, "DAD-duplicate"};
+const Enum::YLeaf IpAddrOperStQual::DAD_preferred {25, "DAD-preferred"};
+const Enum::YLeaf IpAddrOperStQual::DAD_deprecated {26, "DAD-deprecated"};
+const Enum::YLeaf IpAddrOperStQual::DAD_invalid {27, "DAD-invalid"};
+const Enum::YLeaf IpAddrOperStQual::multiple_lladdr {28, "multiple-lladdr"};
+const Enum::YLeaf IpAddrOperStQual::invalid_tunnel {29, "invalid-tunnel"};
+const Enum::YLeaf IpAddrOperStQual::lladdr_invalid_tunnel {30, "lladdr-invalid-tunnel"};
+
+const Enum::YLeaf IpAddrT::primary {1, "primary"};
+const Enum::YLeaf IpAddrT::secondary {2, "secondary"};
+
+const Enum::YLeaf IpHardwareEcmpHashPolynomialT::CRC16 {0, "CRC16"};
+const Enum::YLeaf IpHardwareEcmpHashPolynomialT::CRC32HI {1, "CRC32HI"};
+
+const Enum::YLeaf IpLoadShareFormat::disabled {1, "disabled"};
+const Enum::YLeaf IpLoadShareFormat::destPort {2, "destPort"};
+const Enum::YLeaf IpLoadShareFormat::srcDest {3, "srcDest"};
+const Enum::YLeaf IpLoadShareFormat::srcDestGre {4, "srcDestGre"};
+const Enum::YLeaf IpLoadShareFormat::srcDestPort {5, "srcDestPort"};
+const Enum::YLeaf IpLoadShareFormat::source {6, "source"};
+const Enum::YLeaf IpLoadShareFormat::srcDestGTPU {7, "srcDestGTPU"};
+
+const Enum::YLeaf IpOperSt::unspecified {0, "unspecified"};
+const Enum::YLeaf IpOperSt::down {1, "down"};
+const Enum::YLeaf IpOperSt::up {2, "up"};
+const Enum::YLeaf IpOperSt::failed {3, "failed"};
+
+const Enum::YLeaf IpSwitchPktTarget::disabled {0, "disabled"};
+const Enum::YLeaf IpSwitchPktTarget::all {1, "all"};
+const Enum::YLeaf IpSwitchPktTarget::lla {2, "lla"};
 
 const Enum::YLeaf IpUnnumberedOperStQual::unspecified {0, "unspecified"};
 const Enum::YLeaf IpUnnumberedOperStQual::parent_unnumbered {1, "parent-unnumbered"};
@@ -24589,6 +24925,288 @@ const Enum::YLeaf IpUnnumberedOperStQual::child_numbered {2, "child-numbered"};
 const Enum::YLeaf IpUnnumberedOperStQual::invalid_source {3, "invalid-source"};
 const Enum::YLeaf IpUnnumberedOperStQual::invalid_interface {4, "invalid-interface"};
 const Enum::YLeaf IpUnnumberedOperStQual::intf_self_referential {5, "intf-self-referential"};
+
+const Enum::YLeaf IpUrpfT::disabled {0, "disabled"};
+const Enum::YLeaf IpUrpfT::strict {1, "strict"};
+const Enum::YLeaf IpUrpfT::loose {2, "loose"};
+const Enum::YLeaf IpUrpfT::loose_allow_default {3, "loose-allow-default"};
+
+const Enum::YLeaf IpmcJoinType::Y_0 {0, "0"};
+const Enum::YLeaf IpmcJoinType::Y_1 {1, "1"};
+
+const Enum::YLeaf IpmcVer::unspecified {0, "unspecified"};
+const Enum::YLeaf IpmcVer::Y_2 {2, "2"};
+const Enum::YLeaf IpmcVer::Y_3 {3, "3"};
+
+const Enum::YLeaf IpmcsnoopDbT::group {1, "group"};
+const Enum::YLeaf IpmcsnoopDbT::fabric_mcgrp {2, "fabric-mcgrp"};
+const Enum::YLeaf IpmcsnoopDbT::querier {3, "querier"};
+const Enum::YLeaf IpmcsnoopDbT::mrouter {4, "mrouter"};
+const Enum::YLeaf IpmcsnoopDbT::snoopstats {5, "snoopstats"};
+const Enum::YLeaf IpmcsnoopDbT::policy {6, "policy"};
+const Enum::YLeaf IpmcsnoopDbT::snoop {7, "snoop"};
+const Enum::YLeaf IpmcsnoopDbT::exptrack {8, "exptrack"};
+const Enum::YLeaf IpmcsnoopDbT::stats {9, "stats"};
+const Enum::YLeaf IpmcsnoopDbT::mac {10, "mac"};
+const Enum::YLeaf IpmcsnoopDbT::macoif {11, "macoif"};
+
+const Enum::YLeaf IpmcsnoopFwdMode::ip {1, "ip"};
+const Enum::YLeaf IpmcsnoopFwdMode::mac {2, "mac"};
+
+const Enum::YLeaf IpmcsnoopMacType::Y__STAR__ {0, "*"};
+const Enum::YLeaf IpmcsnoopMacType::G {1, "G"};
+const Enum::YLeaf IpmcsnoopMacType::R {2, "R"};
+const Enum::YLeaf IpmcsnoopMacType::O {3, "O"};
+const Enum::YLeaf IpmcsnoopMacType::IGMP {4, "IGMP"};
+
+const Enum::YLeaf IpmcsnoopMrouteType::static_ {0, "static"};
+const Enum::YLeaf IpmcsnoopMrouteType::dynamic {1, "dynamic"};
+const Enum::YLeaf IpmcsnoopMrouteType::internal {2, "internal"};
+const Enum::YLeaf IpmcsnoopMrouteType::fabpath {3, "fabpath"};
+const Enum::YLeaf IpmcsnoopMrouteType::vpc {4, "vpc"};
+const Enum::YLeaf IpmcsnoopMrouteType::coLearned {5, "coLearned"};
+const Enum::YLeaf IpmcsnoopMrouteType::peerLearned {6, "peerLearned"};
+const Enum::YLeaf IpmcsnoopMrouteType::userConf {7, "userConf"};
+
+const Enum::YLeaf IpqosBurstRateUnit::unspecified {0, "unspecified"};
+const Enum::YLeaf IpqosBurstRateUnit::bytes {1, "bytes"};
+const Enum::YLeaf IpqosBurstRateUnit::kbytes {2, "kbytes"};
+const Enum::YLeaf IpqosBurstRateUnit::mbytes {3, "mbytes"};
+const Enum::YLeaf IpqosBurstRateUnit::ms {4, "ms"};
+const Enum::YLeaf IpqosBurstRateUnit::us {5, "us"};
+const Enum::YLeaf IpqosBurstRateUnit::packets {6, "packets"};
+
+const Enum::YLeaf IpqosPoliceAction::unspecified {0, "unspecified"};
+const Enum::YLeaf IpqosPoliceAction::transmit {1, "transmit"};
+const Enum::YLeaf IpqosPoliceAction::drop {2, "drop"};
+const Enum::YLeaf IpqosPoliceAction::set_cos_transmit {3, "set-cos-transmit"};
+const Enum::YLeaf IpqosPoliceAction::set_dscp_transmit {4, "set-dscp-transmit"};
+const Enum::YLeaf IpqosPoliceAction::set_prec_transmit {5, "set-prec-transmit"};
+const Enum::YLeaf IpqosPoliceAction::set_qos_transmit {6, "set-qos-transmit"};
+
+const Enum::YLeaf IpqosPrec::routine {0, "routine"};
+const Enum::YLeaf IpqosPrec::priority {1, "priority"};
+const Enum::YLeaf IpqosPrec::immediate {2, "immediate"};
+const Enum::YLeaf IpqosPrec::flash {3, "flash"};
+const Enum::YLeaf IpqosPrec::flash_override {4, "flash-override"};
+const Enum::YLeaf IpqosPrec::critical {5, "critical"};
+const Enum::YLeaf IpqosPrec::internet {6, "internet"};
+const Enum::YLeaf IpqosPrec::network {7, "network"};
+
+const Enum::YLeaf IpqosProtocol::unspecified {0, "unspecified"};
+const Enum::YLeaf IpqosProtocol::arp {1, "arp"};
+const Enum::YLeaf IpqosProtocol::bridging {2, "bridging"};
+const Enum::YLeaf IpqosProtocol::cdp {3, "cdp"};
+const Enum::YLeaf IpqosProtocol::dhcp {7, "dhcp"};
+const Enum::YLeaf IpqosProtocol::isis {8, "isis"};
+const Enum::YLeaf IpqosProtocol::fcoe {14, "fcoe"};
+
+const Enum::YLeaf IpqosQoSMatchType::match_any {0, "match-any"};
+const Enum::YLeaf IpqosQoSMatchType::match_all {1, "match-all"};
+const Enum::YLeaf IpqosQoSMatchType::match_first {2, "match-first"};
+
+const Enum::YLeaf IpqosQueueLimitUnit::none {0, "none"};
+const Enum::YLeaf IpqosQueueLimitUnit::packets {1, "packets"};
+const Enum::YLeaf IpqosQueueLimitUnit::bytes {2, "bytes"};
+const Enum::YLeaf IpqosQueueLimitUnit::kbytes {3, "kbytes"};
+const Enum::YLeaf IpqosQueueLimitUnit::mbytes {4, "mbytes"};
+const Enum::YLeaf IpqosQueueLimitUnit::gbytes {5, "gbytes"};
+const Enum::YLeaf IpqosQueueLimitUnit::ms {6, "ms"};
+const Enum::YLeaf IpqosQueueLimitUnit::us {7, "us"};
+const Enum::YLeaf IpqosQueueLimitUnit::perc {8, "perc"};
+
+const Enum::YLeaf IpqosRateUnit::unspecified {0, "unspecified"};
+const Enum::YLeaf IpqosRateUnit::bps {1, "bps"};
+const Enum::YLeaf IpqosRateUnit::kbps {2, "kbps"};
+const Enum::YLeaf IpqosRateUnit::mbps {3, "mbps"};
+const Enum::YLeaf IpqosRateUnit::gbps {4, "gbps"};
+const Enum::YLeaf IpqosRateUnit::pps {5, "pps"};
+const Enum::YLeaf IpqosRateUnit::pct {6, "pct"};
+
+const Enum::YLeaf IpqosStatsType::none {0, "none"};
+const Enum::YLeaf IpqosStatsType::matchCMap {1, "matchCMap"};
+const Enum::YLeaf IpqosStatsType::MTU {2, "MTU"};
+const Enum::YLeaf IpqosStatsType::setAction {3, "setAction"};
+const Enum::YLeaf IpqosStatsType::pause {4, "pause"};
+const Enum::YLeaf IpqosStatsType::bw {5, "bw"};
+const Enum::YLeaf IpqosStatsType::bwRem {6, "bwRem"};
+const Enum::YLeaf IpqosStatsType::shape {7, "shape"};
+const Enum::YLeaf IpqosStatsType::prio {8, "prio"};
+const Enum::YLeaf IpqosStatsType::randomDetect {9, "randomDetect"};
+const Enum::YLeaf IpqosStatsType::queuing {10, "queuing"};
+const Enum::YLeaf IpqosStatsType::police {11, "police"};
+const Enum::YLeaf IpqosStatsType::qlimit {12, "qlimit"};
+const Enum::YLeaf IpqosStatsType::microburst {13, "microburst"};
+
+const Enum::YLeaf IpqosThreshUnit::none {0, "none"};
+const Enum::YLeaf IpqosThreshUnit::packets {1, "packets"};
+const Enum::YLeaf IpqosThreshUnit::bytes {2, "bytes"};
+const Enum::YLeaf IpqosThreshUnit::kbytes {3, "kbytes"};
+const Enum::YLeaf IpqosThreshUnit::mbytes {4, "mbytes"};
+
+const Enum::YLeaf IpqosPolicyDirection::none {0, "none"};
+const Enum::YLeaf IpqosPolicyDirection::ingress {1, "ingress"};
+const Enum::YLeaf IpqosPolicyDirection::egress {2, "egress"};
+const Enum::YLeaf IpqosPolicyDirection::both {3, "both"};
+
+const Enum::YLeaf IpqosPolicyType::none {0, "none"};
+const Enum::YLeaf IpqosPolicyType::qos {1, "qos"};
+const Enum::YLeaf IpqosPolicyType::queuing {2, "queuing"};
+
+const Enum::YLeaf IpqosStatsState::enabled {0, "enabled"};
+const Enum::YLeaf IpqosStatsState::disabled {1, "disabled"};
+
+const Enum::YLeaf Ipv6ConfigErr::noerror {0, "noerror"};
+const Enum::YLeaf Ipv6ConfigErr::nghbrAddress {1, "nghbrAddress"};
+const Enum::YLeaf Ipv6ConfigErr::useLinkLocalOnly {2, "useLinkLocalOnly"};
+const Enum::YLeaf Ipv6ConfigErr::forward {3, "forward"};
+
+const Enum::YLeaf Ipv6IPv6EventLogSize::disabled {0, "disabled"};
+const Enum::YLeaf Ipv6IPv6EventLogSize::small {1, "small"};
+const Enum::YLeaf Ipv6IPv6EventLogSize::medium {2, "medium"};
+const Enum::YLeaf Ipv6IPv6EventLogSize::large {3, "large"};
+
+const Enum::YLeaf Ipv6IPv6EventType::ipv6Event {0, "ipv6Event"};
+const Enum::YLeaf Ipv6IPv6EventType::bfdEvent {1, "bfdEvent"};
+const Enum::YLeaf Ipv6IPv6EventType::syslog {2, "syslog"};
+const Enum::YLeaf Ipv6IPv6EventType::ipc {3, "ipc"};
+const Enum::YLeaf Ipv6IPv6EventType::snmp {4, "snmp"};
+const Enum::YLeaf Ipv6IPv6EventType::highAvailability {5, "highAvailability"};
+const Enum::YLeaf Ipv6IPv6EventType::sdb {6, "sdb"};
+
+const Enum::YLeaf IsisAdjOperSt::init {1, "init"};
+const Enum::YLeaf IsisAdjOperSt::up {2, "up"};
+const Enum::YLeaf IsisAdjOperSt::down {3, "down"};
+const Enum::YLeaf IsisAdjOperSt::gr_init {4, "gr-init"};
+
+const Enum::YLeaf IsisAuthT::clear {1, "clear"};
+const Enum::YLeaf IsisAuthT::md5 {2, "md5"};
+
+const Enum::YLeaf IsisBwRefUnit::mbps {0, "mbps"};
+const Enum::YLeaf IsisBwRefUnit::gbps {1, "gbps"};
+
+const Enum::YLeaf IsisDbT::ls {1, "ls"};
+const Enum::YLeaf IsisDbT::rt {2, "rt"};
+const Enum::YLeaf IsisDbT::nh {3, "nh"};
+const Enum::YLeaf IsisDbT::mcgrp {4, "mcgrp"};
+const Enum::YLeaf IsisDbT::fn {5, "fn"};
+const Enum::YLeaf IsisDbT::dtep {6, "dtep"};
+
+const Enum::YLeaf IsisHelloPadT::always {1, "always"};
+const Enum::YLeaf IsisHelloPadT::transient {2, "transient"};
+const Enum::YLeaf IsisHelloPadT::never {3, "never"};
+
+const Enum::YLeaf IsisIsT::l1 {1, "l1"};
+const Enum::YLeaf IsisIsT::l2 {2, "l2"};
+const Enum::YLeaf IsisIsT::l12 {3, "l12"};
+
+const Enum::YLeaf IsisLvlT::p2p {0, "p2p"};
+const Enum::YLeaf IsisLvlT::l1 {1, "l1"};
+const Enum::YLeaf IsisLvlT::l2 {2, "l2"};
+
+const Enum::YLeaf IsisMetricStyle::narrow {1, "narrow"};
+const Enum::YLeaf IsisMetricStyle::wide {2, "wide"};
+const Enum::YLeaf IsisMetricStyle::transition {3, "transition"};
+
+const Enum::YLeaf IsisOperSt::unknown {0, "unknown"};
+const Enum::YLeaf IsisOperSt::initializing {1, "initializing"};
+const Enum::YLeaf IsisOperSt::ok {2, "ok"};
+const Enum::YLeaf IsisOperSt::failed {3, "failed"};
+
+const Enum::YLeaf IsisOverloadAdminSt::off {0, "off"};
+const Enum::YLeaf IsisOverloadAdminSt::always_on {1, "always-on"};
+const Enum::YLeaf IsisOverloadAdminSt::bootup {2, "bootup"};
+const Enum::YLeaf IsisOverloadAdminSt::bgp_converge {3, "bgp-converge"};
+const Enum::YLeaf IsisOverloadAdminSt::bgp_converge_max_wait {4, "bgp-converge-max-wait"};
+
+const Enum::YLeaf IsisPassiveIntfT::l1 {1, "l1"};
+const Enum::YLeaf IsisPassiveIntfT::l2 {2, "l2"};
+const Enum::YLeaf IsisPassiveIntfT::l12 {3, "l12"};
+const Enum::YLeaf IsisPassiveIntfT::inherit {4, "inherit"};
+
+const Enum::YLeaf L1AdminSt::down {1, "down"};
+const Enum::YLeaf L1AdminSt::up {2, "up"};
+
+const Enum::YLeaf L1AllowMultiTag::enable {1, "enable"};
+const Enum::YLeaf L1AllowMultiTag::disable {0, "disable"};
+
+const Enum::YLeaf L1AutoNeg::on {1, "on"};
+const Enum::YLeaf L1AutoNeg::off {2, "off"};
+const Enum::YLeaf L1AutoNeg::Y_25G {3, "25G"};
+
+const Enum::YLeaf L1Beacon::on {1, "on"};
+const Enum::YLeaf L1Beacon::off {2, "off"};
+
+const Enum::YLeaf L1BufferBoost::disable {0, "disable"};
+const Enum::YLeaf L1BufferBoost::enable {1, "enable"};
+
+const Enum::YLeaf L1DceMode::core {1, "core"};
+const Enum::YLeaf L1DceMode::edge {2, "edge"};
+const Enum::YLeaf L1DceMode::auto_ {3, "auto"};
+const Enum::YLeaf L1DceMode::off {4, "off"};
+
+const Enum::YLeaf L1DiagsT::none {0, "none"};
+const Enum::YLeaf L1DiagsT::dom {1, "dom"};
+const Enum::YLeaf L1DiagsT::ddm {2, "ddm"};
+
+const Enum::YLeaf L1Dot1qEtherType::Y_0x8100 {1, "0x8100"};
+const Enum::YLeaf L1Dot1qEtherType::Y_0x88A8 {2, "0x88A8"};
+const Enum::YLeaf L1Dot1qEtherType::Y_0x9100 {3, "0x9100"};
+const Enum::YLeaf L1Dot1qEtherType::any {4, "any"};
+
+const Enum::YLeaf L1Duplex::auto_ {1, "auto"};
+const Enum::YLeaf L1Duplex::full {2, "full"};
+const Enum::YLeaf L1Duplex::half {3, "half"};
+
+const Enum::YLeaf L1EEELatency::variable {1, "variable"};
+const Enum::YLeaf L1EEELatency::constant {2, "constant"};
+
+const Enum::YLeaf L1EEELpi::aggressive {1, "aggressive"};
+const Enum::YLeaf L1EEELpi::normal {2, "normal"};
+
+const Enum::YLeaf L1EEEState::enable {1, "enable"};
+const Enum::YLeaf L1EEEState::disable {2, "disable"};
+const Enum::YLeaf L1EEEState::disagreed {3, "disagreed"};
+const Enum::YLeaf L1EEEState::not_applicable {4, "not-applicable"};
+
+const Enum::YLeaf L1FECMode::auto_ {4, "auto"};
+const Enum::YLeaf L1FECMode::rs_fec {2, "rs-fec"};
+const Enum::YLeaf L1FECMode::fc_fec {1, "fc-fec"};
+const Enum::YLeaf L1FECMode::fec_off {3, "fec-off"};
+const Enum::YLeaf L1FECMode::rs_ieee {5, "rs-ieee"};
+const Enum::YLeaf L1FECMode::rs_cons16 {6, "rs-cons16"};
+
+const Enum::YLeaf L1IntfT::phy {1, "phy"};
+const Enum::YLeaf L1IntfT::phy_shared {2, "phy-shared"};
+
+const Enum::YLeaf L1Layer::Layer2 {1, "Layer2"};
+const Enum::YLeaf L1Layer::Layer3 {2, "Layer3"};
+
+const Enum::YLeaf L1LinkLog::default_ {1, "default"};
+const Enum::YLeaf L1LinkLog::enable {2, "enable"};
+const Enum::YLeaf L1LinkLog::disable {3, "disable"};
+
+const Enum::YLeaf L1LinkTransmitReset::enable {1, "enable"};
+const Enum::YLeaf L1LinkTransmitReset::disable {0, "disable"};
+
+const Enum::YLeaf L1Mdix::auto_ {1, "auto"};
+const Enum::YLeaf L1Mdix::mdi {2, "mdi"};
+const Enum::YLeaf L1Mdix::mdi_x {3, "mdi-x"};
+
+const Enum::YLeaf L1Medium::broadcast {1, "broadcast"};
+const Enum::YLeaf L1Medium::p2p {2, "p2p"};
+
+const Enum::YLeaf L1Mode::access {1, "access"};
+const Enum::YLeaf L1Mode::trunk {2, "trunk"};
+const Enum::YLeaf L1Mode::fex_fabric {3, "fex-fabric"};
+const Enum::YLeaf L1Mode::dot1q_tunnel {4, "dot1q-tunnel"};
+const Enum::YLeaf L1Mode::promiscuous {5, "promiscuous"};
+const Enum::YLeaf L1Mode::host {6, "host"};
+const Enum::YLeaf L1Mode::trunk_secondary {7, "trunk_secondary"};
+const Enum::YLeaf L1Mode::trunk_promiscuous {8, "trunk_promiscuous"};
+
+const Enum::YLeaf L1Module::lc {0, "lc"};
+const Enum::YLeaf L1Module::sup {1, "sup"};
 
 const Enum::YLeaf L1OperStQual::unknown {0, "unknown"};
 const Enum::YLeaf L1OperStQual::up {1, "up"};
@@ -24847,2202 +25465,10 @@ const Enum::YLeaf L1OperStQual::vdc_mode {253, "vdc-mode"};
 const Enum::YLeaf L1OperStQual::enm_pin_fail_link_down {254, "enm-pin-fail-link-down"};
 const Enum::YLeaf L1OperStQual::inactive_m1_port_fpath_access_vlan {255, "inactive-m1-port-fpath-access-vlan"};
 
-const Enum::YLeaf FirmwareType::controller {0, "controller"};
-const Enum::YLeaf FirmwareType::switch_ {1, "switch"};
-const Enum::YLeaf FirmwareType::catalog {2, "catalog"};
-
-const Enum::YLeaf DatetimeLoggingLevel::emergency {0, "emergency"};
-const Enum::YLeaf DatetimeLoggingLevel::alert {1, "alert"};
-const Enum::YLeaf DatetimeLoggingLevel::critical {2, "critical"};
-const Enum::YLeaf DatetimeLoggingLevel::error {3, "error"};
-const Enum::YLeaf DatetimeLoggingLevel::warning {4, "warning"};
-const Enum::YLeaf DatetimeLoggingLevel::notif {5, "notif"};
-const Enum::YLeaf DatetimeLoggingLevel::inform {6, "inform"};
-const Enum::YLeaf DatetimeLoggingLevel::debug {7, "debug"};
-
-const Enum::YLeaf FcoeAdminSt::enabled {1, "enabled"};
-const Enum::YLeaf FcoeAdminSt::disabled {2, "disabled"};
-
-const Enum::YLeaf MonitorDirection::in {1, "in"};
-const Enum::YLeaf MonitorDirection::out {2, "out"};
-const Enum::YLeaf MonitorDirection::both {3, "both"};
-const Enum::YLeaf MonitorDirection::none {4, "none"};
-
-const Enum::YLeaf MonitorMode::access {1, "access"};
-const Enum::YLeaf MonitorMode::fabric {2, "fabric"};
-
-const Enum::YLeaf BgpPrivateASControl::none {0, "none"};
-const Enum::YLeaf BgpPrivateASControl::remove_exclusive {1, "remove-exclusive"};
-const Enum::YLeaf BgpPrivateASControl::remove_all {2, "remove-all"};
-const Enum::YLeaf BgpPrivateASControl::replace_as {3, "replace-as"};
-
-const Enum::YLeaf RtcomMode::standard {1, "standard"};
-const Enum::YLeaf RtcomMode::regex {2, "regex"};
-
-const Enum::YLeaf AggregateBooleanFlag::no {0, "no"};
-const Enum::YLeaf AggregateBooleanFlag::yes {1, "yes"};
-
-const Enum::YLeaf OamEpT::ep {1, "ep"};
-const Enum::YLeaf OamEpT::vtep_ep {2, "vtep-ep"};
-const Enum::YLeaf OamEpT::node {3, "node"};
-
-const Enum::YLeaf IpqosPolicyType::none {0, "none"};
-const Enum::YLeaf IpqosPolicyType::qos {1, "qos"};
-const Enum::YLeaf IpqosPolicyType::queuing {2, "queuing"};
-
-const Enum::YLeaf IsisDbT::ls {1, "ls"};
-const Enum::YLeaf IsisDbT::rt {2, "rt"};
-const Enum::YLeaf IsisDbT::nh {3, "nh"};
-const Enum::YLeaf IsisDbT::mcgrp {4, "mcgrp"};
-const Enum::YLeaf IsisDbT::fn {5, "fn"};
-const Enum::YLeaf IsisDbT::dtep {6, "dtep"};
-
-const Enum::YLeaf L1TrunkLog::default_ {1, "default"};
-const Enum::YLeaf L1TrunkLog::enable {2, "enable"};
-const Enum::YLeaf L1TrunkLog::disable {3, "disable"};
-
-const Enum::YLeaf IgmpLimitSt::below_thresh {0, "below-thresh"};
-const Enum::YLeaf IgmpLimitSt::above_thresh {1, "above-thresh"};
-const Enum::YLeaf IgmpLimitSt::exhausted {2, "exhausted"};
-
-const Enum::YLeaf MribHoldAdminSt::enabled {1, "enabled"};
-const Enum::YLeaf MribHoldAdminSt::disabled {2, "disabled"};
-
-const Enum::YLeaf L1Medium::broadcast {1, "broadcast"};
-const Enum::YLeaf L1Medium::p2p {2, "p2p"};
-
-const Enum::YLeaf RibDbT::rt {1, "rt"};
-const Enum::YLeaf RibDbT::nh {2, "nh"};
-const Enum::YLeaf RibDbT::adj {3, "adj"};
-
-const Enum::YLeaf CapScope::node {0, "node"};
-const Enum::YLeaf CapScope::policy_domain {1, "policy-domain"};
-const Enum::YLeaf CapScope::fabric {2, "fabric"};
-
-const Enum::YLeaf Icmpv6LoggingLevel::Emergency {0, "Emergency"};
-const Enum::YLeaf Icmpv6LoggingLevel::Alert {1, "Alert"};
-const Enum::YLeaf Icmpv6LoggingLevel::Critical {2, "Critical"};
-const Enum::YLeaf Icmpv6LoggingLevel::Error {3, "Error"};
-const Enum::YLeaf Icmpv6LoggingLevel::Warning {4, "Warning"};
-const Enum::YLeaf Icmpv6LoggingLevel::Notice {5, "Notice"};
-const Enum::YLeaf Icmpv6LoggingLevel::Informational {6, "Informational"};
-const Enum::YLeaf Icmpv6LoggingLevel::Debug {7, "Debug"};
-
-const Enum::YLeaf L1SwitchportMacLearn::disable {0, "disable"};
-const Enum::YLeaf L1SwitchportMacLearn::enable {1, "enable"};
-
-const Enum::YLeaf LacpSysRole::primary {1, "primary"};
-const Enum::YLeaf LacpSysRole::secondary {2, "secondary"};
-
-const Enum::YLeaf NwAdminStProcessStatAutoDisc::enabled {1, "enabled"};
-const Enum::YLeaf NwAdminStProcessStatAutoDisc::disabled {2, "disabled"};
-
-const Enum::YLeaf SnmpNotificationType::traps {1, "traps"};
-const Enum::YLeaf SnmpNotificationType::informs {2, "informs"};
-
-const Enum::YLeaf AnalyticsOperSt::enabled {1, "enabled"};
-const Enum::YLeaf AnalyticsOperSt::disabled {2, "disabled"};
-
-const Enum::YLeaf MribModeAdminSt::enabled {1, "enabled"};
-const Enum::YLeaf MribModeAdminSt::disabled {2, "disabled"};
-
-const Enum::YLeaf EqptPsRdnM::unknown {0, "unknown"};
-const Enum::YLeaf EqptPsRdnM::not_supp {1, "not-supp"};
-const Enum::YLeaf EqptPsRdnM::rdn {2, "rdn"};
-const Enum::YLeaf EqptPsRdnM::comb {3, "comb"};
-const Enum::YLeaf EqptPsRdnM::n_rdn {4, "n-rdn"};
-const Enum::YLeaf EqptPsRdnM::ps_rdn {5, "ps-rdn"};
-const Enum::YLeaf EqptPsRdnM::insrc_rdn {6, "insrc-rdn"};
-const Enum::YLeaf EqptPsRdnM::sinin_rdn {7, "sinin-rdn"};
-const Enum::YLeaf EqptPsRdnM::comb_force {8, "comb-force"};
-
-const Enum::YLeaf ActionAdminSt::unknown {0, "unknown"};
-const Enum::YLeaf ActionAdminSt::start {1, "start"};
-const Enum::YLeaf ActionAdminSt::stop {2, "stop"};
-const Enum::YLeaf ActionAdminSt::suspend {3, "suspend"};
-
-const Enum::YLeaf BgpRtCtrlOperSt::unresolved {1, "unresolved"};
-const Enum::YLeaf BgpRtCtrlOperSt::resolved {2, "resolved"};
-
-const Enum::YLeaf RtleakProto::unspecified {0, "unspecified"};
-const Enum::YLeaf RtleakProto::static_ {1, "static"};
-const Enum::YLeaf RtleakProto::direct {2, "direct"};
-const Enum::YLeaf RtleakProto::bgp {3, "bgp"};
-const Enum::YLeaf RtleakProto::isis {4, "isis"};
-const Enum::YLeaf RtleakProto::ospf {5, "ospf"};
-const Enum::YLeaf RtleakProto::ospfv3 {6, "ospfv3"};
-const Enum::YLeaf RtleakProto::eigrp {7, "eigrp"};
-const Enum::YLeaf RtleakProto::host {8, "host"};
-const Enum::YLeaf RtleakProto::rip {9, "rip"};
-const Enum::YLeaf RtleakProto::amt {10, "amt"};
-const Enum::YLeaf RtleakProto::lisp {11, "lisp"};
-const Enum::YLeaf RtleakProto::hmm {12, "hmm"};
-const Enum::YLeaf RtleakProto::am {13, "am"};
-
-const Enum::YLeaf AaaLdapSSLStrictnessLevel::strict {0, "strict"};
-const Enum::YLeaf AaaLdapSSLStrictnessLevel::permissive {1, "permissive"};
-
-const Enum::YLeaf PcPortChannelProtocol::unknown {0, "unknown"};
-const Enum::YLeaf PcPortChannelProtocol::none {1, "none"};
-const Enum::YLeaf PcPortChannelProtocol::lacp {2, "lacp"};
-
-const Enum::YLeaf InstallerInstType::none {-1, "none"};
-const Enum::YLeaf InstallerInstType::disruptive {0, "disruptive"};
-const Enum::YLeaf InstallerInstType::non_disruptive {1, "non-disruptive"};
-
-const Enum::YLeaf OspfEventType::adj {0, "adj"};
-const Enum::YLeaf OspfEventType::internal {1, "internal"};
-const Enum::YLeaf OspfEventType::ha {2, "ha"};
-const Enum::YLeaf OspfEventType::lsa_flood {3, "lsa-flood"};
-const Enum::YLeaf OspfEventType::lsa {4, "lsa"};
-const Enum::YLeaf OspfEventType::spf {5, "spf"};
-const Enum::YLeaf OspfEventType::redist {6, "redist"};
-const Enum::YLeaf OspfEventType::ldp {7, "ldp"};
-const Enum::YLeaf OspfEventType::mpls_te {8, "mpls-te"};
-const Enum::YLeaf OspfEventType::hello {9, "hello"};
-const Enum::YLeaf OspfEventType::rib {10, "rib"};
-const Enum::YLeaf OspfEventType::spf_trigger {11, "spf-trigger"};
-const Enum::YLeaf OspfEventType::cli {12, "cli"};
-
-const Enum::YLeaf L2MacInfo::standard {0, "standard"};
-const Enum::YLeaf L2MacInfo::drop {1, "drop"};
-const Enum::YLeaf L2MacInfo::svi_down_flood {2, "svi-down-flood"};
-const Enum::YLeaf L2MacInfo::sup_inband_cfsoe {3, "sup-inband-cfsoe"};
-const Enum::YLeaf L2MacInfo::vpc_peer_link {4, "vpc-peer-link"};
-const Enum::YLeaf L2MacInfo::nve {5, "nve"};
-const Enum::YLeaf L2MacInfo::sup_eth {6, "sup-eth"};
-
-const Enum::YLeaf NvoVniTypeT::L2 {1, "L2"};
-const Enum::YLeaf NvoVniTypeT::L3 {2, "L3"};
-
-const Enum::YLeaf ArpEventType::cli {0, "cli"};
-const Enum::YLeaf ArpEventType::client_events {1, "client-events"};
-const Enum::YLeaf ArpEventType::client_errors {2, "client-errors"};
-const Enum::YLeaf ArpEventType::control_events {3, "control-events"};
-const Enum::YLeaf ArpEventType::internal_events {4, "internal-events"};
-const Enum::YLeaf ArpEventType::internal_errors {5, "internal-errors"};
-const Enum::YLeaf ArpEventType::high_availability {6, "high-availability"};
-const Enum::YLeaf ArpEventType::ip_sync {7, "ip-sync"};
-const Enum::YLeaf ArpEventType::local_cache_events {8, "local-cache-events"};
-const Enum::YLeaf ArpEventType::local_cache_errors {9, "local-cache-errors"};
-const Enum::YLeaf ArpEventType::pkt_messages {10, "pkt-messages"};
-const Enum::YLeaf ArpEventType::snmp {11, "snmp"};
-const Enum::YLeaf ArpEventType::suppress_events {12, "suppress-events"};
-const Enum::YLeaf ArpEventType::suppress_errors {13, "suppress-errors"};
-const Enum::YLeaf ArpEventType::sync {14, "sync"};
-const Enum::YLeaf ArpEventType::arp_controller_errors {15, "arp-controller-errors"};
-const Enum::YLeaf ArpEventType::arp_dme_event {16, "arp-dme-event"};
-const Enum::YLeaf ArpEventType::adjacency_control {101, "adjacency-control"};
-const Enum::YLeaf ArpEventType::adjacency_errors {102, "adjacency-errors"};
-const Enum::YLeaf ArpEventType::adjacency_ipc_events {103, "adjacency-ipc-events"};
-const Enum::YLeaf ArpEventType::adjacency_stats {104, "adjacency-stats"};
-const Enum::YLeaf ArpEventType::adjacency_high_availability {105, "adjacency-high-availability"};
-const Enum::YLeaf ArpEventType::adjacency_cli {106, "adjacency-cli"};
-const Enum::YLeaf ArpEventType::adjacency_sdb {107, "adjacency-sdb"};
-const Enum::YLeaf ArpEventType::adjacency_snmp {108, "adjacency-snmp"};
-const Enum::YLeaf ArpEventType::adjacency_netbroker {109, "adjacency-netbroker"};
-const Enum::YLeaf ArpEventType::am_dme_event {110, "am-dme-event"};
-const Enum::YLeaf ArpEventType::am_event {111, "am-event"};
-
-const Enum::YLeaf NbmNbmLinkRole::EXTERNAL_LINK {0, "EXTERNAL_LINK"};
-const Enum::YLeaf NbmNbmLinkRole::FABRIC_LINK {1, "FABRIC_LINK"};
-
-const Enum::YLeaf PoePoePortmode::Default {0, "Default"};
-const Enum::YLeaf PoePoePortmode::never {1, "never"};
-const Enum::YLeaf PoePoePortmode::auto_ {2, "auto"};
-const Enum::YLeaf PoePoePortmode::static_ {3, "static"};
-
-const Enum::YLeaf RtmapRpTypeT::unspecified {0, "unspecified"};
-const Enum::YLeaf RtmapRpTypeT::ASM {1, "ASM"};
-const Enum::YLeaf RtmapRpTypeT::Bidir {2, "Bidir"};
-
-const Enum::YLeaf SnmpV3SecLvl::unspecified {0, "unspecified"};
-const Enum::YLeaf SnmpV3SecLvl::noauth {1, "noauth"};
-const Enum::YLeaf SnmpV3SecLvl::auth {2, "auth"};
-const Enum::YLeaf SnmpV3SecLvl::priv {3, "priv"};
-
-const Enum::YLeaf BgpMvpnRtType::none {0, "none"};
-const Enum::YLeaf BgpMvpnRtType::interas_ipmsi_ad {1, "interas-ipmsi-ad"};
-const Enum::YLeaf BgpMvpnRtType::intraas_ipmsi_ad {2, "intraas-ipmsi-ad"};
-const Enum::YLeaf BgpMvpnRtType::spmsi_ad {3, "spmsi-ad"};
-const Enum::YLeaf BgpMvpnRtType::leaf_ad {4, "leaf-ad"};
-const Enum::YLeaf BgpMvpnRtType::sa_ad {5, "sa-ad"};
-const Enum::YLeaf BgpMvpnRtType::shared_c_mcast {6, "shared-c-mcast"};
-const Enum::YLeaf BgpMvpnRtType::source_c_mcast {7, "source-c-mcast"};
-
-const Enum::YLeaf MonitorSrcT::port {1, "port"};
-const Enum::YLeaf MonitorSrcT::encap {2, "encap"};
-const Enum::YLeaf MonitorSrcT::port_encap {3, "port-encap"};
-
-const Enum::YLeaf VpcPeerStQual::success {0, "success"};
-const Enum::YLeaf VpcPeerStQual::uplinks_down {1, "uplinks-down"};
-const Enum::YLeaf VpcPeerStQual::route_down {2, "route-down"};
-const Enum::YLeaf VpcPeerStQual::peer_unrch {3, "peer-unrch"};
-const Enum::YLeaf VpcPeerStQual::compat_fail {4, "compat-fail"};
-const Enum::YLeaf VpcPeerStQual::election_err {5, "election-err"};
-const Enum::YLeaf VpcPeerStQual::oob_not_up {6, "oob-not-up"};
-
-const Enum::YLeaf FlowDirection::unspecified {0, "unspecified"};
-const Enum::YLeaf FlowDirection::in {1, "in"};
-const Enum::YLeaf FlowDirection::out {2, "out"};
-const Enum::YLeaf FlowDirection::both {3, "both"};
-
-const Enum::YLeaf BgpPeerOperSt::unspecified {0, "unspecified"};
-const Enum::YLeaf BgpPeerOperSt::illegal {1, "illegal"};
-const Enum::YLeaf BgpPeerOperSt::shut {2, "shut"};
-const Enum::YLeaf BgpPeerOperSt::idle {3, "idle"};
-const Enum::YLeaf BgpPeerOperSt::connect {4, "connect"};
-const Enum::YLeaf BgpPeerOperSt::active {5, "active"};
-const Enum::YLeaf BgpPeerOperSt::open_sent {6, "open-sent"};
-const Enum::YLeaf BgpPeerOperSt::open_confirm {7, "open-confirm"};
-const Enum::YLeaf BgpPeerOperSt::established {8, "established"};
-const Enum::YLeaf BgpPeerOperSt::closing {9, "closing"};
-const Enum::YLeaf BgpPeerOperSt::error {10, "error"};
-const Enum::YLeaf BgpPeerOperSt::unknown {11, "unknown"};
-
-const Enum::YLeaf RtctrlRtCtrlDir::in {1, "in"};
-const Enum::YLeaf RtctrlRtCtrlDir::out {2, "out"};
-
-const Enum::YLeaf ClimodeT::EXEC {0, "EXEC"};
-const Enum::YLeaf ClimodeT::CONFIG {1, "CONFIG"};
-
-const Enum::YLeaf RelnClassId::unspecified {0, "unspecified"};
-const Enum::YLeaf RelnClassId::cdpIf {1, "cdpIf"};
-const Enum::YLeaf RelnClassId::cnwAggrIf {2, "cnwAggrIf"};
-const Enum::YLeaf RelnClassId::cnwPhysIf {3, "cnwPhysIf"};
-const Enum::YLeaf RelnClassId::connIf {4, "connIf"};
-const Enum::YLeaf RelnClassId::datetimeNtpSrcIf {5, "datetimeNtpSrcIf"};
-const Enum::YLeaf RelnClassId::dhcpClientIf {6, "dhcpClientIf"};
-const Enum::YLeaf RelnClassId::dhcpDAIIf {7, "dhcpDAIIf"};
-const Enum::YLeaf RelnClassId::dhcpIpsgIf {8, "dhcpIpsgIf"};
-const Enum::YLeaf RelnClassId::dhcpPseudoIf {9, "dhcpPseudoIf"};
-const Enum::YLeaf RelnClassId::dhcpRelayIf {10, "dhcpRelayIf"};
-const Enum::YLeaf RelnClassId::dhcpServerIf {11, "dhcpServerIf"};
-const Enum::YLeaf RelnClassId::dhcpSnoopIf {12, "dhcpSnoopIf"};
-const Enum::YLeaf RelnClassId::dhcpSourceIf {13, "dhcpSourceIf"};
-const Enum::YLeaf RelnClassId::dhcpSrcIf {14, "dhcpSrcIf"};
-const Enum::YLeaf RelnClassId::dhcpV6SourceIf {15, "dhcpV6SourceIf"};
-const Enum::YLeaf RelnClassId::dhcpV6SrcIf {16, "dhcpV6SrcIf"};
-const Enum::YLeaf RelnClassId::egressIf {17, "egressIf"};
-const Enum::YLeaf RelnClassId::ingressIf {18, "ingressIf"};
-const Enum::YLeaf RelnClassId::ipSrcIf {19, "ipSrcIf"};
-const Enum::YLeaf RelnClassId::l1EthIf {20, "l1EthIf"};
-const Enum::YLeaf RelnClassId::l1PhysIf {21, "l1PhysIf"};
-const Enum::YLeaf RelnClassId::l2BrIf {22, "l2BrIf"};
-const Enum::YLeaf RelnClassId::l2ExtIf {23, "l2ExtIf"};
-const Enum::YLeaf RelnClassId::l2InbandIf {24, "l2InbandIf"};
-const Enum::YLeaf RelnClassId::l2VfcIf {25, "l2VfcIf"};
-const Enum::YLeaf RelnClassId::l3If {26, "l3If"};
-const Enum::YLeaf RelnClassId::l3LbRtdIf {27, "l3LbRtdIf"};
-const Enum::YLeaf RelnClassId::lldpIf {28, "lldpIf"};
-const Enum::YLeaf RelnClassId::mcpIf {29, "mcpIf"};
-const Enum::YLeaf RelnClassId::mgmtMgmtIf {30, "mgmtMgmtIf"};
-const Enum::YLeaf RelnClassId::mgmtRtdMgmtIf {31, "mgmtRtdMgmtIf"};
-const Enum::YLeaf RelnClassId::nwIf {32, "nwIf"};
-const Enum::YLeaf RelnClassId::ospfIf {33, "ospfIf"};
-const Enum::YLeaf RelnClassId::ospfv3If {34, "ospfv3If"};
-const Enum::YLeaf RelnClassId::pcAggrIf {35, "pcAggrIf"};
-const Enum::YLeaf RelnClassId::pktOnPassiveIf {36, "pktOnPassiveIf"};
-const Enum::YLeaf RelnClassId::regressIf {37, "regressIf"};
-const Enum::YLeaf RelnClassId::rsactiveIf {38, "rsactiveIf"};
-const Enum::YLeaf RelnClassId::rtactiveIf {39, "rtactiveIf"};
-const Enum::YLeaf RelnClassId::rtlsNodeToIf {40, "rtlsNodeToIf"};
-const Enum::YLeaf RelnClassId::srcIf {41, "srcIf"};
-const Enum::YLeaf RelnClassId::tunnelIf {42, "tunnelIf"};
-const Enum::YLeaf RelnClassId::vpcIf {43, "vpcIf"};
-const Enum::YLeaf RelnClassId::l3Inst {44, "l3Inst"};
-const Enum::YLeaf RelnClassId::l3EncRtdIf {45, "l3EncRtdIf"};
-const Enum::YLeaf RelnClassId::rtregcomRule {46, "rtregcomRule"};
-const Enum::YLeaf RelnClassId::rtpfxRule {47, "rtpfxRule"};
-const Enum::YLeaf RelnClassId::rtmapMatchRtDst {48, "rtmapMatchRtDst"};
-
-const Enum::YLeaf EthpmErrDisEvent::event_link_flap {0, "event-link-flap"};
-const Enum::YLeaf EthpmErrDisEvent::event_udld {1, "event-udld"};
-const Enum::YLeaf EthpmErrDisEvent::event_bpduguard {2, "event-bpduguard"};
-const Enum::YLeaf EthpmErrDisEvent::event_loopback {3, "event-loopback"};
-const Enum::YLeaf EthpmErrDisEvent::event_storm_ctrl {4, "event-storm-ctrl"};
-const Enum::YLeaf EthpmErrDisEvent::event_dhcp_rate_lim {5, "event-dhcp-rate-lim"};
-const Enum::YLeaf EthpmErrDisEvent::event_arp_inspection {6, "event-arp-inspection"};
-const Enum::YLeaf EthpmErrDisEvent::event_sec_violation {7, "event-sec-violation"};
-const Enum::YLeaf EthpmErrDisEvent::event_psec_violation {8, "event-psec-violation"};
-const Enum::YLeaf EthpmErrDisEvent::event_stp_inconsist_vpc_peerlink {9, "event-stp-inconsist-vpc-peerlink"};
-const Enum::YLeaf EthpmErrDisEvent::event_set_port_state_failed {10, "event-set-port-state-failed"};
-const Enum::YLeaf EthpmErrDisEvent::event_debug_1 {11, "event-debug-1"};
-const Enum::YLeaf EthpmErrDisEvent::event_debug_2 {12, "event-debug-2"};
-const Enum::YLeaf EthpmErrDisEvent::event_debug_3 {13, "event-debug-3"};
-const Enum::YLeaf EthpmErrDisEvent::event_debug_4 {14, "event-debug-4"};
-const Enum::YLeaf EthpmErrDisEvent::event_debug_5 {15, "event-debug-5"};
-const Enum::YLeaf EthpmErrDisEvent::event_ip_addr_conflict {16, "event-ip-addr-conflict"};
-const Enum::YLeaf EthpmErrDisEvent::event_ipqos_mgr_error {17, "event-ipqos-mgr-error"};
-const Enum::YLeaf EthpmErrDisEvent::event_ethpm {18, "event-ethpm"};
-const Enum::YLeaf EthpmErrDisEvent::event_ipqos_dcbxp_compat_failure {19, "event-ipqos-dcbxp-compat-failure"};
-const Enum::YLeaf EthpmErrDisEvent::event_syserr_based {20, "event-syserr-based"};
-const Enum::YLeaf EthpmErrDisEvent::unknown {21, "unknown"};
-const Enum::YLeaf EthpmErrDisEvent::event_mcp_loop {22, "event-mcp-loop"};
-const Enum::YLeaf EthpmErrDisEvent::event_ep_move {23, "event-ep-move"};
-const Enum::YLeaf EthpmErrDisEvent::event_dcbx_no_ack {24, "event-dcbx-no-ack"};
-
-const Enum::YLeaf PlatformQosMinBuffer::all {0, "all"};
-const Enum::YLeaf PlatformQosMinBuffer::none {1, "none"};
-const Enum::YLeaf PlatformQosMinBuffer::default_ {2, "default"};
-
-const Enum::YLeaf EqptRdSt::unknown {0, "unknown"};
-const Enum::YLeaf EqptRdSt::active {1, "active"};
-const Enum::YLeaf EqptRdSt::standby {2, "standby"};
-
-const Enum::YLeaf OspfIfOperSt::unknown {0, "unknown"};
-const Enum::YLeaf OspfIfOperSt::down {1, "down"};
-const Enum::YLeaf OspfIfOperSt::loopback {2, "loopback"};
-const Enum::YLeaf OspfIfOperSt::waiting {3, "waiting"};
-const Enum::YLeaf OspfIfOperSt::p2p {4, "p2p"};
-const Enum::YLeaf OspfIfOperSt::dr {5, "dr"};
-const Enum::YLeaf OspfIfOperSt::bdr {6, "bdr"};
-const Enum::YLeaf OspfIfOperSt::dr_other {7, "dr-other"};
-
-const Enum::YLeaf L1Duplex::auto_ {1, "auto"};
-const Enum::YLeaf L1Duplex::full {2, "full"};
-const Enum::YLeaf L1Duplex::half {3, "half"};
-
-const Enum::YLeaf L1PacketTimestampState::disable {0, "disable"};
-const Enum::YLeaf L1PacketTimestampState::enable_ingress {1, "enable-ingress"};
-const Enum::YLeaf L1PacketTimestampState::enable_egress {2, "enable-egress"};
-const Enum::YLeaf L1PacketTimestampState::enable_both {3, "enable-both"};
-
-const Enum::YLeaf AggregateAfT::ipv4_ucast {0, "ipv4-ucast"};
-const Enum::YLeaf AggregateAfT::vpnv4_ucast {1, "vpnv4-ucast"};
-const Enum::YLeaf AggregateAfT::ipv6_ucast {2, "ipv6-ucast"};
-const Enum::YLeaf AggregateAfT::vpnv6_ucast {3, "vpnv6-ucast"};
-const Enum::YLeaf AggregateAfT::l2_evpn {4, "l2-evpn"};
-
-const Enum::YLeaf ArpSuppressArpMode::disabled {0, "disabled"};
-const Enum::YLeaf ArpSuppressArpMode::l2suppressarp {1, "l2suppressarp"};
-const Enum::YLeaf ArpSuppressArpMode::l2l3suppressarp {2, "l2l3suppressarp"};
-const Enum::YLeaf ArpSuppressArpMode::invalid {3, "invalid"};
-
-const Enum::YLeaf EqptcapXcvrT::unspecified {0, "unspecified"};
-const Enum::YLeaf EqptcapXcvrT::gbic {1, "gbic"};
-const Enum::YLeaf EqptcapXcvrT::solder {2, "solder"};
-const Enum::YLeaf EqptcapXcvrT::sfp {3, "sfp"};
-const Enum::YLeaf EqptcapXcvrT::xbi {4, "xbi"};
-const Enum::YLeaf EqptcapXcvrT::xenpak {5, "xenpak"};
-const Enum::YLeaf EqptcapXcvrT::xfp {6, "xfp"};
-const Enum::YLeaf EqptcapXcvrT::xff {7, "xff"};
-const Enum::YLeaf EqptcapXcvrT::xfp_e {8, "xfp-e"};
-const Enum::YLeaf EqptcapXcvrT::xpak {9, "xpak"};
-const Enum::YLeaf EqptcapXcvrT::x2 {10, "x2"};
-const Enum::YLeaf EqptcapXcvrT::dwdm_sfp {11, "dwdm-sfp"};
-const Enum::YLeaf EqptcapXcvrT::qsfp {12, "qsfp"};
-
-const Enum::YLeaf L1DceMode::core {1, "core"};
-const Enum::YLeaf L1DceMode::edge {2, "edge"};
-const Enum::YLeaf L1DceMode::auto_ {3, "auto"};
-const Enum::YLeaf L1DceMode::off {4, "off"};
-
 const Enum::YLeaf L1OperSt::unknown {0, "unknown"};
 const Enum::YLeaf L1OperSt::down {1, "down"};
 const Enum::YLeaf L1OperSt::up {2, "up"};
 const Enum::YLeaf L1OperSt::link_up {3, "link-up"};
-
-const Enum::YLeaf ArpLoggingLevel::emergency {0, "emergency"};
-const Enum::YLeaf ArpLoggingLevel::alert {1, "alert"};
-const Enum::YLeaf ArpLoggingLevel::critical {2, "critical"};
-const Enum::YLeaf ArpLoggingLevel::error {3, "error"};
-const Enum::YLeaf ArpLoggingLevel::warning {4, "warning"};
-const Enum::YLeaf ArpLoggingLevel::notification {5, "notification"};
-const Enum::YLeaf ArpLoggingLevel::informational {6, "informational"};
-const Enum::YLeaf ArpLoggingLevel::debug {7, "debug"};
-
-const Enum::YLeaf OspfBfdControl::unspecified {0, "unspecified"};
-const Enum::YLeaf OspfBfdControl::enabled {1, "enabled"};
-const Enum::YLeaf OspfBfdControl::disabled {2, "disabled"};
-
-const Enum::YLeaf BgpSoftReconfigBackup::none {0, "none"};
-const Enum::YLeaf BgpSoftReconfigBackup::inbound {1, "inbound"};
-const Enum::YLeaf BgpSoftReconfigBackup::inbound_always {2, "inbound-always"};
-
-const Enum::YLeaf StpRoot::primary {1, "primary"};
-const Enum::YLeaf StpRoot::secondary {2, "secondary"};
-
-const Enum::YLeaf OpflexDeviceType::unknown {0, "unknown"};
-const Enum::YLeaf OpflexDeviceType::n1kv {1, "n1kv"};
-const Enum::YLeaf OpflexDeviceType::hyperv {2, "hyperv"};
-const Enum::YLeaf OpflexDeviceType::ovs {3, "ovs"};
-
-const Enum::YLeaf EqptAirFilter::absent {0, "absent"};
-const Enum::YLeaf EqptAirFilter::present {1, "present"};
-const Enum::YLeaf EqptAirFilter::notsupported {2, "notsupported"};
-
-const Enum::YLeaf UdldOperSt::enabled {1, "enabled"};
-const Enum::YLeaf UdldOperSt::disabled {2, "disabled"};
-
-const Enum::YLeaf SisfRaGuardOtherConfig::off {0, "off"};
-const Enum::YLeaf SisfRaGuardOtherConfig::on {1, "on"};
-const Enum::YLeaf SisfRaGuardOtherConfig::nocheck {2, "nocheck"};
-
-const Enum::YLeaf RtfltAction::deny {0, "deny"};
-const Enum::YLeaf RtfltAction::permit {1, "permit"};
-
-const Enum::YLeaf BgpLsAttrEntryType::none {0, "none"};
-const Enum::YLeaf BgpLsAttrEntryType::peer_node_sid {1101, "peer-node-sid"};
-const Enum::YLeaf BgpLsAttrEntryType::peer_adj_sid {1102, "peer-adj-sid"};
-const Enum::YLeaf BgpLsAttrEntryType::peer_set_sid {1103, "peer-set-sid"};
-
-const Enum::YLeaf CoppProfT::unknown {0, "unknown"};
-const Enum::YLeaf CoppProfT::strict {1, "strict"};
-const Enum::YLeaf CoppProfT::moderate {2, "moderate"};
-const Enum::YLeaf CoppProfT::dense {4, "dense"};
-const Enum::YLeaf CoppProfT::lenient {3, "lenient"};
-
-const Enum::YLeaf BgpTblSt::unknown {0, "unknown"};
-const Enum::YLeaf BgpTblSt::up {1, "up"};
-const Enum::YLeaf BgpTblSt::down {2, "down"};
-
-const Enum::YLeaf IsisIsT::l1 {1, "l1"};
-const Enum::YLeaf IsisIsT::l2 {2, "l2"};
-const Enum::YLeaf IsisIsT::l12 {3, "l12"};
-
-const Enum::YLeaf ArpStAdjOperStQual::unspecified {0, "unspecified"};
-const Enum::YLeaf ArpStAdjOperStQual::subnet_mismatch {1, "subnet-mismatch"};
-const Enum::YLeaf ArpStAdjOperStQual::invalid_mac {2, "invalid-mac"};
-const Enum::YLeaf ArpStAdjOperStQual::invalid_ip {3, "invalid-ip"};
-const Enum::YLeaf ArpStAdjOperStQual::invalid_vrf {4, "invalid-vrf"};
-const Enum::YLeaf ArpStAdjOperStQual::own_mac {5, "own-mac"};
-const Enum::YLeaf ArpStAdjOperStQual::if_down {6, "if-down"};
-const Enum::YLeaf ArpStAdjOperStQual::up {7, "up"};
-const Enum::YLeaf ArpStAdjOperStQual::invalid_if {8, "invalid-if"};
-const Enum::YLeaf ArpStAdjOperStQual::invalid_clidata {9, "invalid-clidata"};
-const Enum::YLeaf ArpStAdjOperStQual::no_memory {10, "no-memory"};
-
-const Enum::YLeaf SyslogSeverityLevelSeverity::emergencies {0, "emergencies"};
-const Enum::YLeaf SyslogSeverityLevelSeverity::alerts {1, "alerts"};
-const Enum::YLeaf SyslogSeverityLevelSeverity::critical {2, "critical"};
-const Enum::YLeaf SyslogSeverityLevelSeverity::errors {3, "errors"};
-const Enum::YLeaf SyslogSeverityLevelSeverity::warnings {4, "warnings"};
-const Enum::YLeaf SyslogSeverityLevelSeverity::notifications {5, "notifications"};
-const Enum::YLeaf SyslogSeverityLevelSeverity::information {6, "information"};
-const Enum::YLeaf SyslogSeverityLevelSeverity::debugging {7, "debugging"};
-const Enum::YLeaf SyslogSeverityLevelSeverity::unspecified {8, "unspecified"};
-
-const Enum::YLeaf ArpOpcode::unspecified {0, "unspecified"};
-const Enum::YLeaf ArpOpcode::req {1, "req"};
-const Enum::YLeaf ArpOpcode::reply {2, "reply"};
-
-const Enum::YLeaf TelemetryAdminState::enabled {1, "enabled"};
-
-const Enum::YLeaf VrrpBfdSessionSt::disabled {0, "disabled"};
-const Enum::YLeaf VrrpBfdSessionSt::inactive {1, "inactive"};
-const Enum::YLeaf VrrpBfdSessionSt::deleted {2, "deleted"};
-const Enum::YLeaf VrrpBfdSessionSt::unknown {3, "unknown"};
-const Enum::YLeaf VrrpBfdSessionSt::active {4, "active"};
-
-const Enum::YLeaf EthpmShareState::dedicated {0, "dedicated"};
-const Enum::YLeaf EthpmShareState::shared {1, "shared"};
-
-const Enum::YLeaf OspfOperSt::invalid {0, "invalid"};
-const Enum::YLeaf OspfOperSt::down {1, "down"};
-const Enum::YLeaf OspfOperSt::up {2, "up"};
-
-const Enum::YLeaf InstallerInstErr::none {0, "none"};
-const Enum::YLeaf InstallerInstErr::preupg_err1 {1, "preupg-err1"};
-const Enum::YLeaf InstallerInstErr::preupg_err2 {2, "preupg-err2"};
-const Enum::YLeaf InstallerInstErr::user_abort {3, "user-abort"};
-
-const Enum::YLeaf AaaRulePermissionType::none {0, "none"};
-const Enum::YLeaf AaaRulePermissionType::permit {1, "permit"};
-const Enum::YLeaf AaaRulePermissionType::deny {2, "deny"};
-
-const Enum::YLeaf NdRtPrefForNdRt::low {0, "low"};
-const Enum::YLeaf NdRtPrefForNdRt::medium {1, "medium"};
-const Enum::YLeaf NdRtPrefForNdRt::high {2, "high"};
-
-const Enum::YLeaf FirmwareRunningMode::normal {0, "normal"};
-const Enum::YLeaf FirmwareRunningMode::recovery {1, "recovery"};
-
-const Enum::YLeaf NvoPeerStateT::Up {1, "Up"};
-const Enum::YLeaf NvoPeerStateT::Down {2, "Down"};
-
-const Enum::YLeaf TrackProbeState::reachability {0, "reachability"};
-const Enum::YLeaf TrackProbeState::state {1, "state"};
-
-const Enum::YLeaf PcLastSt::successful {0, "successful"};
-const Enum::YLeaf PcLastSt::failed {1, "failed"};
-
-const Enum::YLeaf IpmcJoinType::Y_0 {0, "0"};
-const Enum::YLeaf IpmcJoinType::Y_1 {1, "1"};
-
-const Enum::YLeaf L1SwitchportVirtualEthernetBridge::disable {0, "disable"};
-const Enum::YLeaf L1SwitchportVirtualEthernetBridge::enable {1, "enable"};
-
-const Enum::YLeaf InstallerInstOper::none {0, "none"};
-const Enum::YLeaf InstallerInstOper::install {1, "install"};
-const Enum::YLeaf InstallerInstOper::impact {2, "impact"};
-const Enum::YLeaf InstallerInstOper::abort {3, "abort"};
-
-const Enum::YLeaf AggregateReplicationModeType::unknown {0, "unknown"};
-const Enum::YLeaf AggregateReplicationModeType::replicationServer {1, "replicationServer"};
-const Enum::YLeaf AggregateReplicationModeType::ingressReplication {2, "ingressReplication"};
-const Enum::YLeaf AggregateReplicationModeType::ipMulticast {3, "ipMulticast"};
-
-const Enum::YLeaf L1AutoNeg::on {1, "on"};
-const Enum::YLeaf L1AutoNeg::off {2, "off"};
-const Enum::YLeaf L1AutoNeg::Y_25G {3, "25G"};
-
-const Enum::YLeaf PoePoePolice::Default {0, "Default"};
-const Enum::YLeaf PoePoePolice::errdisable {1, "errdisable"};
-const Enum::YLeaf PoePoePolice::log {2, "log"};
-
-const Enum::YLeaf SpanMode::access {1, "access"};
-const Enum::YLeaf SpanMode::fabric {2, "fabric"};
-
-const Enum::YLeaf HsrpBiaScopeType::global {1, "global"};
-const Enum::YLeaf HsrpBiaScopeType::local {2, "local"};
-
-const Enum::YLeaf NdStAdjOperSt::down {0, "down"};
-const Enum::YLeaf NdStAdjOperSt::up {1, "up"};
-
-const Enum::YLeaf CdpDevIdT::none {0, "none"};
-const Enum::YLeaf CdpDevIdT::mac {1, "mac"};
-const Enum::YLeaf CdpDevIdT::serialNum {2, "serialNum"};
-const Enum::YLeaf CdpDevIdT::sysName {3, "sysName"};
-
-const Enum::YLeaf NvoIngReplProtoT::unknown {0, "unknown"};
-const Enum::YLeaf NvoIngReplProtoT::bgp {1, "bgp"};
-const Enum::YLeaf NvoIngReplProtoT::static_ {2, "static"};
-
-const Enum::YLeaf SisfDeviceRole::node {0, "node"};
-const Enum::YLeaf SisfDeviceRole::switch_ {3, "switch"};
-
-const Enum::YLeaf AggregateRttPType::import {1, "import"};
-const Enum::YLeaf AggregateRttPType::export_ {2, "export"};
-
-const Enum::YLeaf NwAddrF::ipv4 {1, "ipv4"};
-const Enum::YLeaf NwAddrF::ipv6 {2, "ipv6"};
-const Enum::YLeaf NwAddrF::mac {3, "mac"};
-
-const Enum::YLeaf RtdmcAuthT::none {0, "none"};
-const Enum::YLeaf RtdmcAuthT::ah_md5 {1, "ah-md5"};
-
-const Enum::YLeaf IpqosPolicyDirection::none {0, "none"};
-const Enum::YLeaf IpqosPolicyDirection::ingress {1, "ingress"};
-const Enum::YLeaf IpqosPolicyDirection::egress {2, "egress"};
-const Enum::YLeaf IpqosPolicyDirection::both {3, "both"};
-
-const Enum::YLeaf TunnelifTunnelSrcDirect::enabled {1, "enabled"};
-const Enum::YLeaf TunnelifTunnelSrcDirect::disabled {2, "disabled"};
-
-const Enum::YLeaf AggregateConfigStatus::unknown {0, "unknown"};
-const Enum::YLeaf AggregateConfigStatus::configReady {1, "configReady"};
-const Enum::YLeaf AggregateConfigStatus::configNotReady {2, "configNotReady"};
-const Enum::YLeaf AggregateConfigStatus::configPurgeInProgress {4, "configPurgeInProgress"};
-
-const Enum::YLeaf SegrtOperSt::disabled {0, "disabled"};
-const Enum::YLeaf SegrtOperSt::enabled {1, "enabled"};
-const Enum::YLeaf SegrtOperSt::ha_in_progress {2, "ha-in-progress"};
-
-const Enum::YLeaf MonAdminState::enabled {1, "enabled"};
-const Enum::YLeaf MonAdminState::disabled {2, "disabled"};
-
-const Enum::YLeaf MplsstaticAfT::ipv4_ucast {1, "ipv4-ucast"};
-const Enum::YLeaf MplsstaticAfT::ipv6_ucast {2, "ipv6-ucast"};
-
-const Enum::YLeaf TrackRouteOwner::none {0, "none"};
-const Enum::YLeaf TrackRouteOwner::hmm {1, "hmm"};
-
-const Enum::YLeaf VsanAdminSt::active {1, "active"};
-const Enum::YLeaf VsanAdminSt::suspended {2, "suspended"};
-
-const Enum::YLeaf FcCreateState::created {0, "created"};
-const Enum::YLeaf FcCreateState::removed {1, "removed"};
-
-const Enum::YLeaf QosPrio::unspecified {0, "unspecified"};
-const Enum::YLeaf QosPrio::level3 {1, "level3"};
-const Enum::YLeaf QosPrio::level2 {2, "level2"};
-const Enum::YLeaf QosPrio::level1 {3, "level1"};
-const Enum::YLeaf QosPrio::policy_plane {4, "policy-plane"};
-const Enum::YLeaf QosPrio::control_plane {5, "control-plane"};
-const Enum::YLeaf QosPrio::span {6, "span"};
-
-const Enum::YLeaf IsisOperSt::unknown {0, "unknown"};
-const Enum::YLeaf IsisOperSt::initializing {1, "initializing"};
-const Enum::YLeaf IsisOperSt::ok {2, "ok"};
-const Enum::YLeaf IsisOperSt::failed {3, "failed"};
-
-const Enum::YLeaf NbmNbmRcvOwner::IGMP {0, "IGMP"};
-const Enum::YLeaf NbmNbmRcvOwner::STATIC {1, "STATIC"};
-const Enum::YLeaf NbmNbmRcvOwner::PIM {2, "PIM"};
-const Enum::YLeaf NbmNbmRcvOwner::NBM_STATIC {4, "NBM-STATIC"};
-
-const Enum::YLeaf NbmNbmFlowPolicerEn::DISABLED {0, "DISABLED"};
-const Enum::YLeaf NbmNbmFlowPolicerEn::ENABLED {1, "ENABLED"};
-
-const Enum::YLeaf TrackIntfProtocolType::none {0, "none"};
-const Enum::YLeaf TrackIntfProtocolType::ipv4_routing {1, "ipv4-routing"};
-const Enum::YLeaf TrackIntfProtocolType::ipv6_routing {2, "ipv6-routing"};
-const Enum::YLeaf TrackIntfProtocolType::line_protocol {3, "line-protocol"};
-
-const Enum::YLeaf MsdpOperSt::inactive {0, "inactive"};
-const Enum::YLeaf MsdpOperSt::down {1, "down"};
-const Enum::YLeaf MsdpOperSt::admin_down {2, "admin-down"};
-const Enum::YLeaf MsdpOperSt::connecting {3, "connecting"};
-const Enum::YLeaf MsdpOperSt::listening {4, "listening"};
-const Enum::YLeaf MsdpOperSt::established {5, "established"};
-
-const Enum::YLeaf L1AdminSt::down {1, "down"};
-const Enum::YLeaf L1AdminSt::up {2, "up"};
-
-const Enum::YLeaf L3CtxT::oob_mgmt {1, "oob-mgmt"};
-const Enum::YLeaf L3CtxT::inb_mgmt {2, "inb-mgmt"};
-const Enum::YLeaf L3CtxT::tenant {3, "tenant"};
-
-const Enum::YLeaf AdjacencyDbT::ip {1, "ip"};
-const Enum::YLeaf AdjacencyDbT::ipv6 {2, "ipv6"};
-
-const Enum::YLeaf AaaKeyEncUserPass::unspecified {255, "unspecified"};
-const Enum::YLeaf AaaKeyEncUserPass::clear {0, "clear"};
-const Enum::YLeaf AaaKeyEncUserPass::Encrypt {5, "Encrypt"};
-
-const Enum::YLeaf L3VrfGsdbCtxType::vrf {1, "vrf"};
-const Enum::YLeaf L3VrfGsdbCtxType::if_ {2, "if"};
-const Enum::YLeaf L3VrfGsdbCtxType::table {3, "table"};
-const Enum::YLeaf L3VrfGsdbCtxType::if_table {4, "if-table"};
-const Enum::YLeaf L3VrfGsdbCtxType::if_list {5, "if-list"};
-const Enum::YLeaf L3VrfGsdbCtxType::purge {6, "purge"};
-const Enum::YLeaf L3VrfGsdbCtxType::vpnid {7, "vpnid"};
-const Enum::YLeaf L3VrfGsdbCtxType::source_of_origin {8, "source-of-origin"};
-const Enum::YLeaf L3VrfGsdbCtxType::route_limits {9, "route-limits"};
-
-const Enum::YLeaf PimBfdInstSt::enabled {1, "enabled"};
-const Enum::YLeaf PimBfdInstSt::disabled {2, "disabled"};
-const Enum::YLeaf PimBfdInstSt::none {0, "none"};
-
-const Enum::YLeaf ArpDbT::ip {1, "ip"};
-const Enum::YLeaf ArpDbT::supcache {2, "supcache"};
-
-const Enum::YLeaf ConftmplTemplateType::unknown {0, "unknown"};
-const Enum::YLeaf ConftmplTemplateType::vrf {1, "vrf"};
-const Enum::YLeaf ConftmplTemplateType::vlan {2, "vlan"};
-const Enum::YLeaf ConftmplTemplateType::intf {3, "intf"};
-
-const Enum::YLeaf L1Mode::access {1, "access"};
-const Enum::YLeaf L1Mode::trunk {2, "trunk"};
-const Enum::YLeaf L1Mode::fex_fabric {3, "fex-fabric"};
-const Enum::YLeaf L1Mode::dot1q_tunnel {4, "dot1q-tunnel"};
-const Enum::YLeaf L1Mode::promiscuous {5, "promiscuous"};
-const Enum::YLeaf L1Mode::host {6, "host"};
-const Enum::YLeaf L1Mode::trunk_secondary {7, "trunk_secondary"};
-const Enum::YLeaf L1Mode::trunk_promiscuous {8, "trunk_promiscuous"};
-
-const Enum::YLeaf L2BridgeMode::ip {1, "ip"};
-const Enum::YLeaf L2BridgeMode::mac {2, "mac"};
-
-const Enum::YLeaf VpcOperSt::unknown {0, "unknown"};
-const Enum::YLeaf VpcOperSt::down {1, "down"};
-const Enum::YLeaf VpcOperSt::up {2, "up"};
-const Enum::YLeaf VpcOperSt::noCfg {3, "noCfg"};
-
-const Enum::YLeaf ImMode100M::disabled {0, "disabled"};
-const Enum::YLeaf ImMode100M::enabled {1, "enabled"};
-
-const Enum::YLeaf RtcomComT::regular {1, "regular"};
-const Enum::YLeaf RtcomComT::extended {2, "extended"};
-
-const Enum::YLeaf L2DomMode::CE {1, "CE"};
-const Enum::YLeaf L2DomMode::FabricPath {2, "FabricPath"};
-
-const Enum::YLeaf BgpAsnPropagation::none {0, "none"};
-const Enum::YLeaf BgpAsnPropagation::no_prepend {1, "no-prepend"};
-const Enum::YLeaf BgpAsnPropagation::replace_as {2, "replace-as"};
-const Enum::YLeaf BgpAsnPropagation::dual_as {3, "dual-as"};
-
-const Enum::YLeaf IpqosStatsState::enabled {0, "enabled"};
-const Enum::YLeaf IpqosStatsState::disabled {1, "disabled"};
-
-const Enum::YLeaf BgpDomOperSt::unknown {0, "unknown"};
-const Enum::YLeaf BgpDomOperSt::up {1, "up"};
-const Enum::YLeaf BgpDomOperSt::down {2, "down"};
-
-const Enum::YLeaf TelemetryCompression::disabled {0, "disabled"};
-const Enum::YLeaf TelemetryCompression::gzip {1, "gzip"};
-
-const Enum::YLeaf BgpPfxSidAttrEntryType::none {0, "none"};
-const Enum::YLeaf BgpPfxSidAttrEntryType::label_index {1, "label-index"};
-const Enum::YLeaf BgpPfxSidAttrEntryType::ipv6_sid {2, "ipv6-sid"};
-const Enum::YLeaf BgpPfxSidAttrEntryType::origin_srgb {3, "origin-srgb"};
-
-const Enum::YLeaf EqptLedType::unknown {0, "unknown"};
-const Enum::YLeaf EqptLedType::status {1, "status"};
-const Enum::YLeaf EqptLedType::system {2, "system"};
-const Enum::YLeaf EqptLedType::active {3, "active"};
-const Enum::YLeaf EqptLedType::power {4, "power"};
-const Enum::YLeaf EqptLedType::battery {5, "battery"};
-const Enum::YLeaf EqptLedType::lc_status {6, "lc-status"};
-const Enum::YLeaf EqptLedType::sup_status {7, "sup-status"};
-const Enum::YLeaf EqptLedType::fc_status {8, "fc-status"};
-const Enum::YLeaf EqptLedType::fan_status {9, "fan-status"};
-const Enum::YLeaf EqptLedType::pwr_status {10, "pwr-status"};
-
-const Enum::YLeaf PlatformFabricSpeed::DEFAULT {0, "DEFAULT"};
-const Enum::YLeaf PlatformFabricSpeed::FABRIC_SPEED_40G {1, "FABRIC_SPEED_40G"};
-
-const Enum::YLeaf McastFiltMode::include {1, "include"};
-const Enum::YLeaf McastFiltMode::exclude {2, "exclude"};
-
-const Enum::YLeaf NbmNbmGroupRangeType::ASM {0, "ASM"};
-const Enum::YLeaf NbmNbmGroupRangeType::SSM {1, "SSM"};
-
-const Enum::YLeaf StpMode::mst {1, "mst"};
-const Enum::YLeaf StpMode::pvrst {2, "pvrst"};
-
-const Enum::YLeaf AaaRuleAccessType::none {0, "none"};
-const Enum::YLeaf AaaRuleAccessType::read {1, "read"};
-const Enum::YLeaf AaaRuleAccessType::read_write {2, "read-write"};
-const Enum::YLeaf AaaRuleAccessType::command {3, "command"};
-
-const Enum::YLeaf SnmpPrivTypeT::no {0, "no"};
-const Enum::YLeaf SnmpPrivTypeT::des {1, "des"};
-const Enum::YLeaf SnmpPrivTypeT::aes128 {2, "aes128"};
-
-const Enum::YLeaf RtctrlRttPType::import {1, "import"};
-const Enum::YLeaf RtctrlRttPType::export_ {2, "export"};
-
-const Enum::YLeaf OspfPassiveControl::unspecified {0, "unspecified"};
-const Enum::YLeaf OspfPassiveControl::enabled {1, "enabled"};
-const Enum::YLeaf OspfPassiveControl::disabled {2, "disabled"};
-
-const Enum::YLeaf ProcOperSt::intr_sleep {0, "intr-sleep"};
-const Enum::YLeaf ProcOperSt::stopped {1, "stopped"};
-const Enum::YLeaf ProcOperSt::unintr_sleep {2, "unintr-sleep"};
-const Enum::YLeaf ProcOperSt::running {3, "running"};
-const Enum::YLeaf ProcOperSt::dead {4, "dead"};
-const Enum::YLeaf ProcOperSt::defunct {5, "defunct"};
-
-const Enum::YLeaf NwAdminStIfStatPortUnreach::enabled {1, "enabled"};
-const Enum::YLeaf NwAdminStIfStatPortUnreach::disabled {2, "disabled"};
-
-const Enum::YLeaf InstallerInstEnum::yes {0, "yes"};
-const Enum::YLeaf InstallerInstEnum::no {1, "no"};
-
-const Enum::YLeaf BgpAsSegT::sequence {1, "sequence"};
-const Enum::YLeaf BgpAsSegT::set {2, "set"};
-
-const Enum::YLeaf DatetimeNTPPeerMode::unspecified {0, "unspecified"};
-const Enum::YLeaf DatetimeNTPPeerMode::symmetricActive {1, "symmetricActive"};
-const Enum::YLeaf DatetimeNTPPeerMode::symmetricPassive {2, "symmetricPassive"};
-const Enum::YLeaf DatetimeNTPPeerMode::client {3, "client"};
-const Enum::YLeaf DatetimeNTPPeerMode::server {4, "server"};
-const Enum::YLeaf DatetimeNTPPeerMode::broadcast {5, "broadcast"};
-const Enum::YLeaf DatetimeNTPPeerMode::reservedControl {6, "reservedControl"};
-const Enum::YLeaf DatetimeNTPPeerMode::reservedPrivate {7, "reservedPrivate"};
-
-const Enum::YLeaf VpcParamType::unknown {0, "unknown"};
-const Enum::YLeaf VpcParamType::type_1 {1, "type-1"};
-const Enum::YLeaf VpcParamType::type_2 {2, "type-2"};
-
-const Enum::YLeaf AaaBoolean::no {0, "no"};
-const Enum::YLeaf AaaBoolean::yes {1, "yes"};
-
-const Enum::YLeaf AnalyticsCollVersion::v5 {1, "v5"};
-const Enum::YLeaf AnalyticsCollVersion::v9 {2, "v9"};
-const Enum::YLeaf AnalyticsCollVersion::cisco_v1 {3, "cisco-v1"};
-
-const Enum::YLeaf CoppIcmp::Undefined {0, "Undefined"};
-const Enum::YLeaf CoppIcmp::redirect {1, "redirect"};
-const Enum::YLeaf CoppIcmp::unreachable {2, "unreachable"};
-
-const Enum::YLeaf MonitorDbT::ipep_resolve {1, "ipep-resolve"};
-
-const Enum::YLeaf IpqosBurstRateUnit::unspecified {0, "unspecified"};
-const Enum::YLeaf IpqosBurstRateUnit::bytes {1, "bytes"};
-const Enum::YLeaf IpqosBurstRateUnit::kbytes {2, "kbytes"};
-const Enum::YLeaf IpqosBurstRateUnit::mbytes {3, "mbytes"};
-const Enum::YLeaf IpqosBurstRateUnit::ms {4, "ms"};
-const Enum::YLeaf IpqosBurstRateUnit::us {5, "us"};
-const Enum::YLeaf IpqosBurstRateUnit::packets {6, "packets"};
-
-const Enum::YLeaf L1capSubj::unknown {0, "unknown"};
-const Enum::YLeaf L1capSubj::pc_namespace {1, "pc-namespace"};
-const Enum::YLeaf L1capSubj::ethport {2, "ethport"};
-
-const Enum::YLeaf AggregateFabFwdMode::standard {0, "standard"};
-const Enum::YLeaf AggregateFabFwdMode::anycastgw {1, "anycastgw"};
-const Enum::YLeaf AggregateFabFwdMode::proxygw {2, "proxygw"};
-
-const Enum::YLeaf BgpRtCtrlDir::in {1, "in"};
-const Enum::YLeaf BgpRtCtrlDir::out {2, "out"};
-
-const Enum::YLeaf IpLoadShareFormat::disabled {1, "disabled"};
-const Enum::YLeaf IpLoadShareFormat::destPort {2, "destPort"};
-const Enum::YLeaf IpLoadShareFormat::srcDest {3, "srcDest"};
-const Enum::YLeaf IpLoadShareFormat::srcDestGre {4, "srcDestGre"};
-const Enum::YLeaf IpLoadShareFormat::srcDestPort {5, "srcDestPort"};
-const Enum::YLeaf IpLoadShareFormat::source {6, "source"};
-const Enum::YLeaf IpLoadShareFormat::srcDestGTPU {7, "srcDestGTPU"};
-
-const Enum::YLeaf AaaRealmDomainAuthRealm::local {0, "local"};
-const Enum::YLeaf AaaRealmDomainAuthRealm::radius {1, "radius"};
-const Enum::YLeaf AaaRealmDomainAuthRealm::tacacs {2, "tacacs"};
-const Enum::YLeaf AaaRealmDomainAuthRealm::ldap {3, "ldap"};
-const Enum::YLeaf AaaRealmDomainAuthRealm::none {4, "none"};
-
-const Enum::YLeaf EqptSensorT::cpu {1, "cpu"};
-const Enum::YLeaf EqptSensorT::inlet {2, "inlet"};
-const Enum::YLeaf EqptSensorT::outlet {3, "outlet"};
-const Enum::YLeaf EqptSensorT::hotswap {4, "hotswap"};
-const Enum::YLeaf EqptSensorT::dimm {5, "dimm"};
-const Enum::YLeaf EqptSensorT::phy {6, "phy"};
-const Enum::YLeaf EqptSensorT::sfp {7, "sfp"};
-const Enum::YLeaf EqptSensorT::qsfp {8, "qsfp"};
-const Enum::YLeaf EqptSensorT::asic {9, "asic"};
-const Enum::YLeaf EqptSensorT::pch {10, "pch"};
-const Enum::YLeaf EqptSensorT::cpu_crm {11, "cpu-crm"};
-const Enum::YLeaf EqptSensorT::asic_vrm {12, "asic-vrm"};
-const Enum::YLeaf EqptSensorT::x86 {18, "x86"};
-const Enum::YLeaf EqptSensorT::arm {19, "arm"};
-const Enum::YLeaf EqptSensorT::die {20, "die"};
-
-const Enum::YLeaf SysmgrSupSt::unknown {0, "unknown"};
-const Enum::YLeaf SysmgrSupSt::active {1, "active"};
-const Enum::YLeaf SysmgrSupSt::hot_stdby {2, "hot-stdby"};
-const Enum::YLeaf SysmgrSupSt::cold_stdby {3, "cold-stdby"};
-const Enum::YLeaf SysmgrSupSt::offline {4, "offline"};
-const Enum::YLeaf SysmgrSupSt::normal {5, "normal"};
-const Enum::YLeaf SysmgrSupSt::non_dis_upg {6, "non-dis-upg"};
-
-const Enum::YLeaf L1LinkLog::default_ {1, "default"};
-const Enum::YLeaf L1LinkLog::enable {2, "enable"};
-const Enum::YLeaf L1LinkLog::disable {3, "disable"};
-
-const Enum::YLeaf L1EEEState::enable {1, "enable"};
-const Enum::YLeaf L1EEEState::disable {2, "disable"};
-const Enum::YLeaf L1EEEState::disagreed {3, "disagreed"};
-const Enum::YLeaf L1EEEState::not_applicable {4, "not-applicable"};
-
-const Enum::YLeaf EthpmTrunkStatus::unknown {0, "unknown"};
-const Enum::YLeaf EthpmTrunkStatus::trunking {1, "trunking"};
-const Enum::YLeaf EthpmTrunkStatus::fabricpath {2, "fabricpath"};
-const Enum::YLeaf EthpmTrunkStatus::not_trunking {3, "not-trunking"};
-const Enum::YLeaf EthpmTrunkStatus::trunk_bundle {4, "trunk-bundle"};
-const Enum::YLeaf EthpmTrunkStatus::fabric_bundle {5, "fabric-bundle"};
-const Enum::YLeaf EthpmTrunkStatus::no_trunk_bundle {6, "no-trunk-bundle"};
-
-const Enum::YLeaf StpPriority::Y_0 {0, "0"};
-const Enum::YLeaf StpPriority::Y_4096 {1, "4096"};
-const Enum::YLeaf StpPriority::Y_8192 {2, "8192"};
-const Enum::YLeaf StpPriority::Y_12288 {3, "12288"};
-const Enum::YLeaf StpPriority::Y_16384 {4, "16384"};
-const Enum::YLeaf StpPriority::Y_20480 {5, "20480"};
-const Enum::YLeaf StpPriority::Y_24576 {6, "24576"};
-const Enum::YLeaf StpPriority::Y_28672 {7, "28672"};
-const Enum::YLeaf StpPriority::Y_32768 {8, "32768"};
-const Enum::YLeaf StpPriority::Y_36864 {9, "36864"};
-const Enum::YLeaf StpPriority::Y_40960 {10, "40960"};
-const Enum::YLeaf StpPriority::Y_45056 {11, "45056"};
-const Enum::YLeaf StpPriority::Y_49152 {12, "49152"};
-const Enum::YLeaf StpPriority::Y_53248 {13, "53248"};
-const Enum::YLeaf StpPriority::Y_57344 {14, "57344"};
-const Enum::YLeaf StpPriority::Y_61440 {15, "61440"};
-
-const Enum::YLeaf IpAddrOperStQual::unspecified {0, "unspecified"};
-const Enum::YLeaf IpAddrOperStQual::up {1, "up"};
-const Enum::YLeaf IpAddrOperStQual::subnet_overlap {2, "subnet-overlap"};
-const Enum::YLeaf IpAddrOperStQual::no_primary {3, "no-primary"};
-const Enum::YLeaf IpAddrOperStQual::if_down {4, "if-down"};
-const Enum::YLeaf IpAddrOperStQual::addr_exists {5, "addr-exists"};
-const Enum::YLeaf IpAddrOperStQual::invalid_vrf {6, "invalid-vrf"};
-const Enum::YLeaf IpAddrOperStQual::static_rt_nh {7, "static-rt-nh"};
-const Enum::YLeaf IpAddrOperStQual::lb_addr {8, "lb-addr"};
-const Enum::YLeaf IpAddrOperStQual::invalid_ll_use {9, "invalid-ll-use"};
-const Enum::YLeaf IpAddrOperStQual::no_glbl_addr {10, "no-glbl-addr"};
-const Enum::YLeaf IpAddrOperStQual::no_ll_addr {11, "no-ll-addr"};
-const Enum::YLeaf IpAddrOperStQual::dad_in_progress {12, "dad-in-progress"};
-const Enum::YLeaf IpAddrOperStQual::dad_failed {13, "dad-failed"};
-const Enum::YLeaf IpAddrOperStQual::invalid_mask_len {14, "invalid-mask-len"};
-const Enum::YLeaf IpAddrOperStQual::l2_intf_err {15, "l2-intf-err"};
-const Enum::YLeaf IpAddrOperStQual::super_intf_err {16, "super-intf-err"};
-const Enum::YLeaf IpAddrOperStQual::invalid_ll {17, "invalid-ll"};
-const Enum::YLeaf IpAddrOperStQual::if_init_err {18, "if-init-err"};
-const Enum::YLeaf IpAddrOperStQual::ifindex_err {19, "ifindex-err"};
-const Enum::YLeaf IpAddrOperStQual::invalid_eui64 {20, "invalid-eui64"};
-const Enum::YLeaf IpAddrOperStQual::lladdr_create_fail {21, "lladdr-create-fail"};
-const Enum::YLeaf IpAddrOperStQual::DAD_tentative {22, "DAD-tentative"};
-const Enum::YLeaf IpAddrOperStQual::DAD_lcl_duplicate {23, "DAD-lcl-duplicate"};
-const Enum::YLeaf IpAddrOperStQual::DAD_duplicate {24, "DAD-duplicate"};
-const Enum::YLeaf IpAddrOperStQual::DAD_preferred {25, "DAD-preferred"};
-const Enum::YLeaf IpAddrOperStQual::DAD_deprecated {26, "DAD-deprecated"};
-const Enum::YLeaf IpAddrOperStQual::DAD_invalid {27, "DAD-invalid"};
-const Enum::YLeaf IpAddrOperStQual::multiple_lladdr {28, "multiple-lladdr"};
-const Enum::YLeaf IpAddrOperStQual::invalid_tunnel {29, "invalid-tunnel"};
-const Enum::YLeaf IpAddrOperStQual::lladdr_invalid_tunnel {30, "lladdr-invalid-tunnel"};
-
-const Enum::YLeaf SnmpPrivType::none {0, "none"};
-const Enum::YLeaf SnmpPrivType::des {1, "des"};
-const Enum::YLeaf SnmpPrivType::aes_128 {2, "aes-128"};
-
-const Enum::YLeaf NpvExtIfFsmSt::no_transition {0, "no-transition"};
-const Enum::YLeaf NpvExtIfFsmSt::no_change {1, "no-change"};
-const Enum::YLeaf NpvExtIfFsmSt::any {2, "any"};
-const Enum::YLeaf NpvExtIfFsmSt::down {3, "down"};
-const Enum::YLeaf NpvExtIfFsmSt::preinit_done {4, "preinit-done"};
-const Enum::YLeaf NpvExtIfFsmSt::wait_flogi_response {5, "wait-flogi-response"};
-const Enum::YLeaf NpvExtIfFsmSt::up {6, "up"};
-const Enum::YLeaf NpvExtIfFsmSt::flogi_failed {7, "flogi-failed"};
-const Enum::YLeaf NpvExtIfFsmSt::wait_fcid_add {8, "wait-fcid-add"};
-const Enum::YLeaf NpvExtIfFsmSt::wait_fcid_del {9, "wait-fcid-del"};
-const Enum::YLeaf NpvExtIfFsmSt::wait_ns_registration {10, "wait-ns-registration"};
-const Enum::YLeaf NpvExtIfFsmSt::flogi_fail_retry {11, "flogi-fail-retry"};
-const Enum::YLeaf NpvExtIfFsmSt::wait_for_vsan_up {12, "wait-for-vsan-up"};
-const Enum::YLeaf NpvExtIfFsmSt::wait_lc_port_config {13, "wait-lc-port-config"};
-const Enum::YLeaf NpvExtIfFsmSt::pc_member_add {14, "pc-member-add"};
-const Enum::YLeaf NpvExtIfFsmSt::pc_member_del {15, "pc-member-del"};
-
-const Enum::YLeaf BfdTrkMbrLnk::enable {1, "enable"};
-const Enum::YLeaf BfdTrkMbrLnk::disable {0, "disable"};
-
-const Enum::YLeaf OspfAdjOperSt::unknown {0, "unknown"};
-const Enum::YLeaf OspfAdjOperSt::down {1, "down"};
-const Enum::YLeaf OspfAdjOperSt::attempt {2, "attempt"};
-const Enum::YLeaf OspfAdjOperSt::initializing {3, "initializing"};
-const Enum::YLeaf OspfAdjOperSt::two_way {4, "two-way"};
-const Enum::YLeaf OspfAdjOperSt::exstart {5, "exstart"};
-const Enum::YLeaf OspfAdjOperSt::exchange {6, "exchange"};
-const Enum::YLeaf OspfAdjOperSt::loading {7, "loading"};
-const Enum::YLeaf OspfAdjOperSt::full {8, "full"};
-const Enum::YLeaf OspfAdjOperSt::self {9, "self"};
-
-const Enum::YLeaf FvImmediacy_::immediate {1, "immediate"};
-const Enum::YLeaf FvImmediacy_::lazy {2, "lazy"};
-
-const Enum::YLeaf AaaKeyEncTacacsPlusProviderKeyEnc::Y_0 {0, "0"};
-const Enum::YLeaf AaaKeyEncTacacsPlusProviderKeyEnc::Y_6 {6, "6"};
-const Enum::YLeaf AaaKeyEncTacacsPlusProviderKeyEnc::Y_7 {7, "7"};
-const Enum::YLeaf AaaKeyEncTacacsPlusProviderKeyEnc::inherit_from_global {255, "inherit-from-global"};
-
-const Enum::YLeaf OspfBwRefUnit::mbps {0, "mbps"};
-const Enum::YLeaf OspfBwRefUnit::gbps {1, "gbps"};
-
-const Enum::YLeaf InbandTelemetryModeT::inbandtelemetry {0, "inbandtelemetry"};
-const Enum::YLeaf InbandTelemetryModeT::postcard {1, "postcard"};
-
-const Enum::YLeaf IsisHelloPadT::always {1, "always"};
-const Enum::YLeaf IsisHelloPadT::transient {2, "transient"};
-const Enum::YLeaf IsisHelloPadT::never {3, "never"};
-
-const Enum::YLeaf TunnelifTunnelMode::gre__FWD_SLASH__ip {1, "gre/ip"};
-const Enum::YLeaf TunnelifTunnelMode::gre__FWD_SLASH__ipv6 {6, "gre/ipv6"};
-const Enum::YLeaf TunnelifTunnelMode::ipip__FWD_SLASH__ip {7, "ipip/ip"};
-const Enum::YLeaf TunnelifTunnelMode::ipip__FWD_SLASH__ipv6 {8, "ipip/ipv6"};
-const Enum::YLeaf TunnelifTunnelMode::ipip__FWD_SLASH__dcapany__FWD_SLASH__ip {9, "ipip/dcapany/ip"};
-const Enum::YLeaf TunnelifTunnelMode::ipip__FWD_SLASH__dcapany__FWD_SLASH__ipv6 {10, "ipip/dcapany/ipv6"};
-const Enum::YLeaf TunnelifTunnelMode::ipv6ip {11, "ipv6ip"};
-const Enum::YLeaf TunnelifTunnelMode::ipv6ip__FWD_SLASH__dcapany {12, "ipv6ip/dcapany"};
-const Enum::YLeaf TunnelifTunnelMode::ipv6ipv6 {13, "ipv6ipv6"};
-const Enum::YLeaf TunnelifTunnelMode::ipv6ipv6__FWD_SLASH__dcapany {14, "ipv6ipv6/dcapany"};
-
-const Enum::YLeaf RtdmcDbT::rp {0, "rp"};
-const Enum::YLeaf RtdmcDbT::grange {1, "grange"};
-const Enum::YLeaf RtdmcDbT::route {2, "route"};
-const Enum::YLeaf RtdmcDbT::dynrpsrc {3, "dynrpsrc"};
-const Enum::YLeaf RtdmcDbT::gstats {4, "gstats"};
-const Enum::YLeaf RtdmcDbT::vrf {5, "vrf"};
-const Enum::YLeaf RtdmcDbT::ifrec {6, "ifrec"};
-const Enum::YLeaf RtdmcDbT::grpoif {7, "grpoif"};
-const Enum::YLeaf RtdmcDbT::group {8, "group"};
-const Enum::YLeaf RtdmcDbT::ifstats {9, "ifstats"};
-const Enum::YLeaf RtdmcDbT::peer {10, "peer"};
-const Enum::YLeaf RtdmcDbT::rphash {11, "rphash"};
-const Enum::YLeaf RtdmcDbT::df {12, "df"};
-const Enum::YLeaf RtdmcDbT::bf {13, "bf"};
-const Enum::YLeaf RtdmcDbT::embedrp {14, "embedrp"};
-const Enum::YLeaf RtdmcDbT::syslog {15, "syslog"};
-const Enum::YLeaf RtdmcDbT::vrfdetail {16, "vrfdetail"};
-
-const Enum::YLeaf NdRouterPreference::Medium {0, "Medium"};
-const Enum::YLeaf NdRouterPreference::High {1, "High"};
-const Enum::YLeaf NdRouterPreference::Reserved {2, "Reserved"};
-const Enum::YLeaf NdRouterPreference::Low {3, "Low"};
-
-const Enum::YLeaf BgpEgressPeerEng::none {0, "none"};
-const Enum::YLeaf BgpEgressPeerEng::enabled {1, "enabled"};
-const Enum::YLeaf BgpEgressPeerEng::enabled_adj_sid {2, "enabled-adj-sid"};
-
-const Enum::YLeaf TopNodeRole::unsupported {0, "unsupported"};
-const Enum::YLeaf TopNodeRole::controller {1, "controller"};
-const Enum::YLeaf TopNodeRole::leaf {2, "leaf"};
-const Enum::YLeaf TopNodeRole::spine {3, "spine"};
-const Enum::YLeaf TopNodeRole::vleaf {4, "vleaf"};
-const Enum::YLeaf TopNodeRole::vip {5, "vip"};
-const Enum::YLeaf TopNodeRole::protection_chain {6, "protection-chain"};
-
-const Enum::YLeaf SviMedium::bcast {0, "bcast"};
-const Enum::YLeaf SviMedium::p2p {1, "p2p"};
-
-const Enum::YLeaf TunnelifTunnelPMTUD::enabled {1, "enabled"};
-const Enum::YLeaf TunnelifTunnelPMTUD::disabled {2, "disabled"};
-
-const Enum::YLeaf PlatformBufferMonitorSt::Enable {1, "Enable"};
-const Enum::YLeaf PlatformBufferMonitorSt::Disable {0, "Disable"};
-
-const Enum::YLeaf InstallerInstModType::nxos_supervisor {0, "nxos-supervisor"};
-const Enum::YLeaf InstallerInstModType::lc {1, "lc"};
-const Enum::YLeaf InstallerInstModType::fex {2, "fex"};
-const Enum::YLeaf InstallerInstModType::bios {3, "bios"};
-const Enum::YLeaf InstallerInstModType::lcn9k {4, "lcn9k"};
-const Enum::YLeaf InstallerInstModType::unknown {-1, "unknown"};
-
-const Enum::YLeaf SisfSecurityLevel::glean {0, "glean"};
-const Enum::YLeaf SisfSecurityLevel::inspect {1, "inspect"};
-const Enum::YLeaf SisfSecurityLevel::guard {2, "guard"};
-
-const Enum::YLeaf SisfDhcpflag::on {0, "on"};
-const Enum::YLeaf SisfDhcpflag::off {1, "off"};
-
-const Enum::YLeaf PlatformInfraVlanForce::Disable {0, "Disable"};
-const Enum::YLeaf PlatformInfraVlanForce::Enable {1, "Enable"};
-
-const Enum::YLeaf SnmpSmplType::unspecified {0, "unspecified"};
-const Enum::YLeaf SnmpSmplType::absolute {1, "absolute"};
-const Enum::YLeaf SnmpSmplType::delta {2, "delta"};
-
-const Enum::YLeaf AnalyticsDefPolicyT::permit {0, "permit"};
-const Enum::YLeaf AnalyticsDefPolicyT::deny {1, "deny"};
-
-const Enum::YLeaf SpanDbT::ipep_resolve {1, "ipep-resolve"};
-
-const Enum::YLeaf VrrpGroupSt::init {0, "init"};
-const Enum::YLeaf VrrpGroupSt::backup {1, "backup"};
-const Enum::YLeaf VrrpGroupSt::master {2, "master"};
-
-const Enum::YLeaf EthpmSyslogInfo::default_ {0, "default"};
-const Enum::YLeaf EthpmSyslogInfo::info_1 {1, "info-1"};
-
-const Enum::YLeaf VsanLbType::src_dst_id {1, "src-dst-id"};
-const Enum::YLeaf VsanLbType::src_dst_ox_id {2, "src-dst-ox-id"};
-
-const Enum::YLeaf OspfLsaLeakOperSt::Inactive {0, "Inactive"};
-const Enum::YLeaf OspfLsaLeakOperSt::active {1, "active"};
-
-const Enum::YLeaf L1PortTypeFabric::no {0, "no"};
-const Enum::YLeaf L1PortTypeFabric::yes {1, "yes"};
-
-const Enum::YLeaf RtleakCtrl::unspecified {0, "unspecified"};
-const Enum::YLeaf RtleakCtrl::warning {1, "warning"};
-const Enum::YLeaf RtleakCtrl::withdraw {2, "withdraw"};
-
-const Enum::YLeaf PcOperSt::up {0, "up"};
-const Enum::YLeaf PcOperSt::down {1, "down"};
-const Enum::YLeaf PcOperSt::bringup_in_progress {2, "bringup-in-progress"};
-const Enum::YLeaf PcOperSt::module_removed {3, "module-removed"};
-
-const Enum::YLeaf AaaKeyEncRadiusProviderKeyEnc::Y_0 {0, "0"};
-const Enum::YLeaf AaaKeyEncRadiusProviderKeyEnc::Y_6 {6, "6"};
-const Enum::YLeaf AaaKeyEncRadiusProviderKeyEnc::Y_7 {7, "7"};
-const Enum::YLeaf AaaKeyEncRadiusProviderKeyEnc::inherit_from_global {255, "inherit-from-global"};
-
-const Enum::YLeaf TelemetryEncoding::GPB {1, "GPB"};
-const Enum::YLeaf TelemetryEncoding::JSON {2, "JSON"};
-const Enum::YLeaf TelemetryEncoding::XML {3, "XML"};
-
-const Enum::YLeaf CoppRdrct::Undefined {0, "Undefined"};
-const Enum::YLeaf CoppRdrct::arp_inspect {1, "arp-inspect"};
-const Enum::YLeaf CoppRdrct::dhcp_snoop {2, "dhcp-snoop"};
-
-const Enum::YLeaf EqptMemT::unk {0, "unk"};
-const Enum::YLeaf EqptMemT::dimm {1, "dimm"};
-const Enum::YLeaf EqptMemT::flash {2, "flash"};
-const Enum::YLeaf EqptMemT::sprom {3, "sprom"};
-
-const Enum::YLeaf CapRaiseFaultState::nominal {0, "nominal"};
-const Enum::YLeaf CapRaiseFaultState::ruleHasLess {1, "ruleHasLess"};
-const Enum::YLeaf CapRaiseFaultState::ruleHasMore {2, "ruleHasMore"};
-
-const Enum::YLeaf BgpPeerType::ibgp {1, "ibgp"};
-const Enum::YLeaf BgpPeerType::ebgp {2, "ebgp"};
-
-const Enum::YLeaf NetflowDirectionT::in {1, "in"};
-const Enum::YLeaf NetflowDirectionT::out {2, "out"};
-const Enum::YLeaf NetflowDirectionT::both {3, "both"};
-
-const Enum::YLeaf PlatformRoutingMode::DEFAULT {0, "DEFAULT"};
-const Enum::YLeaf PlatformRoutingMode::NON_HIER_DEFAULT {1, "NON_HIER_DEFAULT"};
-const Enum::YLeaf PlatformRoutingMode::NON_HIER_MAX_L3 {2, "NON_HIER_MAX_L3"};
-const Enum::YLeaf PlatformRoutingMode::MAX_HOST {3, "MAX_HOST"};
-const Enum::YLeaf PlatformRoutingMode::TOR_MAX_L3 {4, "TOR_MAX_L3"};
-const Enum::YLeaf PlatformRoutingMode::DEFAULT_64B {5, "DEFAULT_64B"};
-const Enum::YLeaf PlatformRoutingMode::NON_HIER_MAX_L3_64B {6, "NON_HIER_MAX_L3_64B"};
-const Enum::YLeaf PlatformRoutingMode::TOR_MAX_L3_64B {7, "TOR_MAX_L3_64B"};
-const Enum::YLeaf PlatformRoutingMode::TOR_MAX_L2 {8, "TOR_MAX_L2"};
-const Enum::YLeaf PlatformRoutingMode::TOR_MAX_L2L3 {9, "TOR_MAX_L2L3"};
-const Enum::YLeaf PlatformRoutingMode::TOR_TEMPLATE_OVL_HOST_SCALE {21, "TOR_TEMPLATE_OVL_HOST_SCALE"};
-const Enum::YLeaf PlatformRoutingMode::TEMPLATE_LPM_HEAVY {22, "TEMPLATE_LPM_HEAVY"};
-const Enum::YLeaf PlatformRoutingMode::TOR_TEMPLATE_LPM_SCALE_V6_64 {23, "TOR_TEMPLATE_LPM_SCALE_V6_64"};
-const Enum::YLeaf PlatformRoutingMode::TOR_TEMPLATE_DUAL_STACK_HOST_SCALE {24, "TOR_TEMPLATE_DUAL_STACK_HOST_SCALE"};
-const Enum::YLeaf PlatformRoutingMode::TEMPLATE_DYNAMIC_TRIE_SCALE {25, "TEMPLATE_DYNAMIC_TRIE_SCALE"};
-const Enum::YLeaf PlatformRoutingMode::TEMPLATE_MULTICAST_HEAVY {26, "TEMPLATE_MULTICAST_HEAVY"};
-const Enum::YLeaf PlatformRoutingMode::TEMPLATE_VXLAN_SCALE {27, "TEMPLATE_VXLAN_SCALE"};
-const Enum::YLeaf PlatformRoutingMode::TEMPLATE_MPLS_SCALE {28, "TEMPLATE_MPLS_SCALE"};
-const Enum::YLeaf PlatformRoutingMode::TEMPLATE_IPV6_LPM_HEAVY {29, "TEMPLATE_IPV6_LPM_HEAVY"};
-const Enum::YLeaf PlatformRoutingMode::TEMPLATE_MULTICAST_EXT_HEAVY {31, "TEMPLATE_MULTICAST_EXT_HEAVY"};
-
-const Enum::YLeaf IpqosRateUnit::unspecified {0, "unspecified"};
-const Enum::YLeaf IpqosRateUnit::bps {1, "bps"};
-const Enum::YLeaf IpqosRateUnit::kbps {2, "kbps"};
-const Enum::YLeaf IpqosRateUnit::mbps {3, "mbps"};
-const Enum::YLeaf IpqosRateUnit::gbps {4, "gbps"};
-const Enum::YLeaf IpqosRateUnit::pps {5, "pps"};
-const Enum::YLeaf IpqosRateUnit::pct {6, "pct"};
-
-const Enum::YLeaf MplsOperSt::down {0, "down"};
-const Enum::YLeaf MplsOperSt::up {1, "up"};
-
-const Enum::YLeaf NbmNbmPermit::UNDEFINED {0, "UNDEFINED"};
-const Enum::YLeaf NbmNbmPermit::DENIED {1, "DENIED"};
-const Enum::YLeaf NbmNbmPermit::ALLOWED {2, "ALLOWED"};
-
-const Enum::YLeaf FmInstOperState::enabled {1, "enabled"};
-const Enum::YLeaf FmInstOperState::disabled {2, "disabled"};
-const Enum::YLeaf FmInstOperState::enabled_not_running {3, "enabled-not-running"};
-
-const Enum::YLeaf CfsAdminSt::enabled {1, "enabled"};
-const Enum::YLeaf CfsAdminSt::disabled {2, "disabled"};
-
-const Enum::YLeaf PimIfdbT::stats {0, "stats"};
-const Enum::YLeaf PimIfdbT::adj {1, "adj"};
-const Enum::YLeaf PimIfdbT::prop {2, "prop"};
-
-const Enum::YLeaf L2CreateState::created {1, "created"};
-const Enum::YLeaf L2CreateState::removed {2, "removed"};
-const Enum::YLeaf L2CreateState::deleted_and_stale {3, "deleted-and-stale"};
-
-const Enum::YLeaf VpcTosType::min_delay {0, "min-delay"};
-const Enum::YLeaf VpcTosType::max_throughput {1, "max-throughput"};
-const Enum::YLeaf VpcTosType::max_reliability {2, "max-reliability"};
-const Enum::YLeaf VpcTosType::min_monetary_cost {3, "min-monetary-cost"};
-const Enum::YLeaf VpcTosType::normal {4, "normal"};
-
-const Enum::YLeaf IpmcVer::unspecified {0, "unspecified"};
-const Enum::YLeaf IpmcVer::Y_2 {2, "2"};
-const Enum::YLeaf IpmcVer::Y_3 {3, "3"};
-
-const Enum::YLeaf NbmNbmEndpointRole::UNKNOWN {0, "UNKNOWN"};
-const Enum::YLeaf NbmNbmEndpointRole::ARP {1, "ARP"};
-const Enum::YLeaf NbmNbmEndpointRole::RECEIVER {2, "RECEIVER"};
-const Enum::YLeaf NbmNbmEndpointRole::RECEIVER_ARP {3, "RECEIVER_ARP"};
-const Enum::YLeaf NbmNbmEndpointRole::SENDER {4, "SENDER"};
-const Enum::YLeaf NbmNbmEndpointRole::SENDER_ARP {5, "SENDER_ARP"};
-const Enum::YLeaf NbmNbmEndpointRole::SENDER_RECEIVER {6, "SENDER_RECEIVER"};
-const Enum::YLeaf NbmNbmEndpointRole::SENDER_RECEIVER_ARP {7, "SENDER_RECEIVER_ARP"};
-
-const Enum::YLeaf SisfNdpflag::on {0, "on"};
-const Enum::YLeaf SisfNdpflag::off {1, "off"};
-
-const Enum::YLeaf AggregateCtrlrType::unknown {0, "unknown"};
-const Enum::YLeaf AggregateCtrlrType::l2_vxlan {1, "l2-vxlan"};
-const Enum::YLeaf AggregateCtrlrType::vxlan {2, "vxlan"};
-
-const Enum::YLeaf RtdmcBfdOperSt::down {0, "down"};
-const Enum::YLeaf RtdmcBfdOperSt::rem_pend {1, "rem-pend"};
-const Enum::YLeaf RtdmcBfdOperSt::up {2, "up"};
-
-const Enum::YLeaf NetflowCollVersion::v5 {1, "v5"};
-const Enum::YLeaf NetflowCollVersion::v9 {2, "v9"};
-const Enum::YLeaf NetflowCollVersion::cisco_v1 {3, "cisco-v1"};
-
-const Enum::YLeaf SrteEncapsulationType::mpls {0, "mpls"};
-
-const Enum::YLeaf FmOperState::enabled {1, "enabled"};
-const Enum::YLeaf FmOperState::disabled {2, "disabled"};
-
-const Enum::YLeaf L1Beacon::on {1, "on"};
-const Enum::YLeaf L1Beacon::off {2, "off"};
-
-const Enum::YLeaf BgpPmsiTunType::none {0, "none"};
-const Enum::YLeaf BgpPmsiTunType::ingress_repl {1, "ingress-repl"};
-
-const Enum::YLeaf AaaClear::no {0, "no"};
-const Enum::YLeaf AaaClear::yes {1, "yes"};
-
-const Enum::YLeaf EqptPsuFanDir::front2back {0, "front2back"};
-const Enum::YLeaf EqptPsuFanDir::back2front {1, "back2front"};
-const Enum::YLeaf EqptPsuFanDir::notused {2, "notused"};
-
-const Enum::YLeaf SyslogFacility::kern {0, "kern"};
-const Enum::YLeaf SyslogFacility::user {1, "user"};
-const Enum::YLeaf SyslogFacility::mail {2, "mail"};
-const Enum::YLeaf SyslogFacility::daemon {3, "daemon"};
-const Enum::YLeaf SyslogFacility::auth {4, "auth"};
-const Enum::YLeaf SyslogFacility::syslog {5, "syslog"};
-const Enum::YLeaf SyslogFacility::lpr {6, "lpr"};
-const Enum::YLeaf SyslogFacility::news {7, "news"};
-const Enum::YLeaf SyslogFacility::uucp {8, "uucp"};
-const Enum::YLeaf SyslogFacility::cron {9, "cron"};
-const Enum::YLeaf SyslogFacility::authpriv {10, "authpriv"};
-const Enum::YLeaf SyslogFacility::ftp {11, "ftp"};
-const Enum::YLeaf SyslogFacility::local0 {16, "local0"};
-const Enum::YLeaf SyslogFacility::local1 {17, "local1"};
-const Enum::YLeaf SyslogFacility::local2 {18, "local2"};
-const Enum::YLeaf SyslogFacility::local3 {19, "local3"};
-const Enum::YLeaf SyslogFacility::local4 {20, "local4"};
-const Enum::YLeaf SyslogFacility::local5 {21, "local5"};
-const Enum::YLeaf SyslogFacility::local6 {22, "local6"};
-const Enum::YLeaf SyslogFacility::local7 {23, "local7"};
-
-const Enum::YLeaf RegressEnumT::val1 {1, "val1"};
-const Enum::YLeaf RegressEnumT::val2 {2, "val2"};
-const Enum::YLeaf RegressEnumT::val3 {3, "val3"};
-
-const Enum::YLeaf EqptVSrc::unknown {0, "unknown"};
-const Enum::YLeaf EqptVSrc::Y_110v {1, "110v"};
-const Enum::YLeaf EqptVSrc::Y_220v {2, "220v"};
-
-const Enum::YLeaf AggregateConfTmplStatus::inactive {0, "inactive"};
-const Enum::YLeaf AggregateConfTmplStatus::active {1, "active"};
-const Enum::YLeaf AggregateConfTmplStatus::failed {2, "failed"};
-
-const Enum::YLeaf RibDomOperSt::up {1, "up"};
-const Enum::YLeaf RibDomOperSt::down_pending {2, "down-pending"};
-const Enum::YLeaf RibDomOperSt::purged {3, "purged"};
-const Enum::YLeaf RibDomOperSt::down {4, "down"};
-const Enum::YLeaf RibDomOperSt::del_pending {5, "del-pending"};
-const Enum::YLeaf RibDomOperSt::deleted {6, "deleted"};
-
-const Enum::YLeaf IpqosProtocol::unspecified {0, "unspecified"};
-const Enum::YLeaf IpqosProtocol::arp {1, "arp"};
-const Enum::YLeaf IpqosProtocol::bridging {2, "bridging"};
-const Enum::YLeaf IpqosProtocol::cdp {3, "cdp"};
-const Enum::YLeaf IpqosProtocol::dhcp {7, "dhcp"};
-const Enum::YLeaf IpqosProtocol::isis {8, "isis"};
-const Enum::YLeaf IpqosProtocol::fcoe {14, "fcoe"};
-
-const Enum::YLeaf BfdAfT::ipv4 {1, "ipv4"};
-const Enum::YLeaf BfdAfT::ipv6 {2, "ipv6"};
-
-const Enum::YLeaf AaaRadSrvUseType::Auth {0, "Auth"};
-const Enum::YLeaf AaaRadSrvUseType::Author {1, "Author"};
-const Enum::YLeaf AaaRadSrvUseType::Acc {2, "Acc"};
-const Enum::YLeaf AaaRadSrvUseType::All {3, "All"};
-
-const Enum::YLeaf OspfBfdOperSt::down {0, "down"};
-const Enum::YLeaf OspfBfdOperSt::up {1, "up"};
-
-const Enum::YLeaf StpPathcostOp::auto_ {0, "auto"};
-const Enum::YLeaf StpPathcostOp::short_ {1, "short"};
-const Enum::YLeaf StpPathcostOp::long_ {2, "long"};
-
-const Enum::YLeaf EqptSlotT::unknown {0, "unknown"};
-const Enum::YLeaf EqptSlotT::supslot {1, "supslot"};
-const Enum::YLeaf EqptSlotT::lcslot {2, "lcslot"};
-const Enum::YLeaf EqptSlotT::fcslot {3, "fcslot"};
-const Enum::YLeaf EqptSlotT::scslot {4, "scslot"};
-const Enum::YLeaf EqptSlotT::extchslot {5, "extchslot"};
-const Enum::YLeaf EqptSlotT::psuslot {6, "psuslot"};
-const Enum::YLeaf EqptSlotT::fantray {7, "fantray"};
-const Enum::YLeaf EqptSlotT::bslot {8, "bslot"};
-const Enum::YLeaf EqptSlotT::nslot {9, "nslot"};
-
-const Enum::YLeaf NetflowModeT::netflow {0, "netflow"};
-
-const Enum::YLeaf L1TxT::unknown {1, "unknown"};
-const Enum::YLeaf L1TxT::LL {2, "LL"};
-const Enum::YLeaf L1TxT::SN {3, "SN"};
-const Enum::YLeaf L1TxT::LC {4, "LC"};
-const Enum::YLeaf L1TxT::EL {5, "EL"};
-const Enum::YLeaf L1TxT::Y_10GBASE_SR {6, "10GBASE-SR"};
-const Enum::YLeaf L1TxT::Y_10GBASE_LR {7, "10GBASE-LR"};
-const Enum::YLeaf L1TxT::Y_10GBASE_ER {8, "10GBASE-ER"};
-const Enum::YLeaf L1TxT::Y_10GBASE_LX4 {9, "10GBASE-LX4"};
-const Enum::YLeaf L1TxT::Y_10GBASE_SW {10, "10GBASE-SW"};
-const Enum::YLeaf L1TxT::Y_10GBASE_LW {11, "10GBASE-LW"};
-const Enum::YLeaf L1TxT::Y_10GBASE_EW {12, "10GBASE-EW"};
-
-const Enum::YLeaf ArpEventLogSize::disabled {0, "disabled"};
-const Enum::YLeaf ArpEventLogSize::small {1, "small"};
-const Enum::YLeaf ArpEventLogSize::medium {2, "medium"};
-const Enum::YLeaf ArpEventLogSize::large {3, "large"};
-
-const Enum::YLeaf VpcRole::election_not_done {0, "election-not-done"};
-const Enum::YLeaf VpcRole::master {1, "master"};
-const Enum::YLeaf VpcRole::slave {2, "slave"};
-
-const Enum::YLeaf McpOperSt::init {0, "init"};
-const Enum::YLeaf McpOperSt::up {1, "up"};
-const Enum::YLeaf McpOperSt::down {3, "down"};
-
-const Enum::YLeaf OspfFlagStatus::set {0, "set"};
-const Enum::YLeaf OspfFlagStatus::clear {1, "clear"};
-
-const Enum::YLeaf RtdmcAdjOperSt::up {0, "up"};
-const Enum::YLeaf RtdmcAdjOperSt::inactive {1, "inactive"};
-
-const Enum::YLeaf BgpPeerGrSt::na {1, "na"};
-const Enum::YLeaf BgpPeerGrSt::reset {2, "reset"};
-const Enum::YLeaf BgpPeerGrSt::up {3, "up"};
-
-const Enum::YLeaf BgpAdvertL2vpnEvpn::enabled {1, "enabled"};
-const Enum::YLeaf BgpAdvertL2vpnEvpn::disabled {0, "disabled"};
-
-const Enum::YLeaf MribEhType::cli {0, "cli"};
-const Enum::YLeaf MribEhType::mdt {1, "mdt"};
-const Enum::YLeaf MribEhType::mfdmDebugs {2, "mfdmDebugs"};
-const Enum::YLeaf MribEhType::mfdmEvents {3, "mfdmEvents"};
-const Enum::YLeaf MribEhType::mfdmStats {4, "mfdmStats"};
-const Enum::YLeaf MribEhType::notyClients {5, "notyClients"};
-const Enum::YLeaf MribEhType::rib {6, "rib"};
-const Enum::YLeaf MribEhType::ribSum {7, "ribSum"};
-const Enum::YLeaf MribEhType::urib {8, "urib"};
-const Enum::YLeaf MribEhType::vrf {9, "vrf"};
-const Enum::YLeaf MribEhType::nbm {10, "nbm"};
-
-const Enum::YLeaf AaaProviderState::unknown {0, "unknown"};
-const Enum::YLeaf AaaProviderState::operable {1, "operable"};
-const Enum::YLeaf AaaProviderState::inoperable {2, "inoperable"};
-
-const Enum::YLeaf AclActionType::invalid {0, "invalid"};
-const Enum::YLeaf AclActionType::permit {1, "permit"};
-const Enum::YLeaf AclActionType::deny {2, "deny"};
-const Enum::YLeaf AclActionType::copy {3, "copy"};
-const Enum::YLeaf AclActionType::divert {4, "divert"};
-const Enum::YLeaf AclActionType::redirect {5, "redirect"};
-
-const Enum::YLeaf MonitorErSpanVer::ver2 {2, "ver2"};
-const Enum::YLeaf MonitorErSpanVer::ver3 {3, "ver3"};
-
-const Enum::YLeaf StpVpcState::none {0, "none"};
-const Enum::YLeaf StpVpcState::vPCPeerlink {1, "vPCPeerlink"};
-const Enum::YLeaf StpVpcState::vPC {2, "vPC"};
-
-const Enum::YLeaf DhcpClIfOperSt::unspecified {0, "unspecified"};
-const Enum::YLeaf DhcpClIfOperSt::init {1, "init"};
-const Enum::YLeaf DhcpClIfOperSt::discover {2, "discover"};
-const Enum::YLeaf DhcpClIfOperSt::requesting {3, "requesting"};
-const Enum::YLeaf DhcpClIfOperSt::addr_rcvd {4, "addr-rcvd"};
-const Enum::YLeaf DhcpClIfOperSt::failed {5, "failed"};
-const Enum::YLeaf DhcpClIfOperSt::request_timedout {6, "request-timedout"};
-const Enum::YLeaf DhcpClIfOperSt::down {7, "down"};
-
-const Enum::YLeaf NgoamXcPortState::down {0, "down"};
-const Enum::YLeaf NgoamXcPortState::up {1, "up"};
-const Enum::YLeaf NgoamXcPortState::errDisabled {2, "errDisabled"};
-
-const Enum::YLeaf AaaPwdPolicy::enable {0, "enable"};
-const Enum::YLeaf AaaPwdPolicy::disable {1, "disable"};
-
-const Enum::YLeaf TunnelEncapT::unknown {0, "unknown"};
-const Enum::YLeaf TunnelEncapT::vxlan {1, "vxlan"};
-const Enum::YLeaf TunnelEncapT::ivxlan {2, "ivxlan"};
-const Enum::YLeaf TunnelEncapT::nvgre {3, "nvgre"};
-
-const Enum::YLeaf OspfVrfLiteControl::unspecified {0, "unspecified"};
-const Enum::YLeaf OspfVrfLiteControl::l3vpn {1, "l3vpn"};
-const Enum::YLeaf OspfVrfLiteControl::evpn {2, "evpn"};
-
-const Enum::YLeaf PlatformPcLbAlgo::PC_LB_ALGO_DLB {1, "PC_LB_ALGO_DLB"};
-const Enum::YLeaf PlatformPcLbAlgo::PC_LB_ALGO_RTAG7 {2, "PC_LB_ALGO_RTAG7"};
-const Enum::YLeaf PlatformPcLbAlgo::PC_LB_ALGO_RTAG7_MURMUR {3, "PC_LB_ALGO_RTAG7_MURMUR"};
-const Enum::YLeaf PlatformPcLbAlgo::PC_LB_ALGO_RTAG7_LOCAL_CRC {4, "PC_LB_ALGO_RTAG7_LOCAL_CRC"};
-const Enum::YLeaf PlatformPcLbAlgo::PC_LB_ALGO_DYNAMIC_PIN {5, "PC_LB_ALGO_DYNAMIC_PIN"};
-
-const Enum::YLeaf NdDbT::adj {1, "adj"};
-
-const Enum::YLeaf RtmapCriteria::exact {1, "exact"};
-const Enum::YLeaf RtmapCriteria::sub_group {2, "sub-group"};
-
-const Enum::YLeaf BgpMode::fabric {1, "fabric"};
-const Enum::YLeaf BgpMode::external {2, "external"};
-
-const Enum::YLeaf RtmapAdminSt::enabled {1, "enabled"};
-const Enum::YLeaf RtmapAdminSt::disabled {2, "disabled"};
-
-const Enum::YLeaf BfdOperSt::admin_down {0, "admin-down"};
-const Enum::YLeaf BfdOperSt::down {1, "down"};
-const Enum::YLeaf BfdOperSt::init {2, "init"};
-const Enum::YLeaf BfdOperSt::up {3, "up"};
-
-const Enum::YLeaf CoppMatchT::Undefined {0, "Undefined"};
-const Enum::YLeaf CoppMatchT::access_group {1, "access-group"};
-const Enum::YLeaf CoppMatchT::redirect {2, "redirect"};
-const Enum::YLeaf CoppMatchT::exception {3, "exception"};
-const Enum::YLeaf CoppMatchT::protocol {4, "protocol"};
-
-const Enum::YLeaf TunnelifTunnelOption::unknown {0, "unknown"};
-const Enum::YLeaf TunnelifTunnelOption::del_on_fail {1, "del_on_fail"};
-const Enum::YLeaf TunnelifTunnelOption::usr_cfg_mtu {2, "usr_cfg_mtu"};
-
-const Enum::YLeaf IsisMetricStyle::narrow {1, "narrow"};
-const Enum::YLeaf IsisMetricStyle::wide {2, "wide"};
-const Enum::YLeaf IsisMetricStyle::transition {3, "transition"};
-
-const Enum::YLeaf QosTenantPrio::unspecified {0, "unspecified"};
-const Enum::YLeaf QosTenantPrio::level3 {1, "level3"};
-const Enum::YLeaf QosTenantPrio::level2 {2, "level2"};
-const Enum::YLeaf QosTenantPrio::level1 {3, "level1"};
-
-const Enum::YLeaf RtmapRouteT::external {1, "external"};
-const Enum::YLeaf RtmapRouteT::internal {2, "internal"};
-const Enum::YLeaf RtmapRouteT::ospf_inter_area {3, "ospf-inter-area"};
-const Enum::YLeaf RtmapRouteT::ospf_intra_area {4, "ospf-intra-area"};
-const Enum::YLeaf RtmapRouteT::isis_l1 {5, "isis-l1"};
-const Enum::YLeaf RtmapRouteT::isis_l2 {6, "isis-l2"};
-const Enum::YLeaf RtmapRouteT::local {7, "local"};
-const Enum::YLeaf RtmapRouteT::ospf_nssa_external {8, "ospf-nssa-external"};
-const Enum::YLeaf RtmapRouteT::ospf_type1 {9, "ospf-type1"};
-const Enum::YLeaf RtmapRouteT::ospf_type2 {10, "ospf-type2"};
-
-const Enum::YLeaf PcPortChannelType::ethernet {0, "ethernet"};
-
-const Enum::YLeaf NbmNbmFlowOperEn::NOOP {0, "NOOP"};
-const Enum::YLeaf NbmNbmFlowOperEn::ROUTE_ADD {1, "ROUTE_ADD"};
-const Enum::YLeaf NbmNbmFlowOperEn::ROUTE_DEL {2, "ROUTE_DEL"};
-const Enum::YLeaf NbmNbmFlowOperEn::UPD_ADD_OIF {3, "UPD_ADD_OIF"};
-const Enum::YLeaf NbmNbmFlowOperEn::UPD_DEL_OIF {4, "UPD_DEL_OIF"};
-const Enum::YLeaf NbmNbmFlowOperEn::LOC_ADD_OIF {5, "LOC_ADD_OIF"};
-const Enum::YLeaf NbmNbmFlowOperEn::LOC_DEL_OIF {6, "LOC_DEL_OIF"};
-const Enum::YLeaf NbmNbmFlowOperEn::UPD_IIF {7, "UPD_IIF"};
-const Enum::YLeaf NbmNbmFlowOperEn::DENY_POLICY_SRC {8, "DENY_POLICY_SRC"};
-const Enum::YLeaf NbmNbmFlowOperEn::SRC_DISCOVERY {9, "SRC_DISCOVERY"};
-const Enum::YLeaf NbmNbmFlowOperEn::SRC_DISC_STOP {10, "SRC_DISC_STOP"};
-const Enum::YLeaf NbmNbmFlowOperEn::Y_11 {11, "11"};
-const Enum::YLeaf NbmNbmFlowOperEn::Y_12 {12, "12"};
-const Enum::YLeaf NbmNbmFlowOperEn::Y_13_UNUSED {13, "13-UNUSED"};
-const Enum::YLeaf NbmNbmFlowOperEn::Y_14 {14, "14"};
-const Enum::YLeaf NbmNbmFlowOperEn::ALLOW_POLICY_SRC {15, "ALLOW_POLICY_SRC"};
-const Enum::YLeaf NbmNbmFlowOperEn::DENY_POLICY_RCV {16, "DENY_POLICY_RCV"};
-const Enum::YLeaf NbmNbmFlowOperEn::ALLOW_POLICY_RCV {17, "ALLOW_POLICY_RCV"};
-const Enum::YLeaf NbmNbmFlowOperEn::Y_18 {18, "18"};
-const Enum::YLeaf NbmNbmFlowOperEn::Y_19 {19, "19"};
-const Enum::YLeaf NbmNbmFlowOperEn::Y_20 {20, "20"};
-
-const Enum::YLeaf NvoMultisiteIngReplStateT::disable {1, "disable"};
-const Enum::YLeaf NvoMultisiteIngReplStateT::enable {2, "enable"};
-
-const Enum::YLeaf McastfwdEhType::internal {0, "internal"};
-const Enum::YLeaf McastfwdEhType::cli {1, "cli"};
-const Enum::YLeaf McastfwdEhType::packet {2, "packet"};
-const Enum::YLeaf McastfwdEhType::vrf {3, "vrf"};
-const Enum::YLeaf McastfwdEhType::l2 {4, "l2"};
-const Enum::YLeaf McastfwdEhType::nbm {5, "nbm"};
-
-const Enum::YLeaf MonTransport::none {0, "none"};
-const Enum::YLeaf MonTransport::tcp {1, "tcp"};
-const Enum::YLeaf MonTransport::udp {2, "udp"};
-const Enum::YLeaf MonTransport::all {3, "all"};
-const Enum::YLeaf MonTransport::tls {4, "tls"};
-
-const Enum::YLeaf NpvSrvIfFsmSt::no_transition {0, "no-transition"};
-const Enum::YLeaf NpvSrvIfFsmSt::no_change {1, "no-change"};
-const Enum::YLeaf NpvSrvIfFsmSt::any {2, "any"};
-const Enum::YLeaf NpvSrvIfFsmSt::if_down {3, "if-down"};
-const Enum::YLeaf NpvSrvIfFsmSt::wait_ext_if {4, "wait-ext-if"};
-const Enum::YLeaf NpvSrvIfFsmSt::wait_flogi {5, "wait-flogi"};
-const Enum::YLeaf NpvSrvIfFsmSt::if_up {6, "if-up"};
-const Enum::YLeaf NpvSrvIfFsmSt::flogi_cleanup {7, "flogi-cleanup"};
-const Enum::YLeaf NpvSrvIfFsmSt::wait_fc_add {8, "wait-fc-add"};
-const Enum::YLeaf NpvSrvIfFsmSt::wait_fc_del {9, "wait-fc-del"};
-const Enum::YLeaf NpvSrvIfFsmSt::wait_ext_if_stable {10, "wait-ext-if-stable"};
-
-const Enum::YLeaf SysmgrSupT::local {0, "local"};
-const Enum::YLeaf SysmgrSupT::remote {1, "remote"};
-
-const Enum::YLeaf IsisOverloadAdminSt::off {0, "off"};
-const Enum::YLeaf IsisOverloadAdminSt::always_on {1, "always-on"};
-const Enum::YLeaf IsisOverloadAdminSt::bootup {2, "bootup"};
-const Enum::YLeaf IsisOverloadAdminSt::bgp_converge {3, "bgp-converge"};
-const Enum::YLeaf IsisOverloadAdminSt::bgp_converge_max_wait {4, "bgp-converge-max-wait"};
-
-const Enum::YLeaf AggregateIngressRepProtocolType::unknown {0, "unknown"};
-const Enum::YLeaf AggregateIngressRepProtocolType::static_ {1, "static"};
-const Enum::YLeaf AggregateIngressRepProtocolType::bgp {2, "bgp"};
-
-const Enum::YLeaf MsdpEhType::cli {0, "cli"};
-const Enum::YLeaf MsdpEhType::events {1, "events"};
-const Enum::YLeaf MsdpEhType::msdpInternal {2, "msdpInternal"};
-const Enum::YLeaf MsdpEhType::routes {3, "routes"};
-const Enum::YLeaf MsdpEhType::tcp {4, "tcp"};
-
-const Enum::YLeaf BgpLsNlriType::none {0, "none"};
-const Enum::YLeaf BgpLsNlriType::node {1, "node"};
-const Enum::YLeaf BgpLsNlriType::link {2, "link"};
-const Enum::YLeaf BgpLsNlriType::ipv4_topo {3, "ipv4-topo"};
-const Enum::YLeaf BgpLsNlriType::ipv6_topo {4, "ipv6-topo"};
-
-const Enum::YLeaf RtmapSetCriteria::none {1, "none"};
-const Enum::YLeaf RtmapSetCriteria::append {2, "append"};
-const Enum::YLeaf RtmapSetCriteria::replace {3, "replace"};
-const Enum::YLeaf RtmapSetCriteria::igp {4, "igp"};
-const Enum::YLeaf RtmapSetCriteria::pre_bestpath {5, "pre-bestpath"};
-
-const Enum::YLeaf EqptSensorOpSt::fail {0, "fail"};
-const Enum::YLeaf EqptSensorOpSt::normal {1, "normal"};
-const Enum::YLeaf EqptSensorOpSt::minor {2, "minor"};
-const Enum::YLeaf EqptSensorOpSt::major_ {3, "major"};
-const Enum::YLeaf EqptSensorOpSt::absent {4, "absent"};
-const Enum::YLeaf EqptSensorOpSt::bad_asic {5, "bad-asic"};
-
-const Enum::YLeaf SpanOperSt::unspecified {0, "unspecified"};
-const Enum::YLeaf SpanOperSt::up {1, "up"};
-const Enum::YLeaf SpanOperSt::down {2, "down"};
-const Enum::YLeaf SpanOperSt::failed {3, "failed"};
-const Enum::YLeaf SpanOperSt::partial {4, "partial"};
-
-const Enum::YLeaf BgpLsAdminSt::inactive {0, "inactive"};
-const Enum::YLeaf BgpLsAdminSt::active {1, "active"};
-
-const Enum::YLeaf BgpPwdType::Y_0 {0, "0"};
-const Enum::YLeaf BgpPwdType::Y_3 {3, "3"};
-const Enum::YLeaf BgpPwdType::Y_7 {7, "7"};
-const Enum::YLeaf BgpPwdType::LINE {5, "LINE"};
-
-const Enum::YLeaf SisfRaGuardManagedConfig::off {0, "off"};
-const Enum::YLeaf SisfRaGuardManagedConfig::on {1, "on"};
-const Enum::YLeaf SisfRaGuardManagedConfig::nocheck {2, "nocheck"};
-
-const Enum::YLeaf BgpShutStQual::unspecified {0, "unspecified"};
-const Enum::YLeaf BgpShutStQual::admin {1, "admin"};
-const Enum::YLeaf BgpShutStQual::no_mem {2, "no-mem"};
-const Enum::YLeaf BgpShutStQual::exceeded_pfxlimit {3, "exceeded-pfxlimit"};
-const Enum::YLeaf BgpShutStQual::admin_up {4, "admin-up"};
-const Enum::YLeaf BgpShutStQual::no_affinity {5, "no-affinity"};
-
-const Enum::YLeaf AnalyticsDirectionT::in {1, "in"};
-const Enum::YLeaf AnalyticsDirectionT::out {2, "out"};
-const Enum::YLeaf AnalyticsDirectionT::both {3, "both"};
-
-const Enum::YLeaf TunnelAdminSt::up {1, "up"};
-const Enum::YLeaf TunnelAdminSt::down {2, "down"};
-
-const Enum::YLeaf QospOperSt::enabled {1, "enabled"};
-const Enum::YLeaf QospOperSt::disabled {2, "disabled"};
-
-const Enum::YLeaf StpPortState::unknown {0, "unknown"};
-const Enum::YLeaf StpPortState::discarding {1, "discarding"};
-const Enum::YLeaf StpPortState::learning {2, "learning"};
-const Enum::YLeaf StpPortState::forwarding {3, "forwarding"};
-const Enum::YLeaf StpPortState::disabled {4, "disabled"};
-
-const Enum::YLeaf BgpLsProtoId::none {0, "none"};
-const Enum::YLeaf BgpLsProtoId::isis_l1 {1, "isis-l1"};
-const Enum::YLeaf BgpLsProtoId::isis_l2 {2, "isis-l2"};
-const Enum::YLeaf BgpLsProtoId::ospf_v2 {3, "ospf-v2"};
-const Enum::YLeaf BgpLsProtoId::direct {4, "direct"};
-const Enum::YLeaf BgpLsProtoId::static_ {5, "static"};
-const Enum::YLeaf BgpLsProtoId::ospf_v3 {6, "ospf-v3"};
-const Enum::YLeaf BgpLsProtoId::epe {7, "epe"};
-
-const Enum::YLeaf FsetOperState::none {0, "none"};
-const Enum::YLeaf FsetOperState::enabled {1, "enabled"};
-const Enum::YLeaf FsetOperState::disabled {2, "disabled"};
-const Enum::YLeaf FsetOperState::installed {3, "installed"};
-const Enum::YLeaf FsetOperState::uninstalled {4, "uninstalled"};
-
-const Enum::YLeaf DatetimeProvT::peer {0, "peer"};
-const Enum::YLeaf DatetimeProvT::server {1, "server"};
-const Enum::YLeaf DatetimeProvT::invalid {2, "invalid"};
-
-const Enum::YLeaf GoldResult::untested {1, "untested"};
-const Enum::YLeaf GoldResult::failure {2, "failure"};
-const Enum::YLeaf GoldResult::not_complete {3, "not-complete"};
-const Enum::YLeaf GoldResult::aborted {4, "aborted"};
-const Enum::YLeaf GoldResult::success {5, "success"};
-const Enum::YLeaf GoldResult::error_disabled {6, "error-disabled"};
-const Enum::YLeaf GoldResult::error_ignore {7, "error-ignore"};
-const Enum::YLeaf GoldResult::error_disabled_w_no {8, "error-disabled-w-no"};
-const Enum::YLeaf GoldResult::unavailable {9, "unavailable"};
-
-const Enum::YLeaf NwAdminStProcessStatNullBcast::enabled {1, "enabled"};
-const Enum::YLeaf NwAdminStProcessStatNullBcast::disabled {2, "disabled"};
-
-const Enum::YLeaf CoppMatchOption::Unknown {0, "Unknown"};
-const Enum::YLeaf CoppMatchOption::MatchAny {1, "MatchAny"};
-const Enum::YLeaf CoppMatchOption::MatchAll {2, "MatchAll"};
-
-const Enum::YLeaf OspfAreaT::regular {1, "regular"};
-const Enum::YLeaf OspfAreaT::stub {2, "stub"};
-const Enum::YLeaf OspfAreaT::nssa {3, "nssa"};
-
-const Enum::YLeaf ActrlDirection::uni_dir {1, "uni-dir"};
-const Enum::YLeaf ActrlDirection::bi_dir {2, "bi-dir"};
-
-const Enum::YLeaf IpmcsnoopFwdMode::ip {1, "ip"};
-const Enum::YLeaf IpmcsnoopFwdMode::mac {2, "mac"};
-
-const Enum::YLeaf L1Module::lc {0, "lc"};
-const Enum::YLeaf L1Module::sup {1, "sup"};
-
-const Enum::YLeaf AdjacencyAdjOperSt::unspecified {0, "unspecified"};
-const Enum::YLeaf AdjacencyAdjOperSt::incomplete {1, "incomplete"};
-const Enum::YLeaf AdjacencyAdjOperSt::normal {2, "normal"};
-
-const Enum::YLeaf NvoMultisiteTrackingT::unknown {0, "unknown"};
-const Enum::YLeaf NvoMultisiteTrackingT::dci {1, "dci"};
-const Enum::YLeaf NvoMultisiteTrackingT::fabric {2, "fabric"};
-
-const Enum::YLeaf L2fmLearning::enable {1, "enable"};
-const Enum::YLeaf L2fmLearning::disable {0, "disable"};
-
-const Enum::YLeaf StpAdminSt::enabled {1, "enabled"};
-const Enum::YLeaf StpAdminSt::disabled {2, "disabled"};
-
-const Enum::YLeaf AggregateResourceStatus::unknown {0, "unknown"};
-const Enum::YLeaf AggregateResourceStatus::vlanCreated {1, "vlanCreated"};
-const Enum::YLeaf AggregateResourceStatus::vlanFailed {2, "vlanFailed"};
-const Enum::YLeaf AggregateResourceStatus::vnidCreated {3, "vnidCreated"};
-const Enum::YLeaf AggregateResourceStatus::vnidFailed {4, "vnidFailed"};
-const Enum::YLeaf AggregateResourceStatus::vlansCarved {5, "vlansCarved"};
-const Enum::YLeaf AggregateResourceStatus::vlansNotCarved {6, "vlansNotCarved"};
-const Enum::YLeaf AggregateResourceStatus::vnidCreationReceived {7, "vnidCreationReceived"};
-const Enum::YLeaf AggregateResourceStatus::myTEPIPPublished {101, "myTEPIPPublished"};
-const Enum::YLeaf AggregateResourceStatus::controllerIntfNotCarved {201, "controllerIntfNotCarved"};
-const Enum::YLeaf AggregateResourceStatus::controllerIntfCarved {202, "controllerIntfCarved"};
-
-const Enum::YLeaf ImBreakoutMapT::no_breakout {0, "no-breakout"};
-const Enum::YLeaf ImBreakoutMapT::Y_10g_4x {5, "10g-4x"};
-const Enum::YLeaf ImBreakoutMapT::Y_10g_2x {9, "10g-2x"};
-const Enum::YLeaf ImBreakoutMapT::Y_25g_4x {8, "25g-4x"};
-const Enum::YLeaf ImBreakoutMapT::Y_50g_2x {7, "50g-2x"};
-
-const Enum::YLeaf IpSwitchPktTarget::disabled {0, "disabled"};
-const Enum::YLeaf IpSwitchPktTarget::all {1, "all"};
-const Enum::YLeaf IpSwitchPktTarget::lla {2, "lla"};
-
-const Enum::YLeaf InstallerStage::preupg_copy_image {0, "preupg-copy-image"};
-const Enum::YLeaf InstallerStage::preupg_initializing {1, "preupg-initializing"};
-const Enum::YLeaf InstallerStage::preupg_verifying_images {3, "preupg-verifying_images"};
-const Enum::YLeaf InstallerStage::preupg_runtime_check {6, "preupg-runtime-check"};
-const Enum::YLeaf InstallerStage::preupg_sync_image {7, "preupg-sync-image"};
-const Enum::YLeaf InstallerStage::upgrade_upg_fex {9, "upgrade-upg-fex"};
-const Enum::YLeaf InstallerStage::upgrade_upg_lc {10, "upgrade-upg-lc"};
-const Enum::YLeaf InstallerStage::preupg_conf_sync {11, "preupg-conf-sync"};
-const Enum::YLeaf InstallerStage::preupg_set_boot {12, "preupg-set-boot"};
-const Enum::YLeaf InstallerStage::preupg_force_dnld {13, "preupg-force-dnld"};
-const Enum::YLeaf InstallerStage::preupg_wait_mod {14, "preupg-wait-mod"};
-const Enum::YLeaf InstallerStage::preupg_convert_startup {15, "preupg-convert-startup"};
-const Enum::YLeaf InstallerStage::preupg_save_sup_state {16, "preupg-save-sup-state"};
-const Enum::YLeaf InstallerStage::upgrade_kexec {17, "upgrade-kexec"};
-const Enum::YLeaf InstallerStage::preupg_pre_upg_notif {19, "preupg-pre-upg-notif"};
-const Enum::YLeaf InstallerStage::preupg_mod_support_check {20, "preupg-mod-support-check"};
-const Enum::YLeaf InstallerStage::preupg_Checks {21, "preupg-Checks"};
-const Enum::YLeaf InstallerStage::upgrade_upg_bios {22, "upgrade-upg-bios"};
-const Enum::YLeaf InstallerStage::upgrade_upg_cmp {23, "upgrade-upg-cmp"};
-const Enum::YLeaf InstallerStage::upgrade_notification {24, "upgrade-notification"};
-const Enum::YLeaf InstallerStage::preupg_save_mts_state {25, "preupg-save-mts-state"};
-const Enum::YLeaf InstallerStage::success {26, "success"};
-const Enum::YLeaf InstallerStage::failed {27, "failed"};
-const Enum::YLeaf InstallerStage::not_started {28, "not-started"};
-const Enum::YLeaf InstallerStage::upgrade_sup_state_verification {29, "upgrade-sup-state-verification"};
-const Enum::YLeaf InstallerStage::upgrade_switchover_notif {30, "upgrade-switchover-notif"};
-const Enum::YLeaf InstallerStage::upgrade_standby_container_start {31, "upgrade-standby-container-start"};
-const Enum::YLeaf InstallerStage::user_abort {32, "user-abort"};
-
-const Enum::YLeaf OspfIfType::unspecified {0, "unspecified"};
-const Enum::YLeaf OspfIfType::loopback {1, "loopback"};
-const Enum::YLeaf OspfIfType::p2p {2, "p2p"};
-const Enum::YLeaf OspfIfType::p2mp {3, "p2mp"};
-const Enum::YLeaf OspfIfType::nbma {4, "nbma"};
-const Enum::YLeaf OspfIfType::bcast {5, "bcast"};
-
-const Enum::YLeaf NwEntOperSt::unknown {0, "unknown"};
-const Enum::YLeaf NwEntOperSt::enabled {1, "enabled"};
-const Enum::YLeaf NwEntOperSt::disabled {2, "disabled"};
-const Enum::YLeaf NwEntOperSt::initializing {3, "initializing"};
-const Enum::YLeaf NwEntOperSt::failed {4, "failed"};
-
-const Enum::YLeaf PlatformLatencyMonitorSt::Enable {1, "Enable"};
-const Enum::YLeaf PlatformLatencyMonitorSt::Disable {0, "Disable"};
-
-const Enum::YLeaf QospECN::disabled {0, "disabled"};
-const Enum::YLeaf QospECN::enabled {1, "enabled"};
-
-const Enum::YLeaf NgoamOamChannel::invalid {0, "invalid"};
-const Enum::YLeaf NgoamOamChannel::tissa {2, "tissa"};
-
-const Enum::YLeaf TunnelifTunnelOperStQual::unknown {0, "unknown"};
-const Enum::YLeaf TunnelifTunnelOperStQual::none {1, "none"};
-const Enum::YLeaf TunnelifTunnelOperStQual::initing {2, "initing"};
-const Enum::YLeaf TunnelifTunnelOperStQual::incomp_conf {3, "incomp-conf"};
-const Enum::YLeaf TunnelifTunnelOperStQual::dup_conf {4, "dup-conf"};
-const Enum::YLeaf TunnelifTunnelOperStQual::no_mode {5, "no-mode"};
-const Enum::YLeaf TunnelifTunnelOperStQual::admin_down {6, "admin-down"};
-const Enum::YLeaf TunnelifTunnelOperStQual::src_down {7, "src-down"};
-const Enum::YLeaf TunnelifTunnelOperStQual::src_unres {8, "src-unres"};
-const Enum::YLeaf TunnelifTunnelOperStQual::no_dest {9, "no-dest"};
-const Enum::YLeaf TunnelifTunnelOperStQual::desip_unres {10, "desip-unres"};
-const Enum::YLeaf TunnelifTunnelOperStQual::dest_unreach {11, "dest-unreach"};
-const Enum::YLeaf TunnelifTunnelOperStQual::vrf_mismatch {12, "vrf-mismatch"};
-const Enum::YLeaf TunnelifTunnelOperStQual::vrf_fwdref {13, "vrf-fwdref"};
-const Enum::YLeaf TunnelifTunnelOperStQual::vrf_down {14, "vrf-down"};
-const Enum::YLeaf TunnelifTunnelOperStQual::mtu_error {15, "mtu-error"};
-const Enum::YLeaf TunnelifTunnelOperStQual::hwprog_fail {16, "hwprog-fail"};
-const Enum::YLeaf TunnelifTunnelOperStQual::no_src {17, "no-src"};
-
-const Enum::YLeaf AggregateIntfAssignMode::dedicated {0, "dedicated"};
-const Enum::YLeaf AggregateIntfAssignMode::shared {1, "shared"};
-
-const Enum::YLeaf Icmpv6EventType::cli {0, "cli"};
-const Enum::YLeaf Icmpv6EventType::errors {1, "errors"};
-const Enum::YLeaf Icmpv6EventType::highAvailability {2, "highAvailability"};
-const Enum::YLeaf Icmpv6EventType::icmpv6_internal {3, "icmpv6-internal"};
-const Enum::YLeaf Icmpv6EventType::ipv6SyncEvent {4, "ipv6SyncEvent"};
-const Enum::YLeaf Icmpv6EventType::mldDebug {5, "mldDebug"};
-const Enum::YLeaf Icmpv6EventType::mldEvent {6, "mldEvent"};
-const Enum::YLeaf Icmpv6EventType::nd {7, "nd"};
-const Enum::YLeaf Icmpv6EventType::sync_event {8, "sync-event"};
-const Enum::YLeaf Icmpv6EventType::vrf {9, "vrf"};
-
-const Enum::YLeaf GoldBootLevel::bypass {0, "bypass"};
-const Enum::YLeaf GoldBootLevel::complete {1, "complete"};
-
-const Enum::YLeaf EqptPoweroffSt::no {0, "no"};
-const Enum::YLeaf EqptPoweroffSt::yes {1, "yes"};
-
-const Enum::YLeaf SwpkgsPackageActionResult::success {0, "success"};
-const Enum::YLeaf SwpkgsPackageActionResult::failed {1, "failed"};
-const Enum::YLeaf SwpkgsPackageActionResult::not_available {2, "not-available"};
-
-const Enum::YLeaf NvoCfgSrcT::unknown {0, "unknown"};
-const Enum::YLeaf NvoCfgSrcT::cli {1, "cli"};
-const Enum::YLeaf NvoCfgSrcT::controller {2, "controller"};
-
-const Enum::YLeaf NbmNbmBwUnitEn::UNSPECIFIED {0, "UNSPECIFIED"};
-const Enum::YLeaf NbmNbmBwUnitEn::KBPS {1, "KBPS"};
-const Enum::YLeaf NbmNbmBwUnitEn::MBPS {2, "MBPS"};
-const Enum::YLeaf NbmNbmBwUnitEn::GBPS {3, "GBPS"};
-
-const Enum::YLeaf VrrpAdminSt::disabled {1, "disabled"};
-const Enum::YLeaf VrrpAdminSt::enabled {2, "enabled"};
-
-const Enum::YLeaf StpBPDUGuard::default_ {0, "default"};
-const Enum::YLeaf StpBPDUGuard::enable {1, "enable"};
-const Enum::YLeaf StpBPDUGuard::disable {2, "disable"};
-
-const Enum::YLeaf EqptAdSt::unknown {0, "unknown"};
-const Enum::YLeaf EqptAdSt::enabled {1, "enabled"};
-const Enum::YLeaf EqptAdSt::disabled {2, "disabled"};
-
-const Enum::YLeaf L1Layer::Layer2 {1, "Layer2"};
-const Enum::YLeaf L1Layer::Layer3 {2, "Layer3"};
-
-const Enum::YLeaf ScrtchpdAction::create {1, "create"};
-const Enum::YLeaf ScrtchpdAction::delete_ {2, "delete"};
-
-const Enum::YLeaf IpqosQueueLimitUnit::none {0, "none"};
-const Enum::YLeaf IpqosQueueLimitUnit::packets {1, "packets"};
-const Enum::YLeaf IpqosQueueLimitUnit::bytes {2, "bytes"};
-const Enum::YLeaf IpqosQueueLimitUnit::kbytes {3, "kbytes"};
-const Enum::YLeaf IpqosQueueLimitUnit::mbytes {4, "mbytes"};
-const Enum::YLeaf IpqosQueueLimitUnit::gbytes {5, "gbytes"};
-const Enum::YLeaf IpqosQueueLimitUnit::ms {6, "ms"};
-const Enum::YLeaf IpqosQueueLimitUnit::us {7, "us"};
-const Enum::YLeaf IpqosQueueLimitUnit::perc {8, "perc"};
-
-const Enum::YLeaf AnalyticsCModeT::aci {0, "aci"};
-const Enum::YLeaf AnalyticsCModeT::standalone {1, "standalone"};
-
-const Enum::YLeaf TestOperSt::fail {0, "fail"};
-const Enum::YLeaf TestOperSt::indeterminate {1, "indeterminate"};
-const Enum::YLeaf TestOperSt::interrupted {2, "interrupted"};
-const Enum::YLeaf TestOperSt::pending {3, "pending"};
-const Enum::YLeaf TestOperSt::not_supp {4, "not-supp"};
-const Enum::YLeaf TestOperSt::not_acc {5, "not-acc"};
-const Enum::YLeaf TestOperSt::pass {6, "pass"};
-const Enum::YLeaf TestOperSt::not_tested {7, "not-tested"};
-
-const Enum::YLeaf BgpOrigin::igp {1, "igp"};
-const Enum::YLeaf BgpOrigin::egp {2, "egp"};
-const Enum::YLeaf BgpOrigin::incomplete {3, "incomplete"};
-
-const Enum::YLeaf GoldModuleDiagStatus::fail {0, "fail"};
-const Enum::YLeaf GoldModuleDiagStatus::pass {1, "pass"};
-const Enum::YLeaf GoldModuleDiagStatus::untested {2, "untested"};
-
-const Enum::YLeaf NvoSuppressARPT::off {0, "off"};
-const Enum::YLeaf NvoSuppressARPT::enabled {1, "enabled"};
-const Enum::YLeaf NvoSuppressARPT::disabled {2, "disabled"};
-
-const Enum::YLeaf EpmDbT::ep {1, "ep"};
-
-const Enum::YLeaf LldpAdminSt::enabled {1, "enabled"};
-const Enum::YLeaf LldpAdminSt::disabled {2, "disabled"};
-
-const Enum::YLeaf IpqosThreshUnit::none {0, "none"};
-const Enum::YLeaf IpqosThreshUnit::packets {1, "packets"};
-const Enum::YLeaf IpqosThreshUnit::bytes {2, "bytes"};
-const Enum::YLeaf IpqosThreshUnit::kbytes {3, "kbytes"};
-const Enum::YLeaf IpqosThreshUnit::mbytes {4, "mbytes"};
-
-const Enum::YLeaf OspfEventLogSize::disabled {0, "disabled"};
-const Enum::YLeaf OspfEventLogSize::small {1, "small"};
-const Enum::YLeaf OspfEventLogSize::medium {2, "medium"};
-const Enum::YLeaf OspfEventLogSize::large {3, "large"};
-
-const Enum::YLeaf NbmNbmPolicyType::SENDER {0, "SENDER"};
-const Enum::YLeaf NbmNbmPolicyType::RECEIVER {1, "RECEIVER"};
-const Enum::YLeaf NbmNbmPolicyType::PIM {2, "PIM"};
-
-const Enum::YLeaf NgoamXcState::Active {0, "Active"};
-const Enum::YLeaf NgoamXcState::DB {1, "DB"};
-const Enum::YLeaf NgoamXcState::HB {2, "HB"};
-const Enum::YLeaf NgoamXcState::RD {4, "RD"};
-const Enum::YLeaf NgoamXcState::LD {8, "LD"};
-const Enum::YLeaf NgoamXcState::DB__FWD_SLASH__HB {3, "DB/HB"};
-const Enum::YLeaf NgoamXcState::RD__FWD_SLASH__HB {6, "RD/HB"};
-const Enum::YLeaf NgoamXcState::DB__FWD_SLASH__HB__FWD_SLASH__RD {7, "DB/HB/RD"};
-const Enum::YLeaf NgoamXcState::DB__FWD_SLASH__LD {9, "DB/LD"};
-const Enum::YLeaf NgoamXcState::HB__FWD_SLASH__LD {10, "HB/LD"};
-const Enum::YLeaf NgoamXcState::DB__FWD_SLASH__HB__FWD_SLASH__LD {11, "DB/HB/LD"};
-const Enum::YLeaf NgoamXcState::RD__FWD_SLASH__LD {12, "RD/LD"};
-const Enum::YLeaf NgoamXcState::DB__FWD_SLASH__RD__FWD_SLASH__LD {13, "DB/RD/LD"};
-const Enum::YLeaf NgoamXcState::HB__FWD_SLASH__RD__FWD_SLASH__LD {14, "HB/RD/LD"};
-const Enum::YLeaf NgoamXcState::DB__FWD_SLASH__HB__FWD_SLASH__RD__FWD_SLASH__LD {15, "DB/HB/RD/LD"};
-
-const Enum::YLeaf RtdmcBfdInstSt::enabled {1, "enabled"};
-const Enum::YLeaf RtdmcBfdInstSt::disabled {2, "disabled"};
-const Enum::YLeaf RtdmcBfdInstSt::none {0, "none"};
-
-const Enum::YLeaf StpRootMode::enabled {1, "enabled"};
-const Enum::YLeaf StpRootMode::disabled {0, "disabled"};
-
-const Enum::YLeaf NwAdminStIfStatDirectBcast::enabled {1, "enabled"};
-const Enum::YLeaf NwAdminStIfStatDirectBcast::disabled {2, "disabled"};
-
-const Enum::YLeaf CompInstType_::unknown {0, "unknown"};
-const Enum::YLeaf CompInstType_::phys {1, "phys"};
-const Enum::YLeaf CompInstType_::virt {2, "virt"};
-const Enum::YLeaf CompInstType_::hv {3, "hv"};
-
-const Enum::YLeaf BgpStReason::none {0, "none"};
-const Enum::YLeaf BgpStReason::no_mem {1, "no-mem"};
-
-const Enum::YLeaf OpflexHbStatus::unknown {0, "unknown"};
-const Enum::YLeaf OpflexHbStatus::invalid_dvs {1, "invalid-dvs"};
-const Enum::YLeaf OpflexHbStatus::valid_dvs {2, "valid-dvs"};
-
-const Enum::YLeaf AclHttpOptionType::get {1, "get"};
-const Enum::YLeaf AclHttpOptionType::put {2, "put"};
-const Enum::YLeaf AclHttpOptionType::head {3, "head"};
-const Enum::YLeaf AclHttpOptionType::post {4, "post"};
-const Enum::YLeaf AclHttpOptionType::delete_ {5, "delete"};
-const Enum::YLeaf AclHttpOptionType::trace {6, "trace"};
-const Enum::YLeaf AclHttpOptionType::connect {7, "connect"};
-const Enum::YLeaf AclHttpOptionType::invalid {0, "invalid"};
-
-const Enum::YLeaf BgpBmpSt::enabled {0, "enabled"};
-const Enum::YLeaf BgpBmpSt::disabled {1, "disabled"};
-
-const Enum::YLeaf RtleakRtCtrlDir::in {0, "in"};
-const Enum::YLeaf RtleakRtCtrlDir::out {1, "out"};
-
-const Enum::YLeaf IpmcsnoopMrouteType::static_ {0, "static"};
-const Enum::YLeaf IpmcsnoopMrouteType::dynamic {1, "dynamic"};
-const Enum::YLeaf IpmcsnoopMrouteType::internal {2, "internal"};
-const Enum::YLeaf IpmcsnoopMrouteType::fabpath {3, "fabpath"};
-const Enum::YLeaf IpmcsnoopMrouteType::vpc {4, "vpc"};
-const Enum::YLeaf IpmcsnoopMrouteType::coLearned {5, "coLearned"};
-const Enum::YLeaf IpmcsnoopMrouteType::peerLearned {6, "peerLearned"};
-const Enum::YLeaf IpmcsnoopMrouteType::userConf {7, "userConf"};
-
-const Enum::YLeaf L1EEELatency::variable {1, "variable"};
-const Enum::YLeaf L1EEELatency::constant {2, "constant"};
-
-const Enum::YLeaf VpcPeerSt::noCfg {0, "noCfg"};
-const Enum::YLeaf VpcPeerSt::down {1, "down"};
-const Enum::YLeaf VpcPeerSt::up {2, "up"};
-
-const Enum::YLeaf NwAdminStIfStatLocalProxyArp::enabled {1, "enabled"};
-const Enum::YLeaf NwAdminStIfStatLocalProxyArp::disabled {2, "disabled"};
-
-const Enum::YLeaf BootImageVerify::enable {1, "enable"};
-const Enum::YLeaf BootImageVerify::disable {0, "disable"};
-
-const Enum::YLeaf IpmcsnoopMacType::Y__STAR__ {0, "*"};
-const Enum::YLeaf IpmcsnoopMacType::G {1, "G"};
-const Enum::YLeaf IpmcsnoopMacType::R {2, "R"};
-const Enum::YLeaf IpmcsnoopMacType::O {3, "O"};
-const Enum::YLeaf IpmcsnoopMacType::IGMP {4, "IGMP"};
-
-const Enum::YLeaf SysmgrFwT::bios {1, "bios"};
-const Enum::YLeaf SysmgrFwT::kickstart {2, "kickstart"};
-const Enum::YLeaf SysmgrFwT::system {3, "system"};
-
-const Enum::YLeaf IpqosPoliceAction::unspecified {0, "unspecified"};
-const Enum::YLeaf IpqosPoliceAction::transmit {1, "transmit"};
-const Enum::YLeaf IpqosPoliceAction::drop {2, "drop"};
-const Enum::YLeaf IpqosPoliceAction::set_cos_transmit {3, "set-cos-transmit"};
-const Enum::YLeaf IpqosPoliceAction::set_dscp_transmit {4, "set-dscp-transmit"};
-const Enum::YLeaf IpqosPoliceAction::set_prec_transmit {5, "set-prec-transmit"};
-const Enum::YLeaf IpqosPoliceAction::set_qos_transmit {6, "set-qos-transmit"};
-
-const Enum::YLeaf PkiCsyncElementType::exclude {0, "exclude"};
-const Enum::YLeaf PkiCsyncElementType::include {1, "include"};
-
-const Enum::YLeaf RtdmcPolicyDirType::none {0, "none"};
-const Enum::YLeaf RtdmcPolicyDirType::in {1, "in"};
-const Enum::YLeaf RtdmcPolicyDirType::out {2, "out"};
-
-const Enum::YLeaf L2DomAdminSt::suspend {1, "suspend"};
-const Enum::YLeaf L2DomAdminSt::active {2, "active"};
-
-const Enum::YLeaf AggregateVpcOperStatus::down {0, "down"};
-const Enum::YLeaf AggregateVpcOperStatus::up {1, "up"};
-
-const Enum::YLeaf EqptPwrState::unknown {0, "unknown"};
-const Enum::YLeaf EqptPwrState::off {1, "off"};
-const Enum::YLeaf EqptPwrState::on {2, "on"};
-const Enum::YLeaf EqptPwrState::deny {3, "deny"};
-const Enum::YLeaf EqptPwrState::multi_boot_fail {4, "multi-boot-fail"};
-
-const Enum::YLeaf NvoHostLearnModeT::DP {1, "DP"};
-const Enum::YLeaf NvoHostLearnModeT::CP {2, "CP"};
-const Enum::YLeaf NvoHostLearnModeT::Ctrlr {3, "Ctrlr"};
-
-const Enum::YLeaf AggregateOperState::unknown {0, "unknown"};
-const Enum::YLeaf AggregateOperState::up {1, "up"};
-const Enum::YLeaf AggregateOperState::down {2, "down"};
-
-const Enum::YLeaf OpflexEppDownloadHint::unknown {0, "unknown"};
-const Enum::YLeaf OpflexEppDownloadHint::always {1, "always"};
-const Enum::YLeaf OpflexEppDownloadHint::optimal {2, "optimal"};
-
-const Enum::YLeaf SnmpLogEnableType::no {0, "no"};
-const Enum::YLeaf SnmpLogEnableType::yes {1, "yes"};
-
-const Enum::YLeaf IsisPassiveIntfT::l1 {1, "l1"};
-const Enum::YLeaf IsisPassiveIntfT::l2 {2, "l2"};
-const Enum::YLeaf IsisPassiveIntfT::l12 {3, "l12"};
-const Enum::YLeaf IsisPassiveIntfT::inherit {4, "inherit"};
-
-const Enum::YLeaf SysmgrOperDataMode::init {1, "init"};
-const Enum::YLeaf SysmgrOperDataMode::publish {2, "publish"};
-const Enum::YLeaf SysmgrOperDataMode::done {4, "done"};
-
-const Enum::YLeaf NdVaddrClientState::ICMPV6_CLIENT_STATE_INACTIVE {0, "ICMPV6_CLIENT_STATE_INACTIVE"};
-const Enum::YLeaf NdVaddrClientState::ICMPV6_CLIENT_STATE_ACTIVE {1, "ICMPV6_CLIENT_STATE_ACTIVE"};
-const Enum::YLeaf NdVaddrClientState::ICMPV6_CLIENT_STATE_ANYCAST_INACTIVE {2, "ICMPV6_CLIENT_STATE_ANYCAST_INACTIVE"};
-
-const Enum::YLeaf PlatformPoweroffSt::no {0, "no"};
-const Enum::YLeaf PlatformPoweroffSt::yes {1, "yes"};
-
-const Enum::YLeaf OspfSegRtControl::unspecified {0, "unspecified"};
-const Enum::YLeaf OspfSegRtControl::mpls {1, "mpls"};
-const Enum::YLeaf OspfSegRtControl::disable {2, "disable"};
-
-const Enum::YLeaf ProcCpuHistoryDurationName::last60seconds {1, "last60seconds"};
-
-const Enum::YLeaf OspfDbT::ls {1, "ls"};
-const Enum::YLeaf OspfDbT::rt {2, "rt"};
-const Enum::YLeaf OspfDbT::nh {3, "nh"};
-
-const Enum::YLeaf BdDefaultSVIAutoState::disable {0, "disable"};
-const Enum::YLeaf BdDefaultSVIAutoState::enable {1, "enable"};
-
-const Enum::YLeaf RtmapOriginT::egp {1, "egp"};
-const Enum::YLeaf RtmapOriginT::igp {2, "igp"};
-const Enum::YLeaf RtmapOriginT::incomplete {3, "incomplete"};
-
-const Enum::YLeaf DatetimeAdminState::enabled {1, "enabled"};
-const Enum::YLeaf DatetimeAdminState::disabled {2, "disabled"};
-
-const Enum::YLeaf EqptArchCPUArch::x86_32 {1, "x86_32"};
-const Enum::YLeaf EqptArchCPUArch::x86_64 {2, "x86_64"};
-const Enum::YLeaf EqptArchCPUArch::any {0, "any"};
-
-const Enum::YLeaf MsdpAuthT::none {0, "none"};
-const Enum::YLeaf MsdpAuthT::md5 {1, "md5"};
-
-const Enum::YLeaf RtmapAction::deny {0, "deny"};
-const Enum::YLeaf RtmapAction::permit {1, "permit"};
-
-const Enum::YLeaf RtmapPrecName::routine {0, "routine"};
-const Enum::YLeaf RtmapPrecName::priority {1, "priority"};
-const Enum::YLeaf RtmapPrecName::immediate {2, "immediate"};
-const Enum::YLeaf RtmapPrecName::flash {3, "flash"};
-const Enum::YLeaf RtmapPrecName::flash_override {4, "flash-override"};
-const Enum::YLeaf RtmapPrecName::critical {5, "critical"};
-const Enum::YLeaf RtmapPrecName::internet {6, "internet"};
-const Enum::YLeaf RtmapPrecName::network {7, "network"};
-
-const Enum::YLeaf AaaKeyEnc::Y_0 {0, "0"};
-const Enum::YLeaf AaaKeyEnc::Y_6 {6, "6"};
-const Enum::YLeaf AaaKeyEnc::Y_7 {7, "7"};
-
-const Enum::YLeaf NvoHostReachT::Flood_and_learn {0, "Flood-and-learn"};
-const Enum::YLeaf NvoHostReachT::bgp {1, "bgp"};
-const Enum::YLeaf NvoHostReachT::controller {2, "controller"};
-const Enum::YLeaf NvoHostReachT::openflow {3, "openflow"};
-const Enum::YLeaf NvoHostReachT::openflowIR {4, "openflowIR"};
-
-const Enum::YLeaf SviOperStQual::unknown {0, "unknown"};
-const Enum::YLeaf SviOperStQual::admin_shut {1, "admin-shut"};
-const Enum::YLeaf SviOperStQual::no_vlan {2, "no-vlan"};
-const Enum::YLeaf SviOperStQual::bad_vlan_t {3, "bad-vlan_t"};
-const Enum::YLeaf SviOperStQual::vlan_down {4, "vlan-down"};
-const Enum::YLeaf SviOperStQual::hwprog_flfm {5, "hwprog-flfm"};
-const Enum::YLeaf SviOperStQual::hwprog_fles {6, "hwprog-fles"};
-const Enum::YLeaf SviOperStQual::oos {7, "oos"};
-const Enum::YLeaf SviOperStQual::reinit {8, "reinit"};
-const Enum::YLeaf SviOperStQual::mtuprog_fail {9, "mtuprog-fail"};
-const Enum::YLeaf SviOperStQual::vrf_unusable {10, "vrf-unusable"};
-const Enum::YLeaf SviOperStQual::l2st_change {11, "l2st-change"};
-const Enum::YLeaf SviOperStQual::suspended {12, "suspended"};
-const Enum::YLeaf SviOperStQual::macalloc_fail {13, "macalloc-fail"};
-const Enum::YLeaf SviOperStQual::nonrouted_vdc {14, "nonrouted-vdc"};
-const Enum::YLeaf SviOperStQual::int_vlan_create_fail {15, "int-vlan-create-fail"};
-const Enum::YLeaf SviOperStQual::inbMgmt_cfg_fail {16, "inbMgmt-cfg-fail"};
-
-const Enum::YLeaf SyslogSeverity::emergencies {0, "emergencies"};
-const Enum::YLeaf SyslogSeverity::alerts {1, "alerts"};
-const Enum::YLeaf SyslogSeverity::critical {2, "critical"};
-const Enum::YLeaf SyslogSeverity::errors {3, "errors"};
-const Enum::YLeaf SyslogSeverity::warnings {4, "warnings"};
-const Enum::YLeaf SyslogSeverity::notifications {5, "notifications"};
-const Enum::YLeaf SyslogSeverity::information {6, "information"};
-const Enum::YLeaf SyslogSeverity::debugging {7, "debugging"};
-
-const Enum::YLeaf L1BufferBoost::disable {0, "disable"};
-const Enum::YLeaf L1BufferBoost::enable {1, "enable"};
-
-const Enum::YLeaf BfdDiagCode::none {0, "none"};
-const Enum::YLeaf BfdDiagCode::detect_timeout {1, "detect-timeout"};
-const Enum::YLeaf BfdDiagCode::echo_fail {2, "echo-fail"};
-const Enum::YLeaf BfdDiagCode::nbr_signal_down {3, "nbr-signal-down"};
-const Enum::YLeaf BfdDiagCode::fwd_plane_reset {4, "fwd-plane-reset"};
-const Enum::YLeaf BfdDiagCode::path_down {5, "path-down"};
-const Enum::YLeaf BfdDiagCode::concat_path_down {6, "concat-path-down"};
-const Enum::YLeaf BfdDiagCode::admin_down {7, "admin-down"};
-const Enum::YLeaf BfdDiagCode::rev_concat_path_down {8, "rev-concat-path-down"};
-
-const Enum::YLeaf TunnelOperSt::up {1, "up"};
-const Enum::YLeaf TunnelOperSt::down {2, "down"};
-
-const Enum::YLeaf PlatformHwProfile::Default {0, "Default"};
-const Enum::YLeaf PlatformHwProfile::QS_PORT_MODE_64X10G {1, "QS_PORT_MODE_64X10G"};
-const Enum::YLeaf PlatformHwProfile::QS_PORT_MODE_48X10G_4X40G {2, "QS_PORT_MODE_48X10G_4X40G"};
-const Enum::YLeaf PlatformHwProfile::QS_PORT_MODE_52X10G_3X40g {3, "QS_PORT_MODE_52X10G_3X40g"};
-const Enum::YLeaf PlatformHwProfile::QS_PORT_MODE_56X10G_2X40G {4, "QS_PORT_MODE_56X10G_2X40G"};
-const Enum::YLeaf PlatformHwProfile::QS_PORT_MODE_60X10G_1X40G {5, "QS_PORT_MODE_60X10G_1X40G"};
-const Enum::YLeaf PlatformHwProfile::QS_PORT_MODE {6, "QS_PORT_MODE"};
-const Enum::YLeaf PlatformHwProfile::QG_PORT_MODE_32X10G_8X40G {9, "QG_PORT_MODE_32X10G_8X40G"};
-const Enum::YLeaf PlatformHwProfile::QG_PORT_MODE_16X40G {10, "QG_PORT_MODE_16X40G"};
-const Enum::YLeaf PlatformHwProfile::QG_PORT_MODE_16X10G_12X40G {11, "QG_PORT_MODE_16X10G_12X40G"};
-const Enum::YLeaf PlatformHwProfile::QG_PORT_MODE_8X10G_14X40G {12, "QG_PORT_MODE_8X10G_14X40G"};
-const Enum::YLeaf PlatformHwProfile::NEP_PORT_MODE_32X40G {13, "NEP_PORT_MODE_32X40G"};
-const Enum::YLeaf PlatformHwProfile::NEP_PORT_MODE_24X40G {14, "NEP_PORT_MODE_24X40G"};
-const Enum::YLeaf PlatformHwProfile::NEP_PORT_MODE_26X40G {15, "NEP_PORT_MODE_26X40G"};
-const Enum::YLeaf PlatformHwProfile::NEP_PORT_MODE_32X40G_FIXED {16, "NEP_PORT_MODE_32X40G_FIXED"};
-const Enum::YLeaf PlatformHwProfile::QI2_PORT_MODE_72X10G {17, "QI2_PORT_MODE_72X10G"};
-const Enum::YLeaf PlatformHwProfile::QI2_PORT_MODE_48X10G_6x40G {18, "QI2_PORT_MODE_48X10G_6x40G"};
-const Enum::YLeaf PlatformHwProfile::QI2_PORT_MODE_BKOUT {19, "QI2_PORT_MODE_BKOUT"};
-const Enum::YLeaf PlatformHwProfile::DV_PORT_MODE_48X25G_4X100G {20, "DV_PORT_MODE_48X25G_4X100G"};
-const Enum::YLeaf PlatformHwProfile::DV_PORT_MODE_48X25G_2X100G_4X40G {21, "DV_PORT_MODE_48X25G_2X100G_4X40G"};
-const Enum::YLeaf PlatformHwProfile::PB_PORT_MODE_48X10G_6X100G {22, "PB_PORT_MODE_48X10G_6X100G"};
-const Enum::YLeaf PlatformHwProfile::PB_PORT_MODE_48X10G_4X100G_2X40G {23, "PB_PORT_MODE_48X10G_4X100G_2X40G"};
-const Enum::YLeaf PlatformHwProfile::FOST_PORT_MODE_28X40G_4X100G {26, "FOST_PORT_MODE_28X40G_4X100G"};
-const Enum::YLeaf PlatformHwProfile::FOST_PORT_MODE_18X100G {27, "FOST_PORT_MODE_18X100G"};
-const Enum::YLeaf PlatformHwProfile::FOST_PORT_MODE_24X40G_6X100G {28, "FOST_PORT_MODE_24X40G_6X100G"};
-const Enum::YLeaf PlatformHwProfile::TET_PORT_MODE_64X100G {29, "TET_PORT_MODE_64X100G"};
-const Enum::YLeaf PlatformHwProfile::TET_PORT_MODE_96X25G_32X100G {30, "TET_PORT_MODE_96X25G_32X100G"};
-const Enum::YLeaf PlatformHwProfile::TET_PORT_MODE_128X25G {31, "TET_PORT_MODE_128X25G"};
-
-const Enum::YLeaf PcPCHashDist::none {0, "none"};
-const Enum::YLeaf PcPCHashDist::adaptive {1, "adaptive"};
-const Enum::YLeaf PcPCHashDist::fixed {2, "fixed"};
-
-const Enum::YLeaf NetflowFltType::ipv4 {1, "ipv4"};
-const Enum::YLeaf NetflowFltType::ipv6 {2, "ipv6"};
-const Enum::YLeaf NetflowFltType::ce {3, "ce"};
-
-const Enum::YLeaf L1SwitchingSt::disabled {0, "disabled"};
-const Enum::YLeaf L1SwitchingSt::enabled {1, "enabled"};
-
-const Enum::YLeaf NwAdminStIfStatIpUnreach::enabled {1, "enabled"};
-const Enum::YLeaf NwAdminStIfStatIpUnreach::disabled {2, "disabled"};
-
-const Enum::YLeaf OspfNssaTransRole::always {1, "always"};
-const Enum::YLeaf OspfNssaTransRole::candidate {2, "candidate"};
-const Enum::YLeaf OspfNssaTransRole::never {3, "never"};
-
-const Enum::YLeaf IpqosStatsType::none {0, "none"};
-const Enum::YLeaf IpqosStatsType::matchCMap {1, "matchCMap"};
-const Enum::YLeaf IpqosStatsType::MTU {2, "MTU"};
-const Enum::YLeaf IpqosStatsType::setAction {3, "setAction"};
-const Enum::YLeaf IpqosStatsType::pause {4, "pause"};
-const Enum::YLeaf IpqosStatsType::bw {5, "bw"};
-const Enum::YLeaf IpqosStatsType::bwRem {6, "bwRem"};
-const Enum::YLeaf IpqosStatsType::shape {7, "shape"};
-const Enum::YLeaf IpqosStatsType::prio {8, "prio"};
-const Enum::YLeaf IpqosStatsType::randomDetect {9, "randomDetect"};
-const Enum::YLeaf IpqosStatsType::queuing {10, "queuing"};
-const Enum::YLeaf IpqosStatsType::police {11, "police"};
-const Enum::YLeaf IpqosStatsType::qlimit {12, "qlimit"};
-const Enum::YLeaf IpqosStatsType::microburst {13, "microburst"};
-
-const Enum::YLeaf M6ribDbT::client {0, "client"};
-const Enum::YLeaf M6ribDbT::memest {1, "memest"};
-const Enum::YLeaf M6ribDbT::vrf {2, "vrf"};
-
-const Enum::YLeaf CdpDuplex::unknown {0, "unknown"};
-const Enum::YLeaf CdpDuplex::half {1, "half"};
-const Enum::YLeaf CdpDuplex::full {2, "full"};
-
-const Enum::YLeaf RelnState::unformed {0, "unformed"};
-const Enum::YLeaf RelnState::formed {1, "formed"};
-const Enum::YLeaf RelnState::missing_target {2, "missing-target"};
-const Enum::YLeaf RelnState::invalid_target {4, "invalid-target"};
-
-const Enum::YLeaf AaaProviderGroupProtocol::tacacs {0, "tacacs"};
-const Enum::YLeaf AaaProviderGroupProtocol::radius {1, "radius"};
-const Enum::YLeaf AaaProviderGroupProtocol::ldap {2, "ldap"};
-
-const Enum::YLeaf L2AssocOperSt::oper {0, "oper"};
-const Enum::YLeaf L2AssocOperSt::non_oper {1, "non-oper"};
-
-const Enum::YLeaf ProcProcessType::unknown {0, "unknown"};
-const Enum::YLeaf ProcProcessType::non_sysmgr {1, "non-sysmgr"};
-const Enum::YLeaf ProcProcessType::vdc_local {2, "vdc-local"};
-const Enum::YLeaf ProcProcessType::vdc_global {3, "vdc-global"};
-const Enum::YLeaf ProcProcessType::vdc_unaware {4, "vdc-unaware"};
-const Enum::YLeaf ProcProcessType::not_running {5, "not-running"};
-const Enum::YLeaf ProcProcessType::terminated_etc {6, "terminated-etc"};
-
-const Enum::YLeaf HsrpGroupAf::ipv4 {1, "ipv4"};
-const Enum::YLeaf HsrpGroupAf::ipv6 {2, "ipv6"};
-
-const Enum::YLeaf NvoMultisiteStateT::enabled {1, "enabled"};
-
-const Enum::YLeaf NwAdminStIfStatMRouting::enabled {1, "enabled"};
-const Enum::YLeaf NwAdminStIfStatMRouting::disabled {2, "disabled"};
-
-const Enum::YLeaf PkiModulus::mod512 {512, "mod512"};
-const Enum::YLeaf PkiModulus::mod1024 {1024, "mod1024"};
-const Enum::YLeaf PkiModulus::mod1536 {1536, "mod1536"};
-const Enum::YLeaf PkiModulus::mod2048 {2048, "mod2048"};
-
-const Enum::YLeaf NbmNbmFaultType::NONE {0, "NONE"};
-const Enum::YLeaf NbmNbmFaultType::POLICYDENIED {1, "POLICYDENIED"};
-const Enum::YLeaf NbmNbmFaultType::POLICYDENIEDSENDER {2, "POLICYDENIEDSENDER"};
-const Enum::YLeaf NbmNbmFaultType::POLICYDENIEDRECEIVER {3, "POLICYDENIEDRECEIVER"};
-const Enum::YLeaf NbmNbmFaultType::RESOURCEUNAVAIL {4, "RESOURCEUNAVAIL"};
-const Enum::YLeaf NbmNbmFaultType::POLICERUNAVAIL {5, "POLICERUNAVAIL"};
-const Enum::YLeaf NbmNbmFaultType::BWUNAVAIL {6, "BWUNAVAIL"};
-const Enum::YLeaf NbmNbmFaultType::EXTBWUNAVAIL {7, "EXTBWUNAVAIL"};
-const Enum::YLeaf NbmNbmFaultType::FLOWPOLUNAVAIL {8, "FLOWPOLUNAVAIL"};
-const Enum::YLeaf NbmNbmFaultType::NOUCASTROUTE {9, "NOUCASTROUTE"};
-const Enum::YLeaf NbmNbmFaultType::FLOWLIMITREACHED {10, "FLOWLIMITREACHED"};
-const Enum::YLeaf NbmNbmFaultType::EXTFLOWLIMITREACHED {11, "EXTFLOWLIMITREACHED"};
-const Enum::YLeaf NbmNbmFaultType::EXTPOLICYDENIED {12, "EXTPOLICYDENIED"};
-const Enum::YLeaf NbmNbmFaultType::EXTPOLICERUNAVAIL {13, "EXTPOLICERUNAVAIL"};
-const Enum::YLeaf NbmNbmFaultType::BADIFSTATE {14, "BADIFSTATE"};
-
-const Enum::YLeaf StpBpdufilter::default_ {0, "default"};
-const Enum::YLeaf StpBpdufilter::enable {1, "enable"};
-const Enum::YLeaf StpBpdufilter::disable {2, "disable"};
-
-const Enum::YLeaf Vrrpv3VrAf::ipv4 {1, "ipv4"};
-const Enum::YLeaf Vrrpv3VrAf::ipv6 {2, "ipv6"};
-
-const Enum::YLeaf RtdmcDfStates::unknown {0, "unknown"};
-const Enum::YLeaf RtdmcDfStates::offer {1, "offer"};
-const Enum::YLeaf RtdmcDfStates::lose {2, "lose"};
-const Enum::YLeaf RtdmcDfStates::winner {3, "winner"};
-const Enum::YLeaf RtdmcDfStates::backoff {4, "backoff"};
 
 const Enum::YLeaf L1OperStQual_::unknown {0, "unknown"};
 const Enum::YLeaf L1OperStQual_::up {1, "up"};
@@ -27301,10 +25727,1282 @@ const Enum::YLeaf L1OperStQual_::vdc_mode {253, "vdc-mode"};
 const Enum::YLeaf L1OperStQual_::enm_pin_fail_link_down {254, "enm-pin-fail-link-down"};
 const Enum::YLeaf L1OperStQual_::inactive_m1_port_fpath_access_vlan {255, "inactive-m1-port-fpath-access-vlan"};
 
-const Enum::YLeaf SyslogOriginIdType::unknown {0, "unknown"};
-const Enum::YLeaf SyslogOriginIdType::hostname {1, "hostname"};
-const Enum::YLeaf SyslogOriginIdType::ip {2, "ip"};
-const Enum::YLeaf SyslogOriginIdType::string {3, "string"};
+const Enum::YLeaf L1PacketTimestampState::disable {0, "disable"};
+const Enum::YLeaf L1PacketTimestampState::enable_ingress {1, "enable-ingress"};
+const Enum::YLeaf L1PacketTimestampState::enable_egress {2, "enable-egress"};
+const Enum::YLeaf L1PacketTimestampState::enable_both {3, "enable-both"};
+
+const Enum::YLeaf L1PhyLayer::ethernet {2, "ethernet"};
+const Enum::YLeaf L1PhyLayer::sup_inband {4, "sup-inband"};
+const Enum::YLeaf L1PhyLayer::eobc {5, "eobc"};
+const Enum::YLeaf L1PhyLayer::mgmt {6, "mgmt"};
+const Enum::YLeaf L1PhyLayer::max {8, "max"};
+
+const Enum::YLeaf L1PktT::bcast {1, "bcast"};
+const Enum::YLeaf L1PktT::unk_ucast {2, "unk-ucast"};
+const Enum::YLeaf L1PktT::mcast {3, "mcast"};
+const Enum::YLeaf L1PktT::all {4, "all"};
+
+const Enum::YLeaf L1PortTypeFabric::no {0, "no"};
+const Enum::YLeaf L1PortTypeFabric::yes {1, "yes"};
+
+const Enum::YLeaf L1RouterMacIpv6Extract::disable {0, "disable"};
+const Enum::YLeaf L1RouterMacIpv6Extract::enable {1, "enable"};
+
+const Enum::YLeaf L1SnmpTrapSt::enable {1, "enable"};
+const Enum::YLeaf L1SnmpTrapSt::disable {2, "disable"};
+
+const Enum::YLeaf L1SpanMode::not_a_span_dest {1, "not-a-span-dest"};
+const Enum::YLeaf L1SpanMode::span_dest {2, "span-dest"};
+const Enum::YLeaf L1SpanMode::span_dest_fwd {3, "span-dest-fwd"};
+const Enum::YLeaf L1SpanMode::span_dest_fwd_learn {4, "span-dest-fwd-learn"};
+
+const Enum::YLeaf L1Speed::unknown {0, "unknown"};
+const Enum::YLeaf L1Speed::Y_100M {2, "100M"};
+const Enum::YLeaf L1Speed::Y_1G {3, "1G"};
+const Enum::YLeaf L1Speed::Y_10G {4, "10G"};
+const Enum::YLeaf L1Speed::Y_40G {5, "40G"};
+const Enum::YLeaf L1Speed::auto_ {6, "auto"};
+const Enum::YLeaf L1Speed::auto_100M {7, "auto_100M"};
+const Enum::YLeaf L1Speed::auto_100M_1G {8, "auto_100M_1G"};
+const Enum::YLeaf L1Speed::Y_100G {9, "100G"};
+const Enum::YLeaf L1Speed::Y_25G {10, "25G"};
+const Enum::YLeaf L1Speed::Y_10M {11, "10M"};
+const Enum::YLeaf L1Speed::Y_50G {12, "50G"};
+
+const Enum::YLeaf L1SpeedGroup::unknown {0, "unknown"};
+const Enum::YLeaf L1SpeedGroup::Y_1000 {3, "1000"};
+const Enum::YLeaf L1SpeedGroup::Y_25000 {10, "25000"};
+const Enum::YLeaf L1SpeedGroup::Y_10000 {4, "10000"};
+const Enum::YLeaf L1SpeedGroup::Y_40000 {5, "40000"};
+const Enum::YLeaf L1SpeedGroup::auto_ {6, "auto"};
+
+const Enum::YLeaf L1SwitchingSt::disabled {0, "disabled"};
+const Enum::YLeaf L1SwitchingSt::enabled {1, "enabled"};
+
+const Enum::YLeaf L1SwitchportVirtualEthernetBridge::disable {0, "disable"};
+const Enum::YLeaf L1SwitchportVirtualEthernetBridge::enable {1, "enable"};
+
+const Enum::YLeaf L1TrunkLog::default_ {1, "default"};
+const Enum::YLeaf L1TrunkLog::enable {2, "enable"};
+const Enum::YLeaf L1TrunkLog::disable {3, "disable"};
+
+const Enum::YLeaf L1TxT::unknown {1, "unknown"};
+const Enum::YLeaf L1TxT::LL {2, "LL"};
+const Enum::YLeaf L1TxT::SN {3, "SN"};
+const Enum::YLeaf L1TxT::LC {4, "LC"};
+const Enum::YLeaf L1TxT::EL {5, "EL"};
+const Enum::YLeaf L1TxT::Y_10GBASE_SR {6, "10GBASE-SR"};
+const Enum::YLeaf L1TxT::Y_10GBASE_LR {7, "10GBASE-LR"};
+const Enum::YLeaf L1TxT::Y_10GBASE_ER {8, "10GBASE-ER"};
+const Enum::YLeaf L1TxT::Y_10GBASE_LX4 {9, "10GBASE-LX4"};
+const Enum::YLeaf L1TxT::Y_10GBASE_SW {10, "10GBASE-SW"};
+const Enum::YLeaf L1TxT::Y_10GBASE_LW {11, "10GBASE-LW"};
+const Enum::YLeaf L1TxT::Y_10GBASE_EW {12, "10GBASE-EW"};
+
+const Enum::YLeaf L1VdcSt::not_created {0, "not-created"};
+const Enum::YLeaf L1VdcSt::created {1, "created"};
+const Enum::YLeaf L1VdcSt::cleanup {2, "cleanup"};
+
+const Enum::YLeaf L1VoiceVlanType::none {0, "none"};
+const Enum::YLeaf L1VoiceVlanType::tagged {1, "tagged"};
+const Enum::YLeaf L1VoiceVlanType::dot1p {2, "dot1p"};
+const Enum::YLeaf L1VoiceVlanType::untagged {3, "untagged"};
+
+const Enum::YLeaf L1SwitchportMacLearn::disable {0, "disable"};
+const Enum::YLeaf L1SwitchportMacLearn::enable {1, "enable"};
+
+const Enum::YLeaf L1capSubj::unknown {0, "unknown"};
+const Enum::YLeaf L1capSubj::pc_namespace {1, "pc-namespace"};
+const Enum::YLeaf L1capSubj::ethport {2, "ethport"};
+
+const Enum::YLeaf L2AssocOperSt::oper {0, "oper"};
+const Enum::YLeaf L2AssocOperSt::non_oper {1, "non-oper"};
+
+const Enum::YLeaf L2BridgeMode::ip {1, "ip"};
+const Enum::YLeaf L2BridgeMode::mac {2, "mac"};
+
+const Enum::YLeaf L2CreateState::created {1, "created"};
+const Enum::YLeaf L2CreateState::removed {2, "removed"};
+const Enum::YLeaf L2CreateState::deleted_and_stale {3, "deleted-and-stale"};
+
+const Enum::YLeaf L2DomAdminSt::suspend {1, "suspend"};
+const Enum::YLeaf L2DomAdminSt::active {2, "active"};
+
+const Enum::YLeaf L2DomMode::CE {1, "CE"};
+const Enum::YLeaf L2DomMode::FabricPath {2, "FabricPath"};
+
+const Enum::YLeaf L2DomOperSt::up {1, "up"};
+const Enum::YLeaf L2DomOperSt::down {2, "down"};
+const Enum::YLeaf L2DomOperSt::unknown {3, "unknown"};
+
+const Enum::YLeaf L2DomType::bd_regular {1, "bd-regular"};
+const Enum::YLeaf L2DomType::bd_reserved {2, "bd-reserved"};
+const Enum::YLeaf L2DomType::bd_control {3, "bd-control"};
+const Enum::YLeaf L2DomType::bd_external {4, "bd-external"};
+const Enum::YLeaf L2DomType::ckt_vlan {5, "ckt-vlan"};
+const Enum::YLeaf L2DomType::ckt_vxlan {6, "ckt-vxlan"};
+
+const Enum::YLeaf L2EnfPref::sw {1, "sw"};
+const Enum::YLeaf L2EnfPref::hw {2, "hw"};
+
+const Enum::YLeaf L2EtherType::unspecified {0, "unspecified"};
+const Enum::YLeaf L2EtherType::arp {2054, "arp"};
+const Enum::YLeaf L2EtherType::trill {8947, "trill"};
+const Enum::YLeaf L2EtherType::mpls_ucast {34887, "mpls_ucast"};
+const Enum::YLeaf L2EtherType::mac_security {35045, "mac_security"};
+const Enum::YLeaf L2EtherType::fcoe {35078, "fcoe"};
+const Enum::YLeaf L2EtherType::ip {43981, "ip"};
+
+const Enum::YLeaf L2MacInfo::standard {0, "standard"};
+const Enum::YLeaf L2MacInfo::drop {1, "drop"};
+const Enum::YLeaf L2MacInfo::svi_down_flood {2, "svi-down-flood"};
+const Enum::YLeaf L2MacInfo::sup_inband_cfsoe {3, "sup-inband-cfsoe"};
+const Enum::YLeaf L2MacInfo::vpc_peer_link {4, "vpc-peer-link"};
+const Enum::YLeaf L2MacInfo::nve {5, "nve"};
+const Enum::YLeaf L2MacInfo::sup_eth {6, "sup-eth"};
+
+const Enum::YLeaf L2MacType::unknown {0, "unknown"};
+const Enum::YLeaf L2MacType::primary {1, "primary"};
+const Enum::YLeaf L2MacType::gateway {2, "gateway"};
+const Enum::YLeaf L2MacType::overlay {4, "overlay"};
+const Enum::YLeaf L2MacType::primary_vpc_peer {5, "primary-vpc-peer"};
+const Enum::YLeaf L2MacType::control_plane {6, "control-plane"};
+const Enum::YLeaf L2MacType::vsan {7, "vsan"};
+
+const Enum::YLeaf L2Mode::F {0, "F"};
+const Enum::YLeaf L2Mode::NP {1, "NP"};
+const Enum::YLeaf L2Mode::E {2, "E"};
+const Enum::YLeaf L2Mode::TF {3, "TF"};
+const Enum::YLeaf L2Mode::TNP {4, "TNP"};
+
+const Enum::YLeaf L2NativeT::regular {0, "regular"};
+const Enum::YLeaf L2NativeT::native {1, "native"};
+const Enum::YLeaf L2NativeT::untagged {2, "untagged"};
+
+const Enum::YLeaf L2PvlanTypes::default_ {0, "default"};
+const Enum::YLeaf L2PvlanTypes::primary {1, "primary"};
+const Enum::YLeaf L2PvlanTypes::community {2, "community"};
+const Enum::YLeaf L2PvlanTypes::isolated {3, "isolated"};
+
+const Enum::YLeaf L2TrafficMapCfgSt::config_success {0, "config-success"};
+const Enum::YLeaf L2TrafficMapCfgSt::config_failure {1, "config-failure"};
+
+const Enum::YLeaf L2TrunkMode::off {0, "off"};
+const Enum::YLeaf L2TrunkMode::on {1, "on"};
+const Enum::YLeaf L2TrunkMode::auto_ {2, "auto"};
+
+const Enum::YLeaf L2XConnect::enable {1, "enable"};
+const Enum::YLeaf L2XConnect::disable {0, "disable"};
+
+const Enum::YLeaf L2Disablefka::not_set {0, "not_set"};
+const Enum::YLeaf L2Disablefka::set {1, "set"};
+
+const Enum::YLeaf L2capSubj::unknown {0, "unknown"};
+const Enum::YLeaf L2capSubj::vxlan_namespace {1, "vxlan-namespace"};
+const Enum::YLeaf L2capSubj::nvgre_namespace {2, "nvgre-namespace"};
+const Enum::YLeaf L2capSubj::domain_namespace {3, "domain-namespace"};
+const Enum::YLeaf L2capSubj::tunnel_namespace {4, "tunnel-namespace"};
+
+const Enum::YLeaf L2fmLearning::enable {1, "enable"};
+const Enum::YLeaf L2fmLearning::disable {0, "disable"};
+
+const Enum::YLeaf L3CtxT::oob_mgmt {1, "oob-mgmt"};
+const Enum::YLeaf L3CtxT::inb_mgmt {2, "inb-mgmt"};
+const Enum::YLeaf L3CtxT::tenant {3, "tenant"};
+
+const Enum::YLeaf L3VrfAdminState::shutdown {1, "shutdown"};
+const Enum::YLeaf L3VrfAdminState::admin_up {2, "admin-up"};
+
+const Enum::YLeaf L3VrfGsdbCtxType::vrf {1, "vrf"};
+const Enum::YLeaf L3VrfGsdbCtxType::if_ {2, "if"};
+const Enum::YLeaf L3VrfGsdbCtxType::table {3, "table"};
+const Enum::YLeaf L3VrfGsdbCtxType::if_table {4, "if-table"};
+const Enum::YLeaf L3VrfGsdbCtxType::if_list {5, "if-list"};
+const Enum::YLeaf L3VrfGsdbCtxType::purge {6, "purge"};
+const Enum::YLeaf L3VrfGsdbCtxType::vpnid {7, "vpnid"};
+const Enum::YLeaf L3VrfGsdbCtxType::source_of_origin {8, "source-of-origin"};
+const Enum::YLeaf L3VrfGsdbCtxType::route_limits {9, "route-limits"};
+
+const Enum::YLeaf L3VrfOperState::up {1, "up"};
+const Enum::YLeaf L3VrfOperState::down {2, "down"};
+
+const Enum::YLeaf L3VrfOperStateQual::admin_down {1, "admin-down"};
+const Enum::YLeaf L3VrfOperStateQual::admin_down_pending {2, "admin-down-pending"};
+const Enum::YLeaf L3VrfOperStateQual::delete_holddown {3, "delete-holddown"};
+const Enum::YLeaf L3VrfOperStateQual::delete_pending {4, "delete-pending"};
+const Enum::YLeaf L3VrfOperStateQual::invalid {5, "invalid"};
+const Enum::YLeaf L3VrfOperStateQual::create_pending {6, "create-pending"};
+
+const Enum::YLeaf L3capSubj::unknown {0, "unknown"};
+const Enum::YLeaf L3capSubj::vrf_namespace {1, "vrf-namespace"};
+const Enum::YLeaf L3capSubj::lb_namespace {2, "lb-namespace"};
+const Enum::YLeaf L3capSubj::rdnn_namespace {3, "rdnn-namespace"};
+
+const Enum::YLeaf LacpSysRole::primary {1, "primary"};
+const Enum::YLeaf LacpSysRole::secondary {2, "secondary"};
+
+const Enum::YLeaf LacpTxRate::normal {1, "normal"};
+const Enum::YLeaf LacpTxRate::fast {2, "fast"};
+
+const Enum::YLeaf LldpAdminSt::enabled {1, "enabled"};
+const Enum::YLeaf LldpAdminSt::disabled {2, "disabled"};
+
+const Enum::YLeaf LldpPortIdSubType::long_ {0, "long"};
+const Enum::YLeaf LldpPortIdSubType::short_ {1, "short"};
+
+const Enum::YLeaf M6ribDbT::client {0, "client"};
+const Enum::YLeaf M6ribDbT::memest {1, "memest"};
+const Enum::YLeaf M6ribDbT::vrf {2, "vrf"};
+
+const Enum::YLeaf M6ribEhType::cli {0, "cli"};
+const Enum::YLeaf M6ribEhType::mdt {1, "mdt"};
+const Enum::YLeaf M6ribEhType::mfdmDebugs {2, "mfdmDebugs"};
+const Enum::YLeaf M6ribEhType::mfdmEvents {3, "mfdmEvents"};
+const Enum::YLeaf M6ribEhType::mfdmStats {4, "mfdmStats"};
+const Enum::YLeaf M6ribEhType::notyClients {5, "notyClients"};
+const Enum::YLeaf M6ribEhType::rib {6, "rib"};
+const Enum::YLeaf M6ribEhType::ribSum {7, "ribSum"};
+const Enum::YLeaf M6ribEhType::urib {8, "urib"};
+const Enum::YLeaf M6ribEhType::vrf {9, "vrf"};
+
+const Enum::YLeaf M6ribHoldAdminSt::enabled {1, "enabled"};
+const Enum::YLeaf M6ribHoldAdminSt::disabled {2, "disabled"};
+
+const Enum::YLeaf McastFiltMode::include {1, "include"};
+const Enum::YLeaf McastFiltMode::exclude {2, "exclude"};
+
+const Enum::YLeaf McastVer::unspecified {0, "unspecified"};
+
+const Enum::YLeaf McastfwdEhType::internal {0, "internal"};
+const Enum::YLeaf McastfwdEhType::cli {1, "cli"};
+const Enum::YLeaf McastfwdEhType::packet {2, "packet"};
+const Enum::YLeaf McastfwdEhType::vrf {3, "vrf"};
+const Enum::YLeaf McastfwdEhType::l2 {4, "l2"};
+const Enum::YLeaf McastfwdEhType::nbm {5, "nbm"};
+
+const Enum::YLeaf McpOperSt::init {0, "init"};
+const Enum::YLeaf McpOperSt::up {1, "up"};
+const Enum::YLeaf McpOperSt::down {3, "down"};
+
+const Enum::YLeaf MockMode::Repeated {0, "Repeated"};
+const Enum::YLeaf MockMode::Once {1, "Once"};
+
+const Enum::YLeaf MonAdminState::enabled {1, "enabled"};
+const Enum::YLeaf MonAdminState::disabled {2, "disabled"};
+
+const Enum::YLeaf MonTransport::none {0, "none"};
+const Enum::YLeaf MonTransport::tcp {1, "tcp"};
+const Enum::YLeaf MonTransport::udp {2, "udp"};
+const Enum::YLeaf MonTransport::all {3, "all"};
+const Enum::YLeaf MonTransport::tls {4, "tls"};
+
+const Enum::YLeaf MonitorDbT::ipep_resolve {1, "ipep-resolve"};
+
+const Enum::YLeaf MonitorDestEncapT::gre {1, "gre"};
+
+const Enum::YLeaf MonitorDirection::in {1, "in"};
+const Enum::YLeaf MonitorDirection::out {2, "out"};
+const Enum::YLeaf MonitorDirection::both {3, "both"};
+const Enum::YLeaf MonitorDirection::none {4, "none"};
+
+const Enum::YLeaf MonitorErSpanVer::ver2 {2, "ver2"};
+const Enum::YLeaf MonitorErSpanVer::ver3 {3, "ver3"};
+
+const Enum::YLeaf MonitorMode::access {1, "access"};
+const Enum::YLeaf MonitorMode::fabric {2, "fabric"};
+
+const Enum::YLeaf MonitorOperSt::up {1, "up"};
+const Enum::YLeaf MonitorOperSt::down {2, "down"};
+const Enum::YLeaf MonitorOperSt::failed {3, "failed"};
+
+const Enum::YLeaf MonitorSrcT::port {1, "port"};
+const Enum::YLeaf MonitorSrcT::encap {2, "encap"};
+const Enum::YLeaf MonitorSrcT::port_encap {3, "port-encap"};
+
+const Enum::YLeaf MplsOperSt::down {0, "down"};
+const Enum::YLeaf MplsOperSt::up {1, "up"};
+
+const Enum::YLeaf MplsstaticAfT::ipv4_ucast {1, "ipv4-ucast"};
+const Enum::YLeaf MplsstaticAfT::ipv6_ucast {2, "ipv6-ucast"};
+
+const Enum::YLeaf MribEhType::cli {0, "cli"};
+const Enum::YLeaf MribEhType::mdt {1, "mdt"};
+const Enum::YLeaf MribEhType::mfdmDebugs {2, "mfdmDebugs"};
+const Enum::YLeaf MribEhType::mfdmEvents {3, "mfdmEvents"};
+const Enum::YLeaf MribEhType::mfdmStats {4, "mfdmStats"};
+const Enum::YLeaf MribEhType::notyClients {5, "notyClients"};
+const Enum::YLeaf MribEhType::rib {6, "rib"};
+const Enum::YLeaf MribEhType::ribSum {7, "ribSum"};
+const Enum::YLeaf MribEhType::urib {8, "urib"};
+const Enum::YLeaf MribEhType::vrf {9, "vrf"};
+const Enum::YLeaf MribEhType::nbm {10, "nbm"};
+
+const Enum::YLeaf MribHoldAdminSt::enabled {1, "enabled"};
+const Enum::YLeaf MribHoldAdminSt::disabled {2, "disabled"};
+
+const Enum::YLeaf MribModeAdminSt::enabled {1, "enabled"};
+const Enum::YLeaf MribModeAdminSt::disabled {2, "disabled"};
+
+const Enum::YLeaf MribMultipathMode::none {1, "none"};
+const Enum::YLeaf MribMultipathMode::nbm {2, "nbm"};
+const Enum::YLeaf MribMultipathMode::null {3, "null"};
+const Enum::YLeaf MribMultipathMode::s_g_hash {4, "s-g-hash"};
+const Enum::YLeaf MribMultipathMode::legacy {5, "legacy"};
+const Enum::YLeaf MribMultipathMode::resilient {6, "resilient"};
+const Enum::YLeaf MribMultipathMode::s_g_hash_next_hop {7, "s-g-hash-next-hop"};
+
+const Enum::YLeaf MsdpAuthT::none {0, "none"};
+const Enum::YLeaf MsdpAuthT::md5 {1, "md5"};
+
+const Enum::YLeaf MsdpDbT::route {0, "route"};
+const Enum::YLeaf MsdpDbT::source {1, "source"};
+
+const Enum::YLeaf MsdpEhType::cli {0, "cli"};
+const Enum::YLeaf MsdpEhType::events {1, "events"};
+const Enum::YLeaf MsdpEhType::msdpInternal {2, "msdpInternal"};
+const Enum::YLeaf MsdpEhType::routes {3, "routes"};
+const Enum::YLeaf MsdpEhType::tcp {4, "tcp"};
+
+const Enum::YLeaf MsdpOperSt::inactive {0, "inactive"};
+const Enum::YLeaf MsdpOperSt::down {1, "down"};
+const Enum::YLeaf MsdpOperSt::admin_down {2, "admin-down"};
+const Enum::YLeaf MsdpOperSt::connecting {3, "connecting"};
+const Enum::YLeaf MsdpOperSt::listening {4, "listening"};
+const Enum::YLeaf MsdpOperSt::established {5, "established"};
+
+const Enum::YLeaf MsdpSource::none {0, "none"};
+const Enum::YLeaf MsdpSource::pflist {1, "pflist"};
+const Enum::YLeaf MsdpSource::rtmap {2, "rtmap"};
+
+const Enum::YLeaf NbmNbmBwUnitEn::UNSPECIFIED {0, "UNSPECIFIED"};
+const Enum::YLeaf NbmNbmBwUnitEn::KBPS {1, "KBPS"};
+const Enum::YLeaf NbmNbmBwUnitEn::MBPS {2, "MBPS"};
+const Enum::YLeaf NbmNbmBwUnitEn::GBPS {3, "GBPS"};
+
+const Enum::YLeaf NbmNbmEndpointRole::UNKNOWN {0, "UNKNOWN"};
+const Enum::YLeaf NbmNbmEndpointRole::ARP {1, "ARP"};
+const Enum::YLeaf NbmNbmEndpointRole::RECEIVER {2, "RECEIVER"};
+const Enum::YLeaf NbmNbmEndpointRole::RECEIVER_ARP {3, "RECEIVER_ARP"};
+const Enum::YLeaf NbmNbmEndpointRole::SENDER {4, "SENDER"};
+const Enum::YLeaf NbmNbmEndpointRole::SENDER_ARP {5, "SENDER_ARP"};
+const Enum::YLeaf NbmNbmEndpointRole::SENDER_RECEIVER {6, "SENDER_RECEIVER"};
+const Enum::YLeaf NbmNbmEndpointRole::SENDER_RECEIVER_ARP {7, "SENDER_RECEIVER_ARP"};
+
+const Enum::YLeaf NbmNbmFaultType::NONE {0, "NONE"};
+const Enum::YLeaf NbmNbmFaultType::POLICYDENIED {1, "POLICYDENIED"};
+const Enum::YLeaf NbmNbmFaultType::POLICYDENIEDSENDER {2, "POLICYDENIEDSENDER"};
+const Enum::YLeaf NbmNbmFaultType::POLICYDENIEDRECEIVER {3, "POLICYDENIEDRECEIVER"};
+const Enum::YLeaf NbmNbmFaultType::RESOURCEUNAVAIL {4, "RESOURCEUNAVAIL"};
+const Enum::YLeaf NbmNbmFaultType::POLICERUNAVAIL {5, "POLICERUNAVAIL"};
+const Enum::YLeaf NbmNbmFaultType::BWUNAVAIL {6, "BWUNAVAIL"};
+const Enum::YLeaf NbmNbmFaultType::EXTBWUNAVAIL {7, "EXTBWUNAVAIL"};
+const Enum::YLeaf NbmNbmFaultType::FLOWPOLUNAVAIL {8, "FLOWPOLUNAVAIL"};
+const Enum::YLeaf NbmNbmFaultType::NOUCASTROUTE {9, "NOUCASTROUTE"};
+const Enum::YLeaf NbmNbmFaultType::FLOWLIMITREACHED {10, "FLOWLIMITREACHED"};
+const Enum::YLeaf NbmNbmFaultType::EXTFLOWLIMITREACHED {11, "EXTFLOWLIMITREACHED"};
+const Enum::YLeaf NbmNbmFaultType::EXTPOLICYDENIED {12, "EXTPOLICYDENIED"};
+const Enum::YLeaf NbmNbmFaultType::EXTPOLICERUNAVAIL {13, "EXTPOLICERUNAVAIL"};
+const Enum::YLeaf NbmNbmFaultType::BADIFSTATE {14, "BADIFSTATE"};
+
+const Enum::YLeaf NbmNbmFlowOperEn::NOOP {0, "NOOP"};
+const Enum::YLeaf NbmNbmFlowOperEn::ROUTE_ADD {1, "ROUTE_ADD"};
+const Enum::YLeaf NbmNbmFlowOperEn::ROUTE_DEL {2, "ROUTE_DEL"};
+const Enum::YLeaf NbmNbmFlowOperEn::UPD_ADD_OIF {3, "UPD_ADD_OIF"};
+const Enum::YLeaf NbmNbmFlowOperEn::UPD_DEL_OIF {4, "UPD_DEL_OIF"};
+const Enum::YLeaf NbmNbmFlowOperEn::LOC_ADD_OIF {5, "LOC_ADD_OIF"};
+const Enum::YLeaf NbmNbmFlowOperEn::LOC_DEL_OIF {6, "LOC_DEL_OIF"};
+const Enum::YLeaf NbmNbmFlowOperEn::UPD_IIF {7, "UPD_IIF"};
+const Enum::YLeaf NbmNbmFlowOperEn::DENY_POLICY_SRC {8, "DENY_POLICY_SRC"};
+const Enum::YLeaf NbmNbmFlowOperEn::SRC_DISCOVERY {9, "SRC_DISCOVERY"};
+const Enum::YLeaf NbmNbmFlowOperEn::SRC_DISC_STOP {10, "SRC_DISC_STOP"};
+const Enum::YLeaf NbmNbmFlowOperEn::Y_11 {11, "11"};
+const Enum::YLeaf NbmNbmFlowOperEn::Y_12 {12, "12"};
+const Enum::YLeaf NbmNbmFlowOperEn::Y_13_UNUSED {13, "13-UNUSED"};
+const Enum::YLeaf NbmNbmFlowOperEn::Y_14 {14, "14"};
+const Enum::YLeaf NbmNbmFlowOperEn::ALLOW_POLICY_SRC {15, "ALLOW_POLICY_SRC"};
+const Enum::YLeaf NbmNbmFlowOperEn::DENY_POLICY_RCV {16, "DENY_POLICY_RCV"};
+const Enum::YLeaf NbmNbmFlowOperEn::ALLOW_POLICY_RCV {17, "ALLOW_POLICY_RCV"};
+const Enum::YLeaf NbmNbmFlowOperEn::Y_18 {18, "18"};
+const Enum::YLeaf NbmNbmFlowOperEn::Y_19 {19, "19"};
+const Enum::YLeaf NbmNbmFlowOperEn::Y_20 {20, "20"};
+
+const Enum::YLeaf NbmNbmFlowPolicerEn::DISABLED {0, "DISABLED"};
+const Enum::YLeaf NbmNbmFlowPolicerEn::ENABLED {1, "ENABLED"};
+
+const Enum::YLeaf NbmNbmGroupRangeType::ASM {0, "ASM"};
+const Enum::YLeaf NbmNbmGroupRangeType::SSM {1, "SSM"};
+
+const Enum::YLeaf NbmNbmLinkRole::EXTERNAL_LINK {0, "EXTERNAL_LINK"};
+const Enum::YLeaf NbmNbmLinkRole::FABRIC_LINK {1, "FABRIC_LINK"};
+
+const Enum::YLeaf NbmNbmNoYes::NO {0, "NO"};
+const Enum::YLeaf NbmNbmNoYes::YES {1, "YES"};
+const Enum::YLeaf NbmNbmNoYes::NA {2, "NA"};
+
+const Enum::YLeaf NbmNbmOifOrigin::UNDEFINED {0, "UNDEFINED"};
+const Enum::YLeaf NbmNbmOifOrigin::PROTOCOL {1, "PROTOCOL"};
+const Enum::YLeaf NbmNbmOifOrigin::API {2, "API"};
+const Enum::YLeaf NbmNbmOifOrigin::API_PROTOCOL {3, "API_PROTOCOL"};
+
+const Enum::YLeaf NbmNbmOperationalMode::UNDEFINED {0, "UNDEFINED"};
+const Enum::YLeaf NbmNbmOperationalMode::PIM_ACTIVE {1, "PIM_ACTIVE"};
+
+const Enum::YLeaf NbmNbmPermit::UNDEFINED {0, "UNDEFINED"};
+const Enum::YLeaf NbmNbmPermit::DENIED {1, "DENIED"};
+const Enum::YLeaf NbmNbmPermit::ALLOWED {2, "ALLOWED"};
+
+const Enum::YLeaf NbmNbmPolicyType::SENDER {0, "SENDER"};
+const Enum::YLeaf NbmNbmPolicyType::RECEIVER {1, "RECEIVER"};
+const Enum::YLeaf NbmNbmPolicyType::PIM {2, "PIM"};
+
+const Enum::YLeaf NbmNbmRcvOwner::IGMP {0, "IGMP"};
+const Enum::YLeaf NbmNbmRcvOwner::STATIC {1, "STATIC"};
+const Enum::YLeaf NbmNbmRcvOwner::PIM {2, "PIM"};
+const Enum::YLeaf NbmNbmRcvOwner::NBM_STATIC {4, "NBM-STATIC"};
+
+const Enum::YLeaf NdAdjOperSt::unspecified {0, "unspecified"};
+const Enum::YLeaf NdAdjOperSt::incomplete {1, "incomplete"};
+const Enum::YLeaf NdAdjOperSt::normal {2, "normal"};
+
+const Enum::YLeaf NdConfigErr::noerror {0, "noerror"};
+const Enum::YLeaf NdConfigErr::managedConfigFlag {1, "managedConfigFlag"};
+const Enum::YLeaf NdConfigErr::otherConfigFlag {2, "otherConfigFlag"};
+const Enum::YLeaf NdConfigErr::raIntvl {3, "raIntvl"};
+const Enum::YLeaf NdConfigErr::raLifetime {4, "raLifetime"};
+const Enum::YLeaf NdConfigErr::suppressRa {5, "suppressRa"};
+const Enum::YLeaf NdConfigErr::macExtract {6, "macExtract"};
+
+const Enum::YLeaf NdDbT::adj {1, "adj"};
+
+const Enum::YLeaf NdMacExtract::none {0, "none"};
+const Enum::YLeaf NdMacExtract::nud_phase {1, "nud-phase"};
+const Enum::YLeaf NdMacExtract::exclude_nud_phase {2, "exclude-nud-phase"};
+
+const Enum::YLeaf NdRouterPreference::Medium {0, "Medium"};
+const Enum::YLeaf NdRouterPreference::High {1, "High"};
+const Enum::YLeaf NdRouterPreference::Reserved {2, "Reserved"};
+const Enum::YLeaf NdRouterPreference::Low {3, "Low"};
+
+const Enum::YLeaf NdRtPrefForCmd::unspecified {0, "unspecified"};
+const Enum::YLeaf NdRtPrefForCmd::low {1, "low"};
+const Enum::YLeaf NdRtPrefForCmd::medium {2, "medium"};
+const Enum::YLeaf NdRtPrefForCmd::high {3, "high"};
+
+const Enum::YLeaf NdRtPrefForNdRt::low {0, "low"};
+const Enum::YLeaf NdRtPrefForNdRt::medium {1, "medium"};
+const Enum::YLeaf NdRtPrefForNdRt::high {2, "high"};
+
+const Enum::YLeaf NdSolicitAcceptValue::none {0, "none"};
+const Enum::YLeaf NdSolicitAcceptValue::accept {1, "accept"};
+const Enum::YLeaf NdSolicitAcceptValue::no_accept {2, "no-accept"};
+
+const Enum::YLeaf NdStAdjOperSt::down {0, "down"};
+const Enum::YLeaf NdStAdjOperSt::up {1, "up"};
+
+const Enum::YLeaf NdStAdjOperStQual::subnet_mismatch {1, "subnet-mismatch"};
+const Enum::YLeaf NdStAdjOperStQual::invalid_mac {2, "invalid-mac"};
+const Enum::YLeaf NdStAdjOperStQual::invalid_ip {3, "invalid-ip"};
+const Enum::YLeaf NdStAdjOperStQual::invalid_vrf {4, "invalid-vrf"};
+const Enum::YLeaf NdStAdjOperStQual::own_mac {5, "own-mac"};
+const Enum::YLeaf NdStAdjOperStQual::if_down {6, "if-down"};
+const Enum::YLeaf NdStAdjOperStQual::up {7, "up"};
+
+const Enum::YLeaf NdVaddrClientState::ICMPV6_CLIENT_STATE_INACTIVE {0, "ICMPV6_CLIENT_STATE_INACTIVE"};
+const Enum::YLeaf NdVaddrClientState::ICMPV6_CLIENT_STATE_ACTIVE {1, "ICMPV6_CLIENT_STATE_ACTIVE"};
+const Enum::YLeaf NdVaddrClientState::ICMPV6_CLIENT_STATE_ANYCAST_INACTIVE {2, "ICMPV6_CLIENT_STATE_ANYCAST_INACTIVE"};
+
+const Enum::YLeaf NetflowCollVersion::v5 {1, "v5"};
+const Enum::YLeaf NetflowCollVersion::v9 {2, "v9"};
+const Enum::YLeaf NetflowCollVersion::cisco_v1 {3, "cisco-v1"};
+
+const Enum::YLeaf NetflowDirectionT::in {1, "in"};
+const Enum::YLeaf NetflowDirectionT::out {2, "out"};
+const Enum::YLeaf NetflowDirectionT::both {3, "both"};
+
+const Enum::YLeaf NetflowFltType::ipv4 {1, "ipv4"};
+const Enum::YLeaf NetflowFltType::ipv6 {2, "ipv6"};
+const Enum::YLeaf NetflowFltType::ce {3, "ce"};
+
+const Enum::YLeaf NetflowModeT::netflow {0, "netflow"};
+
+const Enum::YLeaf NgmvpnAfT::ipv4 {0, "ipv4"};
+const Enum::YLeaf NgmvpnAfT::ipv6 {1, "ipv6"};
+
+const Enum::YLeaf NgmvpnDbT::mroute {0, "mroute"};
+const Enum::YLeaf NgmvpnDbT::saroute {1, "saroute"};
+const Enum::YLeaf NgmvpnDbT::l2route {2, "l2route"};
+
+const Enum::YLeaf NgmvpnEhType::bgp {0, "bgp"};
+const Enum::YLeaf NgmvpnEhType::mrib {1, "mrib"};
+const Enum::YLeaf NgmvpnEhType::m2rib {2, "m2rib"};
+const Enum::YLeaf NgmvpnEhType::m6rib {3, "m6rib"};
+const Enum::YLeaf NgmvpnEhType::pim {4, "pim"};
+const Enum::YLeaf NgmvpnEhType::pim6 {5, "pim6"};
+const Enum::YLeaf NgmvpnEhType::hmm {6, "hmm"};
+const Enum::YLeaf NgmvpnEhType::isis {7, "isis"};
+const Enum::YLeaf NgmvpnEhType::ha {8, "ha"};
+
+const Enum::YLeaf NgoamOamChannel::invalid {0, "invalid"};
+const Enum::YLeaf NgoamOamChannel::tissa {2, "tissa"};
+
+const Enum::YLeaf NgoamXcPortState::down {0, "down"};
+const Enum::YLeaf NgoamXcPortState::up {1, "up"};
+const Enum::YLeaf NgoamXcPortState::errDisabled {2, "errDisabled"};
+
+const Enum::YLeaf NgoamXcState::Active {0, "Active"};
+const Enum::YLeaf NgoamXcState::DB {1, "DB"};
+const Enum::YLeaf NgoamXcState::HB {2, "HB"};
+const Enum::YLeaf NgoamXcState::RD {4, "RD"};
+const Enum::YLeaf NgoamXcState::LD {8, "LD"};
+const Enum::YLeaf NgoamXcState::DB__FWD_SLASH__HB {3, "DB/HB"};
+const Enum::YLeaf NgoamXcState::RD__FWD_SLASH__HB {6, "RD/HB"};
+const Enum::YLeaf NgoamXcState::DB__FWD_SLASH__HB__FWD_SLASH__RD {7, "DB/HB/RD"};
+const Enum::YLeaf NgoamXcState::DB__FWD_SLASH__LD {9, "DB/LD"};
+const Enum::YLeaf NgoamXcState::HB__FWD_SLASH__LD {10, "HB/LD"};
+const Enum::YLeaf NgoamXcState::DB__FWD_SLASH__HB__FWD_SLASH__LD {11, "DB/HB/LD"};
+const Enum::YLeaf NgoamXcState::RD__FWD_SLASH__LD {12, "RD/LD"};
+const Enum::YLeaf NgoamXcState::DB__FWD_SLASH__RD__FWD_SLASH__LD {13, "DB/RD/LD"};
+const Enum::YLeaf NgoamXcState::HB__FWD_SLASH__RD__FWD_SLASH__LD {14, "HB/RD/LD"};
+const Enum::YLeaf NgoamXcState::DB__FWD_SLASH__HB__FWD_SLASH__RD__FWD_SLASH__LD {15, "DB/HB/RD/LD"};
+
+const Enum::YLeaf NpvExtIfFsmSt::no_transition {0, "no-transition"};
+const Enum::YLeaf NpvExtIfFsmSt::no_change {1, "no-change"};
+const Enum::YLeaf NpvExtIfFsmSt::any {2, "any"};
+const Enum::YLeaf NpvExtIfFsmSt::down {3, "down"};
+const Enum::YLeaf NpvExtIfFsmSt::preinit_done {4, "preinit-done"};
+const Enum::YLeaf NpvExtIfFsmSt::wait_flogi_response {5, "wait-flogi-response"};
+const Enum::YLeaf NpvExtIfFsmSt::up {6, "up"};
+const Enum::YLeaf NpvExtIfFsmSt::flogi_failed {7, "flogi-failed"};
+const Enum::YLeaf NpvExtIfFsmSt::wait_fcid_add {8, "wait-fcid-add"};
+const Enum::YLeaf NpvExtIfFsmSt::wait_fcid_del {9, "wait-fcid-del"};
+const Enum::YLeaf NpvExtIfFsmSt::wait_ns_registration {10, "wait-ns-registration"};
+const Enum::YLeaf NpvExtIfFsmSt::flogi_fail_retry {11, "flogi-fail-retry"};
+const Enum::YLeaf NpvExtIfFsmSt::wait_for_vsan_up {12, "wait-for-vsan-up"};
+const Enum::YLeaf NpvExtIfFsmSt::wait_lc_port_config {13, "wait-lc-port-config"};
+const Enum::YLeaf NpvExtIfFsmSt::pc_member_add {14, "pc-member-add"};
+const Enum::YLeaf NpvExtIfFsmSt::pc_member_del {15, "pc-member-del"};
+
+const Enum::YLeaf NpvSrvIfFsmSt::no_transition {0, "no-transition"};
+const Enum::YLeaf NpvSrvIfFsmSt::no_change {1, "no-change"};
+const Enum::YLeaf NpvSrvIfFsmSt::any {2, "any"};
+const Enum::YLeaf NpvSrvIfFsmSt::if_down {3, "if-down"};
+const Enum::YLeaf NpvSrvIfFsmSt::wait_ext_if {4, "wait-ext-if"};
+const Enum::YLeaf NpvSrvIfFsmSt::wait_flogi {5, "wait-flogi"};
+const Enum::YLeaf NpvSrvIfFsmSt::if_up {6, "if-up"};
+const Enum::YLeaf NpvSrvIfFsmSt::flogi_cleanup {7, "flogi-cleanup"};
+const Enum::YLeaf NpvSrvIfFsmSt::wait_fc_add {8, "wait-fc-add"};
+const Enum::YLeaf NpvSrvIfFsmSt::wait_fc_del {9, "wait-fc-del"};
+const Enum::YLeaf NpvSrvIfFsmSt::wait_ext_if_stable {10, "wait-ext-if-stable"};
+
+const Enum::YLeaf NvoCfgSrcT::unknown {0, "unknown"};
+const Enum::YLeaf NvoCfgSrcT::cli {1, "cli"};
+const Enum::YLeaf NvoCfgSrcT::controller {2, "controller"};
+
+const Enum::YLeaf NvoEncapT::unknown {0, "unknown"};
+const Enum::YLeaf NvoEncapT::vxlan {1, "vxlan"};
+const Enum::YLeaf NvoEncapT::vxlan_tun_ctrl_frame {2, "vxlan-tun-ctrl-frame"};
+const Enum::YLeaf NvoEncapT::vxlan_tun_ctrl_frame_lacp {3, "vxlan-tun-ctrl-frame-lacp"};
+const Enum::YLeaf NvoEncapT::vxlan_tun_ctrl_frame_stp {4, "vxlan-tun-ctrl-frame-stp"};
+const Enum::YLeaf NvoEncapT::dot1q {5, "dot1q"};
+const Enum::YLeaf NvoEncapT::dot1q_tun_ctrl_frame {6, "dot1q-tun-ctrl-frame"};
+const Enum::YLeaf NvoEncapT::dot1q_tun_ctrl_frame_lacp {7, "dot1q-tun-ctrl-frame-lacp"};
+const Enum::YLeaf NvoEncapT::dot1q_tun_ctrl_frame_stp {8, "dot1q-tun-ctrl-frame-stp"};
+
+const Enum::YLeaf NvoEvpnMcastStT::enabled {1, "enabled"};
+
+const Enum::YLeaf NvoHostLearnModeT::DP {1, "DP"};
+const Enum::YLeaf NvoHostLearnModeT::CP {2, "CP"};
+const Enum::YLeaf NvoHostLearnModeT::Ctrlr {3, "Ctrlr"};
+
+const Enum::YLeaf NvoHostReachT::Flood_and_learn {0, "Flood-and-learn"};
+const Enum::YLeaf NvoHostReachT::bgp {1, "bgp"};
+const Enum::YLeaf NvoHostReachT::controller {2, "controller"};
+const Enum::YLeaf NvoHostReachT::openflow {3, "openflow"};
+const Enum::YLeaf NvoHostReachT::openflowIR {4, "openflowIR"};
+
+const Enum::YLeaf NvoIngReplProtoT::unknown {0, "unknown"};
+const Enum::YLeaf NvoIngReplProtoT::bgp {1, "bgp"};
+const Enum::YLeaf NvoIngReplProtoT::static_ {2, "static"};
+
+const Enum::YLeaf NvoMultisiteIngReplStateT::disable {1, "disable"};
+const Enum::YLeaf NvoMultisiteIngReplStateT::enable {2, "enable"};
+
+const Enum::YLeaf NvoMultisiteStateT::enabled {1, "enabled"};
+
+const Enum::YLeaf NvoMultisiteTrackingT::unknown {0, "unknown"};
+const Enum::YLeaf NvoMultisiteTrackingT::dci {1, "dci"};
+const Enum::YLeaf NvoMultisiteTrackingT::fabric {2, "fabric"};
+
+const Enum::YLeaf NvoPeerStateT::Up {1, "Up"};
+const Enum::YLeaf NvoPeerStateT::Down {2, "Down"};
+
+const Enum::YLeaf NvoReplModeT::unknown {0, "unknown"};
+const Enum::YLeaf NvoReplModeT::replicationServer {1, "replicationServer"};
+const Enum::YLeaf NvoReplModeT::ingressReplication {2, "ingressReplication"};
+
+const Enum::YLeaf NvoSuppressARPT::off {0, "off"};
+const Enum::YLeaf NvoSuppressARPT::enabled {1, "enabled"};
+const Enum::YLeaf NvoSuppressARPT::disabled {2, "disabled"};
+
+const Enum::YLeaf NvoVniStateT::Up {1, "Up"};
+const Enum::YLeaf NvoVniStateT::Down {2, "Down"};
+
+const Enum::YLeaf NvoVniTypeT::L2 {1, "L2"};
+const Enum::YLeaf NvoVniTypeT::L3 {2, "L3"};
+
+const Enum::YLeaf NwAddrF::ipv4 {1, "ipv4"};
+const Enum::YLeaf NwAddrF::ipv6 {2, "ipv6"};
+const Enum::YLeaf NwAddrF::mac {3, "mac"};
+
+const Enum::YLeaf NwAdminSt::enabled {1, "enabled"};
+const Enum::YLeaf NwAdminSt::disabled {2, "disabled"};
+
+const Enum::YLeaf NwEntOperSt::unknown {0, "unknown"};
+const Enum::YLeaf NwEntOperSt::enabled {1, "enabled"};
+const Enum::YLeaf NwEntOperSt::disabled {2, "disabled"};
+const Enum::YLeaf NwEntOperSt::initializing {3, "initializing"};
+const Enum::YLeaf NwEntOperSt::failed {4, "failed"};
+
+const Enum::YLeaf NwAdminSt_::enabled {1, "enabled"};
+const Enum::YLeaf NwAdminSt_::disabled {2, "disabled"};
+
+const Enum::YLeaf NwMemAlertLevel::normal {0, "normal"};
+const Enum::YLeaf NwMemAlertLevel::minor {1, "minor"};
+const Enum::YLeaf NwMemAlertLevel::major_ {2, "major"};
+const Enum::YLeaf NwMemAlertLevel::critical {3, "critical"};
+
+const Enum::YLeaf NwOSSum::failed {0, "failed"};
+const Enum::YLeaf NwOSSum::initializing {1, "initializing"};
+const Enum::YLeaf NwOSSum::resetting {2, "resetting"};
+const Enum::YLeaf NwOSSum::degraded {3, "degraded"};
+const Enum::YLeaf NwOSSum::ok {4, "ok"};
+
+const Enum::YLeaf OamEpT::ep {1, "ep"};
+const Enum::YLeaf OamEpT::vtep_ep {2, "vtep-ep"};
+const Enum::YLeaf OamEpT::node {3, "node"};
+
+const Enum::YLeaf OpflexDevOperState::unknown {0, "unknown"};
+const Enum::YLeaf OpflexDevOperState::online {1, "online"};
+const Enum::YLeaf OpflexDevOperState::offline {2, "offline"};
+const Enum::YLeaf OpflexDevOperState::identified {3, "identified"};
+const Enum::YLeaf OpflexDevOperState::compatible {4, "compatible"};
+const Enum::YLeaf OpflexDevOperState::incompatible {5, "incompatible"};
+
+const Enum::YLeaf OpflexDeviceType::unknown {0, "unknown"};
+const Enum::YLeaf OpflexDeviceType::n1kv {1, "n1kv"};
+const Enum::YLeaf OpflexDeviceType::hyperv {2, "hyperv"};
+const Enum::YLeaf OpflexDeviceType::ovs {3, "ovs"};
+
+const Enum::YLeaf OpflexDirection::in {0, "in"};
+const Enum::YLeaf OpflexDirection::out {1, "out"};
+
+const Enum::YLeaf OpflexEpTransitionStatus::unknown {0, "unknown"};
+const Enum::YLeaf OpflexEpTransitionStatus::attached {1, "attached"};
+const Enum::YLeaf OpflexEpTransitionStatus::detached {2, "detached"};
+
+const Enum::YLeaf OpflexEppDownloadHint::unknown {0, "unknown"};
+const Enum::YLeaf OpflexEppDownloadHint::always {1, "always"};
+const Enum::YLeaf OpflexEppDownloadHint::optimal {2, "optimal"};
+
+const Enum::YLeaf OpflexHbStatus::unknown {0, "unknown"};
+const Enum::YLeaf OpflexHbStatus::invalid_dvs {1, "invalid-dvs"};
+const Enum::YLeaf OpflexHbStatus::valid_dvs {2, "valid-dvs"};
+
+const Enum::YLeaf OspfActive::no {0, "no"};
+const Enum::YLeaf OspfActive::yes {1, "yes"};
+
+const Enum::YLeaf OspfAdjChangeLogLevel::none {0, "none"};
+const Enum::YLeaf OspfAdjChangeLogLevel::brief {1, "brief"};
+const Enum::YLeaf OspfAdjChangeLogLevel::detail {2, "detail"};
+
+const Enum::YLeaf OspfAdjOperSt::unknown {0, "unknown"};
+const Enum::YLeaf OspfAdjOperSt::down {1, "down"};
+const Enum::YLeaf OspfAdjOperSt::attempt {2, "attempt"};
+const Enum::YLeaf OspfAdjOperSt::initializing {3, "initializing"};
+const Enum::YLeaf OspfAdjOperSt::two_way {4, "two-way"};
+const Enum::YLeaf OspfAdjOperSt::exstart {5, "exstart"};
+const Enum::YLeaf OspfAdjOperSt::exchange {6, "exchange"};
+const Enum::YLeaf OspfAdjOperSt::loading {7, "loading"};
+const Enum::YLeaf OspfAdjOperSt::full {8, "full"};
+const Enum::YLeaf OspfAdjOperSt::self {9, "self"};
+
+const Enum::YLeaf OspfAlways::no {0, "no"};
+const Enum::YLeaf OspfAlways::yes {1, "yes"};
+
+const Enum::YLeaf OspfAreaT::regular {1, "regular"};
+const Enum::YLeaf OspfAreaT::stub {2, "stub"};
+const Enum::YLeaf OspfAreaT::nssa {3, "nssa"};
+
+const Enum::YLeaf OspfAuthT::none {0, "none"};
+const Enum::YLeaf OspfAuthT::simple {1, "simple"};
+const Enum::YLeaf OspfAuthT::md5 {2, "md5"};
+const Enum::YLeaf OspfAuthT::unspecified {3, "unspecified"};
+
+const Enum::YLeaf OspfBfdControl::unspecified {0, "unspecified"};
+const Enum::YLeaf OspfBfdControl::enabled {1, "enabled"};
+const Enum::YLeaf OspfBfdControl::disabled {2, "disabled"};
+
+const Enum::YLeaf OspfBfdOperSt::down {0, "down"};
+const Enum::YLeaf OspfBfdOperSt::up {1, "up"};
+
+const Enum::YLeaf OspfBwRefUnit::mbps {0, "mbps"};
+const Enum::YLeaf OspfBwRefUnit::gbps {1, "gbps"};
+
+const Enum::YLeaf OspfDbT::ls {1, "ls"};
+const Enum::YLeaf OspfDbT::rt {2, "rt"};
+const Enum::YLeaf OspfDbT::nh {3, "nh"};
+
+const Enum::YLeaf OspfEventLogSize::disabled {0, "disabled"};
+const Enum::YLeaf OspfEventLogSize::small {1, "small"};
+const Enum::YLeaf OspfEventLogSize::medium {2, "medium"};
+const Enum::YLeaf OspfEventLogSize::large {3, "large"};
+
+const Enum::YLeaf OspfEventType::adj {0, "adj"};
+const Enum::YLeaf OspfEventType::internal {1, "internal"};
+const Enum::YLeaf OspfEventType::ha {2, "ha"};
+const Enum::YLeaf OspfEventType::lsa_flood {3, "lsa-flood"};
+const Enum::YLeaf OspfEventType::lsa {4, "lsa"};
+const Enum::YLeaf OspfEventType::spf {5, "spf"};
+const Enum::YLeaf OspfEventType::redist {6, "redist"};
+const Enum::YLeaf OspfEventType::ldp {7, "ldp"};
+const Enum::YLeaf OspfEventType::mpls_te {8, "mpls-te"};
+const Enum::YLeaf OspfEventType::hello {9, "hello"};
+const Enum::YLeaf OspfEventType::rib {10, "rib"};
+const Enum::YLeaf OspfEventType::spf_trigger {11, "spf-trigger"};
+const Enum::YLeaf OspfEventType::cli {12, "cli"};
+
+const Enum::YLeaf OspfFlagStatus::set {0, "set"};
+const Enum::YLeaf OspfFlagStatus::clear {1, "clear"};
+
+const Enum::YLeaf OspfGrCtrl::planned_only {1, "planned-only"};
+const Enum::YLeaf OspfGrCtrl::complete {2, "complete"};
+const Enum::YLeaf OspfGrCtrl::disabled {3, "disabled"};
+
+const Enum::YLeaf OspfHelperExitQual::none {1, "none"};
+const Enum::YLeaf OspfHelperExitQual::in_progress {2, "in-progress"};
+const Enum::YLeaf OspfHelperExitQual::completed {3, "completed"};
+const Enum::YLeaf OspfHelperExitQual::timed_out {4, "timed-out"};
+const Enum::YLeaf OspfHelperExitQual::topology_changed {5, "topology-changed"};
+
+const Enum::YLeaf OspfHelperSt::not_helping {1, "not-helping"};
+const Enum::YLeaf OspfHelperSt::helping {2, "helping"};
+
+const Enum::YLeaf OspfIfOperSt::unknown {0, "unknown"};
+const Enum::YLeaf OspfIfOperSt::down {1, "down"};
+const Enum::YLeaf OspfIfOperSt::loopback {2, "loopback"};
+const Enum::YLeaf OspfIfOperSt::waiting {3, "waiting"};
+const Enum::YLeaf OspfIfOperSt::p2p {4, "p2p"};
+const Enum::YLeaf OspfIfOperSt::dr {5, "dr"};
+const Enum::YLeaf OspfIfOperSt::bdr {6, "bdr"};
+const Enum::YLeaf OspfIfOperSt::dr_other {7, "dr-other"};
+
+const Enum::YLeaf OspfIfType::unspecified {0, "unspecified"};
+const Enum::YLeaf OspfIfType::loopback {1, "loopback"};
+const Enum::YLeaf OspfIfType::p2p {2, "p2p"};
+const Enum::YLeaf OspfIfType::p2mp {3, "p2mp"};
+const Enum::YLeaf OspfIfType::nbma {4, "nbma"};
+const Enum::YLeaf OspfIfType::bcast {5, "bcast"};
+
+const Enum::YLeaf OspfLsaLeakOperSt::Inactive {0, "Inactive"};
+const Enum::YLeaf OspfLsaLeakOperSt::active {1, "active"};
+
+const Enum::YLeaf OspfLsaT::router {1, "router"};
+const Enum::YLeaf OspfLsaT::nw {2, "nw"};
+const Enum::YLeaf OspfLsaT::summary {3, "summary"};
+const Enum::YLeaf OspfLsaT::asbr {4, "asbr"};
+const Enum::YLeaf OspfLsaT::ext {5, "ext"};
+const Enum::YLeaf OspfLsaT::nssa {7, "nssa"};
+const Enum::YLeaf OspfLsaT::link_opq {9, "link-opq"};
+const Enum::YLeaf OspfLsaT::area_opq {10, "area-opq"};
+const Enum::YLeaf OspfLsaT::as_opq {11, "as-opq"};
+
+const Enum::YLeaf OspfMaxLsaAct::reject {0, "reject"};
+const Enum::YLeaf OspfMaxLsaAct::restart {1, "restart"};
+const Enum::YLeaf OspfMaxLsaAct::log {2, "log"};
+
+const Enum::YLeaf OspfMaxLsaOperSt::ok {0, "ok"};
+const Enum::YLeaf OspfMaxLsaOperSt::threshold_exceeded {1, "threshold-exceeded"};
+
+const Enum::YLeaf OspfMaxLsaOperStQual::ok {0, "ok"};
+const Enum::YLeaf OspfMaxLsaOperStQual::warning {1, "warning"};
+const Enum::YLeaf OspfMaxLsaOperStQual::overload {2, "overload"};
+const Enum::YLeaf OspfMaxLsaOperStQual::sleep {3, "sleep"};
+const Enum::YLeaf OspfMaxLsaOperStQual::reset {4, "reset"};
+const Enum::YLeaf OspfMaxLsaOperStQual::perm_sleep {5, "perm-sleep"};
+
+const Enum::YLeaf OspfNssaTransRole::always {1, "always"};
+const Enum::YLeaf OspfNssaTransRole::candidate {2, "candidate"};
+const Enum::YLeaf OspfNssaTransRole::never {3, "never"};
+
+const Enum::YLeaf OspfNssaTransSt::enabled {1, "enabled"};
+const Enum::YLeaf OspfNssaTransSt::elected {2, "elected"};
+const Enum::YLeaf OspfNssaTransSt::disabled {3, "disabled"};
+
+const Enum::YLeaf OspfNwT::unspecified {0, "unspecified"};
+const Enum::YLeaf OspfNwT::p2p {1, "p2p"};
+const Enum::YLeaf OspfNwT::bcast {2, "bcast"};
+
+const Enum::YLeaf OspfOperSt::invalid {0, "invalid"};
+const Enum::YLeaf OspfOperSt::down {1, "down"};
+const Enum::YLeaf OspfOperSt::up {2, "up"};
+
+const Enum::YLeaf OspfPassiveControl::unspecified {0, "unspecified"};
+const Enum::YLeaf OspfPassiveControl::enabled {1, "enabled"};
+const Enum::YLeaf OspfPassiveControl::disabled {2, "disabled"};
+
+const Enum::YLeaf OspfPathT::intra {1, "intra"};
+const Enum::YLeaf OspfPathT::discard_int {2, "discard-int"};
+const Enum::YLeaf OspfPathT::inter {3, "inter"};
+const Enum::YLeaf OspfPathT::discard_ext {4, "discard-ext"};
+const Enum::YLeaf OspfPathT::ext1 {5, "ext1"};
+const Enum::YLeaf OspfPathT::nssa1 {6, "nssa1"};
+const Enum::YLeaf OspfPathT::ext2 {7, "ext2"};
+const Enum::YLeaf OspfPathT::nssa2 {8, "nssa2"};
+
+const Enum::YLeaf OspfSegRtControl::unspecified {0, "unspecified"};
+const Enum::YLeaf OspfSegRtControl::mpls {1, "mpls"};
+const Enum::YLeaf OspfSegRtControl::disable {2, "disable"};
+
+const Enum::YLeaf OspfSgmntRtgMplsOperSt::Disabled {0, "Disabled"};
+const Enum::YLeaf OspfSgmntRtgMplsOperSt::Enabled {1, "Enabled"};
+
+const Enum::YLeaf OspfVrfLiteControl::unspecified {0, "unspecified"};
+const Enum::YLeaf OspfVrfLiteControl::l3vpn {1, "l3vpn"};
+const Enum::YLeaf OspfVrfLiteControl::evpn {2, "evpn"};
+
+const Enum::YLeaf PcChannelingSt::unknown {0, "unknown"};
+const Enum::YLeaf PcChannelingSt::channeling {1, "channeling"};
+const Enum::YLeaf PcChannelingSt::individual {2, "individual"};
+const Enum::YLeaf PcChannelingSt::failed {3, "failed"};
+const Enum::YLeaf PcChannelingSt::suspended {4, "suspended"};
+const Enum::YLeaf PcChannelingSt::hot_standby {5, "hot-standby"};
+
+const Enum::YLeaf PcHashDist::none {0, "none"};
+const Enum::YLeaf PcHashDist::adaptive {1, "adaptive"};
+const Enum::YLeaf PcHashDist::fixed {2, "fixed"};
+
+const Enum::YLeaf PcLastSt::successful {0, "successful"};
+const Enum::YLeaf PcLastSt::failed {1, "failed"};
+
+const Enum::YLeaf PcMode::on {0, "on"};
+const Enum::YLeaf PcMode::static_ {1, "static"};
+const Enum::YLeaf PcMode::active {2, "active"};
+const Enum::YLeaf PcMode::passive {3, "passive"};
+const Enum::YLeaf PcMode::mac_pin {4, "mac-pin"};
+
+const Enum::YLeaf PcOperSt::up {0, "up"};
+const Enum::YLeaf PcOperSt::down {1, "down"};
+const Enum::YLeaf PcOperSt::bringup_in_progress {2, "bringup-in-progress"};
+const Enum::YLeaf PcOperSt::module_removed {3, "module-removed"};
+
+const Enum::YLeaf PcPCHashDist::none {0, "none"};
+const Enum::YLeaf PcPCHashDist::adaptive {1, "adaptive"};
+const Enum::YLeaf PcPCHashDist::fixed {2, "fixed"};
+
+const Enum::YLeaf PcPoType::none {0, "none"};
+const Enum::YLeaf PcPoType::hif_pc {1, "hif-pc"};
+const Enum::YLeaf PcPoType::non_hif_pc {2, "non-hif-pc"};
+
+const Enum::YLeaf PcPortChannelProtocol::unknown {0, "unknown"};
+const Enum::YLeaf PcPortChannelProtocol::none {1, "none"};
+const Enum::YLeaf PcPortChannelProtocol::lacp {2, "lacp"};
+
+const Enum::YLeaf PcPortChannelType::ethernet {0, "ethernet"};
+
+const Enum::YLeaf PcSummOperSt::up {0, "up"};
+const Enum::YLeaf PcSummOperSt::down {1, "down"};
+const Enum::YLeaf PcSummOperSt::module_removed {2, "module-removed"};
+const Enum::YLeaf PcSummOperSt::individual {3, "individual"};
+const Enum::YLeaf PcSummOperSt::suspended {4, "suspended"};
+const Enum::YLeaf PcSummOperSt::hot_standby {5, "hot-standby"};
+
+const Enum::YLeaf Pim6EhType::assertRcv {0, "assertRcv"};
+const Enum::YLeaf Pim6EhType::bidir {1, "bidir"};
+const Enum::YLeaf Pim6EhType::hello {2, "hello"};
+const Enum::YLeaf Pim6EhType::joinPrune {3, "joinPrune"};
+const Enum::YLeaf Pim6EhType::nullReg {4, "nullReg"};
+const Enum::YLeaf Pim6EhType::packet {5, "packet"};
+const Enum::YLeaf Pim6EhType::pim6Internal {6, "pim6Internal"};
+const Enum::YLeaf Pim6EhType::rp {7, "rp"};
+const Enum::YLeaf Pim6EhType::vrf {8, "vrf"};
+const Enum::YLeaf Pim6EhType::jpSum {9, "jpSum"};
+
+const Enum::YLeaf PimBfdInstSt::enabled {1, "enabled"};
+const Enum::YLeaf PimBfdInstSt::disabled {2, "disabled"};
+const Enum::YLeaf PimBfdInstSt::none {0, "none"};
+
+const Enum::YLeaf PimEhType::assert {0, "assert"};
+const Enum::YLeaf PimEhType::bidir {1, "bidir"};
+const Enum::YLeaf PimEhType::cli {2, "cli"};
+const Enum::YLeaf PimEhType::dataRegRecv {3, "dataRegRecv"};
+const Enum::YLeaf PimEhType::hello {4, "hello"};
+const Enum::YLeaf PimEhType::joinPrune {5, "joinPrune"};
+const Enum::YLeaf PimEhType::mrib {6, "mrib"};
+const Enum::YLeaf PimEhType::nullReg {7, "nullReg"};
+const Enum::YLeaf PimEhType::packet {8, "packet"};
+const Enum::YLeaf PimEhType::nbm {9, "nbm"};
+const Enum::YLeaf PimEhType::pimInternal {10, "pimInternal"};
+const Enum::YLeaf PimEhType::pimLib {11, "pimLib"};
+const Enum::YLeaf PimEhType::rp {12, "rp"};
+const Enum::YLeaf PimEhType::txlist {13, "txlist"};
+const Enum::YLeaf PimEhType::vpc {14, "vpc"};
+const Enum::YLeaf PimEhType::vrf {15, "vrf"};
+const Enum::YLeaf PimEhType::jpSum {16, "jpSum"};
+const Enum::YLeaf PimEhType::jpTw {17, "jpTw"};
+
+const Enum::YLeaf PimIfdbT::stats {0, "stats"};
+const Enum::YLeaf PimIfdbT::adj {1, "adj"};
+const Enum::YLeaf PimIfdbT::prop {2, "prop"};
+
+const Enum::YLeaf PkiCsyncActivationStateType::disabled {0, "disabled"};
+const Enum::YLeaf PkiCsyncActivationStateType::enabled {1, "enabled"};
+
+const Enum::YLeaf PkiCsyncElementType::exclude {0, "exclude"};
+const Enum::YLeaf PkiCsyncElementType::include {1, "include"};
+
+const Enum::YLeaf PkiKeyringState::started {1, "started"};
+const Enum::YLeaf PkiKeyringState::created {2, "created"};
+const Enum::YLeaf PkiKeyringState::reqCreated {3, "reqCreated"};
+const Enum::YLeaf PkiKeyringState::tpSet {4, "tpSet"};
+const Enum::YLeaf PkiKeyringState::completed {5, "completed"};
+
+const Enum::YLeaf PkiModulus::mod512 {512, "mod512"};
+const Enum::YLeaf PkiModulus::mod1024 {1024, "mod1024"};
+const Enum::YLeaf PkiModulus::mod1536 {1536, "mod1536"};
+const Enum::YLeaf PkiModulus::mod2048 {2048, "mod2048"};
+
+const Enum::YLeaf PlatformFabricSpeed::DEFAULT {0, "DEFAULT"};
+const Enum::YLeaf PlatformFabricSpeed::FABRIC_SPEED_40G {1, "FABRIC_SPEED_40G"};
+
+const Enum::YLeaf PlatformHwProfile::Default {0, "Default"};
+const Enum::YLeaf PlatformHwProfile::QS_PORT_MODE_64X10G {1, "QS_PORT_MODE_64X10G"};
+const Enum::YLeaf PlatformHwProfile::QS_PORT_MODE_48X10G_4X40G {2, "QS_PORT_MODE_48X10G_4X40G"};
+const Enum::YLeaf PlatformHwProfile::QS_PORT_MODE_52X10G_3X40g {3, "QS_PORT_MODE_52X10G_3X40g"};
+const Enum::YLeaf PlatformHwProfile::QS_PORT_MODE_56X10G_2X40G {4, "QS_PORT_MODE_56X10G_2X40G"};
+const Enum::YLeaf PlatformHwProfile::QS_PORT_MODE_60X10G_1X40G {5, "QS_PORT_MODE_60X10G_1X40G"};
+const Enum::YLeaf PlatformHwProfile::QS_PORT_MODE {6, "QS_PORT_MODE"};
+const Enum::YLeaf PlatformHwProfile::QG_PORT_MODE_32X10G_8X40G {9, "QG_PORT_MODE_32X10G_8X40G"};
+const Enum::YLeaf PlatformHwProfile::QG_PORT_MODE_16X40G {10, "QG_PORT_MODE_16X40G"};
+const Enum::YLeaf PlatformHwProfile::QG_PORT_MODE_16X10G_12X40G {11, "QG_PORT_MODE_16X10G_12X40G"};
+const Enum::YLeaf PlatformHwProfile::QG_PORT_MODE_8X10G_14X40G {12, "QG_PORT_MODE_8X10G_14X40G"};
+const Enum::YLeaf PlatformHwProfile::NEP_PORT_MODE_32X40G {13, "NEP_PORT_MODE_32X40G"};
+const Enum::YLeaf PlatformHwProfile::NEP_PORT_MODE_24X40G {14, "NEP_PORT_MODE_24X40G"};
+const Enum::YLeaf PlatformHwProfile::NEP_PORT_MODE_26X40G {15, "NEP_PORT_MODE_26X40G"};
+const Enum::YLeaf PlatformHwProfile::NEP_PORT_MODE_32X40G_FIXED {16, "NEP_PORT_MODE_32X40G_FIXED"};
+const Enum::YLeaf PlatformHwProfile::QI2_PORT_MODE_72X10G {17, "QI2_PORT_MODE_72X10G"};
+const Enum::YLeaf PlatformHwProfile::QI2_PORT_MODE_48X10G_6x40G {18, "QI2_PORT_MODE_48X10G_6x40G"};
+const Enum::YLeaf PlatformHwProfile::QI2_PORT_MODE_BKOUT {19, "QI2_PORT_MODE_BKOUT"};
+const Enum::YLeaf PlatformHwProfile::DV_PORT_MODE_48X25G_4X100G {20, "DV_PORT_MODE_48X25G_4X100G"};
+const Enum::YLeaf PlatformHwProfile::DV_PORT_MODE_48X25G_2X100G_4X40G {21, "DV_PORT_MODE_48X25G_2X100G_4X40G"};
+const Enum::YLeaf PlatformHwProfile::PB_PORT_MODE_48X10G_6X100G {22, "PB_PORT_MODE_48X10G_6X100G"};
+const Enum::YLeaf PlatformHwProfile::PB_PORT_MODE_48X10G_4X100G_2X40G {23, "PB_PORT_MODE_48X10G_4X100G_2X40G"};
+const Enum::YLeaf PlatformHwProfile::FOST_PORT_MODE_28X40G_4X100G {26, "FOST_PORT_MODE_28X40G_4X100G"};
+const Enum::YLeaf PlatformHwProfile::FOST_PORT_MODE_18X100G {27, "FOST_PORT_MODE_18X100G"};
+const Enum::YLeaf PlatformHwProfile::FOST_PORT_MODE_24X40G_6X100G {28, "FOST_PORT_MODE_24X40G_6X100G"};
+const Enum::YLeaf PlatformHwProfile::TET_PORT_MODE_64X100G {29, "TET_PORT_MODE_64X100G"};
+const Enum::YLeaf PlatformHwProfile::TET_PORT_MODE_96X25G_32X100G {30, "TET_PORT_MODE_96X25G_32X100G"};
+const Enum::YLeaf PlatformHwProfile::TET_PORT_MODE_128X25G {31, "TET_PORT_MODE_128X25G"};
+
+const Enum::YLeaf PlatformPcLbAlgo::PC_LB_ALGO_DLB {1, "PC_LB_ALGO_DLB"};
+const Enum::YLeaf PlatformPcLbAlgo::PC_LB_ALGO_RTAG7 {2, "PC_LB_ALGO_RTAG7"};
+const Enum::YLeaf PlatformPcLbAlgo::PC_LB_ALGO_RTAG7_MURMUR {3, "PC_LB_ALGO_RTAG7_MURMUR"};
+const Enum::YLeaf PlatformPcLbAlgo::PC_LB_ALGO_RTAG7_LOCAL_CRC {4, "PC_LB_ALGO_RTAG7_LOCAL_CRC"};
+const Enum::YLeaf PlatformPcLbAlgo::PC_LB_ALGO_DYNAMIC_PIN {5, "PC_LB_ALGO_DYNAMIC_PIN"};
+
+const Enum::YLeaf PlatformPstatCfg::PSTAT_DISABLE {0, "PSTAT_DISABLE"};
+const Enum::YLeaf PlatformPstatCfg::PSTAT_ENABLE {1, "PSTAT_ENABLE"};
+const Enum::YLeaf PlatformPstatCfg::PSTAT_ENABLE_PEAK {2, "PSTAT_ENABLE_PEAK"};
+
+const Enum::YLeaf PlatformQosMinBuffer::all {0, "all"};
+const Enum::YLeaf PlatformQosMinBuffer::none {1, "none"};
+const Enum::YLeaf PlatformQosMinBuffer::default_ {2, "default"};
+
+const Enum::YLeaf PlatformRoutingMode::DEFAULT {0, "DEFAULT"};
+const Enum::YLeaf PlatformRoutingMode::NON_HIER_DEFAULT {1, "NON_HIER_DEFAULT"};
+const Enum::YLeaf PlatformRoutingMode::NON_HIER_MAX_L3 {2, "NON_HIER_MAX_L3"};
+const Enum::YLeaf PlatformRoutingMode::MAX_HOST {3, "MAX_HOST"};
+const Enum::YLeaf PlatformRoutingMode::TOR_MAX_L3 {4, "TOR_MAX_L3"};
+const Enum::YLeaf PlatformRoutingMode::DEFAULT_64B {5, "DEFAULT_64B"};
+const Enum::YLeaf PlatformRoutingMode::NON_HIER_MAX_L3_64B {6, "NON_HIER_MAX_L3_64B"};
+const Enum::YLeaf PlatformRoutingMode::TOR_MAX_L3_64B {7, "TOR_MAX_L3_64B"};
+const Enum::YLeaf PlatformRoutingMode::TOR_MAX_L2 {8, "TOR_MAX_L2"};
+const Enum::YLeaf PlatformRoutingMode::TOR_MAX_L2L3 {9, "TOR_MAX_L2L3"};
+const Enum::YLeaf PlatformRoutingMode::TOR_TEMPLATE_OVL_HOST_SCALE {21, "TOR_TEMPLATE_OVL_HOST_SCALE"};
+const Enum::YLeaf PlatformRoutingMode::TEMPLATE_LPM_HEAVY {22, "TEMPLATE_LPM_HEAVY"};
+const Enum::YLeaf PlatformRoutingMode::TOR_TEMPLATE_LPM_SCALE_V6_64 {23, "TOR_TEMPLATE_LPM_SCALE_V6_64"};
+const Enum::YLeaf PlatformRoutingMode::TOR_TEMPLATE_DUAL_STACK_HOST_SCALE {24, "TOR_TEMPLATE_DUAL_STACK_HOST_SCALE"};
+const Enum::YLeaf PlatformRoutingMode::TEMPLATE_DYNAMIC_TRIE_SCALE {25, "TEMPLATE_DYNAMIC_TRIE_SCALE"};
+const Enum::YLeaf PlatformRoutingMode::TEMPLATE_MULTICAST_HEAVY {26, "TEMPLATE_MULTICAST_HEAVY"};
+const Enum::YLeaf PlatformRoutingMode::TEMPLATE_VXLAN_SCALE {27, "TEMPLATE_VXLAN_SCALE"};
+const Enum::YLeaf PlatformRoutingMode::TEMPLATE_MPLS_SCALE {28, "TEMPLATE_MPLS_SCALE"};
+const Enum::YLeaf PlatformRoutingMode::TEMPLATE_IPV6_LPM_HEAVY {29, "TEMPLATE_IPV6_LPM_HEAVY"};
+const Enum::YLeaf PlatformRoutingMode::TEMPLATE_MULTICAST_EXT_HEAVY {31, "TEMPLATE_MULTICAST_EXT_HEAVY"};
+
+const Enum::YLeaf PlatformSwitchingMode::DEFAULT {0, "DEFAULT"};
+const Enum::YLeaf PlatformSwitchingMode::STORE_FORWARD {1, "STORE_FORWARD"};
+
+const Enum::YLeaf PlatformTuple::Disable {0, "Disable"};
+const Enum::YLeaf PlatformTuple::Enable {1, "Enable"};
+
+const Enum::YLeaf PlatformBufferMonitorMd::None {0, "None"};
+const Enum::YLeaf PlatformBufferMonitorMd::Unicast {2, "Unicast"};
+const Enum::YLeaf PlatformBufferMonitorMd::Multicast {3, "Multicast"};
+
+const Enum::YLeaf PlatformBufferMonitorSt::Enable {1, "Enable"};
+const Enum::YLeaf PlatformBufferMonitorSt::Disable {0, "Disable"};
+
+const Enum::YLeaf PlatformInfraVlanForce::Disable {0, "Disable"};
+const Enum::YLeaf PlatformInfraVlanForce::Enable {1, "Enable"};
+
+const Enum::YLeaf PlatformLatencyMonitorSt::Enable {1, "Enable"};
+const Enum::YLeaf PlatformLatencyMonitorSt::Disable {0, "Disable"};
+
+const Enum::YLeaf PlatformPfcMmuBufferSt::disable {0, "disable"};
+const Enum::YLeaf PlatformPfcMmuBufferSt::enable {1, "enable"};
+
+const Enum::YLeaf PlatformPoweroffSt::no {0, "no"};
+const Enum::YLeaf PlatformPoweroffSt::yes {1, "yes"};
+
+const Enum::YLeaf PoePoePolice::Default {0, "Default"};
+const Enum::YLeaf PoePoePolice::errdisable {1, "errdisable"};
+const Enum::YLeaf PoePoePolice::log {2, "log"};
+
+const Enum::YLeaf PoePoePortmode::Default {0, "Default"};
+const Enum::YLeaf PoePoePortmode::never {1, "never"};
+const Enum::YLeaf PoePoePortmode::auto_ {2, "auto"};
+const Enum::YLeaf PoePoePortmode::static_ {3, "static"};
+
+const Enum::YLeaf PoePoePriority::low {0, "low"};
+const Enum::YLeaf PoePoePriority::high {1, "high"};
+
+const Enum::YLeaf ProcCpuHistoryDurationName::last60seconds {1, "last60seconds"};
+
+const Enum::YLeaf ProcOperSt::intr_sleep {0, "intr-sleep"};
+const Enum::YLeaf ProcOperSt::stopped {1, "stopped"};
+const Enum::YLeaf ProcOperSt::unintr_sleep {2, "unintr-sleep"};
+const Enum::YLeaf ProcOperSt::running {3, "running"};
+const Enum::YLeaf ProcOperSt::dead {4, "dead"};
+const Enum::YLeaf ProcOperSt::defunct {5, "defunct"};
+
+const Enum::YLeaf ProcOperState::up {0, "up"};
+const Enum::YLeaf ProcOperState::down {1, "down"};
+
+const Enum::YLeaf ProcProcessType::unknown {0, "unknown"};
+const Enum::YLeaf ProcProcessType::non_sysmgr {1, "non-sysmgr"};
+const Enum::YLeaf ProcProcessType::vdc_local {2, "vdc-local"};
+const Enum::YLeaf ProcProcessType::vdc_global {3, "vdc-global"};
+const Enum::YLeaf ProcProcessType::vdc_unaware {4, "vdc-unaware"};
+const Enum::YLeaf ProcProcessType::not_running {5, "not-running"};
+const Enum::YLeaf ProcProcessType::terminated_etc {6, "terminated-etc"};
+
+const Enum::YLeaf QosPrio::unspecified {0, "unspecified"};
+const Enum::YLeaf QosPrio::level3 {1, "level3"};
+const Enum::YLeaf QosPrio::level2 {2, "level2"};
+const Enum::YLeaf QosPrio::level1 {3, "level1"};
+const Enum::YLeaf QosPrio::policy_plane {4, "policy-plane"};
+const Enum::YLeaf QosPrio::control_plane {5, "control-plane"};
+const Enum::YLeaf QosPrio::span {6, "span"};
+
+const Enum::YLeaf QosTenantPrio::unspecified {0, "unspecified"};
+const Enum::YLeaf QosTenantPrio::level3 {1, "level3"};
+const Enum::YLeaf QosTenantPrio::level2 {2, "level2"};
+const Enum::YLeaf QosTenantPrio::level1 {3, "level1"};
+
+const Enum::YLeaf QospCongAlgo::wred {0, "wred"};
+const Enum::YLeaf QospCongAlgo::tail_drop {1, "tail-drop"};
+
+const Enum::YLeaf QospCtrlMeth::static_ {0, "static"};
+const Enum::YLeaf QospCtrlMeth::dynamic {1, "dynamic"};
+
+const Enum::YLeaf QospECN::disabled {0, "disabled"};
+const Enum::YLeaf QospECN::enabled {1, "enabled"};
+
+const Enum::YLeaf QospOperSt::enabled {1, "enabled"};
+const Enum::YLeaf QospOperSt::disabled {2, "disabled"};
+
+const Enum::YLeaf QospSchedAlgo::wrr {0, "wrr"};
+const Enum::YLeaf QospSchedAlgo::sp {1, "sp"};
+
+const Enum::YLeaf RegressEnumT::val1 {1, "val1"};
+const Enum::YLeaf RegressEnumT::val2 {2, "val2"};
+const Enum::YLeaf RegressEnumT::val3 {3, "val3"};
+
+const Enum::YLeaf RelnClassId::unspecified {0, "unspecified"};
+const Enum::YLeaf RelnClassId::cdpIf {1, "cdpIf"};
+const Enum::YLeaf RelnClassId::cnwAggrIf {2, "cnwAggrIf"};
+const Enum::YLeaf RelnClassId::cnwPhysIf {3, "cnwPhysIf"};
+const Enum::YLeaf RelnClassId::connIf {4, "connIf"};
+const Enum::YLeaf RelnClassId::datetimeNtpSrcIf {5, "datetimeNtpSrcIf"};
+const Enum::YLeaf RelnClassId::dhcpClientIf {6, "dhcpClientIf"};
+const Enum::YLeaf RelnClassId::dhcpDAIIf {7, "dhcpDAIIf"};
+const Enum::YLeaf RelnClassId::dhcpIpsgIf {8, "dhcpIpsgIf"};
+const Enum::YLeaf RelnClassId::dhcpPseudoIf {9, "dhcpPseudoIf"};
+const Enum::YLeaf RelnClassId::dhcpRelayIf {10, "dhcpRelayIf"};
+const Enum::YLeaf RelnClassId::dhcpServerIf {11, "dhcpServerIf"};
+const Enum::YLeaf RelnClassId::dhcpSnoopIf {12, "dhcpSnoopIf"};
+const Enum::YLeaf RelnClassId::dhcpSourceIf {13, "dhcpSourceIf"};
+const Enum::YLeaf RelnClassId::dhcpSrcIf {14, "dhcpSrcIf"};
+const Enum::YLeaf RelnClassId::dhcpV6SourceIf {15, "dhcpV6SourceIf"};
+const Enum::YLeaf RelnClassId::dhcpV6SrcIf {16, "dhcpV6SrcIf"};
+const Enum::YLeaf RelnClassId::egressIf {17, "egressIf"};
+const Enum::YLeaf RelnClassId::ingressIf {18, "ingressIf"};
+const Enum::YLeaf RelnClassId::ipSrcIf {19, "ipSrcIf"};
+const Enum::YLeaf RelnClassId::l1EthIf {20, "l1EthIf"};
+const Enum::YLeaf RelnClassId::l1PhysIf {21, "l1PhysIf"};
+const Enum::YLeaf RelnClassId::l2BrIf {22, "l2BrIf"};
+const Enum::YLeaf RelnClassId::l2ExtIf {23, "l2ExtIf"};
+const Enum::YLeaf RelnClassId::l2InbandIf {24, "l2InbandIf"};
+const Enum::YLeaf RelnClassId::l2VfcIf {25, "l2VfcIf"};
+const Enum::YLeaf RelnClassId::l3If {26, "l3If"};
+const Enum::YLeaf RelnClassId::l3LbRtdIf {27, "l3LbRtdIf"};
+const Enum::YLeaf RelnClassId::lldpIf {28, "lldpIf"};
+const Enum::YLeaf RelnClassId::mcpIf {29, "mcpIf"};
+const Enum::YLeaf RelnClassId::mgmtMgmtIf {30, "mgmtMgmtIf"};
+const Enum::YLeaf RelnClassId::mgmtRtdMgmtIf {31, "mgmtRtdMgmtIf"};
+const Enum::YLeaf RelnClassId::nwIf {32, "nwIf"};
+const Enum::YLeaf RelnClassId::ospfIf {33, "ospfIf"};
+const Enum::YLeaf RelnClassId::ospfv3If {34, "ospfv3If"};
+const Enum::YLeaf RelnClassId::pcAggrIf {35, "pcAggrIf"};
+const Enum::YLeaf RelnClassId::pktOnPassiveIf {36, "pktOnPassiveIf"};
+const Enum::YLeaf RelnClassId::regressIf {37, "regressIf"};
+const Enum::YLeaf RelnClassId::rsactiveIf {38, "rsactiveIf"};
+const Enum::YLeaf RelnClassId::rtactiveIf {39, "rtactiveIf"};
+const Enum::YLeaf RelnClassId::rtlsNodeToIf {40, "rtlsNodeToIf"};
+const Enum::YLeaf RelnClassId::srcIf {41, "srcIf"};
+const Enum::YLeaf RelnClassId::tunnelIf {42, "tunnelIf"};
+const Enum::YLeaf RelnClassId::vpcIf {43, "vpcIf"};
+const Enum::YLeaf RelnClassId::l3Inst {44, "l3Inst"};
+const Enum::YLeaf RelnClassId::l3EncRtdIf {45, "l3EncRtdIf"};
+const Enum::YLeaf RelnClassId::rtregcomRule {46, "rtregcomRule"};
+const Enum::YLeaf RelnClassId::rtpfxRule {47, "rtpfxRule"};
+const Enum::YLeaf RelnClassId::rtmapMatchRtDst {48, "rtmapMatchRtDst"};
+
+const Enum::YLeaf RelnResolverType::mo {1, "mo"};
+const Enum::YLeaf RelnResolverType::service {2, "service"};
+const Enum::YLeaf RelnResolverType::local {3, "local"};
+
+const Enum::YLeaf RelnState::unformed {0, "unformed"};
+const Enum::YLeaf RelnState::formed {1, "formed"};
+const Enum::YLeaf RelnState::missing_target {2, "missing-target"};
+const Enum::YLeaf RelnState::invalid_target {4, "invalid-target"};
+
+const Enum::YLeaf RelnStateQual::none {0, "none"};
+const Enum::YLeaf RelnStateQual::mismatch_target {1, "mismatch-target"};
+const Enum::YLeaf RelnStateQual::default_target {2, "default-target"};
+
+const Enum::YLeaf RelnTargetType::name {0, "name"};
+const Enum::YLeaf RelnTargetType::mo {1, "mo"};
+const Enum::YLeaf RelnTargetType::all {2, "all"};
+
+const Enum::YLeaf RibDbT::rt {1, "rt"};
+const Enum::YLeaf RibDbT::nh {2, "nh"};
+const Enum::YLeaf RibDbT::adj {3, "adj"};
+
+const Enum::YLeaf RibDomOperSt::up {1, "up"};
+const Enum::YLeaf RibDomOperSt::down_pending {2, "down-pending"};
+const Enum::YLeaf RibDomOperSt::purged {3, "purged"};
+const Enum::YLeaf RibDomOperSt::down {4, "down"};
+const Enum::YLeaf RibDomOperSt::del_pending {5, "del-pending"};
+const Enum::YLeaf RibDomOperSt::deleted {6, "deleted"};
+
+const Enum::YLeaf RtcomComT::regular {1, "regular"};
+const Enum::YLeaf RtcomComT::extended {2, "extended"};
+
+const Enum::YLeaf RtcomMode::standard {1, "standard"};
+const Enum::YLeaf RtcomMode::regex {2, "regex"};
+
+const Enum::YLeaf RtctrlRtCtrlDir::in {1, "in"};
+const Enum::YLeaf RtctrlRtCtrlDir::out {2, "out"};
+
+const Enum::YLeaf RtctrlRttPType::import {1, "import"};
+const Enum::YLeaf RtctrlRttPType::export_ {2, "export"};
+
+const Enum::YLeaf RtdmcAdjOperSt::up {0, "up"};
+const Enum::YLeaf RtdmcAdjOperSt::inactive {1, "inactive"};
+
+const Enum::YLeaf RtdmcAuthT::none {0, "none"};
+const Enum::YLeaf RtdmcAuthT::ah_md5 {1, "ah-md5"};
+
+const Enum::YLeaf RtdmcBfdInstSt::enabled {1, "enabled"};
+const Enum::YLeaf RtdmcBfdInstSt::disabled {2, "disabled"};
+const Enum::YLeaf RtdmcBfdInstSt::none {0, "none"};
+
+const Enum::YLeaf RtdmcBfdOperSt::down {0, "down"};
+const Enum::YLeaf RtdmcBfdOperSt::rem_pend {1, "rem-pend"};
+const Enum::YLeaf RtdmcBfdOperSt::up {2, "up"};
+
+const Enum::YLeaf RtdmcDbT::rp {0, "rp"};
+const Enum::YLeaf RtdmcDbT::grange {1, "grange"};
+const Enum::YLeaf RtdmcDbT::route {2, "route"};
+const Enum::YLeaf RtdmcDbT::dynrpsrc {3, "dynrpsrc"};
+const Enum::YLeaf RtdmcDbT::gstats {4, "gstats"};
+const Enum::YLeaf RtdmcDbT::vrf {5, "vrf"};
+const Enum::YLeaf RtdmcDbT::ifrec {6, "ifrec"};
+const Enum::YLeaf RtdmcDbT::grpoif {7, "grpoif"};
+const Enum::YLeaf RtdmcDbT::group {8, "group"};
+const Enum::YLeaf RtdmcDbT::ifstats {9, "ifstats"};
+const Enum::YLeaf RtdmcDbT::peer {10, "peer"};
+const Enum::YLeaf RtdmcDbT::rphash {11, "rphash"};
+const Enum::YLeaf RtdmcDbT::df {12, "df"};
+const Enum::YLeaf RtdmcDbT::bf {13, "bf"};
+const Enum::YLeaf RtdmcDbT::embedrp {14, "embedrp"};
+const Enum::YLeaf RtdmcDbT::syslog {15, "syslog"};
+const Enum::YLeaf RtdmcDbT::vrfdetail {16, "vrfdetail"};
+
+const Enum::YLeaf RtdmcDfStates::unknown {0, "unknown"};
+const Enum::YLeaf RtdmcDfStates::offer {1, "offer"};
+const Enum::YLeaf RtdmcDfStates::lose {2, "lose"};
+const Enum::YLeaf RtdmcDfStates::winner {3, "winner"};
+const Enum::YLeaf RtdmcDfStates::backoff {4, "backoff"};
+
+const Enum::YLeaf RtdmcPolicyDirType::none {0, "none"};
+const Enum::YLeaf RtdmcPolicyDirType::in {1, "in"};
+const Enum::YLeaf RtdmcPolicyDirType::out {2, "out"};
+
+const Enum::YLeaf RtextcomScope::transitive {0, "transitive"};
+const Enum::YLeaf RtextcomScope::non_transitive {1, "non-transitive"};
+
+const Enum::YLeaf RtextcomType::rttarget {1, "rttarget"};
+const Enum::YLeaf RtextcomType::generic {2, "generic"};
+
+const Enum::YLeaf RtfltAction::deny {0, "deny"};
+const Enum::YLeaf RtfltAction::permit {1, "permit"};
+
+const Enum::YLeaf RtleakCtrl::unspecified {0, "unspecified"};
+const Enum::YLeaf RtleakCtrl::warning {1, "warning"};
+const Enum::YLeaf RtleakCtrl::withdraw {2, "withdraw"};
+
+const Enum::YLeaf RtleakProto::unspecified {0, "unspecified"};
+const Enum::YLeaf RtleakProto::static_ {1, "static"};
+const Enum::YLeaf RtleakProto::direct {2, "direct"};
+const Enum::YLeaf RtleakProto::bgp {3, "bgp"};
+const Enum::YLeaf RtleakProto::isis {4, "isis"};
+const Enum::YLeaf RtleakProto::ospf {5, "ospf"};
+const Enum::YLeaf RtleakProto::ospfv3 {6, "ospfv3"};
+const Enum::YLeaf RtleakProto::eigrp {7, "eigrp"};
+const Enum::YLeaf RtleakProto::host {8, "host"};
+const Enum::YLeaf RtleakProto::rip {9, "rip"};
+const Enum::YLeaf RtleakProto::amt {10, "amt"};
+const Enum::YLeaf RtleakProto::lisp {11, "lisp"};
+const Enum::YLeaf RtleakProto::hmm {12, "hmm"};
+const Enum::YLeaf RtleakProto::am {13, "am"};
+
+const Enum::YLeaf RtleakRtCtrlDir::in {0, "in"};
+const Enum::YLeaf RtleakRtCtrlDir::out {1, "out"};
+
+const Enum::YLeaf RtleakScope::intra {1, "intra"};
+const Enum::YLeaf RtleakScope::inter {2, "inter"};
+const Enum::YLeaf RtleakScope::defrt {3, "defrt"};
+
+const Enum::YLeaf RtmapAction::deny {0, "deny"};
+const Enum::YLeaf RtmapAction::permit {1, "permit"};
+
+const Enum::YLeaf RtmapAdminSt::enabled {1, "enabled"};
+const Enum::YLeaf RtmapAdminSt::disabled {2, "disabled"};
+
+const Enum::YLeaf RtmapCriteria::exact {1, "exact"};
+const Enum::YLeaf RtmapCriteria::sub_group {2, "sub-group"};
 
 const Enum::YLeaf RtmapMatchT::reg_community {1, "reg-community"};
 const Enum::YLeaf RtmapMatchT::ext_community {2, "ext-community"};
@@ -27326,316 +27024,263 @@ const Enum::YLeaf RtmapMatchT::rt_src_v6 {17, "rt-src-v6"};
 const Enum::YLeaf RtmapMatchT::rt_ipv4_mcast {18, "rt-ipv4-mcast"};
 const Enum::YLeaf RtmapMatchT::rt_ipv6_mcast {19, "rt-ipv6-mcast"};
 
-const Enum::YLeaf L3capSubj::unknown {0, "unknown"};
-const Enum::YLeaf L3capSubj::vrf_namespace {1, "vrf-namespace"};
-const Enum::YLeaf L3capSubj::lb_namespace {2, "lb-namespace"};
-const Enum::YLeaf L3capSubj::rdnn_namespace {3, "rdnn-namespace"};
+const Enum::YLeaf RtmapMetricT::type_1 {1, "type-1"};
+const Enum::YLeaf RtmapMetricT::type_2 {2, "type-2"};
+const Enum::YLeaf RtmapMetricT::internal {3, "internal"};
+const Enum::YLeaf RtmapMetricT::external {4, "external"};
 
-const Enum::YLeaf VpcCompatSt::pass {0, "pass"};
-const Enum::YLeaf VpcCompatSt::fail {1, "fail"};
-const Enum::YLeaf VpcCompatSt::notDone {2, "notDone"};
+const Enum::YLeaf RtmapOriginT::egp {1, "egp"};
+const Enum::YLeaf RtmapOriginT::igp {2, "igp"};
+const Enum::YLeaf RtmapOriginT::incomplete {3, "incomplete"};
 
-const Enum::YLeaf MockMode::Repeated {0, "Repeated"};
-const Enum::YLeaf MockMode::Once {1, "Once"};
+const Enum::YLeaf RtmapPrecName::routine {0, "routine"};
+const Enum::YLeaf RtmapPrecName::priority {1, "priority"};
+const Enum::YLeaf RtmapPrecName::immediate {2, "immediate"};
+const Enum::YLeaf RtmapPrecName::flash {3, "flash"};
+const Enum::YLeaf RtmapPrecName::flash_override {4, "flash-override"};
+const Enum::YLeaf RtmapPrecName::critical {5, "critical"};
+const Enum::YLeaf RtmapPrecName::internet {6, "internet"};
+const Enum::YLeaf RtmapPrecName::network {7, "network"};
 
-const Enum::YLeaf L1PktT::bcast {1, "bcast"};
-const Enum::YLeaf L1PktT::unk_ucast {2, "unk-ucast"};
-const Enum::YLeaf L1PktT::mcast {3, "mcast"};
-const Enum::YLeaf L1PktT::all {4, "all"};
+const Enum::YLeaf RtmapRoutePervasive::non_pervasive {0, "non-pervasive"};
+const Enum::YLeaf RtmapRoutePervasive::pervasive {1, "pervasive"};
+const Enum::YLeaf RtmapRoutePervasive::pervasive_non_ext_bd {2, "pervasive-non-ext-bd"};
 
-const Enum::YLeaf SpanDirection::in {1, "in"};
-const Enum::YLeaf SpanDirection::out {2, "out"};
-const Enum::YLeaf SpanDirection::both {3, "both"};
+const Enum::YLeaf RtmapRouteT::external {1, "external"};
+const Enum::YLeaf RtmapRouteT::internal {2, "internal"};
+const Enum::YLeaf RtmapRouteT::ospf_inter_area {3, "ospf-inter-area"};
+const Enum::YLeaf RtmapRouteT::ospf_intra_area {4, "ospf-intra-area"};
+const Enum::YLeaf RtmapRouteT::isis_l1 {5, "isis-l1"};
+const Enum::YLeaf RtmapRouteT::isis_l2 {6, "isis-l2"};
+const Enum::YLeaf RtmapRouteT::local {7, "local"};
+const Enum::YLeaf RtmapRouteT::ospf_nssa_external {8, "ospf-nssa-external"};
+const Enum::YLeaf RtmapRouteT::ospf_type1 {9, "ospf-type1"};
+const Enum::YLeaf RtmapRouteT::ospf_type2 {10, "ospf-type2"};
 
-const Enum::YLeaf L2PvlanTypes::default_ {0, "default"};
-const Enum::YLeaf L2PvlanTypes::primary {1, "primary"};
-const Enum::YLeaf L2PvlanTypes::community {2, "community"};
-const Enum::YLeaf L2PvlanTypes::isolated {3, "isolated"};
+const Enum::YLeaf RtmapSetCriteria::none {1, "none"};
+const Enum::YLeaf RtmapSetCriteria::append {2, "append"};
+const Enum::YLeaf RtmapSetCriteria::replace {3, "replace"};
+const Enum::YLeaf RtmapSetCriteria::igp {4, "igp"};
+const Enum::YLeaf RtmapSetCriteria::pre_bestpath {5, "pre-bestpath"};
 
-const Enum::YLeaf EqptColor::no_color {0, "no-color"};
-const Enum::YLeaf EqptColor::green {1, "green"};
-const Enum::YLeaf EqptColor::yellow {2, "yellow"};
-const Enum::YLeaf EqptColor::amber {3, "amber"};
-const Enum::YLeaf EqptColor::red {4, "red"};
-const Enum::YLeaf EqptColor::blue {5, "blue"};
+const Enum::YLeaf RtmapSetT::reg_community {1, "reg-community"};
+const Enum::YLeaf RtmapSetT::ext_gen_community {2, "ext-gen-community"};
+const Enum::YLeaf RtmapSetT::rtt_community {3, "rtt-community"};
+const Enum::YLeaf RtmapSetT::rt_tag {4, "rt-tag"};
+const Enum::YLeaf RtmapSetT::rt_weight {5, "rt-weight"};
+const Enum::YLeaf RtmapSetT::local_pref {6, "local-pref"};
+const Enum::YLeaf RtmapSetT::metric {7, "metric"};
+const Enum::YLeaf RtmapSetT::ospf_nssa {8, "ospf-nssa"};
+const Enum::YLeaf RtmapSetT::ospf_fwd_addr {9, "ospf-fwd-addr"};
+const Enum::YLeaf RtmapSetT::ip_nh {10, "ip-nh"};
+const Enum::YLeaf RtmapSetT::metric_type {11, "metric-type"};
+const Enum::YLeaf RtmapSetT::rt_dist {12, "rt-dist"};
+const Enum::YLeaf RtmapSetT::nh_pa {13, "nh-pa"};
+const Enum::YLeaf RtmapSetT::origin {14, "origin"};
+const Enum::YLeaf RtmapSetT::list_community {15, "list-community"};
+const Enum::YLeaf RtmapSetT::dampening {16, "dampening"};
+const Enum::YLeaf RtmapSetT::extcommunity_cost {17, "extcommunity-cost"};
+const Enum::YLeaf RtmapSetT::ip_prec {18, "ip-prec"};
+const Enum::YLeaf RtmapSetT::continue_ {19, "continue"};
+const Enum::YLeaf RtmapSetT::rt_index {20, "rt-index"};
+const Enum::YLeaf RtmapSetT::list_extcommunity {21, "list-extcommunity"};
+const Enum::YLeaf RtmapSetT::ipv6_prec {22, "ipv6-prec"};
+const Enum::YLeaf RtmapSetT::prepend {23, "prepend"};
+const Enum::YLeaf RtmapSetT::lastas {24, "lastas"};
+const Enum::YLeaf RtmapSetT::as_pathtag {25, "as-pathtag"};
 
-const Enum::YLeaf L1Mdix::auto_ {1, "auto"};
-const Enum::YLeaf L1Mdix::mdi {2, "mdi"};
-const Enum::YLeaf L1Mdix::mdi_x {3, "mdi-x"};
+const Enum::YLeaf RtmapRpTypeT::unspecified {0, "unspecified"};
+const Enum::YLeaf RtmapRpTypeT::ASM {1, "ASM"};
+const Enum::YLeaf RtmapRpTypeT::Bidir {2, "Bidir"};
 
-const Enum::YLeaf TrackRouteState::reachability {0, "reachability"};
+const Enum::YLeaf RtpfxCriteria::exact {0, "exact"};
+const Enum::YLeaf RtpfxCriteria::inexact {1, "inexact"};
 
-const Enum::YLeaf QospCongAlgo::wred {0, "wred"};
-const Enum::YLeaf QospCongAlgo::tail_drop {1, "tail-drop"};
+const Enum::YLeaf SatmExtChOperSt::unknown {0, "unknown"};
+const Enum::YLeaf SatmExtChOperSt::initializing {1, "initializing"};
+const Enum::YLeaf SatmExtChOperSt::discovered {2, "discovered"};
+const Enum::YLeaf SatmExtChOperSt::connected {3, "connected"};
+const Enum::YLeaf SatmExtChOperSt::registering {4, "registering"};
+const Enum::YLeaf SatmExtChOperSt::registered {5, "registered"};
+const Enum::YLeaf SatmExtChOperSt::ready {6, "ready"};
+const Enum::YLeaf SatmExtChOperSt::online_seq {7, "online-seq"};
+const Enum::YLeaf SatmExtChOperSt::online {8, "online"};
+const Enum::YLeaf SatmExtChOperSt::offline_req {9, "offline-req"};
+const Enum::YLeaf SatmExtChOperSt::offline_seq {10, "offline-seq"};
+const Enum::YLeaf SatmExtChOperSt::offline {11, "offline"};
+const Enum::YLeaf SatmExtChOperSt::img_download {12, "img-download"};
+const Enum::YLeaf SatmExtChOperSt::failed {13, "failed"};
+const Enum::YLeaf SatmExtChOperSt::removed {14, "removed"};
+const Enum::YLeaf SatmExtChOperSt::hl_upg_seq {15, "hl-upg-seq"};
+const Enum::YLeaf SatmExtChOperSt::chk_upg_seq {16, "chk-upg-seq"};
+const Enum::YLeaf SatmExtChOperSt::upg_start {17, "upg-start"};
+const Enum::YLeaf SatmExtChOperSt::hl_upg_idle {18, "hl-upg-idle"};
+const Enum::YLeaf SatmExtChOperSt::chk_ins_seq {19, "chk-ins-seq"};
+const Enum::YLeaf SatmExtChOperSt::hl_upg_fail {20, "hl-upg-fail"};
+const Enum::YLeaf SatmExtChOperSt::aa_upg_rdy {21, "aa-upg-rdy"};
+const Enum::YLeaf SatmExtChOperSt::aa_upg_idle {22, "aa-upg-idle"};
+const Enum::YLeaf SatmExtChOperSt::aa_upg_done {23, "aa-upg-done"};
+const Enum::YLeaf SatmExtChOperSt::aa_upg_fail {24, "aa-upg-fail"};
+const Enum::YLeaf SatmExtChOperSt::aa_ver_mismatch {25, "aa-ver-mismatch"};
+const Enum::YLeaf SatmExtChOperSt::ch_type_mismatch {26, "ch-type-mismatch"};
 
-const Enum::YLeaf HmmBoolean::no {0, "no"};
-const Enum::YLeaf HmmBoolean::yes {1, "yes"};
+const Enum::YLeaf SatmFpFsmSt::unknown {0, "unknown"};
+const Enum::YLeaf SatmFpFsmSt::created {1, "created"};
+const Enum::YLeaf SatmFpFsmSt::discovered {2, "discovered"};
+const Enum::YLeaf SatmFpFsmSt::configured {3, "configured"};
+const Enum::YLeaf SatmFpFsmSt::up {4, "up"};
+const Enum::YLeaf SatmFpFsmSt::connecting {5, "connecting"};
+const Enum::YLeaf SatmFpFsmSt::active {6, "active"};
+const Enum::YLeaf SatmFpFsmSt::incompatible {7, "incompatible"};
+const Enum::YLeaf SatmFpFsmSt::disconnected {8, "disconnected"};
+const Enum::YLeaf SatmFpFsmSt::id_mismatch {9, "id-mismatch"};
 
-const Enum::YLeaf L1FECMode::auto_ {4, "auto"};
-const Enum::YLeaf L1FECMode::rs_fec {2, "rs-fec"};
-const Enum::YLeaf L1FECMode::fc_fec {1, "fc-fec"};
-const Enum::YLeaf L1FECMode::fec_off {3, "fec-off"};
-const Enum::YLeaf L1FECMode::rs_ieee {5, "rs-ieee"};
-const Enum::YLeaf L1FECMode::rs_cons16 {6, "rs-cons16"};
+const Enum::YLeaf SatmHpOperSt::unknown {0, "unknown"};
+const Enum::YLeaf SatmHpOperSt::up {1, "up"};
+const Enum::YLeaf SatmHpOperSt::down {2, "down"};
+const Enum::YLeaf SatmHpOperSt::fail {3, "fail"};
 
-const Enum::YLeaf MsdpSource::none {0, "none"};
-const Enum::YLeaf MsdpSource::pflist {1, "pflist"};
-const Enum::YLeaf MsdpSource::rtmap {2, "rtmap"};
+const Enum::YLeaf SatmOperSt::unknown {0, "unknown"};
+const Enum::YLeaf SatmOperSt::up {1, "up"};
+const Enum::YLeaf SatmOperSt::down {2, "down"};
+const Enum::YLeaf SatmOperSt::failed {3, "failed"};
 
-const Enum::YLeaf EqptAcc::read_only {0, "read-only"};
-const Enum::YLeaf EqptAcc::read_write {1, "read-write"};
+const Enum::YLeaf ScrtchpdAction::create {1, "create"};
+const Enum::YLeaf ScrtchpdAction::delete_ {2, "delete"};
 
-const Enum::YLeaf BgpSummaryOnly::enabled {1, "enabled"};
-const Enum::YLeaf BgpSummaryOnly::disabled {0, "disabled"};
+const Enum::YLeaf SegrtAfType::ipv4 {1, "ipv4"};
+const Enum::YLeaf SegrtAfType::ipv6 {2, "ipv6"};
 
-const Enum::YLeaf PoePoePriority::low {0, "low"};
-const Enum::YLeaf PoePoePriority::high {1, "high"};
+const Enum::YLeaf SegrtOperSt::disabled {0, "disabled"};
+const Enum::YLeaf SegrtOperSt::enabled {1, "enabled"};
+const Enum::YLeaf SegrtOperSt::ha_in_progress {2, "ha-in-progress"};
 
-const Enum::YLeaf L1Dot1qEtherType::Y_0x8100 {1, "0x8100"};
-const Enum::YLeaf L1Dot1qEtherType::Y_0x88A8 {2, "0x88A8"};
-const Enum::YLeaf L1Dot1qEtherType::Y_0x9100 {3, "0x9100"};
-const Enum::YLeaf L1Dot1qEtherType::any {4, "any"};
+const Enum::YLeaf SegrtOperStQual::none {0, "none"};
+const Enum::YLeaf SegrtOperStQual::shut {1, "shut"};
+const Enum::YLeaf SegrtOperStQual::srgb_cleanup_in_progress {2, "srgb-cleanup-in-progress"};
+const Enum::YLeaf SegrtOperStQual::srgb_cleanup_failed {3, "srgb-cleanup-failed"};
+const Enum::YLeaf SegrtOperStQual::srgb_alloc_in_progress {4, "srgb-alloc-in-progress"};
+const Enum::YLeaf SegrtOperStQual::srgb_alloc_failed {5, "srgb-alloc-failed"};
 
-const Enum::YLeaf DatetimeClockProtocol::unspecified {0, "unspecified"};
-const Enum::YLeaf DatetimeClockProtocol::ptp {1, "ptp"};
-const Enum::YLeaf DatetimeClockProtocol::ntp {2, "ntp"};
-const Enum::YLeaf DatetimeClockProtocol::none {3, "none"};
+const Enum::YLeaf SegrtSRGBOperSt::none {0, "none"};
+const Enum::YLeaf SegrtSRGBOperSt::in_use {1, "in-use"};
+const Enum::YLeaf SegrtSRGBOperSt::alloc_in_progress {2, "alloc-in-progress"};
+const Enum::YLeaf SegrtSRGBOperSt::alloc_failed {3, "alloc-failed"};
+const Enum::YLeaf SegrtSRGBOperSt::cleanup_in_progress {4, "cleanup-in-progress"};
+const Enum::YLeaf SegrtSRGBOperSt::cleanup_failed {5, "cleanup-failed"};
 
-const Enum::YLeaf SwpkgsOperState::none {0, "none"};
-const Enum::YLeaf SwpkgsOperState::inactive {1, "inactive"};
-const Enum::YLeaf SwpkgsOperState::activated {2, "activated"};
-const Enum::YLeaf SwpkgsOperState::deactivated {3, "deactivated"};
-const Enum::YLeaf SwpkgsOperState::committed {4, "committed"};
+const Enum::YLeaf SegrtSidValueType::index_ {1, "index"};
+const Enum::YLeaf SegrtSidValueType::absolute {2, "absolute"};
 
-const Enum::YLeaf L2XConnect::enable {1, "enable"};
-const Enum::YLeaf L2XConnect::disable {0, "disable"};
-
-const Enum::YLeaf L1EEELpi::aggressive {1, "aggressive"};
-const Enum::YLeaf L1EEELpi::normal {2, "normal"};
-
-const Enum::YLeaf ConftmplOperationType::create {1, "create"};
-const Enum::YLeaf ConftmplOperationType::delete_ {2, "delete"};
-
-const Enum::YLeaf TrackListObj::none {0, "none"};
-const Enum::YLeaf TrackListObj::and_ {1, "and"};
-const Enum::YLeaf TrackListObj::or_ {2, "or"};
-const Enum::YLeaf TrackListObj::percentage {3, "percentage"};
-const Enum::YLeaf TrackListObj::weight {4, "weight"};
-
-const Enum::YLeaf NvoVniStateT::Up {1, "Up"};
-const Enum::YLeaf NvoVniStateT::Down {2, "Down"};
-
-const Enum::YLeaf InbandTelemetryProfile::endpoint {0, "endpoint"};
-const Enum::YLeaf InbandTelemetryProfile::transit {1, "transit"};
-
-const Enum::YLeaf UdldPktDirection::send {0, "send"};
-const Enum::YLeaf UdldPktDirection::recv {1, "recv"};
-
-const Enum::YLeaf NwOSSum::failed {0, "failed"};
-const Enum::YLeaf NwOSSum::initializing {1, "initializing"};
-const Enum::YLeaf NwOSSum::resetting {2, "resetting"};
-const Enum::YLeaf NwOSSum::degraded {3, "degraded"};
-const Enum::YLeaf NwOSSum::ok {4, "ok"};
-
-const Enum::YLeaf PlatformSwitchingMode::DEFAULT {0, "DEFAULT"};
-const Enum::YLeaf PlatformSwitchingMode::STORE_FORWARD {1, "STORE_FORWARD"};
-
-const Enum::YLeaf SisfDhcpGuardDeviceRole::client {0, "client"};
-const Enum::YLeaf SisfDhcpGuardDeviceRole::server {1, "server"};
-const Enum::YLeaf SisfDhcpGuardDeviceRole::monitor {2, "monitor"};
-
-const Enum::YLeaf CdpOperSt::up {1, "up"};
-const Enum::YLeaf CdpOperSt::down {2, "down"};
-
-const Enum::YLeaf Ipv6IPv6EventType::ipv6Event {0, "ipv6Event"};
-const Enum::YLeaf Ipv6IPv6EventType::bfdEvent {1, "bfdEvent"};
-const Enum::YLeaf Ipv6IPv6EventType::syslog {2, "syslog"};
-const Enum::YLeaf Ipv6IPv6EventType::ipc {3, "ipc"};
-const Enum::YLeaf Ipv6IPv6EventType::snmp {4, "snmp"};
-const Enum::YLeaf Ipv6IPv6EventType::highAvailability {5, "highAvailability"};
-const Enum::YLeaf Ipv6IPv6EventType::sdb {6, "sdb"};
-
-const Enum::YLeaf TraceroutePathT::external {1, "external"};
-const Enum::YLeaf TraceroutePathT::internal {2, "internal"};
-
-const Enum::YLeaf StpIfMode::default_ {0, "default"};
-const Enum::YLeaf StpIfMode::edge {1, "edge"};
-const Enum::YLeaf StpIfMode::network {2, "network"};
-const Enum::YLeaf StpIfMode::normal {3, "normal"};
-const Enum::YLeaf StpIfMode::trunk {4, "trunk"};
-
-const Enum::YLeaf RelnResolverType::mo {1, "mo"};
-const Enum::YLeaf RelnResolverType::service {2, "service"};
-const Enum::YLeaf RelnResolverType::local {3, "local"};
-
-const Enum::YLeaf L2Mode::F {0, "F"};
-const Enum::YLeaf L2Mode::NP {1, "NP"};
-const Enum::YLeaf L2Mode::E {2, "E"};
-const Enum::YLeaf L2Mode::TF {3, "TF"};
-const Enum::YLeaf L2Mode::TNP {4, "TNP"};
+const Enum::YLeaf SegrtSrDpType::mpls {1, "mpls"};
+const Enum::YLeaf SegrtSrDpType::ipv6 {2, "ipv6"};
 
 const Enum::YLeaf SisfNonGlobalTracking::default_ {0, "default"};
 const Enum::YLeaf SisfNonGlobalTracking::disable {1, "disable"};
 const Enum::YLeaf SisfNonGlobalTracking::enable {2, "enable"};
 
-const Enum::YLeaf OspfActive::no {0, "no"};
-const Enum::YLeaf OspfActive::yes {1, "yes"};
+const Enum::YLeaf SisfDeviceRole::node {0, "node"};
+const Enum::YLeaf SisfDeviceRole::switch_ {3, "switch"};
 
-const Enum::YLeaf SviOperSt::unknown {0, "unknown"};
-const Enum::YLeaf SviOperSt::up {1, "up"};
-const Enum::YLeaf SviOperSt::down {2, "down"};
-const Enum::YLeaf SviOperSt::shutdown {3, "shutdown"};
-const Enum::YLeaf SviOperSt::out_of_srvc {4, "out-of-srvc"};
+const Enum::YLeaf SisfDhcpGuardDeviceRole::client {0, "client"};
+const Enum::YLeaf SisfDhcpGuardDeviceRole::server {1, "server"};
+const Enum::YLeaf SisfDhcpGuardDeviceRole::monitor {2, "monitor"};
 
-const Enum::YLeaf PcMode::on {0, "on"};
-const Enum::YLeaf PcMode::static_ {1, "static"};
-const Enum::YLeaf PcMode::active {2, "active"};
-const Enum::YLeaf PcMode::passive {3, "passive"};
-const Enum::YLeaf PcMode::mac_pin {4, "mac-pin"};
+const Enum::YLeaf SisfDhcpflag::on {0, "on"};
+const Enum::YLeaf SisfDhcpflag::off {1, "off"};
 
-const Enum::YLeaf DatetimeClockFormat::Y_24hours {0, "24hours"};
-const Enum::YLeaf DatetimeClockFormat::Y_12hours {1, "12hours"};
+const Enum::YLeaf SisfNdpflag::on {0, "on"};
+const Enum::YLeaf SisfNdpflag::off {1, "off"};
 
-const Enum::YLeaf EqptEjSt::open {0, "open"};
-const Enum::YLeaf EqptEjSt::closed {1, "closed"};
+const Enum::YLeaf SisfRaGuardDeviceRole::host {1, "host"};
+const Enum::YLeaf SisfRaGuardDeviceRole::router {2, "router"};
+const Enum::YLeaf SisfRaGuardDeviceRole::switch_ {3, "switch"};
+const Enum::YLeaf SisfRaGuardDeviceRole::monitor {4, "monitor"};
 
-const Enum::YLeaf L1RouterMacIpv6Extract::disable {0, "disable"};
-const Enum::YLeaf L1RouterMacIpv6Extract::enable {1, "enable"};
+const Enum::YLeaf SisfRaGuardManagedConfig::off {0, "off"};
+const Enum::YLeaf SisfRaGuardManagedConfig::on {1, "on"};
+const Enum::YLeaf SisfRaGuardManagedConfig::nocheck {2, "nocheck"};
 
-const Enum::YLeaf IpqosQoSMatchType::match_any {0, "match-any"};
-const Enum::YLeaf IpqosQoSMatchType::match_all {1, "match-all"};
-const Enum::YLeaf IpqosQoSMatchType::match_first {2, "match-first"};
+const Enum::YLeaf SisfRaGuardOtherConfig::off {0, "off"};
+const Enum::YLeaf SisfRaGuardOtherConfig::on {1, "on"};
+const Enum::YLeaf SisfRaGuardOtherConfig::nocheck {2, "nocheck"};
 
-const Enum::YLeaf HsrpAuthT::simple {1, "simple"};
-const Enum::YLeaf HsrpAuthT::md5 {2, "md5"};
+const Enum::YLeaf SisfRaGuardRouterPreferenceMaximum::low {1, "low"};
+const Enum::YLeaf SisfRaGuardRouterPreferenceMaximum::medium {2, "medium"};
+const Enum::YLeaf SisfRaGuardRouterPreferenceMaximum::high {3, "high"};
+const Enum::YLeaf SisfRaGuardRouterPreferenceMaximum::nocheck {4, "nocheck"};
 
-const Enum::YLeaf TestTrig::unspecified {0, "unspecified"};
-const Enum::YLeaf TestTrig::on_demand {1, "on-demand"};
-const Enum::YLeaf TestTrig::boot {2, "boot"};
-const Enum::YLeaf TestTrig::forever {4, "forever"};
+const Enum::YLeaf SisfSecurityLevel::glean {0, "glean"};
+const Enum::YLeaf SisfSecurityLevel::inspect {1, "inspect"};
+const Enum::YLeaf SisfSecurityLevel::guard {2, "guard"};
 
-const Enum::YLeaf StpPortRole::unknown {0, "unknown"};
-const Enum::YLeaf StpPortRole::root {1, "root"};
-const Enum::YLeaf StpPortRole::alternate {2, "alternate"};
-const Enum::YLeaf StpPortRole::designated {3, "designated"};
-const Enum::YLeaf StpPortRole::backup {4, "backup"};
-const Enum::YLeaf StpPortRole::master {5, "master"};
-
-const Enum::YLeaf CompNicState::down {0, "down"};
-const Enum::YLeaf CompNicState::up {1, "up"};
-
-const Enum::YLeaf SegrtSidValueType::index_ {1, "index"};
-const Enum::YLeaf SegrtSidValueType::absolute {2, "absolute"};
-
-const Enum::YLeaf PlatformTuple::Disable {0, "Disable"};
-const Enum::YLeaf PlatformTuple::Enable {1, "Enable"};
-
-const Enum::YLeaf L1Speed::unknown {0, "unknown"};
-const Enum::YLeaf L1Speed::Y_100M {2, "100M"};
-const Enum::YLeaf L1Speed::Y_1G {3, "1G"};
-const Enum::YLeaf L1Speed::Y_10G {4, "10G"};
-const Enum::YLeaf L1Speed::Y_40G {5, "40G"};
-const Enum::YLeaf L1Speed::auto_ {6, "auto"};
-const Enum::YLeaf L1Speed::auto_100M {7, "auto_100M"};
-const Enum::YLeaf L1Speed::auto_100M_1G {8, "auto_100M_1G"};
-const Enum::YLeaf L1Speed::Y_100G {9, "100G"};
-const Enum::YLeaf L1Speed::Y_25G {10, "25G"};
-const Enum::YLeaf L1Speed::Y_10M {11, "10M"};
-const Enum::YLeaf L1Speed::Y_50G {12, "50G"};
-
-const Enum::YLeaf StpModeType::edge {1, "edge"};
-const Enum::YLeaf StpModeType::network {2, "network"};
-const Enum::YLeaf StpModeType::normal {3, "normal"};
-
-const Enum::YLeaf EthpmFcotType::unknown {0, "unknown"};
-const Enum::YLeaf EthpmFcotType::xfp {1, "xfp"};
-const Enum::YLeaf EthpmFcotType::x2 {2, "x2"};
-const Enum::YLeaf EthpmFcotType::dummy {3, "dummy"};
-const Enum::YLeaf EthpmFcotType::sfp {4, "sfp"};
-const Enum::YLeaf EthpmFcotType::qsfp {5, "qsfp"};
-const Enum::YLeaf EthpmFcotType::cfp_40g {6, "cfp-40g"};
-const Enum::YLeaf EthpmFcotType::cfp_100g {7, "cfp-100g"};
-const Enum::YLeaf EthpmFcotType::cfp {8, "cfp"};
-const Enum::YLeaf EthpmFcotType::qsfp28 {9, "qsfp28"};
-
-const Enum::YLeaf VrrpGroupStQual::up {0, "up"};
-const Enum::YLeaf VrrpGroupStQual::down {1, "down"};
-const Enum::YLeaf VrrpGroupStQual::no_primary_vip {2, "no-primary-vip"};
-const Enum::YLeaf VrrpGroupStQual::admin_down {3, "admin-down"};
-const Enum::YLeaf VrrpGroupStQual::interface_down {4, "interface-down"};
-const Enum::YLeaf VrrpGroupStQual::no_intf_ip_cfgd {5, "no-intf-ip-cfgd"};
-const Enum::YLeaf VrrpGroupStQual::no_vrf_info_for_intf {6, "no-vrf-info-for-intf"};
-const Enum::YLeaf VrrpGroupStQual::bd_not_allocated {7, "bd-not-allocated"};
-const Enum::YLeaf VrrpGroupStQual::vmac_not_added {8, "vmac-not-added"};
-const Enum::YLeaf VrrpGroupStQual::invalid_vip {9, "invalid-vip"};
-const Enum::YLeaf VrrpGroupStQual::IfIp_vip_subnet_mismatch {10, "IfIp-vip-subnet-mismatch"};
-const Enum::YLeaf VrrpGroupStQual::internal_error {11, "internal_error"};
-
-const Enum::YLeaf AaaCmdType::config {0, "config"};
-const Enum::YLeaf AaaCmdType::exec {1, "exec"};
-
-const Enum::YLeaf BgpAfT::ipv4_ucast {1, "ipv4-ucast"};
-const Enum::YLeaf BgpAfT::ipv4_mcast {2, "ipv4-mcast"};
-const Enum::YLeaf BgpAfT::vpnv4_ucast {3, "vpnv4-ucast"};
-const Enum::YLeaf BgpAfT::ipv6_ucast {5, "ipv6-ucast"};
-const Enum::YLeaf BgpAfT::ipv6_mcast {6, "ipv6-mcast"};
-const Enum::YLeaf BgpAfT::vpnv6_ucast {7, "vpnv6-ucast"};
-const Enum::YLeaf BgpAfT::l2vpn_evpn {9, "l2vpn-evpn"};
-const Enum::YLeaf BgpAfT::ipv4_lucast {10, "ipv4-lucast"};
-const Enum::YLeaf BgpAfT::ipv6_lucast {11, "ipv6-lucast"};
-const Enum::YLeaf BgpAfT::lnkstate {12, "lnkstate"};
-const Enum::YLeaf BgpAfT::ipv4_mvpn {13, "ipv4-mvpn"};
-const Enum::YLeaf BgpAfT::ipv6_mvpn {14, "ipv6-mvpn"};
-const Enum::YLeaf BgpAfT::l2vpn_vpls {15, "l2vpn-vpls"};
-const Enum::YLeaf BgpAfT::ipv4_mdt {16, "ipv4-mdt"};
-const Enum::YLeaf BgpAfT::vpnv6_mcast {8, "vpnv6-mcast"};
-
-const Enum::YLeaf TrackAf::none {0, "none"};
-const Enum::YLeaf TrackAf::ipv4 {1, "ipv4"};
-const Enum::YLeaf TrackAf::ipv6 {2, "ipv6"};
-
-const Enum::YLeaf EqptExtChSt::unknown {0, "unknown"};
-const Enum::YLeaf EqptExtChSt::initializing {1, "initializing"};
-const Enum::YLeaf EqptExtChSt::discovered {2, "discovered"};
-const Enum::YLeaf EqptExtChSt::connected {3, "connected"};
-const Enum::YLeaf EqptExtChSt::reg {4, "reg"};
-const Enum::YLeaf EqptExtChSt::regDone {5, "regDone"};
-const Enum::YLeaf EqptExtChSt::ready {6, "ready"};
-const Enum::YLeaf EqptExtChSt::onlSeq {7, "onlSeq"};
-const Enum::YLeaf EqptExtChSt::online {8, "online"};
-const Enum::YLeaf EqptExtChSt::offReq {9, "offReq"};
-const Enum::YLeaf EqptExtChSt::offSeq {10, "offSeq"};
-const Enum::YLeaf EqptExtChSt::offline {11, "offline"};
-const Enum::YLeaf EqptExtChSt::imgDld {12, "imgDld"};
-const Enum::YLeaf EqptExtChSt::failed {13, "failed"};
-const Enum::YLeaf EqptExtChSt::removed {14, "removed"};
-const Enum::YLeaf EqptExtChSt::hlUpgSeq {15, "hlUpgSeq"};
-const Enum::YLeaf EqptExtChSt::chkUpgSeq {16, "chkUpgSeq"};
-const Enum::YLeaf EqptExtChSt::svStates {17, "svStates"};
-const Enum::YLeaf EqptExtChSt::hlUpgIdle {18, "hlUpgIdle"};
-const Enum::YLeaf EqptExtChSt::chkInsSeq {19, "chkInsSeq"};
-const Enum::YLeaf EqptExtChSt::hlUpgFail {20, "hlUpgFail"};
-const Enum::YLeaf EqptExtChSt::aaUpgRdy {21, "aaUpgRdy"};
-const Enum::YLeaf EqptExtChSt::aaUpgIdle {22, "aaUpgIdle"};
-const Enum::YLeaf EqptExtChSt::aaUpgOver {23, "aaUpgOver"};
-const Enum::YLeaf EqptExtChSt::aaUpgFail {24, "aaUpgFail"};
-const Enum::YLeaf EqptExtChSt::aaVersMismatch {25, "aaVersMismatch"};
-const Enum::YLeaf EqptExtChSt::ExtChTypeMismatch {26, "ExtChTypeMismatch"};
-
-const Enum::YLeaf TelemetryDataSource::DME {1, "DME"};
-const Enum::YLeaf TelemetryDataSource::NX_API {3, "NX-API"};
-const Enum::YLeaf TelemetryDataSource::YANG {4, "YANG"};
-const Enum::YLeaf TelemetryDataSource::DEFAULT {16, "DEFAULT"};
-
-const Enum::YLeaf FcAdminSt::down {1, "down"};
-const Enum::YLeaf FcAdminSt::up {2, "up"};
+const Enum::YLeaf SnmpAuthType::hmac_md5_96 {1, "hmac-md5-96"};
+const Enum::YLeaf SnmpAuthType::hmac_sha1_96 {2, "hmac-sha1-96"};
 
 const Enum::YLeaf SnmpAuthTypeT::no {0, "no"};
 const Enum::YLeaf SnmpAuthTypeT::md5 {1, "md5"};
 const Enum::YLeaf SnmpAuthTypeT::sha {2, "sha"};
 
-const Enum::YLeaf FmAdminState::enabled {1, "enabled"};
-const Enum::YLeaf FmAdminState::disabled {2, "disabled"};
+const Enum::YLeaf SnmpBoolean::no {0, "no"};
+const Enum::YLeaf SnmpBoolean::yes {1, "yes"};
+
+const Enum::YLeaf SnmpCommAcessT::ro {0, "ro"};
+const Enum::YLeaf SnmpCommAcessT::rw {1, "rw"};
+const Enum::YLeaf SnmpCommAcessT::unspecified {2, "unspecified"};
+
+const Enum::YLeaf SnmpLogEnableType::no {0, "no"};
+const Enum::YLeaf SnmpLogEnableType::yes {1, "yes"};
+
+const Enum::YLeaf SnmpNotificationType::traps {1, "traps"};
+const Enum::YLeaf SnmpNotificationType::informs {2, "informs"};
+
+const Enum::YLeaf SnmpPrivType::none {0, "none"};
+const Enum::YLeaf SnmpPrivType::des {1, "des"};
+const Enum::YLeaf SnmpPrivType::aes_128 {2, "aes-128"};
+
+const Enum::YLeaf SnmpPrivTypeT::no {0, "no"};
+const Enum::YLeaf SnmpPrivTypeT::des {1, "des"};
+const Enum::YLeaf SnmpPrivTypeT::aes128 {2, "aes128"};
+
+const Enum::YLeaf SnmpSnmpTrapSt::enable {1, "enable"};
+const Enum::YLeaf SnmpSnmpTrapSt::disable {2, "disable"};
+
+const Enum::YLeaf SnmpV3SecLvl::unspecified {0, "unspecified"};
+const Enum::YLeaf SnmpV3SecLvl::noauth {1, "noauth"};
+const Enum::YLeaf SnmpV3SecLvl::auth {2, "auth"};
+const Enum::YLeaf SnmpV3SecLvl::priv {3, "priv"};
+
+const Enum::YLeaf SnmpVersion::v1 {1, "v1"};
+const Enum::YLeaf SnmpVersion::v2c {2, "v2c"};
+const Enum::YLeaf SnmpVersion::v3 {3, "v3"};
+
+const Enum::YLeaf SnmpSmplType::unspecified {0, "unspecified"};
+const Enum::YLeaf SnmpSmplType::absolute {1, "absolute"};
+const Enum::YLeaf SnmpSmplType::delta {2, "delta"};
+
+const Enum::YLeaf SnmpTcpSessionAuthT::no {0, "no"};
+const Enum::YLeaf SnmpTcpSessionAuthT::tcpSess {1, "tcpSess"};
+const Enum::YLeaf SnmpTcpSessionAuthT::tcpSessAuth {2, "tcpSessAuth"};
+
+const Enum::YLeaf SpanDbT::ipep_resolve {1, "ipep-resolve"};
+
+const Enum::YLeaf SpanDestEncapT::gre {1, "gre"};
+
+const Enum::YLeaf SpanDirection::in {1, "in"};
+const Enum::YLeaf SpanDirection::out {2, "out"};
+const Enum::YLeaf SpanDirection::both {3, "both"};
+
+const Enum::YLeaf SpanErSpanVer::ver1 {1, "ver1"};
+const Enum::YLeaf SpanErSpanVer::ver2 {2, "ver2"};
+
+const Enum::YLeaf SpanMode::access {1, "access"};
+const Enum::YLeaf SpanMode::fabric {2, "fabric"};
+
+const Enum::YLeaf SpanOperSt::unspecified {0, "unspecified"};
+const Enum::YLeaf SpanOperSt::up {1, "up"};
+const Enum::YLeaf SpanOperSt::down {2, "down"};
+const Enum::YLeaf SpanOperSt::failed {3, "failed"};
+const Enum::YLeaf SpanOperSt::partial {4, "partial"};
 
 const Enum::YLeaf SpanOperStQual::active {1, "active"};
 const Enum::YLeaf SpanOperStQual::no_hw_res {2, "no-hw-res"};
@@ -27653,201 +27298,556 @@ const Enum::YLeaf SpanOperStQual::no_route {13, "no-route"};
 const Enum::YLeaf SpanOperStQual::no_eg_intf {14, "no-eg-intf"};
 const Enum::YLeaf SpanOperStQual::hw_err {15, "hw-err"};
 
-const Enum::YLeaf AnalyticsConfigLatencyResFactorT::enable {1, "enable"};
-const Enum::YLeaf AnalyticsConfigLatencyResFactorT::disable {0, "disable"};
+const Enum::YLeaf SpanSrcT::port {1, "port"};
+const Enum::YLeaf SpanSrcT::encap {2, "encap"};
+const Enum::YLeaf SpanSrcT::port_encap {3, "port-encap"};
 
-const Enum::YLeaf L1PhyLayer::ethernet {2, "ethernet"};
-const Enum::YLeaf L1PhyLayer::sup_inband {4, "sup-inband"};
-const Enum::YLeaf L1PhyLayer::eobc {5, "eobc"};
-const Enum::YLeaf L1PhyLayer::mgmt {6, "mgmt"};
-const Enum::YLeaf L1PhyLayer::max {8, "max"};
-
-const Enum::YLeaf OspfPathT::intra {1, "intra"};
-const Enum::YLeaf OspfPathT::discard_int {2, "discard-int"};
-const Enum::YLeaf OspfPathT::inter {3, "inter"};
-const Enum::YLeaf OspfPathT::discard_ext {4, "discard-ext"};
-const Enum::YLeaf OspfPathT::ext1 {5, "ext1"};
-const Enum::YLeaf OspfPathT::nssa1 {6, "nssa1"};
-const Enum::YLeaf OspfPathT::ext2 {7, "ext2"};
-const Enum::YLeaf OspfPathT::nssa2 {8, "nssa2"};
-
-const Enum::YLeaf OspfMaxLsaOperSt::ok {0, "ok"};
-const Enum::YLeaf OspfMaxLsaOperSt::threshold_exceeded {1, "threshold-exceeded"};
-
-const Enum::YLeaf L1IntfT::phy {1, "phy"};
-const Enum::YLeaf L1IntfT::phy_shared {2, "phy-shared"};
-
-const Enum::YLeaf L2NativeT::regular {0, "regular"};
-const Enum::YLeaf L2NativeT::native {1, "native"};
-const Enum::YLeaf L2NativeT::untagged {2, "untagged"};
-
-const Enum::YLeaf OpflexDevOperState::unknown {0, "unknown"};
-const Enum::YLeaf OpflexDevOperState::online {1, "online"};
-const Enum::YLeaf OpflexDevOperState::offline {2, "offline"};
-const Enum::YLeaf OpflexDevOperState::identified {3, "identified"};
-const Enum::YLeaf OpflexDevOperState::compatible {4, "compatible"};
-const Enum::YLeaf OpflexDevOperState::incompatible {5, "incompatible"};
-
-const Enum::YLeaf BgpEhType::none {0, "none"};
-const Enum::YLeaf BgpEhType::cli {1, "cli"};
-const Enum::YLeaf BgpEhType::events {2, "events"};
-const Enum::YLeaf BgpEhType::periodic {3, "periodic"};
-const Enum::YLeaf BgpEhType::detail {4, "detail"};
-const Enum::YLeaf BgpEhType::errors {5, "errors"};
-const Enum::YLeaf BgpEhType::objstore {6, "objstore"};
-
-const Enum::YLeaf L2TrunkMode::off {0, "off"};
-const Enum::YLeaf L2TrunkMode::on {1, "on"};
-const Enum::YLeaf L2TrunkMode::auto_ {2, "auto"};
+const Enum::YLeaf SrteEncapsulationType::mpls {0, "mpls"};
 
 const Enum::YLeaf SrteMetric::none {0, "none"};
 const Enum::YLeaf SrteMetric::te {1, "te"};
 const Enum::YLeaf SrteMetric::igp {2, "igp"};
 
-const Enum::YLeaf AclVAclActionType::invalid {0, "invalid"};
-const Enum::YLeaf AclVAclActionType::forward {1, "forward"};
-const Enum::YLeaf AclVAclActionType::drop {2, "drop"};
-const Enum::YLeaf AclVAclActionType::redirect {3, "redirect"};
+const Enum::YLeaf StpAdminSt::enabled {1, "enabled"};
+const Enum::YLeaf StpAdminSt::disabled {2, "disabled"};
 
-const Enum::YLeaf EqptPortT::unknown {0, "unknown"};
-const Enum::YLeaf EqptPortT::eobc {1, "eobc"};
-const Enum::YLeaf EqptPortT::mgmt {2, "mgmt"};
-const Enum::YLeaf EqptPortT::fab {3, "fab"};
-const Enum::YLeaf EqptPortT::leaf {4, "leaf"};
-const Enum::YLeaf EqptPortT::extchhp {5, "extchhp"};
-const Enum::YLeaf EqptPortT::extchfp {6, "extchfp"};
+const Enum::YLeaf StpBPDUGuard::default_ {0, "default"};
+const Enum::YLeaf StpBPDUGuard::enable {1, "enable"};
+const Enum::YLeaf StpBPDUGuard::disable {2, "disable"};
 
-const Enum::YLeaf OspfLsaT::router {1, "router"};
-const Enum::YLeaf OspfLsaT::nw {2, "nw"};
-const Enum::YLeaf OspfLsaT::summary {3, "summary"};
-const Enum::YLeaf OspfLsaT::asbr {4, "asbr"};
-const Enum::YLeaf OspfLsaT::ext {5, "ext"};
-const Enum::YLeaf OspfLsaT::nssa {7, "nssa"};
-const Enum::YLeaf OspfLsaT::link_opq {9, "link-opq"};
-const Enum::YLeaf OspfLsaT::area_opq {10, "area-opq"};
-const Enum::YLeaf OspfLsaT::as_opq {11, "as-opq"};
+const Enum::YLeaf StpBpdufilter::default_ {0, "default"};
+const Enum::YLeaf StpBpdufilter::enable {1, "enable"};
+const Enum::YLeaf StpBpdufilter::disable {2, "disable"};
 
-const Enum::YLeaf SysmgrCfgMode::init {1, "init"};
-const Enum::YLeaf SysmgrCfgMode::replay {2, "replay"};
-const Enum::YLeaf SysmgrCfgMode::done {4, "done"};
+const Enum::YLeaf StpGuard::default_ {0, "default"};
+const Enum::YLeaf StpGuard::root {1, "root"};
+const Enum::YLeaf StpGuard::loop {2, "loop"};
+const Enum::YLeaf StpGuard::none {3, "none"};
 
-const Enum::YLeaf ArpStAdjOperSt::down {0, "down"};
-const Enum::YLeaf ArpStAdjOperSt::up {1, "up"};
-const Enum::YLeaf ArpStAdjOperSt::unspecified {10, "unspecified"};
+const Enum::YLeaf StpIfMode::default_ {0, "default"};
+const Enum::YLeaf StpIfMode::edge {1, "edge"};
+const Enum::YLeaf StpIfMode::network {2, "network"};
+const Enum::YLeaf StpIfMode::normal {3, "normal"};
+const Enum::YLeaf StpIfMode::trunk {4, "trunk"};
 
-const Enum::YLeaf L1SpeedGroup::unknown {0, "unknown"};
-const Enum::YLeaf L1SpeedGroup::Y_1000 {3, "1000"};
-const Enum::YLeaf L1SpeedGroup::Y_25000 {10, "25000"};
-const Enum::YLeaf L1SpeedGroup::Y_10000 {4, "10000"};
-const Enum::YLeaf L1SpeedGroup::Y_40000 {5, "40000"};
-const Enum::YLeaf L1SpeedGroup::auto_ {6, "auto"};
+const Enum::YLeaf StpLinkType::auto_ {1, "auto"};
+const Enum::YLeaf StpLinkType::p2p {2, "p2p"};
+const Enum::YLeaf StpLinkType::shared {3, "shared"};
 
-const Enum::YLeaf OspfNssaTransSt::enabled {1, "enabled"};
-const Enum::YLeaf OspfNssaTransSt::elected {2, "elected"};
-const Enum::YLeaf OspfNssaTransSt::disabled {3, "disabled"};
+const Enum::YLeaf StpMode::mst {1, "mst"};
+const Enum::YLeaf StpMode::pvrst {2, "pvrst"};
 
-const Enum::YLeaf L2DomOperSt::up {1, "up"};
-const Enum::YLeaf L2DomOperSt::down {2, "down"};
-const Enum::YLeaf L2DomOperSt::unknown {3, "unknown"};
+const Enum::YLeaf StpModeType::edge {1, "edge"};
+const Enum::YLeaf StpModeType::network {2, "network"};
+const Enum::YLeaf StpModeType::normal {3, "normal"};
 
-const Enum::YLeaf EqptBaudRate::Y_300 {1, "300"};
-const Enum::YLeaf EqptBaudRate::Y_1200 {2, "1200"};
-const Enum::YLeaf EqptBaudRate::Y_2400 {3, "2400"};
-const Enum::YLeaf EqptBaudRate::Y_4800 {4, "4800"};
-const Enum::YLeaf EqptBaudRate::Y_9600 {5, "9600"};
-const Enum::YLeaf EqptBaudRate::Y_38400 {6, "38400"};
-const Enum::YLeaf EqptBaudRate::Y_57600 {7, "57600"};
-const Enum::YLeaf EqptBaudRate::Y_115200 {8, "115200"};
+const Enum::YLeaf StpPathcostOp::auto_ {0, "auto"};
+const Enum::YLeaf StpPathcostOp::short_ {1, "short"};
+const Enum::YLeaf StpPathcostOp::long_ {2, "long"};
 
-const Enum::YLeaf AcBankT::even {1, "even"};
-const Enum::YLeaf AcBankT::Odd {2, "Odd"};
+const Enum::YLeaf StpPortRole::unknown {0, "unknown"};
+const Enum::YLeaf StpPortRole::root {1, "root"};
+const Enum::YLeaf StpPortRole::alternate {2, "alternate"};
+const Enum::YLeaf StpPortRole::designated {3, "designated"};
+const Enum::YLeaf StpPortRole::backup {4, "backup"};
+const Enum::YLeaf StpPortRole::master {5, "master"};
 
-const Enum::YLeaf FvPcEnfPref::enforced {1, "enforced"};
-const Enum::YLeaf FvPcEnfPref::unenforced {2, "unenforced"};
+const Enum::YLeaf StpPortState::unknown {0, "unknown"};
+const Enum::YLeaf StpPortState::discarding {1, "discarding"};
+const Enum::YLeaf StpPortState::learning {2, "learning"};
+const Enum::YLeaf StpPortState::forwarding {3, "forwarding"};
+const Enum::YLeaf StpPortState::disabled {4, "disabled"};
 
-const Enum::YLeaf HsrpHsrpVersion::v1 {1, "v1"};
-const Enum::YLeaf HsrpHsrpVersion::v2 {2, "v2"};
+const Enum::YLeaf StpPriority::Y_0 {0, "0"};
+const Enum::YLeaf StpPriority::Y_4096 {1, "4096"};
+const Enum::YLeaf StpPriority::Y_8192 {2, "8192"};
+const Enum::YLeaf StpPriority::Y_12288 {3, "12288"};
+const Enum::YLeaf StpPriority::Y_16384 {4, "16384"};
+const Enum::YLeaf StpPriority::Y_20480 {5, "20480"};
+const Enum::YLeaf StpPriority::Y_24576 {6, "24576"};
+const Enum::YLeaf StpPriority::Y_28672 {7, "28672"};
+const Enum::YLeaf StpPriority::Y_32768 {8, "32768"};
+const Enum::YLeaf StpPriority::Y_36864 {9, "36864"};
+const Enum::YLeaf StpPriority::Y_40960 {10, "40960"};
+const Enum::YLeaf StpPriority::Y_45056 {11, "45056"};
+const Enum::YLeaf StpPriority::Y_49152 {12, "49152"};
+const Enum::YLeaf StpPriority::Y_53248 {13, "53248"};
+const Enum::YLeaf StpPriority::Y_57344 {14, "57344"};
+const Enum::YLeaf StpPriority::Y_61440 {15, "61440"};
 
-const Enum::YLeaf NvoEvpnMcastStT::enabled {1, "enabled"};
+const Enum::YLeaf StpProtocol::unknown {0, "unknown"};
+const Enum::YLeaf StpProtocol::mstp {1, "mstp"};
+const Enum::YLeaf StpProtocol::rstp {2, "rstp"};
 
-const Enum::YLeaf EqptCardT::unknown {0, "unknown"};
-const Enum::YLeaf EqptCardT::supervisor {1, "supervisor"};
-const Enum::YLeaf EqptCardT::linecard {2, "linecard"};
-const Enum::YLeaf EqptCardT::fabriccard {3, "fabriccard"};
-const Enum::YLeaf EqptCardT::sysctrlcard {4, "sysctrlcard"};
-const Enum::YLeaf EqptCardT::extchcard {5, "extchcard"};
-const Enum::YLeaf EqptCardT::fan_tray {6, "fan-tray"};
-const Enum::YLeaf EqptCardT::power_supply {7, "power-supply"};
+const Enum::YLeaf StpRoot::primary {1, "primary"};
+const Enum::YLeaf StpRoot::secondary {2, "secondary"};
 
-const Enum::YLeaf L3VrfOperState::up {1, "up"};
-const Enum::YLeaf L3VrfOperState::down {2, "down"};
+const Enum::YLeaf StpRootMode::enabled {1, "enabled"};
+const Enum::YLeaf StpRootMode::disabled {0, "disabled"};
 
-const Enum::YLeaf NvoReplModeT::unknown {0, "unknown"};
-const Enum::YLeaf NvoReplModeT::replicationServer {1, "replicationServer"};
-const Enum::YLeaf NvoReplModeT::ingressReplication {2, "ingressReplication"};
+const Enum::YLeaf StpRootType::none {0, "none"};
+const Enum::YLeaf StpRootType::primary {1, "primary"};
+const Enum::YLeaf StpRootType::secondary {2, "secondary"};
 
-const Enum::YLeaf IpmcsnoopDbT::group {1, "group"};
-const Enum::YLeaf IpmcsnoopDbT::fabric_mcgrp {2, "fabric-mcgrp"};
-const Enum::YLeaf IpmcsnoopDbT::querier {3, "querier"};
-const Enum::YLeaf IpmcsnoopDbT::mrouter {4, "mrouter"};
-const Enum::YLeaf IpmcsnoopDbT::snoopstats {5, "snoopstats"};
-const Enum::YLeaf IpmcsnoopDbT::policy {6, "policy"};
-const Enum::YLeaf IpmcsnoopDbT::snoop {7, "snoop"};
-const Enum::YLeaf IpmcsnoopDbT::exptrack {8, "exptrack"};
-const Enum::YLeaf IpmcsnoopDbT::stats {9, "stats"};
-const Enum::YLeaf IpmcsnoopDbT::mac {10, "mac"};
-const Enum::YLeaf IpmcsnoopDbT::macoif {11, "macoif"};
+const Enum::YLeaf StpSimulate::enabled {1, "enabled"};
+const Enum::YLeaf StpSimulate::disabled {2, "disabled"};
 
-const Enum::YLeaf CoppConformAction::Undefined {0, "Undefined"};
-const Enum::YLeaf CoppConformAction::transmit {1, "transmit"};
-const Enum::YLeaf CoppConformAction::drop {2, "drop"};
+const Enum::YLeaf StpVpcState::none {0, "none"};
+const Enum::YLeaf StpVpcState::vPCPeerlink {1, "vPCPeerlink"};
+const Enum::YLeaf StpVpcState::vPC {2, "vPC"};
 
-const Enum::YLeaf PimEhType::assert {0, "assert"};
-const Enum::YLeaf PimEhType::bidir {1, "bidir"};
-const Enum::YLeaf PimEhType::cli {2, "cli"};
-const Enum::YLeaf PimEhType::dataRegRecv {3, "dataRegRecv"};
-const Enum::YLeaf PimEhType::hello {4, "hello"};
-const Enum::YLeaf PimEhType::joinPrune {5, "joinPrune"};
-const Enum::YLeaf PimEhType::mrib {6, "mrib"};
-const Enum::YLeaf PimEhType::nullReg {7, "nullReg"};
-const Enum::YLeaf PimEhType::packet {8, "packet"};
-const Enum::YLeaf PimEhType::nbm {9, "nbm"};
-const Enum::YLeaf PimEhType::pimInternal {10, "pimInternal"};
-const Enum::YLeaf PimEhType::pimLib {11, "pimLib"};
-const Enum::YLeaf PimEhType::rp {12, "rp"};
-const Enum::YLeaf PimEhType::txlist {13, "txlist"};
-const Enum::YLeaf PimEhType::vpc {14, "vpc"};
-const Enum::YLeaf PimEhType::vrf {15, "vrf"};
-const Enum::YLeaf PimEhType::jpSum {16, "jpSum"};
-const Enum::YLeaf PimEhType::jpTw {17, "jpTw"};
+const Enum::YLeaf SviMedium::bcast {0, "bcast"};
+const Enum::YLeaf SviMedium::p2p {1, "p2p"};
 
-const Enum::YLeaf NwAdminStIfStatProxyArp::enabled {1, "enabled"};
-const Enum::YLeaf NwAdminStIfStatProxyArp::disabled {2, "disabled"};
+const Enum::YLeaf SviOperSt::unknown {0, "unknown"};
+const Enum::YLeaf SviOperSt::up {1, "up"};
+const Enum::YLeaf SviOperSt::down {2, "down"};
+const Enum::YLeaf SviOperSt::shutdown {3, "shutdown"};
+const Enum::YLeaf SviOperSt::out_of_srvc {4, "out-of-srvc"};
 
-const Enum::YLeaf FmcastOperSt::active {1, "active"};
-const Enum::YLeaf FmcastOperSt::inactive {2, "inactive"};
+const Enum::YLeaf SviOperStQual::unknown {0, "unknown"};
+const Enum::YLeaf SviOperStQual::admin_shut {1, "admin-shut"};
+const Enum::YLeaf SviOperStQual::no_vlan {2, "no-vlan"};
+const Enum::YLeaf SviOperStQual::bad_vlan_t {3, "bad-vlan_t"};
+const Enum::YLeaf SviOperStQual::vlan_down {4, "vlan-down"};
+const Enum::YLeaf SviOperStQual::hwprog_flfm {5, "hwprog-flfm"};
+const Enum::YLeaf SviOperStQual::hwprog_fles {6, "hwprog-fles"};
+const Enum::YLeaf SviOperStQual::oos {7, "oos"};
+const Enum::YLeaf SviOperStQual::reinit {8, "reinit"};
+const Enum::YLeaf SviOperStQual::mtuprog_fail {9, "mtuprog-fail"};
+const Enum::YLeaf SviOperStQual::vrf_unusable {10, "vrf-unusable"};
+const Enum::YLeaf SviOperStQual::l2st_change {11, "l2st-change"};
+const Enum::YLeaf SviOperStQual::suspended {12, "suspended"};
+const Enum::YLeaf SviOperStQual::macalloc_fail {13, "macalloc-fail"};
+const Enum::YLeaf SviOperStQual::nonrouted_vdc {14, "nonrouted-vdc"};
+const Enum::YLeaf SviOperStQual::int_vlan_create_fail {15, "int-vlan-create-fail"};
+const Enum::YLeaf SviOperStQual::inbMgmt_cfg_fail {16, "inbMgmt-cfg-fail"};
 
-const Enum::YLeaf FirmwareRunningOperSt::ok {0, "ok"};
-const Enum::YLeaf FirmwareRunningOperSt::ver_mismatch {1, "ver-mismatch"};
+const Enum::YLeaf SwpkgsOperState::none {0, "none"};
+const Enum::YLeaf SwpkgsOperState::inactive {1, "inactive"};
+const Enum::YLeaf SwpkgsOperState::activated {2, "activated"};
+const Enum::YLeaf SwpkgsOperState::deactivated {3, "deactivated"};
+const Enum::YLeaf SwpkgsOperState::committed {4, "committed"};
+
+const Enum::YLeaf SwpkgsPackageAction::init {0, "init"};
+const Enum::YLeaf SwpkgsPackageAction::add {1, "add"};
+const Enum::YLeaf SwpkgsPackageAction::activate {2, "activate"};
+const Enum::YLeaf SwpkgsPackageAction::add_activate {3, "add-activate"};
+const Enum::YLeaf SwpkgsPackageAction::deactivate {4, "deactivate"};
+const Enum::YLeaf SwpkgsPackageAction::commit {5, "commit"};
+const Enum::YLeaf SwpkgsPackageAction::remove {6, "remove"};
+
+const Enum::YLeaf SwpkgsPackageActionResult::success {0, "success"};
+const Enum::YLeaf SwpkgsPackageActionResult::failed {1, "failed"};
+const Enum::YLeaf SwpkgsPackageActionResult::not_available {2, "not-available"};
+
+const Enum::YLeaf SyslogFacility::kern {0, "kern"};
+const Enum::YLeaf SyslogFacility::user {1, "user"};
+const Enum::YLeaf SyslogFacility::mail {2, "mail"};
+const Enum::YLeaf SyslogFacility::daemon {3, "daemon"};
+const Enum::YLeaf SyslogFacility::auth {4, "auth"};
+const Enum::YLeaf SyslogFacility::syslog {5, "syslog"};
+const Enum::YLeaf SyslogFacility::lpr {6, "lpr"};
+const Enum::YLeaf SyslogFacility::news {7, "news"};
+const Enum::YLeaf SyslogFacility::uucp {8, "uucp"};
+const Enum::YLeaf SyslogFacility::cron {9, "cron"};
+const Enum::YLeaf SyslogFacility::authpriv {10, "authpriv"};
+const Enum::YLeaf SyslogFacility::ftp {11, "ftp"};
+const Enum::YLeaf SyslogFacility::local0 {16, "local0"};
+const Enum::YLeaf SyslogFacility::local1 {17, "local1"};
+const Enum::YLeaf SyslogFacility::local2 {18, "local2"};
+const Enum::YLeaf SyslogFacility::local3 {19, "local3"};
+const Enum::YLeaf SyslogFacility::local4 {20, "local4"};
+const Enum::YLeaf SyslogFacility::local5 {21, "local5"};
+const Enum::YLeaf SyslogFacility::local6 {22, "local6"};
+const Enum::YLeaf SyslogFacility::local7 {23, "local7"};
 
 const Enum::YLeaf SyslogOperState::unknown {0, "unknown"};
 const Enum::YLeaf SyslogOperState::available {1, "available"};
 const Enum::YLeaf SyslogOperState::errored {2, "errored"};
 
-const Enum::YLeaf L1SnmpTrapSt::enable {1, "enable"};
-const Enum::YLeaf L1SnmpTrapSt::disable {2, "disable"};
+const Enum::YLeaf SyslogOriginIdType::unknown {0, "unknown"};
+const Enum::YLeaf SyslogOriginIdType::hostname {1, "hostname"};
+const Enum::YLeaf SyslogOriginIdType::ip {2, "ip"};
+const Enum::YLeaf SyslogOriginIdType::string {3, "string"};
 
-const Enum::YLeaf NdAdjOperSt::unspecified {0, "unspecified"};
-const Enum::YLeaf NdAdjOperSt::incomplete {1, "incomplete"};
-const Enum::YLeaf NdAdjOperSt::normal {2, "normal"};
+const Enum::YLeaf SyslogSeverity::emergencies {0, "emergencies"};
+const Enum::YLeaf SyslogSeverity::alerts {1, "alerts"};
+const Enum::YLeaf SyslogSeverity::critical {2, "critical"};
+const Enum::YLeaf SyslogSeverity::errors {3, "errors"};
+const Enum::YLeaf SyslogSeverity::warnings {4, "warnings"};
+const Enum::YLeaf SyslogSeverity::notifications {5, "notifications"};
+const Enum::YLeaf SyslogSeverity::information {6, "information"};
+const Enum::YLeaf SyslogSeverity::debugging {7, "debugging"};
 
-const Enum::YLeaf NbmNbmNoYes::NO {0, "NO"};
-const Enum::YLeaf NbmNbmNoYes::YES {1, "YES"};
-const Enum::YLeaf NbmNbmNoYes::NA {2, "NA"};
+const Enum::YLeaf SyslogTimeStampFormat::microseconds {0, "microseconds"};
+const Enum::YLeaf SyslogTimeStampFormat::milliseconds {1, "milliseconds"};
+const Enum::YLeaf SyslogTimeStampFormat::seconds {2, "seconds"};
 
-const Enum::YLeaf BfdAuthT::none {0, "none"};
-const Enum::YLeaf BfdAuthT::sha1 {4, "sha1"};
-const Enum::YLeaf BfdAuthT::met_sha1 {5, "met-sha1"};
+const Enum::YLeaf SysmgrCfgMode::init {1, "init"};
+const Enum::YLeaf SysmgrCfgMode::replay {2, "replay"};
+const Enum::YLeaf SysmgrCfgMode::done {4, "done"};
+
+const Enum::YLeaf SysmgrFwMode::recovery {1, "recovery"};
+const Enum::YLeaf SysmgrFwMode::regular {2, "regular"};
+
+const Enum::YLeaf SysmgrFwT::bios {1, "bios"};
+const Enum::YLeaf SysmgrFwT::kickstart {2, "kickstart"};
+const Enum::YLeaf SysmgrFwT::system {3, "system"};
+
+const Enum::YLeaf SysmgrOperDataMode::init {1, "init"};
+const Enum::YLeaf SysmgrOperDataMode::publish {2, "publish"};
+const Enum::YLeaf SysmgrOperDataMode::done {4, "done"};
+
+const Enum::YLeaf SysmgrSupSt::unknown {0, "unknown"};
+const Enum::YLeaf SysmgrSupSt::active {1, "active"};
+const Enum::YLeaf SysmgrSupSt::hot_stdby {2, "hot-stdby"};
+const Enum::YLeaf SysmgrSupSt::cold_stdby {3, "cold-stdby"};
+const Enum::YLeaf SysmgrSupSt::offline {4, "offline"};
+const Enum::YLeaf SysmgrSupSt::normal {5, "normal"};
+const Enum::YLeaf SysmgrSupSt::non_dis_upg {6, "non-dis-upg"};
+
+const Enum::YLeaf SysmgrSupT::local {0, "local"};
+const Enum::YLeaf SysmgrSupT::remote {1, "remote"};
+
+const Enum::YLeaf TelemetryAdminState::enabled {1, "enabled"};
+
+const Enum::YLeaf TelemetryCompression::disabled {0, "disabled"};
+const Enum::YLeaf TelemetryCompression::gzip {1, "gzip"};
+
+const Enum::YLeaf TelemetryDataSource::DME {1, "DME"};
+const Enum::YLeaf TelemetryDataSource::NX_API {3, "NX-API"};
+const Enum::YLeaf TelemetryDataSource::YANG {4, "YANG"};
+const Enum::YLeaf TelemetryDataSource::DEFAULT {16, "DEFAULT"};
+
+const Enum::YLeaf TelemetryEncoding::GPB {1, "GPB"};
+const Enum::YLeaf TelemetryEncoding::JSON {2, "JSON"};
+const Enum::YLeaf TelemetryEncoding::XML {3, "XML"};
+
+const Enum::YLeaf TelemetryProtocol::UDP {1, "UDP"};
+const Enum::YLeaf TelemetryProtocol::TCP {2, "TCP"};
+const Enum::YLeaf TelemetryProtocol::gRPC {3, "gRPC"};
+const Enum::YLeaf TelemetryProtocol::HTTP {4, "HTTP"};
+
+const Enum::YLeaf TerminalTermParity::none {0, "none"};
+const Enum::YLeaf TerminalTermParity::odd {1, "odd"};
+const Enum::YLeaf TerminalTermParity::even {2, "even"};
+
+const Enum::YLeaf TestOperSt::fail {0, "fail"};
+const Enum::YLeaf TestOperSt::indeterminate {1, "indeterminate"};
+const Enum::YLeaf TestOperSt::interrupted {2, "interrupted"};
+const Enum::YLeaf TestOperSt::pending {3, "pending"};
+const Enum::YLeaf TestOperSt::not_supp {4, "not-supp"};
+const Enum::YLeaf TestOperSt::not_acc {5, "not-acc"};
+const Enum::YLeaf TestOperSt::pass {6, "pass"};
+const Enum::YLeaf TestOperSt::not_tested {7, "not-tested"};
+
+const Enum::YLeaf TestTrig::unspecified {0, "unspecified"};
+const Enum::YLeaf TestTrig::on_demand {1, "on-demand"};
+const Enum::YLeaf TestTrig::boot {2, "boot"};
+const Enum::YLeaf TestTrig::forever {4, "forever"};
+
+const Enum::YLeaf TopNodeRole::unsupported {0, "unsupported"};
+const Enum::YLeaf TopNodeRole::controller {1, "controller"};
+const Enum::YLeaf TopNodeRole::leaf {2, "leaf"};
+const Enum::YLeaf TopNodeRole::spine {3, "spine"};
+const Enum::YLeaf TopNodeRole::vleaf {4, "vleaf"};
+const Enum::YLeaf TopNodeRole::vip {5, "vip"};
+const Enum::YLeaf TopNodeRole::protection_chain {6, "protection-chain"};
+
+const Enum::YLeaf TraceroutePathT::external {1, "external"};
+const Enum::YLeaf TraceroutePathT::internal {2, "internal"};
+
+const Enum::YLeaf TrackAf::none {0, "none"};
+const Enum::YLeaf TrackAf::ipv4 {1, "ipv4"};
+const Enum::YLeaf TrackAf::ipv6 {2, "ipv6"};
+
+const Enum::YLeaf TrackIntfProtocolType::none {0, "none"};
+const Enum::YLeaf TrackIntfProtocolType::ipv4_routing {1, "ipv4-routing"};
+const Enum::YLeaf TrackIntfProtocolType::ipv6_routing {2, "ipv6-routing"};
+const Enum::YLeaf TrackIntfProtocolType::line_protocol {3, "line-protocol"};
+
+const Enum::YLeaf TrackListObj::none {0, "none"};
+const Enum::YLeaf TrackListObj::and_ {1, "and"};
+const Enum::YLeaf TrackListObj::or_ {2, "or"};
+const Enum::YLeaf TrackListObj::percentage {3, "percentage"};
+const Enum::YLeaf TrackListObj::weight {4, "weight"};
+
+const Enum::YLeaf TrackProbeState::reachability {0, "reachability"};
+const Enum::YLeaf TrackProbeState::state {1, "state"};
+
+const Enum::YLeaf TrackRouteOwner::none {0, "none"};
+const Enum::YLeaf TrackRouteOwner::hmm {1, "hmm"};
+
+const Enum::YLeaf TrackRouteState::reachability {0, "reachability"};
+
+const Enum::YLeaf TunnelAdminSt::up {1, "up"};
+const Enum::YLeaf TunnelAdminSt::down {2, "down"};
+
+const Enum::YLeaf TunnelEncapT::unknown {0, "unknown"};
+const Enum::YLeaf TunnelEncapT::vxlan {1, "vxlan"};
+const Enum::YLeaf TunnelEncapT::ivxlan {2, "ivxlan"};
+const Enum::YLeaf TunnelEncapT::nvgre {3, "nvgre"};
+
+const Enum::YLeaf TunnelLayerT::l2 {1, "l2"};
+const Enum::YLeaf TunnelLayerT::l3 {2, "l3"};
+
+const Enum::YLeaf TunnelOperSt::up {1, "up"};
+const Enum::YLeaf TunnelOperSt::down {2, "down"};
+
+const Enum::YLeaf TunnelTunnelQual::unknown {0, "unknown"};
+const Enum::YLeaf TunnelTunnelQual::ivxlan {1, "ivxlan"};
+const Enum::YLeaf TunnelTunnelQual::vxlan {2, "vxlan"};
+
+const Enum::YLeaf TunnelifSnmpTrapSt::enabled {1, "enabled"};
+const Enum::YLeaf TunnelifSnmpTrapSt::disabled {2, "disabled"};
+
+const Enum::YLeaf TunnelifTunnelMode::gre__FWD_SLASH__ip {1, "gre/ip"};
+const Enum::YLeaf TunnelifTunnelMode::gre__FWD_SLASH__ipv6 {6, "gre/ipv6"};
+const Enum::YLeaf TunnelifTunnelMode::ipip__FWD_SLASH__ip {7, "ipip/ip"};
+const Enum::YLeaf TunnelifTunnelMode::ipip__FWD_SLASH__ipv6 {8, "ipip/ipv6"};
+const Enum::YLeaf TunnelifTunnelMode::ipip__FWD_SLASH__dcapany__FWD_SLASH__ip {9, "ipip/dcapany/ip"};
+const Enum::YLeaf TunnelifTunnelMode::ipip__FWD_SLASH__dcapany__FWD_SLASH__ipv6 {10, "ipip/dcapany/ipv6"};
+const Enum::YLeaf TunnelifTunnelMode::ipv6ip {11, "ipv6ip"};
+const Enum::YLeaf TunnelifTunnelMode::ipv6ip__FWD_SLASH__dcapany {12, "ipv6ip/dcapany"};
+const Enum::YLeaf TunnelifTunnelMode::ipv6ipv6 {13, "ipv6ipv6"};
+const Enum::YLeaf TunnelifTunnelMode::ipv6ipv6__FWD_SLASH__dcapany {14, "ipv6ipv6/dcapany"};
+
+const Enum::YLeaf TunnelifTunnelOperSt::up {1, "up"};
+const Enum::YLeaf TunnelifTunnelOperSt::down {2, "down"};
+
+const Enum::YLeaf TunnelifTunnelOperStQual::unknown {0, "unknown"};
+const Enum::YLeaf TunnelifTunnelOperStQual::none {1, "none"};
+const Enum::YLeaf TunnelifTunnelOperStQual::initing {2, "initing"};
+const Enum::YLeaf TunnelifTunnelOperStQual::incomp_conf {3, "incomp-conf"};
+const Enum::YLeaf TunnelifTunnelOperStQual::dup_conf {4, "dup-conf"};
+const Enum::YLeaf TunnelifTunnelOperStQual::no_mode {5, "no-mode"};
+const Enum::YLeaf TunnelifTunnelOperStQual::admin_down {6, "admin-down"};
+const Enum::YLeaf TunnelifTunnelOperStQual::src_down {7, "src-down"};
+const Enum::YLeaf TunnelifTunnelOperStQual::src_unres {8, "src-unres"};
+const Enum::YLeaf TunnelifTunnelOperStQual::no_dest {9, "no-dest"};
+const Enum::YLeaf TunnelifTunnelOperStQual::desip_unres {10, "desip-unres"};
+const Enum::YLeaf TunnelifTunnelOperStQual::dest_unreach {11, "dest-unreach"};
+const Enum::YLeaf TunnelifTunnelOperStQual::vrf_mismatch {12, "vrf-mismatch"};
+const Enum::YLeaf TunnelifTunnelOperStQual::vrf_fwdref {13, "vrf-fwdref"};
+const Enum::YLeaf TunnelifTunnelOperStQual::vrf_down {14, "vrf-down"};
+const Enum::YLeaf TunnelifTunnelOperStQual::mtu_error {15, "mtu-error"};
+const Enum::YLeaf TunnelifTunnelOperStQual::hwprog_fail {16, "hwprog-fail"};
+const Enum::YLeaf TunnelifTunnelOperStQual::no_src {17, "no-src"};
+
+const Enum::YLeaf TunnelifTunnelOption::unknown {0, "unknown"};
+const Enum::YLeaf TunnelifTunnelOption::del_on_fail {1, "del_on_fail"};
+const Enum::YLeaf TunnelifTunnelOption::usr_cfg_mtu {2, "usr_cfg_mtu"};
+
+const Enum::YLeaf TunnelifTunnelPMTUD::enabled {1, "enabled"};
+const Enum::YLeaf TunnelifTunnelPMTUD::disabled {2, "disabled"};
+
+const Enum::YLeaf TunnelifTunnelSrcDirect::enabled {1, "enabled"};
+const Enum::YLeaf TunnelifTunnelSrcDirect::disabled {2, "disabled"};
+
+const Enum::YLeaf UdldAdminSt::enabled {1, "enabled"};
+const Enum::YLeaf UdldAdminSt::disabled {2, "disabled"};
+
+const Enum::YLeaf UdldOperSt::enabled {1, "enabled"};
+const Enum::YLeaf UdldOperSt::disabled {2, "disabled"};
+
+const Enum::YLeaf UdldPktDirection::send {0, "send"};
+const Enum::YLeaf UdldPktDirection::recv {1, "recv"};
+
+const Enum::YLeaf UdldPortEnable::port_enabled {0, "port-enabled"};
+const Enum::YLeaf UdldPortEnable::port_fiber_disabled {1, "port-fiber-disabled"};
+const Enum::YLeaf UdldPortEnable::port_default {2, "port-default"};
+const Enum::YLeaf UdldPortEnable::port_default_disable {3, "port-default-disable"};
+
+const Enum::YLeaf VpcCompatSt::pass {0, "pass"};
+const Enum::YLeaf VpcCompatSt::fail {1, "fail"};
+const Enum::YLeaf VpcCompatSt::notDone {2, "notDone"};
+
+const Enum::YLeaf VpcDualActiveSt::false_ {0, "false"};
+const Enum::YLeaf VpcDualActiveSt::true_ {1, "true"};
+
+const Enum::YLeaf VpcOperSt::unknown {0, "unknown"};
+const Enum::YLeaf VpcOperSt::down {1, "down"};
+const Enum::YLeaf VpcOperSt::up {2, "up"};
+const Enum::YLeaf VpcOperSt::noCfg {3, "noCfg"};
+
+const Enum::YLeaf VpcParamType::unknown {0, "unknown"};
+const Enum::YLeaf VpcParamType::type_1 {1, "type-1"};
+const Enum::YLeaf VpcParamType::type_2 {2, "type-2"};
+
+const Enum::YLeaf VpcPeerSt::noCfg {0, "noCfg"};
+const Enum::YLeaf VpcPeerSt::down {1, "down"};
+const Enum::YLeaf VpcPeerSt::up {2, "up"};
+
+const Enum::YLeaf VpcPeerStQual::success {0, "success"};
+const Enum::YLeaf VpcPeerStQual::uplinks_down {1, "uplinks-down"};
+const Enum::YLeaf VpcPeerStQual::route_down {2, "route-down"};
+const Enum::YLeaf VpcPeerStQual::peer_unrch {3, "peer-unrch"};
+const Enum::YLeaf VpcPeerStQual::compat_fail {4, "compat-fail"};
+const Enum::YLeaf VpcPeerStQual::election_err {5, "election-err"};
+const Enum::YLeaf VpcPeerStQual::oob_not_up {6, "oob-not-up"};
+
+const Enum::YLeaf VpcPrecType::network {0, "network"};
+const Enum::YLeaf VpcPrecType::internet {1, "internet"};
+const Enum::YLeaf VpcPrecType::critical {2, "critical"};
+const Enum::YLeaf VpcPrecType::flash_override {3, "flash-override"};
+const Enum::YLeaf VpcPrecType::flash {4, "flash"};
+const Enum::YLeaf VpcPrecType::immediate {5, "immediate"};
+const Enum::YLeaf VpcPrecType::priority {6, "priority"};
+const Enum::YLeaf VpcPrecType::routine {7, "routine"};
+
+const Enum::YLeaf VpcRole::election_not_done {0, "election-not-done"};
+const Enum::YLeaf VpcRole::master {1, "master"};
+const Enum::YLeaf VpcRole::slave {2, "slave"};
+
+const Enum::YLeaf VpcSummRole::election_not_done {0, "election-not-done"};
+const Enum::YLeaf VpcSummRole::cfg_master_oper_master {1, "cfg-master-oper-master"};
+const Enum::YLeaf VpcSummRole::cfg_master_oper_slave {2, "cfg-master-oper-slave"};
+const Enum::YLeaf VpcSummRole::cfg_slave_oper_master {3, "cfg-slave-oper-master"};
+const Enum::YLeaf VpcSummRole::cfg_slave_oper_slave {4, "cfg-slave-oper-slave"};
+
+const Enum::YLeaf VpcTosCfgType::noCfg {0, "noCfg"};
+const Enum::YLeaf VpcTosCfgType::tos_byte {1, "tos-byte"};
+const Enum::YLeaf VpcTosCfgType::tos_value {2, "tos-value"};
+const Enum::YLeaf VpcTosCfgType::tos_type {3, "tos-type"};
+const Enum::YLeaf VpcTosCfgType::precedence_type {4, "precedence-type"};
+const Enum::YLeaf VpcTosCfgType::precedence_value {5, "precedence-value"};
+
+const Enum::YLeaf VpcTosType::min_delay {0, "min-delay"};
+const Enum::YLeaf VpcTosType::max_throughput {1, "max-throughput"};
+const Enum::YLeaf VpcTosType::max_reliability {2, "max-reliability"};
+const Enum::YLeaf VpcTosType::min_monetary_cost {3, "min-monetary-cost"};
+const Enum::YLeaf VpcTosType::normal {4, "normal"};
+
+const Enum::YLeaf VrrpAdminSt::disabled {1, "disabled"};
+const Enum::YLeaf VrrpAdminSt::enabled {2, "enabled"};
+
+const Enum::YLeaf VrrpAuthType::none {1, "none"};
+const Enum::YLeaf VrrpAuthType::simple {2, "simple"};
+
+const Enum::YLeaf VrrpGroupSt::init {0, "init"};
+const Enum::YLeaf VrrpGroupSt::backup {1, "backup"};
+const Enum::YLeaf VrrpGroupSt::master {2, "master"};
+
+const Enum::YLeaf VrrpGroupStQual::up {0, "up"};
+const Enum::YLeaf VrrpGroupStQual::down {1, "down"};
+const Enum::YLeaf VrrpGroupStQual::no_primary_vip {2, "no-primary-vip"};
+const Enum::YLeaf VrrpGroupStQual::admin_down {3, "admin-down"};
+const Enum::YLeaf VrrpGroupStQual::interface_down {4, "interface-down"};
+const Enum::YLeaf VrrpGroupStQual::no_intf_ip_cfgd {5, "no-intf-ip-cfgd"};
+const Enum::YLeaf VrrpGroupStQual::no_vrf_info_for_intf {6, "no-vrf-info-for-intf"};
+const Enum::YLeaf VrrpGroupStQual::bd_not_allocated {7, "bd-not-allocated"};
+const Enum::YLeaf VrrpGroupStQual::vmac_not_added {8, "vmac-not-added"};
+const Enum::YLeaf VrrpGroupStQual::invalid_vip {9, "invalid-vip"};
+const Enum::YLeaf VrrpGroupStQual::IfIp_vip_subnet_mismatch {10, "IfIp-vip-subnet-mismatch"};
+const Enum::YLeaf VrrpGroupStQual::internal_error {11, "internal_error"};
+
+const Enum::YLeaf VrrpPreempt::enabled {1, "enabled"};
+const Enum::YLeaf VrrpPreempt::disabled {2, "disabled"};
+
+const Enum::YLeaf VrrpBfdSessionSt::disabled {0, "disabled"};
+const Enum::YLeaf VrrpBfdSessionSt::inactive {1, "inactive"};
+const Enum::YLeaf VrrpBfdSessionSt::deleted {2, "deleted"};
+const Enum::YLeaf VrrpBfdSessionSt::unknown {3, "unknown"};
+const Enum::YLeaf VrrpBfdSessionSt::active {4, "active"};
+
+const Enum::YLeaf Vrrpv3VrAf::ipv4 {1, "ipv4"};
+const Enum::YLeaf Vrrpv3VrAf::ipv6 {2, "ipv6"};
+
+const Enum::YLeaf VsanAdminSt::active {1, "active"};
+const Enum::YLeaf VsanAdminSt::suspended {2, "suspended"};
+
+const Enum::YLeaf VsanLbType::src_dst_id {1, "src-dst-id"};
+const Enum::YLeaf VsanLbType::src_dst_ox_id {2, "src-dst-ox-id"};
+
+const Enum::YLeaf VsanOperSt::up {1, "up"};
+const Enum::YLeaf VsanOperSt::down {2, "down"};
+
+const Enum::YLeaf SyslogSeverityLevelSeverity::emergencies {0, "emergencies"};
+const Enum::YLeaf SyslogSeverityLevelSeverity::alerts {1, "alerts"};
+const Enum::YLeaf SyslogSeverityLevelSeverity::critical {2, "critical"};
+const Enum::YLeaf SyslogSeverityLevelSeverity::errors {3, "errors"};
+const Enum::YLeaf SyslogSeverityLevelSeverity::warnings {4, "warnings"};
+const Enum::YLeaf SyslogSeverityLevelSeverity::notifications {5, "notifications"};
+const Enum::YLeaf SyslogSeverityLevelSeverity::information {6, "information"};
+const Enum::YLeaf SyslogSeverityLevelSeverity::debugging {7, "debugging"};
+const Enum::YLeaf SyslogSeverityLevelSeverity::unspecified {8, "unspecified"};
+
+const Enum::YLeaf AaaKeyEncRadiusProviderKeyEnc::Y_0 {0, "0"};
+const Enum::YLeaf AaaKeyEncRadiusProviderKeyEnc::Y_6 {6, "6"};
+const Enum::YLeaf AaaKeyEncRadiusProviderKeyEnc::Y_7 {7, "7"};
+const Enum::YLeaf AaaKeyEncRadiusProviderKeyEnc::inherit_from_global {255, "inherit-from-global"};
+
+const Enum::YLeaf AaaKeyEncLdapProviderKeyEnc::Y_0 {0, "0"};
+const Enum::YLeaf AaaKeyEncLdapProviderKeyEnc::Y_6 {6, "6"};
+const Enum::YLeaf AaaKeyEncLdapProviderKeyEnc::Y_7 {7, "7"};
+const Enum::YLeaf AaaKeyEncLdapProviderKeyEnc::inherit_from_global {255, "inherit-from-global"};
+
+const Enum::YLeaf AaaKeyEncTacacsPlusProviderKeyEnc::Y_0 {0, "0"};
+const Enum::YLeaf AaaKeyEncTacacsPlusProviderKeyEnc::Y_6 {6, "6"};
+const Enum::YLeaf AaaKeyEncTacacsPlusProviderKeyEnc::Y_7 {7, "7"};
+const Enum::YLeaf AaaKeyEncTacacsPlusProviderKeyEnc::inherit_from_global {255, "inherit-from-global"};
+
+const Enum::YLeaf AaaRealmDomainAuthRealm::local {0, "local"};
+const Enum::YLeaf AaaRealmDomainAuthRealm::radius {1, "radius"};
+const Enum::YLeaf AaaRealmDomainAuthRealm::tacacs {2, "tacacs"};
+const Enum::YLeaf AaaRealmDomainAuthRealm::ldap {3, "ldap"};
+const Enum::YLeaf AaaRealmDomainAuthRealm::none {4, "none"};
+
+const Enum::YLeaf L1FECModePhysIfOperFECMode::auto_ {4, "auto"};
+const Enum::YLeaf L1FECModePhysIfOperFECMode::rs_fec {2, "rs-fec"};
+const Enum::YLeaf L1FECModePhysIfOperFECMode::fc_fec {1, "fc-fec"};
+const Enum::YLeaf L1FECModePhysIfOperFECMode::fec_off {3, "fec-off"};
+const Enum::YLeaf L1FECModePhysIfOperFECMode::rs_ieee {5, "rs-ieee"};
+const Enum::YLeaf L1FECModePhysIfOperFECMode::rs_cons16 {6, "rs-cons16"};
+const Enum::YLeaf L1FECModePhysIfOperFECMode::not_available {20, "not-available"};
+
+const Enum::YLeaf L1LayerAggrIfLayer::Layer2 {1, "Layer2"};
+const Enum::YLeaf L1LayerAggrIfLayer::Layer3 {2, "Layer3"};
+const Enum::YLeaf L1LayerAggrIfLayer::pltfmDfltLayer {3, "pltfmDfltLayer"};
+
+const Enum::YLeaf NwAdminStIfStatProxyArp::enabled {1, "enabled"};
+const Enum::YLeaf NwAdminStIfStatProxyArp::disabled {2, "disabled"};
+
+const Enum::YLeaf NwAdminStIfStatLocalProxyArp::enabled {1, "enabled"};
+const Enum::YLeaf NwAdminStIfStatLocalProxyArp::disabled {2, "disabled"};
+
+const Enum::YLeaf NwAdminStIfStatMRouting::enabled {1, "enabled"};
+const Enum::YLeaf NwAdminStIfStatMRouting::disabled {2, "disabled"};
+
+const Enum::YLeaf NwAdminStIfStatIcmpRedirect::enabled {1, "enabled"};
+const Enum::YLeaf NwAdminStIfStatIcmpRedirect::disabled {2, "disabled"};
+
+const Enum::YLeaf NwAdminStIfStatDirectBcast::enabled {1, "enabled"};
+const Enum::YLeaf NwAdminStIfStatDirectBcast::disabled {2, "disabled"};
+
+const Enum::YLeaf NwAdminStIfStatIpUnreach::enabled {1, "enabled"};
+const Enum::YLeaf NwAdminStIfStatIpUnreach::disabled {2, "disabled"};
+
+const Enum::YLeaf NwAdminStIfStatPortUnreach::enabled {1, "enabled"};
+const Enum::YLeaf NwAdminStIfStatPortUnreach::disabled {2, "disabled"};
+
+const Enum::YLeaf NwAdminStProcessStatAutoDisc::enabled {1, "enabled"};
+const Enum::YLeaf NwAdminStProcessStatAutoDisc::disabled {2, "disabled"};
+
+const Enum::YLeaf NwAdminStProcessStatAutoDiscAdd::enabled {1, "enabled"};
+const Enum::YLeaf NwAdminStProcessStatAutoDiscAdd::disabled {2, "disabled"};
+
+const Enum::YLeaf NwAdminStProcessStatNullBcast::enabled {1, "enabled"};
+const Enum::YLeaf NwAdminStProcessStatNullBcast::disabled {2, "disabled"};
+
+const Enum::YLeaf NwAdminStProcessStatAutoPuntBcast::enabled {1, "enabled"};
+const Enum::YLeaf NwAdminStProcessStatAutoPuntBcast::disabled {2, "disabled"};
+
+const Enum::YLeaf NwAdminStProcessStatStaticDisc::enabled {1, "enabled"};
+const Enum::YLeaf NwAdminStProcessStatStaticDisc::disabled {2, "disabled"};
+
+const Enum::YLeaf EqptArchCPUArch::x86_32 {1, "x86_32"};
+const Enum::YLeaf EqptArchCPUArch::x86_64 {2, "x86_64"};
+const Enum::YLeaf EqptArchCPUArch::any {0, "any"};
+
+const Enum::YLeaf ClimodeT::EXEC {0, "EXEC"};
+const Enum::YLeaf ClimodeT::CONFIG {1, "CONFIG"};
 
 
 }

@@ -13,7 +13,8 @@ namespace Cisco_IOS_XR_ipv6_nd_cfg {
 
 Ipv6Neighbor::Ipv6Neighbor()
     :
-    scavenge_timeout{YType::uint32, "scavenge-timeout"}
+    scavenge_timeout{YType::uint32, "scavenge-timeout"},
+    cos{YType::uint32, "cos"}
         ,
     neighbors(std::make_shared<Ipv6Neighbor::Neighbors>())
 {
@@ -30,6 +31,7 @@ bool Ipv6Neighbor::has_data() const
 {
     if (is_presence_container) return true;
     return scavenge_timeout.is_set
+	|| cos.is_set
 	|| (neighbors !=  nullptr && neighbors->has_data());
 }
 
@@ -37,6 +39,7 @@ bool Ipv6Neighbor::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(scavenge_timeout.yfilter)
+	|| ydk::is_set(cos.yfilter)
 	|| (neighbors !=  nullptr && neighbors->has_operation());
 }
 
@@ -52,6 +55,7 @@ std::vector<std::pair<std::string, LeafData> > Ipv6Neighbor::get_name_leaf_data(
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (scavenge_timeout.is_set || is_set(scavenge_timeout.yfilter)) leaf_name_data.push_back(scavenge_timeout.get_name_leafdata());
+    if (cos.is_set || is_set(cos.yfilter)) leaf_name_data.push_back(cos.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -91,6 +95,12 @@ void Ipv6Neighbor::set_value(const std::string & value_path, const std::string &
         scavenge_timeout.value_namespace = name_space;
         scavenge_timeout.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "cos")
+    {
+        cos = value;
+        cos.value_namespace = name_space;
+        cos.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Ipv6Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
@@ -98,6 +108,10 @@ void Ipv6Neighbor::set_filter(const std::string & value_path, YFilter yfilter)
     if(value_path == "scavenge-timeout")
     {
         scavenge_timeout.yfilter = yfilter;
+    }
+    if(value_path == "cos")
+    {
+        cos.yfilter = yfilter;
     }
 }
 
@@ -128,7 +142,7 @@ std::map<std::pair<std::string, std::string>, std::string> Ipv6Neighbor::get_nam
 
 bool Ipv6Neighbor::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "neighbors" || name == "scavenge-timeout")
+    if(name == "neighbors" || name == "scavenge-timeout" || name == "cos")
         return true;
     return false;
 }
@@ -376,6 +390,9 @@ bool Ipv6Neighbor::Neighbors::Neighbor::has_leaf_or_child_of_name(const std::str
     return false;
 }
 
+const Enum::YLeaf Ipv6srpEncapsulation::srpa {5, "srpa"};
+const Enum::YLeaf Ipv6srpEncapsulation::srpb {6, "srpb"};
+
 const Enum::YLeaf Ipv6ndMonth::january {0, "january"};
 const Enum::YLeaf Ipv6ndMonth::february {1, "february"};
 const Enum::YLeaf Ipv6ndMonth::march {2, "march"};
@@ -392,9 +409,6 @@ const Enum::YLeaf Ipv6ndMonth::december {11, "december"};
 const Enum::YLeaf Ipv6NdRouterPref::high {1, "high"};
 const Enum::YLeaf Ipv6NdRouterPref::medium {2, "medium"};
 const Enum::YLeaf Ipv6NdRouterPref::low {3, "low"};
-
-const Enum::YLeaf Ipv6srpEncapsulation::srpa {5, "srpa"};
-const Enum::YLeaf Ipv6srpEncapsulation::srpb {6, "srpb"};
 
 
 }

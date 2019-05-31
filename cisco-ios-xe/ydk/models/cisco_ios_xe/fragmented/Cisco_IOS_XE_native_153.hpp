@@ -55,7 +55,7 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv6::Vrf::Ipv6Flowspec::Peer
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_no; //type: one of uint32, string
+        ydk::YLeaf as_no; //type: one of string, uint32
         ydk::YLeaf no_prepend; //type: empty
         ydk::YLeaf replace_as; //type: empty
         ydk::YLeaf dual_as; //type: empty
@@ -749,10 +749,10 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv6::Vrf::Ipv6Flowspec::Neig
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: string
-        ydk::YLeaf remote_as; //type: one of uint32, string
+        ydk::YLeaf remote_as; //type: one of string, uint32
         ydk::YLeaf activate; //type: empty
         ydk::YLeaf advertisement_interval; //type: uint16
-        ydk::YLeaf cluster_id; //type: one of uint32, string
+        ydk::YLeaf cluster_id; //type: one of string, uint32
         ydk::YLeaf description; //type: string
         ydk::YLeaf disable_connected_check; //type: empty
         ydk::YLeaf next_hop_unchanged; //type: empty
@@ -1046,7 +1046,7 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv6::Vrf::Ipv6Flowspec::Neig
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_no; //type: one of uint32, string
+        ydk::YLeaf as_no; //type: one of string, uint32
         ydk::YLeaf no_prepend; //type: empty
         ydk::YLeaf replace_as; //type: empty
         ydk::YLeaf dual_as; //type: empty
@@ -1858,7 +1858,7 @@ class Native::Router::Bgp::AddressFamily::WithVrf::Ipv6::Vrf::Ipv6Flowspec::Redi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_no; //type: one of uint32, string
+        ydk::YLeaf as_no; //type: one of string, uint32
         ydk::YLeaf metric; //type: uint32
         ydk::YLeaf route_map; //type: string
 

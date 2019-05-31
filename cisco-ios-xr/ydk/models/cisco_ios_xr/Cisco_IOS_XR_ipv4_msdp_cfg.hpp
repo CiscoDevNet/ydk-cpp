@@ -626,19 +626,19 @@ class Msdp::DefaultContext::SaFilters::SaFilter : public ydk::Entity
 
 }; // Msdp::DefaultContext::SaFilters::SaFilter
 
-class MsdpListTypeVrf : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf list;
-        static const ydk::Enum::YLeaf rp_list;
-
-};
-
 class MsdpFilterTypeVrf : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf incoming;
         static const ydk::Enum::YLeaf outgoing;
+
+};
+
+class MsdpListTypeVrf : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf list;
+        static const ydk::Enum::YLeaf rp_list;
 
 };
 

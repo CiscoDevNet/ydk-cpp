@@ -67,6 +67,8 @@ struct GnmiClientRequest {
 	std::string operation;
 };
 
+void release_allocated_memory(std::vector<GnmiClientRequest> & request_list);
+
 struct GnmiClientModelData {
 	std::string name;
 	std::string organization;
@@ -132,6 +134,8 @@ class gNMIClient : public NetconfClient
     std::string execute_payload(const std::string & payload);
     std::vector<std::string> get_capabilities();
     std::string get_hostname_port();
+
+    void perform_session_check(const std::string & message);
 
   private:
 

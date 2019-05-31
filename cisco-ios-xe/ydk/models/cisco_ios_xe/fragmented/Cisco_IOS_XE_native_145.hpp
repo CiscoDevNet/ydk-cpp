@@ -228,7 +228,7 @@ class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Area : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
         ydk::YLeaf default_cost; //type: uint32
         class Authentication; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Area::Authentication
         class Capability; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Area::Capability
@@ -1504,7 +1504,7 @@ class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::QueueDepth::Hello : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf options; //type: one of uint32, enumeration
+        ydk::YLeaf options; //type: one of enumeration, uint32
         class Options;
 
 }; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::QueueDepth::Hello
@@ -1526,7 +1526,7 @@ class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::QueueDepth::Update : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf options; //type: one of uint32, enumeration
+        ydk::YLeaf options; //type: one of enumeration, uint32
         class Options;
 
 }; // Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::QueueDepth::Update
@@ -2046,7 +2046,7 @@ class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Bgp : publ
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_number; //type: one of uint32, string
+        ydk::YLeaf as_number; //type: one of string, uint32
         class RedistOptions; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Bgp::RedistOptions
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Bgp::RedistOptions> redist_options;
@@ -2147,7 +2147,7 @@ class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Eigrp : pu
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_number; //type: one of uint32, string
+        ydk::YLeaf as_number; //type: one of string, uint32
         class RedistOptions; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Eigrp::RedistOptions
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Eigrp::RedistOptions> redist_options;
@@ -3082,7 +3082,7 @@ class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonG
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_number; //type: one of uint32, string
+        ydk::YLeaf as_number; //type: one of string, uint32
         class RedistOptions; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Bgp::RedistOptions
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Bgp::RedistOptions> redist_options;
@@ -3183,7 +3183,7 @@ class Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonG
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_number; //type: one of uint32, string
+        ydk::YLeaf as_number; //type: one of string, uint32
         class RedistOptions; //type: Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Eigrp::RedistOptions
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospfv3::AddressFamily::Ipv6::Vrf::Redistribute::Vrf_::NonGlobalVrf::Eigrp::RedistOptions> redist_options;

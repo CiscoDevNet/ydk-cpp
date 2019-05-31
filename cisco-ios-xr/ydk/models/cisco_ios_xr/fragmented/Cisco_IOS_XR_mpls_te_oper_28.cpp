@@ -11737,7 +11737,8 @@ MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup::CurrentSe
     :
     current_setup_timer{YType::uint32, "current-setup-timer"},
     selection_reason{YType::str, "selection-reason"},
-    current_setup_last_error{YType::str, "current-setup-last-error"}
+    current_setup_last_error{YType::str, "current-setup-last-error"},
+    protection_role{YType::enumeration, "protection-role"}
         ,
     connected_uptimes(std::make_shared<MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup::ConnectedUptimes>())
 {
@@ -11756,6 +11757,7 @@ bool MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup::has_
     return current_setup_timer.is_set
 	|| selection_reason.is_set
 	|| current_setup_last_error.is_set
+	|| protection_role.is_set
 	|| (connected_uptimes !=  nullptr && connected_uptimes->has_data());
 }
 
@@ -11765,6 +11767,7 @@ bool MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup::has_
 	|| ydk::is_set(current_setup_timer.yfilter)
 	|| ydk::is_set(selection_reason.yfilter)
 	|| ydk::is_set(current_setup_last_error.yfilter)
+	|| ydk::is_set(protection_role.yfilter)
 	|| (connected_uptimes !=  nullptr && connected_uptimes->has_operation());
 }
 
@@ -11782,6 +11785,7 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::P2pP2mpTunnel::TunnelHead
     if (current_setup_timer.is_set || is_set(current_setup_timer.yfilter)) leaf_name_data.push_back(current_setup_timer.get_name_leafdata());
     if (selection_reason.is_set || is_set(selection_reason.yfilter)) leaf_name_data.push_back(selection_reason.get_name_leafdata());
     if (current_setup_last_error.is_set || is_set(current_setup_last_error.yfilter)) leaf_name_data.push_back(current_setup_last_error.get_name_leafdata());
+    if (protection_role.is_set || is_set(protection_role.yfilter)) leaf_name_data.push_back(protection_role.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -11833,6 +11837,12 @@ void MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup::set_
         current_setup_last_error.value_namespace = name_space;
         current_setup_last_error.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "protection-role")
+    {
+        protection_role = value;
+        protection_role.value_namespace = name_space;
+        protection_role.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup::set_filter(const std::string & value_path, YFilter yfilter)
@@ -11849,11 +11859,15 @@ void MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup::set_
     {
         current_setup_last_error.yfilter = yfilter;
     }
+    if(value_path == "protection-role")
+    {
+        protection_role.yfilter = yfilter;
+    }
 }
 
 bool MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::CurrentSetup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "connected-uptimes" || name == "current-setup-timer" || name == "selection-reason" || name == "current-setup-last-error")
+    if(name == "connected-uptimes" || name == "current-setup-timer" || name == "selection-reason" || name == "current-setup-last-error" || name == "protection-role")
         return true;
     return false;
 }
@@ -11954,7 +11968,8 @@ MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::ReoptSetup::ReoptSetup(
     :
     reoptimized_setup_uptime{YType::uint32, "reoptimized-setup-uptime"},
     reoptimized_setup_timer{YType::uint32, "reoptimized-setup-timer"},
-    reoptimized_setup_last_error{YType::str, "reoptimized-setup-last-error"}
+    reoptimized_setup_last_error{YType::str, "reoptimized-setup-last-error"},
+    protection_role{YType::enumeration, "protection-role"}
 {
 
     yang_name = "reopt-setup"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true; 
@@ -11969,7 +11984,8 @@ bool MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::ReoptSetup::has_da
     if (is_presence_container) return true;
     return reoptimized_setup_uptime.is_set
 	|| reoptimized_setup_timer.is_set
-	|| reoptimized_setup_last_error.is_set;
+	|| reoptimized_setup_last_error.is_set
+	|| protection_role.is_set;
 }
 
 bool MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::ReoptSetup::has_operation() const
@@ -11977,7 +11993,8 @@ bool MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::ReoptSetup::has_op
     return is_set(yfilter)
 	|| ydk::is_set(reoptimized_setup_uptime.yfilter)
 	|| ydk::is_set(reoptimized_setup_timer.yfilter)
-	|| ydk::is_set(reoptimized_setup_last_error.yfilter);
+	|| ydk::is_set(reoptimized_setup_last_error.yfilter)
+	|| ydk::is_set(protection_role.yfilter);
 }
 
 std::string MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::ReoptSetup::get_segment_path() const
@@ -11994,6 +12011,7 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::P2pP2mpTunnel::TunnelHead
     if (reoptimized_setup_uptime.is_set || is_set(reoptimized_setup_uptime.yfilter)) leaf_name_data.push_back(reoptimized_setup_uptime.get_name_leafdata());
     if (reoptimized_setup_timer.is_set || is_set(reoptimized_setup_timer.yfilter)) leaf_name_data.push_back(reoptimized_setup_timer.get_name_leafdata());
     if (reoptimized_setup_last_error.is_set || is_set(reoptimized_setup_last_error.yfilter)) leaf_name_data.push_back(reoptimized_setup_last_error.get_name_leafdata());
+    if (protection_role.is_set || is_set(protection_role.yfilter)) leaf_name_data.push_back(protection_role.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -12031,6 +12049,12 @@ void MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::ReoptSetup::set_va
         reoptimized_setup_last_error.value_namespace = name_space;
         reoptimized_setup_last_error.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "protection-role")
+    {
+        protection_role = value;
+        protection_role.value_namespace = name_space;
+        protection_role.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::ReoptSetup::set_filter(const std::string & value_path, YFilter yfilter)
@@ -12047,11 +12071,15 @@ void MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::ReoptSetup::set_fi
     {
         reoptimized_setup_last_error.yfilter = yfilter;
     }
+    if(value_path == "protection-role")
+    {
+        protection_role.yfilter = yfilter;
+    }
 }
 
 bool MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::ReoptSetup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "reoptimized-setup-uptime" || name == "reoptimized-setup-timer" || name == "reoptimized-setup-last-error")
+    if(name == "reoptimized-setup-uptime" || name == "reoptimized-setup-timer" || name == "reoptimized-setup-last-error" || name == "protection-role")
         return true;
     return false;
 }
@@ -12589,7 +12617,8 @@ bool MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::GmplsOtherProtectS
 MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::StandbySetup::StandbySetup()
     :
     standby_lsp_uptime{YType::uint32, "standby-lsp-uptime"},
-    standby_setup_timer{YType::uint32, "standby-setup-timer"}
+    standby_setup_timer{YType::uint32, "standby-setup-timer"},
+    protection_role{YType::enumeration, "protection-role"}
 {
 
     yang_name = "standby-setup"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true; 
@@ -12603,14 +12632,16 @@ bool MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::StandbySetup::has_
 {
     if (is_presence_container) return true;
     return standby_lsp_uptime.is_set
-	|| standby_setup_timer.is_set;
+	|| standby_setup_timer.is_set
+	|| protection_role.is_set;
 }
 
 bool MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::StandbySetup::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(standby_lsp_uptime.yfilter)
-	|| ydk::is_set(standby_setup_timer.yfilter);
+	|| ydk::is_set(standby_setup_timer.yfilter)
+	|| ydk::is_set(protection_role.yfilter);
 }
 
 std::string MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::StandbySetup::get_segment_path() const
@@ -12626,6 +12657,7 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::P2pP2mpTunnel::TunnelHead
 
     if (standby_lsp_uptime.is_set || is_set(standby_lsp_uptime.yfilter)) leaf_name_data.push_back(standby_lsp_uptime.get_name_leafdata());
     if (standby_setup_timer.is_set || is_set(standby_setup_timer.yfilter)) leaf_name_data.push_back(standby_setup_timer.get_name_leafdata());
+    if (protection_role.is_set || is_set(protection_role.yfilter)) leaf_name_data.push_back(protection_role.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -12657,6 +12689,12 @@ void MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::StandbySetup::set_
         standby_setup_timer.value_namespace = name_space;
         standby_setup_timer.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "protection-role")
+    {
+        protection_role = value;
+        protection_role.value_namespace = name_space;
+        protection_role.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::StandbySetup::set_filter(const std::string & value_path, YFilter yfilter)
@@ -12669,11 +12707,15 @@ void MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::StandbySetup::set_
     {
         standby_setup_timer.yfilter = yfilter;
     }
+    if(value_path == "protection-role")
+    {
+        protection_role.yfilter = yfilter;
+    }
 }
 
 bool MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::StandbySetup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "standby-lsp-uptime" || name == "standby-setup-timer")
+    if(name == "standby-lsp-uptime" || name == "standby-setup-timer" || name == "protection-role")
         return true;
     return false;
 }
@@ -12682,7 +12724,8 @@ MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::StandbyReoptSetup::Stan
     :
     reoptimized_setup_uptime{YType::uint32, "reoptimized-setup-uptime"},
     reoptimized_setup_timer{YType::uint32, "reoptimized-setup-timer"},
-    reoptimized_setup_last_error{YType::str, "reoptimized-setup-last-error"}
+    reoptimized_setup_last_error{YType::str, "reoptimized-setup-last-error"},
+    protection_role{YType::enumeration, "protection-role"}
 {
 
     yang_name = "standby-reopt-setup"; yang_parent_name = "history"; is_top_level_class = false; has_list_ancestor = true; 
@@ -12697,7 +12740,8 @@ bool MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::StandbyReoptSetup:
     if (is_presence_container) return true;
     return reoptimized_setup_uptime.is_set
 	|| reoptimized_setup_timer.is_set
-	|| reoptimized_setup_last_error.is_set;
+	|| reoptimized_setup_last_error.is_set
+	|| protection_role.is_set;
 }
 
 bool MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::StandbyReoptSetup::has_operation() const
@@ -12705,7 +12749,8 @@ bool MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::StandbyReoptSetup:
     return is_set(yfilter)
 	|| ydk::is_set(reoptimized_setup_uptime.yfilter)
 	|| ydk::is_set(reoptimized_setup_timer.yfilter)
-	|| ydk::is_set(reoptimized_setup_last_error.yfilter);
+	|| ydk::is_set(reoptimized_setup_last_error.yfilter)
+	|| ydk::is_set(protection_role.yfilter);
 }
 
 std::string MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::StandbyReoptSetup::get_segment_path() const
@@ -12722,6 +12767,7 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::P2pP2mpTunnel::TunnelHead
     if (reoptimized_setup_uptime.is_set || is_set(reoptimized_setup_uptime.yfilter)) leaf_name_data.push_back(reoptimized_setup_uptime.get_name_leafdata());
     if (reoptimized_setup_timer.is_set || is_set(reoptimized_setup_timer.yfilter)) leaf_name_data.push_back(reoptimized_setup_timer.get_name_leafdata());
     if (reoptimized_setup_last_error.is_set || is_set(reoptimized_setup_last_error.yfilter)) leaf_name_data.push_back(reoptimized_setup_last_error.get_name_leafdata());
+    if (protection_role.is_set || is_set(protection_role.yfilter)) leaf_name_data.push_back(protection_role.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -12759,6 +12805,12 @@ void MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::StandbyReoptSetup:
         reoptimized_setup_last_error.value_namespace = name_space;
         reoptimized_setup_last_error.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "protection-role")
+    {
+        protection_role = value;
+        protection_role.value_namespace = name_space;
+        protection_role.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::StandbyReoptSetup::set_filter(const std::string & value_path, YFilter yfilter)
@@ -12775,11 +12827,15 @@ void MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::StandbyReoptSetup:
     {
         reoptimized_setup_last_error.yfilter = yfilter;
     }
+    if(value_path == "protection-role")
+    {
+        protection_role.yfilter = yfilter;
+    }
 }
 
 bool MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::History::StandbyReoptSetup::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "reoptimized-setup-uptime" || name == "reoptimized-setup-timer" || name == "reoptimized-setup-last-error")
+    if(name == "reoptimized-setup-uptime" || name == "reoptimized-setup-timer" || name == "reoptimized-setup-last-error" || name == "protection-role")
         return true;
     return false;
 }

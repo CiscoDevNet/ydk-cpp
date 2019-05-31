@@ -21,10 +21,10 @@
 //
 //////////////////////////////////////////////////////////////////
 
-
 #include <iostream>
 #include <sstream>
 #include <stdio.h>
+#include <signal.h>
 
 #include <libnetconf.h>
 #include <libnetconf_ssh.h>
@@ -100,6 +100,10 @@ NetconfSSHClient::NetconfSSHClient(
 
 int NetconfSSHClient::connect()
 {
+    // We expect write failures to occur, but we want to handle them where
+    // the error occurs rather than in a SIGPIPE handler.
+    signal(SIGPIPE, SIG_IGN);
+
     session = nc_session_connect(hostname.c_str(), port, username.c_str(), NULL);
     perform_session_check("Could not connect to " + hostname);
     init_capabilities();
@@ -129,19 +133,21 @@ void NetconfSSHClient::init_capabilities()
 
 string NetconfSSHClient::execute_payload(const string & payload)
 {
-    perform_session_check("Could not execute payload. Not connected to " + hostname);
+    perform_session_check("Cannot not execute payload. Not connected to " + hostname);
 
     nc_reply *reply;
     nc_rpc *rpc = build_rpc_request(payload);
 
-    YLOG_DEBUG("Netconf SSH Client: sending rpc");
+    YLOG_DEBUG("Netconf SSH Client: sending RPC");
     const nc_msgid msgid = nc_session_send_rpc(session, rpc);
     if (msgid == NULL) {
-        YLOG_ERROR("Could not send payload {}", payload );
-        throw(YClientError{"Could not send payload"});
+        YLOG_ERROR("Failed to send RPC\n{}", payload );
+        throw(YClientError{"Failed to send RPC"});
     }
 
-    YLOG_DEBUG("Netconf SSH Client: receiving rpc");
+    perform_session_check("Cannot not receive RPC reply. Not connected to " + hostname);
+
+    YLOG_DEBUG("Netconf SSH Client: receiving reply RPC");
     NC_MSG_TYPE msg_type = nc_session_recv_reply(session, timeout, &reply);
     YLOG_DEBUG("Netconf SSH Client: processing reply");
     string receive_msg = process_rpc_reply(msg_type, reply);
@@ -163,10 +169,18 @@ nc_rpc* NetconfSSHClient::build_rpc_request(const string & payload)
 
     if (rpc == NULL)
     {
-        YLOG_ERROR("Could not build rpc payload: {}", payload );
-        throw(YClientError{"Could not build payload"});
+        YLOG_ERROR("Could not build RPC payload:\n{}", payload );
+        throw(YClientError{"Could not build RPC payload"});
     }
     return rpc;
+}
+
+static string nc_rpc_dump_to_string(const nc_rpc* reply)
+{
+    char * nc_reply = nc_rpc_dump(reply);
+    string nc_reply_str {nc_reply};
+    free(nc_reply);
+    return nc_reply_str;
 }
 
 string NetconfSSHClient::process_rpc_reply(int msg_type, const nc_rpc* reply)
@@ -174,9 +188,9 @@ string NetconfSSHClient::process_rpc_reply(int msg_type, const nc_rpc* reply)
     switch (msg_type)
     {
         case NC_MSG_REPLY:
-            return nc_rpc_dump(reply);
+            return nc_rpc_dump_to_string(reply);
         case NC_MSG_HELLO:
-            return nc_rpc_dump(reply);
+            return nc_rpc_dump_to_string(reply);
 
         default:
         case NC_MSG_WOULDBLOCK:
@@ -184,7 +198,7 @@ string NetconfSSHClient::process_rpc_reply(int msg_type, const nc_rpc* reply)
             throw(YClientError{"Connection timed out"});
         case NC_MSG_UNKNOWN:
             YLOG_ERROR("RPC error occurred");
-            throw(YClientError{"RPC error occured"});
+            throw(YClientError{"RPC error occurred"});
     }
     return {};
 }
@@ -237,7 +251,7 @@ char* NetconfSSHClient::clb_set_interactive(const char *name, const char *instru
     char* password_buffer = (char*) malloc(sizeof(char) * (password_string.size() + 1));
     snprintf(password_buffer, password_string.size() + 1, "%s", password_string.c_str());
 
-    YLOG_DEBUG("looked up password for interactive: {}", password_buffer);
+    YLOG_DEBUG("Looked up password for interactive: {}", password_buffer);
     return password_buffer;
 }
 
@@ -247,7 +261,7 @@ char* NetconfSSHClient::clb_set_passphrase(const char *user_name, const char *ho
     char* password_buffer = (char*) malloc(sizeof(char) * (password_string.size() + 1));
     snprintf(password_buffer, password_string.size() + 1, "%s", password_string.c_str());
 
-    YLOG_DEBUG("looked up password for passphrase: {}", password_buffer);
+    YLOG_DEBUG("Looked up password for passphrase: {}", password_buffer);
     return password_buffer;
 }
 
@@ -259,12 +273,28 @@ int NetconfSSHClient::clb_ssh_host_authenticity_check(const char *hostname,
 
 void NetconfSSHClient::perform_session_check(const string & message)
 {
-    if (session == NULL)
+    int session_status = nc_session_get_status(session);
+    YLOG_DEBUG("NetconfSSHClient: NC session status: {}", session_status);
+    if (session_status != NC_SESSION_STATUS_WORKING && session_status != NC_SESSION_STATUS_CLOSING)
     {
-        YLOG_ERROR(message.c_str());
-        throw(YClientError{message});
+        string msg = message + ": Session status: ";
+        if (session_status == NC_SESSION_STATUS_ERROR)
+            msg += "Undefined";
+        else if (session_status == NC_SESSION_STATUS_STARTUP)
+            msg += "Setting up";
+        else if (session_status == NC_SESSION_STATUS_CLOSED)
+            msg += "Closed";
+        else if (session_status == NC_SESSION_STATUS_DUMMY)
+            msg += "Dummy";
+        YLOG_ERROR(msg.c_str());
+        throw(YClientError{msg});
+    }
+    if (!nc_session_is_ssh_connected(session))
+    {
+        string msg = message + ": SSH session is not connected";
+        YLOG_ERROR(msg.c_str());
+        throw(YClientError{msg});
     }
 }
-
 
 }

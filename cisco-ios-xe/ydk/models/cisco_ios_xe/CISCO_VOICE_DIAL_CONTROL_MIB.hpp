@@ -1316,18 +1316,12 @@ class CvCallVolumeWMIntvlType : public ydk::Enum
 
 };
 
-class CvIlbcFrameMode : public ydk::Enum
+class CvCallVolumeStatsIntvlType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf frameMode20;
-        static const ydk::Enum::YLeaf frameMode30;
-
-};
-
-class CvAmrNbRtpEncap : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rfc3267;
+        static const ydk::Enum::YLeaf secondStats;
+        static const ydk::Enum::YLeaf minuteStats;
+        static const ydk::Enum::YLeaf hourStats;
 
 };
 
@@ -1343,6 +1337,21 @@ class CvSessionProtocol : public ydk::Enum
 
 };
 
+class CvAmrNbRtpEncap : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rfc3267;
+
+};
+
+class CvIlbcFrameMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf frameMode20;
+        static const ydk::Enum::YLeaf frameMode30;
+
+};
+
 class CvCallConnectionType : public ydk::Enum
 {
     public:
@@ -1353,15 +1362,6 @@ class CvCallConnectionType : public ydk::Enum
         static const ydk::Enum::YLeaf multicast;
         static const ydk::Enum::YLeaf cacontrol;
         static const ydk::Enum::YLeaf telephony;
-
-};
-
-class CvCallVolumeStatsIntvlType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf secondStats;
-        static const ydk::Enum::YLeaf minuteStats;
-        static const ydk::Enum::YLeaf hourStats;
 
 };
 

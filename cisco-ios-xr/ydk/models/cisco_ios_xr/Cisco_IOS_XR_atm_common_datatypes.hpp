@@ -30,6 +30,15 @@ class AtmPvcShaping : public ydk::Enum
 
 };
 
+class AtmPvcData : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf data;
+        static const ydk::Enum::YLeaf ilmi;
+        static const ydk::Enum::YLeaf layer2;
+
+};
+
 class AtmPvcEncapsulation : public ydk::Enum
 {
     public:
@@ -38,15 +47,6 @@ class AtmPvcEncapsulation : public ydk::Enum
         static const ydk::Enum::YLeaf nlpid;
         static const ydk::Enum::YLeaf aal0;
         static const ydk::Enum::YLeaf aal5;
-
-};
-
-class AtmPvcData : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf data;
-        static const ydk::Enum::YLeaf ilmi;
-        static const ydk::Enum::YLeaf layer2;
 
 };
 

@@ -6749,6 +6749,15 @@ class PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3Protoc
 
 }; // PerfMgmt::Threshold::Ospfv3Protocol::Ospfv3ProtocolTemplates::Ospfv3ProtocolTemplate::InputLsRequests
 
+class PmThresholdRearm : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf always;
+        static const ydk::Enum::YLeaf window;
+        static const ydk::Enum::YLeaf toggle;
+
+};
+
 class PmThresholdOp : public ydk::Enum
 {
     public:
@@ -6759,15 +6768,6 @@ class PmThresholdOp : public ydk::Enum
         static const ydk::Enum::YLeaf gt;
         static const ydk::Enum::YLeaf ge;
         static const ydk::Enum::YLeaf rg;
-
-};
-
-class PmThresholdRearm : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf always;
-        static const ydk::Enum::YLeaf window;
-        static const ydk::Enum::YLeaf toggle;
 
 };
 

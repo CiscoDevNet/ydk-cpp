@@ -871,53 +871,12 @@ class ClockPortState : public ydk::Enum
 
 };
 
-class ClockTimeSourceType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf atomicClock;
-        static const ydk::Enum::YLeaf gps;
-        static const ydk::Enum::YLeaf terrestrialRadio;
-        static const ydk::Enum::YLeaf ptp;
-        static const ydk::Enum::YLeaf ntp;
-        static const ydk::Enum::YLeaf handSet;
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf internalOsillator;
-
-};
-
 class ClockProfileType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf default_;
         static const ydk::Enum::YLeaf telecom;
         static const ydk::Enum::YLeaf vendorspecific;
-
-};
-
-class ClockRoleType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf master;
-        static const ydk::Enum::YLeaf slave;
-
-};
-
-class ClockType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ordinaryClock;
-        static const ydk::Enum::YLeaf boundaryClock;
-        static const ydk::Enum::YLeaf transparentClock;
-        static const ydk::Enum::YLeaf boundaryNode;
-
-};
-
-class ClockTxModeType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unicast;
-        static const ydk::Enum::YLeaf multicast;
-        static const ydk::Enum::YLeaf multicastmix;
 
 };
 
@@ -948,6 +907,14 @@ class ClockQualityAccuracyType : public ydk::Enum
 
 };
 
+class ClockRoleType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf slave;
+
+};
+
 class ClockStateType : public ydk::Enum
 {
     public:
@@ -956,6 +923,39 @@ class ClockStateType : public ydk::Enum
         static const ydk::Enum::YLeaf acquiring;
         static const ydk::Enum::YLeaf frequencyLocked;
         static const ydk::Enum::YLeaf phaseAligned;
+
+};
+
+class ClockTimeSourceType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf atomicClock;
+        static const ydk::Enum::YLeaf gps;
+        static const ydk::Enum::YLeaf terrestrialRadio;
+        static const ydk::Enum::YLeaf ptp;
+        static const ydk::Enum::YLeaf ntp;
+        static const ydk::Enum::YLeaf handSet;
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf internalOsillator;
+
+};
+
+class ClockTxModeType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf multicast;
+        static const ydk::Enum::YLeaf multicastmix;
+
+};
+
+class ClockType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ordinaryClock;
+        static const ydk::Enum::YLeaf boundaryClock;
+        static const ydk::Enum::YLeaf transparentClock;
+        static const ydk::Enum::YLeaf boundaryNode;
 
 };
 

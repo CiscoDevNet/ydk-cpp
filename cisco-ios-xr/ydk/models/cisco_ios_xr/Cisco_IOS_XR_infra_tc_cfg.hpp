@@ -112,13 +112,6 @@ class TrafficCollector::Statistics : public ydk::Entity
 
 }; // TrafficCollector::Statistics
 
-class HistoryTimeout : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf max;
-
-};
-
 class HistorySize : public ydk::Enum
 {
     public:
@@ -141,6 +134,13 @@ class CollectIonInterval : public ydk::Enum
         static const ydk::Enum::YLeaf Y_20_minutes;
         static const ydk::Enum::YLeaf Y_30_minutes;
         static const ydk::Enum::YLeaf Y_60_minutes;
+
+};
+
+class HistoryTimeout : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf max;
 
 };
 

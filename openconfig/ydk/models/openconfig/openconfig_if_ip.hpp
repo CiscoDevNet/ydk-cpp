@@ -10,15 +10,6 @@
 namespace openconfig {
 namespace openconfig_if_ip {
 
-class NeighborOrigin : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf OTHER;
-        static const ydk::Enum::YLeaf STATIC;
-        static const ydk::Enum::YLeaf DYNAMIC;
-
-};
-
 class IpAddressOrigin : public ydk::Enum
 {
     public:
@@ -27,6 +18,15 @@ class IpAddressOrigin : public ydk::Enum
         static const ydk::Enum::YLeaf DHCP;
         static const ydk::Enum::YLeaf LINK_LAYER;
         static const ydk::Enum::YLeaf RANDOM;
+
+};
+
+class NeighborOrigin : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf OTHER;
+        static const ydk::Enum::YLeaf STATIC;
+        static const ydk::Enum::YLeaf DYNAMIC;
 
 };
 

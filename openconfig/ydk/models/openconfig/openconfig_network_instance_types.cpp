@@ -11,23 +11,13 @@ using namespace ydk;
 namespace openconfig {
 namespace openconfig_network_instance_types {
 
-SIGNALLINGPROTOCOL::SIGNALLINGPROTOCOL()
-     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:SIGNALLING_PROTOCOL")
+NETWORKINSTANCETYPE::NETWORKINSTANCETYPE()
+     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:NETWORK_INSTANCE_TYPE")
 {
 
 }
 
-SIGNALLINGPROTOCOL::~SIGNALLINGPROTOCOL()
-{
-}
-
-LABELALLOCATIONMODE::LABELALLOCATIONMODE()
-     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:LABEL_ALLOCATION_MODE")
-{
-
-}
-
-LABELALLOCATIONMODE::~LABELALLOCATIONMODE()
+NETWORKINSTANCETYPE::~NETWORKINSTANCETYPE()
 {
 }
 
@@ -41,6 +31,16 @@ ENDPOINTTYPE::~ENDPOINTTYPE()
 {
 }
 
+LABELALLOCATIONMODE::LABELALLOCATIONMODE()
+     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:LABEL_ALLOCATION_MODE")
+{
+
+}
+
+LABELALLOCATIONMODE::~LABELALLOCATIONMODE()
+{
+}
+
 ENCAPSULATION::ENCAPSULATION()
      : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:ENCAPSULATION")
 {
@@ -51,33 +51,23 @@ ENCAPSULATION::~ENCAPSULATION()
 {
 }
 
-NETWORKINSTANCETYPE::NETWORKINSTANCETYPE()
-     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:NETWORK_INSTANCE_TYPE")
+SIGNALLINGPROTOCOL::SIGNALLINGPROTOCOL()
+     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:SIGNALLING_PROTOCOL")
 {
 
 }
 
-NETWORKINSTANCETYPE::~NETWORKINSTANCETYPE()
+SIGNALLINGPROTOCOL::~SIGNALLINGPROTOCOL()
 {
 }
 
-INSTANCELABEL::INSTANCELABEL()
-     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:INSTANCE_LABEL")
-{
-
-}
-
-INSTANCELABEL::~INSTANCELABEL()
-{
-}
-
-L2VSI::L2VSI()
-     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:L2VSI")
+DEFAULTINSTANCE::DEFAULTINSTANCE()
+     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:DEFAULT_INSTANCE")
 {
 
 }
 
-L2VSI::~L2VSI()
+DEFAULTINSTANCE::~DEFAULTINSTANCE()
 {
 }
 
@@ -91,6 +81,46 @@ L3VRF::~L3VRF()
 {
 }
 
+L2VSI::L2VSI()
+     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:L2VSI")
+{
+
+}
+
+L2VSI::~L2VSI()
+{
+}
+
+L2P2P::L2P2P()
+     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:L2P2P")
+{
+
+}
+
+L2P2P::~L2P2P()
+{
+}
+
+L2L3::L2L3()
+     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:L2L3")
+{
+
+}
+
+L2L3::~L2L3()
+{
+}
+
+LOCAL::LOCAL()
+     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:LOCAL")
+{
+
+}
+
+LOCAL::~LOCAL()
+{
+}
+
 REMOTE::REMOTE()
      : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:REMOTE")
 {
@@ -98,16 +128,6 @@ REMOTE::REMOTE()
 }
 
 REMOTE::~REMOTE()
-{
-}
-
-LDP::LDP()
-     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:LDP")
-{
-
-}
-
-LDP::~LDP()
 {
 }
 
@@ -121,6 +141,26 @@ PERPREFIX::~PERPREFIX()
 {
 }
 
+PERNEXTHOP::PERNEXTHOP()
+     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:PER_NEXTHOP")
+{
+
+}
+
+PERNEXTHOP::~PERNEXTHOP()
+{
+}
+
+INSTANCELABEL::INSTANCELABEL()
+     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:INSTANCE_LABEL")
+{
+
+}
+
+INSTANCELABEL::~INSTANCELABEL()
+{
+}
+
 MPLS::MPLS()
      : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:MPLS")
 {
@@ -128,6 +168,26 @@ MPLS::MPLS()
 }
 
 MPLS::~MPLS()
+{
+}
+
+VXLAN::VXLAN()
+     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:VXLAN")
+{
+
+}
+
+VXLAN::~VXLAN()
+{
+}
+
+LDP::LDP()
+     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:LDP")
+{
+
+}
+
+LDP::~LDP()
 {
 }
 
@@ -148,66 +208,6 @@ BGPEVPN::BGPEVPN()
 }
 
 BGPEVPN::~BGPEVPN()
-{
-}
-
-L2P2P::L2P2P()
-     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:L2P2P")
-{
-
-}
-
-L2P2P::~L2P2P()
-{
-}
-
-DEFAULTINSTANCE::DEFAULTINSTANCE()
-     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:DEFAULT_INSTANCE")
-{
-
-}
-
-DEFAULTINSTANCE::~DEFAULTINSTANCE()
-{
-}
-
-LOCAL::LOCAL()
-     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:LOCAL")
-{
-
-}
-
-LOCAL::~LOCAL()
-{
-}
-
-L2L3::L2L3()
-     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:L2L3")
-{
-
-}
-
-L2L3::~L2L3()
-{
-}
-
-VXLAN::VXLAN()
-     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:VXLAN")
-{
-
-}
-
-VXLAN::~VXLAN()
-{
-}
-
-PERNEXTHOP::PERNEXTHOP()
-     : Identity("http://openconfig.net/yang/network-instance-types", "openconfig-network-instance-types", "openconfig-network-instance-types:PER_NEXTHOP")
-{
-
-}
-
-PERNEXTHOP::~PERNEXTHOP()
 {
 }
 

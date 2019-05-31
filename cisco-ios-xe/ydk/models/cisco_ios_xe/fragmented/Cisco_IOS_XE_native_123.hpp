@@ -214,6 +214,7 @@ class Native::System : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
+        class Mode; //type: Native::System::Mode
         class Debug; //type: Native::System::Debug
         class Disable; //type: Native::System::Disable
         class Environment; //type: Native::System::Environment
@@ -221,8 +222,8 @@ class Native::System : public ydk::Entity
         class Ignore; //type: Native::System::Ignore
         class ModeButton; //type: Native::System::ModeButton
         class Mtu; //type: Native::System::Mtu
-        class Mode; //type: Native::System::Mode
 
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode> mode;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Debug> debug;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Disable> disable;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Environment> environment;
@@ -230,9 +231,129 @@ class Native::System : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Ignore> ignore;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::ModeButton> mode_button;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mtu> mtu;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode> mode;
         
 }; // Native::System
+
+
+class Native::System::Mode : public ydk::Entity
+{
+    public:
+        Mode();
+        ~Mode();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class Maintenance; //type: Native::System::Mode::Maintenance
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode::Maintenance> maintenance; // presence node
+        
+}; // Native::System::Mode
+
+
+class Native::System::Mode::Maintenance : public ydk::Entity
+{
+    public:
+        Maintenance();
+        ~Maintenance();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class ConfigMaintenance; //type: Native::System::Mode::Maintenance::ConfigMaintenance
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode::Maintenance::ConfigMaintenance> config_maintenance;
+        
+}; // Native::System::Mode::Maintenance
+
+
+class Native::System::Mode::Maintenance::ConfigMaintenance : public ydk::Entity
+{
+    public:
+        ConfigMaintenance();
+        ~ConfigMaintenance();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf failsafe; //type: uint8
+        ydk::YLeaf template_; //type: string
+        ydk::YLeaf timeout; //type: uint8
+        class OnReload; //type: Native::System::Mode::Maintenance::ConfigMaintenance::OnReload
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode::Maintenance::ConfigMaintenance::OnReload> on_reload;
+        
+}; // Native::System::Mode::Maintenance::ConfigMaintenance
+
+
+class Native::System::Mode::Maintenance::ConfigMaintenance::OnReload : public ydk::Entity
+{
+    public:
+        OnReload();
+        ~OnReload();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        class ResetReason; //type: Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason
+
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason> reset_reason;
+        
+}; // Native::System::Mode::Maintenance::ConfigMaintenance::OnReload
+
+
+class Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason : public ydk::Entity
+{
+    public:
+        ResetReason();
+        ~ResetReason();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf maintenance; //type: empty
+
+}; // Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason
 
 
 class Native::System::Debug : public ydk::Entity
@@ -681,127 +802,6 @@ class Native::System::Mtu : public ydk::Entity
         ydk::YLeaf routing; //type: uint16
 
 }; // Native::System::Mtu
-
-
-class Native::System::Mode : public ydk::Entity
-{
-    public:
-        Mode();
-        ~Mode();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class Maintenance; //type: Native::System::Mode::Maintenance
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode::Maintenance> maintenance; // presence node
-        
-}; // Native::System::Mode
-
-
-class Native::System::Mode::Maintenance : public ydk::Entity
-{
-    public:
-        Maintenance();
-        ~Maintenance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class ConfigMaintenance; //type: Native::System::Mode::Maintenance::ConfigMaintenance
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode::Maintenance::ConfigMaintenance> config_maintenance;
-        
-}; // Native::System::Mode::Maintenance
-
-
-class Native::System::Mode::Maintenance::ConfigMaintenance : public ydk::Entity
-{
-    public:
-        ConfigMaintenance();
-        ~ConfigMaintenance();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf failsafe; //type: uint8
-        ydk::YLeaf template_; //type: string
-        ydk::YLeaf timeout; //type: uint8
-        class OnReload; //type: Native::System::Mode::Maintenance::ConfigMaintenance::OnReload
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode::Maintenance::ConfigMaintenance::OnReload> on_reload;
-        
-}; // Native::System::Mode::Maintenance::ConfigMaintenance
-
-
-class Native::System::Mode::Maintenance::ConfigMaintenance::OnReload : public ydk::Entity
-{
-    public:
-        OnReload();
-        ~OnReload();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        class ResetReason; //type: Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason
-
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason> reset_reason;
-        
-}; // Native::System::Mode::Maintenance::ConfigMaintenance::OnReload
-
-
-class Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason : public ydk::Entity
-{
-    public:
-        ResetReason();
-        ~ResetReason();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-        std::string get_absolute_path() const override;
-
-        ydk::YLeaf maintenance; //type: empty
-
-}; // Native::System::Mode::Maintenance::ConfigMaintenance::OnReload::ResetReason
 
 
 class Native::Errdisable : public ydk::Entity
@@ -2980,7 +2980,7 @@ class Native::RadiusServer::Host : public ydk::Entity
         ydk::YLeaf acct_port; //type: uint16
         ydk::YLeaf retransmit; //type: uint8
         ydk::YLeaf timeout; //type: uint16
-        ydk::YLeaf key; //type: one of string, enumeration
+        ydk::YLeaf key; //type: one of enumeration, string
         ydk::YLeaf clear_key; //type: string
         class Test; //type: Native::RadiusServer::Host::Test
 

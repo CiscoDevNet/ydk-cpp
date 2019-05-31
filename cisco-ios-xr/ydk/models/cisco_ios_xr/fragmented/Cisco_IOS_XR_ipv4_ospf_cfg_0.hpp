@@ -82,10 +82,8 @@ class Ospf::Processes::Process : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf process_name; //type: string
-        ydk::YLeaf start; //type: empty
         ydk::YLeaf nsr; //type: Nsr
         ydk::YLeaf protocol_shutdown; //type: OspfShutdown
-        ydk::YLeaf running; //type: empty
         class Snmp; //type: Ospf::Processes::Process::Snmp
         class Distribute; //type: Ospf::Processes::Process::Distribute
         class Vrfs; //type: Ospf::Processes::Process::Vrfs
@@ -210,7 +208,6 @@ class Ospf::Processes::Process::Vrfs::Vrf : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf vrf_start; //type: empty
         ydk::YLeaf snmp_trap_enabled; //type: boolean
         ydk::YLeaf domain_tag; //type: uint32
         ydk::YLeaf vrf_lite; //type: empty
@@ -239,6 +236,7 @@ class Ospf::Processes::Process::Vrfs::Vrf : public ydk::Entity
         class MaxLsa; //type: Ospf::Processes::Process::Vrfs::Vrf::MaxLsa
         class AutoCost; //type: Ospf::Processes::Process::Vrfs::Vrf::AutoCost
         class Ucmp; //type: Ospf::Processes::Process::Vrfs::Vrf::Ucmp
+        class ApplyWeight; //type: Ospf::Processes::Process::Vrfs::Vrf::ApplyWeight
         class FastReroute; //type: Ospf::Processes::Process::Vrfs::Vrf::FastReroute
         class SummaryPrefixes; //type: Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes
         class OutgoingRouteUpdates; //type: Ospf::Processes::Process::Vrfs::Vrf::OutgoingRouteUpdates
@@ -260,6 +258,7 @@ class Ospf::Processes::Process::Vrfs::Vrf : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::MaxLsa> max_lsa; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AutoCost> auto_cost;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::Ucmp> ucmp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::ApplyWeight> apply_weight; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::FastReroute> fast_reroute;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::SummaryPrefixes> summary_prefixes;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::OutgoingRouteUpdates> outgoing_route_updates;
@@ -712,6 +711,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::ProcessScope : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf cost; //type: uint32
+        ydk::YLeaf weight; //type: uint32
         ydk::YLeaf external_out; //type: boolean
         ydk::YLeaf prefix_suppression_primary; //type: boolean
         ydk::YLeaf mtu_ignore; //type: boolean
@@ -1669,6 +1669,29 @@ class Ospf::Processes::Process::Vrfs::Vrf::Ucmp::ExcludeInterfaces::ExcludeInter
 }; // Ospf::Processes::Process::Vrfs::Vrf::Ucmp::ExcludeInterfaces::ExcludeInterface
 
 
+class Ospf::Processes::Process::Vrfs::Vrf::ApplyWeight : public ydk::Entity
+{
+    public:
+        ApplyWeight();
+        ~ApplyWeight();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf bandwidth; //type: boolean
+        ydk::YLeaf reference_bandwidth; //type: uint32
+        ydk::YLeaf default_weight; //type: uint32
+
+}; // Ospf::Processes::Process::Vrfs::Vrf::ApplyWeight
+
+
 class Ospf::Processes::Process::Vrfs::Vrf::FastReroute : public ydk::Entity
 {
     public:
@@ -2101,7 +2124,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress : public y
         ydk::YLeaf external_out; //type: boolean
         ydk::YLeaf summary_in; //type: boolean
         ydk::YLeaf segment_routing; //type: OspfSegmentRouting
-        ydk::YLeaf running; //type: empty
         class VirtualLinkScopes; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinkScopes
         class ShamLinkScopes; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinkScopes
         class AreaScope; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope
@@ -2164,7 +2186,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLi
         ydk::YLeaf hello_interval; //type: uint32
         ydk::YLeaf transmit_delay; //type: uint32
         ydk::YLeaf retransmit_interval; //type: uint32
-        ydk::YLeaf running; //type: empty
         class Authentication; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinkScopes::VirtualLinkScope::Authentication
         class DeadIntervalMinimal; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::VirtualLinkScopes::VirtualLinkScope::DeadIntervalMinimal
 
@@ -2336,7 +2357,6 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinkS
         ydk::YLeaf hello_interval; //type: uint32
         ydk::YLeaf transmit_delay; //type: uint32
         ydk::YLeaf retransmit_interval; //type: uint32
-        ydk::YLeaf running; //type: empty
         class Authentication; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinkScopes::ShamLinkScope::Authentication
         class DeadIntervalMinimal; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::ShamLinkScopes::ShamLinkScope::DeadIntervalMinimal
 
@@ -2479,6 +2499,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::AreaScope
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf cost; //type: uint32
+        ydk::YLeaf weight; //type: uint32
         ydk::YLeaf prefix_suppression_primary; //type: boolean
         ydk::YLeaf mtu_ignore; //type: boolean
         ydk::YLeaf ldp_sync_igp_shortcuts; //type: boolean
@@ -3112,6 +3133,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScope
 
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf cost; //type: uint32
+        ydk::YLeaf weight; //type: uint32
         ydk::YLeaf prefix_suppression_primary; //type: boolean
         ydk::YLeaf mtu_ignore; //type: boolean
         ydk::YLeaf ldp_sync_igp_shortcuts; //type: boolean
@@ -3131,7 +3153,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScope
         ydk::YLeaf retransmit_interval; //type: uint32
         ydk::YLeaf priority; //type: uint32
         ydk::YLeaf flood_reduction; //type: boolean
-        ydk::YLeaf running; //type: empty
+        class AdjacencySids; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::AdjacencySids
         class PrefixSid; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::PrefixSid
         class PrefixSidStrict; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::PrefixSidStrict
         class DistributeList; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::DistributeList
@@ -3143,6 +3165,7 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScope
         class FastReroute; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute
         class CostFallback; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::CostFallback
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::AdjacencySids> adjacency_sids;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::PrefixSid> prefix_sid; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::PrefixSidStrict> prefix_sid_strict; // presence node
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::DistributeList> distribute_list; // presence node
@@ -3155,6 +3178,53 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScope
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_cfg::Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::CostFallback> cost_fallback;
         
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope
+
+
+class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::AdjacencySids : public ydk::Entity
+{
+    public:
+        AdjacencySids();
+        ~AdjacencySids();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class AdjacencySid; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::AdjacencySids::AdjacencySid
+
+        ydk::YList adjacency_sid;
+        
+}; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::AdjacencySids
+
+
+class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::AdjacencySids::AdjacencySid : public ydk::Entity
+{
+    public:
+        AdjacencySid();
+        ~AdjacencySid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sid_type; //type: OspfSid
+        ydk::YLeaf sid_value; //type: uint32
+        ydk::YLeaf protected_; //type: boolean
+        ydk::YLeaf neighbor_address; //type: string
+
+}; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::AdjacencySids::AdjacencySid
 
 
 class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::PrefixSid : public ydk::Entity
@@ -3740,71 +3810,87 @@ class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScope
 
 }; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::CandidateInterfaces::CandidateInterface
 
-
-class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces : public ydk::Entity
+class OspfProcFrrRlfaTunnel : public ydk::Enum
 {
     public:
-        ExcludeInterfaces();
-        ~ExcludeInterfaces();
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf mpls_ldp;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
+};
 
-        class ExcludeInterface; //type: Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface
-
-        ydk::YList exclude_interface;
-        
-}; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces
-
-
-class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface : public ydk::Entity
+class OspfSubAddressFamily : public ydk::Enum
 {
     public:
-        ExcludeInterface();
-        ~ExcludeInterface();
+        static const ydk::Enum::YLeaf unicast;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
+};
 
-        ydk::YLeaf interface_name; //type: string
-
-}; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::FastReroute::PerPrefix::ExcludeInterfaces::ExcludeInterface
-
-
-class Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::CostFallback : public ydk::Entity
+class OspfNetwork : public ydk::Enum
 {
     public:
-        CostFallback();
-        ~CostFallback();
+        static const ydk::Enum::YLeaf broadcast;
+        static const ydk::Enum::YLeaf non_broadcast;
+        static const ydk::Enum::YLeaf point_to_point;
+        static const ydk::Enum::YLeaf point_to_multipoint;
+        static const ydk::Enum::YLeaf non_broadcast_point_to_multipoint;
 
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
+};
 
-        ydk::YLeaf cost; //type: uint32
-        ydk::YLeaf threshold; //type: uint32
+class OspfFastRerouteTiebreakersIntf : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf downstream;
+        static const ydk::Enum::YLeaf line_card_disjoint;
+        static const ydk::Enum::YLeaf lowest_metric;
+        static const ydk::Enum::YLeaf node_protect;
+        static const ydk::Enum::YLeaf primary_path;
+        static const ydk::Enum::YLeaf secondary_path;
+        static const ydk::Enum::YLeaf srlg_disjoint;
+        static const ydk::Enum::YLeaf interface_disjoint;
 
-}; // Ospf::Processes::Process::Vrfs::Vrf::AreaAddresses::AreaAddress::NameScopes::NameScope::CostFallback
+};
+
+class OspfAuthentication : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf plain;
+        static const ydk::Enum::YLeaf md5;
+        static const ydk::Enum::YLeaf keychain;
+
+};
+
+class OspfEigrpRoute : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf external;
+
+};
+
+class OspfSid : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf index_;
+        static const ydk::Enum::YLeaf absolute;
+
+};
+
+class OspfLinkStateMetric : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf type1;
+        static const ydk::Enum::YLeaf type2;
+
+};
+
+class OspfKeychainAuth : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf keychain;
+
+};
 
 class OspfFastRerouteTiebreakers : public ydk::Enum
 {
@@ -3820,12 +3906,126 @@ class OspfFastRerouteTiebreakers : public ydk::Enum
 
 };
 
+class OspfUloopAvoidance : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf protected_;
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf segment_routing;
+
+};
+
+class OspfShutdown : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf full;
+        static const ydk::Enum::YLeaf hostmode;
+        static const ydk::Enum::YLeaf onreload;
+
+};
+
+class OspfDomainId : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf type0005;
+        static const ydk::Enum::YLeaf type0105;
+        static const ydk::Enum::YLeaf type0205;
+        static const ydk::Enum::YLeaf type8005;
+
+};
+
+class OspfFrrRlfaTunnel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf mpls_ldp;
+
+};
+
+class OspfLogAdj : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf brief;
+        static const ydk::Enum::YLeaf detail;
+        static const ydk::Enum::YLeaf suppress;
+
+};
+
 class OspfFastReroute : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf per_link;
         static const ydk::Enum::YLeaf per_prefix;
+
+};
+
+class OspfCiscoNsf : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf always;
+        static const ydk::Enum::YLeaf require_nsf_neighbors;
+
+};
+
+class OspfProcFastReroute : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf per_link;
+        static const ydk::Enum::YLeaf per_prefix;
+
+};
+
+class OspfRedistLsa : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf summary;
+        static const ydk::Enum::YLeaf external;
+
+};
+
+class OspfDistListProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf connected;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf bgp;
+        static const ydk::Enum::YLeaf ospf;
+        static const ydk::Enum::YLeaf dagr;
+
+};
+
+class BfdEnableMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf default_;
+        static const ydk::Enum::YLeaf strict;
+
+};
+
+class OspfSegmentRoutingForwarding : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disable;
+        static const ydk::Enum::YLeaf mpls;
+
+};
+
+class OspfIetfNsf : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf all;
+
+};
+
+class Nsr : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf false_;
 
 };
 
@@ -3842,48 +4042,6 @@ class OspfTraceBufSize : public ydk::Enum
         static const ydk::Enum::YLeaf size16384;
         static const ydk::Enum::YLeaf size32768;
         static const ydk::Enum::YLeaf size65536;
-
-};
-
-class OspfRedistLsa : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf summary;
-        static const ydk::Enum::YLeaf external;
-
-};
-
-class OspfIetfNsf : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf all;
-
-};
-
-class BfdEnableMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf default_;
-        static const ydk::Enum::YLeaf strict;
-
-};
-
-class OspfFastReroutePriority : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf high;
-        static const ydk::Enum::YLeaf medium;
-        static const ydk::Enum::YLeaf low;
-
-};
-
-class OspfCiscoNsf : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf always;
-        static const ydk::Enum::YLeaf require_nsf_neighbors;
 
 };
 
@@ -3905,24 +4063,23 @@ class OspfRedistProtocol : public ydk::Enum
 
 };
 
+class OspfRouteLevel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf type1;
+        static const ydk::Enum::YLeaf type2;
+        static const ydk::Enum::YLeaf type1_and2;
+
+};
+
+class OspfIetfNsfSupport : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf never;
+
+};
+
 class OspfSegmentRouting : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf disable;
-        static const ydk::Enum::YLeaf mpls;
-
-};
-
-class OspfUloopAvoidance : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf protected_;
-        static const ydk::Enum::YLeaf all;
-        static const ydk::Enum::YLeaf segment_routing;
-
-};
-
-class OspfSegmentRoutingForwarding : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf disable;
@@ -3937,166 +4094,13 @@ class OspfAddressFamily : public ydk::Enum
 
 };
 
-class OspfProcFastReroute : public ydk::Enum
+class OspfFastReroutePriority : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf per_link;
-        static const ydk::Enum::YLeaf per_prefix;
-
-};
-
-class OspfProcFrrRlfaTunnel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf mpls_ldp;
-
-};
-
-class OspfIetfNsfSupport : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf never;
-
-};
-
-class OspfLinkStateMetric : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf type1;
-        static const ydk::Enum::YLeaf type2;
-
-};
-
-class OspfAuthentication : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf plain;
-        static const ydk::Enum::YLeaf md5;
-        static const ydk::Enum::YLeaf keychain;
-
-};
-
-class OspfLogAdj : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf brief;
-        static const ydk::Enum::YLeaf detail;
-        static const ydk::Enum::YLeaf suppress;
-
-};
-
-class OspfSubAddressFamily : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unicast;
-
-};
-
-class OspfDomainId : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf type0005;
-        static const ydk::Enum::YLeaf type0105;
-        static const ydk::Enum::YLeaf type0205;
-        static const ydk::Enum::YLeaf type8005;
-
-};
-
-class OspfEigrpRoute : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf internal;
-        static const ydk::Enum::YLeaf external;
-
-};
-
-class OspfSid : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf index_;
-        static const ydk::Enum::YLeaf absolute;
-
-};
-
-class Nsr : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf true_;
-        static const ydk::Enum::YLeaf false_;
-
-};
-
-class OspfFastRerouteTiebreakersIntf : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf downstream;
-        static const ydk::Enum::YLeaf line_card_disjoint;
-        static const ydk::Enum::YLeaf lowest_metric;
-        static const ydk::Enum::YLeaf node_protect;
-        static const ydk::Enum::YLeaf primary_path;
-        static const ydk::Enum::YLeaf secondary_path;
-        static const ydk::Enum::YLeaf srlg_disjoint;
-        static const ydk::Enum::YLeaf interface_disjoint;
-
-};
-
-class OspfDistListProtocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf all;
-        static const ydk::Enum::YLeaf connected;
-        static const ydk::Enum::YLeaf static_;
-        static const ydk::Enum::YLeaf bgp;
-        static const ydk::Enum::YLeaf ospf;
-        static const ydk::Enum::YLeaf dagr;
-
-};
-
-class OspfRouteLevel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf type1;
-        static const ydk::Enum::YLeaf type2;
-        static const ydk::Enum::YLeaf type1_and2;
-
-};
-
-class OspfNetwork : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf broadcast;
-        static const ydk::Enum::YLeaf non_broadcast;
-        static const ydk::Enum::YLeaf point_to_point;
-        static const ydk::Enum::YLeaf point_to_multipoint;
-        static const ydk::Enum::YLeaf non_broadcast_point_to_multipoint;
-
-};
-
-class OspfFrrRlfaTunnel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf mpls_ldp;
-
-};
-
-class OspfShutdown : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf full;
-        static const ydk::Enum::YLeaf hostmode;
-        static const ydk::Enum::YLeaf onreload;
-
-};
-
-class OspfKeychainAuth : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf keychain;
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf high;
+        static const ydk::Enum::YLeaf medium;
+        static const ydk::Enum::YLeaf low;
 
 };
 

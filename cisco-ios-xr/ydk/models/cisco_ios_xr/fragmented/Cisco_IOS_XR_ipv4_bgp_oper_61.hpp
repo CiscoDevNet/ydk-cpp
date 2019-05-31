@@ -8,173 +8,16 @@
 #include <ydk/errors.hpp>
 
 #include "Cisco_IOS_XR_ipv4_bgp_oper_0.hpp"
-#include "Cisco_IOS_XR_ipv4_bgp_oper_11.hpp"
-#include "Cisco_IOS_XR_ipv4_bgp_oper_40.hpp"
-#include "Cisco_IOS_XR_ipv4_bgp_oper_55.hpp"
-#include "Cisco_IOS_XR_ipv4_bgp_oper_59.hpp"
+#include "Cisco_IOS_XR_ipv4_bgp_oper_12.hpp"
+#include "Cisco_IOS_XR_ipv4_bgp_oper_43.hpp"
+#include "Cisco_IOS_XR_ipv4_bgp_oper_58.hpp"
 #include "Cisco_IOS_XR_ipv4_bgp_oper_60.hpp"
 
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_bgp_oper {
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::MvpnNbrAddr::Ipv6SrPolicyAddress : public ydk::Entity
-{
-    public:
-        Ipv6SrPolicyAddress();
-        ~Ipv6SrPolicyAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ipv6_srpolicy_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::MvpnNbrAddr::Ipv6SrPolicyAddress
-
-
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::MvpnNexthopAddr : public ydk::Entity
-{
-    public:
-        MvpnNexthopAddr();
-        ~MvpnNexthopAddr();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf afi; //type: BgpAfi
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv4_mcast_address; //type: string
-        ydk::YLeaf ipv4_label_address; //type: string
-        ydk::YLeaf ipv4_tunnel_address; //type: string
-        ydk::YLeaf ipv4_mdt_address; //type: string
-        ydk::YLeaf ipv4vpn_address; //type: string
-        ydk::YLeaf ipv4vpna_mcastddress; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-        ydk::YLeaf ipv6_mcast_address; //type: string
-        ydk::YLeaf ipv6_label_address; //type: string
-        ydk::YLeaf ipv6vpn_address; //type: string
-        ydk::YLeaf ipv6vpn_mcast_address; //type: string
-        ydk::YLeaf rt_constraint_address; //type: string
-        ydk::YLeaf ipv6mvpn_address; //type: string
-        ydk::YLeaf ipv4mvpn_address; //type: string
-        ydk::YLeaf l2vpn_evpn_address; //type: string
-        ydk::YLeaf ls_ls_address; //type: string
-        ydk::YLeaf ipv4_flowspec_address; //type: string
-        ydk::YLeaf ipv6_flowspec_address; //type: string
-        ydk::YLeaf ipv4vpn_flowspec_address; //type: string
-        ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::MvpnNexthopAddr::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::MvpnNexthopAddr::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::MvpnNexthopAddr::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::MvpnNexthopAddr::Ipv6SrPolicyAddress
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::MvpnNexthopAddr::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::MvpnNexthopAddr::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::MvpnNexthopAddr::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::MvpnNexthopAddr::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
-        
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::MvpnNexthopAddr
-
-
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::MvpnNexthopAddr::L2vpnVplsAddress : public ydk::Entity
-{
-    public:
-        L2vpnVplsAddress();
-        ~L2vpnVplsAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf l2vpn_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::MvpnNexthopAddr::L2vpnVplsAddress
-
-
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::MvpnNexthopAddr::L2vpnMspwAddress : public ydk::Entity
-{
-    public:
-        L2vpnMspwAddress();
-        ~L2vpnMspwAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf l2vpn_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::MvpnNexthopAddr::L2vpnMspwAddress
-
-
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::MvpnNexthopAddr::Ipv4SrPolicyAddress : public ydk::Entity
-{
-    public:
-        Ipv4SrPolicyAddress();
-        ~Ipv4SrPolicyAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ipv4_srpolicy_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::MvpnNexthopAddr::Ipv4SrPolicyAddress
-
-
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::MvpnNexthopAddr::Ipv6SrPolicyAddress : public ydk::Entity
-{
-    public:
-        Ipv6SrPolicyAddress();
-        ~Ipv6SrPolicyAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ipv6_srpolicy_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::MvpnNexthopAddr::Ipv6SrPolicyAddress
-
-
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::VpnNexthopAddr : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr : public ydk::Entity
 {
     public:
         VpnNexthopAddr();
@@ -212,20 +55,20 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf ipv6_flowspec_address; //type: string
         ydk::YLeaf ipv4vpn_flowspec_address; //type: string
         ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::VpnNexthopAddr::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::VpnNexthopAddr::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::VpnNexthopAddr::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::VpnNexthopAddr::Ipv6SrPolicyAddress
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::Ipv6SrPolicyAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::VpnNexthopAddr::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::VpnNexthopAddr::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::VpnNexthopAddr::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::VpnNexthopAddr::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::VpnNexthopAddr
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::VpnNexthopAddr::L2vpnVplsAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::L2vpnVplsAddress : public ydk::Entity
 {
     public:
         L2vpnVplsAddress();
@@ -243,10 +86,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::VpnNexthopAddr::L2vpnVplsAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::L2vpnVplsAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::VpnNexthopAddr::L2vpnMspwAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::L2vpnMspwAddress : public ydk::Entity
 {
     public:
         L2vpnMspwAddress();
@@ -264,10 +107,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::VpnNexthopAddr::L2vpnMspwAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::L2vpnMspwAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::VpnNexthopAddr::Ipv4SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::Ipv4SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv4SrPolicyAddress();
@@ -285,10 +128,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf ipv4_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::VpnNexthopAddr::Ipv4SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::Ipv4SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::VpnNexthopAddr::Ipv6SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::Ipv6SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv6SrPolicyAddress();
@@ -306,10 +149,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf ipv6_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::VpnNexthopAddr::Ipv6SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::VpnNexthopAddr::Ipv6SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::RcvdLabel : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::RcvdLabel : public ydk::Entity
 {
     public:
         RcvdLabel();
@@ -327,10 +170,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf entry; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::RcvdLabel
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::RcvdLabel
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::L2vpnCircuitStatusValue : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::L2vpnCircuitStatusValue : public ydk::Entity
 {
     public:
         L2vpnCircuitStatusValue();
@@ -348,10 +191,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::L2vpnCircuitStatusValue
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::L2vpnCircuitStatusValue
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::MvpnPmsiValue : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnPmsiValue : public ydk::Entity
 {
     public:
         MvpnPmsiValue();
@@ -369,10 +212,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::MvpnPmsiValue
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::MvpnPmsiValue
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::ExtendedCommunity : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::ExtendedCommunity : public ydk::Entity
 {
     public:
         ExtendedCommunity();
@@ -390,10 +233,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::ExtendedCommunity
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::ExtendedCommunity
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::LocalPeersAdvertisedTo : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo : public ydk::Entity
 {
     public:
         LocalPeersAdvertisedTo();
@@ -412,14 +255,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf is_neighbor; //type: boolean
         ydk::YLeaf update_group_afi; //type: uint8
         ydk::YLeaf update_group_number; //type: uint32
-        class NeighborAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::LocalPeersAdvertisedTo::NeighborAddress
+        class NeighborAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::LocalPeersAdvertisedTo::NeighborAddress> neighbor_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress> neighbor_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::LocalPeersAdvertisedTo
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::LocalPeersAdvertisedTo::NeighborAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress : public ydk::Entity
 {
     public:
         NeighborAddress();
@@ -457,20 +300,20 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf ipv6_flowspec_address; //type: string
         ydk::YLeaf ipv4vpn_flowspec_address; //type: string
         ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::LocalPeersAdvertisedTo::NeighborAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress : public ydk::Entity
 {
     public:
         L2vpnVplsAddress();
@@ -488,10 +331,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress : public ydk::Entity
 {
     public:
         L2vpnMspwAddress();
@@ -509,10 +352,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv4SrPolicyAddress();
@@ -530,10 +373,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf ipv4_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv6SrPolicyAddress();
@@ -551,10 +394,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf ipv6_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::LocalPeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::PePeersAdvertisedTo : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo : public ydk::Entity
 {
     public:
         PePeersAdvertisedTo();
@@ -573,14 +416,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf is_neighbor; //type: boolean
         ydk::YLeaf update_group_afi; //type: uint8
         ydk::YLeaf update_group_number; //type: uint32
-        class NeighborAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::PePeersAdvertisedTo::NeighborAddress
+        class NeighborAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::PePeersAdvertisedTo::NeighborAddress> neighbor_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress> neighbor_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::PePeersAdvertisedTo
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::PePeersAdvertisedTo::NeighborAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress : public ydk::Entity
 {
     public:
         NeighborAddress();
@@ -618,20 +461,20 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf ipv6_flowspec_address; //type: string
         ydk::YLeaf ipv4vpn_flowspec_address; //type: string
         ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::PePeersAdvertisedTo::NeighborAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress : public ydk::Entity
 {
     public:
         L2vpnVplsAddress();
@@ -649,10 +492,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnVplsAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress : public ydk::Entity
 {
     public:
         L2vpnMspwAddress();
@@ -670,10 +513,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::L2vpnMspwAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv4SrPolicyAddress();
@@ -691,10 +534,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf ipv4_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv4SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv6SrPolicyAddress();
@@ -712,10 +555,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf ipv6_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::PePeersAdvertisedTo::NeighborAddress::Ipv6SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::BestPathOrrBitfield : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield : public ydk::Entity
 {
     public:
         BestPathOrrBitfield();
@@ -734,14 +577,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf is_neighbor; //type: boolean
         ydk::YLeaf update_group_afi; //type: uint8
         ydk::YLeaf update_group_number; //type: uint32
-        class NeighborAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::BestPathOrrBitfield::NeighborAddress
+        class NeighborAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::BestPathOrrBitfield::NeighborAddress> neighbor_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress> neighbor_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::BestPathOrrBitfield
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::BestPathOrrBitfield::NeighborAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress : public ydk::Entity
 {
     public:
         NeighborAddress();
@@ -779,20 +622,20 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf ipv6_flowspec_address; //type: string
         ydk::YLeaf ipv4vpn_flowspec_address; //type: string
         ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::BestPathOrrBitfield::NeighborAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnVplsAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnVplsAddress : public ydk::Entity
 {
     public:
         L2vpnVplsAddress();
@@ -810,10 +653,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnVplsAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnVplsAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnMspwAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnMspwAddress : public ydk::Entity
 {
     public:
         L2vpnMspwAddress();
@@ -831,10 +674,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnMspwAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::L2vpnMspwAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv4SrPolicyAddress();
@@ -852,10 +695,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf ipv4_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv6SrPolicyAddress();
@@ -873,10 +716,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf ipv6_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::BestPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::AddPathOrrBitfield : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield : public ydk::Entity
 {
     public:
         AddPathOrrBitfield();
@@ -895,14 +738,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf is_neighbor; //type: boolean
         ydk::YLeaf update_group_afi; //type: uint8
         ydk::YLeaf update_group_number; //type: uint32
-        class NeighborAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::AddPathOrrBitfield::NeighborAddress
+        class NeighborAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::AddPathOrrBitfield::NeighborAddress> neighbor_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress> neighbor_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::AddPathOrrBitfield
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::AddPathOrrBitfield::NeighborAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress : public ydk::Entity
 {
     public:
         NeighborAddress();
@@ -940,20 +783,20 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf ipv6_flowspec_address; //type: string
         ydk::YLeaf ipv4vpn_flowspec_address; //type: string
         ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::AddPathOrrBitfield::NeighborAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnVplsAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnVplsAddress : public ydk::Entity
 {
     public:
         L2vpnVplsAddress();
@@ -971,10 +814,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnVplsAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnVplsAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnMspwAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnMspwAddress : public ydk::Entity
 {
     public:
         L2vpnMspwAddress();
@@ -992,10 +835,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnMspwAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::L2vpnMspwAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv4SrPolicyAddress();
@@ -1013,10 +856,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf ipv4_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv4SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv6SrPolicyAddress();
@@ -1034,10 +877,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf ipv6_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::PathInformation::AddPathOrrBitfield::NeighborAddress::Ipv6SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn : public ydk::Entity
 {
     public:
         AttributesAfterPolicyIn();
@@ -1076,20 +919,20 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf ribrnhip_table; //type: uint32
         ydk::YLeaf ribrnh_vni; //type: uint32
         ydk::YLeaf ribrnh_encap; //type: uint8
-        class CommonAttributes; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes
-        class AttrSet; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet
-        class RnhAddr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RnhAddr
-        class RibrnhIp; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RibrnhIp
+        class CommonAttributes; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes
+        class AttrSet; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet
+        class RnhAddr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RnhAddr
+        class RibrnhIp; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes> common_attributes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet> attr_set;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RnhAddr> rnh_addr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RibrnhIp> ribrnh_ip;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes> common_attributes;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet> attr_set;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RnhAddr> rnh_addr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp> ribrnh_ip;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes : public ydk::Entity
 {
     public:
         CommonAttributes();
@@ -1121,6 +964,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf is_pe_distinguisher_label_present; //type: boolean
         ydk::YLeaf is_ls_attribute_present; //type: boolean
         ydk::YLeaf is_label_index_present; //type: boolean
+        ydk::YLeaf is_prefix_sid_label_indexpresent; //type: boolean
+        ydk::YLeaf is_prefix_sid_orig_srg_bpresent; //type: boolean
+        ydk::YLeaf is_prefix_sids_rv6vpnsi_dpresent; //type: boolean
+        ydk::YLeaf is_prefix_sid_unk_tl_vspresent; //type: boolean
         ydk::YLeaf neighbor_as; //type: uint32
         ydk::YLeaf aggregator_as; //type: uint32
         ydk::YLeaf aggregator_address; //type: string
@@ -1138,21 +985,27 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf pmsi_label; //type: uint32
         ydk::YLeaf ppm_pvalue; //type: uint32
         ydk::YLeaf is_large_community_present; //type: boolean
-        class PrefixSidAttr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr
-        class TunnelEncap; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap
-        class Community; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::Community
-        class ExtendedCommunity; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity
-        class UnknownAttribute; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute
-        class Cluster; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::Cluster
-        class L2tpv3Cookie; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::L2tpv3Cookie
-        class ConnectorValue; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue
-        class PmsiValue; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::PmsiValue
-        class LsAttr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::LsAttr
-        class PeDistinguisherLabel; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel
-        class LargeCommunity; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::LargeCommunity
+        class PrefixSidLabelIndex; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidLabelIndex
+        class PrefixSidOrigSrgb; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidOrigSrgb
+        class PrefixSidsRv6vpnsid; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidsRv6vpnsid
+        class PrefixSidUnkTlVs; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidUnkTlVs
+        class TunnelEncap; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap
+        class Community; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::Community
+        class ExtendedCommunity; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity
+        class UnknownAttribute; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute
+        class Cluster; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::Cluster
+        class L2tpv3Cookie; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::L2tpv3Cookie
+        class ConnectorValue; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue
+        class PmsiValue; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PmsiValue
+        class LsAttr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::LsAttr
+        class PeDistinguisherLabel; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel
+        class LargeCommunity; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::LargeCommunity
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr> prefix_sid_attr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap> tunnel_encap;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidLabelIndex> prefix_sid_label_index;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidOrigSrgb> prefix_sid_orig_srgb;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidsRv6vpnsid> prefix_sids_rv6vpnsid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidUnkTlVs> prefix_sid_unk_tl_vs;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap> tunnel_encap;
         ydk::YList community;
         ydk::YList extended_community;
         ydk::YList unknown_attribute;
@@ -1164,14 +1017,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YList pe_distinguisher_label;
         ydk::YList large_community;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidLabelIndex : public ydk::Entity
 {
     public:
-        PrefixSidAttr();
-        ~PrefixSidAttr();
+        PrefixSidLabelIndex();
+        ~PrefixSidLabelIndex();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1183,18 +1036,43 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class PrefixSidTlv; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr::PrefixSidTlv
+        ydk::YLeaf reserved; //type: uint8
+        ydk::YLeaf flags; //type: uint16
+        ydk::YLeaf label_index; //type: uint32
 
-        ydk::YList prefix_sid_tlv;
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidLabelIndex
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidOrigSrgb : public ydk::Entity
+{
+    public:
+        PrefixSidOrigSrgb();
+        ~PrefixSidOrigSrgb();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf flags; //type: uint16
+        ydk::YLeaf range_count; //type: uint32
+        class Range; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidOrigSrgb::Range
+
+        ydk::YList range;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidOrigSrgb
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr::PrefixSidTlv : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidOrigSrgb::Range : public ydk::Entity
 {
     public:
-        PrefixSidTlv();
-        ~PrefixSidTlv();
+        Range();
+        ~Range();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1206,14 +1084,107 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf type; //type: BgpPrefixSid
-        ydk::YLeaf len; //type: uint16
-        ydk::YLeaf val; //type: string
+        ydk::YLeaf range_start; //type: uint32
+        ydk::YLeaf range_end; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::PrefixSidAttr::PrefixSidTlv
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidOrigSrgb::Range
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidsRv6vpnsid : public ydk::Entity
+{
+    public:
+        PrefixSidsRv6vpnsid();
+        ~PrefixSidsRv6vpnsid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf reserved; //type: uint8
+        ydk::YLeaf sid_count; //type: uint32
+        class Sid; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidsRv6vpnsid::Sid
+
+        ydk::YList sid;
+        
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidsRv6vpnsid
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidsRv6vpnsid::Sid : public ydk::Entity
+{
+    public:
+        Sid();
+        ~Sid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sid_type; //type: uint8
+        ydk::YLeaf sid_flags; //type: uint8
+        ydk::YLeaf sid_value; //type: string
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidsRv6vpnsid::Sid
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidUnkTlVs : public ydk::Entity
+{
+    public:
+        PrefixSidUnkTlVs();
+        ~PrefixSidUnkTlVs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf tlv_count; //type: uint16
+        ydk::YLeaf received_buffer_length; //type: uint32
+        class TlVsBuffer; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidUnkTlVs::TlVsBuffer
+
+        ydk::YList tl_vs_buffer;
+        
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidUnkTlVs
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidUnkTlVs::TlVsBuffer : public ydk::Entity
+{
+    public:
+        TlVsBuffer();
+        ~TlVsBuffer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PrefixSidUnkTlVs::TlVsBuffer
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap : public ydk::Entity
 {
     public:
         TunnelEncap();
@@ -1229,14 +1200,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SrPolicy; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy
+        class SrPolicy; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy> sr_policy;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy> sr_policy;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy : public ydk::Entity
 {
     public:
         SrPolicy();
@@ -1257,18 +1228,18 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf state; //type: boolean
         ydk::YLeaf request_state; //type: BgpSrpolicyReqState
         ydk::YLeaf usable; //type: boolean
-        class BindingSid; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid
-        class AllocatedBindingSid; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid
-        class SegmentList; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList
+        class BindingSid; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid
+        class AllocatedBindingSid; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid
+        class SegmentList; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid> binding_sid;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid> allocated_binding_sid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid> binding_sid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid> allocated_binding_sid;
         ydk::YList segment_list;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid : public ydk::Entity
 {
     public:
         BindingSid();
@@ -1288,10 +1259,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf ipv6_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::BindingSid
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid : public ydk::Entity
 {
     public:
         AllocatedBindingSid();
@@ -1311,10 +1282,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf ipv6_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::AllocatedBindingSid
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList : public ydk::Entity
 {
     public:
         SegmentList();
@@ -1331,14 +1302,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf weight; //type: uint8
-        class Segment; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment
+        class Segment; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment
 
         ydk::YList segment;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment : public ydk::Entity
 {
     public:
         Segment();
@@ -1359,10 +1330,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf ipv4_address; //type: string
         ydk::YLeaf ipv6_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::TunnelEncap::SrPolicy::SegmentList::Segment
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::Community : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::Community : public ydk::Entity
 {
     public:
         Community();
@@ -1380,10 +1351,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf entry; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::Community
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::Community
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity : public ydk::Entity
 {
     public:
         ExtendedCommunity();
@@ -1401,10 +1372,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::ExtendedCommunity
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute : public ydk::Entity
 {
     public:
         UnknownAttribute();
@@ -1422,10 +1393,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::UnknownAttribute
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::Cluster : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::Cluster : public ydk::Entity
 {
     public:
         Cluster();
@@ -1443,10 +1414,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf entry; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::Cluster
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::Cluster
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::L2tpv3Cookie : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::L2tpv3Cookie : public ydk::Entity
 {
     public:
         L2tpv3Cookie();
@@ -1464,10 +1435,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::L2tpv3Cookie
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::L2tpv3Cookie
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue : public ydk::Entity
 {
     public:
         ConnectorValue();
@@ -1485,10 +1456,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::ConnectorValue
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::PmsiValue : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PmsiValue : public ydk::Entity
 {
     public:
         PmsiValue();
@@ -1506,10 +1477,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::PmsiValue
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PmsiValue
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::LsAttr : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::LsAttr : public ydk::Entity
 {
     public:
         LsAttr();
@@ -1527,10 +1498,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::LsAttr
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::LsAttr
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel : public ydk::Entity
 {
     public:
         PeDistinguisherLabel();
@@ -1549,10 +1520,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf pe_address; //type: string
         ydk::YLeaf label; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::PeDistinguisherLabel
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::LargeCommunity : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::LargeCommunity : public ydk::Entity
 {
     public:
         LargeCommunity();
@@ -1572,10 +1543,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf local_data1; //type: uint32
         ydk::YLeaf local_data2; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::CommonAttributes::LargeCommunity
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::CommonAttributes::LargeCommunity
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet : public ydk::Entity
 {
     public:
         AttrSet();
@@ -1607,6 +1578,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf is_pe_distinguisher_label_present; //type: boolean
         ydk::YLeaf is_ls_attribute_present; //type: boolean
         ydk::YLeaf is_label_index_present; //type: boolean
+        ydk::YLeaf is_prefix_sid_label_indexpresent; //type: boolean
+        ydk::YLeaf is_prefix_sid_orig_srg_bpresent; //type: boolean
+        ydk::YLeaf is_prefix_sids_rv6vpnsi_dpresent; //type: boolean
+        ydk::YLeaf is_prefix_sid_unk_tl_vspresent; //type: boolean
         ydk::YLeaf neighbor_as; //type: uint32
         ydk::YLeaf aggregator_as; //type: uint32
         ydk::YLeaf aggregator_address; //type: string
@@ -1624,21 +1599,27 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf pmsi_label; //type: uint32
         ydk::YLeaf ppm_pvalue; //type: uint32
         ydk::YLeaf is_large_community_present; //type: boolean
-        class PrefixSidAttr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr
-        class TunnelEncap; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::TunnelEncap
-        class Community; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::Community
-        class ExtendedCommunity; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity
-        class UnknownAttribute; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::UnknownAttribute
-        class Cluster; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::Cluster
-        class L2tpv3Cookie; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::L2tpv3Cookie
-        class ConnectorValue; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::ConnectorValue
-        class PmsiValue; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::PmsiValue
-        class LsAttr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::LsAttr
-        class PeDistinguisherLabel; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel
-        class LargeCommunity; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::LargeCommunity
+        class PrefixSidLabelIndex; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidLabelIndex
+        class PrefixSidOrigSrgb; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidOrigSrgb
+        class PrefixSidsRv6vpnsid; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidsRv6vpnsid
+        class PrefixSidUnkTlVs; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidUnkTlVs
+        class TunnelEncap; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap
+        class Community; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::Community
+        class ExtendedCommunity; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity
+        class UnknownAttribute; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::UnknownAttribute
+        class Cluster; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::Cluster
+        class L2tpv3Cookie; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::L2tpv3Cookie
+        class ConnectorValue; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::ConnectorValue
+        class PmsiValue; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PmsiValue
+        class LsAttr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::LsAttr
+        class PeDistinguisherLabel; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel
+        class LargeCommunity; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::LargeCommunity
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr> prefix_sid_attr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::TunnelEncap> tunnel_encap;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidLabelIndex> prefix_sid_label_index;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidOrigSrgb> prefix_sid_orig_srgb;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidsRv6vpnsid> prefix_sids_rv6vpnsid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidUnkTlVs> prefix_sid_unk_tl_vs;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap> tunnel_encap;
         ydk::YList community;
         ydk::YList extended_community;
         ydk::YList unknown_attribute;
@@ -1650,14 +1631,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YList pe_distinguisher_label;
         ydk::YList large_community;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidLabelIndex : public ydk::Entity
 {
     public:
-        PrefixSidAttr();
-        ~PrefixSidAttr();
+        PrefixSidLabelIndex();
+        ~PrefixSidLabelIndex();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1669,18 +1650,43 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class PrefixSidTlv; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr::PrefixSidTlv
+        ydk::YLeaf reserved; //type: uint8
+        ydk::YLeaf flags; //type: uint16
+        ydk::YLeaf label_index; //type: uint32
 
-        ydk::YList prefix_sid_tlv;
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidLabelIndex
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidOrigSrgb : public ydk::Entity
+{
+    public:
+        PrefixSidOrigSrgb();
+        ~PrefixSidOrigSrgb();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf flags; //type: uint16
+        ydk::YLeaf range_count; //type: uint32
+        class Range; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidOrigSrgb::Range
+
+        ydk::YList range;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidOrigSrgb
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr::PrefixSidTlv : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidOrigSrgb::Range : public ydk::Entity
 {
     public:
-        PrefixSidTlv();
-        ~PrefixSidTlv();
+        Range();
+        ~Range();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1692,14 +1698,107 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf type; //type: BgpPrefixSid
-        ydk::YLeaf len; //type: uint16
-        ydk::YLeaf val; //type: string
+        ydk::YLeaf range_start; //type: uint32
+        ydk::YLeaf range_end; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::PrefixSidAttr::PrefixSidTlv
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidOrigSrgb::Range
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::TunnelEncap : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidsRv6vpnsid : public ydk::Entity
+{
+    public:
+        PrefixSidsRv6vpnsid();
+        ~PrefixSidsRv6vpnsid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf reserved; //type: uint8
+        ydk::YLeaf sid_count; //type: uint32
+        class Sid; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidsRv6vpnsid::Sid
+
+        ydk::YList sid;
+        
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidsRv6vpnsid
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidsRv6vpnsid::Sid : public ydk::Entity
+{
+    public:
+        Sid();
+        ~Sid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf sid_type; //type: uint8
+        ydk::YLeaf sid_flags; //type: uint8
+        ydk::YLeaf sid_value; //type: string
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidsRv6vpnsid::Sid
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidUnkTlVs : public ydk::Entity
+{
+    public:
+        PrefixSidUnkTlVs();
+        ~PrefixSidUnkTlVs();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf tlv_count; //type: uint16
+        ydk::YLeaf received_buffer_length; //type: uint32
+        class TlVsBuffer; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidUnkTlVs::TlVsBuffer
+
+        ydk::YList tl_vs_buffer;
+        
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidUnkTlVs
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidUnkTlVs::TlVsBuffer : public ydk::Entity
+{
+    public:
+        TlVsBuffer();
+        ~TlVsBuffer();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint8
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PrefixSidUnkTlVs::TlVsBuffer
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap : public ydk::Entity
 {
     public:
         TunnelEncap();
@@ -1715,14 +1814,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SrPolicy; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy
+        class SrPolicy; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy> sr_policy;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy> sr_policy;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::TunnelEncap
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy : public ydk::Entity
 {
     public:
         SrPolicy();
@@ -1743,18 +1842,18 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf state; //type: boolean
         ydk::YLeaf request_state; //type: BgpSrpolicyReqState
         ydk::YLeaf usable; //type: boolean
-        class BindingSid; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid
-        class AllocatedBindingSid; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid
-        class SegmentList; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList
+        class BindingSid; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid
+        class AllocatedBindingSid; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid
+        class SegmentList; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid> binding_sid;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid> allocated_binding_sid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid> binding_sid;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid> allocated_binding_sid;
         ydk::YList segment_list;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid : public ydk::Entity
 {
     public:
         BindingSid();
@@ -1774,10 +1873,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf ipv6_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::BindingSid
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid : public ydk::Entity
 {
     public:
         AllocatedBindingSid();
@@ -1797,10 +1896,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf label; //type: uint32
         ydk::YLeaf ipv6_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::AllocatedBindingSid
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList : public ydk::Entity
 {
     public:
         SegmentList();
@@ -1817,14 +1916,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf weight; //type: uint8
-        class Segment; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment
+        class Segment; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment
 
         ydk::YList segment;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment : public ydk::Entity
 {
     public:
         Segment();
@@ -1845,10 +1944,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf ipv4_address; //type: string
         ydk::YLeaf ipv6_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::TunnelEncap::SrPolicy::SegmentList::Segment
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::Community : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::Community : public ydk::Entity
 {
     public:
         Community();
@@ -1866,10 +1965,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf entry; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::Community
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::Community
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity : public ydk::Entity
 {
     public:
         ExtendedCommunity();
@@ -1887,10 +1986,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::ExtendedCommunity
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::UnknownAttribute : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::UnknownAttribute : public ydk::Entity
 {
     public:
         UnknownAttribute();
@@ -1908,10 +2007,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::UnknownAttribute
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::UnknownAttribute
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::Cluster : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::Cluster : public ydk::Entity
 {
     public:
         Cluster();
@@ -1929,10 +2028,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf entry; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::Cluster
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::Cluster
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::L2tpv3Cookie : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::L2tpv3Cookie : public ydk::Entity
 {
     public:
         L2tpv3Cookie();
@@ -1950,10 +2049,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::L2tpv3Cookie
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::L2tpv3Cookie
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::ConnectorValue : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::ConnectorValue : public ydk::Entity
 {
     public:
         ConnectorValue();
@@ -1971,10 +2070,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::ConnectorValue
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::ConnectorValue
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::PmsiValue : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PmsiValue : public ydk::Entity
 {
     public:
         PmsiValue();
@@ -1992,10 +2091,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::PmsiValue
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PmsiValue
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::LsAttr : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::LsAttr : public ydk::Entity
 {
     public:
         LsAttr();
@@ -2013,10 +2112,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf entry; //type: uint8
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::LsAttr
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::LsAttr
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel : public ydk::Entity
 {
     public:
         PeDistinguisherLabel();
@@ -2035,10 +2134,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf pe_address; //type: string
         ydk::YLeaf label; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::PeDistinguisherLabel
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::LargeCommunity : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::LargeCommunity : public ydk::Entity
 {
     public:
         LargeCommunity();
@@ -2058,10 +2157,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf local_data1; //type: uint32
         ydk::YLeaf local_data2; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::AttrSet::LargeCommunity
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::AttrSet::LargeCommunity
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RnhAddr : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RnhAddr : public ydk::Entity
 {
     public:
         RnhAddr();
@@ -2082,10 +2181,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf ipv6_address; //type: string
         ydk::YLeaf mac_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RnhAddr
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RnhAddr
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RibrnhIp : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp : public ydk::Entity
 {
     public:
         RibrnhIp();
@@ -2123,20 +2222,20 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf ipv6_flowspec_address; //type: string
         ydk::YLeaf ipv4vpn_flowspec_address; //type: string
         ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RibrnhIp
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress : public ydk::Entity
 {
     public:
         L2vpnVplsAddress();
@@ -2154,10 +2253,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::L2vpnVplsAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress : public ydk::Entity
 {
     public:
         L2vpnMspwAddress();
@@ -2175,10 +2274,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::L2vpnMspwAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv4SrPolicyAddress();
@@ -2196,10 +2295,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf ipv4_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::Ipv4SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv6SrPolicyAddress();
@@ -2217,14 +2316,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf ipv6_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActiveProcessInstancePath::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathUsedTable::Path::AttributesAfterPolicyIn::RibrnhIp::Ipv6SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric : public ydk::Entity
 {
     public:
-        LocalPathElement();
-        ~LocalPathElement();
+        BmpPathTableGeneric();
+        ~BmpPathTableGeneric();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2236,33 +2335,148 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf pelem_path_id; //type: uint32
-        ydk::YLeaf pelem_version; //type: uint32
-        ydk::YLeaf pelem_flags; //type: uint32
-        ydk::YLeaf pelem_gw_metric; //type: uint32
-        ydk::YLeaf pelem_path_flags; //type: uint64
-        ydk::YLeaf pelem_path_peer_path_id; //type: uint32
-        ydk::YLeaf pelem_table_attr_version; //type: uint32
-        ydk::YLeaf pelem_path_table_attr_version; //type: uint32
-        ydk::YLeaf pelem_no_bestpath_table_attr_version; //type: uint32
-        ydk::YLeaf pelem_no_addpath_table_attr_version; //type: uint32
-        ydk::YLeaf is_perm_path_pelem; //type: boolean
-        class PelemPathNexthop; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNexthop
-        class NhTunnel; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::NhTunnel
-        class PelemPathNeighborAddr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNeighborAddr
+        ydk::YLeaf bmp_route_monitoringe_enabled; //type: boolean
+        ydk::YLeaf bmp_table_version; //type: uint32
+        ydk::YLeaf network_count; //type: uint32
+        ydk::YLeaf path_count; //type: uint32
+        ydk::YLeaf bmp_version_wrapped; //type: uint32
+        ydk::YLeaf bmp_version_wrapped_tid; //type: uint32
+        ydk::YLeaf bmp_version_inprogress; //type: boolean
+        ydk::YLeaf bmp_version_incremented; //type: boolean
+        class BmpVersionWrapTimeSpec; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapTimeSpec
+        class BmpVersionWrapStartTimeSpec; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapStartTimeSpec
+        class BmpVersionWrapDoneTimeSpec; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapDoneTimeSpec
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNexthop> pelem_path_nexthop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::NhTunnel> nh_tunnel;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNeighborAddr> pelem_path_neighbor_addr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapTimeSpec> bmp_version_wrap_time_spec;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapStartTimeSpec> bmp_version_wrap_start_time_spec;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapDoneTimeSpec> bmp_version_wrap_done_time_spec;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNexthop : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapTimeSpec : public ydk::Entity
 {
     public:
-        PelemPathNexthop();
-        ~PelemPathNexthop();
+        BmpVersionWrapTimeSpec();
+        ~BmpVersionWrapTimeSpec();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapTimeSpec
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapStartTimeSpec : public ydk::Entity
+{
+    public:
+        BmpVersionWrapStartTimeSpec();
+        ~BmpVersionWrapStartTimeSpec();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapStartTimeSpec
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapDoneTimeSpec : public ydk::Entity
+{
+    public:
+        BmpVersionWrapDoneTimeSpec();
+        ~BmpVersionWrapDoneTimeSpec();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::BmpPathTableGeneric::BmpVersionWrapDoneTimeSpec
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets : public ydk::Entity
+{
+    public:
+        RpcSets();
+        ~RpcSets();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class RpcSet; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet
+
+        ydk::YList rpc_set;
+        
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet : public ydk::Entity
+{
+    public:
+        RpcSet();
+        ~RpcSet();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf rpc_set_index; //type: uint32
+        ydk::YLeaf next_hop_xr; //type: uint32
+        ydk::YLeaf label; //type: uint32
+        ydk::YLeaf ref_count; //type: uint32
+        ydk::YLeaf srv6sid_address; //type: string
+        ydk::YLeaf srv6sid_address_len; //type: uint32
+        class NextHop; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop
+
+        ydk::YList next_hop;
+        
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop : public ydk::Entity
+{
+    public:
+        NextHop();
+        ~NextHop();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2296,20 +2510,20 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         ydk::YLeaf ipv6_flowspec_address; //type: string
         ydk::YLeaf ipv4vpn_flowspec_address; //type: string
         ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNexthop::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNexthop::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNexthop::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNexthop::Ipv6SrPolicyAddress
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv6SrPolicyAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNexthop::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNexthop::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNexthop::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNexthop::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNexthop
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNexthop::L2vpnVplsAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnVplsAddress : public ydk::Entity
 {
     public:
         L2vpnVplsAddress();
@@ -2327,10 +2541,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNexthop::L2vpnVplsAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnVplsAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNexthop::L2vpnMspwAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnMspwAddress : public ydk::Entity
 {
     public:
         L2vpnMspwAddress();
@@ -2348,10 +2562,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNexthop::L2vpnMspwAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::L2vpnMspwAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNexthop::Ipv4SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv4SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv4SrPolicyAddress();
@@ -2369,10 +2583,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf ipv4_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNexthop::Ipv4SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv4SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNexthop::Ipv6SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv6SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv6SrPolicyAddress();
@@ -2390,14 +2604,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
 
         ydk::YLeaf ipv6_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNexthop::Ipv6SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::RpcSets::RpcSet::NextHop::Ipv6SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::NhTunnel : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo : public ydk::Entity
 {
     public:
-        NhTunnel();
-        ~NhTunnel();
+        GlobalAfProcessInfo();
+        ~GlobalAfProcessInfo();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2409,83 +2623,23 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf tunnel_type; //type: BgpTunnel
-        ydk::YLeaf tunnel_name; //type: string
-        ydk::YLeaf is_tunnel_up; //type: boolean
-        ydk::YLeaf is_tunnel_info_stale; //type: boolean
-        ydk::YLeaf is_tunnel_registered; //type: boolean
-        ydk::YLeaf is_bgp_te_registered; //type: boolean
-        ydk::YLeaf tunnel_v6_required; //type: boolean
-        ydk::YLeaf tunnel_v6_enabled; //type: boolean
-        ydk::YLeaf tunnel_notif_first_rcvd; //type: boolean
-        ydk::YLeaf tunnel_state_skip_reg; //type: boolean
-        ydk::YLeaf binding_label; //type: uint32
-        ydk::YLeaf tunnel_if_handle; //type: uint32
-        ydk::YLeaf last_tunnel_update; //type: uint32
-        ydk::YLeaf tunnel_color; //type: uint32
-        ydk::YLeaf is_tunnel_color_only; //type: boolean
-        ydk::YLeaf tunnel_endpoint_afi; //type: BgpAfi
-        ydk::YLeaf flags; //type: uint32
+        ydk::YLeaf vrf_name; //type: string
+        ydk::YLeaf af_name; //type: BgpAfi
+        ydk::YLeaf is_nsr_enabled; //type: boolean
+        class Global; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global
+        class Vrf; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Vrf
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::NhTunnel
-
-
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNeighborAddr : public ydk::Entity
-{
-    public:
-        PelemPathNeighborAddr();
-        ~PelemPathNeighborAddr();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf afi; //type: BgpAfi
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv4_mcast_address; //type: string
-        ydk::YLeaf ipv4_label_address; //type: string
-        ydk::YLeaf ipv4_tunnel_address; //type: string
-        ydk::YLeaf ipv4_mdt_address; //type: string
-        ydk::YLeaf ipv4vpn_address; //type: string
-        ydk::YLeaf ipv4vpna_mcastddress; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-        ydk::YLeaf ipv6_mcast_address; //type: string
-        ydk::YLeaf ipv6_label_address; //type: string
-        ydk::YLeaf ipv6vpn_address; //type: string
-        ydk::YLeaf ipv6vpn_mcast_address; //type: string
-        ydk::YLeaf rt_constraint_address; //type: string
-        ydk::YLeaf ipv6mvpn_address; //type: string
-        ydk::YLeaf ipv4mvpn_address; //type: string
-        ydk::YLeaf l2vpn_evpn_address; //type: string
-        ydk::YLeaf ls_ls_address; //type: string
-        ydk::YLeaf ipv4_flowspec_address; //type: string
-        ydk::YLeaf ipv6_flowspec_address; //type: string
-        ydk::YLeaf ipv4vpn_flowspec_address; //type: string
-        ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNeighborAddr::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNeighborAddr::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNeighborAddr::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNeighborAddr::Ipv6SrPolicyAddress
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNeighborAddr::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNeighborAddr::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNeighborAddr::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNeighborAddr::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global> global;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Vrf> vrf;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNeighborAddr
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNeighborAddr::L2vpnVplsAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global : public ydk::Entity
 {
     public:
-        L2vpnVplsAddress();
-        ~L2vpnVplsAddress();
+        Global();
+        ~Global();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2497,117 +2651,54 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf l2vpn_address; //type: string
+        ydk::YLeaf scanner_period; //type: uint16
+        ydk::YLeaf nh_tunnel_version; //type: uint32
+        ydk::YLeaf scan_prefixes; //type: uint32
+        ydk::YLeaf scan_segment_prefixes; //type: uint32
+        ydk::YLeaf scan_segments; //type: uint8
+        ydk::YLeaf inter_as_install_enabled; //type: boolean
+        ydk::YLeaf global_mcast_enabled; //type: boolean
+        ydk::YLeaf segmented_mcast_enabled; //type: boolean
+        ydk::YLeaf gblafrpki_disable; //type: boolean
+        ydk::YLeaf gblafrpki_use_validity; //type: boolean
+        ydk::YLeaf gblafrpki_allow_invalid; //type: boolean
+        ydk::YLeaf gblafrpki_signal_ibgp; //type: boolean
+        ydk::YLeaf update_wait_install_enabled; //type: boolean
+        ydk::YLeaf rib_ack_requests; //type: uint32
+        ydk::YLeaf rib_acks_received; //type: uint32
+        ydk::YLeaf rib_slow_acks; //type: uint32
+        ydk::YLeaf is_perm_net_cfg; //type: boolean
+        ydk::YLeaf perm_net_del_count; //type: uint16
+        ydk::YLeaf perm_net_stale_del_count; //type: uint16
+        ydk::YLeaf perm_net_stale_mark_count; //type: uint16
+        ydk::YLeaf perm_net_insert_count; //type: uint16
+        ydk::YLeaf perm_net_existing_count; //type: uint16
+        ydk::YLeaf perm_net_rpl_query_count; //type: uint16
+        ydk::YLeaf perm_net_rpl_process_count; //type: uint16
+        ydk::YLeaf perm_nbr_count; //type: uint16
+        ydk::YLeaf rib_perm_pelem_not_found_count; //type: uint16
+        ydk::YLeaf rib_perm_path_not_found_count; //type: uint16
+        ydk::YLeaf rib_perm_pelem_found_count; //type: uint16
+        ydk::YLeaf rib_reg_path_found_count; //type: uint16
+        ydk::YLeaf rib_perm_path_found_count; //type: uint16
+        ydk::YLeaf perm_pelem_free_count; //type: uint16
+        ydk::YLeaf perm_path_refresh_count; //type: uint16
+        ydk::YLeaf perm_pelem_bump_count; //type: uint16
+        ydk::YLeaf perm_pelem_all_bump_count; //type: uint16
+        class RibInstall; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall
+        class SyncgrpVersion; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::SyncgrpVersion
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNeighborAddr::L2vpnVplsAddress
-
-
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNeighborAddr::L2vpnMspwAddress : public ydk::Entity
-{
-    public:
-        L2vpnMspwAddress();
-        ~L2vpnMspwAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf l2vpn_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNeighborAddr::L2vpnMspwAddress
-
-
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNeighborAddr::Ipv4SrPolicyAddress : public ydk::Entity
-{
-    public:
-        Ipv4SrPolicyAddress();
-        ~Ipv4SrPolicyAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ipv4_srpolicy_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNeighborAddr::Ipv4SrPolicyAddress
-
-
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNeighborAddr::Ipv6SrPolicyAddress : public ydk::Entity
-{
-    public:
-        Ipv6SrPolicyAddress();
-        ~Ipv6SrPolicyAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ipv6_srpolicy_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::LocalPathElement::PelemPathNeighborAddr::Ipv6SrPolicyAddress
-
-
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement : public ydk::Entity
-{
-    public:
-        ActivePathElement();
-        ~ActivePathElement();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf pelem_path_id; //type: uint32
-        ydk::YLeaf pelem_version; //type: uint32
-        ydk::YLeaf pelem_flags; //type: uint32
-        ydk::YLeaf pelem_gw_metric; //type: uint32
-        ydk::YLeaf pelem_path_flags; //type: uint64
-        ydk::YLeaf pelem_path_peer_path_id; //type: uint32
-        ydk::YLeaf pelem_table_attr_version; //type: uint32
-        ydk::YLeaf pelem_path_table_attr_version; //type: uint32
-        ydk::YLeaf pelem_no_bestpath_table_attr_version; //type: uint32
-        ydk::YLeaf pelem_no_addpath_table_attr_version; //type: uint32
-        ydk::YLeaf is_perm_path_pelem; //type: boolean
-        class PelemPathNexthop; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNexthop
-        class NhTunnel; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::NhTunnel
-        class PelemPathNeighborAddr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNeighborAddr
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNexthop> pelem_path_nexthop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::NhTunnel> nh_tunnel;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNeighborAddr> pelem_path_neighbor_addr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall> rib_install;
+        ydk::YList syncgrp_version;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNexthop : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall : public ydk::Entity
 {
     public:
-        PelemPathNexthop();
-        ~PelemPathNexthop();
+        RibInstall();
+        ~RibInstall();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2619,46 +2710,26 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf afi; //type: BgpAfi
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv4_mcast_address; //type: string
-        ydk::YLeaf ipv4_label_address; //type: string
-        ydk::YLeaf ipv4_tunnel_address; //type: string
-        ydk::YLeaf ipv4_mdt_address; //type: string
-        ydk::YLeaf ipv4vpn_address; //type: string
-        ydk::YLeaf ipv4vpna_mcastddress; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-        ydk::YLeaf ipv6_mcast_address; //type: string
-        ydk::YLeaf ipv6_label_address; //type: string
-        ydk::YLeaf ipv6vpn_address; //type: string
-        ydk::YLeaf ipv6vpn_mcast_address; //type: string
-        ydk::YLeaf rt_constraint_address; //type: string
-        ydk::YLeaf ipv6mvpn_address; //type: string
-        ydk::YLeaf ipv4mvpn_address; //type: string
-        ydk::YLeaf l2vpn_evpn_address; //type: string
-        ydk::YLeaf ls_ls_address; //type: string
-        ydk::YLeaf ipv4_flowspec_address; //type: string
-        ydk::YLeaf ipv6_flowspec_address; //type: string
-        ydk::YLeaf ipv4vpn_flowspec_address; //type: string
-        ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNexthop::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNexthop::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNexthop::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNexthop::Ipv6SrPolicyAddress
+        ydk::YLeaf installed_count; //type: uint32
+        ydk::YLeaf modified_count; //type: uint32
+        ydk::YLeaf skipped_count; //type: uint32
+        ydk::YLeaf withdrawn_count; //type: uint32
+        ydk::YLeaf start_version; //type: uint32
+        ydk::YLeaf target_version; //type: uint32
+        class UpdateTime; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::UpdateTime
+        class InstallTime; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::InstallTime
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNexthop::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNexthop::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNexthop::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNexthop::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::UpdateTime> update_time;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::InstallTime> install_time;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNexthop
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNexthop::L2vpnVplsAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::UpdateTime : public ydk::Entity
 {
     public:
-        L2vpnVplsAddress();
-        ~L2vpnVplsAddress();
+        UpdateTime();
+        ~UpdateTime();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2670,16 +2741,17 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf l2vpn_address; //type: string
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNexthop::L2vpnVplsAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::UpdateTime
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNexthop::L2vpnMspwAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::InstallTime : public ydk::Entity
 {
     public:
-        L2vpnMspwAddress();
-        ~L2vpnMspwAddress();
+        InstallTime();
+        ~InstallTime();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2691,16 +2763,17 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf l2vpn_address; //type: string
+        ydk::YLeaf seconds; //type: uint32
+        ydk::YLeaf nanoseconds; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNexthop::L2vpnMspwAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::RibInstall::InstallTime
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNexthop::Ipv4SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::SyncgrpVersion : public ydk::Entity
 {
     public:
-        Ipv4SrPolicyAddress();
-        ~Ipv4SrPolicyAddress();
+        SyncgrpVersion();
+        ~SyncgrpVersion();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2712,16 +2785,16 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ipv4_srpolicy_address; //type: string
+        ydk::YLeaf entry; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNexthop::Ipv4SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Global::SyncgrpVersion
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNexthop::Ipv6SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Vrf : public ydk::Entity
 {
     public:
-        Ipv6SrPolicyAddress();
-        ~Ipv6SrPolicyAddress();
+        Vrf();
+        ~Vrf();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2733,16 +2806,44 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ipv6_srpolicy_address; //type: string
+        ydk::YLeaf table_is_active; //type: boolean
+        ydk::YLeaf table_id; //type: uint32
+        ydk::YLeaf def_orig_enabled; //type: boolean
+        ydk::YLeaf table_version; //type: uint32
+        ydk::YLeaf rd_version; //type: uint32
+        ydk::YLeaf rib_version; //type: uint32
+        ydk::YLeaf nsr_conv_version; //type: uint32
+        ydk::YLeaf nsr_is_conv; //type: boolean
+        ydk::YLeaf client_reflection_enabled; //type: boolean
+        ydk::YLeaf dampening_enabled; //type: boolean
+        ydk::YLeaf ebgp_distance; //type: uint16
+        ydk::YLeaf ibgp_distance; //type: uint16
+        ydk::YLeaf aggregates_distance; //type: uint16
+        ydk::YLeaf dynamic_med_enabled; //type: boolean
+        ydk::YLeaf dynamic_med_interval; //type: uint16
+        ydk::YLeaf dynamic_med_timer_running; //type: boolean
+        ydk::YLeaf dynamic_med_timer_value; //type: uint16
+        ydk::YLeaf dynamic_med_periodic_timer_running; //type: boolean
+        ydk::YLeaf dynamic_med_periodic_timer_value; //type: uint16
+        ydk::YLeaf rib_has_converged; //type: boolean
+        ydk::YLeaf rib_convergence_version; //type: uint32
+        ydk::YLeaf is_rib_table_full; //type: boolean
+        ydk::YLeaf rib_table_full_version; //type: uint32
+        ydk::YLeaf nexthop_resolution_minimum_prefix_length_configured; //type: boolean
+        ydk::YLeaf nexthop_resolution_minimum_prefix_length; //type: uint32
+        ydk::YLeaf selective_ebgp_multipath_enabled; //type: boolean
+        ydk::YLeaf selective_ibgp_multipath_enabled; //type: boolean
+        ydk::YLeaf selective_eibgp_multipath_enabled; //type: boolean
+        ydk::YLeaf rib_acked_table_version; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNexthop::Ipv6SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::GlobalAfProcessInfo::Vrf
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::NhTunnel : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr : public ydk::Entity
 {
     public:
-        NhTunnel();
-        ~NhTunnel();
+        AdvertisedPathXr();
+        ~AdvertisedPathXr();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2754,190 +2855,18 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf tunnel_type; //type: BgpTunnel
-        ydk::YLeaf tunnel_name; //type: string
-        ydk::YLeaf is_tunnel_up; //type: boolean
-        ydk::YLeaf is_tunnel_info_stale; //type: boolean
-        ydk::YLeaf is_tunnel_registered; //type: boolean
-        ydk::YLeaf is_bgp_te_registered; //type: boolean
-        ydk::YLeaf tunnel_v6_required; //type: boolean
-        ydk::YLeaf tunnel_v6_enabled; //type: boolean
-        ydk::YLeaf tunnel_notif_first_rcvd; //type: boolean
-        ydk::YLeaf tunnel_state_skip_reg; //type: boolean
-        ydk::YLeaf binding_label; //type: uint32
-        ydk::YLeaf tunnel_if_handle; //type: uint32
-        ydk::YLeaf last_tunnel_update; //type: uint32
-        ydk::YLeaf tunnel_color; //type: uint32
-        ydk::YLeaf is_tunnel_color_only; //type: boolean
-        ydk::YLeaf tunnel_endpoint_afi; //type: BgpAfi
-        ydk::YLeaf flags; //type: uint32
+        class AdvertisedPath; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::NhTunnel
-
-
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNeighborAddr : public ydk::Entity
-{
-    public:
-        PelemPathNeighborAddr();
-        ~PelemPathNeighborAddr();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf afi; //type: BgpAfi
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv4_mcast_address; //type: string
-        ydk::YLeaf ipv4_label_address; //type: string
-        ydk::YLeaf ipv4_tunnel_address; //type: string
-        ydk::YLeaf ipv4_mdt_address; //type: string
-        ydk::YLeaf ipv4vpn_address; //type: string
-        ydk::YLeaf ipv4vpna_mcastddress; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-        ydk::YLeaf ipv6_mcast_address; //type: string
-        ydk::YLeaf ipv6_label_address; //type: string
-        ydk::YLeaf ipv6vpn_address; //type: string
-        ydk::YLeaf ipv6vpn_mcast_address; //type: string
-        ydk::YLeaf rt_constraint_address; //type: string
-        ydk::YLeaf ipv6mvpn_address; //type: string
-        ydk::YLeaf ipv4mvpn_address; //type: string
-        ydk::YLeaf l2vpn_evpn_address; //type: string
-        ydk::YLeaf ls_ls_address; //type: string
-        ydk::YLeaf ipv4_flowspec_address; //type: string
-        ydk::YLeaf ipv6_flowspec_address; //type: string
-        ydk::YLeaf ipv4vpn_flowspec_address; //type: string
-        ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNeighborAddr::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNeighborAddr::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNeighborAddr::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNeighborAddr::Ipv6SrPolicyAddress
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNeighborAddr::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNeighborAddr::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNeighborAddr::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNeighborAddr::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        ydk::YList advertised_path;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNeighborAddr
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNeighborAddr::L2vpnVplsAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath : public ydk::Entity
 {
     public:
-        L2vpnVplsAddress();
-        ~L2vpnVplsAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf l2vpn_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNeighborAddr::L2vpnVplsAddress
-
-
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNeighborAddr::L2vpnMspwAddress : public ydk::Entity
-{
-    public:
-        L2vpnMspwAddress();
-        ~L2vpnMspwAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf l2vpn_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNeighborAddr::L2vpnMspwAddress
-
-
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNeighborAddr::Ipv4SrPolicyAddress : public ydk::Entity
-{
-    public:
-        Ipv4SrPolicyAddress();
-        ~Ipv4SrPolicyAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ipv4_srpolicy_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNeighborAddr::Ipv4SrPolicyAddress
-
-
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNeighborAddr::Ipv6SrPolicyAddress : public ydk::Entity
-{
-    public:
-        Ipv6SrPolicyAddress();
-        ~Ipv6SrPolicyAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf ipv6_srpolicy_address; //type: string
-
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::Networks::Network::ActivePathElement::PelemPathNeighborAddr::Ipv6SrPolicyAddress
-
-
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable : public ydk::Entity
-{
-    public:
-        PathTable();
-        ~PathTable();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class Path; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path
-
-        ydk::YList path;
-        
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable
-
-
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path : public ydk::Entity
-{
-    public:
-        Path();
-        ~Path();
+        AdvertisedPath();
+        ~AdvertisedPath();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2953,10 +2882,6 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
         ydk::YLeaf network; //type: string
         ydk::YLeaf prefix_length; //type: uint32
         ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf route_type; //type: BgpRoute
-        ydk::YLeaf source_rd; //type: string
-        ydk::YLeaf orig_source_rd; //type: string
-        ydk::YLeaf path_id; //type: uint32
         ydk::YLeaf no_path; //type: boolean
         ydk::YLeaf af_name; //type: BgpAfi
         ydk::YLeaf process_instance_id; //type: uint8
@@ -2970,18 +2895,18 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
         ydk::YLeaf vrf_name; //type: string
         ydk::YLeaf source_vrf_name; //type: string
         ydk::YLeaf srcaf_name; //type: BgpAfi
-        class AdvertisedNeighbor; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::AdvertisedNeighbor
-        class PathInformation; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation
-        class AttributesAfterPolicyIn; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::AttributesAfterPolicyIn
+        class AdvertisedNeighbor; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor
+        class PathInformation; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation
+        class AttributesAfterPolicyIn; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::AdvertisedNeighbor> advertised_neighbor;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation> path_information;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::AttributesAfterPolicyIn> attributes_after_policy_in;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor> advertised_neighbor;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation> path_information;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AttributesAfterPolicyIn> attributes_after_policy_in;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::AdvertisedNeighbor : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor : public ydk::Entity
 {
     public:
         AdvertisedNeighbor();
@@ -3019,20 +2944,20 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
         ydk::YLeaf ipv6_flowspec_address; //type: string
         ydk::YLeaf ipv4vpn_flowspec_address; //type: string
         ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::AdvertisedNeighbor::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::AdvertisedNeighbor::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::AdvertisedNeighbor::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::AdvertisedNeighbor::Ipv6SrPolicyAddress
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv6SrPolicyAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::AdvertisedNeighbor::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::AdvertisedNeighbor::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::AdvertisedNeighbor::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::AdvertisedNeighbor::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::AdvertisedNeighbor
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::AdvertisedNeighbor::L2vpnVplsAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnVplsAddress : public ydk::Entity
 {
     public:
         L2vpnVplsAddress();
@@ -3050,10 +2975,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::AdvertisedNeighbor::L2vpnVplsAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnVplsAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::AdvertisedNeighbor::L2vpnMspwAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnMspwAddress : public ydk::Entity
 {
     public:
         L2vpnMspwAddress();
@@ -3071,10 +2996,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::AdvertisedNeighbor::L2vpnMspwAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::L2vpnMspwAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::AdvertisedNeighbor::Ipv4SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv4SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv4SrPolicyAddress();
@@ -3092,10 +3017,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf ipv4_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::AdvertisedNeighbor::Ipv4SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv4SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::AdvertisedNeighbor::Ipv6SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv6SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv6SrPolicyAddress();
@@ -3113,10 +3038,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf ipv6_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::AdvertisedNeighbor::Ipv6SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::AdvertisedNeighbor::Ipv6SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation : public ydk::Entity
 {
     public:
         PathInformation();
@@ -3177,6 +3102,7 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
         ydk::YLeaf has_mdt_group_addr; //type: boolean
         ydk::YLeaf l2vpn_size; //type: uint32
         ydk::YLeaf l2vpn_evpn_esi; //type: string
+        ydk::YLeaf evpn_path_flags; //type: uint32
         ydk::YLeaf has_gw_addr; //type: boolean
         ydk::YLeaf has_nh_addr; //type: boolean
         ydk::YLeaf has_second_label; //type: boolean
@@ -3230,37 +3156,38 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
         ydk::YLeaf route_distinguisher; //type: string
         ydk::YLeaf mac_ip_present; //type: boolean
         ydk::YLeaf mac_ip; //type: string
-        class BgpPrefix; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix
-        class NeighborAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NeighborAddress
-        class NextHop; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NextHop
-        class NhTunnel; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NhTunnel
-        class MdtGroupAddr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MdtGroupAddr
-        class GwAddr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::GwAddr
-        class NhAddr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NhAddr
-        class BestPathCompWinner; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BestPathCompWinner
-        class MvpnNbrAddr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnNbrAddr
-        class MvpnNexthopAddr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnNexthopAddr
-        class VpnNexthopAddr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::VpnNexthopAddr
-        class RcvdLabel; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::RcvdLabel
-        class L2vpnCircuitStatusValue; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::L2vpnCircuitStatusValue
-        class MvpnPmsiValue; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnPmsiValue
-        class ExtendedCommunity; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::ExtendedCommunity
-        class LocalPeersAdvertisedTo; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::LocalPeersAdvertisedTo
-        class PePeersAdvertisedTo; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::PePeersAdvertisedTo
-        class BestPathOrrBitfield; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BestPathOrrBitfield
-        class AddPathOrrBitfield; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::AddPathOrrBitfield
+        ydk::YLeaf ether_tag_id; //type: uint32
+        class BgpPrefix; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix
+        class NeighborAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NeighborAddress
+        class NextHop; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NextHop
+        class NhTunnel; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NhTunnel
+        class MdtGroupAddr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MdtGroupAddr
+        class GwAddr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::GwAddr
+        class NhAddr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NhAddr
+        class BestPathCompWinner; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathCompWinner
+        class MvpnNbrAddr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNbrAddr
+        class MvpnNexthopAddr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNexthopAddr
+        class VpnNexthopAddr; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::VpnNexthopAddr
+        class RcvdLabel; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::RcvdLabel
+        class L2vpnCircuitStatusValue; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::L2vpnCircuitStatusValue
+        class MvpnPmsiValue; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnPmsiValue
+        class ExtendedCommunity; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::ExtendedCommunity
+        class LocalPeersAdvertisedTo; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::LocalPeersAdvertisedTo
+        class PePeersAdvertisedTo; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::PePeersAdvertisedTo
+        class BestPathOrrBitfield; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathOrrBitfield
+        class AddPathOrrBitfield; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::AddPathOrrBitfield
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix> bgp_prefix;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NeighborAddress> neighbor_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NextHop> next_hop;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NhTunnel> nh_tunnel;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MdtGroupAddr> mdt_group_addr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::GwAddr> gw_addr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NhAddr> nh_addr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BestPathCompWinner> best_path_comp_winner;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnNbrAddr> mvpn_nbr_addr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnNexthopAddr> mvpn_nexthop_addr;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::VpnNexthopAddr> vpn_nexthop_addr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix> bgp_prefix;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NeighborAddress> neighbor_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NextHop> next_hop;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NhTunnel> nh_tunnel;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MdtGroupAddr> mdt_group_addr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::GwAddr> gw_addr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NhAddr> nh_addr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathCompWinner> best_path_comp_winner;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNbrAddr> mvpn_nbr_addr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNexthopAddr> mvpn_nexthop_addr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::VpnNexthopAddr> vpn_nexthop_addr;
         ydk::YList rcvd_label;
         ydk::YList l2vpn_circuit_status_value;
         ydk::YList mvpn_pmsi_value;
@@ -3270,10 +3197,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
         ydk::YList best_path_orr_bitfield;
         ydk::YList add_path_orr_bitfield;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix : public ydk::Entity
 {
     public:
         BgpPrefix();
@@ -3290,14 +3217,14 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf prefix_length; //type: uint16
-        class Prefix; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix::Prefix
+        class Prefix; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix::Prefix> prefix;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix> prefix;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix::Prefix : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix : public ydk::Entity
 {
     public:
         Prefix();
@@ -3335,20 +3262,20 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
         ydk::YLeaf ipv6_flowspec_address; //type: string
         ydk::YLeaf ipv4vpn_flowspec_address; //type: string
         ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix::Prefix::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix::Prefix::Ipv6SrPolicyAddress
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::Ipv6SrPolicyAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix::Prefix::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix::Prefix::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix::Prefix
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress : public ydk::Entity
 {
     public:
         L2vpnVplsAddress();
@@ -3366,10 +3293,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnVplsAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress : public ydk::Entity
 {
     public:
         L2vpnMspwAddress();
@@ -3387,10 +3314,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::L2vpnMspwAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix::Prefix::Ipv4SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::Ipv4SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv4SrPolicyAddress();
@@ -3408,10 +3335,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf ipv4_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix::Prefix::Ipv4SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::Ipv4SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix::Prefix::Ipv6SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::Ipv6SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv6SrPolicyAddress();
@@ -3429,10 +3356,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf ipv6_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BgpPrefix::Prefix::Ipv6SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BgpPrefix::Prefix::Ipv6SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NeighborAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NeighborAddress : public ydk::Entity
 {
     public:
         NeighborAddress();
@@ -3470,20 +3397,20 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
         ydk::YLeaf ipv6_flowspec_address; //type: string
         ydk::YLeaf ipv4vpn_flowspec_address; //type: string
         ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NeighborAddress::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NeighborAddress::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NeighborAddress::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NeighborAddress::Ipv6SrPolicyAddress
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NeighborAddress::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NeighborAddress::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NeighborAddress::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NeighborAddress::Ipv6SrPolicyAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NeighborAddress::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NeighborAddress::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NeighborAddress::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NeighborAddress::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NeighborAddress::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NeighborAddress::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NeighborAddress::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NeighborAddress::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NeighborAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NeighborAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NeighborAddress::L2vpnVplsAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NeighborAddress::L2vpnVplsAddress : public ydk::Entity
 {
     public:
         L2vpnVplsAddress();
@@ -3501,10 +3428,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NeighborAddress::L2vpnVplsAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NeighborAddress::L2vpnVplsAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NeighborAddress::L2vpnMspwAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NeighborAddress::L2vpnMspwAddress : public ydk::Entity
 {
     public:
         L2vpnMspwAddress();
@@ -3522,10 +3449,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NeighborAddress::L2vpnMspwAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NeighborAddress::L2vpnMspwAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NeighborAddress::Ipv4SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NeighborAddress::Ipv4SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv4SrPolicyAddress();
@@ -3543,10 +3470,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf ipv4_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NeighborAddress::Ipv4SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NeighborAddress::Ipv4SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NeighborAddress::Ipv6SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NeighborAddress::Ipv6SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv6SrPolicyAddress();
@@ -3564,10 +3491,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf ipv6_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NeighborAddress::Ipv6SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NeighborAddress::Ipv6SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NextHop : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NextHop : public ydk::Entity
 {
     public:
         NextHop();
@@ -3605,20 +3532,20 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
         ydk::YLeaf ipv6_flowspec_address; //type: string
         ydk::YLeaf ipv4vpn_flowspec_address; //type: string
         ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NextHop::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NextHop::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NextHop::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NextHop::Ipv6SrPolicyAddress
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NextHop::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NextHop::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NextHop::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NextHop::Ipv6SrPolicyAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NextHop::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NextHop::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NextHop::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NextHop::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NextHop::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NextHop::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NextHop::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NextHop::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NextHop
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NextHop
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NextHop::L2vpnVplsAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NextHop::L2vpnVplsAddress : public ydk::Entity
 {
     public:
         L2vpnVplsAddress();
@@ -3636,10 +3563,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NextHop::L2vpnVplsAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NextHop::L2vpnVplsAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NextHop::L2vpnMspwAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NextHop::L2vpnMspwAddress : public ydk::Entity
 {
     public:
         L2vpnMspwAddress();
@@ -3657,10 +3584,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NextHop::L2vpnMspwAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NextHop::L2vpnMspwAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NextHop::Ipv4SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NextHop::Ipv4SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv4SrPolicyAddress();
@@ -3678,10 +3605,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf ipv4_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NextHop::Ipv4SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NextHop::Ipv4SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NextHop::Ipv6SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NextHop::Ipv6SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv6SrPolicyAddress();
@@ -3699,10 +3626,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf ipv6_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NextHop::Ipv6SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NextHop::Ipv6SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NhTunnel : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NhTunnel : public ydk::Entity
 {
     public:
         NhTunnel();
@@ -3736,10 +3663,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
         ydk::YLeaf tunnel_endpoint_afi; //type: BgpAfi
         ydk::YLeaf flags; //type: uint32
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NhTunnel
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NhTunnel
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MdtGroupAddr : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MdtGroupAddr : public ydk::Entity
 {
     public:
         MdtGroupAddr();
@@ -3777,20 +3704,20 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
         ydk::YLeaf ipv6_flowspec_address; //type: string
         ydk::YLeaf ipv4vpn_flowspec_address; //type: string
         ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MdtGroupAddr::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MdtGroupAddr::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MdtGroupAddr::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MdtGroupAddr::Ipv6SrPolicyAddress
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MdtGroupAddr::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MdtGroupAddr::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MdtGroupAddr::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MdtGroupAddr::Ipv6SrPolicyAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MdtGroupAddr::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MdtGroupAddr::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MdtGroupAddr::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MdtGroupAddr::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MdtGroupAddr::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MdtGroupAddr::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MdtGroupAddr::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MdtGroupAddr::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MdtGroupAddr
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MdtGroupAddr
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MdtGroupAddr::L2vpnVplsAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MdtGroupAddr::L2vpnVplsAddress : public ydk::Entity
 {
     public:
         L2vpnVplsAddress();
@@ -3808,10 +3735,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MdtGroupAddr::L2vpnVplsAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MdtGroupAddr::L2vpnVplsAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MdtGroupAddr::L2vpnMspwAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MdtGroupAddr::L2vpnMspwAddress : public ydk::Entity
 {
     public:
         L2vpnMspwAddress();
@@ -3829,10 +3756,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MdtGroupAddr::L2vpnMspwAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MdtGroupAddr::L2vpnMspwAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MdtGroupAddr::Ipv4SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MdtGroupAddr::Ipv4SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv4SrPolicyAddress();
@@ -3850,10 +3777,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf ipv4_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MdtGroupAddr::Ipv4SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MdtGroupAddr::Ipv4SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MdtGroupAddr::Ipv6SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MdtGroupAddr::Ipv6SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv6SrPolicyAddress();
@@ -3871,10 +3798,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf ipv6_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MdtGroupAddr::Ipv6SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MdtGroupAddr::Ipv6SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::GwAddr : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::GwAddr : public ydk::Entity
 {
     public:
         GwAddr();
@@ -3894,10 +3821,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
         ydk::YLeaf ipv4_address; //type: string
         ydk::YLeaf ipv6_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::GwAddr
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::GwAddr
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NhAddr : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NhAddr : public ydk::Entity
 {
     public:
         NhAddr();
@@ -3917,10 +3844,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
         ydk::YLeaf ipv4_address; //type: string
         ydk::YLeaf ipv6_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::NhAddr
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::NhAddr
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BestPathCompWinner : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathCompWinner : public ydk::Entity
 {
     public:
         BestPathCompWinner();
@@ -3958,20 +3885,20 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
         ydk::YLeaf ipv6_flowspec_address; //type: string
         ydk::YLeaf ipv4vpn_flowspec_address; //type: string
         ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BestPathCompWinner::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BestPathCompWinner::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BestPathCompWinner::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BestPathCompWinner::Ipv6SrPolicyAddress
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathCompWinner::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathCompWinner::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathCompWinner::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathCompWinner::Ipv6SrPolicyAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BestPathCompWinner::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BestPathCompWinner::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BestPathCompWinner::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BestPathCompWinner::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathCompWinner::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathCompWinner::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathCompWinner::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathCompWinner::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BestPathCompWinner
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathCompWinner
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BestPathCompWinner::L2vpnVplsAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathCompWinner::L2vpnVplsAddress : public ydk::Entity
 {
     public:
         L2vpnVplsAddress();
@@ -3989,10 +3916,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BestPathCompWinner::L2vpnVplsAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathCompWinner::L2vpnVplsAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BestPathCompWinner::L2vpnMspwAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathCompWinner::L2vpnMspwAddress : public ydk::Entity
 {
     public:
         L2vpnMspwAddress();
@@ -4010,10 +3937,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BestPathCompWinner::L2vpnMspwAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathCompWinner::L2vpnMspwAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BestPathCompWinner::Ipv4SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathCompWinner::Ipv4SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv4SrPolicyAddress();
@@ -4031,10 +3958,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf ipv4_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BestPathCompWinner::Ipv4SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathCompWinner::Ipv4SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BestPathCompWinner::Ipv6SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathCompWinner::Ipv6SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv6SrPolicyAddress();
@@ -4052,10 +3979,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf ipv6_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::BestPathCompWinner::Ipv6SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::BestPathCompWinner::Ipv6SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnNbrAddr : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNbrAddr : public ydk::Entity
 {
     public:
         MvpnNbrAddr();
@@ -4093,20 +4020,20 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
         ydk::YLeaf ipv6_flowspec_address; //type: string
         ydk::YLeaf ipv4vpn_flowspec_address; //type: string
         ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnNbrAddr::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnNbrAddr::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnNbrAddr::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnNbrAddr::Ipv6SrPolicyAddress
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNbrAddr::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNbrAddr::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNbrAddr::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNbrAddr::Ipv6SrPolicyAddress
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnNbrAddr::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnNbrAddr::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnNbrAddr::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnNbrAddr::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNbrAddr::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNbrAddr::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNbrAddr::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNbrAddr::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
         
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnNbrAddr
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNbrAddr
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnNbrAddr::L2vpnVplsAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNbrAddr::L2vpnVplsAddress : public ydk::Entity
 {
     public:
         L2vpnVplsAddress();
@@ -4124,10 +4051,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnNbrAddr::L2vpnVplsAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNbrAddr::L2vpnVplsAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnNbrAddr::L2vpnMspwAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNbrAddr::L2vpnMspwAddress : public ydk::Entity
 {
     public:
         L2vpnMspwAddress();
@@ -4145,10 +4072,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf l2vpn_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnNbrAddr::L2vpnMspwAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNbrAddr::L2vpnMspwAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnNbrAddr::Ipv4SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNbrAddr::Ipv4SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv4SrPolicyAddress();
@@ -4166,10 +4093,10 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf ipv4_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnNbrAddr::Ipv4SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNbrAddr::Ipv4SrPolicyAddress
 
 
-class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnNbrAddr::Ipv6SrPolicyAddress : public ydk::Entity
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNbrAddr::Ipv6SrPolicyAddress : public ydk::Entity
 {
     public:
         Ipv6SrPolicyAddress();
@@ -4187,7 +4114,79 @@ class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable:
 
         ydk::YLeaf ipv6_srpolicy_address; //type: string
 
-}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::PathTable::Path::PathInformation::MvpnNbrAddr::Ipv6SrPolicyAddress
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNbrAddr::Ipv6SrPolicyAddress
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNexthopAddr : public ydk::Entity
+{
+    public:
+        MvpnNexthopAddr();
+        ~MvpnNexthopAddr();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf afi; //type: BgpAfi
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv4_mcast_address; //type: string
+        ydk::YLeaf ipv4_label_address; //type: string
+        ydk::YLeaf ipv4_tunnel_address; //type: string
+        ydk::YLeaf ipv4_mdt_address; //type: string
+        ydk::YLeaf ipv4vpn_address; //type: string
+        ydk::YLeaf ipv4vpna_mcastddress; //type: string
+        ydk::YLeaf ipv6_address; //type: string
+        ydk::YLeaf ipv6_mcast_address; //type: string
+        ydk::YLeaf ipv6_label_address; //type: string
+        ydk::YLeaf ipv6vpn_address; //type: string
+        ydk::YLeaf ipv6vpn_mcast_address; //type: string
+        ydk::YLeaf rt_constraint_address; //type: string
+        ydk::YLeaf ipv6mvpn_address; //type: string
+        ydk::YLeaf ipv4mvpn_address; //type: string
+        ydk::YLeaf l2vpn_evpn_address; //type: string
+        ydk::YLeaf ls_ls_address; //type: string
+        ydk::YLeaf ipv4_flowspec_address; //type: string
+        ydk::YLeaf ipv6_flowspec_address; //type: string
+        ydk::YLeaf ipv4vpn_flowspec_address; //type: string
+        ydk::YLeaf ipv6vpn_flowspec_address; //type: string
+        class L2vpnVplsAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNexthopAddr::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNexthopAddr::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNexthopAddr::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNexthopAddr::Ipv6SrPolicyAddress
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNexthopAddr::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNexthopAddr::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNexthopAddr::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNexthopAddr::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNexthopAddr
+
+
+class Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNexthopAddr::L2vpnVplsAddress : public ydk::Entity
+{
+    public:
+        L2vpnVplsAddress();
+        ~L2vpnVplsAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf l2vpn_address; //type: string
+
+}; // Bgp::Instances::Instance::InstanceStandby::DefaultVrf::Afs::Af::AdvertisedPathXr::AdvertisedPath::PathInformation::MvpnNexthopAddr::L2vpnVplsAddress
 
 
 }

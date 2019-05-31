@@ -18422,61 +18422,6 @@ bool PlatformInventory::Racks::Rack::Slots::Slot::Cards::Card::PortSlots::PortSl
     return false;
 }
 
-const Enum::YLeaf InvAdminState::admin_state_invalid {0, "admin-state-invalid"};
-const Enum::YLeaf InvAdminState::admin_up {1, "admin-up"};
-const Enum::YLeaf InvAdminState::admin_down {2, "admin-down"};
-
-const Enum::YLeaf InvResetReason::module_reset_reason_unknown {0, "module-reset-reason-unknown"};
-const Enum::YLeaf InvResetReason::module_reset_reason_powerup {1, "module-reset-reason-powerup"};
-const Enum::YLeaf InvResetReason::module_reset_reason_user_shutdown {2, "module-reset-reason-user-shutdown"};
-const Enum::YLeaf InvResetReason::module_reset_reason_user_reload {3, "module-reset-reason-user-reload"};
-const Enum::YLeaf InvResetReason::module_reset_reason_auto_reload {4, "module-reset-reason-auto-reload"};
-const Enum::YLeaf InvResetReason::module_reset_reason_environment {5, "module-reset-reason-environment"};
-const Enum::YLeaf InvResetReason::module_reset_reason_user_unpower {6, "module-reset-reason-user-unpower"};
-
-const Enum::YLeaf InvCardState::inv_card_not_present {0, "inv-card-not-present"};
-const Enum::YLeaf InvCardState::inv_card_present {1, "inv-card-present"};
-const Enum::YLeaf InvCardState::inv_card_reset {2, "inv-card-reset"};
-const Enum::YLeaf InvCardState::inv_card_booting {3, "inv-card-booting"};
-const Enum::YLeaf InvCardState::inv_card_mbi_booting {4, "inv-card-mbi-booting"};
-const Enum::YLeaf InvCardState::inv_card_running_mbi {5, "inv-card-running-mbi"};
-const Enum::YLeaf InvCardState::inv_card_running_ena {6, "inv-card-running-ena"};
-const Enum::YLeaf InvCardState::inv_card_bring_down {7, "inv-card-bring-down"};
-const Enum::YLeaf InvCardState::inv_card_ena_failure {8, "inv-card-ena-failure"};
-const Enum::YLeaf InvCardState::inv_card_f_diag_run {9, "inv-card-f-diag-run"};
-const Enum::YLeaf InvCardState::inv_card_f_diag_failure {10, "inv-card-f-diag-failure"};
-const Enum::YLeaf InvCardState::inv_card_powered {11, "inv-card-powered"};
-const Enum::YLeaf InvCardState::inv_card_unpowered {12, "inv-card-unpowered"};
-const Enum::YLeaf InvCardState::inv_card_mdr {13, "inv-card-mdr"};
-const Enum::YLeaf InvCardState::inv_card_mdr_running_mbi {14, "inv-card-mdr-running-mbi"};
-const Enum::YLeaf InvCardState::inv_card_main_t_mode {15, "inv-card-main-t-mode"};
-const Enum::YLeaf InvCardState::inv_card_admin_down {16, "inv-card-admin-down"};
-const Enum::YLeaf InvCardState::inv_card_no_mon {17, "inv-card-no-mon"};
-const Enum::YLeaf InvCardState::inv_card_unknown {18, "inv-card-unknown"};
-const Enum::YLeaf InvCardState::inv_card_failed {19, "inv-card-failed"};
-const Enum::YLeaf InvCardState::inv_card_ok {20, "inv-card-ok"};
-const Enum::YLeaf InvCardState::inv_card_missing {21, "inv-card-missing"};
-const Enum::YLeaf InvCardState::inv_card_field_diag_downloading {22, "inv-card-field-diag-downloading"};
-const Enum::YLeaf InvCardState::inv_card_field_diag_unmonitor {23, "inv-card-field-diag-unmonitor"};
-const Enum::YLeaf InvCardState::inv_card_fabric_field_diag_unmonitor {24, "inv-card-fabric-field-diag-unmonitor"};
-const Enum::YLeaf InvCardState::inv_card_field_diag_rp_launching {25, "inv-card-field-diag-rp-launching"};
-const Enum::YLeaf InvCardState::inv_card_field_diag_running {26, "inv-card-field-diag-running"};
-const Enum::YLeaf InvCardState::inv_card_field_diag_pass {27, "inv-card-field-diag-pass"};
-const Enum::YLeaf InvCardState::inv_card_field_diag_fail {28, "inv-card-field-diag-fail"};
-const Enum::YLeaf InvCardState::inv_card_field_diag_timeout {29, "inv-card-field-diag-timeout"};
-const Enum::YLeaf InvCardState::inv_card_disabled {30, "inv-card-disabled"};
-const Enum::YLeaf InvCardState::inv_card_spa_booting {31, "inv-card-spa-booting"};
-const Enum::YLeaf InvCardState::inv_card_not_allowed_online {32, "inv-card-not-allowed-online"};
-const Enum::YLeaf InvCardState::inv_card_stopped {33, "inv-card-stopped"};
-const Enum::YLeaf InvCardState::inv_card_incompatible_fw_ver {34, "inv-card-incompatible-fw-ver"};
-const Enum::YLeaf InvCardState::inv_card_fpd_hold {35, "inv-card-fpd-hold"};
-const Enum::YLeaf InvCardState::inv_card_node_prep {36, "inv-card-node-prep"};
-const Enum::YLeaf InvCardState::inv_card_updating_fpd {37, "inv-card-updating-fpd"};
-const Enum::YLeaf InvCardState::inv_card_num_states {38, "inv-card-num-states"};
-
-const Enum::YLeaf InvMonitorState::unmonitored {0, "unmonitored"};
-const Enum::YLeaf InvMonitorState::monitored {1, "monitored"};
-
 const Enum::YLeaf NodeState::not_present {0, "not-present"};
 const Enum::YLeaf NodeState::present {1, "present"};
 const Enum::YLeaf NodeState::reset {2, "reset"};
@@ -18532,9 +18477,64 @@ const Enum::YLeaf NodeState::unknown {50, "unknown"};
 const Enum::YLeaf CardRedundancyState::active {1, "active"};
 const Enum::YLeaf CardRedundancyState::standby {2, "standby"};
 
+const Enum::YLeaf InvResetReason::module_reset_reason_unknown {0, "module-reset-reason-unknown"};
+const Enum::YLeaf InvResetReason::module_reset_reason_powerup {1, "module-reset-reason-powerup"};
+const Enum::YLeaf InvResetReason::module_reset_reason_user_shutdown {2, "module-reset-reason-user-shutdown"};
+const Enum::YLeaf InvResetReason::module_reset_reason_user_reload {3, "module-reset-reason-user-reload"};
+const Enum::YLeaf InvResetReason::module_reset_reason_auto_reload {4, "module-reset-reason-auto-reload"};
+const Enum::YLeaf InvResetReason::module_reset_reason_environment {5, "module-reset-reason-environment"};
+const Enum::YLeaf InvResetReason::module_reset_reason_user_unpower {6, "module-reset-reason-user-unpower"};
+
+const Enum::YLeaf InvMonitorState::unmonitored {0, "unmonitored"};
+const Enum::YLeaf InvMonitorState::monitored {1, "monitored"};
+
+const Enum::YLeaf InvCardState::inv_card_not_present {0, "inv-card-not-present"};
+const Enum::YLeaf InvCardState::inv_card_present {1, "inv-card-present"};
+const Enum::YLeaf InvCardState::inv_card_reset {2, "inv-card-reset"};
+const Enum::YLeaf InvCardState::inv_card_booting {3, "inv-card-booting"};
+const Enum::YLeaf InvCardState::inv_card_mbi_booting {4, "inv-card-mbi-booting"};
+const Enum::YLeaf InvCardState::inv_card_running_mbi {5, "inv-card-running-mbi"};
+const Enum::YLeaf InvCardState::inv_card_running_ena {6, "inv-card-running-ena"};
+const Enum::YLeaf InvCardState::inv_card_bring_down {7, "inv-card-bring-down"};
+const Enum::YLeaf InvCardState::inv_card_ena_failure {8, "inv-card-ena-failure"};
+const Enum::YLeaf InvCardState::inv_card_f_diag_run {9, "inv-card-f-diag-run"};
+const Enum::YLeaf InvCardState::inv_card_f_diag_failure {10, "inv-card-f-diag-failure"};
+const Enum::YLeaf InvCardState::inv_card_powered {11, "inv-card-powered"};
+const Enum::YLeaf InvCardState::inv_card_unpowered {12, "inv-card-unpowered"};
+const Enum::YLeaf InvCardState::inv_card_mdr {13, "inv-card-mdr"};
+const Enum::YLeaf InvCardState::inv_card_mdr_running_mbi {14, "inv-card-mdr-running-mbi"};
+const Enum::YLeaf InvCardState::inv_card_main_t_mode {15, "inv-card-main-t-mode"};
+const Enum::YLeaf InvCardState::inv_card_admin_down {16, "inv-card-admin-down"};
+const Enum::YLeaf InvCardState::inv_card_no_mon {17, "inv-card-no-mon"};
+const Enum::YLeaf InvCardState::inv_card_unknown {18, "inv-card-unknown"};
+const Enum::YLeaf InvCardState::inv_card_failed {19, "inv-card-failed"};
+const Enum::YLeaf InvCardState::inv_card_ok {20, "inv-card-ok"};
+const Enum::YLeaf InvCardState::inv_card_missing {21, "inv-card-missing"};
+const Enum::YLeaf InvCardState::inv_card_field_diag_downloading {22, "inv-card-field-diag-downloading"};
+const Enum::YLeaf InvCardState::inv_card_field_diag_unmonitor {23, "inv-card-field-diag-unmonitor"};
+const Enum::YLeaf InvCardState::inv_card_fabric_field_diag_unmonitor {24, "inv-card-fabric-field-diag-unmonitor"};
+const Enum::YLeaf InvCardState::inv_card_field_diag_rp_launching {25, "inv-card-field-diag-rp-launching"};
+const Enum::YLeaf InvCardState::inv_card_field_diag_running {26, "inv-card-field-diag-running"};
+const Enum::YLeaf InvCardState::inv_card_field_diag_pass {27, "inv-card-field-diag-pass"};
+const Enum::YLeaf InvCardState::inv_card_field_diag_fail {28, "inv-card-field-diag-fail"};
+const Enum::YLeaf InvCardState::inv_card_field_diag_timeout {29, "inv-card-field-diag-timeout"};
+const Enum::YLeaf InvCardState::inv_card_disabled {30, "inv-card-disabled"};
+const Enum::YLeaf InvCardState::inv_card_spa_booting {31, "inv-card-spa-booting"};
+const Enum::YLeaf InvCardState::inv_card_not_allowed_online {32, "inv-card-not-allowed-online"};
+const Enum::YLeaf InvCardState::inv_card_stopped {33, "inv-card-stopped"};
+const Enum::YLeaf InvCardState::inv_card_incompatible_fw_ver {34, "inv-card-incompatible-fw-ver"};
+const Enum::YLeaf InvCardState::inv_card_fpd_hold {35, "inv-card-fpd-hold"};
+const Enum::YLeaf InvCardState::inv_card_node_prep {36, "inv-card-node-prep"};
+const Enum::YLeaf InvCardState::inv_card_updating_fpd {37, "inv-card-updating-fpd"};
+const Enum::YLeaf InvCardState::inv_card_num_states {38, "inv-card-num-states"};
+
 const Enum::YLeaf InvPowerAdminState::admin_power_invalid {0, "admin-power-invalid"};
 const Enum::YLeaf InvPowerAdminState::admin_on {2, "admin-on"};
 const Enum::YLeaf InvPowerAdminState::admin_off {3, "admin-off"};
+
+const Enum::YLeaf InvAdminState::admin_state_invalid {0, "admin-state-invalid"};
+const Enum::YLeaf InvAdminState::admin_up {1, "admin-up"};
+const Enum::YLeaf InvAdminState::admin_down {2, "admin-down"};
 
 
 }

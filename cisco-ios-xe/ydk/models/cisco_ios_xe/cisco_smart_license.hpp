@@ -1119,11 +1119,69 @@ class Licensing::State::StateInfo::Usage : public ydk::Entity
 
 }; // Licensing::State::StateInfo::Usage
 
+class NotifRegisterFailureEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf general_failure;
+        static const ydk::Enum::YLeaf already_registered_failure;
+        static const ydk::Enum::YLeaf de_register_failure;
+
+};
+
+class RegistrationStateEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf reg_state_not_registered;
+        static const ydk::Enum::YLeaf reg_state_complete;
+        static const ydk::Enum::YLeaf reg_state_in_progress;
+        static const ydk::Enum::YLeaf reg_state_retry;
+        static const ydk::Enum::YLeaf reg_state_failed;
+
+};
+
+class AuthorizationStateEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf auth_state_none;
+        static const ydk::Enum::YLeaf auth_state_eval;
+        static const ydk::Enum::YLeaf auth_state_eval_expired;
+        static const ydk::Enum::YLeaf auth_state_authorized;
+        static const ydk::Enum::YLeaf auth_state_authorized_reservation;
+        static const ydk::Enum::YLeaf auth_state_out_of_compliance;
+        static const ydk::Enum::YLeaf auth_state_authorization_expired;
+
+};
+
+class UtilityReportingTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf utility_reporting_type_none;
+        static const ydk::Enum::YLeaf utility_reporting_type_subscription;
+        static const ydk::Enum::YLeaf utility_reporting_type_certificate;
+
+};
+
 class TransportTypeEnum : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf transport_type_callhome;
         static const ydk::Enum::YLeaf transport_type_smart;
+
+};
+
+class EnforcementModeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enforcement_waiting;
+        static const ydk::Enum::YLeaf enforcement_in_compliance;
+        static const ydk::Enum::YLeaf enforcement_out_of_compliance;
+        static const ydk::Enum::YLeaf enforcement_overage;
+        static const ydk::Enum::YLeaf enforcement_evaluation;
+        static const ydk::Enum::YLeaf enforcement_evaluation_expired;
+        static const ydk::Enum::YLeaf enforcement_authorization_expired;
+        static const ydk::Enum::YLeaf enforcement_reservation_in_compliance;
+        static const ydk::Enum::YLeaf enforcement_invalid_tag;
+        static const ydk::Enum::YLeaf enforcement_disabled;
 
 };
 
@@ -1274,64 +1332,6 @@ class ErrorEnum : public ydk::Enum
         static const ydk::Enum::YLeaf thirdparty;
         static const ydk::Enum::YLeaf transporttype;
         static const ydk::Enum::YLeaf max;
-
-};
-
-class UtilityReportingTypeEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf utility_reporting_type_none;
-        static const ydk::Enum::YLeaf utility_reporting_type_subscription;
-        static const ydk::Enum::YLeaf utility_reporting_type_certificate;
-
-};
-
-class EnforcementModeEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enforcement_waiting;
-        static const ydk::Enum::YLeaf enforcement_in_compliance;
-        static const ydk::Enum::YLeaf enforcement_out_of_compliance;
-        static const ydk::Enum::YLeaf enforcement_overage;
-        static const ydk::Enum::YLeaf enforcement_evaluation;
-        static const ydk::Enum::YLeaf enforcement_evaluation_expired;
-        static const ydk::Enum::YLeaf enforcement_authorization_expired;
-        static const ydk::Enum::YLeaf enforcement_reservation_in_compliance;
-        static const ydk::Enum::YLeaf enforcement_invalid_tag;
-        static const ydk::Enum::YLeaf enforcement_disabled;
-
-};
-
-class AuthorizationStateEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf auth_state_none;
-        static const ydk::Enum::YLeaf auth_state_eval;
-        static const ydk::Enum::YLeaf auth_state_eval_expired;
-        static const ydk::Enum::YLeaf auth_state_authorized;
-        static const ydk::Enum::YLeaf auth_state_authorized_reservation;
-        static const ydk::Enum::YLeaf auth_state_out_of_compliance;
-        static const ydk::Enum::YLeaf auth_state_authorization_expired;
-
-};
-
-class RegistrationStateEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf reg_state_not_registered;
-        static const ydk::Enum::YLeaf reg_state_complete;
-        static const ydk::Enum::YLeaf reg_state_in_progress;
-        static const ydk::Enum::YLeaf reg_state_retry;
-        static const ydk::Enum::YLeaf reg_state_failed;
-
-};
-
-class NotifRegisterFailureEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf general_failure;
-        static const ydk::Enum::YLeaf already_registered_failure;
-        static const ydk::Enum::YLeaf de_register_failure;
 
 };
 

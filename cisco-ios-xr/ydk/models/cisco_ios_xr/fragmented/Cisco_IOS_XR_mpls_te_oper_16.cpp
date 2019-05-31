@@ -5,15 +5,15 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_mpls_te_oper_16.hpp"
-#include "Cisco_IOS_XR_mpls_te_oper_18.hpp"
-#include "Cisco_IOS_XR_mpls_te_oper_29.hpp"
-#include "Cisco_IOS_XR_mpls_te_oper_28.hpp"
-#include "Cisco_IOS_XR_mpls_te_oper_21.hpp"
-#include "Cisco_IOS_XR_mpls_te_oper_26.hpp"
-#include "Cisco_IOS_XR_mpls_te_oper_20.hpp"
-#include "Cisco_IOS_XR_mpls_te_oper_25.hpp"
-#include "Cisco_IOS_XR_mpls_te_oper_17.hpp"
 #include "Cisco_IOS_XR_mpls_te_oper_23.hpp"
+#include "Cisco_IOS_XR_mpls_te_oper_21.hpp"
+#include "Cisco_IOS_XR_mpls_te_oper_20.hpp"
+#include "Cisco_IOS_XR_mpls_te_oper_28.hpp"
+#include "Cisco_IOS_XR_mpls_te_oper_29.hpp"
+#include "Cisco_IOS_XR_mpls_te_oper_18.hpp"
+#include "Cisco_IOS_XR_mpls_te_oper_17.hpp"
+#include "Cisco_IOS_XR_mpls_te_oper_25.hpp"
+#include "Cisco_IOS_XR_mpls_te_oper_26.hpp"
 
 using namespace ydk;
 
@@ -11539,7 +11539,8 @@ MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelHead()
     last_path_change{YType::uint32, "last-path-change"},
     persistent_bytes{YType::uint64, "persistent-bytes"},
     persistent_packets{YType::uint64, "persistent-packets"},
-    autoroute_announce_exclude_segment_routing{YType::boolean, "autoroute-announce-exclude-segment-routing"}
+    autoroute_announce_exclude_segment_routing{YType::boolean, "autoroute-announce-exclude-segment-routing"},
+    last_working_lsp_id{YType::uint16, "last-working-lsp-id"}
         ,
     config(std::make_shared<MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::Config>())
     , tunnel_current_lsp(std::make_shared<MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelCurrentLsp>())
@@ -11671,6 +11672,7 @@ bool MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::has_data() const
 	|| persistent_bytes.is_set
 	|| persistent_packets.is_set
 	|| autoroute_announce_exclude_segment_routing.is_set
+	|| last_working_lsp_id.is_set
 	|| (config !=  nullptr && config->has_data())
 	|| (tunnel_current_lsp !=  nullptr && tunnel_current_lsp->has_data())
 	|| (reoptimized_p2mp_lsp !=  nullptr && reoptimized_p2mp_lsp->has_data())
@@ -11768,6 +11770,7 @@ bool MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::has_operation() const
 	|| ydk::is_set(persistent_bytes.yfilter)
 	|| ydk::is_set(persistent_packets.yfilter)
 	|| ydk::is_set(autoroute_announce_exclude_segment_routing.yfilter)
+	|| ydk::is_set(last_working_lsp_id.yfilter)
 	|| (config !=  nullptr && config->has_operation())
 	|| (tunnel_current_lsp !=  nullptr && tunnel_current_lsp->has_operation())
 	|| (reoptimized_p2mp_lsp !=  nullptr && reoptimized_p2mp_lsp->has_operation())
@@ -11876,6 +11879,7 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::P2pP2mpTunnel::TunnelHead
     if (persistent_bytes.is_set || is_set(persistent_bytes.yfilter)) leaf_name_data.push_back(persistent_bytes.get_name_leafdata());
     if (persistent_packets.is_set || is_set(persistent_packets.yfilter)) leaf_name_data.push_back(persistent_packets.get_name_leafdata());
     if (autoroute_announce_exclude_segment_routing.is_set || is_set(autoroute_announce_exclude_segment_routing.yfilter)) leaf_name_data.push_back(autoroute_announce_exclude_segment_routing.get_name_leafdata());
+    if (last_working_lsp_id.is_set || is_set(last_working_lsp_id.yfilter)) leaf_name_data.push_back(last_working_lsp_id.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -12634,6 +12638,12 @@ void MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::set_value(const std::string
         autoroute_announce_exclude_segment_routing.value_namespace = name_space;
         autoroute_announce_exclude_segment_routing.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "last-working-lsp-id")
+    {
+        last_working_lsp_id = value;
+        last_working_lsp_id.value_namespace = name_space;
+        last_working_lsp_id.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::set_filter(const std::string & value_path, YFilter yfilter)
@@ -12886,11 +12896,15 @@ void MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::set_filter(const std::strin
     {
         autoroute_announce_exclude_segment_routing.yfilter = yfilter;
     }
+    if(value_path == "last-working-lsp-id")
+    {
+        last_working_lsp_id.yfilter = yfilter;
+    }
 }
 
 bool MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "config" || name == "tunnel-current-lsp" || name == "reoptimized-p2mp-lsp" || name == "tunnel-standby-lsp" || name == "reoptimized-standby-p2mp-lsp" || name == "tunnel-restoration-lsp" || name == "delay-clean-pp-lsp" || name == "cleaned-lsp" || name == "p2p-info" || name == "auto-capacity" || name == "history" || name == "path-protection" || name == "auto-backup" || name == "auto-mesh" || name == "auto-pcc" || name == "pce-delegation" || name == "soft-preemption" || name == "wdm-unitunnel" || name == "transport-tunnel-info" || name == "bfd-info" || name == "otn-bidir" || name == "bidir" || name == "xro-attribute-set" || name == "te-tunnel-convergence" || name == "flex-info" || name == "destination" || name == "tunnel-name" || name == "role-standby" || name == "tunnel-interface-name" || name == "admin-state" || name == "operational-state" || name == "operational-state-changes" || name == "signaled-name" || name == "fail-reason" || name == "destination-up-count" || name == "destination-disabled-count" || name == "destination-down-count" || name == "re-opt-hold-down-timer-remaining" || name == "bandwidth-requested" || name == "bandwidth-type" || name == "is-node-protected" || name == "is-bandwidth-protect" || name == "tunnel-recovering" || name == "reroute-pending" || name == "explicit-path-change" || name == "path-option-change" || name == "affinity-failure-reopt-disabled" || name == "affinity-failure-reopt-time-remained" || name == "affinity-failure-delayed-tear-time-remained" || name == "invalidation-time-remained" || name == "drop-mode" || name == "auto-route" || name == "forwarding-adjacency" || name == "load-share-factor" || name == "load-share-type" || name == "create-time" || name == "uptime" || name == "metric-type" || name == "tie-breaker" || name == "tiebreaker-type" || name == "tiebreaker-qualifier" || name == "metric-qualifier" || name == "is-hop-limit-ignore" || name == "hop-limit-ignored-reason" || name == "outbound-frr-state" || name == "area-id" || name == "pce-fail-reason" || name == "snmp-index" || name == "is-inter-area-tunnel" || name == "is-auto-backup" || name == "is-auto-pcc" || name == "is-pce-delegated" || name == "tunnel-attribute-set-name" || name == "tunnel-attribute-set-type" || name == "xro-attribute-set-name" || name == "is-passive" || name == "passive-tunnel-name" || name == "binding-label-exists" || name == "binding-label" || name == "last-hop-ifindex" || name == "is-named" || name == "lsp-wrap-protection-enabled" || name == "lsp-wrap-label" || name == "is-interface" || name == "last-path-change" || name == "persistent-bytes" || name == "persistent-packets" || name == "autoroute-announce-exclude-segment-routing")
+    if(name == "config" || name == "tunnel-current-lsp" || name == "reoptimized-p2mp-lsp" || name == "tunnel-standby-lsp" || name == "reoptimized-standby-p2mp-lsp" || name == "tunnel-restoration-lsp" || name == "delay-clean-pp-lsp" || name == "cleaned-lsp" || name == "p2p-info" || name == "auto-capacity" || name == "history" || name == "path-protection" || name == "auto-backup" || name == "auto-mesh" || name == "auto-pcc" || name == "pce-delegation" || name == "soft-preemption" || name == "wdm-unitunnel" || name == "transport-tunnel-info" || name == "bfd-info" || name == "otn-bidir" || name == "bidir" || name == "xro-attribute-set" || name == "te-tunnel-convergence" || name == "flex-info" || name == "destination" || name == "tunnel-name" || name == "role-standby" || name == "tunnel-interface-name" || name == "admin-state" || name == "operational-state" || name == "operational-state-changes" || name == "signaled-name" || name == "fail-reason" || name == "destination-up-count" || name == "destination-disabled-count" || name == "destination-down-count" || name == "re-opt-hold-down-timer-remaining" || name == "bandwidth-requested" || name == "bandwidth-type" || name == "is-node-protected" || name == "is-bandwidth-protect" || name == "tunnel-recovering" || name == "reroute-pending" || name == "explicit-path-change" || name == "path-option-change" || name == "affinity-failure-reopt-disabled" || name == "affinity-failure-reopt-time-remained" || name == "affinity-failure-delayed-tear-time-remained" || name == "invalidation-time-remained" || name == "drop-mode" || name == "auto-route" || name == "forwarding-adjacency" || name == "load-share-factor" || name == "load-share-type" || name == "create-time" || name == "uptime" || name == "metric-type" || name == "tie-breaker" || name == "tiebreaker-type" || name == "tiebreaker-qualifier" || name == "metric-qualifier" || name == "is-hop-limit-ignore" || name == "hop-limit-ignored-reason" || name == "outbound-frr-state" || name == "area-id" || name == "pce-fail-reason" || name == "snmp-index" || name == "is-inter-area-tunnel" || name == "is-auto-backup" || name == "is-auto-pcc" || name == "is-pce-delegated" || name == "tunnel-attribute-set-name" || name == "tunnel-attribute-set-type" || name == "xro-attribute-set-name" || name == "is-passive" || name == "passive-tunnel-name" || name == "binding-label-exists" || name == "binding-label" || name == "last-hop-ifindex" || name == "is-named" || name == "lsp-wrap-protection-enabled" || name == "lsp-wrap-label" || name == "is-interface" || name == "last-path-change" || name == "persistent-bytes" || name == "persistent-packets" || name == "autoroute-announce-exclude-segment-routing" || name == "last-working-lsp-id")
         return true;
     return false;
 }
@@ -14926,7 +14940,8 @@ MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelCurrentLsp::TunnelCurrentL
     is_interface{YType::boolean, "is-interface"},
     last_path_change{YType::uint32, "last-path-change"},
     persistent_bytes{YType::uint64, "persistent-bytes"},
-    persistent_packets{YType::uint64, "persistent-packets"}
+    persistent_packets{YType::uint64, "persistent-packets"},
+    protection_role{YType::enumeration, "protection-role"}
         ,
     lsp_fec(std::make_shared<MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelCurrentLsp::LspFec>())
     , s2l(this, {})
@@ -14970,6 +14985,7 @@ bool MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelCurrentLsp::has_data(
 	|| last_path_change.is_set
 	|| persistent_bytes.is_set
 	|| persistent_packets.is_set
+	|| protection_role.is_set
 	|| (lsp_fec !=  nullptr && lsp_fec->has_data());
 }
 
@@ -15003,6 +15019,7 @@ bool MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelCurrentLsp::has_opera
 	|| ydk::is_set(last_path_change.yfilter)
 	|| ydk::is_set(persistent_bytes.yfilter)
 	|| ydk::is_set(persistent_packets.yfilter)
+	|| ydk::is_set(protection_role.yfilter)
 	|| (lsp_fec !=  nullptr && lsp_fec->has_operation());
 }
 
@@ -15039,6 +15056,7 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::P2pP2mpTunnel::TunnelHead
     if (last_path_change.is_set || is_set(last_path_change.yfilter)) leaf_name_data.push_back(last_path_change.get_name_leafdata());
     if (persistent_bytes.is_set || is_set(persistent_bytes.yfilter)) leaf_name_data.push_back(persistent_bytes.get_name_leafdata());
     if (persistent_packets.is_set || is_set(persistent_packets.yfilter)) leaf_name_data.push_back(persistent_packets.get_name_leafdata());
+    if (protection_role.is_set || is_set(protection_role.yfilter)) leaf_name_data.push_back(protection_role.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -15221,6 +15239,12 @@ void MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelCurrentLsp::set_value
         persistent_packets.value_namespace = name_space;
         persistent_packets.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "protection-role")
+    {
+        protection_role = value;
+        protection_role.value_namespace = name_space;
+        protection_role.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelCurrentLsp::set_filter(const std::string & value_path, YFilter yfilter)
@@ -15313,11 +15337,15 @@ void MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelCurrentLsp::set_filte
     {
         persistent_packets.yfilter = yfilter;
     }
+    if(value_path == "protection-role")
+    {
+        protection_role.yfilter = yfilter;
+    }
 }
 
 bool MplsTe::P2pP2mpTunnel::TunnelHeads::TunnelHead::TunnelCurrentLsp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "lsp-fec" || name == "s2l" || name == "signaled-name" || name == "is-frr-failed" || name == "frr-active-reason" || name == "lsp-bandwidth" || name == "lsp-setup-priority" || name == "lsp-hold-priority" || name == "lsp-bandwidth-type" || name == "dste-class-match" || name == "dste-class-index" || name == "type" || name == "uptime" || name == "s2-ls-up" || name == "s2-ls-proceeding" || name == "s2-ls-down" || name == "reoptimize-reason" || name == "reoptimize-trigger" || name == "timer-left" || name == "is-passive" || name == "is-interface" || name == "last-path-change" || name == "persistent-bytes" || name == "persistent-packets")
+    if(name == "lsp-fec" || name == "s2l" || name == "signaled-name" || name == "is-frr-failed" || name == "frr-active-reason" || name == "lsp-bandwidth" || name == "lsp-setup-priority" || name == "lsp-hold-priority" || name == "lsp-bandwidth-type" || name == "dste-class-match" || name == "dste-class-index" || name == "type" || name == "uptime" || name == "s2-ls-up" || name == "s2-ls-proceeding" || name == "s2-ls-down" || name == "reoptimize-reason" || name == "reoptimize-trigger" || name == "timer-left" || name == "is-passive" || name == "is-interface" || name == "last-path-change" || name == "persistent-bytes" || name == "persistent-packets" || name == "protection-role")
         return true;
     return false;
 }

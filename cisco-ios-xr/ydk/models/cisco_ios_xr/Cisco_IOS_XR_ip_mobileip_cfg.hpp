@@ -1637,6 +1637,13 @@ class MobileIp::Lmas::Lma::ReplayProtection : public ydk::Entity
 
 }; // MobileIp::Lmas::Lma::ReplayProtection
 
+class GreKeyType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf symmetric;
+
+};
+
 class ServiceType : public ydk::Enum
 {
     public:
@@ -1653,13 +1660,10 @@ class LmaService : public ydk::Enum
 
 };
 
-class EncapOpt : public ydk::Enum
+class RedistType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf greipv4;
-        static const ydk::Enum::YLeaf greipv6;
-        static const ydk::Enum::YLeaf mgreipv4;
-        static const ydk::Enum::YLeaf mgreipv6;
+        static const ydk::Enum::YLeaf home_address;
 
 };
 
@@ -1678,20 +1682,6 @@ class LmaRole : public ydk::Enum
 
 };
 
-class RedistType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf home_address;
-
-};
-
-class GreKeyType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf symmetric;
-
-};
-
 class LmaRat : public ydk::Enum
 {
     public:
@@ -1707,6 +1697,16 @@ class LmaRat : public ydk::Enum
         static const ydk::Enum::YLeaf Y_3gpp2hrpd;
         static const ydk::Enum::YLeaf Y_3gpp21rtt;
         static const ydk::Enum::YLeaf Y_3gpp2umb;
+
+};
+
+class EncapOpt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf greipv4;
+        static const ydk::Enum::YLeaf greipv6;
+        static const ydk::Enum::YLeaf mgreipv4;
+        static const ydk::Enum::YLeaf mgreipv6;
 
 };
 

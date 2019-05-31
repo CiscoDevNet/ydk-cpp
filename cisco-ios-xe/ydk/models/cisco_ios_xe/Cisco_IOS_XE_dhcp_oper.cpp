@@ -793,6 +793,11 @@ bool DhcpOperData::Dhcpv4ClientOper::LeaseExpiry::has_leaf_or_child_of_name(cons
     return false;
 }
 
+const Enum::YLeaf DhcpServerBindingState::dhcp_server_binding_state_selecting {0, "dhcp-server-binding-state-selecting"};
+const Enum::YLeaf DhcpServerBindingState::dhcp_server_binding_state_active {1, "dhcp-server-binding-state-active"};
+const Enum::YLeaf DhcpServerBindingState::dhcp_server_binding_state_terminated {2, "dhcp-server-binding-state-terminated"};
+const Enum::YLeaf DhcpServerBindingState::dhcp_server_binding_state_unknown {3, "dhcp-server-binding-state-unknown"};
+
 const Enum::YLeaf DhcpServerBindingType::dhcp_server_binding_type_manual {0, "dhcp-server-binding-type-manual"};
 const Enum::YLeaf DhcpServerBindingType::dhcp_server_binding_type_static {1, "dhcp-server-binding-type-static"};
 const Enum::YLeaf DhcpServerBindingType::dhcp_server_binding_type_relay {2, "dhcp-server-binding-type-relay"};
@@ -800,14 +805,6 @@ const Enum::YLeaf DhcpServerBindingType::dhcp_server_binding_type_automatic {3, 
 const Enum::YLeaf DhcpServerBindingType::dhcp_server_binding_type_odap {4, "dhcp-server-binding-type-odap"};
 const Enum::YLeaf DhcpServerBindingType::dhcp_server_binding_type_from_aaa {5, "dhcp-server-binding-type-from-aaa"};
 const Enum::YLeaf DhcpServerBindingType::dhcp_server_binding_type_remembered {6, "dhcp-server-binding-type-remembered"};
-
-const Enum::YLeaf DhcpExpiryOption::dhcp_expiration_time {0, "dhcp-expiration-time"};
-const Enum::YLeaf DhcpExpiryOption::dhcp_expiration_infinite {1, "dhcp-expiration-infinite"};
-
-const Enum::YLeaf DhcpClientIdType::dhcp_htype_ethernet {0, "dhcp-htype-ethernet"};
-const Enum::YLeaf DhcpClientIdType::dhcp_htype_ieee802 {1, "dhcp-htype-ieee802"};
-const Enum::YLeaf DhcpClientIdType::dhcp_htype_rfclimit {2, "dhcp-htype-rfclimit"};
-const Enum::YLeaf DhcpClientIdType::dhcp_htype_clientid {3, "dhcp-htype-clientid"};
 
 const Enum::YLeaf DhcpClientState::dhcp_client_state_temp_from_client {0, "dhcp-client-state-temp-from-client"};
 const Enum::YLeaf DhcpClientState::dhcp_client_state_temp_from_sync {1, "dhcp-client-state-temp-from-sync"};
@@ -824,10 +821,13 @@ const Enum::YLeaf DhcpClientState::dhcp_client_state_purging {11, "dhcp-client-s
 const Enum::YLeaf DhcpClientState::dhcp_client_state_leasequery {12, "dhcp-client-state-leasequery"};
 const Enum::YLeaf DhcpClientState::dhcp_client_state_unknown {13, "dhcp-client-state-unknown"};
 
-const Enum::YLeaf DhcpServerBindingState::dhcp_server_binding_state_selecting {0, "dhcp-server-binding-state-selecting"};
-const Enum::YLeaf DhcpServerBindingState::dhcp_server_binding_state_active {1, "dhcp-server-binding-state-active"};
-const Enum::YLeaf DhcpServerBindingState::dhcp_server_binding_state_terminated {2, "dhcp-server-binding-state-terminated"};
-const Enum::YLeaf DhcpServerBindingState::dhcp_server_binding_state_unknown {3, "dhcp-server-binding-state-unknown"};
+const Enum::YLeaf DhcpExpiryOption::dhcp_expiration_time {0, "dhcp-expiration-time"};
+const Enum::YLeaf DhcpExpiryOption::dhcp_expiration_infinite {1, "dhcp-expiration-infinite"};
+
+const Enum::YLeaf DhcpClientIdType::dhcp_htype_ethernet {0, "dhcp-htype-ethernet"};
+const Enum::YLeaf DhcpClientIdType::dhcp_htype_ieee802 {1, "dhcp-htype-ieee802"};
+const Enum::YLeaf DhcpClientIdType::dhcp_htype_rfclimit {2, "dhcp-htype-rfclimit"};
+const Enum::YLeaf DhcpClientIdType::dhcp_htype_clientid {3, "dhcp-htype-clientid"};
 
 
 }

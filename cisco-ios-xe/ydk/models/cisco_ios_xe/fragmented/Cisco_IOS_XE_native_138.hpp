@@ -3659,7 +3659,7 @@ class Native::Router::Ospf::Area : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
         ydk::YLeaf default_cost; //type: uint32
         class Authentication; //type: Native::Router::Ospf::Area::Authentication
         class Capability; //type: Native::Router::Ospf::Area::Capability

@@ -11,13 +11,13 @@ using namespace ydk;
 namespace ietf {
 namespace ietf_yang_push {
 
-CustomStream::CustomStream()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-yang-push", "ietf-yang-push", "ietf-yang-push:custom-stream")
+ErrorDataNotAuthorized::ErrorDataNotAuthorized()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-yang-push", "ietf-yang-push", "ietf-yang-push:error-data-not-authorized")
 {
 
 }
 
-CustomStream::~CustomStream()
+ErrorDataNotAuthorized::~ErrorDataNotAuthorized()
 {
 }
 
@@ -31,13 +31,13 @@ YangPush::~YangPush()
 {
 }
 
-ErrorDataNotAuthorized::ErrorDataNotAuthorized()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-yang-push", "ietf-yang-push", "ietf-yang-push:error-data-not-authorized")
+CustomStream::CustomStream()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-yang-push", "ietf-yang-push", "ietf-yang-push:custom-stream")
 {
 
 }
 
-ErrorDataNotAuthorized::~ErrorDataNotAuthorized()
+CustomStream::~CustomStream()
 {
 }
 

@@ -448,7 +448,7 @@ class Native::Router::Bgp::Template::PeerSession : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf name; //type: string
-        ydk::YLeaf remote_as; //type: one of uint32, string
+        ydk::YLeaf remote_as; //type: one of string, uint32
         ydk::YLeaf version; //type: uint8
         class HaMode; //type: Native::Router::Bgp::Template::PeerSession::HaMode
         class Password; //type: Native::Router::Bgp::Template::PeerSession::Password
@@ -835,7 +835,7 @@ class Native::Router::Bgp::Scope::Global::PeerGroup::Neighbor : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: string
-        ydk::YLeaf remote_as; //type: one of uint32, string
+        ydk::YLeaf remote_as; //type: one of string, uint32
         ydk::YLeaf description; //type: string
         ydk::YLeaf version; //type: uint16
         class PeerGroup_; //type: Native::Router::Bgp::Scope::Global::PeerGroup::Neighbor::PeerGroup_
@@ -1055,7 +1055,7 @@ class Native::Router::Bgp::Scope::Global::Neighbor : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf id; //type: string
-        ydk::YLeaf remote_as; //type: one of uint32, string
+        ydk::YLeaf remote_as; //type: one of string, uint32
         ydk::YLeaf description; //type: string
         ydk::YLeaf version; //type: uint16
         class PeerGroup; //type: Native::Router::Bgp::Scope::Global::Neighbor::PeerGroup

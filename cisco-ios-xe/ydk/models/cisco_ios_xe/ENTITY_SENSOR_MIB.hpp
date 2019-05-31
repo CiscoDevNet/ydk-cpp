@@ -110,15 +110,6 @@ class EntitySensorDataType : public ydk::Enum
 
 };
 
-class EntitySensorStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ok;
-        static const ydk::Enum::YLeaf unavailable;
-        static const ydk::Enum::YLeaf nonoperational;
-
-};
-
 class EntitySensorDataScale : public ydk::Enum
 {
     public:
@@ -139,6 +130,15 @@ class EntitySensorDataScale : public ydk::Enum
         static const ydk::Enum::YLeaf peta;
         static const ydk::Enum::YLeaf zetta;
         static const ydk::Enum::YLeaf yotta;
+
+};
+
+class EntitySensorStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ok;
+        static const ydk::Enum::YLeaf unavailable;
+        static const ydk::Enum::YLeaf nonoperational;
 
 };
 

@@ -21,26 +21,6 @@ Stream::~Stream()
 {
 }
 
-Encodings::Encodings()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:encodings")
-{
-
-}
-
-Encodings::~Encodings()
-{
-}
-
-Transport::Transport()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:transport")
-{
-
-}
-
-Transport::~Transport()
-{
-}
-
 SubscriptionResult::SubscriptionResult()
      : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:subscription-result")
 {
@@ -68,6 +48,26 @@ SubscriptionErrors::SubscriptionErrors()
 }
 
 SubscriptionErrors::~SubscriptionErrors()
+{
+}
+
+Encodings::Encodings()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:encodings")
+{
+
+}
+
+Encodings::~Encodings()
+{
+}
+
+Transport::Transport()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:transport")
+{
+
+}
+
+Transport::~Transport()
 {
 }
 
@@ -3857,13 +3857,93 @@ bool Subscriptions::Subscription::Receivers::Receiver::has_leaf_or_child_of_name
     return false;
 }
 
-NoResources::NoResources()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:no-resources")
+NETCONF::NETCONF()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:NETCONF")
 {
 
 }
 
-NoResources::~NoResources()
+NETCONF::~NETCONF()
+{
+}
+
+Ok::Ok()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:ok")
+{
+
+}
+
+Ok::~Ok()
+{
+}
+
+Error::Error()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error")
+{
+
+}
+
+Error::~Error()
+{
+}
+
+ErrorNoSuchSubscription::ErrorNoSuchSubscription()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error-no-such-subscription")
+{
+
+}
+
+ErrorNoSuchSubscription::~ErrorNoSuchSubscription()
+{
+}
+
+ErrorNoSuchOption::ErrorNoSuchOption()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error-no-such-option")
+{
+
+}
+
+ErrorNoSuchOption::~ErrorNoSuchOption()
+{
+}
+
+ErrorInsufficientResources::ErrorInsufficientResources()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error-insufficient-resources")
+{
+
+}
+
+ErrorInsufficientResources::~ErrorInsufficientResources()
+{
+}
+
+ErrorConfiguredSubscription::ErrorConfiguredSubscription()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error-configured-subscription")
+{
+
+}
+
+ErrorConfiguredSubscription::~ErrorConfiguredSubscription()
+{
+}
+
+ErrorOther::ErrorOther()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error-other")
+{
+
+}
+
+ErrorOther::~ErrorOther()
+{
+}
+
+Active::Active()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:active")
+{
+
+}
+
+Active::~Active()
 {
 }
 
@@ -3887,13 +3967,13 @@ Suspended::~Suspended()
 {
 }
 
-EncodeJson::EncodeJson()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:encode-json")
+InError::InError()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:in-error")
 {
 
 }
 
-EncodeJson::~EncodeJson()
+InError::~InError()
 {
 }
 
@@ -3907,83 +3987,13 @@ InternalError::~InternalError()
 {
 }
 
-Other::Other()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:other")
+NoResources::NoResources()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:no-resources")
 {
 
 }
 
-Other::~Other()
-{
-}
-
-InError::InError()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:in-error")
-{
-
-}
-
-InError::~InError()
-{
-}
-
-Netconf::Netconf()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:netconf")
-{
-
-}
-
-Netconf::~Netconf()
-{
-}
-
-Error::Error()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error")
-{
-
-}
-
-Error::~Error()
-{
-}
-
-Active::Active()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:active")
-{
-
-}
-
-Active::~Active()
-{
-}
-
-NETCONF::NETCONF()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:NETCONF")
-{
-
-}
-
-NETCONF::~NETCONF()
-{
-}
-
-Ok::Ok()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:ok")
-{
-
-}
-
-Ok::~Ok()
-{
-}
-
-EncodeXml::EncodeXml()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:encode-xml")
-{
-
-}
-
-EncodeXml::~EncodeXml()
+NoResources::~NoResources()
 {
 }
 
@@ -3997,53 +4007,43 @@ SubscriptionDeleted::~SubscriptionDeleted()
 {
 }
 
-ErrorNoSuchOption::ErrorNoSuchOption()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error-no-such-option")
+Other::Other()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:other")
 {
 
 }
 
-ErrorNoSuchOption::~ErrorNoSuchOption()
+Other::~Other()
 {
 }
 
-ErrorNoSuchSubscription::ErrorNoSuchSubscription()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error-no-such-subscription")
-{
-
-}
-
-ErrorNoSuchSubscription::~ErrorNoSuchSubscription()
-{
-}
-
-ErrorOther::ErrorOther()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error-other")
+EncodeXml::EncodeXml()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:encode-xml")
 {
 
 }
 
-ErrorOther::~ErrorOther()
+EncodeXml::~EncodeXml()
 {
 }
 
-ErrorInsufficientResources::ErrorInsufficientResources()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error-insufficient-resources")
-{
-
-}
-
-ErrorInsufficientResources::~ErrorInsufficientResources()
-{
-}
-
-ErrorConfiguredSubscription::ErrorConfiguredSubscription()
-     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:error-configured-subscription")
+EncodeJson::EncodeJson()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:encode-json")
 {
 
 }
 
-ErrorConfiguredSubscription::~ErrorConfiguredSubscription()
+EncodeJson::~EncodeJson()
+{
+}
+
+Netconf::Netconf()
+     : Identity("urn:ietf:params:xml:ns:yang:ietf-event-notifications", "ietf-event-notifications", "ietf-event-notifications:netconf")
+{
+
+}
+
+Netconf::~Netconf()
 {
 }
 

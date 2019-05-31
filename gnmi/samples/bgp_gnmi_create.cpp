@@ -20,7 +20,6 @@
 #include <ydk/gnmi_provider.hpp>
 #include <ydk/crud_service.hpp>
 
-//#include <ydk_openconfig/openconfig_bgp.hpp>
 #include <ydk_ydktest/openconfig_bgp.hpp>
 #include <ydk_ydktest/openconfig_bgp_types.hpp>
 
@@ -41,30 +40,12 @@ void config_bgp(openconfig_bgp::Bgp & bgp)
 {
     // Set the Global AS
     bgp.global->config->as = 65172;
-    bgp.global->config->router_id = "1.2.3.4";
     
-    // Commented because of XR 611 issue with OC identity
-    auto afi_safi = make_shared<openconfig_bgp::Bgp::Global::AfiSafis::AfiSafi>();
-    afi_safi->afi_safi_name = openconfig_bgp_types::L3VPNIPV4UNICAST();
-    afi_safi->config->afi_safi_name = openconfig_bgp_types::L3VPNIPV4UNICAST();
-    afi_safi->config->enabled = false;
-    bgp.global->afi_safis->afi_safi.append(afi_safi);
-
     auto neighbor = make_shared<openconfig_bgp::Bgp::Neighbors::Neighbor>();
-    neighbor->neighbor_address = "6.7.8.9";
-    neighbor->config->neighbor_address = "6.7.8.9";
-    neighbor->config->peer_as = 65001;
-    neighbor->config->local_as = 65001;
-    neighbor->config->peer_group = "IBGP";
+    neighbor->neighbor_address = "172.16.255.2";
+    neighbor->config->neighbor_address = "172.16.255.2";
+    neighbor->config->peer_as = 65172;
     bgp.neighbors->neighbor.append(neighbor);
-
-    auto peer_group = make_shared<openconfig_bgp::Bgp::PeerGroups::PeerGroup>();
-    peer_group->peer_group_name = "IBGP";
-    peer_group->config->peer_group_name = "IBGP";
-    peer_group->config->description = "test description";
-    peer_group->config->peer_as = 65001;
-    peer_group->config->local_as = 65001;
-    bgp.peer_groups->peer_group.append(peer_group);
 }
 
 int main(int argc, char* argv[])
@@ -82,7 +63,7 @@ int main(int argc, char* argv[])
     }
 
     try {
-        ydk::path::Repository repo{"/home/osboxes/ydk-gen/sdk/cpp/core/tests/models/"};
+        ydk::path::Repository repo{TEST_HOME};
         int port = stoi(sport);
         gNMIServiceProvider provider{repo, host, port, username, password};
 

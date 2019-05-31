@@ -13,11 +13,11 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ifmgr_cfg {
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24 : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ethernet::OpticalPowerDegrade : public ydk::Entity
 {
     public:
-        EthernetHour24();
-        ~EthernetHour24();
+        OpticalPowerDegrade();
+        ~OpticalPowerDegrade();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -29,18 +29,16 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Et
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24Ether; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether
+        ydk::YLeaf rx_alarm_threshold; //type: int32
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether> hour24_ether;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24
+}; // InterfaceConfigurations::InterfaceConfiguration::Ethernet::OpticalPowerDegrade
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ethernet::SignalDegradeBitErrorRate : public ydk::Entity
 {
     public:
-        Hour24Ether();
-        ~Hour24Ether();
+        SignalDegradeBitErrorRate();
+        ~SignalDegradeBitErrorRate();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -52,20 +50,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Et
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24EtherThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherThresholds
-        class Hour24EtherReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherReports
+        ydk::YLeaf signal_degrade_threshold; //type: uint32
+        ydk::YLeaf signal_degrade_report; //type: empty
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherThresholds> hour24_ether_thresholds;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherReports> hour24_ether_reports;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether
+}; // InterfaceConfigurations::InterfaceConfiguration::Ethernet::SignalDegradeBitErrorRate
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ethernet::CarrierDelay : public ydk::Entity
 {
     public:
-        Hour24EtherThresholds();
-        ~Hour24EtherThresholds();
+        CarrierDelay();
+        ~CarrierDelay();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -77,18 +72,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Et
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24EtherThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherThresholds::Hour24EtherThreshold
+        ydk::YLeaf carrier_delay_up; //type: uint32
+        ydk::YLeaf carrier_delay_down; //type: uint32
 
-        ydk::YList hour24_ether_threshold;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::Ethernet::CarrierDelay
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherThresholds::Hour24EtherThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm : public ydk::Entity
 {
     public:
-        Hour24EtherThreshold();
-        ~Hour24EtherThreshold();
+        Dwdm();
+        ~Dwdm();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -100,17 +94,30 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Et
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ether_threshold; //type: EtherThreshold
-        ydk::YLeaf ether_threshold_value; //type: uint32
+        ydk::YLeaf enable_vtxp; //type: boolean
+        ydk::YLeaf network_port_id; //type: string
+        ydk::YLeaf transport_admin_state; //type: DwdmAdminState
+        ydk::YLeaf laser; //type: empty
+        ydk::YLeaf transmit_power; //type: int32
+        ydk::YLeaf rx_threshold; //type: int32
+        ydk::YLeaf network_connection_id; //type: string
+        ydk::YLeaf loopback; //type: DwdmLoopback
+        class NetworkSrlgs; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs
+        class G709; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709
+        class Wavelength; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::Wavelength
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherThresholds::Hour24EtherThreshold
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs> network_srlgs;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709> g709;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::Wavelength> wavelength; // presence node
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs : public ydk::Entity
 {
     public:
-        Hour24EtherReports();
-        ~Hour24EtherReports();
+        NetworkSrlgs();
+        ~NetworkSrlgs();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -122,18 +129,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Et
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24EtherReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherReports::Hour24EtherReport
+        class NetworkSrlg; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg
 
-        ydk::YList hour24_ether_report;
+        ydk::YList network_srlg;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherReports
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherReports::Hour24EtherReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg : public ydk::Entity
 {
     public:
-        Hour24EtherReport();
-        ~Hour24EtherReport();
+        NetworkSrlg();
+        ~NetworkSrlg();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -145,16 +152,22 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Et
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ether_report; //type: EtherReport
+        ydk::YLeaf set_id; //type: uint32
+        ydk::YLeaf srlg1; //type: uint32
+        ydk::YLeaf srlg2; //type: uint32
+        ydk::YLeaf srlg3; //type: uint32
+        ydk::YLeaf srlg4; //type: uint32
+        ydk::YLeaf srlg5; //type: uint32
+        ydk::YLeaf srlg6; //type: uint32
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetHour24::Hour24Ether::Hour24EtherReports::Hour24EtherReport
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::NetworkSrlgs::NetworkSrlg
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15otnTcms : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709 : public ydk::Entity
 {
     public:
-        Minute15otnTcms();
-        ~Minute15otnTcms();
+        G709();
+        ~G709();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -166,18 +179,31 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Mi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Minute15otnTcm; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15otnTcms::Minute15otnTcm
+        ydk::YLeaf proactive; //type: Proactive
+        ydk::YLeaf bdi_to_gais; //type: empty
+        ydk::YLeaf tim_to_gais; //type: empty
+        ydk::YLeaf proactive_logging_file; //type: string
+        ydk::YLeaf tti_processing; //type: empty
+        ydk::YLeaf enable; //type: boolean
+        ydk::YLeaf framing; //type: Framing
+        class Odu; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu
+        class Otu; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu
+        class Prbs; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Prbs
+        class Fec; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Fec
 
-        ydk::YList minute15otn_tcm;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu> odu;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu> otu;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Prbs> prbs; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Fec> fec; // presence node
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15otnTcms
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15otnTcms::Minute15otnTcm : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu : public ydk::Entity
 {
     public:
-        Minute15otnTcm();
-        ~Minute15otnTcm();
+        Odu();
+        ~Odu();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -189,21 +215,24 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Mi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf tcm_number; //type: uint32
-        class Min15OtnTcmThreshes; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15otnTcms::Minute15otnTcm::Min15OtnTcmThreshes
-        class Minute15otnTcmReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15otnTcms::Minute15otnTcm::Minute15otnTcmReports
+        class OduReports; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports
+        class OduThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds
+        class OduExpectedTti; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti
+        class OduTxTti; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduTxTti
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15otnTcms::Minute15otnTcm::Min15OtnTcmThreshes> min15_otn_tcm_threshes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15otnTcms::Minute15otnTcm::Minute15otnTcmReports> minute15otn_tcm_reports;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports> odu_reports;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds> odu_thresholds;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti> odu_expected_tti;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduTxTti> odu_tx_tti;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15otnTcms::Minute15otnTcm
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15otnTcms::Minute15otnTcm::Min15OtnTcmThreshes : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports : public ydk::Entity
 {
     public:
-        Min15OtnTcmThreshes();
-        ~Min15OtnTcmThreshes();
+        OduReports();
+        ~OduReports();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -215,18 +244,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Mi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Min15OtnTcmThresh; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15otnTcms::Minute15otnTcm::Min15OtnTcmThreshes::Min15OtnTcmThresh
+        class OduReport; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport
 
-        ydk::YList min15_otn_tcm_thresh;
+        ydk::YList odu_report;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15otnTcms::Minute15otnTcm::Min15OtnTcmThreshes
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15otnTcms::Minute15otnTcm::Min15OtnTcmThreshes::Min15OtnTcmThresh : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport : public ydk::Entity
 {
     public:
-        Min15OtnTcmThresh();
-        ~Min15OtnTcmThresh();
+        OduReport();
+        ~OduReport();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -238,17 +267,16 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Mi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf otn_threshold; //type: OtnTcmThreshold
-        ydk::YLeaf otn_threshold_value; //type: uint32
+        ydk::YLeaf alarm; //type: OduAlarm
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15otnTcms::Minute15otnTcm::Min15OtnTcmThreshes::Min15OtnTcmThresh
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduReports::OduReport
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15otnTcms::Minute15otnTcm::Minute15otnTcmReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds : public ydk::Entity
 {
     public:
-        Minute15otnTcmReports();
-        ~Minute15otnTcmReports();
+        OduThresholds();
+        ~OduThresholds();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -260,18 +288,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Mi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Minute15otnTcmReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15otnTcms::Minute15otnTcm::Minute15otnTcmReports::Minute15otnTcmReport
+        class OduThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold
 
-        ydk::YList minute15otn_tcm_report;
+        ydk::YList odu_threshold;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15otnTcms::Minute15otnTcm::Minute15otnTcmReports
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15otnTcms::Minute15otnTcm::Minute15otnTcmReports::Minute15otnTcmReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold : public ydk::Entity
 {
     public:
-        Minute15otnTcmReport();
-        ~Minute15otnTcmReport();
+        OduThreshold();
+        ~OduThreshold();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -283,17 +311,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Mi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf otn_report; //type: OtnTcmReport
-        ydk::YLeaf enable; //type: Report
+        ydk::YLeaf threshold; //type: OduThreshold
+        ydk::YLeaf threshold_value; //type: uint32
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15otnTcms::Minute15otnTcm::Minute15otnTcmReports::Minute15otnTcmReport
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduThresholds::OduThreshold
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24 : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti : public ydk::Entity
 {
     public:
-        OcHour24();
-        ~OcHour24();
+        OduExpectedTti();
+        ~OduExpectedTti();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -305,18 +333,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Oc
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class OcHour24Ocn; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn
+        ydk::YLeaf string_type; //type: ExpectedTti
+        ydk::YLeaf ascii_string; //type: string
+        ydk::YLeaf hex_string; //type: string
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn> oc_hour24_ocn;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduExpectedTti
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduTxTti : public ydk::Entity
 {
     public:
-        OcHour24Ocn();
-        ~OcHour24Ocn();
+        OduTxTti();
+        ~OduTxTti();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -328,20 +356,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Oc
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class OcHour24OcnReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnReports
-        class OcHour24OcnThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnThresholds
+        ydk::YLeaf string_type; //type: TxTti
+        ydk::YLeaf ascii_string; //type: string
+        ydk::YLeaf hex_string; //type: string
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnReports> oc_hour24_ocn_reports;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnThresholds> oc_hour24_ocn_thresholds;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Odu::OduTxTti
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu : public ydk::Entity
 {
     public:
-        OcHour24OcnReports();
-        ~OcHour24OcnReports();
+        Otu();
+        ~Otu();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -353,18 +379,26 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Oc
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class OcHour24OcnReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnReports::OcHour24OcnReport
+        class OtuExpectedTti; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuExpectedTti
+        class OtuThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds
+        class Frr; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr
+        class OtuReports; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports
+        class OtuTxTti; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuTxTti
 
-        ydk::YList oc_hour24_ocn_report;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuExpectedTti> otu_expected_tti;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds> otu_thresholds;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr> frr;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports> otu_reports;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuTxTti> otu_tx_tti;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnReports
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnReports::OcHour24OcnReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuExpectedTti : public ydk::Entity
 {
     public:
-        OcHour24OcnReport();
-        ~OcHour24OcnReport();
+        OtuExpectedTti();
+        ~OtuExpectedTti();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -376,17 +410,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Oc
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ocn_report; //type: OcnReport
-        ydk::YLeaf enable; //type: Report
+        ydk::YLeaf string_type; //type: ExpectedTti
+        ydk::YLeaf ascii_string; //type: string
+        ydk::YLeaf hex_string; //type: string
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnReports::OcHour24OcnReport
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuExpectedTti
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds : public ydk::Entity
 {
     public:
-        OcHour24OcnThresholds();
-        ~OcHour24OcnThresholds();
+        OtuThresholds();
+        ~OtuThresholds();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -398,18 +433,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Oc
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class OcHour24OcnThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnThresholds::OcHour24OcnThreshold
+        class OtuThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds::OtuThreshold
 
-        ydk::YList oc_hour24_ocn_threshold;
+        ydk::YList otu_threshold;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnThresholds::OcHour24OcnThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds::OtuThreshold : public ydk::Entity
 {
     public:
-        OcHour24OcnThreshold();
-        ~OcHour24OcnThreshold();
+        OtuThreshold();
+        ~OtuThreshold();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -421,17 +456,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Oc
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ocn_threshold; //type: OcnThreshold
-        ydk::YLeaf ocn_threshold_value; //type: uint32
+        ydk::YLeaf threshold; //type: OtuThreshold
+        ydk::YLeaf threshold_value; //type: uint32
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcHour24::OcHour24Ocn::OcHour24OcnThresholds::OcHour24OcnThreshold
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuThresholds::OtuThreshold
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15 : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr : public ydk::Entity
 {
     public:
-        EthernetMinute15();
-        ~EthernetMinute15();
+        Frr();
+        ~Frr();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -443,18 +478,24 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Et
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Minute15Ether; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether
+        class TriggerWindow; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerWindow
+        class RevertThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertThreshold
+        class TriggerThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerThreshold
+        class RevertWindow; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertWindow
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether> minute15_ether;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerWindow> trigger_window; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertThreshold> revert_threshold; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerThreshold> trigger_threshold; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertWindow> revert_window; // presence node
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerWindow : public ydk::Entity
 {
     public:
-        Minute15Ether();
-        ~Minute15Ether();
+        TriggerWindow();
+        ~TriggerWindow();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -466,20 +507,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Et
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Minute15EtherThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherThresholds
-        class Minute15EtherReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherReports
+        ydk::YLeaf window; //type: uint32
+        ydk::YLeaf dummy; //type: uint32
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherThresholds> minute15_ether_thresholds;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherReports> minute15_ether_reports;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerWindow
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertThreshold : public ydk::Entity
 {
     public:
-        Minute15EtherThresholds();
-        ~Minute15EtherThresholds();
+        RevertThreshold();
+        ~RevertThreshold();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -491,18 +529,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Et
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Minute15EtherThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherThresholds::Minute15EtherThreshold
+        ydk::YLeaf ber_base; //type: uint32
+        ydk::YLeaf ber_power; //type: uint32
 
-        ydk::YList minute15_ether_threshold;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertThreshold
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherThresholds::Minute15EtherThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerThreshold : public ydk::Entity
 {
     public:
-        Minute15EtherThreshold();
-        ~Minute15EtherThreshold();
+        TriggerThreshold();
+        ~TriggerThreshold();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -514,17 +551,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Et
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ether_threshold; //type: EtherThreshold
-        ydk::YLeaf ether_threshold_value; //type: uint32
+        ydk::YLeaf ber_base; //type: uint32
+        ydk::YLeaf ber_power; //type: uint32
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherThresholds::Minute15EtherThreshold
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::TriggerThreshold
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertWindow : public ydk::Entity
 {
     public:
-        Minute15EtherReports();
-        ~Minute15EtherReports();
+        RevertWindow();
+        ~RevertWindow();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -536,18 +573,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Et
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Minute15EtherReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherReports::Minute15EtherReport
+        ydk::YLeaf window; //type: uint32
+        ydk::YLeaf dummy; //type: uint32
 
-        ydk::YList minute15_ether_report;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherReports
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::Frr::RevertWindow
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherReports::Minute15EtherReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports : public ydk::Entity
 {
     public:
-        Minute15EtherReport();
-        ~Minute15EtherReport();
+        OtuReports();
+        ~OtuReports();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -559,16 +595,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Et
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ether_report; //type: EtherReport
+        class OtuReport; //type: InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports::OtuReport
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::EthernetMinute15::Minute15Ether::Minute15EtherReports::Minute15EtherReport
+        ydk::YList otu_report;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24 : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports::OtuReport : public ydk::Entity
 {
     public:
-        HoVcHour24();
-        ~HoVcHour24();
+        OtuReport();
+        ~OtuReport();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -580,18 +618,16 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class HoVcHour24hoVc; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24hoVc
+        ydk::YLeaf alarm; //type: OtuAlarm
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24hoVc> ho_vc_hour24ho_vc;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuReports::OtuReport
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24hoVc : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuTxTti : public ydk::Entity
 {
     public:
-        HoVcHour24hoVc();
-        ~HoVcHour24hoVc();
+        OtuTxTti();
+        ~OtuTxTti();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -603,20 +639,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class HoVcHour24hoVcReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24hoVc::HoVcHour24hoVcReports
-        class HoVcHour24hoVcThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24hoVc::HoVcHour24hoVcThresholds
+        ydk::YLeaf string_type; //type: TxTti
+        ydk::YLeaf ascii_string; //type: string
+        ydk::YLeaf hex_string; //type: string
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24hoVc::HoVcHour24hoVcReports> ho_vc_hour24ho_vc_reports;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24hoVc::HoVcHour24hoVcThresholds> ho_vc_hour24ho_vc_thresholds;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24hoVc
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Otu::OtuTxTti
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24hoVc::HoVcHour24hoVcReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Prbs : public ydk::Entity
 {
     public:
-        HoVcHour24hoVcReports();
-        ~HoVcHour24hoVcReports();
+        Prbs();
+        ~Prbs();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -628,18 +662,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class HoVcHour24hoVcReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24hoVc::HoVcHour24hoVcReports::HoVcHour24hoVcReport
+        ydk::YLeaf prbs_mode; //type: PrbsMode
+        ydk::YLeaf prbs_pattern; //type: PrbsPattern
 
-        ydk::YList ho_vc_hour24ho_vc_report;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24hoVc::HoVcHour24hoVcReports
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Prbs
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24hoVc::HoVcHour24hoVcReports::HoVcHour24hoVcReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Fec : public ydk::Entity
 {
     public:
-        HoVcHour24hoVcReport();
-        ~HoVcHour24hoVcReport();
+        Fec();
+        ~Fec();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -651,17 +684,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ho_vc_report; //type: HoVcReport
-        ydk::YLeaf enable; //type: Report
+        ydk::YLeaf fec_mode; //type: Fec
+        ydk::YLeaf efec_mode; //type: Efec
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24hoVc::HoVcHour24hoVcReports::HoVcHour24hoVcReport
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::G709::Fec
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24hoVc::HoVcHour24hoVcThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dwdm::Wavelength : public ydk::Entity
 {
     public:
-        HoVcHour24hoVcThresholds();
-        ~HoVcHour24hoVcThresholds();
+        Wavelength();
+        ~Wavelength();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -673,18 +706,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class HoVcHour24hoVcThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24hoVc::HoVcHour24hoVcThresholds::HoVcHour24hoVcThreshold
+        ydk::YLeaf wave_channel; //type: uint32
+        ydk::YLeaf wave_channel_number; //type: WaveChannelNum
+        ydk::YLeaf prog_frequency; //type: string
 
-        ydk::YList ho_vc_hour24ho_vc_threshold;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24hoVc::HoVcHour24hoVcThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::Dwdm::Wavelength
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24hoVc::HoVcHour24hoVcThresholds::HoVcHour24hoVcThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::VlanSubConfiguration : public ydk::Entity
 {
     public:
-        HoVcHour24hoVcThreshold();
-        ~HoVcHour24hoVcThreshold();
+        VlanSubConfiguration();
+        ~VlanSubConfiguration();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -696,17 +729,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ho_vc_threshold; //type: HoVcThreshold
-        ydk::YLeaf ho_vc_threshold_value; //type: uint32
+        class VlanIdentifier; //type: InterfaceConfigurations::InterfaceConfiguration::VlanSubConfiguration::VlanIdentifier
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcHour24::HoVcHour24hoVc::HoVcHour24hoVcThresholds::HoVcHour24hoVcThreshold
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::VlanSubConfiguration::VlanIdentifier> vlan_identifier; // presence node
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::VlanSubConfiguration
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30 : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::VlanSubConfiguration::VlanIdentifier : public ydk::Entity
 {
     public:
-        Second30();
-        ~Second30();
+        VlanIdentifier();
+        ~VlanIdentifier();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -718,30 +752,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Second30pcs; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30pcs
-        class Second30fec; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30fec
-        class Second30Optics; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics
-        class Second30secyif; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyif
-        class Second30secyrx; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyrx
-        class Second30otn; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30otn
-        class Second30secytx; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secytx
+        ydk::YLeaf vlan_type; //type: Vlan
+        ydk::YLeaf first_tag; //type: uint32
+        ydk::YLeaf second_tag; //type: one of uint32, enumeration
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30pcs> second30pcs;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30fec> second30fec;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics> second30_optics;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyif> second30secyif;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyrx> second30secyrx;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30otn> second30otn;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secytx> second30secytx;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30
+}; // InterfaceConfigurations::InterfaceConfiguration::VlanSubConfiguration::VlanIdentifier
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30pcs : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetService : public ydk::Entity
 {
     public:
-        Second30pcs();
-        ~Second30pcs();
+        EthernetService();
+        ~EthernetService();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -753,20 +775,22 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Second30pcsThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30pcs::Second30pcsThresholds
-        class Second30pcsReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30pcs::Second30pcsReports
+        class LocalTrafficDefaultEncapsulation; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetService::LocalTrafficDefaultEncapsulation
+        class Encapsulation; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetService::Encapsulation
+        class Rewrite; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetService::Rewrite
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30pcs::Second30pcsThresholds> second30pcs_thresholds;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30pcs::Second30pcsReports> second30pcs_reports;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetService::LocalTrafficDefaultEncapsulation> local_traffic_default_encapsulation; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetService::Encapsulation> encapsulation; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetService::Rewrite> rewrite; // presence node
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30pcs
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetService
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30pcs::Second30pcsThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetService::LocalTrafficDefaultEncapsulation : public ydk::Entity
 {
     public:
-        Second30pcsThresholds();
-        ~Second30pcsThresholds();
+        LocalTrafficDefaultEncapsulation();
+        ~LocalTrafficDefaultEncapsulation();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -778,18 +802,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Second30pcsThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30pcs::Second30pcsThresholds::Second30pcsThreshold
+        ydk::YLeaf outer_tag_type; //type: Vlan
+        ydk::YLeaf outer_vlan_id; //type: uint32
+        ydk::YLeaf inner_vlan_id; //type: uint32
 
-        ydk::YList second30pcs_threshold;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30pcs::Second30pcsThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetService::LocalTrafficDefaultEncapsulation
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30pcs::Second30pcsThresholds::Second30pcsThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetService::Encapsulation : public ydk::Entity
 {
     public:
-        Second30pcsThreshold();
-        ~Second30pcsThreshold();
+        Encapsulation();
+        ~Encapsulation();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -801,17 +825,43 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf pcs_threshold; //type: PcsThreshold
-        ydk::YLeaf pcs_threshold_value; //type: string
+        ydk::YLeaf outer_tag_type; //type: Match
+        ydk::YLeaf outer_range1_low; //type: one of uint32, enumeration
+        ydk::YLeaf outer_range1_high; //type: one of uint32, enumeration
+        ydk::YLeaf inner_tag_type; //type: Match
+        ydk::YLeaf inner_range1_low; //type: one of uint32, enumeration
+        ydk::YLeaf inner_range1_high; //type: uint32
+        ydk::YLeaf additional_range1_low; //type: one of uint32, enumeration
+        ydk::YLeaf additional_range1_high; //type: uint32
+        ydk::YLeaf additional_range2_low; //type: one of uint32, enumeration
+        ydk::YLeaf additional_range2_high; //type: uint32
+        ydk::YLeaf additional_range3_low; //type: one of uint32, enumeration
+        ydk::YLeaf additional_range3_high; //type: uint32
+        ydk::YLeaf additional_range4_low; //type: one of uint32, enumeration
+        ydk::YLeaf additional_range4_high; //type: uint32
+        ydk::YLeaf additional_range5_low; //type: one of uint32, enumeration
+        ydk::YLeaf additional_range5_high; //type: uint32
+        ydk::YLeaf additional_range6_low; //type: one of uint32, enumeration
+        ydk::YLeaf additional_range6_high; //type: uint32
+        ydk::YLeaf additional_range7_low; //type: one of uint32, enumeration
+        ydk::YLeaf additional_range7_high; //type: uint32
+        ydk::YLeaf additional_range8_low; //type: one of uint32, enumeration
+        ydk::YLeaf additional_range8_high; //type: uint32
+        ydk::YLeaf outer_class_of_service; //type: uint32
+        ydk::YLeaf inner_class_of_service; //type: uint32
+        ydk::YLeaf payload_ethertype_match; //type: EthertypeMatch
+        ydk::YLeaf ingress_source_mac; //type: string
+        ydk::YLeaf ingress_destination_mac; //type: string
+        ydk::YLeaf exact; //type: empty
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30pcs::Second30pcsThresholds::Second30pcsThreshold
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetService::Encapsulation
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30pcs::Second30pcsReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetService::Rewrite : public ydk::Entity
 {
     public:
-        Second30pcsReports();
-        ~Second30pcsReports();
+        Rewrite();
+        ~Rewrite();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -823,18 +873,20 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Second30pcsReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30pcs::Second30pcsReports::Second30pcsReport
+        ydk::YLeaf rewrite_type; //type: Rewrite
+        ydk::YLeaf outer_tag_type; //type: Match
+        ydk::YLeaf outer_tag_value; //type: uint32
+        ydk::YLeaf inner_tag_type; //type: Match
+        ydk::YLeaf inner_tag_value; //type: uint32
 
-        ydk::YList second30pcs_report;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30pcs::Second30pcsReports
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetService::Rewrite
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30pcs::Second30pcsReports::Second30pcsReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetBng : public ydk::Entity
 {
     public:
-        Second30pcsReport();
-        ~Second30pcsReport();
+        EthernetBng();
+        ~EthernetBng();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -846,17 +898,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf pcs_report; //type: PcsReport
-        ydk::YLeaf enable; //type: Report
+        class AmbiguousEncapsulation; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetBng::AmbiguousEncapsulation
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30pcs::Second30pcsReports::Second30pcsReport
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetBng::AmbiguousEncapsulation> ambiguous_encapsulation; // presence node
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetBng
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30fec : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetBng::AmbiguousEncapsulation : public ydk::Entity
 {
     public:
-        Second30fec();
-        ~Second30fec();
+        AmbiguousEncapsulation();
+        ~AmbiguousEncapsulation();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -868,20 +921,43 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Second30fecThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30fec::Second30fecThresholds
-        class Second30fecReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30fec::Second30fecReports
+        ydk::YLeaf outer_tag_type; //type: Match
+        ydk::YLeaf outer_range1_low; //type: one of uint32, enumeration
+        ydk::YLeaf outer_range1_high; //type: one of uint32, enumeration
+        ydk::YLeaf inner_tag_type; //type: Match
+        ydk::YLeaf inner_range1_low; //type: one of uint32, enumeration
+        ydk::YLeaf inner_range1_high; //type: uint32
+        ydk::YLeaf additional_range1_low; //type: one of uint32, enumeration
+        ydk::YLeaf additional_range1_high; //type: uint32
+        ydk::YLeaf additional_range2_low; //type: one of uint32, enumeration
+        ydk::YLeaf additional_range2_high; //type: uint32
+        ydk::YLeaf additional_range3_low; //type: one of uint32, enumeration
+        ydk::YLeaf additional_range3_high; //type: uint32
+        ydk::YLeaf additional_range4_low; //type: one of uint32, enumeration
+        ydk::YLeaf additional_range4_high; //type: uint32
+        ydk::YLeaf additional_range5_low; //type: one of uint32, enumeration
+        ydk::YLeaf additional_range5_high; //type: uint32
+        ydk::YLeaf additional_range6_low; //type: one of uint32, enumeration
+        ydk::YLeaf additional_range6_high; //type: uint32
+        ydk::YLeaf additional_range7_low; //type: one of uint32, enumeration
+        ydk::YLeaf additional_range7_high; //type: uint32
+        ydk::YLeaf additional_range8_low; //type: one of uint32, enumeration
+        ydk::YLeaf additional_range8_high; //type: uint32
+        ydk::YLeaf outer_class_of_service; //type: uint32
+        ydk::YLeaf inner_class_of_service; //type: uint32
+        ydk::YLeaf payload_ethertype_match; //type: EthertypeMatch
+        ydk::YLeaf ingress_source_mac; //type: string
+        ydk::YLeaf ingress_destination_mac; //type: string
+        ydk::YLeaf exact; //type: empty
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30fec::Second30fecThresholds> second30fec_thresholds;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30fec::Second30fecReports> second30fec_reports;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30fec
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetBng::AmbiguousEncapsulation
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30fec::Second30fecThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::MacAccounting : public ydk::Entity
 {
     public:
-        Second30fecThresholds();
-        ~Second30fecThresholds();
+        MacAccounting();
+        ~MacAccounting();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -893,18 +969,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Second30fecThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30fec::Second30fecThresholds::Second30fecThreshold
+        ydk::YLeaf ingress; //type: empty
+        ydk::YLeaf egress; //type: empty
 
-        ydk::YList second30fec_threshold;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30fec::Second30fecThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::MacAccounting
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30fec::Second30fecThresholds::Second30fecThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures : public ydk::Entity
 {
     public:
-        Second30fecThreshold();
-        ~Second30fecThreshold();
+        EthernetFeatures();
+        ~EthernetFeatures();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -916,17 +991,22 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf fec_threshold; //type: FecThreshold
-        ydk::YLeaf fec_threshold_value; //type: string
+        ydk::YLeaf filtering; //type: Filtering
+        ydk::YLeaf ether_link_oam_enable; //type: empty
+        class Cfm; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm
+        class EtherLinkOam; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30fec::Second30fecThresholds::Second30fecThreshold
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm> cfm;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam> ether_link_oam;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30fec::Second30fecReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm : public ydk::Entity
 {
     public:
-        Second30fecReports();
-        ~Second30fecReports();
+        Cfm();
+        ~Cfm();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -938,18 +1018,20 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Second30fecReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30fec::Second30fecReports::Second30fecReport
+        class Domains; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains
+        class AisUp; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::AisUp
 
-        ydk::YList second30fec_report;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains> domains;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::AisUp> ais_up;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30fec::Second30fecReports
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30fec::Second30fecReports::Second30fecReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains : public ydk::Entity
 {
     public:
-        Second30fecReport();
-        ~Second30fecReport();
+        Domains();
+        ~Domains();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -961,17 +1043,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf fec_report; //type: FecReport
-        ydk::YLeaf enable; //type: Report
+        class Domain; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30fec::Second30fecReports::Second30fecReport
+        ydk::YList domain;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain : public ydk::Entity
 {
     public:
-        Second30Optics();
-        ~Second30Optics();
+        Domain();
+        ~Domain();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -983,20 +1066,19 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Second30OpticsReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsReports
-        class Second30OpticsThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds
+        ydk::YLeaf domain; //type: string
+        class Mep; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsReports> second30_optics_reports;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds> second30_optics_thresholds;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep> mep;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep : public ydk::Entity
 {
     public:
-        Second30OpticsReports();
-        ~Second30OpticsReports();
+        Mep();
+        ~Mep();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1008,18 +1090,23 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Second30OpticsReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsReports::Second30OpticsReport
+        ydk::YLeaf cos; //type: uint32
+        class SlaProfileTargetMepIds; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::SlaProfileTargetMepIds
+        class MepProperties; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::MepProperties
+        class LossMeasurementCounters; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::LossMeasurementCounters
 
-        ydk::YList second30_optics_report;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::SlaProfileTargetMepIds> sla_profile_target_mep_ids;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::MepProperties> mep_properties; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::LossMeasurementCounters> loss_measurement_counters; // presence node
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsReports
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsReports::Second30OpticsReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::SlaProfileTargetMepIds : public ydk::Entity
 {
     public:
-        Second30OpticsReport();
-        ~Second30OpticsReport();
+        SlaProfileTargetMepIds();
+        ~SlaProfileTargetMepIds();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1031,16 +1118,20 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf optics_report; //type: OpticsReport
+        class SlaProfileTargetMepId; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::SlaProfileTargetMepIds::SlaProfileTargetMepId
+        class SlaProfileTargetMacAddress; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::SlaProfileTargetMepIds::SlaProfileTargetMacAddress
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsReports::Second30OpticsReport
+        ydk::YList sla_profile_target_mep_id;
+        ydk::YList sla_profile_target_mac_address;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::SlaProfileTargetMepIds
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::SlaProfileTargetMepIds::SlaProfileTargetMepId : public ydk::Entity
 {
     public:
-        Second30OpticsThresholds();
-        ~Second30OpticsThresholds();
+        SlaProfileTargetMepId();
+        ~SlaProfileTargetMepId();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1052,18 +1143,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Second30OpticsThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds::Second30OpticsThreshold
+        ydk::YLeaf profile; //type: string
+        ydk::YLeaf target_mep_id; //type: uint32
 
-        ydk::YList second30_optics_threshold;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::SlaProfileTargetMepIds::SlaProfileTargetMepId
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds::Second30OpticsThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::SlaProfileTargetMepIds::SlaProfileTargetMacAddress : public ydk::Entity
 {
     public:
-        Second30OpticsThreshold();
-        ~Second30OpticsThreshold();
+        SlaProfileTargetMacAddress();
+        ~SlaProfileTargetMacAddress();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1075,18 +1165,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf optics_threshold; //type: OpticsThreshold
-        ydk::YLeaf optics_threshold_value; //type: int32
-        ydk::YLeaf dbm; //type: uint32
+        ydk::YLeaf profile; //type: string
+        ydk::YLeaf target_mac_address; //type: string
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30Optics::Second30OpticsThresholds::Second30OpticsThreshold
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::SlaProfileTargetMepIds::SlaProfileTargetMacAddress
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyif : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::MepProperties : public ydk::Entity
 {
     public:
-        Second30secyif();
-        ~Second30secyif();
+        MepProperties();
+        ~MepProperties();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1098,20 +1187,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Second30secyifThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyif::Second30secyifThresholds
-        class Second30secyifReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyif::Second30secyifReports
+        ydk::YLeaf service; //type: string
+        ydk::YLeaf mep_id; //type: uint32
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyif::Second30secyifThresholds> second30secyif_thresholds;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyif::Second30secyifReports> second30secyif_reports;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyif
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::MepProperties
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyif::Second30secyifThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::LossMeasurementCounters : public ydk::Entity
 {
     public:
-        Second30secyifThresholds();
-        ~Second30secyifThresholds();
+        LossMeasurementCounters();
+        ~LossMeasurementCounters();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1123,18 +1209,24 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Second30secyifThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyif::Second30secyifThresholds::Second30secyifThreshold
+        ydk::YLeaf cfg_type; //type: CfmLmCountersCfg
+        ydk::YLeaf cos0; //type: uint32
+        ydk::YLeaf cos1; //type: uint32
+        ydk::YLeaf cos2; //type: uint32
+        ydk::YLeaf cos3; //type: uint32
+        ydk::YLeaf cos4; //type: uint32
+        ydk::YLeaf cos5; //type: uint32
+        ydk::YLeaf cos6; //type: uint32
+        ydk::YLeaf cos7; //type: uint32
 
-        ydk::YList second30secyif_threshold;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyif::Second30secyifThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::Domains::Domain::Mep::LossMeasurementCounters
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyif::Second30secyifThresholds::Second30secyifThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::AisUp : public ydk::Entity
 {
     public:
-        Second30secyifThreshold();
-        ~Second30secyifThreshold();
+        AisUp();
+        ~AisUp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1146,17 +1238,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf secyif_threshold; //type: SecyifThreshold
-        ydk::YLeaf secyif_threshold_value; //type: uint32
+        class Transmission; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::AisUp::Transmission
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyif::Second30secyifThresholds::Second30secyifThreshold
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::AisUp::Transmission> transmission; // presence node
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::AisUp
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyif::Second30secyifReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::AisUp::Transmission : public ydk::Entity
 {
     public:
-        Second30secyifReports();
-        ~Second30secyifReports();
+        Transmission();
+        ~Transmission();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1168,18 +1261,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Second30secyifReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyif::Second30secyifReports::Second30secyifReport
+        ydk::YLeaf ais_interval; //type: CfmAisInterval
+        ydk::YLeaf cos; //type: uint32
 
-        ydk::YList second30secyif_report;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyif::Second30secyifReports
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::Cfm::AisUp::Transmission
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyif::Second30secyifReports::Second30secyifReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam : public ydk::Entity
 {
     public:
-        Second30secyifReport();
-        ~Second30secyifReport();
+        EtherLinkOam();
+        ~EtherLinkOam();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1191,17 +1283,29 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf secyif_report; //type: SecyifReport
-        ydk::YLeaf enable; //type: Report
+        ydk::YLeaf timeout; //type: uint32
+        ydk::YLeaf mode; //type: EtherLinkOamModeEnum
+        ydk::YLeaf mib_retrieval; //type: boolean
+        ydk::YLeaf profile_name; //type: string
+        ydk::YLeaf remote_loopback; //type: boolean
+        ydk::YLeaf hello_interval; //type: EtherLinkOamHelloIntervalEnum
+        ydk::YLeaf udlf; //type: boolean
+        class Action; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::Action
+        class RequireRemote; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::RequireRemote
+        class LinkMonitoring; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyif::Second30secyifReports::Second30secyifReport
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::Action> action;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::RequireRemote> require_remote;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring> link_monitoring;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyrx : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::Action : public ydk::Entity
 {
     public:
-        Second30secyrx();
-        ~Second30secyrx();
+        Action();
+        ~Action();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1213,20 +1317,25 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Second30secyrxThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyrx::Second30secyrxThresholds
-        class Second30secyrxReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyrx::Second30secyrxReports
+        ydk::YLeaf dying_gasp; //type: EtherLinkOamEventActionEnum
+        ydk::YLeaf link_fault; //type: EtherLinkOamEventActionEnumEfd
+        ydk::YLeaf capabilities_conflict; //type: EtherLinkOamEventActionEnumEfd
+        ydk::YLeaf session_up; //type: EtherLinkOamEventActionPrimEnum
+        ydk::YLeaf critical_event; //type: EtherLinkOamEventActionEnum
+        ydk::YLeaf remote_loopback; //type: EtherLinkOamEventActionPrimEnum
+        ydk::YLeaf wiring_conflict; //type: EtherLinkOamEventActionEnumEfd
+        ydk::YLeaf high_threshold; //type: EtherLinkOamEventActionEnum
+        ydk::YLeaf discovery_timeout; //type: EtherLinkOamEventActionEnumEfd
+        ydk::YLeaf session_down; //type: EtherLinkOamEventActionEnumEfd
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyrx::Second30secyrxThresholds> second30secyrx_thresholds;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyrx::Second30secyrxReports> second30secyrx_reports;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyrx
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::Action
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyrx::Second30secyrxThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::RequireRemote : public ydk::Entity
 {
     public:
-        Second30secyrxThresholds();
-        ~Second30secyrxThresholds();
+        RequireRemote();
+        ~RequireRemote();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1238,18 +1347,19 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Second30secyrxThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyrx::Second30secyrxThresholds::Second30secyrxThreshold
+        ydk::YLeaf mode; //type: EtherLinkOamRequireModeEnum
+        ydk::YLeaf mib_retrieval; //type: boolean
+        ydk::YLeaf remote_loopback; //type: boolean
+        ydk::YLeaf link_monitoring; //type: boolean
 
-        ydk::YList second30secyrx_threshold;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyrx::Second30secyrxThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::RequireRemote
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyrx::Second30secyrxThresholds::Second30secyrxThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring : public ydk::Entity
 {
     public:
-        Second30secyrxThreshold();
-        ~Second30secyrxThreshold();
+        LinkMonitoring();
+        ~LinkMonitoring();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1261,17 +1371,25 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf secyrx_threshold; //type: SecyrxThreshold
-        ydk::YLeaf secyrx_threshold_value; //type: uint32
+        ydk::YLeaf monitoring; //type: boolean
+        class SymbolPeriod; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod
+        class FramePeriod; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod
+        class FrameSeconds; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds
+        class Frame; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyrx::Second30secyrxThresholds::Second30secyrxThreshold
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod> symbol_period;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod> frame_period;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds> frame_seconds;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame> frame;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyrx::Second30secyrxReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod : public ydk::Entity
 {
     public:
-        Second30secyrxReports();
-        ~Second30secyrxReports();
+        SymbolPeriod();
+        ~SymbolPeriod();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1283,18 +1401,20 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Second30secyrxReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyrx::Second30secyrxReports::Second30secyrxReport
+        class Window; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod::Window
+        class Threshold; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod::Threshold
 
-        ydk::YList second30secyrx_report;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod::Window> window; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod::Threshold> threshold;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyrx::Second30secyrxReports
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyrx::Second30secyrxReports::Second30secyrxReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod::Window : public ydk::Entity
 {
     public:
-        Second30secyrxReport();
-        ~Second30secyrxReport();
+        Window();
+        ~Window();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1306,17 +1426,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf secyrx_report; //type: SecyrxReport
-        ydk::YLeaf enable; //type: Report
+        ydk::YLeaf window; //type: uint32
+        ydk::YLeaf units; //type: EtherLinkOamWindowUnitsSymbolsEnum
+        ydk::YLeaf multiplier; //type: EtherLinkOamThresholdWindowMultiplierEnum
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secyrx::Second30secyrxReports::Second30secyrxReport
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod::Window
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30otn : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod::Threshold : public ydk::Entity
 {
     public:
-        Second30otn();
-        ~Second30otn();
+        Threshold();
+        ~Threshold();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1328,20 +1449,20 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Second30OtnThreshes; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30otn::Second30OtnThreshes
-        class Second30otnReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30otn::Second30otnReports
+        ydk::YLeaf threshold_low; //type: uint32
+        ydk::YLeaf threshold_high; //type: uint32
+        ydk::YLeaf units; //type: EtherLinkOamThresholdUnitsSymbolsEnum
+        ydk::YLeaf multiplier_low; //type: EtherLinkOamThresholdWindowMultiplierEnum
+        ydk::YLeaf multiplier_high; //type: EtherLinkOamThresholdWindowMultiplierEnum
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30otn::Second30OtnThreshes> second30_otn_threshes;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30otn::Second30otnReports> second30otn_reports;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30otn
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::SymbolPeriod::Threshold
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30otn::Second30OtnThreshes : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod : public ydk::Entity
 {
     public:
-        Second30OtnThreshes();
-        ~Second30OtnThreshes();
+        FramePeriod();
+        ~FramePeriod();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1353,18 +1474,20 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Second30OtnThresh; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30otn::Second30OtnThreshes::Second30OtnThresh
+        class Window; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod::Window
+        class Threshold; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod::Threshold
 
-        ydk::YList second30_otn_thresh;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod::Window> window; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod::Threshold> threshold;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30otn::Second30OtnThreshes
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30otn::Second30OtnThreshes::Second30OtnThresh : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod::Window : public ydk::Entity
 {
     public:
-        Second30OtnThresh();
-        ~Second30OtnThresh();
+        Window();
+        ~Window();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1376,17 +1499,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf otn_threshold; //type: OtnThreshold
-        ydk::YLeaf otn_threshold_value; //type: uint32
+        ydk::YLeaf window; //type: uint32
+        ydk::YLeaf units; //type: EtherLinkOamWindowUnitsFramesEnum
+        ydk::YLeaf multiplier; //type: EtherLinkOamThresholdWindowMultiplierEnum
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30otn::Second30OtnThreshes::Second30OtnThresh
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod::Window
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30otn::Second30otnReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod::Threshold : public ydk::Entity
 {
     public:
-        Second30otnReports();
-        ~Second30otnReports();
+        Threshold();
+        ~Threshold();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1398,18 +1522,20 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Second30otnReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30otn::Second30otnReports::Second30otnReport
+        ydk::YLeaf threshold_low; //type: uint32
+        ydk::YLeaf threshold_high; //type: uint32
+        ydk::YLeaf units; //type: EtherLinkOamThresholdUnitsFramesEnum
+        ydk::YLeaf multiplier_low; //type: EtherLinkOamThresholdWindowMultiplierEnum
+        ydk::YLeaf multiplier_high; //type: EtherLinkOamThresholdWindowMultiplierEnum
 
-        ydk::YList second30otn_report;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30otn::Second30otnReports
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FramePeriod::Threshold
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30otn::Second30otnReports::Second30otnReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds : public ydk::Entity
 {
     public:
-        Second30otnReport();
-        ~Second30otnReport();
+        FrameSeconds();
+        ~FrameSeconds();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1421,17 +1547,19 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf otn_report; //type: OtnReport
-        ydk::YLeaf enable; //type: Report
+        ydk::YLeaf window; //type: uint32
+        class Threshold; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30otn::Second30otnReports::Second30otnReport
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold> threshold;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secytx : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold : public ydk::Entity
 {
     public:
-        Second30secytx();
-        ~Second30secytx();
+        Threshold();
+        ~Threshold();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1443,20 +1571,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Second30secytxThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secytx::Second30secytxThresholds
-        class Second30secytxReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secytx::Second30secytxReports
+        ydk::YLeaf threshold_low; //type: uint32
+        ydk::YLeaf threshold_high; //type: uint32
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secytx::Second30secytxThresholds> second30secytx_thresholds;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secytx::Second30secytxReports> second30secytx_reports;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secytx
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::FrameSeconds::Threshold
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secytx::Second30secytxThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame : public ydk::Entity
 {
     public:
-        Second30secytxThresholds();
-        ~Second30secytxThresholds();
+        Frame();
+        ~Frame();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1468,18 +1593,19 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Second30secytxThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secytx::Second30secytxThresholds::Second30secytxThreshold
+        ydk::YLeaf window; //type: uint32
+        class Threshold; //type: InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold
 
-        ydk::YList second30secytx_threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold> threshold;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secytx::Second30secytxThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secytx::Second30secytxThresholds::Second30secytxThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold : public ydk::Entity
 {
     public:
-        Second30secytxThreshold();
-        ~Second30secytxThreshold();
+        Threshold();
+        ~Threshold();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1491,17 +1617,19 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf secytx_threshold; //type: SecytxThreshold
-        ydk::YLeaf secytx_threshold_value; //type: uint32
+        ydk::YLeaf threshold_low; //type: uint32
+        ydk::YLeaf threshold_high; //type: uint32
+        ydk::YLeaf multiplier_low; //type: EtherLinkOamThresholdWindowMultiplierEnum
+        ydk::YLeaf multiplier_high; //type: EtherLinkOamThresholdWindowMultiplierEnum
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secytx::Second30secytxThresholds::Second30secytxThreshold
+}; // InterfaceConfigurations::InterfaceConfiguration::EthernetFeatures::EtherLinkOam::LinkMonitoring::Frame::Threshold
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secytx::Second30secytxReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::CarrierDelay : public ydk::Entity
 {
     public:
-        Second30secytxReports();
-        ~Second30secytxReports();
+        CarrierDelay();
+        ~CarrierDelay();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1513,18 +1641,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Second30secytxReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secytx::Second30secytxReports::Second30secytxReport
+        ydk::YLeaf carrier_delay_up; //type: uint32
+        ydk::YLeaf carrier_delay_down; //type: uint32
 
-        ydk::YList second30secytx_report;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secytx::Second30secytxReports
+}; // InterfaceConfigurations::InterfaceConfiguration::CarrierDelay
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secytx::Second30secytxReports::Second30secytxReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration : public ydk::Entity
 {
     public:
-        Second30secytxReport();
-        ~Second30secytxReport();
+        VlanTrunkConfiguration();
+        ~VlanTrunkConfiguration();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1536,17 +1663,22 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Se
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf secytx_report; //type: SecytxReport
-        ydk::YLeaf enable; //type: Report
+        ydk::YLeaf tunneling_ethertype; //type: TunnelingEthertype
+        class NativeVlanIdentifier; //type: InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier
+        class VlanSwitched; //type: InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Second30::Second30secytx::Second30secytxReports::Second30secytxReport
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier> native_vlan_identifier; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched> vlan_switched;
+                class TunnelingEthertype;
 
+}; // InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24otnTcms : public ydk::Entity
+
+class InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier : public ydk::Entity
 {
     public:
-        Hour24otnTcms();
-        ~Hour24otnTcms();
+        NativeVlanIdentifier();
+        ~NativeVlanIdentifier();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1558,18 +1690,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24otnTcm; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24otnTcms::Hour24otnTcm
+        ydk::YLeaf vlan_type; //type: Vlan
+        ydk::YLeaf vlan_identifier; //type: uint32
 
-        ydk::YList hour24otn_tcm;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24otnTcms
+}; // InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::NativeVlanIdentifier
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24otnTcms::Hour24otnTcm : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched : public ydk::Entity
 {
     public:
-        Hour24otnTcm();
-        ~Hour24otnTcm();
+        VlanSwitched();
+        ~VlanSwitched();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1581,21 +1712,19 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf tcm_number; //type: uint32
-        class Hour24otnTcmThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24otnTcms::Hour24otnTcm::Hour24otnTcmThresholds
-        class Hour24otnTcmReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24otnTcms::Hour24otnTcm::Hour24otnTcmReports
+        ydk::YLeaf mode; //type: VsMode
+        ydk::YLeaf access_vlan; //type: uint32
+        ydk::YLeaf trunk_tag_type; //type: Vlan
+        ydk::YLeaf trunk_vla_ns; //type: string
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24otnTcms::Hour24otnTcm::Hour24otnTcmThresholds> hour24otn_tcm_thresholds;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24otnTcms::Hour24otnTcm::Hour24otnTcmReports> hour24otn_tcm_reports;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24otnTcms::Hour24otnTcm
+}; // InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::VlanSwitched
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24otnTcms::Hour24otnTcm::Hour24otnTcmThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess : public ydk::Entity
 {
     public:
-        Hour24otnTcmThresholds();
-        ~Hour24otnTcmThresholds();
+        NvSatelliteAccess();
+        ~NvSatelliteAccess();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1607,18 +1736,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24otnTcmThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24otnTcms::Hour24otnTcm::Hour24otnTcmThresholds::Hour24otnTcmThreshold
+        class Qos; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::Qos
 
-        ydk::YList hour24otn_tcm_threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::Qos> qos;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24otnTcms::Hour24otnTcm::Hour24otnTcmThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24otnTcms::Hour24otnTcm::Hour24otnTcmThresholds::Hour24otnTcmThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::Qos : public ydk::Entity
 {
     public:
-        Hour24otnTcmThreshold();
-        ~Hour24otnTcmThreshold();
+        Qos();
+        ~Qos();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1630,17 +1759,20 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf otn_threshold; //type: OtnTcmThreshold
-        ydk::YLeaf otn_threshold_value; //type: uint32
+        class Output; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::Qos::Output
+        class Input; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::Qos::Input
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24otnTcms::Hour24otnTcm::Hour24otnTcmThresholds::Hour24otnTcmThreshold
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::Qos::Output> output;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::Qos::Input> input;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::Qos
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24otnTcms::Hour24otnTcm::Hour24otnTcmReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::Qos::Output : public ydk::Entity
 {
     public:
-        Hour24otnTcmReports();
-        ~Hour24otnTcmReports();
+        Output();
+        ~Output();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1652,18 +1784,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24otnTcmReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24otnTcms::Hour24otnTcm::Hour24otnTcmReports::Hour24otnTcmReport
+        class ServicePolicy; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::Qos::Output::ServicePolicy
 
-        ydk::YList hour24otn_tcm_report;
+        ydk::YList service_policy;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24otnTcms::Hour24otnTcm::Hour24otnTcmReports
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::Qos::Output
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24otnTcms::Hour24otnTcm::Hour24otnTcmReports::Hour24otnTcmReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::Qos::Output::ServicePolicy : public ydk::Entity
 {
     public:
-        Hour24otnTcmReport();
-        ~Hour24otnTcmReport();
+        ServicePolicy();
+        ~ServicePolicy();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1675,17 +1807,16 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf otn_report; //type: OtnTcmReport
-        ydk::YLeaf enable; //type: Report
+        ydk::YLeaf service_policy_name; //type: string
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24otnTcms::Hour24otnTcm::Hour24otnTcmReports::Hour24otnTcmReport
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::Qos::Output::ServicePolicy
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15 : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::Qos::Input : public ydk::Entity
 {
     public:
-        StsMinute15();
-        ~StsMinute15();
+        Input();
+        ~Input();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1697,18 +1828,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::St
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class StsMinute15Path; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path
+        class ServicePolicy; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::Qos::Input::ServicePolicy
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path> sts_minute15_path;
+        ydk::YList service_policy;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::Qos::Input
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::Qos::Input::ServicePolicy : public ydk::Entity
 {
     public:
-        StsMinute15Path();
-        ~StsMinute15Path();
+        ServicePolicy();
+        ~ServicePolicy();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1720,20 +1851,16 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::St
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class StsMinute15PathReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports
-        class StsMinute15PathThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds
+        ydk::YLeaf service_policy_name; //type: string
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports> sts_minute15_path_reports;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds> sts_minute15_path_thresholds;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteAccess::Qos::Input::ServicePolicy
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink : public ydk::Entity
 {
     public:
-        StsMinute15PathReports();
-        ~StsMinute15PathReports();
+        NvSatelliteFabricLink();
+        ~NvSatelliteFabricLink();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1745,18 +1872,28 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::St
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class StsMinute15PathReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::StsMinute15PathReport
+        ydk::YLeaf satellite; //type: uint32
+        ydk::YLeaf minimum_required_links; //type: uint32
+        class Redundancy; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Redundancy
+        class RemotePorts; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts
+        class EthernetFeatures; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures
+        class FrequencySynchronization; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::FrequencySynchronization
+        class Qos; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos
 
-        ydk::YList sts_minute15_path_report;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Redundancy> redundancy;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts> remote_ports;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures> ethernet_features;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::FrequencySynchronization> frequency_synchronization;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos> qos;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::StsMinute15PathReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Redundancy : public ydk::Entity
 {
     public:
-        StsMinute15PathReport();
-        ~StsMinute15PathReport();
+        Redundancy();
+        ~Redundancy();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1768,17 +1905,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::St
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf path_report; //type: StsReport
-        ydk::YLeaf enable; //type: Report
+        ydk::YLeaf iccp_group; //type: uint32
+        ydk::YLeaf minimum_preferred_links; //type: uint32
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathReports::StsMinute15PathReport
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Redundancy
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts : public ydk::Entity
 {
     public:
-        StsMinute15PathThresholds();
-        ~StsMinute15PathThresholds();
+        RemotePorts();
+        ~RemotePorts();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1790,18 +1927,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::St
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class StsMinute15PathThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::StsMinute15PathThreshold
+        class RemotePort; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort
 
-        ydk::YList sts_minute15_path_threshold;
+        ydk::YList remote_port;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::StsMinute15PathThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort : public ydk::Entity
 {
     public:
-        StsMinute15PathThreshold();
-        ~StsMinute15PathThreshold();
+        RemotePort();
+        ~RemotePort();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1813,17 +1950,19 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::St
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf path_threshold; //type: StsThreshold
-        ydk::YLeaf path_threshold_value; //type: uint32
+        ydk::YLeaf port_type; //type: string
+        ydk::YLeaf slot; //type: uint32
+        ydk::YLeaf sub_slot; //type: uint32
+        ydk::YLeaf port_range; //type: string
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsMinute15::StsMinute15Path::StsMinute15PathThresholds::StsMinute15PathThreshold
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::RemotePorts::RemotePort
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24 : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures : public ydk::Entity
 {
     public:
-        Hour24();
-        ~Hour24();
+        EthernetFeatures();
+        ~EthernetFeatures();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1835,30 +1974,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24otn; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24otn
-        class Hour24Optics; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics
-        class Hour24pcs; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24pcs
-        class Hour24fec; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24fec
-        class Hour24secyif; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyif
-        class Hour24secyrx; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyrx
-        class Hour24secytx; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secytx
+        class Cfm; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24otn> hour24otn;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics> hour24_optics;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24pcs> hour24pcs;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24fec> hour24fec;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyif> hour24secyif;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyrx> hour24secyrx;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secytx> hour24secytx;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm> cfm;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24otn : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm : public ydk::Entity
 {
     public:
-        Hour24otn();
-        ~Hour24otn();
+        Cfm();
+        ~Cfm();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1870,20 +1997,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24otnThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24otn::Hour24otnThresholds
-        class Hour24otnReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24otn::Hour24otnReports
+        ydk::YLeaf continuity_check_interval; //type: CfmCcmInterval
+        ydk::YLeaf level; //type: uint32
+        ydk::YLeaf enable; //type: empty
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24otn::Hour24otnThresholds> hour24otn_thresholds;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24otn::Hour24otnReports> hour24otn_reports;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24otn
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::EthernetFeatures::Cfm
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24otn::Hour24otnThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::FrequencySynchronization : public ydk::Entity
 {
     public:
-        Hour24otnThresholds();
-        ~Hour24otnThresholds();
+        FrequencySynchronization();
+        ~FrequencySynchronization();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1895,18 +2020,16 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24otnThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24otn::Hour24otnThresholds::Hour24otnThreshold
+        ydk::YLeaf enable; //type: empty
 
-        ydk::YList hour24otn_threshold;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24otn::Hour24otnThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::FrequencySynchronization
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24otn::Hour24otnThresholds::Hour24otnThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos : public ydk::Entity
 {
     public:
-        Hour24otnThreshold();
-        ~Hour24otnThreshold();
+        Qos();
+        ~Qos();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1918,17 +2041,20 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf otn_threshold; //type: OtnThreshold
-        ydk::YLeaf otn_threshold_value; //type: uint32
+        class Output; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output
+        class Input; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24otn::Hour24otnThresholds::Hour24otnThreshold
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output> output;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input> input;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24otn::Hour24otnReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output : public ydk::Entity
 {
     public:
-        Hour24otnReports();
-        ~Hour24otnReports();
+        Output();
+        ~Output();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1940,18 +2066,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24otnReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24otn::Hour24otnReports::Hour24otnReport
+        class ServicePolicy; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output::ServicePolicy
 
-        ydk::YList hour24otn_report;
+        ydk::YList service_policy;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24otn::Hour24otnReports
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24otn::Hour24otnReports::Hour24otnReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output::ServicePolicy : public ydk::Entity
 {
     public:
-        Hour24otnReport();
-        ~Hour24otnReport();
+        ServicePolicy();
+        ~ServicePolicy();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1963,17 +2089,16 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf otn_report; //type: OtnReport
-        ydk::YLeaf enable; //type: Report
+        ydk::YLeaf service_policy_name; //type: string
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24otn::Hour24otnReports::Hour24otnReport
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Output::ServicePolicy
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input : public ydk::Entity
 {
     public:
-        Hour24Optics();
-        ~Hour24Optics();
+        Input();
+        ~Input();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -1985,20 +2110,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24OpticsThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds
-        class Hour24OpticsReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports
+        class ServicePolicy; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input::ServicePolicy
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds> hour24_optics_thresholds;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports> hour24_optics_reports;
+        ydk::YList service_policy;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input::ServicePolicy : public ydk::Entity
 {
     public:
-        Hour24OpticsThresholds();
-        ~Hour24OpticsThresholds();
+        ServicePolicy();
+        ~ServicePolicy();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2010,18 +2133,16 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24OpticsThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::Hour24OpticsThreshold
+        ydk::YLeaf service_policy_name; //type: string
 
-        ydk::YList hour24_optics_threshold;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricLink::Qos::Input::ServicePolicy
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::Hour24OpticsThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork : public ydk::Entity
 {
     public:
-        Hour24OpticsThreshold();
-        ~Hour24OpticsThreshold();
+        NvSatelliteFabricNetwork();
+        ~NvSatelliteFabricNetwork();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2033,18 +2154,21 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf optics_threshold; //type: OpticsThreshold
-        ydk::YLeaf optics_threshold_value; //type: int32
-        ydk::YLeaf dbm; //type: uint32
+        ydk::YLeaf enable; //type: empty
+        class Satellites; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites
+        class Redundancy; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsThresholds::Hour24OpticsThreshold
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites> satellites;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy> redundancy;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites : public ydk::Entity
 {
     public:
-        Hour24OpticsReports();
-        ~Hour24OpticsReports();
+        Satellites();
+        ~Satellites();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2056,18 +2180,20 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24OpticsReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::Hour24OpticsReport
+        class Satellite; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite
+        class Qos; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos
 
-        ydk::YList hour24_optics_report;
+        ydk::YList satellite;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos> qos;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::Hour24OpticsReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite : public ydk::Entity
 {
     public:
-        Hour24OpticsReport();
-        ~Hour24OpticsReport();
+        Satellite();
+        ~Satellite();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2079,16 +2205,20 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf optics_report; //type: OpticsReport
+        ydk::YLeaf satellite_id; //type: uint32
+        ydk::YLeaf enable; //type: empty
+        class RemotePorts; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24Optics::Hour24OpticsReports::Hour24OpticsReport
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts> remote_ports;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24pcs : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts : public ydk::Entity
 {
     public:
-        Hour24pcs();
-        ~Hour24pcs();
+        RemotePorts();
+        ~RemotePorts();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2100,20 +2230,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24pcsThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24pcs::Hour24pcsThresholds
-        class Hour24pcsReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24pcs::Hour24pcsReports
+        class RemotePort; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24pcs::Hour24pcsThresholds> hour24pcs_thresholds;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24pcs::Hour24pcsReports> hour24pcs_reports;
+        ydk::YList remote_port;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24pcs
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24pcs::Hour24pcsThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort : public ydk::Entity
 {
     public:
-        Hour24pcsThresholds();
-        ~Hour24pcsThresholds();
+        RemotePort();
+        ~RemotePort();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2125,18 +2253,19 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24pcsThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24pcs::Hour24pcsThresholds::Hour24pcsThreshold
+        ydk::YLeaf port_type; //type: string
+        ydk::YLeaf slot; //type: uint32
+        ydk::YLeaf sub_slot; //type: uint32
+        ydk::YLeaf port_range; //type: string
 
-        ydk::YList hour24pcs_threshold;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24pcs::Hour24pcsThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Satellite::RemotePorts::RemotePort
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24pcs::Hour24pcsThresholds::Hour24pcsThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos : public ydk::Entity
 {
     public:
-        Hour24pcsThreshold();
-        ~Hour24pcsThreshold();
+        Qos();
+        ~Qos();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2148,17 +2277,20 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf pcs_threshold; //type: PcsThreshold
-        ydk::YLeaf pcs_threshold_value; //type: string
+        class Output; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output
+        class Input; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24pcs::Hour24pcsThresholds::Hour24pcsThreshold
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output> output;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input> input;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24pcs::Hour24pcsReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output : public ydk::Entity
 {
     public:
-        Hour24pcsReports();
-        ~Hour24pcsReports();
+        Output();
+        ~Output();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2170,18 +2302,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24pcsReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24pcs::Hour24pcsReports::Hour24pcsReport
+        class ServicePolicy; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output::ServicePolicy
 
-        ydk::YList hour24pcs_report;
+        ydk::YList service_policy;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24pcs::Hour24pcsReports
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24pcs::Hour24pcsReports::Hour24pcsReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output::ServicePolicy : public ydk::Entity
 {
     public:
-        Hour24pcsReport();
-        ~Hour24pcsReport();
+        ServicePolicy();
+        ~ServicePolicy();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2193,17 +2325,16 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf pcs_report; //type: PcsReport
-        ydk::YLeaf enable; //type: Report
+        ydk::YLeaf service_policy_name; //type: string
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24pcs::Hour24pcsReports::Hour24pcsReport
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Output::ServicePolicy
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24fec : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input : public ydk::Entity
 {
     public:
-        Hour24fec();
-        ~Hour24fec();
+        Input();
+        ~Input();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2215,20 +2346,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24fecThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24fec::Hour24fecThresholds
-        class Hour24fecReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24fec::Hour24fecReports
+        class ServicePolicy; //type: InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input::ServicePolicy
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24fec::Hour24fecThresholds> hour24fec_thresholds;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24fec::Hour24fecReports> hour24fec_reports;
+        ydk::YList service_policy;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24fec
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24fec::Hour24fecThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input::ServicePolicy : public ydk::Entity
 {
     public:
-        Hour24fecThresholds();
-        ~Hour24fecThresholds();
+        ServicePolicy();
+        ~ServicePolicy();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2240,18 +2369,16 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24fecThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24fec::Hour24fecThresholds::Hour24fecThreshold
+        ydk::YLeaf service_policy_name; //type: string
 
-        ydk::YList hour24fec_threshold;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24fec::Hour24fecThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Satellites::Qos::Input::ServicePolicy
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24fec::Hour24fecThresholds::Hour24fecThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy : public ydk::Entity
 {
     public:
-        Hour24fecThreshold();
-        ~Hour24fecThreshold();
+        Redundancy();
+        ~Redundancy();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2263,17 +2390,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf fec_threshold; //type: FecThreshold
-        ydk::YLeaf fec_threshold_value; //type: string
+        ydk::YLeaf iccp_group; //type: uint32
+        ydk::YLeaf minimum_preferred_links; //type: uint32
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24fec::Hour24fecThresholds::Hour24fecThreshold
+}; // InterfaceConfigurations::InterfaceConfiguration::NvSatelliteFabricNetwork::Redundancy
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24fec::Hour24fecReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Lldp : public ydk::Entity
 {
     public:
-        Hour24fecReports();
-        ~Hour24fecReports();
+        Lldp();
+        ~Lldp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2285,18 +2412,22 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24fecReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24fec::Hour24fecReports::Hour24fecReport
+        ydk::YLeaf lldp_intf_enter; //type: boolean
+        ydk::YLeaf enable; //type: boolean
+        class Transmit; //type: InterfaceConfigurations::InterfaceConfiguration::Lldp::Transmit
+        class Receive; //type: InterfaceConfigurations::InterfaceConfiguration::Lldp::Receive
 
-        ydk::YList hour24fec_report;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Lldp::Transmit> transmit;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Lldp::Receive> receive;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24fec::Hour24fecReports
+}; // InterfaceConfigurations::InterfaceConfiguration::Lldp
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24fec::Hour24fecReports::Hour24fecReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Lldp::Transmit : public ydk::Entity
 {
     public:
-        Hour24fecReport();
-        ~Hour24fecReport();
+        Transmit();
+        ~Transmit();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2308,17 +2439,16 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf fec_report; //type: FecReport
-        ydk::YLeaf enable; //type: Report
+        ydk::YLeaf disable; //type: boolean
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24fec::Hour24fecReports::Hour24fecReport
+}; // InterfaceConfigurations::InterfaceConfiguration::Lldp::Transmit
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyif : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Lldp::Receive : public ydk::Entity
 {
     public:
-        Hour24secyif();
-        ~Hour24secyif();
+        Receive();
+        ~Receive();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2330,20 +2460,16 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24secyifReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyif::Hour24secyifReports
-        class Hour24secyifThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyif::Hour24secyifThresholds
+        ydk::YLeaf disable; //type: boolean
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyif::Hour24secyifReports> hour24secyif_reports;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyif::Hour24secyifThresholds> hour24secyif_thresholds;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyif
+}; // InterfaceConfigurations::InterfaceConfiguration::Lldp::Receive
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyif::Hour24secyifReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions : public ydk::Entity
 {
     public:
-        Hour24secyifReports();
-        ~Hour24secyifReports();
+        SpanMonitorSessions();
+        ~SpanMonitorSessions();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2355,18 +2481,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24secyifReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyif::Hour24secyifReports::Hour24secyifReport
+        class SpanMonitorSession; //type: InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession
 
-        ydk::YList hour24secyif_report;
+        ydk::YList span_monitor_session;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyif::Hour24secyifReports
+}; // InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyif::Hour24secyifReports::Hour24secyifReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession : public ydk::Entity
 {
     public:
-        Hour24secyifReport();
-        ~Hour24secyifReport();
+        SpanMonitorSession();
+        ~SpanMonitorSession();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2378,17 +2504,23 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf secyif_report; //type: SecyifReport
-        ydk::YLeaf enable; //type: Report
+        ydk::YLeaf session_class; //type: SpanSessionClass
+        ydk::YLeaf mirror_first; //type: uint32
+        ydk::YLeaf mirror_interval; //type: SpanMirrorInterval
+        class Attachment; //type: InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::Attachment
+        class Acl; //type: InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::Acl
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyif::Hour24secyifReports::Hour24secyifReport
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::Attachment> attachment; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::Acl> acl; // presence node
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyif::Hour24secyifThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::Attachment : public ydk::Entity
 {
     public:
-        Hour24secyifThresholds();
-        ~Hour24secyifThresholds();
+        Attachment();
+        ~Attachment();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2400,18 +2532,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24secyifThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyif::Hour24secyifThresholds::Hour24secyifThreshold
+        ydk::YLeaf session_name; //type: string
+        ydk::YLeaf direction; //type: SpanTrafficDirection
+        ydk::YLeaf port_level_enable; //type: empty
 
-        ydk::YList hour24secyif_threshold;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyif::Hour24secyifThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::Attachment
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyif::Hour24secyifThresholds::Hour24secyifThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::Acl : public ydk::Entity
 {
     public:
-        Hour24secyifThreshold();
-        ~Hour24secyifThreshold();
+        Acl();
+        ~Acl();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2423,17 +2555,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf secyif_threshold; //type: SecyifThreshold
-        ydk::YLeaf secyif_threshold_value; //type: uint32
+        ydk::YLeaf acl_enable; //type: empty
+        ydk::YLeaf acl_name; //type: string
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyif::Hour24secyifThresholds::Hour24secyifThreshold
+}; // InterfaceConfigurations::InterfaceConfiguration::SpanMonitorSessions::SpanMonitorSession::Acl
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyrx : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4FlowSpec : public ydk::Entity
 {
     public:
-        Hour24secyrx();
-        ~Hour24secyrx();
+        Ipv4FlowSpec();
+        ~Ipv4FlowSpec();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2445,20 +2577,16 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24secyrxReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyrx::Hour24secyrxReports
-        class Hour24secyrxThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyrx::Hour24secyrxThresholds
+        ydk::YLeaf enabled; //type: empty
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyrx::Hour24secyrxReports> hour24secyrx_reports;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyrx::Hour24secyrxThresholds> hour24secyrx_thresholds;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyrx
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4FlowSpec
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyrx::Hour24secyrxReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv6FlowSpec : public ydk::Entity
 {
     public:
-        Hour24secyrxReports();
-        ~Hour24secyrxReports();
+        Ipv6FlowSpec();
+        ~Ipv6FlowSpec();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2470,18 +2598,16 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24secyrxReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyrx::Hour24secyrxReports::Hour24secyrxReport
+        ydk::YLeaf enabled; //type: empty
 
-        ydk::YList hour24secyrx_report;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyrx::Hour24secyrxReports
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv6FlowSpec
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyrx::Hour24secyrxReports::Hour24secyrxReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization : public ydk::Entity
 {
     public:
-        Hour24secyrxReport();
-        ~Hour24secyrxReport();
+        FrequencySynchronization();
+        ~FrequencySynchronization();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2493,17 +2619,26 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf secyrx_report; //type: SecyrxReport
-        ydk::YLeaf enable; //type: Report
+        ydk::YLeaf ssm_disable; //type: empty
+        ydk::YLeaf time_of_day_priority; //type: uint32
+        ydk::YLeaf selection_input; //type: empty
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf priority; //type: uint32
+        ydk::YLeaf wait_to_restore_time; //type: uint32
+        class InputQualityLevel; //type: InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::InputQualityLevel
+        class OutputQualityLevel; //type: InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::OutputQualityLevel
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyrx::Hour24secyrxReports::Hour24secyrxReport
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::InputQualityLevel> input_quality_level;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::OutputQualityLevel> output_quality_level;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyrx::Hour24secyrxThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::InputQualityLevel : public ydk::Entity
 {
     public:
-        Hour24secyrxThresholds();
-        ~Hour24secyrxThresholds();
+        InputQualityLevel();
+        ~InputQualityLevel();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2515,18 +2650,19 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24secyrxThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyrx::Hour24secyrxThresholds::Hour24secyrxThreshold
+        ydk::YLeaf quality_level_option; //type: FsyncQlOption
+        ydk::YLeaf exact_quality_level_value; //type: FsyncQlValue
+        ydk::YLeaf min_quality_level_value; //type: FsyncQlValue
+        ydk::YLeaf max_quality_level_value; //type: FsyncQlValue
 
-        ydk::YList hour24secyrx_threshold;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyrx::Hour24secyrxThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::InputQualityLevel
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyrx::Hour24secyrxThresholds::Hour24secyrxThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::OutputQualityLevel : public ydk::Entity
 {
     public:
-        Hour24secyrxThreshold();
-        ~Hour24secyrxThreshold();
+        OutputQualityLevel();
+        ~OutputQualityLevel();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2538,17 +2674,19 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf secyrx_threshold; //type: SecyrxThreshold
-        ydk::YLeaf secyrx_threshold_value; //type: uint32
+        ydk::YLeaf quality_level_option; //type: FsyncQlOption
+        ydk::YLeaf exact_quality_level_value; //type: FsyncQlValue
+        ydk::YLeaf min_quality_level_value; //type: FsyncQlValue
+        ydk::YLeaf max_quality_level_value; //type: FsyncQlValue
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secyrx::Hour24secyrxThresholds::Hour24secyrxThreshold
+}; // InterfaceConfigurations::InterfaceConfiguration::FrequencySynchronization::OutputQualityLevel
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secytx : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::ServicePolicies : public ydk::Entity
 {
     public:
-        Hour24secytx();
-        ~Hour24secytx();
+        ServicePolicies();
+        ~ServicePolicies();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2560,20 +2698,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24secytxThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secytx::Hour24secytxThresholds
-        class Hour24secytxReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secytx::Hour24secytxReports
+        class ServicePolicy; //type: InterfaceConfigurations::InterfaceConfiguration::ServicePolicies::ServicePolicy
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secytx::Hour24secytxThresholds> hour24secytx_thresholds;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secytx::Hour24secytxReports> hour24secytx_reports;
+        ydk::YList service_policy;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secytx
+}; // InterfaceConfigurations::InterfaceConfiguration::ServicePolicies
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secytx::Hour24secytxThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::ServicePolicies::ServicePolicy : public ydk::Entity
 {
     public:
-        Hour24secytxThresholds();
-        ~Hour24secytxThresholds();
+        ServicePolicy();
+        ~ServicePolicy();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2585,18 +2721,16 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24secytxThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secytx::Hour24secytxThresholds::Hour24secytxThreshold
+        ydk::YLeaf service_policy_name; //type: string
 
-        ydk::YList hour24secytx_threshold;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secytx::Hour24secytxThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::ServicePolicies::ServicePolicy
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secytx::Hour24secytxThresholds::Hour24secytxThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Afs : public ydk::Entity
 {
     public:
-        Hour24secytxThreshold();
-        ~Hour24secytxThreshold();
+        Afs();
+        ~Afs();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2608,17 +2742,20 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf secytx_threshold; //type: SecytxThreshold
-        ydk::YLeaf secytx_threshold_value; //type: uint32
+        class Af; //type: InterfaceConfigurations::InterfaceConfiguration::Afs::Af
+        class AfTopologyName; //type: InterfaceConfigurations::InterfaceConfiguration::Afs::AfTopologyName
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secytx::Hour24secytxThresholds::Hour24secytxThreshold
+        ydk::YList af;
+        ydk::YList af_topology_name;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Afs
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secytx::Hour24secytxReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Afs::Af : public ydk::Entity
 {
     public:
-        Hour24secytxReports();
-        ~Hour24secytxReports();
+        Af();
+        ~Af();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2630,18 +2767,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Hour24secytxReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secytx::Hour24secytxReports::Hour24secytxReport
+        ydk::YLeaf af_name; //type: VrfAddressFamily
+        ydk::YLeaf saf_name; //type: VrfSubAddressFamily
 
-        ydk::YList hour24secytx_report;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secytx::Hour24secytxReports
+}; // InterfaceConfigurations::InterfaceConfiguration::Afs::Af
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secytx::Hour24secytxReports::Hour24secytxReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Afs::AfTopologyName : public ydk::Entity
 {
     public:
-        Hour24secytxReport();
-        ~Hour24secytxReport();
+        AfTopologyName();
+        ~AfTopologyName();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2653,17 +2789,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf secytx_report; //type: SecytxReport
-        ydk::YLeaf enable; //type: Report
+        ydk::YLeaf topology_name; //type: string
+        ydk::YLeaf af_name; //type: VrfAddressFamily
+        ydk::YLeaf saf_name; //type: VrfSubAddressFamily
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Hour24::Hour24secytx::Hour24secytxReports::Hour24secytxReport
+}; // InterfaceConfigurations::InterfaceConfiguration::Afs::AfTopologyName
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15 : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Statistics : public ydk::Entity
 {
     public:
-        HoVcMinute15();
-        ~HoVcMinute15();
+        Statistics();
+        ~Statistics();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2675,18 +2812,16 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class HoVcMinute15hoVc; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15hoVc
+        ydk::YLeaf load_interval; //type: uint32
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15hoVc> ho_vc_minute15ho_vc;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15
+}; // InterfaceConfigurations::InterfaceConfiguration::Statistics
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15hoVc : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv6PacketFilter : public ydk::Entity
 {
     public:
-        HoVcMinute15hoVc();
-        ~HoVcMinute15hoVc();
+        Ipv6PacketFilter();
+        ~Ipv6PacketFilter();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2698,20 +2833,20 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class HoVcMinute15hoVcReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15hoVc::HoVcMinute15hoVcReports
-        class HoVcMinute15hoVcThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15hoVc::HoVcMinute15hoVcThresholds
+        class Inbound; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv6PacketFilter::Inbound
+        class Outbound; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv6PacketFilter::Outbound
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15hoVc::HoVcMinute15hoVcReports> ho_vc_minute15ho_vc_reports;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15hoVc::HoVcMinute15hoVcThresholds> ho_vc_minute15ho_vc_thresholds;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv6PacketFilter::Inbound> inbound;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv6PacketFilter::Outbound> outbound;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15hoVc
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv6PacketFilter
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15hoVc::HoVcMinute15hoVcReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv6PacketFilter::Inbound : public ydk::Entity
 {
     public:
-        HoVcMinute15hoVcReports();
-        ~HoVcMinute15hoVcReports();
+        Inbound();
+        ~Inbound();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2723,18 +2858,21 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class HoVcMinute15hoVcReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15hoVc::HoVcMinute15hoVcReports::HoVcMinute15hoVcReport
+        ydk::YLeaf common_acl_name; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf interface_statistics; //type: empty
+        ydk::YLeaf compression_level; //type: uint32
+        ydk::YLeafList acl_name_array; //type: list of  string
+        ydk::YLeafList is_common_array; //type: list of  boolean
 
-        ydk::YList ho_vc_minute15ho_vc_report;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15hoVc::HoVcMinute15hoVcReports
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv6PacketFilter::Inbound
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15hoVc::HoVcMinute15hoVcReports::HoVcMinute15hoVcReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv6PacketFilter::Outbound : public ydk::Entity
 {
     public:
-        HoVcMinute15hoVcReport();
-        ~HoVcMinute15hoVcReport();
+        Outbound();
+        ~Outbound();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2746,17 +2884,21 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ho_vc_report; //type: HoVcReport
-        ydk::YLeaf enable; //type: Report
+        ydk::YLeaf do_not_use; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf interface_statistics; //type: empty
+        ydk::YLeaf compression_level; //type: uint32
+        ydk::YLeafList acl_name_array; //type: list of  string
+        ydk::YLeafList is_common_array; //type: list of  boolean
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15hoVc::HoVcMinute15hoVcReports::HoVcMinute15hoVcReport
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv6PacketFilter::Outbound
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15hoVc::HoVcMinute15hoVcThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::EsPacketFilter : public ydk::Entity
 {
     public:
-        HoVcMinute15hoVcThresholds();
-        ~HoVcMinute15hoVcThresholds();
+        EsPacketFilter();
+        ~EsPacketFilter();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2768,18 +2910,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class HoVcMinute15hoVcThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15hoVc::HoVcMinute15hoVcThresholds::HoVcMinute15hoVcThreshold
+        ydk::YLeaf outbound; //type: string
+        ydk::YLeaf inbound; //type: string
 
-        ydk::YList ho_vc_minute15ho_vc_threshold;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15hoVc::HoVcMinute15hoVcThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::EsPacketFilter
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15hoVc::HoVcMinute15hoVcThresholds::HoVcMinute15hoVcThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4PacketFilter : public ydk::Entity
 {
     public:
-        HoVcMinute15hoVcThreshold();
-        ~HoVcMinute15hoVcThreshold();
+        Ipv4PacketFilter();
+        ~Ipv4PacketFilter();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2791,17 +2932,20 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Ho
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ho_vc_threshold; //type: HoVcThreshold
-        ydk::YLeaf ho_vc_threshold_value; //type: uint32
+        class Outbound; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4PacketFilter::Outbound
+        class Inbound; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4PacketFilter::Inbound
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::HoVcMinute15::HoVcMinute15hoVc::HoVcMinute15hoVcThresholds::HoVcMinute15hoVcThreshold
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv4PacketFilter::Outbound> outbound;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv4PacketFilter::Inbound> inbound;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4PacketFilter
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24 : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4PacketFilter::Outbound : public ydk::Entity
 {
     public:
-        StsHour24();
-        ~StsHour24();
+        Outbound();
+        ~Outbound();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2813,18 +2957,22 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::St
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class StsHour24Path; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path
+        ydk::YLeaf do_not_use; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_count; //type: empty
+        ydk::YLeaf interface_statistics; //type: empty
+        ydk::YLeaf compression_level; //type: uint32
+        ydk::YLeafList acl_name_array; //type: list of  string
+        ydk::YLeafList is_common_array; //type: list of  boolean
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path> sts_hour24_path;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4PacketFilter::Outbound
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4PacketFilter::Inbound : public ydk::Entity
 {
     public:
-        StsHour24Path();
-        ~StsHour24Path();
+        Inbound();
+        ~Inbound();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2836,20 +2984,22 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::St
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class StsHour24PathThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path::StsHour24PathThresholds
-        class StsHour24PathReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path::StsHour24PathReports
+        ydk::YLeaf common_acl_name; //type: string
+        ydk::YLeaf name; //type: string
+        ydk::YLeaf hardware_count; //type: empty
+        ydk::YLeaf interface_statistics; //type: empty
+        ydk::YLeaf compression_level; //type: uint32
+        ydk::YLeafList acl_name_array; //type: list of  string
+        ydk::YLeafList is_common_array; //type: list of  boolean
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path::StsHour24PathThresholds> sts_hour24_path_thresholds;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path::StsHour24PathReports> sts_hour24_path_reports;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4PacketFilter::Inbound
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path::StsHour24PathThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dagrs : public ydk::Entity
 {
     public:
-        StsHour24PathThresholds();
-        ~StsHour24PathThresholds();
+        Dagrs();
+        ~Dagrs();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2861,18 +3011,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::St
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class StsHour24PathThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path::StsHour24PathThresholds::StsHour24PathThreshold
+        class Dagr; //type: InterfaceConfigurations::InterfaceConfiguration::Dagrs::Dagr
 
-        ydk::YList sts_hour24_path_threshold;
+        ydk::YList dagr;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path::StsHour24PathThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::Dagrs
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path::StsHour24PathThresholds::StsHour24PathThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dagrs::Dagr : public ydk::Entity
 {
     public:
-        StsHour24PathThreshold();
-        ~StsHour24PathThreshold();
+        Dagr();
+        ~Dagr();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2884,17 +3034,20 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::St
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf path_threshold; //type: StsThreshold
-        ydk::YLeaf path_threshold_value; //type: uint32
+        ydk::YLeaf ip_addr; //type: string
+        ydk::YLeaf enter; //type: empty
+        class Sub; //type: InterfaceConfigurations::InterfaceConfiguration::Dagrs::Dagr::Sub
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path::StsHour24PathThresholds::StsHour24PathThreshold
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dagrs::Dagr::Sub> sub;
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Dagrs::Dagr
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path::StsHour24PathReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dagrs::Dagr::Sub : public ydk::Entity
 {
     public:
-        StsHour24PathReports();
-        ~StsHour24PathReports();
+        Sub();
+        ~Sub();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2906,18 +3059,23 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::St
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class StsHour24PathReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path::StsHour24PathReports::StsHour24PathReport
+        ydk::YLeaf priority_timeout; //type: uint32
+        class Metric; //type: InterfaceConfigurations::InterfaceConfiguration::Dagrs::Dagr::Sub::Metric
+        class Timers; //type: InterfaceConfigurations::InterfaceConfiguration::Dagrs::Dagr::Sub::Timers
+        class Distance; //type: InterfaceConfigurations::InterfaceConfiguration::Dagrs::Dagr::Sub::Distance
 
-        ydk::YList sts_hour24_path_report;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dagrs::Dagr::Sub::Metric> metric;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dagrs::Dagr::Sub::Timers> timers;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Dagrs::Dagr::Sub::Distance> distance;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path::StsHour24PathReports
+}; // InterfaceConfigurations::InterfaceConfiguration::Dagrs::Dagr::Sub
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path::StsHour24PathReports::StsHour24PathReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dagrs::Dagr::Sub::Metric : public ydk::Entity
 {
     public:
-        StsHour24PathReport();
-        ~StsHour24PathReport();
+        Metric();
+        ~Metric();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2929,17 +3087,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::St
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf path_report; //type: StsReport
-        ydk::YLeaf enable; //type: Report
+        ydk::YLeaf metric_norm; //type: uint32
+        ydk::YLeaf metric_prio; //type: uint32
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StsHour24::StsHour24Path::StsHour24PathReports::StsHour24PathReport
+}; // InterfaceConfigurations::InterfaceConfiguration::Dagrs::Dagr::Sub::Metric
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15 : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dagrs::Dagr::Sub::Timers : public ydk::Entity
 {
     public:
-        StmMinute15();
-        ~StmMinute15();
+        Timers();
+        ~Timers();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2951,18 +3109,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::St
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class StmMinute15Stm; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm
+        ydk::YLeaf query_time; //type: uint32
+        ydk::YLeaf sby_time; //type: uint32
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm> stm_minute15_stm;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15
+}; // InterfaceConfigurations::InterfaceConfiguration::Dagrs::Dagr::Sub::Timers
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Dagrs::Dagr::Sub::Distance : public ydk::Entity
 {
     public:
-        StmMinute15Stm();
-        ~StmMinute15Stm();
+        Distance();
+        ~Distance();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2974,20 +3131,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::St
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class StmMinute15StmReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm::StmMinute15StmReports
-        class StmMinute15StmThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm::StmMinute15StmThresholds
+        ydk::YLeaf dist_norm; //type: uint32
+        ydk::YLeaf dist_prio; //type: uint32
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm::StmMinute15StmReports> stm_minute15_stm_reports;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm::StmMinute15StmThresholds> stm_minute15_stm_thresholds;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm
+}; // InterfaceConfigurations::InterfaceConfiguration::Dagrs::Dagr::Sub::Distance
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm::StmMinute15StmReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4arp : public ydk::Entity
 {
     public:
-        StmMinute15StmReports();
-        ~StmMinute15StmReports();
+        Ipv4arp();
+        ~Ipv4arp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2999,18 +3153,24 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::St
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class StmMinute15StmReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm::StmMinute15StmReports::StmMinute15StmReport
+        ydk::YLeaf learning_local; //type: empty
+        ydk::YLeaf drop_adj_timeout; //type: uint32
+        ydk::YLeaf learning_solicited; //type: empty
+        ydk::YLeaf gratuitous_ignore; //type: empty
+        ydk::YLeaf proxy_arp; //type: empty
+        ydk::YLeaf purge_delay; //type: uint32
+        ydk::YLeaf learning_disable; //type: empty
+        ydk::YLeaf local_proxy_arp; //type: empty
+        ydk::YLeaf timeout; //type: uint32
 
-        ydk::YList stm_minute15_stm_report;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm::StmMinute15StmReports
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4arp
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm::StmMinute15StmReports::StmMinute15StmReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4DhcpClientConfig : public ydk::Entity
 {
     public:
-        StmMinute15StmReport();
-        ~StmMinute15StmReport();
+        Ipv4DhcpClientConfig();
+        ~Ipv4DhcpClientConfig();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3022,17 +3182,23 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::St
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf stm_report; //type: StmReport
-        ydk::YLeaf enable; //type: Report
+        ydk::YLeaf ipv4_dhcp_client; //type: empty
+        class Option61Config; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4DhcpClientConfig::Option61Config
+        class Option60Config; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4DhcpClientConfig::Option60Config
+        class Option77Config; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4DhcpClientConfig::Option77Config
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm::StmMinute15StmReports::StmMinute15StmReport
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv4DhcpClientConfig::Option61Config> option61_config; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv4DhcpClientConfig::Option60Config> option60_config; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv4DhcpClientConfig::Option77Config> option77_config; // presence node
+        
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4DhcpClientConfig
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm::StmMinute15StmThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4DhcpClientConfig::Option61Config : public ydk::Entity
 {
     public:
-        StmMinute15StmThresholds();
-        ~StmMinute15StmThresholds();
+        Option61Config();
+        ~Option61Config();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3044,18 +3210,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::St
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class StmMinute15StmThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm::StmMinute15StmThresholds::StmMinute15StmThreshold
+        ydk::YLeaf opt61; //type: Option61
+        ydk::YLeaf subtype; //type: Opt61Sub
+        ydk::YLeaf ascii_string; //type: string
 
-        ydk::YList stm_minute15_stm_threshold;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm::StmMinute15StmThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4DhcpClientConfig::Option61Config
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm::StmMinute15StmThresholds::StmMinute15StmThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4DhcpClientConfig::Option60Config : public ydk::Entity
 {
     public:
-        StmMinute15StmThreshold();
-        ~StmMinute15StmThreshold();
+        Option60Config();
+        ~Option60Config();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3067,17 +3233,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::St
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf stm_threshold; //type: StmThreshold
-        ydk::YLeaf stm_threshold_value; //type: uint32
+        ydk::YLeaf opt60; //type: Option60
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf ascii_string; //type: string
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::StmMinute15::StmMinute15Stm::StmMinute15StmThresholds::StmMinute15StmThreshold
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4DhcpClientConfig::Option60Config
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24 : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4DhcpClientConfig::Option77Config : public ydk::Entity
 {
     public:
-        SonetHour24();
-        ~SonetHour24();
+        Option77Config();
+        ~Option77Config();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3089,20 +3256,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::So
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SonetHour24Path; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path
-        class SonetHour24Ocn; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn
+        ydk::YLeaf opt77; //type: Option77
+        ydk::YLeaf enable; //type: empty
+        ydk::YLeaf ascii_string; //type: string
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path> sonet_hour24_path;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn> sonet_hour24_ocn;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4DhcpClientConfig::Option77Config
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4Network : public ydk::Entity
 {
     public:
-        SonetHour24Path();
-        ~SonetHour24Path();
+        Ipv4Network();
+        ~Ipv4Network();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3114,20 +3279,32 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::So
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SonetHour24PathThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path::SonetHour24PathThresholds
-        class SonetHour24PathReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path::SonetHour24PathReports
+        ydk::YLeaf forwarding_enable; //type: empty
+        ydk::YLeaf icmp_mask_reply; //type: empty
+        ydk::YLeaf tcp_mss_adjust_enable; //type: empty
+        ydk::YLeaf ttl_propagate_disable; //type: empty
+        ydk::YLeaf point_to_point; //type: empty
+        ydk::YLeaf mtu; //type: uint32
+        class BgpPa; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa
+        class Verify; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Verify
+        class Bgp; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp
+        class Addresses; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses
+        class HelperAddresses; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path::SonetHour24PathThresholds> sonet_hour24_path_thresholds;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path::SonetHour24PathReports> sonet_hour24_path_reports;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa> bgp_pa;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Verify> verify;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp> bgp;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses> addresses;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses> helper_addresses;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4Network
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path::SonetHour24PathThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa : public ydk::Entity
 {
     public:
-        SonetHour24PathThresholds();
-        ~SonetHour24PathThresholds();
+        BgpPa();
+        ~BgpPa();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3139,18 +3316,20 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::So
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SonetHour24PathThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path::SonetHour24PathThresholds::SonetHour24PathThreshold
+        class Input; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Input
+        class Output; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Output
 
-        ydk::YList sonet_hour24_path_threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Input> input;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Output> output;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path::SonetHour24PathThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path::SonetHour24PathThresholds::SonetHour24PathThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Input : public ydk::Entity
 {
     public:
-        SonetHour24PathThreshold();
-        ~SonetHour24PathThreshold();
+        Input();
+        ~Input();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3162,17 +3341,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::So
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf path_threshold; //type: PathThreshold
-        ydk::YLeaf path_threshold_value; //type: uint32
+        ydk::YLeaf source_accounting; //type: boolean
+        ydk::YLeaf destination_accounting; //type: boolean
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path::SonetHour24PathThresholds::SonetHour24PathThreshold
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Input
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path::SonetHour24PathReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Output : public ydk::Entity
 {
     public:
-        SonetHour24PathReports();
-        ~SonetHour24PathReports();
+        Output();
+        ~Output();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3184,18 +3363,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::So
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SonetHour24PathReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path::SonetHour24PathReports::SonetHour24PathReport
+        ydk::YLeaf source_accounting; //type: boolean
+        ydk::YLeaf destination_accounting; //type: boolean
 
-        ydk::YList sonet_hour24_path_report;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path::SonetHour24PathReports
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::BgpPa::Output
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path::SonetHour24PathReports::SonetHour24PathReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Verify : public ydk::Entity
 {
     public:
-        SonetHour24PathReport();
-        ~SonetHour24PathReport();
+        Verify();
+        ~Verify();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3207,16 +3385,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::So
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf path_report; //type: PathReport
+        ydk::YLeaf reachable; //type: Ipv4Reachable
+        ydk::YLeaf self_ping; //type: Ipv4SelfPing
+        ydk::YLeaf default_ping; //type: Ipv4DefaultPing
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Path::SonetHour24PathReports::SonetHour24PathReport
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Verify
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp : public ydk::Entity
 {
     public:
-        SonetHour24Ocn();
-        ~SonetHour24Ocn();
+        Bgp();
+        ~Bgp();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3228,20 +3408,20 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::So
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SonetHour24OcnThresholds; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn::SonetHour24OcnThresholds
-        class SonetHour24OcnReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn::SonetHour24OcnReports
+        class Qppb; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb
+        class FlowTag; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn::SonetHour24OcnThresholds> sonet_hour24_ocn_thresholds;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn::SonetHour24OcnReports> sonet_hour24_ocn_reports;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb> qppb;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag> flow_tag;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn::SonetHour24OcnThresholds : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb : public ydk::Entity
 {
     public:
-        SonetHour24OcnThresholds();
-        ~SonetHour24OcnThresholds();
+        Qppb();
+        ~Qppb();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3253,18 +3433,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::So
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SonetHour24OcnThreshold; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn::SonetHour24OcnThresholds::SonetHour24OcnThreshold
+        class Input; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::Input
 
-        ydk::YList sonet_hour24_ocn_threshold;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::Input> input;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn::SonetHour24OcnThresholds
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn::SonetHour24OcnThresholds::SonetHour24OcnThreshold : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::Input : public ydk::Entity
 {
     public:
-        SonetHour24OcnThreshold();
-        ~SonetHour24OcnThreshold();
+        Input();
+        ~Input();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3276,17 +3456,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::So
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ocn_threshold; //type: OcnThreshold
-        ydk::YLeaf ocn_threshold_value; //type: uint32
+        ydk::YLeaf source; //type: Ipv4InterfaceQppb
+        ydk::YLeaf destination; //type: Ipv4InterfaceQppb
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn::SonetHour24OcnThresholds::SonetHour24OcnThreshold
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::Qppb::Input
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn::SonetHour24OcnReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag : public ydk::Entity
 {
     public:
-        SonetHour24OcnReports();
-        ~SonetHour24OcnReports();
+        FlowTag();
+        ~FlowTag();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3298,18 +3478,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::So
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class SonetHour24OcnReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn::SonetHour24OcnReports::SonetHour24OcnReport
+        class FlowTagInput; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::FlowTagInput
 
-        ydk::YList sonet_hour24_ocn_report;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::FlowTagInput> flow_tag_input;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn::SonetHour24OcnReports
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn::SonetHour24OcnReports::SonetHour24OcnReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::FlowTagInput : public ydk::Entity
 {
     public:
-        SonetHour24OcnReport();
-        ~SonetHour24OcnReport();
+        FlowTagInput();
+        ~FlowTagInput();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3321,16 +3501,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::So
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf ocn_report; //type: OcnReport
+        ydk::YLeaf source; //type: boolean
+        ydk::YLeaf destination; //type: boolean
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::SonetHour24::SonetHour24Ocn::SonetHour24OcnReports::SonetHour24OcnReport
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Bgp::FlowTag::FlowTagInput
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses : public ydk::Entity
 {
     public:
-        Minute15Path();
-        ~Minute15Path();
+        Addresses();
+        ~Addresses();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3342,18 +3523,22 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Mi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Minute15otnPath; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15otnPath
+        ydk::YLeaf unnumbered; //type: string
+        ydk::YLeaf dhcp; //type: empty
+        class Secondaries; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries
+        class Primary; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Primary
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15otnPath> minute15otn_path;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries> secondaries;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Primary> primary; // presence node
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15otnPath : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries : public ydk::Entity
 {
     public:
-        Minute15otnPath();
-        ~Minute15otnPath();
+        Secondaries();
+        ~Secondaries();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3365,20 +3550,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Mi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Minute15otnPathReports; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15otnPath::Minute15otnPathReports
-        class Min15OtnPathThreshes; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15otnPath::Min15OtnPathThreshes
+        class Secondary; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries::Secondary
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15otnPath::Minute15otnPathReports> minute15otn_path_reports;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15otnPath::Min15OtnPathThreshes> min15_otn_path_threshes;
+        ydk::YList secondary;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15otnPath
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15otnPath::Minute15otnPathReports : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries::Secondary : public ydk::Entity
 {
     public:
-        Minute15otnPathReports();
-        ~Minute15otnPathReports();
+        Secondary();
+        ~Secondary();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3390,18 +3573,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Mi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Minute15otnPathReport; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15otnPath::Minute15otnPathReports::Minute15otnPathReport
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf netmask; //type: string
+        ydk::YLeaf route_tag; //type: uint32
 
-        ydk::YList minute15otn_path_report;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15otnPath::Minute15otnPathReports
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Secondaries::Secondary
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15otnPath::Minute15otnPathReports::Minute15otnPathReport : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Primary : public ydk::Entity
 {
     public:
-        Minute15otnPathReport();
-        ~Minute15otnPathReport();
+        Primary();
+        ~Primary();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3413,17 +3596,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Mi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf otn_report; //type: OtnReport
-        ydk::YLeaf enable; //type: Report
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf netmask; //type: string
+        ydk::YLeaf route_tag; //type: uint32
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15otnPath::Minute15otnPathReports::Minute15otnPathReport
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::Addresses::Primary
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15otnPath::Min15OtnPathThreshes : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses : public ydk::Entity
 {
     public:
-        Min15OtnPathThreshes();
-        ~Min15OtnPathThreshes();
+        HelperAddresses();
+        ~HelperAddresses();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3435,18 +3619,18 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Mi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Min15OtnPathThresh; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15otnPath::Min15OtnPathThreshes::Min15OtnPathThresh
+        class HelperAddress; //type: InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses::HelperAddress
 
-        ydk::YList min15_otn_path_thresh;
+        ydk::YList helper_address;
         
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15otnPath::Min15OtnPathThreshes
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15otnPath::Min15OtnPathThreshes::Min15OtnPathThresh : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses::HelperAddress : public ydk::Entity
 {
     public:
-        Min15OtnPathThresh();
-        ~Min15OtnPathThresh();
+        HelperAddress();
+        ~HelperAddress();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3458,17 +3642,17 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Mi
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf otn_threshold; //type: OtnThreshold
-        ydk::YLeaf otn_threshold_value; //type: uint32
+        ydk::YLeaf address; //type: string
+        ydk::YLeaf vrf_name; //type: string
 
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Minute15Path::Minute15otnPath::Min15OtnPathThreshes::Min15OtnPathThresh
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4Network::HelperAddresses::HelperAddress
 
 
-class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15 : public ydk::Entity
+class InterfaceConfigurations::InterfaceConfiguration::Ipv4NetworkForwarding : public ydk::Entity
 {
     public:
-        OcMinute15();
-        ~OcMinute15();
+        Ipv4NetworkForwarding();
+        ~Ipv4NetworkForwarding();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -3480,11 +3664,19 @@ class InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::Oc
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class OcMinute15Ocn; //type: InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn
+        ydk::YLeaf directed_broadcast; //type: empty
+        ydk::YLeaf unreachables; //type: empty
+        ydk::YLeaf redirects; //type: empty
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ifmgr_cfg::InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15::OcMinute15Ocn> oc_minute15_ocn;
-        
-}; // InterfaceConfigurations::InterfaceConfiguration::PerformanceManagement::OcMinute15
+}; // InterfaceConfigurations::InterfaceConfiguration::Ipv4NetworkForwarding
+
+class InterfaceConfigurations::InterfaceConfiguration::VlanTrunkConfiguration::TunnelingEthertype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_0x9100;
+        static const ydk::Enum::YLeaf Y_0x9200;
+
+};
 
 
 }

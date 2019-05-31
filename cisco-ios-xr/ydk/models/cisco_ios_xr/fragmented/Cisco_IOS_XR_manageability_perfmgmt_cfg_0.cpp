@@ -18002,6 +18002,10 @@ bool PerfMgmt::Threshold::LdpMpls::LdpMplsTemplates::LdpMplsTemplate::LabelRelea
     return false;
 }
 
+const Enum::YLeaf PmThresholdRearm::always {0, "always"};
+const Enum::YLeaf PmThresholdRearm::window {1, "window"};
+const Enum::YLeaf PmThresholdRearm::toggle {2, "toggle"};
+
 const Enum::YLeaf PmThresholdOp::eq {1, "eq"};
 const Enum::YLeaf PmThresholdOp::ne {2, "ne"};
 const Enum::YLeaf PmThresholdOp::lt {3, "lt"};
@@ -18009,10 +18013,6 @@ const Enum::YLeaf PmThresholdOp::le {4, "le"};
 const Enum::YLeaf PmThresholdOp::gt {5, "gt"};
 const Enum::YLeaf PmThresholdOp::ge {6, "ge"};
 const Enum::YLeaf PmThresholdOp::rg {7, "rg"};
-
-const Enum::YLeaf PmThresholdRearm::always {0, "always"};
-const Enum::YLeaf PmThresholdRearm::window {1, "window"};
-const Enum::YLeaf PmThresholdRearm::toggle {2, "toggle"};
 
 
 }

@@ -10,20 +10,20 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_clns_isis_datatypes {
 
+class IsisAddressFamily : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+};
+
 class IsisInternalLevel : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf not_set;
         static const ydk::Enum::YLeaf level1;
         static const ydk::Enum::YLeaf level2;
-
-};
-
-class IsisAddressFamily : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
 
 };
 

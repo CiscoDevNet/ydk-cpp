@@ -83,7 +83,6 @@ class Ospfv3::Processes::Process : public ydk::Entity
         ydk::YLeaf process_name; //type: string
         ydk::YLeaf nsr; //type: Ospfv3nsr
         ydk::YLeaf protocol_shutdown; //type: empty
-        ydk::YLeaf enable; //type: empty
         class DefaultVrf; //type: Ospfv3::Processes::Process::DefaultVrf
         class Vrfs; //type: Ospfv3::Processes::Process::Vrfs
         class Af; //type: Ospfv3::Processes::Process::Af
@@ -3732,9 +3731,9 @@ class Ospfv3::Processes::Process::DefaultVrf::StubRouter : public ydk::Entity
         class V6bit; //type: Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit
         class MaxMetric; //type: Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric
 
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::StubRouter::Rbit> rbit;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit> v6bit;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric> max_metric;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::StubRouter::Rbit> rbit; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit> v6bit; // presence node
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv6_ospfv3_cfg::Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric> max_metric; // presence node
         
 }; // Ospfv3::Processes::Process::DefaultVrf::StubRouter
 
@@ -3758,7 +3757,6 @@ class Ospfv3::Processes::Process::DefaultVrf::StubRouter::Rbit : public ydk::Ent
         ydk::YLeaf on_switchover; //type: uint32
         ydk::YLeaf always; //type: empty
         ydk::YLeaf include_stub; //type: empty
-        ydk::YLeaf enable; //type: empty
         ydk::YLeaf on_proc_migration; //type: uint32
         ydk::YLeaf on_proc_restart; //type: uint32
         class OnStartup; //type: Ospfv3::Processes::Process::DefaultVrf::StubRouter::Rbit::OnStartup
@@ -3808,7 +3806,6 @@ class Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit : public ydk::En
 
         ydk::YLeaf on_switchover; //type: uint32
         ydk::YLeaf always; //type: empty
-        ydk::YLeaf enable; //type: empty
         ydk::YLeaf on_proc_migration; //type: uint32
         ydk::YLeaf on_proc_restart; //type: uint32
         class OnStartup; //type: Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit::OnStartup
@@ -3817,51 +3814,38 @@ class Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit : public ydk::En
         
 }; // Ospfv3::Processes::Process::DefaultVrf::StubRouter::V6bit
 
-class Ospfv3DomainId : public ydk::Enum
+class Ospfv3Protocol : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf type0005;
-        static const ydk::Enum::YLeaf type0105;
-        static const ydk::Enum::YLeaf type0205;
-        static const ydk::Enum::YLeaf type8005;
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf connected;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf bgp;
+        static const ydk::Enum::YLeaf isis;
+        static const ydk::Enum::YLeaf ospfv3;
+        static const ydk::Enum::YLeaf eigrp;
 
 };
 
-class Ospfv3Network : public ydk::Enum
+class Ospfv3FastRerouteTiebreakers : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf broadcast;
-        static const ydk::Enum::YLeaf non_broadcast;
-        static const ydk::Enum::YLeaf point_to_point;
-        static const ydk::Enum::YLeaf point_to_multipoint;
-        static const ydk::Enum::YLeaf non_broadcast_point_to_multipoint;
+        static const ydk::Enum::YLeaf downstream;
+        static const ydk::Enum::YLeaf line_card_disjoint;
+        static const ydk::Enum::YLeaf lowest_metric;
+        static const ydk::Enum::YLeaf node_protect;
+        static const ydk::Enum::YLeaf primary_path;
+        static const ydk::Enum::YLeaf secondary_path;
+        static const ydk::Enum::YLeaf srlg_disjoint;
 
 };
 
-class Ospfv3Metric : public ydk::Enum
+class Ospfv3isisRoute : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf type1;
-        static const ydk::Enum::YLeaf type2;
-
-};
-
-class Ospfv3AuthenticationType2 : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf null;
-        static const ydk::Enum::YLeaf md5;
-        static const ydk::Enum::YLeaf sha1;
-
-};
-
-class Ospfv3FastReroutePriority : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf high;
-        static const ydk::Enum::YLeaf medium;
-        static const ydk::Enum::YLeaf low;
+        static const ydk::Enum::YLeaf level1;
+        static const ydk::Enum::YLeaf level2;
+        static const ydk::Enum::YLeaf level1_and2;
 
 };
 
@@ -3883,6 +3867,29 @@ class Ospfv3LogAdj : public ydk::Enum
 
 };
 
+class Ospfv3ProtocolType2 : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf connected;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf bgp;
+        static const ydk::Enum::YLeaf isis;
+        static const ydk::Enum::YLeaf ospfv3;
+        static const ydk::Enum::YLeaf eigrp;
+        static const ydk::Enum::YLeaf subscriber;
+        static const ydk::Enum::YLeaf application;
+        static const ydk::Enum::YLeaf mobile;
+
+};
+
+class Ospfv3Metric : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf type1;
+        static const ydk::Enum::YLeaf type2;
+
+};
+
 class Ospfv3TraceBufSize : public ydk::Enum
 {
     public:
@@ -3899,33 +3906,6 @@ class Ospfv3TraceBufSize : public ydk::Enum
 
 };
 
-class Ospfv3FastReroute : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf per_link;
-        static const ydk::Enum::YLeaf per_prefix;
-
-};
-
-class Ospfv3isisRoute : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf level1;
-        static const ydk::Enum::YLeaf level2;
-        static const ydk::Enum::YLeaf level1_and2;
-
-};
-
-class Ospfv3nssaExternalRoute : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf external1;
-        static const ydk::Enum::YLeaf external2;
-        static const ydk::Enum::YLeaf external;
-
-};
-
 class Ospfv3ExternalRoute : public ydk::Enum
 {
     public:
@@ -3935,11 +3915,45 @@ class Ospfv3ExternalRoute : public ydk::Enum
 
 };
 
-class Ospfv3nsr : public ydk::Enum
+class Ospfv3SubsequentAddressFamily : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf true_;
-        static const ydk::Enum::YLeaf false_;
+        static const ydk::Enum::YLeaf unicast;
+
+};
+
+class Ospfv3InternalRoute : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf internal;
+
+};
+
+class Ospfv3FastReroute : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf per_link;
+        static const ydk::Enum::YLeaf per_prefix;
+
+};
+
+class Ospfv3DomainId : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf type0005;
+        static const ydk::Enum::YLeaf type0105;
+        static const ydk::Enum::YLeaf type0205;
+        static const ydk::Enum::YLeaf type8005;
+
+};
+
+class Ospfv3AuthenticationType2 : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf null;
+        static const ydk::Enum::YLeaf md5;
+        static const ydk::Enum::YLeaf sha1;
 
 };
 
@@ -3950,16 +3964,11 @@ class Ospfv3AddressFamily : public ydk::Enum
 
 };
 
-class Ospfv3Protocol : public ydk::Enum
+class Ospfv3Authentication : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf all;
-        static const ydk::Enum::YLeaf connected;
-        static const ydk::Enum::YLeaf static_;
-        static const ydk::Enum::YLeaf bgp;
-        static const ydk::Enum::YLeaf isis;
-        static const ydk::Enum::YLeaf ospfv3;
-        static const ydk::Enum::YLeaf eigrp;
+        static const ydk::Enum::YLeaf md5;
+        static const ydk::Enum::YLeaf sha1;
 
 };
 
@@ -3975,25 +3984,20 @@ class Ospfv3EncryptionAlgorithm : public ydk::Enum
 
 };
 
-class Ospfv3ProtocolType2 : public ydk::Enum
+class Ospfv3nsr : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf connected;
-        static const ydk::Enum::YLeaf static_;
-        static const ydk::Enum::YLeaf bgp;
-        static const ydk::Enum::YLeaf isis;
-        static const ydk::Enum::YLeaf ospfv3;
-        static const ydk::Enum::YLeaf eigrp;
-        static const ydk::Enum::YLeaf subscriber;
-        static const ydk::Enum::YLeaf application;
-        static const ydk::Enum::YLeaf mobile;
+        static const ydk::Enum::YLeaf true_;
+        static const ydk::Enum::YLeaf false_;
 
 };
 
-class Ospfv3SubsequentAddressFamily : public ydk::Enum
+class Ospfv3nssaExternalRoute : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unicast;
+        static const ydk::Enum::YLeaf external1;
+        static const ydk::Enum::YLeaf external2;
+        static const ydk::Enum::YLeaf external;
 
 };
 
@@ -4005,31 +4009,24 @@ class Ospfv3EigrpRoute : public ydk::Enum
 
 };
 
-class Ospfv3FastRerouteTiebreakers : public ydk::Enum
+class Ospfv3FastReroutePriority : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf downstream;
-        static const ydk::Enum::YLeaf line_card_disjoint;
-        static const ydk::Enum::YLeaf lowest_metric;
-        static const ydk::Enum::YLeaf node_protect;
-        static const ydk::Enum::YLeaf primary_path;
-        static const ydk::Enum::YLeaf secondary_path;
-        static const ydk::Enum::YLeaf srlg_disjoint;
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf high;
+        static const ydk::Enum::YLeaf medium;
+        static const ydk::Enum::YLeaf low;
 
 };
 
-class Ospfv3Authentication : public ydk::Enum
+class Ospfv3Network : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf md5;
-        static const ydk::Enum::YLeaf sha1;
-
-};
-
-class Ospfv3InternalRoute : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf broadcast;
+        static const ydk::Enum::YLeaf non_broadcast;
+        static const ydk::Enum::YLeaf point_to_point;
+        static const ydk::Enum::YLeaf point_to_multipoint;
+        static const ydk::Enum::YLeaf non_broadcast_point_to_multipoint;
 
 };
 

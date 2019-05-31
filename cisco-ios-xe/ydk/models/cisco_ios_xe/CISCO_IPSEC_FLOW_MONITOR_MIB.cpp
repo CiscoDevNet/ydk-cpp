@@ -8253,8 +8253,11 @@ bool CISCOIPSECFLOWMONITORMIB::CipSecFailTable::CipSecFailEntry::has_leaf_or_chi
     return false;
 }
 
-const Enum::YLeaf TunnelStatus::active {1, "active"};
-const Enum::YLeaf TunnelStatus::destroy {2, "destroy"};
+const Enum::YLeaf IkePeerType::ipAddrPeer {1, "ipAddrPeer"};
+const Enum::YLeaf IkePeerType::namePeer {2, "namePeer"};
+
+const Enum::YLeaf IkeNegoMode::main {1, "main"};
+const Enum::YLeaf IkeNegoMode::aggressive {2, "aggressive"};
 
 const Enum::YLeaf IkeHashAlgo::none {1, "none"};
 const Enum::YLeaf IkeHashAlgo::md5 {2, "md5"};
@@ -8266,39 +8269,36 @@ const Enum::YLeaf IkeAuthMethod::rsaSig {3, "rsaSig"};
 const Enum::YLeaf IkeAuthMethod::rsaEncrypt {4, "rsaEncrypt"};
 const Enum::YLeaf IkeAuthMethod::revPublicKey {5, "revPublicKey"};
 
+const Enum::YLeaf DiffHellmanGrp::none {1, "none"};
+const Enum::YLeaf DiffHellmanGrp::dhGroup1 {2, "dhGroup1"};
+const Enum::YLeaf DiffHellmanGrp::dhGroup2 {3, "dhGroup2"};
+
 const Enum::YLeaf KeyType::ike {1, "ike"};
 const Enum::YLeaf KeyType::manual {2, "manual"};
 
-const Enum::YLeaf TrapStatus::enabled {1, "enabled"};
-const Enum::YLeaf TrapStatus::disabled {2, "disabled"};
-
-const Enum::YLeaf CompAlgo::none {1, "none"};
-const Enum::YLeaf CompAlgo::ldf {2, "ldf"};
+const Enum::YLeaf EncapMode::tunnel {1, "tunnel"};
+const Enum::YLeaf EncapMode::transport {2, "transport"};
 
 const Enum::YLeaf EncryptAlgo::none {1, "none"};
 const Enum::YLeaf EncryptAlgo::des {2, "des"};
 const Enum::YLeaf EncryptAlgo::des3 {3, "des3"};
 
-const Enum::YLeaf IkePeerType::ipAddrPeer {1, "ipAddrPeer"};
-const Enum::YLeaf IkePeerType::namePeer {2, "namePeer"};
-
-const Enum::YLeaf IkeNegoMode::main {1, "main"};
-const Enum::YLeaf IkeNegoMode::aggressive {2, "aggressive"};
-
-const Enum::YLeaf EncapMode::tunnel {1, "tunnel"};
-const Enum::YLeaf EncapMode::transport {2, "transport"};
-
 const Enum::YLeaf AuthAlgo::none {1, "none"};
 const Enum::YLeaf AuthAlgo::hmacMd5 {2, "hmacMd5"};
 const Enum::YLeaf AuthAlgo::hmacSha {3, "hmacSha"};
+
+const Enum::YLeaf CompAlgo::none {1, "none"};
+const Enum::YLeaf CompAlgo::ldf {2, "ldf"};
 
 const Enum::YLeaf EndPtType::singleIpAddr {1, "singleIpAddr"};
 const Enum::YLeaf EndPtType::ipAddrRange {2, "ipAddrRange"};
 const Enum::YLeaf EndPtType::ipSubnet {3, "ipSubnet"};
 
-const Enum::YLeaf DiffHellmanGrp::none {1, "none"};
-const Enum::YLeaf DiffHellmanGrp::dhGroup1 {2, "dhGroup1"};
-const Enum::YLeaf DiffHellmanGrp::dhGroup2 {3, "dhGroup2"};
+const Enum::YLeaf TunnelStatus::active {1, "active"};
+const Enum::YLeaf TunnelStatus::destroy {2, "destroy"};
+
+const Enum::YLeaf TrapStatus::enabled {1, "enabled"};
+const Enum::YLeaf TrapStatus::disabled {2, "disabled"};
 
 const Enum::YLeaf CISCOIPSECFLOWMONITORMIB::CipSecHistGlobalCntl::CipSecHistCheckPoint::ready {1, "ready"};
 const Enum::YLeaf CISCOIPSECFLOWMONITORMIB::CipSecHistGlobalCntl::CipSecHistCheckPoint::checkPoint {2, "checkPoint"};

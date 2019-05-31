@@ -995,6 +995,17 @@ class QueueRange : public ydk::Enum
 
 };
 
+class ThresholdSetRange : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf zeroT;
+        static const ydk::Enum::YLeaf oneT;
+        static const ydk::Enum::YLeaf twoT;
+        static const ydk::Enum::YLeaf fourT;
+        static const ydk::Enum::YLeaf eightT;
+
+};
+
 class QosInterfaceQueueType : public ydk::Enum
 {
     public:
@@ -1043,17 +1054,6 @@ class QosInterfaceQueueType : public ydk::Enum
         static const ydk::Enum::YLeaf oneP7Q4t;
         static const ydk::Enum::YLeaf oneP3Q4t;
         static const ydk::Enum::YLeaf oneP7Q2t;
-
-};
-
-class ThresholdSetRange : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf zeroT;
-        static const ydk::Enum::YLeaf oneT;
-        static const ydk::Enum::YLeaf twoT;
-        static const ydk::Enum::YLeaf fourT;
-        static const ydk::Enum::YLeaf eightT;
 
 };
 

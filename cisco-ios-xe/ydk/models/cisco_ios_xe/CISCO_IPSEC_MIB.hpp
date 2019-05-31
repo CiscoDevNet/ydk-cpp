@@ -441,15 +441,6 @@ class CISCOIPSECMIB::CipsCryptomapSetIfTable::CipsCryptomapSetIfEntry : public y
 
 }; // CISCOIPSECMIB::CipsCryptomapSetIfTable::CipsCryptomapSetIfEntry
 
-class IkeHashAlgo : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf md5;
-        static const ydk::Enum::YLeaf sha;
-
-};
-
 class CryptomapType : public ydk::Enum
 {
     public:
@@ -462,29 +453,21 @@ class CryptomapType : public ydk::Enum
 
 };
 
-class IkeIdentityType : public ydk::Enum
+class CryptomapSetBindStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf isakmpIdTypeUNKNOWN;
-        static const ydk::Enum::YLeaf isakmpIdTypeADDRESS;
-        static const ydk::Enum::YLeaf isakmpIdTypeHOSTNAME;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf attached;
+        static const ydk::Enum::YLeaf detached;
 
 };
 
-class TrapStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf enabled;
-        static const ydk::Enum::YLeaf disabled;
-
-};
-
-class EncryptAlgo : public ydk::Enum
+class IkeHashAlgo : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf des;
-        static const ydk::Enum::YLeaf des3;
+        static const ydk::Enum::YLeaf md5;
+        static const ydk::Enum::YLeaf sha;
 
 };
 
@@ -499,12 +482,12 @@ class IkeAuthMethod : public ydk::Enum
 
 };
 
-class CryptomapSetBindStatus : public ydk::Enum
+class IkeIdentityType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf attached;
-        static const ydk::Enum::YLeaf detached;
+        static const ydk::Enum::YLeaf isakmpIdTypeUNKNOWN;
+        static const ydk::Enum::YLeaf isakmpIdTypeADDRESS;
+        static const ydk::Enum::YLeaf isakmpIdTypeHOSTNAME;
 
 };
 
@@ -514,6 +497,23 @@ class DiffHellmanGrp : public ydk::Enum
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf dhGroup1;
         static const ydk::Enum::YLeaf dhGroup2;
+
+};
+
+class EncryptAlgo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf des;
+        static const ydk::Enum::YLeaf des3;
+
+};
+
+class TrapStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
 
 };
 

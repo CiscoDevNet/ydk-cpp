@@ -5725,6 +5725,85 @@ bool EthernetInterface::Berts::Bert::BertStatus::has_leaf_or_child_of_name(const
     return false;
 }
 
+const Enum::YLeaf EthernetDevIf::no_interface {0, "no-interface"};
+const Enum::YLeaf EthernetDevIf::xgmii {1, "xgmii"};
+const Enum::YLeaf EthernetDevIf::xaui {2, "xaui"};
+const Enum::YLeaf EthernetDevIf::ethernet_num_dev_if {3, "ethernet-num-dev-if"};
+
+const Enum::YLeaf EthernetDev::no_device {0, "no-device"};
+const Enum::YLeaf EthernetDev::pma_pmd {1, "pma-pmd"};
+const Enum::YLeaf EthernetDev::wis {2, "wis"};
+const Enum::YLeaf EthernetDev::pcs {3, "pcs"};
+const Enum::YLeaf EthernetDev::phy_xs {4, "phy-xs"};
+const Enum::YLeaf EthernetDev::dte_xs {5, "dte-xs"};
+const Enum::YLeaf EthernetDev::ethernet_num_dev {6, "ethernet-num-dev"};
+
+const Enum::YLeaf EthernetBertPattern::no_test_pattern {0, "no-test-pattern"};
+const Enum::YLeaf EthernetBertPattern::high_frequency {1, "high-frequency"};
+const Enum::YLeaf EthernetBertPattern::low_frequency {2, "low-frequency"};
+const Enum::YLeaf EthernetBertPattern::mixed_frequency {3, "mixed-frequency"};
+const Enum::YLeaf EthernetBertPattern::continuous_random {4, "continuous-random"};
+const Enum::YLeaf EthernetBertPattern::continuous_jitter {5, "continuous-jitter"};
+const Enum::YLeaf EthernetBertPattern::long_continuous_random {6, "long-continuous-random"};
+const Enum::YLeaf EthernetBertPattern::short_continuous_random {7, "short-continuous-random"};
+const Enum::YLeaf EthernetBertPattern::pseudorandom_seed_a {8, "pseudorandom-seed-a"};
+const Enum::YLeaf EthernetBertPattern::pseudorandom_seed_b {9, "pseudorandom-seed-b"};
+const Enum::YLeaf EthernetBertPattern::prbs31 {10, "prbs31"};
+const Enum::YLeaf EthernetBertPattern::square_wave {11, "square-wave"};
+const Enum::YLeaf EthernetBertPattern::pseudorandom {12, "pseudorandom"};
+const Enum::YLeaf EthernetBertPattern::ethernet_bert_pattern_types {13, "ethernet-bert-pattern-types"};
+
+const Enum::YLeaf EthernetBertErrCnt::no_count_type {0, "no-count-type"};
+const Enum::YLeaf EthernetBertErrCnt::bit_error_count {1, "bit-error-count"};
+const Enum::YLeaf EthernetBertErrCnt::frame_error_count {2, "frame-error-count"};
+const Enum::YLeaf EthernetBertErrCnt::block_error_count {3, "block-error-count"};
+const Enum::YLeaf EthernetBertErrCnt::ethernet_bert_err_cnt_types {4, "ethernet-bert-err-cnt-types"};
+
+const Enum::YLeaf EtherAinsStatus::ains_soak_status_none {0, "ains-soak-status-none"};
+const Enum::YLeaf EtherAinsStatus::ains_soak_status_pending {1, "ains-soak-status-pending"};
+const Enum::YLeaf EtherAinsStatus::ains_soak_status_running {2, "ains-soak-status-running"};
+
+const Enum::YLeaf EtherPfc::no_pfc {0, "no-pfc"};
+const Enum::YLeaf EtherPfc::on {1, "on"};
+
+const Enum::YLeaf EthCtrlrAlarmState::alarm_not_supported {0, "alarm-not-supported"};
+const Enum::YLeaf EthCtrlrAlarmState::alarm_set {1, "alarm-set"};
+const Enum::YLeaf EthCtrlrAlarmState::alarm_not_set {2, "alarm-not-set"};
+
+const Enum::YLeaf EthernetIpg::standard {0, "standard"};
+const Enum::YLeaf EthernetIpg::non_standard {1, "non-standard"};
+
+const Enum::YLeaf EtherFlowcontrol::no_flowcontrol {0, "no-flowcontrol"};
+const Enum::YLeaf EtherFlowcontrol::egress {1, "egress"};
+const Enum::YLeaf EtherFlowcontrol::ingress {2, "ingress"};
+const Enum::YLeaf EtherFlowcontrol::bidirectional {3, "bidirectional"};
+
+const Enum::YLeaf EthernetDuplex::ethernet_duplex_invalid {0, "ethernet-duplex-invalid"};
+const Enum::YLeaf EthernetDuplex::half_duplex {1, "half-duplex"};
+const Enum::YLeaf EthernetDuplex::full_duplex {2, "full-duplex"};
+
+const Enum::YLeaf EthernetSpeed::ethernet_speed_invalid {0, "ethernet-speed-invalid"};
+const Enum::YLeaf EthernetSpeed::ten_mbps {1, "ten-mbps"};
+const Enum::YLeaf EthernetSpeed::hundred_mbps {2, "hundred-mbps"};
+const Enum::YLeaf EthernetSpeed::one_gbps {3, "one-gbps"};
+const Enum::YLeaf EthernetSpeed::ten_gbps {4, "ten-gbps"};
+const Enum::YLeaf EthernetSpeed::twenty_five_gbps {5, "twenty-five-gbps"};
+const Enum::YLeaf EthernetSpeed::forty_gbps {6, "forty-gbps"};
+const Enum::YLeaf EthernetSpeed::fifty_gbps {7, "fifty-gbps"};
+const Enum::YLeaf EthernetSpeed::hundred_gbps {8, "hundred-gbps"};
+const Enum::YLeaf EthernetSpeed::two_hundred_gbps {9, "two-hundred-gbps"};
+const Enum::YLeaf EthernetSpeed::four_hundred_gbps {10, "four-hundred-gbps"};
+const Enum::YLeaf EthernetSpeed::ethernet_speed_types_count {11, "ethernet-speed-types-count"};
+
+const Enum::YLeaf EtherLedState::led_state_unknown {0, "led-state-unknown"};
+const Enum::YLeaf EtherLedState::led_off {1, "led-off"};
+const Enum::YLeaf EtherLedState::green_on {2, "green-on"};
+const Enum::YLeaf EtherLedState::green_flashing {3, "green-flashing"};
+const Enum::YLeaf EtherLedState::yellow_on {4, "yellow-on"};
+const Enum::YLeaf EtherLedState::yellow_flashing {5, "yellow-flashing"};
+const Enum::YLeaf EtherLedState::red_on {6, "red-on"};
+const Enum::YLeaf EtherLedState::red_flashing {7, "red-flashing"};
+
 const Enum::YLeaf EtherLinkState::state_undefined {0, "state-undefined"};
 const Enum::YLeaf EtherLinkState::unknown_state {1, "unknown-state"};
 const Enum::YLeaf EtherLinkState::available {2, "available"};
@@ -5755,51 +5834,15 @@ const Enum::YLeaf EtherLinkState::wan_framing_error {26, "wan-framing-error"};
 const Enum::YLeaf EtherLinkState::otn_framing_error {27, "otn-framing-error"};
 const Enum::YLeaf EtherLinkState::shutdown {28, "shutdown"};
 
-const Enum::YLeaf EthernetBertPattern::no_test_pattern {0, "no-test-pattern"};
-const Enum::YLeaf EthernetBertPattern::high_frequency {1, "high-frequency"};
-const Enum::YLeaf EthernetBertPattern::low_frequency {2, "low-frequency"};
-const Enum::YLeaf EthernetBertPattern::mixed_frequency {3, "mixed-frequency"};
-const Enum::YLeaf EthernetBertPattern::continuous_random {4, "continuous-random"};
-const Enum::YLeaf EthernetBertPattern::continuous_jitter {5, "continuous-jitter"};
-const Enum::YLeaf EthernetBertPattern::long_continuous_random {6, "long-continuous-random"};
-const Enum::YLeaf EthernetBertPattern::short_continuous_random {7, "short-continuous-random"};
-const Enum::YLeaf EthernetBertPattern::pseudorandom_seed_a {8, "pseudorandom-seed-a"};
-const Enum::YLeaf EthernetBertPattern::pseudorandom_seed_b {9, "pseudorandom-seed-b"};
-const Enum::YLeaf EthernetBertPattern::prbs31 {10, "prbs31"};
-const Enum::YLeaf EthernetBertPattern::square_wave {11, "square-wave"};
-const Enum::YLeaf EthernetBertPattern::pseudorandom {12, "pseudorandom"};
-const Enum::YLeaf EthernetBertPattern::ethernet_bert_pattern_types {13, "ethernet-bert-pattern-types"};
+const Enum::YLeaf EthernetFec::not_configured {0, "not-configured"};
+const Enum::YLeaf EthernetFec::standard {1, "standard"};
+const Enum::YLeaf EthernetFec::disabled {2, "disabled"};
+const Enum::YLeaf EthernetFec::base_r {3, "base-r"};
 
-const Enum::YLeaf EthernetPortEnable::disabled {0, "disabled"};
-const Enum::YLeaf EthernetPortEnable::rx_enabled {1, "rx-enabled"};
-const Enum::YLeaf EthernetPortEnable::tx_enabled {2, "tx-enabled"};
-const Enum::YLeaf EthernetPortEnable::enabled {3, "enabled"};
-
-const Enum::YLeaf EthCtrlrAlarmState::alarm_not_supported {0, "alarm-not-supported"};
-const Enum::YLeaf EthCtrlrAlarmState::alarm_set {1, "alarm-set"};
-const Enum::YLeaf EthCtrlrAlarmState::alarm_not_set {2, "alarm-not-set"};
-
-const Enum::YLeaf EthernetDev::no_device {0, "no-device"};
-const Enum::YLeaf EthernetDev::pma_pmd {1, "pma-pmd"};
-const Enum::YLeaf EthernetDev::wis {2, "wis"};
-const Enum::YLeaf EthernetDev::pcs {3, "pcs"};
-const Enum::YLeaf EthernetDev::phy_xs {4, "phy-xs"};
-const Enum::YLeaf EthernetDev::dte_xs {5, "dte-xs"};
-const Enum::YLeaf EthernetDev::ethernet_num_dev {6, "ethernet-num-dev"};
-
-const Enum::YLeaf EtherPhyPresent::phy_not_present {0, "phy-not-present"};
-const Enum::YLeaf EtherPhyPresent::phy_present {1, "phy-present"};
-const Enum::YLeaf EtherPhyPresent::no_information {2, "no-information"};
-
-const Enum::YLeaf EthernetDevIf::no_interface {0, "no-interface"};
-const Enum::YLeaf EthernetDevIf::xgmii {1, "xgmii"};
-const Enum::YLeaf EthernetDevIf::xaui {2, "xaui"};
-const Enum::YLeaf EthernetDevIf::ethernet_num_dev_if {3, "ethernet-num-dev-if"};
-
-const Enum::YLeaf EtherFlowcontrol::no_flowcontrol {0, "no-flowcontrol"};
-const Enum::YLeaf EtherFlowcontrol::egress {1, "egress"};
-const Enum::YLeaf EtherFlowcontrol::ingress {2, "ingress"};
-const Enum::YLeaf EtherFlowcontrol::bidirectional {3, "bidirectional"};
+const Enum::YLeaf EthernetLoopback::no_loopback {0, "no-loopback"};
+const Enum::YLeaf EthernetLoopback::internal {1, "internal"};
+const Enum::YLeaf EthernetLoopback::line {2, "line"};
+const Enum::YLeaf EthernetLoopback::external {3, "external"};
 
 const Enum::YLeaf EtherDomAlarm::no_information {0, "no-information"};
 const Enum::YLeaf EtherDomAlarm::alarm_high {1, "alarm-high"};
@@ -5808,48 +5851,9 @@ const Enum::YLeaf EtherDomAlarm::normal {3, "normal"};
 const Enum::YLeaf EtherDomAlarm::warning_low {4, "warning-low"};
 const Enum::YLeaf EtherDomAlarm::alarm_low {5, "alarm-low"};
 
-const Enum::YLeaf EtherPfc::no_pfc {0, "no-pfc"};
-const Enum::YLeaf EtherPfc::on {1, "on"};
-
-const Enum::YLeaf EthernetBertErrCnt::no_count_type {0, "no-count-type"};
-const Enum::YLeaf EthernetBertErrCnt::bit_error_count {1, "bit-error-count"};
-const Enum::YLeaf EthernetBertErrCnt::frame_error_count {2, "frame-error-count"};
-const Enum::YLeaf EthernetBertErrCnt::block_error_count {3, "block-error-count"};
-const Enum::YLeaf EthernetBertErrCnt::ethernet_bert_err_cnt_types {4, "ethernet-bert-err-cnt-types"};
-
-const Enum::YLeaf EthernetDuplex::ethernet_duplex_invalid {0, "ethernet-duplex-invalid"};
-const Enum::YLeaf EthernetDuplex::half_duplex {1, "half-duplex"};
-const Enum::YLeaf EthernetDuplex::full_duplex {2, "full-duplex"};
-
-const Enum::YLeaf EthernetIpg::standard {0, "standard"};
-const Enum::YLeaf EthernetIpg::non_standard {1, "non-standard"};
-
-const Enum::YLeaf EthernetSpeed::ethernet_speed_invalid {0, "ethernet-speed-invalid"};
-const Enum::YLeaf EthernetSpeed::ten_mbps {1, "ten-mbps"};
-const Enum::YLeaf EthernetSpeed::hundred_mbps {2, "hundred-mbps"};
-const Enum::YLeaf EthernetSpeed::one_gbps {3, "one-gbps"};
-const Enum::YLeaf EthernetSpeed::ten_gbps {4, "ten-gbps"};
-const Enum::YLeaf EthernetSpeed::twenty_five_gbps {5, "twenty-five-gbps"};
-const Enum::YLeaf EthernetSpeed::forty_gbps {6, "forty-gbps"};
-const Enum::YLeaf EthernetSpeed::fifty_gbps {7, "fifty-gbps"};
-const Enum::YLeaf EthernetSpeed::hundred_gbps {8, "hundred-gbps"};
-const Enum::YLeaf EthernetSpeed::two_hundred_gbps {9, "two-hundred-gbps"};
-const Enum::YLeaf EthernetSpeed::four_hundred_gbps {10, "four-hundred-gbps"};
-const Enum::YLeaf EthernetSpeed::ethernet_speed_types_count {11, "ethernet-speed-types-count"};
-
-const Enum::YLeaf EtherLedState::led_state_unknown {0, "led-state-unknown"};
-const Enum::YLeaf EtherLedState::led_off {1, "led-off"};
-const Enum::YLeaf EtherLedState::green_on {2, "green-on"};
-const Enum::YLeaf EtherLedState::green_flashing {3, "green-flashing"};
-const Enum::YLeaf EtherLedState::yellow_on {4, "yellow-on"};
-const Enum::YLeaf EtherLedState::yellow_flashing {5, "yellow-flashing"};
-const Enum::YLeaf EtherLedState::red_on {6, "red-on"};
-const Enum::YLeaf EtherLedState::red_flashing {7, "red-flashing"};
-
-const Enum::YLeaf EthernetFec::not_configured {0, "not-configured"};
-const Enum::YLeaf EthernetFec::standard {1, "standard"};
-const Enum::YLeaf EthernetFec::disabled {2, "disabled"};
-const Enum::YLeaf EthernetFec::base_r {3, "base-r"};
+const Enum::YLeaf EtherPhyPresent::phy_not_present {0, "phy-not-present"};
+const Enum::YLeaf EtherPhyPresent::phy_present {1, "phy-present"};
+const Enum::YLeaf EtherPhyPresent::no_information {2, "no-information"};
 
 const Enum::YLeaf EthernetMedia::ethernet_other {0, "ethernet-other"};
 const Enum::YLeaf EthernetMedia::ethernet_unknown {1, "ethernet-unknown"};
@@ -6228,16 +6232,16 @@ const Enum::YLeaf EthernetMedia::ethernet_25gbase_cu3m {373, "ethernet-25gbase-c
 const Enum::YLeaf EthernetMedia::ethernet_25gbase_cu5m {374, "ethernet-25gbase-cu5m"};
 const Enum::YLeaf EthernetMedia::ethernet_100gbase_sm_sr {375, "ethernet-100gbase-sm-sr"};
 const Enum::YLeaf EthernetMedia::ethernet_100gbase_sr_bd {376, "ethernet-100gbase-sr-bd"};
-const Enum::YLeaf EthernetMedia::ethernet_base_max {377, "ethernet-base-max"};
+const Enum::YLeaf EthernetMedia::ethernet_1000base_2bx_d {377, "ethernet-1000base-2bx-d"};
+const Enum::YLeaf EthernetMedia::ethernet_1000base_2bx_d_i {378, "ethernet-1000base-2bx-d-i"};
+const Enum::YLeaf EthernetMedia::ethernet_1000base_2bx_u {379, "ethernet-1000base-2bx-u"};
+const Enum::YLeaf EthernetMedia::ethernet_1000base_2bx_u_i {380, "ethernet-1000base-2bx-u-i"};
+const Enum::YLeaf EthernetMedia::ethernet_base_max {381, "ethernet-base-max"};
 
-const Enum::YLeaf EtherAinsStatus::ains_soak_status_none {0, "ains-soak-status-none"};
-const Enum::YLeaf EtherAinsStatus::ains_soak_status_pending {1, "ains-soak-status-pending"};
-const Enum::YLeaf EtherAinsStatus::ains_soak_status_running {2, "ains-soak-status-running"};
-
-const Enum::YLeaf EthernetLoopback::no_loopback {0, "no-loopback"};
-const Enum::YLeaf EthernetLoopback::internal {1, "internal"};
-const Enum::YLeaf EthernetLoopback::line {2, "line"};
-const Enum::YLeaf EthernetLoopback::external {3, "external"};
+const Enum::YLeaf EthernetPortEnable::disabled {0, "disabled"};
+const Enum::YLeaf EthernetPortEnable::rx_enabled {1, "rx-enabled"};
+const Enum::YLeaf EthernetPortEnable::tx_enabled {2, "tx-enabled"};
+const Enum::YLeaf EthernetPortEnable::enabled {3, "enabled"};
 
 
 }

@@ -926,6 +926,23 @@ class IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit
 
 }; // IpSubscriber::Nodes::Node::AccessInterfaces::AccessInterface::SessionLimit::Total
 
+class IpsubMaParentIntfVlan : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf plain;
+        static const ydk::Enum::YLeaf ambiguous;
+
+};
+
+class IpsubMaParentIntfStateData : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf deleted;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf up;
+
+};
+
 class IpsubMaIntfStateData : public ydk::Enum
 {
     public:
@@ -945,23 +962,6 @@ class IpsubMaIntfStateData : public ydk::Enum
         static const ydk::Enum::YLeaf disconnecting;
         static const ydk::Enum::YLeaf disconnected;
         static const ydk::Enum::YLeaf error;
-
-};
-
-class IpsubMaParentIntfVlan : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf plain;
-        static const ydk::Enum::YLeaf ambiguous;
-
-};
-
-class IpsubMaParentIntfStateData : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf deleted;
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf up;
 
 };
 

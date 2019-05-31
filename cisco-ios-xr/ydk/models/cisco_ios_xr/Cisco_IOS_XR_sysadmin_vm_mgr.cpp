@@ -250,11 +250,8 @@ VM::AllLocations::AllUiids::AllUiids()
     id{YType::str, "id"},
     status{YType::str, "status"},
     ipaddr{YType::str, "ipaddr"},
-    hb_interval_s{YType::str, "hb_interval_s"},
-    hb_interval_ns{YType::str, "hb_interval_ns"},
     last_hb_sent{YType::str, "last_hb_sent"},
-    last_hb_rec{YType::str, "last_hb_rec"},
-    role{YType::str, "role"}
+    last_hb_rec{YType::str, "last_hb_rec"}
 {
 
     yang_name = "all-uiids"; yang_parent_name = "all-locations"; is_top_level_class = false; has_list_ancestor = true; 
@@ -271,11 +268,8 @@ bool VM::AllLocations::AllUiids::has_data() const
 	|| id.is_set
 	|| status.is_set
 	|| ipaddr.is_set
-	|| hb_interval_s.is_set
-	|| hb_interval_ns.is_set
 	|| last_hb_sent.is_set
-	|| last_hb_rec.is_set
-	|| role.is_set;
+	|| last_hb_rec.is_set;
 }
 
 bool VM::AllLocations::AllUiids::has_operation() const
@@ -285,11 +279,8 @@ bool VM::AllLocations::AllUiids::has_operation() const
 	|| ydk::is_set(id.yfilter)
 	|| ydk::is_set(status.yfilter)
 	|| ydk::is_set(ipaddr.yfilter)
-	|| ydk::is_set(hb_interval_s.yfilter)
-	|| ydk::is_set(hb_interval_ns.yfilter)
 	|| ydk::is_set(last_hb_sent.yfilter)
-	|| ydk::is_set(last_hb_rec.yfilter)
-	|| ydk::is_set(role.yfilter);
+	|| ydk::is_set(last_hb_rec.yfilter);
 }
 
 std::string VM::AllLocations::AllUiids::get_segment_path() const
@@ -308,11 +299,8 @@ std::vector<std::pair<std::string, LeafData> > VM::AllLocations::AllUiids::get_n
     if (id.is_set || is_set(id.yfilter)) leaf_name_data.push_back(id.get_name_leafdata());
     if (status.is_set || is_set(status.yfilter)) leaf_name_data.push_back(status.get_name_leafdata());
     if (ipaddr.is_set || is_set(ipaddr.yfilter)) leaf_name_data.push_back(ipaddr.get_name_leafdata());
-    if (hb_interval_s.is_set || is_set(hb_interval_s.yfilter)) leaf_name_data.push_back(hb_interval_s.get_name_leafdata());
-    if (hb_interval_ns.is_set || is_set(hb_interval_ns.yfilter)) leaf_name_data.push_back(hb_interval_ns.get_name_leafdata());
     if (last_hb_sent.is_set || is_set(last_hb_sent.yfilter)) leaf_name_data.push_back(last_hb_sent.get_name_leafdata());
     if (last_hb_rec.is_set || is_set(last_hb_rec.yfilter)) leaf_name_data.push_back(last_hb_rec.get_name_leafdata());
-    if (role.is_set || is_set(role.yfilter)) leaf_name_data.push_back(role.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -356,18 +344,6 @@ void VM::AllLocations::AllUiids::set_value(const std::string & value_path, const
         ipaddr.value_namespace = name_space;
         ipaddr.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "hb_interval_s")
-    {
-        hb_interval_s = value;
-        hb_interval_s.value_namespace = name_space;
-        hb_interval_s.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "hb_interval_ns")
-    {
-        hb_interval_ns = value;
-        hb_interval_ns.value_namespace = name_space;
-        hb_interval_ns.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "last_hb_sent")
     {
         last_hb_sent = value;
@@ -379,12 +355,6 @@ void VM::AllLocations::AllUiids::set_value(const std::string & value_path, const
         last_hb_rec = value;
         last_hb_rec.value_namespace = name_space;
         last_hb_rec.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "role")
-    {
-        role = value;
-        role.value_namespace = name_space;
-        role.value_namespace_prefix = name_space_prefix;
     }
 }
 
@@ -406,14 +376,6 @@ void VM::AllLocations::AllUiids::set_filter(const std::string & value_path, YFil
     {
         ipaddr.yfilter = yfilter;
     }
-    if(value_path == "hb_interval_s")
-    {
-        hb_interval_s.yfilter = yfilter;
-    }
-    if(value_path == "hb_interval_ns")
-    {
-        hb_interval_ns.yfilter = yfilter;
-    }
     if(value_path == "last_hb_sent")
     {
         last_hb_sent.yfilter = yfilter;
@@ -422,15 +384,11 @@ void VM::AllLocations::AllUiids::set_filter(const std::string & value_path, YFil
     {
         last_hb_rec.yfilter = yfilter;
     }
-    if(value_path == "role")
-    {
-        role.yfilter = yfilter;
-    }
 }
 
 bool VM::AllLocations::AllUiids::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "uiid" || name == "id" || name == "status" || name == "ipaddr" || name == "hb_interval_s" || name == "hb_interval_ns" || name == "last_hb_sent" || name == "last_hb_rec" || name == "role")
+    if(name == "uiid" || name == "id" || name == "status" || name == "ipaddr" || name == "last_hb_sent" || name == "last_hb_rec")
         return true;
     return false;
 }

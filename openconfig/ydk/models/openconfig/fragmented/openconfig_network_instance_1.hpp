@@ -3041,7 +3041,7 @@ class NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardin
         ydk::YLeaf mpls_label; //type: one of uint32, enumeration
         ydk::YLeaf mpls_tc; //type: uint8
         ydk::YLeaf ip_dscp; //type: uint8
-        ydk::YLeaf ip_protocol; //type: one of identityref, uint8
+        ydk::YLeaf ip_protocol; //type: one of uint8, identityref
         ydk::YLeaf l4_src_port; //type: uint16
         ydk::YLeaf l4_dst_port; //type: uint16
 
@@ -3070,7 +3070,7 @@ class NetworkInstances::NetworkInstance::Afts::PolicyForwarding::PolicyForwardin
         ydk::YLeaf mpls_label; //type: one of uint32, enumeration
         ydk::YLeaf mpls_tc; //type: uint8
         ydk::YLeaf ip_dscp; //type: uint8
-        ydk::YLeaf ip_protocol; //type: one of identityref, uint8
+        ydk::YLeaf ip_protocol; //type: one of uint8, identityref
         ydk::YLeaf l4_src_port; //type: uint16
         ydk::YLeaf l4_dst_port; //type: uint16
         ydk::YLeaf packets_forwarded; //type: uint64

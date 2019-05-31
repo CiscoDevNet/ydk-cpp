@@ -1031,7 +1031,8 @@ BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData
     actor_operational_key{YType::uint16, "actor-operational-key"},
     partner_system_priority{YType::uint16, "partner-system-priority"},
     partner_system_mac_address{YType::str, "partner-system-mac-address"},
-    partner_operational_key{YType::uint16, "partner-operational-key"}
+    partner_operational_key{YType::uint16, "partner-operational-key"},
+    applied_lacp_mode{YType::enumeration, "applied-lacp-mode"}
         ,
     actor_bundle_data(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::ActorBundleData>())
     , bundle_system_id(std::make_shared<BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::BundleSystemId>())
@@ -1053,6 +1054,7 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Bundl
 	|| partner_system_priority.is_set
 	|| partner_system_mac_address.is_set
 	|| partner_operational_key.is_set
+	|| applied_lacp_mode.is_set
 	|| (actor_bundle_data !=  nullptr && actor_bundle_data->has_data())
 	|| (bundle_system_id !=  nullptr && bundle_system_id->has_data());
 }
@@ -1064,6 +1066,7 @@ bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Bundl
 	|| ydk::is_set(partner_system_priority.yfilter)
 	|| ydk::is_set(partner_system_mac_address.yfilter)
 	|| ydk::is_set(partner_operational_key.yfilter)
+	|| ydk::is_set(applied_lacp_mode.yfilter)
 	|| (actor_bundle_data !=  nullptr && actor_bundle_data->has_operation())
 	|| (bundle_system_id !=  nullptr && bundle_system_id->has_operation());
 }
@@ -1083,6 +1086,7 @@ std::vector<std::pair<std::string, LeafData> > BundleInformation::Lacp::LacpMemb
     if (partner_system_priority.is_set || is_set(partner_system_priority.yfilter)) leaf_name_data.push_back(partner_system_priority.get_name_leafdata());
     if (partner_system_mac_address.is_set || is_set(partner_system_mac_address.yfilter)) leaf_name_data.push_back(partner_system_mac_address.get_name_leafdata());
     if (partner_operational_key.is_set || is_set(partner_operational_key.yfilter)) leaf_name_data.push_back(partner_operational_key.get_name_leafdata());
+    if (applied_lacp_mode.is_set || is_set(applied_lacp_mode.yfilter)) leaf_name_data.push_back(applied_lacp_mode.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1154,6 +1158,12 @@ void BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Bundl
         partner_operational_key.value_namespace = name_space;
         partner_operational_key.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "applied-lacp-mode")
+    {
+        applied_lacp_mode = value;
+        applied_lacp_mode.value_namespace = name_space;
+        applied_lacp_mode.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1174,11 +1184,15 @@ void BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::Bundl
     {
         partner_operational_key.yfilter = yfilter;
     }
+    if(value_path == "applied-lacp-mode")
+    {
+        applied_lacp_mode.yfilter = yfilter;
+    }
 }
 
 bool BundleInformation::Lacp::LacpMembers::LacpMember::LacpMemberAncestor::BundleData::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "actor-bundle-data" || name == "bundle-system-id" || name == "actor-operational-key" || name == "partner-system-priority" || name == "partner-system-mac-address" || name == "partner-operational-key")
+    if(name == "actor-bundle-data" || name == "bundle-system-id" || name == "actor-operational-key" || name == "partner-system-priority" || name == "partner-system-mac-address" || name == "partner-operational-key" || name == "applied-lacp-mode")
         return true;
     return false;
 }

@@ -4689,6 +4689,11 @@ bool DOCSIETFBPI2MIB::DocsIetfBpi2CmtsCACertTable::DocsIetfBpi2CmtsCACertEntry::
     return false;
 }
 
+const Enum::YLeaf DocsBpkmSAType::none {0, "none"};
+const Enum::YLeaf DocsBpkmSAType::primary {1, "primary"};
+const Enum::YLeaf DocsBpkmSAType::static_ {2, "static"};
+const Enum::YLeaf DocsBpkmSAType::dynamic {3, "dynamic"};
+
 const Enum::YLeaf DocsBpkmDataEncryptAlg::none {0, "none"};
 const Enum::YLeaf DocsBpkmDataEncryptAlg::des56CbcMode {1, "des56CbcMode"};
 const Enum::YLeaf DocsBpkmDataEncryptAlg::des40CbcMode {2, "des40CbcMode"};
@@ -4698,11 +4703,6 @@ const Enum::YLeaf DocsBpkmDataEncryptAlg::aes256CbcMode {5, "aes256CbcMode"};
 
 const Enum::YLeaf DocsBpkmDataAuthentAlg::none {0, "none"};
 const Enum::YLeaf DocsBpkmDataAuthentAlg::hmacSha196 {1, "hmacSha196"};
-
-const Enum::YLeaf DocsBpkmSAType::none {0, "none"};
-const Enum::YLeaf DocsBpkmSAType::primary {1, "primary"};
-const Enum::YLeaf DocsBpkmSAType::static_ {2, "static"};
-const Enum::YLeaf DocsBpkmSAType::dynamic {3, "dynamic"};
 
 const Enum::YLeaf DOCSIETFBPI2MIB::DocsIetfBpi2CodeDownloadControl::DocsIetfBpi2CodeDownloadStatusCode::configFileCvcVerified {1, "configFileCvcVerified"};
 const Enum::YLeaf DOCSIETFBPI2MIB::DocsIetfBpi2CodeDownloadControl::DocsIetfBpi2CodeDownloadStatusCode::configFileCvcRejected {2, "configFileCvcRejected"};

@@ -5,35 +5,37 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XE_native_0.hpp"
-#include "Cisco_IOS_XE_native_229.hpp"
-#include "Cisco_IOS_XE_native_223.hpp"
-#include "Cisco_IOS_XE_native_12.hpp"
-#include "Cisco_IOS_XE_native_129.hpp"
-#include "Cisco_IOS_XE_native_222.hpp"
-#include "Cisco_IOS_XE_native_2.hpp"
-#include "Cisco_IOS_XE_native_7.hpp"
-#include "Cisco_IOS_XE_native_226.hpp"
-#include "Cisco_IOS_XE_native_1.hpp"
-#include "Cisco_IOS_XE_native_123.hpp"
-#include "Cisco_IOS_XE_native_20.hpp"
-#include "Cisco_IOS_XE_native_121.hpp"
-#include "Cisco_IOS_XE_native_133.hpp"
-#include "Cisco_IOS_XE_native_122.hpp"
+#include "Cisco_IOS_XE_native_118.hpp"
+#include "Cisco_IOS_XE_native_117.hpp"
+#include "Cisco_IOS_XE_native_130.hpp"
+#include "Cisco_IOS_XE_native_231.hpp"
+#include "Cisco_IOS_XE_native_221.hpp"
+#include "Cisco_IOS_XE_native_124.hpp"
+#include "Cisco_IOS_XE_native_131.hpp"
 #include "Cisco_IOS_XE_native_230.hpp"
 #include "Cisco_IOS_XE_native_13.hpp"
-#include "Cisco_IOS_XE_native_14.hpp"
-#include "Cisco_IOS_XE_native_115.hpp"
-#include "Cisco_IOS_XE_native_220.hpp"
-#include "Cisco_IOS_XE_native_219.hpp"
-#include "Cisco_IOS_XE_native_231.hpp"
-#include "Cisco_IOS_XE_native_124.hpp"
-#include "Cisco_IOS_XE_native_117.hpp"
-#include "Cisco_IOS_XE_native_221.hpp"
-#include "Cisco_IOS_XE_native_130.hpp"
 #include "Cisco_IOS_XE_native_132.hpp"
+#include "Cisco_IOS_XE_native_123.hpp"
+#include "Cisco_IOS_XE_native_7.hpp"
+#include "Cisco_IOS_XE_native_129.hpp"
+#include "Cisco_IOS_XE_native_2.hpp"
+#include "Cisco_IOS_XE_native_219.hpp"
+#include "Cisco_IOS_XE_native_223.hpp"
+#include "Cisco_IOS_XE_native_12.hpp"
 #include "Cisco_IOS_XE_native_120.hpp"
-#include "Cisco_IOS_XE_native_131.hpp"
-#include "Cisco_IOS_XE_native_118.hpp"
+#include "Cisco_IOS_XE_native_220.hpp"
+#include "Cisco_IOS_XE_native_229.hpp"
+#include "Cisco_IOS_XE_native_122.hpp"
+#include "Cisco_IOS_XE_native_1.hpp"
+#include "Cisco_IOS_XE_native_121.hpp"
+#include "Cisco_IOS_XE_native_228.hpp"
+#include "Cisco_IOS_XE_native_133.hpp"
+#include "Cisco_IOS_XE_native_232.hpp"
+#include "Cisco_IOS_XE_native_222.hpp"
+#include "Cisco_IOS_XE_native_115.hpp"
+#include "Cisco_IOS_XE_native_20.hpp"
+#include "Cisco_IOS_XE_native_226.hpp"
+#include "Cisco_IOS_XE_native_14.hpp"
 
 using namespace ydk;
 
@@ -181,16 +183,29 @@ Native::Native()
     , process(std::make_shared<Native::Process>())
     , exception(std::make_shared<Native::Exception>())
     , iox(nullptr) // presence node
-    , power(std::make_shared<Native::Power>())
-    , vpdn(std::make_shared<Native::Vpdn>())
+    , arp(std::make_shared<Native::Arp>())
     , esmc(std::make_shared<Native::Esmc>())
-    , access_session(std::make_shared<Native::AccessSession>())
-    , authentication(std::make_shared<Native::Authentication>())
+    , bba_group(std::make_shared<Native::BbaGroup>())
+    , cef(std::make_shared<Native::Cef>())
     , dialer(std::make_shared<Native::Dialer>())
     , dialer_list(this, {"group_number"})
-    , vstack(std::make_shared<Native::Vstack>())
+    , coap(std::make_shared<Native::Coap>())
+    , device_sensor(std::make_shared<Native::DeviceSensor>())
+    , diagnostic(std::make_shared<Native::Diagnostic>())
     , et_analytics(nullptr) // presence node
-    , arp(std::make_shared<Native::Arp>())
+    , fabric_group(std::make_shared<Native::FabricGroup>())
+    , lldp(std::make_shared<Native::Lldp>())
+    , maintenance_template(this, {"templ_name"})
+    , nat66(std::make_shared<Native::Nat66>())
+    , pm_agent(nullptr) // presence node
+    , shell(std::make_shared<Native::Shell>())
+    , pnp(std::make_shared<Native::Pnp>())
+    , power(std::make_shared<Native::Power>())
+    , named_ordering_route_map(std::make_shared<Native::NamedOrderingRouteMap>())
+    , access_session(std::make_shared<Native::AccessSession>())
+    , authentication(std::make_shared<Native::Authentication>())
+    , service_list(std::make_shared<Native::ServiceList>())
+    , service_routing(std::make_shared<Native::ServiceRouting>())
     , network_policy(std::make_shared<Native::NetworkPolicy>())
     , energywise(std::make_shared<Native::Energywise>())
     , service_template(this, {"word"})
@@ -203,26 +218,13 @@ Native::Native()
     , hw_switch(std::make_shared<Native::HwSwitch>())
     , feature(std::make_shared<Native::Feature>())
     , openflow(std::make_shared<Native::Openflow>())
-    , bba_group(std::make_shared<Native::BbaGroup>())
-    , maintenance_template(this, {"templ_name"})
-    , cef(std::make_shared<Native::Cef>())
-    , nat66(std::make_shared<Native::Nat66>())
-    , shell(std::make_shared<Native::Shell>())
-    , voice(std::make_shared<Native::Voice>())
-    , voice_card(this, {"slot"})
-    , service_routing(std::make_shared<Native::ServiceRouting>())
-    , lldp(std::make_shared<Native::Lldp>())
-    , service_list(std::make_shared<Native::ServiceList>())
-    , diagnostic(std::make_shared<Native::Diagnostic>())
-    , pm_agent(nullptr) // presence node
-    , named_ordering_route_map(std::make_shared<Native::NamedOrderingRouteMap>())
-    , pnp(std::make_shared<Native::Pnp>())
-    , fabric_group(std::make_shared<Native::FabricGroup>())
-    , device_sensor(std::make_shared<Native::DeviceSensor>())
-    , coap(std::make_shared<Native::Coap>())
     , utd(nullptr) // presence node
     , utd_st(std::make_shared<Native::UtdSt>())
     , utd_mt(std::make_shared<Native::UtdMt>())
+    , voice(std::make_shared<Native::Voice>())
+    , voice_card(this, {"slot"})
+    , vpdn(std::make_shared<Native::Vpdn>())
+    , vstack(std::make_shared<Native::Vstack>())
 {
     default_->parent = this;
     bfd->parent = this;
@@ -337,14 +339,25 @@ Native::Native()
     template_->parent = this;
     process->parent = this;
     exception->parent = this;
-    power->parent = this;
-    vpdn->parent = this;
+    arp->parent = this;
     esmc->parent = this;
+    bba_group->parent = this;
+    cef->parent = this;
+    dialer->parent = this;
+    coap->parent = this;
+    device_sensor->parent = this;
+    diagnostic->parent = this;
+    fabric_group->parent = this;
+    lldp->parent = this;
+    nat66->parent = this;
+    shell->parent = this;
+    pnp->parent = this;
+    power->parent = this;
+    named_ordering_route_map->parent = this;
     access_session->parent = this;
     authentication->parent = this;
-    dialer->parent = this;
-    vstack->parent = this;
-    arp->parent = this;
+    service_list->parent = this;
+    service_routing->parent = this;
     network_policy->parent = this;
     energywise->parent = this;
     device->parent = this;
@@ -354,22 +367,11 @@ Native::Native()
     hw_switch->parent = this;
     feature->parent = this;
     openflow->parent = this;
-    bba_group->parent = this;
-    cef->parent = this;
-    nat66->parent = this;
-    shell->parent = this;
-    voice->parent = this;
-    service_routing->parent = this;
-    lldp->parent = this;
-    service_list->parent = this;
-    diagnostic->parent = this;
-    named_ordering_route_map->parent = this;
-    pnp->parent = this;
-    fabric_group->parent = this;
-    device_sensor->parent = this;
-    coap->parent = this;
     utd_st->parent = this;
     utd_mt->parent = this;
+    voice->parent = this;
+    vpdn->parent = this;
+    vstack->parent = this;
 
     yang_name = "native"; yang_parent_name = "Cisco-IOS-XE-native"; is_top_level_class = true; has_list_ancestor = false; 
 }
@@ -441,6 +443,11 @@ bool Native::has_data() const
         if(dialer_list[index]->has_data())
             return true;
     }
+    for (std::size_t index=0; index<maintenance_template.len(); index++)
+    {
+        if(maintenance_template[index]->has_data())
+            return true;
+    }
     for (std::size_t index=0; index<service_template.len(); index++)
     {
         if(service_template[index]->has_data())
@@ -454,11 +461,6 @@ bool Native::has_data() const
     for (std::size_t index=0; index<switch_virtual.len(); index++)
     {
         if(switch_virtual[index]->has_data())
-            return true;
-    }
-    for (std::size_t index=0; index<maintenance_template.len(); index++)
-    {
-        if(maintenance_template[index]->has_data())
             return true;
     }
     for (std::size_t index=0; index<voice_card.len(); index++)
@@ -593,15 +595,27 @@ bool Native::has_data() const
 	|| (process !=  nullptr && process->has_data())
 	|| (exception !=  nullptr && exception->has_data())
 	|| (iox !=  nullptr && iox->has_data())
-	|| (power !=  nullptr && power->has_data())
-	|| (vpdn !=  nullptr && vpdn->has_data())
+	|| (arp !=  nullptr && arp->has_data())
 	|| (esmc !=  nullptr && esmc->has_data())
+	|| (bba_group !=  nullptr && bba_group->has_data())
+	|| (cef !=  nullptr && cef->has_data())
+	|| (dialer !=  nullptr && dialer->has_data())
+	|| (coap !=  nullptr && coap->has_data())
+	|| (device_sensor !=  nullptr && device_sensor->has_data())
+	|| (diagnostic !=  nullptr && diagnostic->has_data())
+	|| (et_analytics !=  nullptr && et_analytics->has_data())
+	|| (fabric_group !=  nullptr && fabric_group->has_data())
+	|| (lldp !=  nullptr && lldp->has_data())
+	|| (nat66 !=  nullptr && nat66->has_data())
+	|| (pm_agent !=  nullptr && pm_agent->has_data())
+	|| (shell !=  nullptr && shell->has_data())
+	|| (pnp !=  nullptr && pnp->has_data())
+	|| (power !=  nullptr && power->has_data())
+	|| (named_ordering_route_map !=  nullptr && named_ordering_route_map->has_data())
 	|| (access_session !=  nullptr && access_session->has_data())
 	|| (authentication !=  nullptr && authentication->has_data())
-	|| (dialer !=  nullptr && dialer->has_data())
-	|| (vstack !=  nullptr && vstack->has_data())
-	|| (et_analytics !=  nullptr && et_analytics->has_data())
-	|| (arp !=  nullptr && arp->has_data())
+	|| (service_list !=  nullptr && service_list->has_data())
+	|| (service_routing !=  nullptr && service_routing->has_data())
 	|| (network_policy !=  nullptr && network_policy->has_data())
 	|| (energywise !=  nullptr && energywise->has_data())
 	|| (device !=  nullptr && device->has_data())
@@ -611,24 +625,12 @@ bool Native::has_data() const
 	|| (hw_switch !=  nullptr && hw_switch->has_data())
 	|| (feature !=  nullptr && feature->has_data())
 	|| (openflow !=  nullptr && openflow->has_data())
-	|| (bba_group !=  nullptr && bba_group->has_data())
-	|| (cef !=  nullptr && cef->has_data())
-	|| (nat66 !=  nullptr && nat66->has_data())
-	|| (shell !=  nullptr && shell->has_data())
-	|| (voice !=  nullptr && voice->has_data())
-	|| (service_routing !=  nullptr && service_routing->has_data())
-	|| (lldp !=  nullptr && lldp->has_data())
-	|| (service_list !=  nullptr && service_list->has_data())
-	|| (diagnostic !=  nullptr && diagnostic->has_data())
-	|| (pm_agent !=  nullptr && pm_agent->has_data())
-	|| (named_ordering_route_map !=  nullptr && named_ordering_route_map->has_data())
-	|| (pnp !=  nullptr && pnp->has_data())
-	|| (fabric_group !=  nullptr && fabric_group->has_data())
-	|| (device_sensor !=  nullptr && device_sensor->has_data())
-	|| (coap !=  nullptr && coap->has_data())
 	|| (utd !=  nullptr && utd->has_data())
 	|| (utd_st !=  nullptr && utd_st->has_data())
-	|| (utd_mt !=  nullptr && utd_mt->has_data());
+	|| (utd_mt !=  nullptr && utd_mt->has_data())
+	|| (voice !=  nullptr && voice->has_data())
+	|| (vpdn !=  nullptr && vpdn->has_data())
+	|| (vstack !=  nullptr && vstack->has_data());
 }
 
 bool Native::has_operation() const
@@ -693,6 +695,11 @@ bool Native::has_operation() const
         if(dialer_list[index]->has_operation())
             return true;
     }
+    for (std::size_t index=0; index<maintenance_template.len(); index++)
+    {
+        if(maintenance_template[index]->has_operation())
+            return true;
+    }
     for (std::size_t index=0; index<service_template.len(); index++)
     {
         if(service_template[index]->has_operation())
@@ -706,11 +713,6 @@ bool Native::has_operation() const
     for (std::size_t index=0; index<switch_virtual.len(); index++)
     {
         if(switch_virtual[index]->has_operation())
-            return true;
-    }
-    for (std::size_t index=0; index<maintenance_template.len(); index++)
-    {
-        if(maintenance_template[index]->has_operation())
             return true;
     }
     for (std::size_t index=0; index<voice_card.len(); index++)
@@ -846,15 +848,27 @@ bool Native::has_operation() const
 	|| (process !=  nullptr && process->has_operation())
 	|| (exception !=  nullptr && exception->has_operation())
 	|| (iox !=  nullptr && iox->has_operation())
-	|| (power !=  nullptr && power->has_operation())
-	|| (vpdn !=  nullptr && vpdn->has_operation())
+	|| (arp !=  nullptr && arp->has_operation())
 	|| (esmc !=  nullptr && esmc->has_operation())
+	|| (bba_group !=  nullptr && bba_group->has_operation())
+	|| (cef !=  nullptr && cef->has_operation())
+	|| (dialer !=  nullptr && dialer->has_operation())
+	|| (coap !=  nullptr && coap->has_operation())
+	|| (device_sensor !=  nullptr && device_sensor->has_operation())
+	|| (diagnostic !=  nullptr && diagnostic->has_operation())
+	|| (et_analytics !=  nullptr && et_analytics->has_operation())
+	|| (fabric_group !=  nullptr && fabric_group->has_operation())
+	|| (lldp !=  nullptr && lldp->has_operation())
+	|| (nat66 !=  nullptr && nat66->has_operation())
+	|| (pm_agent !=  nullptr && pm_agent->has_operation())
+	|| (shell !=  nullptr && shell->has_operation())
+	|| (pnp !=  nullptr && pnp->has_operation())
+	|| (power !=  nullptr && power->has_operation())
+	|| (named_ordering_route_map !=  nullptr && named_ordering_route_map->has_operation())
 	|| (access_session !=  nullptr && access_session->has_operation())
 	|| (authentication !=  nullptr && authentication->has_operation())
-	|| (dialer !=  nullptr && dialer->has_operation())
-	|| (vstack !=  nullptr && vstack->has_operation())
-	|| (et_analytics !=  nullptr && et_analytics->has_operation())
-	|| (arp !=  nullptr && arp->has_operation())
+	|| (service_list !=  nullptr && service_list->has_operation())
+	|| (service_routing !=  nullptr && service_routing->has_operation())
 	|| (network_policy !=  nullptr && network_policy->has_operation())
 	|| (energywise !=  nullptr && energywise->has_operation())
 	|| (device !=  nullptr && device->has_operation())
@@ -864,24 +878,12 @@ bool Native::has_operation() const
 	|| (hw_switch !=  nullptr && hw_switch->has_operation())
 	|| (feature !=  nullptr && feature->has_operation())
 	|| (openflow !=  nullptr && openflow->has_operation())
-	|| (bba_group !=  nullptr && bba_group->has_operation())
-	|| (cef !=  nullptr && cef->has_operation())
-	|| (nat66 !=  nullptr && nat66->has_operation())
-	|| (shell !=  nullptr && shell->has_operation())
-	|| (voice !=  nullptr && voice->has_operation())
-	|| (service_routing !=  nullptr && service_routing->has_operation())
-	|| (lldp !=  nullptr && lldp->has_operation())
-	|| (service_list !=  nullptr && service_list->has_operation())
-	|| (diagnostic !=  nullptr && diagnostic->has_operation())
-	|| (pm_agent !=  nullptr && pm_agent->has_operation())
-	|| (named_ordering_route_map !=  nullptr && named_ordering_route_map->has_operation())
-	|| (pnp !=  nullptr && pnp->has_operation())
-	|| (fabric_group !=  nullptr && fabric_group->has_operation())
-	|| (device_sensor !=  nullptr && device_sensor->has_operation())
-	|| (coap !=  nullptr && coap->has_operation())
 	|| (utd !=  nullptr && utd->has_operation())
 	|| (utd_st !=  nullptr && utd_st->has_operation())
-	|| (utd_mt !=  nullptr && utd_mt->has_operation());
+	|| (utd_mt !=  nullptr && utd_mt->has_operation())
+	|| (voice !=  nullptr && voice->has_operation())
+	|| (vpdn !=  nullptr && vpdn->has_operation())
+	|| (vstack !=  nullptr && vstack->has_operation());
 }
 
 std::string Native::get_segment_path() const
@@ -2069,22 +2071,13 @@ std::shared_ptr<ydk::Entity> Native::get_child_by_name(const std::string & child
         return iox;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-power:power")
+    if(child_yang_name == "Cisco-IOS-XE-arp:arp")
     {
-        if(power == nullptr)
+        if(arp == nullptr)
         {
-            power = std::make_shared<Native::Power>();
+            arp = std::make_shared<Native::Arp>();
         }
-        return power;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-vpdn:vpdn")
-    {
-        if(vpdn == nullptr)
-        {
-            vpdn = std::make_shared<Native::Vpdn>();
-        }
-        return vpdn;
+        return arp;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-ethernet:esmc")
@@ -2094,6 +2087,157 @@ std::shared_ptr<ydk::Entity> Native::get_child_by_name(const std::string & child
             esmc = std::make_shared<Native::Esmc>();
         }
         return esmc;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-bba-group:bba-group")
+    {
+        if(bba_group == nullptr)
+        {
+            bba_group = std::make_shared<Native::BbaGroup>();
+        }
+        return bba_group;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-cef:cef")
+    {
+        if(cef == nullptr)
+        {
+            cef = std::make_shared<Native::Cef>();
+        }
+        return cef;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-cellular:dialer")
+    {
+        if(dialer == nullptr)
+        {
+            dialer = std::make_shared<Native::Dialer>();
+        }
+        return dialer;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-cellular:dialer-list")
+    {
+        auto ent_ = std::make_shared<Native::DialerList>();
+        ent_->parent = this;
+        dialer_list.append(ent_);
+        return ent_;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-coap:coap")
+    {
+        if(coap == nullptr)
+        {
+            coap = std::make_shared<Native::Coap>();
+        }
+        return coap;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-device-sensor:device-sensor")
+    {
+        if(device_sensor == nullptr)
+        {
+            device_sensor = std::make_shared<Native::DeviceSensor>();
+        }
+        return device_sensor;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-diagnostics:diagnostic")
+    {
+        if(diagnostic == nullptr)
+        {
+            diagnostic = std::make_shared<Native::Diagnostic>();
+        }
+        return diagnostic;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-eta:et-analytics")
+    {
+        if(et_analytics == nullptr)
+        {
+            et_analytics = std::make_shared<Native::EtAnalytics>();
+        }
+        return et_analytics;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-iwanfabric:fabric-group")
+    {
+        if(fabric_group == nullptr)
+        {
+            fabric_group = std::make_shared<Native::FabricGroup>();
+        }
+        return fabric_group;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-lldp:lldp")
+    {
+        if(lldp == nullptr)
+        {
+            lldp = std::make_shared<Native::Lldp>();
+        }
+        return lldp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-mmode:maintenance-template")
+    {
+        auto ent_ = std::make_shared<Native::MaintenanceTemplate>();
+        ent_->parent = this;
+        maintenance_template.append(ent_);
+        return ent_;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-nat:nat66")
+    {
+        if(nat66 == nullptr)
+        {
+            nat66 = std::make_shared<Native::Nat66>();
+        }
+        return nat66;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-pathmgr:pm-agent")
+    {
+        if(pm_agent == nullptr)
+        {
+            pm_agent = std::make_shared<Native::PmAgent>();
+        }
+        return pm_agent;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-platform:shell")
+    {
+        if(shell == nullptr)
+        {
+            shell = std::make_shared<Native::Shell>();
+        }
+        return shell;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-pnp:pnp")
+    {
+        if(pnp == nullptr)
+        {
+            pnp = std::make_shared<Native::Pnp>();
+        }
+        return pnp;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-power:power")
+    {
+        if(power == nullptr)
+        {
+            power = std::make_shared<Native::Power>();
+        }
+        return power;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-route-map:named-ordering-route-map")
+    {
+        if(named_ordering_route_map == nullptr)
+        {
+            named_ordering_route_map = std::make_shared<Native::NamedOrderingRouteMap>();
+        }
+        return named_ordering_route_map;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-sanet:access-session")
@@ -2114,48 +2258,22 @@ std::shared_ptr<ydk::Entity> Native::get_child_by_name(const std::string & child
         return authentication;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-cellular:dialer")
+    if(child_yang_name == "Cisco-IOS-XE-service-discovery:service-list")
     {
-        if(dialer == nullptr)
+        if(service_list == nullptr)
         {
-            dialer = std::make_shared<Native::Dialer>();
+            service_list = std::make_shared<Native::ServiceList>();
         }
-        return dialer;
+        return service_list;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-cellular:dialer-list")
+    if(child_yang_name == "Cisco-IOS-XE-service-routing:service-routing")
     {
-        auto ent_ = std::make_shared<Native::DialerList>();
-        ent_->parent = this;
-        dialer_list.append(ent_);
-        return ent_;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-vstack:vstack")
-    {
-        if(vstack == nullptr)
+        if(service_routing == nullptr)
         {
-            vstack = std::make_shared<Native::Vstack>();
+            service_routing = std::make_shared<Native::ServiceRouting>();
         }
-        return vstack;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-eta:et-analytics")
-    {
-        if(et_analytics == nullptr)
-        {
-            et_analytics = std::make_shared<Native::EtAnalytics>();
-        }
-        return et_analytics;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-arp:arp")
-    {
-        if(arp == nullptr)
-        {
-            arp = std::make_shared<Native::Arp>();
-        }
-        return arp;
+        return service_routing;
     }
 
     if(child_yang_name == "Cisco-IOS-XE-switch:network-policy")
@@ -2263,157 +2381,6 @@ std::shared_ptr<ydk::Entity> Native::get_child_by_name(const std::string & child
         return openflow;
     }
 
-    if(child_yang_name == "Cisco-IOS-XE-bba-group:bba-group")
-    {
-        if(bba_group == nullptr)
-        {
-            bba_group = std::make_shared<Native::BbaGroup>();
-        }
-        return bba_group;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-mmode:maintenance-template")
-    {
-        auto ent_ = std::make_shared<Native::MaintenanceTemplate>();
-        ent_->parent = this;
-        maintenance_template.append(ent_);
-        return ent_;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-cef:cef")
-    {
-        if(cef == nullptr)
-        {
-            cef = std::make_shared<Native::Cef>();
-        }
-        return cef;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-nat:nat66")
-    {
-        if(nat66 == nullptr)
-        {
-            nat66 = std::make_shared<Native::Nat66>();
-        }
-        return nat66;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-platform:shell")
-    {
-        if(shell == nullptr)
-        {
-            shell = std::make_shared<Native::Shell>();
-        }
-        return shell;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-voice:voice")
-    {
-        if(voice == nullptr)
-        {
-            voice = std::make_shared<Native::Voice>();
-        }
-        return voice;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-voice:voice-card")
-    {
-        auto ent_ = std::make_shared<Native::VoiceCard>();
-        ent_->parent = this;
-        voice_card.append(ent_);
-        return ent_;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-service-routing:service-routing")
-    {
-        if(service_routing == nullptr)
-        {
-            service_routing = std::make_shared<Native::ServiceRouting>();
-        }
-        return service_routing;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-lldp:lldp")
-    {
-        if(lldp == nullptr)
-        {
-            lldp = std::make_shared<Native::Lldp>();
-        }
-        return lldp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-service-discovery:service-list")
-    {
-        if(service_list == nullptr)
-        {
-            service_list = std::make_shared<Native::ServiceList>();
-        }
-        return service_list;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-diagnostics:diagnostic")
-    {
-        if(diagnostic == nullptr)
-        {
-            diagnostic = std::make_shared<Native::Diagnostic>();
-        }
-        return diagnostic;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-pathmgr:pm-agent")
-    {
-        if(pm_agent == nullptr)
-        {
-            pm_agent = std::make_shared<Native::PmAgent>();
-        }
-        return pm_agent;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-route-map:named-ordering-route-map")
-    {
-        if(named_ordering_route_map == nullptr)
-        {
-            named_ordering_route_map = std::make_shared<Native::NamedOrderingRouteMap>();
-        }
-        return named_ordering_route_map;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-pnp:pnp")
-    {
-        if(pnp == nullptr)
-        {
-            pnp = std::make_shared<Native::Pnp>();
-        }
-        return pnp;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-iwanfabric:fabric-group")
-    {
-        if(fabric_group == nullptr)
-        {
-            fabric_group = std::make_shared<Native::FabricGroup>();
-        }
-        return fabric_group;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-device-sensor:device-sensor")
-    {
-        if(device_sensor == nullptr)
-        {
-            device_sensor = std::make_shared<Native::DeviceSensor>();
-        }
-        return device_sensor;
-    }
-
-    if(child_yang_name == "Cisco-IOS-XE-coap:coap")
-    {
-        if(coap == nullptr)
-        {
-            coap = std::make_shared<Native::Coap>();
-        }
-        return coap;
-    }
-
     if(child_yang_name == "Cisco-IOS-XE-utd:utd")
     {
         if(utd == nullptr)
@@ -2439,6 +2406,41 @@ std::shared_ptr<ydk::Entity> Native::get_child_by_name(const std::string & child
             utd_mt = std::make_shared<Native::UtdMt>();
         }
         return utd_mt;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-voice:voice")
+    {
+        if(voice == nullptr)
+        {
+            voice = std::make_shared<Native::Voice>();
+        }
+        return voice;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-voice:voice-card")
+    {
+        auto ent_ = std::make_shared<Native::VoiceCard>();
+        ent_->parent = this;
+        voice_card.append(ent_);
+        return ent_;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-vpdn:vpdn")
+    {
+        if(vpdn == nullptr)
+        {
+            vpdn = std::make_shared<Native::Vpdn>();
+        }
+        return vpdn;
+    }
+
+    if(child_yang_name == "Cisco-IOS-XE-vstack:vstack")
+    {
+        if(vstack == nullptr)
+        {
+            vstack = std::make_shared<Native::Vstack>();
+        }
+        return vstack;
     }
 
     return nullptr;
@@ -3142,14 +3144,9 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::get_children() const
         _children["iox"] = iox;
     }
 
-    if(power != nullptr)
+    if(arp != nullptr)
     {
-        _children["Cisco-IOS-XE-power:power"] = power;
-    }
-
-    if(vpdn != nullptr)
-    {
-        _children["Cisco-IOS-XE-vpdn:vpdn"] = vpdn;
+        _children["Cisco-IOS-XE-arp:arp"] = arp;
     }
 
     if(esmc != nullptr)
@@ -3157,14 +3154,14 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::get_children() const
         _children["Cisco-IOS-XE-ethernet:esmc"] = esmc;
     }
 
-    if(access_session != nullptr)
+    if(bba_group != nullptr)
     {
-        _children["Cisco-IOS-XE-sanet:access-session"] = access_session;
+        _children["Cisco-IOS-XE-bba-group:bba-group"] = bba_group;
     }
 
-    if(authentication != nullptr)
+    if(cef != nullptr)
     {
-        _children["Cisco-IOS-XE-sanet:authentication"] = authentication;
+        _children["Cisco-IOS-XE-cef:cef"] = cef;
     }
 
     if(dialer != nullptr)
@@ -3181,9 +3178,19 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::get_children() const
             _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    if(vstack != nullptr)
+    if(coap != nullptr)
     {
-        _children["Cisco-IOS-XE-vstack:vstack"] = vstack;
+        _children["Cisco-IOS-XE-coap:coap"] = coap;
+    }
+
+    if(device_sensor != nullptr)
+    {
+        _children["Cisco-IOS-XE-device-sensor:device-sensor"] = device_sensor;
+    }
+
+    if(diagnostic != nullptr)
+    {
+        _children["Cisco-IOS-XE-diagnostics:diagnostic"] = diagnostic;
     }
 
     if(et_analytics != nullptr)
@@ -3191,9 +3198,73 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::get_children() const
         _children["Cisco-IOS-XE-eta:et-analytics"] = et_analytics;
     }
 
-    if(arp != nullptr)
+    if(fabric_group != nullptr)
     {
-        _children["Cisco-IOS-XE-arp:arp"] = arp;
+        _children["Cisco-IOS-XE-iwanfabric:fabric-group"] = fabric_group;
+    }
+
+    if(lldp != nullptr)
+    {
+        _children["Cisco-IOS-XE-lldp:lldp"] = lldp;
+    }
+
+    count_ = 0;
+    for (auto ent_ : maintenance_template.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    if(nat66 != nullptr)
+    {
+        _children["Cisco-IOS-XE-nat:nat66"] = nat66;
+    }
+
+    if(pm_agent != nullptr)
+    {
+        _children["Cisco-IOS-XE-pathmgr:pm-agent"] = pm_agent;
+    }
+
+    if(shell != nullptr)
+    {
+        _children["Cisco-IOS-XE-platform:shell"] = shell;
+    }
+
+    if(pnp != nullptr)
+    {
+        _children["Cisco-IOS-XE-pnp:pnp"] = pnp;
+    }
+
+    if(power != nullptr)
+    {
+        _children["Cisco-IOS-XE-power:power"] = power;
+    }
+
+    if(named_ordering_route_map != nullptr)
+    {
+        _children["Cisco-IOS-XE-route-map:named-ordering-route-map"] = named_ordering_route_map;
+    }
+
+    if(access_session != nullptr)
+    {
+        _children["Cisco-IOS-XE-sanet:access-session"] = access_session;
+    }
+
+    if(authentication != nullptr)
+    {
+        _children["Cisco-IOS-XE-sanet:authentication"] = authentication;
+    }
+
+    if(service_list != nullptr)
+    {
+        _children["Cisco-IOS-XE-service-discovery:service-list"] = service_list;
+    }
+
+    if(service_routing != nullptr)
+    {
+        _children["Cisco-IOS-XE-service-routing:service-routing"] = service_routing;
     }
 
     if(network_policy != nullptr)
@@ -3268,33 +3339,19 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::get_children() const
         _children["Cisco-IOS-XE-switch:openflow"] = openflow;
     }
 
-    if(bba_group != nullptr)
+    if(utd != nullptr)
     {
-        _children["Cisco-IOS-XE-bba-group:bba-group"] = bba_group;
+        _children["Cisco-IOS-XE-utd:utd"] = utd;
     }
 
-    count_ = 0;
-    for (auto ent_ : maintenance_template.entities())
+    if(utd_st != nullptr)
     {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
+        _children["Cisco-IOS-XE-utd:utd-st"] = utd_st;
     }
 
-    if(cef != nullptr)
+    if(utd_mt != nullptr)
     {
-        _children["Cisco-IOS-XE-cef:cef"] = cef;
-    }
-
-    if(nat66 != nullptr)
-    {
-        _children["Cisco-IOS-XE-nat:nat66"] = nat66;
-    }
-
-    if(shell != nullptr)
-    {
-        _children["Cisco-IOS-XE-platform:shell"] = shell;
+        _children["Cisco-IOS-XE-utd:utd-mt"] = utd_mt;
     }
 
     if(voice != nullptr)
@@ -3311,69 +3368,14 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Native::get_children() const
             _children[ent_->get_segment_path()+count_++] = ent_;
     }
 
-    if(service_routing != nullptr)
+    if(vpdn != nullptr)
     {
-        _children["Cisco-IOS-XE-service-routing:service-routing"] = service_routing;
+        _children["Cisco-IOS-XE-vpdn:vpdn"] = vpdn;
     }
 
-    if(lldp != nullptr)
+    if(vstack != nullptr)
     {
-        _children["Cisco-IOS-XE-lldp:lldp"] = lldp;
-    }
-
-    if(service_list != nullptr)
-    {
-        _children["Cisco-IOS-XE-service-discovery:service-list"] = service_list;
-    }
-
-    if(diagnostic != nullptr)
-    {
-        _children["Cisco-IOS-XE-diagnostics:diagnostic"] = diagnostic;
-    }
-
-    if(pm_agent != nullptr)
-    {
-        _children["Cisco-IOS-XE-pathmgr:pm-agent"] = pm_agent;
-    }
-
-    if(named_ordering_route_map != nullptr)
-    {
-        _children["Cisco-IOS-XE-route-map:named-ordering-route-map"] = named_ordering_route_map;
-    }
-
-    if(pnp != nullptr)
-    {
-        _children["Cisco-IOS-XE-pnp:pnp"] = pnp;
-    }
-
-    if(fabric_group != nullptr)
-    {
-        _children["Cisco-IOS-XE-iwanfabric:fabric-group"] = fabric_group;
-    }
-
-    if(device_sensor != nullptr)
-    {
-        _children["Cisco-IOS-XE-device-sensor:device-sensor"] = device_sensor;
-    }
-
-    if(coap != nullptr)
-    {
-        _children["Cisco-IOS-XE-coap:coap"] = coap;
-    }
-
-    if(utd != nullptr)
-    {
-        _children["Cisco-IOS-XE-utd:utd"] = utd;
-    }
-
-    if(utd_st != nullptr)
-    {
-        _children["Cisco-IOS-XE-utd:utd-st"] = utd_st;
-    }
-
-    if(utd_mt != nullptr)
-    {
-        _children["Cisco-IOS-XE-utd:utd-mt"] = utd_mt;
+        _children["Cisco-IOS-XE-vstack:vstack"] = vstack;
     }
 
     return _children;
@@ -3494,7 +3496,7 @@ std::map<std::pair<std::string, std::string>, std::string> Native::get_namespace
 
 bool Native::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "default" || name == "bfd" || name == "stackwise-virtual" || name == "boot" || name == "banner" || name == "memory" || name == "location" || name == "call-home" || name == "hw-module" || name == "cisp" || name == "module" || name == "domain" || name == "parser" || name == "service" || name == "platform" || name == "enable" || name == "password" || name == "eap" || name == "archive" || name == "username" || name == "card" || name == "controller" || name == "vrf" || name == "rmon" || name == "sampler" || name == "flow" || name == "ip" || name == "mka" || name == "macro" || name == "ipv6" || name == "vlan" || name == "mvrp" || name == "avb" || name == "ptp" || name == "cdp" || name == "avc" || name == "policy" || name == "interface" || name == "route-map" || name == "route-tag" || name == "table-map" || name == "sdm" || name == "mls" || name == "object-group" || name == "pseudowire-class" || name == "control-plane" || name == "control-plane-host" || name == "clock" || name == "logging" || name == "aaa" || name == "privilege" || name == "login" || name == "multilink" || name == "mac-address-table" || name == "redundancy" || name == "scheduler" || name == "epm" || name == "spanning-tree" || name == "subscriber" || name == "track" || name == "dot1x" || name == "mab" || name == "fallback" || name == "parameter-map" || name == "ppp" || name == "mac" || name == "tacacs" || name == "tacacs-server" || name == "software" || name == "upgrade" || name == "vtp" || name == "xconnect" || name == "fabric" || name == "port-channel" || name == "key" || name == "l2" || name == "system" || name == "errdisable" || name == "identity" || name == "monitor" || name == "tftp-server" || name == "radius-server" || name == "radius" || name == "zone" || name == "zone-pair" || name == "alarm-contact" || name == "ethernet" || name == "bridge-domain" || name == "crypto" || name == "cts" || name == "bfd-template" || name == "pfr" || name == "pfr-map" || name == "facility-alarm" || name == "setup" || name == "tod-clock" || name == "network-clock" || name == "l2vpn" || name == "l2vpn-config" || name == "l3vpn" || name == "mpls" || name == "router" || name == "service-chain" || name == "performance" || name == "otv" || name == "remote-management" || name == "virtual-service" || name == "snmp" || name == "snmp-server" || name == "segment-routing" || name == "license" || name == "memory-size" || name == "transceiver" || name == "service-insertion" || name == "udld" || name == "qos" || name == "time-range" || name == "device-tracking" || name == "fhrp" || name == "metadata" || name == "profile" || name == "alias" || name == "line" || name == "ntp" || name == "wsma" || name == "event" || name == "template" || name == "process" || name == "exception" || name == "iox" || name == "power" || name == "vpdn" || name == "esmc" || name == "access-session" || name == "authentication" || name == "dialer" || name == "dialer-list" || name == "vstack" || name == "et-analytics" || name == "arp" || name == "network-policy" || name == "energywise" || name == "service-template" || name == "switch" || name == "switch-virtual" || name == "device" || name == "stack-mac" || name == "l2protocol-tunnel" || name == "rep" || name == "hw-switch" || name == "feature" || name == "openflow" || name == "bba-group" || name == "maintenance-template" || name == "cef" || name == "nat66" || name == "shell" || name == "voice" || name == "voice-card" || name == "service-routing" || name == "lldp" || name == "service-list" || name == "diagnostic" || name == "pm-agent" || name == "named-ordering-route-map" || name == "pnp" || name == "fabric-group" || name == "device-sensor" || name == "coap" || name == "utd" || name == "utd-st" || name == "utd-mt" || name == "version" || name == "boot-start-marker" || name == "boot-end-marker" || name == "captive-portal-bypass" || name == "hostname" || name == "aqm-register-fnf" || name == "config-register" || name == "disable-eadi")
+    if(name == "default" || name == "bfd" || name == "stackwise-virtual" || name == "boot" || name == "banner" || name == "memory" || name == "location" || name == "call-home" || name == "hw-module" || name == "cisp" || name == "module" || name == "domain" || name == "parser" || name == "service" || name == "platform" || name == "enable" || name == "password" || name == "eap" || name == "archive" || name == "username" || name == "card" || name == "controller" || name == "vrf" || name == "rmon" || name == "sampler" || name == "flow" || name == "ip" || name == "mka" || name == "macro" || name == "ipv6" || name == "vlan" || name == "mvrp" || name == "avb" || name == "ptp" || name == "cdp" || name == "avc" || name == "policy" || name == "interface" || name == "route-map" || name == "route-tag" || name == "table-map" || name == "sdm" || name == "mls" || name == "object-group" || name == "pseudowire-class" || name == "control-plane" || name == "control-plane-host" || name == "clock" || name == "logging" || name == "aaa" || name == "privilege" || name == "login" || name == "multilink" || name == "mac-address-table" || name == "redundancy" || name == "scheduler" || name == "epm" || name == "spanning-tree" || name == "subscriber" || name == "track" || name == "dot1x" || name == "mab" || name == "fallback" || name == "parameter-map" || name == "ppp" || name == "mac" || name == "tacacs" || name == "tacacs-server" || name == "software" || name == "upgrade" || name == "vtp" || name == "xconnect" || name == "fabric" || name == "port-channel" || name == "key" || name == "l2" || name == "system" || name == "errdisable" || name == "identity" || name == "monitor" || name == "tftp-server" || name == "radius-server" || name == "radius" || name == "zone" || name == "zone-pair" || name == "alarm-contact" || name == "ethernet" || name == "bridge-domain" || name == "crypto" || name == "cts" || name == "bfd-template" || name == "pfr" || name == "pfr-map" || name == "facility-alarm" || name == "setup" || name == "tod-clock" || name == "network-clock" || name == "l2vpn" || name == "l2vpn-config" || name == "l3vpn" || name == "mpls" || name == "router" || name == "service-chain" || name == "performance" || name == "otv" || name == "remote-management" || name == "virtual-service" || name == "snmp" || name == "snmp-server" || name == "segment-routing" || name == "license" || name == "memory-size" || name == "transceiver" || name == "service-insertion" || name == "udld" || name == "qos" || name == "time-range" || name == "device-tracking" || name == "fhrp" || name == "metadata" || name == "profile" || name == "alias" || name == "line" || name == "ntp" || name == "wsma" || name == "event" || name == "template" || name == "process" || name == "exception" || name == "iox" || name == "arp" || name == "esmc" || name == "bba-group" || name == "cef" || name == "dialer" || name == "dialer-list" || name == "coap" || name == "device-sensor" || name == "diagnostic" || name == "et-analytics" || name == "fabric-group" || name == "lldp" || name == "maintenance-template" || name == "nat66" || name == "pm-agent" || name == "shell" || name == "pnp" || name == "power" || name == "named-ordering-route-map" || name == "access-session" || name == "authentication" || name == "service-list" || name == "service-routing" || name == "network-policy" || name == "energywise" || name == "service-template" || name == "switch" || name == "switch-virtual" || name == "device" || name == "stack-mac" || name == "l2protocol-tunnel" || name == "rep" || name == "hw-switch" || name == "feature" || name == "openflow" || name == "utd" || name == "utd-st" || name == "utd-mt" || name == "voice" || name == "voice-card" || name == "vpdn" || name == "vstack" || name == "version" || name == "boot-start-marker" || name == "boot-end-marker" || name == "captive-portal-bypass" || name == "hostname" || name == "aqm-register-fnf" || name == "config-register" || name == "disable-eadi")
         return true;
     return false;
 }

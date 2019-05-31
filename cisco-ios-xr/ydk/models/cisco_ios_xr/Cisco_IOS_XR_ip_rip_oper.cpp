@@ -9062,17 +9062,17 @@ bool Rip::DefaultVrf::Global::InterfaceSummary::has_leaf_or_child_of_name(const 
     return false;
 }
 
+const Enum::YLeaf InterfaceState::interface_none {0, "interface-none"};
+const Enum::YLeaf InterfaceState::interface_down {1, "interface-down"};
+const Enum::YLeaf InterfaceState::interface_up {2, "interface-up"};
+const Enum::YLeaf InterfaceState::interface_unknown {3, "interface-unknown"};
+
 const Enum::YLeaf RipRouteOrigin::rip_rt_org_runover {0, "rip-rt-org-runover"};
 const Enum::YLeaf RipRouteOrigin::rip_rt_org_redist {1, "rip-rt-org-redist"};
 const Enum::YLeaf RipRouteOrigin::rip_rt_org_auto_summary {2, "rip-rt-org-auto-summary"};
 const Enum::YLeaf RipRouteOrigin::rip_rt_org_rip {3, "rip-rt-org-rip"};
 const Enum::YLeaf RipRouteOrigin::rip_rt_org_intsummary {4, "rip-rt-org-intsummary"};
 const Enum::YLeaf RipRouteOrigin::rip_rt_org_unused {5, "rip-rt-org-unused"};
-
-const Enum::YLeaf InterfaceState::interface_none {0, "interface-none"};
-const Enum::YLeaf InterfaceState::interface_down {1, "interface-down"};
-const Enum::YLeaf InterfaceState::interface_up {2, "interface-up"};
-const Enum::YLeaf InterfaceState::interface_unknown {3, "interface-unknown"};
 
 
 }

@@ -28,51 +28,6 @@ class OPENCONFIGSOFTWARECOMPONENT : public virtual ydk::Identity
 
 }; // OPENCONFIGSOFTWARECOMPONENT
 
-class OPERATINGSYSTEM : public openconfig::openconfig_platform_types::OPENCONFIGSOFTWARECOMPONENT, virtual ydk::Identity
-{
-    public:
-        OPERATINGSYSTEM();
-        ~OPERATINGSYSTEM();
-
-
-}; // OPERATINGSYSTEM
-
-class LINECARD : public openconfig::openconfig_platform_types::OPENCONFIGHARDWARECOMPONENT, virtual ydk::Identity
-{
-    public:
-        LINECARD();
-        ~LINECARD();
-
-
-}; // LINECARD
-
-class MODULE : public openconfig::openconfig_platform_types::OPENCONFIGHARDWARECOMPONENT, virtual ydk::Identity
-{
-    public:
-        MODULE();
-        ~MODULE();
-
-
-}; // MODULE
-
-class CPU : public openconfig::openconfig_platform_types::OPENCONFIGHARDWARECOMPONENT, virtual ydk::Identity
-{
-    public:
-        CPU();
-        ~CPU();
-
-
-}; // CPU
-
-class TRANSCEIVER : public openconfig::openconfig_platform_types::OPENCONFIGHARDWARECOMPONENT, virtual ydk::Identity
-{
-    public:
-        TRANSCEIVER();
-        ~TRANSCEIVER();
-
-
-}; // TRANSCEIVER
-
 class CHASSIS : public openconfig::openconfig_platform_types::OPENCONFIGHARDWARECOMPONENT, virtual ydk::Identity
 {
     public:
@@ -81,15 +36,6 @@ class CHASSIS : public openconfig::openconfig_platform_types::OPENCONFIGHARDWARE
 
 
 }; // CHASSIS
-
-class FAN : public openconfig::openconfig_platform_types::OPENCONFIGHARDWARECOMPONENT, virtual ydk::Identity
-{
-    public:
-        FAN();
-        ~FAN();
-
-
-}; // FAN
 
 class BACKPLANE : public openconfig::openconfig_platform_types::OPENCONFIGHARDWARECOMPONENT, virtual ydk::Identity
 {
@@ -100,6 +46,24 @@ class BACKPLANE : public openconfig::openconfig_platform_types::OPENCONFIGHARDWA
 
 }; // BACKPLANE
 
+class POWERSUPPLY : public openconfig::openconfig_platform_types::OPENCONFIGHARDWARECOMPONENT, virtual ydk::Identity
+{
+    public:
+        POWERSUPPLY();
+        ~POWERSUPPLY();
+
+
+}; // POWERSUPPLY
+
+class FAN : public openconfig::openconfig_platform_types::OPENCONFIGHARDWARECOMPONENT, virtual ydk::Identity
+{
+    public:
+        FAN();
+        ~FAN();
+
+
+}; // FAN
+
 class SENSOR : public openconfig::openconfig_platform_types::OPENCONFIGHARDWARECOMPONENT, virtual ydk::Identity
 {
     public:
@@ -108,6 +72,24 @@ class SENSOR : public openconfig::openconfig_platform_types::OPENCONFIGHARDWAREC
 
 
 }; // SENSOR
+
+class MODULE : public openconfig::openconfig_platform_types::OPENCONFIGHARDWARECOMPONENT, virtual ydk::Identity
+{
+    public:
+        MODULE();
+        ~MODULE();
+
+
+}; // MODULE
+
+class LINECARD : public openconfig::openconfig_platform_types::OPENCONFIGHARDWARECOMPONENT, virtual ydk::Identity
+{
+    public:
+        LINECARD();
+        ~LINECARD();
+
+
+}; // LINECARD
 
 class PORT : public openconfig::openconfig_platform_types::OPENCONFIGHARDWARECOMPONENT, virtual ydk::Identity
 {
@@ -118,14 +100,32 @@ class PORT : public openconfig::openconfig_platform_types::OPENCONFIGHARDWARECOM
 
 }; // PORT
 
-class POWERSUPPLY : public openconfig::openconfig_platform_types::OPENCONFIGHARDWARECOMPONENT, virtual ydk::Identity
+class TRANSCEIVER : public openconfig::openconfig_platform_types::OPENCONFIGHARDWARECOMPONENT, virtual ydk::Identity
 {
     public:
-        POWERSUPPLY();
-        ~POWERSUPPLY();
+        TRANSCEIVER();
+        ~TRANSCEIVER();
 
 
-}; // POWERSUPPLY
+}; // TRANSCEIVER
+
+class CPU : public openconfig::openconfig_platform_types::OPENCONFIGHARDWARECOMPONENT, virtual ydk::Identity
+{
+    public:
+        CPU();
+        ~CPU();
+
+
+}; // CPU
+
+class OPERATINGSYSTEM : public openconfig::openconfig_platform_types::OPENCONFIGSOFTWARECOMPONENT, virtual ydk::Identity
+{
+    public:
+        OPERATINGSYSTEM();
+        ~OPERATINGSYSTEM();
+
+
+}; // OPERATINGSYSTEM
 
 
 }

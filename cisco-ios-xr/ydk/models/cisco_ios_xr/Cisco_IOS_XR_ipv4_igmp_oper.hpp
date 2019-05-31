@@ -18896,6 +18896,15 @@ class Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::Subsc
 
 }; // Igmp::Active::DefaultContext::InterfaceStateOffs::InterfaceStateOff::SubscriberAddress
 
+class IgmpssmMap : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf dns;
+        static const ydk::Enum::YLeaf all;
+
+};
+
 class IgmpEdmProtocol : public ydk::Enum
 {
     public:
@@ -18913,15 +18922,6 @@ class IgmpAfi : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf ipv4_unicast;
         static const ydk::Enum::YLeaf ipv6_unicast;
-
-};
-
-class IgmpssmMap : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf static_;
-        static const ydk::Enum::YLeaf dns;
-        static const ydk::Enum::YLeaf all;
 
 };
 

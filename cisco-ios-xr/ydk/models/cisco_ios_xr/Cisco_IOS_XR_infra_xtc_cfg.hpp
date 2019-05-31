@@ -46,6 +46,7 @@ class Pce : public ydk::Entity
         class Netconf; //type: Pce::Netconf
         class DisjointPath; //type: Pce::DisjointPath
         class ExplicitPaths; //type: Pce::ExplicitPaths
+        class PeerFilter; //type: Pce::PeerFilter
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::Ipv6StateSyncs> ipv6_state_syncs;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::PccAddresses> pcc_addresses;
@@ -58,6 +59,7 @@ class Pce : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::Netconf> netconf;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::DisjointPath> disjoint_path;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::ExplicitPaths> explicit_paths;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_infra_xtc_cfg::Pce::PeerFilter> peer_filter;
         
 }; // Pce
 
@@ -1279,6 +1281,28 @@ class Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop : public ydk::Entity
 
 }; // Pce::ExplicitPaths::ExplicitPath::PathHops::PathHop
 
+
+class Pce::PeerFilter : public ydk::Entity
+{
+    public:
+        PeerFilter();
+        ~PeerFilter();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::string get_absolute_path() const override;
+
+        ydk::YLeaf ipv4_acl; //type: string
+
+}; // Pce::PeerFilter
+
 class PceSegment : public ydk::Enum
 {
     public:
@@ -1287,21 +1311,11 @@ class PceSegment : public ydk::Enum
 
 };
 
-class PceBindingSid : public ydk::Enum
+class PcePathHop : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mpls_label_specified;
-        static const ydk::Enum::YLeaf mpls_label_any;
-
-};
-
-class PceExplicitPathHop : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf address;
-        static const ydk::Enum::YLeaf sid_node;
-        static const ydk::Enum::YLeaf sid_adjancency;
-        static const ydk::Enum::YLeaf binding_sid;
+        static const ydk::Enum::YLeaf mpls;
+        static const ydk::Enum::YLeaf srv6;
 
 };
 
@@ -1313,6 +1327,16 @@ class PcePath : public ydk::Enum
 
 };
 
+class PceDisjointPath : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf link;
+        static const ydk::Enum::YLeaf node;
+        static const ydk::Enum::YLeaf srlg;
+        static const ydk::Enum::YLeaf srlg_node;
+
+};
+
 class PceEndPoint : public ydk::Enum
 {
     public:
@@ -1321,19 +1345,11 @@ class PceEndPoint : public ydk::Enum
 
 };
 
-class PcerestAuthentication : public ydk::Enum
+class PceBindingSid : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf basic;
-        static const ydk::Enum::YLeaf digest;
-
-};
-
-class PcePathHop : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mpls;
-        static const ydk::Enum::YLeaf srv6;
+        static const ydk::Enum::YLeaf mpls_label_specified;
+        static const ydk::Enum::YLeaf mpls_label_any;
 
 };
 
@@ -1347,13 +1363,21 @@ class PceMetric : public ydk::Enum
 
 };
 
-class PceDisjointPath : public ydk::Enum
+class PcerestAuthentication : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf link;
-        static const ydk::Enum::YLeaf node;
-        static const ydk::Enum::YLeaf srlg;
-        static const ydk::Enum::YLeaf srlg_node;
+        static const ydk::Enum::YLeaf basic;
+        static const ydk::Enum::YLeaf digest;
+
+};
+
+class PceExplicitPathHop : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf address;
+        static const ydk::Enum::YLeaf sid_node;
+        static const ydk::Enum::YLeaf sid_adjancency;
+        static const ydk::Enum::YLeaf binding_sid;
 
 };
 

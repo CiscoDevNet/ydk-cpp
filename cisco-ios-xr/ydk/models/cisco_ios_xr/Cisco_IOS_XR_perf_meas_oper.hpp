@@ -1508,13 +1508,6 @@ class PerformanceMeasurementResponder::Nodes::Node::Interfaces::Interface::Inter
 
 }; // PerformanceMeasurementResponder::Nodes::Node::Interfaces::Interface::InterfaceCounters
 
-class PmMeasurement : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf delay_measurement_type;
-
-};
-
 class PmAdvertReason : public ydk::Enum
 {
     public:
@@ -1532,6 +1525,7 @@ class PmAdvertReason : public ydk::Enum
         static const ydk::Enum::YLeaf advertise_delay_config;
         static const ydk::Enum::YLeaf advertise_delay_unconfig;
         static const ydk::Enum::YLeaf received_control_code_error;
+        static const ydk::Enum::YLeaf link_is_down;
 
 };
 
@@ -1550,11 +1544,10 @@ class PmProbeNotRunningReason : public ydk::Enum
 
 };
 
-class PmDelayMode : public ydk::Enum
+class PmMeasurement : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf delay_mode_one_way;
-        static const ydk::Enum::YLeaf delay_mode_two_way;
+        static const ydk::Enum::YLeaf delay_measurement_type;
 
 };
 
@@ -1564,6 +1557,14 @@ class PmTransport : public ydk::Enum
         static const ydk::Enum::YLeaf interface_transport_type;
         static const ydk::Enum::YLeaf rsvpte_transport_type;
         static const ydk::Enum::YLeaf sr_policy_transport_type;
+
+};
+
+class PmDelayMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf delay_mode_one_way;
+        static const ydk::Enum::YLeaf delay_mode_two_way;
 
 };
 

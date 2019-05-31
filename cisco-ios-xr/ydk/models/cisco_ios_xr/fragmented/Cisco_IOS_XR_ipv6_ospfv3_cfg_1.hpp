@@ -56,7 +56,6 @@ class Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric : public ydk
         ydk::YLeaf on_switchover; //type: uint32
         ydk::YLeaf always; //type: empty
         ydk::YLeaf include_stub; //type: empty
-        ydk::YLeaf enable; //type: empty
         ydk::YLeaf on_proc_migration; //type: uint32
         ydk::YLeaf on_proc_restart; //type: uint32
         class OnStartup; //type: Ospfv3::Processes::Process::DefaultVrf::StubRouter::MaxMetric::OnStartup
@@ -640,7 +639,6 @@ class Ospfv3::Processes::Process::Vrfs::Vrf : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf vrf_name; //type: string
-        ydk::YLeaf enable; //type: empty
         ydk::YLeaf snmpvrf_trap; //type: empty
         ydk::YLeaf prefix_suppression; //type: boolean
         ydk::YLeaf retransmit_interval; //type: uint32

@@ -8264,6 +8264,18 @@ bool AlarmMgr::Detail::System::Suppressed::has_leaf_or_child_of_name(const std::
     return false;
 }
 
+const Enum::YLeaf SeverityTd::unknown {0, "unknown"};
+const Enum::YLeaf SeverityTd::not_reported {1, "not_reported"};
+const Enum::YLeaf SeverityTd::not_alarmed {2, "not_alarmed"};
+const Enum::YLeaf SeverityTd::minor {3, "minor"};
+const Enum::YLeaf SeverityTd::major_ {4, "major"};
+const Enum::YLeaf SeverityTd::critical {5, "critical"};
+
+const Enum::YLeaf StatusTd::unknown {0, "unknown"};
+const Enum::YLeaf StatusTd::set {1, "set"};
+const Enum::YLeaf StatusTd::clear {2, "clear"};
+const Enum::YLeaf StatusTd::suppress {3, "suppress"};
+
 const Enum::YLeaf GroupTd::unknown {0, "unknown"};
 const Enum::YLeaf GroupTd::environ {1, "environ"};
 const Enum::YLeaf GroupTd::ethernet {2, "ethernet"};
@@ -8284,11 +8296,6 @@ const Enum::YLeaf GroupTd::ots {17, "ots"};
 const Enum::YLeaf GroupTd::timing {18, "timing"};
 const Enum::YLeaf GroupTd::last {19, "last"};
 
-const Enum::YLeaf StatusTd::unknown {0, "unknown"};
-const Enum::YLeaf StatusTd::set {1, "set"};
-const Enum::YLeaf StatusTd::clear {2, "clear"};
-const Enum::YLeaf StatusTd::suppress {3, "suppress"};
-
 const Enum::YLeaf AgentStateTd::start {0, "start"};
 const Enum::YLeaf AgentStateTd::init {1, "init"};
 const Enum::YLeaf AgentStateTd::connecting {2, "connecting"};
@@ -8300,13 +8307,6 @@ const Enum::YLeaf AgentTypeTd::unknown {0, "unknown"};
 const Enum::YLeaf AgentTypeTd::producer {1, "producer"};
 const Enum::YLeaf AgentTypeTd::consumer {2, "consumer"};
 const Enum::YLeaf AgentTypeTd::subscriber {3, "subscriber"};
-
-const Enum::YLeaf SeverityTd::unknown {0, "unknown"};
-const Enum::YLeaf SeverityTd::not_reported {1, "not_reported"};
-const Enum::YLeaf SeverityTd::not_alarmed {2, "not_alarmed"};
-const Enum::YLeaf SeverityTd::minor {3, "minor"};
-const Enum::YLeaf SeverityTd::major_ {4, "major"};
-const Enum::YLeaf SeverityTd::critical {5, "critical"};
 
 
 }

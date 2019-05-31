@@ -191,11 +191,11 @@ class ExplicitPaths::Names::Name::Address : public ydk::Entity
 
 }; // ExplicitPaths::Names::Name::Address
 
-class IepStatus : public ydk::Enum
+class IepHop : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf enabled;
-        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf strict;
+        static const ydk::Enum::YLeaf loose;
 
 };
 
@@ -208,11 +208,11 @@ class IepAddress : public ydk::Enum
 
 };
 
-class IepHop : public ydk::Enum
+class IepStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf strict;
-        static const ydk::Enum::YLeaf loose;
+        static const ydk::Enum::YLeaf enabled;
+        static const ydk::Enum::YLeaf disabled;
 
 };
 

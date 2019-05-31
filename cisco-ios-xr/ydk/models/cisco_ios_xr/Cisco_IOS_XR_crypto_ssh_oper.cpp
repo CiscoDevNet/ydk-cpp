@@ -534,7 +534,10 @@ Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::SessionDetailInfo()
     out_mac{YType::enumeration, "out-mac"},
     start_time{YType::str, "start-time"},
     end_time{YType::str, "end-time"}
+        ,
+    next_session(std::make_shared<Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::NextSession>())
 {
+    next_session->parent = this;
 
     yang_name = "session-detail-info"; yang_parent_name = "incoming-sessions"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -554,7 +557,8 @@ bool Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::has_data() con
 	|| in_mac.is_set
 	|| out_mac.is_set
 	|| start_time.is_set
-	|| end_time.is_set;
+	|| end_time.is_set
+	|| (next_session !=  nullptr && next_session->has_data());
 }
 
 bool Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::has_operation() const
@@ -568,7 +572,8 @@ bool Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::has_operation(
 	|| ydk::is_set(in_mac.yfilter)
 	|| ydk::is_set(out_mac.yfilter)
 	|| ydk::is_set(start_time.yfilter)
-	|| ydk::is_set(end_time.yfilter);
+	|| ydk::is_set(end_time.yfilter)
+	|| (next_session !=  nullptr && next_session->has_operation());
 }
 
 std::string Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::get_segment_path() const
@@ -599,6 +604,15 @@ std::vector<std::pair<std::string, LeafData> > Ssh1::Kex::Nodes::Node::IncomingS
 
 std::shared_ptr<ydk::Entity> Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "next-session")
+    {
+        if(next_session == nullptr)
+        {
+            next_session = std::make_shared<Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::NextSession>();
+        }
+        return next_session;
+    }
+
     return nullptr;
 }
 
@@ -606,6 +620,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh1::Kex::Nodes::Node::Inco
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(next_session != nullptr)
+    {
+        _children["next-session"] = next_session;
+    }
+
     return _children;
 }
 
@@ -709,8 +728,70 @@ void Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::set_filter(con
 
 bool Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "session-id" || name == "key-exchange" || name == "public-key" || name == "in-cipher" || name == "out-cipher" || name == "in-mac" || name == "out-mac" || name == "start-time" || name == "end-time")
+    if(name == "next-session" || name == "session-id" || name == "key-exchange" || name == "public-key" || name == "in-cipher" || name == "out-cipher" || name == "in-mac" || name == "out-mac" || name == "start-time" || name == "end-time")
         return true;
+    return false;
+}
+
+Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::NextSession::NextSession()
+{
+
+    yang_name = "next-session"; yang_parent_name = "session-detail-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::NextSession::~NextSession()
+{
+}
+
+bool Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::NextSession::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::NextSession::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::NextSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::NextSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::NextSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::NextSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::NextSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::NextSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ssh1::Kex::Nodes::Node::IncomingSessions::SessionDetailInfo::NextSession::has_leaf_or_child_of_name(const std::string & name) const
+{
     return false;
 }
 
@@ -818,7 +899,10 @@ Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::SessionDetailInf
     out_mac{YType::enumeration, "out-mac"},
     start_time{YType::str, "start-time"},
     end_time{YType::str, "end-time"}
+        ,
+    next_session(std::make_shared<Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::NextSession>())
 {
+    next_session->parent = this;
 
     yang_name = "session-detail-info"; yang_parent_name = "outgoing-connections"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -838,7 +922,8 @@ bool Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::has_data() 
 	|| in_mac.is_set
 	|| out_mac.is_set
 	|| start_time.is_set
-	|| end_time.is_set;
+	|| end_time.is_set
+	|| (next_session !=  nullptr && next_session->has_data());
 }
 
 bool Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::has_operation() const
@@ -852,7 +937,8 @@ bool Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::has_operati
 	|| ydk::is_set(in_mac.yfilter)
 	|| ydk::is_set(out_mac.yfilter)
 	|| ydk::is_set(start_time.yfilter)
-	|| ydk::is_set(end_time.yfilter);
+	|| ydk::is_set(end_time.yfilter)
+	|| (next_session !=  nullptr && next_session->has_operation());
 }
 
 std::string Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::get_segment_path() const
@@ -883,6 +969,15 @@ std::vector<std::pair<std::string, LeafData> > Ssh1::Kex::Nodes::Node::OutgoingC
 
 std::shared_ptr<ydk::Entity> Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "next-session")
+    {
+        if(next_session == nullptr)
+        {
+            next_session = std::make_shared<Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::NextSession>();
+        }
+        return next_session;
+    }
+
     return nullptr;
 }
 
@@ -890,6 +985,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh1::Kex::Nodes::Node::Outg
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(next_session != nullptr)
+    {
+        _children["next-session"] = next_session;
+    }
+
     return _children;
 }
 
@@ -993,8 +1093,70 @@ void Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::set_filter(
 
 bool Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "session-id" || name == "key-exchange" || name == "public-key" || name == "in-cipher" || name == "out-cipher" || name == "in-mac" || name == "out-mac" || name == "start-time" || name == "end-time")
+    if(name == "next-session" || name == "session-id" || name == "key-exchange" || name == "public-key" || name == "in-cipher" || name == "out-cipher" || name == "in-mac" || name == "out-mac" || name == "start-time" || name == "end-time")
         return true;
+    return false;
+}
+
+Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::NextSession::NextSession()
+{
+
+    yang_name = "next-session"; yang_parent_name = "session-detail-info"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::NextSession::~NextSession()
+{
+}
+
+bool Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::NextSession::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::NextSession::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::NextSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::NextSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::NextSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::NextSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::NextSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::NextSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ssh1::Kex::Nodes::Node::OutgoingConnections::SessionDetailInfo::NextSession::has_leaf_or_child_of_name(const std::string & name) const
+{
     return false;
 }
 
@@ -1479,7 +1641,10 @@ Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::SessionRekeyInfo()
     session_rekey_count{YType::uint32, "session-rekey-count"},
     time_to_rekey{YType::str, "time-to-rekey"},
     volume_to_rekey{YType::str, "volume-to-rekey"}
+        ,
+    next_session(std::make_shared<Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::NextSession>())
 {
+    next_session->parent = this;
 
     yang_name = "session-rekey-info"; yang_parent_name = "incoming-sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -1494,7 +1659,8 @@ bool Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::has_data() const
     return session_id.is_set
 	|| session_rekey_count.is_set
 	|| time_to_rekey.is_set
-	|| volume_to_rekey.is_set;
+	|| volume_to_rekey.is_set
+	|| (next_session !=  nullptr && next_session->has_data());
 }
 
 bool Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::has_operation() const
@@ -1503,7 +1669,8 @@ bool Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::has_operation() co
 	|| ydk::is_set(session_id.yfilter)
 	|| ydk::is_set(session_rekey_count.yfilter)
 	|| ydk::is_set(time_to_rekey.yfilter)
-	|| ydk::is_set(volume_to_rekey.yfilter);
+	|| ydk::is_set(volume_to_rekey.yfilter)
+	|| (next_session !=  nullptr && next_session->has_operation());
 }
 
 std::string Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::get_absolute_path() const
@@ -1536,6 +1703,15 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Rekey::IncomingSess
 
 std::shared_ptr<ydk::Entity> Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "next-session")
+    {
+        if(next_session == nullptr)
+        {
+            next_session = std::make_shared<Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::NextSession>();
+        }
+        return next_session;
+    }
+
     return nullptr;
 }
 
@@ -1543,6 +1719,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Rekey::Incomin
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(next_session != nullptr)
+    {
+        _children["next-session"] = next_session;
+    }
+
     return _children;
 }
 
@@ -1596,8 +1777,77 @@ void Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::set_filter(const s
 
 bool Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "session-id" || name == "session-rekey-count" || name == "time-to-rekey" || name == "volume-to-rekey")
+    if(name == "next-session" || name == "session-id" || name == "session-rekey-count" || name == "time-to-rekey" || name == "volume-to-rekey")
         return true;
+    return false;
+}
+
+Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::NextSession::NextSession()
+{
+
+    yang_name = "next-session"; yang_parent_name = "session-rekey-info"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::NextSession::~NextSession()
+{
+}
+
+bool Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::NextSession::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::NextSession::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::NextSession::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-oper:ssh/session/rekey/incoming-sessions/session-rekey-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::NextSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::NextSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::NextSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::NextSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::NextSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::NextSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ssh::Session::Rekey::IncomingSessions::SessionRekeyInfo::NextSession::has_leaf_or_child_of_name(const std::string & name) const
+{
     return false;
 }
 
@@ -1707,7 +1957,10 @@ Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::SessionRekeyInfo()
     session_rekey_count{YType::uint32, "session-rekey-count"},
     time_to_rekey{YType::str, "time-to-rekey"},
     volume_to_rekey{YType::str, "volume-to-rekey"}
+        ,
+    next_session(std::make_shared<Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::NextSession>())
 {
+    next_session->parent = this;
 
     yang_name = "session-rekey-info"; yang_parent_name = "outgoing-connections"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -1722,7 +1975,8 @@ bool Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::has_data() cons
     return session_id.is_set
 	|| session_rekey_count.is_set
 	|| time_to_rekey.is_set
-	|| volume_to_rekey.is_set;
+	|| volume_to_rekey.is_set
+	|| (next_session !=  nullptr && next_session->has_data());
 }
 
 bool Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::has_operation() const
@@ -1731,7 +1985,8 @@ bool Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::has_operation()
 	|| ydk::is_set(session_id.yfilter)
 	|| ydk::is_set(session_rekey_count.yfilter)
 	|| ydk::is_set(time_to_rekey.yfilter)
-	|| ydk::is_set(volume_to_rekey.yfilter);
+	|| ydk::is_set(volume_to_rekey.yfilter)
+	|| (next_session !=  nullptr && next_session->has_operation());
 }
 
 std::string Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::get_absolute_path() const
@@ -1764,6 +2019,15 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Rekey::OutgoingConn
 
 std::shared_ptr<ydk::Entity> Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "next-session")
+    {
+        if(next_session == nullptr)
+        {
+            next_session = std::make_shared<Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::NextSession>();
+        }
+        return next_session;
+    }
+
     return nullptr;
 }
 
@@ -1771,6 +2035,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Rekey::Outgoin
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(next_session != nullptr)
+    {
+        _children["next-session"] = next_session;
+    }
+
     return _children;
 }
 
@@ -1824,8 +2093,77 @@ void Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::set_filter(cons
 
 bool Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "session-id" || name == "session-rekey-count" || name == "time-to-rekey" || name == "volume-to-rekey")
+    if(name == "next-session" || name == "session-id" || name == "session-rekey-count" || name == "time-to-rekey" || name == "volume-to-rekey")
         return true;
+    return false;
+}
+
+Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::NextSession::NextSession()
+{
+
+    yang_name = "next-session"; yang_parent_name = "session-rekey-info"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::NextSession::~NextSession()
+{
+}
+
+bool Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::NextSession::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::NextSession::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::NextSession::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-oper:ssh/session/rekey/outgoing-connections/session-rekey-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::NextSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::NextSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::NextSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::NextSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::NextSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::NextSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ssh::Session::Rekey::OutgoingConnections::SessionRekeyInfo::NextSession::has_leaf_or_child_of_name(const std::string & name) const
+{
     return false;
 }
 
@@ -2047,7 +2385,10 @@ Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::SessionDetailI
     out_mac{YType::enumeration, "out-mac"},
     start_time{YType::str, "start-time"},
     end_time{YType::str, "end-time"}
+        ,
+    next_session(std::make_shared<Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::NextSession>())
 {
+    next_session->parent = this;
 
     yang_name = "session-detail-info"; yang_parent_name = "incoming-sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -2067,7 +2408,8 @@ bool Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::has_data(
 	|| in_mac.is_set
 	|| out_mac.is_set
 	|| start_time.is_set
-	|| end_time.is_set;
+	|| end_time.is_set
+	|| (next_session !=  nullptr && next_session->has_data());
 }
 
 bool Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::has_operation() const
@@ -2081,7 +2423,8 @@ bool Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::has_opera
 	|| ydk::is_set(in_mac.yfilter)
 	|| ydk::is_set(out_mac.yfilter)
 	|| ydk::is_set(start_time.yfilter)
-	|| ydk::is_set(end_time.yfilter);
+	|| ydk::is_set(end_time.yfilter)
+	|| (next_session !=  nullptr && next_session->has_operation());
 }
 
 std::string Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::get_absolute_path() const
@@ -2119,6 +2462,15 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::HistoryDetail::Inco
 
 std::shared_ptr<ydk::Entity> Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "next-session")
+    {
+        if(next_session == nullptr)
+        {
+            next_session = std::make_shared<Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::NextSession>();
+        }
+        return next_session;
+    }
+
     return nullptr;
 }
 
@@ -2126,6 +2478,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::HistoryDetail:
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(next_session != nullptr)
+    {
+        _children["next-session"] = next_session;
+    }
+
     return _children;
 }
 
@@ -2229,8 +2586,77 @@ void Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::set_filte
 
 bool Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "session-id" || name == "key-exchange" || name == "public-key" || name == "in-cipher" || name == "out-cipher" || name == "in-mac" || name == "out-mac" || name == "start-time" || name == "end-time")
+    if(name == "next-session" || name == "session-id" || name == "key-exchange" || name == "public-key" || name == "in-cipher" || name == "out-cipher" || name == "in-mac" || name == "out-mac" || name == "start-time" || name == "end-time")
         return true;
+    return false;
+}
+
+Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::NextSession::NextSession()
+{
+
+    yang_name = "next-session"; yang_parent_name = "session-detail-info"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::NextSession::~NextSession()
+{
+}
+
+bool Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::NextSession::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::NextSession::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::NextSession::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-oper:ssh/session/history-detail/incoming-sessions/session-detail-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::NextSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::NextSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::NextSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::NextSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::NextSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::NextSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ssh::Session::HistoryDetail::IncomingSessions::SessionDetailInfo::NextSession::has_leaf_or_child_of_name(const std::string & name) const
+{
     return false;
 }
 
@@ -2345,7 +2771,10 @@ Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::SessionDeta
     out_mac{YType::enumeration, "out-mac"},
     start_time{YType::str, "start-time"},
     end_time{YType::str, "end-time"}
+        ,
+    next_session(std::make_shared<Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::NextSession>())
 {
+    next_session->parent = this;
 
     yang_name = "session-detail-info"; yang_parent_name = "outgoing-connections"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -2365,7 +2794,8 @@ bool Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::has_da
 	|| in_mac.is_set
 	|| out_mac.is_set
 	|| start_time.is_set
-	|| end_time.is_set;
+	|| end_time.is_set
+	|| (next_session !=  nullptr && next_session->has_data());
 }
 
 bool Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::has_operation() const
@@ -2379,7 +2809,8 @@ bool Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::has_op
 	|| ydk::is_set(in_mac.yfilter)
 	|| ydk::is_set(out_mac.yfilter)
 	|| ydk::is_set(start_time.yfilter)
-	|| ydk::is_set(end_time.yfilter);
+	|| ydk::is_set(end_time.yfilter)
+	|| (next_session !=  nullptr && next_session->has_operation());
 }
 
 std::string Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::get_absolute_path() const
@@ -2417,6 +2848,15 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::HistoryDetail::Outg
 
 std::shared_ptr<ydk::Entity> Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "next-session")
+    {
+        if(next_session == nullptr)
+        {
+            next_session = std::make_shared<Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::NextSession>();
+        }
+        return next_session;
+    }
+
     return nullptr;
 }
 
@@ -2424,6 +2864,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::HistoryDetail:
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(next_session != nullptr)
+    {
+        _children["next-session"] = next_session;
+    }
+
     return _children;
 }
 
@@ -2527,8 +2972,77 @@ void Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::set_fi
 
 bool Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "session-id" || name == "key-exchange" || name == "public-key" || name == "in-cipher" || name == "out-cipher" || name == "in-mac" || name == "out-mac" || name == "start-time" || name == "end-time")
+    if(name == "next-session" || name == "session-id" || name == "key-exchange" || name == "public-key" || name == "in-cipher" || name == "out-cipher" || name == "in-mac" || name == "out-mac" || name == "start-time" || name == "end-time")
         return true;
+    return false;
+}
+
+Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::NextSession::NextSession()
+{
+
+    yang_name = "next-session"; yang_parent_name = "session-detail-info"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::NextSession::~NextSession()
+{
+}
+
+bool Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::NextSession::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::NextSession::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::NextSession::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-oper:ssh/session/history-detail/outgoing-connections/session-detail-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::NextSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::NextSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::NextSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::NextSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::NextSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::NextSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ssh::Session::HistoryDetail::OutgoingConnections::SessionDetailInfo::NextSession::has_leaf_or_child_of_name(const std::string & name) const
+{
     return false;
 }
 
@@ -2749,8 +3263,10 @@ Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::SessionBriefInfo()
     version{YType::enumeration, "version"},
     authentication_type{YType::enumeration, "authentication-type"}
         ,
-    mc_info(this, {})
+    next_session(std::make_shared<Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::NextSession>())
+    , mc_info(this, {})
 {
+    next_session->parent = this;
 
     yang_name = "session-brief-info"; yang_parent_name = "incoming-sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -2773,7 +3289,8 @@ bool Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::has_data() const
 	|| user_id.is_set
 	|| host_address.is_set
 	|| version.is_set
-	|| authentication_type.is_set;
+	|| authentication_type.is_set
+	|| (next_session !=  nullptr && next_session->has_data());
 }
 
 bool Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::has_operation() const
@@ -2790,7 +3307,8 @@ bool Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::has_operation() co
 	|| ydk::is_set(user_id.yfilter)
 	|| ydk::is_set(host_address.yfilter)
 	|| ydk::is_set(version.yfilter)
-	|| ydk::is_set(authentication_type.yfilter);
+	|| ydk::is_set(authentication_type.yfilter)
+	|| (next_session !=  nullptr && next_session->has_operation());
 }
 
 std::string Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::get_absolute_path() const
@@ -2826,6 +3344,15 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Brief::IncomingSess
 
 std::shared_ptr<ydk::Entity> Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "next-session")
+    {
+        if(next_session == nullptr)
+        {
+            next_session = std::make_shared<Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::NextSession>();
+        }
+        return next_session;
+    }
+
     if(child_yang_name == "mc-info")
     {
         auto ent_ = std::make_shared<Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::McInfo>();
@@ -2841,6 +3368,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Brief::Incomin
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(next_session != nullptr)
+    {
+        _children["next-session"] = next_session;
+    }
+
     count_ = 0;
     for (auto ent_ : mc_info.entities())
     {
@@ -2933,8 +3465,77 @@ void Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::set_filter(const s
 
 bool Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mc-info" || name == "session-id" || name == "node-name" || name == "session-state" || name == "user-id" || name == "host-address" || name == "version" || name == "authentication-type")
+    if(name == "next-session" || name == "mc-info" || name == "session-id" || name == "node-name" || name == "session-state" || name == "user-id" || name == "host-address" || name == "version" || name == "authentication-type")
         return true;
+    return false;
+}
+
+Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::NextSession::NextSession()
+{
+
+    yang_name = "next-session"; yang_parent_name = "session-brief-info"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::NextSession::~NextSession()
+{
+}
+
+bool Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::NextSession::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::NextSession::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::NextSession::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-oper:ssh/session/brief/incoming-sessions/session-brief-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::NextSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::NextSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::NextSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::NextSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::NextSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::NextSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ssh::Session::Brief::IncomingSessions::SessionBriefInfo::NextSession::has_leaf_or_child_of_name(const std::string & name) const
+{
     return false;
 }
 
@@ -3176,8 +3777,10 @@ Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::SessionBriefInfo()
     version{YType::enumeration, "version"},
     authentication_type{YType::enumeration, "authentication-type"}
         ,
-    mc_info(this, {})
+    next_session(std::make_shared<Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::NextSession>())
+    , mc_info(this, {})
 {
+    next_session->parent = this;
 
     yang_name = "session-brief-info"; yang_parent_name = "outgoing-sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -3200,7 +3803,8 @@ bool Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::has_data() const
 	|| user_id.is_set
 	|| host_address.is_set
 	|| version.is_set
-	|| authentication_type.is_set;
+	|| authentication_type.is_set
+	|| (next_session !=  nullptr && next_session->has_data());
 }
 
 bool Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::has_operation() const
@@ -3217,7 +3821,8 @@ bool Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::has_operation() co
 	|| ydk::is_set(user_id.yfilter)
 	|| ydk::is_set(host_address.yfilter)
 	|| ydk::is_set(version.yfilter)
-	|| ydk::is_set(authentication_type.yfilter);
+	|| ydk::is_set(authentication_type.yfilter)
+	|| (next_session !=  nullptr && next_session->has_operation());
 }
 
 std::string Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::get_absolute_path() const
@@ -3253,6 +3858,15 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Brief::OutgoingSess
 
 std::shared_ptr<ydk::Entity> Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "next-session")
+    {
+        if(next_session == nullptr)
+        {
+            next_session = std::make_shared<Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::NextSession>();
+        }
+        return next_session;
+    }
+
     if(child_yang_name == "mc-info")
     {
         auto ent_ = std::make_shared<Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::McInfo>();
@@ -3268,6 +3882,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Brief::Outgoin
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(next_session != nullptr)
+    {
+        _children["next-session"] = next_session;
+    }
+
     count_ = 0;
     for (auto ent_ : mc_info.entities())
     {
@@ -3360,8 +3979,77 @@ void Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::set_filter(const s
 
 bool Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mc-info" || name == "session-id" || name == "node-name" || name == "session-state" || name == "user-id" || name == "host-address" || name == "version" || name == "authentication-type")
+    if(name == "next-session" || name == "mc-info" || name == "session-id" || name == "node-name" || name == "session-state" || name == "user-id" || name == "host-address" || name == "version" || name == "authentication-type")
         return true;
+    return false;
+}
+
+Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::NextSession::NextSession()
+{
+
+    yang_name = "next-session"; yang_parent_name = "session-brief-info"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::NextSession::~NextSession()
+{
+}
+
+bool Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::NextSession::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::NextSession::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::NextSession::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-oper:ssh/session/brief/outgoing-sessions/session-brief-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::NextSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::NextSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::NextSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::NextSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::NextSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::NextSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ssh::Session::Brief::OutgoingSessions::SessionBriefInfo::NextSession::has_leaf_or_child_of_name(const std::string & name) const
+{
     return false;
 }
 
@@ -3691,8 +4379,10 @@ Ssh::Session::History::IncomingSessions::SessionHistoryInfo::SessionHistoryInfo(
     version{YType::enumeration, "version"},
     authentication_type{YType::enumeration, "authentication-type"}
         ,
-    mc_info(this, {})
+    next_session(std::make_shared<Ssh::Session::History::IncomingSessions::SessionHistoryInfo::NextSession>())
+    , mc_info(this, {})
 {
+    next_session->parent = this;
 
     yang_name = "session-history-info"; yang_parent_name = "incoming-sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -3714,7 +4404,8 @@ bool Ssh::Session::History::IncomingSessions::SessionHistoryInfo::has_data() con
 	|| user_id.is_set
 	|| host_address.is_set
 	|| version.is_set
-	|| authentication_type.is_set;
+	|| authentication_type.is_set
+	|| (next_session !=  nullptr && next_session->has_data());
 }
 
 bool Ssh::Session::History::IncomingSessions::SessionHistoryInfo::has_operation() const
@@ -3730,7 +4421,8 @@ bool Ssh::Session::History::IncomingSessions::SessionHistoryInfo::has_operation(
 	|| ydk::is_set(user_id.yfilter)
 	|| ydk::is_set(host_address.yfilter)
 	|| ydk::is_set(version.yfilter)
-	|| ydk::is_set(authentication_type.yfilter);
+	|| ydk::is_set(authentication_type.yfilter)
+	|| (next_session !=  nullptr && next_session->has_operation());
 }
 
 std::string Ssh::Session::History::IncomingSessions::SessionHistoryInfo::get_absolute_path() const
@@ -3765,6 +4457,15 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::History::IncomingSe
 
 std::shared_ptr<ydk::Entity> Ssh::Session::History::IncomingSessions::SessionHistoryInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "next-session")
+    {
+        if(next_session == nullptr)
+        {
+            next_session = std::make_shared<Ssh::Session::History::IncomingSessions::SessionHistoryInfo::NextSession>();
+        }
+        return next_session;
+    }
+
     if(child_yang_name == "mc-info")
     {
         auto ent_ = std::make_shared<Ssh::Session::History::IncomingSessions::SessionHistoryInfo::McInfo>();
@@ -3780,6 +4481,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::History::Incom
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(next_session != nullptr)
+    {
+        _children["next-session"] = next_session;
+    }
+
     count_ = 0;
     for (auto ent_ : mc_info.entities())
     {
@@ -3862,8 +4568,77 @@ void Ssh::Session::History::IncomingSessions::SessionHistoryInfo::set_filter(con
 
 bool Ssh::Session::History::IncomingSessions::SessionHistoryInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "mc-info" || name == "session-id" || name == "node-name" || name == "user-id" || name == "host-address" || name == "version" || name == "authentication-type")
+    if(name == "next-session" || name == "mc-info" || name == "session-id" || name == "node-name" || name == "user-id" || name == "host-address" || name == "version" || name == "authentication-type")
         return true;
+    return false;
+}
+
+Ssh::Session::History::IncomingSessions::SessionHistoryInfo::NextSession::NextSession()
+{
+
+    yang_name = "next-session"; yang_parent_name = "session-history-info"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ssh::Session::History::IncomingSessions::SessionHistoryInfo::NextSession::~NextSession()
+{
+}
+
+bool Ssh::Session::History::IncomingSessions::SessionHistoryInfo::NextSession::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ssh::Session::History::IncomingSessions::SessionHistoryInfo::NextSession::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ssh::Session::History::IncomingSessions::SessionHistoryInfo::NextSession::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-oper:ssh/session/history/incoming-sessions/session-history-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::Session::History::IncomingSessions::SessionHistoryInfo::NextSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::Session::History::IncomingSessions::SessionHistoryInfo::NextSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ssh::Session::History::IncomingSessions::SessionHistoryInfo::NextSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::History::IncomingSessions::SessionHistoryInfo::NextSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ssh::Session::History::IncomingSessions::SessionHistoryInfo::NextSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ssh::Session::History::IncomingSessions::SessionHistoryInfo::NextSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ssh::Session::History::IncomingSessions::SessionHistoryInfo::NextSession::has_leaf_or_child_of_name(const std::string & name) const
+{
     return false;
 }
 
@@ -4213,7 +4988,10 @@ Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::SessionDetailInfo()
     out_mac{YType::enumeration, "out-mac"},
     start_time{YType::str, "start-time"},
     end_time{YType::str, "end-time"}
+        ,
+    next_session(std::make_shared<Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::NextSession>())
 {
+    next_session->parent = this;
 
     yang_name = "session-detail-info"; yang_parent_name = "incoming-sessions"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -4233,7 +5011,8 @@ bool Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::has_data() const
 	|| in_mac.is_set
 	|| out_mac.is_set
 	|| start_time.is_set
-	|| end_time.is_set;
+	|| end_time.is_set
+	|| (next_session !=  nullptr && next_session->has_data());
 }
 
 bool Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::has_operation() const
@@ -4247,7 +5026,8 @@ bool Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::has_operation() 
 	|| ydk::is_set(in_mac.yfilter)
 	|| ydk::is_set(out_mac.yfilter)
 	|| ydk::is_set(start_time.yfilter)
-	|| ydk::is_set(end_time.yfilter);
+	|| ydk::is_set(end_time.yfilter)
+	|| (next_session !=  nullptr && next_session->has_operation());
 }
 
 std::string Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::get_absolute_path() const
@@ -4285,6 +5065,15 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Detail::IncomingSes
 
 std::shared_ptr<ydk::Entity> Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "next-session")
+    {
+        if(next_session == nullptr)
+        {
+            next_session = std::make_shared<Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::NextSession>();
+        }
+        return next_session;
+    }
+
     return nullptr;
 }
 
@@ -4292,6 +5081,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Detail::Incomi
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(next_session != nullptr)
+    {
+        _children["next-session"] = next_session;
+    }
+
     return _children;
 }
 
@@ -4395,8 +5189,77 @@ void Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::set_filter(const
 
 bool Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "session-id" || name == "key-exchange" || name == "public-key" || name == "in-cipher" || name == "out-cipher" || name == "in-mac" || name == "out-mac" || name == "start-time" || name == "end-time")
+    if(name == "next-session" || name == "session-id" || name == "key-exchange" || name == "public-key" || name == "in-cipher" || name == "out-cipher" || name == "in-mac" || name == "out-mac" || name == "start-time" || name == "end-time")
         return true;
+    return false;
+}
+
+Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::NextSession::NextSession()
+{
+
+    yang_name = "next-session"; yang_parent_name = "session-detail-info"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::NextSession::~NextSession()
+{
+}
+
+bool Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::NextSession::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::NextSession::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::NextSession::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-oper:ssh/session/detail/incoming-sessions/session-detail-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::NextSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::NextSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::NextSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::NextSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::NextSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::NextSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ssh::Session::Detail::IncomingSessions::SessionDetailInfo::NextSession::has_leaf_or_child_of_name(const std::string & name) const
+{
     return false;
 }
 
@@ -4511,7 +5374,10 @@ Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::SessionDetailInfo(
     out_mac{YType::enumeration, "out-mac"},
     start_time{YType::str, "start-time"},
     end_time{YType::str, "end-time"}
+        ,
+    next_session(std::make_shared<Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::NextSession>())
 {
+    next_session->parent = this;
 
     yang_name = "session-detail-info"; yang_parent_name = "outgoing-connections"; is_top_level_class = false; has_list_ancestor = false; 
 }
@@ -4531,7 +5397,8 @@ bool Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::has_data() co
 	|| in_mac.is_set
 	|| out_mac.is_set
 	|| start_time.is_set
-	|| end_time.is_set;
+	|| end_time.is_set
+	|| (next_session !=  nullptr && next_session->has_data());
 }
 
 bool Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::has_operation() const
@@ -4545,7 +5412,8 @@ bool Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::has_operation
 	|| ydk::is_set(in_mac.yfilter)
 	|| ydk::is_set(out_mac.yfilter)
 	|| ydk::is_set(start_time.yfilter)
-	|| ydk::is_set(end_time.yfilter);
+	|| ydk::is_set(end_time.yfilter)
+	|| (next_session !=  nullptr && next_session->has_operation());
 }
 
 std::string Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::get_absolute_path() const
@@ -4583,6 +5451,15 @@ std::vector<std::pair<std::string, LeafData> > Ssh::Session::Detail::OutgoingCon
 
 std::shared_ptr<ydk::Entity> Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "next-session")
+    {
+        if(next_session == nullptr)
+        {
+            next_session = std::make_shared<Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::NextSession>();
+        }
+        return next_session;
+    }
+
     return nullptr;
 }
 
@@ -4590,6 +5467,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Detail::Outgoi
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(next_session != nullptr)
+    {
+        _children["next-session"] = next_session;
+    }
+
     return _children;
 }
 
@@ -4693,32 +5575,79 @@ void Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::set_filter(co
 
 bool Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "session-id" || name == "key-exchange" || name == "public-key" || name == "in-cipher" || name == "out-cipher" || name == "in-mac" || name == "out-mac" || name == "start-time" || name == "end-time")
+    if(name == "next-session" || name == "session-id" || name == "key-exchange" || name == "public-key" || name == "in-cipher" || name == "out-cipher" || name == "in-mac" || name == "out-mac" || name == "start-time" || name == "end-time")
         return true;
     return false;
 }
 
-const Enum::YLeaf KexName::kex_not_applicable {-1, "kex-not-applicable"};
-const Enum::YLeaf KexName::diffie_hellman_group1 {0, "diffie-hellman-group1"};
-const Enum::YLeaf KexName::diffie_hellman_group14 {1, "diffie-hellman-group14"};
-const Enum::YLeaf KexName::diffie_hellman_group15 {2, "diffie-hellman-group15"};
-const Enum::YLeaf KexName::diffie_hellman_group16 {3, "diffie-hellman-group16"};
-const Enum::YLeaf KexName::diffie_hellman_group17 {4, "diffie-hellman-group17"};
-const Enum::YLeaf KexName::diffie_hellman_group18 {5, "diffie-hellman-group18"};
-const Enum::YLeaf KexName::ecdh_nistp256 {6, "ecdh-nistp256"};
-const Enum::YLeaf KexName::ecdh_nistp384 {7, "ecdh-nistp384"};
-const Enum::YLeaf KexName::ecdh_nistp521 {8, "ecdh-nistp521"};
-const Enum::YLeaf KexName::password_authenticated {9, "password-authenticated"};
+Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::NextSession::NextSession()
+{
 
-const Enum::YLeaf Hostkey::host_key_not_applicable {-1, "host-key-not-applicable"};
-const Enum::YLeaf Hostkey::ssh_dss {0, "ssh-dss"};
-const Enum::YLeaf Hostkey::ssh_rsa {1, "ssh-rsa"};
-const Enum::YLeaf Hostkey::ecdsa_sha2_nistp521 {2, "ecdsa-sha2-nistp521"};
-const Enum::YLeaf Hostkey::ecdsa_sha2_nistp384 {3, "ecdsa-sha2-nistp384"};
-const Enum::YLeaf Hostkey::ecdsa_sha2_nistp256 {4, "ecdsa-sha2-nistp256"};
+    yang_name = "next-session"; yang_parent_name = "session-detail-info"; is_top_level_class = false; has_list_ancestor = false; 
+}
 
-const Enum::YLeaf Version::v2 {0, "v2"};
-const Enum::YLeaf Version::v1 {1, "v1"};
+Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::NextSession::~NextSession()
+{
+}
+
+bool Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::NextSession::has_data() const
+{
+    if (is_presence_container) return true;
+    return false;
+}
+
+bool Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::NextSession::has_operation() const
+{
+    return is_set(yfilter);
+}
+
+std::string Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::NextSession::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-crypto-ssh-oper:ssh/session/detail/outgoing-connections/session-detail-info/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::NextSession::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "next-session";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::NextSession::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::NextSession::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::NextSession::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::NextSession::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::NextSession::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Ssh::Session::Detail::OutgoingConnections::SessionDetailInfo::NextSession::has_leaf_or_child_of_name(const std::string & name) const
+{
+    return false;
+}
 
 const Enum::YLeaf Connection::undefined {0, "undefined"};
 const Enum::YLeaf Connection::shell {1, "shell"};
@@ -4728,6 +5657,13 @@ const Enum::YLeaf Connection::sftp_subsystem {4, "sftp-subsystem"};
 const Enum::YLeaf Connection::netconf_subsystem {5, "netconf-subsystem"};
 const Enum::YLeaf Connection::tl1_subsystem {6, "tl1-subsystem"};
 const Enum::YLeaf Connection::netconf_xml_subsystem {7, "netconf-xml-subsystem"};
+
+const Enum::YLeaf Authen::password {0, "password"};
+const Enum::YLeaf Authen::rsa_public_key {1, "rsa-public-key"};
+const Enum::YLeaf Authen::keyboard_interactive {2, "keyboard-interactive"};
+
+const Enum::YLeaf Version::v2 {0, "v2"};
+const Enum::YLeaf Version::v1 {1, "v1"};
 
 const Enum::YLeaf States::open {1, "open"};
 const Enum::YLeaf States::version_ok {2, "version-ok"};
@@ -4761,9 +5697,24 @@ const Enum::YLeaf Cipher::aes256_ctr {6, "aes256-ctr"};
 const Enum::YLeaf Cipher::aes128_gcm {7, "aes128-gcm"};
 const Enum::YLeaf Cipher::aes256_gcm {8, "aes256-gcm"};
 
-const Enum::YLeaf Authen::password {0, "password"};
-const Enum::YLeaf Authen::rsa_public_key {1, "rsa-public-key"};
-const Enum::YLeaf Authen::keyboard_interactive {2, "keyboard-interactive"};
+const Enum::YLeaf Hostkey::host_key_not_applicable {-1, "host-key-not-applicable"};
+const Enum::YLeaf Hostkey::ssh_dss {0, "ssh-dss"};
+const Enum::YLeaf Hostkey::ssh_rsa {1, "ssh-rsa"};
+const Enum::YLeaf Hostkey::ecdsa_sha2_nistp521 {2, "ecdsa-sha2-nistp521"};
+const Enum::YLeaf Hostkey::ecdsa_sha2_nistp384 {3, "ecdsa-sha2-nistp384"};
+const Enum::YLeaf Hostkey::ecdsa_sha2_nistp256 {4, "ecdsa-sha2-nistp256"};
+
+const Enum::YLeaf KexName::kex_not_applicable {-1, "kex-not-applicable"};
+const Enum::YLeaf KexName::diffie_hellman_group1 {0, "diffie-hellman-group1"};
+const Enum::YLeaf KexName::diffie_hellman_group14 {1, "diffie-hellman-group14"};
+const Enum::YLeaf KexName::diffie_hellman_group15 {2, "diffie-hellman-group15"};
+const Enum::YLeaf KexName::diffie_hellman_group16 {3, "diffie-hellman-group16"};
+const Enum::YLeaf KexName::diffie_hellman_group17 {4, "diffie-hellman-group17"};
+const Enum::YLeaf KexName::diffie_hellman_group18 {5, "diffie-hellman-group18"};
+const Enum::YLeaf KexName::ecdh_nistp256 {6, "ecdh-nistp256"};
+const Enum::YLeaf KexName::ecdh_nistp384 {7, "ecdh-nistp384"};
+const Enum::YLeaf KexName::ecdh_nistp521 {8, "ecdh-nistp521"};
+const Enum::YLeaf KexName::password_authenticated {9, "password-authenticated"};
 
 
 }

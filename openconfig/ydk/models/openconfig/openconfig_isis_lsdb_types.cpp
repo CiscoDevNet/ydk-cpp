@@ -11,16 +11,6 @@ using namespace ydk;
 namespace openconfig {
 namespace openconfig_isis_lsdb_types {
 
-ISISSUBTLVTYPE::ISISSUBTLVTYPE()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:ISIS_SUBTLV_TYPE")
-{
-
-}
-
-ISISSUBTLVTYPE::~ISISSUBTLVTYPE()
-{
-}
-
 ISISTLVTYPE::ISISTLVTYPE()
      : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:ISIS_TLV_TYPE")
 {
@@ -31,13 +21,13 @@ ISISTLVTYPE::~ISISTLVTYPE()
 {
 }
 
-AREAADDRESSES::AREAADDRESSES()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:AREA_ADDRESSES")
+ISISSUBTLVTYPE::ISISSUBTLVTYPE()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:ISIS_SUBTLV_TYPE")
 {
 
 }
 
-AREAADDRESSES::~AREAADDRESSES()
+ISISSUBTLVTYPE::~ISISSUBTLVTYPE()
 {
 }
 
@@ -51,83 +41,83 @@ ISREACHABILITYSUBTLVSTYPE::~ISREACHABILITYSUBTLVSTYPE()
 {
 }
 
-ISREACHABILITYLINKLOSS::ISREACHABILITYLINKLOSS()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_LINK_LOSS")
+IPREACHABILITYSUBTLVSTYPE::IPREACHABILITYSUBTLVSTYPE()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IP_REACHABILITY_SUBTLVS_TYPE")
 {
 
 }
 
-ISREACHABILITYLINKLOSS::~ISREACHABILITYLINKLOSS()
+IPREACHABILITYSUBTLVSTYPE::~IPREACHABILITYSUBTLVSTYPE()
 {
 }
 
-MTISNEIGHBORATTRIBUTE::MTISNEIGHBORATTRIBUTE()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:MT_IS_NEIGHBOR_ATTRIBUTE")
-{
-
-}
-
-MTISNEIGHBORATTRIBUTE::~MTISNEIGHBORATTRIBUTE()
-{
-}
-
-ISREACHABILITYIPV4INTERFACEADDRESS::ISREACHABILITYIPV4INTERFACEADDRESS()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_IPV4_INTERFACE_ADDRESS")
+ROUTERCAPABILITYSUBTLVSTYPE::ROUTERCAPABILITYSUBTLVSTYPE()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:ROUTER_CAPABILITY_SUBTLVS_TYPE")
 {
 
 }
 
-ISREACHABILITYIPV4INTERFACEADDRESS::~ISREACHABILITYIPV4INTERFACEADDRESS()
+ROUTERCAPABILITYSUBTLVSTYPE::~ROUTERCAPABILITYSUBTLVSTYPE()
 {
 }
 
-ISREACHABILITYIPV4NEIGHBORADDRESS::ISREACHABILITYIPV4NEIGHBORADDRESS()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_IPV4_NEIGHBOR_ADDRESS")
-{
-
-}
-
-ISREACHABILITYIPV4NEIGHBORADDRESS::~ISREACHABILITYIPV4NEIGHBORADDRESS()
-{
-}
-
-ISREACHABILITYEXTENDEDADMINGROUP::ISREACHABILITYEXTENDEDADMINGROUP()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_EXTENDED_ADMIN_GROUP")
+AREAADDRESSES::AREAADDRESSES()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:AREA_ADDRESSES")
 {
 
 }
 
-ISREACHABILITYEXTENDEDADMINGROUP::~ISREACHABILITYEXTENDEDADMINGROUP()
+AREAADDRESSES::~AREAADDRESSES()
 {
 }
 
-NLPID::NLPID()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:NLPID")
-{
-
-}
-
-NLPID::~NLPID()
-{
-}
-
-MTIPV6REACHABILITY::MTIPV6REACHABILITY()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:MT_IPV6_REACHABILITY")
+IISNEIGHBORS::IISNEIGHBORS()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IIS_NEIGHBORS")
 {
 
 }
 
-MTIPV6REACHABILITY::~MTIPV6REACHABILITY()
+IISNEIGHBORS::~IISNEIGHBORS()
 {
 }
 
-MTISN::MTISN()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:MT_ISN")
+INSTANCEID::INSTANCEID()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:INSTANCE_ID")
 {
 
 }
 
-MTISN::~MTISN()
+INSTANCEID::~INSTANCEID()
+{
+}
+
+AUTHENTICATION::AUTHENTICATION()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:AUTHENTICATION")
+{
+
+}
+
+AUTHENTICATION::~AUTHENTICATION()
+{
+}
+
+PURGEOI::PURGEOI()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:PURGE_OI")
+{
+
+}
+
+PURGEOI::~PURGEOI()
+{
+}
+
+EXTENDEDISREACHABILITY::EXTENDEDISREACHABILITY()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:EXTENDED_IS_REACHABILITY")
+{
+
+}
+
+EXTENDEDISREACHABILITY::~EXTENDEDISREACHABILITY()
 {
 }
 
@@ -151,243 +141,23 @@ ISISALIASID::~ISISALIASID()
 {
 }
 
-IPV6SRLG::IPV6SRLG()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IPV6_SRLG")
+IPV4INTERNALREACHABILITY::IPV4INTERNALREACHABILITY()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IPV4_INTERNAL_REACHABILITY")
 {
 
 }
 
-IPV6SRLG::~IPV6SRLG()
+IPV4INTERNALREACHABILITY::~IPV4INTERNALREACHABILITY()
 {
 }
 
-ISREACHABILITYBANDWIDTHCONSTRAINTS::ISREACHABILITYBANDWIDTHCONSTRAINTS()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_BANDWIDTH_CONSTRAINTS")
-{
-
-}
-
-ISREACHABILITYBANDWIDTHCONSTRAINTS::~ISREACHABILITYBANDWIDTHCONSTRAINTS()
-{
-}
-
-IPV4TEROUTERID::IPV4TEROUTERID()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IPV4_TE_ROUTER_ID")
+NLPID::NLPID()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:NLPID")
 {
 
 }
 
-IPV4TEROUTERID::~IPV4TEROUTERID()
-{
-}
-
-ISREACHABILITYIPV6INTERFACEADDRESS::ISREACHABILITYIPV6INTERFACEADDRESS()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_IPV6_INTERFACE_ADDRESS")
-{
-
-}
-
-ISREACHABILITYIPV6INTERFACEADDRESS::~ISREACHABILITYIPV6INTERFACEADDRESS()
-{
-}
-
-ROUTERCAPABILITYSUBTLVSTYPE::ROUTERCAPABILITYSUBTLVSTYPE()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:ROUTER_CAPABILITY_SUBTLVS_TYPE")
-{
-
-}
-
-ROUTERCAPABILITYSUBTLVSTYPE::~ROUTERCAPABILITYSUBTLVSTYPE()
-{
-}
-
-ISREACHABILITYADJSID::ISREACHABILITYADJSID()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_ADJ_SID")
-{
-
-}
-
-ISREACHABILITYADJSID::~ISREACHABILITYADJSID()
-{
-}
-
-MULTITOPOLOGY::MULTITOPOLOGY()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:MULTI_TOPOLOGY")
-{
-
-}
-
-MULTITOPOLOGY::~MULTITOPOLOGY()
-{
-}
-
-ISREACHABILITYLINKATTRIBUTES::ISREACHABILITYLINKATTRIBUTES()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_LINK_ATTRIBUTES")
-{
-
-}
-
-ISREACHABILITYLINKATTRIBUTES::~ISREACHABILITYLINKATTRIBUTES()
-{
-}
-
-IPV6INTERFACEADDRESSES::IPV6INTERFACEADDRESSES()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IPV6_INTERFACE_ADDRESSES")
-{
-
-}
-
-IPV6INTERFACEADDRESSES::~IPV6INTERFACEADDRESSES()
-{
-}
-
-DYNAMICNAME::DYNAMICNAME()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:DYNAMIC_NAME")
-{
-
-}
-
-DYNAMICNAME::~DYNAMICNAME()
-{
-}
-
-ISREACHABILITYAVAILABLEBANDWIDTH::ISREACHABILITYAVAILABLEBANDWIDTH()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_AVAILABLE_BANDWIDTH")
-{
-
-}
-
-ISREACHABILITYAVAILABLEBANDWIDTH::~ISREACHABILITYAVAILABLEBANDWIDTH()
-{
-}
-
-IPV4INTERFACEADDRESSES::IPV4INTERFACEADDRESSES()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IPV4_INTERFACE_ADDRESSES")
-{
-
-}
-
-IPV4INTERFACEADDRESSES::~IPV4INTERFACEADDRESSES()
-{
-}
-
-IPV6TEROUTERID::IPV6TEROUTERID()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IPV6_TE_ROUTER_ID")
-{
-
-}
-
-IPV6TEROUTERID::~IPV6TEROUTERID()
-{
-}
-
-INSTANCEID::INSTANCEID()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:INSTANCE_ID")
-{
-
-}
-
-INSTANCEID::~INSTANCEID()
-{
-}
-
-ISREACHABILITYADJLANSID::ISREACHABILITYADJLANSID()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_ADJ_LAN_SID")
-{
-
-}
-
-ISREACHABILITYADJLANSID::~ISREACHABILITYADJLANSID()
-{
-}
-
-MTIPV4REACHABILITY::MTIPV4REACHABILITY()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:MT_IPV4_REACHABILITY")
-{
-
-}
-
-MTIPV4REACHABILITY::~MTIPV4REACHABILITY()
-{
-}
-
-ISREACHABILITYUTILIZEDBANDWIDTH::ISREACHABILITYUTILIZEDBANDWIDTH()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_UTILIZED_BANDWIDTH")
-{
-
-}
-
-ISREACHABILITYUTILIZEDBANDWIDTH::~ISREACHABILITYUTILIZEDBANDWIDTH()
-{
-}
-
-IPREACHABILITYSUBTLVSTYPE::IPREACHABILITYSUBTLVSTYPE()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IP_REACHABILITY_SUBTLVS_TYPE")
-{
-
-}
-
-IPREACHABILITYSUBTLVSTYPE::~IPREACHABILITYSUBTLVSTYPE()
-{
-}
-
-ISREACHABILITYMINMAXLINKDELAY::ISREACHABILITYMINMAXLINKDELAY()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_MIN_MAX_LINK_DELAY")
-{
-
-}
-
-ISREACHABILITYMINMAXLINKDELAY::~ISREACHABILITYMINMAXLINKDELAY()
-{
-}
-
-IPREACHABILITYPREFIXSID::IPREACHABILITYPREFIXSID()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IP_REACHABILITY_PREFIX_SID")
-{
-
-}
-
-IPREACHABILITYPREFIXSID::~IPREACHABILITYPREFIXSID()
-{
-}
-
-EXTENDEDIPV4REACHABILITY::EXTENDEDIPV4REACHABILITY()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:EXTENDED_IPV4_REACHABILITY")
-{
-
-}
-
-EXTENDEDIPV4REACHABILITY::~EXTENDEDIPV4REACHABILITY()
-{
-}
-
-IPREACHABILITYPREFIXFLAGS::IPREACHABILITYPREFIXFLAGS()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IP_REACHABILITY_PREFIX_FLAGS")
-{
-
-}
-
-IPREACHABILITYPREFIXFLAGS::~IPREACHABILITYPREFIXFLAGS()
-{
-}
-
-ISREACHABILITYMAXRESERVABLEBANDWIDTH::ISREACHABILITYMAXRESERVABLEBANDWIDTH()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_MAX_RESERVABLE_BANDWIDTH")
-{
-
-}
-
-ISREACHABILITYMAXRESERVABLEBANDWIDTH::~ISREACHABILITYMAXRESERVABLEBANDWIDTH()
-{
-}
-
-PURGEOI::PURGEOI()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:PURGE_OI")
-{
-
-}
-
-PURGEOI::~PURGEOI()
+NLPID::~NLPID()
 {
 }
 
@@ -401,23 +171,43 @@ IPV4EXTERNALREACHABILITY::~IPV4EXTERNALREACHABILITY()
 {
 }
 
-IPV6REACHABILITY::IPV6REACHABILITY()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IPV6_REACHABILITY")
+IPV4INTERFACEADDRESSES::IPV4INTERFACEADDRESSES()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IPV4_INTERFACE_ADDRESSES")
 {
 
 }
 
-IPV6REACHABILITY::~IPV6REACHABILITY()
+IPV4INTERFACEADDRESSES::~IPV4INTERFACEADDRESSES()
 {
 }
 
-ISREACHABILITYMAXLINKBANDWIDTH::ISREACHABILITYMAXLINKBANDWIDTH()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_MAX_LINK_BANDWIDTH")
+IPV4TEROUTERID::IPV4TEROUTERID()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IPV4_TE_ROUTER_ID")
 {
 
 }
 
-ISREACHABILITYMAXLINKBANDWIDTH::~ISREACHABILITYMAXLINKBANDWIDTH()
+IPV4TEROUTERID::~IPV4TEROUTERID()
+{
+}
+
+EXTENDEDIPV4REACHABILITY::EXTENDEDIPV4REACHABILITY()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:EXTENDED_IPV4_REACHABILITY")
+{
+
+}
+
+EXTENDEDIPV4REACHABILITY::~EXTENDEDIPV4REACHABILITY()
+{
+}
+
+DYNAMICNAME::DYNAMICNAME()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:DYNAMIC_NAME")
+{
+
+}
+
+DYNAMICNAME::~DYNAMICNAME()
 {
 }
 
@@ -431,33 +221,93 @@ IPV4SRLG::~IPV4SRLG()
 {
 }
 
-IPV4INTERNALREACHABILITY::IPV4INTERNALREACHABILITY()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IPV4_INTERNAL_REACHABILITY")
+IPV6SRLG::IPV6SRLG()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IPV6_SRLG")
 {
 
 }
 
-IPV4INTERNALREACHABILITY::~IPV4INTERNALREACHABILITY()
+IPV6SRLG::~IPV6SRLG()
 {
 }
 
-ISREACHABILITYUNRESERVEDBANDWIDTH::ISREACHABILITYUNRESERVEDBANDWIDTH()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_UNRESERVED_BANDWIDTH")
-{
-
-}
-
-ISREACHABILITYUNRESERVEDBANDWIDTH::~ISREACHABILITYUNRESERVEDBANDWIDTH()
-{
-}
-
-ROUTERCAPABILITYSRCAPABILITY::ROUTERCAPABILITYSRCAPABILITY()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:ROUTER_CAPABILITY_SR_CAPABILITY")
+IPV6TEROUTERID::IPV6TEROUTERID()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IPV6_TE_ROUTER_ID")
 {
 
 }
 
-ROUTERCAPABILITYSRCAPABILITY::~ROUTERCAPABILITYSRCAPABILITY()
+IPV6TEROUTERID::~IPV6TEROUTERID()
+{
+}
+
+MTISN::MTISN()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:MT_ISN")
+{
+
+}
+
+MTISN::~MTISN()
+{
+}
+
+MTISNEIGHBORATTRIBUTE::MTISNEIGHBORATTRIBUTE()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:MT_IS_NEIGHBOR_ATTRIBUTE")
+{
+
+}
+
+MTISNEIGHBORATTRIBUTE::~MTISNEIGHBORATTRIBUTE()
+{
+}
+
+MULTITOPOLOGY::MULTITOPOLOGY()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:MULTI_TOPOLOGY")
+{
+
+}
+
+MULTITOPOLOGY::~MULTITOPOLOGY()
+{
+}
+
+IPV6INTERFACEADDRESSES::IPV6INTERFACEADDRESSES()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IPV6_INTERFACE_ADDRESSES")
+{
+
+}
+
+IPV6INTERFACEADDRESSES::~IPV6INTERFACEADDRESSES()
+{
+}
+
+MTIPV4REACHABILITY::MTIPV4REACHABILITY()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:MT_IPV4_REACHABILITY")
+{
+
+}
+
+MTIPV4REACHABILITY::~MTIPV4REACHABILITY()
+{
+}
+
+IPV6REACHABILITY::IPV6REACHABILITY()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IPV6_REACHABILITY")
+{
+
+}
+
+IPV6REACHABILITY::~IPV6REACHABILITY()
+{
+}
+
+MTIPV6REACHABILITY::MTIPV6REACHABILITY()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:MT_IPV6_REACHABILITY")
+{
+
+}
+
+MTIPV6REACHABILITY::~MTIPV6REACHABILITY()
 {
 }
 
@@ -471,16 +321,6 @@ ROUTERCAPABILITY::~ROUTERCAPABILITY()
 {
 }
 
-EXTENDEDISREACHABILITY::EXTENDEDISREACHABILITY()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:EXTENDED_IS_REACHABILITY")
-{
-
-}
-
-EXTENDEDISREACHABILITY::~EXTENDEDISREACHABILITY()
-{
-}
-
 ISREACHABILITYADMINGROUP::ISREACHABILITYADMINGROUP()
      : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_ADMIN_GROUP")
 {
@@ -491,63 +331,63 @@ ISREACHABILITYADMINGROUP::~ISREACHABILITYADMINGROUP()
 {
 }
 
-IPREACHABILITYTAG64::IPREACHABILITYTAG64()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IP_REACHABILITY_TAG64")
+ISREACHABILITYIPV4INTERFACEADDRESS::ISREACHABILITYIPV4INTERFACEADDRESS()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_IPV4_INTERFACE_ADDRESS")
 {
 
 }
 
-IPREACHABILITYTAG64::~IPREACHABILITYTAG64()
+ISREACHABILITYIPV4INTERFACEADDRESS::~ISREACHABILITYIPV4INTERFACEADDRESS()
 {
 }
 
-ISREACHABILITYLINKDELAY::ISREACHABILITYLINKDELAY()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_LINK_DELAY")
-{
-
-}
-
-ISREACHABILITYLINKDELAY::~ISREACHABILITYLINKDELAY()
-{
-}
-
-ISREACHABILITYTEDEFAULTMETRIC::ISREACHABILITYTEDEFAULTMETRIC()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_TE_DEFAULT_METRIC")
+ISREACHABILITYIPV4NEIGHBORADDRESS::ISREACHABILITYIPV4NEIGHBORADDRESS()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_IPV4_NEIGHBOR_ADDRESS")
 {
 
 }
 
-ISREACHABILITYTEDEFAULTMETRIC::~ISREACHABILITYTEDEFAULTMETRIC()
+ISREACHABILITYIPV4NEIGHBORADDRESS::~ISREACHABILITYIPV4NEIGHBORADDRESS()
 {
 }
 
-AUTHENTICATION::AUTHENTICATION()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:AUTHENTICATION")
-{
-
-}
-
-AUTHENTICATION::~AUTHENTICATION()
-{
-}
-
-IISNEIGHBORS::IISNEIGHBORS()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IIS_NEIGHBORS")
+ISREACHABILITYMAXLINKBANDWIDTH::ISREACHABILITYMAXLINKBANDWIDTH()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_MAX_LINK_BANDWIDTH")
 {
 
 }
 
-IISNEIGHBORS::~IISNEIGHBORS()
+ISREACHABILITYMAXLINKBANDWIDTH::~ISREACHABILITYMAXLINKBANDWIDTH()
 {
 }
 
-ISREACHABILITYUNCONSTRAINEDLSP::ISREACHABILITYUNCONSTRAINEDLSP()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_UNCONSTRAINED_LSP")
+ISREACHABILITYMAXRESERVABLEBANDWIDTH::ISREACHABILITYMAXRESERVABLEBANDWIDTH()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_MAX_RESERVABLE_BANDWIDTH")
 {
 
 }
 
-ISREACHABILITYUNCONSTRAINEDLSP::~ISREACHABILITYUNCONSTRAINEDLSP()
+ISREACHABILITYMAXRESERVABLEBANDWIDTH::~ISREACHABILITYMAXRESERVABLEBANDWIDTH()
+{
+}
+
+ISREACHABILITYUNRESERVEDBANDWIDTH::ISREACHABILITYUNRESERVEDBANDWIDTH()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_UNRESERVED_BANDWIDTH")
+{
+
+}
+
+ISREACHABILITYUNRESERVEDBANDWIDTH::~ISREACHABILITYUNRESERVEDBANDWIDTH()
+{
+}
+
+ISREACHABILITYIPV6INTERFACEADDRESS::ISREACHABILITYIPV6INTERFACEADDRESS()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_IPV6_INTERFACE_ADDRESS")
+{
+
+}
+
+ISREACHABILITYIPV6INTERFACEADDRESS::~ISREACHABILITYIPV6INTERFACEADDRESS()
 {
 }
 
@@ -561,43 +401,33 @@ ISREACHABILITYIPV6NEIGHBORADDRESS::~ISREACHABILITYIPV6NEIGHBORADDRESS()
 {
 }
 
-ISREACHABILITYRESIDUALBANDWIDTH::ISREACHABILITYRESIDUALBANDWIDTH()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_RESIDUAL_BANDWIDTH")
+ISREACHABILITYEXTENDEDADMINGROUP::ISREACHABILITYEXTENDEDADMINGROUP()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_EXTENDED_ADMIN_GROUP")
 {
 
 }
 
-ISREACHABILITYRESIDUALBANDWIDTH::~ISREACHABILITYRESIDUALBANDWIDTH()
+ISREACHABILITYEXTENDEDADMINGROUP::~ISREACHABILITYEXTENDEDADMINGROUP()
 {
 }
 
-ISREACHABILITYLINKDELAYVARIATION::ISREACHABILITYLINKDELAYVARIATION()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_LINK_DELAY_VARIATION")
-{
-
-}
-
-ISREACHABILITYLINKDELAYVARIATION::~ISREACHABILITYLINKDELAYVARIATION()
-{
-}
-
-ROUTERCAPABILITYSRALGORITHM::ROUTERCAPABILITYSRALGORITHM()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:ROUTER_CAPABILITY_SR_ALGORITHM")
+ISREACHABILITYTEDEFAULTMETRIC::ISREACHABILITYTEDEFAULTMETRIC()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_TE_DEFAULT_METRIC")
 {
 
 }
 
-ROUTERCAPABILITYSRALGORITHM::~ROUTERCAPABILITYSRALGORITHM()
+ISREACHABILITYTEDEFAULTMETRIC::~ISREACHABILITYTEDEFAULTMETRIC()
 {
 }
 
-IPREACHABILITYIPV6ROUTERID::IPREACHABILITYIPV6ROUTERID()
-     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IP_REACHABILITY_IPV6_ROUTER_ID")
+ISREACHABILITYLINKATTRIBUTES::ISREACHABILITYLINKATTRIBUTES()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_LINK_ATTRIBUTES")
 {
 
 }
 
-IPREACHABILITYIPV6ROUTERID::~IPREACHABILITYIPV6ROUTERID()
+ISREACHABILITYLINKATTRIBUTES::~ISREACHABILITYLINKATTRIBUTES()
 {
 }
 
@@ -611,6 +441,116 @@ ISREACHABILITYLINKPROTECTIONTYPE::~ISREACHABILITYLINKPROTECTIONTYPE()
 {
 }
 
+ISREACHABILITYBANDWIDTHCONSTRAINTS::ISREACHABILITYBANDWIDTHCONSTRAINTS()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_BANDWIDTH_CONSTRAINTS")
+{
+
+}
+
+ISREACHABILITYBANDWIDTHCONSTRAINTS::~ISREACHABILITYBANDWIDTHCONSTRAINTS()
+{
+}
+
+ISREACHABILITYUNCONSTRAINEDLSP::ISREACHABILITYUNCONSTRAINEDLSP()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_UNCONSTRAINED_LSP")
+{
+
+}
+
+ISREACHABILITYUNCONSTRAINEDLSP::~ISREACHABILITYUNCONSTRAINEDLSP()
+{
+}
+
+ISREACHABILITYADJSID::ISREACHABILITYADJSID()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_ADJ_SID")
+{
+
+}
+
+ISREACHABILITYADJSID::~ISREACHABILITYADJSID()
+{
+}
+
+ISREACHABILITYADJLANSID::ISREACHABILITYADJLANSID()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_ADJ_LAN_SID")
+{
+
+}
+
+ISREACHABILITYADJLANSID::~ISREACHABILITYADJLANSID()
+{
+}
+
+ISREACHABILITYLINKDELAY::ISREACHABILITYLINKDELAY()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_LINK_DELAY")
+{
+
+}
+
+ISREACHABILITYLINKDELAY::~ISREACHABILITYLINKDELAY()
+{
+}
+
+ISREACHABILITYMINMAXLINKDELAY::ISREACHABILITYMINMAXLINKDELAY()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_MIN_MAX_LINK_DELAY")
+{
+
+}
+
+ISREACHABILITYMINMAXLINKDELAY::~ISREACHABILITYMINMAXLINKDELAY()
+{
+}
+
+ISREACHABILITYLINKDELAYVARIATION::ISREACHABILITYLINKDELAYVARIATION()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_LINK_DELAY_VARIATION")
+{
+
+}
+
+ISREACHABILITYLINKDELAYVARIATION::~ISREACHABILITYLINKDELAYVARIATION()
+{
+}
+
+ISREACHABILITYLINKLOSS::ISREACHABILITYLINKLOSS()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_LINK_LOSS")
+{
+
+}
+
+ISREACHABILITYLINKLOSS::~ISREACHABILITYLINKLOSS()
+{
+}
+
+ISREACHABILITYRESIDUALBANDWIDTH::ISREACHABILITYRESIDUALBANDWIDTH()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_RESIDUAL_BANDWIDTH")
+{
+
+}
+
+ISREACHABILITYRESIDUALBANDWIDTH::~ISREACHABILITYRESIDUALBANDWIDTH()
+{
+}
+
+ISREACHABILITYAVAILABLEBANDWIDTH::ISREACHABILITYAVAILABLEBANDWIDTH()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_AVAILABLE_BANDWIDTH")
+{
+
+}
+
+ISREACHABILITYAVAILABLEBANDWIDTH::~ISREACHABILITYAVAILABLEBANDWIDTH()
+{
+}
+
+ISREACHABILITYUTILIZEDBANDWIDTH::ISREACHABILITYUTILIZEDBANDWIDTH()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IS_REACHABILITY_UTILIZED_BANDWIDTH")
+{
+
+}
+
+ISREACHABILITYUTILIZEDBANDWIDTH::~ISREACHABILITYUTILIZEDBANDWIDTH()
+{
+}
+
 IPREACHABILITYTAG::IPREACHABILITYTAG()
      : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IP_REACHABILITY_TAG")
 {
@@ -621,6 +561,36 @@ IPREACHABILITYTAG::~IPREACHABILITYTAG()
 {
 }
 
+IPREACHABILITYTAG64::IPREACHABILITYTAG64()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IP_REACHABILITY_TAG64")
+{
+
+}
+
+IPREACHABILITYTAG64::~IPREACHABILITYTAG64()
+{
+}
+
+IPREACHABILITYPREFIXSID::IPREACHABILITYPREFIXSID()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IP_REACHABILITY_PREFIX_SID")
+{
+
+}
+
+IPREACHABILITYPREFIXSID::~IPREACHABILITYPREFIXSID()
+{
+}
+
+IPREACHABILITYPREFIXFLAGS::IPREACHABILITYPREFIXFLAGS()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IP_REACHABILITY_PREFIX_FLAGS")
+{
+
+}
+
+IPREACHABILITYPREFIXFLAGS::~IPREACHABILITYPREFIXFLAGS()
+{
+}
+
 IPREACHABILITYIPV4ROUTERID::IPREACHABILITYIPV4ROUTERID()
      : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IP_REACHABILITY_IPV4_ROUTER_ID")
 {
@@ -628,6 +598,36 @@ IPREACHABILITYIPV4ROUTERID::IPREACHABILITYIPV4ROUTERID()
 }
 
 IPREACHABILITYIPV4ROUTERID::~IPREACHABILITYIPV4ROUTERID()
+{
+}
+
+IPREACHABILITYIPV6ROUTERID::IPREACHABILITYIPV6ROUTERID()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:IP_REACHABILITY_IPV6_ROUTER_ID")
+{
+
+}
+
+IPREACHABILITYIPV6ROUTERID::~IPREACHABILITYIPV6ROUTERID()
+{
+}
+
+ROUTERCAPABILITYSRCAPABILITY::ROUTERCAPABILITYSRCAPABILITY()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:ROUTER_CAPABILITY_SR_CAPABILITY")
+{
+
+}
+
+ROUTERCAPABILITYSRCAPABILITY::~ROUTERCAPABILITYSRCAPABILITY()
+{
+}
+
+ROUTERCAPABILITYSRALGORITHM::ROUTERCAPABILITYSRALGORITHM()
+     : Identity("http://openconfig.net/yang/isis-lsdb-types", "openconfig-isis-lsdb-types", "openconfig-isis-lsdb-types:ROUTER_CAPABILITY_SR_ALGORITHM")
+{
+
+}
+
+ROUTERCAPABILITYSRALGORITHM::~ROUTERCAPABILITYSRALGORITHM()
 {
 }
 

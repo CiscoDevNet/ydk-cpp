@@ -787,51 +787,6 @@ class TelemetryModelDriven::Summary : public ydk::Entity
 
 }; // TelemetryModelDriven::Summary
 
-class MdtTransportEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_set;
-        static const ydk::Enum::YLeaf grpc;
-        static const ydk::Enum::YLeaf tcp;
-        static const ydk::Enum::YLeaf udp;
-        static const ydk::Enum::YLeaf dialin;
-
-};
-
-class MdtInternalPathStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf internal_err;
-        static const ydk::Enum::YLeaf plugin_active;
-        static const ydk::Enum::YLeaf plugin_not_initialized;
-        static const ydk::Enum::YLeaf plugin_invalid_cadence;
-        static const ydk::Enum::YLeaf plugin_err;
-        static const ydk::Enum::YLeaf filter_err;
-        static const ydk::Enum::YLeaf paused;
-        static const ydk::Enum::YLeaf event_ing_active;
-        static const ydk::Enum::YLeaf event_ing_not_active;
-        static const ydk::Enum::YLeaf event_ing_err;
-
-};
-
-class MdtIp : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
-class MdtSubsStateEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_active;
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf paused;
-
-};
-
 class MdtSourceQosMarking : public ydk::Enum
 {
     public:
@@ -859,6 +814,32 @@ class MdtSourceQosMarking : public ydk::Enum
 
 };
 
+class MdtSubsStateEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_active;
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf paused;
+
+};
+
+class MdtInternalPathStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf internal_err;
+        static const ydk::Enum::YLeaf plugin_active;
+        static const ydk::Enum::YLeaf plugin_not_initialized;
+        static const ydk::Enum::YLeaf plugin_invalid_cadence;
+        static const ydk::Enum::YLeaf plugin_err;
+        static const ydk::Enum::YLeaf filter_err;
+        static const ydk::Enum::YLeaf paused;
+        static const ydk::Enum::YLeaf event_ing_active;
+        static const ydk::Enum::YLeaf event_ing_not_active;
+        static const ydk::Enum::YLeaf event_ing_err;
+
+};
+
 class MdtDestStateEnum : public ydk::Enum
 {
     public:
@@ -871,6 +852,17 @@ class MdtDestStateEnum : public ydk::Enum
 
 };
 
+class MdtTransportEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_set;
+        static const ydk::Enum::YLeaf grpc;
+        static const ydk::Enum::YLeaf tcp;
+        static const ydk::Enum::YLeaf udp;
+        static const ydk::Enum::YLeaf dialin;
+
+};
+
 class MdtEncodingEnum : public ydk::Enum
 {
     public:
@@ -878,6 +870,14 @@ class MdtEncodingEnum : public ydk::Enum
         static const ydk::Enum::YLeaf gpb;
         static const ydk::Enum::YLeaf self_describing_gpb;
         static const ydk::Enum::YLeaf json;
+
+};
+
+class MdtIp : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 

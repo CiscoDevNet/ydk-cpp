@@ -11,36 +11,17 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_bgp_datatypes {
 
-const Enum::YLeaf BgpAfAdditionalPathsCfg::enable {1, "enable"};
-const Enum::YLeaf BgpAfAdditionalPathsCfg::disable {2, "disable"};
-
-const Enum::YLeaf BgpSubsequentAddressFamily::unicast {1, "unicast"};
-const Enum::YLeaf BgpSubsequentAddressFamily::multicast {2, "multicast"};
-const Enum::YLeaf BgpSubsequentAddressFamily::labeled_unicast {4, "labeled-unicast"};
-const Enum::YLeaf BgpSubsequentAddressFamily::mvpn {5, "mvpn"};
-const Enum::YLeaf BgpSubsequentAddressFamily::mspw {6, "mspw"};
-const Enum::YLeaf BgpSubsequentAddressFamily::tunnel {64, "tunnel"};
-const Enum::YLeaf BgpSubsequentAddressFamily::vpls {65, "vpls"};
-const Enum::YLeaf BgpSubsequentAddressFamily::mdt {66, "mdt"};
-const Enum::YLeaf BgpSubsequentAddressFamily::vpws {68, "vpws"};
-const Enum::YLeaf BgpSubsequentAddressFamily::evpn {70, "evpn"};
-const Enum::YLeaf BgpSubsequentAddressFamily::ls {71, "ls"};
-const Enum::YLeaf BgpSubsequentAddressFamily::sr_policy {73, "sr-policy"};
-const Enum::YLeaf BgpSubsequentAddressFamily::vpn {128, "vpn"};
-const Enum::YLeaf BgpSubsequentAddressFamily::vpn_mcast {129, "vpn-mcast"};
-const Enum::YLeaf BgpSubsequentAddressFamily::rt_filter {132, "rt-filter"};
-const Enum::YLeaf BgpSubsequentAddressFamily::flowspec {133, "flowspec"};
-const Enum::YLeaf BgpSubsequentAddressFamily::vpn_flowspec {134, "vpn-flowspec"};
-const Enum::YLeaf BgpSubsequentAddressFamily::all {254, "all"};
-
-const Enum::YLeaf BgpNbrCapAdditionalPathsCfg::enable {1, "enable"};
-const Enum::YLeaf BgpNbrCapAdditionalPathsCfg::disable {2, "disable"};
-
 const Enum::YLeaf BgpOfficialAddressFamily::ipv4 {1, "ipv4"};
 const Enum::YLeaf BgpOfficialAddressFamily::ipv6 {2, "ipv6"};
 const Enum::YLeaf BgpOfficialAddressFamily::l2vpn {25, "l2vpn"};
 const Enum::YLeaf BgpOfficialAddressFamily::ls {16388, "ls"};
 const Enum::YLeaf BgpOfficialAddressFamily::all {65534, "all"};
+
+const Enum::YLeaf BgpNbrCapAdditionalPathsCfg::enable {1, "enable"};
+const Enum::YLeaf BgpNbrCapAdditionalPathsCfg::disable {2, "disable"};
+
+const Enum::YLeaf BgpAdvertiseLocalLabeledRouteCfg::enable {1, "enable"};
+const Enum::YLeaf BgpAdvertiseLocalLabeledRouteCfg::disable {2, "disable"};
 
 const Enum::YLeaf BgpTos::precedence {0, "precedence"};
 const Enum::YLeaf BgpTos::dscp {1, "dscp"};
@@ -72,6 +53,9 @@ const Enum::YLeaf BgpAddressFamily::ipv4_sr_policy {23, "ipv4-sr-policy"};
 const Enum::YLeaf BgpAddressFamily::ipv6_sr_policy {24, "ipv6-sr-policy"};
 const Enum::YLeaf BgpAddressFamily::all_address_family {25, "all-address-family"};
 
+const Enum::YLeaf BgpUpdateFilterAction::treat_as_withdraw {1, "treat-as-withdraw"};
+const Enum::YLeaf BgpUpdateFilterAction::discard_attibute {2, "discard-attibute"};
+
 const Enum::YLeaf BgpPrecedenceDscp::af11 {10, "af11"};
 const Enum::YLeaf BgpPrecedenceDscp::af12 {12, "af12"};
 const Enum::YLeaf BgpPrecedenceDscp::af13 {14, "af13"};
@@ -101,11 +85,27 @@ const Enum::YLeaf BgpPrecedenceDscp::network {7, "network"};
 const Enum::YLeaf BgpPrecedenceDscp::priority {1, "priority"};
 const Enum::YLeaf BgpPrecedenceDscp::default_or_routine {0, "default-or-routine"};
 
-const Enum::YLeaf BgpAdvertiseLocalLabeledRouteCfg::enable {1, "enable"};
-const Enum::YLeaf BgpAdvertiseLocalLabeledRouteCfg::disable {2, "disable"};
+const Enum::YLeaf BgpAfAdditionalPathsCfg::enable {1, "enable"};
+const Enum::YLeaf BgpAfAdditionalPathsCfg::disable {2, "disable"};
 
-const Enum::YLeaf BgpUpdateFilterAction::treat_as_withdraw {1, "treat-as-withdraw"};
-const Enum::YLeaf BgpUpdateFilterAction::discard_attibute {2, "discard-attibute"};
+const Enum::YLeaf BgpSubsequentAddressFamily::unicast {1, "unicast"};
+const Enum::YLeaf BgpSubsequentAddressFamily::multicast {2, "multicast"};
+const Enum::YLeaf BgpSubsequentAddressFamily::labeled_unicast {4, "labeled-unicast"};
+const Enum::YLeaf BgpSubsequentAddressFamily::mvpn {5, "mvpn"};
+const Enum::YLeaf BgpSubsequentAddressFamily::mspw {6, "mspw"};
+const Enum::YLeaf BgpSubsequentAddressFamily::tunnel {64, "tunnel"};
+const Enum::YLeaf BgpSubsequentAddressFamily::vpls {65, "vpls"};
+const Enum::YLeaf BgpSubsequentAddressFamily::mdt {66, "mdt"};
+const Enum::YLeaf BgpSubsequentAddressFamily::vpws {68, "vpws"};
+const Enum::YLeaf BgpSubsequentAddressFamily::evpn {70, "evpn"};
+const Enum::YLeaf BgpSubsequentAddressFamily::ls {71, "ls"};
+const Enum::YLeaf BgpSubsequentAddressFamily::sr_policy {73, "sr-policy"};
+const Enum::YLeaf BgpSubsequentAddressFamily::vpn {128, "vpn"};
+const Enum::YLeaf BgpSubsequentAddressFamily::vpn_mcast {129, "vpn-mcast"};
+const Enum::YLeaf BgpSubsequentAddressFamily::rt_filter {132, "rt-filter"};
+const Enum::YLeaf BgpSubsequentAddressFamily::flowspec {133, "flowspec"};
+const Enum::YLeaf BgpSubsequentAddressFamily::vpn_flowspec {134, "vpn-flowspec"};
+const Enum::YLeaf BgpSubsequentAddressFamily::all {254, "all"};
 
 
 }

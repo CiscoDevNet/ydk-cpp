@@ -1048,7 +1048,7 @@ class Native::Interface::EmbeddedServiceEngine::Standby::StandbyList : public yd
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of string, enumeration
+        ydk::YLeaf ipv6; //type: one of enumeration, string
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -2278,8 +2278,8 @@ class Native::Interface::Ethernet : public ydk::Entity
         class PmPath; //type: Native::Interface::Ethernet::PmPath
         class EtAnalytics; //type: Native::Interface::Ethernet::EtAnalytics
         class Umbrella; //type: Native::Interface::Ethernet::Umbrella
-        class ZoneMember; //type: Native::Interface::Ethernet::ZoneMember
         class Utd; //type: Native::Interface::Ethernet::Utd
+        class ZoneMember; //type: Native::Interface::Ethernet::ZoneMember
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Ethernet::SwitchportConf> switchport_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Ethernet::Switchport> switchport;
@@ -2320,8 +2320,8 @@ class Native::Interface::Ethernet : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Ethernet::PmPath> pm_path;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Ethernet::EtAnalytics> et_analytics;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Ethernet::Umbrella> umbrella;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Ethernet::ZoneMember> zone_member;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Ethernet::Utd> utd;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::Ethernet::ZoneMember> zone_member;
                 class IfState;
         class ServiceInsertion;
 
@@ -2455,8 +2455,8 @@ class Native::Interface::Ethernet::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -2625,8 +2625,8 @@ class Native::Interface::Ethernet::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 

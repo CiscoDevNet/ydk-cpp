@@ -16130,9 +16130,11 @@ Bundles::Bundles_::Bundle::Bundle()
     :
     bundle_interface{YType::str, "bundle-interface"}
         ,
-    data(std::make_shared<Bundles::Bundles_::Bundle::Data>())
+    applied_lacp_mode(std::make_shared<Bundles::Bundles_::Bundle::AppliedLacpMode>())
+    , data(std::make_shared<Bundles::Bundles_::Bundle::Data>())
     , members(std::make_shared<Bundles::Bundles_::Bundle::Members>())
 {
+    applied_lacp_mode->parent = this;
     data->parent = this;
     members->parent = this;
 
@@ -16147,6 +16149,7 @@ bool Bundles::Bundles_::Bundle::has_data() const
 {
     if (is_presence_container) return true;
     return bundle_interface.is_set
+	|| (applied_lacp_mode !=  nullptr && applied_lacp_mode->has_data())
 	|| (data !=  nullptr && data->has_data())
 	|| (members !=  nullptr && members->has_data());
 }
@@ -16155,6 +16158,7 @@ bool Bundles::Bundles_::Bundle::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(bundle_interface.yfilter)
+	|| (applied_lacp_mode !=  nullptr && applied_lacp_mode->has_operation())
 	|| (data !=  nullptr && data->has_operation())
 	|| (members !=  nullptr && members->has_operation());
 }
@@ -16186,6 +16190,15 @@ std::vector<std::pair<std::string, LeafData> > Bundles::Bundles_::Bundle::get_na
 
 std::shared_ptr<ydk::Entity> Bundles::Bundles_::Bundle::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "applied-lacp-mode")
+    {
+        if(applied_lacp_mode == nullptr)
+        {
+            applied_lacp_mode = std::make_shared<Bundles::Bundles_::Bundle::AppliedLacpMode>();
+        }
+        return applied_lacp_mode;
+    }
+
     if(child_yang_name == "data")
     {
         if(data == nullptr)
@@ -16211,6 +16224,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Bundles::Bundles_::Bundle::g
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(applied_lacp_mode != nullptr)
+    {
+        _children["applied-lacp-mode"] = applied_lacp_mode;
+    }
+
     if(data != nullptr)
     {
         _children["data"] = data;
@@ -16244,7 +16262,85 @@ void Bundles::Bundles_::Bundle::set_filter(const std::string & value_path, YFilt
 
 bool Bundles::Bundles_::Bundle::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "data" || name == "members" || name == "bundle-interface")
+    if(name == "applied-lacp-mode" || name == "data" || name == "members" || name == "bundle-interface")
+        return true;
+    return false;
+}
+
+Bundles::Bundles_::Bundle::AppliedLacpMode::AppliedLacpMode()
+    :
+    applied_lacp_mode{YType::enumeration, "applied-lacp-mode"}
+{
+
+    yang_name = "applied-lacp-mode"; yang_parent_name = "bundle"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bundles::Bundles_::Bundle::AppliedLacpMode::~AppliedLacpMode()
+{
+}
+
+bool Bundles::Bundles_::Bundle::AppliedLacpMode::has_data() const
+{
+    if (is_presence_container) return true;
+    return applied_lacp_mode.is_set;
+}
+
+bool Bundles::Bundles_::Bundle::AppliedLacpMode::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(applied_lacp_mode.yfilter);
+}
+
+std::string Bundles::Bundles_::Bundle::AppliedLacpMode::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "applied-lacp-mode";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bundles::Bundles_::Bundle::AppliedLacpMode::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (applied_lacp_mode.is_set || is_set(applied_lacp_mode.yfilter)) leaf_name_data.push_back(applied_lacp_mode.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Bundles::Bundles_::Bundle::AppliedLacpMode::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bundles::Bundles_::Bundle::AppliedLacpMode::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Bundles::Bundles_::Bundle::AppliedLacpMode::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "applied-lacp-mode")
+    {
+        applied_lacp_mode = value;
+        applied_lacp_mode.value_namespace = name_space;
+        applied_lacp_mode.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bundles::Bundles_::Bundle::AppliedLacpMode::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "applied-lacp-mode")
+    {
+        applied_lacp_mode.yfilter = yfilter;
+    }
+}
+
+bool Bundles::Bundles_::Bundle::AppliedLacpMode::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "applied-lacp-mode")
         return true;
     return false;
 }
@@ -17377,7 +17473,8 @@ Bundles::Bundles_::Bundle::Members::Member::Member()
     bandwidth{YType::uint32, "bandwidth"},
     lacp_enabled{YType::str, "lacp-enabled"},
     member_type{YType::enumeration, "member-type"},
-    member_name{YType::str, "member-name"}
+    member_name{YType::str, "member-name"},
+    replication_error{YType::uint32, "replication-error"}
         ,
     counters(std::make_shared<Bundles::Bundles_::Bundle::Members::Member::Counters>())
     , link_data(std::make_shared<Bundles::Bundles_::Bundle::Members::Member::LinkData>())
@@ -17410,6 +17507,7 @@ bool Bundles::Bundles_::Bundle::Members::Member::has_data() const
 	|| lacp_enabled.is_set
 	|| member_type.is_set
 	|| member_name.is_set
+	|| replication_error.is_set
 	|| (counters !=  nullptr && counters->has_data())
 	|| (link_data !=  nullptr && link_data->has_data())
 	|| (member_mux_data !=  nullptr && member_mux_data->has_data())
@@ -17430,6 +17528,7 @@ bool Bundles::Bundles_::Bundle::Members::Member::has_operation() const
 	|| ydk::is_set(lacp_enabled.yfilter)
 	|| ydk::is_set(member_type.yfilter)
 	|| ydk::is_set(member_name.yfilter)
+	|| ydk::is_set(replication_error.yfilter)
 	|| (counters !=  nullptr && counters->has_operation())
 	|| (link_data !=  nullptr && link_data->has_operation())
 	|| (member_mux_data !=  nullptr && member_mux_data->has_operation())
@@ -17459,6 +17558,7 @@ std::vector<std::pair<std::string, LeafData> > Bundles::Bundles_::Bundle::Member
     if (lacp_enabled.is_set || is_set(lacp_enabled.yfilter)) leaf_name_data.push_back(lacp_enabled.get_name_leafdata());
     if (member_type.is_set || is_set(member_type.yfilter)) leaf_name_data.push_back(member_type.get_name_leafdata());
     if (member_name.is_set || is_set(member_name.yfilter)) leaf_name_data.push_back(member_name.get_name_leafdata());
+    if (replication_error.is_set || is_set(replication_error.yfilter)) leaf_name_data.push_back(replication_error.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -17600,6 +17700,12 @@ void Bundles::Bundles_::Bundle::Members::Member::set_value(const std::string & v
         member_name.value_namespace = name_space;
         member_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "replication-error")
+    {
+        replication_error = value;
+        replication_error.value_namespace = name_space;
+        replication_error.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Bundles::Bundles_::Bundle::Members::Member::set_filter(const std::string & value_path, YFilter yfilter)
@@ -17648,11 +17754,15 @@ void Bundles::Bundles_::Bundle::Members::Member::set_filter(const std::string & 
     {
         member_name.yfilter = yfilter;
     }
+    if(value_path == "replication-error")
+    {
+        replication_error.yfilter = yfilter;
+    }
 }
 
 bool Bundles::Bundles_::Bundle::Members::Member::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "counters" || name == "link-data" || name == "member-mux-data" || name == "mac-address" || name == "member-interface" || name == "interface-name" || name == "port-priority" || name == "port-number" || name == "underlying-link-id" || name == "link-order-number" || name == "iccp-node" || name == "bandwidth" || name == "lacp-enabled" || name == "member-type" || name == "member-name")
+    if(name == "counters" || name == "link-data" || name == "member-mux-data" || name == "mac-address" || name == "member-interface" || name == "interface-name" || name == "port-priority" || name == "port-number" || name == "underlying-link-id" || name == "link-order-number" || name == "iccp-node" || name == "bandwidth" || name == "lacp-enabled" || name == "member-type" || name == "member-name" || name == "replication-error")
         return true;
     return false;
 }
@@ -20290,104 +20400,6 @@ void BundlesAdjacency::Nodes::Node::Brief::BundleData::set_filter(const std::str
 bool BundlesAdjacency::Nodes::Node::Brief::BundleData::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "sub-interface" || name == "interface-name" || name == "sub-interface-count" || name == "member-count" || name == "total-weight")
-        return true;
-    return false;
-}
-
-BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::SubInterface()
-    :
-    interface_name{YType::str, "interface-name"}
-        ,
-    load_balance_data(std::make_shared<BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData>())
-{
-    load_balance_data->parent = this;
-
-    yang_name = "sub-interface"; yang_parent_name = "bundle-data"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::~SubInterface()
-{
-}
-
-bool BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::has_data() const
-{
-    if (is_presence_container) return true;
-    return interface_name.is_set
-	|| (load_balance_data !=  nullptr && load_balance_data->has_data());
-}
-
-bool BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(interface_name.yfilter)
-	|| (load_balance_data !=  nullptr && load_balance_data->has_operation());
-}
-
-std::string BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "sub-interface";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (interface_name.is_set || is_set(interface_name.yfilter)) leaf_name_data.push_back(interface_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "load-balance-data")
-    {
-        if(load_balance_data == nullptr)
-        {
-            load_balance_data = std::make_shared<BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::LoadBalanceData>();
-        }
-        return load_balance_data;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(load_balance_data != nullptr)
-    {
-        _children["load-balance-data"] = load_balance_data;
-    }
-
-    return _children;
-}
-
-void BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name = value;
-        interface_name.value_namespace = name_space;
-        interface_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "interface-name")
-    {
-        interface_name.yfilter = yfilter;
-    }
-}
-
-bool BundlesAdjacency::Nodes::Node::Brief::BundleData::SubInterface::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "load-balance-data" || name == "interface-name")
         return true;
     return false;
 }

@@ -362,15 +362,6 @@ class FlowExporterIpwriteStatsType : public ydk::Enum
 
 };
 
-class FlowMonitorCacheState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf flow_monitor_cache_state_being_deleted;
-        static const ydk::Enum::YLeaf flow_monitor_cache_state_being_allocated;
-        static const ydk::Enum::YLeaf flow_monitor_cache_state_not_allocated;
-
-};
-
 class FlowMonitorCacheType : public ydk::Enum
 {
     public:
@@ -378,6 +369,15 @@ class FlowMonitorCacheType : public ydk::Enum
         static const ydk::Enum::YLeaf flow_monitor_cache_type_permanent;
         static const ydk::Enum::YLeaf flow_monitor_cache_type_synchronized;
         static const ydk::Enum::YLeaf flow_monitor_cache_type_immediate;
+
+};
+
+class FlowMonitorCacheState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf flow_monitor_cache_state_being_deleted;
+        static const ydk::Enum::YLeaf flow_monitor_cache_state_being_allocated;
+        static const ydk::Enum::YLeaf flow_monitor_cache_state_not_allocated;
 
 };
 

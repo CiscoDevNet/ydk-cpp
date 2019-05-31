@@ -2130,6 +2130,10 @@ bool CISCODATACOLLECTIONMIB::CdcFileXferConfTable::CdcFileXferConfEntry::has_lea
     return false;
 }
 
+const Enum::YLeaf CdcFileFormat::cdcBulkASCII {1, "cdcBulkASCII"};
+const Enum::YLeaf CdcFileFormat::cdcBulkBinary {2, "cdcBulkBinary"};
+const Enum::YLeaf CdcFileFormat::cdcSchemaASCII {3, "cdcSchemaASCII"};
+
 const Enum::YLeaf CdcFileXferStatus::notStarted {1, "notStarted"};
 const Enum::YLeaf CdcFileXferStatus::success {2, "success"};
 const Enum::YLeaf CdcFileXferStatus::aborted {3, "aborted"};
@@ -2139,10 +2143,6 @@ const Enum::YLeaf CdcFileXferStatus::unreachableIpAddress {6, "unreachableIpAddr
 const Enum::YLeaf CdcFileXferStatus::networkFailed {7, "networkFailed"};
 const Enum::YLeaf CdcFileXferStatus::fileWriteFailed {8, "fileWriteFailed"};
 const Enum::YLeaf CdcFileXferStatus::authFailed {9, "authFailed"};
-
-const Enum::YLeaf CdcFileFormat::cdcBulkASCII {1, "cdcBulkASCII"};
-const Enum::YLeaf CdcFileFormat::cdcBulkBinary {2, "cdcBulkBinary"};
-const Enum::YLeaf CdcFileFormat::cdcSchemaASCII {3, "cdcSchemaASCII"};
 
 const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileCommand::idle {1, "idle"};
 const Enum::YLeaf CISCODATACOLLECTIONMIB::CdcVFileTable::CdcVFileEntry::CdcVFileCommand::swapToNewFile {2, "swapToNewFile"};

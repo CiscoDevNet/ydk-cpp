@@ -7,7 +7,7 @@ set(YDK_DESCRIPTION "YANG Development Kit Library. The gNMI library for YDK API.
 # CPack Dynamic Settings
 set (CPACK_PACKAGE_NAME "libydk_gnmi")
 set (CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
-set (CPACK_PACKAGE_RELEASE "2")
+set (CPACK_PACKAGE_RELEASE "1")
 set (CPACK_PACKAGE_DESCRIPTION_SUMMARY "YDK gNMI Library")
 
 # CPack Static Settings

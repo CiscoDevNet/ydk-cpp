@@ -31,6 +31,7 @@ class IpDomain : public ydk::Entity
         std::string get_bundle_name() const override;
         std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
 
+        ydk::YLeaf default_flows_disable; //type: empty
         class Vrfs; //type: IpDomain::Vrfs
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ip_domain_cfg::IpDomain::Vrfs> vrfs;

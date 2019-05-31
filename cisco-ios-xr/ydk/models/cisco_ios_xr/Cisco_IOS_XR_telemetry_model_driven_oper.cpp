@@ -4914,31 +4914,6 @@ bool TelemetryModelDriven::Summary::has_leaf_or_child_of_name(const std::string 
     return false;
 }
 
-const Enum::YLeaf MdtTransportEnum::not_set {0, "not-set"};
-const Enum::YLeaf MdtTransportEnum::grpc {1, "grpc"};
-const Enum::YLeaf MdtTransportEnum::tcp {2, "tcp"};
-const Enum::YLeaf MdtTransportEnum::udp {3, "udp"};
-const Enum::YLeaf MdtTransportEnum::dialin {6, "dialin"};
-
-const Enum::YLeaf MdtInternalPathStatus::active {0, "active"};
-const Enum::YLeaf MdtInternalPathStatus::internal_err {1, "internal-err"};
-const Enum::YLeaf MdtInternalPathStatus::plugin_active {2, "plugin-active"};
-const Enum::YLeaf MdtInternalPathStatus::plugin_not_initialized {3, "plugin-not-initialized"};
-const Enum::YLeaf MdtInternalPathStatus::plugin_invalid_cadence {4, "plugin-invalid-cadence"};
-const Enum::YLeaf MdtInternalPathStatus::plugin_err {5, "plugin-err"};
-const Enum::YLeaf MdtInternalPathStatus::filter_err {6, "filter-err"};
-const Enum::YLeaf MdtInternalPathStatus::paused {7, "paused"};
-const Enum::YLeaf MdtInternalPathStatus::event_ing_active {8, "event-ing-active"};
-const Enum::YLeaf MdtInternalPathStatus::event_ing_not_active {9, "event-ing-not-active"};
-const Enum::YLeaf MdtInternalPathStatus::event_ing_err {10, "event-ing-err"};
-
-const Enum::YLeaf MdtIp::ipv4 {1, "ipv4"};
-const Enum::YLeaf MdtIp::ipv6 {2, "ipv6"};
-
-const Enum::YLeaf MdtSubsStateEnum::not_active {0, "not-active"};
-const Enum::YLeaf MdtSubsStateEnum::active {1, "active"};
-const Enum::YLeaf MdtSubsStateEnum::paused {2, "paused"};
-
 const Enum::YLeaf MdtSourceQosMarking::dscp_default {0, "dscp-default"};
 const Enum::YLeaf MdtSourceQosMarking::dscp_cs1 {8, "dscp-cs1"};
 const Enum::YLeaf MdtSourceQosMarking::dscp_af11 {10, "dscp-af11"};
@@ -4961,6 +4936,22 @@ const Enum::YLeaf MdtSourceQosMarking::dscp_ef {46, "dscp-ef"};
 const Enum::YLeaf MdtSourceQosMarking::dscp_cs6 {48, "dscp-cs6"};
 const Enum::YLeaf MdtSourceQosMarking::dscp_cs7 {56, "dscp-cs7"};
 
+const Enum::YLeaf MdtSubsStateEnum::not_active {0, "not-active"};
+const Enum::YLeaf MdtSubsStateEnum::active {1, "active"};
+const Enum::YLeaf MdtSubsStateEnum::paused {2, "paused"};
+
+const Enum::YLeaf MdtInternalPathStatus::active {0, "active"};
+const Enum::YLeaf MdtInternalPathStatus::internal_err {1, "internal-err"};
+const Enum::YLeaf MdtInternalPathStatus::plugin_active {2, "plugin-active"};
+const Enum::YLeaf MdtInternalPathStatus::plugin_not_initialized {3, "plugin-not-initialized"};
+const Enum::YLeaf MdtInternalPathStatus::plugin_invalid_cadence {4, "plugin-invalid-cadence"};
+const Enum::YLeaf MdtInternalPathStatus::plugin_err {5, "plugin-err"};
+const Enum::YLeaf MdtInternalPathStatus::filter_err {6, "filter-err"};
+const Enum::YLeaf MdtInternalPathStatus::paused {7, "paused"};
+const Enum::YLeaf MdtInternalPathStatus::event_ing_active {8, "event-ing-active"};
+const Enum::YLeaf MdtInternalPathStatus::event_ing_not_active {9, "event-ing-not-active"};
+const Enum::YLeaf MdtInternalPathStatus::event_ing_err {10, "event-ing-err"};
+
 const Enum::YLeaf MdtDestStateEnum::dest_not_active {0, "dest-not-active"};
 const Enum::YLeaf MdtDestStateEnum::dest_active {1, "dest-active"};
 const Enum::YLeaf MdtDestStateEnum::dest_asking_pause {2, "dest-asking-pause"};
@@ -4968,10 +4959,19 @@ const Enum::YLeaf MdtDestStateEnum::dest_paused {3, "dest-paused"};
 const Enum::YLeaf MdtDestStateEnum::dest_resuming {4, "dest-resuming"};
 const Enum::YLeaf MdtDestStateEnum::dest_channel_not_found {5, "dest-channel-not-found"};
 
+const Enum::YLeaf MdtTransportEnum::not_set {0, "not-set"};
+const Enum::YLeaf MdtTransportEnum::grpc {1, "grpc"};
+const Enum::YLeaf MdtTransportEnum::tcp {2, "tcp"};
+const Enum::YLeaf MdtTransportEnum::udp {3, "udp"};
+const Enum::YLeaf MdtTransportEnum::dialin {6, "dialin"};
+
 const Enum::YLeaf MdtEncodingEnum::not_set {0, "not-set"};
 const Enum::YLeaf MdtEncodingEnum::gpb {2, "gpb"};
 const Enum::YLeaf MdtEncodingEnum::self_describing_gpb {3, "self-describing-gpb"};
 const Enum::YLeaf MdtEncodingEnum::json {4, "json"};
+
+const Enum::YLeaf MdtIp::ipv4 {1, "ipv4"};
+const Enum::YLeaf MdtIp::ipv6 {2, "ipv6"};
 
 
 }

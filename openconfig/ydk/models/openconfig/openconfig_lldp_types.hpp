@@ -10,15 +10,6 @@
 namespace openconfig {
 namespace openconfig_lldp_types {
 
-class LLDPTLV : public virtual ydk::Identity
-{
-    public:
-        LLDPTLV();
-        ~LLDPTLV();
-
-
-}; // LLDPTLV
-
 class LLDPSYSTEMCAPABILITY : public virtual ydk::Identity
 {
     public:
@@ -28,41 +19,23 @@ class LLDPSYSTEMCAPABILITY : public virtual ydk::Identity
 
 }; // LLDPSYSTEMCAPABILITY
 
-class SYSTEMNAME : public openconfig::openconfig_lldp_types::LLDPTLV, virtual ydk::Identity
+class LLDPTLV : public virtual ydk::Identity
 {
     public:
-        SYSTEMNAME();
-        ~SYSTEMNAME();
+        LLDPTLV();
+        ~LLDPTLV();
 
 
-}; // SYSTEMNAME
+}; // LLDPTLV
 
-class MACBRIDGE : public openconfig::openconfig_lldp_types::LLDPSYSTEMCAPABILITY, virtual ydk::Identity
+class OTHER : public openconfig::openconfig_lldp_types::LLDPSYSTEMCAPABILITY, virtual ydk::Identity
 {
     public:
-        MACBRIDGE();
-        ~MACBRIDGE();
+        OTHER();
+        ~OTHER();
 
 
-}; // MACBRIDGE
-
-class PORTDESCRIPTION : public openconfig::openconfig_lldp_types::LLDPTLV, virtual ydk::Identity
-{
-    public:
-        PORTDESCRIPTION();
-        ~PORTDESCRIPTION();
-
-
-}; // PORTDESCRIPTION
-
-class DOCSISCABLEDEVICE : public openconfig::openconfig_lldp_types::LLDPSYSTEMCAPABILITY, virtual ydk::Identity
-{
-    public:
-        DOCSISCABLEDEVICE();
-        ~DOCSISCABLEDEVICE();
-
-
-}; // DOCSISCABLEDEVICE
+}; // OTHER
 
 class REPEATER : public openconfig::openconfig_lldp_types::LLDPSYSTEMCAPABILITY, virtual ydk::Identity
 {
@@ -73,41 +46,32 @@ class REPEATER : public openconfig::openconfig_lldp_types::LLDPSYSTEMCAPABILITY,
 
 }; // REPEATER
 
-class SYSTEMDESCRIPTION : public openconfig::openconfig_lldp_types::LLDPTLV, virtual ydk::Identity
+class MACBRIDGE : public openconfig::openconfig_lldp_types::LLDPSYSTEMCAPABILITY, virtual ydk::Identity
 {
     public:
-        SYSTEMDESCRIPTION();
-        ~SYSTEMDESCRIPTION();
+        MACBRIDGE();
+        ~MACBRIDGE();
 
 
-}; // SYSTEMDESCRIPTION
+}; // MACBRIDGE
 
-class CVLAN : public openconfig::openconfig_lldp_types::LLDPSYSTEMCAPABILITY, virtual ydk::Identity
+class WLANACCESSPOINT : public openconfig::openconfig_lldp_types::LLDPSYSTEMCAPABILITY, virtual ydk::Identity
 {
     public:
-        CVLAN();
-        ~CVLAN();
+        WLANACCESSPOINT();
+        ~WLANACCESSPOINT();
 
 
-}; // CVLAN
+}; // WLANACCESSPOINT
 
-class TWOPORTMACRELAY : public openconfig::openconfig_lldp_types::LLDPSYSTEMCAPABILITY, virtual ydk::Identity
+class ROUTER : public openconfig::openconfig_lldp_types::LLDPSYSTEMCAPABILITY, virtual ydk::Identity
 {
     public:
-        TWOPORTMACRELAY();
-        ~TWOPORTMACRELAY();
+        ROUTER();
+        ~ROUTER();
 
 
-}; // TWOPORTMACRELAY
-
-class SVLAN : public openconfig::openconfig_lldp_types::LLDPSYSTEMCAPABILITY, virtual ydk::Identity
-{
-    public:
-        SVLAN();
-        ~SVLAN();
-
-
-}; // SVLAN
+}; // ROUTER
 
 class TELEPHONE : public openconfig::openconfig_lldp_types::LLDPSYSTEMCAPABILITY, virtual ydk::Identity
 {
@@ -118,6 +82,51 @@ class TELEPHONE : public openconfig::openconfig_lldp_types::LLDPSYSTEMCAPABILITY
 
 }; // TELEPHONE
 
+class DOCSISCABLEDEVICE : public openconfig::openconfig_lldp_types::LLDPSYSTEMCAPABILITY, virtual ydk::Identity
+{
+    public:
+        DOCSISCABLEDEVICE();
+        ~DOCSISCABLEDEVICE();
+
+
+}; // DOCSISCABLEDEVICE
+
+class STATIONONLY : public openconfig::openconfig_lldp_types::LLDPSYSTEMCAPABILITY, virtual ydk::Identity
+{
+    public:
+        STATIONONLY();
+        ~STATIONONLY();
+
+
+}; // STATIONONLY
+
+class CVLAN : public openconfig::openconfig_lldp_types::LLDPSYSTEMCAPABILITY, virtual ydk::Identity
+{
+    public:
+        CVLAN();
+        ~CVLAN();
+
+
+}; // CVLAN
+
+class SVLAN : public openconfig::openconfig_lldp_types::LLDPSYSTEMCAPABILITY, virtual ydk::Identity
+{
+    public:
+        SVLAN();
+        ~SVLAN();
+
+
+}; // SVLAN
+
+class TWOPORTMACRELAY : public openconfig::openconfig_lldp_types::LLDPSYSTEMCAPABILITY, virtual ydk::Identity
+{
+    public:
+        TWOPORTMACRELAY();
+        ~TWOPORTMACRELAY();
+
+
+}; // TWOPORTMACRELAY
+
 class CHASSISID : public openconfig::openconfig_lldp_types::LLDPTLV, virtual ydk::Identity
 {
     public:
@@ -127,14 +136,41 @@ class CHASSISID : public openconfig::openconfig_lldp_types::LLDPTLV, virtual ydk
 
 }; // CHASSISID
 
-class OTHER : public openconfig::openconfig_lldp_types::LLDPSYSTEMCAPABILITY, virtual ydk::Identity
+class PORTID : public openconfig::openconfig_lldp_types::LLDPTLV, virtual ydk::Identity
 {
     public:
-        OTHER();
-        ~OTHER();
+        PORTID();
+        ~PORTID();
 
 
-}; // OTHER
+}; // PORTID
+
+class PORTDESCRIPTION : public openconfig::openconfig_lldp_types::LLDPTLV, virtual ydk::Identity
+{
+    public:
+        PORTDESCRIPTION();
+        ~PORTDESCRIPTION();
+
+
+}; // PORTDESCRIPTION
+
+class SYSTEMNAME : public openconfig::openconfig_lldp_types::LLDPTLV, virtual ydk::Identity
+{
+    public:
+        SYSTEMNAME();
+        ~SYSTEMNAME();
+
+
+}; // SYSTEMNAME
+
+class SYSTEMDESCRIPTION : public openconfig::openconfig_lldp_types::LLDPTLV, virtual ydk::Identity
+{
+    public:
+        SYSTEMDESCRIPTION();
+        ~SYSTEMDESCRIPTION();
+
+
+}; // SYSTEMDESCRIPTION
 
 class SYSTEMCAPABILITIES : public openconfig::openconfig_lldp_types::LLDPTLV, virtual ydk::Identity
 {
@@ -153,42 +189,6 @@ class MANAGEMENTADDRESS : public openconfig::openconfig_lldp_types::LLDPTLV, vir
 
 
 }; // MANAGEMENTADDRESS
-
-class ROUTER : public openconfig::openconfig_lldp_types::LLDPSYSTEMCAPABILITY, virtual ydk::Identity
-{
-    public:
-        ROUTER();
-        ~ROUTER();
-
-
-}; // ROUTER
-
-class PORTID : public openconfig::openconfig_lldp_types::LLDPTLV, virtual ydk::Identity
-{
-    public:
-        PORTID();
-        ~PORTID();
-
-
-}; // PORTID
-
-class STATIONONLY : public openconfig::openconfig_lldp_types::LLDPSYSTEMCAPABILITY, virtual ydk::Identity
-{
-    public:
-        STATIONONLY();
-        ~STATIONONLY();
-
-
-}; // STATIONONLY
-
-class WLANACCESSPOINT : public openconfig::openconfig_lldp_types::LLDPSYSTEMCAPABILITY, virtual ydk::Identity
-{
-    public:
-        WLANACCESSPOINT();
-        ~WLANACCESSPOINT();
-
-
-}; // WLANACCESSPOINT
 
 class ChassisIdType : public ydk::Enum
 {

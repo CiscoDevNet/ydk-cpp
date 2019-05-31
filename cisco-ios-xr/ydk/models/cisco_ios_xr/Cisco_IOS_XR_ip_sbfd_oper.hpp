@@ -243,20 +243,20 @@ class Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator : public y
 
 }; // Sbfd::TargetIdentifier::LocalVrfs::LocalVrf::LocalDiscriminator
 
-class SbfdAddressFamily : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
 class BfdAfId : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf bfd_af_id_none;
         static const ydk::Enum::YLeaf bfd_af_id_ipv4;
         static const ydk::Enum::YLeaf bfd_af_id_ipv6;
+
+};
+
+class SbfdAddressFamily : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 

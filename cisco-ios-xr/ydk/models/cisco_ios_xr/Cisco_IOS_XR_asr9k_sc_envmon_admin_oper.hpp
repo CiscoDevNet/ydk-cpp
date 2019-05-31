@@ -382,6 +382,10 @@ class EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::Sensor
         ydk::YLeaf status; //type: uint32
         ydk::YLeaf age_time_stamp; //type: uint32
         ydk::YLeaf update_rate; //type: uint32
+        ydk::YLeaf average; //type: int32
+        ydk::YLeaf minimum; //type: int32
+        ydk::YLeaf maximum; //type: int32
+        ydk::YLeaf interval; //type: int32
 
 }; // EnvironmentalMonitoring::Racks::Rack::Slots::Slot::Modules::Module::SensorTypes::SensorType::SensorNames::SensorName::ValueDetailed
 

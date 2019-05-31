@@ -319,16 +319,12 @@ class MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields : public ydk::Entity
 
 }; // MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields
 
-class MdtXfrmOperator : public ydk::Enum
+class MdtXfrmAttrType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf operator_none;
-        static const ydk::Enum::YLeaf eq;
-        static const ydk::Enum::YLeaf ne;
-        static const ydk::Enum::YLeaf gt;
-        static const ydk::Enum::YLeaf ge;
-        static const ydk::Enum::YLeaf lt;
-        static const ydk::Enum::YLeaf le;
+        static const ydk::Enum::YLeaf mdt_xfrm_attr_none;
+        static const ydk::Enum::YLeaf mandatory;
+        static const ydk::Enum::YLeaf primary;
 
 };
 
@@ -349,12 +345,16 @@ class MdtXfrmLogicOp : public ydk::Enum
 
 };
 
-class MdtXfrmAttrType : public ydk::Enum
+class MdtXfrmOperator : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mdt_xfrm_attr_none;
-        static const ydk::Enum::YLeaf mandatory;
-        static const ydk::Enum::YLeaf primary;
+        static const ydk::Enum::YLeaf operator_none;
+        static const ydk::Enum::YLeaf eq;
+        static const ydk::Enum::YLeaf ne;
+        static const ydk::Enum::YLeaf gt;
+        static const ydk::Enum::YLeaf ge;
+        static const ydk::Enum::YLeaf lt;
+        static const ydk::Enum::YLeaf le;
 
 };
 

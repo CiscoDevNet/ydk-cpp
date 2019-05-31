@@ -1139,7 +1139,7 @@ class RsvpStandby::PsbDetaileds::PsbDetailed::Hop : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_logical_interface_name; //type: string
+        ydk::YLeaf neighbor_logical_interface_handle; //type: uint32
 
 }; // RsvpStandby::PsbDetaileds::PsbDetailed::Hop
 
@@ -2829,7 +2829,7 @@ class RsvpStandby::RsbDetaileds::RsbDetailed::Hop : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_logical_interface_name; //type: string
+        ydk::YLeaf neighbor_logical_interface_handle; //type: uint32
 
 }; // RsvpStandby::RsbDetaileds::RsbDetailed::Hop
 
@@ -7809,7 +7809,7 @@ class RsvpStandby::RequestDetails::RequestDetail::Hop : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_logical_interface_name; //type: string
+        ydk::YLeaf neighbor_logical_interface_handle; //type: uint32
 
 }; // RsvpStandby::RequestDetails::RequestDetail::Hop
 
@@ -11745,7 +11745,7 @@ class Rsvp::PxsbDetails::PxsbDetail::Hop : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_logical_interface_name; //type: string
+        ydk::YLeaf neighbor_logical_interface_handle; //type: uint32
 
 }; // Rsvp::PxsbDetails::PxsbDetail::Hop
 
@@ -12244,7 +12244,7 @@ class Rsvp::RxsbDetails::RxsbDetail::Hop : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_logical_interface_name; //type: string
+        ydk::YLeaf neighbor_logical_interface_handle; //type: uint32
 
 }; // Rsvp::RxsbDetails::RxsbDetail::Hop
 
@@ -13320,7 +13320,7 @@ class Rsvp::PsbDetaileds::PsbDetailed::Hop : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_logical_interface_name; //type: string
+        ydk::YLeaf neighbor_logical_interface_handle; //type: uint32
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::Hop
 
@@ -15010,7 +15010,7 @@ class Rsvp::RsbDetaileds::RsbDetailed::Hop : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_logical_interface_name; //type: string
+        ydk::YLeaf neighbor_logical_interface_handle; //type: uint32
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::Hop
 
@@ -19990,7 +19990,7 @@ class Rsvp::RequestDetails::RequestDetail::Hop : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_logical_interface_name; //type: string
+        ydk::YLeaf neighbor_logical_interface_handle; //type: uint32
 
 }; // Rsvp::RequestDetails::RequestDetail::Hop
 
@@ -23232,6 +23232,63 @@ class Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTime : p
 
 }; // Rsvp::GlobalNeighborBriefs::GlobalNeighborBrief::LostCommunicationTime
 
+class RsvpMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf send;
+        static const ydk::Enum::YLeaf receive;
+
+};
+
+class RsvpSession : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf p2p_lsp_ipv4;
+        static const ydk::Enum::YLeaf ouni_ipv4;
+        static const ydk::Enum::YLeaf p2mp_lsp_ipv4;
+
+};
+
+class IgpteLibBwModel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rdm;
+        static const ydk::Enum::YLeaf mam;
+        static const ydk::Enum::YLeaf not_set;
+
+};
+
+class RsvpMgmtRestartState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf done;
+        static const ydk::Enum::YLeaf recovery;
+        static const ydk::Enum::YLeaf abort;
+
+};
+
+class RsvpMgmtHelloDownReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_applicable;
+        static const ydk::Enum::YLeaf wrong_destination_instance;
+        static const ydk::Enum::YLeaf wrong_source_instance;
+        static const ydk::Enum::YLeaf hello_missed;
+        static const ydk::Enum::YLeaf interface_down;
+        static const ydk::Enum::YLeaf neighbor_disabled_hello;
+        static const ydk::Enum::YLeaf control_channel_down;
+
+};
+
+class RsvpMgmtHelloInstanceOwner : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mpls_graceful_restart;
+        static const ydk::Enum::YLeaf mpls_ouni;
+
+};
+
 class RsvpMgmtAssociation : public ydk::Enum
 {
     public:
@@ -23243,38 +23300,13 @@ class RsvpMgmtAssociation : public ydk::Enum
 
 };
 
-class RsvpMgmtEroSubobj : public ydk::Enum
+class RsvpMgmtRroSubobj : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf rsvp_mgmt_ero_type_ipv4;
-        static const ydk::Enum::YLeaf rsvp_mgmt_ero_type_un_num;
-
-};
-
-class RsvpMgmtQosServiceEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rsvp_mgmt_qos_unknown;
-        static const ydk::Enum::YLeaf rsvp_mgmt_qos_guaranteed;
-        static const ydk::Enum::YLeaf rsvp_mgmt_qos_controlled_load;
-        static const ydk::Enum::YLeaf rsvp_mgmt_qos_qualitative;
-
-};
-
-class RsvpMgmtHelloInstance : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf passive;
-
-};
-
-class IgpteLibBwModel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rdm;
-        static const ydk::Enum::YLeaf mam;
-        static const ydk::Enum::YLeaf not_set;
+        static const ydk::Enum::YLeaf ipv4rro_type;
+        static const ydk::Enum::YLeaf label_rro_type;
+        static const ydk::Enum::YLeaf unnumbered_rro_type;
+        static const ydk::Enum::YLeaf srlg_rro_type;
 
 };
 
@@ -23297,53 +23329,19 @@ class RsvpProcNsrNotReadyReason : public ydk::Enum
 
 };
 
-class RsvpMgmtDsteModes : public ydk::Enum
+class RsvpSyncStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf pre_standard;
-        static const ydk::Enum::YLeaf standard;
+        static const ydk::Enum::YLeaf not_ready;
+        static const ydk::Enum::YLeaf ready;
 
 };
 
-class RsvpMgmtRestartState : public ydk::Enum
+class RsvpMgmtGrApp : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf done;
-        static const ydk::Enum::YLeaf recovery;
-        static const ydk::Enum::YLeaf abort;
-
-};
-
-class RsvpMgmtReservationTypeEnum : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rsvp_mgmt_ff_option;
-        static const ydk::Enum::YLeaf rsvp_mgmt_wf_option;
-        static const ydk::Enum::YLeaf rsvp_mgmt_se_option;
-
-};
-
-class RsvpMgmtTspec : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf g709otn;
-        static const ydk::Enum::YLeaf intsrv;
-
-};
-
-class RsvpMgmtAuthDirection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rsvp_mgmt_auth_direction_send;
-        static const ydk::Enum::YLeaf rsvp_mgmt_auth_direction_recv;
-
-};
-
-class RsvpMgmtFilter : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rsvp_mgmt_filter_type_ipv4;
-        static const ydk::Enum::YLeaf rsvp_mgmt_filter_type_p2mp_lsp_ipv4;
+        static const ydk::Enum::YLeaf ouni;
+        static const ydk::Enum::YLeaf gmpls;
 
 };
 
@@ -23361,13 +23359,22 @@ class RsvpProcRole : public ydk::Enum
 
 };
 
-class RsvpSession : public ydk::Enum
+class RsvpMgmtAuthChallengeStatus : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf p2p_lsp_ipv4;
-        static const ydk::Enum::YLeaf ouni_ipv4;
-        static const ydk::Enum::YLeaf p2mp_lsp_ipv4;
+        static const ydk::Enum::YLeaf rsvp_mgmt_auth_cs_not_cfg;
+        static const ydk::Enum::YLeaf rsvp_mgmt_auth_cs_completed;
+        static const ydk::Enum::YLeaf rsvp_mgmt_auth_cs_in_progress;
+        static const ydk::Enum::YLeaf rsvp_mgmt_auth_cs_failure;
+        static const ydk::Enum::YLeaf rsvp_mgmt_auth_cs_not_supported;
+
+};
+
+class RsvpMgmtHelloInstance : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf passive;
 
 };
 
@@ -23380,6 +23387,15 @@ class RsvpMgmtHelloState : public ydk::Enum
 
 };
 
+class RsvpMgmtReservationTypeEnum : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rsvp_mgmt_ff_option;
+        static const ydk::Enum::YLeaf rsvp_mgmt_wf_option;
+        static const ydk::Enum::YLeaf rsvp_mgmt_se_option;
+
+};
+
 class RsvpMgmtFlowSpec : public ydk::Enum
 {
     public:
@@ -23387,21 +23403,62 @@ class RsvpMgmtFlowSpec : public ydk::Enum
 
 };
 
-class RsvpMgmtHelloInstanceOwner : public ydk::Enum
+class RsvpMgmtQosServiceEnum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf mpls_graceful_restart;
-        static const ydk::Enum::YLeaf mpls_ouni;
+        static const ydk::Enum::YLeaf rsvp_mgmt_qos_unknown;
+        static const ydk::Enum::YLeaf rsvp_mgmt_qos_guaranteed;
+        static const ydk::Enum::YLeaf rsvp_mgmt_qos_controlled_load;
+        static const ydk::Enum::YLeaf rsvp_mgmt_qos_qualitative;
 
 };
 
-class RsvpMgmtRroSubobj : public ydk::Enum
+class RsvpTimerState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf ipv4rro_type;
-        static const ydk::Enum::YLeaf label_rro_type;
-        static const ydk::Enum::YLeaf unnumbered_rro_type;
-        static const ydk::Enum::YLeaf srlg_rro_type;
+        static const ydk::Enum::YLeaf rsvp_timer_running_and_sleeping;
+        static const ydk::Enum::YLeaf rsvp_timer_running;
+        static const ydk::Enum::YLeaf rsvp_timer_not_running;
+
+};
+
+class RsvpMgmtEroSubobjStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rsvp_mgmt_ero_status_not_available;
+        static const ydk::Enum::YLeaf rsvp_mgmt_ero_status_available;
+        static const ydk::Enum::YLeaf rsvp_mgmt_ero_status_bw_not_available;
+
+};
+
+class RsvpMgmtEroSubobj : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rsvp_mgmt_ero_type_ipv4;
+        static const ydk::Enum::YLeaf rsvp_mgmt_ero_type_un_num;
+
+};
+
+class RsvpMgmtGenericLabel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rsvp_mgmt_label_type_gmpls;
+
+};
+
+class RsvpMgmtTspec : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf g709otn;
+        static const ydk::Enum::YLeaf intsrv;
+
+};
+
+class RsvpMgmtFilter : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rsvp_mgmt_filter_type_ipv4;
+        static const ydk::Enum::YLeaf rsvp_mgmt_filter_type_p2mp_lsp_ipv4;
 
 };
 
@@ -23415,45 +23472,6 @@ class RsvpMgmtSession : public ydk::Enum
 
 };
 
-class RsvpMgmtHelloDownReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_applicable;
-        static const ydk::Enum::YLeaf wrong_destination_instance;
-        static const ydk::Enum::YLeaf wrong_source_instance;
-        static const ydk::Enum::YLeaf hello_missed;
-        static const ydk::Enum::YLeaf interface_down;
-        static const ydk::Enum::YLeaf neighbor_disabled_hello;
-        static const ydk::Enum::YLeaf control_channel_down;
-
-};
-
-class RsvpMgmtGenericLabel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rsvp_mgmt_label_type_gmpls;
-
-};
-
-class RsvpMgmtGrApp : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ouni;
-        static const ydk::Enum::YLeaf gmpls;
-
-};
-
-class RsvpMgmtAuthChallengeStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rsvp_mgmt_auth_cs_not_cfg;
-        static const ydk::Enum::YLeaf rsvp_mgmt_auth_cs_completed;
-        static const ydk::Enum::YLeaf rsvp_mgmt_auth_cs_in_progress;
-        static const ydk::Enum::YLeaf rsvp_mgmt_auth_cs_failure;
-        static const ydk::Enum::YLeaf rsvp_mgmt_auth_cs_not_supported;
-
-};
-
 class RsvpMgmtAuthKi : public ydk::Enum
 {
     public:
@@ -23464,37 +23482,19 @@ class RsvpMgmtAuthKi : public ydk::Enum
 
 };
 
-class RsvpTimerState : public ydk::Enum
+class RsvpMgmtAuthDirection : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf rsvp_timer_running_and_sleeping;
-        static const ydk::Enum::YLeaf rsvp_timer_running;
-        static const ydk::Enum::YLeaf rsvp_timer_not_running;
+        static const ydk::Enum::YLeaf rsvp_mgmt_auth_direction_send;
+        static const ydk::Enum::YLeaf rsvp_mgmt_auth_direction_recv;
 
 };
 
-class RsvpSyncStatus : public ydk::Enum
+class RsvpMgmtDsteModes : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf not_ready;
-        static const ydk::Enum::YLeaf ready;
-
-};
-
-class RsvpMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf send;
-        static const ydk::Enum::YLeaf receive;
-
-};
-
-class RsvpMgmtEroSubobjStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rsvp_mgmt_ero_status_not_available;
-        static const ydk::Enum::YLeaf rsvp_mgmt_ero_status_available;
-        static const ydk::Enum::YLeaf rsvp_mgmt_ero_status_bw_not_available;
+        static const ydk::Enum::YLeaf pre_standard;
+        static const ydk::Enum::YLeaf standard;
 
 };
 

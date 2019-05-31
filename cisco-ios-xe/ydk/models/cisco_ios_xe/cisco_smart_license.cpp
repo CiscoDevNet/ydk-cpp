@@ -5244,8 +5244,41 @@ bool Licensing::State::StateInfo::Usage::has_leaf_or_child_of_name(const std::st
     return false;
 }
 
+const Enum::YLeaf NotifRegisterFailureEnum::general_failure {0, "general-failure"};
+const Enum::YLeaf NotifRegisterFailureEnum::already_registered_failure {1, "already-registered-failure"};
+const Enum::YLeaf NotifRegisterFailureEnum::de_register_failure {2, "de-register-failure"};
+
+const Enum::YLeaf RegistrationStateEnum::reg_state_not_registered {0, "reg-state-not-registered"};
+const Enum::YLeaf RegistrationStateEnum::reg_state_complete {1, "reg-state-complete"};
+const Enum::YLeaf RegistrationStateEnum::reg_state_in_progress {2, "reg-state-in-progress"};
+const Enum::YLeaf RegistrationStateEnum::reg_state_retry {3, "reg-state-retry"};
+const Enum::YLeaf RegistrationStateEnum::reg_state_failed {4, "reg-state-failed"};
+
+const Enum::YLeaf AuthorizationStateEnum::auth_state_none {0, "auth-state-none"};
+const Enum::YLeaf AuthorizationStateEnum::auth_state_eval {1, "auth-state-eval"};
+const Enum::YLeaf AuthorizationStateEnum::auth_state_eval_expired {2, "auth-state-eval-expired"};
+const Enum::YLeaf AuthorizationStateEnum::auth_state_authorized {3, "auth-state-authorized"};
+const Enum::YLeaf AuthorizationStateEnum::auth_state_authorized_reservation {4, "auth-state-authorized-reservation"};
+const Enum::YLeaf AuthorizationStateEnum::auth_state_out_of_compliance {5, "auth-state-out-of-compliance"};
+const Enum::YLeaf AuthorizationStateEnum::auth_state_authorization_expired {6, "auth-state-authorization-expired"};
+
+const Enum::YLeaf UtilityReportingTypeEnum::utility_reporting_type_none {0, "utility-reporting-type-none"};
+const Enum::YLeaf UtilityReportingTypeEnum::utility_reporting_type_subscription {1, "utility-reporting-type-subscription"};
+const Enum::YLeaf UtilityReportingTypeEnum::utility_reporting_type_certificate {2, "utility-reporting-type-certificate"};
+
 const Enum::YLeaf TransportTypeEnum::transport_type_callhome {0, "transport-type-callhome"};
 const Enum::YLeaf TransportTypeEnum::transport_type_smart {1, "transport-type-smart"};
+
+const Enum::YLeaf EnforcementModeEnum::enforcement_waiting {0, "enforcement-waiting"};
+const Enum::YLeaf EnforcementModeEnum::enforcement_in_compliance {1, "enforcement-in-compliance"};
+const Enum::YLeaf EnforcementModeEnum::enforcement_out_of_compliance {2, "enforcement-out-of-compliance"};
+const Enum::YLeaf EnforcementModeEnum::enforcement_overage {3, "enforcement-overage"};
+const Enum::YLeaf EnforcementModeEnum::enforcement_evaluation {4, "enforcement-evaluation"};
+const Enum::YLeaf EnforcementModeEnum::enforcement_evaluation_expired {5, "enforcement-evaluation-expired"};
+const Enum::YLeaf EnforcementModeEnum::enforcement_authorization_expired {6, "enforcement-authorization-expired"};
+const Enum::YLeaf EnforcementModeEnum::enforcement_reservation_in_compliance {7, "enforcement-reservation-in-compliance"};
+const Enum::YLeaf EnforcementModeEnum::enforcement_invalid_tag {8, "enforcement-invalid-tag"};
+const Enum::YLeaf EnforcementModeEnum::enforcement_disabled {9, "enforcement-disabled"};
 
 const Enum::YLeaf ErrorEnum::success {0, "success"};
 const Enum::YLeaf ErrorEnum::malloc {1, "malloc"};
@@ -5391,39 +5424,6 @@ const Enum::YLeaf ErrorEnum::fqdn {140, "fqdn"};
 const Enum::YLeaf ErrorEnum::thirdparty {141, "thirdparty"};
 const Enum::YLeaf ErrorEnum::transporttype {142, "transporttype"};
 const Enum::YLeaf ErrorEnum::max {143, "max"};
-
-const Enum::YLeaf UtilityReportingTypeEnum::utility_reporting_type_none {0, "utility-reporting-type-none"};
-const Enum::YLeaf UtilityReportingTypeEnum::utility_reporting_type_subscription {1, "utility-reporting-type-subscription"};
-const Enum::YLeaf UtilityReportingTypeEnum::utility_reporting_type_certificate {2, "utility-reporting-type-certificate"};
-
-const Enum::YLeaf EnforcementModeEnum::enforcement_waiting {0, "enforcement-waiting"};
-const Enum::YLeaf EnforcementModeEnum::enforcement_in_compliance {1, "enforcement-in-compliance"};
-const Enum::YLeaf EnforcementModeEnum::enforcement_out_of_compliance {2, "enforcement-out-of-compliance"};
-const Enum::YLeaf EnforcementModeEnum::enforcement_overage {3, "enforcement-overage"};
-const Enum::YLeaf EnforcementModeEnum::enforcement_evaluation {4, "enforcement-evaluation"};
-const Enum::YLeaf EnforcementModeEnum::enforcement_evaluation_expired {5, "enforcement-evaluation-expired"};
-const Enum::YLeaf EnforcementModeEnum::enforcement_authorization_expired {6, "enforcement-authorization-expired"};
-const Enum::YLeaf EnforcementModeEnum::enforcement_reservation_in_compliance {7, "enforcement-reservation-in-compliance"};
-const Enum::YLeaf EnforcementModeEnum::enforcement_invalid_tag {8, "enforcement-invalid-tag"};
-const Enum::YLeaf EnforcementModeEnum::enforcement_disabled {9, "enforcement-disabled"};
-
-const Enum::YLeaf AuthorizationStateEnum::auth_state_none {0, "auth-state-none"};
-const Enum::YLeaf AuthorizationStateEnum::auth_state_eval {1, "auth-state-eval"};
-const Enum::YLeaf AuthorizationStateEnum::auth_state_eval_expired {2, "auth-state-eval-expired"};
-const Enum::YLeaf AuthorizationStateEnum::auth_state_authorized {3, "auth-state-authorized"};
-const Enum::YLeaf AuthorizationStateEnum::auth_state_authorized_reservation {4, "auth-state-authorized-reservation"};
-const Enum::YLeaf AuthorizationStateEnum::auth_state_out_of_compliance {5, "auth-state-out-of-compliance"};
-const Enum::YLeaf AuthorizationStateEnum::auth_state_authorization_expired {6, "auth-state-authorization-expired"};
-
-const Enum::YLeaf RegistrationStateEnum::reg_state_not_registered {0, "reg-state-not-registered"};
-const Enum::YLeaf RegistrationStateEnum::reg_state_complete {1, "reg-state-complete"};
-const Enum::YLeaf RegistrationStateEnum::reg_state_in_progress {2, "reg-state-in-progress"};
-const Enum::YLeaf RegistrationStateEnum::reg_state_retry {3, "reg-state-retry"};
-const Enum::YLeaf RegistrationStateEnum::reg_state_failed {4, "reg-state-failed"};
-
-const Enum::YLeaf NotifRegisterFailureEnum::general_failure {0, "general-failure"};
-const Enum::YLeaf NotifRegisterFailureEnum::already_registered_failure {1, "already-registered-failure"};
-const Enum::YLeaf NotifRegisterFailureEnum::de_register_failure {2, "de-register-failure"};
 
 
 }

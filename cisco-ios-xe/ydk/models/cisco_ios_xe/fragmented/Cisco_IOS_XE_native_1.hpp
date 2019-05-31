@@ -831,7 +831,7 @@ class Native::Platform::ExternalAlarm : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf line; //type: uint32
-        ydk::YLeaf alarm; //type: one of uint16, enumeration
+        ydk::YLeaf alarm; //type: one of enumeration, uint16
 
 }; // Native::Platform::ExternalAlarm
 
@@ -1808,7 +1808,7 @@ class Native::Archive : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf path; //type: one of string, enumeration
+        ydk::YLeaf path; //type: one of enumeration, string
         ydk::YLeaf maximum; //type: uint8
         ydk::YLeaf write_memory; //type: empty
         ydk::YLeaf time_period; //type: uint32

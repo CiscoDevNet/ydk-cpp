@@ -180,9 +180,11 @@ class SessionRedundancyManager::Summary : public ydk::Entity
         ydk::YLeaf disabled_group_count; //type: uint32
         ydk::YLeaf master_group_count; //type: uint32
         ydk::YLeaf slave_group_count; //type: uint32
+        ydk::YLeaf active_group_count; //type: uint32
         ydk::YLeaf interface_count; //type: uint32
         ydk::YLeaf master_interface_count; //type: uint32
         ydk::YLeaf slave_interface_count; //type: uint32
+        ydk::YLeaf active_interface_count; //type: uint32
         ydk::YLeaf pool_count; //type: uint32
 
 }; // SessionRedundancyManager::Summary
@@ -320,7 +322,9 @@ class SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId : public ydk::Enti
         ydk::YLeaf interface_name; //type: string
         ydk::YLeaf key_index; //type: string
         ydk::YLeaf role_master; //type: boolean
+        ydk::YLeaf role_active; //type: boolean
         ydk::YLeaf negative_acknowledgement_update_all; //type: boolean
+        ydk::YLeaf entry_type; //type: boolean
         class SessionDetailedInformation; //type: SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionDetailedInformation
         class SessionSyncErrorInformation; //type: SessionRedundancyAgent::Nodes::Node::GroupIdXr::GroupId::SessionSyncErrorInformation
 
@@ -451,6 +455,8 @@ class SessionRedundancyAgent::Nodes::Node::ClientIds::ClientId : public ydk::Ent
         ydk::YLeaf tx_list_receive_session_session_sod_selected; //type: uint32
         ydk::YLeaf tx_list_receive_session_session_eod_all; //type: uint32
         ydk::YLeaf tx_list_receive_session_session_eod_selected; //type: uint32
+        ydk::YLeaf tx_list_rx_tcp_restart_start_of_download; //type: uint32
+        ydk::YLeaf tx_list_rx_tcp_restart_end_of_download; //type: uint32
         ydk::YLeaf tx_list_receive_session_session_eoms; //type: uint32
         ydk::YLeaf tx_list_receive_session_session_clear_all; //type: uint32
         ydk::YLeaf tx_list_receive_session_session_clear_selected; //type: uint32
@@ -1137,21 +1143,15 @@ class SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary : public
 
 }; // SessionRedundancyAgent::Nodes::Node::GroupSummaries::GroupSummary
 
-class SergShowSessionError : public ydk::Enum
+class SergShowMem : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf hard;
-        static const ydk::Enum::YLeaf soft;
-
-};
-
-class SergShowSlaveMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf warm;
-        static const ydk::Enum::YLeaf hot;
+        static const ydk::Enum::YLeaf standard;
+        static const ydk::Enum::YLeaf chunk;
+        static const ydk::Enum::YLeaf edm;
+        static const ydk::Enum::YLeaf string;
+        static const ydk::Enum::YLeaf static_;
+        static const ydk::Enum::YLeaf unknown;
 
 };
 
@@ -1164,18 +1164,6 @@ class SergShowSoReason : public ydk::Enum
         static const ydk::Enum::YLeaf peer_down;
         static const ydk::Enum::YLeaf object_tracking_status_change;
         static const ydk::Enum::YLeaf serg_show_so_reason_max;
-
-};
-
-class SergShowMem : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf standard;
-        static const ydk::Enum::YLeaf chunk;
-        static const ydk::Enum::YLeaf edm;
-        static const ydk::Enum::YLeaf string;
-        static const ydk::Enum::YLeaf static_;
-        static const ydk::Enum::YLeaf unknown;
 
 };
 
@@ -1194,22 +1182,12 @@ class SergPeerStatus : public ydk::Enum
 
 };
 
-class SergShowImRole : public ydk::Enum
+class SergShowSessionError : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf master;
-        static const ydk::Enum::YLeaf slave;
-
-};
-
-class SergShowComp : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf serga;
-        static const ydk::Enum::YLeaf ipv6nd;
-        static const ydk::Enum::YLeaf dhcpv6;
-        static const ydk::Enum::YLeaf daps;
+        static const ydk::Enum::YLeaf hard;
+        static const ydk::Enum::YLeaf soft;
 
 };
 
@@ -1223,12 +1201,42 @@ class SergShowSessionOperation : public ydk::Enum
 
 };
 
+class SergShowComp : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf serga;
+        static const ydk::Enum::YLeaf ipv6nd;
+        static const ydk::Enum::YLeaf dhcpv6;
+        static const ydk::Enum::YLeaf daps;
+
+};
+
+class SergShowSlaveMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf warm;
+        static const ydk::Enum::YLeaf hot;
+
+};
+
 class SergShowRole : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf master;
         static const ydk::Enum::YLeaf slave;
+        static const ydk::Enum::YLeaf active;
+
+};
+
+class SergShowImRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf master;
+        static const ydk::Enum::YLeaf slave;
+        static const ydk::Enum::YLeaf active;
 
 };
 

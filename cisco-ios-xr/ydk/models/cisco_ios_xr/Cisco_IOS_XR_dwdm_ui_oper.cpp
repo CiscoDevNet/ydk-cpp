@@ -10993,27 +10993,16 @@ bool Vtxp::DwdmVtxp::PortVtxps::PortVtxp::Info::has_leaf_or_child_of_name(const 
     return false;
 }
 
+const Enum::YLeaf G709apsByte::pp_no_protect {0, "pp-no-protect"};
+const Enum::YLeaf G709apsByte::pp_no_request {15, "pp-no-request"};
+const Enum::YLeaf G709apsByte::pp_regen_degrade {63, "pp-regen-degrade"};
+const Enum::YLeaf G709apsByte::pp_sig_degrade {175, "pp-sig-degrade"};
+const Enum::YLeaf G709apsByte::pp_remote_main {239, "pp-remote-main"};
+const Enum::YLeaf G709apsByte::pp_aps_unknown {255, "pp-aps-unknown"};
+
 const Enum::YLeaf G709ppintfState::pp_intf_up {0, "pp-intf-up"};
 const Enum::YLeaf G709ppintfState::pp_intf_failing {1, "pp-intf-failing"};
 const Enum::YLeaf G709ppintfState::pp_intf_down {2, "pp-intf-down"};
-
-const Enum::YLeaf G709ppfsmMode::pp_disable {0, "pp-disable"};
-const Enum::YLeaf G709ppfsmMode::pp_default_mode {1, "pp-default-mode"};
-const Enum::YLeaf G709ppfsmMode::pp_graceful_mode {2, "pp-graceful-mode"};
-
-const Enum::YLeaf DwdmControllerState::dwdm_ui_state_up {0, "dwdm-ui-state-up"};
-const Enum::YLeaf DwdmControllerState::dwdm_ui_state_down {1, "dwdm-ui-state-down"};
-const Enum::YLeaf DwdmControllerState::dwdm_ui_state_admin_down {2, "dwdm-ui-state-admin-down"};
-
-const Enum::YLeaf DwdmtasState::tas_oos {0, "tas-oos"};
-const Enum::YLeaf DwdmtasState::tas_is {1, "tas-is"};
-const Enum::YLeaf DwdmtasState::tas_oos_mt {2, "tas-oos-mt"};
-const Enum::YLeaf DwdmtasState::tas_is_cfg {3, "tas-is-cfg"};
-
-const Enum::YLeaf G709prbsMode::mode_source {0, "mode-source"};
-const Enum::YLeaf G709prbsMode::mode_sink {1, "mode-sink"};
-const Enum::YLeaf G709prbsMode::mode_source_sink {2, "mode-source-sink"};
-const Enum::YLeaf G709prbsMode::mode_invalid {3, "mode-invalid"};
 
 const Enum::YLeaf G709ppfsmState::in_active {0, "in-active"};
 const Enum::YLeaf G709ppfsmState::disabled {1, "disabled"};
@@ -11026,6 +11015,38 @@ const Enum::YLeaf G709ppfsmState::local_failed {7, "local-failed"};
 const Enum::YLeaf G709ppfsmState::remote_failed {8, "remote-failed"};
 const Enum::YLeaf G709ppfsmState::main_t_failed {9, "main-t-failed"};
 const Enum::YLeaf G709ppfsmState::regen_failed {10, "regen-failed"};
+
+const Enum::YLeaf G709ppfsmMode::pp_disable {0, "pp-disable"};
+const Enum::YLeaf G709ppfsmMode::pp_default_mode {1, "pp-default-mode"};
+const Enum::YLeaf G709ppfsmMode::pp_graceful_mode {2, "pp-graceful-mode"};
+
+const Enum::YLeaf DwdmWaveChannelOwner::default_ {0, "default"};
+const Enum::YLeaf DwdmWaveChannelOwner::configuration {1, "configuration"};
+const Enum::YLeaf DwdmWaveChannelOwner::gmpls {2, "gmpls"};
+
+const Enum::YLeaf G709efecMode::g975_none {0, "g975-none"};
+const Enum::YLeaf G709efecMode::g975_1_i4 {1, "g975-1-i4"};
+const Enum::YLeaf G709efecMode::g975_1_i7 {2, "g975-1-i7"};
+
+const Enum::YLeaf DwdmtasState::tas_oos {0, "tas-oos"};
+const Enum::YLeaf DwdmtasState::tas_is {1, "tas-is"};
+const Enum::YLeaf DwdmtasState::tas_oos_mt {2, "tas-oos-mt"};
+const Enum::YLeaf DwdmtasState::tas_is_cfg {3, "tas-is-cfg"};
+
+const Enum::YLeaf DwdmControllerState::dwdm_ui_state_up {0, "dwdm-ui-state-up"};
+const Enum::YLeaf DwdmControllerState::dwdm_ui_state_down {1, "dwdm-ui-state-down"};
+const Enum::YLeaf DwdmControllerState::dwdm_ui_state_admin_down {2, "dwdm-ui-state-admin-down"};
+
+const Enum::YLeaf G709prbsMode::mode_source {0, "mode-source"};
+const Enum::YLeaf G709prbsMode::mode_sink {1, "mode-sink"};
+const Enum::YLeaf G709prbsMode::mode_source_sink {2, "mode-source-sink"};
+const Enum::YLeaf G709prbsMode::mode_invalid {3, "mode-invalid"};
+
+const Enum::YLeaf G709prbsPattern::pattern_none {0, "pattern-none"};
+const Enum::YLeaf G709prbsPattern::pattern_null {1, "pattern-null"};
+const Enum::YLeaf G709prbsPattern::pattern_pn11 {2, "pattern-pn11"};
+const Enum::YLeaf G709prbsPattern::pattern_pn23 {3, "pattern-pn23"};
+const Enum::YLeaf G709prbsPattern::pattern_pn31 {4, "pattern-pn31"};
 
 const Enum::YLeaf G709prbsInterval::current_interval {0, "current-interval"};
 const Enum::YLeaf G709prbsInterval::previous_interval {1, "previous-interval"};
@@ -11060,27 +11081,6 @@ const Enum::YLeaf G709prbsInterval::previous_interval29 {29, "previous-interval2
 const Enum::YLeaf G709prbsInterval::previous_interval30 {30, "previous-interval30"};
 const Enum::YLeaf G709prbsInterval::previous_interval31 {31, "previous-interval31"};
 const Enum::YLeaf G709prbsInterval::previous_interval32 {32, "previous-interval32"};
-
-const Enum::YLeaf DwdmWaveChannelOwner::default_ {0, "default"};
-const Enum::YLeaf DwdmWaveChannelOwner::configuration {1, "configuration"};
-const Enum::YLeaf DwdmWaveChannelOwner::gmpls {2, "gmpls"};
-
-const Enum::YLeaf G709efecMode::g975_none {0, "g975-none"};
-const Enum::YLeaf G709efecMode::g975_1_i4 {1, "g975-1-i4"};
-const Enum::YLeaf G709efecMode::g975_1_i7 {2, "g975-1-i7"};
-
-const Enum::YLeaf G709prbsPattern::pattern_none {0, "pattern-none"};
-const Enum::YLeaf G709prbsPattern::pattern_null {1, "pattern-null"};
-const Enum::YLeaf G709prbsPattern::pattern_pn11 {2, "pattern-pn11"};
-const Enum::YLeaf G709prbsPattern::pattern_pn23 {3, "pattern-pn23"};
-const Enum::YLeaf G709prbsPattern::pattern_pn31 {4, "pattern-pn31"};
-
-const Enum::YLeaf G709apsByte::pp_no_protect {0, "pp-no-protect"};
-const Enum::YLeaf G709apsByte::pp_no_request {15, "pp-no-request"};
-const Enum::YLeaf G709apsByte::pp_regen_degrade {63, "pp-regen-degrade"};
-const Enum::YLeaf G709apsByte::pp_sig_degrade {175, "pp-sig-degrade"};
-const Enum::YLeaf G709apsByte::pp_remote_main {239, "pp-remote-main"};
-const Enum::YLeaf G709apsByte::pp_aps_unknown {255, "pp-aps-unknown"};
 
 
 }

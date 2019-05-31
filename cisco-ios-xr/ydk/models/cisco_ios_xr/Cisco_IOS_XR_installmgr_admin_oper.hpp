@@ -3845,36 +3845,6 @@ class Install::Logs::Log::Communication::LogContents::V3::Scope : public ydk::En
 
 }; // Install::Logs::Log::Communication::LogContents::V3::Scope
 
-class InstmgrIssuAbortMethod : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf method_undefined;
-        static const ydk::Enum::YLeaf method_no_operation;
-        static const ydk::Enum::YLeaf method_standby_reload;
-        static const ydk::Enum::YLeaf method_system_reload;
-        static const ydk::Enum::YLeaf method_rollback;
-        static const ydk::Enum::YLeaf method_not_possible;
-        static const ydk::Enum::YLeaf method_admin_only;
-
-};
-
-class InstmgrBagRequestTrigger : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cli;
-        static const ydk::Enum::YLeaf xr_xml;
-
-};
-
-class InstmgrGroup : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf inst_pkg_group_undefined;
-        static const ydk::Enum::YLeaf inst_pkg_group_grouped;
-        static const ydk::Enum::YLeaf inst_pkg_group_individual;
-
-};
-
 class IsmCardTypeFamily : public ydk::Enum
 {
     public:
@@ -3895,17 +3865,41 @@ class IsmCardTypeFamily : public ydk::Enum
 
 };
 
-class InstmgrBagUserMsgCategory : public ydk::Enum
+class InstmgrIsmFsmState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf user_error;
-        static const ydk::Enum::YLeaf non_specific;
-        static const ydk::Enum::YLeaf warning;
-        static const ydk::Enum::YLeaf information;
-        static const ydk::Enum::YLeaf user_prompt;
-        static const ydk::Enum::YLeaf log;
-        static const ydk::Enum::YLeaf system_error;
-        static const ydk::Enum::YLeaf user_response;
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf init_done;
+        static const ydk::Enum::YLeaf load_shut;
+        static const ydk::Enum::YLeaf load_wait;
+        static const ydk::Enum::YLeaf load_stp_root_before;
+        static const ydk::Enum::YLeaf load_standby_root_sc_upgrade;
+        static const ydk::Enum::YLeaf load_standby_management_upgrade;
+        static const ydk::Enum::YLeaf load_stp_root_after;
+        static const ydk::Enum::YLeaf load_fabric_upgrade;
+        static const ydk::Enum::YLeaf load_management_issu_ready;
+        static const ydk::Enum::YLeaf load_done;
+        static const ydk::Enum::YLeaf run_prep;
+        static const ydk::Enum::YLeaf run_wait;
+        static const ydk::Enum::YLeaf runi_mdr_prep;
+        static const ydk::Enum::YLeaf runi_mdr_start;
+        static const ydk::Enum::YLeaf runi_mdr_complete;
+        static const ydk::Enum::YLeaf run_make_standby_ready;
+        static const ydk::Enum::YLeaf run_root_scfo;
+        static const ydk::Enum::YLeaf run_ndscfo;
+        static const ydk::Enum::YLeaf run_transient1;
+        static const ydk::Enum::YLeaf run_dscfo;
+        static const ydk::Enum::YLeaf run_fo_complete;
+        static const ydk::Enum::YLeaf run_stp_root_return;
+        static const ydk::Enum::YLeaf runi_mdr_continue;
+        static const ydk::Enum::YLeaf run_am_i_ready_afteri_mdr;
+        static const ydk::Enum::YLeaf run_nsf_ready;
+        static const ydk::Enum::YLeaf run_nsf_begin;
+        static const ydk::Enum::YLeaf runi_mdr_done;
+        static const ydk::Enum::YLeaf run_management_issu_ready;
+        static const ydk::Enum::YLeaf run_un_shut;
+        static const ydk::Enum::YLeaf run_is_done;
+        static const ydk::Enum::YLeaf state_max;
 
 };
 
@@ -3917,26 +3911,6 @@ class InstallmgrIsmNodeConforming : public ydk::Enum
         static const ydk::Enum::YLeaf upgrade_fail;
         static const ydk::Enum::YLeaf none_conforming_spa;
         static const ydk::Enum::YLeaf spa_upgrade_fail;
-
-};
-
-class InstmgrInstallPhase : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf inst_phase_unknown;
-        static const ydk::Enum::YLeaf inst_phase_download;
-        static const ydk::Enum::YLeaf inst_phase_sw_change;
-        static const ydk::Enum::YLeaf inst_phase_cleaning_up;
-
-};
-
-class InstmgrIssuAbortImpact : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf undefined;
-        static const ydk::Enum::YLeaf hitless;
-        static const ydk::Enum::YLeaf traffic_outage;
-        static const ydk::Enum::YLeaf not_applicable;
 
 };
 
@@ -3978,13 +3952,25 @@ class InstmgrIsmNodeState : public ydk::Enum
 
 };
 
-class InstmgrPkg : public ydk::Enum
+class InstmgrPiCard : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf inst_pkg_type_undefined;
-        static const ydk::Enum::YLeaf inst_pkg_type_root;
-        static const ydk::Enum::YLeaf inst_pkg_type_standard;
-        static const ydk::Enum::YLeaf inst_pkg_type_internal;
+        static const ydk::Enum::YLeaf type_rp;
+        static const ydk::Enum::YLeaf type_drp;
+        static const ydk::Enum::YLeaf type_lc;
+        static const ydk::Enum::YLeaf type_sc;
+        static const ydk::Enum::YLeaf type_sp;
+        static const ydk::Enum::YLeaf type_other;
+
+};
+
+class InstmgrNodeRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf redundency_unknown;
+        static const ydk::Enum::YLeaf redundency_active;
+        static const ydk::Enum::YLeaf redundency_standby;
+        static const ydk::Enum::YLeaf redundency_unusable;
 
 };
 
@@ -4032,13 +4018,99 @@ class InstmgrCardState : public ydk::Enum
 
 };
 
-class InstmgrNodeRole : public ydk::Enum
+class InstmgrGroup : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf redundency_unknown;
-        static const ydk::Enum::YLeaf redundency_active;
-        static const ydk::Enum::YLeaf redundency_standby;
-        static const ydk::Enum::YLeaf redundency_unusable;
+        static const ydk::Enum::YLeaf inst_pkg_group_undefined;
+        static const ydk::Enum::YLeaf inst_pkg_group_grouped;
+        static const ydk::Enum::YLeaf inst_pkg_group_individual;
+
+};
+
+class InstmgrPkg : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf inst_pkg_type_undefined;
+        static const ydk::Enum::YLeaf inst_pkg_type_root;
+        static const ydk::Enum::YLeaf inst_pkg_type_standard;
+        static const ydk::Enum::YLeaf inst_pkg_type_internal;
+
+};
+
+class InstmgrInstallPhase : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf inst_phase_unknown;
+        static const ydk::Enum::YLeaf inst_phase_download;
+        static const ydk::Enum::YLeaf inst_phase_sw_change;
+        static const ydk::Enum::YLeaf inst_phase_cleaning_up;
+
+};
+
+class InstmgrBagIiState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf in_progress;
+        static const ydk::Enum::YLeaf completed;
+        static const ydk::Enum::YLeaf aborted;
+        static const ydk::Enum::YLeaf rebooted;
+
+};
+
+class InstmgrBagIiDirection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_incremental;
+        static const ydk::Enum::YLeaf installing;
+        static const ydk::Enum::YLeaf unwinding;
+
+};
+
+class InstmgrBagUserMsgCategory : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf user_error;
+        static const ydk::Enum::YLeaf non_specific;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf information;
+        static const ydk::Enum::YLeaf user_prompt;
+        static const ydk::Enum::YLeaf log;
+        static const ydk::Enum::YLeaf system_error;
+        static const ydk::Enum::YLeaf user_response;
+
+};
+
+class InstmgrIssuAbortImpact : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf undefined;
+        static const ydk::Enum::YLeaf hitless;
+        static const ydk::Enum::YLeaf traffic_outage;
+        static const ydk::Enum::YLeaf not_applicable;
+
+};
+
+class InstmgrIssuAbortMethod : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf method_undefined;
+        static const ydk::Enum::YLeaf method_no_operation;
+        static const ydk::Enum::YLeaf method_standby_reload;
+        static const ydk::Enum::YLeaf method_system_reload;
+        static const ydk::Enum::YLeaf method_rollback;
+        static const ydk::Enum::YLeaf method_not_possible;
+        static const ydk::Enum::YLeaf method_admin_only;
+
+};
+
+class InstmgrBagAbortState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf abortable;
+        static const ydk::Enum::YLeaf no_longer_abortable;
+        static const ydk::Enum::YLeaf never_abortable;
+        static const ydk::Enum::YLeaf already_aborted;
 
 };
 
@@ -4064,73 +4136,11 @@ class InstmgrRequest : public ydk::Enum
 
 };
 
-class InstmgrIsmFsmState : public ydk::Enum
+class InstmgrBagRequestTrigger : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf idle;
-        static const ydk::Enum::YLeaf init_done;
-        static const ydk::Enum::YLeaf load_shut;
-        static const ydk::Enum::YLeaf load_wait;
-        static const ydk::Enum::YLeaf load_stp_root_before;
-        static const ydk::Enum::YLeaf load_standby_root_sc_upgrade;
-        static const ydk::Enum::YLeaf load_standby_management_upgrade;
-        static const ydk::Enum::YLeaf load_stp_root_after;
-        static const ydk::Enum::YLeaf load_fabric_upgrade;
-        static const ydk::Enum::YLeaf load_management_issu_ready;
-        static const ydk::Enum::YLeaf load_done;
-        static const ydk::Enum::YLeaf run_prep;
-        static const ydk::Enum::YLeaf run_wait;
-        static const ydk::Enum::YLeaf runi_mdr_prep;
-        static const ydk::Enum::YLeaf runi_mdr_start;
-        static const ydk::Enum::YLeaf runi_mdr_complete;
-        static const ydk::Enum::YLeaf run_make_standby_ready;
-        static const ydk::Enum::YLeaf run_root_scfo;
-        static const ydk::Enum::YLeaf run_ndscfo;
-        static const ydk::Enum::YLeaf run_transient1;
-        static const ydk::Enum::YLeaf run_dscfo;
-        static const ydk::Enum::YLeaf run_fo_complete;
-        static const ydk::Enum::YLeaf run_stp_root_return;
-        static const ydk::Enum::YLeaf runi_mdr_continue;
-        static const ydk::Enum::YLeaf run_am_i_ready_afteri_mdr;
-        static const ydk::Enum::YLeaf run_nsf_ready;
-        static const ydk::Enum::YLeaf run_nsf_begin;
-        static const ydk::Enum::YLeaf runi_mdr_done;
-        static const ydk::Enum::YLeaf run_management_issu_ready;
-        static const ydk::Enum::YLeaf run_un_shut;
-        static const ydk::Enum::YLeaf run_is_done;
-        static const ydk::Enum::YLeaf state_max;
-
-};
-
-class InstmgrBagIiDirection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_incremental;
-        static const ydk::Enum::YLeaf installing;
-        static const ydk::Enum::YLeaf unwinding;
-
-};
-
-class InstmgrPiCard : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf type_rp;
-        static const ydk::Enum::YLeaf type_drp;
-        static const ydk::Enum::YLeaf type_lc;
-        static const ydk::Enum::YLeaf type_sc;
-        static const ydk::Enum::YLeaf type_sp;
-        static const ydk::Enum::YLeaf type_other;
-
-};
-
-class InstmgrBagIiState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf idle;
-        static const ydk::Enum::YLeaf in_progress;
-        static const ydk::Enum::YLeaf completed;
-        static const ydk::Enum::YLeaf aborted;
-        static const ydk::Enum::YLeaf rebooted;
+        static const ydk::Enum::YLeaf cli;
+        static const ydk::Enum::YLeaf xr_xml;
 
 };
 
@@ -4145,16 +4155,6 @@ class InstmgrBagLogEntryUserMsgCategory : public ydk::Enum
         static const ydk::Enum::YLeaf log;
         static const ydk::Enum::YLeaf system_error;
         static const ydk::Enum::YLeaf user_response;
-
-};
-
-class InstmgrBagAbortState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf abortable;
-        static const ydk::Enum::YLeaf no_longer_abortable;
-        static const ydk::Enum::YLeaf never_abortable;
-        static const ydk::Enum::YLeaf already_aborted;
 
 };
 

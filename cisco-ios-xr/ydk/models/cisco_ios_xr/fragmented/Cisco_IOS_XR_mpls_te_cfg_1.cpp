@@ -1403,7 +1403,6 @@ bool MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::has_leaf_or_c
 MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::AutoBackupAttribute()
     :
     attribute_set_name{YType::str, "attribute-set-name"},
-    enable{YType::empty, "enable"},
     record_route{YType::empty, "record-route"}
         ,
     signalled_name(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::SignalledName>())
@@ -1431,7 +1430,6 @@ bool MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAtt
 {
     if (is_presence_container) return true;
     return attribute_set_name.is_set
-	|| enable.is_set
 	|| record_route.is_set
 	|| (signalled_name !=  nullptr && signalled_name->has_data())
 	|| (auto_backup_logging !=  nullptr && auto_backup_logging->has_data())
@@ -1446,7 +1444,6 @@ bool MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAtt
 {
     return is_set(yfilter)
 	|| ydk::is_set(attribute_set_name.yfilter)
-	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(record_route.yfilter)
 	|| (signalled_name !=  nullptr && signalled_name->has_operation())
 	|| (auto_backup_logging !=  nullptr && auto_backup_logging->has_operation())
@@ -1477,7 +1474,6 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (attribute_set_name.is_set || is_set(attribute_set_name.yfilter)) leaf_name_data.push_back(attribute_set_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (record_route.is_set || is_set(record_route.yfilter)) leaf_name_data.push_back(record_route.get_name_leafdata());
 
     return leaf_name_data;
@@ -1602,12 +1598,6 @@ void MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAtt
         attribute_set_name.value_namespace = name_space;
         attribute_set_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "record-route")
     {
         record_route = value;
@@ -1622,10 +1612,6 @@ void MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAtt
     {
         attribute_set_name.yfilter = yfilter;
     }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
     if(value_path == "record-route")
     {
         record_route.yfilter = yfilter;
@@ -1634,7 +1620,7 @@ void MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAtt
 
 bool MplsTe::GlobalAttributes::AttributeSet::AutoBackupAttributes::AutoBackupAttribute::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "signalled-name" || name == "auto-backup-logging" || name == "priority" || name == "affinity-mask" || name == "path-selection" || name == "policy-classes" || name == "new-style-affinity-affinity-types" || name == "attribute-set-name" || name == "enable" || name == "record-route")
+    if(name == "signalled-name" || name == "auto-backup-logging" || name == "priority" || name == "affinity-mask" || name == "path-selection" || name == "policy-classes" || name == "new-style-affinity-affinity-types" || name == "attribute-set-name" || name == "record-route")
         return true;
     return false;
 }
@@ -4400,8 +4386,7 @@ MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::OtnPpAt
     attribute_set_name{YType::str, "attribute-set-name"},
     aps_protection_mode{YType::enumeration, "aps-protection-mode"},
     aps_restoration_style{YType::enumeration, "aps-restoration-style"},
-    aps_protection_type{YType::enumeration, "aps-protection-type"},
-    enable{YType::empty, "enable"}
+    aps_protection_type{YType::enumeration, "aps-protection-type"}
         ,
     revert_schedule_names(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::RevertScheduleNames>())
     , sub_network_connection_mode(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::SubNetworkConnectionMode>())
@@ -4427,7 +4412,6 @@ bool MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::ha
 	|| aps_protection_mode.is_set
 	|| aps_restoration_style.is_set
 	|| aps_protection_type.is_set
-	|| enable.is_set
 	|| (revert_schedule_names !=  nullptr && revert_schedule_names->has_data())
 	|| (sub_network_connection_mode !=  nullptr && sub_network_connection_mode->has_data())
 	|| (timers !=  nullptr && timers->has_data())
@@ -4441,7 +4425,6 @@ bool MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::ha
 	|| ydk::is_set(aps_protection_mode.yfilter)
 	|| ydk::is_set(aps_restoration_style.yfilter)
 	|| ydk::is_set(aps_protection_type.yfilter)
-	|| ydk::is_set(enable.yfilter)
 	|| (revert_schedule_names !=  nullptr && revert_schedule_names->has_operation())
 	|| (sub_network_connection_mode !=  nullptr && sub_network_connection_mode->has_operation())
 	|| (timers !=  nullptr && timers->has_operation())
@@ -4471,7 +4454,6 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
     if (aps_protection_mode.is_set || is_set(aps_protection_mode.yfilter)) leaf_name_data.push_back(aps_protection_mode.get_name_leafdata());
     if (aps_restoration_style.is_set || is_set(aps_restoration_style.yfilter)) leaf_name_data.push_back(aps_restoration_style.get_name_leafdata());
     if (aps_protection_type.is_set || is_set(aps_protection_type.yfilter)) leaf_name_data.push_back(aps_protection_type.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -4571,12 +4553,6 @@ void MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::se
         aps_protection_type.value_namespace = name_space;
         aps_protection_type.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::set_filter(const std::string & value_path, YFilter yfilter)
@@ -4597,15 +4573,11 @@ void MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::se
     {
         aps_protection_type.yfilter = yfilter;
     }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::OtnPpAttributes::OtnPpAttribute::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "revert-schedule-names" || name == "sub-network-connection-mode" || name == "timers" || name == "path-selection" || name == "attribute-set-name" || name == "aps-protection-mode" || name == "aps-restoration-style" || name == "aps-protection-type" || name == "enable")
+    if(name == "revert-schedule-names" || name == "sub-network-connection-mode" || name == "timers" || name == "path-selection" || name == "attribute-set-name" || name == "aps-protection-mode" || name == "aps-restoration-style" || name == "aps-protection-type")
         return true;
     return false;
 }
@@ -5453,7 +5425,6 @@ MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::A
     autoroute_announce{YType::empty, "autoroute-announce"},
     interface_bandwidth{YType::uint32, "interface-bandwidth"},
     forward_class{YType::uint32, "forward-class"},
-    enable{YType::empty, "enable"},
     record_route{YType::empty, "record-route"},
     collection_only{YType::empty, "collection-only"},
     soft_preemption{YType::empty, "soft-preemption"},
@@ -5487,7 +5458,6 @@ bool MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribu
 	|| autoroute_announce.is_set
 	|| interface_bandwidth.is_set
 	|| forward_class.is_set
-	|| enable.is_set
 	|| record_route.is_set
 	|| collection_only.is_set
 	|| soft_preemption.is_set
@@ -5509,7 +5479,6 @@ bool MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribu
 	|| ydk::is_set(autoroute_announce.yfilter)
 	|| ydk::is_set(interface_bandwidth.yfilter)
 	|| ydk::is_set(forward_class.yfilter)
-	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(record_route.yfilter)
 	|| ydk::is_set(collection_only.yfilter)
 	|| ydk::is_set(soft_preemption.yfilter)
@@ -5547,7 +5516,6 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
     if (autoroute_announce.is_set || is_set(autoroute_announce.yfilter)) leaf_name_data.push_back(autoroute_announce.get_name_leafdata());
     if (interface_bandwidth.is_set || is_set(interface_bandwidth.yfilter)) leaf_name_data.push_back(interface_bandwidth.get_name_leafdata());
     if (forward_class.is_set || is_set(forward_class.yfilter)) leaf_name_data.push_back(forward_class.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (record_route.is_set || is_set(record_route.yfilter)) leaf_name_data.push_back(record_route.get_name_leafdata());
     if (collection_only.is_set || is_set(collection_only.yfilter)) leaf_name_data.push_back(collection_only.get_name_leafdata());
     if (soft_preemption.is_set || is_set(soft_preemption.yfilter)) leaf_name_data.push_back(soft_preemption.get_name_leafdata());
@@ -5707,12 +5675,6 @@ void MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribu
         forward_class.value_namespace = name_space;
         forward_class.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "record-route")
     {
         record_route = value;
@@ -5757,10 +5719,6 @@ void MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribu
     {
         forward_class.yfilter = yfilter;
     }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
     if(value_path == "record-route")
     {
         record_route.yfilter = yfilter;
@@ -5781,7 +5739,7 @@ void MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribu
 
 bool MplsTe::GlobalAttributes::AttributeSet::AutoMeshAttributes::AutoMeshAttribute::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "auto-mesh-logging" || name == "priority" || name == "affinity-mask" || name == "bandwidth" || name == "path-selection" || name == "policy-classes" || name == "new-style-affinity-affinity-types" || name == "fast-reroute" || name == "attribute-set-name" || name == "autoroute-announce" || name == "interface-bandwidth" || name == "forward-class" || name == "enable" || name == "record-route" || name == "collection-only" || name == "soft-preemption" || name == "load-share")
+    if(name == "auto-mesh-logging" || name == "priority" || name == "affinity-mask" || name == "bandwidth" || name == "path-selection" || name == "policy-classes" || name == "new-style-affinity-affinity-types" || name == "fast-reroute" || name == "attribute-set-name" || name == "autoroute-announce" || name == "interface-bandwidth" || name == "forward-class" || name == "record-route" || name == "collection-only" || name == "soft-preemption" || name == "load-share")
         return true;
     return false;
 }
@@ -8664,8 +8622,7 @@ bool MplsTe::GlobalAttributes::AttributeSet::XroAttributes::has_leaf_or_child_of
 
 MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::XroAttribute()
     :
-    attribute_set_name{YType::str, "attribute-set-name"},
-    enable{YType::empty, "enable"}
+    attribute_set_name{YType::str, "attribute-set-name"}
         ,
     path_diversity(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::PathDiversity>())
     , path_selection(std::make_shared<MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::PathSelection>())
@@ -8684,7 +8641,6 @@ bool MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::has_da
 {
     if (is_presence_container) return true;
     return attribute_set_name.is_set
-	|| enable.is_set
 	|| (path_diversity !=  nullptr && path_diversity->has_data())
 	|| (path_selection !=  nullptr && path_selection->has_data());
 }
@@ -8693,7 +8649,6 @@ bool MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::has_op
 {
     return is_set(yfilter)
 	|| ydk::is_set(attribute_set_name.yfilter)
-	|| ydk::is_set(enable.yfilter)
 	|| (path_diversity !=  nullptr && path_diversity->has_operation())
 	|| (path_selection !=  nullptr && path_selection->has_operation());
 }
@@ -8718,7 +8673,6 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::Attribu
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (attribute_set_name.is_set || is_set(attribute_set_name.yfilter)) leaf_name_data.push_back(attribute_set_name.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -8772,12 +8726,6 @@ void MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::set_va
         attribute_set_name.value_namespace = name_space;
         attribute_set_name.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::set_filter(const std::string & value_path, YFilter yfilter)
@@ -8786,15 +8734,11 @@ void MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::set_fi
     {
         attribute_set_name.yfilter = yfilter;
     }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
 }
 
 bool MplsTe::GlobalAttributes::AttributeSet::XroAttributes::XroAttribute::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "path-diversity" || name == "path-selection" || name == "attribute-set-name" || name == "enable")
+    if(name == "path-diversity" || name == "path-selection" || name == "attribute-set-name")
         return true;
     return false;
 }
@@ -10929,7 +10873,6 @@ bool MplsTe::GlobalAttributes::PceAttributes::Peers::has_leaf_or_child_of_name(c
 MplsTe::GlobalAttributes::PceAttributes::Peers::Peer::Peer()
     :
     pce_peer_address{YType::str, "pce-peer-address"},
-    enable{YType::empty, "enable"},
     password{YType::str, "password"},
     keychain{YType::str, "keychain"},
     precedence{YType::uint32, "precedence"}
@@ -10946,7 +10889,6 @@ bool MplsTe::GlobalAttributes::PceAttributes::Peers::Peer::has_data() const
 {
     if (is_presence_container) return true;
     return pce_peer_address.is_set
-	|| enable.is_set
 	|| password.is_set
 	|| keychain.is_set
 	|| precedence.is_set;
@@ -10956,7 +10898,6 @@ bool MplsTe::GlobalAttributes::PceAttributes::Peers::Peer::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(pce_peer_address.yfilter)
-	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(password.yfilter)
 	|| ydk::is_set(keychain.yfilter)
 	|| ydk::is_set(precedence.yfilter);
@@ -10982,7 +10923,6 @@ std::vector<std::pair<std::string, LeafData> > MplsTe::GlobalAttributes::PceAttr
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (pce_peer_address.is_set || is_set(pce_peer_address.yfilter)) leaf_name_data.push_back(pce_peer_address.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (password.is_set || is_set(password.yfilter)) leaf_name_data.push_back(password.get_name_leafdata());
     if (keychain.is_set || is_set(keychain.yfilter)) leaf_name_data.push_back(keychain.get_name_leafdata());
     if (precedence.is_set || is_set(precedence.yfilter)) leaf_name_data.push_back(precedence.get_name_leafdata());
@@ -11011,12 +10951,6 @@ void MplsTe::GlobalAttributes::PceAttributes::Peers::Peer::set_value(const std::
         pce_peer_address.value_namespace = name_space;
         pce_peer_address.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "password")
     {
         password = value;
@@ -11043,10 +10977,6 @@ void MplsTe::GlobalAttributes::PceAttributes::Peers::Peer::set_filter(const std:
     {
         pce_peer_address.yfilter = yfilter;
     }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
     if(value_path == "password")
     {
         password.yfilter = yfilter;
@@ -11063,7 +10993,7 @@ void MplsTe::GlobalAttributes::PceAttributes::Peers::Peer::set_filter(const std:
 
 bool MplsTe::GlobalAttributes::PceAttributes::Peers::Peer::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "pce-peer-address" || name == "enable" || name == "password" || name == "keychain" || name == "precedence")
+    if(name == "pce-peer-address" || name == "password" || name == "keychain" || name == "precedence")
         return true;
     return false;
 }

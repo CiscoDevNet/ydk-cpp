@@ -738,6 +738,27 @@ class Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInfoCommon : public y
 
 }; // Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInfoCommon
 
+class ClockUpdateNode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf clk_never_updated;
+        static const ydk::Enum::YLeaf clk_updated;
+        static const ydk::Enum::YLeaf clk_no_update_info;
+
+};
+
+class NtpLoopFilterState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ntp_loop_flt_n_set;
+        static const ydk::Enum::YLeaf ntp_loop_flt_f_set;
+        static const ydk::Enum::YLeaf ntp_loop_flt_spik;
+        static const ydk::Enum::YLeaf ntp_loop_flt_freq;
+        static const ydk::Enum::YLeaf ntp_loop_flt_sync;
+        static const ydk::Enum::YLeaf ntp_loop_flt_unkn;
+
+};
+
 class NtpPeerStatus : public ydk::Enum
 {
     public:
@@ -764,27 +785,6 @@ class NtpMode : public ydk::Enum
         static const ydk::Enum::YLeaf ntp_mode_control;
         static const ydk::Enum::YLeaf ntp_mode_private;
         static const ydk::Enum::YLeaf ntp_mode_xcast_client;
-
-};
-
-class ClockUpdateNode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf clk_never_updated;
-        static const ydk::Enum::YLeaf clk_updated;
-        static const ydk::Enum::YLeaf clk_no_update_info;
-
-};
-
-class NtpLoopFilterState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ntp_loop_flt_n_set;
-        static const ydk::Enum::YLeaf ntp_loop_flt_f_set;
-        static const ydk::Enum::YLeaf ntp_loop_flt_spik;
-        static const ydk::Enum::YLeaf ntp_loop_flt_freq;
-        static const ydk::Enum::YLeaf ntp_loop_flt_sync;
-        static const ydk::Enum::YLeaf ntp_loop_flt_unkn;
 
 };
 

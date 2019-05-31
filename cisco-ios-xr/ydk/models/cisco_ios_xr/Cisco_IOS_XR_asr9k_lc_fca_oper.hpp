@@ -343,17 +343,6 @@ class Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail : public ydk::Entity
 
 }; // Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail
 
-class SpaResetReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf spa_reset_reason_unknown;
-        static const ydk::Enum::YLeaf spa_reset_reason_manual;
-        static const ydk::Enum::YLeaf spa_reset_reason_fpd_upgrade;
-        static const ydk::Enum::YLeaf spa_reset_reason_audit_fail;
-        static const ydk::Enum::YLeaf spa_reset_reason_failure;
-
-};
-
 class SpaFailureReason : public ydk::Enum
 {
     public:
@@ -365,6 +354,17 @@ class SpaFailureReason : public ydk::Enum
         static const ydk::Enum::YLeaf spa_failure_reason_sw_restart;
         static const ydk::Enum::YLeaf spa_failure_reason_check_fpd;
         static const ydk::Enum::YLeaf spa_failure_reason_read_type;
+
+};
+
+class SpaResetReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf spa_reset_reason_unknown;
+        static const ydk::Enum::YLeaf spa_reset_reason_manual;
+        static const ydk::Enum::YLeaf spa_reset_reason_fpd_upgrade;
+        static const ydk::Enum::YLeaf spa_reset_reason_audit_fail;
+        static const ydk::Enum::YLeaf spa_reset_reason_failure;
 
 };
 

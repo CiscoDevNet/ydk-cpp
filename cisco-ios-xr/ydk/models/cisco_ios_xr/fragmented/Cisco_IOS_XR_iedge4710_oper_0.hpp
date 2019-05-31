@@ -4091,92 +4091,6 @@ class SubscriberAuthorStateFilterFlag : public ydk::Enum
 
 };
 
-class IedgeOperSessionState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf initialize;
-        static const ydk::Enum::YLeaf connecting;
-        static const ydk::Enum::YLeaf connected;
-        static const ydk::Enum::YLeaf activated;
-        static const ydk::Enum::YLeaf idle;
-        static const ydk::Enum::YLeaf disconnecting;
-        static const ydk::Enum::YLeaf end;
-
-};
-
-class SubscriberStateFilterFlag : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf initializing;
-        static const ydk::Enum::YLeaf connecting;
-        static const ydk::Enum::YLeaf connected;
-        static const ydk::Enum::YLeaf activated;
-        static const ydk::Enum::YLeaf idle;
-        static const ydk::Enum::YLeaf disconnecting;
-        static const ydk::Enum::YLeaf end;
-
-};
-
-class IedgePppSub : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf pta;
-        static const ydk::Enum::YLeaf lac;
-
-};
-
-class IedgeOperServiceStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf error;
-        static const ydk::Enum::YLeaf new_;
-        static const ydk::Enum::YLeaf loading;
-        static const ydk::Enum::YLeaf req_association;
-        static const ydk::Enum::YLeaf associated;
-        static const ydk::Enum::YLeaf req_pd_association;
-        static const ydk::Enum::YLeaf applied;
-        static const ydk::Enum::YLeaf req_unassociation;
-        static const ydk::Enum::YLeaf req_pd_unassociation;
-        static const ydk::Enum::YLeaf unapplied;
-        static const ydk::Enum::YLeaf max;
-
-};
-
-class SubscriberAuthenStateFilterFlag : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf un_authenticated;
-        static const ydk::Enum::YLeaf authenticated;
-
-};
-
-class IedgeOperService : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf profile;
-        static const ydk::Enum::YLeaf template_;
-        static const ydk::Enum::YLeaf grp_template;
-        static const ydk::Enum::YLeaf ppp_template;
-        static const ydk::Enum::YLeaf eth_template;
-        static const ydk::Enum::YLeaf ip_sub_template;
-        static const ydk::Enum::YLeaf multi_template;
-        static const ydk::Enum::YLeaf max_templae;
-
-};
-
-class IedgeOperSession : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf pppoe;
-        static const ydk::Enum::YLeaf ppp;
-        static const ydk::Enum::YLeaf ip_packet_trigger;
-        static const ydk::Enum::YLeaf ip_packet_dhcp_trigger;
-
-};
-
 class SubscriberSrgOperFilterFlag : public ydk::Enum
 {
     public:
@@ -4198,6 +4112,92 @@ class SubscriberAddressFamilyFilterFlag : public ydk::Enum
         static const ydk::Enum::YLeaf dual_part_up;
         static const ydk::Enum::YLeaf dual_up;
         static const ydk::Enum::YLeaf lac;
+
+};
+
+class SubscriberStateFilterFlag : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf initializing;
+        static const ydk::Enum::YLeaf connecting;
+        static const ydk::Enum::YLeaf connected;
+        static const ydk::Enum::YLeaf activated;
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf disconnecting;
+        static const ydk::Enum::YLeaf end;
+
+};
+
+class SubscriberAuthenStateFilterFlag : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf un_authenticated;
+        static const ydk::Enum::YLeaf authenticated;
+
+};
+
+class IedgeOperServiceStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf error;
+        static const ydk::Enum::YLeaf new_;
+        static const ydk::Enum::YLeaf loading;
+        static const ydk::Enum::YLeaf req_association;
+        static const ydk::Enum::YLeaf associated;
+        static const ydk::Enum::YLeaf req_pd_association;
+        static const ydk::Enum::YLeaf applied;
+        static const ydk::Enum::YLeaf req_unassociation;
+        static const ydk::Enum::YLeaf req_pd_unassociation;
+        static const ydk::Enum::YLeaf unapplied;
+        static const ydk::Enum::YLeaf max;
+
+};
+
+class IedgeOperService : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf profile;
+        static const ydk::Enum::YLeaf template_;
+        static const ydk::Enum::YLeaf grp_template;
+        static const ydk::Enum::YLeaf ppp_template;
+        static const ydk::Enum::YLeaf eth_template;
+        static const ydk::Enum::YLeaf ip_sub_template;
+        static const ydk::Enum::YLeaf multi_template;
+        static const ydk::Enum::YLeaf max_templae;
+
+};
+
+class IedgeOperSessionState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf initialize;
+        static const ydk::Enum::YLeaf connecting;
+        static const ydk::Enum::YLeaf connected;
+        static const ydk::Enum::YLeaf activated;
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf disconnecting;
+        static const ydk::Enum::YLeaf end;
+
+};
+
+class IedgePppSub : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf pta;
+        static const ydk::Enum::YLeaf lac;
+
+};
+
+class IedgeOperSession : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf pppoe;
+        static const ydk::Enum::YLeaf ppp;
+        static const ydk::Enum::YLeaf ip_packet_trigger;
+        static const ydk::Enum::YLeaf ip_packet_dhcp_trigger;
 
 };
 

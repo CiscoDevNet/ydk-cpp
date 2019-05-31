@@ -10,13 +10,6 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_Ethernet_SPAN_datatypes {
 
-class SpanSessionClassOld : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf true_;
-
-};
-
 class SpanSessionClass : public ydk::Enum
 {
     public:
@@ -25,6 +18,13 @@ class SpanSessionClass : public ydk::Enum
         static const ydk::Enum::YLeaf ipv6;
         static const ydk::Enum::YLeaf mpls_ipv4;
         static const ydk::Enum::YLeaf mpls_ipv6;
+
+};
+
+class SpanSessionClassOld : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf true_;
 
 };
 

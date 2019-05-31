@@ -10,14 +10,6 @@
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_isis {
 
-class AuthenticationLevelType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf level_1;
-        static const ydk::Enum::YLeaf level_2;
-
-};
-
 class IsisLevelType : public ydk::Enum
 {
     public:
@@ -32,6 +24,14 @@ class IsisRoutesLevelType : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_1_2;
+        static const ydk::Enum::YLeaf level_2;
+
+};
+
+class AuthenticationLevelType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf level_1;
         static const ydk::Enum::YLeaf level_2;
 
 };

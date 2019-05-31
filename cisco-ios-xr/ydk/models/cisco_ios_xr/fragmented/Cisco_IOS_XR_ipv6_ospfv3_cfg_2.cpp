@@ -3015,13 +3015,10 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::DistributeList::In::has_leaf_or_chil
 
 Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::StubRouter()
     :
-    rbit(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit>())
-    , v6bit(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit>())
-    , max_metric(std::make_shared<Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric>())
+    rbit(nullptr) // presence node
+    , v6bit(nullptr) // presence node
+    , max_metric(nullptr) // presence node
 {
-    rbit->parent = this;
-    v6bit->parent = this;
-    max_metric->parent = this;
 
     yang_name = "stub-router"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -3136,7 +3133,6 @@ Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::Rbit()
     on_switchover{YType::uint32, "on-switchover"},
     always{YType::empty, "always"},
     include_stub{YType::empty, "include-stub"},
-    enable{YType::empty, "enable"},
     on_proc_migration{YType::uint32, "on-proc-migration"},
     on_proc_restart{YType::uint32, "on-proc-restart"}
         ,
@@ -3144,7 +3140,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::Rbit()
 {
     on_startup->parent = this;
 
-    yang_name = "rbit"; yang_parent_name = "stub-router"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "rbit"; yang_parent_name = "stub-router"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::~Rbit()
@@ -3157,7 +3153,6 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::has_data() const
     return on_switchover.is_set
 	|| always.is_set
 	|| include_stub.is_set
-	|| enable.is_set
 	|| on_proc_migration.is_set
 	|| on_proc_restart.is_set
 	|| (on_startup !=  nullptr && on_startup->has_data());
@@ -3169,7 +3164,6 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::has_operation() co
 	|| ydk::is_set(on_switchover.yfilter)
 	|| ydk::is_set(always.yfilter)
 	|| ydk::is_set(include_stub.yfilter)
-	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(on_proc_migration.yfilter)
 	|| ydk::is_set(on_proc_restart.yfilter)
 	|| (on_startup !=  nullptr && on_startup->has_operation());
@@ -3189,7 +3183,6 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
     if (on_switchover.is_set || is_set(on_switchover.yfilter)) leaf_name_data.push_back(on_switchover.get_name_leafdata());
     if (always.is_set || is_set(always.yfilter)) leaf_name_data.push_back(always.get_name_leafdata());
     if (include_stub.is_set || is_set(include_stub.yfilter)) leaf_name_data.push_back(include_stub.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (on_proc_migration.is_set || is_set(on_proc_migration.yfilter)) leaf_name_data.push_back(on_proc_migration.get_name_leafdata());
     if (on_proc_restart.is_set || is_set(on_proc_restart.yfilter)) leaf_name_data.push_back(on_proc_restart.get_name_leafdata());
 
@@ -3243,12 +3236,6 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::set_value(const st
         include_stub.value_namespace = name_space;
         include_stub.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "on-proc-migration")
     {
         on_proc_migration = value;
@@ -3277,10 +3264,6 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::set_filter(const s
     {
         include_stub.yfilter = yfilter;
     }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
     if(value_path == "on-proc-migration")
     {
         on_proc_migration.yfilter = yfilter;
@@ -3293,7 +3276,7 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::set_filter(const s
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::Rbit::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "on-startup" || name == "on-switchover" || name == "always" || name == "include-stub" || name == "enable" || name == "on-proc-migration" || name == "on-proc-restart")
+    if(name == "on-startup" || name == "on-switchover" || name == "always" || name == "include-stub" || name == "on-proc-migration" || name == "on-proc-restart")
         return true;
     return false;
 }
@@ -3394,7 +3377,6 @@ Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit::V6bit()
     :
     on_switchover{YType::uint32, "on-switchover"},
     always{YType::empty, "always"},
-    enable{YType::empty, "enable"},
     on_proc_migration{YType::uint32, "on-proc-migration"},
     on_proc_restart{YType::uint32, "on-proc-restart"}
         ,
@@ -3402,7 +3384,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit::V6bit()
 {
     on_startup->parent = this;
 
-    yang_name = "v6bit"; yang_parent_name = "stub-router"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "v6bit"; yang_parent_name = "stub-router"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit::~V6bit()
@@ -3414,7 +3396,6 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit::has_data() const
     if (is_presence_container) return true;
     return on_switchover.is_set
 	|| always.is_set
-	|| enable.is_set
 	|| on_proc_migration.is_set
 	|| on_proc_restart.is_set
 	|| (on_startup !=  nullptr && on_startup->has_data());
@@ -3425,7 +3406,6 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit::has_operation() c
     return is_set(yfilter)
 	|| ydk::is_set(on_switchover.yfilter)
 	|| ydk::is_set(always.yfilter)
-	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(on_proc_migration.yfilter)
 	|| ydk::is_set(on_proc_restart.yfilter)
 	|| (on_startup !=  nullptr && on_startup->has_operation());
@@ -3444,7 +3424,6 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
 
     if (on_switchover.is_set || is_set(on_switchover.yfilter)) leaf_name_data.push_back(on_switchover.get_name_leafdata());
     if (always.is_set || is_set(always.yfilter)) leaf_name_data.push_back(always.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (on_proc_migration.is_set || is_set(on_proc_migration.yfilter)) leaf_name_data.push_back(on_proc_migration.get_name_leafdata());
     if (on_proc_restart.is_set || is_set(on_proc_restart.yfilter)) leaf_name_data.push_back(on_proc_restart.get_name_leafdata());
 
@@ -3492,12 +3471,6 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit::set_value(const s
         always.value_namespace = name_space;
         always.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "on-proc-migration")
     {
         on_proc_migration = value;
@@ -3522,10 +3495,6 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit::set_filter(const 
     {
         always.yfilter = yfilter;
     }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
     if(value_path == "on-proc-migration")
     {
         on_proc_migration.yfilter = yfilter;
@@ -3538,7 +3507,7 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit::set_filter(const 
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::V6bit::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "on-startup" || name == "on-switchover" || name == "always" || name == "enable" || name == "on-proc-migration" || name == "on-proc-restart")
+    if(name == "on-startup" || name == "on-switchover" || name == "always" || name == "on-proc-migration" || name == "on-proc-restart")
         return true;
     return false;
 }
@@ -3642,7 +3611,6 @@ Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::MaxMetric()
     on_switchover{YType::uint32, "on-switchover"},
     always{YType::empty, "always"},
     include_stub{YType::empty, "include-stub"},
-    enable{YType::empty, "enable"},
     on_proc_migration{YType::uint32, "on-proc-migration"},
     on_proc_restart{YType::uint32, "on-proc-restart"}
         ,
@@ -3650,7 +3618,7 @@ Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::MaxMetric()
 {
     on_startup->parent = this;
 
-    yang_name = "max-metric"; yang_parent_name = "stub-router"; is_top_level_class = false; has_list_ancestor = true; 
+    yang_name = "max-metric"; yang_parent_name = "stub-router"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
 }
 
 Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::~MaxMetric()
@@ -3665,7 +3633,6 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::has_data() co
 	|| on_switchover.is_set
 	|| always.is_set
 	|| include_stub.is_set
-	|| enable.is_set
 	|| on_proc_migration.is_set
 	|| on_proc_restart.is_set
 	|| (on_startup !=  nullptr && on_startup->has_data());
@@ -3679,7 +3646,6 @@ bool Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::has_operation
 	|| ydk::is_set(on_switchover.yfilter)
 	|| ydk::is_set(always.yfilter)
 	|| ydk::is_set(include_stub.yfilter)
-	|| ydk::is_set(enable.yfilter)
 	|| ydk::is_set(on_proc_migration.yfilter)
 	|| ydk::is_set(on_proc_restart.yfilter)
 	|| (on_startup !=  nullptr && on_startup->has_operation());
@@ -3701,7 +3667,6 @@ std::vector<std::pair<std::string, LeafData> > Ospfv3::Processes::Process::Vrfs:
     if (on_switchover.is_set || is_set(on_switchover.yfilter)) leaf_name_data.push_back(on_switchover.get_name_leafdata());
     if (always.is_set || is_set(always.yfilter)) leaf_name_data.push_back(always.get_name_leafdata());
     if (include_stub.is_set || is_set(include_stub.yfilter)) leaf_name_data.push_back(include_stub.get_name_leafdata());
-    if (enable.is_set || is_set(enable.yfilter)) leaf_name_data.push_back(enable.get_name_leafdata());
     if (on_proc_migration.is_set || is_set(on_proc_migration.yfilter)) leaf_name_data.push_back(on_proc_migration.get_name_leafdata());
     if (on_proc_restart.is_set || is_set(on_proc_restart.yfilter)) leaf_name_data.push_back(on_proc_restart.get_name_leafdata());
 
@@ -3767,12 +3732,6 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::set_value(con
         include_stub.value_namespace = name_space;
         include_stub.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "enable")
-    {
-        enable = value;
-        enable.value_namespace = name_space;
-        enable.value_namespace_prefix = name_space_prefix;
-    }
     if(value_path == "on-proc-migration")
     {
         on_proc_migration = value;
@@ -3809,10 +3768,6 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::set_filter(co
     {
         include_stub.yfilter = yfilter;
     }
-    if(value_path == "enable")
-    {
-        enable.yfilter = yfilter;
-    }
     if(value_path == "on-proc-migration")
     {
         on_proc_migration.yfilter = yfilter;
@@ -3825,7 +3780,7 @@ void Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::set_filter(co
 
 bool Ospfv3::Processes::Process::Vrfs::Vrf::StubRouter::MaxMetric::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "on-startup" || name == "external-lsa" || name == "summary-lsa" || name == "on-switchover" || name == "always" || name == "include-stub" || name == "enable" || name == "on-proc-migration" || name == "on-proc-restart")
+    if(name == "on-startup" || name == "external-lsa" || name == "summary-lsa" || name == "on-switchover" || name == "always" || name == "include-stub" || name == "on-proc-migration" || name == "on-proc-restart")
         return true;
     return false;
 }

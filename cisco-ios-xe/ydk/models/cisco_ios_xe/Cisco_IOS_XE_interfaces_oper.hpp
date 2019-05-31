@@ -1642,24 +1642,6 @@ class QosMatchType : public ydk::Enum
 
 };
 
-class EtherDuplex : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf full_duplex;
-        static const ydk::Enum::YLeaf half_duplex;
-        static const ydk::Enum::YLeaf auto_duplex;
-        static const ydk::Enum::YLeaf unknown_duplex;
-
-};
-
-class SerialCrc : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf serial_crc32;
-        static const ydk::Enum::YLeaf serial_crc16;
-
-};
-
 class ThreshUnit : public ydk::Enum
 {
     public:
@@ -1672,25 +1654,21 @@ class ThreshUnit : public ydk::Enum
 
 };
 
-class T1e1LoopbackMode : public ydk::Enum
+class QosDirection : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf t1e1_no_loopback;
-        static const ydk::Enum::YLeaf t1e1_cli_local_loopback;
-        static const ydk::Enum::YLeaf t1e1_line_cli_local_loopback;
-        static const ydk::Enum::YLeaf t1e1_payload_cli_local_loopback;
-        static const ydk::Enum::YLeaf t1e1_local_line_loopback;
-        static const ydk::Enum::YLeaf t1e1_local_payload_loopback;
-        static const ydk::Enum::YLeaf t1e1_local_ansi_fdl_remote_loopback;
-        static const ydk::Enum::YLeaf t1e1_line_att_fdl_remote_loopback;
-        static const ydk::Enum::YLeaf t1e1_payload_ansi_fdl_remote_loopback;
-        static const ydk::Enum::YLeaf t1e1_payload_att_fdl_remote_loopback;
-        static const ydk::Enum::YLeaf t1e1_line_iboc_remote_loopback;
-        static const ydk::Enum::YLeaf t1e1_line_ansi_fdl_local_loopback;
-        static const ydk::Enum::YLeaf t1e1_line_att_fdl_local_loopback;
-        static const ydk::Enum::YLeaf t1e1_payload_ansi_fdl_local_loopback;
-        static const ydk::Enum::YLeaf t1e1_payload_att_fdl_local_loopback;
-        static const ydk::Enum::YLeaf t1e1_line_iboc_local_loopback;
+        static const ydk::Enum::YLeaf qos_inbound;
+        static const ydk::Enum::YLeaf qos_outbound;
+
+};
+
+class AggregationType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf lag_off;
+        static const ydk::Enum::YLeaf lag_auto;
+        static const ydk::Enum::YLeaf lag_active;
+        static const ydk::Enum::YLeaf lag_passive;
 
 };
 
@@ -1701,6 +1679,32 @@ class IntfState : public ydk::Enum
         static const ydk::Enum::YLeaf if_state_up;
         static const ydk::Enum::YLeaf if_state_down;
         static const ydk::Enum::YLeaf if_state_test;
+
+};
+
+class EtherDuplex : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf full_duplex;
+        static const ydk::Enum::YLeaf half_duplex;
+        static const ydk::Enum::YLeaf auto_duplex;
+        static const ydk::Enum::YLeaf unknown_duplex;
+
+};
+
+class EtherSpeed : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf speed_10mb;
+        static const ydk::Enum::YLeaf speed_100mb;
+        static const ydk::Enum::YLeaf speed_1gb;
+        static const ydk::Enum::YLeaf speed_10gb;
+        static const ydk::Enum::YLeaf speed_25gb;
+        static const ydk::Enum::YLeaf speed_40gb;
+        static const ydk::Enum::YLeaf speed_50gb;
+        static const ydk::Enum::YLeaf speed_100gb;
+        static const ydk::Enum::YLeaf speed_unknown;
+        static const ydk::Enum::YLeaf speed_auto;
 
 };
 
@@ -1715,24 +1719,6 @@ class OperState : public ydk::Enum
         static const ydk::Enum::YLeaf if_oper_state_dormant;
         static const ydk::Enum::YLeaf if_oper_state_not_present;
         static const ydk::Enum::YLeaf if_oper_state_lower_layer_down;
-
-};
-
-class AggregationType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf lag_off;
-        static const ydk::Enum::YLeaf lag_auto;
-        static const ydk::Enum::YLeaf lag_active;
-        static const ydk::Enum::YLeaf lag_passive;
-
-};
-
-class SubrateSpeed : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf dsx1_subrate_56kbps;
-        static const ydk::Enum::YLeaf dsx1_subrate_64kbps;
 
 };
 
@@ -2020,27 +2006,41 @@ class IetfIntfType : public ydk::Enum
 
 };
 
-class QosDirection : public ydk::Enum
+class SerialCrc : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf qos_inbound;
-        static const ydk::Enum::YLeaf qos_outbound;
+        static const ydk::Enum::YLeaf serial_crc32;
+        static const ydk::Enum::YLeaf serial_crc16;
 
 };
 
-class EtherSpeed : public ydk::Enum
+class SubrateSpeed : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf speed_10mb;
-        static const ydk::Enum::YLeaf speed_100mb;
-        static const ydk::Enum::YLeaf speed_1gb;
-        static const ydk::Enum::YLeaf speed_10gb;
-        static const ydk::Enum::YLeaf speed_25gb;
-        static const ydk::Enum::YLeaf speed_40gb;
-        static const ydk::Enum::YLeaf speed_50gb;
-        static const ydk::Enum::YLeaf speed_100gb;
-        static const ydk::Enum::YLeaf speed_unknown;
-        static const ydk::Enum::YLeaf speed_auto;
+        static const ydk::Enum::YLeaf dsx1_subrate_56kbps;
+        static const ydk::Enum::YLeaf dsx1_subrate_64kbps;
+
+};
+
+class T1e1LoopbackMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf t1e1_no_loopback;
+        static const ydk::Enum::YLeaf t1e1_cli_local_loopback;
+        static const ydk::Enum::YLeaf t1e1_line_cli_local_loopback;
+        static const ydk::Enum::YLeaf t1e1_payload_cli_local_loopback;
+        static const ydk::Enum::YLeaf t1e1_local_line_loopback;
+        static const ydk::Enum::YLeaf t1e1_local_payload_loopback;
+        static const ydk::Enum::YLeaf t1e1_local_ansi_fdl_remote_loopback;
+        static const ydk::Enum::YLeaf t1e1_line_att_fdl_remote_loopback;
+        static const ydk::Enum::YLeaf t1e1_payload_ansi_fdl_remote_loopback;
+        static const ydk::Enum::YLeaf t1e1_payload_att_fdl_remote_loopback;
+        static const ydk::Enum::YLeaf t1e1_line_iboc_remote_loopback;
+        static const ydk::Enum::YLeaf t1e1_line_ansi_fdl_local_loopback;
+        static const ydk::Enum::YLeaf t1e1_line_att_fdl_local_loopback;
+        static const ydk::Enum::YLeaf t1e1_payload_ansi_fdl_local_loopback;
+        static const ydk::Enum::YLeaf t1e1_payload_att_fdl_local_loopback;
+        static const ydk::Enum::YLeaf t1e1_line_iboc_local_loopback;
 
 };
 

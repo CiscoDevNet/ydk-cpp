@@ -143,8 +143,8 @@ class Native::Interface::FastEthernet::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -313,8 +313,8 @@ class Native::Interface::FastEthernet::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 
@@ -704,7 +704,7 @@ class Native::Interface::FastEthernet::Isis : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf lsp_interval; //type: uint32
-        ydk::YLeaf mesh_group; //type: one of uint32, enumeration
+        ydk::YLeaf mesh_group; //type: one of enumeration, uint32
         ydk::YLeaf network; //type: Network
         ydk::YLeaf protocol; //type: Protocol
         ydk::YLeaf retransmit_interval; //type: uint16
@@ -1079,7 +1079,7 @@ class Native::Interface::FastEthernet::Isis::HelloInterval : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of uint16, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint16
         class HelloIntervalList; //type: Native::Interface::FastEthernet::Isis::HelloInterval::HelloIntervalList
 
         ydk::YList hello_interval_list;
@@ -1105,7 +1105,7 @@ class Native::Interface::FastEthernet::Isis::HelloInterval::HelloIntervalList : 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of uint16, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint16
         class Levels;
         class Value_;
 
@@ -1201,7 +1201,7 @@ class Native::Interface::FastEthernet::Isis::Ipv6::Metric : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of uint32, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint32
         class MetricList; //type: Native::Interface::FastEthernet::Isis::Ipv6::Metric::MetricList
 
         ydk::YList metric_list;
@@ -1227,7 +1227,7 @@ class Native::Interface::FastEthernet::Isis::Ipv6::Metric::MetricList : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of uint32, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint32
         class Levels;
         class Value_;
 
@@ -1271,7 +1271,7 @@ class Native::Interface::FastEthernet::Isis::Metric : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of uint32, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint32
         class MetricList; //type: Native::Interface::FastEthernet::Isis::Metric::MetricList
 
         ydk::YList metric_list;
@@ -1297,7 +1297,7 @@ class Native::Interface::FastEthernet::Isis::Metric::MetricList : public ydk::En
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of uint32, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint32
         class Levels;
         class Value_;
 
@@ -1864,7 +1864,7 @@ class Native::Interface::FastEthernet::Mpls::Ldp::Discovery : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf transport_address; //type: one of string, enumeration
+        ydk::YLeaf transport_address; //type: one of enumeration, string
 
 }; // Native::Interface::FastEthernet::Mpls::Ldp::Discovery
 
@@ -2189,9 +2189,9 @@ class Native::Interface::FastEthernet::Ip : public ydk::Entity
         class Dhcp; //type: Native::Interface::FastEthernet::Ip::Dhcp
         class SummaryAddress; //type: Native::Interface::FastEthernet::Ip::SummaryAddress
         class Verify; //type: Native::Interface::FastEthernet::Ip::Verify
+        class Ospf; //type: Native::Interface::FastEthernet::Ip::Ospf
         class Flow; //type: Native::Interface::FastEthernet::Ip::Flow
         class Igmp; //type: Native::Interface::FastEthernet::Ip::Igmp
-        class Ospf; //type: Native::Interface::FastEthernet::Ip::Ospf
         class Lisp; //type: Native::Interface::FastEthernet::Ip::Lisp
         class Nat; //type: Native::Interface::FastEthernet::Ip::Nat
         class Nbar; //type: Native::Interface::FastEthernet::Ip::Nbar
@@ -2218,9 +2218,9 @@ class Native::Interface::FastEthernet::Ip : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Dhcp> dhcp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::SummaryAddress> summary_address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Verify> verify;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Ospf> ospf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Flow> flow;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Igmp> igmp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Ospf> ospf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Lisp> lisp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Nat> nat;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::FastEthernet::Ip::Nbar> nbar;

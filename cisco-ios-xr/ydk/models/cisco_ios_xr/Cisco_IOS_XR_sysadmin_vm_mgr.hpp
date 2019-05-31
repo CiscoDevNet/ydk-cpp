@@ -83,11 +83,8 @@ class VM::AllLocations::AllUiids : public ydk::Entity
         ydk::YLeaf id; //type: string
         ydk::YLeaf status; //type: string
         ydk::YLeaf ipaddr; //type: string
-        ydk::YLeaf hb_interval_s; //type: string
-        ydk::YLeaf hb_interval_ns; //type: string
         ydk::YLeaf last_hb_sent; //type: string
         ydk::YLeaf last_hb_rec; //type: string
-        ydk::YLeaf role; //type: string
 
 }; // VM::AllLocations::AllUiids
 

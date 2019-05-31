@@ -12074,11 +12074,14 @@ bool Diag::Racks::Rack::Summary::Summary_::has_leaf_or_child_of_name(const std::
     return false;
 }
 
-const Enum::YLeaf DiagProcessor::mpc8614d {0, "mpc8614d"};
-
 const Enum::YLeaf DiagSlot::fan_tray {0, "fan-tray"};
 const Enum::YLeaf DiagSlot::power_module {1, "power-module"};
 const Enum::YLeaf DiagSlot::module {2, "module"};
+
+const Enum::YLeaf DiagNode::node {0, "node"};
+const Enum::YLeaf DiagNode::spa {1, "spa"};
+
+const Enum::YLeaf DiagProcessor::mpc8614d {0, "mpc8614d"};
 
 const Enum::YLeaf NodeState::not_present {0, "not-present"};
 const Enum::YLeaf NodeState::present {1, "present"};
@@ -12131,9 +12134,6 @@ const Enum::YLeaf NodeState::up {47, "up"};
 const Enum::YLeaf NodeState::down {48, "down"};
 const Enum::YLeaf NodeState::max {49, "max"};
 const Enum::YLeaf NodeState::unknown {50, "unknown"};
-
-const Enum::YLeaf DiagNode::node {0, "node"};
-const Enum::YLeaf DiagNode::spa {1, "spa"};
 
 
 }

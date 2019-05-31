@@ -2713,7 +2713,7 @@ class Native::Router::Bgp::Scope::Vrf::AddressFamily::NoVrf::Ipv4::Ipv4Unicast::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf as_no; //type: one of uint32, string
+        ydk::YLeaf as_no; //type: one of string, uint32
         ydk::YLeaf metric; //type: uint32
         ydk::YLeaf route_map; //type: string
 

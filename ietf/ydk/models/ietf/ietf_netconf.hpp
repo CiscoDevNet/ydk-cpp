@@ -872,14 +872,6 @@ class Validate::Input::Source : public ydk::Entity
 
 }; // Validate::Input::Source
 
-class ErrorSeverityType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf error;
-        static const ydk::Enum::YLeaf warning;
-
-};
-
 class ErrorTagType : public ydk::Enum
 {
     public:
@@ -903,6 +895,14 @@ class ErrorTagType : public ydk::Enum
         static const ydk::Enum::YLeaf operation_failed;
         static const ydk::Enum::YLeaf partial_operation;
         static const ydk::Enum::YLeaf malformed_message;
+
+};
+
+class ErrorSeverityType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf error;
+        static const ydk::Enum::YLeaf warning;
 
 };
 

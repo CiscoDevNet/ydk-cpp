@@ -4080,25 +4080,12 @@ bool SubscriberRedundancyAgent::Nodes::Node::GroupIds::GroupId::Interface::has_l
     return false;
 }
 
-const Enum::YLeaf SrgShowImRole::none {0, "none"};
-const Enum::YLeaf SrgShowImRole::master {1, "master"};
-const Enum::YLeaf SrgShowImRole::slave {2, "slave"};
-
-const Enum::YLeaf SrgShowSessionError::none {0, "none"};
-const Enum::YLeaf SrgShowSessionError::hard {1, "hard"};
-const Enum::YLeaf SrgShowSessionError::soft {2, "soft"};
-
 const Enum::YLeaf SrgShowSoReason::internal {0, "internal"};
 const Enum::YLeaf SrgShowSoReason::admin {1, "admin"};
 const Enum::YLeaf SrgShowSoReason::peer_up {2, "peer-up"};
 const Enum::YLeaf SrgShowSoReason::peer_down {3, "peer-down"};
 const Enum::YLeaf SrgShowSoReason::object_tracking_status_change {4, "object-tracking-status-change"};
 const Enum::YLeaf SrgShowSoReason::srg_show_so_reason_max {5, "srg-show-so-reason-max"};
-
-const Enum::YLeaf SrgShowSessionOperation::none {0, "none"};
-const Enum::YLeaf SrgShowSessionOperation::update {1, "update"};
-const Enum::YLeaf SrgShowSessionOperation::delete_ {2, "delete"};
-const Enum::YLeaf SrgShowSessionOperation::in_sync {3, "in-sync"};
 
 const Enum::YLeaf SrgPeerStatus::not_configured {0, "not-configured"};
 const Enum::YLeaf SrgPeerStatus::initialize {1, "initialize"};
@@ -4110,13 +4097,14 @@ const Enum::YLeaf SrgPeerStatus::cleanup {6, "cleanup"};
 const Enum::YLeaf SrgPeerStatus::connected {7, "connected"};
 const Enum::YLeaf SrgPeerStatus::established {8, "established"};
 
-const Enum::YLeaf SrgShowRole::none {0, "none"};
-const Enum::YLeaf SrgShowRole::master {1, "master"};
-const Enum::YLeaf SrgShowRole::slave {2, "slave"};
+const Enum::YLeaf SrgShowSessionError::none {0, "none"};
+const Enum::YLeaf SrgShowSessionError::hard {1, "hard"};
+const Enum::YLeaf SrgShowSessionError::soft {2, "soft"};
 
-const Enum::YLeaf SrgShowSlaveMode::none {0, "none"};
-const Enum::YLeaf SrgShowSlaveMode::warm {1, "warm"};
-const Enum::YLeaf SrgShowSlaveMode::hot {2, "hot"};
+const Enum::YLeaf SrgShowSessionOperation::none {0, "none"};
+const Enum::YLeaf SrgShowSessionOperation::update {1, "update"};
+const Enum::YLeaf SrgShowSessionOperation::delete_ {2, "delete"};
+const Enum::YLeaf SrgShowSessionOperation::in_sync {3, "in-sync"};
 
 const Enum::YLeaf SrgShowComp::srga {0, "srga"};
 const Enum::YLeaf SrgShowComp::dhcpv4 {1, "dhcpv4"};
@@ -4125,6 +4113,18 @@ const Enum::YLeaf SrgShowComp::pppoe {3, "pppoe"};
 const Enum::YLeaf SrgShowComp::ppp {4, "ppp"};
 const Enum::YLeaf SrgShowComp::l2tp {5, "l2tp"};
 const Enum::YLeaf SrgShowComp::iedge {6, "iedge"};
+
+const Enum::YLeaf SrgShowSlaveMode::none {0, "none"};
+const Enum::YLeaf SrgShowSlaveMode::warm {1, "warm"};
+const Enum::YLeaf SrgShowSlaveMode::hot {2, "hot"};
+
+const Enum::YLeaf SrgShowRole::none {0, "none"};
+const Enum::YLeaf SrgShowRole::master {1, "master"};
+const Enum::YLeaf SrgShowRole::slave {2, "slave"};
+
+const Enum::YLeaf SrgShowImRole::none {0, "none"};
+const Enum::YLeaf SrgShowImRole::master {1, "master"};
+const Enum::YLeaf SrgShowImRole::slave {2, "slave"};
 
 
 }

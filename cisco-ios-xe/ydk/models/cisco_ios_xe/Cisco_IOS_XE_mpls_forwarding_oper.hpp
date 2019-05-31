@@ -210,30 +210,6 @@ class MplsForwardingOperData::MplsLocalLabelStatistics : public ydk::Entity
 
 }; // MplsForwardingOperData::MplsLocalLabelStatistics
 
-class ForwardingNextHopType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf point2point;
-        static const ydk::Enum::YLeaf next_hop_ip_address;
-
-};
-
-class OutgoingInterfaceDescriptionType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf interface_type;
-        static const ydk::Enum::YLeaf interface_value;
-
-};
-
-class ConnectionInfoType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf information_string;
-        static const ydk::Enum::YLeaf ip_prefix;
-
-};
-
 class OutgoingInterfaceType : public ydk::Enum
 {
     public:
@@ -242,6 +218,14 @@ class OutgoingInterfaceType : public ydk::Enum
         static const ydk::Enum::YLeaf aggregate;
         static const ydk::Enum::YLeaf exception;
         static const ydk::Enum::YLeaf none;
+
+};
+
+class OutgoingInterfaceDescriptionType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf interface_type;
+        static const ydk::Enum::YLeaf interface_value;
 
 };
 
@@ -254,6 +238,22 @@ class OutgoingLabelType : public ydk::Enum
         static const ydk::Enum::YLeaf ipv6_explicit_null;
         static const ydk::Enum::YLeaf regular_label;
         static const ydk::Enum::YLeaf invalid_label;
+
+};
+
+class ConnectionInfoType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf information_string;
+        static const ydk::Enum::YLeaf ip_prefix;
+
+};
+
+class ForwardingNextHopType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf point2point;
+        static const ydk::Enum::YLeaf next_hop_ip_address;
 
 };
 

@@ -82,7 +82,9 @@ class SpanMonitorSession::Sessions::Session : public ydk::Entity
 
         ydk::YLeaf session; //type: string
         ydk::YLeaf class_; //type: SpanSessionClass
+        ydk::YLeaf discard_class; //type: uint32
         ydk::YLeaf inject_interface; //type: string
+        ydk::YLeaf traffic_class; //type: uint32
         class Destination; //type: SpanMonitorSession::Sessions::Session::Destination
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_Ethernet_SPAN_cfg::SpanMonitorSession::Sessions::Session::Destination> destination;

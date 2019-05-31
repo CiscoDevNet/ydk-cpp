@@ -10,6 +10,30 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_sysadmin_issu {
 
+class IssuAction : public ydk::Entity
+{
+    public:
+        IssuAction();
+        ~IssuAction();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+        std::shared_ptr<ydk::Entity> clone_ptr() const override;
+        ydk::augment_capabilities_function get_augment_capabilities_function() const override;
+        std::string get_bundle_yang_models_location() const override;
+        std::string get_bundle_name() const override;
+        std::map<std::pair<std::string, std::string>, std::string> get_namespace_identity_lookup() const override;
+
+
+}; // IssuAction
+
 class Issu : public ydk::Entity
 {
     public:
@@ -264,9 +288,9 @@ class Issu::Internals : public ydk::Entity
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_issu::Issu::Internals::Orchestrator> orchestrator;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_issu::Issu::Internals::Agents> agents;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_sysadmin_issu::Issu::Internals::InventoryMonitor> inventory_monitor;
-                class PhaseType;
-        class OpRequestType;
+                class OpRequestType;
         class StageType;
+        class PhaseType;
 
 }; // Issu::Internals
 
@@ -877,6 +901,40 @@ class Issu::Internals::InventoryMonitor::Inventory::Node : public ydk::Entity
 
 }; // Issu::Internals::InventoryMonitor::Inventory::Node
 
+class OpStartResult : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf start_success;
+        static const ydk::Enum::YLeaf error_operation_in_progress;
+        static const ydk::Enum::YLeaf activate_error_no_prepare;
+        static const ydk::Enum::YLeaf prepare_error_previous_prepare;
+        static const ydk::Enum::YLeaf recover_error_unrecoverable;
+        static const ydk::Enum::YLeaf start_error_internal;
+        static const ydk::Enum::YLeaf prepare_error_previous_operation_not_committed;
+        static const ydk::Enum::YLeaf prepare_error_already_in_progress;
+
+};
+
+class OpResult : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf success;
+        static const ydk::Enum::YLeaf error_input;
+        static const ydk::Enum::YLeaf error_orchestration;
+        static const ydk::Enum::YLeaf error_install;
+        static const ydk::Enum::YLeaf error_node_redundancy;
+
+};
+
+class IssuNotif : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf notif_sysadmin_op_start;
+        static const ydk::Enum::YLeaf notif_sysadmin_phase_start;
+        static const ydk::Enum::YLeaf notif_sysadmin_op_end;
+
+};
+
 class OpStage : public ydk::Enum
 {
     public:
@@ -894,40 +952,6 @@ class OpStage : public ydk::Enum
         static const ydk::Enum::YLeaf activate_paused;
         static const ydk::Enum::YLeaf activate_postamble;
         static const ydk::Enum::YLeaf activate_complete;
-
-};
-
-class IssuNotif : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf notif_sysadmin_op_start;
-        static const ydk::Enum::YLeaf notif_sysadmin_phase_start;
-        static const ydk::Enum::YLeaf notif_sysadmin_op_end;
-
-};
-
-class OpResult : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf success;
-        static const ydk::Enum::YLeaf error_input;
-        static const ydk::Enum::YLeaf error_orchestration;
-        static const ydk::Enum::YLeaf error_install;
-        static const ydk::Enum::YLeaf error_node_redundancy;
-
-};
-
-class OpStartResult : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf start_success;
-        static const ydk::Enum::YLeaf error_operation_in_progress;
-        static const ydk::Enum::YLeaf activate_error_no_prepare;
-        static const ydk::Enum::YLeaf prepare_error_previous_prepare;
-        static const ydk::Enum::YLeaf recover_error_unrecoverable;
-        static const ydk::Enum::YLeaf start_error_internal;
-        static const ydk::Enum::YLeaf prepare_error_previous_operation_not_committed;
-        static const ydk::Enum::YLeaf prepare_error_already_in_progress;
 
 };
 
@@ -966,14 +990,6 @@ class Issu::Clients::Client::Response : public ydk::Enum
         static const ydk::Enum::YLeaf notif_resp_send_error;
         static const ydk::Enum::YLeaf notif_resp_client_error;
         static const ydk::Enum::YLeaf notif_resp_client_abort;
-
-};
-
-class Issu::Internals::PhaseType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf calvados_activate_phase_one;
-        static const ydk::Enum::YLeaf calvados_activate_phase_two;
 
 };
 
@@ -1018,6 +1034,14 @@ class Issu::Internals::StageType : public ydk::Enum
         static const ydk::Enum::YLeaf activate_error_pause;
         static const ydk::Enum::YLeaf activate_calvados_recovery;
         static const ydk::Enum::YLeaf activate_recovery_postamble;
+
+};
+
+class Issu::Internals::PhaseType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf calvados_activate_phase_one;
+        static const ydk::Enum::YLeaf calvados_activate_phase_two;
 
 };
 

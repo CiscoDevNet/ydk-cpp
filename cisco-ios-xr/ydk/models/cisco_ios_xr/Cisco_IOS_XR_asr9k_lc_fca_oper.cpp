@@ -1574,12 +1574,6 @@ bool Mpa::Nodes::Node::Bay::MpaDetailTable::MpaDetail::has_leaf_or_child_of_name
     return false;
 }
 
-const Enum::YLeaf SpaResetReason::spa_reset_reason_unknown {1, "spa-reset-reason-unknown"};
-const Enum::YLeaf SpaResetReason::spa_reset_reason_manual {2, "spa-reset-reason-manual"};
-const Enum::YLeaf SpaResetReason::spa_reset_reason_fpd_upgrade {3, "spa-reset-reason-fpd-upgrade"};
-const Enum::YLeaf SpaResetReason::spa_reset_reason_audit_fail {4, "spa-reset-reason-audit-fail"};
-const Enum::YLeaf SpaResetReason::spa_reset_reason_failure {5, "spa-reset-reason-failure"};
-
 const Enum::YLeaf SpaFailureReason::spa_failure_reason_unknown {1, "spa-failure-reason-unknown"};
 const Enum::YLeaf SpaFailureReason::spa_failure_reason_spi_failure {2, "spa-failure-reason-spi-failure"};
 const Enum::YLeaf SpaFailureReason::spa_failure_reason_boot {3, "spa-failure-reason-boot"};
@@ -1588,6 +1582,12 @@ const Enum::YLeaf SpaFailureReason::spa_failure_reason_sw_failed {5, "spa-failur
 const Enum::YLeaf SpaFailureReason::spa_failure_reason_sw_restart {6, "spa-failure-reason-sw-restart"};
 const Enum::YLeaf SpaFailureReason::spa_failure_reason_check_fpd {7, "spa-failure-reason-check-fpd"};
 const Enum::YLeaf SpaFailureReason::spa_failure_reason_read_type {8, "spa-failure-reason-read-type"};
+
+const Enum::YLeaf SpaResetReason::spa_reset_reason_unknown {1, "spa-reset-reason-unknown"};
+const Enum::YLeaf SpaResetReason::spa_reset_reason_manual {2, "spa-reset-reason-manual"};
+const Enum::YLeaf SpaResetReason::spa_reset_reason_fpd_upgrade {3, "spa-reset-reason-fpd-upgrade"};
+const Enum::YLeaf SpaResetReason::spa_reset_reason_audit_fail {4, "spa-reset-reason-audit-fail"};
+const Enum::YLeaf SpaResetReason::spa_reset_reason_failure {5, "spa-reset-reason-failure"};
 
 const Enum::YLeaf SpaOperState::spa_state_reset {1, "spa-state-reset"};
 const Enum::YLeaf SpaOperState::spa_state_failed {2, "spa-state-failed"};

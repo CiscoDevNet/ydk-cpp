@@ -11,6 +11,832 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_clns_isis_cfg {
 
+Isis::Instances::Instance::LspRefreshIntervals::LspRefreshIntervals()
+    :
+    lsp_refresh_interval(this, {"level"})
+{
+
+    yang_name = "lsp-refresh-intervals"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::LspRefreshIntervals::~LspRefreshIntervals()
+{
+}
+
+bool Isis::Instances::Instance::LspRefreshIntervals::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<lsp_refresh_interval.len(); index++)
+    {
+        if(lsp_refresh_interval[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::LspRefreshIntervals::has_operation() const
+{
+    for (std::size_t index=0; index<lsp_refresh_interval.len(); index++)
+    {
+        if(lsp_refresh_interval[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::LspRefreshIntervals::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lsp-refresh-intervals";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::LspRefreshIntervals::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::LspRefreshIntervals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "lsp-refresh-interval")
+    {
+        auto ent_ = std::make_shared<Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval>();
+        ent_->parent = this;
+        lsp_refresh_interval.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::LspRefreshIntervals::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : lsp_refresh_interval.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Isis::Instances::Instance::LspRefreshIntervals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::LspRefreshIntervals::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::LspRefreshIntervals::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "lsp-refresh-interval")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::LspRefreshInterval()
+    :
+    level{YType::enumeration, "level"},
+    interval{YType::uint32, "interval"}
+{
+
+    yang_name = "lsp-refresh-interval"; yang_parent_name = "lsp-refresh-intervals"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::~LspRefreshInterval()
+{
+}
+
+bool Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::has_data() const
+{
+    if (is_presence_container) return true;
+    return level.is_set
+	|| interval.is_set;
+}
+
+bool Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(interval.yfilter);
+}
+
+std::string Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "lsp-refresh-interval";
+    ADD_KEY_TOKEN(level, "level");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interval")
+    {
+        interval = value;
+        interval.value_namespace = name_space;
+        interval.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "interval")
+    {
+        interval.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "level" || name == "interval")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Distribute::Distribute()
+    :
+    dist_inst_id{YType::uint32, "dist-inst-id"},
+    level{YType::enumeration, "level"},
+    dist_throttle{YType::uint32, "dist-throttle"}
+{
+
+    yang_name = "distribute"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
+}
+
+Isis::Instances::Instance::Distribute::~Distribute()
+{
+}
+
+bool Isis::Instances::Instance::Distribute::has_data() const
+{
+    if (is_presence_container) return true;
+    return dist_inst_id.is_set
+	|| level.is_set
+	|| dist_throttle.is_set;
+}
+
+bool Isis::Instances::Instance::Distribute::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(dist_inst_id.yfilter)
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(dist_throttle.yfilter);
+}
+
+std::string Isis::Instances::Instance::Distribute::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "distribute";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Distribute::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (dist_inst_id.is_set || is_set(dist_inst_id.yfilter)) leaf_name_data.push_back(dist_inst_id.get_name_leafdata());
+    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (dist_throttle.is_set || is_set(dist_throttle.yfilter)) leaf_name_data.push_back(dist_throttle.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Distribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Distribute::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Isis::Instances::Instance::Distribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "dist-inst-id")
+    {
+        dist_inst_id = value;
+        dist_inst_id.value_namespace = name_space;
+        dist_inst_id.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "level")
+    {
+        level = value;
+        level.value_namespace = name_space;
+        level.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dist-throttle")
+    {
+        dist_throttle = value;
+        dist_throttle.value_namespace = name_space;
+        dist_throttle.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Distribute::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "dist-inst-id")
+    {
+        dist_inst_id.yfilter = yfilter;
+    }
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
+    if(value_path == "dist-throttle")
+    {
+        dist_throttle.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Distribute::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "dist-inst-id" || name == "level" || name == "dist-throttle")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::FlexAlgos::FlexAlgos()
+    :
+    flex_algo(this, {"flex_algo"})
+{
+
+    yang_name = "flex-algos"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::FlexAlgos::~FlexAlgos()
+{
+}
+
+bool Isis::Instances::Instance::FlexAlgos::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<flex_algo.len(); index++)
+    {
+        if(flex_algo[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::FlexAlgos::has_operation() const
+{
+    for (std::size_t index=0; index<flex_algo.len(); index++)
+    {
+        if(flex_algo[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::FlexAlgos::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "flex-algos";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::FlexAlgos::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::FlexAlgos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "flex-algo")
+    {
+        auto ent_ = std::make_shared<Isis::Instances::Instance::FlexAlgos::FlexAlgo>();
+        ent_->parent = this;
+        flex_algo.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::FlexAlgos::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : flex_algo.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Isis::Instances::Instance::FlexAlgos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::FlexAlgos::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::FlexAlgos::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "flex-algo")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::FlexAlgos::FlexAlgo::FlexAlgo()
+    :
+    flex_algo{YType::uint32, "flex-algo"},
+    running{YType::empty, "running"},
+    metric_type{YType::uint32, "metric-type"},
+    priority{YType::uint32, "priority"},
+    frr_disable{YType::boolean, "frr-disable"},
+    advertise_definition{YType::boolean, "advertise-definition"}
+        ,
+    affinity_exclude_anies(std::make_shared<Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies>())
+{
+    affinity_exclude_anies->parent = this;
+
+    yang_name = "flex-algo"; yang_parent_name = "flex-algos"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::FlexAlgos::FlexAlgo::~FlexAlgo()
+{
+}
+
+bool Isis::Instances::Instance::FlexAlgos::FlexAlgo::has_data() const
+{
+    if (is_presence_container) return true;
+    return flex_algo.is_set
+	|| running.is_set
+	|| metric_type.is_set
+	|| priority.is_set
+	|| frr_disable.is_set
+	|| advertise_definition.is_set
+	|| (affinity_exclude_anies !=  nullptr && affinity_exclude_anies->has_data());
+}
+
+bool Isis::Instances::Instance::FlexAlgos::FlexAlgo::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(flex_algo.yfilter)
+	|| ydk::is_set(running.yfilter)
+	|| ydk::is_set(metric_type.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| ydk::is_set(frr_disable.yfilter)
+	|| ydk::is_set(advertise_definition.yfilter)
+	|| (affinity_exclude_anies !=  nullptr && affinity_exclude_anies->has_operation());
+}
+
+std::string Isis::Instances::Instance::FlexAlgos::FlexAlgo::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "flex-algo";
+    ADD_KEY_TOKEN(flex_algo, "flex-algo");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::FlexAlgos::FlexAlgo::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (flex_algo.is_set || is_set(flex_algo.yfilter)) leaf_name_data.push_back(flex_algo.get_name_leafdata());
+    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
+    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+    if (frr_disable.is_set || is_set(frr_disable.yfilter)) leaf_name_data.push_back(frr_disable.get_name_leafdata());
+    if (advertise_definition.is_set || is_set(advertise_definition.yfilter)) leaf_name_data.push_back(advertise_definition.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::FlexAlgos::FlexAlgo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "affinity-exclude-anies")
+    {
+        if(affinity_exclude_anies == nullptr)
+        {
+            affinity_exclude_anies = std::make_shared<Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies>();
+        }
+        return affinity_exclude_anies;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::FlexAlgos::FlexAlgo::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(affinity_exclude_anies != nullptr)
+    {
+        _children["affinity-exclude-anies"] = affinity_exclude_anies;
+    }
+
+    return _children;
+}
+
+void Isis::Instances::Instance::FlexAlgos::FlexAlgo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "flex-algo")
+    {
+        flex_algo = value;
+        flex_algo.value_namespace = name_space;
+        flex_algo.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "running")
+    {
+        running = value;
+        running.value_namespace = name_space;
+        running.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type = value;
+        metric_type.value_namespace = name_space;
+        metric_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "frr-disable")
+    {
+        frr_disable = value;
+        frr_disable.value_namespace = name_space;
+        frr_disable.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "advertise-definition")
+    {
+        advertise_definition = value;
+        advertise_definition.value_namespace = name_space;
+        advertise_definition.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::FlexAlgos::FlexAlgo::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "flex-algo")
+    {
+        flex_algo.yfilter = yfilter;
+    }
+    if(value_path == "running")
+    {
+        running.yfilter = yfilter;
+    }
+    if(value_path == "metric-type")
+    {
+        metric_type.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+    if(value_path == "frr-disable")
+    {
+        frr_disable.yfilter = yfilter;
+    }
+    if(value_path == "advertise-definition")
+    {
+        advertise_definition.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::FlexAlgos::FlexAlgo::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "affinity-exclude-anies" || name == "flex-algo" || name == "running" || name == "metric-type" || name == "priority" || name == "frr-disable" || name == "advertise-definition")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::AffinityExcludeAnies()
+    :
+    affinity_exclude_any{YType::str, "affinity-exclude-any"}
+{
+
+    yang_name = "affinity-exclude-anies"; yang_parent_name = "flex-algo"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::~AffinityExcludeAnies()
+{
+}
+
+bool Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::has_data() const
+{
+    if (is_presence_container) return true;
+    for (auto const & leaf : affinity_exclude_any.getYLeafs())
+    {
+        if(leaf.is_set)
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::has_operation() const
+{
+    for (auto const & leaf : affinity_exclude_any.getYLeafs())
+    {
+        if(is_set(leaf.yfilter))
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(affinity_exclude_any.yfilter);
+}
+
+std::string Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "affinity-exclude-anies";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    auto affinity_exclude_any_name_datas = affinity_exclude_any.get_name_leafdata();
+    leaf_name_data.insert(leaf_name_data.end(), affinity_exclude_any_name_datas.begin(), affinity_exclude_any_name_datas.end());
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "affinity-exclude-any")
+    {
+        affinity_exclude_any.append(value);
+    }
+}
+
+void Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "affinity-exclude-any")
+    {
+        affinity_exclude_any.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "affinity-exclude-any")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::AffinityMappings::AffinityMappings()
+    :
+    affinity_mapping(this, {"affinity_name"})
+{
+
+    yang_name = "affinity-mappings"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::AffinityMappings::~AffinityMappings()
+{
+}
+
+bool Isis::Instances::Instance::AffinityMappings::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<affinity_mapping.len(); index++)
+    {
+        if(affinity_mapping[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::AffinityMappings::has_operation() const
+{
+    for (std::size_t index=0; index<affinity_mapping.len(); index++)
+    {
+        if(affinity_mapping[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::AffinityMappings::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "affinity-mappings";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::AffinityMappings::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::AffinityMappings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "affinity-mapping")
+    {
+        auto ent_ = std::make_shared<Isis::Instances::Instance::AffinityMappings::AffinityMapping>();
+        ent_->parent = this;
+        affinity_mapping.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::AffinityMappings::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : affinity_mapping.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Isis::Instances::Instance::AffinityMappings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::AffinityMappings::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::AffinityMappings::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "affinity-mapping")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::AffinityMappings::AffinityMapping::AffinityMapping()
+    :
+    affinity_name{YType::str, "affinity-name"},
+    value_{YType::uint32, "value"}
+{
+
+    yang_name = "affinity-mapping"; yang_parent_name = "affinity-mappings"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::AffinityMappings::AffinityMapping::~AffinityMapping()
+{
+}
+
+bool Isis::Instances::Instance::AffinityMappings::AffinityMapping::has_data() const
+{
+    if (is_presence_container) return true;
+    return affinity_name.is_set
+	|| value_.is_set;
+}
+
+bool Isis::Instances::Instance::AffinityMappings::AffinityMapping::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(affinity_name.yfilter)
+	|| ydk::is_set(value_.yfilter);
+}
+
+std::string Isis::Instances::Instance::AffinityMappings::AffinityMapping::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "affinity-mapping";
+    ADD_KEY_TOKEN(affinity_name, "affinity-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::AffinityMappings::AffinityMapping::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (affinity_name.is_set || is_set(affinity_name.yfilter)) leaf_name_data.push_back(affinity_name.get_name_leafdata());
+    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::AffinityMappings::AffinityMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::AffinityMappings::AffinityMapping::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Isis::Instances::Instance::AffinityMappings::AffinityMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "affinity-name")
+    {
+        affinity_name = value;
+        affinity_name.value_namespace = name_space;
+        affinity_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "value")
+    {
+        value_ = value;
+        value_.value_namespace = name_space;
+        value_.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::AffinityMappings::AffinityMapping::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "affinity-name")
+    {
+        affinity_name.yfilter = yfilter;
+    }
+    if(value_path == "value")
+    {
+        value_.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::AffinityMappings::AffinityMapping::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "affinity-name" || name == "value")
+        return true;
+    return false;
+}
+
 Isis::Instances::Instance::LspAcceptPasswords::LspAcceptPasswords()
     :
     lsp_accept_password(this, {"level"})

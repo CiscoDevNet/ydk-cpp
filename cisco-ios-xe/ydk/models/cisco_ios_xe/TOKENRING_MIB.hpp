@@ -12,33 +12,6 @@
 namespace cisco_ios_xe {
 namespace TOKENRING_MIB {
 
-class Dot5ChipSetTItms380 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        Dot5ChipSetTItms380();
-        ~Dot5ChipSetTItms380();
-
-
-}; // Dot5ChipSetTItms380
-
-class Dot5ChipSetTItms380c16 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        Dot5ChipSetTItms380c16();
-        ~Dot5ChipSetTItms380c16();
-
-
-}; // Dot5ChipSetTItms380c16
-
-class Dot5ChipSetIBM16 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        Dot5ChipSetIBM16();
-        ~Dot5ChipSetIBM16();
-
-
-}; // Dot5ChipSetIBM16
-
 class Dot5TestInsertFunc : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
@@ -56,6 +29,33 @@ class Dot5TestFullDuplexLoopBack : public ietf::ietf_yang_smiv2::ObjectIdentity,
 
 
 }; // Dot5TestFullDuplexLoopBack
+
+class Dot5ChipSetIBM16 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        Dot5ChipSetIBM16();
+        ~Dot5ChipSetIBM16();
+
+
+}; // Dot5ChipSetIBM16
+
+class Dot5ChipSetTItms380 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        Dot5ChipSetTItms380();
+        ~Dot5ChipSetTItms380();
+
+
+}; // Dot5ChipSetTItms380
+
+class Dot5ChipSetTItms380c16 : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        Dot5ChipSetTItms380c16();
+        ~Dot5ChipSetTItms380c16();
+
+
+}; // Dot5ChipSetTItms380c16
 
 class TOKENRINGMIB : public ydk::Entity
 {

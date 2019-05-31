@@ -1100,6 +1100,24 @@ class MgmtMplsStaticPathStatus : public ydk::Enum
 
 };
 
+class MgmtStaticLspAfi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_applicable;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+};
+
+class MplsStaticPathRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf primary;
+        static const ydk::Enum::YLeaf backup;
+        static const ydk::Enum::YLeaf primary_and_backup;
+
+};
+
 class MgmtStaticPath : public ydk::Enum
 {
     public:
@@ -1108,17 +1126,7 @@ class MgmtStaticPath : public ydk::Enum
 
 };
 
-class MgmtMplsStaticLabelMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf per_prefix;
-        static const ydk::Enum::YLeaf per_vrf;
-        static const ydk::Enum::YLeaf cross_connect;
-
-};
-
-class MgmtStaticLspAfi : public ydk::Enum
+class MgmtStaticAddr : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf not_applicable;
@@ -1147,21 +1155,13 @@ class MgmtMplsStaticLabelStatus : public ydk::Enum
 
 };
 
-class MgmtStaticAddr : public ydk::Enum
+class MgmtMplsStaticLabelMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf not_applicable;
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
-class MplsStaticPathRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf primary;
-        static const ydk::Enum::YLeaf backup;
-        static const ydk::Enum::YLeaf primary_and_backup;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf per_prefix;
+        static const ydk::Enum::YLeaf per_vrf;
+        static const ydk::Enum::YLeaf cross_connect;
 
 };
 

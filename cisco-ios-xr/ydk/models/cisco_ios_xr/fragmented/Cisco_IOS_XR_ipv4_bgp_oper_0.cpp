@@ -5,12 +5,13 @@
 #include "bundle_info.hpp"
 #include "generated_entity_lookup.hpp"
 #include "Cisco_IOS_XR_ipv4_bgp_oper_0.hpp"
-#include "Cisco_IOS_XR_ipv4_bgp_oper_1.hpp"
-#include "Cisco_IOS_XR_ipv4_bgp_oper_3.hpp"
+#include "Cisco_IOS_XR_ipv4_bgp_oper_6.hpp"
 #include "Cisco_IOS_XR_ipv4_bgp_oper_5.hpp"
-#include "Cisco_IOS_XR_ipv4_bgp_oper_69.hpp"
+#include "Cisco_IOS_XR_ipv4_bgp_oper_1.hpp"
+#include "Cisco_IOS_XR_ipv4_bgp_oper_12.hpp"
 #include "Cisco_IOS_XR_ipv4_bgp_oper_2.hpp"
-#include "Cisco_IOS_XR_ipv4_bgp_oper_11.hpp"
+#include "Cisco_IOS_XR_ipv4_bgp_oper_74.hpp"
+#include "Cisco_IOS_XR_ipv4_bgp_oper_3.hpp"
 
 using namespace ydk;
 
@@ -1607,11 +1608,13 @@ Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurat
     msg_log_in_buf_count{YType::uint32, "msg-log-in-buf-count"},
     msg_log_out_buf_count{YType::uint32, "msg-log-out-buf-count"},
     route_updates_source{YType::str, "route-updates-source"},
+    local_address_subnet_len{YType::uint32, "local-address-subnet-len"},
     dmz_link_bandwidth{YType::uint32, "dmz-link-bandwidth"},
     ebgp_recv_dmz{YType::uint32, "ebgp-recv-dmz"},
     ebgp_send_dmz_mode{YType::enumeration, "ebgp-send-dmz-mode"},
     ttl_security{YType::uint32, "ttl-security"},
     suppress4_byte_as{YType::uint32, "suppress4-byte-as"},
+    update_in_safi14_merge{YType::uint32, "update-in-safi14-merge"},
     capability_negotiation_suppressed{YType::uint32, "capability-negotiation-suppressed"},
     session_open_mode{YType::enumeration, "session-open-mode"},
     bfd{YType::uint32, "bfd"},
@@ -1655,6 +1658,7 @@ Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurat
     local_as_dual_as{YType::boolean, "local-as-dual-as"}
         ,
     local_ip_address(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalIpAddress>())
+    , local_address_subnet(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet>())
     , remote_as_info(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::RemoteAsInfo>())
     , speaker_id_info(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::SpeakerIdInfo>())
     , min_advertisement_info(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MinAdvertisementInfo>())
@@ -1673,6 +1677,7 @@ Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurat
     , msg_log_in_info(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogInInfo>())
     , msg_log_out_info(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo>())
     , update_source_info(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::UpdateSourceInfo>())
+    , local_address_subnet_info(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnetInfo>())
     , dmz_link_bandwidth_info(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::DmzLinkBandwidthInfo>())
     , ebgp_recv_dmz_info(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::EbgpRecvDmzInfo>())
     , ebgp_send_dmz_info(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::EbgpSendDmzInfo>())
@@ -1707,6 +1712,7 @@ Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurat
     , graceful_shutdown_loc_pref_info(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::GracefulShutdownLocPrefInfo>())
     , graceful_shutdown_as_prepends_info(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::GracefulShutdownAsPrependsInfo>())
     , graceful_shutdown_activate_info(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::GracefulShutdownActivateInfo>())
+    , update_in_safi14_merge_info(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::UpdateInSafi14MergeInfo>())
     , capability_negotiation_suppressed_info(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::CapabilityNegotiationSuppressedInfo>())
     , neighbor_remote_as_list_info(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::NeighborRemoteAsListInfo>())
     , max_peers_info(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MaxPeersInfo>())
@@ -1714,6 +1720,7 @@ Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurat
     , ao_keychain_info(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::AoKeychainInfo>())
 {
     local_ip_address->parent = this;
+    local_address_subnet->parent = this;
     remote_as_info->parent = this;
     speaker_id_info->parent = this;
     min_advertisement_info->parent = this;
@@ -1732,6 +1739,7 @@ Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurat
     msg_log_in_info->parent = this;
     msg_log_out_info->parent = this;
     update_source_info->parent = this;
+    local_address_subnet_info->parent = this;
     dmz_link_bandwidth_info->parent = this;
     ebgp_recv_dmz_info->parent = this;
     ebgp_send_dmz_info->parent = this;
@@ -1766,6 +1774,7 @@ Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurat
     graceful_shutdown_loc_pref_info->parent = this;
     graceful_shutdown_as_prepends_info->parent = this;
     graceful_shutdown_activate_info->parent = this;
+    update_in_safi14_merge_info->parent = this;
     capability_negotiation_suppressed_info->parent = this;
     neighbor_remote_as_list_info->parent = this;
     max_peers_info->parent = this;
@@ -1808,11 +1817,13 @@ bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfi
 	|| msg_log_in_buf_count.is_set
 	|| msg_log_out_buf_count.is_set
 	|| route_updates_source.is_set
+	|| local_address_subnet_len.is_set
 	|| dmz_link_bandwidth.is_set
 	|| ebgp_recv_dmz.is_set
 	|| ebgp_send_dmz_mode.is_set
 	|| ttl_security.is_set
 	|| suppress4_byte_as.is_set
+	|| update_in_safi14_merge.is_set
 	|| capability_negotiation_suppressed.is_set
 	|| session_open_mode.is_set
 	|| bfd.is_set
@@ -1855,6 +1866,7 @@ bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfi
 	|| local_as_replace_as.is_set
 	|| local_as_dual_as.is_set
 	|| (local_ip_address !=  nullptr && local_ip_address->has_data())
+	|| (local_address_subnet !=  nullptr && local_address_subnet->has_data())
 	|| (remote_as_info !=  nullptr && remote_as_info->has_data())
 	|| (speaker_id_info !=  nullptr && speaker_id_info->has_data())
 	|| (min_advertisement_info !=  nullptr && min_advertisement_info->has_data())
@@ -1873,6 +1885,7 @@ bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfi
 	|| (msg_log_in_info !=  nullptr && msg_log_in_info->has_data())
 	|| (msg_log_out_info !=  nullptr && msg_log_out_info->has_data())
 	|| (update_source_info !=  nullptr && update_source_info->has_data())
+	|| (local_address_subnet_info !=  nullptr && local_address_subnet_info->has_data())
 	|| (dmz_link_bandwidth_info !=  nullptr && dmz_link_bandwidth_info->has_data())
 	|| (ebgp_recv_dmz_info !=  nullptr && ebgp_recv_dmz_info->has_data())
 	|| (ebgp_send_dmz_info !=  nullptr && ebgp_send_dmz_info->has_data())
@@ -1907,6 +1920,7 @@ bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfi
 	|| (graceful_shutdown_loc_pref_info !=  nullptr && graceful_shutdown_loc_pref_info->has_data())
 	|| (graceful_shutdown_as_prepends_info !=  nullptr && graceful_shutdown_as_prepends_info->has_data())
 	|| (graceful_shutdown_activate_info !=  nullptr && graceful_shutdown_activate_info->has_data())
+	|| (update_in_safi14_merge_info !=  nullptr && update_in_safi14_merge_info->has_data())
 	|| (capability_negotiation_suppressed_info !=  nullptr && capability_negotiation_suppressed_info->has_data())
 	|| (neighbor_remote_as_list_info !=  nullptr && neighbor_remote_as_list_info->has_data())
 	|| (max_peers_info !=  nullptr && max_peers_info->has_data())
@@ -1943,11 +1957,13 @@ bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfi
 	|| ydk::is_set(msg_log_in_buf_count.yfilter)
 	|| ydk::is_set(msg_log_out_buf_count.yfilter)
 	|| ydk::is_set(route_updates_source.yfilter)
+	|| ydk::is_set(local_address_subnet_len.yfilter)
 	|| ydk::is_set(dmz_link_bandwidth.yfilter)
 	|| ydk::is_set(ebgp_recv_dmz.yfilter)
 	|| ydk::is_set(ebgp_send_dmz_mode.yfilter)
 	|| ydk::is_set(ttl_security.yfilter)
 	|| ydk::is_set(suppress4_byte_as.yfilter)
+	|| ydk::is_set(update_in_safi14_merge.yfilter)
 	|| ydk::is_set(capability_negotiation_suppressed.yfilter)
 	|| ydk::is_set(session_open_mode.yfilter)
 	|| ydk::is_set(bfd.yfilter)
@@ -1990,6 +2006,7 @@ bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfi
 	|| ydk::is_set(local_as_replace_as.yfilter)
 	|| ydk::is_set(local_as_dual_as.yfilter)
 	|| (local_ip_address !=  nullptr && local_ip_address->has_operation())
+	|| (local_address_subnet !=  nullptr && local_address_subnet->has_operation())
 	|| (remote_as_info !=  nullptr && remote_as_info->has_operation())
 	|| (speaker_id_info !=  nullptr && speaker_id_info->has_operation())
 	|| (min_advertisement_info !=  nullptr && min_advertisement_info->has_operation())
@@ -2008,6 +2025,7 @@ bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfi
 	|| (msg_log_in_info !=  nullptr && msg_log_in_info->has_operation())
 	|| (msg_log_out_info !=  nullptr && msg_log_out_info->has_operation())
 	|| (update_source_info !=  nullptr && update_source_info->has_operation())
+	|| (local_address_subnet_info !=  nullptr && local_address_subnet_info->has_operation())
 	|| (dmz_link_bandwidth_info !=  nullptr && dmz_link_bandwidth_info->has_operation())
 	|| (ebgp_recv_dmz_info !=  nullptr && ebgp_recv_dmz_info->has_operation())
 	|| (ebgp_send_dmz_info !=  nullptr && ebgp_send_dmz_info->has_operation())
@@ -2042,6 +2060,7 @@ bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfi
 	|| (graceful_shutdown_loc_pref_info !=  nullptr && graceful_shutdown_loc_pref_info->has_operation())
 	|| (graceful_shutdown_as_prepends_info !=  nullptr && graceful_shutdown_as_prepends_info->has_operation())
 	|| (graceful_shutdown_activate_info !=  nullptr && graceful_shutdown_activate_info->has_operation())
+	|| (update_in_safi14_merge_info !=  nullptr && update_in_safi14_merge_info->has_operation())
 	|| (capability_negotiation_suppressed_info !=  nullptr && capability_negotiation_suppressed_info->has_operation())
 	|| (neighbor_remote_as_list_info !=  nullptr && neighbor_remote_as_list_info->has_operation())
 	|| (max_peers_info !=  nullptr && max_peers_info->has_operation())
@@ -2086,11 +2105,13 @@ std::vector<std::pair<std::string, LeafData> > Bgp::ConfigInstances::ConfigInsta
     if (msg_log_in_buf_count.is_set || is_set(msg_log_in_buf_count.yfilter)) leaf_name_data.push_back(msg_log_in_buf_count.get_name_leafdata());
     if (msg_log_out_buf_count.is_set || is_set(msg_log_out_buf_count.yfilter)) leaf_name_data.push_back(msg_log_out_buf_count.get_name_leafdata());
     if (route_updates_source.is_set || is_set(route_updates_source.yfilter)) leaf_name_data.push_back(route_updates_source.get_name_leafdata());
+    if (local_address_subnet_len.is_set || is_set(local_address_subnet_len.yfilter)) leaf_name_data.push_back(local_address_subnet_len.get_name_leafdata());
     if (dmz_link_bandwidth.is_set || is_set(dmz_link_bandwidth.yfilter)) leaf_name_data.push_back(dmz_link_bandwidth.get_name_leafdata());
     if (ebgp_recv_dmz.is_set || is_set(ebgp_recv_dmz.yfilter)) leaf_name_data.push_back(ebgp_recv_dmz.get_name_leafdata());
     if (ebgp_send_dmz_mode.is_set || is_set(ebgp_send_dmz_mode.yfilter)) leaf_name_data.push_back(ebgp_send_dmz_mode.get_name_leafdata());
     if (ttl_security.is_set || is_set(ttl_security.yfilter)) leaf_name_data.push_back(ttl_security.get_name_leafdata());
     if (suppress4_byte_as.is_set || is_set(suppress4_byte_as.yfilter)) leaf_name_data.push_back(suppress4_byte_as.get_name_leafdata());
+    if (update_in_safi14_merge.is_set || is_set(update_in_safi14_merge.yfilter)) leaf_name_data.push_back(update_in_safi14_merge.get_name_leafdata());
     if (capability_negotiation_suppressed.is_set || is_set(capability_negotiation_suppressed.yfilter)) leaf_name_data.push_back(capability_negotiation_suppressed.get_name_leafdata());
     if (session_open_mode.is_set || is_set(session_open_mode.yfilter)) leaf_name_data.push_back(session_open_mode.get_name_leafdata());
     if (bfd.is_set || is_set(bfd.yfilter)) leaf_name_data.push_back(bfd.get_name_leafdata());
@@ -2146,6 +2167,15 @@ std::shared_ptr<ydk::Entity> Bgp::ConfigInstances::ConfigInstance::ConfigInstanc
             local_ip_address = std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalIpAddress>();
         }
         return local_ip_address;
+    }
+
+    if(child_yang_name == "local-address-subnet")
+    {
+        if(local_address_subnet == nullptr)
+        {
+            local_address_subnet = std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet>();
+        }
+        return local_address_subnet;
     }
 
     if(child_yang_name == "remote-as-info")
@@ -2308,6 +2338,15 @@ std::shared_ptr<ydk::Entity> Bgp::ConfigInstances::ConfigInstance::ConfigInstanc
             update_source_info = std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::UpdateSourceInfo>();
         }
         return update_source_info;
+    }
+
+    if(child_yang_name == "local-address-subnet-info")
+    {
+        if(local_address_subnet_info == nullptr)
+        {
+            local_address_subnet_info = std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnetInfo>();
+        }
+        return local_address_subnet_info;
     }
 
     if(child_yang_name == "dmz-link-bandwidth-info")
@@ -2616,6 +2655,15 @@ std::shared_ptr<ydk::Entity> Bgp::ConfigInstances::ConfigInstance::ConfigInstanc
         return graceful_shutdown_activate_info;
     }
 
+    if(child_yang_name == "update-in-safi14-merge-info")
+    {
+        if(update_in_safi14_merge_info == nullptr)
+        {
+            update_in_safi14_merge_info = std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::UpdateInSafi14MergeInfo>();
+        }
+        return update_in_safi14_merge_info;
+    }
+
     if(child_yang_name == "capability-negotiation-suppressed-info")
     {
         if(capability_negotiation_suppressed_info == nullptr)
@@ -2671,6 +2719,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::ConfigInstances::Config
     if(local_ip_address != nullptr)
     {
         _children["local-ip-address"] = local_ip_address;
+    }
+
+    if(local_address_subnet != nullptr)
+    {
+        _children["local-address-subnet"] = local_address_subnet;
     }
 
     if(remote_as_info != nullptr)
@@ -2761,6 +2814,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::ConfigInstances::Config
     if(update_source_info != nullptr)
     {
         _children["update-source-info"] = update_source_info;
+    }
+
+    if(local_address_subnet_info != nullptr)
+    {
+        _children["local-address-subnet-info"] = local_address_subnet_info;
     }
 
     if(dmz_link_bandwidth_info != nullptr)
@@ -2931,6 +2989,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::ConfigInstances::Config
     if(graceful_shutdown_activate_info != nullptr)
     {
         _children["graceful-shutdown-activate-info"] = graceful_shutdown_activate_info;
+    }
+
+    if(update_in_safi14_merge_info != nullptr)
+    {
+        _children["update-in-safi14-merge-info"] = update_in_safi14_merge_info;
     }
 
     if(capability_negotiation_suppressed_info != nullptr)
@@ -3119,6 +3182,12 @@ void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfi
         route_updates_source.value_namespace = name_space;
         route_updates_source.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "local-address-subnet-len")
+    {
+        local_address_subnet_len = value;
+        local_address_subnet_len.value_namespace = name_space;
+        local_address_subnet_len.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "dmz-link-bandwidth")
     {
         dmz_link_bandwidth = value;
@@ -3148,6 +3217,12 @@ void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfi
         suppress4_byte_as = value;
         suppress4_byte_as.value_namespace = name_space;
         suppress4_byte_as.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "update-in-safi14-merge")
+    {
+        update_in_safi14_merge = value;
+        update_in_safi14_merge.value_namespace = name_space;
+        update_in_safi14_merge.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "capability-negotiation-suppressed")
     {
@@ -3503,6 +3578,10 @@ void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfi
     {
         route_updates_source.yfilter = yfilter;
     }
+    if(value_path == "local-address-subnet-len")
+    {
+        local_address_subnet_len.yfilter = yfilter;
+    }
     if(value_path == "dmz-link-bandwidth")
     {
         dmz_link_bandwidth.yfilter = yfilter;
@@ -3522,6 +3601,10 @@ void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfi
     if(value_path == "suppress4-byte-as")
     {
         suppress4_byte_as.yfilter = yfilter;
+    }
+    if(value_path == "update-in-safi14-merge")
+    {
+        update_in_safi14_merge.yfilter = yfilter;
     }
     if(value_path == "capability-negotiation-suppressed")
     {
@@ -3691,7 +3774,7 @@ void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfi
 
 bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "local-ip-address" || name == "remote-as-info" || name == "speaker-id-info" || name == "min-advertisement-info" || name == "description-info" || name == "ebgp-hop-count-info" || name == "tcpmss-info" || name == "bmp-servers-info" || name == "keychain-info" || name == "local-as-info" || name == "password-info" || name == "receive-buffer-info" || name == "send-buffer-info" || name == "shutdown-info" || name == "timers-info" || name == "local-address-info" || name == "msg-log-in-info" || name == "msg-log-out-info" || name == "update-source-info" || name == "dmz-link-bandwidth-info" || name == "ebgp-recv-dmz-info" || name == "ebgp-send-dmz-info" || name == "ttl-security-info" || name == "suppress4-bbyte-as-info" || name == "session-open-mode-info" || name == "bfd-info" || name == "bfd-mininterval-info" || name == "bfd-multiplier-info" || name == "tos-info" || name == "nsr-disabled-info" || name == "graceful-restart-disabled-info" || name == "nbr-restart-time-info" || name == "nbr-stale-path-time-info" || name == "nbr-enforce-first-as-info" || name == "cluster-id-info" || name == "ignore-connected-info" || name == "internal-vpn-client-info" || name == "addpath-send-capability-info" || name == "addpath-receive-capability-info" || name == "egress-peer-engineering-info" || name == "update-error-handling-no-reset-info" || name == "prefix-validation-disable-info" || name == "prefix-validation-use-validit-info" || name == "prefix-validation-allow-invalid-info" || name == "prefix-validation-signal-ibgp-info" || name == "neighbor-update-filter-exists-info" || name == "neighbor-update-filter-message-buffer-count-info" || name == "neighbor-update-filter-syslog-disable-info" || name == "neighbor-update-filter-attribute-info" || name == "graceful-shutdown-info" || name == "graceful-shutdown-loc-pref-info" || name == "graceful-shutdown-as-prepends-info" || name == "graceful-shutdown-activate-info" || name == "capability-negotiation-suppressed-info" || name == "neighbor-remote-as-list-info" || name == "max-peers-info" || name == "idle-watch-time-info" || name == "ao-keychain-info" || name == "remote-as-number-xx" || name == "remote-as-number-yy" || name == "configured-speaker-id" || name == "tcp-mss" || name == "min-advertisement-interval" || name == "min-advertisement-interval-msecs" || name == "description" || name == "ebgp-hop-count" || name == "bmp-servers" || name == "is-ebgp-multihop-bgp-mpls-forwarding-disabled" || name == "keychain" || name == "local-as-number-xx" || name == "local-as-number-yy" || name == "local-as-no-prepend" || name == "password" || name == "socket-buffer-receive-size" || name == "bgp-buffer-receive-size" || name == "socket-buffer-send-size" || name == "bgp-buffer-send-size" || name == "adminstrative-shutdown" || name == "keepalive-interval" || name == "hold-time-value" || name == "min-acc-hold-time-value" || name == "msg-log-in-buf-count" || name == "msg-log-out-buf-count" || name == "route-updates-source" || name == "dmz-link-bandwidth" || name == "ebgp-recv-dmz" || name == "ebgp-send-dmz-mode" || name == "ttl-security" || name == "suppress4-byte-as" || name == "capability-negotiation-suppressed" || name == "session-open-mode" || name == "bfd" || name == "bfd-mininterval" || name == "bfd-multiplier" || name == "tos-type-info" || name == "tos-value-info" || name == "nsr-disabled" || name == "graceful-restart-disabled" || name == "nbr-restart-time" || name == "nbr-stale-path-time" || name == "nbr-enforce-first-as-status" || name == "nbr-cluster-id-type-info" || name == "nbr-cluster-id-info" || name == "ignore-connected-check" || name == "internal-vpn-client" || name == "addpath-send-capability" || name == "update-error-handling-no-reset" || name == "addpath-receive-capability" || name == "egress-peer-engineering" || name == "prefix-validation-disable" || name == "bestpath-use-origin-as-validity" || name == "prefix-validation-allow-invalid" || name == "prefix-validation-signal-ibgp" || name == "neighbor-update-filter-exists" || name == "neighbor-update-filter-message-buffer-count" || name == "neighbor-update-filter-message-buffer-is-non-circular" || name == "neighbor-update-filter-logging-disable" || name == "neighbor-update-filter-attribute-filter-group-name" || name == "graceful-shutdown-exists" || name == "graceful-shutdown-loc-pref" || name == "graceful-shutdown-as-prepends" || name == "graceful-shutdown-activate" || name == "neighbor-remote-as-list-group-name" || name == "max-peers" || name == "idle-watch-time" || name == "ao-keychain" || name == "ao-include-tcp-options" || name == "ao-accept-mismatch-connection" || name == "local-as-replace-as" || name == "local-as-dual-as")
+    if(name == "local-ip-address" || name == "local-address-subnet" || name == "remote-as-info" || name == "speaker-id-info" || name == "min-advertisement-info" || name == "description-info" || name == "ebgp-hop-count-info" || name == "tcpmss-info" || name == "bmp-servers-info" || name == "keychain-info" || name == "local-as-info" || name == "password-info" || name == "receive-buffer-info" || name == "send-buffer-info" || name == "shutdown-info" || name == "timers-info" || name == "local-address-info" || name == "msg-log-in-info" || name == "msg-log-out-info" || name == "update-source-info" || name == "local-address-subnet-info" || name == "dmz-link-bandwidth-info" || name == "ebgp-recv-dmz-info" || name == "ebgp-send-dmz-info" || name == "ttl-security-info" || name == "suppress4-bbyte-as-info" || name == "session-open-mode-info" || name == "bfd-info" || name == "bfd-mininterval-info" || name == "bfd-multiplier-info" || name == "tos-info" || name == "nsr-disabled-info" || name == "graceful-restart-disabled-info" || name == "nbr-restart-time-info" || name == "nbr-stale-path-time-info" || name == "nbr-enforce-first-as-info" || name == "cluster-id-info" || name == "ignore-connected-info" || name == "internal-vpn-client-info" || name == "addpath-send-capability-info" || name == "addpath-receive-capability-info" || name == "egress-peer-engineering-info" || name == "update-error-handling-no-reset-info" || name == "prefix-validation-disable-info" || name == "prefix-validation-use-validit-info" || name == "prefix-validation-allow-invalid-info" || name == "prefix-validation-signal-ibgp-info" || name == "neighbor-update-filter-exists-info" || name == "neighbor-update-filter-message-buffer-count-info" || name == "neighbor-update-filter-syslog-disable-info" || name == "neighbor-update-filter-attribute-info" || name == "graceful-shutdown-info" || name == "graceful-shutdown-loc-pref-info" || name == "graceful-shutdown-as-prepends-info" || name == "graceful-shutdown-activate-info" || name == "update-in-safi14-merge-info" || name == "capability-negotiation-suppressed-info" || name == "neighbor-remote-as-list-info" || name == "max-peers-info" || name == "idle-watch-time-info" || name == "ao-keychain-info" || name == "remote-as-number-xx" || name == "remote-as-number-yy" || name == "configured-speaker-id" || name == "tcp-mss" || name == "min-advertisement-interval" || name == "min-advertisement-interval-msecs" || name == "description" || name == "ebgp-hop-count" || name == "bmp-servers" || name == "is-ebgp-multihop-bgp-mpls-forwarding-disabled" || name == "keychain" || name == "local-as-number-xx" || name == "local-as-number-yy" || name == "local-as-no-prepend" || name == "password" || name == "socket-buffer-receive-size" || name == "bgp-buffer-receive-size" || name == "socket-buffer-send-size" || name == "bgp-buffer-send-size" || name == "adminstrative-shutdown" || name == "keepalive-interval" || name == "hold-time-value" || name == "min-acc-hold-time-value" || name == "msg-log-in-buf-count" || name == "msg-log-out-buf-count" || name == "route-updates-source" || name == "local-address-subnet-len" || name == "dmz-link-bandwidth" || name == "ebgp-recv-dmz" || name == "ebgp-send-dmz-mode" || name == "ttl-security" || name == "suppress4-byte-as" || name == "update-in-safi14-merge" || name == "capability-negotiation-suppressed" || name == "session-open-mode" || name == "bfd" || name == "bfd-mininterval" || name == "bfd-multiplier" || name == "tos-type-info" || name == "tos-value-info" || name == "nsr-disabled" || name == "graceful-restart-disabled" || name == "nbr-restart-time" || name == "nbr-stale-path-time" || name == "nbr-enforce-first-as-status" || name == "nbr-cluster-id-type-info" || name == "nbr-cluster-id-info" || name == "ignore-connected-check" || name == "internal-vpn-client" || name == "addpath-send-capability" || name == "update-error-handling-no-reset" || name == "addpath-receive-capability" || name == "egress-peer-engineering" || name == "prefix-validation-disable" || name == "bestpath-use-origin-as-validity" || name == "prefix-validation-allow-invalid" || name == "prefix-validation-signal-ibgp" || name == "neighbor-update-filter-exists" || name == "neighbor-update-filter-message-buffer-count" || name == "neighbor-update-filter-message-buffer-is-non-circular" || name == "neighbor-update-filter-logging-disable" || name == "neighbor-update-filter-attribute-filter-group-name" || name == "graceful-shutdown-exists" || name == "graceful-shutdown-loc-pref" || name == "graceful-shutdown-as-prepends" || name == "graceful-shutdown-activate" || name == "neighbor-remote-as-list-group-name" || name == "max-peers" || name == "idle-watch-time" || name == "ao-keychain" || name == "ao-include-tcp-options" || name == "ao-accept-mismatch-connection" || name == "local-as-replace-as" || name == "local-as-dual-as")
         return true;
     return false;
 }
@@ -4447,6 +4530,763 @@ void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfi
 }
 
 bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalIpAddress::Ipv6SrPolicyAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv6-srpolicy-address")
+        return true;
+    return false;
+}
+
+Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::LocalAddressSubnet()
+    :
+    afi{YType::enumeration, "afi"},
+    ipv4_address{YType::str, "ipv4-address"},
+    ipv4_mcast_address{YType::str, "ipv4-mcast-address"},
+    ipv4_label_address{YType::str, "ipv4-label-address"},
+    ipv4_tunnel_address{YType::str, "ipv4-tunnel-address"},
+    ipv4_mdt_address{YType::str, "ipv4-mdt-address"},
+    ipv4vpn_address{YType::str, "ipv4vpn-address"},
+    ipv4vpna_mcastddress{YType::str, "ipv4vpna-mcastddress"},
+    ipv6_address{YType::str, "ipv6-address"},
+    ipv6_mcast_address{YType::str, "ipv6-mcast-address"},
+    ipv6_label_address{YType::str, "ipv6-label-address"},
+    ipv6vpn_address{YType::str, "ipv6vpn-address"},
+    ipv6vpn_mcast_address{YType::str, "ipv6vpn-mcast-address"},
+    rt_constraint_address{YType::str, "rt-constraint-address"},
+    ipv6mvpn_address{YType::str, "ipv6mvpn-address"},
+    ipv4mvpn_address{YType::str, "ipv4mvpn-address"},
+    l2vpn_evpn_address{YType::str, "l2vpn-evpn-address"},
+    ls_ls_address{YType::str, "ls-ls-address"},
+    ipv4_flowspec_address{YType::str, "ipv4-flowspec-address"},
+    ipv6_flowspec_address{YType::str, "ipv6-flowspec-address"},
+    ipv4vpn_flowspec_address{YType::str, "ipv4vpn-flowspec-address"},
+    ipv6vpn_flowspec_address{YType::str, "ipv6vpn-flowspec-address"}
+        ,
+    l2vpn_vpls_address(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnVplsAddress>())
+    , l2vpn_mspw_address(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnMspwAddress>())
+    , ipv4_sr_policy_address(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv4SrPolicyAddress>())
+    , ipv6_sr_policy_address(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv6SrPolicyAddress>())
+{
+    l2vpn_vpls_address->parent = this;
+    l2vpn_mspw_address->parent = this;
+    ipv4_sr_policy_address->parent = this;
+    ipv6_sr_policy_address->parent = this;
+
+    yang_name = "local-address-subnet"; yang_parent_name = "af-independent-config"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::~LocalAddressSubnet()
+{
+}
+
+bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::has_data() const
+{
+    if (is_presence_container) return true;
+    return afi.is_set
+	|| ipv4_address.is_set
+	|| ipv4_mcast_address.is_set
+	|| ipv4_label_address.is_set
+	|| ipv4_tunnel_address.is_set
+	|| ipv4_mdt_address.is_set
+	|| ipv4vpn_address.is_set
+	|| ipv4vpna_mcastddress.is_set
+	|| ipv6_address.is_set
+	|| ipv6_mcast_address.is_set
+	|| ipv6_label_address.is_set
+	|| ipv6vpn_address.is_set
+	|| ipv6vpn_mcast_address.is_set
+	|| rt_constraint_address.is_set
+	|| ipv6mvpn_address.is_set
+	|| ipv4mvpn_address.is_set
+	|| l2vpn_evpn_address.is_set
+	|| ls_ls_address.is_set
+	|| ipv4_flowspec_address.is_set
+	|| ipv6_flowspec_address.is_set
+	|| ipv4vpn_flowspec_address.is_set
+	|| ipv6vpn_flowspec_address.is_set
+	|| (l2vpn_vpls_address !=  nullptr && l2vpn_vpls_address->has_data())
+	|| (l2vpn_mspw_address !=  nullptr && l2vpn_mspw_address->has_data())
+	|| (ipv4_sr_policy_address !=  nullptr && ipv4_sr_policy_address->has_data())
+	|| (ipv6_sr_policy_address !=  nullptr && ipv6_sr_policy_address->has_data());
+}
+
+bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(afi.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv4_mcast_address.yfilter)
+	|| ydk::is_set(ipv4_label_address.yfilter)
+	|| ydk::is_set(ipv4_tunnel_address.yfilter)
+	|| ydk::is_set(ipv4_mdt_address.yfilter)
+	|| ydk::is_set(ipv4vpn_address.yfilter)
+	|| ydk::is_set(ipv4vpna_mcastddress.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter)
+	|| ydk::is_set(ipv6_mcast_address.yfilter)
+	|| ydk::is_set(ipv6_label_address.yfilter)
+	|| ydk::is_set(ipv6vpn_address.yfilter)
+	|| ydk::is_set(ipv6vpn_mcast_address.yfilter)
+	|| ydk::is_set(rt_constraint_address.yfilter)
+	|| ydk::is_set(ipv6mvpn_address.yfilter)
+	|| ydk::is_set(ipv4mvpn_address.yfilter)
+	|| ydk::is_set(l2vpn_evpn_address.yfilter)
+	|| ydk::is_set(ls_ls_address.yfilter)
+	|| ydk::is_set(ipv4_flowspec_address.yfilter)
+	|| ydk::is_set(ipv6_flowspec_address.yfilter)
+	|| ydk::is_set(ipv4vpn_flowspec_address.yfilter)
+	|| ydk::is_set(ipv6vpn_flowspec_address.yfilter)
+	|| (l2vpn_vpls_address !=  nullptr && l2vpn_vpls_address->has_operation())
+	|| (l2vpn_mspw_address !=  nullptr && l2vpn_mspw_address->has_operation())
+	|| (ipv4_sr_policy_address !=  nullptr && ipv4_sr_policy_address->has_operation())
+	|| (ipv6_sr_policy_address !=  nullptr && ipv6_sr_policy_address->has_operation());
+}
+
+std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "local-address-subnet";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv4_mcast_address.is_set || is_set(ipv4_mcast_address.yfilter)) leaf_name_data.push_back(ipv4_mcast_address.get_name_leafdata());
+    if (ipv4_label_address.is_set || is_set(ipv4_label_address.yfilter)) leaf_name_data.push_back(ipv4_label_address.get_name_leafdata());
+    if (ipv4_tunnel_address.is_set || is_set(ipv4_tunnel_address.yfilter)) leaf_name_data.push_back(ipv4_tunnel_address.get_name_leafdata());
+    if (ipv4_mdt_address.is_set || is_set(ipv4_mdt_address.yfilter)) leaf_name_data.push_back(ipv4_mdt_address.get_name_leafdata());
+    if (ipv4vpn_address.is_set || is_set(ipv4vpn_address.yfilter)) leaf_name_data.push_back(ipv4vpn_address.get_name_leafdata());
+    if (ipv4vpna_mcastddress.is_set || is_set(ipv4vpna_mcastddress.yfilter)) leaf_name_data.push_back(ipv4vpna_mcastddress.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+    if (ipv6_mcast_address.is_set || is_set(ipv6_mcast_address.yfilter)) leaf_name_data.push_back(ipv6_mcast_address.get_name_leafdata());
+    if (ipv6_label_address.is_set || is_set(ipv6_label_address.yfilter)) leaf_name_data.push_back(ipv6_label_address.get_name_leafdata());
+    if (ipv6vpn_address.is_set || is_set(ipv6vpn_address.yfilter)) leaf_name_data.push_back(ipv6vpn_address.get_name_leafdata());
+    if (ipv6vpn_mcast_address.is_set || is_set(ipv6vpn_mcast_address.yfilter)) leaf_name_data.push_back(ipv6vpn_mcast_address.get_name_leafdata());
+    if (rt_constraint_address.is_set || is_set(rt_constraint_address.yfilter)) leaf_name_data.push_back(rt_constraint_address.get_name_leafdata());
+    if (ipv6mvpn_address.is_set || is_set(ipv6mvpn_address.yfilter)) leaf_name_data.push_back(ipv6mvpn_address.get_name_leafdata());
+    if (ipv4mvpn_address.is_set || is_set(ipv4mvpn_address.yfilter)) leaf_name_data.push_back(ipv4mvpn_address.get_name_leafdata());
+    if (l2vpn_evpn_address.is_set || is_set(l2vpn_evpn_address.yfilter)) leaf_name_data.push_back(l2vpn_evpn_address.get_name_leafdata());
+    if (ls_ls_address.is_set || is_set(ls_ls_address.yfilter)) leaf_name_data.push_back(ls_ls_address.get_name_leafdata());
+    if (ipv4_flowspec_address.is_set || is_set(ipv4_flowspec_address.yfilter)) leaf_name_data.push_back(ipv4_flowspec_address.get_name_leafdata());
+    if (ipv6_flowspec_address.is_set || is_set(ipv6_flowspec_address.yfilter)) leaf_name_data.push_back(ipv6_flowspec_address.get_name_leafdata());
+    if (ipv4vpn_flowspec_address.is_set || is_set(ipv4vpn_flowspec_address.yfilter)) leaf_name_data.push_back(ipv4vpn_flowspec_address.get_name_leafdata());
+    if (ipv6vpn_flowspec_address.is_set || is_set(ipv6vpn_flowspec_address.yfilter)) leaf_name_data.push_back(ipv6vpn_flowspec_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "l2vpn-vpls-address")
+    {
+        if(l2vpn_vpls_address == nullptr)
+        {
+            l2vpn_vpls_address = std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnVplsAddress>();
+        }
+        return l2vpn_vpls_address;
+    }
+
+    if(child_yang_name == "l2vpn-mspw-address")
+    {
+        if(l2vpn_mspw_address == nullptr)
+        {
+            l2vpn_mspw_address = std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnMspwAddress>();
+        }
+        return l2vpn_mspw_address;
+    }
+
+    if(child_yang_name == "ipv4-sr-policy-address")
+    {
+        if(ipv4_sr_policy_address == nullptr)
+        {
+            ipv4_sr_policy_address = std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv4SrPolicyAddress>();
+        }
+        return ipv4_sr_policy_address;
+    }
+
+    if(child_yang_name == "ipv6-sr-policy-address")
+    {
+        if(ipv6_sr_policy_address == nullptr)
+        {
+            ipv6_sr_policy_address = std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv6SrPolicyAddress>();
+        }
+        return ipv6_sr_policy_address;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(l2vpn_vpls_address != nullptr)
+    {
+        _children["l2vpn-vpls-address"] = l2vpn_vpls_address;
+    }
+
+    if(l2vpn_mspw_address != nullptr)
+    {
+        _children["l2vpn-mspw-address"] = l2vpn_mspw_address;
+    }
+
+    if(ipv4_sr_policy_address != nullptr)
+    {
+        _children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
+    }
+
+    if(ipv6_sr_policy_address != nullptr)
+    {
+        _children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
+    }
+
+    return _children;
+}
+
+void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "afi")
+    {
+        afi = value;
+        afi.value_namespace = name_space;
+        afi.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-mcast-address")
+    {
+        ipv4_mcast_address = value;
+        ipv4_mcast_address.value_namespace = name_space;
+        ipv4_mcast_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-label-address")
+    {
+        ipv4_label_address = value;
+        ipv4_label_address.value_namespace = name_space;
+        ipv4_label_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-tunnel-address")
+    {
+        ipv4_tunnel_address = value;
+        ipv4_tunnel_address.value_namespace = name_space;
+        ipv4_tunnel_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-mdt-address")
+    {
+        ipv4_mdt_address = value;
+        ipv4_mdt_address.value_namespace = name_space;
+        ipv4_mdt_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4vpn-address")
+    {
+        ipv4vpn_address = value;
+        ipv4vpn_address.value_namespace = name_space;
+        ipv4vpn_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4vpna-mcastddress")
+    {
+        ipv4vpna_mcastddress = value;
+        ipv4vpna_mcastddress.value_namespace = name_space;
+        ipv4vpna_mcastddress.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-mcast-address")
+    {
+        ipv6_mcast_address = value;
+        ipv6_mcast_address.value_namespace = name_space;
+        ipv6_mcast_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-label-address")
+    {
+        ipv6_label_address = value;
+        ipv6_label_address.value_namespace = name_space;
+        ipv6_label_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6vpn-address")
+    {
+        ipv6vpn_address = value;
+        ipv6vpn_address.value_namespace = name_space;
+        ipv6vpn_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6vpn-mcast-address")
+    {
+        ipv6vpn_mcast_address = value;
+        ipv6vpn_mcast_address.value_namespace = name_space;
+        ipv6vpn_mcast_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "rt-constraint-address")
+    {
+        rt_constraint_address = value;
+        rt_constraint_address.value_namespace = name_space;
+        rt_constraint_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6mvpn-address")
+    {
+        ipv6mvpn_address = value;
+        ipv6mvpn_address.value_namespace = name_space;
+        ipv6mvpn_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4mvpn-address")
+    {
+        ipv4mvpn_address = value;
+        ipv4mvpn_address.value_namespace = name_space;
+        ipv4mvpn_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "l2vpn-evpn-address")
+    {
+        l2vpn_evpn_address = value;
+        l2vpn_evpn_address.value_namespace = name_space;
+        l2vpn_evpn_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ls-ls-address")
+    {
+        ls_ls_address = value;
+        ls_ls_address.value_namespace = name_space;
+        ls_ls_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-flowspec-address")
+    {
+        ipv4_flowspec_address = value;
+        ipv4_flowspec_address.value_namespace = name_space;
+        ipv4_flowspec_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-flowspec-address")
+    {
+        ipv6_flowspec_address = value;
+        ipv6_flowspec_address.value_namespace = name_space;
+        ipv6_flowspec_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4vpn-flowspec-address")
+    {
+        ipv4vpn_flowspec_address = value;
+        ipv4vpn_flowspec_address.value_namespace = name_space;
+        ipv4vpn_flowspec_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6vpn-flowspec-address")
+    {
+        ipv6vpn_flowspec_address = value;
+        ipv6vpn_flowspec_address.value_namespace = name_space;
+        ipv6vpn_flowspec_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "afi")
+    {
+        afi.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-mcast-address")
+    {
+        ipv4_mcast_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-label-address")
+    {
+        ipv4_label_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-tunnel-address")
+    {
+        ipv4_tunnel_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-mdt-address")
+    {
+        ipv4_mdt_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4vpn-address")
+    {
+        ipv4vpn_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4vpna-mcastddress")
+    {
+        ipv4vpna_mcastddress.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-mcast-address")
+    {
+        ipv6_mcast_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-label-address")
+    {
+        ipv6_label_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6vpn-address")
+    {
+        ipv6vpn_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6vpn-mcast-address")
+    {
+        ipv6vpn_mcast_address.yfilter = yfilter;
+    }
+    if(value_path == "rt-constraint-address")
+    {
+        rt_constraint_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6mvpn-address")
+    {
+        ipv6mvpn_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4mvpn-address")
+    {
+        ipv4mvpn_address.yfilter = yfilter;
+    }
+    if(value_path == "l2vpn-evpn-address")
+    {
+        l2vpn_evpn_address.yfilter = yfilter;
+    }
+    if(value_path == "ls-ls-address")
+    {
+        ls_ls_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-flowspec-address")
+    {
+        ipv4_flowspec_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-flowspec-address")
+    {
+        ipv6_flowspec_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv4vpn-flowspec-address")
+    {
+        ipv4vpn_flowspec_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6vpn-flowspec-address")
+    {
+        ipv6vpn_flowspec_address.yfilter = yfilter;
+    }
+}
+
+bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2vpn-vpls-address" || name == "l2vpn-mspw-address" || name == "ipv4-sr-policy-address" || name == "ipv6-sr-policy-address" || name == "afi" || name == "ipv4-address" || name == "ipv4-mcast-address" || name == "ipv4-label-address" || name == "ipv4-tunnel-address" || name == "ipv4-mdt-address" || name == "ipv4vpn-address" || name == "ipv4vpna-mcastddress" || name == "ipv6-address" || name == "ipv6-mcast-address" || name == "ipv6-label-address" || name == "ipv6vpn-address" || name == "ipv6vpn-mcast-address" || name == "rt-constraint-address" || name == "ipv6mvpn-address" || name == "ipv4mvpn-address" || name == "l2vpn-evpn-address" || name == "ls-ls-address" || name == "ipv4-flowspec-address" || name == "ipv6-flowspec-address" || name == "ipv4vpn-flowspec-address" || name == "ipv6vpn-flowspec-address")
+        return true;
+    return false;
+}
+
+Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnVplsAddress::L2vpnVplsAddress()
+    :
+    l2vpn_address{YType::str, "l2vpn-address"}
+{
+
+    yang_name = "l2vpn-vpls-address"; yang_parent_name = "local-address-subnet"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnVplsAddress::~L2vpnVplsAddress()
+{
+}
+
+bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnVplsAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return l2vpn_address.is_set;
+}
+
+bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnVplsAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(l2vpn_address.yfilter);
+}
+
+std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnVplsAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2vpn-vpls-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnVplsAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (l2vpn_address.is_set || is_set(l2vpn_address.yfilter)) leaf_name_data.push_back(l2vpn_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnVplsAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnVplsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "l2vpn-address")
+    {
+        l2vpn_address = value;
+        l2vpn_address.value_namespace = name_space;
+        l2vpn_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnVplsAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "l2vpn-address")
+    {
+        l2vpn_address.yfilter = yfilter;
+    }
+}
+
+bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnVplsAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2vpn-address")
+        return true;
+    return false;
+}
+
+Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnMspwAddress::L2vpnMspwAddress()
+    :
+    l2vpn_address{YType::str, "l2vpn-address"}
+{
+
+    yang_name = "l2vpn-mspw-address"; yang_parent_name = "local-address-subnet"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnMspwAddress::~L2vpnMspwAddress()
+{
+}
+
+bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnMspwAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return l2vpn_address.is_set;
+}
+
+bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnMspwAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(l2vpn_address.yfilter);
+}
+
+std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnMspwAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "l2vpn-mspw-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnMspwAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (l2vpn_address.is_set || is_set(l2vpn_address.yfilter)) leaf_name_data.push_back(l2vpn_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnMspwAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnMspwAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnMspwAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "l2vpn-address")
+    {
+        l2vpn_address = value;
+        l2vpn_address.value_namespace = name_space;
+        l2vpn_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnMspwAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "l2vpn-address")
+    {
+        l2vpn_address.yfilter = yfilter;
+    }
+}
+
+bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnMspwAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "l2vpn-address")
+        return true;
+    return false;
+}
+
+Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv4SrPolicyAddress::Ipv4SrPolicyAddress()
+    :
+    ipv4_srpolicy_address{YType::str, "ipv4-srpolicy-address"}
+{
+
+    yang_name = "ipv4-sr-policy-address"; yang_parent_name = "local-address-subnet"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv4SrPolicyAddress::~Ipv4SrPolicyAddress()
+{
+}
+
+bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv4SrPolicyAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return ipv4_srpolicy_address.is_set;
+}
+
+bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv4SrPolicyAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipv4_srpolicy_address.yfilter);
+}
+
+std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv4SrPolicyAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv4-sr-policy-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv4SrPolicyAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipv4_srpolicy_address.is_set || is_set(ipv4_srpolicy_address.yfilter)) leaf_name_data.push_back(ipv4_srpolicy_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv4SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv4SrPolicyAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv4SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipv4-srpolicy-address")
+    {
+        ipv4_srpolicy_address = value;
+        ipv4_srpolicy_address.value_namespace = name_space;
+        ipv4_srpolicy_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv4SrPolicyAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv4-srpolicy-address")
+    {
+        ipv4_srpolicy_address.yfilter = yfilter;
+    }
+}
+
+bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv4SrPolicyAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "ipv4-srpolicy-address")
+        return true;
+    return false;
+}
+
+Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv6SrPolicyAddress::Ipv6SrPolicyAddress()
+    :
+    ipv6_srpolicy_address{YType::str, "ipv6-srpolicy-address"}
+{
+
+    yang_name = "ipv6-sr-policy-address"; yang_parent_name = "local-address-subnet"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv6SrPolicyAddress::~Ipv6SrPolicyAddress()
+{
+}
+
+bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv6SrPolicyAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return ipv6_srpolicy_address.is_set;
+}
+
+bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv6SrPolicyAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(ipv6_srpolicy_address.yfilter);
+}
+
+std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv6SrPolicyAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "ipv6-sr-policy-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv6SrPolicyAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (ipv6_srpolicy_address.is_set || is_set(ipv6_srpolicy_address.yfilter)) leaf_name_data.push_back(ipv6_srpolicy_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv6SrPolicyAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv6SrPolicyAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv6SrPolicyAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "ipv6-srpolicy-address")
+    {
+        ipv6_srpolicy_address = value;
+        ipv6_srpolicy_address.value_namespace = name_space;
+        ipv6_srpolicy_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv6SrPolicyAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "ipv6-srpolicy-address")
+    {
+        ipv6_srpolicy_address.yfilter = yfilter;
+    }
+}
+
+bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv6SrPolicyAddress::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ipv6-srpolicy-address")
         return true;
@@ -21621,971 +22461,23 @@ bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfi
     return false;
 }
 
-Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::MsgLogOutInfo()
-    :
-    is_item_configured{YType::boolean, "is-item-configured"}
-        ,
-    inheritance_chain(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain>())
-{
-    inheritance_chain->parent = this;
-
-    yang_name = "msg-log-out-info"; yang_parent_name = "af-independent-config"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::~MsgLogOutInfo()
-{
-}
-
-bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::has_data() const
-{
-    if (is_presence_container) return true;
-    return is_item_configured.is_set
-	|| (inheritance_chain !=  nullptr && inheritance_chain->has_data());
-}
-
-bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(is_item_configured.yfilter)
-	|| (inheritance_chain !=  nullptr && inheritance_chain->has_operation());
-}
-
-std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "msg-log-out-info";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (is_item_configured.is_set || is_set(is_item_configured.yfilter)) leaf_name_data.push_back(is_item_configured.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "inheritance-chain")
-    {
-        if(inheritance_chain == nullptr)
-        {
-            inheritance_chain = std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain>();
-        }
-        return inheritance_chain;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(inheritance_chain != nullptr)
-    {
-        _children["inheritance-chain"] = inheritance_chain;
-    }
-
-    return _children;
-}
-
-void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "is-item-configured")
-    {
-        is_item_configured = value;
-        is_item_configured.value_namespace = name_space;
-        is_item_configured.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "is-item-configured")
-    {
-        is_item_configured.yfilter = yfilter;
-    }
-}
-
-bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "inheritance-chain" || name == "is-item-configured")
-        return true;
-    return false;
-}
-
-Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::InheritanceChain()
-    :
-    bgp_config_entid(this, {})
-{
-
-    yang_name = "inheritance-chain"; yang_parent_name = "msg-log-out-info"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::~InheritanceChain()
-{
-}
-
-bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<bgp_config_entid.len(); index++)
-    {
-        if(bgp_config_entid[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::has_operation() const
-{
-    for (std::size_t index=0; index<bgp_config_entid.len(); index++)
-    {
-        if(bgp_config_entid[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "inheritance-chain";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "bgp-config-entid")
-    {
-        auto ent_ = std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid>();
-        ent_->parent = this;
-        bgp_config_entid.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : bgp_config_entid.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "bgp-config-entid")
-        return true;
-    return false;
-}
-
-Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::BgpConfigEntid()
-    :
-    address_family_identifier{YType::uint8, "address-family-identifier"},
-    configuration_type{YType::enumeration, "configuration-type"},
-    group_name{YType::str, "group-name"}
-        ,
-    neighbor_address(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress>())
-{
-    neighbor_address->parent = this;
-
-    yang_name = "bgp-config-entid"; yang_parent_name = "inheritance-chain"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::~BgpConfigEntid()
-{
-}
-
-bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::has_data() const
-{
-    if (is_presence_container) return true;
-    return address_family_identifier.is_set
-	|| configuration_type.is_set
-	|| group_name.is_set
-	|| (neighbor_address !=  nullptr && neighbor_address->has_data());
-}
-
-bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(address_family_identifier.yfilter)
-	|| ydk::is_set(configuration_type.yfilter)
-	|| ydk::is_set(group_name.yfilter)
-	|| (neighbor_address !=  nullptr && neighbor_address->has_operation());
-}
-
-std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "bgp-config-entid";
-    path_buffer << "[" << get_ylist_key() << "]";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (address_family_identifier.is_set || is_set(address_family_identifier.yfilter)) leaf_name_data.push_back(address_family_identifier.get_name_leafdata());
-    if (configuration_type.is_set || is_set(configuration_type.yfilter)) leaf_name_data.push_back(configuration_type.get_name_leafdata());
-    if (group_name.is_set || is_set(group_name.yfilter)) leaf_name_data.push_back(group_name.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "neighbor-address")
-    {
-        if(neighbor_address == nullptr)
-        {
-            neighbor_address = std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress>();
-        }
-        return neighbor_address;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(neighbor_address != nullptr)
-    {
-        _children["neighbor-address"] = neighbor_address;
-    }
-
-    return _children;
-}
-
-void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "address-family-identifier")
-    {
-        address_family_identifier = value;
-        address_family_identifier.value_namespace = name_space;
-        address_family_identifier.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "configuration-type")
-    {
-        configuration_type = value;
-        configuration_type.value_namespace = name_space;
-        configuration_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "group-name")
-    {
-        group_name = value;
-        group_name.value_namespace = name_space;
-        group_name.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "address-family-identifier")
-    {
-        address_family_identifier.yfilter = yfilter;
-    }
-    if(value_path == "configuration-type")
-    {
-        configuration_type.yfilter = yfilter;
-    }
-    if(value_path == "group-name")
-    {
-        group_name.yfilter = yfilter;
-    }
-}
-
-bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "neighbor-address" || name == "address-family-identifier" || name == "configuration-type" || name == "group-name")
-        return true;
-    return false;
-}
-
-Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::NeighborAddress()
-    :
-    afi{YType::enumeration, "afi"},
-    ipv4_address{YType::str, "ipv4-address"},
-    ipv4_mcast_address{YType::str, "ipv4-mcast-address"},
-    ipv4_label_address{YType::str, "ipv4-label-address"},
-    ipv4_tunnel_address{YType::str, "ipv4-tunnel-address"},
-    ipv4_mdt_address{YType::str, "ipv4-mdt-address"},
-    ipv4vpn_address{YType::str, "ipv4vpn-address"},
-    ipv4vpna_mcastddress{YType::str, "ipv4vpna-mcastddress"},
-    ipv6_address{YType::str, "ipv6-address"},
-    ipv6_mcast_address{YType::str, "ipv6-mcast-address"},
-    ipv6_label_address{YType::str, "ipv6-label-address"},
-    ipv6vpn_address{YType::str, "ipv6vpn-address"},
-    ipv6vpn_mcast_address{YType::str, "ipv6vpn-mcast-address"},
-    rt_constraint_address{YType::str, "rt-constraint-address"},
-    ipv6mvpn_address{YType::str, "ipv6mvpn-address"},
-    ipv4mvpn_address{YType::str, "ipv4mvpn-address"},
-    l2vpn_evpn_address{YType::str, "l2vpn-evpn-address"},
-    ls_ls_address{YType::str, "ls-ls-address"},
-    ipv4_flowspec_address{YType::str, "ipv4-flowspec-address"},
-    ipv6_flowspec_address{YType::str, "ipv6-flowspec-address"},
-    ipv4vpn_flowspec_address{YType::str, "ipv4vpn-flowspec-address"},
-    ipv6vpn_flowspec_address{YType::str, "ipv6vpn-flowspec-address"}
-        ,
-    l2vpn_vpls_address(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::L2vpnVplsAddress>())
-    , l2vpn_mspw_address(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::L2vpnMspwAddress>())
-    , ipv4_sr_policy_address(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::Ipv4SrPolicyAddress>())
-    , ipv6_sr_policy_address(std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::Ipv6SrPolicyAddress>())
-{
-    l2vpn_vpls_address->parent = this;
-    l2vpn_mspw_address->parent = this;
-    ipv4_sr_policy_address->parent = this;
-    ipv6_sr_policy_address->parent = this;
-
-    yang_name = "neighbor-address"; yang_parent_name = "bgp-config-entid"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::~NeighborAddress()
-{
-}
-
-bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::has_data() const
-{
-    if (is_presence_container) return true;
-    return afi.is_set
-	|| ipv4_address.is_set
-	|| ipv4_mcast_address.is_set
-	|| ipv4_label_address.is_set
-	|| ipv4_tunnel_address.is_set
-	|| ipv4_mdt_address.is_set
-	|| ipv4vpn_address.is_set
-	|| ipv4vpna_mcastddress.is_set
-	|| ipv6_address.is_set
-	|| ipv6_mcast_address.is_set
-	|| ipv6_label_address.is_set
-	|| ipv6vpn_address.is_set
-	|| ipv6vpn_mcast_address.is_set
-	|| rt_constraint_address.is_set
-	|| ipv6mvpn_address.is_set
-	|| ipv4mvpn_address.is_set
-	|| l2vpn_evpn_address.is_set
-	|| ls_ls_address.is_set
-	|| ipv4_flowspec_address.is_set
-	|| ipv6_flowspec_address.is_set
-	|| ipv4vpn_flowspec_address.is_set
-	|| ipv6vpn_flowspec_address.is_set
-	|| (l2vpn_vpls_address !=  nullptr && l2vpn_vpls_address->has_data())
-	|| (l2vpn_mspw_address !=  nullptr && l2vpn_mspw_address->has_data())
-	|| (ipv4_sr_policy_address !=  nullptr && ipv4_sr_policy_address->has_data())
-	|| (ipv6_sr_policy_address !=  nullptr && ipv6_sr_policy_address->has_data());
-}
-
-bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(afi.yfilter)
-	|| ydk::is_set(ipv4_address.yfilter)
-	|| ydk::is_set(ipv4_mcast_address.yfilter)
-	|| ydk::is_set(ipv4_label_address.yfilter)
-	|| ydk::is_set(ipv4_tunnel_address.yfilter)
-	|| ydk::is_set(ipv4_mdt_address.yfilter)
-	|| ydk::is_set(ipv4vpn_address.yfilter)
-	|| ydk::is_set(ipv4vpna_mcastddress.yfilter)
-	|| ydk::is_set(ipv6_address.yfilter)
-	|| ydk::is_set(ipv6_mcast_address.yfilter)
-	|| ydk::is_set(ipv6_label_address.yfilter)
-	|| ydk::is_set(ipv6vpn_address.yfilter)
-	|| ydk::is_set(ipv6vpn_mcast_address.yfilter)
-	|| ydk::is_set(rt_constraint_address.yfilter)
-	|| ydk::is_set(ipv6mvpn_address.yfilter)
-	|| ydk::is_set(ipv4mvpn_address.yfilter)
-	|| ydk::is_set(l2vpn_evpn_address.yfilter)
-	|| ydk::is_set(ls_ls_address.yfilter)
-	|| ydk::is_set(ipv4_flowspec_address.yfilter)
-	|| ydk::is_set(ipv6_flowspec_address.yfilter)
-	|| ydk::is_set(ipv4vpn_flowspec_address.yfilter)
-	|| ydk::is_set(ipv6vpn_flowspec_address.yfilter)
-	|| (l2vpn_vpls_address !=  nullptr && l2vpn_vpls_address->has_operation())
-	|| (l2vpn_mspw_address !=  nullptr && l2vpn_mspw_address->has_operation())
-	|| (ipv4_sr_policy_address !=  nullptr && ipv4_sr_policy_address->has_operation())
-	|| (ipv6_sr_policy_address !=  nullptr && ipv6_sr_policy_address->has_operation());
-}
-
-std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "neighbor-address";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (afi.is_set || is_set(afi.yfilter)) leaf_name_data.push_back(afi.get_name_leafdata());
-    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
-    if (ipv4_mcast_address.is_set || is_set(ipv4_mcast_address.yfilter)) leaf_name_data.push_back(ipv4_mcast_address.get_name_leafdata());
-    if (ipv4_label_address.is_set || is_set(ipv4_label_address.yfilter)) leaf_name_data.push_back(ipv4_label_address.get_name_leafdata());
-    if (ipv4_tunnel_address.is_set || is_set(ipv4_tunnel_address.yfilter)) leaf_name_data.push_back(ipv4_tunnel_address.get_name_leafdata());
-    if (ipv4_mdt_address.is_set || is_set(ipv4_mdt_address.yfilter)) leaf_name_data.push_back(ipv4_mdt_address.get_name_leafdata());
-    if (ipv4vpn_address.is_set || is_set(ipv4vpn_address.yfilter)) leaf_name_data.push_back(ipv4vpn_address.get_name_leafdata());
-    if (ipv4vpna_mcastddress.is_set || is_set(ipv4vpna_mcastddress.yfilter)) leaf_name_data.push_back(ipv4vpna_mcastddress.get_name_leafdata());
-    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
-    if (ipv6_mcast_address.is_set || is_set(ipv6_mcast_address.yfilter)) leaf_name_data.push_back(ipv6_mcast_address.get_name_leafdata());
-    if (ipv6_label_address.is_set || is_set(ipv6_label_address.yfilter)) leaf_name_data.push_back(ipv6_label_address.get_name_leafdata());
-    if (ipv6vpn_address.is_set || is_set(ipv6vpn_address.yfilter)) leaf_name_data.push_back(ipv6vpn_address.get_name_leafdata());
-    if (ipv6vpn_mcast_address.is_set || is_set(ipv6vpn_mcast_address.yfilter)) leaf_name_data.push_back(ipv6vpn_mcast_address.get_name_leafdata());
-    if (rt_constraint_address.is_set || is_set(rt_constraint_address.yfilter)) leaf_name_data.push_back(rt_constraint_address.get_name_leafdata());
-    if (ipv6mvpn_address.is_set || is_set(ipv6mvpn_address.yfilter)) leaf_name_data.push_back(ipv6mvpn_address.get_name_leafdata());
-    if (ipv4mvpn_address.is_set || is_set(ipv4mvpn_address.yfilter)) leaf_name_data.push_back(ipv4mvpn_address.get_name_leafdata());
-    if (l2vpn_evpn_address.is_set || is_set(l2vpn_evpn_address.yfilter)) leaf_name_data.push_back(l2vpn_evpn_address.get_name_leafdata());
-    if (ls_ls_address.is_set || is_set(ls_ls_address.yfilter)) leaf_name_data.push_back(ls_ls_address.get_name_leafdata());
-    if (ipv4_flowspec_address.is_set || is_set(ipv4_flowspec_address.yfilter)) leaf_name_data.push_back(ipv4_flowspec_address.get_name_leafdata());
-    if (ipv6_flowspec_address.is_set || is_set(ipv6_flowspec_address.yfilter)) leaf_name_data.push_back(ipv6_flowspec_address.get_name_leafdata());
-    if (ipv4vpn_flowspec_address.is_set || is_set(ipv4vpn_flowspec_address.yfilter)) leaf_name_data.push_back(ipv4vpn_flowspec_address.get_name_leafdata());
-    if (ipv6vpn_flowspec_address.is_set || is_set(ipv6vpn_flowspec_address.yfilter)) leaf_name_data.push_back(ipv6vpn_flowspec_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "l2vpn-vpls-address")
-    {
-        if(l2vpn_vpls_address == nullptr)
-        {
-            l2vpn_vpls_address = std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::L2vpnVplsAddress>();
-        }
-        return l2vpn_vpls_address;
-    }
-
-    if(child_yang_name == "l2vpn-mspw-address")
-    {
-        if(l2vpn_mspw_address == nullptr)
-        {
-            l2vpn_mspw_address = std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::L2vpnMspwAddress>();
-        }
-        return l2vpn_mspw_address;
-    }
-
-    if(child_yang_name == "ipv4-sr-policy-address")
-    {
-        if(ipv4_sr_policy_address == nullptr)
-        {
-            ipv4_sr_policy_address = std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::Ipv4SrPolicyAddress>();
-        }
-        return ipv4_sr_policy_address;
-    }
-
-    if(child_yang_name == "ipv6-sr-policy-address")
-    {
-        if(ipv6_sr_policy_address == nullptr)
-        {
-            ipv6_sr_policy_address = std::make_shared<Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::Ipv6SrPolicyAddress>();
-        }
-        return ipv6_sr_policy_address;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(l2vpn_vpls_address != nullptr)
-    {
-        _children["l2vpn-vpls-address"] = l2vpn_vpls_address;
-    }
-
-    if(l2vpn_mspw_address != nullptr)
-    {
-        _children["l2vpn-mspw-address"] = l2vpn_mspw_address;
-    }
-
-    if(ipv4_sr_policy_address != nullptr)
-    {
-        _children["ipv4-sr-policy-address"] = ipv4_sr_policy_address;
-    }
-
-    if(ipv6_sr_policy_address != nullptr)
-    {
-        _children["ipv6-sr-policy-address"] = ipv6_sr_policy_address;
-    }
-
-    return _children;
-}
-
-void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "afi")
-    {
-        afi = value;
-        afi.value_namespace = name_space;
-        afi.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address = value;
-        ipv4_address.value_namespace = name_space;
-        ipv4_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-mcast-address")
-    {
-        ipv4_mcast_address = value;
-        ipv4_mcast_address.value_namespace = name_space;
-        ipv4_mcast_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-label-address")
-    {
-        ipv4_label_address = value;
-        ipv4_label_address.value_namespace = name_space;
-        ipv4_label_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-tunnel-address")
-    {
-        ipv4_tunnel_address = value;
-        ipv4_tunnel_address.value_namespace = name_space;
-        ipv4_tunnel_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-mdt-address")
-    {
-        ipv4_mdt_address = value;
-        ipv4_mdt_address.value_namespace = name_space;
-        ipv4_mdt_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4vpn-address")
-    {
-        ipv4vpn_address = value;
-        ipv4vpn_address.value_namespace = name_space;
-        ipv4vpn_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4vpna-mcastddress")
-    {
-        ipv4vpna_mcastddress = value;
-        ipv4vpna_mcastddress.value_namespace = name_space;
-        ipv4vpna_mcastddress.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address = value;
-        ipv6_address.value_namespace = name_space;
-        ipv6_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-mcast-address")
-    {
-        ipv6_mcast_address = value;
-        ipv6_mcast_address.value_namespace = name_space;
-        ipv6_mcast_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-label-address")
-    {
-        ipv6_label_address = value;
-        ipv6_label_address.value_namespace = name_space;
-        ipv6_label_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6vpn-address")
-    {
-        ipv6vpn_address = value;
-        ipv6vpn_address.value_namespace = name_space;
-        ipv6vpn_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6vpn-mcast-address")
-    {
-        ipv6vpn_mcast_address = value;
-        ipv6vpn_mcast_address.value_namespace = name_space;
-        ipv6vpn_mcast_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "rt-constraint-address")
-    {
-        rt_constraint_address = value;
-        rt_constraint_address.value_namespace = name_space;
-        rt_constraint_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6mvpn-address")
-    {
-        ipv6mvpn_address = value;
-        ipv6mvpn_address.value_namespace = name_space;
-        ipv6mvpn_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4mvpn-address")
-    {
-        ipv4mvpn_address = value;
-        ipv4mvpn_address.value_namespace = name_space;
-        ipv4mvpn_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "l2vpn-evpn-address")
-    {
-        l2vpn_evpn_address = value;
-        l2vpn_evpn_address.value_namespace = name_space;
-        l2vpn_evpn_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ls-ls-address")
-    {
-        ls_ls_address = value;
-        ls_ls_address.value_namespace = name_space;
-        ls_ls_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4-flowspec-address")
-    {
-        ipv4_flowspec_address = value;
-        ipv4_flowspec_address.value_namespace = name_space;
-        ipv4_flowspec_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6-flowspec-address")
-    {
-        ipv6_flowspec_address = value;
-        ipv6_flowspec_address.value_namespace = name_space;
-        ipv6_flowspec_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv4vpn-flowspec-address")
-    {
-        ipv4vpn_flowspec_address = value;
-        ipv4vpn_flowspec_address.value_namespace = name_space;
-        ipv4vpn_flowspec_address.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "ipv6vpn-flowspec-address")
-    {
-        ipv6vpn_flowspec_address = value;
-        ipv6vpn_flowspec_address.value_namespace = name_space;
-        ipv6vpn_flowspec_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "afi")
-    {
-        afi.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-address")
-    {
-        ipv4_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-mcast-address")
-    {
-        ipv4_mcast_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-label-address")
-    {
-        ipv4_label_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-tunnel-address")
-    {
-        ipv4_tunnel_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-mdt-address")
-    {
-        ipv4_mdt_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4vpn-address")
-    {
-        ipv4vpn_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4vpna-mcastddress")
-    {
-        ipv4vpna_mcastddress.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-address")
-    {
-        ipv6_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-mcast-address")
-    {
-        ipv6_mcast_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-label-address")
-    {
-        ipv6_label_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6vpn-address")
-    {
-        ipv6vpn_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6vpn-mcast-address")
-    {
-        ipv6vpn_mcast_address.yfilter = yfilter;
-    }
-    if(value_path == "rt-constraint-address")
-    {
-        rt_constraint_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6mvpn-address")
-    {
-        ipv6mvpn_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4mvpn-address")
-    {
-        ipv4mvpn_address.yfilter = yfilter;
-    }
-    if(value_path == "l2vpn-evpn-address")
-    {
-        l2vpn_evpn_address.yfilter = yfilter;
-    }
-    if(value_path == "ls-ls-address")
-    {
-        ls_ls_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4-flowspec-address")
-    {
-        ipv4_flowspec_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6-flowspec-address")
-    {
-        ipv6_flowspec_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv4vpn-flowspec-address")
-    {
-        ipv4vpn_flowspec_address.yfilter = yfilter;
-    }
-    if(value_path == "ipv6vpn-flowspec-address")
-    {
-        ipv6vpn_flowspec_address.yfilter = yfilter;
-    }
-}
-
-bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "l2vpn-vpls-address" || name == "l2vpn-mspw-address" || name == "ipv4-sr-policy-address" || name == "ipv6-sr-policy-address" || name == "afi" || name == "ipv4-address" || name == "ipv4-mcast-address" || name == "ipv4-label-address" || name == "ipv4-tunnel-address" || name == "ipv4-mdt-address" || name == "ipv4vpn-address" || name == "ipv4vpna-mcastddress" || name == "ipv6-address" || name == "ipv6-mcast-address" || name == "ipv6-label-address" || name == "ipv6vpn-address" || name == "ipv6vpn-mcast-address" || name == "rt-constraint-address" || name == "ipv6mvpn-address" || name == "ipv4mvpn-address" || name == "l2vpn-evpn-address" || name == "ls-ls-address" || name == "ipv4-flowspec-address" || name == "ipv6-flowspec-address" || name == "ipv4vpn-flowspec-address" || name == "ipv6vpn-flowspec-address")
-        return true;
-    return false;
-}
-
-Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::L2vpnVplsAddress::L2vpnVplsAddress()
-    :
-    l2vpn_address{YType::str, "l2vpn-address"}
-{
-
-    yang_name = "l2vpn-vpls-address"; yang_parent_name = "neighbor-address"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::L2vpnVplsAddress::~L2vpnVplsAddress()
-{
-}
-
-bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::L2vpnVplsAddress::has_data() const
-{
-    if (is_presence_container) return true;
-    return l2vpn_address.is_set;
-}
-
-bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::L2vpnVplsAddress::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(l2vpn_address.yfilter);
-}
-
-std::string Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::L2vpnVplsAddress::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "l2vpn-vpls-address";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::L2vpnVplsAddress::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (l2vpn_address.is_set || is_set(l2vpn_address.yfilter)) leaf_name_data.push_back(l2vpn_address.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::L2vpnVplsAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::L2vpnVplsAddress::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::L2vpnVplsAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "l2vpn-address")
-    {
-        l2vpn_address = value;
-        l2vpn_address.value_namespace = name_space;
-        l2vpn_address.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::L2vpnVplsAddress::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "l2vpn-address")
-    {
-        l2vpn_address.yfilter = yfilter;
-    }
-}
-
-bool Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::L2vpnVplsAddress::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "l2vpn-address")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf BgpSrpolicyReqState::request_pending {0, "request-pending"};
-const Enum::YLeaf BgpSrpolicyReqState::requested {1, "requested"};
-const Enum::YLeaf BgpSrpolicyReqState::notified_up {2, "notified-up"};
-const Enum::YLeaf BgpSrpolicyReqState::notified_down {4, "notified-down"};
-const Enum::YLeaf BgpSrpolicyReqState::marked_stale {8, "marked-stale"};
-const Enum::YLeaf BgpSrpolicyReqState::marked_disable {16, "marked-disable"};
-
-const Enum::YLeaf BgpBfdState::bgp_bfd_state_not_configured {0, "bgp-bfd-state-not-configured"};
-const Enum::YLeaf BgpBfdState::bgp_bfd_state_admin_down {1, "bgp-bfd-state-admin-down"};
-const Enum::YLeaf BgpBfdState::bgp_bfd_state_not_supported {2, "bgp-bfd-state-not-supported"};
-const Enum::YLeaf BgpBfdState::bgp_bfd_state_not_created {3, "bgp-bfd-state-not-created"};
-const Enum::YLeaf BgpBfdState::bgp_bfd_state_created {4, "bgp-bfd-state-created"};
-const Enum::YLeaf BgpBfdState::bgp_bfd_state_up {5, "bgp-bfd-state-up"};
-const Enum::YLeaf BgpBfdState::bgp_bfd_state_down {6, "bgp-bfd-state-down"};
-const Enum::YLeaf BgpBfdState::bgp_bfd_state_nbr_not_configured {7, "bgp-bfd-state-nbr-not-configured"};
-const Enum::YLeaf BgpBfdState::bgp_bfd_state_none {8, "bgp-bfd-state-none"};
-
-const Enum::YLeaf BgpEntities::af_group {0, "af-group"};
-const Enum::YLeaf BgpEntities::session_group {1, "session-group"};
-const Enum::YLeaf BgpEntities::neighbor_group {2, "neighbor-group"};
-const Enum::YLeaf BgpEntities::neighbor {3, "neighbor"};
-
-const Enum::YLeaf BgpNhValidate::bgp_nh_validate_sync {0, "bgp-nh-validate-sync"};
-const Enum::YLeaf BgpNhValidate::bgp_nh_validate_async {1, "bgp-nh-validate-async"};
-const Enum::YLeaf BgpNhValidate::bgp_nh_validate_none {2, "bgp-nh-validate-none"};
-
-const Enum::YLeaf BgpDsConnState::none {0, "none"};
-const Enum::YLeaf BgpDsConnState::connect_init {1, "connect-init"};
-const Enum::YLeaf BgpDsConnState::connect_fail {2, "connect-fail"};
-const Enum::YLeaf BgpDsConnState::connect_estb {3, "connect-estb"};
-const Enum::YLeaf BgpDsConnState::disconnect_init {4, "disconnect-init"};
-const Enum::YLeaf BgpDsConnState::disconnect_fail {5, "disconnect-fail"};
-const Enum::YLeaf BgpDsConnState::disconnect_done {6, "disconnect-done"};
-
-const Enum::YLeaf BgpRpkiState::idle {0, "idle"};
-const Enum::YLeaf BgpRpkiState::attempt_connect {1, "attempt-connect"};
-const Enum::YLeaf BgpRpkiState::connected {2, "connected"};
-
-const Enum::YLeaf BgpPeerResetReasonIndex::bgp_read_remote_closed {1, "bgp-read-remote-closed"};
-const Enum::YLeaf BgpPeerResetReasonIndex::bgp_read_failed {2, "bgp-read-failed"};
-const Enum::YLeaf BgpPeerResetReasonIndex::bgp_write_failed {3, "bgp-write-failed"};
-const Enum::YLeaf BgpPeerResetReasonIndex::bgp_sock_disconnected {4, "bgp-sock-disconnected"};
-const Enum::YLeaf BgpPeerResetReasonIndex::bgp_sock_select_failed {5, "bgp-sock-select-failed"};
-const Enum::YLeaf BgpPeerResetReasonIndex::bgp_peer_reset_reason_none {6, "bgp-peer-reset-reason-none"};
-
-const Enum::YLeaf BgpScopedSyncState::bgp_scope_sync_state_none {0, "bgp-scope-sync-state-none"};
-const Enum::YLeaf BgpScopedSyncState::bgp_scope_sync_state_not_nsr_ready {1, "bgp-scope-sync-state-not-nsr-ready"};
-const Enum::YLeaf BgpScopedSyncState::bgp_scope_sync_state_timer_start {2, "bgp-scope-sync-state-timer-start"};
-const Enum::YLeaf BgpScopedSyncState::bgp_scope_sync_state_add_list {3, "bgp-scope-sync-state-add-list"};
-const Enum::YLeaf BgpScopedSyncState::bgp_scope_sync_state_batch_acitve {4, "bgp-scope-sync-state-batch-acitve"};
-
-const Enum::YLeaf BgpEbgpSendDmzEnableMode::bgp_ebgp_send_dmz_disable {0, "bgp-ebgp-send-dmz-disable"};
-const Enum::YLeaf BgpEbgpSendDmzEnableMode::bgp_ebgp_send_dmz_dflt {1, "bgp-ebgp-send-dmz-dflt"};
-const Enum::YLeaf BgpEbgpSendDmzEnableMode::bgp_ebgp_send_dmz_cumulative {2, "bgp-ebgp-send-dmz-cumulative"};
-
-const Enum::YLeaf BgpBagUpdErrAction::bgp_bag_upd_err_action_none {0, "bgp-bag-upd-err-action-none"};
-const Enum::YLeaf BgpBagUpdErrAction::bgp_bag_upd_err_action_discard_msg {1, "bgp-bag-upd-err-action-discard-msg"};
-const Enum::YLeaf BgpBagUpdErrAction::bgp_bag_upd_err_action_reset {2, "bgp-bag-upd-err-action-reset"};
-const Enum::YLeaf BgpBagUpdErrAction::bgp_bag_upd_err_action_wdr_or_reset {3, "bgp-bag-upd-err-action-wdr-or-reset"};
-const Enum::YLeaf BgpBagUpdErrAction::bgp_bag_upd_err_action_wdr {4, "bgp-bag-upd-err-action-wdr"};
-const Enum::YLeaf BgpBagUpdErrAction::bgp_bag_upd_err_action_discard_attr {5, "bgp-bag-upd-err-action-discard-attr"};
-const Enum::YLeaf BgpBagUpdErrAction::bgp_bag_upd_err_action_local_repair {6, "bgp-bag-upd-err-action-local-repair"};
-const Enum::YLeaf BgpBagUpdErrAction::bgp_bag_upd_err_action_max {7, "bgp-bag-upd-err-action-max"};
-
-const Enum::YLeaf BgpRpkiPstate::not_started {0, "not-started"};
-const Enum::YLeaf BgpRpkiPstate::reset {1, "reset"};
-const Enum::YLeaf BgpRpkiPstate::refresh {2, "refresh"};
-const Enum::YLeaf BgpRpkiPstate::reset_query_sent {3, "reset-query-sent"};
-const Enum::YLeaf BgpRpkiPstate::serial_query_sent {4, "serial-query-sent"};
-const Enum::YLeaf BgpRpkiPstate::data_start {5, "data-start"};
-const Enum::YLeaf BgpRpkiPstate::data_end {6, "data-end"};
-
-const Enum::YLeaf BgpRoute1::bgp_route_type_used {0, "bgp-route-type-used"};
-const Enum::YLeaf BgpRoute1::bgp_route_type_rcvd_only {1, "bgp-route-type-rcvd-only"};
-const Enum::YLeaf BgpRoute1::bgp_route_type_safi_label_ed_ucast_used {2, "bgp-route-type-safi-label-ed-ucast-used"};
-const Enum::YLeaf BgpRoute1::bgp_route_type_safi_label_ed_ucast_rcvd_only {3, "bgp-route-type-safi-label-ed-ucast-rcvd-only"};
-const Enum::YLeaf BgpRoute1::bgp_route_type_rib {4, "bgp-route-type-rib"};
-const Enum::YLeaf BgpRoute1::bgp_route_type_aggregate {5, "bgp-route-type-aggregate"};
-const Enum::YLeaf BgpRoute1::bgp_route_type_max {6, "bgp-route-type-max"};
-
-const Enum::YLeaf BgpBagUpdFilterAction::none {0, "none"};
-const Enum::YLeaf BgpBagUpdFilterAction::withdraw {1, "withdraw"};
-const Enum::YLeaf BgpBagUpdFilterAction::attribute_discard {2, "attribute-discard"};
-
 const Enum::YLeaf BgpRpkiEdmAf::ipv4 {2, "ipv4"};
 const Enum::YLeaf BgpRpkiEdmAf::ipv6 {10, "ipv6"};
 
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_not_compared {0, "bgp-bp-comp-not-compared"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_imulti_path {1, "bgp-bp-comp-imulti-path"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_emulti_path {2, "bgp-bp-comp-emulti-path"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_eimulti_path {3, "bgp-bp-comp-eimulti-path"};
-const Enum::YLeaf BgpBpStage::bgp_bp_invalid_path {4, "bgp-bp-invalid-path"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_pre_cost_comm {5, "bgp-bp-comp-pre-cost-comm"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_weight {6, "bgp-bp-comp-weight"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_locpref {7, "bgp-bp-comp-locpref"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_rpki {8, "bgp-bp-comp-rpki"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_aigp {9, "bgp-bp-comp-aigp"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_local {10, "bgp-bp-comp-local"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_local_rib {11, "bgp-bp-comp-local-rib"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_as_path_len {12, "bgp-bp-comp-as-path-len"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_origin {13, "bgp-bp-comp-origin"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_med {14, "bgp-bp-comp-med"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_ebgp {15, "bgp-bp-comp-ebgp"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_ao {16, "bgp-bp-comp-ao"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_igp_metric {17, "bgp-bp-comp-igp-metric"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_igp_cost_comm {18, "bgp-bp-comp-igp-cost-comm"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_rtr_id {19, "bgp-bp-comp-rtr-id"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_clstr_len {20, "bgp-bp-comp-clstr-len"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_nbr_addr {21, "bgp-bp-comp-nbr-addr"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_suppressed {22, "bgp-bp-comp-suppressed"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_mismatch {23, "bgp-bp-comp-mismatch"};
-const Enum::YLeaf BgpBpStage::bgp_bp_comp_persistence {24, "bgp-bp-comp-persistence"};
+const Enum::YLeaf BgpRoute::used {0, "used"};
+const Enum::YLeaf BgpRoute::received_only {1, "received-only"};
+const Enum::YLeaf BgpRoute::safi_labeled_unicast_used {2, "safi-labeled-unicast-used"};
+const Enum::YLeaf BgpRoute::safi_labeled_unicast_received_only {3, "safi-labeled-unicast-received-only"};
+const Enum::YLeaf BgpRoute::rib {4, "rib"};
+const Enum::YLeaf BgpRoute::aggregate {5, "aggregate"};
 
-const Enum::YLeaf BgpNhEvent::bgp_nh_event_crit_not_f {0, "bgp-nh-event-crit-not-f"};
-const Enum::YLeaf BgpNhEvent::bgp_nh_event_non_crit_not_f {1, "bgp-nh-event-non-crit-not-f"};
-const Enum::YLeaf BgpNhEvent::bgp_nh_event_registration {2, "bgp-nh-event-registration"};
+const Enum::YLeaf BgpEntity::af_group {0, "af-group"};
+const Enum::YLeaf BgpEntity::session_group {1, "session-group"};
+const Enum::YLeaf BgpEntity::neighbor_group {2, "neighbor-group"};
+const Enum::YLeaf BgpEntity::neighbor {3, "neighbor"};
 
-const Enum::YLeaf BgpNhUpdate::bgp_nh_update_none {0, "bgp-nh-update-none"};
-const Enum::YLeaf BgpNhUpdate::bgp_nh_update_crit_not_f {1, "bgp-nh-update-crit-not-f"};
-const Enum::YLeaf BgpNhUpdate::bgp_nh_update_crit_sync {2, "bgp-nh-update-crit-sync"};
-const Enum::YLeaf BgpNhUpdate::bgp_nh_update_crit_rib_conv {3, "bgp-nh-update-crit-rib-conv"};
-const Enum::YLeaf BgpNhUpdate::bgp_nh_update_crit_table_down {4, "bgp-nh-update-crit-table-down"};
-const Enum::YLeaf BgpNhUpdate::bgp_nh_update_non_crit_not_f {5, "bgp-nh-update-non-crit-not-f"};
-const Enum::YLeaf BgpNhUpdate::bgp_nh_update_non_crit_sync {6, "bgp-nh-update-non-crit-sync"};
-const Enum::YLeaf BgpNhUpdate::bgp_nh_update_non_crit_rib_conv {7, "bgp-nh-update-non-crit-rib-conv"};
-const Enum::YLeaf BgpNhUpdate::bgp_nh_update_non_crit_table_down {8, "bgp-nh-update-non-crit-table-down"};
+const Enum::YLeaf BgpLabelRpfInstall::bgp_label_rpf_install_rib {0, "bgp-label-rpf-install-rib"};
+const Enum::YLeaf BgpLabelRpfInstall::bgp_label_rpf_install_lsd {1, "bgp-label-rpf-install-lsd"};
 
 const Enum::YLeaf BgpRpkiPerror::none {0, "none"};
 const Enum::YLeaf BgpRpkiPerror::message_version {1, "message-version"};
@@ -22597,91 +22489,13 @@ const Enum::YLeaf BgpRpkiPerror::fsm {6, "fsm"};
 const Enum::YLeaf BgpRpkiPerror::no_response {7, "no-response"};
 const Enum::YLeaf BgpRpkiPerror::error_report {8, "error-report"};
 
-const Enum::YLeaf BgpBfdEnableMode::bgp_bfd_enable_mode_disable {0, "bgp-bfd-enable-mode-disable"};
-const Enum::YLeaf BgpBfdEnableMode::bgp_bfd_enable_mode_def {1, "bgp-bfd-enable-mode-def"};
-const Enum::YLeaf BgpBfdEnableMode::bgp_bfd_enable_mode_strict {2, "bgp-bfd-enable-mode-strict"};
-
-const Enum::YLeaf BgpRnhAddrLen::none {0, "none"};
-const Enum::YLeaf BgpRnhAddrLen::v4 {4, "v4"};
-const Enum::YLeaf BgpRnhAddrLen::mac {6, "mac"};
-const Enum::YLeaf BgpRnhAddrLen::v6 {16, "v6"};
-
-const Enum::YLeaf BgpTcpMode::bgp_tcp_mode_type_either {0, "bgp-tcp-mode-type-either"};
-const Enum::YLeaf BgpTcpMode::bgp_tcp_mode_type_active_only {1, "bgp-tcp-mode-type-active-only"};
-const Enum::YLeaf BgpTcpMode::bgp_tcp_mode_type_passive_only {2, "bgp-tcp-mode-type-passive-only"};
-
-const Enum::YLeaf BgpBmpState::none {0, "none"};
-const Enum::YLeaf BgpBmpState::connecting {1, "connecting"};
-const Enum::YLeaf BgpBmpState::established {2, "established"};
-const Enum::YLeaf BgpBmpState::closing {3, "closing"};
-
-const Enum::YLeaf BgpIsmConnState::none {0, "none"};
-const Enum::YLeaf BgpIsmConnState::connect_done {1, "connect-done"};
-
-const Enum::YLeaf BgpOpenCheckErr::none {0, "none"};
-const Enum::YLeaf BgpOpenCheckErr::neighbor_down {1, "neighbor-down"};
-const Enum::YLeaf BgpOpenCheckErr::no_update_group_set {2, "no-update-group-set"};
-const Enum::YLeaf BgpOpenCheckErr::no_af_config {3, "no-af-config"};
-const Enum::YLeaf BgpOpenCheckErr::update_group_pending {4, "update-group-pending"};
-const Enum::YLeaf BgpOpenCheckErr::low_memory {5, "low-memory"};
-const Enum::YLeaf BgpOpenCheckErr::neighbor_shutdown {6, "neighbor-shutdown"};
-const Enum::YLeaf BgpOpenCheckErr::ebgp_neighbor_remote {7, "ebgp-neighbor-remote"};
-const Enum::YLeaf BgpOpenCheckErr::update_source_interface_null {8, "update-source-interface-null"};
-const Enum::YLeaf BgpOpenCheckErr::no_ipv6_address {9, "no-ipv6-address"};
-const Enum::YLeaf BgpOpenCheckErr::first_hop_interface_null {10, "first-hop-interface-null"};
-const Enum::YLeaf BgpOpenCheckErr::no_ipv6ll_address {11, "no-ipv6ll-address"};
-const Enum::YLeaf BgpOpenCheckErr::no_update_source_config {12, "no-update-source-config"};
-const Enum::YLeaf BgpOpenCheckErr::no_router_id {13, "no-router-id"};
-const Enum::YLeaf BgpOpenCheckErr::update_source_interface_get_failed {14, "update-source-interface-get-failed"};
-const Enum::YLeaf BgpOpenCheckErr::update_source_interface_state_get_failed {15, "update-source-interface-state-get-failed"};
-const Enum::YLeaf BgpOpenCheckErr::update_source_interface_down {16, "update-source-interface-down"};
-const Enum::YLeaf BgpOpenCheckErr::update_source_interface_ll_get_failed {17, "update-source-interface-ll-get-failed"};
-const Enum::YLeaf BgpOpenCheckErr::update_source_interface_address_get_failed {18, "update-source-interface-address-get-failed"};
-const Enum::YLeaf BgpOpenCheckErr::source_address_af_invalid {19, "source-address-af-invalid"};
-const Enum::YLeaf BgpOpenCheckErr::no_update_source_ll_peering {20, "no-update-source-ll-peering"};
-const Enum::YLeaf BgpOpenCheckErr::local_address_get_failed {21, "local-address-get-failed"};
-const Enum::YLeaf BgpOpenCheckErr::no_best_local_address {22, "no-best-local-address"};
-const Enum::YLeaf BgpOpenCheckErr::neighbor_address_equals_local_address {23, "neighbor-address-equals-local-address"};
-const Enum::YLeaf BgpOpenCheckErr::neighbor_closing {24, "neighbor-closing"};
-const Enum::YLeaf BgpOpenCheckErr::neighbor_pending_reset {25, "neighbor-pending-reset"};
-const Enum::YLeaf BgpOpenCheckErr::out_interface_set_failed {26, "out-interface-set-failed"};
-const Enum::YLeaf BgpOpenCheckErr::local_address_mismatch {27, "local-address-mismatch"};
-const Enum::YLeaf BgpOpenCheckErr::neighbor_active_only {28, "neighbor-active-only"};
-const Enum::YLeaf BgpOpenCheckErr::socket_init_failed {29, "socket-init-failed"};
-const Enum::YLeaf BgpOpenCheckErr::socket_operation_failed {30, "socket-operation-failed"};
-const Enum::YLeaf BgpOpenCheckErr::local_neighbor {31, "local-neighbor"};
-const Enum::YLeaf BgpOpenCheckErr::multi_hop_neighbor {32, "multi-hop-neighbor"};
-
-const Enum::YLeaf BgpRoute::used {0, "used"};
-const Enum::YLeaf BgpRoute::received_only {1, "received-only"};
-const Enum::YLeaf BgpRoute::safi_labeled_unicast_used {2, "safi-labeled-unicast-used"};
-const Enum::YLeaf BgpRoute::safi_labeled_unicast_received_only {3, "safi-labeled-unicast-received-only"};
-const Enum::YLeaf BgpRoute::rib {4, "rib"};
-const Enum::YLeaf BgpRoute::aggregate {5, "aggregate"};
-
-const Enum::YLeaf BgpConnState::bgp_st_dont_care {0, "bgp-st-dont-care"};
-const Enum::YLeaf BgpConnState::bgp_st_idle {1, "bgp-st-idle"};
-const Enum::YLeaf BgpConnState::bgp_st_connect {2, "bgp-st-connect"};
-const Enum::YLeaf BgpConnState::bgp_st_active {3, "bgp-st-active"};
-const Enum::YLeaf BgpConnState::bgp_st_open_sent {4, "bgp-st-open-sent"};
-const Enum::YLeaf BgpConnState::bgp_st_open_confirm {5, "bgp-st-open-confirm"};
-const Enum::YLeaf BgpConnState::bgp_st_estab {6, "bgp-st-estab"};
-const Enum::YLeaf BgpConnState::bgp_st_closing {7, "bgp-st-closing"};
-const Enum::YLeaf BgpConnState::bgp_st_closing_sync {8, "bgp-st-closing-sync"};
-
-const Enum::YLeaf SrSid::label {1, "label"};
-const Enum::YLeaf SrSid::ipv4 {2, "ipv4"};
-const Enum::YLeaf SrSid::ipv6 {3, "ipv6"};
-
-const Enum::YLeaf BgpEntity::af_group {0, "af-group"};
-const Enum::YLeaf BgpEntity::session_group {1, "session-group"};
-const Enum::YLeaf BgpEntity::neighbor_group {2, "neighbor-group"};
-const Enum::YLeaf BgpEntity::neighbor {3, "neighbor"};
-
-const Enum::YLeaf BgpTunnel::tunnel_none {0, "tunnel-none"};
-const Enum::YLeaf BgpTunnel::attrset {1, "attrset"};
-const Enum::YLeaf BgpTunnel::sr_policy {2, "sr-policy"};
-const Enum::YLeaf BgpTunnel::odn_policy {4, "odn-policy"};
+const Enum::YLeaf BgpRpkiPstate::not_started {0, "not-started"};
+const Enum::YLeaf BgpRpkiPstate::reset {1, "reset"};
+const Enum::YLeaf BgpRpkiPstate::refresh {2, "refresh"};
+const Enum::YLeaf BgpRpkiPstate::reset_query_sent {3, "reset-query-sent"};
+const Enum::YLeaf BgpRpkiPstate::serial_query_sent {4, "serial-query-sent"};
+const Enum::YLeaf BgpRpkiPstate::data_start {5, "data-start"};
+const Enum::YLeaf BgpRpkiPstate::data_end {6, "data-end"};
 
 const Enum::YLeaf BgpRpkiCreason::no_close_reason {0, "no-close-reason"};
 const Enum::YLeaf BgpRpkiCreason::read_error {1, "read-error"};
@@ -22695,9 +22509,48 @@ const Enum::YLeaf BgpRpkiCreason::user_clear {8, "user-clear"};
 const Enum::YLeaf BgpRpkiCreason::ssh_died {9, "ssh-died"};
 const Enum::YLeaf BgpRpkiCreason::tcp_died {10, "tcp-died"};
 
-const Enum::YLeaf BgpV4V6Len::gwnone {0, "gwnone"};
-const Enum::YLeaf BgpV4V6Len::gwipv4 {4, "gwipv4"};
-const Enum::YLeaf BgpV4V6Len::gwipv6 {16, "gwipv6"};
+const Enum::YLeaf BgpRpkiState::idle {0, "idle"};
+const Enum::YLeaf BgpRpkiState::attempt_connect {1, "attempt-connect"};
+const Enum::YLeaf BgpRpkiState::connected {2, "connected"};
+
+const Enum::YLeaf BgpIsmConnState::none {0, "none"};
+const Enum::YLeaf BgpIsmConnState::connect_done {1, "connect-done"};
+
+const Enum::YLeaf BgpDsConnState::none {0, "none"};
+const Enum::YLeaf BgpDsConnState::connect_init {1, "connect-init"};
+const Enum::YLeaf BgpDsConnState::connect_fail {2, "connect-fail"};
+const Enum::YLeaf BgpDsConnState::connect_estb {3, "connect-estb"};
+const Enum::YLeaf BgpDsConnState::disconnect_init {4, "disconnect-init"};
+const Enum::YLeaf BgpDsConnState::disconnect_fail {5, "disconnect-fail"};
+const Enum::YLeaf BgpDsConnState::disconnect_done {6, "disconnect-done"};
+
+const Enum::YLeaf BgpScopedSyncState::bgp_scope_sync_state_none {0, "bgp-scope-sync-state-none"};
+const Enum::YLeaf BgpScopedSyncState::bgp_scope_sync_state_not_nsr_ready {1, "bgp-scope-sync-state-not-nsr-ready"};
+const Enum::YLeaf BgpScopedSyncState::bgp_scope_sync_state_timer_start {2, "bgp-scope-sync-state-timer-start"};
+const Enum::YLeaf BgpScopedSyncState::bgp_scope_sync_state_add_list {3, "bgp-scope-sync-state-add-list"};
+const Enum::YLeaf BgpScopedSyncState::bgp_scope_sync_state_batch_acitve {4, "bgp-scope-sync-state-batch-acitve"};
+
+const Enum::YLeaf BgpBmpUpdMode::bgp_bmp_upd_n_either {0, "bgp-bmp-upd-n-either"};
+const Enum::YLeaf BgpBmpUpdMode::bgp_bmp_upd_route_mon {1, "bgp-bmp-upd-route-mon"};
+const Enum::YLeaf BgpBmpUpdMode::bgp_bmp_upd_route_mirr {2, "bgp-bmp-upd-route-mirr"};
+
+const Enum::YLeaf BgpBmpState::none {0, "none"};
+const Enum::YLeaf BgpBmpState::connecting {1, "connecting"};
+const Enum::YLeaf BgpBmpState::established {2, "established"};
+const Enum::YLeaf BgpBmpState::closing {3, "closing"};
+
+const Enum::YLeaf BgpBagUpdFilterAction::none {0, "none"};
+const Enum::YLeaf BgpBagUpdFilterAction::withdraw {1, "withdraw"};
+const Enum::YLeaf BgpBagUpdFilterAction::attribute_discard {2, "attribute-discard"};
+
+const Enum::YLeaf BgpBagUpdErrAction::bgp_bag_upd_err_action_none {0, "bgp-bag-upd-err-action-none"};
+const Enum::YLeaf BgpBagUpdErrAction::bgp_bag_upd_err_action_discard_msg {1, "bgp-bag-upd-err-action-discard-msg"};
+const Enum::YLeaf BgpBagUpdErrAction::bgp_bag_upd_err_action_reset {2, "bgp-bag-upd-err-action-reset"};
+const Enum::YLeaf BgpBagUpdErrAction::bgp_bag_upd_err_action_wdr_or_reset {3, "bgp-bag-upd-err-action-wdr-or-reset"};
+const Enum::YLeaf BgpBagUpdErrAction::bgp_bag_upd_err_action_wdr {4, "bgp-bag-upd-err-action-wdr"};
+const Enum::YLeaf BgpBagUpdErrAction::bgp_bag_upd_err_action_discard_attr {5, "bgp-bag-upd-err-action-discard-attr"};
+const Enum::YLeaf BgpBagUpdErrAction::bgp_bag_upd_err_action_local_repair {6, "bgp-bag-upd-err-action-local-repair"};
+const Enum::YLeaf BgpBagUpdErrAction::bgp_bag_upd_err_action_max {7, "bgp-bag-upd-err-action-max"};
 
 const Enum::YLeaf BgpSyncNbrNsrState::bgp_nbr_nsr_st_none {0, "bgp-nbr-nsr-st-none"};
 const Enum::YLeaf BgpSyncNbrNsrState::bgp_nbr_nsr_st_oper_down {1, "bgp-nbr-nsr-st-oper-down"};
@@ -22706,45 +22559,12 @@ const Enum::YLeaf BgpSyncNbrNsrState::bgp_nbr_nsr_st_tcp_phase_two {3, "bgp-nbr-
 const Enum::YLeaf BgpSyncNbrNsrState::bgp_nbr_nsr_st_bgp_init_sync {4, "bgp-nbr-nsr-st-bgp-init-sync"};
 const Enum::YLeaf BgpSyncNbrNsrState::bgp_nbr_nsr_st_nsr_ready {5, "bgp-nbr-nsr-st-nsr-ready"};
 
-const Enum::YLeaf BgpPrefixSid::prefix_sid_label_index {1, "prefix-sid-label-index"};
-const Enum::YLeaf BgpPrefixSid::prefix_sid_ipv6_sid {2, "prefix-sid-ipv6-sid"};
-const Enum::YLeaf BgpPrefixSid::prefix_sid_origin_at_or_srgb {3, "prefix-sid-origin-at-or-srgb"};
-const Enum::YLeaf BgpPrefixSid::prefix_sid_srv6 {4, "prefix-sid-srv6"};
-
-const Enum::YLeaf BgpAfi::ipv4 {0, "ipv4"};
-const Enum::YLeaf BgpAfi::ipv4_multicast {1, "ipv4-multicast"};
-const Enum::YLeaf BgpAfi::ipv4_labeled {2, "ipv4-labeled"};
-const Enum::YLeaf BgpAfi::ipv4_tunnel {3, "ipv4-tunnel"};
-const Enum::YLeaf BgpAfi::vpnv4 {4, "vpnv4"};
-const Enum::YLeaf BgpAfi::ipv6 {5, "ipv6"};
-const Enum::YLeaf BgpAfi::ipv6_multicast {6, "ipv6-multicast"};
-const Enum::YLeaf BgpAfi::ipv6_labeled {7, "ipv6-labeled"};
-const Enum::YLeaf BgpAfi::vpnv6 {8, "vpnv6"};
-const Enum::YLeaf BgpAfi::ipv4_mdt {9, "ipv4-mdt"};
-const Enum::YLeaf BgpAfi::l2vpn_vpls {10, "l2vpn-vpls"};
-const Enum::YLeaf BgpAfi::rt_constraint {11, "rt-constraint"};
-const Enum::YLeaf BgpAfi::ipv4_mvpn {12, "ipv4-mvpn"};
-const Enum::YLeaf BgpAfi::ipv6_mvpn {13, "ipv6-mvpn"};
-const Enum::YLeaf BgpAfi::l2vpn_evpn {14, "l2vpn-evpn"};
-const Enum::YLeaf BgpAfi::ls_ls {15, "ls-ls"};
-const Enum::YLeaf BgpAfi::vpnv4_multicast {16, "vpnv4-multicast"};
-const Enum::YLeaf BgpAfi::vpnv6_multicast {17, "vpnv6-multicast"};
-const Enum::YLeaf BgpAfi::ipv4_flowspec {18, "ipv4-flowspec"};
-const Enum::YLeaf BgpAfi::ipv6_flowspec {19, "ipv6-flowspec"};
-const Enum::YLeaf BgpAfi::vpnv4_flowspec {20, "vpnv4-flowspec"};
-const Enum::YLeaf BgpAfi::vpnv6_flowspec {21, "vpnv6-flowspec"};
-const Enum::YLeaf BgpAfi::l2vpn_mspw {22, "l2vpn-mspw"};
-const Enum::YLeaf BgpAfi::ipv4_sr_policy {23, "ipv4-sr-policy"};
-const Enum::YLeaf BgpAfi::ipv6_sr_policy {24, "ipv6-sr-policy"};
-const Enum::YLeaf BgpAfi::no_address_family {25, "no-address-family"};
-const Enum::YLeaf BgpAfi::all_address_families {26, "all-address-families"};
-
-const Enum::YLeaf BgpBindingSid::none {0, "none"};
-const Enum::YLeaf BgpBindingSid::label {1, "label"};
-const Enum::YLeaf BgpBindingSid::v6 {2, "v6"};
-
-const Enum::YLeaf BgpRpkiAf::ipv4 {2, "ipv4"};
-const Enum::YLeaf BgpRpkiAf::ipv6 {26, "ipv6"};
+const Enum::YLeaf BgpPeerResetReasonIndex::bgp_read_remote_closed {1, "bgp-read-remote-closed"};
+const Enum::YLeaf BgpPeerResetReasonIndex::bgp_read_failed {2, "bgp-read-failed"};
+const Enum::YLeaf BgpPeerResetReasonIndex::bgp_write_failed {3, "bgp-write-failed"};
+const Enum::YLeaf BgpPeerResetReasonIndex::bgp_sock_disconnected {4, "bgp-sock-disconnected"};
+const Enum::YLeaf BgpPeerResetReasonIndex::bgp_sock_select_failed {5, "bgp-sock-select-failed"};
+const Enum::YLeaf BgpPeerResetReasonIndex::bgp_peer_reset_reason_none {6, "bgp-peer-reset-reason-none"};
 
 const Enum::YLeaf BgpResetReasonIndex::bgp_none {0, "bgp-none"};
 const Enum::YLeaf BgpResetReasonIndex::bgp_init {1, "bgp-init"};
@@ -22791,6 +22611,82 @@ const Enum::YLeaf BgpResetReasonIndex::internal_vpn_client_changed {41, "interna
 const Enum::YLeaf BgpResetReasonIndex::cap_suppress_all_changed {42, "cap-suppress-all-changed"};
 const Enum::YLeaf BgpResetReasonIndex::next_hop_changed {43, "next-hop-changed"};
 
+const Enum::YLeaf BgpBfdEnableMode::bgp_bfd_enable_mode_disable {0, "bgp-bfd-enable-mode-disable"};
+const Enum::YLeaf BgpBfdEnableMode::bgp_bfd_enable_mode_def {1, "bgp-bfd-enable-mode-def"};
+const Enum::YLeaf BgpBfdEnableMode::bgp_bfd_enable_mode_strict {2, "bgp-bfd-enable-mode-strict"};
+
+const Enum::YLeaf BgpBfdState::bgp_bfd_state_not_configured {0, "bgp-bfd-state-not-configured"};
+const Enum::YLeaf BgpBfdState::bgp_bfd_state_admin_down {1, "bgp-bfd-state-admin-down"};
+const Enum::YLeaf BgpBfdState::bgp_bfd_state_not_supported {2, "bgp-bfd-state-not-supported"};
+const Enum::YLeaf BgpBfdState::bgp_bfd_state_not_created {3, "bgp-bfd-state-not-created"};
+const Enum::YLeaf BgpBfdState::bgp_bfd_state_created {4, "bgp-bfd-state-created"};
+const Enum::YLeaf BgpBfdState::bgp_bfd_state_up {5, "bgp-bfd-state-up"};
+const Enum::YLeaf BgpBfdState::bgp_bfd_state_down {6, "bgp-bfd-state-down"};
+const Enum::YLeaf BgpBfdState::bgp_bfd_state_nbr_not_configured {7, "bgp-bfd-state-nbr-not-configured"};
+const Enum::YLeaf BgpBfdState::bgp_bfd_state_none {8, "bgp-bfd-state-none"};
+
+const Enum::YLeaf BgpOpenCheckErr::none {0, "none"};
+const Enum::YLeaf BgpOpenCheckErr::neighbor_down {1, "neighbor-down"};
+const Enum::YLeaf BgpOpenCheckErr::no_update_group_set {2, "no-update-group-set"};
+const Enum::YLeaf BgpOpenCheckErr::no_af_config {3, "no-af-config"};
+const Enum::YLeaf BgpOpenCheckErr::update_group_pending {4, "update-group-pending"};
+const Enum::YLeaf BgpOpenCheckErr::low_memory {5, "low-memory"};
+const Enum::YLeaf BgpOpenCheckErr::neighbor_shutdown {6, "neighbor-shutdown"};
+const Enum::YLeaf BgpOpenCheckErr::ebgp_neighbor_remote {7, "ebgp-neighbor-remote"};
+const Enum::YLeaf BgpOpenCheckErr::update_source_interface_null {8, "update-source-interface-null"};
+const Enum::YLeaf BgpOpenCheckErr::no_ipv6_address {9, "no-ipv6-address"};
+const Enum::YLeaf BgpOpenCheckErr::first_hop_interface_null {10, "first-hop-interface-null"};
+const Enum::YLeaf BgpOpenCheckErr::no_ipv6ll_address {11, "no-ipv6ll-address"};
+const Enum::YLeaf BgpOpenCheckErr::no_update_source_config {12, "no-update-source-config"};
+const Enum::YLeaf BgpOpenCheckErr::no_router_id {13, "no-router-id"};
+const Enum::YLeaf BgpOpenCheckErr::update_source_interface_get_failed {14, "update-source-interface-get-failed"};
+const Enum::YLeaf BgpOpenCheckErr::update_source_interface_state_get_failed {15, "update-source-interface-state-get-failed"};
+const Enum::YLeaf BgpOpenCheckErr::update_source_interface_down {16, "update-source-interface-down"};
+const Enum::YLeaf BgpOpenCheckErr::update_source_interface_ll_get_failed {17, "update-source-interface-ll-get-failed"};
+const Enum::YLeaf BgpOpenCheckErr::update_source_interface_address_get_failed {18, "update-source-interface-address-get-failed"};
+const Enum::YLeaf BgpOpenCheckErr::source_address_af_invalid {19, "source-address-af-invalid"};
+const Enum::YLeaf BgpOpenCheckErr::no_update_source_ll_peering {20, "no-update-source-ll-peering"};
+const Enum::YLeaf BgpOpenCheckErr::local_address_get_failed {21, "local-address-get-failed"};
+const Enum::YLeaf BgpOpenCheckErr::no_best_local_address {22, "no-best-local-address"};
+const Enum::YLeaf BgpOpenCheckErr::neighbor_address_equals_local_address {23, "neighbor-address-equals-local-address"};
+const Enum::YLeaf BgpOpenCheckErr::neighbor_closing {24, "neighbor-closing"};
+const Enum::YLeaf BgpOpenCheckErr::neighbor_pending_reset {25, "neighbor-pending-reset"};
+const Enum::YLeaf BgpOpenCheckErr::out_interface_set_failed {26, "out-interface-set-failed"};
+const Enum::YLeaf BgpOpenCheckErr::local_address_mismatch {27, "local-address-mismatch"};
+const Enum::YLeaf BgpOpenCheckErr::neighbor_active_only {28, "neighbor-active-only"};
+const Enum::YLeaf BgpOpenCheckErr::socket_init_failed {29, "socket-init-failed"};
+const Enum::YLeaf BgpOpenCheckErr::socket_operation_failed {30, "socket-operation-failed"};
+const Enum::YLeaf BgpOpenCheckErr::local_neighbor {31, "local-neighbor"};
+const Enum::YLeaf BgpOpenCheckErr::multi_hop_neighbor {32, "multi-hop-neighbor"};
+
+const Enum::YLeaf BgpConnState::bgp_st_dont_care {0, "bgp-st-dont-care"};
+const Enum::YLeaf BgpConnState::bgp_st_idle {1, "bgp-st-idle"};
+const Enum::YLeaf BgpConnState::bgp_st_connect {2, "bgp-st-connect"};
+const Enum::YLeaf BgpConnState::bgp_st_active {3, "bgp-st-active"};
+const Enum::YLeaf BgpConnState::bgp_st_open_sent {4, "bgp-st-open-sent"};
+const Enum::YLeaf BgpConnState::bgp_st_open_confirm {5, "bgp-st-open-confirm"};
+const Enum::YLeaf BgpConnState::bgp_st_estab {6, "bgp-st-estab"};
+const Enum::YLeaf BgpConnState::bgp_st_closing {7, "bgp-st-closing"};
+const Enum::YLeaf BgpConnState::bgp_st_closing_sync {8, "bgp-st-closing-sync"};
+
+const Enum::YLeaf BgpNhValidate::bgp_nh_validate_sync {0, "bgp-nh-validate-sync"};
+const Enum::YLeaf BgpNhValidate::bgp_nh_validate_async {1, "bgp-nh-validate-async"};
+const Enum::YLeaf BgpNhValidate::bgp_nh_validate_none {2, "bgp-nh-validate-none"};
+
+const Enum::YLeaf BgpNhUpdate::bgp_nh_update_none {0, "bgp-nh-update-none"};
+const Enum::YLeaf BgpNhUpdate::bgp_nh_update_crit_not_f {1, "bgp-nh-update-crit-not-f"};
+const Enum::YLeaf BgpNhUpdate::bgp_nh_update_crit_sync {2, "bgp-nh-update-crit-sync"};
+const Enum::YLeaf BgpNhUpdate::bgp_nh_update_crit_rib_conv {3, "bgp-nh-update-crit-rib-conv"};
+const Enum::YLeaf BgpNhUpdate::bgp_nh_update_crit_table_down {4, "bgp-nh-update-crit-table-down"};
+const Enum::YLeaf BgpNhUpdate::bgp_nh_update_non_crit_not_f {5, "bgp-nh-update-non-crit-not-f"};
+const Enum::YLeaf BgpNhUpdate::bgp_nh_update_non_crit_sync {6, "bgp-nh-update-non-crit-sync"};
+const Enum::YLeaf BgpNhUpdate::bgp_nh_update_non_crit_rib_conv {7, "bgp-nh-update-non-crit-rib-conv"};
+const Enum::YLeaf BgpNhUpdate::bgp_nh_update_non_crit_table_down {8, "bgp-nh-update-non-crit-table-down"};
+
+const Enum::YLeaf BgpNhEvent::bgp_nh_event_crit_not_f {0, "bgp-nh-event-crit-not-f"};
+const Enum::YLeaf BgpNhEvent::bgp_nh_event_non_crit_not_f {1, "bgp-nh-event-non-crit-not-f"};
+const Enum::YLeaf BgpNhEvent::bgp_nh_event_registration {2, "bgp-nh-event-registration"};
+
 const Enum::YLeaf BgpRtrState::bgp_router_read_only {0, "bgp-router-read-only"};
 const Enum::YLeaf BgpRtrState::bgp_router_do_best_path {1, "bgp-router-do-best-path"};
 const Enum::YLeaf BgpRtrState::bgp_router_do_tunnel_update {2, "bgp-router-do-tunnel-update"};
@@ -22800,12 +22696,112 @@ const Enum::YLeaf BgpRtrState::bgp_router_do_ribupd {5, "bgp-router-do-ribupd"};
 const Enum::YLeaf BgpRtrState::bgp_router_read_write {6, "bgp-router-read-write"};
 const Enum::YLeaf BgpRtrState::bgp_router_mode_count {7, "bgp-router-mode-count"};
 
-const Enum::YLeaf BgpLabelRpfInstall::bgp_label_rpf_install_rib {0, "bgp-label-rpf-install-rib"};
-const Enum::YLeaf BgpLabelRpfInstall::bgp_label_rpf_install_lsd {1, "bgp-label-rpf-install-lsd"};
+const Enum::YLeaf BgpRnhAddrLen::none {0, "none"};
+const Enum::YLeaf BgpRnhAddrLen::v4 {4, "v4"};
+const Enum::YLeaf BgpRnhAddrLen::mac {6, "mac"};
+const Enum::YLeaf BgpRnhAddrLen::v6 {16, "v6"};
 
-const Enum::YLeaf BgpBmpUpdMode::bgp_bmp_upd_n_either {0, "bgp-bmp-upd-n-either"};
-const Enum::YLeaf BgpBmpUpdMode::bgp_bmp_upd_route_mon {1, "bgp-bmp-upd-route-mon"};
-const Enum::YLeaf BgpBmpUpdMode::bgp_bmp_upd_route_mirr {2, "bgp-bmp-upd-route-mirr"};
+const Enum::YLeaf SrSid::label {1, "label"};
+const Enum::YLeaf SrSid::ipv4 {2, "ipv4"};
+const Enum::YLeaf SrSid::ipv6 {3, "ipv6"};
+
+const Enum::YLeaf BgpSrpolicyReqState::request_pending {0, "request-pending"};
+const Enum::YLeaf BgpSrpolicyReqState::requested {1, "requested"};
+const Enum::YLeaf BgpSrpolicyReqState::notified_up {2, "notified-up"};
+const Enum::YLeaf BgpSrpolicyReqState::notified_down {4, "notified-down"};
+const Enum::YLeaf BgpSrpolicyReqState::marked_stale {8, "marked-stale"};
+const Enum::YLeaf BgpSrpolicyReqState::marked_disable {16, "marked-disable"};
+
+const Enum::YLeaf BgpBindingSid::none {0, "none"};
+const Enum::YLeaf BgpBindingSid::label {1, "label"};
+const Enum::YLeaf BgpBindingSid::v6 {2, "v6"};
+
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_not_compared {0, "bgp-bp-comp-not-compared"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_imulti_path {1, "bgp-bp-comp-imulti-path"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_emulti_path {2, "bgp-bp-comp-emulti-path"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_eimulti_path {3, "bgp-bp-comp-eimulti-path"};
+const Enum::YLeaf BgpBpStage::bgp_bp_invalid_path {4, "bgp-bp-invalid-path"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_pre_cost_comm {5, "bgp-bp-comp-pre-cost-comm"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_weight {6, "bgp-bp-comp-weight"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_locpref {7, "bgp-bp-comp-locpref"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_rpki {8, "bgp-bp-comp-rpki"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_aigp {9, "bgp-bp-comp-aigp"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_local {10, "bgp-bp-comp-local"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_local_rib {11, "bgp-bp-comp-local-rib"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_as_path_len {12, "bgp-bp-comp-as-path-len"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_origin {13, "bgp-bp-comp-origin"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_med {14, "bgp-bp-comp-med"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_ebgp {15, "bgp-bp-comp-ebgp"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_ao {16, "bgp-bp-comp-ao"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_igp_metric {17, "bgp-bp-comp-igp-metric"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_igp_cost_comm {18, "bgp-bp-comp-igp-cost-comm"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_rtr_id {19, "bgp-bp-comp-rtr-id"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_clstr_len {20, "bgp-bp-comp-clstr-len"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_nbr_addr {21, "bgp-bp-comp-nbr-addr"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_suppressed {22, "bgp-bp-comp-suppressed"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_mismatch {23, "bgp-bp-comp-mismatch"};
+const Enum::YLeaf BgpBpStage::bgp_bp_comp_persistence {24, "bgp-bp-comp-persistence"};
+
+const Enum::YLeaf BgpV4V6Len::gwnone {0, "gwnone"};
+const Enum::YLeaf BgpV4V6Len::gwipv4 {4, "gwipv4"};
+const Enum::YLeaf BgpV4V6Len::gwipv6 {16, "gwipv6"};
+
+const Enum::YLeaf BgpTunnel::tunnel_none {0, "tunnel-none"};
+const Enum::YLeaf BgpTunnel::attrset {1, "attrset"};
+const Enum::YLeaf BgpTunnel::sr_policy {2, "sr-policy"};
+const Enum::YLeaf BgpTunnel::odn_policy {4, "odn-policy"};
+
+const Enum::YLeaf BgpRoute1::bgp_route_type_used {0, "bgp-route-type-used"};
+const Enum::YLeaf BgpRoute1::bgp_route_type_rcvd_only {1, "bgp-route-type-rcvd-only"};
+const Enum::YLeaf BgpRoute1::bgp_route_type_safi_label_ed_ucast_used {2, "bgp-route-type-safi-label-ed-ucast-used"};
+const Enum::YLeaf BgpRoute1::bgp_route_type_safi_label_ed_ucast_rcvd_only {3, "bgp-route-type-safi-label-ed-ucast-rcvd-only"};
+const Enum::YLeaf BgpRoute1::bgp_route_type_rib {4, "bgp-route-type-rib"};
+const Enum::YLeaf BgpRoute1::bgp_route_type_aggregate {5, "bgp-route-type-aggregate"};
+const Enum::YLeaf BgpRoute1::bgp_route_type_max {6, "bgp-route-type-max"};
+
+const Enum::YLeaf BgpRpkiAf::ipv4 {2, "ipv4"};
+const Enum::YLeaf BgpRpkiAf::ipv6 {26, "ipv6"};
+
+const Enum::YLeaf BgpTcpMode::bgp_tcp_mode_type_either {0, "bgp-tcp-mode-type-either"};
+const Enum::YLeaf BgpTcpMode::bgp_tcp_mode_type_active_only {1, "bgp-tcp-mode-type-active-only"};
+const Enum::YLeaf BgpTcpMode::bgp_tcp_mode_type_passive_only {2, "bgp-tcp-mode-type-passive-only"};
+
+const Enum::YLeaf BgpEbgpSendDmzEnableMode::bgp_ebgp_send_dmz_disable {0, "bgp-ebgp-send-dmz-disable"};
+const Enum::YLeaf BgpEbgpSendDmzEnableMode::bgp_ebgp_send_dmz_dflt {1, "bgp-ebgp-send-dmz-dflt"};
+const Enum::YLeaf BgpEbgpSendDmzEnableMode::bgp_ebgp_send_dmz_cumulative {2, "bgp-ebgp-send-dmz-cumulative"};
+
+const Enum::YLeaf BgpEntities::af_group {0, "af-group"};
+const Enum::YLeaf BgpEntities::session_group {1, "session-group"};
+const Enum::YLeaf BgpEntities::neighbor_group {2, "neighbor-group"};
+const Enum::YLeaf BgpEntities::neighbor {3, "neighbor"};
+
+const Enum::YLeaf BgpAfi::ipv4 {0, "ipv4"};
+const Enum::YLeaf BgpAfi::ipv4_multicast {1, "ipv4-multicast"};
+const Enum::YLeaf BgpAfi::ipv4_labeled {2, "ipv4-labeled"};
+const Enum::YLeaf BgpAfi::ipv4_tunnel {3, "ipv4-tunnel"};
+const Enum::YLeaf BgpAfi::vpnv4 {4, "vpnv4"};
+const Enum::YLeaf BgpAfi::ipv6 {5, "ipv6"};
+const Enum::YLeaf BgpAfi::ipv6_multicast {6, "ipv6-multicast"};
+const Enum::YLeaf BgpAfi::ipv6_labeled {7, "ipv6-labeled"};
+const Enum::YLeaf BgpAfi::vpnv6 {8, "vpnv6"};
+const Enum::YLeaf BgpAfi::ipv4_mdt {9, "ipv4-mdt"};
+const Enum::YLeaf BgpAfi::l2vpn_vpls {10, "l2vpn-vpls"};
+const Enum::YLeaf BgpAfi::rt_constraint {11, "rt-constraint"};
+const Enum::YLeaf BgpAfi::ipv4_mvpn {12, "ipv4-mvpn"};
+const Enum::YLeaf BgpAfi::ipv6_mvpn {13, "ipv6-mvpn"};
+const Enum::YLeaf BgpAfi::l2vpn_evpn {14, "l2vpn-evpn"};
+const Enum::YLeaf BgpAfi::ls_ls {15, "ls-ls"};
+const Enum::YLeaf BgpAfi::vpnv4_multicast {16, "vpnv4-multicast"};
+const Enum::YLeaf BgpAfi::vpnv6_multicast {17, "vpnv6-multicast"};
+const Enum::YLeaf BgpAfi::ipv4_flowspec {18, "ipv4-flowspec"};
+const Enum::YLeaf BgpAfi::ipv6_flowspec {19, "ipv6-flowspec"};
+const Enum::YLeaf BgpAfi::vpnv4_flowspec {20, "vpnv4-flowspec"};
+const Enum::YLeaf BgpAfi::vpnv6_flowspec {21, "vpnv6-flowspec"};
+const Enum::YLeaf BgpAfi::l2vpn_mspw {22, "l2vpn-mspw"};
+const Enum::YLeaf BgpAfi::ipv4_sr_policy {23, "ipv4-sr-policy"};
+const Enum::YLeaf BgpAfi::ipv6_sr_policy {24, "ipv6-sr-policy"};
+const Enum::YLeaf BgpAfi::no_address_family {25, "no-address-family"};
+const Enum::YLeaf BgpAfi::all_address_families {26, "all-address-families"};
 
 
 }

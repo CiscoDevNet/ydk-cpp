@@ -1584,18 +1584,6 @@ const Enum::YLeaf RFState::active {14, "active"};
 const Enum::YLeaf RFState::activeExtraload {15, "activeExtraload"};
 const Enum::YLeaf RFState::activeHandback {16, "activeHandback"};
 
-const Enum::YLeaf RFIssuState::unset {0, "unset"};
-const Enum::YLeaf RFIssuState::init {1, "init"};
-const Enum::YLeaf RFIssuState::loadVersion {2, "loadVersion"};
-const Enum::YLeaf RFIssuState::runVersion {3, "runVersion"};
-const Enum::YLeaf RFIssuState::commitVersion {4, "commitVersion"};
-
-const Enum::YLeaf RFAction::noAction {0, "noAction"};
-const Enum::YLeaf RFAction::reloadPeer {1, "reloadPeer"};
-const Enum::YLeaf RFAction::reloadShelf {2, "reloadShelf"};
-const Enum::YLeaf RFAction::switchActivity {3, "switchActivity"};
-const Enum::YLeaf RFAction::forceSwitchActivity {4, "forceSwitchActivity"};
-
 const Enum::YLeaf RFMode::nonRedundant {1, "nonRedundant"};
 const Enum::YLeaf RFMode::staticLoadShareNonRedundant {2, "staticLoadShareNonRedundant"};
 const Enum::YLeaf RFMode::dynamicLoadShareNonRedundant {3, "dynamicLoadShareNonRedundant"};
@@ -1605,10 +1593,11 @@ const Enum::YLeaf RFMode::coldStandbyRedundant {6, "coldStandbyRedundant"};
 const Enum::YLeaf RFMode::warmStandbyRedundant {7, "warmStandbyRedundant"};
 const Enum::YLeaf RFMode::hotStandbyRedundant {8, "hotStandbyRedundant"};
 
-const Enum::YLeaf RFClientStatus::noStatus {1, "noStatus"};
-const Enum::YLeaf RFClientStatus::clientNotRedundant {2, "clientNotRedundant"};
-const Enum::YLeaf RFClientStatus::clientRedundancyInProgress {3, "clientRedundancyInProgress"};
-const Enum::YLeaf RFClientStatus::clientRedundant {4, "clientRedundant"};
+const Enum::YLeaf RFAction::noAction {0, "noAction"};
+const Enum::YLeaf RFAction::reloadPeer {1, "reloadPeer"};
+const Enum::YLeaf RFAction::reloadShelf {2, "reloadShelf"};
+const Enum::YLeaf RFAction::switchActivity {3, "switchActivity"};
+const Enum::YLeaf RFAction::forceSwitchActivity {4, "forceSwitchActivity"};
 
 const Enum::YLeaf RFSwactReasonType::unsupported {1, "unsupported"};
 const Enum::YLeaf RFSwactReasonType::none {2, "none"};
@@ -1618,6 +1607,12 @@ const Enum::YLeaf RFSwactReasonType::userForced {5, "userForced"};
 const Enum::YLeaf RFSwactReasonType::activeUnitFailed {6, "activeUnitFailed"};
 const Enum::YLeaf RFSwactReasonType::activeUnitRemoved {7, "activeUnitRemoved"};
 
+const Enum::YLeaf RFIssuState::unset {0, "unset"};
+const Enum::YLeaf RFIssuState::init {1, "init"};
+const Enum::YLeaf RFIssuState::loadVersion {2, "loadVersion"};
+const Enum::YLeaf RFIssuState::runVersion {3, "runVersion"};
+const Enum::YLeaf RFIssuState::commitVersion {4, "commitVersion"};
+
 const Enum::YLeaf RFIssuStateRev1::init {0, "init"};
 const Enum::YLeaf RFIssuStateRev1::systemReset {1, "systemReset"};
 const Enum::YLeaf RFIssuStateRev1::loadVersion {3, "loadVersion"};
@@ -1625,6 +1620,11 @@ const Enum::YLeaf RFIssuStateRev1::loadVersionSwitchover {4, "loadVersionSwitcho
 const Enum::YLeaf RFIssuStateRev1::runVersion {6, "runVersion"};
 const Enum::YLeaf RFIssuStateRev1::runVersionSwitchover {7, "runVersionSwitchover"};
 const Enum::YLeaf RFIssuStateRev1::commitVersion {9, "commitVersion"};
+
+const Enum::YLeaf RFClientStatus::noStatus {1, "noStatus"};
+const Enum::YLeaf RFClientStatus::clientNotRedundant {2, "clientNotRedundant"};
+const Enum::YLeaf RFClientStatus::clientRedundancyInProgress {3, "clientRedundancyInProgress"};
+const Enum::YLeaf RFClientStatus::clientRedundant {4, "clientRedundant"};
 
 
 }

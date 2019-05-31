@@ -431,7 +431,7 @@ class Native::L3vpn::Encapsulation::Ip::Mpls : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf mtu; //type: one of uint32, enumeration
+        ydk::YLeaf mtu; //type: one of enumeration, uint32
         class Mtu;
 
 }; // Native::L3vpn::Encapsulation::Ip::Mpls
@@ -3508,7 +3508,7 @@ class Native::Mpls::Static::Binding::Ipv4::Global::Output : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf dst_next_hop; //type: string
-        ydk::YLeaf label; //type: one of uint32, enumeration
+        ydk::YLeaf label; //type: one of enumeration, uint32
         class Label;
 
 }; // Native::Mpls::Static::Binding::Ipv4::Global::Output
@@ -3582,7 +3582,7 @@ class Native::Mpls::Static::Binding::Ipv4::Vrf::Output : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf dst_next_hop; //type: string
-        ydk::YLeaf label; //type: one of uint32, enumeration
+        ydk::YLeaf label; //type: one of enumeration, uint32
         class Label;
 
 }; // Native::Mpls::Static::Binding::Ipv4::Vrf::Output

@@ -81,7 +81,9 @@ static bool is_output(lys_node* node)
 
 bool ydk::path::RpcImpl::has_output_node() const
 {
-    std::string node_path = lys_path( data_node->m_node->schema);
+    char* path = lys_path( data_node->m_node->schema);
+    std::string node_path {path};
+    free(path);
     std::string search_path = node_path + "//*";	// Patterns includes only descendants of the node
 
     ly_verb(LY_LLSILENT); //turn off libyang logging at the beginning
@@ -101,6 +103,7 @@ bool ydk::path::RpcImpl::has_output_node() const
             }
         }
     }
+    if (result_set) ly_set_free(result_set);
     return result;
 }
 

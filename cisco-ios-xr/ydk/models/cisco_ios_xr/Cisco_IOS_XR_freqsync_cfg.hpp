@@ -40,6 +40,14 @@ class FrequencySynchronization : public ydk::Entity
 
 }; // FrequencySynchronization
 
+class FsyncSystemTimingMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf line_only;
+        static const ydk::Enum::YLeaf clock_only;
+
+};
+
 class FsyncClockSource : public ydk::Enum
 {
     public:
@@ -53,14 +61,6 @@ class FsyncSourceSelectionLogging : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf changes;
         static const ydk::Enum::YLeaf errors;
-
-};
-
-class FsyncSystemTimingMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf line_only;
-        static const ydk::Enum::YLeaf clock_only;
 
 };
 

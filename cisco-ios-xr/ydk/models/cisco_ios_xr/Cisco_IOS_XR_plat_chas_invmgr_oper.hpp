@@ -3116,81 +3116,6 @@ class PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTime : public
 
 }; // PlatformInventory::Racks::Rack::Attributes::FruInfo::ModuleUpTime
 
-class InvAdminState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf admin_state_invalid;
-        static const ydk::Enum::YLeaf admin_up;
-        static const ydk::Enum::YLeaf admin_down;
-
-};
-
-class InvResetReason : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf module_reset_reason_unknown;
-        static const ydk::Enum::YLeaf module_reset_reason_powerup;
-        static const ydk::Enum::YLeaf module_reset_reason_user_shutdown;
-        static const ydk::Enum::YLeaf module_reset_reason_user_reload;
-        static const ydk::Enum::YLeaf module_reset_reason_auto_reload;
-        static const ydk::Enum::YLeaf module_reset_reason_environment;
-        static const ydk::Enum::YLeaf module_reset_reason_user_unpower;
-
-};
-
-class InvCardState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf inv_card_not_present;
-        static const ydk::Enum::YLeaf inv_card_present;
-        static const ydk::Enum::YLeaf inv_card_reset;
-        static const ydk::Enum::YLeaf inv_card_booting;
-        static const ydk::Enum::YLeaf inv_card_mbi_booting;
-        static const ydk::Enum::YLeaf inv_card_running_mbi;
-        static const ydk::Enum::YLeaf inv_card_running_ena;
-        static const ydk::Enum::YLeaf inv_card_bring_down;
-        static const ydk::Enum::YLeaf inv_card_ena_failure;
-        static const ydk::Enum::YLeaf inv_card_f_diag_run;
-        static const ydk::Enum::YLeaf inv_card_f_diag_failure;
-        static const ydk::Enum::YLeaf inv_card_powered;
-        static const ydk::Enum::YLeaf inv_card_unpowered;
-        static const ydk::Enum::YLeaf inv_card_mdr;
-        static const ydk::Enum::YLeaf inv_card_mdr_running_mbi;
-        static const ydk::Enum::YLeaf inv_card_main_t_mode;
-        static const ydk::Enum::YLeaf inv_card_admin_down;
-        static const ydk::Enum::YLeaf inv_card_no_mon;
-        static const ydk::Enum::YLeaf inv_card_unknown;
-        static const ydk::Enum::YLeaf inv_card_failed;
-        static const ydk::Enum::YLeaf inv_card_ok;
-        static const ydk::Enum::YLeaf inv_card_missing;
-        static const ydk::Enum::YLeaf inv_card_field_diag_downloading;
-        static const ydk::Enum::YLeaf inv_card_field_diag_unmonitor;
-        static const ydk::Enum::YLeaf inv_card_fabric_field_diag_unmonitor;
-        static const ydk::Enum::YLeaf inv_card_field_diag_rp_launching;
-        static const ydk::Enum::YLeaf inv_card_field_diag_running;
-        static const ydk::Enum::YLeaf inv_card_field_diag_pass;
-        static const ydk::Enum::YLeaf inv_card_field_diag_fail;
-        static const ydk::Enum::YLeaf inv_card_field_diag_timeout;
-        static const ydk::Enum::YLeaf inv_card_disabled;
-        static const ydk::Enum::YLeaf inv_card_spa_booting;
-        static const ydk::Enum::YLeaf inv_card_not_allowed_online;
-        static const ydk::Enum::YLeaf inv_card_stopped;
-        static const ydk::Enum::YLeaf inv_card_incompatible_fw_ver;
-        static const ydk::Enum::YLeaf inv_card_fpd_hold;
-        static const ydk::Enum::YLeaf inv_card_node_prep;
-        static const ydk::Enum::YLeaf inv_card_updating_fpd;
-        static const ydk::Enum::YLeaf inv_card_num_states;
-
-};
-
-class InvMonitorState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unmonitored;
-        static const ydk::Enum::YLeaf monitored;
-
-};
-
 class NodeState : public ydk::Enum
 {
     public:
@@ -3256,12 +3181,87 @@ class CardRedundancyState : public ydk::Enum
 
 };
 
+class InvResetReason : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf module_reset_reason_unknown;
+        static const ydk::Enum::YLeaf module_reset_reason_powerup;
+        static const ydk::Enum::YLeaf module_reset_reason_user_shutdown;
+        static const ydk::Enum::YLeaf module_reset_reason_user_reload;
+        static const ydk::Enum::YLeaf module_reset_reason_auto_reload;
+        static const ydk::Enum::YLeaf module_reset_reason_environment;
+        static const ydk::Enum::YLeaf module_reset_reason_user_unpower;
+
+};
+
+class InvMonitorState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unmonitored;
+        static const ydk::Enum::YLeaf monitored;
+
+};
+
+class InvCardState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf inv_card_not_present;
+        static const ydk::Enum::YLeaf inv_card_present;
+        static const ydk::Enum::YLeaf inv_card_reset;
+        static const ydk::Enum::YLeaf inv_card_booting;
+        static const ydk::Enum::YLeaf inv_card_mbi_booting;
+        static const ydk::Enum::YLeaf inv_card_running_mbi;
+        static const ydk::Enum::YLeaf inv_card_running_ena;
+        static const ydk::Enum::YLeaf inv_card_bring_down;
+        static const ydk::Enum::YLeaf inv_card_ena_failure;
+        static const ydk::Enum::YLeaf inv_card_f_diag_run;
+        static const ydk::Enum::YLeaf inv_card_f_diag_failure;
+        static const ydk::Enum::YLeaf inv_card_powered;
+        static const ydk::Enum::YLeaf inv_card_unpowered;
+        static const ydk::Enum::YLeaf inv_card_mdr;
+        static const ydk::Enum::YLeaf inv_card_mdr_running_mbi;
+        static const ydk::Enum::YLeaf inv_card_main_t_mode;
+        static const ydk::Enum::YLeaf inv_card_admin_down;
+        static const ydk::Enum::YLeaf inv_card_no_mon;
+        static const ydk::Enum::YLeaf inv_card_unknown;
+        static const ydk::Enum::YLeaf inv_card_failed;
+        static const ydk::Enum::YLeaf inv_card_ok;
+        static const ydk::Enum::YLeaf inv_card_missing;
+        static const ydk::Enum::YLeaf inv_card_field_diag_downloading;
+        static const ydk::Enum::YLeaf inv_card_field_diag_unmonitor;
+        static const ydk::Enum::YLeaf inv_card_fabric_field_diag_unmonitor;
+        static const ydk::Enum::YLeaf inv_card_field_diag_rp_launching;
+        static const ydk::Enum::YLeaf inv_card_field_diag_running;
+        static const ydk::Enum::YLeaf inv_card_field_diag_pass;
+        static const ydk::Enum::YLeaf inv_card_field_diag_fail;
+        static const ydk::Enum::YLeaf inv_card_field_diag_timeout;
+        static const ydk::Enum::YLeaf inv_card_disabled;
+        static const ydk::Enum::YLeaf inv_card_spa_booting;
+        static const ydk::Enum::YLeaf inv_card_not_allowed_online;
+        static const ydk::Enum::YLeaf inv_card_stopped;
+        static const ydk::Enum::YLeaf inv_card_incompatible_fw_ver;
+        static const ydk::Enum::YLeaf inv_card_fpd_hold;
+        static const ydk::Enum::YLeaf inv_card_node_prep;
+        static const ydk::Enum::YLeaf inv_card_updating_fpd;
+        static const ydk::Enum::YLeaf inv_card_num_states;
+
+};
+
 class InvPowerAdminState : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf admin_power_invalid;
         static const ydk::Enum::YLeaf admin_on;
         static const ydk::Enum::YLeaf admin_off;
+
+};
+
+class InvAdminState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf admin_state_invalid;
+        static const ydk::Enum::YLeaf admin_up;
+        static const ydk::Enum::YLeaf admin_down;
 
 };
 

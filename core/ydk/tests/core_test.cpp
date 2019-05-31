@@ -69,7 +69,10 @@ public:
     ~TestClient()
     {
     }
-
+    void perform_session_check(const std::string & message)
+    {
+        return;
+    }
     int connect()
     {
         return 0;

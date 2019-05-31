@@ -1784,6 +1784,9 @@ const Enum::YLeaf CryptoAlg::alg_hmac_sha1_20 {6, "alg-hmac-sha1-20"};
 const Enum::YLeaf CryptoAlg::alg_hmac_sha1_96 {9, "alg-hmac-sha1-96"};
 const Enum::YLeaf CryptoAlg::alg_hmac_sha_256 {10, "alg-hmac-sha-256"};
 
+const Enum::YLeaf MacsecCryptoAlg::aes_128_cmac {7, "aes-128-cmac"};
+const Enum::YLeaf MacsecCryptoAlg::aes_256_cmac {8, "aes-256-cmac"};
+
 const Enum::YLeaf KeyChainMonth::jan {0, "jan"};
 const Enum::YLeaf KeyChainMonth::feb {1, "feb"};
 const Enum::YLeaf KeyChainMonth::mar {2, "mar"};
@@ -1796,9 +1799,6 @@ const Enum::YLeaf KeyChainMonth::sep {8, "sep"};
 const Enum::YLeaf KeyChainMonth::oct {9, "oct"};
 const Enum::YLeaf KeyChainMonth::nov {10, "nov"};
 const Enum::YLeaf KeyChainMonth::dec {11, "dec"};
-
-const Enum::YLeaf MacsecCryptoAlg::aes_128_cmac {7, "aes-128-cmac"};
-const Enum::YLeaf MacsecCryptoAlg::aes_256_cmac {8, "aes-256-cmac"};
 
 
 }

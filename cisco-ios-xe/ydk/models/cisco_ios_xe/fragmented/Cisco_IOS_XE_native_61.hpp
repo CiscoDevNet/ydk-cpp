@@ -214,8 +214,8 @@ class Native::Interface::TwentyFiveGigE::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -384,8 +384,8 @@ class Native::Interface::TwentyFiveGigE::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 
@@ -775,7 +775,7 @@ class Native::Interface::TwentyFiveGigE::Isis : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf lsp_interval; //type: uint32
-        ydk::YLeaf mesh_group; //type: one of uint32, enumeration
+        ydk::YLeaf mesh_group; //type: one of enumeration, uint32
         ydk::YLeaf network; //type: Network
         ydk::YLeaf protocol; //type: Protocol
         ydk::YLeaf retransmit_interval; //type: uint16
@@ -1150,7 +1150,7 @@ class Native::Interface::TwentyFiveGigE::Isis::HelloInterval : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of uint16, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint16
         class HelloIntervalList; //type: Native::Interface::TwentyFiveGigE::Isis::HelloInterval::HelloIntervalList
 
         ydk::YList hello_interval_list;
@@ -1176,7 +1176,7 @@ class Native::Interface::TwentyFiveGigE::Isis::HelloInterval::HelloIntervalList 
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of uint16, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint16
         class Levels;
         class Value_;
 
@@ -1272,7 +1272,7 @@ class Native::Interface::TwentyFiveGigE::Isis::Ipv6::Metric : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of uint32, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint32
         class MetricList; //type: Native::Interface::TwentyFiveGigE::Isis::Ipv6::Metric::MetricList
 
         ydk::YList metric_list;
@@ -1298,7 +1298,7 @@ class Native::Interface::TwentyFiveGigE::Isis::Ipv6::Metric::MetricList : public
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of uint32, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint32
         class Levels;
         class Value_;
 
@@ -1342,7 +1342,7 @@ class Native::Interface::TwentyFiveGigE::Isis::Metric : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf value_; //type: one of uint32, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint32
         class MetricList; //type: Native::Interface::TwentyFiveGigE::Isis::Metric::MetricList
 
         ydk::YList metric_list;
@@ -1368,7 +1368,7 @@ class Native::Interface::TwentyFiveGigE::Isis::Metric::MetricList : public ydk::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf levels; //type: Levels
-        ydk::YLeaf value_; //type: one of uint32, enumeration
+        ydk::YLeaf value_; //type: one of enumeration, uint32
         class Levels;
         class Value_;
 
@@ -1935,7 +1935,7 @@ class Native::Interface::TwentyFiveGigE::Mpls::Ldp::Discovery : public ydk::Enti
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf transport_address; //type: one of string, enumeration
+        ydk::YLeaf transport_address; //type: one of enumeration, string
 
 }; // Native::Interface::TwentyFiveGigE::Mpls::Ldp::Discovery
 
@@ -2260,9 +2260,9 @@ class Native::Interface::TwentyFiveGigE::Ip : public ydk::Entity
         class Dhcp; //type: Native::Interface::TwentyFiveGigE::Ip::Dhcp
         class SummaryAddress; //type: Native::Interface::TwentyFiveGigE::Ip::SummaryAddress
         class Verify; //type: Native::Interface::TwentyFiveGigE::Ip::Verify
+        class Ospf; //type: Native::Interface::TwentyFiveGigE::Ip::Ospf
         class Flow; //type: Native::Interface::TwentyFiveGigE::Ip::Flow
         class Igmp; //type: Native::Interface::TwentyFiveGigE::Ip::Igmp
-        class Ospf; //type: Native::Interface::TwentyFiveGigE::Ip::Ospf
         class Lisp; //type: Native::Interface::TwentyFiveGigE::Ip::Lisp
         class Nat; //type: Native::Interface::TwentyFiveGigE::Ip::Nat
         class Nbar; //type: Native::Interface::TwentyFiveGigE::Ip::Nbar
@@ -2289,9 +2289,9 @@ class Native::Interface::TwentyFiveGigE::Ip : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigE::Ip::Dhcp> dhcp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigE::Ip::SummaryAddress> summary_address;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigE::Ip::Verify> verify;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigE::Ip::Ospf> ospf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigE::Ip::Flow> flow;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigE::Ip::Igmp> igmp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigE::Ip::Ospf> ospf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigE::Ip::Lisp> lisp;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigE::Ip::Nat> nat;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::TwentyFiveGigE::Ip::Nbar> nbar;

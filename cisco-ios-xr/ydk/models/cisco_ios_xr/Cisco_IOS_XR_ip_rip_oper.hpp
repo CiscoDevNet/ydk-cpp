@@ -1387,6 +1387,16 @@ class Rip::DefaultVrf::Global::InterfaceSummary : public ydk::Entity
 
 }; // Rip::DefaultVrf::Global::InterfaceSummary
 
+class InterfaceState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf interface_none;
+        static const ydk::Enum::YLeaf interface_down;
+        static const ydk::Enum::YLeaf interface_up;
+        static const ydk::Enum::YLeaf interface_unknown;
+
+};
+
 class RipRouteOrigin : public ydk::Enum
 {
     public:
@@ -1396,16 +1406,6 @@ class RipRouteOrigin : public ydk::Enum
         static const ydk::Enum::YLeaf rip_rt_org_rip;
         static const ydk::Enum::YLeaf rip_rt_org_intsummary;
         static const ydk::Enum::YLeaf rip_rt_org_unused;
-
-};
-
-class InterfaceState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf interface_none;
-        static const ydk::Enum::YLeaf interface_down;
-        static const ydk::Enum::YLeaf interface_up;
-        static const ydk::Enum::YLeaf interface_unknown;
 
 };
 

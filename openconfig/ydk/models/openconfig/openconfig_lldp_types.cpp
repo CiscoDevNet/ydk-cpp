@@ -11,16 +11,6 @@ using namespace ydk;
 namespace openconfig {
 namespace openconfig_lldp_types {
 
-LLDPTLV::LLDPTLV()
-     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:LLDP_TLV")
-{
-
-}
-
-LLDPTLV::~LLDPTLV()
-{
-}
-
 LLDPSYSTEMCAPABILITY::LLDPSYSTEMCAPABILITY()
      : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:LLDP_SYSTEM_CAPABILITY")
 {
@@ -31,43 +21,23 @@ LLDPSYSTEMCAPABILITY::~LLDPSYSTEMCAPABILITY()
 {
 }
 
-SYSTEMNAME::SYSTEMNAME()
-     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:SYSTEM_NAME")
+LLDPTLV::LLDPTLV()
+     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:LLDP_TLV")
 {
 
 }
 
-SYSTEMNAME::~SYSTEMNAME()
+LLDPTLV::~LLDPTLV()
 {
 }
 
-MACBRIDGE::MACBRIDGE()
-     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:MAC_BRIDGE")
-{
-
-}
-
-MACBRIDGE::~MACBRIDGE()
-{
-}
-
-PORTDESCRIPTION::PORTDESCRIPTION()
-     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:PORT_DESCRIPTION")
+OTHER::OTHER()
+     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:OTHER")
 {
 
 }
 
-PORTDESCRIPTION::~PORTDESCRIPTION()
-{
-}
-
-DOCSISCABLEDEVICE::DOCSISCABLEDEVICE()
-     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:DOCSIS_CABLE_DEVICE")
-{
-
-}
-
-DOCSISCABLEDEVICE::~DOCSISCABLEDEVICE()
+OTHER::~OTHER()
 {
 }
 
@@ -81,43 +51,33 @@ REPEATER::~REPEATER()
 {
 }
 
-SYSTEMDESCRIPTION::SYSTEMDESCRIPTION()
-     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:SYSTEM_DESCRIPTION")
+MACBRIDGE::MACBRIDGE()
+     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:MAC_BRIDGE")
 {
 
 }
 
-SYSTEMDESCRIPTION::~SYSTEMDESCRIPTION()
+MACBRIDGE::~MACBRIDGE()
 {
 }
 
-CVLAN::CVLAN()
-     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:C_VLAN")
-{
-
-}
-
-CVLAN::~CVLAN()
-{
-}
-
-TWOPORTMACRELAY::TWOPORTMACRELAY()
-     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:TWO_PORT_MAC_RELAY")
+WLANACCESSPOINT::WLANACCESSPOINT()
+     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:WLAN_ACCESS_POINT")
 {
 
 }
 
-TWOPORTMACRELAY::~TWOPORTMACRELAY()
+WLANACCESSPOINT::~WLANACCESSPOINT()
 {
 }
 
-SVLAN::SVLAN()
-     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:S_VLAN")
+ROUTER::ROUTER()
+     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:ROUTER")
 {
 
 }
 
-SVLAN::~SVLAN()
+ROUTER::~ROUTER()
 {
 }
 
@@ -131,6 +91,56 @@ TELEPHONE::~TELEPHONE()
 {
 }
 
+DOCSISCABLEDEVICE::DOCSISCABLEDEVICE()
+     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:DOCSIS_CABLE_DEVICE")
+{
+
+}
+
+DOCSISCABLEDEVICE::~DOCSISCABLEDEVICE()
+{
+}
+
+STATIONONLY::STATIONONLY()
+     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:STATION_ONLY")
+{
+
+}
+
+STATIONONLY::~STATIONONLY()
+{
+}
+
+CVLAN::CVLAN()
+     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:C_VLAN")
+{
+
+}
+
+CVLAN::~CVLAN()
+{
+}
+
+SVLAN::SVLAN()
+     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:S_VLAN")
+{
+
+}
+
+SVLAN::~SVLAN()
+{
+}
+
+TWOPORTMACRELAY::TWOPORTMACRELAY()
+     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:TWO_PORT_MAC_RELAY")
+{
+
+}
+
+TWOPORTMACRELAY::~TWOPORTMACRELAY()
+{
+}
+
 CHASSISID::CHASSISID()
      : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:CHASSIS_ID")
 {
@@ -141,13 +151,43 @@ CHASSISID::~CHASSISID()
 {
 }
 
-OTHER::OTHER()
-     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:OTHER")
+PORTID::PORTID()
+     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:PORT_ID")
 {
 
 }
 
-OTHER::~OTHER()
+PORTID::~PORTID()
+{
+}
+
+PORTDESCRIPTION::PORTDESCRIPTION()
+     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:PORT_DESCRIPTION")
+{
+
+}
+
+PORTDESCRIPTION::~PORTDESCRIPTION()
+{
+}
+
+SYSTEMNAME::SYSTEMNAME()
+     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:SYSTEM_NAME")
+{
+
+}
+
+SYSTEMNAME::~SYSTEMNAME()
+{
+}
+
+SYSTEMDESCRIPTION::SYSTEMDESCRIPTION()
+     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:SYSTEM_DESCRIPTION")
+{
+
+}
+
+SYSTEMDESCRIPTION::~SYSTEMDESCRIPTION()
 {
 }
 
@@ -168,46 +208,6 @@ MANAGEMENTADDRESS::MANAGEMENTADDRESS()
 }
 
 MANAGEMENTADDRESS::~MANAGEMENTADDRESS()
-{
-}
-
-ROUTER::ROUTER()
-     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:ROUTER")
-{
-
-}
-
-ROUTER::~ROUTER()
-{
-}
-
-PORTID::PORTID()
-     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:PORT_ID")
-{
-
-}
-
-PORTID::~PORTID()
-{
-}
-
-STATIONONLY::STATIONONLY()
-     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:STATION_ONLY")
-{
-
-}
-
-STATIONONLY::~STATIONONLY()
-{
-}
-
-WLANACCESSPOINT::WLANACCESSPOINT()
-     : Identity("http://openconfig.net/yang/lldp/types", "openconfig-lldp-types", "openconfig-lldp-types:WLAN_ACCESS_POINT")
-{
-
-}
-
-WLANACCESSPOINT::~WLANACCESSPOINT()
 {
 }
 

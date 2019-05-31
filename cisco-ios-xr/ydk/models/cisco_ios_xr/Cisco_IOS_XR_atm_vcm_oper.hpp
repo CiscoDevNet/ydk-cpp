@@ -727,36 +727,12 @@ class AtmVcm::Nodes::Node::VpTunnels::VpTunnel : public ydk::Entity
 
 }; // AtmVcm::Nodes::Node::VpTunnels::VpTunnel
 
-class Vc : public ydk::Enum
+class VcCellPackingMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf layer3_vc;
-        static const ydk::Enum::YLeaf layer2_vc;
-        static const ydk::Enum::YLeaf layer2_vp;
-        static const ydk::Enum::YLeaf vc_type_unknown;
-
-};
-
-class VcEncap : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ilmi;
-        static const ydk::Enum::YLeaf qsaal;
-        static const ydk::Enum::YLeaf snap;
-        static const ydk::Enum::YLeaf mux;
-        static const ydk::Enum::YLeaf nlpid;
-        static const ydk::Enum::YLeaf f4oam;
-        static const ydk::Enum::YLeaf aal0;
-        static const ydk::Enum::YLeaf aal5;
-        static const ydk::Enum::YLeaf encap_unknown;
-
-};
-
-class VcManageLevel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf manage;
-        static const ydk::Enum::YLeaf not_managed;
+        static const ydk::Enum::YLeaf vp;
+        static const ydk::Enum::YLeaf vc;
+        static const ydk::Enum::YLeaf port_mode;
 
 };
 
@@ -766,19 +742,6 @@ class VcTestMode : public ydk::Enum
         static const ydk::Enum::YLeaf test_mode_none;
         static const ydk::Enum::YLeaf loop;
         static const ydk::Enum::YLeaf reserved;
-
-};
-
-class VpTrafShaping : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf vp_cbr;
-        static const ydk::Enum::YLeaf vp_vbr_nrt;
-        static const ydk::Enum::YLeaf vp_vbr_rt;
-        static const ydk::Enum::YLeaf vp_abr;
-        static const ydk::Enum::YLeaf vp_ubr_plus;
-        static const ydk::Enum::YLeaf vp_ubr;
-        static const ydk::Enum::YLeaf vp_traf_shaping_unknown;
 
 };
 
@@ -800,28 +763,16 @@ class VcState : public ydk::Enum
 
 };
 
-class ClassLinkOamInheritLevel : public ydk::Enum
+class VcInheritLevel : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf vc_configured_onvc;
-        static const ydk::Enum::YLeaf vc_class_onvc;
-        static const ydk::Enum::YLeaf vc_class_on_sub_interface;
-        static const ydk::Enum::YLeaf vc_class_on_main_interface;
-        static const ydk::Enum::YLeaf vc_global_default;
-        static const ydk::Enum::YLeaf vc_inherit_level_unknown;
-
-};
-
-class VpState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf vp_initialized;
-        static const ydk::Enum::YLeaf vp_modifying;
-        static const ydk::Enum::YLeaf vp_ready;
-        static const ydk::Enum::YLeaf vp_mgd_down;
-        static const ydk::Enum::YLeaf vp_deleting;
-        static const ydk::Enum::YLeaf vp_deleted;
-        static const ydk::Enum::YLeaf vp_state_unknown;
+        static const ydk::Enum::YLeaf directly_configured_onvc;
+        static const ydk::Enum::YLeaf vc_class_configured_onvc;
+        static const ydk::Enum::YLeaf vc_class_configured_on_sub_interface;
+        static const ydk::Enum::YLeaf vc_class_configured_on_main_interface;
+        static const ydk::Enum::YLeaf global_default;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf not_supported;
 
 };
 
@@ -838,12 +789,48 @@ class VcTrafShaping : public ydk::Enum
 
 };
 
-class VcCellPackingMode : public ydk::Enum
+class VcEncap : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf vp;
-        static const ydk::Enum::YLeaf vc;
-        static const ydk::Enum::YLeaf port_mode;
+        static const ydk::Enum::YLeaf ilmi;
+        static const ydk::Enum::YLeaf qsaal;
+        static const ydk::Enum::YLeaf snap;
+        static const ydk::Enum::YLeaf mux;
+        static const ydk::Enum::YLeaf nlpid;
+        static const ydk::Enum::YLeaf f4oam;
+        static const ydk::Enum::YLeaf aal0;
+        static const ydk::Enum::YLeaf aal5;
+        static const ydk::Enum::YLeaf encap_unknown;
+
+};
+
+class Vc : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf layer3_vc;
+        static const ydk::Enum::YLeaf layer2_vc;
+        static const ydk::Enum::YLeaf layer2_vp;
+        static const ydk::Enum::YLeaf vc_type_unknown;
+
+};
+
+class ClassLinkOamInheritLevel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf vc_configured_onvc;
+        static const ydk::Enum::YLeaf vc_class_onvc;
+        static const ydk::Enum::YLeaf vc_class_on_sub_interface;
+        static const ydk::Enum::YLeaf vc_class_on_main_interface;
+        static const ydk::Enum::YLeaf vc_global_default;
+        static const ydk::Enum::YLeaf vc_inherit_level_unknown;
+
+};
+
+class VcManageLevel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf manage;
+        static const ydk::Enum::YLeaf not_managed;
 
 };
 
@@ -856,16 +843,29 @@ class VcmPort : public ydk::Enum
 
 };
 
-class VcInheritLevel : public ydk::Enum
+class VpState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf directly_configured_onvc;
-        static const ydk::Enum::YLeaf vc_class_configured_onvc;
-        static const ydk::Enum::YLeaf vc_class_configured_on_sub_interface;
-        static const ydk::Enum::YLeaf vc_class_configured_on_main_interface;
-        static const ydk::Enum::YLeaf global_default;
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf not_supported;
+        static const ydk::Enum::YLeaf vp_initialized;
+        static const ydk::Enum::YLeaf vp_modifying;
+        static const ydk::Enum::YLeaf vp_ready;
+        static const ydk::Enum::YLeaf vp_mgd_down;
+        static const ydk::Enum::YLeaf vp_deleting;
+        static const ydk::Enum::YLeaf vp_deleted;
+        static const ydk::Enum::YLeaf vp_state_unknown;
+
+};
+
+class VpTrafShaping : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf vp_cbr;
+        static const ydk::Enum::YLeaf vp_vbr_nrt;
+        static const ydk::Enum::YLeaf vp_vbr_rt;
+        static const ydk::Enum::YLeaf vp_abr;
+        static const ydk::Enum::YLeaf vp_ubr_plus;
+        static const ydk::Enum::YLeaf vp_ubr;
+        static const ydk::Enum::YLeaf vp_traf_shaping_unknown;
 
 };
 

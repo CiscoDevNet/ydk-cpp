@@ -8,10 +8,32 @@
 #include <ydk/errors.hpp>
 
 #include "Cisco_IOS_XR_clns_isis_oper_0.hpp"
-#include "Cisco_IOS_XR_clns_isis_oper_1.hpp"
 
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_clns_isis_oper {
+
+
+class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId : public ydk::Entity
+{
+    public:
+        Ipv4TeRouterId();
+        ~Ipv4TeRouterId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class State; //type: OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::State
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_clns_isis_oper::OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::State> state;
+        
+}; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId
 
 
 class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4TeRouterId::State : public ydk::Entity
@@ -320,7 +342,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf type; //type: string
-        ydk::YLeaf ipv4_source_router_id; //type: string
+        ydk::YLeaf router_id; //type: string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv4SourceRouterId::State
 
@@ -365,7 +387,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf type; //type: string
-        ydk::YLeaf ipv6_source_router_id; //type: string
+        ydk::YLeaf router_id; //type: string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::ExtendedIpv4Reachability::ExtendedIpv4ReachabilityPrefixes::ExtendedIpv4ReachabilityPrefixe::PrefixesSubtlvs::PrefixesSubtlv::Ipv6SourceRouterId::State
 
@@ -852,7 +874,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf flags; //type: OpenconfigIsisLspDefaultMetricStateFlagsEnum
-        ydk::YLeaf default_metric; //type: uint8
+        ydk::YLeaf metric; //type: uint8
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::Ipv4ExternalReachability::Ipv4ExternalReachabilityPrefixes::Ipv4ExternalReachabilityPrefixe::DefaultMetric::State
 
@@ -1307,7 +1329,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf type; //type: string
-        ydk::YLeaf ipv4_source_router_id; //type: string
+        ydk::YLeaf router_id; //type: string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv4SourceRouterId::State
 
@@ -1396,7 +1418,7 @@ class OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Le
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf type; //type: string
-        ydk::YLeaf ipv6_source_router_id; //type: string
+        ydk::YLeaf router_id; //type: string
 
 }; // OcniIsis::NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Levels::Level::LinkStateDatabases::LinkStateDatabase::Tlvses::Tlvs::MtIpv6Reachability::MtIpv6ReachabilityPrefixes::MtIpv6ReachabilityPrefixe::MtIpv6ReachabilityPrefixesSubtlvs::MtIpv6ReachabilityPrefixesSubtlv::MtIpv6ReachabilityPrefixesSubtlvsIpv6SourceRouterId::State
 
@@ -3646,59 +3668,6 @@ class Isis::Instances::Instance::Levels::Level::Adjacencies : public ydk::Entity
         ydk::YList adjacency;
         
 }; // Isis::Instances::Instance::Levels::Level::Adjacencies
-
-
-class Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency : public ydk::Entity
-{
-    public:
-        Adjacency();
-        ~Adjacency();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf system_id; //type: string
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf adjacency_system_id; //type: string
-        ydk::YLeaf adjacency_snpa; //type: string
-        ydk::YLeaf adjacency_interface; //type: string
-        ydk::YLeaf adjacency_media_type; //type: IsisMediaClass
-        ydk::YLeaf adjacency_state; //type: IsisAdjState
-        ydk::YLeaf adjacency_bfd_state; //type: IsisAdjBfdState
-        ydk::YLeaf adjacency_ipv6bfd_state; //type: IsisAdjBfdState
-        ydk::YLeaf adj_ipv4bfd_retry_running; //type: boolean
-        ydk::YLeaf adj_ipv6bfd_retry_running; //type: boolean
-        ydk::YLeaf adj_ipv4bfd_retry_exp; //type: uint32
-        ydk::YLeaf adj_ipv6bfd_retry_exp; //type: uint32
-        ydk::YLeaf adj_ipv4bfd_retry_count; //type: uint32
-        ydk::YLeaf adj_ipv6bfd_retry_count; //type: uint32
-        ydk::YLeaf adjacency_uptime_valid_flag; //type: boolean
-        ydk::YLeaf adjacency_uptime; //type: uint32
-        ydk::YLeaf adjacency_holdtime; //type: uint32
-        ydk::YLeaf adjacency_checkpoint_object_id; //type: uint32
-        ydk::YLeaf adjacency_ietf_nsf_capable_flag; //type: boolean
-        ydk::YLeaf adjacency_dispriority; //type: uint8
-        ydk::YLeaf adjacency_neighbor_priority; //type: uint8
-        ydk::YLeaf adjacency_local_priority; //type: uint8
-        ydk::YLeaf local_dis_flag; //type: boolean
-        ydk::YLeaf neighbor_dis_flag; //type: boolean
-        ydk::YLeaf nsr_standby; //type: uint8
-        class AdjacencyAreaAddress; //type: Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyAreaAddress
-        class AdjacencyTopology; //type: Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyTopology
-        class AdjacencyPerAddressFamilyData; //type: Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency::AdjacencyPerAddressFamilyData
-
-        ydk::YList adjacency_area_address;
-        ydk::YList adjacency_topology;
-        ydk::YList adjacency_per_address_family_data;
-        
-}; // Isis::Instances::Instance::Levels::Level::Adjacencies::Adjacency
 
 
 }

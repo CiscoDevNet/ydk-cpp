@@ -10,20 +10,11 @@
 namespace cisco_ios_xe {
 namespace cisco_ospf {
 
-class OspfLogAdj : public ydk::Enum
+class OspfExternalType : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf enable;
-        static const ydk::Enum::YLeaf detail;
-        static const ydk::Enum::YLeaf disable;
-
-};
-
-class PrefixApplicability : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf protected_;
-        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf Y_1;
+        static const ydk::Enum::YLeaf Y_2;
 
 };
 
@@ -35,11 +26,20 @@ class AccessListInOutType : public ydk::Enum
 
 };
 
-class OspfExternalType : public ydk::Enum
+class PrefixApplicability : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf Y_1;
-        static const ydk::Enum::YLeaf Y_2;
+        static const ydk::Enum::YLeaf protected_;
+        static const ydk::Enum::YLeaf all;
+
+};
+
+class OspfLogAdj : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf enable;
+        static const ydk::Enum::YLeaf detail;
+        static const ydk::Enum::YLeaf disable;
 
 };
 

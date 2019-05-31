@@ -1280,6 +1280,14 @@ class EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::U
 
 }; // EthernetEncapsulation::Nodes::Node::UnicastMacFilters::UnicastMacFilter::UnicastFilter
 
+class VlanService : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf vlan_service_l2;
+        static const ydk::Enum::YLeaf vlan_service_l3;
+
+};
+
 class VlanEncaps : public ydk::Enum
 {
     public:
@@ -1296,12 +1304,64 @@ class VlanEncaps : public ydk::Enum
 
 };
 
+class EfpPayloadEtype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf payload_ethertype_any;
+        static const ydk::Enum::YLeaf payload_ethertype_ip;
+        static const ydk::Enum::YLeaf payload_ethertype_pppoe;
+
+};
+
+class EfpTagPriority : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf priority0;
+        static const ydk::Enum::YLeaf priority1;
+        static const ydk::Enum::YLeaf priority2;
+        static const ydk::Enum::YLeaf priority3;
+        static const ydk::Enum::YLeaf priority4;
+        static const ydk::Enum::YLeaf priority5;
+        static const ydk::Enum::YLeaf priority6;
+        static const ydk::Enum::YLeaf priority7;
+        static const ydk::Enum::YLeaf priority_any;
+
+};
+
+class EfpTagEtype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf untagged;
+        static const ydk::Enum::YLeaf dot1q;
+        static const ydk::Enum::YLeaf dot1ad;
+
+};
+
 class VlanSwitchedMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf trunk_port;
         static const ydk::Enum::YLeaf access_port;
+
+};
+
+class EthFiltering : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_filtering;
+        static const ydk::Enum::YLeaf dot1q_filtering;
+        static const ydk::Enum::YLeaf dot1ad_filtering;
+        static const ydk::Enum::YLeaf two_port_mac_relay_filtering;
+
+};
+
+class VlanQinqOuterEtype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ether_type8100;
+        static const ydk::Enum::YLeaf ether_type9100;
+        static const ydk::Enum::YLeaf ether_type9200;
 
 };
 
@@ -1330,71 +1390,11 @@ class ImStateEnum : public ydk::Enum
 
 };
 
-class EfpTagPriority : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf priority0;
-        static const ydk::Enum::YLeaf priority1;
-        static const ydk::Enum::YLeaf priority2;
-        static const ydk::Enum::YLeaf priority3;
-        static const ydk::Enum::YLeaf priority4;
-        static const ydk::Enum::YLeaf priority5;
-        static const ydk::Enum::YLeaf priority6;
-        static const ydk::Enum::YLeaf priority7;
-        static const ydk::Enum::YLeaf priority_any;
-
-};
-
-class EfpTagEtype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf untagged;
-        static const ydk::Enum::YLeaf dot1q;
-        static const ydk::Enum::YLeaf dot1ad;
-
-};
-
-class VlanService : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf vlan_service_l2;
-        static const ydk::Enum::YLeaf vlan_service_l3;
-
-};
-
-class EfpPayloadEtype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf payload_ethertype_any;
-        static const ydk::Enum::YLeaf payload_ethertype_ip;
-        static const ydk::Enum::YLeaf payload_ethertype_pppoe;
-
-};
-
-class VlanQinqOuterEtype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ether_type8100;
-        static const ydk::Enum::YLeaf ether_type9100;
-        static const ydk::Enum::YLeaf ether_type9200;
-
-};
-
 class EthCapsUcastMacMode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf reserved;
         static const ydk::Enum::YLeaf permit;
-
-};
-
-class EthFiltering : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_filtering;
-        static const ydk::Enum::YLeaf dot1q_filtering;
-        static const ydk::Enum::YLeaf dot1ad_filtering;
-        static const ydk::Enum::YLeaf two_port_mac_relay_filtering;
 
 };
 

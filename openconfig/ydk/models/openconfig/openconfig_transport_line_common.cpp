@@ -31,23 +31,13 @@ INGRESS::~INGRESS()
 {
 }
 
-MONITOR::MONITOR()
-     : Identity("http://openconfig.net/yang/transport-line-common", "openconfig-transport-line-common", "openconfig-transport-line-common:MONITOR")
+EGRESS::EGRESS()
+     : Identity("http://openconfig.net/yang/transport-line-common", "openconfig-transport-line-common", "openconfig-transport-line-common:EGRESS")
 {
 
 }
 
-MONITOR::~MONITOR()
-{
-}
-
-DROP::DROP()
-     : Identity("http://openconfig.net/yang/transport-line-common", "openconfig-transport-line-common", "openconfig-transport-line-common:DROP")
-{
-
-}
-
-DROP::~DROP()
+EGRESS::~EGRESS()
 {
 }
 
@@ -61,13 +51,23 @@ ADD::~ADD()
 {
 }
 
-EGRESS::EGRESS()
-     : Identity("http://openconfig.net/yang/transport-line-common", "openconfig-transport-line-common", "openconfig-transport-line-common:EGRESS")
+DROP::DROP()
+     : Identity("http://openconfig.net/yang/transport-line-common", "openconfig-transport-line-common", "openconfig-transport-line-common:DROP")
 {
 
 }
 
-EGRESS::~EGRESS()
+DROP::~DROP()
+{
+}
+
+MONITOR::MONITOR()
+     : Identity("http://openconfig.net/yang/transport-line-common", "openconfig-transport-line-common", "openconfig-transport-line-common:MONITOR")
+{
+
+}
+
+MONITOR::~MONITOR()
 {
 }
 

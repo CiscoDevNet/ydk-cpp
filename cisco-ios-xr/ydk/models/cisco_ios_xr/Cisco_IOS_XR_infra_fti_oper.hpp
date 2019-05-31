@@ -476,6 +476,17 @@ class DciFabricInterconnect::Acp : public ydk::Entity
 
 }; // DciFabricInterconnect::Acp
 
+class FtiBagFabricPeerState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf fti_bag_fabric_peer_status_disconnected;
+        static const ydk::Enum::YLeaf fti_bag_fabric_peer_status_connecting;
+        static const ydk::Enum::YLeaf fti_bag_fabric_peer_status_connected;
+        static const ydk::Enum::YLeaf fti_bag_fabric_peer_status_ready;
+        static const ydk::Enum::YLeaf fti_bag_fabric_peer_status_closing;
+
+};
+
 class FtiBagFabricState : public ydk::Enum
 {
     public:
@@ -491,17 +502,6 @@ class FtiBagFabricConfigState : public ydk::Enum
     public:
         static const ydk::Enum::YLeaf fti_bag_config_complete;
         static const ydk::Enum::YLeaf fti_bag_config_incomplete;
-
-};
-
-class FtiBagFabricPeerState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf fti_bag_fabric_peer_status_disconnected;
-        static const ydk::Enum::YLeaf fti_bag_fabric_peer_status_connecting;
-        static const ydk::Enum::YLeaf fti_bag_fabric_peer_status_connected;
-        static const ydk::Enum::YLeaf fti_bag_fabric_peer_status_ready;
-        static const ydk::Enum::YLeaf fti_bag_fabric_peer_status_closing;
 
 };
 

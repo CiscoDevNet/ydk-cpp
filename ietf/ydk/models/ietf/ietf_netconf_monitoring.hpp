@@ -10,15 +10,6 @@
 namespace ietf {
 namespace ietf_netconf_monitoring {
 
-class SchemaFormat : public virtual ydk::Identity
-{
-    public:
-        SchemaFormat();
-        ~SchemaFormat();
-
-
-}; // SchemaFormat
-
 class Transport : public virtual ydk::Identity
 {
     public:
@@ -27,6 +18,15 @@ class Transport : public virtual ydk::Identity
 
 
 }; // Transport
+
+class SchemaFormat : public virtual ydk::Identity
+{
+    public:
+        SchemaFormat();
+        ~SchemaFormat();
+
+
+}; // SchemaFormat
 
 class GetSchema : public ydk::Entity
 {
@@ -415,15 +415,6 @@ class NetconfState::Statistics : public ydk::Entity
 
 }; // NetconfState::Statistics
 
-class NetconfBeep : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
-{
-    public:
-        NetconfBeep();
-        ~NetconfBeep();
-
-
-}; // NetconfBeep
-
 class NetconfSsh : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
@@ -433,14 +424,59 @@ class NetconfSsh : public ietf::ietf_netconf_monitoring::Transport, virtual ydk:
 
 }; // NetconfSsh
 
-class Rnc : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
+class NetconfSoapOverBeep : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
 {
     public:
-        Rnc();
-        ~Rnc();
+        NetconfSoapOverBeep();
+        ~NetconfSoapOverBeep();
 
 
-}; // Rnc
+}; // NetconfSoapOverBeep
+
+class NetconfSoapOverHttps : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
+{
+    public:
+        NetconfSoapOverHttps();
+        ~NetconfSoapOverHttps();
+
+
+}; // NetconfSoapOverHttps
+
+class NetconfBeep : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
+{
+    public:
+        NetconfBeep();
+        ~NetconfBeep();
+
+
+}; // NetconfBeep
+
+class NetconfTls : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
+{
+    public:
+        NetconfTls();
+        ~NetconfTls();
+
+
+}; // NetconfTls
+
+class Xsd : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
+{
+    public:
+        Xsd();
+        ~Xsd();
+
+
+}; // Xsd
+
+class Yang : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
+{
+    public:
+        Yang();
+        ~Yang();
+
+
+}; // Yang
 
 class Yin : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
 {
@@ -460,50 +496,14 @@ class Rng : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Ide
 
 }; // Rng
 
-class Xsd : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
+class Rnc : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
 {
     public:
-        Xsd();
-        ~Xsd();
+        Rnc();
+        ~Rnc();
 
 
-}; // Xsd
-
-class NetconfSoapOverBeep : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
-{
-    public:
-        NetconfSoapOverBeep();
-        ~NetconfSoapOverBeep();
-
-
-}; // NetconfSoapOverBeep
-
-class NetconfTls : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
-{
-    public:
-        NetconfTls();
-        ~NetconfTls();
-
-
-}; // NetconfTls
-
-class Yang : public ietf::ietf_netconf_monitoring::SchemaFormat, virtual ydk::Identity
-{
-    public:
-        Yang();
-        ~Yang();
-
-
-}; // Yang
-
-class NetconfSoapOverHttps : public ietf::ietf_netconf_monitoring::Transport, virtual ydk::Identity
-{
-    public:
-        NetconfSoapOverHttps();
-        ~NetconfSoapOverHttps();
-
-
-}; // NetconfSoapOverHttps
+}; // Rnc
 
 class NetconfDatastoreType : public ydk::Enum
 {

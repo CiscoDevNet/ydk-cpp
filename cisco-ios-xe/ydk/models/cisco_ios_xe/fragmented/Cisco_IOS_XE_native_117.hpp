@@ -218,7 +218,7 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Match::SourceProtocol : public 
         ydk::YLeaf mobile; //type: empty
         ydk::YLeaf rip; //type: empty
         ydk::YLeaf static_; //type: empty
-        ydk::YLeafList bgp; //type: list of  one of uint32, string
+        ydk::YLeafList bgp; //type: list of  one of string, uint32
         ydk::YLeafList eigrp; //type: list of  string
         ydk::YLeafList ospf; //type: list of  string
         ydk::YLeafList ospfv3; //type: list of  string
@@ -574,7 +574,7 @@ class Native::TableMap : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        ydk::YLeaf default_; //type: one of uint8, enumeration
+        ydk::YLeaf default_; //type: one of enumeration, uint8
         class Map; //type: Native::TableMap::Map
 
         ydk::YList map;
@@ -1015,9 +1015,9 @@ class Native::ObjectGroup::Service::Tcp::TcpPortList : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf tcp_port; //type: one of uint16, enumeration
+        ydk::YLeaf tcp_port; //type: one of enumeration, uint16
         ydk::YLeaf operator_; //type: Operator_
-        ydk::YLeaf max_tcp_port; //type: one of uint16, enumeration
+        ydk::YLeaf max_tcp_port; //type: one of enumeration, uint16
         class Operator_;
 
 }; // Native::ObjectGroup::Service::Tcp::TcpPortList
@@ -1062,9 +1062,9 @@ class Native::ObjectGroup::Service::TcpUdp::UdpPortList : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf udp_port; //type: one of uint16, enumeration
+        ydk::YLeaf udp_port; //type: one of enumeration, uint16
         ydk::YLeaf operator_; //type: Operator_
-        ydk::YLeaf max_udp_port; //type: one of uint16, enumeration
+        ydk::YLeaf max_udp_port; //type: one of enumeration, uint16
         class Operator_;
 
 }; // Native::ObjectGroup::Service::TcpUdp::UdpPortList
@@ -1109,9 +1109,9 @@ class Native::ObjectGroup::Service::Udp::UdpPortList : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf udp_port; //type: one of uint16, enumeration
+        ydk::YLeaf udp_port; //type: one of enumeration, uint16
         ydk::YLeaf operator_; //type: Operator_
-        ydk::YLeaf max_udp_port; //type: one of uint16, enumeration
+        ydk::YLeaf max_udp_port; //type: one of enumeration, uint16
         class Operator_;
 
 }; // Native::ObjectGroup::Service::Udp::UdpPortList
@@ -2258,11 +2258,11 @@ class Native::Clock::SummerTime : public ydk::Entity
         ydk::YLeaf date_end_time; //type: string
         ydk::YLeaf offset; //type: uint16
         ydk::YLeaf recurring; //type: empty
-        ydk::YLeaf recurring_start; //type: one of uint8, enumeration
+        ydk::YLeaf recurring_start; //type: one of enumeration, uint8
         ydk::YLeaf recurring_start_day; //type: WeekdayType
         ydk::YLeaf recurring_start_month; //type: MonthType
         ydk::YLeaf recurring_start_time; //type: string
-        ydk::YLeaf recurring_end; //type: one of uint8, enumeration
+        ydk::YLeaf recurring_end; //type: one of enumeration, uint8
         ydk::YLeaf recurring_end_day; //type: WeekdayType
         ydk::YLeaf recurring_end_month; //type: MonthType
         ydk::YLeaf recurring_end_time; //type: string
@@ -2316,7 +2316,7 @@ class Native::Logging : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf alarm; //type: one of uint8, enumeration
+        ydk::YLeaf alarm; //type: one of enumeration, uint8
         ydk::YLeaf facility; //type: Facility
         ydk::YLeaf hostip; //type: one of union, string
         ydk::YLeaf snmp_authfail; //type: empty
@@ -2553,7 +2553,7 @@ class Native::Logging::Monitor : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf severity; //type: one of uint16, enumeration
+        ydk::YLeaf severity; //type: one of enumeration, uint16
         class Discriminator; //type: Native::Logging::Monitor::Discriminator
 
         ydk::YList discriminator;
@@ -2579,7 +2579,7 @@ class Native::Logging::Monitor::Discriminator : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        ydk::YLeaf severity; //type: one of uint16, enumeration
+        ydk::YLeaf severity; //type: one of enumeration, uint16
 
 }; // Native::Logging::Monitor::Discriminator
 
@@ -2601,7 +2601,7 @@ class Native::Logging::Buffered : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
         std::string get_absolute_path() const override;
 
-        ydk::YLeaf severity; //type: one of uint16, enumeration
+        ydk::YLeaf severity; //type: one of enumeration, uint16
         ydk::YLeaf xxml; //type: uint32
         class Discriminator; //type: Native::Logging::Buffered::Discriminator
         class Size; //type: Native::Logging::Buffered::Size
@@ -2631,7 +2631,7 @@ class Native::Logging::Buffered::Discriminator : public ydk::Entity
 
         ydk::YLeaf name; //type: string
         ydk::YLeaf size_value; //type: uint32
-        ydk::YLeaf severity; //type: one of uint16, enumeration
+        ydk::YLeaf severity; //type: one of enumeration, uint16
 
 }; // Native::Logging::Buffered::Discriminator
 
@@ -2654,7 +2654,7 @@ class Native::Logging::Buffered::Size : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf size_value; //type: uint32
-        ydk::YLeaf severity; //type: one of uint16, enumeration
+        ydk::YLeaf severity; //type: one of enumeration, uint16
 
 }; // Native::Logging::Buffered::Size
 
@@ -2700,8 +2700,8 @@ class Native::Logging::Console : public ydk::Entity
 
         ydk::YLeaf filtered; //type: empty
         ydk::YLeaf guaranteed; //type: empty
-        ydk::YLeaf xxml; //type: one of uint16, enumeration
-        ydk::YLeaf severity; //type: one of uint16, enumeration
+        ydk::YLeaf xxml; //type: one of enumeration, uint16
+        ydk::YLeaf severity; //type: one of enumeration, uint16
         class Discriminator; //type: Native::Logging::Console::Discriminator
 
         ydk::YList discriminator;
@@ -2727,7 +2727,7 @@ class Native::Logging::Console::Discriminator : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf name; //type: string
-        ydk::YLeaf severity; //type: one of uint16, enumeration
+        ydk::YLeaf severity; //type: one of enumeration, uint16
 
 }; // Native::Logging::Console::Discriminator
 
@@ -2820,7 +2820,7 @@ class Native::Logging::History : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf size; //type: uint16
-        ydk::YLeaf severity_level; //type: one of uint8, enumeration
+        ydk::YLeaf severity_level; //type: one of enumeration, uint8
         class SeverityLevel;
 
 }; // Native::Logging::History
@@ -3469,7 +3469,7 @@ class Native::Logging::RateLimit::Ranges::Except : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf range; //type: one of uint16, enumeration
+        ydk::YLeaf range; //type: one of enumeration, uint16
 
 }; // Native::Logging::RateLimit::Ranges::Except
 
@@ -3541,7 +3541,7 @@ class Native::Logging::RateLimit::Console::Ranges::Except : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf range; //type: one of uint16, enumeration
+        ydk::YLeaf range; //type: one of enumeration, uint16
 
 }; // Native::Logging::RateLimit::Console::Ranges::Except
 
@@ -3611,7 +3611,7 @@ class Native::Logging::RateLimit::Console::All::Ranges::Except : public ydk::Ent
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf range; //type: one of uint16, enumeration
+        ydk::YLeaf range; //type: one of enumeration, uint16
 
 }; // Native::Logging::RateLimit::Console::All::Ranges::Except
 
@@ -3681,7 +3681,7 @@ class Native::Logging::RateLimit::All::Ranges::Except : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf range; //type: one of uint16, enumeration
+        ydk::YLeaf range; //type: one of enumeration, uint16
 
 }; // Native::Logging::RateLimit::All::Ranges::Except
 
@@ -3756,7 +3756,7 @@ class Native::Logging::Trap : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf trap_default; //type: empty
-        ydk::YLeaf severity; //type: one of uint8, enumeration
+        ydk::YLeaf severity; //type: one of enumeration, uint8
         class Severity;
 
 }; // Native::Logging::Trap

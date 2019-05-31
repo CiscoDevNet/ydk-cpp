@@ -842,27 +842,6 @@ class Native::Interface::Vasiright::Umbrella : public ydk::Entity
 }; // Native::Interface::Vasiright::Umbrella
 
 
-class Native::Interface::Vasiright::ZoneMember : public ydk::Entity
-{
-    public:
-        ZoneMember();
-        ~ZoneMember();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf security; //type: string
-
-}; // Native::Interface::Vasiright::ZoneMember
-
-
 class Native::Interface::Vasiright::Utd : public ydk::Entity
 {
     public:
@@ -882,6 +861,27 @@ class Native::Interface::Vasiright::Utd : public ydk::Entity
         ydk::YLeaf enable; //type: empty
 
 }; // Native::Interface::Vasiright::Utd
+
+
+class Native::Interface::Vasiright::ZoneMember : public ydk::Entity
+{
+    public:
+        ZoneMember();
+        ~ZoneMember();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf security; //type: string
+
+}; // Native::Interface::Vasiright::ZoneMember
 
 
 class Native::RouteMap : public ydk::Entity
@@ -1226,7 +1226,7 @@ class Native::RouteMap::RouteMapSeq::Set::Community::CommunityWellKnown : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList community_list; //type: list of  one of union, enumeration
+        ydk::YLeafList community_list; //type: list of  one of enumeration, union
 
 }; // Native::RouteMap::RouteMapSeq::Set::Community::CommunityWellKnown
 
@@ -1724,7 +1724,7 @@ class Native::RouteMap::RouteMapSeq::Set::Extcommunity::Rt : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList asn_nn; //type: list of  one of string, enumeration
+        ydk::YLeafList asn_nn; //type: list of  one of enumeration, string
         class Range; //type: Native::RouteMap::RouteMapSeq::Set::Extcommunity::Rt::Range
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapSeq::Set::Extcommunity::Rt::Range> range;

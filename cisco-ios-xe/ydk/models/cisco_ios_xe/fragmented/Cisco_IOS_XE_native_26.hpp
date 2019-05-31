@@ -575,7 +575,7 @@ class Native::Interface::BDI::Mpls::Ldp::Discovery : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf transport_address; //type: one of string, enumeration
+        ydk::YLeaf transport_address; //type: one of enumeration, string
 
 }; // Native::Interface::BDI::Mpls::Ldp::Discovery
 
@@ -2042,7 +2042,7 @@ class Native::Interface::BDI::Ip::Ospf::ProcessId : public ydk::Entity
 
         //type: uint16 (refers to cisco_ios_xe::Cisco_IOS_XE_native::Native::Router::Ospf::id)
         ydk::YLeaf id;
-        ydk::YLeaf area; //type: one of uint32, string
+        ydk::YLeaf area; //type: one of string, uint32
         ydk::YLeaf secondaries; //type: empty
         ydk::YLeaf none; //type: empty
 
@@ -2399,7 +2399,7 @@ class Native::Interface::BDI::Ip::Ospf::MultiArea : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf id; //type: one of uint32, string
+        ydk::YLeaf id; //type: one of string, uint32
         ydk::YLeaf cost; //type: uint32
 
 }; // Native::Interface::BDI::Ip::Ospf::MultiArea
@@ -3120,7 +3120,7 @@ class Native::Interface::BDI::Standby::StandbyList : public ydk::Entity
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of string, enumeration
+        ydk::YLeaf ipv6; //type: one of enumeration, string
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8

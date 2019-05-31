@@ -4449,6 +4449,24 @@ class PolicyParamUnit : public ydk::Enum
 
 };
 
+class CacState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf admit;
+        static const ydk::Enum::YLeaf redirect;
+        static const ydk::Enum::YLeaf ubrl;
+
+};
+
+class PolicyState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf suspended;
+
+};
+
 class QosCapsOperationEnum : public ydk::Enum
 {
     public:
@@ -4460,30 +4478,12 @@ class QosCapsOperationEnum : public ydk::Enum
 
 };
 
-class CacState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf admit;
-        static const ydk::Enum::YLeaf redirect;
-        static const ydk::Enum::YLeaf ubrl;
-
-};
-
 class QosMaSatCapsTypeEnum : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf input;
         static const ydk::Enum::YLeaf output;
         static const ydk::Enum::YLeaf unknown;
-
-};
-
-class PolicyState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf suspended;
 
 };
 

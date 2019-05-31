@@ -102,7 +102,8 @@ string entity_vector_to_string(vector<Entity*> & entity_list)
         first = false;
       else
         buf += ", ";
-      buf += item->get_segment_path();
+      if (item)
+        buf += item->get_segment_path();
     }
     buf += ']';
     return buf;

@@ -170,14 +170,14 @@ bool FrequencySynchronization::has_leaf_or_child_of_name(const std::string & nam
     return false;
 }
 
+const Enum::YLeaf FsyncSystemTimingMode::line_only {2, "line-only"};
+const Enum::YLeaf FsyncSystemTimingMode::clock_only {3, "clock-only"};
+
 const Enum::YLeaf FsyncClockSource::system {1, "system"};
 const Enum::YLeaf FsyncClockSource::independent {3, "independent"};
 
 const Enum::YLeaf FsyncSourceSelectionLogging::changes {1, "changes"};
 const Enum::YLeaf FsyncSourceSelectionLogging::errors {2, "errors"};
-
-const Enum::YLeaf FsyncSystemTimingMode::line_only {2, "line-only"};
-const Enum::YLeaf FsyncSystemTimingMode::clock_only {3, "clock-only"};
 
 
 }

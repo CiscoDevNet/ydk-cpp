@@ -11,6 +11,1910 @@ using namespace ydk;
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_pim_oper {
 
+Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::SourceOfInformation::SourceOfInformation()
+    :
+    af_name{YType::enumeration, "af-name"},
+    ipv4_address{YType::str, "ipv4-address"},
+    ipv6_address{YType::str, "ipv6-address"}
+{
+
+    yang_name = "source-of-information"; yang_parent_name = "group-map-source"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::SourceOfInformation::~SourceOfInformation()
+{
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::SourceOfInformation::has_data() const
+{
+    if (is_presence_container) return true;
+    return af_name.is_set
+	|| ipv4_address.is_set
+	|| ipv6_address.is_set;
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::SourceOfInformation::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
+}
+
+std::string Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::SourceOfInformation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "source-of-information";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::SourceOfInformation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::SourceOfInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::SourceOfInformation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::SourceOfInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::SourceOfInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::SourceOfInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
+}
+
+Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::GroupMapInformation()
+    :
+    prefix_length{YType::int32, "prefix-length"},
+    client{YType::enumeration, "client"},
+    protocol{YType::enumeration, "protocol"},
+    group_count{YType::uint32, "group-count"},
+    is_used{YType::boolean, "is-used"},
+    mrib_active{YType::boolean, "mrib-active"},
+    is_override{YType::boolean, "is-override"},
+    priority{YType::uint32, "priority"}
+        ,
+    prefix(std::make_shared<Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix>())
+    , rp_address(std::make_shared<Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress>())
+{
+    prefix->parent = this;
+    rp_address->parent = this;
+
+    yang_name = "group-map-information"; yang_parent_name = "group-map-source"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::~GroupMapInformation()
+{
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::has_data() const
+{
+    if (is_presence_container) return true;
+    return prefix_length.is_set
+	|| client.is_set
+	|| protocol.is_set
+	|| group_count.is_set
+	|| is_used.is_set
+	|| mrib_active.is_set
+	|| is_override.is_set
+	|| priority.is_set
+	|| (prefix !=  nullptr && prefix->has_data())
+	|| (rp_address !=  nullptr && rp_address->has_data());
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(prefix_length.yfilter)
+	|| ydk::is_set(client.yfilter)
+	|| ydk::is_set(protocol.yfilter)
+	|| ydk::is_set(group_count.yfilter)
+	|| ydk::is_set(is_used.yfilter)
+	|| ydk::is_set(mrib_active.yfilter)
+	|| ydk::is_set(is_override.yfilter)
+	|| ydk::is_set(priority.yfilter)
+	|| (prefix !=  nullptr && prefix->has_operation())
+	|| (rp_address !=  nullptr && rp_address->has_operation());
+}
+
+std::string Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "group-map-information";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (prefix_length.is_set || is_set(prefix_length.yfilter)) leaf_name_data.push_back(prefix_length.get_name_leafdata());
+    if (client.is_set || is_set(client.yfilter)) leaf_name_data.push_back(client.get_name_leafdata());
+    if (protocol.is_set || is_set(protocol.yfilter)) leaf_name_data.push_back(protocol.get_name_leafdata());
+    if (group_count.is_set || is_set(group_count.yfilter)) leaf_name_data.push_back(group_count.get_name_leafdata());
+    if (is_used.is_set || is_set(is_used.yfilter)) leaf_name_data.push_back(is_used.get_name_leafdata());
+    if (mrib_active.is_set || is_set(mrib_active.yfilter)) leaf_name_data.push_back(mrib_active.get_name_leafdata());
+    if (is_override.is_set || is_set(is_override.yfilter)) leaf_name_data.push_back(is_override.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "prefix")
+    {
+        if(prefix == nullptr)
+        {
+            prefix = std::make_shared<Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix>();
+        }
+        return prefix;
+    }
+
+    if(child_yang_name == "rp-address")
+    {
+        if(rp_address == nullptr)
+        {
+            rp_address = std::make_shared<Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress>();
+        }
+        return rp_address;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(prefix != nullptr)
+    {
+        _children["prefix"] = prefix;
+    }
+
+    if(rp_address != nullptr)
+    {
+        _children["rp-address"] = rp_address;
+    }
+
+    return _children;
+}
+
+void Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "prefix-length")
+    {
+        prefix_length = value;
+        prefix_length.value_namespace = name_space;
+        prefix_length.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "client")
+    {
+        client = value;
+        client.value_namespace = name_space;
+        client.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "protocol")
+    {
+        protocol = value;
+        protocol.value_namespace = name_space;
+        protocol.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "group-count")
+    {
+        group_count = value;
+        group_count.value_namespace = name_space;
+        group_count.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-used")
+    {
+        is_used = value;
+        is_used.value_namespace = name_space;
+        is_used.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mrib-active")
+    {
+        mrib_active = value;
+        mrib_active.value_namespace = name_space;
+        mrib_active.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "is-override")
+    {
+        is_override = value;
+        is_override.value_namespace = name_space;
+        is_override.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "priority")
+    {
+        priority = value;
+        priority.value_namespace = name_space;
+        priority.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "prefix-length")
+    {
+        prefix_length.yfilter = yfilter;
+    }
+    if(value_path == "client")
+    {
+        client.yfilter = yfilter;
+    }
+    if(value_path == "protocol")
+    {
+        protocol.yfilter = yfilter;
+    }
+    if(value_path == "group-count")
+    {
+        group_count.yfilter = yfilter;
+    }
+    if(value_path == "is-used")
+    {
+        is_used.yfilter = yfilter;
+    }
+    if(value_path == "mrib-active")
+    {
+        mrib_active.yfilter = yfilter;
+    }
+    if(value_path == "is-override")
+    {
+        is_override.yfilter = yfilter;
+    }
+    if(value_path == "priority")
+    {
+        priority.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "prefix" || name == "rp-address" || name == "prefix-length" || name == "client" || name == "protocol" || name == "group-count" || name == "is-used" || name == "mrib-active" || name == "is-override" || name == "priority")
+        return true;
+    return false;
+}
+
+Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix::Prefix()
+    :
+    af_name{YType::enumeration, "af-name"},
+    ipv4_address{YType::str, "ipv4-address"},
+    ipv6_address{YType::str, "ipv6-address"}
+{
+
+    yang_name = "prefix"; yang_parent_name = "group-map-information"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix::~Prefix()
+{
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix::has_data() const
+{
+    if (is_presence_container) return true;
+    return af_name.is_set
+	|| ipv4_address.is_set
+	|| ipv6_address.is_set;
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
+}
+
+std::string Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "prefix";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::Prefix::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
+}
+
+Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress::RpAddress()
+    :
+    af_name{YType::enumeration, "af-name"},
+    ipv4_address{YType::str, "ipv4-address"},
+    ipv6_address{YType::str, "ipv6-address"}
+{
+
+    yang_name = "rp-address"; yang_parent_name = "group-map-information"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress::~RpAddress()
+{
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress::has_data() const
+{
+    if (is_presence_container) return true;
+    return af_name.is_set
+	|| ipv4_address.is_set
+	|| ipv6_address.is_set;
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(af_name.yfilter)
+	|| ydk::is_set(ipv4_address.yfilter)
+	|| ydk::is_set(ipv6_address.yfilter);
+}
+
+std::string Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "rp-address";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (af_name.is_set || is_set(af_name.yfilter)) leaf_name_data.push_back(af_name.get_name_leafdata());
+    if (ipv4_address.is_set || is_set(ipv4_address.yfilter)) leaf_name_data.push_back(ipv4_address.get_name_leafdata());
+    if (ipv6_address.is_set || is_set(ipv6_address.yfilter)) leaf_name_data.push_back(ipv6_address.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "af-name")
+    {
+        af_name = value;
+        af_name.value_namespace = name_space;
+        af_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address = value;
+        ipv4_address.value_namespace = name_space;
+        ipv4_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address = value;
+        ipv6_address.value_namespace = name_space;
+        ipv6_address.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "af-name")
+    {
+        af_name.yfilter = yfilter;
+    }
+    if(value_path == "ipv4-address")
+    {
+        ipv4_address.yfilter = yfilter;
+    }
+    if(value_path == "ipv6-address")
+    {
+        ipv6_address.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::GroupMapSources::GroupMapSource::GroupMapInformation::RpAddress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "af-name" || name == "ipv4-address" || name == "ipv6-address")
+        return true;
+    return false;
+}
+
+Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::TrafficCounters()
+    :
+    elapsed_time{YType::uint32, "elapsed-time"},
+    inputs{YType::uint32, "inputs"},
+    outputs{YType::uint32, "outputs"},
+    format_error{YType::uint32, "format-error"},
+    pakman_error{YType::uint32, "pakman-error"},
+    standby_packets_error{YType::uint32, "standby-packets-error"},
+    checksum_error{YType::uint32, "checksum-error"},
+    socket_error{YType::uint32, "socket-error"},
+    send_queue_full{YType::uint32, "send-queue-full"},
+    boundary_acl_rx_drop{YType::uint32, "boundary-acl-rx-drop"},
+    boundary_acl_tx_drop{YType::uint32, "boundary-acl-tx-drop"},
+    no_socket_connection{YType::uint32, "no-socket-connection"},
+    no_source_address{YType::uint32, "no-source-address"},
+    input_hello{YType::uint32, "input-hello"},
+    output_hello{YType::uint32, "output-hello"},
+    input_jp{YType::uint32, "input-jp"},
+    output_jp{YType::uint32, "output-jp"},
+    input_data_register{YType::uint32, "input-data-register"},
+    input_null_register{YType::uint32, "input-null-register"},
+    output_null_register{YType::uint32, "output-null-register"},
+    input_register_stop{YType::uint32, "input-register-stop"},
+    output_register_stop{YType::uint32, "output-register-stop"},
+    input_assert{YType::uint32, "input-assert"},
+    input_assert_batched{YType::uint32, "input-assert-batched"},
+    output_assert{YType::uint32, "output-assert"},
+    output_assert_batched{YType::uint32, "output-assert-batched"},
+    input_df_election{YType::uint32, "input-df-election"},
+    output_df_election{YType::uint32, "output-df-election"},
+    input_bsr_message{YType::uint32, "input-bsr-message"},
+    output_bsr_message{YType::uint32, "output-bsr-message"},
+    input_candidate_rp_advertisement{YType::uint32, "input-candidate-rp-advertisement"},
+    output_candidate_rp_advertisement{YType::uint32, "output-candidate-rp-advertisement"},
+    input_ecmp_redirect{YType::uint32, "input-ecmp-redirect"},
+    output_ecmp_redirect{YType::uint32, "output-ecmp-redirect"},
+    output_loop_error{YType::uint32, "output-loop-error"},
+    mldp_mdt_invalid_lsm_identifier{YType::uint32, "mldp-mdt-invalid-lsm-identifier"},
+    input_no_idb_error{YType::uint32, "input-no-idb-error"},
+    input_no_vrf_error{YType::uint32, "input-no-vrf-error"},
+    input_no_pim_error{YType::uint32, "input-no-pim-error"},
+    input_pim_version_error{YType::uint32, "input-pim-version-error"},
+    output_join_group{YType::uint32, "output-join-group"},
+    output_prune_group{YType::uint32, "output-prune-group"},
+    output_join_prune_bytes{YType::uint32, "output-join-prune-bytes"},
+    output_hello_bytes{YType::uint32, "output-hello-bytes"},
+    non_supported_packets{YType::uint32, "non-supported-packets"},
+    invalid_registers{YType::uint32, "invalid-registers"},
+    invalid_join_prunes{YType::uint32, "invalid-join-prunes"},
+    packet_packman_error{YType::uint32, "packet-packman-error"},
+    packet_read_socket_error{YType::uint32, "packet-read-socket-error"},
+    packet_queue_last_clear{YType::uint32, "packet-queue-last-clear"},
+    packets_standby{YType::uint32, "packets-standby"},
+    no_mdt_socket_connection{YType::uint32, "no-mdt-socket-connection"},
+    mdt_send_queue_full{YType::uint32, "mdt-send-queue-full"},
+    mdt_socket_error{YType::uint32, "mdt-socket-error"},
+    mdt_join_tlv_sent{YType::uint32, "mdt-join-tlv-sent"},
+    mdt_join_tlv_received{YType::uint32, "mdt-join-tlv-received"},
+    mdt_join_bad_type{YType::uint32, "mdt-join-bad-type"},
+    mdt_drop_local_source_address{YType::uint32, "mdt-drop-local-source-address"},
+    mdt_drop_null_local_address{YType::uint32, "mdt-drop-null-local-address"},
+    mdt_drop_no_idb{YType::uint32, "mdt-drop-no-idb"},
+    mdt_drop_no_vrf{YType::uint32, "mdt-drop-no-vrf"},
+    invalid_destination_packets{YType::uint32, "invalid-destination-packets"},
+    mdt_joins_drop_multiple_encapsulation{YType::uint32, "mdt-joins-drop-multiple-encapsulation"},
+    truncated_pim_packets{YType::uint32, "truncated-pim-packets"},
+    invalid_source_encodings{YType::uint32, "invalid-source-encodings"},
+    invalid_hello_options{YType::uint32, "invalid-hello-options"}
+        ,
+    packet_queue(this, {})
+{
+
+    yang_name = "traffic-counters"; yang_parent_name = "vrf"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::~TrafficCounters()
+{
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<packet_queue.len(); index++)
+    {
+        if(packet_queue[index]->has_data())
+            return true;
+    }
+    return elapsed_time.is_set
+	|| inputs.is_set
+	|| outputs.is_set
+	|| format_error.is_set
+	|| pakman_error.is_set
+	|| standby_packets_error.is_set
+	|| checksum_error.is_set
+	|| socket_error.is_set
+	|| send_queue_full.is_set
+	|| boundary_acl_rx_drop.is_set
+	|| boundary_acl_tx_drop.is_set
+	|| no_socket_connection.is_set
+	|| no_source_address.is_set
+	|| input_hello.is_set
+	|| output_hello.is_set
+	|| input_jp.is_set
+	|| output_jp.is_set
+	|| input_data_register.is_set
+	|| input_null_register.is_set
+	|| output_null_register.is_set
+	|| input_register_stop.is_set
+	|| output_register_stop.is_set
+	|| input_assert.is_set
+	|| input_assert_batched.is_set
+	|| output_assert.is_set
+	|| output_assert_batched.is_set
+	|| input_df_election.is_set
+	|| output_df_election.is_set
+	|| input_bsr_message.is_set
+	|| output_bsr_message.is_set
+	|| input_candidate_rp_advertisement.is_set
+	|| output_candidate_rp_advertisement.is_set
+	|| input_ecmp_redirect.is_set
+	|| output_ecmp_redirect.is_set
+	|| output_loop_error.is_set
+	|| mldp_mdt_invalid_lsm_identifier.is_set
+	|| input_no_idb_error.is_set
+	|| input_no_vrf_error.is_set
+	|| input_no_pim_error.is_set
+	|| input_pim_version_error.is_set
+	|| output_join_group.is_set
+	|| output_prune_group.is_set
+	|| output_join_prune_bytes.is_set
+	|| output_hello_bytes.is_set
+	|| non_supported_packets.is_set
+	|| invalid_registers.is_set
+	|| invalid_join_prunes.is_set
+	|| packet_packman_error.is_set
+	|| packet_read_socket_error.is_set
+	|| packet_queue_last_clear.is_set
+	|| packets_standby.is_set
+	|| no_mdt_socket_connection.is_set
+	|| mdt_send_queue_full.is_set
+	|| mdt_socket_error.is_set
+	|| mdt_join_tlv_sent.is_set
+	|| mdt_join_tlv_received.is_set
+	|| mdt_join_bad_type.is_set
+	|| mdt_drop_local_source_address.is_set
+	|| mdt_drop_null_local_address.is_set
+	|| mdt_drop_no_idb.is_set
+	|| mdt_drop_no_vrf.is_set
+	|| invalid_destination_packets.is_set
+	|| mdt_joins_drop_multiple_encapsulation.is_set
+	|| truncated_pim_packets.is_set
+	|| invalid_source_encodings.is_set
+	|| invalid_hello_options.is_set;
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::has_operation() const
+{
+    for (std::size_t index=0; index<packet_queue.len(); index++)
+    {
+        if(packet_queue[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter)
+	|| ydk::is_set(elapsed_time.yfilter)
+	|| ydk::is_set(inputs.yfilter)
+	|| ydk::is_set(outputs.yfilter)
+	|| ydk::is_set(format_error.yfilter)
+	|| ydk::is_set(pakman_error.yfilter)
+	|| ydk::is_set(standby_packets_error.yfilter)
+	|| ydk::is_set(checksum_error.yfilter)
+	|| ydk::is_set(socket_error.yfilter)
+	|| ydk::is_set(send_queue_full.yfilter)
+	|| ydk::is_set(boundary_acl_rx_drop.yfilter)
+	|| ydk::is_set(boundary_acl_tx_drop.yfilter)
+	|| ydk::is_set(no_socket_connection.yfilter)
+	|| ydk::is_set(no_source_address.yfilter)
+	|| ydk::is_set(input_hello.yfilter)
+	|| ydk::is_set(output_hello.yfilter)
+	|| ydk::is_set(input_jp.yfilter)
+	|| ydk::is_set(output_jp.yfilter)
+	|| ydk::is_set(input_data_register.yfilter)
+	|| ydk::is_set(input_null_register.yfilter)
+	|| ydk::is_set(output_null_register.yfilter)
+	|| ydk::is_set(input_register_stop.yfilter)
+	|| ydk::is_set(output_register_stop.yfilter)
+	|| ydk::is_set(input_assert.yfilter)
+	|| ydk::is_set(input_assert_batched.yfilter)
+	|| ydk::is_set(output_assert.yfilter)
+	|| ydk::is_set(output_assert_batched.yfilter)
+	|| ydk::is_set(input_df_election.yfilter)
+	|| ydk::is_set(output_df_election.yfilter)
+	|| ydk::is_set(input_bsr_message.yfilter)
+	|| ydk::is_set(output_bsr_message.yfilter)
+	|| ydk::is_set(input_candidate_rp_advertisement.yfilter)
+	|| ydk::is_set(output_candidate_rp_advertisement.yfilter)
+	|| ydk::is_set(input_ecmp_redirect.yfilter)
+	|| ydk::is_set(output_ecmp_redirect.yfilter)
+	|| ydk::is_set(output_loop_error.yfilter)
+	|| ydk::is_set(mldp_mdt_invalid_lsm_identifier.yfilter)
+	|| ydk::is_set(input_no_idb_error.yfilter)
+	|| ydk::is_set(input_no_vrf_error.yfilter)
+	|| ydk::is_set(input_no_pim_error.yfilter)
+	|| ydk::is_set(input_pim_version_error.yfilter)
+	|| ydk::is_set(output_join_group.yfilter)
+	|| ydk::is_set(output_prune_group.yfilter)
+	|| ydk::is_set(output_join_prune_bytes.yfilter)
+	|| ydk::is_set(output_hello_bytes.yfilter)
+	|| ydk::is_set(non_supported_packets.yfilter)
+	|| ydk::is_set(invalid_registers.yfilter)
+	|| ydk::is_set(invalid_join_prunes.yfilter)
+	|| ydk::is_set(packet_packman_error.yfilter)
+	|| ydk::is_set(packet_read_socket_error.yfilter)
+	|| ydk::is_set(packet_queue_last_clear.yfilter)
+	|| ydk::is_set(packets_standby.yfilter)
+	|| ydk::is_set(no_mdt_socket_connection.yfilter)
+	|| ydk::is_set(mdt_send_queue_full.yfilter)
+	|| ydk::is_set(mdt_socket_error.yfilter)
+	|| ydk::is_set(mdt_join_tlv_sent.yfilter)
+	|| ydk::is_set(mdt_join_tlv_received.yfilter)
+	|| ydk::is_set(mdt_join_bad_type.yfilter)
+	|| ydk::is_set(mdt_drop_local_source_address.yfilter)
+	|| ydk::is_set(mdt_drop_null_local_address.yfilter)
+	|| ydk::is_set(mdt_drop_no_idb.yfilter)
+	|| ydk::is_set(mdt_drop_no_vrf.yfilter)
+	|| ydk::is_set(invalid_destination_packets.yfilter)
+	|| ydk::is_set(mdt_joins_drop_multiple_encapsulation.yfilter)
+	|| ydk::is_set(truncated_pim_packets.yfilter)
+	|| ydk::is_set(invalid_source_encodings.yfilter)
+	|| ydk::is_set(invalid_hello_options.yfilter);
+}
+
+std::string Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "traffic-counters";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (elapsed_time.is_set || is_set(elapsed_time.yfilter)) leaf_name_data.push_back(elapsed_time.get_name_leafdata());
+    if (inputs.is_set || is_set(inputs.yfilter)) leaf_name_data.push_back(inputs.get_name_leafdata());
+    if (outputs.is_set || is_set(outputs.yfilter)) leaf_name_data.push_back(outputs.get_name_leafdata());
+    if (format_error.is_set || is_set(format_error.yfilter)) leaf_name_data.push_back(format_error.get_name_leafdata());
+    if (pakman_error.is_set || is_set(pakman_error.yfilter)) leaf_name_data.push_back(pakman_error.get_name_leafdata());
+    if (standby_packets_error.is_set || is_set(standby_packets_error.yfilter)) leaf_name_data.push_back(standby_packets_error.get_name_leafdata());
+    if (checksum_error.is_set || is_set(checksum_error.yfilter)) leaf_name_data.push_back(checksum_error.get_name_leafdata());
+    if (socket_error.is_set || is_set(socket_error.yfilter)) leaf_name_data.push_back(socket_error.get_name_leafdata());
+    if (send_queue_full.is_set || is_set(send_queue_full.yfilter)) leaf_name_data.push_back(send_queue_full.get_name_leafdata());
+    if (boundary_acl_rx_drop.is_set || is_set(boundary_acl_rx_drop.yfilter)) leaf_name_data.push_back(boundary_acl_rx_drop.get_name_leafdata());
+    if (boundary_acl_tx_drop.is_set || is_set(boundary_acl_tx_drop.yfilter)) leaf_name_data.push_back(boundary_acl_tx_drop.get_name_leafdata());
+    if (no_socket_connection.is_set || is_set(no_socket_connection.yfilter)) leaf_name_data.push_back(no_socket_connection.get_name_leafdata());
+    if (no_source_address.is_set || is_set(no_source_address.yfilter)) leaf_name_data.push_back(no_source_address.get_name_leafdata());
+    if (input_hello.is_set || is_set(input_hello.yfilter)) leaf_name_data.push_back(input_hello.get_name_leafdata());
+    if (output_hello.is_set || is_set(output_hello.yfilter)) leaf_name_data.push_back(output_hello.get_name_leafdata());
+    if (input_jp.is_set || is_set(input_jp.yfilter)) leaf_name_data.push_back(input_jp.get_name_leafdata());
+    if (output_jp.is_set || is_set(output_jp.yfilter)) leaf_name_data.push_back(output_jp.get_name_leafdata());
+    if (input_data_register.is_set || is_set(input_data_register.yfilter)) leaf_name_data.push_back(input_data_register.get_name_leafdata());
+    if (input_null_register.is_set || is_set(input_null_register.yfilter)) leaf_name_data.push_back(input_null_register.get_name_leafdata());
+    if (output_null_register.is_set || is_set(output_null_register.yfilter)) leaf_name_data.push_back(output_null_register.get_name_leafdata());
+    if (input_register_stop.is_set || is_set(input_register_stop.yfilter)) leaf_name_data.push_back(input_register_stop.get_name_leafdata());
+    if (output_register_stop.is_set || is_set(output_register_stop.yfilter)) leaf_name_data.push_back(output_register_stop.get_name_leafdata());
+    if (input_assert.is_set || is_set(input_assert.yfilter)) leaf_name_data.push_back(input_assert.get_name_leafdata());
+    if (input_assert_batched.is_set || is_set(input_assert_batched.yfilter)) leaf_name_data.push_back(input_assert_batched.get_name_leafdata());
+    if (output_assert.is_set || is_set(output_assert.yfilter)) leaf_name_data.push_back(output_assert.get_name_leafdata());
+    if (output_assert_batched.is_set || is_set(output_assert_batched.yfilter)) leaf_name_data.push_back(output_assert_batched.get_name_leafdata());
+    if (input_df_election.is_set || is_set(input_df_election.yfilter)) leaf_name_data.push_back(input_df_election.get_name_leafdata());
+    if (output_df_election.is_set || is_set(output_df_election.yfilter)) leaf_name_data.push_back(output_df_election.get_name_leafdata());
+    if (input_bsr_message.is_set || is_set(input_bsr_message.yfilter)) leaf_name_data.push_back(input_bsr_message.get_name_leafdata());
+    if (output_bsr_message.is_set || is_set(output_bsr_message.yfilter)) leaf_name_data.push_back(output_bsr_message.get_name_leafdata());
+    if (input_candidate_rp_advertisement.is_set || is_set(input_candidate_rp_advertisement.yfilter)) leaf_name_data.push_back(input_candidate_rp_advertisement.get_name_leafdata());
+    if (output_candidate_rp_advertisement.is_set || is_set(output_candidate_rp_advertisement.yfilter)) leaf_name_data.push_back(output_candidate_rp_advertisement.get_name_leafdata());
+    if (input_ecmp_redirect.is_set || is_set(input_ecmp_redirect.yfilter)) leaf_name_data.push_back(input_ecmp_redirect.get_name_leafdata());
+    if (output_ecmp_redirect.is_set || is_set(output_ecmp_redirect.yfilter)) leaf_name_data.push_back(output_ecmp_redirect.get_name_leafdata());
+    if (output_loop_error.is_set || is_set(output_loop_error.yfilter)) leaf_name_data.push_back(output_loop_error.get_name_leafdata());
+    if (mldp_mdt_invalid_lsm_identifier.is_set || is_set(mldp_mdt_invalid_lsm_identifier.yfilter)) leaf_name_data.push_back(mldp_mdt_invalid_lsm_identifier.get_name_leafdata());
+    if (input_no_idb_error.is_set || is_set(input_no_idb_error.yfilter)) leaf_name_data.push_back(input_no_idb_error.get_name_leafdata());
+    if (input_no_vrf_error.is_set || is_set(input_no_vrf_error.yfilter)) leaf_name_data.push_back(input_no_vrf_error.get_name_leafdata());
+    if (input_no_pim_error.is_set || is_set(input_no_pim_error.yfilter)) leaf_name_data.push_back(input_no_pim_error.get_name_leafdata());
+    if (input_pim_version_error.is_set || is_set(input_pim_version_error.yfilter)) leaf_name_data.push_back(input_pim_version_error.get_name_leafdata());
+    if (output_join_group.is_set || is_set(output_join_group.yfilter)) leaf_name_data.push_back(output_join_group.get_name_leafdata());
+    if (output_prune_group.is_set || is_set(output_prune_group.yfilter)) leaf_name_data.push_back(output_prune_group.get_name_leafdata());
+    if (output_join_prune_bytes.is_set || is_set(output_join_prune_bytes.yfilter)) leaf_name_data.push_back(output_join_prune_bytes.get_name_leafdata());
+    if (output_hello_bytes.is_set || is_set(output_hello_bytes.yfilter)) leaf_name_data.push_back(output_hello_bytes.get_name_leafdata());
+    if (non_supported_packets.is_set || is_set(non_supported_packets.yfilter)) leaf_name_data.push_back(non_supported_packets.get_name_leafdata());
+    if (invalid_registers.is_set || is_set(invalid_registers.yfilter)) leaf_name_data.push_back(invalid_registers.get_name_leafdata());
+    if (invalid_join_prunes.is_set || is_set(invalid_join_prunes.yfilter)) leaf_name_data.push_back(invalid_join_prunes.get_name_leafdata());
+    if (packet_packman_error.is_set || is_set(packet_packman_error.yfilter)) leaf_name_data.push_back(packet_packman_error.get_name_leafdata());
+    if (packet_read_socket_error.is_set || is_set(packet_read_socket_error.yfilter)) leaf_name_data.push_back(packet_read_socket_error.get_name_leafdata());
+    if (packet_queue_last_clear.is_set || is_set(packet_queue_last_clear.yfilter)) leaf_name_data.push_back(packet_queue_last_clear.get_name_leafdata());
+    if (packets_standby.is_set || is_set(packets_standby.yfilter)) leaf_name_data.push_back(packets_standby.get_name_leafdata());
+    if (no_mdt_socket_connection.is_set || is_set(no_mdt_socket_connection.yfilter)) leaf_name_data.push_back(no_mdt_socket_connection.get_name_leafdata());
+    if (mdt_send_queue_full.is_set || is_set(mdt_send_queue_full.yfilter)) leaf_name_data.push_back(mdt_send_queue_full.get_name_leafdata());
+    if (mdt_socket_error.is_set || is_set(mdt_socket_error.yfilter)) leaf_name_data.push_back(mdt_socket_error.get_name_leafdata());
+    if (mdt_join_tlv_sent.is_set || is_set(mdt_join_tlv_sent.yfilter)) leaf_name_data.push_back(mdt_join_tlv_sent.get_name_leafdata());
+    if (mdt_join_tlv_received.is_set || is_set(mdt_join_tlv_received.yfilter)) leaf_name_data.push_back(mdt_join_tlv_received.get_name_leafdata());
+    if (mdt_join_bad_type.is_set || is_set(mdt_join_bad_type.yfilter)) leaf_name_data.push_back(mdt_join_bad_type.get_name_leafdata());
+    if (mdt_drop_local_source_address.is_set || is_set(mdt_drop_local_source_address.yfilter)) leaf_name_data.push_back(mdt_drop_local_source_address.get_name_leafdata());
+    if (mdt_drop_null_local_address.is_set || is_set(mdt_drop_null_local_address.yfilter)) leaf_name_data.push_back(mdt_drop_null_local_address.get_name_leafdata());
+    if (mdt_drop_no_idb.is_set || is_set(mdt_drop_no_idb.yfilter)) leaf_name_data.push_back(mdt_drop_no_idb.get_name_leafdata());
+    if (mdt_drop_no_vrf.is_set || is_set(mdt_drop_no_vrf.yfilter)) leaf_name_data.push_back(mdt_drop_no_vrf.get_name_leafdata());
+    if (invalid_destination_packets.is_set || is_set(invalid_destination_packets.yfilter)) leaf_name_data.push_back(invalid_destination_packets.get_name_leafdata());
+    if (mdt_joins_drop_multiple_encapsulation.is_set || is_set(mdt_joins_drop_multiple_encapsulation.yfilter)) leaf_name_data.push_back(mdt_joins_drop_multiple_encapsulation.get_name_leafdata());
+    if (truncated_pim_packets.is_set || is_set(truncated_pim_packets.yfilter)) leaf_name_data.push_back(truncated_pim_packets.get_name_leafdata());
+    if (invalid_source_encodings.is_set || is_set(invalid_source_encodings.yfilter)) leaf_name_data.push_back(invalid_source_encodings.get_name_leafdata());
+    if (invalid_hello_options.is_set || is_set(invalid_hello_options.yfilter)) leaf_name_data.push_back(invalid_hello_options.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "packet-queue")
+    {
+        auto ent_ = std::make_shared<Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue>();
+        ent_->parent = this;
+        packet_queue.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : packet_queue.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "elapsed-time")
+    {
+        elapsed_time = value;
+        elapsed_time.value_namespace = name_space;
+        elapsed_time.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "inputs")
+    {
+        inputs = value;
+        inputs.value_namespace = name_space;
+        inputs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "outputs")
+    {
+        outputs = value;
+        outputs.value_namespace = name_space;
+        outputs.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "format-error")
+    {
+        format_error = value;
+        format_error.value_namespace = name_space;
+        format_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "pakman-error")
+    {
+        pakman_error = value;
+        pakman_error.value_namespace = name_space;
+        pakman_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "standby-packets-error")
+    {
+        standby_packets_error = value;
+        standby_packets_error.value_namespace = name_space;
+        standby_packets_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "checksum-error")
+    {
+        checksum_error = value;
+        checksum_error.value_namespace = name_space;
+        checksum_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "socket-error")
+    {
+        socket_error = value;
+        socket_error.value_namespace = name_space;
+        socket_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "send-queue-full")
+    {
+        send_queue_full = value;
+        send_queue_full.value_namespace = name_space;
+        send_queue_full.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "boundary-acl-rx-drop")
+    {
+        boundary_acl_rx_drop = value;
+        boundary_acl_rx_drop.value_namespace = name_space;
+        boundary_acl_rx_drop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "boundary-acl-tx-drop")
+    {
+        boundary_acl_tx_drop = value;
+        boundary_acl_tx_drop.value_namespace = name_space;
+        boundary_acl_tx_drop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "no-socket-connection")
+    {
+        no_socket_connection = value;
+        no_socket_connection.value_namespace = name_space;
+        no_socket_connection.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "no-source-address")
+    {
+        no_source_address = value;
+        no_source_address.value_namespace = name_space;
+        no_source_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "input-hello")
+    {
+        input_hello = value;
+        input_hello.value_namespace = name_space;
+        input_hello.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-hello")
+    {
+        output_hello = value;
+        output_hello.value_namespace = name_space;
+        output_hello.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "input-jp")
+    {
+        input_jp = value;
+        input_jp.value_namespace = name_space;
+        input_jp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-jp")
+    {
+        output_jp = value;
+        output_jp.value_namespace = name_space;
+        output_jp.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "input-data-register")
+    {
+        input_data_register = value;
+        input_data_register.value_namespace = name_space;
+        input_data_register.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "input-null-register")
+    {
+        input_null_register = value;
+        input_null_register.value_namespace = name_space;
+        input_null_register.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-null-register")
+    {
+        output_null_register = value;
+        output_null_register.value_namespace = name_space;
+        output_null_register.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "input-register-stop")
+    {
+        input_register_stop = value;
+        input_register_stop.value_namespace = name_space;
+        input_register_stop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-register-stop")
+    {
+        output_register_stop = value;
+        output_register_stop.value_namespace = name_space;
+        output_register_stop.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "input-assert")
+    {
+        input_assert = value;
+        input_assert.value_namespace = name_space;
+        input_assert.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "input-assert-batched")
+    {
+        input_assert_batched = value;
+        input_assert_batched.value_namespace = name_space;
+        input_assert_batched.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-assert")
+    {
+        output_assert = value;
+        output_assert.value_namespace = name_space;
+        output_assert.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-assert-batched")
+    {
+        output_assert_batched = value;
+        output_assert_batched.value_namespace = name_space;
+        output_assert_batched.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "input-df-election")
+    {
+        input_df_election = value;
+        input_df_election.value_namespace = name_space;
+        input_df_election.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-df-election")
+    {
+        output_df_election = value;
+        output_df_election.value_namespace = name_space;
+        output_df_election.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "input-bsr-message")
+    {
+        input_bsr_message = value;
+        input_bsr_message.value_namespace = name_space;
+        input_bsr_message.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-bsr-message")
+    {
+        output_bsr_message = value;
+        output_bsr_message.value_namespace = name_space;
+        output_bsr_message.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "input-candidate-rp-advertisement")
+    {
+        input_candidate_rp_advertisement = value;
+        input_candidate_rp_advertisement.value_namespace = name_space;
+        input_candidate_rp_advertisement.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-candidate-rp-advertisement")
+    {
+        output_candidate_rp_advertisement = value;
+        output_candidate_rp_advertisement.value_namespace = name_space;
+        output_candidate_rp_advertisement.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "input-ecmp-redirect")
+    {
+        input_ecmp_redirect = value;
+        input_ecmp_redirect.value_namespace = name_space;
+        input_ecmp_redirect.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-ecmp-redirect")
+    {
+        output_ecmp_redirect = value;
+        output_ecmp_redirect.value_namespace = name_space;
+        output_ecmp_redirect.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-loop-error")
+    {
+        output_loop_error = value;
+        output_loop_error.value_namespace = name_space;
+        output_loop_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mldp-mdt-invalid-lsm-identifier")
+    {
+        mldp_mdt_invalid_lsm_identifier = value;
+        mldp_mdt_invalid_lsm_identifier.value_namespace = name_space;
+        mldp_mdt_invalid_lsm_identifier.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "input-no-idb-error")
+    {
+        input_no_idb_error = value;
+        input_no_idb_error.value_namespace = name_space;
+        input_no_idb_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "input-no-vrf-error")
+    {
+        input_no_vrf_error = value;
+        input_no_vrf_error.value_namespace = name_space;
+        input_no_vrf_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "input-no-pim-error")
+    {
+        input_no_pim_error = value;
+        input_no_pim_error.value_namespace = name_space;
+        input_no_pim_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "input-pim-version-error")
+    {
+        input_pim_version_error = value;
+        input_pim_version_error.value_namespace = name_space;
+        input_pim_version_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-join-group")
+    {
+        output_join_group = value;
+        output_join_group.value_namespace = name_space;
+        output_join_group.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-prune-group")
+    {
+        output_prune_group = value;
+        output_prune_group.value_namespace = name_space;
+        output_prune_group.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-join-prune-bytes")
+    {
+        output_join_prune_bytes = value;
+        output_join_prune_bytes.value_namespace = name_space;
+        output_join_prune_bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "output-hello-bytes")
+    {
+        output_hello_bytes = value;
+        output_hello_bytes.value_namespace = name_space;
+        output_hello_bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "non-supported-packets")
+    {
+        non_supported_packets = value;
+        non_supported_packets.value_namespace = name_space;
+        non_supported_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "invalid-registers")
+    {
+        invalid_registers = value;
+        invalid_registers.value_namespace = name_space;
+        invalid_registers.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "invalid-join-prunes")
+    {
+        invalid_join_prunes = value;
+        invalid_join_prunes.value_namespace = name_space;
+        invalid_join_prunes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packet-packman-error")
+    {
+        packet_packman_error = value;
+        packet_packman_error.value_namespace = name_space;
+        packet_packman_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packet-read-socket-error")
+    {
+        packet_read_socket_error = value;
+        packet_read_socket_error.value_namespace = name_space;
+        packet_read_socket_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packet-queue-last-clear")
+    {
+        packet_queue_last_clear = value;
+        packet_queue_last_clear.value_namespace = name_space;
+        packet_queue_last_clear.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "packets-standby")
+    {
+        packets_standby = value;
+        packets_standby.value_namespace = name_space;
+        packets_standby.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "no-mdt-socket-connection")
+    {
+        no_mdt_socket_connection = value;
+        no_mdt_socket_connection.value_namespace = name_space;
+        no_mdt_socket_connection.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mdt-send-queue-full")
+    {
+        mdt_send_queue_full = value;
+        mdt_send_queue_full.value_namespace = name_space;
+        mdt_send_queue_full.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mdt-socket-error")
+    {
+        mdt_socket_error = value;
+        mdt_socket_error.value_namespace = name_space;
+        mdt_socket_error.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mdt-join-tlv-sent")
+    {
+        mdt_join_tlv_sent = value;
+        mdt_join_tlv_sent.value_namespace = name_space;
+        mdt_join_tlv_sent.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mdt-join-tlv-received")
+    {
+        mdt_join_tlv_received = value;
+        mdt_join_tlv_received.value_namespace = name_space;
+        mdt_join_tlv_received.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mdt-join-bad-type")
+    {
+        mdt_join_bad_type = value;
+        mdt_join_bad_type.value_namespace = name_space;
+        mdt_join_bad_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mdt-drop-local-source-address")
+    {
+        mdt_drop_local_source_address = value;
+        mdt_drop_local_source_address.value_namespace = name_space;
+        mdt_drop_local_source_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mdt-drop-null-local-address")
+    {
+        mdt_drop_null_local_address = value;
+        mdt_drop_null_local_address.value_namespace = name_space;
+        mdt_drop_null_local_address.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mdt-drop-no-idb")
+    {
+        mdt_drop_no_idb = value;
+        mdt_drop_no_idb.value_namespace = name_space;
+        mdt_drop_no_idb.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mdt-drop-no-vrf")
+    {
+        mdt_drop_no_vrf = value;
+        mdt_drop_no_vrf.value_namespace = name_space;
+        mdt_drop_no_vrf.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "invalid-destination-packets")
+    {
+        invalid_destination_packets = value;
+        invalid_destination_packets.value_namespace = name_space;
+        invalid_destination_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mdt-joins-drop-multiple-encapsulation")
+    {
+        mdt_joins_drop_multiple_encapsulation = value;
+        mdt_joins_drop_multiple_encapsulation.value_namespace = name_space;
+        mdt_joins_drop_multiple_encapsulation.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "truncated-pim-packets")
+    {
+        truncated_pim_packets = value;
+        truncated_pim_packets.value_namespace = name_space;
+        truncated_pim_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "invalid-source-encodings")
+    {
+        invalid_source_encodings = value;
+        invalid_source_encodings.value_namespace = name_space;
+        invalid_source_encodings.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "invalid-hello-options")
+    {
+        invalid_hello_options = value;
+        invalid_hello_options.value_namespace = name_space;
+        invalid_hello_options.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "elapsed-time")
+    {
+        elapsed_time.yfilter = yfilter;
+    }
+    if(value_path == "inputs")
+    {
+        inputs.yfilter = yfilter;
+    }
+    if(value_path == "outputs")
+    {
+        outputs.yfilter = yfilter;
+    }
+    if(value_path == "format-error")
+    {
+        format_error.yfilter = yfilter;
+    }
+    if(value_path == "pakman-error")
+    {
+        pakman_error.yfilter = yfilter;
+    }
+    if(value_path == "standby-packets-error")
+    {
+        standby_packets_error.yfilter = yfilter;
+    }
+    if(value_path == "checksum-error")
+    {
+        checksum_error.yfilter = yfilter;
+    }
+    if(value_path == "socket-error")
+    {
+        socket_error.yfilter = yfilter;
+    }
+    if(value_path == "send-queue-full")
+    {
+        send_queue_full.yfilter = yfilter;
+    }
+    if(value_path == "boundary-acl-rx-drop")
+    {
+        boundary_acl_rx_drop.yfilter = yfilter;
+    }
+    if(value_path == "boundary-acl-tx-drop")
+    {
+        boundary_acl_tx_drop.yfilter = yfilter;
+    }
+    if(value_path == "no-socket-connection")
+    {
+        no_socket_connection.yfilter = yfilter;
+    }
+    if(value_path == "no-source-address")
+    {
+        no_source_address.yfilter = yfilter;
+    }
+    if(value_path == "input-hello")
+    {
+        input_hello.yfilter = yfilter;
+    }
+    if(value_path == "output-hello")
+    {
+        output_hello.yfilter = yfilter;
+    }
+    if(value_path == "input-jp")
+    {
+        input_jp.yfilter = yfilter;
+    }
+    if(value_path == "output-jp")
+    {
+        output_jp.yfilter = yfilter;
+    }
+    if(value_path == "input-data-register")
+    {
+        input_data_register.yfilter = yfilter;
+    }
+    if(value_path == "input-null-register")
+    {
+        input_null_register.yfilter = yfilter;
+    }
+    if(value_path == "output-null-register")
+    {
+        output_null_register.yfilter = yfilter;
+    }
+    if(value_path == "input-register-stop")
+    {
+        input_register_stop.yfilter = yfilter;
+    }
+    if(value_path == "output-register-stop")
+    {
+        output_register_stop.yfilter = yfilter;
+    }
+    if(value_path == "input-assert")
+    {
+        input_assert.yfilter = yfilter;
+    }
+    if(value_path == "input-assert-batched")
+    {
+        input_assert_batched.yfilter = yfilter;
+    }
+    if(value_path == "output-assert")
+    {
+        output_assert.yfilter = yfilter;
+    }
+    if(value_path == "output-assert-batched")
+    {
+        output_assert_batched.yfilter = yfilter;
+    }
+    if(value_path == "input-df-election")
+    {
+        input_df_election.yfilter = yfilter;
+    }
+    if(value_path == "output-df-election")
+    {
+        output_df_election.yfilter = yfilter;
+    }
+    if(value_path == "input-bsr-message")
+    {
+        input_bsr_message.yfilter = yfilter;
+    }
+    if(value_path == "output-bsr-message")
+    {
+        output_bsr_message.yfilter = yfilter;
+    }
+    if(value_path == "input-candidate-rp-advertisement")
+    {
+        input_candidate_rp_advertisement.yfilter = yfilter;
+    }
+    if(value_path == "output-candidate-rp-advertisement")
+    {
+        output_candidate_rp_advertisement.yfilter = yfilter;
+    }
+    if(value_path == "input-ecmp-redirect")
+    {
+        input_ecmp_redirect.yfilter = yfilter;
+    }
+    if(value_path == "output-ecmp-redirect")
+    {
+        output_ecmp_redirect.yfilter = yfilter;
+    }
+    if(value_path == "output-loop-error")
+    {
+        output_loop_error.yfilter = yfilter;
+    }
+    if(value_path == "mldp-mdt-invalid-lsm-identifier")
+    {
+        mldp_mdt_invalid_lsm_identifier.yfilter = yfilter;
+    }
+    if(value_path == "input-no-idb-error")
+    {
+        input_no_idb_error.yfilter = yfilter;
+    }
+    if(value_path == "input-no-vrf-error")
+    {
+        input_no_vrf_error.yfilter = yfilter;
+    }
+    if(value_path == "input-no-pim-error")
+    {
+        input_no_pim_error.yfilter = yfilter;
+    }
+    if(value_path == "input-pim-version-error")
+    {
+        input_pim_version_error.yfilter = yfilter;
+    }
+    if(value_path == "output-join-group")
+    {
+        output_join_group.yfilter = yfilter;
+    }
+    if(value_path == "output-prune-group")
+    {
+        output_prune_group.yfilter = yfilter;
+    }
+    if(value_path == "output-join-prune-bytes")
+    {
+        output_join_prune_bytes.yfilter = yfilter;
+    }
+    if(value_path == "output-hello-bytes")
+    {
+        output_hello_bytes.yfilter = yfilter;
+    }
+    if(value_path == "non-supported-packets")
+    {
+        non_supported_packets.yfilter = yfilter;
+    }
+    if(value_path == "invalid-registers")
+    {
+        invalid_registers.yfilter = yfilter;
+    }
+    if(value_path == "invalid-join-prunes")
+    {
+        invalid_join_prunes.yfilter = yfilter;
+    }
+    if(value_path == "packet-packman-error")
+    {
+        packet_packman_error.yfilter = yfilter;
+    }
+    if(value_path == "packet-read-socket-error")
+    {
+        packet_read_socket_error.yfilter = yfilter;
+    }
+    if(value_path == "packet-queue-last-clear")
+    {
+        packet_queue_last_clear.yfilter = yfilter;
+    }
+    if(value_path == "packets-standby")
+    {
+        packets_standby.yfilter = yfilter;
+    }
+    if(value_path == "no-mdt-socket-connection")
+    {
+        no_mdt_socket_connection.yfilter = yfilter;
+    }
+    if(value_path == "mdt-send-queue-full")
+    {
+        mdt_send_queue_full.yfilter = yfilter;
+    }
+    if(value_path == "mdt-socket-error")
+    {
+        mdt_socket_error.yfilter = yfilter;
+    }
+    if(value_path == "mdt-join-tlv-sent")
+    {
+        mdt_join_tlv_sent.yfilter = yfilter;
+    }
+    if(value_path == "mdt-join-tlv-received")
+    {
+        mdt_join_tlv_received.yfilter = yfilter;
+    }
+    if(value_path == "mdt-join-bad-type")
+    {
+        mdt_join_bad_type.yfilter = yfilter;
+    }
+    if(value_path == "mdt-drop-local-source-address")
+    {
+        mdt_drop_local_source_address.yfilter = yfilter;
+    }
+    if(value_path == "mdt-drop-null-local-address")
+    {
+        mdt_drop_null_local_address.yfilter = yfilter;
+    }
+    if(value_path == "mdt-drop-no-idb")
+    {
+        mdt_drop_no_idb.yfilter = yfilter;
+    }
+    if(value_path == "mdt-drop-no-vrf")
+    {
+        mdt_drop_no_vrf.yfilter = yfilter;
+    }
+    if(value_path == "invalid-destination-packets")
+    {
+        invalid_destination_packets.yfilter = yfilter;
+    }
+    if(value_path == "mdt-joins-drop-multiple-encapsulation")
+    {
+        mdt_joins_drop_multiple_encapsulation.yfilter = yfilter;
+    }
+    if(value_path == "truncated-pim-packets")
+    {
+        truncated_pim_packets.yfilter = yfilter;
+    }
+    if(value_path == "invalid-source-encodings")
+    {
+        invalid_source_encodings.yfilter = yfilter;
+    }
+    if(value_path == "invalid-hello-options")
+    {
+        invalid_hello_options.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "packet-queue" || name == "elapsed-time" || name == "inputs" || name == "outputs" || name == "format-error" || name == "pakman-error" || name == "standby-packets-error" || name == "checksum-error" || name == "socket-error" || name == "send-queue-full" || name == "boundary-acl-rx-drop" || name == "boundary-acl-tx-drop" || name == "no-socket-connection" || name == "no-source-address" || name == "input-hello" || name == "output-hello" || name == "input-jp" || name == "output-jp" || name == "input-data-register" || name == "input-null-register" || name == "output-null-register" || name == "input-register-stop" || name == "output-register-stop" || name == "input-assert" || name == "input-assert-batched" || name == "output-assert" || name == "output-assert-batched" || name == "input-df-election" || name == "output-df-election" || name == "input-bsr-message" || name == "output-bsr-message" || name == "input-candidate-rp-advertisement" || name == "output-candidate-rp-advertisement" || name == "input-ecmp-redirect" || name == "output-ecmp-redirect" || name == "output-loop-error" || name == "mldp-mdt-invalid-lsm-identifier" || name == "input-no-idb-error" || name == "input-no-vrf-error" || name == "input-no-pim-error" || name == "input-pim-version-error" || name == "output-join-group" || name == "output-prune-group" || name == "output-join-prune-bytes" || name == "output-hello-bytes" || name == "non-supported-packets" || name == "invalid-registers" || name == "invalid-join-prunes" || name == "packet-packman-error" || name == "packet-read-socket-error" || name == "packet-queue-last-clear" || name == "packets-standby" || name == "no-mdt-socket-connection" || name == "mdt-send-queue-full" || name == "mdt-socket-error" || name == "mdt-join-tlv-sent" || name == "mdt-join-tlv-received" || name == "mdt-join-bad-type" || name == "mdt-drop-local-source-address" || name == "mdt-drop-null-local-address" || name == "mdt-drop-no-idb" || name == "mdt-drop-no-vrf" || name == "invalid-destination-packets" || name == "mdt-joins-drop-multiple-encapsulation" || name == "truncated-pim-packets" || name == "invalid-source-encodings" || name == "invalid-hello-options")
+        return true;
+    return false;
+}
+
+Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueue()
+    :
+    packet_queue_priority{YType::uint32, "packet-queue-priority"}
+        ,
+    packet_queue_state(std::make_shared<Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueState>())
+    , packet_queue_stats(std::make_shared<Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueStats>())
+{
+    packet_queue_state->parent = this;
+    packet_queue_stats->parent = this;
+
+    yang_name = "packet-queue"; yang_parent_name = "traffic-counters"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::~PacketQueue()
+{
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::has_data() const
+{
+    if (is_presence_container) return true;
+    return packet_queue_priority.is_set
+	|| (packet_queue_state !=  nullptr && packet_queue_state->has_data())
+	|| (packet_queue_stats !=  nullptr && packet_queue_stats->has_data());
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(packet_queue_priority.yfilter)
+	|| (packet_queue_state !=  nullptr && packet_queue_state->has_operation())
+	|| (packet_queue_stats !=  nullptr && packet_queue_stats->has_operation());
+}
+
+std::string Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "packet-queue";
+    path_buffer << "[" << get_ylist_key() << "]";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (packet_queue_priority.is_set || is_set(packet_queue_priority.yfilter)) leaf_name_data.push_back(packet_queue_priority.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "packet-queue-state")
+    {
+        if(packet_queue_state == nullptr)
+        {
+            packet_queue_state = std::make_shared<Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueState>();
+        }
+        return packet_queue_state;
+    }
+
+    if(child_yang_name == "packet-queue-stats")
+    {
+        if(packet_queue_stats == nullptr)
+        {
+            packet_queue_stats = std::make_shared<Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueStats>();
+        }
+        return packet_queue_stats;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(packet_queue_state != nullptr)
+    {
+        _children["packet-queue-state"] = packet_queue_state;
+    }
+
+    if(packet_queue_stats != nullptr)
+    {
+        _children["packet-queue-stats"] = packet_queue_stats;
+    }
+
+    return _children;
+}
+
+void Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "packet-queue-priority")
+    {
+        packet_queue_priority = value;
+        packet_queue_priority.value_namespace = name_space;
+        packet_queue_priority.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "packet-queue-priority")
+    {
+        packet_queue_priority.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "packet-queue-state" || name == "packet-queue-stats" || name == "packet-queue-priority")
+        return true;
+    return false;
+}
+
+Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueState::PacketQueueState()
+    :
+    max_queue_size{YType::uint32, "max-queue-size"},
+    queue_size_bytes{YType::uint32, "queue-size-bytes"},
+    queue_size_packets{YType::uint32, "queue-size-packets"}
+{
+
+    yang_name = "packet-queue-state"; yang_parent_name = "packet-queue"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueState::~PacketQueueState()
+{
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueState::has_data() const
+{
+    if (is_presence_container) return true;
+    return max_queue_size.is_set
+	|| queue_size_bytes.is_set
+	|| queue_size_packets.is_set;
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueState::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(max_queue_size.yfilter)
+	|| ydk::is_set(queue_size_bytes.yfilter)
+	|| ydk::is_set(queue_size_packets.yfilter);
+}
+
+std::string Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueState::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "packet-queue-state";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueState::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (max_queue_size.is_set || is_set(max_queue_size.yfilter)) leaf_name_data.push_back(max_queue_size.get_name_leafdata());
+    if (queue_size_bytes.is_set || is_set(queue_size_bytes.yfilter)) leaf_name_data.push_back(queue_size_bytes.get_name_leafdata());
+    if (queue_size_packets.is_set || is_set(queue_size_packets.yfilter)) leaf_name_data.push_back(queue_size_packets.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueState::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueState::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueState::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "max-queue-size")
+    {
+        max_queue_size = value;
+        max_queue_size.value_namespace = name_space;
+        max_queue_size.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "queue-size-bytes")
+    {
+        queue_size_bytes = value;
+        queue_size_bytes.value_namespace = name_space;
+        queue_size_bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "queue-size-packets")
+    {
+        queue_size_packets = value;
+        queue_size_packets.value_namespace = name_space;
+        queue_size_packets.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueState::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "max-queue-size")
+    {
+        max_queue_size.yfilter = yfilter;
+    }
+    if(value_path == "queue-size-bytes")
+    {
+        queue_size_bytes.yfilter = yfilter;
+    }
+    if(value_path == "queue-size-packets")
+    {
+        queue_size_packets.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueState::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "max-queue-size" || name == "queue-size-bytes" || name == "queue-size-packets")
+        return true;
+    return false;
+}
+
+Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueStats::PacketQueueStats()
+    :
+    enqueued_packets{YType::uint32, "enqueued-packets"},
+    dequeued_packets{YType::uint32, "dequeued-packets"},
+    high_water_mark_packets{YType::uint32, "high-water-mark-packets"},
+    high_water_mark_bytes{YType::uint32, "high-water-mark-bytes"},
+    tail_drops{YType::uint32, "tail-drops"}
+{
+
+    yang_name = "packet-queue-stats"; yang_parent_name = "packet-queue"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueStats::~PacketQueueStats()
+{
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueStats::has_data() const
+{
+    if (is_presence_container) return true;
+    return enqueued_packets.is_set
+	|| dequeued_packets.is_set
+	|| high_water_mark_packets.is_set
+	|| high_water_mark_bytes.is_set
+	|| tail_drops.is_set;
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueStats::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(enqueued_packets.yfilter)
+	|| ydk::is_set(dequeued_packets.yfilter)
+	|| ydk::is_set(high_water_mark_packets.yfilter)
+	|| ydk::is_set(high_water_mark_bytes.yfilter)
+	|| ydk::is_set(tail_drops.yfilter);
+}
+
+std::string Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueStats::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "packet-queue-stats";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueStats::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (enqueued_packets.is_set || is_set(enqueued_packets.yfilter)) leaf_name_data.push_back(enqueued_packets.get_name_leafdata());
+    if (dequeued_packets.is_set || is_set(dequeued_packets.yfilter)) leaf_name_data.push_back(dequeued_packets.get_name_leafdata());
+    if (high_water_mark_packets.is_set || is_set(high_water_mark_packets.yfilter)) leaf_name_data.push_back(high_water_mark_packets.get_name_leafdata());
+    if (high_water_mark_bytes.is_set || is_set(high_water_mark_bytes.yfilter)) leaf_name_data.push_back(high_water_mark_bytes.get_name_leafdata());
+    if (tail_drops.is_set || is_set(tail_drops.yfilter)) leaf_name_data.push_back(tail_drops.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueStats::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueStats::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueStats::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "enqueued-packets")
+    {
+        enqueued_packets = value;
+        enqueued_packets.value_namespace = name_space;
+        enqueued_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "dequeued-packets")
+    {
+        dequeued_packets = value;
+        dequeued_packets.value_namespace = name_space;
+        dequeued_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "high-water-mark-packets")
+    {
+        high_water_mark_packets = value;
+        high_water_mark_packets.value_namespace = name_space;
+        high_water_mark_packets.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "high-water-mark-bytes")
+    {
+        high_water_mark_bytes = value;
+        high_water_mark_bytes.value_namespace = name_space;
+        high_water_mark_bytes.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tail-drops")
+    {
+        tail_drops = value;
+        tail_drops.value_namespace = name_space;
+        tail_drops.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueStats::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "enqueued-packets")
+    {
+        enqueued_packets.yfilter = yfilter;
+    }
+    if(value_path == "dequeued-packets")
+    {
+        dequeued_packets.yfilter = yfilter;
+    }
+    if(value_path == "high-water-mark-packets")
+    {
+        high_water_mark_packets.yfilter = yfilter;
+    }
+    if(value_path == "high-water-mark-bytes")
+    {
+        high_water_mark_bytes.yfilter = yfilter;
+    }
+    if(value_path == "tail-drops")
+    {
+        tail_drops.yfilter = yfilter;
+    }
+}
+
+bool Ipv6Pim::Active::Vrfs::Vrf::TrafficCounters::PacketQueue::PacketQueueStats::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "enqueued-packets" || name == "dequeued-packets" || name == "high-water-mark-packets" || name == "high-water-mark-bytes" || name == "tail-drops")
+        return true;
+    return false;
+}
+
 Ipv6Pim::Active::Vrfs::Vrf::GroupMapRpfs::GroupMapRpfs()
     :
     group_map_rpf(this, {})

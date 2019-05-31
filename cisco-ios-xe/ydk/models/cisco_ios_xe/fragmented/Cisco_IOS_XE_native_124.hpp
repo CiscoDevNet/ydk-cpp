@@ -2964,7 +2964,7 @@ class Native::Crypto::DynamicMap::Set::SecurityAssociation::Lifetime : public yd
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf days; //type: uint8
-        ydk::YLeaf kilobytes; //type: one of uint64, enumeration
+        ydk::YLeaf kilobytes; //type: one of enumeration, uint64
         ydk::YLeaf seconds; //type: uint64
         class Kilobytes;
 

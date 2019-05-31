@@ -10,15 +10,6 @@
 namespace openconfig {
 namespace openconfig_isis_lsdb_types {
 
-class ISISSUBTLVTYPE : public virtual ydk::Identity
-{
-    public:
-        ISISSUBTLVTYPE();
-        ~ISISSUBTLVTYPE();
-
-
-}; // ISISSUBTLVTYPE
-
 class ISISTLVTYPE : public virtual ydk::Identity
 {
     public:
@@ -28,14 +19,14 @@ class ISISTLVTYPE : public virtual ydk::Identity
 
 }; // ISISTLVTYPE
 
-class AREAADDRESSES : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
+class ISISSUBTLVTYPE : public virtual ydk::Identity
 {
     public:
-        AREAADDRESSES();
-        ~AREAADDRESSES();
+        ISISSUBTLVTYPE();
+        ~ISISSUBTLVTYPE();
 
 
-}; // AREAADDRESSES
+}; // ISISSUBTLVTYPE
 
 class ISREACHABILITYSUBTLVSTYPE : public openconfig::openconfig_isis_lsdb_types::ISISSUBTLVTYPE, virtual ydk::Identity
 {
@@ -46,77 +37,77 @@ class ISREACHABILITYSUBTLVSTYPE : public openconfig::openconfig_isis_lsdb_types:
 
 }; // ISREACHABILITYSUBTLVSTYPE
 
-class ISREACHABILITYLINKLOSS : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+class IPREACHABILITYSUBTLVSTYPE : public openconfig::openconfig_isis_lsdb_types::ISISSUBTLVTYPE, virtual ydk::Identity
 {
     public:
-        ISREACHABILITYLINKLOSS();
-        ~ISREACHABILITYLINKLOSS();
+        IPREACHABILITYSUBTLVSTYPE();
+        ~IPREACHABILITYSUBTLVSTYPE();
 
 
-}; // ISREACHABILITYLINKLOSS
+}; // IPREACHABILITYSUBTLVSTYPE
 
-class MTISNEIGHBORATTRIBUTE : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
+class ROUTERCAPABILITYSUBTLVSTYPE : public openconfig::openconfig_isis_lsdb_types::ISISSUBTLVTYPE, virtual ydk::Identity
 {
     public:
-        MTISNEIGHBORATTRIBUTE();
-        ~MTISNEIGHBORATTRIBUTE();
+        ROUTERCAPABILITYSUBTLVSTYPE();
+        ~ROUTERCAPABILITYSUBTLVSTYPE();
 
 
-}; // MTISNEIGHBORATTRIBUTE
+}; // ROUTERCAPABILITYSUBTLVSTYPE
 
-class ISREACHABILITYIPV4INTERFACEADDRESS : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+class AREAADDRESSES : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
 {
     public:
-        ISREACHABILITYIPV4INTERFACEADDRESS();
-        ~ISREACHABILITYIPV4INTERFACEADDRESS();
+        AREAADDRESSES();
+        ~AREAADDRESSES();
 
 
-}; // ISREACHABILITYIPV4INTERFACEADDRESS
+}; // AREAADDRESSES
 
-class ISREACHABILITYIPV4NEIGHBORADDRESS : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+class IISNEIGHBORS : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
 {
     public:
-        ISREACHABILITYIPV4NEIGHBORADDRESS();
-        ~ISREACHABILITYIPV4NEIGHBORADDRESS();
+        IISNEIGHBORS();
+        ~IISNEIGHBORS();
 
 
-}; // ISREACHABILITYIPV4NEIGHBORADDRESS
+}; // IISNEIGHBORS
 
-class ISREACHABILITYEXTENDEDADMINGROUP : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+class INSTANCEID : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
 {
     public:
-        ISREACHABILITYEXTENDEDADMINGROUP();
-        ~ISREACHABILITYEXTENDEDADMINGROUP();
+        INSTANCEID();
+        ~INSTANCEID();
 
 
-}; // ISREACHABILITYEXTENDEDADMINGROUP
+}; // INSTANCEID
 
-class NLPID : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
+class AUTHENTICATION : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
 {
     public:
-        NLPID();
-        ~NLPID();
+        AUTHENTICATION();
+        ~AUTHENTICATION();
 
 
-}; // NLPID
+}; // AUTHENTICATION
 
-class MTIPV6REACHABILITY : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
+class PURGEOI : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
 {
     public:
-        MTIPV6REACHABILITY();
-        ~MTIPV6REACHABILITY();
+        PURGEOI();
+        ~PURGEOI();
 
 
-}; // MTIPV6REACHABILITY
+}; // PURGEOI
 
-class MTISN : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
+class EXTENDEDISREACHABILITY : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
 {
     public:
-        MTISN();
-        ~MTISN();
+        EXTENDEDISREACHABILITY();
+        ~EXTENDEDISREACHABILITY();
 
 
-}; // MTISN
+}; // EXTENDEDISREACHABILITY
 
 class ISNEIGHBORATTRIBUTE : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
 {
@@ -136,221 +127,23 @@ class ISISALIASID : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, 
 
 }; // ISISALIASID
 
-class IPV6SRLG : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
+class IPV4INTERNALREACHABILITY : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
 {
     public:
-        IPV6SRLG();
-        ~IPV6SRLG();
+        IPV4INTERNALREACHABILITY();
+        ~IPV4INTERNALREACHABILITY();
 
 
-}; // IPV6SRLG
+}; // IPV4INTERNALREACHABILITY
 
-class ISREACHABILITYBANDWIDTHCONSTRAINTS : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+class NLPID : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
 {
     public:
-        ISREACHABILITYBANDWIDTHCONSTRAINTS();
-        ~ISREACHABILITYBANDWIDTHCONSTRAINTS();
+        NLPID();
+        ~NLPID();
 
 
-}; // ISREACHABILITYBANDWIDTHCONSTRAINTS
-
-class IPV4TEROUTERID : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
-{
-    public:
-        IPV4TEROUTERID();
-        ~IPV4TEROUTERID();
-
-
-}; // IPV4TEROUTERID
-
-class ISREACHABILITYIPV6INTERFACEADDRESS : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
-{
-    public:
-        ISREACHABILITYIPV6INTERFACEADDRESS();
-        ~ISREACHABILITYIPV6INTERFACEADDRESS();
-
-
-}; // ISREACHABILITYIPV6INTERFACEADDRESS
-
-class ROUTERCAPABILITYSUBTLVSTYPE : public openconfig::openconfig_isis_lsdb_types::ISISSUBTLVTYPE, virtual ydk::Identity
-{
-    public:
-        ROUTERCAPABILITYSUBTLVSTYPE();
-        ~ROUTERCAPABILITYSUBTLVSTYPE();
-
-
-}; // ROUTERCAPABILITYSUBTLVSTYPE
-
-class ISREACHABILITYADJSID : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
-{
-    public:
-        ISREACHABILITYADJSID();
-        ~ISREACHABILITYADJSID();
-
-
-}; // ISREACHABILITYADJSID
-
-class MULTITOPOLOGY : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
-{
-    public:
-        MULTITOPOLOGY();
-        ~MULTITOPOLOGY();
-
-
-}; // MULTITOPOLOGY
-
-class ISREACHABILITYLINKATTRIBUTES : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
-{
-    public:
-        ISREACHABILITYLINKATTRIBUTES();
-        ~ISREACHABILITYLINKATTRIBUTES();
-
-
-}; // ISREACHABILITYLINKATTRIBUTES
-
-class IPV6INTERFACEADDRESSES : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
-{
-    public:
-        IPV6INTERFACEADDRESSES();
-        ~IPV6INTERFACEADDRESSES();
-
-
-}; // IPV6INTERFACEADDRESSES
-
-class DYNAMICNAME : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
-{
-    public:
-        DYNAMICNAME();
-        ~DYNAMICNAME();
-
-
-}; // DYNAMICNAME
-
-class ISREACHABILITYAVAILABLEBANDWIDTH : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
-{
-    public:
-        ISREACHABILITYAVAILABLEBANDWIDTH();
-        ~ISREACHABILITYAVAILABLEBANDWIDTH();
-
-
-}; // ISREACHABILITYAVAILABLEBANDWIDTH
-
-class IPV4INTERFACEADDRESSES : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
-{
-    public:
-        IPV4INTERFACEADDRESSES();
-        ~IPV4INTERFACEADDRESSES();
-
-
-}; // IPV4INTERFACEADDRESSES
-
-class IPV6TEROUTERID : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
-{
-    public:
-        IPV6TEROUTERID();
-        ~IPV6TEROUTERID();
-
-
-}; // IPV6TEROUTERID
-
-class INSTANCEID : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
-{
-    public:
-        INSTANCEID();
-        ~INSTANCEID();
-
-
-}; // INSTANCEID
-
-class ISREACHABILITYADJLANSID : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
-{
-    public:
-        ISREACHABILITYADJLANSID();
-        ~ISREACHABILITYADJLANSID();
-
-
-}; // ISREACHABILITYADJLANSID
-
-class MTIPV4REACHABILITY : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
-{
-    public:
-        MTIPV4REACHABILITY();
-        ~MTIPV4REACHABILITY();
-
-
-}; // MTIPV4REACHABILITY
-
-class ISREACHABILITYUTILIZEDBANDWIDTH : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
-{
-    public:
-        ISREACHABILITYUTILIZEDBANDWIDTH();
-        ~ISREACHABILITYUTILIZEDBANDWIDTH();
-
-
-}; // ISREACHABILITYUTILIZEDBANDWIDTH
-
-class IPREACHABILITYSUBTLVSTYPE : public openconfig::openconfig_isis_lsdb_types::ISISSUBTLVTYPE, virtual ydk::Identity
-{
-    public:
-        IPREACHABILITYSUBTLVSTYPE();
-        ~IPREACHABILITYSUBTLVSTYPE();
-
-
-}; // IPREACHABILITYSUBTLVSTYPE
-
-class ISREACHABILITYMINMAXLINKDELAY : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
-{
-    public:
-        ISREACHABILITYMINMAXLINKDELAY();
-        ~ISREACHABILITYMINMAXLINKDELAY();
-
-
-}; // ISREACHABILITYMINMAXLINKDELAY
-
-class IPREACHABILITYPREFIXSID : public openconfig::openconfig_isis_lsdb_types::IPREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
-{
-    public:
-        IPREACHABILITYPREFIXSID();
-        ~IPREACHABILITYPREFIXSID();
-
-
-}; // IPREACHABILITYPREFIXSID
-
-class EXTENDEDIPV4REACHABILITY : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
-{
-    public:
-        EXTENDEDIPV4REACHABILITY();
-        ~EXTENDEDIPV4REACHABILITY();
-
-
-}; // EXTENDEDIPV4REACHABILITY
-
-class IPREACHABILITYPREFIXFLAGS : public openconfig::openconfig_isis_lsdb_types::IPREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
-{
-    public:
-        IPREACHABILITYPREFIXFLAGS();
-        ~IPREACHABILITYPREFIXFLAGS();
-
-
-}; // IPREACHABILITYPREFIXFLAGS
-
-class ISREACHABILITYMAXRESERVABLEBANDWIDTH : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
-{
-    public:
-        ISREACHABILITYMAXRESERVABLEBANDWIDTH();
-        ~ISREACHABILITYMAXRESERVABLEBANDWIDTH();
-
-
-}; // ISREACHABILITYMAXRESERVABLEBANDWIDTH
-
-class PURGEOI : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
-{
-    public:
-        PURGEOI();
-        ~PURGEOI();
-
-
-}; // PURGEOI
+}; // NLPID
 
 class IPV4EXTERNALREACHABILITY : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
 {
@@ -361,23 +154,41 @@ class IPV4EXTERNALREACHABILITY : public openconfig::openconfig_isis_lsdb_types::
 
 }; // IPV4EXTERNALREACHABILITY
 
-class IPV6REACHABILITY : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
+class IPV4INTERFACEADDRESSES : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
 {
     public:
-        IPV6REACHABILITY();
-        ~IPV6REACHABILITY();
+        IPV4INTERFACEADDRESSES();
+        ~IPV4INTERFACEADDRESSES();
 
 
-}; // IPV6REACHABILITY
+}; // IPV4INTERFACEADDRESSES
 
-class ISREACHABILITYMAXLINKBANDWIDTH : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+class IPV4TEROUTERID : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
 {
     public:
-        ISREACHABILITYMAXLINKBANDWIDTH();
-        ~ISREACHABILITYMAXLINKBANDWIDTH();
+        IPV4TEROUTERID();
+        ~IPV4TEROUTERID();
 
 
-}; // ISREACHABILITYMAXLINKBANDWIDTH
+}; // IPV4TEROUTERID
+
+class EXTENDEDIPV4REACHABILITY : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
+{
+    public:
+        EXTENDEDIPV4REACHABILITY();
+        ~EXTENDEDIPV4REACHABILITY();
+
+
+}; // EXTENDEDIPV4REACHABILITY
+
+class DYNAMICNAME : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
+{
+    public:
+        DYNAMICNAME();
+        ~DYNAMICNAME();
+
+
+}; // DYNAMICNAME
 
 class IPV4SRLG : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
 {
@@ -388,32 +199,86 @@ class IPV4SRLG : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, vir
 
 }; // IPV4SRLG
 
-class IPV4INTERNALREACHABILITY : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
+class IPV6SRLG : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
 {
     public:
-        IPV4INTERNALREACHABILITY();
-        ~IPV4INTERNALREACHABILITY();
+        IPV6SRLG();
+        ~IPV6SRLG();
 
 
-}; // IPV4INTERNALREACHABILITY
+}; // IPV6SRLG
 
-class ISREACHABILITYUNRESERVEDBANDWIDTH : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+class IPV6TEROUTERID : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
 {
     public:
-        ISREACHABILITYUNRESERVEDBANDWIDTH();
-        ~ISREACHABILITYUNRESERVEDBANDWIDTH();
+        IPV6TEROUTERID();
+        ~IPV6TEROUTERID();
 
 
-}; // ISREACHABILITYUNRESERVEDBANDWIDTH
+}; // IPV6TEROUTERID
 
-class ROUTERCAPABILITYSRCAPABILITY : public openconfig::openconfig_isis_lsdb_types::ROUTERCAPABILITYSUBTLVSTYPE, virtual ydk::Identity
+class MTISN : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
 {
     public:
-        ROUTERCAPABILITYSRCAPABILITY();
-        ~ROUTERCAPABILITYSRCAPABILITY();
+        MTISN();
+        ~MTISN();
 
 
-}; // ROUTERCAPABILITYSRCAPABILITY
+}; // MTISN
+
+class MTISNEIGHBORATTRIBUTE : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
+{
+    public:
+        MTISNEIGHBORATTRIBUTE();
+        ~MTISNEIGHBORATTRIBUTE();
+
+
+}; // MTISNEIGHBORATTRIBUTE
+
+class MULTITOPOLOGY : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
+{
+    public:
+        MULTITOPOLOGY();
+        ~MULTITOPOLOGY();
+
+
+}; // MULTITOPOLOGY
+
+class IPV6INTERFACEADDRESSES : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
+{
+    public:
+        IPV6INTERFACEADDRESSES();
+        ~IPV6INTERFACEADDRESSES();
+
+
+}; // IPV6INTERFACEADDRESSES
+
+class MTIPV4REACHABILITY : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
+{
+    public:
+        MTIPV4REACHABILITY();
+        ~MTIPV4REACHABILITY();
+
+
+}; // MTIPV4REACHABILITY
+
+class IPV6REACHABILITY : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
+{
+    public:
+        IPV6REACHABILITY();
+        ~IPV6REACHABILITY();
+
+
+}; // IPV6REACHABILITY
+
+class MTIPV6REACHABILITY : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
+{
+    public:
+        MTIPV6REACHABILITY();
+        ~MTIPV6REACHABILITY();
+
+
+}; // MTIPV6REACHABILITY
 
 class ROUTERCAPABILITY : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
 {
@@ -424,15 +289,6 @@ class ROUTERCAPABILITY : public openconfig::openconfig_isis_lsdb_types::ISISTLVT
 
 }; // ROUTERCAPABILITY
 
-class EXTENDEDISREACHABILITY : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
-{
-    public:
-        EXTENDEDISREACHABILITY();
-        ~EXTENDEDISREACHABILITY();
-
-
-}; // EXTENDEDISREACHABILITY
-
 class ISREACHABILITYADMINGROUP : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
 {
     public:
@@ -442,59 +298,59 @@ class ISREACHABILITYADMINGROUP : public openconfig::openconfig_isis_lsdb_types::
 
 }; // ISREACHABILITYADMINGROUP
 
-class IPREACHABILITYTAG64 : public openconfig::openconfig_isis_lsdb_types::IPREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+class ISREACHABILITYIPV4INTERFACEADDRESS : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
 {
     public:
-        IPREACHABILITYTAG64();
-        ~IPREACHABILITYTAG64();
+        ISREACHABILITYIPV4INTERFACEADDRESS();
+        ~ISREACHABILITYIPV4INTERFACEADDRESS();
 
 
-}; // IPREACHABILITYTAG64
+}; // ISREACHABILITYIPV4INTERFACEADDRESS
 
-class ISREACHABILITYLINKDELAY : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+class ISREACHABILITYIPV4NEIGHBORADDRESS : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
 {
     public:
-        ISREACHABILITYLINKDELAY();
-        ~ISREACHABILITYLINKDELAY();
+        ISREACHABILITYIPV4NEIGHBORADDRESS();
+        ~ISREACHABILITYIPV4NEIGHBORADDRESS();
 
 
-}; // ISREACHABILITYLINKDELAY
+}; // ISREACHABILITYIPV4NEIGHBORADDRESS
 
-class ISREACHABILITYTEDEFAULTMETRIC : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+class ISREACHABILITYMAXLINKBANDWIDTH : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
 {
     public:
-        ISREACHABILITYTEDEFAULTMETRIC();
-        ~ISREACHABILITYTEDEFAULTMETRIC();
+        ISREACHABILITYMAXLINKBANDWIDTH();
+        ~ISREACHABILITYMAXLINKBANDWIDTH();
 
 
-}; // ISREACHABILITYTEDEFAULTMETRIC
+}; // ISREACHABILITYMAXLINKBANDWIDTH
 
-class AUTHENTICATION : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
+class ISREACHABILITYMAXRESERVABLEBANDWIDTH : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
 {
     public:
-        AUTHENTICATION();
-        ~AUTHENTICATION();
+        ISREACHABILITYMAXRESERVABLEBANDWIDTH();
+        ~ISREACHABILITYMAXRESERVABLEBANDWIDTH();
 
 
-}; // AUTHENTICATION
+}; // ISREACHABILITYMAXRESERVABLEBANDWIDTH
 
-class IISNEIGHBORS : public openconfig::openconfig_isis_lsdb_types::ISISTLVTYPE, virtual ydk::Identity
+class ISREACHABILITYUNRESERVEDBANDWIDTH : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
 {
     public:
-        IISNEIGHBORS();
-        ~IISNEIGHBORS();
+        ISREACHABILITYUNRESERVEDBANDWIDTH();
+        ~ISREACHABILITYUNRESERVEDBANDWIDTH();
 
 
-}; // IISNEIGHBORS
+}; // ISREACHABILITYUNRESERVEDBANDWIDTH
 
-class ISREACHABILITYUNCONSTRAINEDLSP : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+class ISREACHABILITYIPV6INTERFACEADDRESS : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
 {
     public:
-        ISREACHABILITYUNCONSTRAINEDLSP();
-        ~ISREACHABILITYUNCONSTRAINEDLSP();
+        ISREACHABILITYIPV6INTERFACEADDRESS();
+        ~ISREACHABILITYIPV6INTERFACEADDRESS();
 
 
-}; // ISREACHABILITYUNCONSTRAINEDLSP
+}; // ISREACHABILITYIPV6INTERFACEADDRESS
 
 class ISREACHABILITYIPV6NEIGHBORADDRESS : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
 {
@@ -505,41 +361,32 @@ class ISREACHABILITYIPV6NEIGHBORADDRESS : public openconfig::openconfig_isis_lsd
 
 }; // ISREACHABILITYIPV6NEIGHBORADDRESS
 
-class ISREACHABILITYRESIDUALBANDWIDTH : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+class ISREACHABILITYEXTENDEDADMINGROUP : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
 {
     public:
-        ISREACHABILITYRESIDUALBANDWIDTH();
-        ~ISREACHABILITYRESIDUALBANDWIDTH();
+        ISREACHABILITYEXTENDEDADMINGROUP();
+        ~ISREACHABILITYEXTENDEDADMINGROUP();
 
 
-}; // ISREACHABILITYRESIDUALBANDWIDTH
+}; // ISREACHABILITYEXTENDEDADMINGROUP
 
-class ISREACHABILITYLINKDELAYVARIATION : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+class ISREACHABILITYTEDEFAULTMETRIC : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
 {
     public:
-        ISREACHABILITYLINKDELAYVARIATION();
-        ~ISREACHABILITYLINKDELAYVARIATION();
+        ISREACHABILITYTEDEFAULTMETRIC();
+        ~ISREACHABILITYTEDEFAULTMETRIC();
 
 
-}; // ISREACHABILITYLINKDELAYVARIATION
+}; // ISREACHABILITYTEDEFAULTMETRIC
 
-class ROUTERCAPABILITYSRALGORITHM : public openconfig::openconfig_isis_lsdb_types::ROUTERCAPABILITYSUBTLVSTYPE, virtual ydk::Identity
+class ISREACHABILITYLINKATTRIBUTES : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
 {
     public:
-        ROUTERCAPABILITYSRALGORITHM();
-        ~ROUTERCAPABILITYSRALGORITHM();
+        ISREACHABILITYLINKATTRIBUTES();
+        ~ISREACHABILITYLINKATTRIBUTES();
 
 
-}; // ROUTERCAPABILITYSRALGORITHM
-
-class IPREACHABILITYIPV6ROUTERID : public openconfig::openconfig_isis_lsdb_types::IPREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
-{
-    public:
-        IPREACHABILITYIPV6ROUTERID();
-        ~IPREACHABILITYIPV6ROUTERID();
-
-
-}; // IPREACHABILITYIPV6ROUTERID
+}; // ISREACHABILITYLINKATTRIBUTES
 
 class ISREACHABILITYLINKPROTECTIONTYPE : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
 {
@@ -550,6 +397,105 @@ class ISREACHABILITYLINKPROTECTIONTYPE : public openconfig::openconfig_isis_lsdb
 
 }; // ISREACHABILITYLINKPROTECTIONTYPE
 
+class ISREACHABILITYBANDWIDTHCONSTRAINTS : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+{
+    public:
+        ISREACHABILITYBANDWIDTHCONSTRAINTS();
+        ~ISREACHABILITYBANDWIDTHCONSTRAINTS();
+
+
+}; // ISREACHABILITYBANDWIDTHCONSTRAINTS
+
+class ISREACHABILITYUNCONSTRAINEDLSP : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+{
+    public:
+        ISREACHABILITYUNCONSTRAINEDLSP();
+        ~ISREACHABILITYUNCONSTRAINEDLSP();
+
+
+}; // ISREACHABILITYUNCONSTRAINEDLSP
+
+class ISREACHABILITYADJSID : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+{
+    public:
+        ISREACHABILITYADJSID();
+        ~ISREACHABILITYADJSID();
+
+
+}; // ISREACHABILITYADJSID
+
+class ISREACHABILITYADJLANSID : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+{
+    public:
+        ISREACHABILITYADJLANSID();
+        ~ISREACHABILITYADJLANSID();
+
+
+}; // ISREACHABILITYADJLANSID
+
+class ISREACHABILITYLINKDELAY : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+{
+    public:
+        ISREACHABILITYLINKDELAY();
+        ~ISREACHABILITYLINKDELAY();
+
+
+}; // ISREACHABILITYLINKDELAY
+
+class ISREACHABILITYMINMAXLINKDELAY : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+{
+    public:
+        ISREACHABILITYMINMAXLINKDELAY();
+        ~ISREACHABILITYMINMAXLINKDELAY();
+
+
+}; // ISREACHABILITYMINMAXLINKDELAY
+
+class ISREACHABILITYLINKDELAYVARIATION : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+{
+    public:
+        ISREACHABILITYLINKDELAYVARIATION();
+        ~ISREACHABILITYLINKDELAYVARIATION();
+
+
+}; // ISREACHABILITYLINKDELAYVARIATION
+
+class ISREACHABILITYLINKLOSS : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+{
+    public:
+        ISREACHABILITYLINKLOSS();
+        ~ISREACHABILITYLINKLOSS();
+
+
+}; // ISREACHABILITYLINKLOSS
+
+class ISREACHABILITYRESIDUALBANDWIDTH : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+{
+    public:
+        ISREACHABILITYRESIDUALBANDWIDTH();
+        ~ISREACHABILITYRESIDUALBANDWIDTH();
+
+
+}; // ISREACHABILITYRESIDUALBANDWIDTH
+
+class ISREACHABILITYAVAILABLEBANDWIDTH : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+{
+    public:
+        ISREACHABILITYAVAILABLEBANDWIDTH();
+        ~ISREACHABILITYAVAILABLEBANDWIDTH();
+
+
+}; // ISREACHABILITYAVAILABLEBANDWIDTH
+
+class ISREACHABILITYUTILIZEDBANDWIDTH : public openconfig::openconfig_isis_lsdb_types::ISREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+{
+    public:
+        ISREACHABILITYUTILIZEDBANDWIDTH();
+        ~ISREACHABILITYUTILIZEDBANDWIDTH();
+
+
+}; // ISREACHABILITYUTILIZEDBANDWIDTH
+
 class IPREACHABILITYTAG : public openconfig::openconfig_isis_lsdb_types::IPREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
 {
     public:
@@ -559,6 +505,33 @@ class IPREACHABILITYTAG : public openconfig::openconfig_isis_lsdb_types::IPREACH
 
 }; // IPREACHABILITYTAG
 
+class IPREACHABILITYTAG64 : public openconfig::openconfig_isis_lsdb_types::IPREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+{
+    public:
+        IPREACHABILITYTAG64();
+        ~IPREACHABILITYTAG64();
+
+
+}; // IPREACHABILITYTAG64
+
+class IPREACHABILITYPREFIXSID : public openconfig::openconfig_isis_lsdb_types::IPREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+{
+    public:
+        IPREACHABILITYPREFIXSID();
+        ~IPREACHABILITYPREFIXSID();
+
+
+}; // IPREACHABILITYPREFIXSID
+
+class IPREACHABILITYPREFIXFLAGS : public openconfig::openconfig_isis_lsdb_types::IPREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+{
+    public:
+        IPREACHABILITYPREFIXFLAGS();
+        ~IPREACHABILITYPREFIXFLAGS();
+
+
+}; // IPREACHABILITYPREFIXFLAGS
+
 class IPREACHABILITYIPV4ROUTERID : public openconfig::openconfig_isis_lsdb_types::IPREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
 {
     public:
@@ -567,6 +540,33 @@ class IPREACHABILITYIPV4ROUTERID : public openconfig::openconfig_isis_lsdb_types
 
 
 }; // IPREACHABILITYIPV4ROUTERID
+
+class IPREACHABILITYIPV6ROUTERID : public openconfig::openconfig_isis_lsdb_types::IPREACHABILITYSUBTLVSTYPE, virtual ydk::Identity
+{
+    public:
+        IPREACHABILITYIPV6ROUTERID();
+        ~IPREACHABILITYIPV6ROUTERID();
+
+
+}; // IPREACHABILITYIPV6ROUTERID
+
+class ROUTERCAPABILITYSRCAPABILITY : public openconfig::openconfig_isis_lsdb_types::ROUTERCAPABILITYSUBTLVSTYPE, virtual ydk::Identity
+{
+    public:
+        ROUTERCAPABILITYSRCAPABILITY();
+        ~ROUTERCAPABILITYSRCAPABILITY();
+
+
+}; // ROUTERCAPABILITYSRCAPABILITY
+
+class ROUTERCAPABILITYSRALGORITHM : public openconfig::openconfig_isis_lsdb_types::ROUTERCAPABILITYSUBTLVSTYPE, virtual ydk::Identity
+{
+    public:
+        ROUTERCAPABILITYSRALGORITHM();
+        ~ROUTERCAPABILITYSRALGORITHM();
+
+
+}; // ROUTERCAPABILITYSRALGORITHM
 
 
 }

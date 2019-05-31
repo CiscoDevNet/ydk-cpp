@@ -158,6 +158,10 @@ bool NetconfService::copy_config(NetconfServiceProvider& provider, DataStore tar
 
 bool NetconfService::copy_config(NetconfServiceProvider& provider, DataStore target, vector<Entity*>& source_list)
 {
+    if (source_list.empty()) {
+        YLOG_INFO("NetconfService::copy_config: Source list is empty");
+        return false;
+    }
     YLOG_INFO("Executing 'copy-config' RPC from {} to {}", entity_vector_to_string(source_list), datastore_to_string(target));
 
     string payload = "";
@@ -247,6 +251,10 @@ bool NetconfService::edit_config(NetconfServiceProvider& provider, DataStore tar
 bool NetconfService::edit_config(NetconfServiceProvider& provider, DataStore target,
 	vector<Entity*>& config_list, string default_operation, string test_option, string error_option)
 {
+    if (config_list.empty()) {
+        YLOG_INFO("NetconfService::edit_config: Config list is empty");
+        return false;
+    }
     YLOG_INFO("Executing 'edit-config' RPC on {}", entity_vector_to_string(config_list));
 
     string payload = "";
@@ -374,6 +382,10 @@ get_from_list(NetconfServiceProvider& provider, DataStore source, vector<Entity*
 vector<shared_ptr<Entity>>
 NetconfService::get(NetconfServiceProvider& provider, vector<Entity*> & filter_list)
 {
+    if (filter_list.empty()) {
+        YLOG_INFO("NetconfService::get: Filter list is empty");
+        return {};
+    }
     YLOG_INFO("Executing 'get' RPC on {}", entity_vector_to_string(filter_list));
     return get_from_list(provider, DataStore::na, filter_list, "ietf-netconf:get");
 }
@@ -381,6 +393,10 @@ NetconfService::get(NetconfServiceProvider& provider, vector<Entity*> & filter_l
 vector<shared_ptr<Entity>>
 NetconfService::get_config(NetconfServiceProvider& provider, DataStore source, vector<Entity*> & filter_list)
 {
+    if (filter_list.empty()) {
+        YLOG_INFO("NetconfService::get: Filter list is empty");
+        return {};
+    }
     YLOG_INFO("Executing 'get-config' RPC on {} from {}", entity_vector_to_string(filter_list), datastore_to_string(source));
     return get_from_list(provider, source, filter_list, "ietf-netconf:get-config");
 }

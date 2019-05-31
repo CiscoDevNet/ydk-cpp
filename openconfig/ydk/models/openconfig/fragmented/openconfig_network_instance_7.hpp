@@ -3520,7 +3520,7 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf sid_id; //type: one of union, string
+        ydk::YLeaf sid_id; //type: one of string, union
         ydk::YLeaf label_options; //type: LabelOptions
         class LabelOptions;
 
@@ -3544,7 +3544,7 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf prefix; //type: string
-        ydk::YLeaf sid_id; //type: one of union, string
+        ydk::YLeaf sid_id; //type: one of string, union
         ydk::YLeaf label_options; //type: LabelOptions
         class LabelOptions;
 

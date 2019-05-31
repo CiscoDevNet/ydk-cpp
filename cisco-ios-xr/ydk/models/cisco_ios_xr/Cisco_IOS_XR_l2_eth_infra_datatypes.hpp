@@ -10,6 +10,14 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_l2_eth_infra_datatypes {
 
+class VsMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf trunk;
+        static const ydk::Enum::YLeaf access;
+
+};
+
 class VlanTagOrCvp : public ydk::Enum
 {
     public:
@@ -25,18 +33,11 @@ class Vlan : public ydk::Enum
 
 };
 
-class VsMode : public ydk::Enum
+class VlanTagOrNative : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf trunk;
-        static const ydk::Enum::YLeaf access;
-
-};
-
-class EthertypeMatch : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ppp_over_ethernet;
+        static const ydk::Enum::YLeaf native;
+        static const ydk::Enum::YLeaf native_with_cvlan_preservation;
 
 };
 
@@ -61,21 +62,6 @@ class Rewrite : public ydk::Enum
 
 };
 
-class VlanTagOrAny : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf any;
-
-};
-
-class VlanTagOrNative : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf native;
-        static const ydk::Enum::YLeaf native_with_cvlan_preservation;
-
-};
-
 class Match : public ydk::Enum
 {
     public:
@@ -85,6 +71,20 @@ class Match : public ydk::Enum
         static const ydk::Enum::YLeaf match_dot1ad;
         static const ydk::Enum::YLeaf match_dot1q_priority;
         static const ydk::Enum::YLeaf match_dot1ad_priority;
+
+};
+
+class EthertypeMatch : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ppp_over_ethernet;
+
+};
+
+class VlanTagOrAny : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf any;
 
 };
 

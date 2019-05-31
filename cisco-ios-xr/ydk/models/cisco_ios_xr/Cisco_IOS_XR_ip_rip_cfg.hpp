@@ -1283,41 +1283,6 @@ class Rip::Vrfs::Vrf::Timers : public ydk::Entity
 
 }; // Rip::Vrfs::Vrf::Timers
 
-class RipAuthMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf text;
-        static const ydk::Enum::YLeaf md5;
-
-};
-
-class IsisRedistRoute : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf level1;
-        static const ydk::Enum::YLeaf level2;
-        static const ydk::Enum::YLeaf level1_and2;
-
-};
-
-class DefaultInformationOption : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf always;
-        static const ydk::Enum::YLeaf policy;
-
-};
-
-class BgpRedistRoute : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf all;
-        static const ydk::Enum::YLeaf internal;
-        static const ydk::Enum::YLeaf external;
-        static const ydk::Enum::YLeaf local;
-
-};
-
 class RipExtCommunity : public ydk::Enum
 {
     public:
@@ -1331,6 +1296,41 @@ class DefaultRedistRoute : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf all;
+
+};
+
+class DefaultInformationOption : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf always;
+        static const ydk::Enum::YLeaf policy;
+
+};
+
+class IsisRedistRoute : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf level1;
+        static const ydk::Enum::YLeaf level2;
+        static const ydk::Enum::YLeaf level1_and2;
+
+};
+
+class BgpRedistRoute : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf all;
+        static const ydk::Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf external;
+        static const ydk::Enum::YLeaf local;
+
+};
+
+class RipAuthMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf text;
+        static const ydk::Enum::YLeaf md5;
 
 };
 

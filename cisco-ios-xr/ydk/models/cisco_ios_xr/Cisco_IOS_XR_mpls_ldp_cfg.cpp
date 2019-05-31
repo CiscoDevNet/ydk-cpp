@@ -2644,8 +2644,10 @@ bool MplsLdp::DefaultVrf::Afs::Af::TrafficEngineering::AutoTunnelMesh::GroupIds:
 MplsLdp::DefaultVrf::Afs::Af::Neighbor::Neighbor()
     :
     addresses(std::make_shared<MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses>())
+    , segment_routing_policies(std::make_shared<MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies>())
 {
     addresses->parent = this;
+    segment_routing_policies->parent = this;
 
     yang_name = "neighbor"; yang_parent_name = "af"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -2657,13 +2659,15 @@ MplsLdp::DefaultVrf::Afs::Af::Neighbor::~Neighbor()
 bool MplsLdp::DefaultVrf::Afs::Af::Neighbor::has_data() const
 {
     if (is_presence_container) return true;
-    return (addresses !=  nullptr && addresses->has_data());
+    return (addresses !=  nullptr && addresses->has_data())
+	|| (segment_routing_policies !=  nullptr && segment_routing_policies->has_data());
 }
 
 bool MplsLdp::DefaultVrf::Afs::Af::Neighbor::has_operation() const
 {
     return is_set(yfilter)
-	|| (addresses !=  nullptr && addresses->has_operation());
+	|| (addresses !=  nullptr && addresses->has_operation())
+	|| (segment_routing_policies !=  nullptr && segment_routing_policies->has_operation());
 }
 
 std::string MplsLdp::DefaultVrf::Afs::Af::Neighbor::get_segment_path() const
@@ -2693,6 +2697,15 @@ std::shared_ptr<ydk::Entity> MplsLdp::DefaultVrf::Afs::Af::Neighbor::get_child_b
         return addresses;
     }
 
+    if(child_yang_name == "segment-routing-policies")
+    {
+        if(segment_routing_policies == nullptr)
+        {
+            segment_routing_policies = std::make_shared<MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies>();
+        }
+        return segment_routing_policies;
+    }
+
     return nullptr;
 }
 
@@ -2703,6 +2716,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::DefaultVrf::Afs::Af
     if(addresses != nullptr)
     {
         _children["addresses"] = addresses;
+    }
+
+    if(segment_routing_policies != nullptr)
+    {
+        _children["segment-routing-policies"] = segment_routing_policies;
     }
 
     return _children;
@@ -2718,7 +2736,7 @@ void MplsLdp::DefaultVrf::Afs::Af::Neighbor::set_filter(const std::string & valu
 
 bool MplsLdp::DefaultVrf::Afs::Af::Neighbor::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "addresses")
+    if(name == "addresses" || name == "segment-routing-policies")
         return true;
     return false;
 }
@@ -2905,6 +2923,192 @@ void MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::Address::set_filter(cons
 bool MplsLdp::DefaultVrf::Afs::Af::Neighbor::Addresses::Address::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "ip-address" || name == "targeted")
+        return true;
+    return false;
+}
+
+MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::SegmentRoutingPolicies()
+    :
+    segment_routing_policy(this, {"name"})
+{
+
+    yang_name = "segment-routing-policies"; yang_parent_name = "neighbor"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::~SegmentRoutingPolicies()
+{
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<segment_routing_policy.len(); index++)
+    {
+        if(segment_routing_policy[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::has_operation() const
+{
+    for (std::size_t index=0; index<segment_routing_policy.len(); index++)
+    {
+        if(segment_routing_policy[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "segment-routing-policies";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "segment-routing-policy")
+    {
+        auto ent_ = std::make_shared<MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::SegmentRoutingPolicy>();
+        ent_->parent = this;
+        segment_routing_policy.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : segment_routing_policy.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "segment-routing-policy")
+        return true;
+    return false;
+}
+
+MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::SegmentRoutingPolicy::SegmentRoutingPolicy()
+    :
+    name{YType::str, "name"},
+    targeted{YType::empty, "targeted"}
+{
+
+    yang_name = "segment-routing-policy"; yang_parent_name = "segment-routing-policies"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::SegmentRoutingPolicy::~SegmentRoutingPolicy()
+{
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::SegmentRoutingPolicy::has_data() const
+{
+    if (is_presence_container) return true;
+    return name.is_set
+	|| targeted.is_set;
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::SegmentRoutingPolicy::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(name.yfilter)
+	|| ydk::is_set(targeted.yfilter);
+}
+
+std::string MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::SegmentRoutingPolicy::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "segment-routing-policy";
+    ADD_KEY_TOKEN(name, "name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::SegmentRoutingPolicy::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (name.is_set || is_set(name.yfilter)) leaf_name_data.push_back(name.get_name_leafdata());
+    if (targeted.is_set || is_set(targeted.yfilter)) leaf_name_data.push_back(targeted.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::SegmentRoutingPolicy::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::SegmentRoutingPolicy::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::SegmentRoutingPolicy::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "name")
+    {
+        name = value;
+        name.value_namespace = name_space;
+        name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "targeted")
+    {
+        targeted = value;
+        targeted.value_namespace = name_space;
+        targeted.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::SegmentRoutingPolicy::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "name")
+    {
+        name.yfilter = yfilter;
+    }
+    if(value_path == "targeted")
+    {
+        targeted.yfilter = yfilter;
+    }
+}
+
+bool MplsLdp::DefaultVrf::Afs::Af::Neighbor::SegmentRoutingPolicies::SegmentRoutingPolicy::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "name" || name == "targeted")
         return true;
     return false;
 }
@@ -14364,29 +14568,24 @@ bool MplsLdp::Global::Mldp::MldpGlobal::Logging::has_leaf_or_child_of_name(const
     return false;
 }
 
-const Enum::YLeaf MplsLdpLabelAdvertise::for_ {1, "for"};
-const Enum::YLeaf MplsLdpLabelAdvertise::for_to {2, "for-to"};
-
-const Enum::YLeaf MldpPolicyMode::inbound {1, "inbound"};
-const Enum::YLeaf MldpPolicyMode::outbound {2, "outbound"};
+const Enum::YLeaf MplsLdpNbrPassword::disable {1, "disable"};
+const Enum::YLeaf MplsLdpNbrPassword::specified {2, "specified"};
 
 const Enum::YLeaf MplsLdpLabelAllocation::acl {1, "acl"};
 const Enum::YLeaf MplsLdpLabelAllocation::host {2, "host"};
 
+const Enum::YLeaf MplsLdpDownstreamOnDemand::peer_acl {1, "peer-acl"};
+
+const Enum::YLeaf MldpPolicyMode::inbound {1, "inbound"};
+const Enum::YLeaf MldpPolicyMode::outbound {2, "outbound"};
+
 const Enum::YLeaf MplsLdpTargetedAccept::all {1, "all"};
 const Enum::YLeaf MplsLdpTargetedAccept::from {2, "from"};
-
-const Enum::YLeaf MplsLdpNbrPassword::disable {1, "disable"};
-const Enum::YLeaf MplsLdpNbrPassword::specified {2, "specified"};
-
-const Enum::YLeaf MplsLdpDownstreamOnDemand::peer_acl {1, "peer-acl"};
 
 const Enum::YLeaf MplsLdpExpNull::all {1, "all"};
 const Enum::YLeaf MplsLdpExpNull::for_ {2, "for"};
 const Enum::YLeaf MplsLdpExpNull::to {3, "to"};
 const Enum::YLeaf MplsLdpExpNull::for_to {4, "for-to"};
-
-const Enum::YLeaf MplsLdpAdvertiseBgpAcl::peer_acl {1, "peer-acl"};
 
 const Enum::YLeaf MplsLdpafName::ipv4 {4, "ipv4"};
 const Enum::YLeaf MplsLdpafName::ipv6 {6, "ipv6"};
@@ -14400,6 +14599,11 @@ const Enum::YLeaf MplsLdpSessionProtection::all_with_duration {3, "all-with-dura
 const Enum::YLeaf MplsLdpSessionProtection::for_with_duration {4, "for-with-duration"};
 const Enum::YLeaf MplsLdpSessionProtection::all_with_forever {5, "all-with-forever"};
 const Enum::YLeaf MplsLdpSessionProtection::for_with_forever {6, "for-with-forever"};
+
+const Enum::YLeaf MplsLdpLabelAdvertise::for_ {1, "for"};
+const Enum::YLeaf MplsLdpLabelAdvertise::for_to {2, "for-to"};
+
+const Enum::YLeaf MplsLdpAdvertiseBgpAcl::peer_acl {1, "peer-acl"};
 
 
 }

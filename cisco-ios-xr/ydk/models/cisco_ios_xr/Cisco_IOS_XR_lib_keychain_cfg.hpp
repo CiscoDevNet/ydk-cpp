@@ -358,6 +358,14 @@ class CryptoAlg : public ydk::Enum
 
 };
 
+class MacsecCryptoAlg : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf aes_128_cmac;
+        static const ydk::Enum::YLeaf aes_256_cmac;
+
+};
+
 class KeyChainMonth : public ydk::Enum
 {
     public:
@@ -373,14 +381,6 @@ class KeyChainMonth : public ydk::Enum
         static const ydk::Enum::YLeaf oct;
         static const ydk::Enum::YLeaf nov;
         static const ydk::Enum::YLeaf dec;
-
-};
-
-class MacsecCryptoAlg : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf aes_128_cmac;
-        static const ydk::Enum::YLeaf aes_256_cmac;
 
 };
 

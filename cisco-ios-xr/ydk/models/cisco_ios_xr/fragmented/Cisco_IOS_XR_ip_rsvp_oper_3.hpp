@@ -253,7 +253,7 @@ class Rsvp::RxsbDetails::RxsbDetail::Hop : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_logical_interface_name; //type: string
+        ydk::YLeaf neighbor_logical_interface_handle; //type: uint32
 
 }; // Rsvp::RxsbDetails::RxsbDetail::Hop
 
@@ -1329,7 +1329,7 @@ class Rsvp::PsbDetaileds::PsbDetailed::Hop : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_logical_interface_name; //type: string
+        ydk::YLeaf neighbor_logical_interface_handle; //type: uint32
 
 }; // Rsvp::PsbDetaileds::PsbDetailed::Hop
 
@@ -3019,7 +3019,7 @@ class Rsvp::RsbDetaileds::RsbDetailed::Hop : public ydk::Entity
         std::string get_absolute_path() const override;
 
         ydk::YLeaf neighbor_address; //type: string
-        ydk::YLeaf neighbor_logical_interface_name; //type: string
+        ydk::YLeaf neighbor_logical_interface_handle; //type: uint32
 
 }; // Rsvp::RsbDetaileds::RsbDetailed::Hop
 

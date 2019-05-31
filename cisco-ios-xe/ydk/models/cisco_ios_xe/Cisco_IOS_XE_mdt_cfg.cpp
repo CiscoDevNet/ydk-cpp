@@ -1601,13 +1601,9 @@ bool MdtConfigData::MdtXfrm::MdtXfrmOp::MdtXfrmOpFields::has_leaf_or_child_of_na
     return false;
 }
 
-const Enum::YLeaf MdtXfrmOperator::operator_none {0, "operator-none"};
-const Enum::YLeaf MdtXfrmOperator::eq {1, "eq"};
-const Enum::YLeaf MdtXfrmOperator::ne {2, "ne"};
-const Enum::YLeaf MdtXfrmOperator::gt {3, "gt"};
-const Enum::YLeaf MdtXfrmOperator::ge {4, "ge"};
-const Enum::YLeaf MdtXfrmOperator::lt {5, "lt"};
-const Enum::YLeaf MdtXfrmOperator::le {6, "le"};
+const Enum::YLeaf MdtXfrmAttrType::mdt_xfrm_attr_none {0, "mdt-xfrm-attr-none"};
+const Enum::YLeaf MdtXfrmAttrType::mandatory {1, "mandatory"};
+const Enum::YLeaf MdtXfrmAttrType::primary {2, "primary"};
 
 const Enum::YLeaf MdtXfrmOpType::sub_record {0, "sub-record"};
 const Enum::YLeaf MdtXfrmOpType::delta {1, "delta"};
@@ -1616,9 +1612,13 @@ const Enum::YLeaf MdtXfrmLogicOp::mdt_xfrm_lop_none {0, "mdt-xfrm-lop-none"};
 const Enum::YLeaf MdtXfrmLogicOp::and_ {1, "and"};
 const Enum::YLeaf MdtXfrmLogicOp::or_ {2, "or"};
 
-const Enum::YLeaf MdtXfrmAttrType::mdt_xfrm_attr_none {0, "mdt-xfrm-attr-none"};
-const Enum::YLeaf MdtXfrmAttrType::mandatory {1, "mandatory"};
-const Enum::YLeaf MdtXfrmAttrType::primary {2, "primary"};
+const Enum::YLeaf MdtXfrmOperator::operator_none {0, "operator-none"};
+const Enum::YLeaf MdtXfrmOperator::eq {1, "eq"};
+const Enum::YLeaf MdtXfrmOperator::ne {2, "ne"};
+const Enum::YLeaf MdtXfrmOperator::gt {3, "gt"};
+const Enum::YLeaf MdtXfrmOperator::ge {4, "ge"};
+const Enum::YLeaf MdtXfrmOperator::lt {5, "lt"};
+const Enum::YLeaf MdtXfrmOperator::le {6, "le"};
 
 
 }

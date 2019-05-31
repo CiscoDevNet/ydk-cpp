@@ -36,7 +36,7 @@ class NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::
         ydk::YLeaf protection_eligible; //type: boolean
         ydk::YLeaf group; //type: boolean
         ydk::YLeaf neighbor; //type: string
-        ydk::YLeaf allocated_dynamic_local; //type: one of union, string
+        ydk::YLeaf allocated_dynamic_local; //type: one of string, union
         class SidId;
 
 }; // NetworkInstances::NetworkInstance::Protocols::Protocol::Isis::Interfaces::Interface::Levels::Level::AfiSafi::Af::SegmentRouting::AdjacencySids::AdjacencySid::State

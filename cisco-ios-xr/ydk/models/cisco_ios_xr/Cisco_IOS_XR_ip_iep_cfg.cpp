@@ -1069,8 +1069,8 @@ bool IpExplicitPaths::Paths::Path::Identifier::Hops::Hop::has_leaf_or_child_of_n
     return false;
 }
 
-const Enum::YLeaf IpIepPath::identifier {1, "identifier"};
-const Enum::YLeaf IpIepPath::name {2, "name"};
+const Enum::YLeaf IpIepNum::unnumbered {1, "unnumbered"};
+const Enum::YLeaf IpIepNum::numbered {2, "numbered"};
 
 const Enum::YLeaf IpIepHop::next_strict {2, "next-strict"};
 const Enum::YLeaf IpIepHop::next_loose {3, "next-loose"};
@@ -1078,8 +1078,8 @@ const Enum::YLeaf IpIepHop::exclude {4, "exclude"};
 const Enum::YLeaf IpIepHop::exclude_srlg {5, "exclude-srlg"};
 const Enum::YLeaf IpIepHop::next_label {6, "next-label"};
 
-const Enum::YLeaf IpIepNum::unnumbered {1, "unnumbered"};
-const Enum::YLeaf IpIepNum::numbered {2, "numbered"};
+const Enum::YLeaf IpIepPath::identifier {1, "identifier"};
+const Enum::YLeaf IpIepPath::name {2, "name"};
 
 
 }

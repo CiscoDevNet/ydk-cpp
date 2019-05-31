@@ -175,7 +175,7 @@ class Native::Interface::AppNavUnCompress::Standby::StandbyList : public ydk::En
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of string, enumeration
+        ydk::YLeaf ipv6; //type: one of enumeration, string
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -1362,7 +1362,7 @@ class Native::Interface::ATM : public ydk::Entity
         ydk::YLeaf keepalive; //type: boolean
         ydk::YLeaf if_state; //type: IfState
         ydk::YLeaf delay; //type: uint32
-        ydk::YLeaf cisco_ios_xe_interfaces_load_interval; //type: uint16
+        ydk::YLeaf load_interval; //type: uint16
         ydk::YLeaf max_reserved_bandwidth; //type: uint8
         ydk::YLeaf mtu; //type: uint16
         ydk::YLeaf service_insertion; //type: ServiceInsertion
@@ -1390,7 +1390,7 @@ class Native::Interface::ATM : public ydk::Entity
         class Mpls; //type: Native::Interface::ATM::Mpls
         class IpVrf; //type: Native::Interface::ATM::IpVrf
         class Vrf; //type: Native::Interface::ATM::Vrf
-        class CiscoIOSXEInterfacesIp; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp
+        class Ip; //type: Native::Interface::ATM::Ip
         class Ipv6; //type: Native::Interface::ATM::Ipv6
         class Logging; //type: Native::Interface::ATM::Logging
         class Mdix; //type: Native::Interface::ATM::Mdix
@@ -1405,11 +1405,11 @@ class Native::Interface::ATM : public ydk::Entity
         class RcvQueue; //type: Native::Interface::ATM::RcvQueue
         class Peer; //type: Native::Interface::ATM::Peer
         class PmPath; //type: Native::Interface::ATM::PmPath
-        class ServicePolicy; //type: Native::Interface::ATM::ServicePolicy
         class CiscoIOSXEAtmIp; //type: Native::Interface::ATM::CiscoIOSXEAtmIp
         class Atm; //type: Native::Interface::ATM::Atm
         class Cem; //type: Native::Interface::ATM::Cem
         class Pvc; //type: Native::Interface::ATM::Pvc
+        class ServicePolicy; //type: Native::Interface::ATM::ServicePolicy
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::SwitchportConf> switchport_conf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Switchport> switchport;
@@ -1433,7 +1433,7 @@ class Native::Interface::ATM : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Mpls> mpls;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::IpVrf> ip_vrf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Vrf> vrf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp> cisco_ios_xe_interfaces_ip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip> ip;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ipv6> ipv6;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Logging> logging;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Mdix> mdix;
@@ -1448,11 +1448,11 @@ class Native::Interface::ATM : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::RcvQueue> rcv_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Peer> peer;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::PmPath> pm_path;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::ServicePolicy> service_policy;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEAtmIp> cisco_ios_xe_atm_ip_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEAtmIp> cisco_ios_xe_atm_ip;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Atm> atm;
         ydk::YList cem;
         ydk::YList pvc;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::ServicePolicy> service_policy;
                 class IfState;
         class ServiceInsertion;
         class Cdp;
@@ -1587,8 +1587,8 @@ class Native::Interface::ATM::Backup::Delay : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -1757,8 +1757,8 @@ class Native::Interface::ATM::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 
@@ -2493,11 +2493,11 @@ class Native::Interface::ATM::Vrf : public ydk::Entity
 }; // Native::Interface::ATM::Vrf
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp : public ydk::Entity
+class Native::Interface::ATM::Ip : public ydk::Entity
 {
     public:
-        CiscoIOSXEInterfacesIp();
-        ~CiscoIOSXEInterfacesIp();
+        Ip();
+        ~Ip();
 
         bool has_data() const override;
         bool has_operation() const override;
@@ -2516,52 +2516,52 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp : public ydk::Entity
         ydk::YLeaf redirects; //type: boolean
         ydk::YLeaf mtu; //type: uint16
         ydk::YLeaf mroute_cache; //type: boolean
-        class AccessGroup; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup
-        class Arp; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Arp
-        class Vrf; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Vrf
-        class Address; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address
-        class DirectedBroadcast; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::DirectedBroadcast
-        class HelloInterval; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::HelloInterval
-        class Authentication; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Authentication
-        class HoldTime; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::HoldTime
-        class HelperAddress; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::HelperAddress
-        class Pim; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Pim
-        class Policy; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Policy
-        class Rip; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Rip
-        class RouteCacheConf; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::RouteCacheConf
-        class RouteCache; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::RouteCache
-        class Router; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Router
-        class Tcp; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Tcp
-        class VirtualReassembly; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::VirtualReassembly
-        class Dhcp; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Dhcp
-        class SummaryAddress; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::SummaryAddress
-        class Verify; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify
+        class AccessGroup; //type: Native::Interface::ATM::Ip::AccessGroup
+        class Arp; //type: Native::Interface::ATM::Ip::Arp
+        class Vrf; //type: Native::Interface::ATM::Ip::Vrf
+        class Address; //type: Native::Interface::ATM::Ip::Address
+        class DirectedBroadcast; //type: Native::Interface::ATM::Ip::DirectedBroadcast
+        class HelloInterval; //type: Native::Interface::ATM::Ip::HelloInterval
+        class Authentication; //type: Native::Interface::ATM::Ip::Authentication
+        class HoldTime; //type: Native::Interface::ATM::Ip::HoldTime
+        class HelperAddress; //type: Native::Interface::ATM::Ip::HelperAddress
+        class Pim; //type: Native::Interface::ATM::Ip::Pim
+        class Policy; //type: Native::Interface::ATM::Ip::Policy
+        class Rip; //type: Native::Interface::ATM::Ip::Rip
+        class RouteCacheConf; //type: Native::Interface::ATM::Ip::RouteCacheConf
+        class RouteCache; //type: Native::Interface::ATM::Ip::RouteCache
+        class Router; //type: Native::Interface::ATM::Ip::Router
+        class Tcp; //type: Native::Interface::ATM::Ip::Tcp
+        class VirtualReassembly; //type: Native::Interface::ATM::Ip::VirtualReassembly
+        class Dhcp; //type: Native::Interface::ATM::Ip::Dhcp
+        class SummaryAddress; //type: Native::Interface::ATM::Ip::SummaryAddress
+        class Verify; //type: Native::Interface::ATM::Ip::Verify
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup> access_group;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Arp> arp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Vrf> vrf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address> address;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::DirectedBroadcast> directed_broadcast; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::HelloInterval> hello_interval;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Authentication> authentication;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::HoldTime> hold_time;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::AccessGroup> access_group;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Arp> arp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Vrf> vrf;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Address> address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::DirectedBroadcast> directed_broadcast; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::HelloInterval> hello_interval;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::HoldTime> hold_time;
         ydk::YList helper_address;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Pim> pim;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Policy> policy;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Rip> rip;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::RouteCacheConf> route_cache_conf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::RouteCache> route_cache; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Router> router;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Tcp> tcp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::VirtualReassembly> virtual_reassembly;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Dhcp> dhcp;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::SummaryAddress> summary_address;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify> verify;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Pim> pim;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Policy> policy;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Rip> rip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::RouteCacheConf> route_cache_conf;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::RouteCache> route_cache; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Router> router;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Tcp> tcp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::VirtualReassembly> virtual_reassembly;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Dhcp> dhcp;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::SummaryAddress> summary_address;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Verify> verify;
         
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp
+}; // Native::Interface::ATM::Ip
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup : public ydk::Entity
+class Native::Interface::ATM::Ip::AccessGroup : public ydk::Entity
 {
     public:
         AccessGroup();
@@ -2577,16 +2577,16 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup : public ydk::
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class In; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::In
-        class Out; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::Out
+        class In; //type: Native::Interface::ATM::Ip::AccessGroup::In
+        class Out; //type: Native::Interface::ATM::Ip::AccessGroup::Out
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::In> in;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::Out> out;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::AccessGroup::In> in;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::AccessGroup::Out> out;
         
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup
+}; // Native::Interface::ATM::Ip::AccessGroup
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::In : public ydk::Entity
+class Native::Interface::ATM::Ip::AccessGroup::In : public ydk::Entity
 {
     public:
         In();
@@ -2602,16 +2602,16 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::In : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class CommonAcl; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::In::CommonAcl
-        class Acl; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::In::Acl
+        class CommonAcl; //type: Native::Interface::ATM::Ip::AccessGroup::In::CommonAcl
+        class Acl; //type: Native::Interface::ATM::Ip::AccessGroup::In::Acl
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::In::CommonAcl> common_acl;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::In::Acl> acl;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::AccessGroup::In::CommonAcl> common_acl;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::AccessGroup::In::Acl> acl;
         
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::In
+}; // Native::Interface::ATM::Ip::AccessGroup::In
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::In::CommonAcl : public ydk::Entity
+class Native::Interface::ATM::Ip::AccessGroup::In::CommonAcl : public ydk::Entity
 {
     public:
         CommonAcl();
@@ -2630,10 +2630,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::In::CommonAcl
         ydk::YLeaf common; //type: one of uint16, string
         ydk::YLeaf in; //type: empty
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::In::CommonAcl
+}; // Native::Interface::ATM::Ip::AccessGroup::In::CommonAcl
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::In::Acl : public ydk::Entity
+class Native::Interface::ATM::Ip::AccessGroup::In::Acl : public ydk::Entity
 {
     public:
         Acl();
@@ -2652,10 +2652,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::In::Acl : pub
         ydk::YLeaf acl_name; //type: one of uint16, string
         ydk::YLeaf in; //type: empty
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::In::Acl
+}; // Native::Interface::ATM::Ip::AccessGroup::In::Acl
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::Out : public ydk::Entity
+class Native::Interface::ATM::Ip::AccessGroup::Out : public ydk::Entity
 {
     public:
         Out();
@@ -2671,16 +2671,16 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::Out : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class CommonAcl; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::Out::CommonAcl
-        class Acl; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::Out::Acl
+        class CommonAcl; //type: Native::Interface::ATM::Ip::AccessGroup::Out::CommonAcl
+        class Acl; //type: Native::Interface::ATM::Ip::AccessGroup::Out::Acl
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::Out::CommonAcl> common_acl;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::Out::Acl> acl;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::AccessGroup::Out::CommonAcl> common_acl;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::AccessGroup::Out::Acl> acl;
         
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::Out
+}; // Native::Interface::ATM::Ip::AccessGroup::Out
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::Out::CommonAcl : public ydk::Entity
+class Native::Interface::ATM::Ip::AccessGroup::Out::CommonAcl : public ydk::Entity
 {
     public:
         CommonAcl();
@@ -2699,10 +2699,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::Out::CommonAc
         ydk::YLeaf common; //type: one of uint16, string
         ydk::YLeaf out; //type: empty
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::Out::CommonAcl
+}; // Native::Interface::ATM::Ip::AccessGroup::Out::CommonAcl
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::Out::Acl : public ydk::Entity
+class Native::Interface::ATM::Ip::AccessGroup::Out::Acl : public ydk::Entity
 {
     public:
         Acl();
@@ -2721,10 +2721,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::Out::Acl : pu
         ydk::YLeaf acl_name; //type: one of uint16, string
         ydk::YLeaf out; //type: empty
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::AccessGroup::Out::Acl
+}; // Native::Interface::ATM::Ip::AccessGroup::Out::Acl
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Arp : public ydk::Entity
+class Native::Interface::ATM::Ip::Arp : public ydk::Entity
 {
     public:
         Arp();
@@ -2740,14 +2740,14 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Arp : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Inspection; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Arp::Inspection
+        class Inspection; //type: Native::Interface::ATM::Ip::Arp::Inspection
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Arp::Inspection> inspection;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Arp::Inspection> inspection;
         
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Arp
+}; // Native::Interface::ATM::Ip::Arp
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Arp::Inspection : public ydk::Entity
+class Native::Interface::ATM::Ip::Arp::Inspection : public ydk::Entity
 {
     public:
         Inspection();
@@ -2764,14 +2764,14 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Arp::Inspection : public y
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf trust; //type: empty
-        class Limit; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Arp::Inspection::Limit
+        class Limit; //type: Native::Interface::ATM::Ip::Arp::Inspection::Limit
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Arp::Inspection::Limit> limit;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Arp::Inspection::Limit> limit;
         
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Arp::Inspection
+}; // Native::Interface::ATM::Ip::Arp::Inspection
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Arp::Inspection::Limit : public ydk::Entity
+class Native::Interface::ATM::Ip::Arp::Inspection::Limit : public ydk::Entity
 {
     public:
         Limit();
@@ -2790,10 +2790,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Arp::Inspection::Limit : p
         ydk::YLeaf none; //type: empty
         ydk::YLeaf rate; //type: uint32
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Arp::Inspection::Limit
+}; // Native::Interface::ATM::Ip::Arp::Inspection::Limit
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Vrf : public ydk::Entity
+class Native::Interface::ATM::Ip::Vrf : public ydk::Entity
 {
     public:
         Vrf();
@@ -2811,14 +2811,14 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Vrf : public ydk::Entity
 
         ydk::YLeaf receive; //type: string
         ydk::YLeaf sitemap; //type: string
-        class Forwarding; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Vrf::Forwarding
+        class Forwarding; //type: Native::Interface::ATM::Ip::Vrf::Forwarding
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Vrf::Forwarding> forwarding;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Vrf::Forwarding> forwarding;
         
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Vrf
+}; // Native::Interface::ATM::Ip::Vrf
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Vrf::Forwarding : public ydk::Entity
+class Native::Interface::ATM::Ip::Vrf::Forwarding : public ydk::Entity
 {
     public:
         Forwarding();
@@ -2838,10 +2838,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Vrf::Forwarding : public y
         ydk::YLeaf mgmtvrf; //type: empty
         ydk::YLeaf word; //type: string
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Vrf::Forwarding
+}; // Native::Interface::ATM::Ip::Vrf::Forwarding
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address : public ydk::Entity
+class Native::Interface::ATM::Ip::Address : public ydk::Entity
 {
     public:
         Address();
@@ -2858,18 +2858,18 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address : public ydk::Enti
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf negotiated; //type: empty
-        class Secondary; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address::Secondary
-        class Primary; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address::Primary
-        class Dhcp; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address::Dhcp
+        class Secondary; //type: Native::Interface::ATM::Ip::Address::Secondary
+        class Primary; //type: Native::Interface::ATM::Ip::Address::Primary
+        class Dhcp; //type: Native::Interface::ATM::Ip::Address::Dhcp
 
         ydk::YList secondary;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address::Primary> primary;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address::Dhcp> dhcp; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Address::Primary> primary;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Address::Dhcp> dhcp; // presence node
         
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address
+}; // Native::Interface::ATM::Ip::Address
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address::Secondary : public ydk::Entity
+class Native::Interface::ATM::Ip::Address::Secondary : public ydk::Entity
 {
     public:
         Secondary();
@@ -2889,10 +2889,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address::Secondary : publi
         ydk::YLeaf mask; //type: string
         ydk::YLeaf secondary; //type: empty
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address::Secondary
+}; // Native::Interface::ATM::Ip::Address::Secondary
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address::Primary : public ydk::Entity
+class Native::Interface::ATM::Ip::Address::Primary : public ydk::Entity
 {
     public:
         Primary();
@@ -2911,10 +2911,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address::Primary : public 
         ydk::YLeaf address; //type: string
         ydk::YLeaf mask; //type: string
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address::Primary
+}; // Native::Interface::ATM::Ip::Address::Primary
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address::Dhcp : public ydk::Entity
+class Native::Interface::ATM::Ip::Address::Dhcp : public ydk::Entity
 {
     public:
         Dhcp();
@@ -2931,14 +2931,14 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address::Dhcp : public ydk
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf hostname; //type: string
-        class ClientId; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address::Dhcp::ClientId
+        class ClientId; //type: Native::Interface::ATM::Ip::Address::Dhcp::ClientId
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address::Dhcp::ClientId> client_id;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Address::Dhcp::ClientId> client_id;
         
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address::Dhcp
+}; // Native::Interface::ATM::Ip::Address::Dhcp
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address::Dhcp::ClientId : public ydk::Entity
+class Native::Interface::ATM::Ip::Address::Dhcp::ClientId : public ydk::Entity
 {
     public:
         ClientId();
@@ -2966,10 +2966,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address::Dhcp::ClientId : 
         ydk::YLeaf hundredgige; //type: string
         ydk::YLeaf vlan; //type: uint16
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Address::Dhcp::ClientId
+}; // Native::Interface::ATM::Ip::Address::Dhcp::ClientId
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::DirectedBroadcast : public ydk::Entity
+class Native::Interface::ATM::Ip::DirectedBroadcast : public ydk::Entity
 {
     public:
         DirectedBroadcast();
@@ -2987,10 +2987,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::DirectedBroadcast : public
 
         ydk::YLeaf direct_broadcast; //type: one of uint16, string
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::DirectedBroadcast
+}; // Native::Interface::ATM::Ip::DirectedBroadcast
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::HelloInterval : public ydk::Entity
+class Native::Interface::ATM::Ip::HelloInterval : public ydk::Entity
 {
     public:
         HelloInterval();
@@ -3009,10 +3009,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::HelloInterval : public ydk
         ydk::YLeaf eigrp; //type: uint16
         ydk::YLeaf seconds; //type: uint16
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::HelloInterval
+}; // Native::Interface::ATM::Ip::HelloInterval
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Authentication : public ydk::Entity
+class Native::Interface::ATM::Ip::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -3028,16 +3028,16 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Authentication : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class KeyChain; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Authentication::KeyChain
-        class Mode; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Authentication::Mode
+        class KeyChain; //type: Native::Interface::ATM::Ip::Authentication::KeyChain
+        class Mode; //type: Native::Interface::ATM::Ip::Authentication::Mode
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Authentication::KeyChain> key_chain;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Authentication::Mode> mode;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Authentication::KeyChain> key_chain;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Authentication::Mode> mode;
         
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Authentication
+}; // Native::Interface::ATM::Ip::Authentication
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Authentication::KeyChain : public ydk::Entity
+class Native::Interface::ATM::Ip::Authentication::KeyChain : public ydk::Entity
 {
     public:
         KeyChain();
@@ -3056,10 +3056,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Authentication::KeyChain :
         ydk::YLeaf eigrp; //type: uint16
         ydk::YLeaf name; //type: string
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Authentication::KeyChain
+}; // Native::Interface::ATM::Ip::Authentication::KeyChain
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Authentication::Mode : public ydk::Entity
+class Native::Interface::ATM::Ip::Authentication::Mode : public ydk::Entity
 {
     public:
         Mode();
@@ -3078,10 +3078,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Authentication::Mode : pub
         ydk::YLeaf eigrp; //type: uint16
         ydk::YLeaf md5; //type: empty
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Authentication::Mode
+}; // Native::Interface::ATM::Ip::Authentication::Mode
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::HoldTime : public ydk::Entity
+class Native::Interface::ATM::Ip::HoldTime : public ydk::Entity
 {
     public:
         HoldTime();
@@ -3100,10 +3100,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::HoldTime : public ydk::Ent
         ydk::YLeaf eigrp; //type: uint16
         ydk::YLeaf seconds; //type: uint16
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::HoldTime
+}; // Native::Interface::ATM::Ip::HoldTime
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::HelperAddress : public ydk::Entity
+class Native::Interface::ATM::Ip::HelperAddress : public ydk::Entity
 {
     public:
         HelperAddress();
@@ -3123,10 +3123,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::HelperAddress : public ydk
         ydk::YLeaf global; //type: empty
         ydk::YLeaf vrf; //type: string
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::HelperAddress
+}; // Native::Interface::ATM::Ip::HelperAddress
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Pim : public ydk::Entity
+class Native::Interface::ATM::Ip::Pim : public ydk::Entity
 {
     public:
         Pim();
@@ -3143,10 +3143,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Pim : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Pim
+}; // Native::Interface::ATM::Ip::Pim
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Policy : public ydk::Entity
+class Native::Interface::ATM::Ip::Policy : public ydk::Entity
 {
     public:
         Policy();
@@ -3164,10 +3164,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Policy : public ydk::Entit
 
         ydk::YLeaf route_map; //type: string
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Policy
+}; // Native::Interface::ATM::Ip::Policy
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Rip : public ydk::Entity
+class Native::Interface::ATM::Ip::Rip : public ydk::Entity
 {
     public:
         Rip();
@@ -3183,14 +3183,14 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Rip : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Authentication; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Rip::Authentication
+        class Authentication; //type: Native::Interface::ATM::Ip::Rip::Authentication
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Rip::Authentication> authentication;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Rip::Authentication> authentication;
         
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Rip
+}; // Native::Interface::ATM::Ip::Rip
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Rip::Authentication : public ydk::Entity
+class Native::Interface::ATM::Ip::Rip::Authentication : public ydk::Entity
 {
     public:
         Authentication();
@@ -3207,14 +3207,14 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Rip::Authentication : publ
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf key_chain; //type: string
-        class Mode; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Rip::Authentication::Mode
+        class Mode; //type: Native::Interface::ATM::Ip::Rip::Authentication::Mode
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Rip::Authentication::Mode> mode;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Rip::Authentication::Mode> mode;
         
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Rip::Authentication
+}; // Native::Interface::ATM::Ip::Rip::Authentication
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Rip::Authentication::Mode : public ydk::Entity
+class Native::Interface::ATM::Ip::Rip::Authentication::Mode : public ydk::Entity
 {
     public:
         Mode();
@@ -3233,10 +3233,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Rip::Authentication::Mode 
         ydk::YLeaf md5; //type: empty
         ydk::YLeaf text; //type: empty
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Rip::Authentication::Mode
+}; // Native::Interface::ATM::Ip::Rip::Authentication::Mode
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::RouteCacheConf : public ydk::Entity
+class Native::Interface::ATM::Ip::RouteCacheConf : public ydk::Entity
 {
     public:
         RouteCacheConf();
@@ -3254,10 +3254,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::RouteCacheConf : public yd
 
         ydk::YLeaf route_cache; //type: boolean
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::RouteCacheConf
+}; // Native::Interface::ATM::Ip::RouteCacheConf
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::RouteCache : public ydk::Entity
+class Native::Interface::ATM::Ip::RouteCache : public ydk::Entity
 {
     public:
         RouteCache();
@@ -3278,10 +3278,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::RouteCache : public ydk::E
         ydk::YLeaf policy; //type: boolean
         ydk::YLeaf same_interface; //type: boolean
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::RouteCache
+}; // Native::Interface::ATM::Ip::RouteCache
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Router : public ydk::Entity
+class Native::Interface::ATM::Ip::Router : public ydk::Entity
 {
     public:
         Router();
@@ -3297,14 +3297,14 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Router : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Isis; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Router::Isis
+        class Isis; //type: Native::Interface::ATM::Ip::Router::Isis
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Router::Isis> isis; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Router::Isis> isis; // presence node
         
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Router
+}; // Native::Interface::ATM::Ip::Router
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Router::Isis : public ydk::Entity
+class Native::Interface::ATM::Ip::Router::Isis : public ydk::Entity
 {
     public:
         Isis();
@@ -3322,10 +3322,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Router::Isis : public ydk:
 
         ydk::YLeaf tag; //type: string
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Router::Isis
+}; // Native::Interface::ATM::Ip::Router::Isis
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Tcp : public ydk::Entity
+class Native::Interface::ATM::Ip::Tcp : public ydk::Entity
 {
     public:
         Tcp();
@@ -3343,10 +3343,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Tcp : public ydk::Entity
 
         ydk::YLeaf adjust_mss; //type: uint16
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Tcp
+}; // Native::Interface::ATM::Ip::Tcp
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::VirtualReassembly : public ydk::Entity
+class Native::Interface::ATM::Ip::VirtualReassembly : public ydk::Entity
 {
     public:
         VirtualReassembly();
@@ -3368,10 +3368,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::VirtualReassembly : public
         ydk::YLeaf drop_fragments; //type: empty
         ydk::YLeaf in; //type: empty
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::VirtualReassembly
+}; // Native::Interface::ATM::Ip::VirtualReassembly
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Dhcp : public ydk::Entity
+class Native::Interface::ATM::Ip::Dhcp : public ydk::Entity
 {
     public:
         Dhcp();
@@ -3388,10 +3388,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Dhcp : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Dhcp
+}; // Native::Interface::ATM::Ip::Dhcp
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::SummaryAddress : public ydk::Entity
+class Native::Interface::ATM::Ip::SummaryAddress : public ydk::Entity
 {
     public:
         SummaryAddress();
@@ -3407,14 +3407,14 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::SummaryAddress : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Eigrp; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::SummaryAddress::Eigrp
+        class Eigrp; //type: Native::Interface::ATM::Ip::SummaryAddress::Eigrp
 
         ydk::YList eigrp;
         
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::SummaryAddress
+}; // Native::Interface::ATM::Ip::SummaryAddress
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::SummaryAddress::Eigrp : public ydk::Entity
+class Native::Interface::ATM::Ip::SummaryAddress::Eigrp : public ydk::Entity
 {
     public:
         Eigrp();
@@ -3435,10 +3435,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::SummaryAddress::Eigrp : pu
         ydk::YLeaf mask; //type: string
         ydk::YLeaf metric; //type: uint32
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::SummaryAddress::Eigrp
+}; // Native::Interface::ATM::Ip::SummaryAddress::Eigrp
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify : public ydk::Entity
+class Native::Interface::ATM::Ip::Verify : public ydk::Entity
 {
     public:
         Verify();
@@ -3454,16 +3454,16 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Source; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Source
-        class Unicast; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Unicast
+        class Source; //type: Native::Interface::ATM::Ip::Verify::Source
+        class Unicast; //type: Native::Interface::ATM::Ip::Verify::Unicast
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Source> source; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Unicast> unicast;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Verify::Source> source; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Verify::Unicast> unicast;
         
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify
+}; // Native::Interface::ATM::Ip::Verify
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Source : public ydk::Entity
+class Native::Interface::ATM::Ip::Verify::Source : public ydk::Entity
 {
     public:
         Source();
@@ -3479,14 +3479,14 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Source : public yd
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class Vlan; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Source::Vlan
+        class Vlan; //type: Native::Interface::ATM::Ip::Verify::Source::Vlan
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Source::Vlan> vlan;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Verify::Source::Vlan> vlan;
         
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Source
+}; // Native::Interface::ATM::Ip::Verify::Source
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Source::Vlan : public ydk::Entity
+class Native::Interface::ATM::Ip::Verify::Source::Vlan : public ydk::Entity
 {
     public:
         Vlan();
@@ -3502,14 +3502,14 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Source::Vlan : pub
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class DhcpSnooping; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Source::Vlan::DhcpSnooping
+        class DhcpSnooping; //type: Native::Interface::ATM::Ip::Verify::Source::Vlan::DhcpSnooping
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Source::Vlan::DhcpSnooping> dhcp_snooping; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Verify::Source::Vlan::DhcpSnooping> dhcp_snooping; // presence node
         
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Source::Vlan
+}; // Native::Interface::ATM::Ip::Verify::Source::Vlan
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Source::Vlan::DhcpSnooping : public ydk::Entity
+class Native::Interface::ATM::Ip::Verify::Source::Vlan::DhcpSnooping : public ydk::Entity
 {
     public:
         DhcpSnooping();
@@ -3527,10 +3527,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Source::Vlan::Dhcp
 
         ydk::YLeaf port_security; //type: empty
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Source::Vlan::DhcpSnooping
+}; // Native::Interface::ATM::Ip::Verify::Source::Vlan::DhcpSnooping
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Unicast : public ydk::Entity
+class Native::Interface::ATM::Ip::Verify::Unicast : public ydk::Entity
 {
     public:
         Unicast();
@@ -3546,16 +3546,16 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Unicast : public y
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        class ReversePath; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Unicast::ReversePath
-        class Source; //type: Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Unicast::Source
+        class ReversePath; //type: Native::Interface::ATM::Ip::Verify::Unicast::ReversePath
+        class Source; //type: Native::Interface::ATM::Ip::Verify::Unicast::Source
 
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Unicast::ReversePath> reverse_path; // presence node
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Unicast::Source> source;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Verify::Unicast::ReversePath> reverse_path; // presence node
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATM::Ip::Verify::Unicast::Source> source;
         
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Unicast
+}; // Native::Interface::ATM::Ip::Verify::Unicast
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Unicast::ReversePath : public ydk::Entity
+class Native::Interface::ATM::Ip::Verify::Unicast::ReversePath : public ydk::Entity
 {
     public:
         ReversePath();
@@ -3572,10 +3572,10 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Unicast::ReversePa
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Unicast::ReversePath
+}; // Native::Interface::ATM::Ip::Verify::Unicast::ReversePath
 
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Unicast::Source : public ydk::Entity
+class Native::Interface::ATM::Ip::Verify::Unicast::Source : public ydk::Entity
 {
     public:
         Source();
@@ -3596,7 +3596,7 @@ class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Unicast::Source : 
         ydk::YLeaf allow_default; //type: empty
         class ReachableVia;
 
-}; // Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Unicast::Source
+}; // Native::Interface::ATM::Ip::Verify::Unicast::Source
 
 
 class Native::Interface::ATM::Ipv6 : public ydk::Entity
@@ -3805,7 +3805,7 @@ class Native::Interface::ATM::HoldQueue::Direction : public ydk::Enum
 
 };
 
-class Native::Interface::ATM::CiscoIOSXEInterfacesIp::Verify::Unicast::Source::ReachableVia : public ydk::Enum
+class Native::Interface::ATM::Ip::Verify::Unicast::Source::ReachableVia : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf any;

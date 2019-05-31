@@ -332,6 +332,313 @@ bool HardwareModuleQosMode::Nodes::Node::has_leaf_or_child_of_name(const std::st
     return false;
 }
 
+HardwareModuleProcessor::HardwareModuleProcessor()
+    :
+    nodes(std::make_shared<HardwareModuleProcessor::Nodes>())
+{
+    nodes->parent = this;
+
+    yang_name = "hardware-module-processor"; yang_parent_name = "Cisco-IOS-XR-asr9k-prm-cfg"; is_top_level_class = true; has_list_ancestor = false; 
+}
+
+HardwareModuleProcessor::~HardwareModuleProcessor()
+{
+}
+
+bool HardwareModuleProcessor::has_data() const
+{
+    if (is_presence_container) return true;
+    return (nodes !=  nullptr && nodes->has_data());
+}
+
+bool HardwareModuleProcessor::has_operation() const
+{
+    return is_set(yfilter)
+	|| (nodes !=  nullptr && nodes->has_operation());
+}
+
+std::string HardwareModuleProcessor::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-asr9k-prm-cfg:hardware-module-processor";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleProcessor::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> HardwareModuleProcessor::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "nodes")
+    {
+        if(nodes == nullptr)
+        {
+            nodes = std::make_shared<HardwareModuleProcessor::Nodes>();
+        }
+        return nodes;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModuleProcessor::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(nodes != nullptr)
+    {
+        _children["nodes"] = nodes;
+    }
+
+    return _children;
+}
+
+void HardwareModuleProcessor::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HardwareModuleProcessor::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+std::shared_ptr<ydk::Entity> HardwareModuleProcessor::clone_ptr() const
+{
+    return std::make_shared<HardwareModuleProcessor>();
+}
+
+std::string HardwareModuleProcessor::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xr_models_path;
+}
+
+std::string HardwareModuleProcessor::get_bundle_name() const
+{
+    return "cisco_ios_xr";
+}
+
+augment_capabilities_function HardwareModuleProcessor::get_augment_capabilities_function() const
+{
+    return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> HardwareModuleProcessor::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool HardwareModuleProcessor::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes")
+        return true;
+    return false;
+}
+
+HardwareModuleProcessor::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
+{
+
+    yang_name = "nodes"; yang_parent_name = "hardware-module-processor"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+HardwareModuleProcessor::Nodes::~Nodes()
+{
+}
+
+bool HardwareModuleProcessor::Nodes::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
+    {
+        if(node[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool HardwareModuleProcessor::Nodes::has_operation() const
+{
+    for (std::size_t index=0; index<node.len(); index++)
+    {
+        if(node[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string HardwareModuleProcessor::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-asr9k-prm-cfg:hardware-module-processor/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string HardwareModuleProcessor::Nodes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nodes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleProcessor::Nodes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> HardwareModuleProcessor::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "node")
+    {
+        auto ent_ = std::make_shared<HardwareModuleProcessor::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModuleProcessor::Nodes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void HardwareModuleProcessor::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HardwareModuleProcessor::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HardwareModuleProcessor::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
+}
+
+HardwareModuleProcessor::Nodes::Node::Node()
+    :
+    node_name{YType::str, "node-name"},
+    mode{YType::enumeration, "mode"}
+{
+
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+HardwareModuleProcessor::Nodes::Node::~Node()
+{
+}
+
+bool HardwareModuleProcessor::Nodes::Node::has_data() const
+{
+    if (is_presence_container) return true;
+    return node_name.is_set
+	|| mode.is_set;
+}
+
+bool HardwareModuleProcessor::Nodes::Node::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
+	|| ydk::is_set(mode.yfilter);
+}
+
+std::string HardwareModuleProcessor::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-asr9k-prm-cfg:hardware-module-processor/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string HardwareModuleProcessor::Nodes::Node::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleProcessor::Nodes::Node::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (mode.is_set || is_set(mode.yfilter)) leaf_name_data.push_back(mode.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> HardwareModuleProcessor::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModuleProcessor::Nodes::Node::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void HardwareModuleProcessor::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node-name")
+    {
+        node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "mode")
+    {
+        mode = value;
+        mode.value_namespace = name_space;
+        mode.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleProcessor::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+    if(value_path == "mode")
+    {
+        mode.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleProcessor::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-name" || name == "mode")
+        return true;
+    return false;
+}
+
 HardwareModuleTcpMssAdjust::HardwareModuleTcpMssAdjust()
     :
     nodes(std::make_shared<HardwareModuleTcpMssAdjust::Nodes>())
@@ -1148,6 +1455,398 @@ void HardwareModuleTcam::Nodes::Node::set_filter(const std::string & value_path,
 bool HardwareModuleTcam::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "node-name" || name == "profile")
+        return true;
+    return false;
+}
+
+HardwareModuleProfile::HardwareModuleProfile()
+    :
+    feature{YType::enumeration, "feature"},
+    scale_active{YType::enumeration, "scale-active"},
+    package_bundle{YType::enumeration, "package-bundle"},
+    feature_active{YType::enumeration, "feature-active"},
+    scale{YType::enumeration, "scale"}
+        ,
+    nodes(std::make_shared<HardwareModuleProfile::Nodes>())
+{
+    nodes->parent = this;
+
+    yang_name = "hardware-module-profile"; yang_parent_name = "Cisco-IOS-XR-asr9k-prm-cfg"; is_top_level_class = true; has_list_ancestor = false; 
+}
+
+HardwareModuleProfile::~HardwareModuleProfile()
+{
+}
+
+bool HardwareModuleProfile::has_data() const
+{
+    if (is_presence_container) return true;
+    return feature.is_set
+	|| scale_active.is_set
+	|| package_bundle.is_set
+	|| feature_active.is_set
+	|| scale.is_set
+	|| (nodes !=  nullptr && nodes->has_data());
+}
+
+bool HardwareModuleProfile::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(feature.yfilter)
+	|| ydk::is_set(scale_active.yfilter)
+	|| ydk::is_set(package_bundle.yfilter)
+	|| ydk::is_set(feature_active.yfilter)
+	|| ydk::is_set(scale.yfilter)
+	|| (nodes !=  nullptr && nodes->has_operation());
+}
+
+std::string HardwareModuleProfile::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-asr9k-prm-cfg:hardware-module-profile";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleProfile::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (feature.is_set || is_set(feature.yfilter)) leaf_name_data.push_back(feature.get_name_leafdata());
+    if (scale_active.is_set || is_set(scale_active.yfilter)) leaf_name_data.push_back(scale_active.get_name_leafdata());
+    if (package_bundle.is_set || is_set(package_bundle.yfilter)) leaf_name_data.push_back(package_bundle.get_name_leafdata());
+    if (feature_active.is_set || is_set(feature_active.yfilter)) leaf_name_data.push_back(feature_active.get_name_leafdata());
+    if (scale.is_set || is_set(scale.yfilter)) leaf_name_data.push_back(scale.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> HardwareModuleProfile::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "nodes")
+    {
+        if(nodes == nullptr)
+        {
+            nodes = std::make_shared<HardwareModuleProfile::Nodes>();
+        }
+        return nodes;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModuleProfile::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(nodes != nullptr)
+    {
+        _children["nodes"] = nodes;
+    }
+
+    return _children;
+}
+
+void HardwareModuleProfile::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "feature")
+    {
+        feature = value;
+        feature.value_namespace = name_space;
+        feature.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "scale-active")
+    {
+        scale_active = value;
+        scale_active.value_namespace = name_space;
+        scale_active.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "package-bundle")
+    {
+        package_bundle = value;
+        package_bundle.value_namespace = name_space;
+        package_bundle.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "feature-active")
+    {
+        feature_active = value;
+        feature_active.value_namespace = name_space;
+        feature_active.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "scale")
+    {
+        scale = value;
+        scale.value_namespace = name_space;
+        scale.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleProfile::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "feature")
+    {
+        feature.yfilter = yfilter;
+    }
+    if(value_path == "scale-active")
+    {
+        scale_active.yfilter = yfilter;
+    }
+    if(value_path == "package-bundle")
+    {
+        package_bundle.yfilter = yfilter;
+    }
+    if(value_path == "feature-active")
+    {
+        feature_active.yfilter = yfilter;
+    }
+    if(value_path == "scale")
+    {
+        scale.yfilter = yfilter;
+    }
+}
+
+std::shared_ptr<ydk::Entity> HardwareModuleProfile::clone_ptr() const
+{
+    return std::make_shared<HardwareModuleProfile>();
+}
+
+std::string HardwareModuleProfile::get_bundle_yang_models_location() const
+{
+    return ydk_cisco_ios_xr_models_path;
+}
+
+std::string HardwareModuleProfile::get_bundle_name() const
+{
+    return "cisco_ios_xr";
+}
+
+augment_capabilities_function HardwareModuleProfile::get_augment_capabilities_function() const
+{
+    return cisco_ios_xr_augment_lookup_tables;
+}
+
+std::map<std::pair<std::string, std::string>, std::string> HardwareModuleProfile::get_namespace_identity_lookup() const
+{
+    return cisco_ios_xr_namespace_identity_lookup;
+}
+
+bool HardwareModuleProfile::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "nodes" || name == "feature" || name == "scale-active" || name == "package-bundle" || name == "feature-active" || name == "scale")
+        return true;
+    return false;
+}
+
+HardwareModuleProfile::Nodes::Nodes()
+    :
+    node(this, {"node_name"})
+{
+
+    yang_name = "nodes"; yang_parent_name = "hardware-module-profile"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+HardwareModuleProfile::Nodes::~Nodes()
+{
+}
+
+bool HardwareModuleProfile::Nodes::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<node.len(); index++)
+    {
+        if(node[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool HardwareModuleProfile::Nodes::has_operation() const
+{
+    for (std::size_t index=0; index<node.len(); index++)
+    {
+        if(node[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string HardwareModuleProfile::Nodes::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-asr9k-prm-cfg:hardware-module-profile/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string HardwareModuleProfile::Nodes::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "nodes";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleProfile::Nodes::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> HardwareModuleProfile::Nodes::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "node")
+    {
+        auto ent_ = std::make_shared<HardwareModuleProfile::Nodes::Node>();
+        ent_->parent = this;
+        node.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModuleProfile::Nodes::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : node.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void HardwareModuleProfile::Nodes::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void HardwareModuleProfile::Nodes::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool HardwareModuleProfile::Nodes::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node")
+        return true;
+    return false;
+}
+
+HardwareModuleProfile::Nodes::Node::Node()
+    :
+    node_name{YType::str, "node-name"},
+    tcam_partition{YType::enumeration, "tcam-partition"},
+    internal_tcam_partition{YType::enumeration, "internal-tcam-partition"}
+{
+
+    yang_name = "node"; yang_parent_name = "nodes"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+HardwareModuleProfile::Nodes::Node::~Node()
+{
+}
+
+bool HardwareModuleProfile::Nodes::Node::has_data() const
+{
+    if (is_presence_container) return true;
+    return node_name.is_set
+	|| tcam_partition.is_set
+	|| internal_tcam_partition.is_set;
+}
+
+bool HardwareModuleProfile::Nodes::Node::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(node_name.yfilter)
+	|| ydk::is_set(tcam_partition.yfilter)
+	|| ydk::is_set(internal_tcam_partition.yfilter);
+}
+
+std::string HardwareModuleProfile::Nodes::Node::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-asr9k-prm-cfg:hardware-module-profile/nodes/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string HardwareModuleProfile::Nodes::Node::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "node";
+    ADD_KEY_TOKEN(node_name, "node-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > HardwareModuleProfile::Nodes::Node::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (node_name.is_set || is_set(node_name.yfilter)) leaf_name_data.push_back(node_name.get_name_leafdata());
+    if (tcam_partition.is_set || is_set(tcam_partition.yfilter)) leaf_name_data.push_back(tcam_partition.get_name_leafdata());
+    if (internal_tcam_partition.is_set || is_set(internal_tcam_partition.yfilter)) leaf_name_data.push_back(internal_tcam_partition.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> HardwareModuleProfile::Nodes::Node::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> HardwareModuleProfile::Nodes::Node::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void HardwareModuleProfile::Nodes::Node::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "node-name")
+    {
+        node_name = value;
+        node_name.value_namespace = name_space;
+        node_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "tcam-partition")
+    {
+        tcam_partition = value;
+        tcam_partition.value_namespace = name_space;
+        tcam_partition.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "internal-tcam-partition")
+    {
+        internal_tcam_partition = value;
+        internal_tcam_partition.value_namespace = name_space;
+        internal_tcam_partition.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void HardwareModuleProfile::Nodes::Node::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "node-name")
+    {
+        node_name.yfilter = yfilter;
+    }
+    if(value_path == "tcam-partition")
+    {
+        tcam_partition.yfilter = yfilter;
+    }
+    if(value_path == "internal-tcam-partition")
+    {
+        internal_tcam_partition.yfilter = yfilter;
+    }
+}
+
+bool HardwareModuleProfile::Nodes::Node::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "node-name" || name == "tcam-partition" || name == "internal-tcam-partition")
         return true;
     return false;
 }
@@ -3605,11 +4304,38 @@ bool HardwareModuleAllQosMode::has_leaf_or_child_of_name(const std::string & nam
     return false;
 }
 
-const Enum::YLeaf Asr9kEfdMode::only_outer_encap {0, "only-outer-encap"};
-const Enum::YLeaf Asr9kEfdMode::include_inner_encap {1, "include-inner-encap"};
+const Enum::YLeaf AdminPrmConfigInternalTcamPartProfile::to_default {0, "to-default"};
+const Enum::YLeaf AdminPrmConfigInternalTcamPartProfile::to_profile_se1 {1, "to-profile-se1"};
+
+const Enum::YLeaf AdminPrmConfigPackageBundle::default_ {0, "default"};
+const Enum::YLeaf AdminPrmConfigPackageBundle::services {9, "services"};
+
+const Enum::YLeaf AdminPrmConfigTcamPartProfile::default_ {0, "default"};
+const Enum::YLeaf AdminPrmConfigTcamPartProfile::ods2_30_ods8_70 {1, "ods2-30-ods8-70"};
+const Enum::YLeaf AdminPrmConfigTcamPartProfile::ods2_40_ods8_60 {2, "ods2-40-ods8-60"};
+const Enum::YLeaf AdminPrmConfigTcamPartProfile::ods2_50_ods8_50 {3, "ods2-50-ods8-50"};
+const Enum::YLeaf AdminPrmConfigTcamPartProfile::ods2_70_ods8_30 {4, "ods2-70-ods8-30"};
+
+const Enum::YLeaf AdminPrmConfigFeatureProfile::default_ {0, "default"};
+const Enum::YLeaf AdminPrmConfigFeatureProfile::l2 {8, "l2"};
+
+const Enum::YLeaf PrmProcessorConfig::mode_default {0, "mode-default"};
+const Enum::YLeaf PrmProcessorConfig::mode_full {1, "mode-full"};
 
 const Enum::YLeaf Asr9kEfdOperation::less_than {2, "less-than"};
 const Enum::YLeaf Asr9kEfdOperation::greater_than_or_equal {3, "greater-than-or-equal"};
+
+const Enum::YLeaf Asr9kEfdMode::only_outer_encap {0, "only-outer-encap"};
+const Enum::YLeaf Asr9kEfdMode::include_inner_encap {1, "include-inner-encap"};
+
+const Enum::YLeaf AdminPrmConfigScaleProfile::default_ {0, "default"};
+const Enum::YLeaf AdminPrmConfigScaleProfile::l2 {1, "l2"};
+const Enum::YLeaf AdminPrmConfigScaleProfile::l3 {2, "l3"};
+const Enum::YLeaf AdminPrmConfigScaleProfile::l3xl {3, "l3xl"};
+const Enum::YLeaf AdminPrmConfigScaleProfile::bng {4, "bng"};
+const Enum::YLeaf AdminPrmConfigScaleProfile::lsr {5, "lsr"};
+const Enum::YLeaf AdminPrmConfigScaleProfile::sat {6, "sat"};
+const Enum::YLeaf AdminPrmConfigScaleProfile::sfp {7, "sfp"};
 
 const Enum::YLeaf PrmTcamProfile::profile0 {0, "profile0"};
 const Enum::YLeaf PrmTcamProfile::profile1 {1, "profile1"};

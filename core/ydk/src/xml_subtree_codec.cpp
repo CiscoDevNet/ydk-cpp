@@ -56,12 +56,15 @@ std::string XmlSubtreeCodec::encode(Entity & entity, path::RootSchemaNode & root
     auto & root_data_node = root_schema.create_datanode(root_path.path);
     xmlDocPtr doc = xmlNewDoc(to_xmlchar("1.0"));
     xmlNodePtr root_node = xmlNewNode(NULL, to_xmlchar(entity.yang_name));
+    xmlDocSetRootElement(doc, root_node);
     set_xml_namespace(root_data_node.get_schema_node().get_statement().name_space, root_node);
 
     populate_xml_node_contents(root_data_node.get_schema_node(), root_path, root_node);
     walk_children(entity, root_data_node.get_schema_node(), root_node);
 
-    return to_string(doc, root_node);
+    string xml_str = to_string(doc, root_node);
+    xmlFreeDoc(doc);
+    return xml_str;
 }
 
 static void walk_children(Entity & entity, const path::SchemaNode & schema, xmlNodePtr xml_node)
@@ -193,9 +196,11 @@ std::shared_ptr<Entity> XmlSubtreeCodec::decode(const std::string & payload, std
     xmlNodePtr root = xmlDocGetRootElement(doc);
     if(entity->yang_name != to_string(root->name))
     {
-        throw YServiceProviderError{"Wrong entity"};
+        YLOG_ERROR("XmlSubtreeCodec::decode(): Top entity '{}' does not match the payload", entity->yang_name);
+    	throw YServiceProviderError{"Top entity does not match the payload"};
     }
     decode_xml(doc, root->children, *entity, nullptr, "");
+    xmlFreeDoc(doc);
     return entity;
 }
 
@@ -254,6 +259,7 @@ static void check_and_set_content(Entity & entity, const string & leaf_name, xml
                 name_space_prefix = to_string(ns->prefix);
                 break;
             }
+            xmlFree(nsList);
         }
         string c = resolve_leaf_value_namespace(to_string(content), name_space, name_space_prefix, &entity);
 

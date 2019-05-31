@@ -377,8 +377,8 @@ class Native::Interface::VirtualTemplate::Ip::Igmp::StaticGroup::Groups : public
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf name; //type: one of string, enumeration
-        ydk::YLeafList source; //type: list of  one of string, enumeration
+        ydk::YLeaf name; //type: one of enumeration, string
+        ydk::YLeafList source; //type: list of  one of enumeration, string
         class Name;
         class Source;
 
@@ -1100,7 +1100,7 @@ class Native::Interface::VirtualTemplate::Standby::StandbyList : public ydk::Ent
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of string, enumeration
+        ydk::YLeaf ipv6; //type: one of enumeration, string
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -3478,7 +3478,7 @@ class Native::Interface::VirtualTemplate::Pppoe::Enable : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf group; //type: one of string, enumeration
+        ydk::YLeaf group; //type: one of enumeration, string
         class Group;
 
 }; // Native::Interface::VirtualTemplate::Pppoe::Enable

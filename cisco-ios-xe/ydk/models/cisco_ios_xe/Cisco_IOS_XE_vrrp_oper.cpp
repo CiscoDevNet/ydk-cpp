@@ -753,6 +753,8 @@ bool VrrpOperData::VrrpOperState::TrackList::has_leaf_or_child_of_name(const std
     return false;
 }
 
+const Enum::YLeaf ProtoVersion::vrrp_v3 {1, "vrrp-v3"};
+
 const Enum::YLeaf MasterReason::reason_not_master {0, "reason-not-master"};
 const Enum::YLeaf MasterReason::reason_priority {1, "reason-priority"};
 const Enum::YLeaf MasterReason::reason_preempt {2, "reason-preempt"};
@@ -763,13 +765,11 @@ const Enum::YLeaf VrrpProtoState::proto_state_backup {2, "proto-state-backup"};
 const Enum::YLeaf VrrpProtoState::proto_state_master {3, "proto-state-master"};
 const Enum::YLeaf VrrpProtoState::proto_state_recover {4, "proto-state-recover"};
 
-const Enum::YLeaf ProtoVersion::vrrp_v3 {1, "vrrp-v3"};
+const Enum::YLeaf OmpStateUpdown::omp_up {0, "omp-up"};
+const Enum::YLeaf OmpStateUpdown::omp_down {1, "omp-down"};
 
 const Enum::YLeaf TrackState::vrrp_track_state_resolved {0, "vrrp-track-state-resolved"};
 const Enum::YLeaf TrackState::vrrp_track_state_unresolved {1, "vrrp-track-state-unresolved"};
-
-const Enum::YLeaf OmpStateUpdown::omp_up {0, "omp-up"};
-const Enum::YLeaf OmpStateUpdown::omp_down {1, "omp-down"};
 
 
 }

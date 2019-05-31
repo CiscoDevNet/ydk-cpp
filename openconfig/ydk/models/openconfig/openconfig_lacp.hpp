@@ -300,22 +300,6 @@ class Lacp::Interfaces::Interface::Members::Member::State::Counters : public ydk
 
 }; // Lacp::Interfaces::Interface::Members::Member::State::Counters
 
-class LacpTimeoutType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf LONG;
-        static const ydk::Enum::YLeaf SHORT;
-
-};
-
-class LacpPeriodType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf FAST;
-        static const ydk::Enum::YLeaf SLOW;
-
-};
-
 class LacpActivityType : public ydk::Enum
 {
     public:
@@ -324,11 +308,27 @@ class LacpActivityType : public ydk::Enum
 
 };
 
+class LacpTimeoutType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf LONG;
+        static const ydk::Enum::YLeaf SHORT;
+
+};
+
 class LacpSynchronizationType : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf IN_SYNC;
         static const ydk::Enum::YLeaf OUT_SYNC;
+
+};
+
+class LacpPeriodType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf FAST;
+        static const ydk::Enum::YLeaf SLOW;
 
 };
 

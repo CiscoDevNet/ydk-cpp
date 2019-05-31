@@ -320,12 +320,16 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base : public ydk::Entity
         class DefaultProfile; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DefaultProfile
         class Match; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match
         class BaseRelayOpt; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseRelayOpt
+        class DhcpToAaa; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DhcpToAaa
         class BaseMatch; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch
+        class MatchDefault; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::MatchDefault
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DefaultProfile> default_profile;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::Match> match;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseRelayOpt> base_relay_opt;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DhcpToAaa> dhcp_to_aaa;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch> base_match;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::MatchDefault> match_default;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base
 
@@ -491,6 +495,74 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseRelayOpt : public ydk
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseRelayOpt
 
 
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DhcpToAaa : public ydk::Entity
+{
+    public:
+        DhcpToAaa();
+        ~DhcpToAaa();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class BaseOption; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DhcpToAaa::BaseOption
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DhcpToAaa::BaseOption> base_option;
+        
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DhcpToAaa
+
+
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DhcpToAaa::BaseOption : public ydk::Entity
+{
+    public:
+        BaseOption();
+        ~BaseOption();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class List; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DhcpToAaa::BaseOption::List
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DhcpToAaa::BaseOption::List> list;
+        
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DhcpToAaa::BaseOption
+
+
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DhcpToAaa::BaseOption::List : public ydk::Entity
+{
+    public:
+        List();
+        ~List();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf option_all; //type: uint32
+        ydk::YLeafList option; //type: list of  uint32
+
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::DhcpToAaa::BaseOption::List
+
+
 class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch : public ydk::Entity
 {
     public:
@@ -508,8 +580,10 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch : public ydk::E
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         class Options; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options
+        class ModeClasses; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::ModeClasses
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options> options;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::ModeClasses> mode_classes;
         
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch
 
@@ -583,6 +657,120 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Optio
         ydk::YLeaf profile_mode; //type: uint32
 
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::Options::Option::OptionProfile
+
+
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::ModeClasses : public ydk::Entity
+{
+    public:
+        ModeClasses();
+        ~ModeClasses();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class ModeClass; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::ModeClasses::ModeClass
+
+        ydk::YList mode_class;
+        
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::ModeClasses
+
+
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::ModeClasses::ModeClass : public ydk::Entity
+{
+    public:
+        ModeClass();
+        ~ModeClass();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf class_name; //type: string
+        class Profile_; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::ModeClasses::ModeClass::Profile_
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::ModeClasses::ModeClass::Profile_> profile;
+        
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::ModeClasses::ModeClass
+
+
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::ModeClasses::ModeClass::Profile_ : public ydk::Entity
+{
+    public:
+        Profile_();
+        ~Profile_();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf profile_name; //type: string
+        ydk::YLeaf mode; //type: Ipv4ModeClassMode
+
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::BaseMatch::ModeClasses::ModeClass::Profile_
+
+
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::MatchDefault : public ydk::Entity
+{
+    public:
+        MatchDefault();
+        ~MatchDefault();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class Profile_; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::MatchDefault::Profile_
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::MatchDefault::Profile_> profile;
+        
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::MatchDefault
+
+
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::MatchDefault::Profile_ : public ydk::Entity
+{
+    public:
+        Profile_();
+        ~Profile_();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf profile_name; //type: string
+        ydk::YLeaf default_mode; //type: Ipv4MatchDefaultMode
+
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Base::MatchDefault::Profile_
 
 
 class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Server : public ydk::Entity
@@ -1697,8 +1885,33 @@ class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::RelayInformationOption :
         ydk::YLeaf vpn; //type: empty
         ydk::YLeaf allow_untrusted; //type: empty
         ydk::YLeaf policy; //type: Ipv4dhcpdRelayInfoOptionPolicy
+        class RemoteId; //type: Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::RelayInformationOption::RemoteId
 
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_dhcpd_cfg::Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::RelayInformationOption::RemoteId> remote_id;
+        
 }; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::RelayInformationOption
+
+
+class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::RelayInformationOption::RemoteId : public ydk::Entity
+{
+    public:
+        RemoteId();
+        ~RemoteId();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf format_type; //type: uint32
+        ydk::YLeaf remote_id_value; //type: string
+
+}; // Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::RelayInformationOption::RemoteId
 
 
 class Ipv4Dhcpd::Profiles::Profile::Modes::Mode::Relay::BroadcastPolicy : public ydk::Entity
@@ -2960,28 +3173,46 @@ class Ipv4Dhcpd::RateLimit : public ydk::Entity
 
 }; // Ipv4Dhcpd::RateLimit
 
-class Matchaction : public ydk::Enum
+class Ipv4MatchDefaultMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf allow;
+        static const ydk::Enum::YLeaf server;
+
+};
+
+class Dhcpv4MatchOption : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf Y_60__FWD_SLASH__60;
+        static const ydk::Enum::YLeaf Y_77__FWD_SLASH__77;
+        static const ydk::Enum::YLeaf Y_124__FWD_SLASH__124;
+        static const ydk::Enum::YLeaf Y_125__FWD_SLASH__125;
+
+};
+
+class Ipv4dhcpdLayer : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf layer2;
+        static const ydk::Enum::YLeaf layer3;
+
+};
+
+class Dhcpv4LimitLease1 : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf interface;
+        static const ydk::Enum::YLeaf circuit_id;
+        static const ydk::Enum::YLeaf remote_id;
+        static const ydk::Enum::YLeaf circuit_id_remote_id;
+
+};
+
+class Ipv4dhcpdRelayGiaddrPolicy : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf replace;
         static const ydk::Enum::YLeaf drop;
-
-};
-
-class Dhcpv4AuthUsername : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf auth_username_mac;
-        static const ydk::Enum::YLeaf auth_username_giaddr;
-
-};
-
-class Policy : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ignore;
-        static const ydk::Enum::YLeaf check;
-        static const ydk::Enum::YLeaf unicastalways;
 
 };
 
@@ -2997,36 +3228,61 @@ class Matchoption : public ydk::Enum
 
 };
 
+class Ipv4dhcpdGiaddrPolicy : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf giaddr_policy_keep;
+
+};
+
+class LeaseLimitValue : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf per_interface;
+        static const ydk::Enum::YLeaf per_circuit_id;
+        static const ydk::Enum::YLeaf per_remote_id;
+
+};
+
+class Dhcpv4AuthUsername : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf auth_username_mac;
+        static const ydk::Enum::YLeaf auth_username_giaddr;
+
+};
+
+class ProxyAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf allow;
+        static const ydk::Enum::YLeaf drop;
+        static const ydk::Enum::YLeaf relay;
+
+};
+
+class Ipv4dhcpdBroadcastFlagPolicy : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ignore;
+        static const ydk::Enum::YLeaf check;
+        static const ydk::Enum::YLeaf unicast_always;
+
+};
+
+class Ipv4ModeClassMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf server;
+        static const ydk::Enum::YLeaf proxy;
+
+};
+
 class BaseAction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf allow;
         static const ydk::Enum::YLeaf drop;
-
-};
-
-class Dhcpv4LimitLease1 : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf interface;
-        static const ydk::Enum::YLeaf circuit_id;
-        static const ydk::Enum::YLeaf remote_id;
-        static const ydk::Enum::YLeaf circuit_id_remote_id;
-
-};
-
-class Ipv4dhcpdLayer : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf layer2;
-        static const ydk::Enum::YLeaf layer3;
-
-};
-
-class Ipv4dhcpdGiaddrPolicy : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf giaddr_policy_keep;
 
 };
 
@@ -3039,6 +3295,59 @@ class Ipv4dhcpdMode : public ydk::Enum
         static const ydk::Enum::YLeaf server;
         static const ydk::Enum::YLeaf proxy;
         static const ydk::Enum::YLeaf base2;
+
+};
+
+class Matchaction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf allow;
+        static const ydk::Enum::YLeaf drop;
+
+};
+
+class Policy : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ignore;
+        static const ydk::Enum::YLeaf check;
+        static const ydk::Enum::YLeaf unicastalways;
+
+};
+
+class Ipv4dhcpdRelayInfoOptionvpnMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf rfc;
+        static const ydk::Enum::YLeaf cisco;
+
+};
+
+class Ipv4dhcpdFmt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_format;
+        static const ydk::Enum::YLeaf hex;
+        static const ydk::Enum::YLeaf ascii;
+        static const ydk::Enum::YLeaf extended;
+
+};
+
+class Ipv4dhcpdRelayInfoOptionAuthenticate : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf received;
+        static const ydk::Enum::YLeaf inserted;
+
+};
+
+class Ipv4dhcpdRelayInfoOptionPolicy : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf replace;
+        static const ydk::Enum::YLeaf keep;
+        static const ydk::Enum::YLeaf drop;
+        static const ydk::Enum::YLeaf encapsulate;
 
 };
 
@@ -3058,91 +3367,10 @@ class Ipv4dhcpdFmtSpecifier : public ydk::Enum
 
 };
 
-class Ipv4dhcpdRelayInfoOptionPolicy : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf replace;
-        static const ydk::Enum::YLeaf keep;
-        static const ydk::Enum::YLeaf drop;
-        static const ydk::Enum::YLeaf encapsulate;
-
-};
-
 class MacMismatchAction : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf forward;
-        static const ydk::Enum::YLeaf drop;
-
-};
-
-class Ipv4dhcpdBroadcastFlagPolicy : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ignore;
-        static const ydk::Enum::YLeaf check;
-        static const ydk::Enum::YLeaf unicast_always;
-
-};
-
-class Ipv4dhcpdFmt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_format;
-        static const ydk::Enum::YLeaf hex;
-        static const ydk::Enum::YLeaf ascii;
-        static const ydk::Enum::YLeaf extended;
-
-};
-
-class Ipv4dhcpdRelayInfoOptionvpnMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf rfc;
-        static const ydk::Enum::YLeaf cisco;
-
-};
-
-class ProxyAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf allow;
-        static const ydk::Enum::YLeaf drop;
-        static const ydk::Enum::YLeaf relay;
-
-};
-
-class LeaseLimitValue : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf per_interface;
-        static const ydk::Enum::YLeaf per_circuit_id;
-        static const ydk::Enum::YLeaf per_remote_id;
-
-};
-
-class Dhcpv4MatchOption : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf Y_60__FWD_SLASH__60;
-        static const ydk::Enum::YLeaf Y_77__FWD_SLASH__77;
-        static const ydk::Enum::YLeaf Y_124__FWD_SLASH__124;
-        static const ydk::Enum::YLeaf Y_125__FWD_SLASH__125;
-
-};
-
-class Ipv4dhcpdRelayInfoOptionAuthenticate : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf received;
-        static const ydk::Enum::YLeaf inserted;
-
-};
-
-class Ipv4dhcpdRelayGiaddrPolicy : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf replace;
         static const ydk::Enum::YLeaf drop;
 
 };

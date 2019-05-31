@@ -11,16 +11,6 @@ using namespace ydk;
 namespace cisco_ios_xe {
 namespace EtherLike_MIB {
 
-Dot3ErrorInitError::Dot3ErrorInitError()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:EtherLike-MIB", "EtherLike-MIB", "EtherLike-MIB:dot3ErrorInitError")
-{
-
-}
-
-Dot3ErrorInitError::~Dot3ErrorInitError()
-{
-}
-
 Dot3TestTdr::Dot3TestTdr()
      : Identity("urn:ietf:params:xml:ns:yang:smiv2:EtherLike-MIB", "EtherLike-MIB", "EtherLike-MIB:dot3TestTdr")
 {
@@ -31,16 +21,6 @@ Dot3TestTdr::~Dot3TestTdr()
 {
 }
 
-Dot3ErrorLoopbackError::Dot3ErrorLoopbackError()
-     : Identity("urn:ietf:params:xml:ns:yang:smiv2:EtherLike-MIB", "EtherLike-MIB", "EtherLike-MIB:dot3ErrorLoopbackError")
-{
-
-}
-
-Dot3ErrorLoopbackError::~Dot3ErrorLoopbackError()
-{
-}
-
 Dot3TestLoopBack::Dot3TestLoopBack()
      : Identity("urn:ietf:params:xml:ns:yang:smiv2:EtherLike-MIB", "EtherLike-MIB", "EtherLike-MIB:dot3TestLoopBack")
 {
@@ -48,6 +28,26 @@ Dot3TestLoopBack::Dot3TestLoopBack()
 }
 
 Dot3TestLoopBack::~Dot3TestLoopBack()
+{
+}
+
+Dot3ErrorInitError::Dot3ErrorInitError()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:EtherLike-MIB", "EtherLike-MIB", "EtherLike-MIB:dot3ErrorInitError")
+{
+
+}
+
+Dot3ErrorInitError::~Dot3ErrorInitError()
+{
+}
+
+Dot3ErrorLoopbackError::Dot3ErrorLoopbackError()
+     : Identity("urn:ietf:params:xml:ns:yang:smiv2:EtherLike-MIB", "EtherLike-MIB", "EtherLike-MIB:dot3ErrorLoopbackError")
+{
+
+}
+
+Dot3ErrorLoopbackError::~Dot3ErrorLoopbackError()
 {
 }
 

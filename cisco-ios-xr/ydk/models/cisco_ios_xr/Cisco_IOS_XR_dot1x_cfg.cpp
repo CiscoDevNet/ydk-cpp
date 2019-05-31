@@ -750,6 +750,7 @@ bool Eap::has_leaf_or_child_of_name(const std::string & name) const
 Eap::EapProfile::EapProfile()
     :
     profile_name{YType::str, "profile-name"},
+    allow_eap_tls1_0{YType::empty, "allow-eap-tls1-0"},
     identity{YType::str, "identity"}
         ,
     eaptls(std::make_shared<Eap::EapProfile::Eaptls>())
@@ -767,6 +768,7 @@ bool Eap::EapProfile::has_data() const
 {
     if (is_presence_container) return true;
     return profile_name.is_set
+	|| allow_eap_tls1_0.is_set
 	|| identity.is_set
 	|| (eaptls !=  nullptr && eaptls->has_data());
 }
@@ -775,6 +777,7 @@ bool Eap::EapProfile::has_operation() const
 {
     return is_set(yfilter)
 	|| ydk::is_set(profile_name.yfilter)
+	|| ydk::is_set(allow_eap_tls1_0.yfilter)
 	|| ydk::is_set(identity.yfilter)
 	|| (eaptls !=  nullptr && eaptls->has_operation());
 }
@@ -799,6 +802,7 @@ std::vector<std::pair<std::string, LeafData> > Eap::EapProfile::get_name_leaf_da
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (profile_name.is_set || is_set(profile_name.yfilter)) leaf_name_data.push_back(profile_name.get_name_leafdata());
+    if (allow_eap_tls1_0.is_set || is_set(allow_eap_tls1_0.yfilter)) leaf_name_data.push_back(allow_eap_tls1_0.get_name_leafdata());
     if (identity.is_set || is_set(identity.yfilter)) leaf_name_data.push_back(identity.get_name_leafdata());
 
     return leaf_name_data;
@@ -839,6 +843,12 @@ void Eap::EapProfile::set_value(const std::string & value_path, const std::strin
         profile_name.value_namespace = name_space;
         profile_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "allow-eap-tls1-0")
+    {
+        allow_eap_tls1_0 = value;
+        allow_eap_tls1_0.value_namespace = name_space;
+        allow_eap_tls1_0.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "identity")
     {
         identity = value;
@@ -853,6 +863,10 @@ void Eap::EapProfile::set_filter(const std::string & value_path, YFilter yfilter
     {
         profile_name.yfilter = yfilter;
     }
+    if(value_path == "allow-eap-tls1-0")
+    {
+        allow_eap_tls1_0.yfilter = yfilter;
+    }
     if(value_path == "identity")
     {
         identity.yfilter = yfilter;
@@ -861,7 +875,7 @@ void Eap::EapProfile::set_filter(const std::string & value_path, YFilter yfilter
 
 bool Eap::EapProfile::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "eaptls" || name == "profile-name" || name == "identity")
+    if(name == "eaptls" || name == "profile-name" || name == "allow-eap-tls1-0" || name == "identity")
         return true;
     return false;
 }

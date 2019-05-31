@@ -2116,15 +2116,36 @@ bool CISCONETSYNCMIB::CnsT4ClockSourceTable::CnsT4ClockSourceEntry::has_leaf_or_
     return false;
 }
 
-const Enum::YLeaf CiscoNetsyncESMCCap::netsyncESMCCapNone {1, "netsyncESMCCapNone"};
-const Enum::YLeaf CiscoNetsyncESMCCap::netsyncESMCCapTxRx {2, "netsyncESMCCapTxRx"};
-const Enum::YLeaf CiscoNetsyncESMCCap::netsyncESMCCapTx {3, "netsyncESMCCapTx"};
-const Enum::YLeaf CiscoNetsyncESMCCap::netsyncESMCCapRx {4, "netsyncESMCCapRx"};
-const Enum::YLeaf CiscoNetsyncESMCCap::netsyncESMCCapInvalid {5, "netsyncESMCCapInvalid"};
+const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeUnknown {1, "netsyncIfTypeUnknown"};
+const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeInternal {2, "netsyncIfTypeInternal"};
+const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeEthernet {3, "netsyncIfTypeEthernet"};
+const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeSonet {4, "netsyncIfTypeSonet"};
+const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeTop {5, "netsyncIfTypeTop"};
+const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeExt {6, "netsyncIfTypeExt"};
+const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeController {7, "netsyncIfTypeController"};
+const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeGps {8, "netsyncIfTypeGps"};
+const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeAtm {9, "netsyncIfTypeAtm"};
+
+const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOptionUnknown {1, "netsyncNetworkOptionUnknown"};
+const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOption1 {2, "netsyncNetworkOption1"};
+const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOption2Gen1 {3, "netsyncNetworkOption2Gen1"};
+const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOption2Gen2 {4, "netsyncNetworkOption2Gen2"};
+const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOption3 {5, "netsyncNetworkOption3"};
+const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOptionInvalid {6, "netsyncNetworkOptionInvalid"};
+
+const Enum::YLeaf CiscoNetsyncEECOption::netsyncEECOptionUnknown {1, "netsyncEECOptionUnknown"};
+const Enum::YLeaf CiscoNetsyncEECOption::netsyncEECOption1 {2, "netsyncEECOption1"};
+const Enum::YLeaf CiscoNetsyncEECOption::netsyncEECOption2 {3, "netsyncEECOption2"};
+const Enum::YLeaf CiscoNetsyncEECOption::netsyncEECOptionInvalid {4, "netsyncEECOptionInvalid"};
 
 const Enum::YLeaf CiscoNetsyncQLMode::netsyncQLModeUnknown {1, "netsyncQLModeUnknown"};
 const Enum::YLeaf CiscoNetsyncQLMode::netsyncQLModeQlDisabled {2, "netsyncQLModeQlDisabled"};
 const Enum::YLeaf CiscoNetsyncQLMode::netsyncQLModeQlEnabled {3, "netsyncQLModeQlEnabled"};
+
+const Enum::YLeaf CiscoNetsyncClockMode::netsyncClockModeUnknown {1, "netsyncClockModeUnknown"};
+const Enum::YLeaf CiscoNetsyncClockMode::netsyncClockModeFreerun {2, "netsyncClockModeFreerun"};
+const Enum::YLeaf CiscoNetsyncClockMode::netsyncClockModeHoldover {3, "netsyncClockModeHoldover"};
+const Enum::YLeaf CiscoNetsyncClockMode::netsyncClockModeLocked {4, "netsyncClockModeLocked"};
 
 const Enum::YLeaf CiscoNetsyncQualityLevel::netsyncQualityLevelNULL {1, "netsyncQualityLevelNULL"};
 const Enum::YLeaf CiscoNetsyncQualityLevel::netsyncQualityLevelDNU {2, "netsyncQualityLevelDNU"};
@@ -2163,38 +2184,17 @@ const Enum::YLeaf CiscoNetsyncQualityLevel::netsyncQualityLevelTNC {34, "netsync
 const Enum::YLeaf CiscoNetsyncQualityLevel::netsyncQualityLevelUNC {35, "netsyncQualityLevelUNC"};
 const Enum::YLeaf CiscoNetsyncQualityLevel::netsyncQualityLevelUNK {36, "netsyncQualityLevelUNK"};
 
-const Enum::YLeaf CiscoNetsyncClockMode::netsyncClockModeUnknown {1, "netsyncClockModeUnknown"};
-const Enum::YLeaf CiscoNetsyncClockMode::netsyncClockModeFreerun {2, "netsyncClockModeFreerun"};
-const Enum::YLeaf CiscoNetsyncClockMode::netsyncClockModeHoldover {3, "netsyncClockModeHoldover"};
-const Enum::YLeaf CiscoNetsyncClockMode::netsyncClockModeLocked {4, "netsyncClockModeLocked"};
-
 const Enum::YLeaf CiscoNetsyncSSMCap::netsyncSSMCapNone {1, "netsyncSSMCapNone"};
 const Enum::YLeaf CiscoNetsyncSSMCap::netsyncSSMCapTxRx {2, "netsyncSSMCapTxRx"};
 const Enum::YLeaf CiscoNetsyncSSMCap::netsyncSSMCapTx {3, "netsyncSSMCapTx"};
 const Enum::YLeaf CiscoNetsyncSSMCap::netsyncSSMCapRx {4, "netsyncSSMCapRx"};
 const Enum::YLeaf CiscoNetsyncSSMCap::netsyncSSMCapInvalid {5, "netsyncSSMCapInvalid"};
 
-const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeUnknown {1, "netsyncIfTypeUnknown"};
-const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeInternal {2, "netsyncIfTypeInternal"};
-const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeEthernet {3, "netsyncIfTypeEthernet"};
-const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeSonet {4, "netsyncIfTypeSonet"};
-const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeTop {5, "netsyncIfTypeTop"};
-const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeExt {6, "netsyncIfTypeExt"};
-const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeController {7, "netsyncIfTypeController"};
-const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeGps {8, "netsyncIfTypeGps"};
-const Enum::YLeaf CiscoNetsyncIfType::netsyncIfTypeAtm {9, "netsyncIfTypeAtm"};
-
-const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOptionUnknown {1, "netsyncNetworkOptionUnknown"};
-const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOption1 {2, "netsyncNetworkOption1"};
-const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOption2Gen1 {3, "netsyncNetworkOption2Gen1"};
-const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOption2Gen2 {4, "netsyncNetworkOption2Gen2"};
-const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOption3 {5, "netsyncNetworkOption3"};
-const Enum::YLeaf CiscoNetsyncNetworkOption::netsyncNetworkOptionInvalid {6, "netsyncNetworkOptionInvalid"};
-
-const Enum::YLeaf CiscoNetsyncEECOption::netsyncEECOptionUnknown {1, "netsyncEECOptionUnknown"};
-const Enum::YLeaf CiscoNetsyncEECOption::netsyncEECOption1 {2, "netsyncEECOption1"};
-const Enum::YLeaf CiscoNetsyncEECOption::netsyncEECOption2 {3, "netsyncEECOption2"};
-const Enum::YLeaf CiscoNetsyncEECOption::netsyncEECOptionInvalid {4, "netsyncEECOptionInvalid"};
+const Enum::YLeaf CiscoNetsyncESMCCap::netsyncESMCCapNone {1, "netsyncESMCCapNone"};
+const Enum::YLeaf CiscoNetsyncESMCCap::netsyncESMCCapTxRx {2, "netsyncESMCCapTxRx"};
+const Enum::YLeaf CiscoNetsyncESMCCap::netsyncESMCCapTx {3, "netsyncESMCCapTx"};
+const Enum::YLeaf CiscoNetsyncESMCCap::netsyncESMCCapRx {4, "netsyncESMCCapRx"};
+const Enum::YLeaf CiscoNetsyncESMCCap::netsyncESMCCapInvalid {5, "netsyncESMCCapInvalid"};
 
 
 }

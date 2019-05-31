@@ -15,6 +15,7 @@ Parser::Parser()
     :
     indentation(std::make_shared<Parser::Indentation>())
     , alias(std::make_shared<Parser::Alias>())
+    , logging_suppress(std::make_shared<Parser::LoggingSuppress>())
     , history(std::make_shared<Parser::History>())
     , interactive(std::make_shared<Parser::Interactive>())
     , commit_optimized(std::make_shared<Parser::CommitOptimized>())
@@ -26,6 +27,7 @@ Parser::Parser()
 {
     indentation->parent = this;
     alias->parent = this;
+    logging_suppress->parent = this;
     history->parent = this;
     interactive->parent = this;
     commit_optimized->parent = this;
@@ -47,6 +49,7 @@ bool Parser::has_data() const
     if (is_presence_container) return true;
     return (indentation !=  nullptr && indentation->has_data())
 	|| (alias !=  nullptr && alias->has_data())
+	|| (logging_suppress !=  nullptr && logging_suppress->has_data())
 	|| (history !=  nullptr && history->has_data())
 	|| (interactive !=  nullptr && interactive->has_data())
 	|| (commit_optimized !=  nullptr && commit_optimized->has_data())
@@ -62,6 +65,7 @@ bool Parser::has_operation() const
     return is_set(yfilter)
 	|| (indentation !=  nullptr && indentation->has_operation())
 	|| (alias !=  nullptr && alias->has_operation())
+	|| (logging_suppress !=  nullptr && logging_suppress->has_operation())
 	|| (history !=  nullptr && history->has_operation())
 	|| (interactive !=  nullptr && interactive->has_operation())
 	|| (commit_optimized !=  nullptr && commit_optimized->has_operation())
@@ -106,6 +110,15 @@ std::shared_ptr<ydk::Entity> Parser::get_child_by_name(const std::string & child
             alias = std::make_shared<Parser::Alias>();
         }
         return alias;
+    }
+
+    if(child_yang_name == "logging-suppress")
+    {
+        if(logging_suppress == nullptr)
+        {
+            logging_suppress = std::make_shared<Parser::LoggingSuppress>();
+        }
+        return logging_suppress;
     }
 
     if(child_yang_name == "history")
@@ -197,6 +210,11 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Parser::get_children() const
         _children["alias"] = alias;
     }
 
+    if(logging_suppress != nullptr)
+    {
+        _children["logging-suppress"] = logging_suppress;
+    }
+
     if(history != nullptr)
     {
         _children["history"] = history;
@@ -275,7 +293,7 @@ std::map<std::pair<std::string, std::string>, std::string> Parser::get_namespace
 
 bool Parser::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "indentation" || name == "alias" || name == "history" || name == "interactive" || name == "commit-optimized" || name == "sysadmin-login-banner" || name == "interface-display" || name == "netmask-format" || name == "configuration" || name == "submode-exit")
+    if(name == "indentation" || name == "alias" || name == "logging-suppress" || name == "history" || name == "interactive" || name == "commit-optimized" || name == "sysadmin-login-banner" || name == "interface-display" || name == "netmask-format" || name == "configuration" || name == "submode-exit")
         return true;
     return false;
 }
@@ -1086,6 +1104,91 @@ void Parser::Alias::Alls::All::set_filter(const std::string & value_path, YFilte
 bool Parser::Alias::Alls::All::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "identifier" || name == "identifier-xr")
+        return true;
+    return false;
+}
+
+Parser::LoggingSuppress::LoggingSuppress()
+    :
+    deprecated{YType::boolean, "deprecated"}
+{
+
+    yang_name = "logging-suppress"; yang_parent_name = "parser"; is_top_level_class = false; has_list_ancestor = false; 
+}
+
+Parser::LoggingSuppress::~LoggingSuppress()
+{
+}
+
+bool Parser::LoggingSuppress::has_data() const
+{
+    if (is_presence_container) return true;
+    return deprecated.is_set;
+}
+
+bool Parser::LoggingSuppress::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(deprecated.yfilter);
+}
+
+std::string Parser::LoggingSuppress::get_absolute_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "Cisco-IOS-XR-parser-cfg:parser/" << get_segment_path();
+    return path_buffer.str();
+}
+
+std::string Parser::LoggingSuppress::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "logging-suppress";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Parser::LoggingSuppress::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (deprecated.is_set || is_set(deprecated.yfilter)) leaf_name_data.push_back(deprecated.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Parser::LoggingSuppress::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Parser::LoggingSuppress::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Parser::LoggingSuppress::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "deprecated")
+    {
+        deprecated = value;
+        deprecated.value_namespace = name_space;
+        deprecated.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Parser::LoggingSuppress::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "deprecated")
+    {
+        deprecated.yfilter = yfilter;
+    }
+}
+
+bool Parser::LoggingSuppress::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "deprecated")
         return true;
     return false;
 }

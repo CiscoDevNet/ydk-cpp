@@ -10,14 +10,6 @@
 namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_tty_management_datatypes {
 
-class TtySessionTimeoutDirection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf in;
-        static const ydk::Enum::YLeaf in_out;
-
-};
-
 class TtyPager : public ydk::Enum
 {
     public:
@@ -36,21 +28,29 @@ class TtyEscapeChar : public ydk::Enum
 
 };
 
-class TtyTransportProtocol : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf telnet;
-        static const ydk::Enum::YLeaf ssh;
-
-};
-
 class TtyTransportProtocolSelect : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
         static const ydk::Enum::YLeaf all;
         static const ydk::Enum::YLeaf some;
+
+};
+
+class TtySessionTimeoutDirection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf in;
+        static const ydk::Enum::YLeaf in_out;
+
+};
+
+class TtyTransportProtocol : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf telnet;
+        static const ydk::Enum::YLeaf ssh;
 
 };
 

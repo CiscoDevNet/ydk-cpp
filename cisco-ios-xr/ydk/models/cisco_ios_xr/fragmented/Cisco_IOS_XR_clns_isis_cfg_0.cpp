@@ -230,6 +230,7 @@ Isis::Instances::Instance::Instance()
     vrf_context{YType::str, "vrf-context"},
     instance_id{YType::uint32, "instance-id"},
     dynamic_host_name{YType::boolean, "dynamic-host-name"},
+    purge_transmit_strict{YType::enumeration, "purge-transmit-strict"},
     nsr{YType::empty, "nsr"},
     log_pdu_drops{YType::empty, "log-pdu-drops"}
         ,
@@ -295,6 +296,7 @@ bool Isis::Instances::Instance::has_data() const
 	|| vrf_context.is_set
 	|| instance_id.is_set
 	|| dynamic_host_name.is_set
+	|| purge_transmit_strict.is_set
 	|| nsr.is_set
 	|| log_pdu_drops.is_set
 	|| (srgb !=  nullptr && srgb->has_data())
@@ -333,6 +335,7 @@ bool Isis::Instances::Instance::has_operation() const
 	|| ydk::is_set(vrf_context.yfilter)
 	|| ydk::is_set(instance_id.yfilter)
 	|| ydk::is_set(dynamic_host_name.yfilter)
+	|| ydk::is_set(purge_transmit_strict.yfilter)
 	|| ydk::is_set(nsr.yfilter)
 	|| ydk::is_set(log_pdu_drops.yfilter)
 	|| (srgb !=  nullptr && srgb->has_operation())
@@ -387,6 +390,7 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::get_na
     if (vrf_context.is_set || is_set(vrf_context.yfilter)) leaf_name_data.push_back(vrf_context.get_name_leafdata());
     if (instance_id.is_set || is_set(instance_id.yfilter)) leaf_name_data.push_back(instance_id.get_name_leafdata());
     if (dynamic_host_name.is_set || is_set(dynamic_host_name.yfilter)) leaf_name_data.push_back(dynamic_host_name.get_name_leafdata());
+    if (purge_transmit_strict.is_set || is_set(purge_transmit_strict.yfilter)) leaf_name_data.push_back(purge_transmit_strict.get_name_leafdata());
     if (nsr.is_set || is_set(nsr.yfilter)) leaf_name_data.push_back(nsr.get_name_leafdata());
     if (log_pdu_drops.is_set || is_set(log_pdu_drops.yfilter)) leaf_name_data.push_back(log_pdu_drops.get_name_leafdata());
 
@@ -770,6 +774,12 @@ void Isis::Instances::Instance::set_value(const std::string & value_path, const 
         dynamic_host_name.value_namespace = name_space;
         dynamic_host_name.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "purge-transmit-strict")
+    {
+        purge_transmit_strict = value;
+        purge_transmit_strict.value_namespace = name_space;
+        purge_transmit_strict.value_namespace_prefix = name_space_prefix;
+    }
     if(value_path == "nsr")
     {
         nsr = value;
@@ -822,6 +832,10 @@ void Isis::Instances::Instance::set_filter(const std::string & value_path, YFilt
     {
         dynamic_host_name.yfilter = yfilter;
     }
+    if(value_path == "purge-transmit-strict")
+    {
+        purge_transmit_strict.yfilter = yfilter;
+    }
     if(value_path == "nsr")
     {
         nsr.yfilter = yfilter;
@@ -834,7 +848,7 @@ void Isis::Instances::Instance::set_filter(const std::string & value_path, YFilt
 
 bool Isis::Instances::Instance::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "srgb" || name == "lsp-generation-intervals" || name == "lsp-arrival-times" || name == "trace-buffer-size" || name == "max-link-metrics" || name == "adjacency-stagger" || name == "afs" || name == "lsp-refresh-intervals" || name == "distribute" || name == "flex-algos" || name == "affinity-mappings" || name == "lsp-accept-passwords" || name == "lsp-mtus" || name == "srlg-table" || name == "nsf" || name == "link-groups" || name == "lsp-check-intervals" || name == "lsp-passwords" || name == "nets" || name == "lsp-lifetimes" || name == "overload-bits" || name == "interfaces" || name == "instance-name" || name == "running" || name == "log-adjacency-changes" || name == "ignore-lsp-errors" || name == "is-type" || name == "tracing-mode" || name == "vrf-context" || name == "instance-id" || name == "dynamic-host-name" || name == "nsr" || name == "log-pdu-drops")
+    if(name == "srgb" || name == "lsp-generation-intervals" || name == "lsp-arrival-times" || name == "trace-buffer-size" || name == "max-link-metrics" || name == "adjacency-stagger" || name == "afs" || name == "lsp-refresh-intervals" || name == "distribute" || name == "flex-algos" || name == "affinity-mappings" || name == "lsp-accept-passwords" || name == "lsp-mtus" || name == "srlg-table" || name == "nsf" || name == "link-groups" || name == "lsp-check-intervals" || name == "lsp-passwords" || name == "nets" || name == "lsp-lifetimes" || name == "overload-bits" || name == "interfaces" || name == "instance-name" || name == "running" || name == "log-adjacency-changes" || name == "ignore-lsp-errors" || name == "is-type" || name == "tracing-mode" || name == "vrf-context" || name == "instance-id" || name == "dynamic-host-name" || name == "purge-transmit-strict" || name == "nsr" || name == "log-pdu-drops")
         return true;
     return false;
 }
@@ -2631,11 +2645,14 @@ Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::SegmentRouting()
     :
     bundle_member_adj_sid{YType::empty, "bundle-member-adj-sid"},
     labeled_only{YType::empty, "labeled-only"},
-    mpls{YType::enumeration, "mpls"},
-    srv6{YType::empty, "srv6"}
+    mpls{YType::enumeration, "mpls"}
         ,
-    prefix_sid_map(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap>())
+    srv6(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6>())
+    , connected_prefix_sids(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids>())
+    , prefix_sid_map(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::PrefixSidMap>())
 {
+    srv6->parent = this;
+    connected_prefix_sids->parent = this;
     prefix_sid_map->parent = this;
 
     yang_name = "segment-routing"; yang_parent_name = "af-data"; is_top_level_class = false; has_list_ancestor = true; 
@@ -2651,7 +2668,8 @@ bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::has_data() cons
     return bundle_member_adj_sid.is_set
 	|| labeled_only.is_set
 	|| mpls.is_set
-	|| srv6.is_set
+	|| (srv6 !=  nullptr && srv6->has_data())
+	|| (connected_prefix_sids !=  nullptr && connected_prefix_sids->has_data())
 	|| (prefix_sid_map !=  nullptr && prefix_sid_map->has_data());
 }
 
@@ -2661,7 +2679,8 @@ bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::has_operation()
 	|| ydk::is_set(bundle_member_adj_sid.yfilter)
 	|| ydk::is_set(labeled_only.yfilter)
 	|| ydk::is_set(mpls.yfilter)
-	|| ydk::is_set(srv6.yfilter)
+	|| (srv6 !=  nullptr && srv6->has_operation())
+	|| (connected_prefix_sids !=  nullptr && connected_prefix_sids->has_operation())
 	|| (prefix_sid_map !=  nullptr && prefix_sid_map->has_operation());
 }
 
@@ -2679,7 +2698,6 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::A
     if (bundle_member_adj_sid.is_set || is_set(bundle_member_adj_sid.yfilter)) leaf_name_data.push_back(bundle_member_adj_sid.get_name_leafdata());
     if (labeled_only.is_set || is_set(labeled_only.yfilter)) leaf_name_data.push_back(labeled_only.get_name_leafdata());
     if (mpls.is_set || is_set(mpls.yfilter)) leaf_name_data.push_back(mpls.get_name_leafdata());
-    if (srv6.is_set || is_set(srv6.yfilter)) leaf_name_data.push_back(srv6.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2687,6 +2705,24 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::A
 
 std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "srv6")
+    {
+        if(srv6 == nullptr)
+        {
+            srv6 = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6>();
+        }
+        return srv6;
+    }
+
+    if(child_yang_name == "connected-prefix-sids")
+    {
+        if(connected_prefix_sids == nullptr)
+        {
+            connected_prefix_sids = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids>();
+        }
+        return connected_prefix_sids;
+    }
+
     if(child_yang_name == "prefix-sid-map")
     {
         if(prefix_sid_map == nullptr)
@@ -2703,6 +2739,16 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::A
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(srv6 != nullptr)
+    {
+        _children["srv6"] = srv6;
+    }
+
+    if(connected_prefix_sids != nullptr)
+    {
+        _children["connected-prefix-sids"] = connected_prefix_sids;
+    }
+
     if(prefix_sid_map != nullptr)
     {
         _children["prefix-sid-map"] = prefix_sid_map;
@@ -2731,12 +2777,6 @@ void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::set_value(const
         mpls.value_namespace = name_space;
         mpls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "srv6")
-    {
-        srv6 = value;
-        srv6.value_namespace = name_space;
-        srv6.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2753,15 +2793,565 @@ void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::set_filter(cons
     {
         mpls.yfilter = yfilter;
     }
-    if(value_path == "srv6")
-    {
-        srv6.yfilter = yfilter;
-    }
 }
 
 bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "prefix-sid-map" || name == "bundle-member-adj-sid" || name == "labeled-only" || name == "mpls" || name == "srv6")
+    if(name == "srv6" || name == "connected-prefix-sids" || name == "prefix-sid-map" || name == "bundle-member-adj-sid" || name == "labeled-only" || name == "mpls")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6()
+    :
+    running{YType::empty, "running"}
+        ,
+    srv6_locators(std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators>())
+{
+    srv6_locators->parent = this;
+
+    yang_name = "srv6"; yang_parent_name = "segment-routing"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::~Srv6()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::has_data() const
+{
+    if (is_presence_container) return true;
+    return running.is_set
+	|| (srv6_locators !=  nullptr && srv6_locators->has_data());
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(running.yfilter)
+	|| (srv6_locators !=  nullptr && srv6_locators->has_operation());
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "srv6";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "srv6-locators")
+    {
+        if(srv6_locators == nullptr)
+        {
+            srv6_locators = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators>();
+        }
+        return srv6_locators;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(srv6_locators != nullptr)
+    {
+        _children["srv6-locators"] = srv6_locators;
+    }
+
+    return _children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "running")
+    {
+        running = value;
+        running.value_namespace = name_space;
+        running.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "running")
+    {
+        running.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "srv6-locators" || name == "running")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::Srv6Locators()
+    :
+    srv6_locator(this, {"locator_name"})
+{
+
+    yang_name = "srv6-locators"; yang_parent_name = "srv6"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::~Srv6Locators()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<srv6_locator.len(); index++)
+    {
+        if(srv6_locator[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::has_operation() const
+{
+    for (std::size_t index=0; index<srv6_locator.len(); index++)
+    {
+        if(srv6_locator[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "srv6-locators";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "srv6-locator")
+    {
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::Srv6Locator>();
+        ent_->parent = this;
+        srv6_locator.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : srv6_locator.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "srv6-locator")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::Srv6Locator::Srv6Locator()
+    :
+    locator_name{YType::str, "locator-name"},
+    running{YType::empty, "running"}
+{
+
+    yang_name = "srv6-locator"; yang_parent_name = "srv6-locators"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::Srv6Locator::~Srv6Locator()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::Srv6Locator::has_data() const
+{
+    if (is_presence_container) return true;
+    return locator_name.is_set
+	|| running.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::Srv6Locator::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(locator_name.yfilter)
+	|| ydk::is_set(running.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::Srv6Locator::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "srv6-locator";
+    ADD_KEY_TOKEN(locator_name, "locator-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::Srv6Locator::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (locator_name.is_set || is_set(locator_name.yfilter)) leaf_name_data.push_back(locator_name.get_name_leafdata());
+    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::Srv6Locator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::Srv6Locator::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::Srv6Locator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "locator-name")
+    {
+        locator_name = value;
+        locator_name.value_namespace = name_space;
+        locator_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "running")
+    {
+        running = value;
+        running.value_namespace = name_space;
+        running.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::Srv6Locator::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "locator-name")
+    {
+        locator_name.yfilter = yfilter;
+    }
+    if(value_path == "running")
+    {
+        running.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::Srv6::Srv6Locators::Srv6Locator::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "locator-name" || name == "running")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSids()
+    :
+    connected_prefix_sid(this, {"address_prefix", "algo"})
+{
+
+    yang_name = "connected-prefix-sids"; yang_parent_name = "segment-routing"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::~ConnectedPrefixSids()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<connected_prefix_sid.len(); index++)
+    {
+        if(connected_prefix_sid[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::has_operation() const
+{
+    for (std::size_t index=0; index<connected_prefix_sid.len(); index++)
+    {
+        if(connected_prefix_sid[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "connected-prefix-sids";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "connected-prefix-sid")
+    {
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid>();
+        ent_->parent = this;
+        connected_prefix_sid.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : connected_prefix_sid.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "connected-prefix-sid")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid::ConnectedPrefixSid()
+    :
+    address_prefix{YType::str, "address-prefix"},
+    algo{YType::uint32, "algo"},
+    sid_type{YType::enumeration, "sid-type"},
+    sid{YType::uint32, "sid"},
+    sid_range{YType::uint32, "sid-range"},
+    interface{YType::str, "interface"},
+    php{YType::enumeration, "php"},
+    explicit_null{YType::enumeration, "explicit-null"}
+{
+
+    yang_name = "connected-prefix-sid"; yang_parent_name = "connected-prefix-sids"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid::~ConnectedPrefixSid()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid::has_data() const
+{
+    if (is_presence_container) return true;
+    return address_prefix.is_set
+	|| algo.is_set
+	|| sid_type.is_set
+	|| sid.is_set
+	|| sid_range.is_set
+	|| interface.is_set
+	|| php.is_set
+	|| explicit_null.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter)
+	|| ydk::is_set(algo.yfilter)
+	|| ydk::is_set(sid_type.yfilter)
+	|| ydk::is_set(sid.yfilter)
+	|| ydk::is_set(sid_range.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(php.yfilter)
+	|| ydk::is_set(explicit_null.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "connected-prefix-sid";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
+    ADD_KEY_TOKEN(algo, "algo");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (algo.is_set || is_set(algo.yfilter)) leaf_name_data.push_back(algo.get_name_leafdata());
+    if (sid_type.is_set || is_set(sid_type.yfilter)) leaf_name_data.push_back(sid_type.get_name_leafdata());
+    if (sid.is_set || is_set(sid.yfilter)) leaf_name_data.push_back(sid.get_name_leafdata());
+    if (sid_range.is_set || is_set(sid_range.yfilter)) leaf_name_data.push_back(sid_range.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (php.is_set || is_set(php.yfilter)) leaf_name_data.push_back(php.get_name_leafdata());
+    if (explicit_null.is_set || is_set(explicit_null.yfilter)) leaf_name_data.push_back(explicit_null.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "algo")
+    {
+        algo = value;
+        algo.value_namespace = name_space;
+        algo.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-type")
+    {
+        sid_type = value;
+        sid_type.value_namespace = name_space;
+        sid_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid")
+    {
+        sid = value;
+        sid.value_namespace = name_space;
+        sid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-range")
+    {
+        sid_range = value;
+        sid_range.value_namespace = name_space;
+        sid_range.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface")
+    {
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "php")
+    {
+        php = value;
+        php.value_namespace = name_space;
+        php.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "explicit-null")
+    {
+        explicit_null = value;
+        explicit_null.value_namespace = name_space;
+        explicit_null.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+    if(value_path == "algo")
+    {
+        algo.yfilter = yfilter;
+    }
+    if(value_path == "sid-type")
+    {
+        sid_type.yfilter = yfilter;
+    }
+    if(value_path == "sid")
+    {
+        sid.yfilter = yfilter;
+    }
+    if(value_path == "sid-range")
+    {
+        sid_range.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "php")
+    {
+        php.yfilter = yfilter;
+    }
+    if(value_path == "explicit-null")
+    {
+        explicit_null.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::AfData::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix" || name == "algo" || name == "sid-type" || name == "sid" || name == "sid-range" || name == "interface" || name == "php" || name == "explicit-null")
         return true;
     return false;
 }
@@ -3605,7 +4195,7 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::FrrsrlgProtectionType
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimits()
     :
-    priority_limit(this, {"level"})
+    priority_limit(this, {"level", "frr_type"})
 {
 
     yang_name = "priority-limits"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true; 
@@ -3698,9 +4288,9 @@ bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::has_l
 
 Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::PriorityLimit()
     :
-    level{YType::enumeration, "level"}
-        ,
-    frr_type(this, {"frr_type"})
+    level{YType::enumeration, "level"},
+    frr_type{YType::enumeration, "frr-type"},
+    priority{YType::enumeration, "priority"}
 {
 
     yang_name = "priority-limit"; yang_parent_name = "priority-limits"; is_top_level_class = false; has_list_ancestor = true; 
@@ -3713,23 +4303,17 @@ Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLi
 bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::has_data() const
 {
     if (is_presence_container) return true;
-    for (std::size_t index=0; index<frr_type.len(); index++)
-    {
-        if(frr_type[index]->has_data())
-            return true;
-    }
-    return level.is_set;
+    return level.is_set
+	|| frr_type.is_set
+	|| priority.is_set;
 }
 
 bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::has_operation() const
 {
-    for (std::size_t index=0; index<frr_type.len(); index++)
-    {
-        if(frr_type[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(level.yfilter);
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(frr_type.yfilter)
+	|| ydk::is_set(priority.yfilter);
 }
 
 std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::get_segment_path() const
@@ -3737,6 +4321,7 @@ std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits
     std::ostringstream path_buffer;
     path_buffer << "priority-limit";
     ADD_KEY_TOKEN(level, "level");
+    ADD_KEY_TOKEN(frr_type, "frr-type");
     return path_buffer.str();
 }
 
@@ -3745,6 +4330,8 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::A
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (frr_type.is_set || is_set(frr_type.yfilter)) leaf_name_data.push_back(frr_type.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3752,14 +4339,6 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::A
 
 std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "frr-type")
-    {
-        auto ent_ = std::make_shared<Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::FrrType>();
-        ent_->parent = this;
-        frr_type.append(ent_);
-        return ent_;
-    }
-
     return nullptr;
 }
 
@@ -3767,15 +4346,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::A
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    count_ = 0;
-    for (auto ent_ : frr_type.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
     return _children;
 }
 
@@ -3787,83 +4357,6 @@ void Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::Prior
         level.value_namespace = name_space;
         level.value_namespace_prefix = name_space_prefix;
     }
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "frr-type" || name == "level")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::FrrType::FrrType()
-    :
-    frr_type{YType::enumeration, "frr-type"},
-    priority{YType::enumeration, "priority"}
-{
-
-    yang_name = "frr-type"; yang_parent_name = "priority-limit"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::FrrType::~FrrType()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::FrrType::has_data() const
-{
-    if (is_presence_container) return true;
-    return frr_type.is_set
-	|| priority.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::FrrType::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(frr_type.yfilter)
-	|| ydk::is_set(priority.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::FrrType::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "frr-type";
-    ADD_KEY_TOKEN(frr_type, "frr-type");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::FrrType::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (frr_type.is_set || is_set(frr_type.yfilter)) leaf_name_data.push_back(frr_type.get_name_leafdata());
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::FrrType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::FrrType::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::FrrType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
     if(value_path == "frr-type")
     {
         frr_type = value;
@@ -3878,8 +4371,12 @@ void Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::Prior
     }
 }
 
-void Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::FrrType::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
     if(value_path == "frr-type")
     {
         frr_type.yfilter = yfilter;
@@ -3890,9 +4387,9 @@ void Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::Prior
     }
 }
 
-bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::FrrType::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::AfData::FrrTable::PriorityLimits::PriorityLimit::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "frr-type" || name == "priority")
+    if(name == "level" || name == "frr-type" || name == "priority")
         return true;
     return false;
 }
@@ -9821,11 +10318,14 @@ Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::SegmentRouting
     :
     bundle_member_adj_sid{YType::empty, "bundle-member-adj-sid"},
     labeled_only{YType::empty, "labeled-only"},
-    mpls{YType::enumeration, "mpls"},
-    srv6{YType::empty, "srv6"}
+    mpls{YType::enumeration, "mpls"}
         ,
-    prefix_sid_map(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap>())
+    srv6(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6>())
+    , connected_prefix_sids(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids>())
+    , prefix_sid_map(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::PrefixSidMap>())
 {
+    srv6->parent = this;
+    connected_prefix_sids->parent = this;
     prefix_sid_map->parent = this;
 
     yang_name = "segment-routing"; yang_parent_name = "topology-name"; is_top_level_class = false; has_list_ancestor = true; 
@@ -9841,7 +10341,8 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::has_data(
     return bundle_member_adj_sid.is_set
 	|| labeled_only.is_set
 	|| mpls.is_set
-	|| srv6.is_set
+	|| (srv6 !=  nullptr && srv6->has_data())
+	|| (connected_prefix_sids !=  nullptr && connected_prefix_sids->has_data())
 	|| (prefix_sid_map !=  nullptr && prefix_sid_map->has_data());
 }
 
@@ -9851,7 +10352,8 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::has_opera
 	|| ydk::is_set(bundle_member_adj_sid.yfilter)
 	|| ydk::is_set(labeled_only.yfilter)
 	|| ydk::is_set(mpls.yfilter)
-	|| ydk::is_set(srv6.yfilter)
+	|| (srv6 !=  nullptr && srv6->has_operation())
+	|| (connected_prefix_sids !=  nullptr && connected_prefix_sids->has_operation())
 	|| (prefix_sid_map !=  nullptr && prefix_sid_map->has_operation());
 }
 
@@ -9869,7 +10371,6 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::A
     if (bundle_member_adj_sid.is_set || is_set(bundle_member_adj_sid.yfilter)) leaf_name_data.push_back(bundle_member_adj_sid.get_name_leafdata());
     if (labeled_only.is_set || is_set(labeled_only.yfilter)) leaf_name_data.push_back(labeled_only.get_name_leafdata());
     if (mpls.is_set || is_set(mpls.yfilter)) leaf_name_data.push_back(mpls.get_name_leafdata());
-    if (srv6.is_set || is_set(srv6.yfilter)) leaf_name_data.push_back(srv6.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -9877,6 +10378,24 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::A
 
 std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
+    if(child_yang_name == "srv6")
+    {
+        if(srv6 == nullptr)
+        {
+            srv6 = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6>();
+        }
+        return srv6;
+    }
+
+    if(child_yang_name == "connected-prefix-sids")
+    {
+        if(connected_prefix_sids == nullptr)
+        {
+            connected_prefix_sids = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids>();
+        }
+        return connected_prefix_sids;
+    }
+
     if(child_yang_name == "prefix-sid-map")
     {
         if(prefix_sid_map == nullptr)
@@ -9893,6 +10412,16 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::A
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
+    if(srv6 != nullptr)
+    {
+        _children["srv6"] = srv6;
+    }
+
+    if(connected_prefix_sids != nullptr)
+    {
+        _children["connected-prefix-sids"] = connected_prefix_sids;
+    }
+
     if(prefix_sid_map != nullptr)
     {
         _children["prefix-sid-map"] = prefix_sid_map;
@@ -9921,12 +10450,6 @@ void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::set_value
         mpls.value_namespace = name_space;
         mpls.value_namespace_prefix = name_space_prefix;
     }
-    if(value_path == "srv6")
-    {
-        srv6 = value;
-        srv6.value_namespace = name_space;
-        srv6.value_namespace_prefix = name_space_prefix;
-    }
 }
 
 void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::set_filter(const std::string & value_path, YFilter yfilter)
@@ -9943,15 +10466,565 @@ void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::set_filte
     {
         mpls.yfilter = yfilter;
     }
-    if(value_path == "srv6")
-    {
-        srv6.yfilter = yfilter;
-    }
 }
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "prefix-sid-map" || name == "bundle-member-adj-sid" || name == "labeled-only" || name == "mpls" || name == "srv6")
+    if(name == "srv6" || name == "connected-prefix-sids" || name == "prefix-sid-map" || name == "bundle-member-adj-sid" || name == "labeled-only" || name == "mpls")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6()
+    :
+    running{YType::empty, "running"}
+        ,
+    srv6_locators(std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators>())
+{
+    srv6_locators->parent = this;
+
+    yang_name = "srv6"; yang_parent_name = "segment-routing"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::~Srv6()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::has_data() const
+{
+    if (is_presence_container) return true;
+    return running.is_set
+	|| (srv6_locators !=  nullptr && srv6_locators->has_data());
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(running.yfilter)
+	|| (srv6_locators !=  nullptr && srv6_locators->has_operation());
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "srv6";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "srv6-locators")
+    {
+        if(srv6_locators == nullptr)
+        {
+            srv6_locators = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators>();
+        }
+        return srv6_locators;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    if(srv6_locators != nullptr)
+    {
+        _children["srv6-locators"] = srv6_locators;
+    }
+
+    return _children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "running")
+    {
+        running = value;
+        running.value_namespace = name_space;
+        running.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "running")
+    {
+        running.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "srv6-locators" || name == "running")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::Srv6Locators()
+    :
+    srv6_locator(this, {"locator_name"})
+{
+
+    yang_name = "srv6-locators"; yang_parent_name = "srv6"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::~Srv6Locators()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<srv6_locator.len(); index++)
+    {
+        if(srv6_locator[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::has_operation() const
+{
+    for (std::size_t index=0; index<srv6_locator.len(); index++)
+    {
+        if(srv6_locator[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "srv6-locators";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "srv6-locator")
+    {
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::Srv6Locator>();
+        ent_->parent = this;
+        srv6_locator.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : srv6_locator.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "srv6-locator")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::Srv6Locator::Srv6Locator()
+    :
+    locator_name{YType::str, "locator-name"},
+    running{YType::empty, "running"}
+{
+
+    yang_name = "srv6-locator"; yang_parent_name = "srv6-locators"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::Srv6Locator::~Srv6Locator()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::Srv6Locator::has_data() const
+{
+    if (is_presence_container) return true;
+    return locator_name.is_set
+	|| running.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::Srv6Locator::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(locator_name.yfilter)
+	|| ydk::is_set(running.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::Srv6Locator::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "srv6-locator";
+    ADD_KEY_TOKEN(locator_name, "locator-name");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::Srv6Locator::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (locator_name.is_set || is_set(locator_name.yfilter)) leaf_name_data.push_back(locator_name.get_name_leafdata());
+    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::Srv6Locator::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::Srv6Locator::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::Srv6Locator::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "locator-name")
+    {
+        locator_name = value;
+        locator_name.value_namespace = name_space;
+        locator_name.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "running")
+    {
+        running = value;
+        running.value_namespace = name_space;
+        running.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::Srv6Locator::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "locator-name")
+    {
+        locator_name.yfilter = yfilter;
+    }
+    if(value_path == "running")
+    {
+        running.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::Srv6::Srv6Locators::Srv6Locator::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "locator-name" || name == "running")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSids()
+    :
+    connected_prefix_sid(this, {"address_prefix", "algo"})
+{
+
+    yang_name = "connected-prefix-sids"; yang_parent_name = "segment-routing"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::~ConnectedPrefixSids()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::has_data() const
+{
+    if (is_presence_container) return true;
+    for (std::size_t index=0; index<connected_prefix_sid.len(); index++)
+    {
+        if(connected_prefix_sid[index]->has_data())
+            return true;
+    }
+    return false;
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::has_operation() const
+{
+    for (std::size_t index=0; index<connected_prefix_sid.len(); index++)
+    {
+        if(connected_prefix_sid[index]->has_operation())
+            return true;
+    }
+    return is_set(yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "connected-prefix-sids";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    if(child_yang_name == "connected-prefix-sid")
+    {
+        auto ent_ = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid>();
+        ent_->parent = this;
+        connected_prefix_sid.append(ent_);
+        return ent_;
+    }
+
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    count_ = 0;
+    for (auto ent_ : connected_prefix_sid.entities())
+    {
+        if(_children.find(ent_->get_segment_path()) == _children.end())
+            _children[ent_->get_segment_path()] = ent_;
+        else
+            _children[ent_->get_segment_path()+count_++] = ent_;
+    }
+
+    return _children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::set_filter(const std::string & value_path, YFilter yfilter)
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "connected-prefix-sid")
+        return true;
+    return false;
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid::ConnectedPrefixSid()
+    :
+    address_prefix{YType::str, "address-prefix"},
+    algo{YType::uint32, "algo"},
+    sid_type{YType::enumeration, "sid-type"},
+    sid{YType::uint32, "sid"},
+    sid_range{YType::uint32, "sid-range"},
+    interface{YType::str, "interface"},
+    php{YType::enumeration, "php"},
+    explicit_null{YType::enumeration, "explicit-null"}
+{
+
+    yang_name = "connected-prefix-sid"; yang_parent_name = "connected-prefix-sids"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid::~ConnectedPrefixSid()
+{
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid::has_data() const
+{
+    if (is_presence_container) return true;
+    return address_prefix.is_set
+	|| algo.is_set
+	|| sid_type.is_set
+	|| sid.is_set
+	|| sid_range.is_set
+	|| interface.is_set
+	|| php.is_set
+	|| explicit_null.is_set;
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(address_prefix.yfilter)
+	|| ydk::is_set(algo.yfilter)
+	|| ydk::is_set(sid_type.yfilter)
+	|| ydk::is_set(sid.yfilter)
+	|| ydk::is_set(sid_range.yfilter)
+	|| ydk::is_set(interface.yfilter)
+	|| ydk::is_set(php.yfilter)
+	|| ydk::is_set(explicit_null.yfilter);
+}
+
+std::string Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "connected-prefix-sid";
+    ADD_KEY_TOKEN(address_prefix, "address-prefix");
+    ADD_KEY_TOKEN(algo, "algo");
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (address_prefix.is_set || is_set(address_prefix.yfilter)) leaf_name_data.push_back(address_prefix.get_name_leafdata());
+    if (algo.is_set || is_set(algo.yfilter)) leaf_name_data.push_back(algo.get_name_leafdata());
+    if (sid_type.is_set || is_set(sid_type.yfilter)) leaf_name_data.push_back(sid_type.get_name_leafdata());
+    if (sid.is_set || is_set(sid.yfilter)) leaf_name_data.push_back(sid.get_name_leafdata());
+    if (sid_range.is_set || is_set(sid_range.yfilter)) leaf_name_data.push_back(sid_range.get_name_leafdata());
+    if (interface.is_set || is_set(interface.yfilter)) leaf_name_data.push_back(interface.get_name_leafdata());
+    if (php.is_set || is_set(php.yfilter)) leaf_name_data.push_back(php.get_name_leafdata());
+    if (explicit_null.is_set || is_set(explicit_null.yfilter)) leaf_name_data.push_back(explicit_null.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix = value;
+        address_prefix.value_namespace = name_space;
+        address_prefix.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "algo")
+    {
+        algo = value;
+        algo.value_namespace = name_space;
+        algo.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-type")
+    {
+        sid_type = value;
+        sid_type.value_namespace = name_space;
+        sid_type.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid")
+    {
+        sid = value;
+        sid.value_namespace = name_space;
+        sid.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "sid-range")
+    {
+        sid_range = value;
+        sid_range.value_namespace = name_space;
+        sid_range.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "interface")
+    {
+        interface = value;
+        interface.value_namespace = name_space;
+        interface.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "php")
+    {
+        php = value;
+        php.value_namespace = name_space;
+        php.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "explicit-null")
+    {
+        explicit_null = value;
+        explicit_null.value_namespace = name_space;
+        explicit_null.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "address-prefix")
+    {
+        address_prefix.yfilter = yfilter;
+    }
+    if(value_path == "algo")
+    {
+        algo.yfilter = yfilter;
+    }
+    if(value_path == "sid-type")
+    {
+        sid_type.yfilter = yfilter;
+    }
+    if(value_path == "sid")
+    {
+        sid.yfilter = yfilter;
+    }
+    if(value_path == "sid-range")
+    {
+        sid_range.yfilter = yfilter;
+    }
+    if(value_path == "interface")
+    {
+        interface.yfilter = yfilter;
+    }
+    if(value_path == "php")
+    {
+        php.yfilter = yfilter;
+    }
+    if(value_path == "explicit-null")
+    {
+        explicit_null.yfilter = yfilter;
+    }
+}
+
+bool Isis::Instances::Instance::Afs::Af::TopologyName::SegmentRouting::ConnectedPrefixSids::ConnectedPrefixSid::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "address-prefix" || name == "algo" || name == "sid-type" || name == "sid" || name == "sid-range" || name == "interface" || name == "php" || name == "explicit-null")
         return true;
     return false;
 }
@@ -10795,7 +11868,7 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::FrrsrlgProtecti
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimits()
     :
-    priority_limit(this, {"level"})
+    priority_limit(this, {"level", "frr_type"})
 {
 
     yang_name = "priority-limits"; yang_parent_name = "frr-table"; is_top_level_class = false; has_list_ancestor = true; 
@@ -10888,9 +11961,9 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits:
 
 Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::PriorityLimit()
     :
-    level{YType::enumeration, "level"}
-        ,
-    frr_type(this, {"frr_type"})
+    level{YType::enumeration, "level"},
+    frr_type{YType::enumeration, "frr-type"},
+    priority{YType::enumeration, "priority"}
 {
 
     yang_name = "priority-limit"; yang_parent_name = "priority-limits"; is_top_level_class = false; has_list_ancestor = true; 
@@ -10903,23 +11976,17 @@ Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::Prio
 bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::has_data() const
 {
     if (is_presence_container) return true;
-    for (std::size_t index=0; index<frr_type.len(); index++)
-    {
-        if(frr_type[index]->has_data())
-            return true;
-    }
-    return level.is_set;
+    return level.is_set
+	|| frr_type.is_set
+	|| priority.is_set;
 }
 
 bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::has_operation() const
 {
-    for (std::size_t index=0; index<frr_type.len(); index++)
-    {
-        if(frr_type[index]->has_operation())
-            return true;
-    }
     return is_set(yfilter)
-	|| ydk::is_set(level.yfilter);
+	|| ydk::is_set(level.yfilter)
+	|| ydk::is_set(frr_type.yfilter)
+	|| ydk::is_set(priority.yfilter);
 }
 
 std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::get_segment_path() const
@@ -10927,6 +11994,7 @@ std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::Priority
     std::ostringstream path_buffer;
     path_buffer << "priority-limit";
     ADD_KEY_TOKEN(level, "level");
+    ADD_KEY_TOKEN(frr_type, "frr-type");
     return path_buffer.str();
 }
 
@@ -10935,6 +12003,8 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::A
     std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
 
     if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
+    if (frr_type.is_set || is_set(frr_type.yfilter)) leaf_name_data.push_back(frr_type.get_name_leafdata());
+    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -10942,14 +12012,6 @@ std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::A
 
 std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
 {
-    if(child_yang_name == "frr-type")
-    {
-        auto ent_ = std::make_shared<Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::FrrType>();
-        ent_->parent = this;
-        frr_type.append(ent_);
-        return ent_;
-    }
-
     return nullptr;
 }
 
@@ -10957,15 +12019,6 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::A
 {
     std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
     char count_=0;
-    count_ = 0;
-    for (auto ent_ : frr_type.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
     return _children;
 }
 
@@ -10977,83 +12030,6 @@ void Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits:
         level.value_namespace = name_space;
         level.value_namespace_prefix = name_space_prefix;
     }
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "frr-type" || name == "level")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::FrrType::FrrType()
-    :
-    frr_type{YType::enumeration, "frr-type"},
-    priority{YType::enumeration, "priority"}
-{
-
-    yang_name = "frr-type"; yang_parent_name = "priority-limit"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::FrrType::~FrrType()
-{
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::FrrType::has_data() const
-{
-    if (is_presence_container) return true;
-    return frr_type.is_set
-	|| priority.is_set;
-}
-
-bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::FrrType::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(frr_type.yfilter)
-	|| ydk::is_set(priority.yfilter);
-}
-
-std::string Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::FrrType::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "frr-type";
-    ADD_KEY_TOKEN(frr_type, "frr-type");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::FrrType::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (frr_type.is_set || is_set(frr_type.yfilter)) leaf_name_data.push_back(frr_type.get_name_leafdata());
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::FrrType::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::FrrType::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::FrrType::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
     if(value_path == "frr-type")
     {
         frr_type = value;
@@ -11068,8 +12044,12 @@ void Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits:
     }
 }
 
-void Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::FrrType::set_filter(const std::string & value_path, YFilter yfilter)
+void Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::set_filter(const std::string & value_path, YFilter yfilter)
 {
+    if(value_path == "level")
+    {
+        level.yfilter = yfilter;
+    }
     if(value_path == "frr-type")
     {
         frr_type.yfilter = yfilter;
@@ -11080,9 +12060,9 @@ void Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits:
     }
 }
 
-bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::FrrType::has_leaf_or_child_of_name(const std::string & name) const
+bool Isis::Instances::Instance::Afs::Af::TopologyName::FrrTable::PriorityLimits::PriorityLimit::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "frr-type" || name == "priority")
+    if(name == "level" || name == "frr-type" || name == "priority")
         return true;
     return false;
 }
@@ -16341,952 +17321,69 @@ bool Isis::Instances::Instance::Afs::Af::TopologyName::Weights::Weight::has_leaf
     return false;
 }
 
-Isis::Instances::Instance::LspRefreshIntervals::LspRefreshIntervals()
-    :
-    lsp_refresh_interval(this, {"level"})
-{
+const Enum::YLeaf NflagClear::disable {0, "disable"};
+const Enum::YLeaf NflagClear::enable {1, "enable"};
 
-    yang_name = "lsp-refresh-intervals"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
-}
+const Enum::YLeaf IsisAdvTypeInterLevel::inter_level {1, "inter-level"};
 
-Isis::Instances::Instance::LspRefreshIntervals::~LspRefreshIntervals()
-{
-}
-
-bool Isis::Instances::Instance::LspRefreshIntervals::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<lsp_refresh_interval.len(); index++)
-    {
-        if(lsp_refresh_interval[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Isis::Instances::Instance::LspRefreshIntervals::has_operation() const
-{
-    for (std::size_t index=0; index<lsp_refresh_interval.len(); index++)
-    {
-        if(lsp_refresh_interval[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Isis::Instances::Instance::LspRefreshIntervals::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-refresh-intervals";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::LspRefreshIntervals::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Isis::Instances::Instance::LspRefreshIntervals::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "lsp-refresh-interval")
-    {
-        auto ent_ = std::make_shared<Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval>();
-        ent_->parent = this;
-        lsp_refresh_interval.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::LspRefreshIntervals::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : lsp_refresh_interval.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Isis::Instances::Instance::LspRefreshIntervals::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Isis::Instances::Instance::LspRefreshIntervals::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Isis::Instances::Instance::LspRefreshIntervals::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "lsp-refresh-interval")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::LspRefreshInterval()
-    :
-    level{YType::enumeration, "level"},
-    interval{YType::uint32, "interval"}
-{
-
-    yang_name = "lsp-refresh-interval"; yang_parent_name = "lsp-refresh-intervals"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::~LspRefreshInterval()
-{
-}
-
-bool Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::has_data() const
-{
-    if (is_presence_container) return true;
-    return level.is_set
-	|| interval.is_set;
-}
-
-bool Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(interval.yfilter);
-}
-
-std::string Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "lsp-refresh-interval";
-    ADD_KEY_TOKEN(level, "level");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (interval.is_set || is_set(interval.yfilter)) leaf_name_data.push_back(interval.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "interval")
-    {
-        interval = value;
-        interval.value_namespace = name_space;
-        interval.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "interval")
-    {
-        interval.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::LspRefreshIntervals::LspRefreshInterval::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "level" || name == "interval")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::Distribute::Distribute()
-    :
-    dist_inst_id{YType::uint32, "dist-inst-id"},
-    level{YType::enumeration, "level"},
-    dist_throttle{YType::uint32, "dist-throttle"}
-{
-
-    yang_name = "distribute"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; is_presence_container = true;
-}
-
-Isis::Instances::Instance::Distribute::~Distribute()
-{
-}
-
-bool Isis::Instances::Instance::Distribute::has_data() const
-{
-    if (is_presence_container) return true;
-    return dist_inst_id.is_set
-	|| level.is_set
-	|| dist_throttle.is_set;
-}
-
-bool Isis::Instances::Instance::Distribute::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(dist_inst_id.yfilter)
-	|| ydk::is_set(level.yfilter)
-	|| ydk::is_set(dist_throttle.yfilter);
-}
-
-std::string Isis::Instances::Instance::Distribute::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "distribute";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::Distribute::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (dist_inst_id.is_set || is_set(dist_inst_id.yfilter)) leaf_name_data.push_back(dist_inst_id.get_name_leafdata());
-    if (level.is_set || is_set(level.yfilter)) leaf_name_data.push_back(level.get_name_leafdata());
-    if (dist_throttle.is_set || is_set(dist_throttle.yfilter)) leaf_name_data.push_back(dist_throttle.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Isis::Instances::Instance::Distribute::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::Distribute::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Isis::Instances::Instance::Distribute::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "dist-inst-id")
-    {
-        dist_inst_id = value;
-        dist_inst_id.value_namespace = name_space;
-        dist_inst_id.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "level")
-    {
-        level = value;
-        level.value_namespace = name_space;
-        level.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "dist-throttle")
-    {
-        dist_throttle = value;
-        dist_throttle.value_namespace = name_space;
-        dist_throttle.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::Distribute::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "dist-inst-id")
-    {
-        dist_inst_id.yfilter = yfilter;
-    }
-    if(value_path == "level")
-    {
-        level.yfilter = yfilter;
-    }
-    if(value_path == "dist-throttle")
-    {
-        dist_throttle.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::Distribute::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "dist-inst-id" || name == "level" || name == "dist-throttle")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::FlexAlgos::FlexAlgos()
-    :
-    flex_algo(this, {"flex_algo"})
-{
-
-    yang_name = "flex-algos"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::FlexAlgos::~FlexAlgos()
-{
-}
-
-bool Isis::Instances::Instance::FlexAlgos::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<flex_algo.len(); index++)
-    {
-        if(flex_algo[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Isis::Instances::Instance::FlexAlgos::has_operation() const
-{
-    for (std::size_t index=0; index<flex_algo.len(); index++)
-    {
-        if(flex_algo[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Isis::Instances::Instance::FlexAlgos::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "flex-algos";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::FlexAlgos::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Isis::Instances::Instance::FlexAlgos::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "flex-algo")
-    {
-        auto ent_ = std::make_shared<Isis::Instances::Instance::FlexAlgos::FlexAlgo>();
-        ent_->parent = this;
-        flex_algo.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::FlexAlgos::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : flex_algo.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Isis::Instances::Instance::FlexAlgos::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Isis::Instances::Instance::FlexAlgos::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Isis::Instances::Instance::FlexAlgos::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "flex-algo")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::FlexAlgos::FlexAlgo::FlexAlgo()
-    :
-    flex_algo{YType::uint32, "flex-algo"},
-    running{YType::empty, "running"},
-    metric_type{YType::uint32, "metric-type"},
-    priority{YType::uint32, "priority"},
-    advertise_definition{YType::boolean, "advertise-definition"}
-        ,
-    affinity_exclude_anies(std::make_shared<Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies>())
-{
-    affinity_exclude_anies->parent = this;
-
-    yang_name = "flex-algo"; yang_parent_name = "flex-algos"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::FlexAlgos::FlexAlgo::~FlexAlgo()
-{
-}
-
-bool Isis::Instances::Instance::FlexAlgos::FlexAlgo::has_data() const
-{
-    if (is_presence_container) return true;
-    return flex_algo.is_set
-	|| running.is_set
-	|| metric_type.is_set
-	|| priority.is_set
-	|| advertise_definition.is_set
-	|| (affinity_exclude_anies !=  nullptr && affinity_exclude_anies->has_data());
-}
-
-bool Isis::Instances::Instance::FlexAlgos::FlexAlgo::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(flex_algo.yfilter)
-	|| ydk::is_set(running.yfilter)
-	|| ydk::is_set(metric_type.yfilter)
-	|| ydk::is_set(priority.yfilter)
-	|| ydk::is_set(advertise_definition.yfilter)
-	|| (affinity_exclude_anies !=  nullptr && affinity_exclude_anies->has_operation());
-}
-
-std::string Isis::Instances::Instance::FlexAlgos::FlexAlgo::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "flex-algo";
-    ADD_KEY_TOKEN(flex_algo, "flex-algo");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::FlexAlgos::FlexAlgo::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (flex_algo.is_set || is_set(flex_algo.yfilter)) leaf_name_data.push_back(flex_algo.get_name_leafdata());
-    if (running.is_set || is_set(running.yfilter)) leaf_name_data.push_back(running.get_name_leafdata());
-    if (metric_type.is_set || is_set(metric_type.yfilter)) leaf_name_data.push_back(metric_type.get_name_leafdata());
-    if (priority.is_set || is_set(priority.yfilter)) leaf_name_data.push_back(priority.get_name_leafdata());
-    if (advertise_definition.is_set || is_set(advertise_definition.yfilter)) leaf_name_data.push_back(advertise_definition.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Isis::Instances::Instance::FlexAlgos::FlexAlgo::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "affinity-exclude-anies")
-    {
-        if(affinity_exclude_anies == nullptr)
-        {
-            affinity_exclude_anies = std::make_shared<Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies>();
-        }
-        return affinity_exclude_anies;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::FlexAlgos::FlexAlgo::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    if(affinity_exclude_anies != nullptr)
-    {
-        _children["affinity-exclude-anies"] = affinity_exclude_anies;
-    }
-
-    return _children;
-}
-
-void Isis::Instances::Instance::FlexAlgos::FlexAlgo::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "flex-algo")
-    {
-        flex_algo = value;
-        flex_algo.value_namespace = name_space;
-        flex_algo.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "running")
-    {
-        running = value;
-        running.value_namespace = name_space;
-        running.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "metric-type")
-    {
-        metric_type = value;
-        metric_type.value_namespace = name_space;
-        metric_type.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "priority")
-    {
-        priority = value;
-        priority.value_namespace = name_space;
-        priority.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "advertise-definition")
-    {
-        advertise_definition = value;
-        advertise_definition.value_namespace = name_space;
-        advertise_definition.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::FlexAlgos::FlexAlgo::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "flex-algo")
-    {
-        flex_algo.yfilter = yfilter;
-    }
-    if(value_path == "running")
-    {
-        running.yfilter = yfilter;
-    }
-    if(value_path == "metric-type")
-    {
-        metric_type.yfilter = yfilter;
-    }
-    if(value_path == "priority")
-    {
-        priority.yfilter = yfilter;
-    }
-    if(value_path == "advertise-definition")
-    {
-        advertise_definition.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::FlexAlgos::FlexAlgo::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "affinity-exclude-anies" || name == "flex-algo" || name == "running" || name == "metric-type" || name == "priority" || name == "advertise-definition")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::AffinityExcludeAnies()
-    :
-    affinity_exclude_any{YType::str, "affinity-exclude-any"}
-{
-
-    yang_name = "affinity-exclude-anies"; yang_parent_name = "flex-algo"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::~AffinityExcludeAnies()
-{
-}
-
-bool Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::has_data() const
-{
-    if (is_presence_container) return true;
-    for (auto const & leaf : affinity_exclude_any.getYLeafs())
-    {
-        if(leaf.is_set)
-            return true;
-    }
-    return false;
-}
-
-bool Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::has_operation() const
-{
-    for (auto const & leaf : affinity_exclude_any.getYLeafs())
-    {
-        if(is_set(leaf.yfilter))
-            return true;
-    }
-    return is_set(yfilter)
-	|| ydk::is_set(affinity_exclude_any.yfilter);
-}
-
-std::string Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "affinity-exclude-anies";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    auto affinity_exclude_any_name_datas = affinity_exclude_any.get_name_leafdata();
-    leaf_name_data.insert(leaf_name_data.end(), affinity_exclude_any_name_datas.begin(), affinity_exclude_any_name_datas.end());
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "affinity-exclude-any")
-    {
-        affinity_exclude_any.append(value);
-    }
-}
-
-void Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "affinity-exclude-any")
-    {
-        affinity_exclude_any.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::FlexAlgos::FlexAlgo::AffinityExcludeAnies::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "affinity-exclude-any")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::AffinityMappings::AffinityMappings()
-    :
-    affinity_mapping(this, {"affinity_name"})
-{
-
-    yang_name = "affinity-mappings"; yang_parent_name = "instance"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::AffinityMappings::~AffinityMappings()
-{
-}
-
-bool Isis::Instances::Instance::AffinityMappings::has_data() const
-{
-    if (is_presence_container) return true;
-    for (std::size_t index=0; index<affinity_mapping.len(); index++)
-    {
-        if(affinity_mapping[index]->has_data())
-            return true;
-    }
-    return false;
-}
-
-bool Isis::Instances::Instance::AffinityMappings::has_operation() const
-{
-    for (std::size_t index=0; index<affinity_mapping.len(); index++)
-    {
-        if(affinity_mapping[index]->has_operation())
-            return true;
-    }
-    return is_set(yfilter);
-}
-
-std::string Isis::Instances::Instance::AffinityMappings::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "affinity-mappings";
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::AffinityMappings::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Isis::Instances::Instance::AffinityMappings::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    if(child_yang_name == "affinity-mapping")
-    {
-        auto ent_ = std::make_shared<Isis::Instances::Instance::AffinityMappings::AffinityMapping>();
-        ent_->parent = this;
-        affinity_mapping.append(ent_);
-        return ent_;
-    }
-
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::AffinityMappings::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    count_ = 0;
-    for (auto ent_ : affinity_mapping.entities())
-    {
-        if(_children.find(ent_->get_segment_path()) == _children.end())
-            _children[ent_->get_segment_path()] = ent_;
-        else
-            _children[ent_->get_segment_path()+count_++] = ent_;
-    }
-
-    return _children;
-}
-
-void Isis::Instances::Instance::AffinityMappings::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-}
-
-void Isis::Instances::Instance::AffinityMappings::set_filter(const std::string & value_path, YFilter yfilter)
-{
-}
-
-bool Isis::Instances::Instance::AffinityMappings::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "affinity-mapping")
-        return true;
-    return false;
-}
-
-Isis::Instances::Instance::AffinityMappings::AffinityMapping::AffinityMapping()
-    :
-    affinity_name{YType::str, "affinity-name"},
-    value_{YType::uint32, "value"}
-{
-
-    yang_name = "affinity-mapping"; yang_parent_name = "affinity-mappings"; is_top_level_class = false; has_list_ancestor = true; 
-}
-
-Isis::Instances::Instance::AffinityMappings::AffinityMapping::~AffinityMapping()
-{
-}
-
-bool Isis::Instances::Instance::AffinityMappings::AffinityMapping::has_data() const
-{
-    if (is_presence_container) return true;
-    return affinity_name.is_set
-	|| value_.is_set;
-}
-
-bool Isis::Instances::Instance::AffinityMappings::AffinityMapping::has_operation() const
-{
-    return is_set(yfilter)
-	|| ydk::is_set(affinity_name.yfilter)
-	|| ydk::is_set(value_.yfilter);
-}
-
-std::string Isis::Instances::Instance::AffinityMappings::AffinityMapping::get_segment_path() const
-{
-    std::ostringstream path_buffer;
-    path_buffer << "affinity-mapping";
-    ADD_KEY_TOKEN(affinity_name, "affinity-name");
-    return path_buffer.str();
-}
-
-std::vector<std::pair<std::string, LeafData> > Isis::Instances::Instance::AffinityMappings::AffinityMapping::get_name_leaf_data() const
-{
-    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
-
-    if (affinity_name.is_set || is_set(affinity_name.yfilter)) leaf_name_data.push_back(affinity_name.get_name_leafdata());
-    if (value_.is_set || is_set(value_.yfilter)) leaf_name_data.push_back(value_.get_name_leafdata());
-
-    return leaf_name_data;
-
-}
-
-std::shared_ptr<ydk::Entity> Isis::Instances::Instance::AffinityMappings::AffinityMapping::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
-{
-    return nullptr;
-}
-
-std::map<std::string, std::shared_ptr<ydk::Entity>> Isis::Instances::Instance::AffinityMappings::AffinityMapping::get_children() const
-{
-    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
-    char count_=0;
-    return _children;
-}
-
-void Isis::Instances::Instance::AffinityMappings::AffinityMapping::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
-{
-    if(value_path == "affinity-name")
-    {
-        affinity_name = value;
-        affinity_name.value_namespace = name_space;
-        affinity_name.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "value")
-    {
-        value_ = value;
-        value_.value_namespace = name_space;
-        value_.value_namespace_prefix = name_space_prefix;
-    }
-}
-
-void Isis::Instances::Instance::AffinityMappings::AffinityMapping::set_filter(const std::string & value_path, YFilter yfilter)
-{
-    if(value_path == "affinity-name")
-    {
-        affinity_name.yfilter = yfilter;
-    }
-    if(value_path == "value")
-    {
-        value_.yfilter = yfilter;
-    }
-}
-
-bool Isis::Instances::Instance::AffinityMappings::AffinityMapping::has_leaf_or_child_of_name(const std::string & name) const
-{
-    if(name == "affinity-name" || name == "value")
-        return true;
-    return false;
-}
-
-const Enum::YLeaf IsisSnpAuth::send_only {0, "send-only"};
-const Enum::YLeaf IsisSnpAuth::full {1, "full"};
-
-const Enum::YLeaf IsisMibMaxAreaAddressMismatchBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibMaxAreaAddressMismatchBoolean::true_ {6, "true"};
-
-const Enum::YLeaf IsisMibLspTooLargeToPropagateBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibLspTooLargeToPropagateBoolean::true_ {14, "true"};
-
-const Enum::YLeaf IsisMibSequenceNumberSkipBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibSequenceNumberSkipBoolean::true_ {8, "true"};
-
-const Enum::YLeaf IsisInterfaceFrrTiebreaker::node_protecting {3, "node-protecting"};
-const Enum::YLeaf IsisInterfaceFrrTiebreaker::srlg_disjoint {6, "srlg-disjoint"};
-
-const Enum::YLeaf IsisAuthenticationAlgorithm::cleartext {1, "cleartext"};
-const Enum::YLeaf IsisAuthenticationAlgorithm::hmac_md5 {2, "hmac-md5"};
-const Enum::YLeaf IsisAuthenticationAlgorithm::keychain {3, "keychain"};
-
-const Enum::YLeaf IsisAdvTypeExternal::external {1, "external"};
-
-const Enum::YLeaf IsisMibRejectedAdjacencyBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibRejectedAdjacencyBoolean::true_ {13, "true"};
-
-const Enum::YLeaf IsisMibCorruptedLspDetectedBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibCorruptedLspDetectedBoolean::true_ {3, "true"};
-
-const Enum::YLeaf IsisAdjCheck::disabled {0, "disabled"};
-
-const Enum::YLeaf IsisispfState::enabled {1, "enabled"};
-
-const Enum::YLeaf IsisfrrLoadSharing::disable {1, "disable"};
-
-const Enum::YLeaf IsisMibAuthenticationFailureBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibAuthenticationFailureBoolean::true_ {10, "true"};
+const Enum::YLeaf IsisEnablePoi::enable_poi_off {0, "enable-poi-off"};
+const Enum::YLeaf IsisEnablePoi::enable_poi_on {1, "enable-poi-on"};
 
 const Enum::YLeaf IsisInterfaceState::shutdown {0, "shutdown"};
 const Enum::YLeaf IsisInterfaceState::suppressed {1, "suppressed"};
 const Enum::YLeaf IsisInterfaceState::passive {2, "passive"};
 const Enum::YLeaf IsisInterfaceState::enabled_active {3, "enabled-active"};
 
-const Enum::YLeaf IsisTracingMode::off {0, "off"};
-const Enum::YLeaf IsisTracingMode::basic {1, "basic"};
-const Enum::YLeaf IsisTracingMode::enhanced {2, "enhanced"};
+const Enum::YLeaf Isisfrr::per_link {1, "per-link"};
+const Enum::YLeaf Isisfrr::per_prefix {2, "per-prefix"};
 
-const Enum::YLeaf IsisAdvTypeInterLevel::inter_level {1, "inter-level"};
+const Enum::YLeaf IsisfrrLoadSharing::disable {1, "disable"};
 
-const Enum::YLeaf IsisNsfFlavor::cisco_proprietary_nsf {1, "cisco-proprietary-nsf"};
-const Enum::YLeaf IsisNsfFlavor::ietf_standard_nsf {2, "ietf-standard-nsf"};
-
-const Enum::YLeaf IsisInterfaceAfState::disable {0, "disable"};
-
-const Enum::YLeaf IsissidProtected::disable {0, "disable"};
-const Enum::YLeaf IsissidProtected::enable {1, "enable"};
-
-const Enum::YLeaf IsisMetricStyle::old_metric_style {0, "old-metric-style"};
-const Enum::YLeaf IsisMetricStyle::new_metric_style {1, "new-metric-style"};
-const Enum::YLeaf IsisMetricStyle::both_metric_style {2, "both-metric-style"};
-const Enum::YLeaf IsisMetricStyle::old_metric_style_transition {3, "old-metric-style-transition"};
-const Enum::YLeaf IsisMetricStyle::new_metric_style_transition {4, "new-metric-style-transition"};
+const Enum::YLeaf IsisAuthenticationFailureMode::drop {0, "drop"};
+const Enum::YLeaf IsisAuthenticationFailureMode::send_only {1, "send-only"};
 
 const Enum::YLeaf IsisApplyWeight::ecmp_only {1, "ecmp-only"};
 const Enum::YLeaf IsisApplyWeight::ucmp_only {2, "ucmp-only"};
 const Enum::YLeaf IsisApplyWeight::ecmp_only_bandwidth {3, "ecmp-only-bandwidth"};
 
-const Enum::YLeaf IsisfrrSrlgProtection::local {0, "local"};
-const Enum::YLeaf IsisfrrSrlgProtection::weighted_global {1, "weighted-global"};
+const Enum::YLeaf IsisLabelPreference::ldp {0, "ldp"};
+const Enum::YLeaf IsisLabelPreference::segment_routing {1, "segment-routing"};
 
-const Enum::YLeaf IsisOverloadBitMode::permanently_set {1, "permanently-set"};
-const Enum::YLeaf IsisOverloadBitMode::startup_period {2, "startup-period"};
-const Enum::YLeaf IsisOverloadBitMode::wait_for_bgp {3, "wait-for-bgp"};
-
-const Enum::YLeaf IsisMibAuthenticationTypeFailureBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibAuthenticationTypeFailureBoolean::true_ {9, "true"};
-
-const Enum::YLeaf IsisMicroLoopAvoidance::not_set {0, "not-set"};
-const Enum::YLeaf IsisMicroLoopAvoidance::micro_loop_avoidance_all {1, "micro-loop-avoidance-all"};
-const Enum::YLeaf IsisMicroLoopAvoidance::micro_loop_avoidance_protected {2, "micro-loop-avoidance-protected"};
-const Enum::YLeaf IsisMicroLoopAvoidance::micro_loop_avoidance_segement_routing {3, "micro-loop-avoidance-segement-routing"};
-
-const Enum::YLeaf IsisApplication::lfa {0, "lfa"};
-
-const Enum::YLeaf IsisRemoteLfa::remote_lfa_none {0, "remote-lfa-none"};
-const Enum::YLeaf IsisRemoteLfa::remote_lfa_tunnel_ldp {1, "remote-lfa-tunnel-ldp"};
-
-const Enum::YLeaf IsisMibAreaMismatchBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibAreaMismatchBoolean::true_ {12, "true"};
-
-const Enum::YLeaf IsisMibAttemptToExceedMaxSequenceBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibAttemptToExceedMaxSequenceBoolean::true_ {4, "true"};
-
-const Enum::YLeaf IsisPrefixPriority::critical_priority {0, "critical-priority"};
-const Enum::YLeaf IsisPrefixPriority::high_priority {1, "high-priority"};
-const Enum::YLeaf IsisPrefixPriority::medium_priority {2, "medium-priority"};
-
-const Enum::YLeaf IsisConfigurableLevels::level1 {1, "level1"};
-const Enum::YLeaf IsisConfigurableLevels::level2 {2, "level2"};
-const Enum::YLeaf IsisConfigurableLevels::level1_and2 {3, "level1-and2"};
-
-const Enum::YLeaf IsisfrrTiebreaker::downstream {0, "downstream"};
-const Enum::YLeaf IsisfrrTiebreaker::lc_disjoint {1, "lc-disjoint"};
-const Enum::YLeaf IsisfrrTiebreaker::lowest_backup_metric {2, "lowest-backup-metric"};
-const Enum::YLeaf IsisfrrTiebreaker::node_protecting {3, "node-protecting"};
-const Enum::YLeaf IsisfrrTiebreaker::primary_path {4, "primary-path"};
-const Enum::YLeaf IsisfrrTiebreaker::secondary_path {5, "secondary-path"};
-const Enum::YLeaf IsisfrrTiebreaker::srlg_disjoint {6, "srlg-disjoint"};
-
-const Enum::YLeaf IsisMibManualAddressDropsBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibManualAddressDropsBoolean::true_ {2, "true"};
-
-const Enum::YLeaf IsisexplicitNullFlag::disable {0, "disable"};
-const Enum::YLeaf IsisexplicitNullFlag::enable {1, "enable"};
-
-const Enum::YLeaf IsisEnablePoi::enable_poi_off {0, "enable-poi-off"};
-const Enum::YLeaf IsisEnablePoi::enable_poi_on {1, "enable-poi-on"};
+const Enum::YLeaf Isissid1::index_ {1, "index"};
+const Enum::YLeaf Isissid1::absolute {2, "absolute"};
 
 const Enum::YLeaf IsisMetric::internal {0, "internal"};
 const Enum::YLeaf IsisMetric::external {1, "external"};
 const Enum::YLeaf IsisMetric::rib_internal {2, "rib-internal"};
 const Enum::YLeaf IsisMetric::rib_external {3, "rib-external"};
 
+const Enum::YLeaf IsisAttachedBit::area {0, "area"};
+const Enum::YLeaf IsisAttachedBit::on {1, "on"};
+const Enum::YLeaf IsisAttachedBit::off {2, "off"};
+
+const Enum::YLeaf IsisConfigurableLevels::level1 {1, "level1"};
+const Enum::YLeaf IsisConfigurableLevels::level2 {2, "level2"};
+const Enum::YLeaf IsisConfigurableLevels::level1_and2 {3, "level1-and2"};
+
+const Enum::YLeaf IsisConfigurableLevel::level_12 {0, "level-12"};
+const Enum::YLeaf IsisConfigurableLevel::level_1 {1, "level-1"};
+const Enum::YLeaf IsisConfigurableLevel::level_2 {2, "level-2"};
+
 const Enum::YLeaf IsisHelloPadding::never {0, "never"};
 const Enum::YLeaf IsisHelloPadding::sometimes {1, "sometimes"};
 
-const Enum::YLeaf IsisMibDatabaseOverFlowBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibDatabaseOverFlowBoolean::true_ {1, "true"};
+const Enum::YLeaf IsisSnpAuth::send_only {0, "send-only"};
+const Enum::YLeaf IsisSnpAuth::full {1, "full"};
+
+const Enum::YLeaf IsisInterfaceAfState::disable {0, "disable"};
+
+const Enum::YLeaf IsisexplicitNullFlag::disable {0, "disable"};
+const Enum::YLeaf IsisexplicitNullFlag::enable {1, "enable"};
 
 const Enum::YLeaf IsisApplicationAttribute::srlg {0, "srlg"};
 
-const Enum::YLeaf IsisAuthenticationFailureMode::drop {0, "drop"};
-const Enum::YLeaf IsisAuthenticationFailureMode::send_only {1, "send-only"};
-
-const Enum::YLeaf IsisMibProtocolsSupportedMismatchBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibProtocolsSupportedMismatchBoolean::true_ {16, "true"};
+const Enum::YLeaf IsisfrrSrlgProtection::local {0, "local"};
+const Enum::YLeaf IsisfrrSrlgProtection::weighted_global {1, "weighted-global"};
 
 const Enum::YLeaf IsisRedistProto::connected {0, "connected"};
 const Enum::YLeaf IsisRedistProto::static_ {1, "static"};
@@ -17300,45 +17397,120 @@ const Enum::YLeaf IsisRedistProto::subscriber {8, "subscriber"};
 const Enum::YLeaf IsisRedistProto::application {9, "application"};
 const Enum::YLeaf IsisRedistProto::mobile {10, "mobile"};
 
-const Enum::YLeaf Isissid1::index_ {1, "index"};
-const Enum::YLeaf Isissid1::absolute {2, "absolute"};
+const Enum::YLeaf IsisTracingMode::off {0, "off"};
+const Enum::YLeaf IsisTracingMode::basic {1, "basic"};
+const Enum::YLeaf IsisTracingMode::enhanced {2, "enhanced"};
+
+const Enum::YLeaf IsisPrefixPriority::critical_priority {0, "critical-priority"};
+const Enum::YLeaf IsisPrefixPriority::high_priority {1, "high-priority"};
+const Enum::YLeaf IsisPrefixPriority::medium_priority {2, "medium-priority"};
+
+const Enum::YLeaf IsisAuthenticationAlgorithm::cleartext {1, "cleartext"};
+const Enum::YLeaf IsisAuthenticationAlgorithm::hmac_md5 {2, "hmac-md5"};
+const Enum::YLeaf IsisAuthenticationAlgorithm::keychain {3, "keychain"};
+
+const Enum::YLeaf IsisispfState::enabled {1, "enabled"};
+
+const Enum::YLeaf IsisApplication::lfa {0, "lfa"};
+
+const Enum::YLeaf IsissidProtected::disable {0, "disable"};
+const Enum::YLeaf IsissidProtected::enable {1, "enable"};
+
+const Enum::YLeaf IsisAdvTypeExternal::external {1, "external"};
 
 const Enum::YLeaf IsisphpFlag::enable {0, "enable"};
 const Enum::YLeaf IsisphpFlag::disable {1, "disable"};
 
-const Enum::YLeaf IsisMibIdLengthMismatchBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibIdLengthMismatchBoolean::true_ {5, "true"};
+const Enum::YLeaf IsisMetricStyle::old_metric_style {0, "old-metric-style"};
+const Enum::YLeaf IsisMetricStyle::new_metric_style {1, "new-metric-style"};
+const Enum::YLeaf IsisMetricStyle::both_metric_style {2, "both-metric-style"};
+const Enum::YLeaf IsisMetricStyle::old_metric_style_transition {3, "old-metric-style-transition"};
+const Enum::YLeaf IsisMetricStyle::new_metric_style_transition {4, "new-metric-style-transition"};
+
+const Enum::YLeaf IsisRemoteLfa::remote_lfa_none {0, "remote-lfa-none"};
+const Enum::YLeaf IsisRemoteLfa::remote_lfa_tunnel_ldp {1, "remote-lfa-tunnel-ldp"};
+
+const Enum::YLeaf IsisMicroLoopAvoidance::not_set {0, "not-set"};
+const Enum::YLeaf IsisMicroLoopAvoidance::micro_loop_avoidance_all {1, "micro-loop-avoidance-all"};
+const Enum::YLeaf IsisMicroLoopAvoidance::micro_loop_avoidance_protected {2, "micro-loop-avoidance-protected"};
+const Enum::YLeaf IsisMicroLoopAvoidance::micro_loop_avoidance_segement_routing {3, "micro-loop-avoidance-segement-routing"};
+
+const Enum::YLeaf IsisAdjCheck::disabled {0, "disabled"};
+
+const Enum::YLeaf IsisInterfaceFrrTiebreaker::node_protecting {3, "node-protecting"};
+const Enum::YLeaf IsisInterfaceFrrTiebreaker::srlg_disjoint {6, "srlg-disjoint"};
+
+const Enum::YLeaf IsisOverloadBitMode::permanently_set {1, "permanently-set"};
+const Enum::YLeaf IsisOverloadBitMode::startup_period {2, "startup-period"};
+const Enum::YLeaf IsisOverloadBitMode::wait_for_bgp {3, "wait-for-bgp"};
+
+const Enum::YLeaf IsisNsfFlavor::cisco_proprietary_nsf {1, "cisco-proprietary-nsf"};
+const Enum::YLeaf IsisNsfFlavor::ietf_standard_nsf {2, "ietf-standard-nsf"};
+
+const Enum::YLeaf IsisfrrTiebreaker::downstream {0, "downstream"};
+const Enum::YLeaf IsisfrrTiebreaker::lc_disjoint {1, "lc-disjoint"};
+const Enum::YLeaf IsisfrrTiebreaker::lowest_backup_metric {2, "lowest-backup-metric"};
+const Enum::YLeaf IsisfrrTiebreaker::node_protecting {3, "node-protecting"};
+const Enum::YLeaf IsisfrrTiebreaker::primary_path {4, "primary-path"};
+const Enum::YLeaf IsisfrrTiebreaker::secondary_path {5, "secondary-path"};
+const Enum::YLeaf IsisfrrTiebreaker::srlg_disjoint {6, "srlg-disjoint"};
+
+const Enum::YLeaf IsisMibManualAddressDropsBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibManualAddressDropsBoolean::true_ {2, "true"};
+
+const Enum::YLeaf IsisMibAuthenticationTypeFailureBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibAuthenticationTypeFailureBoolean::true_ {9, "true"};
+
+const Enum::YLeaf IsisMibMaxAreaAddressMismatchBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibMaxAreaAddressMismatchBoolean::true_ {6, "true"};
+
+const Enum::YLeaf IsisMibSequenceNumberSkipBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibSequenceNumberSkipBoolean::true_ {8, "true"};
+
+const Enum::YLeaf IsisMibDatabaseOverFlowBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibDatabaseOverFlowBoolean::true_ {1, "true"};
 
 const Enum::YLeaf IsisMibAllBoolean::false_ {0, "false"};
 const Enum::YLeaf IsisMibAllBoolean::true_ {19, "true"};
 
-const Enum::YLeaf IsisMibOriginatedLspBufferSizeMismatchBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibOriginatedLspBufferSizeMismatchBoolean::true_ {15, "true"};
-
-const Enum::YLeaf Isisfrr::per_link {1, "per-link"};
-const Enum::YLeaf Isisfrr::per_prefix {2, "per-prefix"};
-
-const Enum::YLeaf IsisAttachedBit::area {0, "area"};
-const Enum::YLeaf IsisAttachedBit::on {1, "on"};
-const Enum::YLeaf IsisAttachedBit::off {2, "off"};
-
-const Enum::YLeaf NflagClear::disable {0, "disable"};
-const Enum::YLeaf NflagClear::enable {1, "enable"};
-
-const Enum::YLeaf IsisLabelPreference::ldp {0, "ldp"};
-const Enum::YLeaf IsisLabelPreference::segment_routing {1, "segment-routing"};
-
-const Enum::YLeaf IsisMibAdjacencyChangeBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibAdjacencyChangeBoolean::true_ {17, "true"};
-
-const Enum::YLeaf IsisMibLspErrorDetectedBoolean::false_ {0, "false"};
-const Enum::YLeaf IsisMibLspErrorDetectedBoolean::true_ {18, "true"};
+const Enum::YLeaf IsisMibLspTooLargeToPropagateBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibLspTooLargeToPropagateBoolean::true_ {14, "true"};
 
 const Enum::YLeaf IsisMibOwnLspPurgeBoolean::false_ {0, "false"};
 const Enum::YLeaf IsisMibOwnLspPurgeBoolean::true_ {7, "true"};
 
+const Enum::YLeaf IsisMibAdjacencyChangeBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibAdjacencyChangeBoolean::true_ {17, "true"};
+
+const Enum::YLeaf IsisMibProtocolsSupportedMismatchBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibProtocolsSupportedMismatchBoolean::true_ {16, "true"};
+
+const Enum::YLeaf IsisMibAttemptToExceedMaxSequenceBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibAttemptToExceedMaxSequenceBoolean::true_ {4, "true"};
+
+const Enum::YLeaf IsisMibIdLengthMismatchBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibIdLengthMismatchBoolean::true_ {5, "true"};
+
+const Enum::YLeaf IsisMibOriginatedLspBufferSizeMismatchBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibOriginatedLspBufferSizeMismatchBoolean::true_ {15, "true"};
+
+const Enum::YLeaf IsisMibAreaMismatchBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibAreaMismatchBoolean::true_ {12, "true"};
+
+const Enum::YLeaf IsisMibCorruptedLspDetectedBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibCorruptedLspDetectedBoolean::true_ {3, "true"};
+
+const Enum::YLeaf IsisMibLspErrorDetectedBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibLspErrorDetectedBoolean::true_ {18, "true"};
+
+const Enum::YLeaf IsisMibRejectedAdjacencyBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibRejectedAdjacencyBoolean::true_ {13, "true"};
+
 const Enum::YLeaf IsisMibVersionSkewBoolean::false_ {0, "false"};
 const Enum::YLeaf IsisMibVersionSkewBoolean::true_ {11, "true"};
+
+const Enum::YLeaf IsisMibAuthenticationFailureBoolean::false_ {0, "false"};
+const Enum::YLeaf IsisMibAuthenticationFailureBoolean::true_ {10, "true"};
 
 const Enum::YLeaf Isis::Instances::Instance::Afs::Af::AfData::Metrics::Metric::Metric_::maximum {16777215, "maximum"};
 

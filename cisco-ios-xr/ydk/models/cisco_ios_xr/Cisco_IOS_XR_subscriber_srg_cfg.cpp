@@ -2533,11 +2533,11 @@ bool SubscriberRedundancy::RevertiveTimer::has_leaf_or_child_of_name(const std::
 const Enum::YLeaf SubscriberRedundancyGroupSlaveMode::warm {1, "warm"};
 const Enum::YLeaf SubscriberRedundancyGroupSlaveMode::hot {2, "hot"};
 
-const Enum::YLeaf SrgAddrFamily::ipv4 {2, "ipv4"};
-const Enum::YLeaf SrgAddrFamily::ipv6 {10, "ipv6"};
-
 const Enum::YLeaf SubscriberRedundancyGroupRole::master {1, "master"};
 const Enum::YLeaf SubscriberRedundancyGroupRole::slave {2, "slave"};
+
+const Enum::YLeaf SrgAddrFamily::ipv4 {2, "ipv4"};
+const Enum::YLeaf SrgAddrFamily::ipv6 {10, "ipv6"};
 
 
 }

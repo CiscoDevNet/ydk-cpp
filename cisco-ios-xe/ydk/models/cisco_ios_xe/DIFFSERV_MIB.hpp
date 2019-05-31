@@ -12,32 +12,14 @@
 namespace cisco_ios_xe {
 namespace DIFFSERV_MIB {
 
-class DiffServTBParamTrTCMBlind : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class DiffServTBParamSimpleTokenBucket : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        DiffServTBParamTrTCMBlind();
-        ~DiffServTBParamTrTCMBlind();
+        DiffServTBParamSimpleTokenBucket();
+        ~DiffServTBParamSimpleTokenBucket();
 
 
-}; // DiffServTBParamTrTCMBlind
-
-class DiffServSchedulerWFQ : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        DiffServSchedulerWFQ();
-        ~DiffServSchedulerWFQ();
-
-
-}; // DiffServSchedulerWFQ
-
-class DiffServTBParamTswTCM : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
-{
-    public:
-        DiffServTBParamTswTCM();
-        ~DiffServTBParamTswTCM();
-
-
-}; // DiffServTBParamTswTCM
+}; // DiffServTBParamSimpleTokenBucket
 
 class DiffServTBParamAvgRate : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
@@ -48,14 +30,14 @@ class DiffServTBParamAvgRate : public ietf::ietf_yang_smiv2::ObjectIdentity, vir
 
 }; // DiffServTBParamAvgRate
 
-class DiffServSchedulerWRR : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class DiffServTBParamSrTCMBlind : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        DiffServSchedulerWRR();
-        ~DiffServSchedulerWRR();
+        DiffServTBParamSrTCMBlind();
+        ~DiffServTBParamSrTCMBlind();
 
 
-}; // DiffServSchedulerWRR
+}; // DiffServTBParamSrTCMBlind
 
 class DiffServTBParamSrTCMAware : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
@@ -66,23 +48,32 @@ class DiffServTBParamSrTCMAware : public ietf::ietf_yang_smiv2::ObjectIdentity, 
 
 }; // DiffServTBParamSrTCMAware
 
-class DiffServTBParamSrTCMBlind : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class DiffServTBParamTrTCMBlind : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        DiffServTBParamSrTCMBlind();
-        ~DiffServTBParamSrTCMBlind();
+        DiffServTBParamTrTCMBlind();
+        ~DiffServTBParamTrTCMBlind();
 
 
-}; // DiffServTBParamSrTCMBlind
+}; // DiffServTBParamTrTCMBlind
 
-class DiffServTBParamSimpleTokenBucket : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class DiffServTBParamTrTCMAware : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        DiffServTBParamSimpleTokenBucket();
-        ~DiffServTBParamSimpleTokenBucket();
+        DiffServTBParamTrTCMAware();
+        ~DiffServTBParamTrTCMAware();
 
 
-}; // DiffServTBParamSimpleTokenBucket
+}; // DiffServTBParamTrTCMAware
+
+class DiffServTBParamTswTCM : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        DiffServTBParamTswTCM();
+        ~DiffServTBParamTswTCM();
+
+
+}; // DiffServTBParamTswTCM
 
 class DiffServSchedulerPriority : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
@@ -93,14 +84,23 @@ class DiffServSchedulerPriority : public ietf::ietf_yang_smiv2::ObjectIdentity, 
 
 }; // DiffServSchedulerPriority
 
-class DiffServTBParamTrTCMAware : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+class DiffServSchedulerWRR : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
 {
     public:
-        DiffServTBParamTrTCMAware();
-        ~DiffServTBParamTrTCMAware();
+        DiffServSchedulerWRR();
+        ~DiffServSchedulerWRR();
 
 
-}; // DiffServTBParamTrTCMAware
+}; // DiffServSchedulerWRR
+
+class DiffServSchedulerWFQ : public ietf::ietf_yang_smiv2::ObjectIdentity, virtual ydk::Identity
+{
+    public:
+        DiffServSchedulerWFQ();
+        ~DiffServSchedulerWFQ();
+
+
+}; // DiffServSchedulerWFQ
 
 class DIFFSERVMIB : public ydk::Entity
 {

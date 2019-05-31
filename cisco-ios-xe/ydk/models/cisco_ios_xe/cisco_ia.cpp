@@ -1570,15 +1570,26 @@ bool Rollback::Output::has_leaf_or_child_of_name(const std::string & name) const
     return false;
 }
 
+const Enum::YLeaf ParserMsgProcessingMethod::blacklist {0, "blacklist"};
+const Enum::YLeaf ParserMsgProcessingMethod::whitelist {1, "whitelist"};
+
+const Enum::YLeaf CiaSyncType::disabled {0, "disabled"};
+const Enum::YLeaf CiaSyncType::without_defaults {1, "without-defaults"};
+const Enum::YLeaf CiaSyncType::include_defaults {2, "include-defaults"};
+
 const Enum::YLeaf CiaLogLevel::none {0, "none"};
 const Enum::YLeaf CiaLogLevel::error {1, "error"};
 const Enum::YLeaf CiaLogLevel::warning {2, "warning"};
 const Enum::YLeaf CiaLogLevel::information {3, "information"};
 const Enum::YLeaf CiaLogLevel::debug {4, "debug"};
 
-const Enum::YLeaf CiaSyncType::disabled {0, "disabled"};
-const Enum::YLeaf CiaSyncType::without_defaults {1, "without-defaults"};
-const Enum::YLeaf CiaSyncType::include_defaults {2, "include-defaults"};
+const Enum::YLeaf OnepLogLevel::none {0, "none"};
+const Enum::YLeaf OnepLogLevel::fatal {1, "fatal"};
+const Enum::YLeaf OnepLogLevel::error {2, "error"};
+const Enum::YLeaf OnepLogLevel::warning {3, "warning"};
+const Enum::YLeaf OnepLogLevel::information {4, "information"};
+const Enum::YLeaf OnepLogLevel::debug {5, "debug"};
+const Enum::YLeaf OnepLogLevel::trace {6, "trace"};
 
 const Enum::YLeaf SyslogSeverity::none {8, "none"};
 const Enum::YLeaf SyslogSeverity::emergency {0, "emergency"};
@@ -1589,17 +1600,6 @@ const Enum::YLeaf SyslogSeverity::warning {4, "warning"};
 const Enum::YLeaf SyslogSeverity::notice {5, "notice"};
 const Enum::YLeaf SyslogSeverity::info {6, "info"};
 const Enum::YLeaf SyslogSeverity::debug {7, "debug"};
-
-const Enum::YLeaf ParserMsgProcessingMethod::blacklist {0, "blacklist"};
-const Enum::YLeaf ParserMsgProcessingMethod::whitelist {1, "whitelist"};
-
-const Enum::YLeaf OnepLogLevel::none {0, "none"};
-const Enum::YLeaf OnepLogLevel::fatal {1, "fatal"};
-const Enum::YLeaf OnepLogLevel::error {2, "error"};
-const Enum::YLeaf OnepLogLevel::warning {3, "warning"};
-const Enum::YLeaf OnepLogLevel::information {4, "information"};
-const Enum::YLeaf OnepLogLevel::debug {5, "debug"};
-const Enum::YLeaf OnepLogLevel::trace {6, "trace"};
 
 
 }

@@ -770,40 +770,7 @@ class Ipv4AclAndPrefixList::Oor::PrefixListSummary::Details : public ydk::Entity
 
 }; // Ipv4AclAndPrefixList::Oor::PrefixListSummary::Details
 
-class AclTcpflagsOperator : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf match_none;
-        static const ydk::Enum::YLeaf match_all;
-        static const ydk::Enum::YLeaf match_any_old;
-        static const ydk::Enum::YLeaf match_any;
-
-};
-
 class AclPortOperator : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf eq;
-        static const ydk::Enum::YLeaf gt;
-        static const ydk::Enum::YLeaf lt;
-        static const ydk::Enum::YLeaf neq;
-        static const ydk::Enum::YLeaf range;
-        static const ydk::Enum::YLeaf onebyte;
-        static const ydk::Enum::YLeaf twobytes;
-
-};
-
-class AclAce1 : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf normal;
-        static const ydk::Enum::YLeaf remark;
-        static const ydk::Enum::YLeaf abf;
-
-};
-
-class AclPortOperator_ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -828,6 +795,17 @@ class BagAclNhAtStatus : public ydk::Enum
 
 };
 
+class BagAclNhStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf not_present;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf down;
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf max;
+
+};
+
 class BagAclNh : public ydk::Enum
 {
     public:
@@ -837,7 +815,54 @@ class BagAclNh : public ydk::Enum
 
 };
 
+class AclPortOperator_ : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf eq;
+        static const ydk::Enum::YLeaf gt;
+        static const ydk::Enum::YLeaf lt;
+        static const ydk::Enum::YLeaf neq;
+        static const ydk::Enum::YLeaf range;
+        static const ydk::Enum::YLeaf onebyte;
+        static const ydk::Enum::YLeaf twobytes;
+
+};
+
 class AclPortOperator__ : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf eq;
+        static const ydk::Enum::YLeaf gt;
+        static const ydk::Enum::YLeaf lt;
+        static const ydk::Enum::YLeaf neq;
+        static const ydk::Enum::YLeaf range;
+        static const ydk::Enum::YLeaf onebyte;
+        static const ydk::Enum::YLeaf twobytes;
+
+};
+
+class AclTcpflagsOperator : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf match_none;
+        static const ydk::Enum::YLeaf match_all;
+        static const ydk::Enum::YLeaf match_any_old;
+        static const ydk::Enum::YLeaf match_any;
+
+};
+
+class AclLog : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf log_none;
+        static const ydk::Enum::YLeaf log;
+        static const ydk::Enum::YLeaf log_input;
+
+};
+
+class AclPortOperator___ : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf none;
@@ -863,37 +888,12 @@ class AclAction : public ydk::Enum
 
 };
 
-class BagAclNhStatus : public ydk::Enum
+class AclAce1 : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf not_present;
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf down;
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf max;
-
-};
-
-class AclPortOperator___ : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf eq;
-        static const ydk::Enum::YLeaf gt;
-        static const ydk::Enum::YLeaf lt;
-        static const ydk::Enum::YLeaf neq;
-        static const ydk::Enum::YLeaf range;
-        static const ydk::Enum::YLeaf onebyte;
-        static const ydk::Enum::YLeaf twobytes;
-
-};
-
-class AclLog : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf log_none;
-        static const ydk::Enum::YLeaf log;
-        static const ydk::Enum::YLeaf log_input;
+        static const ydk::Enum::YLeaf normal;
+        static const ydk::Enum::YLeaf remark;
+        static const ydk::Enum::YLeaf abf;
 
 };
 

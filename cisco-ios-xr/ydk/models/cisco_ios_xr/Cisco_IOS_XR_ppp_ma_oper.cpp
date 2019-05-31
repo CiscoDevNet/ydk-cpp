@@ -7509,38 +7509,11 @@ bool Ppp::Nodes::Node::Summary::LcpAuthPhases::has_leaf_or_child_of_name(const s
     return false;
 }
 
-const Enum::YLeaf NcpIdent::cdpcp {1, "cdpcp"};
-const Enum::YLeaf NcpIdent::ipcp {2, "ipcp"};
-const Enum::YLeaf NcpIdent::ipcpiw {3, "ipcpiw"};
-const Enum::YLeaf NcpIdent::ipv6cp {4, "ipv6cp"};
-const Enum::YLeaf NcpIdent::mplscp {5, "mplscp"};
-const Enum::YLeaf NcpIdent::osicp {6, "osicp"};
-
-const Enum::YLeaf PppSsoFsmState::ppp_sso_state_not_ready_0 {0, "ppp-sso-state-not-ready-0"};
-const Enum::YLeaf PppSsoFsmState::ppp_sso_state_standby_unnegd_1 {1, "ppp-sso-state-standby-unnegd-1"};
-const Enum::YLeaf PppSsoFsmState::ppp_sso_state_active_down_2 {2, "ppp-sso-state-active-down-2"};
-const Enum::YLeaf PppSsoFsmState::ppp_sso_state_deactivating_3 {3, "ppp-sso-state-deactivating-3"};
-const Enum::YLeaf PppSsoFsmState::ppp_sso_state_active_unnegd_4 {4, "ppp-sso-state-active-unnegd-4"};
-const Enum::YLeaf PppSsoFsmState::ppp_sso_state_standby_negd_5 {5, "ppp-sso-state-standby-negd-5"};
-const Enum::YLeaf PppSsoFsmState::ppp_sso_state_activating_6 {6, "ppp-sso-state-activating-6"};
-const Enum::YLeaf PppSsoFsmState::ppp_sso_state_active_negd_7 {7, "ppp-sso-state-active-negd-7"};
-
 const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_none {0, "ppp-iphc-compression-fmt-none"};
 const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_vj {1, "ppp-iphc-compression-fmt-vj"};
 const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_ietf {2, "ppp-iphc-compression-fmt-ietf"};
 const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_iphc {3, "ppp-iphc-compression-fmt-iphc"};
 const Enum::YLeaf PppIphcCompression::ppp_iphc_compression_fmt_cisco {4, "ppp-iphc-compression-fmt-cisco"};
-
-const Enum::YLeaf PppFsmState::ppp_fsm_state_initial_0 {0, "ppp-fsm-state-initial-0"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_starting_1 {1, "ppp-fsm-state-starting-1"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_closed_2 {2, "ppp-fsm-state-closed-2"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_stopped_3 {3, "ppp-fsm-state-stopped-3"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_closing_4 {4, "ppp-fsm-state-closing-4"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_stopping_5 {5, "ppp-fsm-state-stopping-5"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_req_sent_6 {6, "ppp-fsm-state-req-sent-6"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_ack_rcvd_7 {7, "ppp-fsm-state-ack-rcvd-7"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_ack_sent_8 {8, "ppp-fsm-state-ack-sent-8"};
-const Enum::YLeaf PppFsmState::ppp_fsm_state_opened_9 {9, "ppp-fsm-state-opened-9"};
 
 const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_detached {0, "ppp-lcp-mp-mbr-state-detached"};
 const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_lcp_not_negotiated {1, "ppp-lcp-mp-mbr-state-lcp-not-negotiated"};
@@ -7556,6 +7529,33 @@ const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_mcmp_local_mismatch {10
 const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_mcmp_peer_mismatch {11, "ppp-lcp-mp-mbr-state-mcmp-peer-mismatch"};
 const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_standby_up {12, "ppp-lcp-mp-mbr-state-standby-up"};
 const Enum::YLeaf PppLcpMpMbrState::ppp_lcp_mp_mbr_state_active {13, "ppp-lcp-mp-mbr-state-active"};
+
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_not_ready_0 {0, "ppp-sso-state-not-ready-0"};
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_standby_unnegd_1 {1, "ppp-sso-state-standby-unnegd-1"};
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_active_down_2 {2, "ppp-sso-state-active-down-2"};
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_deactivating_3 {3, "ppp-sso-state-deactivating-3"};
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_active_unnegd_4 {4, "ppp-sso-state-active-unnegd-4"};
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_standby_negd_5 {5, "ppp-sso-state-standby-negd-5"};
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_activating_6 {6, "ppp-sso-state-activating-6"};
+const Enum::YLeaf PppSsoFsmState::ppp_sso_state_active_negd_7 {7, "ppp-sso-state-active-negd-7"};
+
+const Enum::YLeaf PppFsmState::ppp_fsm_state_initial_0 {0, "ppp-fsm-state-initial-0"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_starting_1 {1, "ppp-fsm-state-starting-1"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_closed_2 {2, "ppp-fsm-state-closed-2"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_stopped_3 {3, "ppp-fsm-state-stopped-3"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_closing_4 {4, "ppp-fsm-state-closing-4"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_stopping_5 {5, "ppp-fsm-state-stopping-5"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_req_sent_6 {6, "ppp-fsm-state-req-sent-6"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_ack_rcvd_7 {7, "ppp-fsm-state-ack-rcvd-7"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_ack_sent_8 {8, "ppp-fsm-state-ack-sent-8"};
+const Enum::YLeaf PppFsmState::ppp_fsm_state_opened_9 {9, "ppp-fsm-state-opened-9"};
+
+const Enum::YLeaf NcpIdent::cdpcp {1, "cdpcp"};
+const Enum::YLeaf NcpIdent::ipcp {2, "ipcp"};
+const Enum::YLeaf NcpIdent::ipcpiw {3, "ipcpiw"};
+const Enum::YLeaf NcpIdent::ipv6cp {4, "ipv6cp"};
+const Enum::YLeaf NcpIdent::mplscp {5, "mplscp"};
+const Enum::YLeaf NcpIdent::osicp {6, "osicp"};
 
 
 }

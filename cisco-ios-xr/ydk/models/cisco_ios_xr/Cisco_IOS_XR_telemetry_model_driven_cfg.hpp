@@ -450,7 +450,7 @@ class TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv6Destination
 
         ydk::YLeaf protocol; //type: ProtoType
         ydk::YLeaf tls_hostname; //type: string
-        ydk::YLeaf no_tls; //type: uint32
+        ydk::YLeaf no_tls; //type: empty
         ydk::YLeaf packetsize; //type: uint32
 
 }; // TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv6Destinations::Ipv6Destination::Protocol
@@ -523,7 +523,7 @@ class TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv4Destination
 
         ydk::YLeaf protocol; //type: ProtoType
         ydk::YLeaf tls_hostname; //type: string
-        ydk::YLeaf no_tls; //type: uint32
+        ydk::YLeaf no_tls; //type: empty
         ydk::YLeaf packetsize; //type: uint32
 
 }; // TelemetryModelDriven::DestinationGroups::DestinationGroup::Ipv4Destinations::Ipv4Destination::Protocol

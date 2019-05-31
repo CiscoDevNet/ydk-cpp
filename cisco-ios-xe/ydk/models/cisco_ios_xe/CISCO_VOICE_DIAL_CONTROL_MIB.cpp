@@ -7607,10 +7607,9 @@ const Enum::YLeaf CvCallVolumeWMIntvlType::minuteStats {2, "minuteStats"};
 const Enum::YLeaf CvCallVolumeWMIntvlType::hourStats {3, "hourStats"};
 const Enum::YLeaf CvCallVolumeWMIntvlType::fromReloadStats {4, "fromReloadStats"};
 
-const Enum::YLeaf CvIlbcFrameMode::frameMode20 {20, "frameMode20"};
-const Enum::YLeaf CvIlbcFrameMode::frameMode30 {30, "frameMode30"};
-
-const Enum::YLeaf CvAmrNbRtpEncap::rfc3267 {1, "rfc3267"};
+const Enum::YLeaf CvCallVolumeStatsIntvlType::secondStats {1, "secondStats"};
+const Enum::YLeaf CvCallVolumeStatsIntvlType::minuteStats {2, "minuteStats"};
+const Enum::YLeaf CvCallVolumeStatsIntvlType::hourStats {3, "hourStats"};
 
 const Enum::YLeaf CvSessionProtocol::other {1, "other"};
 const Enum::YLeaf CvSessionProtocol::cisco {2, "cisco"};
@@ -7619,6 +7618,11 @@ const Enum::YLeaf CvSessionProtocol::sip {4, "sip"};
 const Enum::YLeaf CvSessionProtocol::multicast {5, "multicast"};
 const Enum::YLeaf CvSessionProtocol::sccp {6, "sccp"};
 
+const Enum::YLeaf CvAmrNbRtpEncap::rfc3267 {1, "rfc3267"};
+
+const Enum::YLeaf CvIlbcFrameMode::frameMode20 {20, "frameMode20"};
+const Enum::YLeaf CvIlbcFrameMode::frameMode30 {30, "frameMode30"};
+
 const Enum::YLeaf CvCallConnectionType::h323 {1, "h323"};
 const Enum::YLeaf CvCallConnectionType::sip {2, "sip"};
 const Enum::YLeaf CvCallConnectionType::mgcp {3, "mgcp"};
@@ -7626,10 +7630,6 @@ const Enum::YLeaf CvCallConnectionType::sccp {4, "sccp"};
 const Enum::YLeaf CvCallConnectionType::multicast {5, "multicast"};
 const Enum::YLeaf CvCallConnectionType::cacontrol {6, "cacontrol"};
 const Enum::YLeaf CvCallConnectionType::telephony {7, "telephony"};
-
-const Enum::YLeaf CvCallVolumeStatsIntvlType::secondStats {1, "secondStats"};
-const Enum::YLeaf CvCallVolumeStatsIntvlType::minuteStats {2, "minuteStats"};
-const Enum::YLeaf CvCallVolumeStatsIntvlType::hourStats {3, "hourStats"};
 
 const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::CvPeerCfgType::voice {1, "voice"};
 const Enum::YLeaf CISCOVOICEDIALCONTROLMIB::CvPeerCfgTable::CvPeerCfgEntry::CvPeerCfgType::voip {2, "voip"};

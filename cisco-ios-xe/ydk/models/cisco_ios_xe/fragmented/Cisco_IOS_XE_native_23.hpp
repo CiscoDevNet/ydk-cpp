@@ -582,7 +582,7 @@ class Native::Interface::ATM::Standby::StandbyList : public ydk::Entity
 
         ydk::YLeaf group_number; //type: uint16
         ydk::YLeaf follow; //type: string
-        ydk::YLeaf ipv6; //type: one of string, enumeration
+        ydk::YLeaf ipv6; //type: one of enumeration, string
         ydk::YLeaf mac_address; //type: string
         ydk::YLeaf name; //type: string
         ydk::YLeaf priority; //type: uint8
@@ -1745,28 +1745,6 @@ class Native::Interface::ATM::PmPath : public ydk::Entity
 }; // Native::Interface::ATM::PmPath
 
 
-class Native::Interface::ATM::ServicePolicy : public ydk::Entity
-{
-    public:
-        ServicePolicy();
-        ~ServicePolicy();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf input; //type: string
-        ydk::YLeaf output; //type: string
-
-}; // Native::Interface::ATM::ServicePolicy
-
-
 class Native::Interface::ATM::CiscoIOSXEAtmIp : public ydk::Entity
 {
     public:
@@ -2685,6 +2663,28 @@ class Native::Interface::ATM::Pvc::XconnectPwClass::Xconnect::Udp::Port : public
 }; // Native::Interface::ATM::Pvc::XconnectPwClass::Xconnect::Udp::Port
 
 
+class Native::Interface::ATM::ServicePolicy : public ydk::Entity
+{
+    public:
+        ServicePolicy();
+        ~ServicePolicy();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf input; //type: string
+        ydk::YLeaf output; //type: string
+
+}; // Native::Interface::ATM::ServicePolicy
+
+
 class Native::Interface::ATMSubinterface : public ydk::Entity
 {
     public:
@@ -2735,7 +2735,7 @@ class Native::Interface::ATMSubinterface::ATM : public ydk::Entity
         ydk::YLeaf keepalive; //type: boolean
         ydk::YLeaf if_state; //type: IfState
         ydk::YLeaf delay; //type: uint32
-        ydk::YLeaf cisco_ios_xe_interfaces_load_interval; //type: uint16
+        ydk::YLeaf load_interval; //type: uint16
         ydk::YLeaf max_reserved_bandwidth; //type: uint8
         ydk::YLeaf mtu; //type: uint16
         ydk::YLeaf service_insertion; //type: ServiceInsertion
@@ -2763,7 +2763,7 @@ class Native::Interface::ATMSubinterface::ATM : public ydk::Entity
         class Mpls; //type: Native::Interface::ATMSubinterface::ATM::Mpls
         class IpVrf; //type: Native::Interface::ATMSubinterface::ATM::IpVrf
         class Vrf; //type: Native::Interface::ATMSubinterface::ATM::Vrf
-        class CiscoIOSXEInterfacesIp; //type: Native::Interface::ATMSubinterface::ATM::CiscoIOSXEInterfacesIp
+        class Ip; //type: Native::Interface::ATMSubinterface::ATM::Ip
         class Ipv6; //type: Native::Interface::ATMSubinterface::ATM::Ipv6
         class Logging; //type: Native::Interface::ATMSubinterface::ATM::Logging
         class Mdix; //type: Native::Interface::ATMSubinterface::ATM::Mdix
@@ -2805,7 +2805,7 @@ class Native::Interface::ATMSubinterface::ATM : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMSubinterface::ATM::Mpls> mpls;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMSubinterface::ATM::IpVrf> ip_vrf;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMSubinterface::ATM::Vrf> vrf;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMSubinterface::ATM::CiscoIOSXEInterfacesIp> cisco_ios_xe_interfaces_ip;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMSubinterface::ATM::Ip> ip;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMSubinterface::ATM::Ipv6> ipv6;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMSubinterface::ATM::Logging> logging;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMSubinterface::ATM::Mdix> mdix;
@@ -2820,7 +2820,7 @@ class Native::Interface::ATMSubinterface::ATM : public ydk::Entity
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMSubinterface::ATM::RcvQueue> rcv_queue;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMSubinterface::ATM::Peer> peer;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMSubinterface::ATM::PmPath> pm_path;
-        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMSubinterface::ATM::CiscoIOSXEAtmIp> cisco_ios_xe_atm_ip_;
+        std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMSubinterface::ATM::CiscoIOSXEAtmIp> cisco_ios_xe_atm_ip;
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::Interface::ATMSubinterface::ATM::Atm> atm;
         ydk::YList cem;
         ydk::YList pvc;
@@ -2958,8 +2958,8 @@ class Native::Interface::ATMSubinterface::ATM::Backup::Delay : public ydk::Entit
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf failure; //type: one of uint32, enumeration
-        ydk::YLeaf secondary_disable; //type: one of uint32, enumeration
+        ydk::YLeaf failure; //type: one of enumeration, uint32
+        ydk::YLeaf secondary_disable; //type: one of enumeration, uint32
         class Failure;
         class SecondaryDisable;
 
@@ -3128,8 +3128,8 @@ class Native::Interface::ATMSubinterface::ATM::Backup::Load : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf kickin; //type: one of uint32, enumeration
-        ydk::YLeaf kickout; //type: one of uint32, enumeration
+        ydk::YLeaf kickin; //type: one of enumeration, uint32
+        ydk::YLeaf kickout; //type: one of enumeration, uint32
         class Kickin;
         class Kickout;
 

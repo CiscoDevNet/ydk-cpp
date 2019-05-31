@@ -9815,35 +9815,6 @@ bool DOCSIF3MIB::DocsIf3CmEm1x1StatsTable::DocsIf3CmEm1x1StatsEntry::has_leaf_or
     return false;
 }
 
-const Enum::YLeaf CmtsCmRegState::other {1, "other"};
-const Enum::YLeaf CmtsCmRegState::initialRanging {2, "initialRanging"};
-const Enum::YLeaf CmtsCmRegState::rangingAutoAdjComplete {4, "rangingAutoAdjComplete"};
-const Enum::YLeaf CmtsCmRegState::dhcpv4Complete {5, "dhcpv4Complete"};
-const Enum::YLeaf CmtsCmRegState::registrationComplete {6, "registrationComplete"};
-const Enum::YLeaf CmtsCmRegState::operational {8, "operational"};
-const Enum::YLeaf CmtsCmRegState::bpiInit {9, "bpiInit"};
-const Enum::YLeaf CmtsCmRegState::startEae {10, "startEae"};
-const Enum::YLeaf CmtsCmRegState::startDhcpv4 {11, "startDhcpv4"};
-const Enum::YLeaf CmtsCmRegState::startDhcpv6 {12, "startDhcpv6"};
-const Enum::YLeaf CmtsCmRegState::dhcpv6Complete {13, "dhcpv6Complete"};
-const Enum::YLeaf CmtsCmRegState::startConfigFileDownload {14, "startConfigFileDownload"};
-const Enum::YLeaf CmtsCmRegState::configFileDownloadComplete {15, "configFileDownloadComplete"};
-const Enum::YLeaf CmtsCmRegState::startRegistration {16, "startRegistration"};
-const Enum::YLeaf CmtsCmRegState::forwardingDisabled {17, "forwardingDisabled"};
-const Enum::YLeaf CmtsCmRegState::rfMuteAll {18, "rfMuteAll"};
-
-const Enum::YLeaf IfDirection::downstream {1, "downstream"};
-const Enum::YLeaf IfDirection::upstream {2, "upstream"};
-
-const Enum::YLeaf SpectrumAnalysisWindowFunction::other {0, "other"};
-const Enum::YLeaf SpectrumAnalysisWindowFunction::hann {1, "hann"};
-const Enum::YLeaf SpectrumAnalysisWindowFunction::blackmanHarris {2, "blackmanHarris"};
-const Enum::YLeaf SpectrumAnalysisWindowFunction::rectangular {3, "rectangular"};
-const Enum::YLeaf SpectrumAnalysisWindowFunction::hamming {4, "hamming"};
-const Enum::YLeaf SpectrumAnalysisWindowFunction::flatTop {5, "flatTop"};
-const Enum::YLeaf SpectrumAnalysisWindowFunction::gaussian {6, "gaussian"};
-const Enum::YLeaf SpectrumAnalysisWindowFunction::chebyshev {7, "chebyshev"};
-
 const Enum::YLeaf CmRegState::other {1, "other"};
 const Enum::YLeaf CmRegState::notReady {2, "notReady"};
 const Enum::YLeaf CmRegState::notSynchronized {3, "notSynchronized"};
@@ -9868,12 +9839,41 @@ const Enum::YLeaf CmRegState::dsTopologyResolutionInProgress {21, "dsTopologyRes
 const Enum::YLeaf CmRegState::rangingInProgress {22, "rangingInProgress"};
 const Enum::YLeaf CmRegState::rfMuteAll {23, "rfMuteAll"};
 
+const Enum::YLeaf CmtsCmRegState::other {1, "other"};
+const Enum::YLeaf CmtsCmRegState::initialRanging {2, "initialRanging"};
+const Enum::YLeaf CmtsCmRegState::rangingAutoAdjComplete {4, "rangingAutoAdjComplete"};
+const Enum::YLeaf CmtsCmRegState::dhcpv4Complete {5, "dhcpv4Complete"};
+const Enum::YLeaf CmtsCmRegState::registrationComplete {6, "registrationComplete"};
+const Enum::YLeaf CmtsCmRegState::operational {8, "operational"};
+const Enum::YLeaf CmtsCmRegState::bpiInit {9, "bpiInit"};
+const Enum::YLeaf CmtsCmRegState::startEae {10, "startEae"};
+const Enum::YLeaf CmtsCmRegState::startDhcpv4 {11, "startDhcpv4"};
+const Enum::YLeaf CmtsCmRegState::startDhcpv6 {12, "startDhcpv6"};
+const Enum::YLeaf CmtsCmRegState::dhcpv6Complete {13, "dhcpv6Complete"};
+const Enum::YLeaf CmtsCmRegState::startConfigFileDownload {14, "startConfigFileDownload"};
+const Enum::YLeaf CmtsCmRegState::configFileDownloadComplete {15, "configFileDownloadComplete"};
+const Enum::YLeaf CmtsCmRegState::startRegistration {16, "startRegistration"};
+const Enum::YLeaf CmtsCmRegState::forwardingDisabled {17, "forwardingDisabled"};
+const Enum::YLeaf CmtsCmRegState::rfMuteAll {18, "rfMuteAll"};
+
+const Enum::YLeaf SpectrumAnalysisWindowFunction::other {0, "other"};
+const Enum::YLeaf SpectrumAnalysisWindowFunction::hann {1, "hann"};
+const Enum::YLeaf SpectrumAnalysisWindowFunction::blackmanHarris {2, "blackmanHarris"};
+const Enum::YLeaf SpectrumAnalysisWindowFunction::rectangular {3, "rectangular"};
+const Enum::YLeaf SpectrumAnalysisWindowFunction::hamming {4, "hamming"};
+const Enum::YLeaf SpectrumAnalysisWindowFunction::flatTop {5, "flatTop"};
+const Enum::YLeaf SpectrumAnalysisWindowFunction::gaussian {6, "gaussian"};
+const Enum::YLeaf SpectrumAnalysisWindowFunction::chebyshev {7, "chebyshev"};
+
 const Enum::YLeaf RangingState::other {1, "other"};
 const Enum::YLeaf RangingState::aborted {2, "aborted"};
 const Enum::YLeaf RangingState::retriesExceeded {3, "retriesExceeded"};
 const Enum::YLeaf RangingState::success {4, "success"};
 const Enum::YLeaf RangingState::continue_ {5, "continue"};
 const Enum::YLeaf RangingState::timeoutT4 {6, "timeoutT4"};
+
+const Enum::YLeaf IfDirection::downstream {1, "downstream"};
+const Enum::YLeaf IfDirection::upstream {2, "upstream"};
 
 const Enum::YLeaf DOCSIF3MIB::DocsIf3CmtsCmCtrl::DocsIf3CmtsCmCtrlCmdCommit::mute {1, "mute"};
 const Enum::YLeaf DOCSIF3MIB::DocsIf3CmtsCmCtrl::DocsIf3CmtsCmCtrlCmdCommit::cmReinit {2, "cmReinit"};

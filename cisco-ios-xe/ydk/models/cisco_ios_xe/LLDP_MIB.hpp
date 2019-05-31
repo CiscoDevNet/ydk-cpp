@@ -610,19 +610,6 @@ class LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry : public ydk::Enti
 
 }; // LLDPMIB::LldpRemOrgDefInfoTable::LldpRemOrgDefInfoEntry
 
-class LldpPortIdSubtype : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf interfaceAlias;
-        static const ydk::Enum::YLeaf portComponent;
-        static const ydk::Enum::YLeaf macAddress;
-        static const ydk::Enum::YLeaf networkAddress;
-        static const ydk::Enum::YLeaf interfaceName;
-        static const ydk::Enum::YLeaf agentCircuitId;
-        static const ydk::Enum::YLeaf local;
-
-};
-
 class LldpChassisIdSubtype : public ydk::Enum
 {
     public:
@@ -632,6 +619,19 @@ class LldpChassisIdSubtype : public ydk::Enum
         static const ydk::Enum::YLeaf macAddress;
         static const ydk::Enum::YLeaf networkAddress;
         static const ydk::Enum::YLeaf interfaceName;
+        static const ydk::Enum::YLeaf local;
+
+};
+
+class LldpPortIdSubtype : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf interfaceAlias;
+        static const ydk::Enum::YLeaf portComponent;
+        static const ydk::Enum::YLeaf macAddress;
+        static const ydk::Enum::YLeaf networkAddress;
+        static const ydk::Enum::YLeaf interfaceName;
+        static const ydk::Enum::YLeaf agentCircuitId;
         static const ydk::Enum::YLeaf local;
 
 };

@@ -145,15 +145,6 @@ class DeviceHardwareData::DeviceHardware::DeviceSystemData : public ydk::Entity
 
 }; // DeviceHardwareData::DeviceHardware::DeviceSystemData
 
-class AlarmSeverity : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf alarm_severity_critical;
-        static const ydk::Enum::YLeaf alarm_severity_major;
-        static const ydk::Enum::YLeaf alarm_severity_minor;
-
-};
-
 class HwType : public ydk::Enum
 {
     public:
@@ -169,6 +160,15 @@ class HwType : public ydk::Enum
         static const ydk::Enum::YLeaf hw_type_transceiver;
         static const ydk::Enum::YLeaf hw_type_fantray;
         static const ydk::Enum::YLeaf hw_type_pem;
+
+};
+
+class AlarmSeverity : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf alarm_severity_critical;
+        static const ydk::Enum::YLeaf alarm_severity_major;
+        static const ydk::Enum::YLeaf alarm_severity_minor;
 
 };
 

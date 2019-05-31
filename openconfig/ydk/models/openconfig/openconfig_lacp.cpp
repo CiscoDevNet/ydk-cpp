@@ -1409,17 +1409,17 @@ bool Lacp::Interfaces::Interface::Members::Member::State::Counters::has_leaf_or_
     return false;
 }
 
-const Enum::YLeaf LacpTimeoutType::LONG {0, "LONG"};
-const Enum::YLeaf LacpTimeoutType::SHORT {1, "SHORT"};
-
-const Enum::YLeaf LacpPeriodType::FAST {0, "FAST"};
-const Enum::YLeaf LacpPeriodType::SLOW {1, "SLOW"};
-
 const Enum::YLeaf LacpActivityType::ACTIVE {0, "ACTIVE"};
 const Enum::YLeaf LacpActivityType::PASSIVE {1, "PASSIVE"};
 
+const Enum::YLeaf LacpTimeoutType::LONG {0, "LONG"};
+const Enum::YLeaf LacpTimeoutType::SHORT {1, "SHORT"};
+
 const Enum::YLeaf LacpSynchronizationType::IN_SYNC {0, "IN_SYNC"};
 const Enum::YLeaf LacpSynchronizationType::OUT_SYNC {1, "OUT_SYNC"};
+
+const Enum::YLeaf LacpPeriodType::FAST {0, "FAST"};
+const Enum::YLeaf LacpPeriodType::SLOW {1, "SLOW"};
 
 
 }

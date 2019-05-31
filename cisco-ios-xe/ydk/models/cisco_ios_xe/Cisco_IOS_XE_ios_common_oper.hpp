@@ -10,6 +10,150 @@
 namespace cisco_ios_xe {
 namespace Cisco_IOS_XE_ios_common_oper {
 
+class IosSnpaType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ios_snpa_type_illegal;
+        static const ydk::Enum::YLeaf ios_snpa_type_ieee48;
+        static const ydk::Enum::YLeaf ios_snpa_type_ieee16;
+        static const ydk::Enum::YLeaf ios_snpa_type_xerox;
+        static const ydk::Enum::YLeaf ios_snpa_type_x121;
+        static const ydk::Enum::YLeaf ios_snpa_type_cisco_hdlc;
+        static const ydk::Enum::YLeaf ios_snpa_type_cisco_mlapb;
+        static const ydk::Enum::YLeaf ios_snpa_type_lapb;
+        static const ydk::Enum::YLeaf ios_snpa_type_smds48;
+        static const ydk::Enum::YLeaf ios_snpa_type_cisco_msdlc;
+        static const ydk::Enum::YLeaf ios_snpa_type_fr10;
+        static const ydk::Enum::YLeaf ios_snpa_type_ultra;
+        static const ydk::Enum::YLeaf ios_snpa_type_cisco_tunnel;
+        static const ydk::Enum::YLeaf ios_snpa_type_cisco_ctunnel;
+        static const ydk::Enum::YLeaf ios_snpa_type_rrr_tunnel;
+        static const ydk::Enum::YLeaf ios_snpa_type_ppp;
+        static const ydk::Enum::YLeaf ios_snpa_type_smds64;
+        static const ydk::Enum::YLeaf ios_snpa_type_atmvc;
+        static const ydk::Enum::YLeaf ios_snpa_type_atm_bundle;
+        static const ydk::Enum::YLeaf ios_snpa_type_atm_svc_bundle;
+        static const ydk::Enum::YLeaf ios_snpa_type_atmnsap;
+        static const ydk::Enum::YLeaf ios_snpa_type_atm_e164;
+        static const ydk::Enum::YLeaf ios_snpa_type_atm_userspecified;
+        static const ydk::Enum::YLeaf ios_snpa_type_sdlc;
+        static const ydk::Enum::YLeaf ios_snpa_type_x25pvc;
+        static const ydk::Enum::YLeaf ios_snpa_type_lapd;
+        static const ydk::Enum::YLeaf ios_snpa_type_masked_atmnsap;
+        static const ydk::Enum::YLeaf ios_snpa_type_atmesi;
+        static const ydk::Enum::YLeaf ios_snpa_type_slip;
+        static const ydk::Enum::YLeaf ios_snpa_type_routedesc;
+        static const ydk::Enum::YLeaf ios_snpa_type_srp_outer;
+        static const ydk::Enum::YLeaf ios_snpa_type_srp_inner;
+
+};
+
+class IosEncapsType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ios_encaps_type_null;
+        static const ydk::Enum::YLeaf ios_encaps_type_arpa;
+        static const ydk::Enum::YLeaf ios_encaps_type_sap;
+        static const ydk::Enum::YLeaf ios_encaps_type_snap;
+        static const ydk::Enum::YLeaf ios_encaps_type_1822;
+        static const ydk::Enum::YLeaf ios_encaps_type_hdlc;
+        static const ydk::Enum::YLeaf ios_encaps_type_unused2;
+        static const ydk::Enum::YLeaf ios_encaps_type_unused1;
+        static const ydk::Enum::YLeaf ios_encaps_type_lapb;
+        static const ydk::Enum::YLeaf ios_encaps_type_x25;
+        static const ydk::Enum::YLeaf ios_encaps_type_hub;
+        static const ydk::Enum::YLeaf ios_encaps_type_novell_ether;
+        static const ydk::Enum::YLeaf ios_encaps_type_unsupported;
+        static const ydk::Enum::YLeaf ios_encaps_type_3com_tr;
+        static const ydk::Enum::YLeaf ios_encaps_type_ub_tr;
+        static const ydk::Enum::YLeaf ios_encaps_type_apollo;
+        static const ydk::Enum::YLeaf ios_encaps_type_ppp;
+        static const ydk::Enum::YLeaf ios_encaps_type_unused4;
+        static const ydk::Enum::YLeaf ios_encaps_type_vines_tr;
+        static const ydk::Enum::YLeaf ios_encaps_type_ethertalk;
+        static const ydk::Enum::YLeaf ios_encaps_type_frame_relay;
+        static const ydk::Enum::YLeaf ios_encaps_type_smds;
+        static const ydk::Enum::YLeaf ios_encaps_type_mac;
+        static const ydk::Enum::YLeaf ios_encaps_type_ultra_iso2;
+        static const ydk::Enum::YLeaf ios_encaps_type_ultra_iso1;
+        static const ydk::Enum::YLeaf ios_encaps_type_stun;
+        static const ydk::Enum::YLeaf ios_encaps_type_bridge;
+        static const ydk::Enum::YLeaf ios_encaps_type_llc2;
+        static const ydk::Enum::YLeaf ios_encaps_type_sdlcp;
+        static const ydk::Enum::YLeaf ios_encaps_type_sdlcs;
+        static const ydk::Enum::YLeaf ios_encaps_type_slip;
+        static const ydk::Enum::YLeaf ios_encaps_type_tunnel;
+        static const ydk::Enum::YLeaf ios_encaps_type_bridge_encaps;
+        static const ydk::Enum::YLeaf ios_encaps_type_atm;
+        static const ydk::Enum::YLeaf ios_encaps_type_atm_dxi;
+        static const ydk::Enum::YLeaf ios_encaps_type_fr_ietf;
+        static const ydk::Enum::YLeaf ios_encaps_type_smds_dxi;
+        static const ydk::Enum::YLeaf ios_encaps_type_atm_dxi_ietf;
+        static const ydk::Enum::YLeaf ios_encaps_type_channel;
+        static const ydk::Enum::YLeaf ios_encaps_type_sdlc;
+        static const ydk::Enum::YLeaf ios_encaps_type_sde;
+        static const ydk::Enum::YLeaf ios_encaps_type_bstun;
+        static const ydk::Enum::YLeaf ios_encaps_type_dialer;
+        static const ydk::Enum::YLeaf ios_encaps_type_novell_fddi;
+        static const ydk::Enum::YLeaf ios_encaps_type_v120;
+        static const ydk::Enum::YLeaf ios_encaps_type_isl;
+        static const ydk::Enum::YLeaf ios_encaps_type_loop;
+        static const ydk::Enum::YLeaf ios_encaps_type_channel_ilan;
+        static const ydk::Enum::YLeaf ios_encaps_type_serial_autodetect;
+        static const ydk::Enum::YLeaf ios_encaps_type_cpp;
+        static const ydk::Enum::YLeaf ios_encaps_type_ndlc;
+        static const ydk::Enum::YLeaf ios_encaps_type_lapd;
+        static const ydk::Enum::YLeaf ios_encaps_type_ftc_trunk;
+        static const ydk::Enum::YLeaf ios_encaps_type_atmces_t1;
+        static const ydk::Enum::YLeaf ios_encaps_type_atmces_e1;
+        static const ydk::Enum::YLeaf ios_encaps_type_voice;
+        static const ydk::Enum::YLeaf ios_encaps_type_alc;
+        static const ydk::Enum::YLeaf ios_encaps_type_uts;
+        static const ydk::Enum::YLeaf ios_encaps_type_trisl;
+        static const ydk::Enum::YLeaf ios_encaps_type_mcns;
+        static const ydk::Enum::YLeaf ios_encaps_type_atmces;
+        static const ydk::Enum::YLeaf ios_encaps_type_trans;
+        static const ydk::Enum::YLeaf ios_encaps_type_clear_channel;
+        static const ydk::Enum::YLeaf ios_encaps_type_tc_atm;
+        static const ydk::Enum::YLeaf ios_encaps_type_fr_ppp;
+        static const ydk::Enum::YLeaf ios_encaps_type_dot1q;
+        static const ydk::Enum::YLeaf ios_encaps_type_funi;
+        static const ydk::Enum::YLeaf ios_encaps_type_lapbta;
+        static const ydk::Enum::YLeaf ios_encaps_type_docsis;
+        static const ydk::Enum::YLeaf ios_encaps_type_np_inband;
+        static const ydk::Enum::YLeaf ios_encaps_type_ss7_mtp2;
+        static const ydk::Enum::YLeaf ios_encaps_type_gtp;
+        static const ydk::Enum::YLeaf ios_encaps_type_isl_switchport;
+        static const ydk::Enum::YLeaf ios_encaps_type_srp;
+        static const ydk::Enum::YLeaf ios_encaps_type_ppp_etype;
+        static const ydk::Enum::YLeaf ios_encaps_type_atm_ppp;
+        static const ydk::Enum::YLeaf ios_encaps_type_mfr;
+        static const ydk::Enum::YLeaf ios_encaps_type_srp2;
+        static const ydk::Enum::YLeaf ios_encaps_type_fr_extended;
+        static const ydk::Enum::YLeaf ios_encaps_type_pppoe;
+        static const ydk::Enum::YLeaf ios_encaps_type_ouni_sdcc;
+        static const ydk::Enum::YLeaf ios_encaps_type_multiservice;
+        static const ydk::Enum::YLeaf ios_encaps_type_container;
+        static const ydk::Enum::YLeaf ios_encaps_type_dot1ad;
+        static const ydk::Enum::YLeaf ios_encaps_type_cem;
+        static const ydk::Enum::YLeaf ios_encaps_type_dot1ah;
+        static const ydk::Enum::YLeaf ios_encaps_type_ptp;
+        static const ydk::Enum::YLeaf ios_encaps_type_ssl;
+        static const ydk::Enum::YLeaf ios_encaps_type_lisp;
+        static const ydk::Enum::YLeaf ios_encaps_type_dsp_spa;
+        static const ydk::Enum::YLeaf ios_encaps_type_t101;
+        static const ydk::Enum::YLeaf ios_encaps_type_crypto;
+        static const ydk::Enum::YLeaf ios_encaps_type_rawtcp;
+        static const ydk::Enum::YLeaf ios_encaps_type_async;
+        static const ydk::Enum::YLeaf ios_encaps_type_cmd;
+        static const ydk::Enum::YLeaf ios_encaps_type_scada;
+        static const ydk::Enum::YLeaf ios_encaps_type_rawudp;
+        static const ydk::Enum::YLeaf ios_encaps_type_relay_line;
+        static const ydk::Enum::YLeaf ios_encaps_type_rawmpls;
+        static const ydk::Enum::YLeaf ios_encaps_type_arpa_nid;
+
+};
+
 class IosLinktype : public ydk::Enum
 {
     public:
@@ -215,150 +359,6 @@ class IosLinktype : public ydk::Enum
         static const ydk::Enum::YLeaf ios_linktype_msrp;
         static const ydk::Enum::YLeaf ios_linktype_macsec_post_exp;
         static const ydk::Enum::YLeaf ios_linktype_macsec_sectag;
-
-};
-
-class IosSnpaType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ios_snpa_type_illegal;
-        static const ydk::Enum::YLeaf ios_snpa_type_ieee48;
-        static const ydk::Enum::YLeaf ios_snpa_type_ieee16;
-        static const ydk::Enum::YLeaf ios_snpa_type_xerox;
-        static const ydk::Enum::YLeaf ios_snpa_type_x121;
-        static const ydk::Enum::YLeaf ios_snpa_type_cisco_hdlc;
-        static const ydk::Enum::YLeaf ios_snpa_type_cisco_mlapb;
-        static const ydk::Enum::YLeaf ios_snpa_type_lapb;
-        static const ydk::Enum::YLeaf ios_snpa_type_smds48;
-        static const ydk::Enum::YLeaf ios_snpa_type_cisco_msdlc;
-        static const ydk::Enum::YLeaf ios_snpa_type_fr10;
-        static const ydk::Enum::YLeaf ios_snpa_type_ultra;
-        static const ydk::Enum::YLeaf ios_snpa_type_cisco_tunnel;
-        static const ydk::Enum::YLeaf ios_snpa_type_cisco_ctunnel;
-        static const ydk::Enum::YLeaf ios_snpa_type_rrr_tunnel;
-        static const ydk::Enum::YLeaf ios_snpa_type_ppp;
-        static const ydk::Enum::YLeaf ios_snpa_type_smds64;
-        static const ydk::Enum::YLeaf ios_snpa_type_atmvc;
-        static const ydk::Enum::YLeaf ios_snpa_type_atm_bundle;
-        static const ydk::Enum::YLeaf ios_snpa_type_atm_svc_bundle;
-        static const ydk::Enum::YLeaf ios_snpa_type_atmnsap;
-        static const ydk::Enum::YLeaf ios_snpa_type_atm_e164;
-        static const ydk::Enum::YLeaf ios_snpa_type_atm_userspecified;
-        static const ydk::Enum::YLeaf ios_snpa_type_sdlc;
-        static const ydk::Enum::YLeaf ios_snpa_type_x25pvc;
-        static const ydk::Enum::YLeaf ios_snpa_type_lapd;
-        static const ydk::Enum::YLeaf ios_snpa_type_masked_atmnsap;
-        static const ydk::Enum::YLeaf ios_snpa_type_atmesi;
-        static const ydk::Enum::YLeaf ios_snpa_type_slip;
-        static const ydk::Enum::YLeaf ios_snpa_type_routedesc;
-        static const ydk::Enum::YLeaf ios_snpa_type_srp_outer;
-        static const ydk::Enum::YLeaf ios_snpa_type_srp_inner;
-
-};
-
-class IosEncapsType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ios_encaps_type_null;
-        static const ydk::Enum::YLeaf ios_encaps_type_arpa;
-        static const ydk::Enum::YLeaf ios_encaps_type_sap;
-        static const ydk::Enum::YLeaf ios_encaps_type_snap;
-        static const ydk::Enum::YLeaf ios_encaps_type_1822;
-        static const ydk::Enum::YLeaf ios_encaps_type_hdlc;
-        static const ydk::Enum::YLeaf ios_encaps_type_unused2;
-        static const ydk::Enum::YLeaf ios_encaps_type_unused1;
-        static const ydk::Enum::YLeaf ios_encaps_type_lapb;
-        static const ydk::Enum::YLeaf ios_encaps_type_x25;
-        static const ydk::Enum::YLeaf ios_encaps_type_hub;
-        static const ydk::Enum::YLeaf ios_encaps_type_novell_ether;
-        static const ydk::Enum::YLeaf ios_encaps_type_unsupported;
-        static const ydk::Enum::YLeaf ios_encaps_type_3com_tr;
-        static const ydk::Enum::YLeaf ios_encaps_type_ub_tr;
-        static const ydk::Enum::YLeaf ios_encaps_type_apollo;
-        static const ydk::Enum::YLeaf ios_encaps_type_ppp;
-        static const ydk::Enum::YLeaf ios_encaps_type_unused4;
-        static const ydk::Enum::YLeaf ios_encaps_type_vines_tr;
-        static const ydk::Enum::YLeaf ios_encaps_type_ethertalk;
-        static const ydk::Enum::YLeaf ios_encaps_type_frame_relay;
-        static const ydk::Enum::YLeaf ios_encaps_type_smds;
-        static const ydk::Enum::YLeaf ios_encaps_type_mac;
-        static const ydk::Enum::YLeaf ios_encaps_type_ultra_iso2;
-        static const ydk::Enum::YLeaf ios_encaps_type_ultra_iso1;
-        static const ydk::Enum::YLeaf ios_encaps_type_stun;
-        static const ydk::Enum::YLeaf ios_encaps_type_bridge;
-        static const ydk::Enum::YLeaf ios_encaps_type_llc2;
-        static const ydk::Enum::YLeaf ios_encaps_type_sdlcp;
-        static const ydk::Enum::YLeaf ios_encaps_type_sdlcs;
-        static const ydk::Enum::YLeaf ios_encaps_type_slip;
-        static const ydk::Enum::YLeaf ios_encaps_type_tunnel;
-        static const ydk::Enum::YLeaf ios_encaps_type_bridge_encaps;
-        static const ydk::Enum::YLeaf ios_encaps_type_atm;
-        static const ydk::Enum::YLeaf ios_encaps_type_atm_dxi;
-        static const ydk::Enum::YLeaf ios_encaps_type_fr_ietf;
-        static const ydk::Enum::YLeaf ios_encaps_type_smds_dxi;
-        static const ydk::Enum::YLeaf ios_encaps_type_atm_dxi_ietf;
-        static const ydk::Enum::YLeaf ios_encaps_type_channel;
-        static const ydk::Enum::YLeaf ios_encaps_type_sdlc;
-        static const ydk::Enum::YLeaf ios_encaps_type_sde;
-        static const ydk::Enum::YLeaf ios_encaps_type_bstun;
-        static const ydk::Enum::YLeaf ios_encaps_type_dialer;
-        static const ydk::Enum::YLeaf ios_encaps_type_novell_fddi;
-        static const ydk::Enum::YLeaf ios_encaps_type_v120;
-        static const ydk::Enum::YLeaf ios_encaps_type_isl;
-        static const ydk::Enum::YLeaf ios_encaps_type_loop;
-        static const ydk::Enum::YLeaf ios_encaps_type_channel_ilan;
-        static const ydk::Enum::YLeaf ios_encaps_type_serial_autodetect;
-        static const ydk::Enum::YLeaf ios_encaps_type_cpp;
-        static const ydk::Enum::YLeaf ios_encaps_type_ndlc;
-        static const ydk::Enum::YLeaf ios_encaps_type_lapd;
-        static const ydk::Enum::YLeaf ios_encaps_type_ftc_trunk;
-        static const ydk::Enum::YLeaf ios_encaps_type_atmces_t1;
-        static const ydk::Enum::YLeaf ios_encaps_type_atmces_e1;
-        static const ydk::Enum::YLeaf ios_encaps_type_voice;
-        static const ydk::Enum::YLeaf ios_encaps_type_alc;
-        static const ydk::Enum::YLeaf ios_encaps_type_uts;
-        static const ydk::Enum::YLeaf ios_encaps_type_trisl;
-        static const ydk::Enum::YLeaf ios_encaps_type_mcns;
-        static const ydk::Enum::YLeaf ios_encaps_type_atmces;
-        static const ydk::Enum::YLeaf ios_encaps_type_trans;
-        static const ydk::Enum::YLeaf ios_encaps_type_clear_channel;
-        static const ydk::Enum::YLeaf ios_encaps_type_tc_atm;
-        static const ydk::Enum::YLeaf ios_encaps_type_fr_ppp;
-        static const ydk::Enum::YLeaf ios_encaps_type_dot1q;
-        static const ydk::Enum::YLeaf ios_encaps_type_funi;
-        static const ydk::Enum::YLeaf ios_encaps_type_lapbta;
-        static const ydk::Enum::YLeaf ios_encaps_type_docsis;
-        static const ydk::Enum::YLeaf ios_encaps_type_np_inband;
-        static const ydk::Enum::YLeaf ios_encaps_type_ss7_mtp2;
-        static const ydk::Enum::YLeaf ios_encaps_type_gtp;
-        static const ydk::Enum::YLeaf ios_encaps_type_isl_switchport;
-        static const ydk::Enum::YLeaf ios_encaps_type_srp;
-        static const ydk::Enum::YLeaf ios_encaps_type_ppp_etype;
-        static const ydk::Enum::YLeaf ios_encaps_type_atm_ppp;
-        static const ydk::Enum::YLeaf ios_encaps_type_mfr;
-        static const ydk::Enum::YLeaf ios_encaps_type_srp2;
-        static const ydk::Enum::YLeaf ios_encaps_type_fr_extended;
-        static const ydk::Enum::YLeaf ios_encaps_type_pppoe;
-        static const ydk::Enum::YLeaf ios_encaps_type_ouni_sdcc;
-        static const ydk::Enum::YLeaf ios_encaps_type_multiservice;
-        static const ydk::Enum::YLeaf ios_encaps_type_container;
-        static const ydk::Enum::YLeaf ios_encaps_type_dot1ad;
-        static const ydk::Enum::YLeaf ios_encaps_type_cem;
-        static const ydk::Enum::YLeaf ios_encaps_type_dot1ah;
-        static const ydk::Enum::YLeaf ios_encaps_type_ptp;
-        static const ydk::Enum::YLeaf ios_encaps_type_ssl;
-        static const ydk::Enum::YLeaf ios_encaps_type_lisp;
-        static const ydk::Enum::YLeaf ios_encaps_type_dsp_spa;
-        static const ydk::Enum::YLeaf ios_encaps_type_t101;
-        static const ydk::Enum::YLeaf ios_encaps_type_crypto;
-        static const ydk::Enum::YLeaf ios_encaps_type_rawtcp;
-        static const ydk::Enum::YLeaf ios_encaps_type_async;
-        static const ydk::Enum::YLeaf ios_encaps_type_cmd;
-        static const ydk::Enum::YLeaf ios_encaps_type_scada;
-        static const ydk::Enum::YLeaf ios_encaps_type_rawudp;
-        static const ydk::Enum::YLeaf ios_encaps_type_relay_line;
-        static const ydk::Enum::YLeaf ios_encaps_type_rawmpls;
-        static const ydk::Enum::YLeaf ios_encaps_type_arpa_nid;
 
 };
 

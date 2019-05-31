@@ -355,11 +355,13 @@ class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConf
         ydk::YLeaf msg_log_in_buf_count; //type: uint32
         ydk::YLeaf msg_log_out_buf_count; //type: uint32
         ydk::YLeaf route_updates_source; //type: string
+        ydk::YLeaf local_address_subnet_len; //type: uint32
         ydk::YLeaf dmz_link_bandwidth; //type: uint32
         ydk::YLeaf ebgp_recv_dmz; //type: uint32
         ydk::YLeaf ebgp_send_dmz_mode; //type: BgpEbgpSendDmzEnableMode
         ydk::YLeaf ttl_security; //type: uint32
         ydk::YLeaf suppress4_byte_as; //type: uint32
+        ydk::YLeaf update_in_safi14_merge; //type: uint32
         ydk::YLeaf capability_negotiation_suppressed; //type: uint32
         ydk::YLeaf session_open_mode; //type: BgpTcpMode
         ydk::YLeaf bfd; //type: uint32
@@ -402,6 +404,7 @@ class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConf
         ydk::YLeaf local_as_replace_as; //type: boolean
         ydk::YLeaf local_as_dual_as; //type: boolean
         class LocalIpAddress; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalIpAddress
+        class LocalAddressSubnet; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet
         class RemoteAsInfo; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::RemoteAsInfo
         class SpeakerIdInfo; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::SpeakerIdInfo
         class MinAdvertisementInfo; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MinAdvertisementInfo
@@ -420,6 +423,7 @@ class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConf
         class MsgLogInInfo; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogInInfo
         class MsgLogOutInfo; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo
         class UpdateSourceInfo; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::UpdateSourceInfo
+        class LocalAddressSubnetInfo; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnetInfo
         class DmzLinkBandwidthInfo; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::DmzLinkBandwidthInfo
         class EbgpRecvDmzInfo; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::EbgpRecvDmzInfo
         class EbgpSendDmzInfo; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::EbgpSendDmzInfo
@@ -454,6 +458,7 @@ class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConf
         class GracefulShutdownLocPrefInfo; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::GracefulShutdownLocPrefInfo
         class GracefulShutdownAsPrependsInfo; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::GracefulShutdownAsPrependsInfo
         class GracefulShutdownActivateInfo; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::GracefulShutdownActivateInfo
+        class UpdateInSafi14MergeInfo; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::UpdateInSafi14MergeInfo
         class CapabilityNegotiationSuppressedInfo; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::CapabilityNegotiationSuppressedInfo
         class NeighborRemoteAsListInfo; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::NeighborRemoteAsListInfo
         class MaxPeersInfo; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MaxPeersInfo
@@ -461,6 +466,7 @@ class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConf
         class AoKeychainInfo; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::AoKeychainInfo
 
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalIpAddress> local_ip_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet> local_address_subnet;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::RemoteAsInfo> remote_as_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::SpeakerIdInfo> speaker_id_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MinAdvertisementInfo> min_advertisement_info;
@@ -479,6 +485,7 @@ class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConf
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogInInfo> msg_log_in_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo> msg_log_out_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::UpdateSourceInfo> update_source_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnetInfo> local_address_subnet_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::DmzLinkBandwidthInfo> dmz_link_bandwidth_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::EbgpRecvDmzInfo> ebgp_recv_dmz_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::EbgpSendDmzInfo> ebgp_send_dmz_info;
@@ -513,6 +520,7 @@ class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConf
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::GracefulShutdownLocPrefInfo> graceful_shutdown_loc_pref_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::GracefulShutdownAsPrependsInfo> graceful_shutdown_as_prepends_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::GracefulShutdownActivateInfo> graceful_shutdown_activate_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::UpdateInSafi14MergeInfo> update_in_safi14_merge_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::CapabilityNegotiationSuppressedInfo> capability_negotiation_suppressed_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::NeighborRemoteAsListInfo> neighbor_remote_as_list_info;
         std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MaxPeersInfo> max_peers_info;
@@ -655,6 +663,141 @@ class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConf
         ydk::YLeaf ipv6_srpolicy_address; //type: string
 
 }; // Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalIpAddress::Ipv6SrPolicyAddress
+
+
+class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet : public ydk::Entity
+{
+    public:
+        LocalAddressSubnet();
+        ~LocalAddressSubnet();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf afi; //type: BgpAfi
+        ydk::YLeaf ipv4_address; //type: string
+        ydk::YLeaf ipv4_mcast_address; //type: string
+        ydk::YLeaf ipv4_label_address; //type: string
+        ydk::YLeaf ipv4_tunnel_address; //type: string
+        ydk::YLeaf ipv4_mdt_address; //type: string
+        ydk::YLeaf ipv4vpn_address; //type: string
+        ydk::YLeaf ipv4vpna_mcastddress; //type: string
+        ydk::YLeaf ipv6_address; //type: string
+        ydk::YLeaf ipv6_mcast_address; //type: string
+        ydk::YLeaf ipv6_label_address; //type: string
+        ydk::YLeaf ipv6vpn_address; //type: string
+        ydk::YLeaf ipv6vpn_mcast_address; //type: string
+        ydk::YLeaf rt_constraint_address; //type: string
+        ydk::YLeaf ipv6mvpn_address; //type: string
+        ydk::YLeaf ipv4mvpn_address; //type: string
+        ydk::YLeaf l2vpn_evpn_address; //type: string
+        ydk::YLeaf ls_ls_address; //type: string
+        ydk::YLeaf ipv4_flowspec_address; //type: string
+        ydk::YLeaf ipv6_flowspec_address; //type: string
+        ydk::YLeaf ipv4vpn_flowspec_address; //type: string
+        ydk::YLeaf ipv6vpn_flowspec_address; //type: string
+        class L2vpnVplsAddress; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnVplsAddress
+        class L2vpnMspwAddress; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnMspwAddress
+        class Ipv4SrPolicyAddress; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv4SrPolicyAddress
+        class Ipv6SrPolicyAddress; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv6SrPolicyAddress
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnVplsAddress> l2vpn_vpls_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnMspwAddress> l2vpn_mspw_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
+        
+}; // Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet
+
+
+class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnVplsAddress : public ydk::Entity
+{
+    public:
+        L2vpnVplsAddress();
+        ~L2vpnVplsAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf l2vpn_address; //type: string
+
+}; // Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnVplsAddress
+
+
+class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnMspwAddress : public ydk::Entity
+{
+    public:
+        L2vpnMspwAddress();
+        ~L2vpnMspwAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf l2vpn_address; //type: string
+
+}; // Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::L2vpnMspwAddress
+
+
+class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv4SrPolicyAddress : public ydk::Entity
+{
+    public:
+        Ipv4SrPolicyAddress();
+        ~Ipv4SrPolicyAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ipv4_srpolicy_address; //type: string
+
+}; // Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv4SrPolicyAddress
+
+
+class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv6SrPolicyAddress : public ydk::Entity
+{
+    public:
+        Ipv6SrPolicyAddress();
+        ~Ipv6SrPolicyAddress();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf ipv6_srpolicy_address; //type: string
+
+}; // Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::LocalAddressSubnet::Ipv6SrPolicyAddress
 
 
 class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::RemoteAsInfo : public ydk::Entity
@@ -3984,179 +4127,27 @@ class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConf
 
 }; // Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogInInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::Ipv6SrPolicyAddress
 
-
-class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo : public ydk::Entity
+class BgpRpkiEdmAf : public ydk::Enum
 {
     public:
-        MsgLogOutInfo();
-        ~MsgLogOutInfo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf is_item_configured; //type: boolean
-        class InheritanceChain; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain> inheritance_chain;
-        
-}; // Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo
-
-
-class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain : public ydk::Entity
-{
-    public:
-        InheritanceChain();
-        ~InheritanceChain();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class BgpConfigEntid; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid
-
-        ydk::YList bgp_config_entid;
-        
-}; // Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain
-
-
-class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid : public ydk::Entity
-{
-    public:
-        BgpConfigEntid();
-        ~BgpConfigEntid();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf address_family_identifier; //type: uint8
-        ydk::YLeaf configuration_type; //type: BgpEntities
-        ydk::YLeaf group_name; //type: string
-        class NeighborAddress; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress> neighbor_address;
-        
-}; // Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid
-
-
-class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress : public ydk::Entity
-{
-    public:
-        NeighborAddress();
-        ~NeighborAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf afi; //type: BgpAfi
-        ydk::YLeaf ipv4_address; //type: string
-        ydk::YLeaf ipv4_mcast_address; //type: string
-        ydk::YLeaf ipv4_label_address; //type: string
-        ydk::YLeaf ipv4_tunnel_address; //type: string
-        ydk::YLeaf ipv4_mdt_address; //type: string
-        ydk::YLeaf ipv4vpn_address; //type: string
-        ydk::YLeaf ipv4vpna_mcastddress; //type: string
-        ydk::YLeaf ipv6_address; //type: string
-        ydk::YLeaf ipv6_mcast_address; //type: string
-        ydk::YLeaf ipv6_label_address; //type: string
-        ydk::YLeaf ipv6vpn_address; //type: string
-        ydk::YLeaf ipv6vpn_mcast_address; //type: string
-        ydk::YLeaf rt_constraint_address; //type: string
-        ydk::YLeaf ipv6mvpn_address; //type: string
-        ydk::YLeaf ipv4mvpn_address; //type: string
-        ydk::YLeaf l2vpn_evpn_address; //type: string
-        ydk::YLeaf ls_ls_address; //type: string
-        ydk::YLeaf ipv4_flowspec_address; //type: string
-        ydk::YLeaf ipv6_flowspec_address; //type: string
-        ydk::YLeaf ipv4vpn_flowspec_address; //type: string
-        ydk::YLeaf ipv6vpn_flowspec_address; //type: string
-        class L2vpnVplsAddress; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::L2vpnVplsAddress
-        class L2vpnMspwAddress; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::L2vpnMspwAddress
-        class Ipv4SrPolicyAddress; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::Ipv4SrPolicyAddress
-        class Ipv6SrPolicyAddress; //type: Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::Ipv6SrPolicyAddress
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::L2vpnVplsAddress> l2vpn_vpls_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::L2vpnMspwAddress> l2vpn_mspw_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::Ipv4SrPolicyAddress> ipv4_sr_policy_address;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_bgp_oper::Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::Ipv6SrPolicyAddress> ipv6_sr_policy_address;
-        
-}; // Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress
-
-
-class Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::L2vpnVplsAddress : public ydk::Entity
-{
-    public:
-        L2vpnVplsAddress();
-        ~L2vpnVplsAddress();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf l2vpn_address; //type: string
-
-}; // Bgp::ConfigInstances::ConfigInstance::ConfigInstanceDefaultVrf::EntityConfigurations::EntityConfiguration::AfIndependentConfig::MsgLogOutInfo::InheritanceChain::BgpConfigEntid::NeighborAddress::L2vpnVplsAddress
-
-class BgpSrpolicyReqState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf request_pending;
-        static const ydk::Enum::YLeaf requested;
-        static const ydk::Enum::YLeaf notified_up;
-        static const ydk::Enum::YLeaf notified_down;
-        static const ydk::Enum::YLeaf marked_stale;
-        static const ydk::Enum::YLeaf marked_disable;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 
-class BgpBfdState : public ydk::Enum
+class BgpRoute : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf bgp_bfd_state_not_configured;
-        static const ydk::Enum::YLeaf bgp_bfd_state_admin_down;
-        static const ydk::Enum::YLeaf bgp_bfd_state_not_supported;
-        static const ydk::Enum::YLeaf bgp_bfd_state_not_created;
-        static const ydk::Enum::YLeaf bgp_bfd_state_created;
-        static const ydk::Enum::YLeaf bgp_bfd_state_up;
-        static const ydk::Enum::YLeaf bgp_bfd_state_down;
-        static const ydk::Enum::YLeaf bgp_bfd_state_nbr_not_configured;
-        static const ydk::Enum::YLeaf bgp_bfd_state_none;
+        static const ydk::Enum::YLeaf used;
+        static const ydk::Enum::YLeaf received_only;
+        static const ydk::Enum::YLeaf safi_labeled_unicast_used;
+        static const ydk::Enum::YLeaf safi_labeled_unicast_received_only;
+        static const ydk::Enum::YLeaf rib;
+        static const ydk::Enum::YLeaf aggregate;
 
 };
 
-class BgpEntities : public ydk::Enum
+class BgpEntity : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf af_group;
@@ -4166,178 +4157,11 @@ class BgpEntities : public ydk::Enum
 
 };
 
-class BgpNhValidate : public ydk::Enum
+class BgpLabelRpfInstall : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf bgp_nh_validate_sync;
-        static const ydk::Enum::YLeaf bgp_nh_validate_async;
-        static const ydk::Enum::YLeaf bgp_nh_validate_none;
-
-};
-
-class BgpDsConnState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf connect_init;
-        static const ydk::Enum::YLeaf connect_fail;
-        static const ydk::Enum::YLeaf connect_estb;
-        static const ydk::Enum::YLeaf disconnect_init;
-        static const ydk::Enum::YLeaf disconnect_fail;
-        static const ydk::Enum::YLeaf disconnect_done;
-
-};
-
-class BgpRpkiState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf idle;
-        static const ydk::Enum::YLeaf attempt_connect;
-        static const ydk::Enum::YLeaf connected;
-
-};
-
-class BgpPeerResetReasonIndex : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bgp_read_remote_closed;
-        static const ydk::Enum::YLeaf bgp_read_failed;
-        static const ydk::Enum::YLeaf bgp_write_failed;
-        static const ydk::Enum::YLeaf bgp_sock_disconnected;
-        static const ydk::Enum::YLeaf bgp_sock_select_failed;
-        static const ydk::Enum::YLeaf bgp_peer_reset_reason_none;
-
-};
-
-class BgpScopedSyncState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bgp_scope_sync_state_none;
-        static const ydk::Enum::YLeaf bgp_scope_sync_state_not_nsr_ready;
-        static const ydk::Enum::YLeaf bgp_scope_sync_state_timer_start;
-        static const ydk::Enum::YLeaf bgp_scope_sync_state_add_list;
-        static const ydk::Enum::YLeaf bgp_scope_sync_state_batch_acitve;
-
-};
-
-class BgpEbgpSendDmzEnableMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bgp_ebgp_send_dmz_disable;
-        static const ydk::Enum::YLeaf bgp_ebgp_send_dmz_dflt;
-        static const ydk::Enum::YLeaf bgp_ebgp_send_dmz_cumulative;
-
-};
-
-class BgpBagUpdErrAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bgp_bag_upd_err_action_none;
-        static const ydk::Enum::YLeaf bgp_bag_upd_err_action_discard_msg;
-        static const ydk::Enum::YLeaf bgp_bag_upd_err_action_reset;
-        static const ydk::Enum::YLeaf bgp_bag_upd_err_action_wdr_or_reset;
-        static const ydk::Enum::YLeaf bgp_bag_upd_err_action_wdr;
-        static const ydk::Enum::YLeaf bgp_bag_upd_err_action_discard_attr;
-        static const ydk::Enum::YLeaf bgp_bag_upd_err_action_local_repair;
-        static const ydk::Enum::YLeaf bgp_bag_upd_err_action_max;
-
-};
-
-class BgpRpkiPstate : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_started;
-        static const ydk::Enum::YLeaf reset;
-        static const ydk::Enum::YLeaf refresh;
-        static const ydk::Enum::YLeaf reset_query_sent;
-        static const ydk::Enum::YLeaf serial_query_sent;
-        static const ydk::Enum::YLeaf data_start;
-        static const ydk::Enum::YLeaf data_end;
-
-};
-
-class BgpRoute1 : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bgp_route_type_used;
-        static const ydk::Enum::YLeaf bgp_route_type_rcvd_only;
-        static const ydk::Enum::YLeaf bgp_route_type_safi_label_ed_ucast_used;
-        static const ydk::Enum::YLeaf bgp_route_type_safi_label_ed_ucast_rcvd_only;
-        static const ydk::Enum::YLeaf bgp_route_type_rib;
-        static const ydk::Enum::YLeaf bgp_route_type_aggregate;
-        static const ydk::Enum::YLeaf bgp_route_type_max;
-
-};
-
-class BgpBagUpdFilterAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf withdraw;
-        static const ydk::Enum::YLeaf attribute_discard;
-
-};
-
-class BgpRpkiEdmAf : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
-class BgpBpStage : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bgp_bp_comp_not_compared;
-        static const ydk::Enum::YLeaf bgp_bp_comp_imulti_path;
-        static const ydk::Enum::YLeaf bgp_bp_comp_emulti_path;
-        static const ydk::Enum::YLeaf bgp_bp_comp_eimulti_path;
-        static const ydk::Enum::YLeaf bgp_bp_invalid_path;
-        static const ydk::Enum::YLeaf bgp_bp_comp_pre_cost_comm;
-        static const ydk::Enum::YLeaf bgp_bp_comp_weight;
-        static const ydk::Enum::YLeaf bgp_bp_comp_locpref;
-        static const ydk::Enum::YLeaf bgp_bp_comp_rpki;
-        static const ydk::Enum::YLeaf bgp_bp_comp_aigp;
-        static const ydk::Enum::YLeaf bgp_bp_comp_local;
-        static const ydk::Enum::YLeaf bgp_bp_comp_local_rib;
-        static const ydk::Enum::YLeaf bgp_bp_comp_as_path_len;
-        static const ydk::Enum::YLeaf bgp_bp_comp_origin;
-        static const ydk::Enum::YLeaf bgp_bp_comp_med;
-        static const ydk::Enum::YLeaf bgp_bp_comp_ebgp;
-        static const ydk::Enum::YLeaf bgp_bp_comp_ao;
-        static const ydk::Enum::YLeaf bgp_bp_comp_igp_metric;
-        static const ydk::Enum::YLeaf bgp_bp_comp_igp_cost_comm;
-        static const ydk::Enum::YLeaf bgp_bp_comp_rtr_id;
-        static const ydk::Enum::YLeaf bgp_bp_comp_clstr_len;
-        static const ydk::Enum::YLeaf bgp_bp_comp_nbr_addr;
-        static const ydk::Enum::YLeaf bgp_bp_comp_suppressed;
-        static const ydk::Enum::YLeaf bgp_bp_comp_mismatch;
-        static const ydk::Enum::YLeaf bgp_bp_comp_persistence;
-
-};
-
-class BgpNhEvent : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bgp_nh_event_crit_not_f;
-        static const ydk::Enum::YLeaf bgp_nh_event_non_crit_not_f;
-        static const ydk::Enum::YLeaf bgp_nh_event_registration;
-
-};
-
-class BgpNhUpdate : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bgp_nh_update_none;
-        static const ydk::Enum::YLeaf bgp_nh_update_crit_not_f;
-        static const ydk::Enum::YLeaf bgp_nh_update_crit_sync;
-        static const ydk::Enum::YLeaf bgp_nh_update_crit_rib_conv;
-        static const ydk::Enum::YLeaf bgp_nh_update_crit_table_down;
-        static const ydk::Enum::YLeaf bgp_nh_update_non_crit_not_f;
-        static const ydk::Enum::YLeaf bgp_nh_update_non_crit_sync;
-        static const ydk::Enum::YLeaf bgp_nh_update_non_crit_rib_conv;
-        static const ydk::Enum::YLeaf bgp_nh_update_non_crit_table_down;
+        static const ydk::Enum::YLeaf bgp_label_rpf_install_rib;
+        static const ydk::Enum::YLeaf bgp_label_rpf_install_lsd;
 
 };
 
@@ -4356,144 +4180,16 @@ class BgpRpkiPerror : public ydk::Enum
 
 };
 
-class BgpBfdEnableMode : public ydk::Enum
+class BgpRpkiPstate : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf bgp_bfd_enable_mode_disable;
-        static const ydk::Enum::YLeaf bgp_bfd_enable_mode_def;
-        static const ydk::Enum::YLeaf bgp_bfd_enable_mode_strict;
-
-};
-
-class BgpRnhAddrLen : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf v4;
-        static const ydk::Enum::YLeaf mac;
-        static const ydk::Enum::YLeaf v6;
-
-};
-
-class BgpTcpMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bgp_tcp_mode_type_either;
-        static const ydk::Enum::YLeaf bgp_tcp_mode_type_active_only;
-        static const ydk::Enum::YLeaf bgp_tcp_mode_type_passive_only;
-
-};
-
-class BgpBmpState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf connecting;
-        static const ydk::Enum::YLeaf established;
-        static const ydk::Enum::YLeaf closing;
-
-};
-
-class BgpIsmConnState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf connect_done;
-
-};
-
-class BgpOpenCheckErr : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf neighbor_down;
-        static const ydk::Enum::YLeaf no_update_group_set;
-        static const ydk::Enum::YLeaf no_af_config;
-        static const ydk::Enum::YLeaf update_group_pending;
-        static const ydk::Enum::YLeaf low_memory;
-        static const ydk::Enum::YLeaf neighbor_shutdown;
-        static const ydk::Enum::YLeaf ebgp_neighbor_remote;
-        static const ydk::Enum::YLeaf update_source_interface_null;
-        static const ydk::Enum::YLeaf no_ipv6_address;
-        static const ydk::Enum::YLeaf first_hop_interface_null;
-        static const ydk::Enum::YLeaf no_ipv6ll_address;
-        static const ydk::Enum::YLeaf no_update_source_config;
-        static const ydk::Enum::YLeaf no_router_id;
-        static const ydk::Enum::YLeaf update_source_interface_get_failed;
-        static const ydk::Enum::YLeaf update_source_interface_state_get_failed;
-        static const ydk::Enum::YLeaf update_source_interface_down;
-        static const ydk::Enum::YLeaf update_source_interface_ll_get_failed;
-        static const ydk::Enum::YLeaf update_source_interface_address_get_failed;
-        static const ydk::Enum::YLeaf source_address_af_invalid;
-        static const ydk::Enum::YLeaf no_update_source_ll_peering;
-        static const ydk::Enum::YLeaf local_address_get_failed;
-        static const ydk::Enum::YLeaf no_best_local_address;
-        static const ydk::Enum::YLeaf neighbor_address_equals_local_address;
-        static const ydk::Enum::YLeaf neighbor_closing;
-        static const ydk::Enum::YLeaf neighbor_pending_reset;
-        static const ydk::Enum::YLeaf out_interface_set_failed;
-        static const ydk::Enum::YLeaf local_address_mismatch;
-        static const ydk::Enum::YLeaf neighbor_active_only;
-        static const ydk::Enum::YLeaf socket_init_failed;
-        static const ydk::Enum::YLeaf socket_operation_failed;
-        static const ydk::Enum::YLeaf local_neighbor;
-        static const ydk::Enum::YLeaf multi_hop_neighbor;
-
-};
-
-class BgpRoute : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf used;
-        static const ydk::Enum::YLeaf received_only;
-        static const ydk::Enum::YLeaf safi_labeled_unicast_used;
-        static const ydk::Enum::YLeaf safi_labeled_unicast_received_only;
-        static const ydk::Enum::YLeaf rib;
-        static const ydk::Enum::YLeaf aggregate;
-
-};
-
-class BgpConnState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bgp_st_dont_care;
-        static const ydk::Enum::YLeaf bgp_st_idle;
-        static const ydk::Enum::YLeaf bgp_st_connect;
-        static const ydk::Enum::YLeaf bgp_st_active;
-        static const ydk::Enum::YLeaf bgp_st_open_sent;
-        static const ydk::Enum::YLeaf bgp_st_open_confirm;
-        static const ydk::Enum::YLeaf bgp_st_estab;
-        static const ydk::Enum::YLeaf bgp_st_closing;
-        static const ydk::Enum::YLeaf bgp_st_closing_sync;
-
-};
-
-class SrSid : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf label;
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
-class BgpEntity : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf af_group;
-        static const ydk::Enum::YLeaf session_group;
-        static const ydk::Enum::YLeaf neighbor_group;
-        static const ydk::Enum::YLeaf neighbor;
-
-};
-
-class BgpTunnel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf tunnel_none;
-        static const ydk::Enum::YLeaf attrset;
-        static const ydk::Enum::YLeaf sr_policy;
-        static const ydk::Enum::YLeaf odn_policy;
+        static const ydk::Enum::YLeaf not_started;
+        static const ydk::Enum::YLeaf reset;
+        static const ydk::Enum::YLeaf refresh;
+        static const ydk::Enum::YLeaf reset_query_sent;
+        static const ydk::Enum::YLeaf serial_query_sent;
+        static const ydk::Enum::YLeaf data_start;
+        static const ydk::Enum::YLeaf data_end;
 
 };
 
@@ -4514,12 +4210,86 @@ class BgpRpkiCreason : public ydk::Enum
 
 };
 
-class BgpV4V6Len : public ydk::Enum
+class BgpRpkiState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf gwnone;
-        static const ydk::Enum::YLeaf gwipv4;
-        static const ydk::Enum::YLeaf gwipv6;
+        static const ydk::Enum::YLeaf idle;
+        static const ydk::Enum::YLeaf attempt_connect;
+        static const ydk::Enum::YLeaf connected;
+
+};
+
+class BgpIsmConnState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf connect_done;
+
+};
+
+class BgpDsConnState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf connect_init;
+        static const ydk::Enum::YLeaf connect_fail;
+        static const ydk::Enum::YLeaf connect_estb;
+        static const ydk::Enum::YLeaf disconnect_init;
+        static const ydk::Enum::YLeaf disconnect_fail;
+        static const ydk::Enum::YLeaf disconnect_done;
+
+};
+
+class BgpScopedSyncState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bgp_scope_sync_state_none;
+        static const ydk::Enum::YLeaf bgp_scope_sync_state_not_nsr_ready;
+        static const ydk::Enum::YLeaf bgp_scope_sync_state_timer_start;
+        static const ydk::Enum::YLeaf bgp_scope_sync_state_add_list;
+        static const ydk::Enum::YLeaf bgp_scope_sync_state_batch_acitve;
+
+};
+
+class BgpBmpUpdMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bgp_bmp_upd_n_either;
+        static const ydk::Enum::YLeaf bgp_bmp_upd_route_mon;
+        static const ydk::Enum::YLeaf bgp_bmp_upd_route_mirr;
+
+};
+
+class BgpBmpState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf connecting;
+        static const ydk::Enum::YLeaf established;
+        static const ydk::Enum::YLeaf closing;
+
+};
+
+class BgpBagUpdFilterAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf withdraw;
+        static const ydk::Enum::YLeaf attribute_discard;
+
+};
+
+class BgpBagUpdErrAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bgp_bag_upd_err_action_none;
+        static const ydk::Enum::YLeaf bgp_bag_upd_err_action_discard_msg;
+        static const ydk::Enum::YLeaf bgp_bag_upd_err_action_reset;
+        static const ydk::Enum::YLeaf bgp_bag_upd_err_action_wdr_or_reset;
+        static const ydk::Enum::YLeaf bgp_bag_upd_err_action_wdr;
+        static const ydk::Enum::YLeaf bgp_bag_upd_err_action_discard_attr;
+        static const ydk::Enum::YLeaf bgp_bag_upd_err_action_local_repair;
+        static const ydk::Enum::YLeaf bgp_bag_upd_err_action_max;
 
 };
 
@@ -4535,63 +4305,15 @@ class BgpSyncNbrNsrState : public ydk::Enum
 
 };
 
-class BgpPrefixSid : public ydk::Enum
+class BgpPeerResetReasonIndex : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf prefix_sid_label_index;
-        static const ydk::Enum::YLeaf prefix_sid_ipv6_sid;
-        static const ydk::Enum::YLeaf prefix_sid_origin_at_or_srgb;
-        static const ydk::Enum::YLeaf prefix_sid_srv6;
-
-};
-
-class BgpAfi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv4_multicast;
-        static const ydk::Enum::YLeaf ipv4_labeled;
-        static const ydk::Enum::YLeaf ipv4_tunnel;
-        static const ydk::Enum::YLeaf vpnv4;
-        static const ydk::Enum::YLeaf ipv6;
-        static const ydk::Enum::YLeaf ipv6_multicast;
-        static const ydk::Enum::YLeaf ipv6_labeled;
-        static const ydk::Enum::YLeaf vpnv6;
-        static const ydk::Enum::YLeaf ipv4_mdt;
-        static const ydk::Enum::YLeaf l2vpn_vpls;
-        static const ydk::Enum::YLeaf rt_constraint;
-        static const ydk::Enum::YLeaf ipv4_mvpn;
-        static const ydk::Enum::YLeaf ipv6_mvpn;
-        static const ydk::Enum::YLeaf l2vpn_evpn;
-        static const ydk::Enum::YLeaf ls_ls;
-        static const ydk::Enum::YLeaf vpnv4_multicast;
-        static const ydk::Enum::YLeaf vpnv6_multicast;
-        static const ydk::Enum::YLeaf ipv4_flowspec;
-        static const ydk::Enum::YLeaf ipv6_flowspec;
-        static const ydk::Enum::YLeaf vpnv4_flowspec;
-        static const ydk::Enum::YLeaf vpnv6_flowspec;
-        static const ydk::Enum::YLeaf l2vpn_mspw;
-        static const ydk::Enum::YLeaf ipv4_sr_policy;
-        static const ydk::Enum::YLeaf ipv6_sr_policy;
-        static const ydk::Enum::YLeaf no_address_family;
-        static const ydk::Enum::YLeaf all_address_families;
-
-};
-
-class BgpBindingSid : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf label;
-        static const ydk::Enum::YLeaf v6;
-
-};
-
-class BgpRpkiAf : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf bgp_read_remote_closed;
+        static const ydk::Enum::YLeaf bgp_read_failed;
+        static const ydk::Enum::YLeaf bgp_write_failed;
+        static const ydk::Enum::YLeaf bgp_sock_disconnected;
+        static const ydk::Enum::YLeaf bgp_sock_select_failed;
+        static const ydk::Enum::YLeaf bgp_peer_reset_reason_none;
 
 };
 
@@ -4645,6 +4367,117 @@ class BgpResetReasonIndex : public ydk::Enum
 
 };
 
+class BgpBfdEnableMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bgp_bfd_enable_mode_disable;
+        static const ydk::Enum::YLeaf bgp_bfd_enable_mode_def;
+        static const ydk::Enum::YLeaf bgp_bfd_enable_mode_strict;
+
+};
+
+class BgpBfdState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bgp_bfd_state_not_configured;
+        static const ydk::Enum::YLeaf bgp_bfd_state_admin_down;
+        static const ydk::Enum::YLeaf bgp_bfd_state_not_supported;
+        static const ydk::Enum::YLeaf bgp_bfd_state_not_created;
+        static const ydk::Enum::YLeaf bgp_bfd_state_created;
+        static const ydk::Enum::YLeaf bgp_bfd_state_up;
+        static const ydk::Enum::YLeaf bgp_bfd_state_down;
+        static const ydk::Enum::YLeaf bgp_bfd_state_nbr_not_configured;
+        static const ydk::Enum::YLeaf bgp_bfd_state_none;
+
+};
+
+class BgpOpenCheckErr : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf neighbor_down;
+        static const ydk::Enum::YLeaf no_update_group_set;
+        static const ydk::Enum::YLeaf no_af_config;
+        static const ydk::Enum::YLeaf update_group_pending;
+        static const ydk::Enum::YLeaf low_memory;
+        static const ydk::Enum::YLeaf neighbor_shutdown;
+        static const ydk::Enum::YLeaf ebgp_neighbor_remote;
+        static const ydk::Enum::YLeaf update_source_interface_null;
+        static const ydk::Enum::YLeaf no_ipv6_address;
+        static const ydk::Enum::YLeaf first_hop_interface_null;
+        static const ydk::Enum::YLeaf no_ipv6ll_address;
+        static const ydk::Enum::YLeaf no_update_source_config;
+        static const ydk::Enum::YLeaf no_router_id;
+        static const ydk::Enum::YLeaf update_source_interface_get_failed;
+        static const ydk::Enum::YLeaf update_source_interface_state_get_failed;
+        static const ydk::Enum::YLeaf update_source_interface_down;
+        static const ydk::Enum::YLeaf update_source_interface_ll_get_failed;
+        static const ydk::Enum::YLeaf update_source_interface_address_get_failed;
+        static const ydk::Enum::YLeaf source_address_af_invalid;
+        static const ydk::Enum::YLeaf no_update_source_ll_peering;
+        static const ydk::Enum::YLeaf local_address_get_failed;
+        static const ydk::Enum::YLeaf no_best_local_address;
+        static const ydk::Enum::YLeaf neighbor_address_equals_local_address;
+        static const ydk::Enum::YLeaf neighbor_closing;
+        static const ydk::Enum::YLeaf neighbor_pending_reset;
+        static const ydk::Enum::YLeaf out_interface_set_failed;
+        static const ydk::Enum::YLeaf local_address_mismatch;
+        static const ydk::Enum::YLeaf neighbor_active_only;
+        static const ydk::Enum::YLeaf socket_init_failed;
+        static const ydk::Enum::YLeaf socket_operation_failed;
+        static const ydk::Enum::YLeaf local_neighbor;
+        static const ydk::Enum::YLeaf multi_hop_neighbor;
+
+};
+
+class BgpConnState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bgp_st_dont_care;
+        static const ydk::Enum::YLeaf bgp_st_idle;
+        static const ydk::Enum::YLeaf bgp_st_connect;
+        static const ydk::Enum::YLeaf bgp_st_active;
+        static const ydk::Enum::YLeaf bgp_st_open_sent;
+        static const ydk::Enum::YLeaf bgp_st_open_confirm;
+        static const ydk::Enum::YLeaf bgp_st_estab;
+        static const ydk::Enum::YLeaf bgp_st_closing;
+        static const ydk::Enum::YLeaf bgp_st_closing_sync;
+
+};
+
+class BgpNhValidate : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bgp_nh_validate_sync;
+        static const ydk::Enum::YLeaf bgp_nh_validate_async;
+        static const ydk::Enum::YLeaf bgp_nh_validate_none;
+
+};
+
+class BgpNhUpdate : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bgp_nh_update_none;
+        static const ydk::Enum::YLeaf bgp_nh_update_crit_not_f;
+        static const ydk::Enum::YLeaf bgp_nh_update_crit_sync;
+        static const ydk::Enum::YLeaf bgp_nh_update_crit_rib_conv;
+        static const ydk::Enum::YLeaf bgp_nh_update_crit_table_down;
+        static const ydk::Enum::YLeaf bgp_nh_update_non_crit_not_f;
+        static const ydk::Enum::YLeaf bgp_nh_update_non_crit_sync;
+        static const ydk::Enum::YLeaf bgp_nh_update_non_crit_rib_conv;
+        static const ydk::Enum::YLeaf bgp_nh_update_non_crit_table_down;
+
+};
+
+class BgpNhEvent : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bgp_nh_event_crit_not_f;
+        static const ydk::Enum::YLeaf bgp_nh_event_non_crit_not_f;
+        static const ydk::Enum::YLeaf bgp_nh_event_registration;
+
+};
+
 class BgpRtrState : public ydk::Enum
 {
     public:
@@ -4659,20 +4492,175 @@ class BgpRtrState : public ydk::Enum
 
 };
 
-class BgpLabelRpfInstall : public ydk::Enum
+class BgpRnhAddrLen : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf bgp_label_rpf_install_rib;
-        static const ydk::Enum::YLeaf bgp_label_rpf_install_lsd;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf v4;
+        static const ydk::Enum::YLeaf mac;
+        static const ydk::Enum::YLeaf v6;
 
 };
 
-class BgpBmpUpdMode : public ydk::Enum
+class SrSid : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf bgp_bmp_upd_n_either;
-        static const ydk::Enum::YLeaf bgp_bmp_upd_route_mon;
-        static const ydk::Enum::YLeaf bgp_bmp_upd_route_mirr;
+        static const ydk::Enum::YLeaf label;
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+};
+
+class BgpSrpolicyReqState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf request_pending;
+        static const ydk::Enum::YLeaf requested;
+        static const ydk::Enum::YLeaf notified_up;
+        static const ydk::Enum::YLeaf notified_down;
+        static const ydk::Enum::YLeaf marked_stale;
+        static const ydk::Enum::YLeaf marked_disable;
+
+};
+
+class BgpBindingSid : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf label;
+        static const ydk::Enum::YLeaf v6;
+
+};
+
+class BgpBpStage : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bgp_bp_comp_not_compared;
+        static const ydk::Enum::YLeaf bgp_bp_comp_imulti_path;
+        static const ydk::Enum::YLeaf bgp_bp_comp_emulti_path;
+        static const ydk::Enum::YLeaf bgp_bp_comp_eimulti_path;
+        static const ydk::Enum::YLeaf bgp_bp_invalid_path;
+        static const ydk::Enum::YLeaf bgp_bp_comp_pre_cost_comm;
+        static const ydk::Enum::YLeaf bgp_bp_comp_weight;
+        static const ydk::Enum::YLeaf bgp_bp_comp_locpref;
+        static const ydk::Enum::YLeaf bgp_bp_comp_rpki;
+        static const ydk::Enum::YLeaf bgp_bp_comp_aigp;
+        static const ydk::Enum::YLeaf bgp_bp_comp_local;
+        static const ydk::Enum::YLeaf bgp_bp_comp_local_rib;
+        static const ydk::Enum::YLeaf bgp_bp_comp_as_path_len;
+        static const ydk::Enum::YLeaf bgp_bp_comp_origin;
+        static const ydk::Enum::YLeaf bgp_bp_comp_med;
+        static const ydk::Enum::YLeaf bgp_bp_comp_ebgp;
+        static const ydk::Enum::YLeaf bgp_bp_comp_ao;
+        static const ydk::Enum::YLeaf bgp_bp_comp_igp_metric;
+        static const ydk::Enum::YLeaf bgp_bp_comp_igp_cost_comm;
+        static const ydk::Enum::YLeaf bgp_bp_comp_rtr_id;
+        static const ydk::Enum::YLeaf bgp_bp_comp_clstr_len;
+        static const ydk::Enum::YLeaf bgp_bp_comp_nbr_addr;
+        static const ydk::Enum::YLeaf bgp_bp_comp_suppressed;
+        static const ydk::Enum::YLeaf bgp_bp_comp_mismatch;
+        static const ydk::Enum::YLeaf bgp_bp_comp_persistence;
+
+};
+
+class BgpV4V6Len : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf gwnone;
+        static const ydk::Enum::YLeaf gwipv4;
+        static const ydk::Enum::YLeaf gwipv6;
+
+};
+
+class BgpTunnel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf tunnel_none;
+        static const ydk::Enum::YLeaf attrset;
+        static const ydk::Enum::YLeaf sr_policy;
+        static const ydk::Enum::YLeaf odn_policy;
+
+};
+
+class BgpRoute1 : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bgp_route_type_used;
+        static const ydk::Enum::YLeaf bgp_route_type_rcvd_only;
+        static const ydk::Enum::YLeaf bgp_route_type_safi_label_ed_ucast_used;
+        static const ydk::Enum::YLeaf bgp_route_type_safi_label_ed_ucast_rcvd_only;
+        static const ydk::Enum::YLeaf bgp_route_type_rib;
+        static const ydk::Enum::YLeaf bgp_route_type_aggregate;
+        static const ydk::Enum::YLeaf bgp_route_type_max;
+
+};
+
+class BgpRpkiAf : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+
+};
+
+class BgpTcpMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bgp_tcp_mode_type_either;
+        static const ydk::Enum::YLeaf bgp_tcp_mode_type_active_only;
+        static const ydk::Enum::YLeaf bgp_tcp_mode_type_passive_only;
+
+};
+
+class BgpEbgpSendDmzEnableMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bgp_ebgp_send_dmz_disable;
+        static const ydk::Enum::YLeaf bgp_ebgp_send_dmz_dflt;
+        static const ydk::Enum::YLeaf bgp_ebgp_send_dmz_cumulative;
+
+};
+
+class BgpEntities : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf af_group;
+        static const ydk::Enum::YLeaf session_group;
+        static const ydk::Enum::YLeaf neighbor_group;
+        static const ydk::Enum::YLeaf neighbor;
+
+};
+
+class BgpAfi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv4_multicast;
+        static const ydk::Enum::YLeaf ipv4_labeled;
+        static const ydk::Enum::YLeaf ipv4_tunnel;
+        static const ydk::Enum::YLeaf vpnv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf ipv6_multicast;
+        static const ydk::Enum::YLeaf ipv6_labeled;
+        static const ydk::Enum::YLeaf vpnv6;
+        static const ydk::Enum::YLeaf ipv4_mdt;
+        static const ydk::Enum::YLeaf l2vpn_vpls;
+        static const ydk::Enum::YLeaf rt_constraint;
+        static const ydk::Enum::YLeaf ipv4_mvpn;
+        static const ydk::Enum::YLeaf ipv6_mvpn;
+        static const ydk::Enum::YLeaf l2vpn_evpn;
+        static const ydk::Enum::YLeaf ls_ls;
+        static const ydk::Enum::YLeaf vpnv4_multicast;
+        static const ydk::Enum::YLeaf vpnv6_multicast;
+        static const ydk::Enum::YLeaf ipv4_flowspec;
+        static const ydk::Enum::YLeaf ipv6_flowspec;
+        static const ydk::Enum::YLeaf vpnv4_flowspec;
+        static const ydk::Enum::YLeaf vpnv6_flowspec;
+        static const ydk::Enum::YLeaf l2vpn_mspw;
+        static const ydk::Enum::YLeaf ipv4_sr_policy;
+        static const ydk::Enum::YLeaf ipv6_sr_policy;
+        static const ydk::Enum::YLeaf no_address_family;
+        static const ydk::Enum::YLeaf all_address_families;
 
 };
 

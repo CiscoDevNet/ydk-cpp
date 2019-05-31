@@ -536,7 +536,7 @@ class Native::RouteMap::RouteMapSeq::Match::SourceProtocol : public ydk::Entity
         ydk::YLeaf mobile; //type: empty
         ydk::YLeaf rip; //type: empty
         ydk::YLeaf static_; //type: empty
-        ydk::YLeafList bgp; //type: list of  one of uint32, string
+        ydk::YLeafList bgp; //type: list of  one of string, uint32
         ydk::YLeafList eigrp; //type: list of  string
         ydk::YLeafList ospf; //type: list of  string
         ydk::YLeafList ospfv3; //type: list of  string
@@ -904,7 +904,7 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Community::CommunityWellKn
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList community_list; //type: list of  one of union, enumeration
+        ydk::YLeafList community_list; //type: list of  one of enumeration, union
 
 }; // Native::RouteMap::RouteMapWithoutOrderSeq::Set::Community::CommunityWellKnown
 
@@ -1402,7 +1402,7 @@ class Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Rt : public 
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList asn_nn; //type: list of  one of string, enumeration
+        ydk::YLeafList asn_nn; //type: list of  one of enumeration, string
         class Range; //type: Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Rt::Range
 
         std::shared_ptr<cisco_ios_xe::Cisco_IOS_XE_native::Native::RouteMap::RouteMapWithoutOrderSeq::Set::Extcommunity::Rt::Range> range;

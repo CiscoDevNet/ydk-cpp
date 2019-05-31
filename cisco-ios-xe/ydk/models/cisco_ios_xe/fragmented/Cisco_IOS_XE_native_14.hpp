@@ -1147,10 +1147,10 @@ class Native::Policy::ClassMap::Match : public ydk::Entity
         ydk::YLeafList class_map; //type: list of  string
         ydk::YLeafList cos; //type: list of  uint8
         ydk::YLeafList discard_class; //type: list of  uint8
-        ydk::YLeafList dscp; //type: list of  one of uint8, enumeration
+        ydk::YLeafList dscp; //type: list of  one of enumeration, uint8
         ydk::YLeafList fr_dlci; //type: list of  uint16
         ydk::YLeafList input_interface; //type: list of  string
-        ydk::YLeafList precedence; //type: list of  one of uint8, enumeration
+        ydk::YLeafList precedence; //type: list of  one of enumeration, uint8
         ydk::YLeafList qos_group; //type: list of  uint16
         class CurrentMethodPriority; //type: Native::Policy::ClassMap::Match::CurrentMethodPriority
         class Application; //type: Native::Policy::ClassMap::Match::Application
@@ -1395,8 +1395,8 @@ class Native::Policy::ClassMap::Match::Ip : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList dscp; //type: list of  one of uint8, enumeration
-        ydk::YLeafList precedence; //type: list of  one of uint8, enumeration
+        ydk::YLeafList dscp; //type: list of  one of enumeration, uint8
+        ydk::YLeafList precedence; //type: list of  one of enumeration, uint8
         class Rtp; //type: Native::Policy::ClassMap::Match::Ip::Rtp
 
         ydk::YList rtp;
@@ -2145,10 +2145,10 @@ class Native::Policy::ClassMap::Match::Not : public ydk::Entity
         ydk::YLeafList class_map; //type: list of  string
         ydk::YLeafList cos; //type: list of  uint8
         ydk::YLeafList discard_class; //type: list of  uint8
-        ydk::YLeafList dscp; //type: list of  one of uint8, enumeration
+        ydk::YLeafList dscp; //type: list of  one of enumeration, uint8
         ydk::YLeafList fr_dlci; //type: list of  uint16
         ydk::YLeafList input_interface; //type: list of  string
-        ydk::YLeafList precedence; //type: list of  one of uint8, enumeration
+        ydk::YLeafList precedence; //type: list of  one of enumeration, uint8
         ydk::YLeafList qos_group; //type: list of  uint16
         class CurrentMethodPriority; //type: Native::Policy::ClassMap::Match::Not::CurrentMethodPriority
         class Application; //type: Native::Policy::ClassMap::Match::Not::Application
@@ -2378,8 +2378,8 @@ class Native::Policy::ClassMap::Match::Not::Ip : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeafList dscp; //type: list of  one of uint8, enumeration
-        ydk::YLeafList precedence; //type: list of  one of uint8, enumeration
+        ydk::YLeafList dscp; //type: list of  one of enumeration, uint8
+        ydk::YLeafList precedence; //type: list of  one of enumeration, uint8
         class Rtp; //type: Native::Policy::ClassMap::Match::Not::Ip::Rtp
 
         ydk::YList rtp;
@@ -3233,7 +3233,7 @@ class Native::Policy::PolicyMap::Event::ClassNumber : public ydk::Entity
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf number; //type: uint8
-        ydk::YLeaf class_; //type: one of string, enumeration
+        ydk::YLeaf class_; //type: one of enumeration, string
         ydk::YLeaf execution_type; //type: ExecutionType
         class ActionNumber; //type: Native::Policy::PolicyMap::Event::ClassNumber::ActionNumber
 
@@ -3478,7 +3478,7 @@ class Native::Policy::PolicyMap::Class : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf name; //type: one of string, enumeration
+        ydk::YLeaf name; //type: one of enumeration, string
         ydk::YLeaf type; //type: Type
         ydk::YLeaf insert_before; //type: string
         ydk::YLeaf random_detect; //type: empty

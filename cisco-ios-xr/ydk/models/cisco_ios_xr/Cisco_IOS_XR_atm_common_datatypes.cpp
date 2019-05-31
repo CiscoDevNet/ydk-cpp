@@ -21,15 +21,15 @@ const Enum::YLeaf AtmPvcShaping::vbr_nrt {2, "vbr-nrt"};
 const Enum::YLeaf AtmPvcShaping::vbr_rt {3, "vbr-rt"};
 const Enum::YLeaf AtmPvcShaping::ubr {6, "ubr"};
 
+const Enum::YLeaf AtmPvcData::data {0, "data"};
+const Enum::YLeaf AtmPvcData::ilmi {2, "ilmi"};
+const Enum::YLeaf AtmPvcData::layer2 {3, "layer2"};
+
 const Enum::YLeaf AtmPvcEncapsulation::snap {3, "snap"};
 const Enum::YLeaf AtmPvcEncapsulation::vc_mux {4, "vc-mux"};
 const Enum::YLeaf AtmPvcEncapsulation::nlpid {5, "nlpid"};
 const Enum::YLeaf AtmPvcEncapsulation::aal0 {7, "aal0"};
 const Enum::YLeaf AtmPvcEncapsulation::aal5 {8, "aal5"};
-
-const Enum::YLeaf AtmPvcData::data {0, "data"};
-const Enum::YLeaf AtmPvcData::ilmi {2, "ilmi"};
-const Enum::YLeaf AtmPvcData::layer2 {3, "layer2"};
 
 
 }

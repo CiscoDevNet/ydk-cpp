@@ -302,20 +302,20 @@ class MplsVpnRt : public ydk::Enum
 
 };
 
-class MplsVpnAfi : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-
-};
-
 class MplsVpnSafi : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf unicast;
         static const ydk::Enum::YLeaf multicast;
         static const ydk::Enum::YLeaf flowspec;
+
+};
+
+class MplsVpnAfi : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
 
 };
 

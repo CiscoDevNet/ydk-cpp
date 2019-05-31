@@ -113,12 +113,6 @@ class PolicyManager::ClassMaps::ClassMap::Match : public ydk::Entity
 
         ydk::YLeaf dei; //type: uint8
         ydk::YLeaf dei_inner; //type: uint8
-        ydk::YLeaf ipv4_acl; //type: string
-        ydk::YLeaf ipv6_acl; //type: string
-        ydk::YLeaf ethernet_services_acl; //type: string
-        ydk::YLeaf mpls_disposition_ipv4_access_list; //type: string
-        ydk::YLeaf mpls_disposition_ipv6_access_list; //type: string
-        ydk::YLeaf fr_de; //type: uint8
         ydk::YLeaf tcp_flag; //type: uint16
         ydk::YLeaf authen_status; //type: string
         ydk::YLeaf vpls_control; //type: empty
@@ -126,7 +120,6 @@ class PolicyManager::ClassMaps::ClassMap::Match : public ydk::Entity
         ydk::YLeaf vpls_multicast; //type: empty
         ydk::YLeaf vpls_known; //type: empty
         ydk::YLeaf vpls_unknown; //type: empty
-        ydk::YLeaf atm_clp; //type: uint8
         ydk::YLeaf atm_oam; //type: empty
         ydk::YLeaf cac_admit; //type: empty
         ydk::YLeaf cac_unadmit; //type: empty
@@ -141,12 +134,18 @@ class PolicyManager::ClassMaps::ClassMap::Match : public ydk::Entity
         ydk::YLeafList cos; //type: list of  uint8
         ydk::YLeafList inner_cos; //type: list of  uint8
         ydk::YLeafList protocol; //type: list of  string
+        ydk::YLeafList ipv4_acl; //type: list of  string
+        ydk::YLeafList ipv6_acl; //type: list of  string
+        ydk::YLeafList ethernet_services_acl; //type: list of  string
         ydk::YLeafList mpls_experimental_topmost; //type: list of  uint8
         ydk::YLeafList mpls_experimental_imposition; //type: list of  uint8
         ydk::YLeafList discard_class; //type: list of  uint8
         ydk::YLeafList ipv4_packet_length; //type: list of  string
         ydk::YLeafList ipv6_packet_length; //type: list of  string
         ydk::YLeafList packet_length; //type: list of  string
+        ydk::YLeafList mpls_disposition_ipv4_access_list; //type: list of  string
+        ydk::YLeafList mpls_disposition_ipv6_access_list; //type: list of  string
+        ydk::YLeafList mpls_disp_class_map; //type: list of  string
         ydk::YLeafList vlan; //type: list of  string
         ydk::YLeafList inner_vlan; //type: list of  string
         ydk::YLeafList flow_tag; //type: list of  string
@@ -154,6 +153,7 @@ class PolicyManager::ClassMaps::ClassMap::Match : public ydk::Entity
         ydk::YLeafList destination_port; //type: list of  string
         ydk::YLeafList fragment_type; //type: list of  string
         ydk::YLeafList frame_relay_dlci; //type: list of  string
+        ydk::YLeafList fr_de; //type: list of  uint8
         ydk::YLeafList icmpv4_code; //type: list of  string
         ydk::YLeafList icmpv4_type; //type: list of  string
         ydk::YLeafList icmpv6_code; //type: list of  string
@@ -171,6 +171,7 @@ class PolicyManager::ClassMaps::ClassMap::Match : public ydk::Entity
         ydk::YLeafList user_name_regex; //type: list of  string
         ydk::YLeafList source_mac; //type: list of  string
         ydk::YLeafList destination_mac; //type: list of  string
+        ydk::YLeafList atm_clp; //type: list of  uint8
         class DestinationAddressIpv4; //type: PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv4
         class DestinationAddressIpv6; //type: PolicyManager::ClassMaps::ClassMap::Match::DestinationAddressIpv6
         class SourceAddressIpv4; //type: PolicyManager::ClassMaps::ClassMap::Match::SourceAddressIpv4
@@ -410,7 +411,7 @@ class PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache : public ydk::E
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf idle_timeout; //type: one of uint16, string
+        ydk::YLeaf idle_timeout; //type: one of string, uint16
 
 }; // PolicyManager::ClassMaps::ClassMap::Match::Flow::FlowCache
 
@@ -433,12 +434,6 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot : public ydk::Entity
 
         ydk::YLeaf dei; //type: uint8
         ydk::YLeaf dei_inner; //type: uint8
-        ydk::YLeaf ipv4_acl; //type: string
-        ydk::YLeaf ipv6_acl; //type: string
-        ydk::YLeaf ethernet_services_acl; //type: string
-        ydk::YLeaf mpls_disposition_ipv4_access_list; //type: string
-        ydk::YLeaf mpls_disposition_ipv6_access_list; //type: string
-        ydk::YLeaf fr_de; //type: uint8
         ydk::YLeaf tcp_flag; //type: uint16
         ydk::YLeaf authen_status; //type: string
         ydk::YLeaf vpls_control; //type: empty
@@ -457,12 +452,18 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot : public ydk::Entity
         ydk::YLeafList cos; //type: list of  uint8
         ydk::YLeafList inner_cos; //type: list of  uint8
         ydk::YLeafList protocol; //type: list of  string
+        ydk::YLeafList ipv4_acl; //type: list of  string
+        ydk::YLeafList ipv6_acl; //type: list of  string
+        ydk::YLeafList ethernet_services_acl; //type: list of  string
         ydk::YLeafList mpls_experimental_topmost; //type: list of  uint8
         ydk::YLeafList mpls_experimental_imposition; //type: list of  uint8
         ydk::YLeafList discard_class; //type: list of  uint8
         ydk::YLeafList ipv4_packet_length; //type: list of  string
         ydk::YLeafList ipv6_packet_length; //type: list of  string
         ydk::YLeafList packet_length; //type: list of  string
+        ydk::YLeafList mpls_disposition_ipv4_access_list; //type: list of  string
+        ydk::YLeafList mpls_disposition_ipv6_access_list; //type: list of  string
+        ydk::YLeafList mpls_disp_class_map; //type: list of  string
         ydk::YLeafList vlan; //type: list of  string
         ydk::YLeafList inner_vlan; //type: list of  string
         ydk::YLeafList flow_tag; //type: list of  string
@@ -470,6 +471,7 @@ class PolicyManager::ClassMaps::ClassMap::MatchNot : public ydk::Entity
         ydk::YLeafList destination_port; //type: list of  string
         ydk::YLeafList fragment_type; //type: list of  string
         ydk::YLeafList frame_relay_dlci; //type: list of  string
+        ydk::YLeafList fr_de; //type: list of  uint8
         ydk::YLeafList icmpv4_code; //type: list of  string
         ydk::YLeafList icmpv4_type; //type: list of  string
         ydk::YLeafList icmpv6_code; //type: list of  string
@@ -1295,13 +1297,13 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect : public
         ydk::YLeaf threshold_min_units; //type: string
         ydk::YLeaf threshold_max_value; //type: uint32
         ydk::YLeaf threshold_max_units; //type: string
-        ydk::YLeaf dei; //type: uint8
         ydk::YLeaf ecn; //type: empty
-        ydk::YLeafList cos; //type: list of  string
+        ydk::YLeafList cos; //type: list of  uint8
         ydk::YLeafList discard_class; //type: list of  uint8
         ydk::YLeafList dscp; //type: list of  string
         ydk::YLeafList mpls_exp; //type: list of  uint8
         ydk::YLeafList precedence; //type: list of  one of uint8, string
+        ydk::YLeafList dei; //type: list of  uint8
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::RandomDetect
 
@@ -1340,6 +1342,8 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set : public ydk::Ent
         ydk::YLeaf dei_imposition; //type: uint8
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf atm_clp; //type: empty
+        ydk::YLeaf dscp_tunnel; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Set
 
@@ -1526,6 +1530,8 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction
         ydk::YLeaf dei_imposition; //type: uint8
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf atm_clp; //type: empty
+        ydk::YLeaf dscp_tunnel; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ConformAction::Set
 
@@ -1589,6 +1595,8 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction:
         ydk::YLeaf dei_imposition; //type: uint8
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf atm_clp; //type: empty
+        ydk::YLeaf dscp_tunnel; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ExceedAction::Set
 
@@ -1652,6 +1660,8 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction
         ydk::YLeaf dei_imposition; //type: uint8
         ydk::YLeaf source_address; //type: string
         ydk::YLeaf destination_address; //type: string
+        ydk::YLeaf atm_clp; //type: empty
+        ydk::YLeaf dscp_tunnel; //type: string
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::Police::ViolateAction::Set
 
@@ -1694,7 +1704,7 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal : public ydk
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf flow_idle_timeout; //type: one of uint16, string
+        ydk::YLeaf flow_idle_timeout; //type: one of string, uint16
         class Rate; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::Rate
         class FlowRate; //type: PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::CacLocal::FlowRate
 
@@ -2250,6 +2260,37 @@ class PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::HttpEnrichment : publ
 
 }; // PolicyManager::PolicyMaps::PolicyMap::PolicyMapRule::HttpEnrichment
 
+class ClassMapType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf qos;
+        static const ydk::Enum::YLeaf traffic;
+        static const ydk::Enum::YLeaf control;
+
+};
+
+class PolicyMapType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf qos;
+        static const ydk::Enum::YLeaf pbr;
+        static const ydk::Enum::YLeaf traffic;
+        static const ydk::Enum::YLeaf subscriber_control;
+        static const ydk::Enum::YLeaf accounting;
+        static const ydk::Enum::YLeaf redirect;
+        static const ydk::Enum::YLeaf flow_monitor;
+
+};
+
+class PmapClassMapType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf qos;
+        static const ydk::Enum::YLeaf traffic;
+        static const ydk::Enum::YLeaf subscriber_control;
+
+};
+
 class EventType : public ydk::Enum
 {
     public:
@@ -2272,15 +2313,6 @@ class EventType : public ydk::Enum
 
 };
 
-class ClassMapType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf qos;
-        static const ydk::Enum::YLeaf traffic;
-        static const ydk::Enum::YLeaf control;
-
-};
-
 class ExecutionStrategy : public ydk::Enum
 {
     public:
@@ -2300,27 +2332,6 @@ class AuthorizeIdentifier : public ydk::Enum
         static const ydk::Enum::YLeaf source_address_ipv6;
         static const ydk::Enum::YLeaf source_address_mac;
         static const ydk::Enum::YLeaf username;
-
-};
-
-class PmapClassMapType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf qos;
-        static const ydk::Enum::YLeaf traffic;
-        static const ydk::Enum::YLeaf subscriber_control;
-
-};
-
-class PolicyMapType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf qos;
-        static const ydk::Enum::YLeaf pbr;
-        static const ydk::Enum::YLeaf traffic;
-        static const ydk::Enum::YLeaf subscriber_control;
-        static const ydk::Enum::YLeaf redirect;
-        static const ydk::Enum::YLeaf flow_monitor;
 
 };
 

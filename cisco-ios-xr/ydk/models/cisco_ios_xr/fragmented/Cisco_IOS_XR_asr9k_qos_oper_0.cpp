@@ -16652,6 +16652,18 @@ bool PlatformQos::Nodes::Node::Interfaces::Interface::Output::Details::Policy::Q
     return false;
 }
 
+const Enum::YLeaf ShapeProfiletypeV2::invalid {0, "invalid"};
+const Enum::YLeaf ShapeProfiletypeV2::always {1, "always"};
+const Enum::YLeaf ShapeProfiletypeV2::never {2, "never"};
+const Enum::YLeaf ShapeProfiletypeV2::explicit_ {3, "explicit"};
+const Enum::YLeaf ShapeProfiletypeV2::scale {4, "scale"};
+const Enum::YLeaf ShapeProfiletypeV2::grid {5, "grid"};
+
+const Enum::YLeaf Action::police_transmit {0, "police-transmit"};
+const Enum::YLeaf Action::police_set_transmit {1, "police-set-transmit"};
+const Enum::YLeaf Action::police_drop {2, "police-drop"};
+const Enum::YLeaf Action::police_unknown {3, "police-unknown"};
+
 const Enum::YLeaf ActionOpcode::precedence {0, "precedence"};
 const Enum::YLeaf ActionOpcode::dscp {1, "dscp"};
 const Enum::YLeaf ActionOpcode::discard_class {2, "discard-class"};
@@ -16684,38 +16696,6 @@ const Enum::YLeaf TbAlgorithm::single_rate_tcm {2, "single-rate-tcm"};
 const Enum::YLeaf TbAlgorithm::two_rate_tcm {3, "two-rate-tcm"};
 const Enum::YLeaf TbAlgorithm::mef_tcm {4, "mef-tcm"};
 const Enum::YLeaf TbAlgorithm::dummy {5, "dummy"};
-
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_invalid {0, "policy-param-unit-invalid"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_bytes {1, "policy-param-unit-bytes"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_kbytes {2, "policy-param-unit-kbytes"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_mbytes {3, "policy-param-unit-mbytes"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_gbytes {4, "policy-param-unit-gbytes"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_bitsps {5, "policy-param-unit-bitsps"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_kbitsps {6, "policy-param-unit-kbitsps"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_mbitsps {7, "policy-param-unit-mbitsps"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_gbitsps {8, "policy-param-unit-gbitsps"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_cells_ps {9, "policy-param-unit-cells-ps"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_packets_ps {10, "policy-param-unit-packets-ps"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_us {11, "policy-param-unit-us"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_ms {12, "policy-param-unit-ms"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_seconds {13, "policy-param-unit-seconds"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_packets {14, "policy-param-unit-packets"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_cells {15, "policy-param-unit-cells"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_percent {16, "policy-param-unit-percent"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_per_thousand {17, "policy-param-unit-per-thousand"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_per_million {18, "policy-param-unit-per-million"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_hz {19, "policy-param-unit-hz"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_khz {20, "policy-param-unit-khz"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_mhz {21, "policy-param-unit-mhz"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_ratio {22, "policy-param-unit-ratio"};
-const Enum::YLeaf PolicyParamUnit::policy_param_unit_max {23, "policy-param-unit-max"};
-
-const Enum::YLeaf ShapeProfiletypeV2::invalid {0, "invalid"};
-const Enum::YLeaf ShapeProfiletypeV2::always {1, "always"};
-const Enum::YLeaf ShapeProfiletypeV2::never {2, "never"};
-const Enum::YLeaf ShapeProfiletypeV2::explicit_ {3, "explicit"};
-const Enum::YLeaf ShapeProfiletypeV2::scale {4, "scale"};
-const Enum::YLeaf ShapeProfiletypeV2::grid {5, "grid"};
 
 const Enum::YLeaf Queue::port_default {0, "port-default"};
 const Enum::YLeaf Queue::class_default {1, "class-default"};
@@ -16754,22 +16734,6 @@ const Enum::YLeaf Queue::normal_priority {33, "normal-priority"};
 const Enum::YLeaf Queue::class_unknown {34, "class-unknown"};
 const Enum::YLeaf Queue::unknown_priority {35, "unknown-priority"};
 
-const Enum::YLeaf Wred1::wred_cos_cmd {0, "wred-cos-cmd"};
-const Enum::YLeaf Wred1::wred_dscp_cmd {1, "wred-dscp-cmd"};
-const Enum::YLeaf Wred1::wred_precedence_cmd {2, "wred-precedence-cmd"};
-const Enum::YLeaf Wred1::wred_discard_class_cmd {3, "wred-discard-class-cmd"};
-const Enum::YLeaf Wred1::wred_mpls_exp_cmd {4, "wred-mpls-exp-cmd"};
-const Enum::YLeaf Wred1::red_with_user_min_max {5, "red-with-user-min-max"};
-const Enum::YLeaf Wred1::red_with_default_min_max {6, "red-with-default-min-max"};
-const Enum::YLeaf Wred1::wred_dei_cmd {7, "wred-dei-cmd"};
-const Enum::YLeaf Wred1::wred_ecn_cmd {8, "wred-ecn-cmd"};
-const Enum::YLeaf Wred1::wred_invalid_cmd {9, "wred-invalid-cmd"};
-
-const Enum::YLeaf Action::police_transmit {0, "police-transmit"};
-const Enum::YLeaf Action::police_set_transmit {1, "police-set-transmit"};
-const Enum::YLeaf Action::police_drop {2, "police-drop"};
-const Enum::YLeaf Action::police_unknown {3, "police-unknown"};
-
 const Enum::YLeaf QosUnit::invalid {0, "invalid"};
 const Enum::YLeaf QosUnit::bytes {1, "bytes"};
 const Enum::YLeaf QosUnit::kilobytes {2, "kilobytes"};
@@ -16787,6 +16751,42 @@ const Enum::YLeaf QosUnit::packets {13, "packets"};
 const Enum::YLeaf QosUnit::cells {14, "cells"};
 const Enum::YLeaf QosUnit::percentage {15, "percentage"};
 const Enum::YLeaf QosUnit::ratio {16, "ratio"};
+
+const Enum::YLeaf Wred1::wred_cos_cmd {0, "wred-cos-cmd"};
+const Enum::YLeaf Wred1::wred_dscp_cmd {1, "wred-dscp-cmd"};
+const Enum::YLeaf Wred1::wred_precedence_cmd {2, "wred-precedence-cmd"};
+const Enum::YLeaf Wred1::wred_discard_class_cmd {3, "wred-discard-class-cmd"};
+const Enum::YLeaf Wred1::wred_mpls_exp_cmd {4, "wred-mpls-exp-cmd"};
+const Enum::YLeaf Wred1::red_with_user_min_max {5, "red-with-user-min-max"};
+const Enum::YLeaf Wred1::red_with_default_min_max {6, "red-with-default-min-max"};
+const Enum::YLeaf Wred1::wred_dei_cmd {7, "wred-dei-cmd"};
+const Enum::YLeaf Wred1::wred_ecn_cmd {8, "wred-ecn-cmd"};
+const Enum::YLeaf Wred1::wred_invalid_cmd {9, "wred-invalid-cmd"};
+
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_invalid {0, "policy-param-unit-invalid"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_bytes {1, "policy-param-unit-bytes"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_kbytes {2, "policy-param-unit-kbytes"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_mbytes {3, "policy-param-unit-mbytes"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_gbytes {4, "policy-param-unit-gbytes"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_bitsps {5, "policy-param-unit-bitsps"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_kbitsps {6, "policy-param-unit-kbitsps"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_mbitsps {7, "policy-param-unit-mbitsps"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_gbitsps {8, "policy-param-unit-gbitsps"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_cells_ps {9, "policy-param-unit-cells-ps"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_packets_ps {10, "policy-param-unit-packets-ps"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_us {11, "policy-param-unit-us"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_ms {12, "policy-param-unit-ms"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_seconds {13, "policy-param-unit-seconds"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_packets {14, "policy-param-unit-packets"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_cells {15, "policy-param-unit-cells"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_percent {16, "policy-param-unit-percent"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_per_thousand {17, "policy-param-unit-per-thousand"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_per_million {18, "policy-param-unit-per-million"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_hz {19, "policy-param-unit-hz"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_khz {20, "policy-param-unit-khz"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_mhz {21, "policy-param-unit-mhz"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_ratio {22, "policy-param-unit-ratio"};
+const Enum::YLeaf PolicyParamUnit::policy_param_unit_max {23, "policy-param-unit-max"};
 
 const Enum::YLeaf CacState::unknown {0, "unknown"};
 const Enum::YLeaf CacState::admit {1, "admit"};

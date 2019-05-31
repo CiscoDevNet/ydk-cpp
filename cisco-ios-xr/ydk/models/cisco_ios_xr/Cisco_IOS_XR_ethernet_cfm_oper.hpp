@@ -134,9 +134,9 @@ class Cfm::Nodes::Node::InterfaceAises::InterfaceAis : public ydk::Entity
         std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
-        ydk::YLeaf interface_name; //type: string
-        ydk::YLeaf direction; //type: CfmAisDir
         ydk::YLeaf interface; //type: string
+        ydk::YLeaf direction; //type: CfmAisDir
+        ydk::YLeaf interface_xr; //type: string
         ydk::YLeaf interface_state; //type: string
         ydk::YLeaf interworking_state; //type: CfmBagIwState
         ydk::YLeaf stp_state; //type: CfmBagStpState
@@ -2907,22 +2907,11 @@ class Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTi
 
 }; // Cfm::Global::PeerMePv2s::PeerMePv2::PeerMep::Statistics::LastCcmReceivedTime
 
-class CfmPmElrIngressAction : public ydk::Enum
+class CfmAisDir : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf elr_ingress_ok;
-        static const ydk::Enum::YLeaf elr_ingress_down;
-        static const ydk::Enum::YLeaf elr_ingress_blocked;
-        static const ydk::Enum::YLeaf elr_ingress_vid;
-
-};
-
-class CfmPmRelayAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf relay_hit;
-        static const ydk::Enum::YLeaf relay_fdb;
-        static const ydk::Enum::YLeaf relay_mpdb;
+        static const ydk::Enum::YLeaf up;
+        static const ydk::Enum::YLeaf down;
 
 };
 
@@ -2938,36 +2927,23 @@ class CfmBagSmanFmt : public ydk::Enum
 
 };
 
-class CfmPmMepDefect : public ydk::Enum
+class CfmBagMdidFmt : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf defect_none;
-        static const ydk::Enum::YLeaf defect_rdi_ccm;
-        static const ydk::Enum::YLeaf defect_ma_cstatus;
-        static const ydk::Enum::YLeaf defect_remote_ccm;
-        static const ydk::Enum::YLeaf defect_error_ccm;
-        static const ydk::Enum::YLeaf defect_cross_connect_ccm;
+        static const ydk::Enum::YLeaf mdid_null;
+        static const ydk::Enum::YLeaf mdid_dns_like;
+        static const ydk::Enum::YLeaf mdid_mac_address;
+        static const ydk::Enum::YLeaf mdid_string;
+        static const ydk::Enum::YLeaf mdid_unknown;
 
 };
 
-class CfmPmElrEgressAction : public ydk::Enum
+class CfmBagCcmOffload : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf elr_egress_ok;
-        static const ydk::Enum::YLeaf elr_egress_down;
-        static const ydk::Enum::YLeaf elr_egress_blocked;
-        static const ydk::Enum::YLeaf elr_egress_vid;
-        static const ydk::Enum::YLeaf elr_egress_mac;
-
-};
-
-class CfmPmIngressAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ingress_ok;
-        static const ydk::Enum::YLeaf ingress_down;
-        static const ydk::Enum::YLeaf ingress_blocked;
-        static const ydk::Enum::YLeaf ingress_vid;
+        static const ydk::Enum::YLeaf offload_none;
+        static const ydk::Enum::YLeaf offload_software;
+        static const ydk::Enum::YLeaf offload_hardware;
 
 };
 
@@ -2985,6 +2961,276 @@ class CfmBagCcmInterval : public ydk::Enum
 
 };
 
+class CfmBagBdidFmt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf invalid;
+        static const ydk::Enum::YLeaf bd_id;
+        static const ydk::Enum::YLeaf xc_p2p_id;
+        static const ydk::Enum::YLeaf xc_mp2mp_id;
+        static const ydk::Enum::YLeaf fxc_vlan_aware_id;
+        static const ydk::Enum::YLeaf fxc_vlan_unaware_id;
+        static const ydk::Enum::YLeaf down_only;
+
+};
+
+class CfmMaMpVariety : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mip;
+        static const ydk::Enum::YLeaf up_mep;
+        static const ydk::Enum::YLeaf downmep;
+        static const ydk::Enum::YLeaf unknown_mep;
+
+};
+
+class CfmBagIssuRole : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf primary;
+        static const ydk::Enum::YLeaf secondary;
+
+};
+
+class CfmBagOpcode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf reserved;
+        static const ydk::Enum::YLeaf ccm;
+        static const ydk::Enum::YLeaf lbr;
+        static const ydk::Enum::YLeaf lbm;
+        static const ydk::Enum::YLeaf ltr;
+        static const ydk::Enum::YLeaf ltm;
+
+};
+
+class CfmBagAisInterval : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ais_interval_none;
+        static const ydk::Enum::YLeaf ais_interval1s;
+        static const ydk::Enum::YLeaf ais_interval1m;
+
+};
+
+class CfmBagMdLevel : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf level0;
+        static const ydk::Enum::YLeaf level1;
+        static const ydk::Enum::YLeaf level2;
+        static const ydk::Enum::YLeaf level3;
+        static const ydk::Enum::YLeaf level4;
+        static const ydk::Enum::YLeaf level5;
+        static const ydk::Enum::YLeaf level6;
+        static const ydk::Enum::YLeaf level7;
+        static const ydk::Enum::YLeaf level_invalid;
+
+};
+
+class CfmBagDirection : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf direction_up;
+        static const ydk::Enum::YLeaf direction_down;
+        static const ydk::Enum::YLeaf direction_invalid;
+
+};
+
+class CfmBagStpState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf stp_up;
+        static const ydk::Enum::YLeaf stp_blocked;
+        static const ydk::Enum::YLeaf stp_unknown;
+
+};
+
+class CfmBagIwState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf interworking_up;
+        static const ydk::Enum::YLeaf interworking_test;
+
+};
+
+class CfmPmAddlIntfStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf administratively_down;
+        static const ydk::Enum::YLeaf remote_excessive_errors;
+        static const ydk::Enum::YLeaf local_excessive_errors;
+
+};
+
+class CfmPmIntfStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf interface_status_up;
+        static const ydk::Enum::YLeaf interface_status_down;
+        static const ydk::Enum::YLeaf interface_status_testing;
+        static const ydk::Enum::YLeaf interface_status_unknown;
+        static const ydk::Enum::YLeaf interface_status_dormant;
+        static const ydk::Enum::YLeaf interface_status_not_present;
+        static const ydk::Enum::YLeaf interface_status_lower_layer_down;
+
+};
+
+class CfmPmPortStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf port_status_blocked;
+        static const ydk::Enum::YLeaf port_status_up;
+        static const ydk::Enum::YLeaf port_status_unknown;
+
+};
+
+class CfmPmRmepState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf peer_mep_idle;
+        static const ydk::Enum::YLeaf peer_mep_start;
+        static const ydk::Enum::YLeaf peer_mep_failed;
+        static const ydk::Enum::YLeaf peer_mep_ok;
+
+};
+
+class CfmPmRmepXcState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cross_check_ok;
+        static const ydk::Enum::YLeaf cross_check_missing;
+        static const ydk::Enum::YLeaf cross_check_extra;
+
+};
+
+class CfmPmAisReceive : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf receive_none;
+        static const ydk::Enum::YLeaf receive_ais;
+        static const ydk::Enum::YLeaf receive_lck;
+        static const ydk::Enum::YLeaf receive_direct;
+
+};
+
+class CfmPmAisTransmit : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf transmit_none;
+        static const ydk::Enum::YLeaf transmit_ais;
+        static const ydk::Enum::YLeaf transmit_ais_direct;
+
+};
+
+class CfmPmMepDefect : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf defect_none;
+        static const ydk::Enum::YLeaf defect_rdi_ccm;
+        static const ydk::Enum::YLeaf defect_ma_cstatus;
+        static const ydk::Enum::YLeaf defect_remote_ccm;
+        static const ydk::Enum::YLeaf defect_error_ccm;
+        static const ydk::Enum::YLeaf defect_cross_connect_ccm;
+
+};
+
+class CfmPmMepFngState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf fng_reset;
+        static const ydk::Enum::YLeaf fng_defect;
+        static const ydk::Enum::YLeaf fng_report_defect;
+        static const ydk::Enum::YLeaf fng_defect_reported;
+        static const ydk::Enum::YLeaf fng_defect_clearing;
+
+};
+
+class CfmPmElrEgressAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf elr_egress_ok;
+        static const ydk::Enum::YLeaf elr_egress_down;
+        static const ydk::Enum::YLeaf elr_egress_blocked;
+        static const ydk::Enum::YLeaf elr_egress_vid;
+        static const ydk::Enum::YLeaf elr_egress_mac;
+
+};
+
+class CfmPmElrIngressAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf elr_ingress_ok;
+        static const ydk::Enum::YLeaf elr_ingress_down;
+        static const ydk::Enum::YLeaf elr_ingress_blocked;
+        static const ydk::Enum::YLeaf elr_ingress_vid;
+
+};
+
+class CfmPmElrRelayAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf elr_relay_hit;
+        static const ydk::Enum::YLeaf elr_relay_fdb;
+        static const ydk::Enum::YLeaf elr_relay_flood;
+        static const ydk::Enum::YLeaf elr_relay_drop;
+
+};
+
+class CfmPmLastHopFmt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf last_hop_none;
+        static const ydk::Enum::YLeaf last_hop_host_name;
+        static const ydk::Enum::YLeaf last_hop_egress_id;
+
+};
+
+class CfmPmEgressAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf egress_ok;
+        static const ydk::Enum::YLeaf egress_down;
+        static const ydk::Enum::YLeaf egress_blocked;
+        static const ydk::Enum::YLeaf egress_vid;
+
+};
+
+class CfmPmPortIdFmt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf port_id_interface_alias;
+        static const ydk::Enum::YLeaf port_id_port_component;
+        static const ydk::Enum::YLeaf port_id_mac_address;
+        static const ydk::Enum::YLeaf port_id_network_address;
+        static const ydk::Enum::YLeaf port_id_interface_name;
+        static const ydk::Enum::YLeaf port_id_agent_circuit_id;
+        static const ydk::Enum::YLeaf port_id_local;
+        static const ydk::Enum::YLeaf port_id_unknown;
+
+};
+
+class CfmPmIngressAction : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ingress_ok;
+        static const ydk::Enum::YLeaf ingress_down;
+        static const ydk::Enum::YLeaf ingress_blocked;
+        static const ydk::Enum::YLeaf ingress_vid;
+
+};
+
+class CfmPmIdFmt : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf id_format_is_string;
+        static const ydk::Enum::YLeaf id_format_is_mac_address;
+        static const ydk::Enum::YLeaf id_format_is_raw_hex;
+
+};
+
 class CfmPmChassisIdFmt : public ydk::Enum
 {
     public:
@@ -2999,68 +3245,40 @@ class CfmPmChassisIdFmt : public ydk::Enum
 
 };
 
-class SlaOperOperation : public ydk::Enum
+class CfmPmRelayAction : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf operation_type_configured;
-        static const ydk::Enum::YLeaf operation_type_ondemand;
+        static const ydk::Enum::YLeaf relay_hit;
+        static const ydk::Enum::YLeaf relay_fdb;
+        static const ydk::Enum::YLeaf relay_mpdb;
 
 };
 
-class CfmPmLastHopFmt : public ydk::Enum
+class CfmPmElmReplyFilter : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf last_hop_none;
-        static const ydk::Enum::YLeaf last_hop_host_name;
-        static const ydk::Enum::YLeaf last_hop_egress_id;
+        static const ydk::Enum::YLeaf reply_filter_not_present;
+        static const ydk::Enum::YLeaf reply_filter_default;
+        static const ydk::Enum::YLeaf reply_filter_vlan_topology;
+        static const ydk::Enum::YLeaf reply_filter_spanning_tree;
+        static const ydk::Enum::YLeaf reply_filter_all_ports;
 
 };
 
-class CfmPmIdFmt : public ydk::Enum
+class CfmPmEltDelayModel : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf id_format_is_string;
-        static const ydk::Enum::YLeaf id_format_is_mac_address;
-        static const ydk::Enum::YLeaf id_format_is_raw_hex;
+        static const ydk::Enum::YLeaf delay_model_invalid;
+        static const ydk::Enum::YLeaf delay_model_logarithmic;
+        static const ydk::Enum::YLeaf delay_model_constant;
 
 };
 
-class CfmPmRmepState : public ydk::Enum
+class CfmPmLtMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf peer_mep_idle;
-        static const ydk::Enum::YLeaf peer_mep_start;
-        static const ydk::Enum::YLeaf peer_mep_failed;
-        static const ydk::Enum::YLeaf peer_mep_ok;
-
-};
-
-class CfmBagCcmOffload : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf offload_none;
-        static const ydk::Enum::YLeaf offload_software;
-        static const ydk::Enum::YLeaf offload_hardware;
-
-};
-
-class CfmPmAisReceive : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf receive_none;
-        static const ydk::Enum::YLeaf receive_ais;
-        static const ydk::Enum::YLeaf receive_lck;
-        static const ydk::Enum::YLeaf receive_direct;
-
-};
-
-class CfmMaMpVariety : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mip;
-        static const ydk::Enum::YLeaf up_mep;
-        static const ydk::Enum::YLeaf downmep;
-        static const ydk::Enum::YLeaf unknown_mep;
+        static const ydk::Enum::YLeaf cfm_pm_lt_mode_basic;
+        static const ydk::Enum::YLeaf cfm_pm_lt_mode_exploratory;
 
 };
 
@@ -3163,220 +3381,11 @@ class CfmPmPktAction : public ydk::Enum
 
 };
 
-class SlaBucketSize : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf buckets_per_probe;
-        static const ydk::Enum::YLeaf probes_per_bucket;
-
-};
-
-class CfmPmEltDelayModel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf delay_model_invalid;
-        static const ydk::Enum::YLeaf delay_model_logarithmic;
-        static const ydk::Enum::YLeaf delay_model_constant;
-
-};
-
-class CfmPmAisTransmit : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf transmit_none;
-        static const ydk::Enum::YLeaf transmit_ais;
-        static const ydk::Enum::YLeaf transmit_ais_direct;
-
-};
-
-class CfmPmElrRelayAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf elr_relay_hit;
-        static const ydk::Enum::YLeaf elr_relay_fdb;
-        static const ydk::Enum::YLeaf elr_relay_flood;
-        static const ydk::Enum::YLeaf elr_relay_drop;
-
-};
-
-class CfmPmPortStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf port_status_blocked;
-        static const ydk::Enum::YLeaf port_status_up;
-        static const ydk::Enum::YLeaf port_status_unknown;
-
-};
-
-class CfmBagIwState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf interworking_up;
-        static const ydk::Enum::YLeaf interworking_test;
-
-};
-
-class CfmBagMdidFmt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mdid_null;
-        static const ydk::Enum::YLeaf mdid_dns_like;
-        static const ydk::Enum::YLeaf mdid_mac_address;
-        static const ydk::Enum::YLeaf mdid_string;
-        static const ydk::Enum::YLeaf mdid_unknown;
-
-};
-
-class CfmBagBdidFmt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf invalid;
-        static const ydk::Enum::YLeaf bd_id;
-        static const ydk::Enum::YLeaf xc_p2p_id;
-        static const ydk::Enum::YLeaf xc_mp2mp_id;
-        static const ydk::Enum::YLeaf fxc_vlan_aware_id;
-        static const ydk::Enum::YLeaf fxc_vlan_unaware_id;
-        static const ydk::Enum::YLeaf down_only;
-
-};
-
-class CfmBagIssuRole : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf primary;
-        static const ydk::Enum::YLeaf secondary;
-
-};
-
-class CfmBagStpState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf stp_up;
-        static const ydk::Enum::YLeaf stp_blocked;
-        static const ydk::Enum::YLeaf stp_unknown;
-
-};
-
-class CfmBagMdLevel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf level0;
-        static const ydk::Enum::YLeaf level1;
-        static const ydk::Enum::YLeaf level2;
-        static const ydk::Enum::YLeaf level3;
-        static const ydk::Enum::YLeaf level4;
-        static const ydk::Enum::YLeaf level5;
-        static const ydk::Enum::YLeaf level6;
-        static const ydk::Enum::YLeaf level7;
-        static const ydk::Enum::YLeaf level_invalid;
-
-};
-
 class SlaOperPacketPriority : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf priority_none;
         static const ydk::Enum::YLeaf priority_cos;
-
-};
-
-class CfmBagAisInterval : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ais_interval_none;
-        static const ydk::Enum::YLeaf ais_interval1s;
-        static const ydk::Enum::YLeaf ais_interval1m;
-
-};
-
-class CfmPmRmepXcState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cross_check_ok;
-        static const ydk::Enum::YLeaf cross_check_missing;
-        static const ydk::Enum::YLeaf cross_check_extra;
-
-};
-
-class CfmPmLtMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cfm_pm_lt_mode_basic;
-        static const ydk::Enum::YLeaf cfm_pm_lt_mode_exploratory;
-
-};
-
-class CfmPmIntfStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf interface_status_up;
-        static const ydk::Enum::YLeaf interface_status_down;
-        static const ydk::Enum::YLeaf interface_status_testing;
-        static const ydk::Enum::YLeaf interface_status_unknown;
-        static const ydk::Enum::YLeaf interface_status_dormant;
-        static const ydk::Enum::YLeaf interface_status_not_present;
-        static const ydk::Enum::YLeaf interface_status_lower_layer_down;
-
-};
-
-class CfmBagDirection : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf direction_up;
-        static const ydk::Enum::YLeaf direction_down;
-        static const ydk::Enum::YLeaf direction_invalid;
-
-};
-
-class CfmPmEgressAction : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf egress_ok;
-        static const ydk::Enum::YLeaf egress_down;
-        static const ydk::Enum::YLeaf egress_blocked;
-        static const ydk::Enum::YLeaf egress_vid;
-
-};
-
-class CfmPmElmReplyFilter : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf reply_filter_not_present;
-        static const ydk::Enum::YLeaf reply_filter_default;
-        static const ydk::Enum::YLeaf reply_filter_vlan_topology;
-        static const ydk::Enum::YLeaf reply_filter_spanning_tree;
-        static const ydk::Enum::YLeaf reply_filter_all_ports;
-
-};
-
-class CfmAisDir : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf up;
-        static const ydk::Enum::YLeaf down;
-
-};
-
-class CfmPmAddlIntfStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf administratively_down;
-        static const ydk::Enum::YLeaf remote_excessive_errors;
-        static const ydk::Enum::YLeaf local_excessive_errors;
-
-};
-
-class CfmBagOpcode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf reserved;
-        static const ydk::Enum::YLeaf ccm;
-        static const ydk::Enum::YLeaf lbr;
-        static const ydk::Enum::YLeaf lbm;
-        static const ydk::Enum::YLeaf ltr;
-        static const ydk::Enum::YLeaf ltm;
 
 };
 
@@ -3388,36 +3397,19 @@ class SlaOperTestPatternScheme : public ydk::Enum
 
 };
 
-class CfmPmMepFngState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf fng_reset;
-        static const ydk::Enum::YLeaf fng_defect;
-        static const ydk::Enum::YLeaf fng_report_defect;
-        static const ydk::Enum::YLeaf fng_defect_reported;
-        static const ydk::Enum::YLeaf fng_defect_clearing;
-
-};
-
-class CfmPmPortIdFmt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf port_id_interface_alias;
-        static const ydk::Enum::YLeaf port_id_port_component;
-        static const ydk::Enum::YLeaf port_id_mac_address;
-        static const ydk::Enum::YLeaf port_id_network_address;
-        static const ydk::Enum::YLeaf port_id_interface_name;
-        static const ydk::Enum::YLeaf port_id_agent_circuit_id;
-        static const ydk::Enum::YLeaf port_id_local;
-        static const ydk::Enum::YLeaf port_id_unknown;
-
-};
-
 class SlaOperBucket : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf bucket_type_bins;
         static const ydk::Enum::YLeaf bucket_type_samples;
+
+};
+
+class SlaBucketSize : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf buckets_per_probe;
+        static const ydk::Enum::YLeaf probes_per_bucket;
 
 };
 
@@ -3433,6 +3425,14 @@ class SlaRecordableMetric : public ydk::Enum
         static const ydk::Enum::YLeaf metric_one_way_jitter_ds;
         static const ydk::Enum::YLeaf metric_one_way_flr_sd;
         static const ydk::Enum::YLeaf metric_one_way_flr_ds;
+
+};
+
+class SlaOperOperation : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf operation_type_configured;
+        static const ydk::Enum::YLeaf operation_type_ondemand;
 
 };
 

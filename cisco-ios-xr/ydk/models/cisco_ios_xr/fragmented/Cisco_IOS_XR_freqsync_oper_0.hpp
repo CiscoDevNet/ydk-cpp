@@ -3892,13 +3892,25 @@ class FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevel
 
 }; // FrequencySynchronization::Nodes::Node::ClockDatas::ClockData::QualityLevelDamped
 
-class FsyncBagDampingState : public ydk::Enum
+class FsyncStream : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf damping_state_down;
-        static const ydk::Enum::YLeaf damping_state_coming_up;
-        static const ydk::Enum::YLeaf damping_state_up;
-        static const ydk::Enum::YLeaf damping_state_going_down;
+        static const ydk::Enum::YLeaf local;
+        static const ydk::Enum::YLeaf selection_point;
+
+};
+
+class FsyncSource : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ethernet;
+        static const ydk::Enum::YLeaf sonet;
+        static const ydk::Enum::YLeaf clock_;
+        static const ydk::Enum::YLeaf internal;
+        static const ydk::Enum::YLeaf ptp;
+        static const ydk::Enum::YLeaf satellite_access;
+        static const ydk::Enum::YLeaf ntp;
+        static const ydk::Enum::YLeaf gnss;
 
 };
 
@@ -3918,6 +3930,41 @@ class FsyncBagStreamState : public ydk::Enum
 
 };
 
+class FsyncBagStreamInput : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf invalid_input;
+        static const ydk::Enum::YLeaf source_input;
+        static const ydk::Enum::YLeaf selection_point_input;
+
+};
+
+class FsyncBagClockIntfClass : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf clock_class_bitst1;
+        static const ydk::Enum::YLeaf clock_class_bitse1;
+        static const ydk::Enum::YLeaf clock_class_bits2m;
+        static const ydk::Enum::YLeaf clock_class_bits6m;
+        static const ydk::Enum::YLeaf clock_class_bits64k;
+        static const ydk::Enum::YLeaf clock_class_dti;
+        static const ydk::Enum::YLeaf clock_class_gps;
+        static const ydk::Enum::YLeaf clock_class_chassis_sync;
+        static const ydk::Enum::YLeaf clock_class_bitsj1;
+        static const ydk::Enum::YLeaf clock_class_unknown;
+
+};
+
+class FsyncBagSourceState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf source_state_unknown;
+        static const ydk::Enum::YLeaf source_state_up;
+        static const ydk::Enum::YLeaf source_state_down;
+        static const ydk::Enum::YLeaf source_state_unavailable;
+
+};
+
 class FsyncBagEsmcPeerState : public ydk::Enum
 {
     public:
@@ -3925,6 +3972,75 @@ class FsyncBagEsmcPeerState : public ydk::Enum
         static const ydk::Enum::YLeaf peer_up;
         static const ydk::Enum::YLeaf peer_timed_out;
         static const ydk::Enum::YLeaf peer_unknown;
+
+};
+
+class FsyncBagQlO2G2Value : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf option2_generation2_invalid;
+        static const ydk::Enum::YLeaf option2_generation2_do_not_use;
+        static const ydk::Enum::YLeaf option2_generation2_failed;
+        static const ydk::Enum::YLeaf option2_generation2_none;
+        static const ydk::Enum::YLeaf option2_generation2prs;
+        static const ydk::Enum::YLeaf option2_generation2stu;
+        static const ydk::Enum::YLeaf option2_generation2_stratum2;
+        static const ydk::Enum::YLeaf option2_generation2_stratum3;
+        static const ydk::Enum::YLeaf option2_generation2tnc;
+        static const ydk::Enum::YLeaf option2_generation2_stratum3e;
+        static const ydk::Enum::YLeaf option2_generation2smc;
+        static const ydk::Enum::YLeaf option2_generation2_stratum4;
+
+};
+
+class FsyncBagQlO2G1Value : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf option2_generation1_invalid;
+        static const ydk::Enum::YLeaf option2_generation1_do_not_use;
+        static const ydk::Enum::YLeaf option2_generation1_failed;
+        static const ydk::Enum::YLeaf option2_generation1_none;
+        static const ydk::Enum::YLeaf option2_generation1prs;
+        static const ydk::Enum::YLeaf option2_generation1stu;
+        static const ydk::Enum::YLeaf option2_generation1_stratum2;
+        static const ydk::Enum::YLeaf option2_generation1_stratum3;
+        static const ydk::Enum::YLeaf option2_generation1smc;
+        static const ydk::Enum::YLeaf option2_generation1_stratum4;
+
+};
+
+class FsyncBagQlO1Value : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf option1_invalid;
+        static const ydk::Enum::YLeaf option1_do_not_use;
+        static const ydk::Enum::YLeaf option1_failed;
+        static const ydk::Enum::YLeaf option1_none;
+        static const ydk::Enum::YLeaf option1prc;
+        static const ydk::Enum::YLeaf option1ssu_a;
+        static const ydk::Enum::YLeaf option1ssu_b;
+        static const ydk::Enum::YLeaf option1sec;
+
+};
+
+class FsyncBagQlOption : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf no_quality_level_option;
+        static const ydk::Enum::YLeaf option1;
+        static const ydk::Enum::YLeaf option2_generation1;
+        static const ydk::Enum::YLeaf option2_generation2;
+        static const ydk::Enum::YLeaf invalid_quality_level_option;
+
+};
+
+class FsyncBagDampingState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf damping_state_down;
+        static const ydk::Enum::YLeaf damping_state_coming_up;
+        static const ydk::Enum::YLeaf damping_state_up;
+        static const ydk::Enum::YLeaf damping_state_going_down;
 
 };
 
@@ -3953,97 +4069,11 @@ class ImStateEnum : public ydk::Enum
 
 };
 
-class FsyncBagStreamInput : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf invalid_input;
-        static const ydk::Enum::YLeaf source_input;
-        static const ydk::Enum::YLeaf selection_point_input;
-
-};
-
-class FsyncBagQlO2G2Value : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf option2_generation2_invalid;
-        static const ydk::Enum::YLeaf option2_generation2_do_not_use;
-        static const ydk::Enum::YLeaf option2_generation2_failed;
-        static const ydk::Enum::YLeaf option2_generation2_none;
-        static const ydk::Enum::YLeaf option2_generation2prs;
-        static const ydk::Enum::YLeaf option2_generation2stu;
-        static const ydk::Enum::YLeaf option2_generation2_stratum2;
-        static const ydk::Enum::YLeaf option2_generation2_stratum3;
-        static const ydk::Enum::YLeaf option2_generation2tnc;
-        static const ydk::Enum::YLeaf option2_generation2_stratum3e;
-        static const ydk::Enum::YLeaf option2_generation2smc;
-        static const ydk::Enum::YLeaf option2_generation2_stratum4;
-
-};
-
-class FsyncBagQlOption : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf no_quality_level_option;
-        static const ydk::Enum::YLeaf option1;
-        static const ydk::Enum::YLeaf option2_generation1;
-        static const ydk::Enum::YLeaf option2_generation2;
-        static const ydk::Enum::YLeaf invalid_quality_level_option;
-
-};
-
-class FsyncBagSourceState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf source_state_unknown;
-        static const ydk::Enum::YLeaf source_state_up;
-        static const ydk::Enum::YLeaf source_state_down;
-        static const ydk::Enum::YLeaf source_state_unavailable;
-
-};
-
 class FsyncBagForwardtraceNode : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf forward_trace_node_selection_point;
         static const ydk::Enum::YLeaf forward_trace_node_source;
-
-};
-
-class FsyncStream : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf local;
-        static const ydk::Enum::YLeaf selection_point;
-
-};
-
-class FsyncBagClockIntfClass : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf clock_class_bitst1;
-        static const ydk::Enum::YLeaf clock_class_bitse1;
-        static const ydk::Enum::YLeaf clock_class_bits2m;
-        static const ydk::Enum::YLeaf clock_class_bits6m;
-        static const ydk::Enum::YLeaf clock_class_bits64k;
-        static const ydk::Enum::YLeaf clock_class_dti;
-        static const ydk::Enum::YLeaf clock_class_gps;
-        static const ydk::Enum::YLeaf clock_class_chassis_sync;
-        static const ydk::Enum::YLeaf clock_class_bitsj1;
-        static const ydk::Enum::YLeaf clock_class_unknown;
-
-};
-
-class FsyncBagQlO1Value : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf option1_invalid;
-        static const ydk::Enum::YLeaf option1_do_not_use;
-        static const ydk::Enum::YLeaf option1_failed;
-        static const ydk::Enum::YLeaf option1_none;
-        static const ydk::Enum::YLeaf option1prc;
-        static const ydk::Enum::YLeaf option1ssu_a;
-        static const ydk::Enum::YLeaf option1ssu_b;
-        static const ydk::Enum::YLeaf option1sec;
 
 };
 
@@ -4059,35 +4089,6 @@ class FsyncBagSourceClass : public ydk::Enum
         static const ydk::Enum::YLeaf satellite_access_interface_source;
         static const ydk::Enum::YLeaf ntp_source;
         static const ydk::Enum::YLeaf gnss_receiver;
-
-};
-
-class FsyncBagQlO2G1Value : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf option2_generation1_invalid;
-        static const ydk::Enum::YLeaf option2_generation1_do_not_use;
-        static const ydk::Enum::YLeaf option2_generation1_failed;
-        static const ydk::Enum::YLeaf option2_generation1_none;
-        static const ydk::Enum::YLeaf option2_generation1prs;
-        static const ydk::Enum::YLeaf option2_generation1stu;
-        static const ydk::Enum::YLeaf option2_generation1_stratum2;
-        static const ydk::Enum::YLeaf option2_generation1_stratum3;
-        static const ydk::Enum::YLeaf option2_generation1smc;
-        static const ydk::Enum::YLeaf option2_generation1_stratum4;
-
-};
-
-class FsyncSource : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ethernet;
-        static const ydk::Enum::YLeaf sonet;
-        static const ydk::Enum::YLeaf clock_;
-        static const ydk::Enum::YLeaf internal;
-        static const ydk::Enum::YLeaf ptp;
-        static const ydk::Enum::YLeaf satellite_access;
-        static const ydk::Enum::YLeaf ntp;
 
 };
 

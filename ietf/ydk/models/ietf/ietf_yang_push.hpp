@@ -12,14 +12,14 @@
 namespace ietf {
 namespace ietf_yang_push {
 
-class CustomStream : public ietf::ietf_event_notifications::Stream, virtual ydk::Identity
+class ErrorDataNotAuthorized : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
 {
     public:
-        CustomStream();
-        ~CustomStream();
+        ErrorDataNotAuthorized();
+        ~ErrorDataNotAuthorized();
 
 
-}; // CustomStream
+}; // ErrorDataNotAuthorized
 
 class YangPush : public ietf::ietf_event_notifications::Stream, virtual ydk::Identity
 {
@@ -30,14 +30,14 @@ class YangPush : public ietf::ietf_event_notifications::Stream, virtual ydk::Ide
 
 }; // YangPush
 
-class ErrorDataNotAuthorized : public ietf::ietf_event_notifications::Error, virtual ydk::Identity
+class CustomStream : public ietf::ietf_event_notifications::Stream, virtual ydk::Identity
 {
     public:
-        ErrorDataNotAuthorized();
-        ~ErrorDataNotAuthorized();
+        CustomStream();
+        ~CustomStream();
 
 
-}; // ErrorDataNotAuthorized
+}; // CustomStream
 
 class Http2 : public ietf::ietf_event_notifications::Transport, virtual ydk::Identity
 {

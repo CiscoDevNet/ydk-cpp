@@ -4712,30 +4712,9 @@ const Enum::YLeaf ClockPortState::passive {7, "passive"};
 const Enum::YLeaf ClockPortState::uncalibrated {8, "uncalibrated"};
 const Enum::YLeaf ClockPortState::slave {9, "slave"};
 
-const Enum::YLeaf ClockTimeSourceType::atomicClock {16, "atomicClock"};
-const Enum::YLeaf ClockTimeSourceType::gps {32, "gps"};
-const Enum::YLeaf ClockTimeSourceType::terrestrialRadio {48, "terrestrialRadio"};
-const Enum::YLeaf ClockTimeSourceType::ptp {64, "ptp"};
-const Enum::YLeaf ClockTimeSourceType::ntp {80, "ntp"};
-const Enum::YLeaf ClockTimeSourceType::handSet {96, "handSet"};
-const Enum::YLeaf ClockTimeSourceType::other {144, "other"};
-const Enum::YLeaf ClockTimeSourceType::internalOsillator {160, "internalOsillator"};
-
 const Enum::YLeaf ClockProfileType::default_ {1, "default"};
 const Enum::YLeaf ClockProfileType::telecom {2, "telecom"};
 const Enum::YLeaf ClockProfileType::vendorspecific {3, "vendorspecific"};
-
-const Enum::YLeaf ClockRoleType::master {1, "master"};
-const Enum::YLeaf ClockRoleType::slave {2, "slave"};
-
-const Enum::YLeaf ClockType::ordinaryClock {1, "ordinaryClock"};
-const Enum::YLeaf ClockType::boundaryClock {2, "boundaryClock"};
-const Enum::YLeaf ClockType::transparentClock {3, "transparentClock"};
-const Enum::YLeaf ClockType::boundaryNode {4, "boundaryNode"};
-
-const Enum::YLeaf ClockTxModeType::unicast {1, "unicast"};
-const Enum::YLeaf ClockTxModeType::multicast {2, "multicast"};
-const Enum::YLeaf ClockTxModeType::multicastmix {3, "multicastmix"};
 
 const Enum::YLeaf ClockQualityAccuracyType::reserved00 {1, "reserved00"};
 const Enum::YLeaf ClockQualityAccuracyType::nanoSecond25 {32, "nanoSecond25"};
@@ -4759,11 +4738,32 @@ const Enum::YLeaf ClockQualityAccuracyType::secondGreater10 {49, "secondGreater1
 const Enum::YLeaf ClockQualityAccuracyType::unknown {254, "unknown"};
 const Enum::YLeaf ClockQualityAccuracyType::reserved255 {255, "reserved255"};
 
+const Enum::YLeaf ClockRoleType::master {1, "master"};
+const Enum::YLeaf ClockRoleType::slave {2, "slave"};
+
 const Enum::YLeaf ClockStateType::freerun {1, "freerun"};
 const Enum::YLeaf ClockStateType::holdover {2, "holdover"};
 const Enum::YLeaf ClockStateType::acquiring {3, "acquiring"};
 const Enum::YLeaf ClockStateType::frequencyLocked {4, "frequencyLocked"};
 const Enum::YLeaf ClockStateType::phaseAligned {5, "phaseAligned"};
+
+const Enum::YLeaf ClockTimeSourceType::atomicClock {16, "atomicClock"};
+const Enum::YLeaf ClockTimeSourceType::gps {32, "gps"};
+const Enum::YLeaf ClockTimeSourceType::terrestrialRadio {48, "terrestrialRadio"};
+const Enum::YLeaf ClockTimeSourceType::ptp {64, "ptp"};
+const Enum::YLeaf ClockTimeSourceType::ntp {80, "ntp"};
+const Enum::YLeaf ClockTimeSourceType::handSet {96, "handSet"};
+const Enum::YLeaf ClockTimeSourceType::other {144, "other"};
+const Enum::YLeaf ClockTimeSourceType::internalOsillator {160, "internalOsillator"};
+
+const Enum::YLeaf ClockTxModeType::unicast {1, "unicast"};
+const Enum::YLeaf ClockTxModeType::multicast {2, "multicast"};
+const Enum::YLeaf ClockTxModeType::multicastmix {3, "multicastmix"};
+
+const Enum::YLeaf ClockType::ordinaryClock {1, "ordinaryClock"};
+const Enum::YLeaf ClockType::boundaryClock {2, "boundaryClock"};
+const Enum::YLeaf ClockType::transparentClock {3, "transparentClock"};
+const Enum::YLeaf ClockType::boundaryNode {4, "boundaryNode"};
 
 
 }

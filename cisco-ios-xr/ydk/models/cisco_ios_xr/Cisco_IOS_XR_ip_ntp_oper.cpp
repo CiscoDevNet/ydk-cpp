@@ -3469,6 +3469,17 @@ bool Ntp::Nodes::Node::Associations::PeerSummaryInfo::PeerInfoCommon::has_leaf_o
     return false;
 }
 
+const Enum::YLeaf ClockUpdateNode::clk_never_updated {0, "clk-never-updated"};
+const Enum::YLeaf ClockUpdateNode::clk_updated {1, "clk-updated"};
+const Enum::YLeaf ClockUpdateNode::clk_no_update_info {2, "clk-no-update-info"};
+
+const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_n_set {1, "ntp-loop-flt-n-set"};
+const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_f_set {2, "ntp-loop-flt-f-set"};
+const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_spik {3, "ntp-loop-flt-spik"};
+const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_freq {4, "ntp-loop-flt-freq"};
+const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_sync {5, "ntp-loop-flt-sync"};
+const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_unkn {6, "ntp-loop-flt-unkn"};
+
 const Enum::YLeaf NtpPeerStatus::ntp_ctl_pst_sel_reject {0, "ntp-ctl-pst-sel-reject"};
 const Enum::YLeaf NtpPeerStatus::ntp_ctl_pst_sel_sane {1, "ntp-ctl-pst-sel-sane"};
 const Enum::YLeaf NtpPeerStatus::ntp_ctl_pst_sel_correct {2, "ntp-ctl-pst-sel-correct"};
@@ -3487,17 +3498,6 @@ const Enum::YLeaf NtpMode::ntp_mode_xcast_server {5, "ntp-mode-xcast-server"};
 const Enum::YLeaf NtpMode::ntp_mode_control {6, "ntp-mode-control"};
 const Enum::YLeaf NtpMode::ntp_mode_private {7, "ntp-mode-private"};
 const Enum::YLeaf NtpMode::ntp_mode_xcast_client {8, "ntp-mode-xcast-client"};
-
-const Enum::YLeaf ClockUpdateNode::clk_never_updated {0, "clk-never-updated"};
-const Enum::YLeaf ClockUpdateNode::clk_updated {1, "clk-updated"};
-const Enum::YLeaf ClockUpdateNode::clk_no_update_info {2, "clk-no-update-info"};
-
-const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_n_set {1, "ntp-loop-flt-n-set"};
-const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_f_set {2, "ntp-loop-flt-f-set"};
-const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_spik {3, "ntp-loop-flt-spik"};
-const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_freq {4, "ntp-loop-flt-freq"};
-const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_sync {5, "ntp-loop-flt-sync"};
-const Enum::YLeaf NtpLoopFilterState::ntp_loop_flt_unkn {6, "ntp-loop-flt-unkn"};
 
 const Enum::YLeaf NtpLeap::ntp_leap_no_warning {0, "ntp-leap-no-warning"};
 const Enum::YLeaf NtpLeap::ntp_leap_addse_cond {1, "ntp-leap-addse-cond"};

@@ -494,11 +494,12 @@ class CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry : publi
 
 }; // CISCOMEDIAGATEWAYMIB::CMediaGwRscStatsTable::CMediaGwRscStatsEntry
 
-class CCallControlJitterDelayMode : public ydk::Enum
+class CGwServiceState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf adaptive;
-        static const ydk::Enum::YLeaf fixed;
+        static const ydk::Enum::YLeaf inService;
+        static const ydk::Enum::YLeaf forcedOutOfService;
+        static const ydk::Enum::YLeaf gracefulOutOfService;
 
 };
 
@@ -511,12 +512,11 @@ class CGwAdminState : public ydk::Enum
 
 };
 
-class CGwServiceState : public ydk::Enum
+class CCallControlJitterDelayMode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf inService;
-        static const ydk::Enum::YLeaf forcedOutOfService;
-        static const ydk::Enum::YLeaf gracefulOutOfService;
+        static const ydk::Enum::YLeaf adaptive;
+        static const ydk::Enum::YLeaf fixed;
 
 };
 

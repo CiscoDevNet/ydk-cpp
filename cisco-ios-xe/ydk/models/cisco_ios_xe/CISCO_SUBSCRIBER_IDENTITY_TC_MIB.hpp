@@ -10,32 +10,6 @@
 namespace cisco_ios_xe {
 namespace CISCO_SUBSCRIBER_IDENTITY_TC_MIB {
 
-class SubscriberMediaType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf async;
-        static const ydk::Enum::YLeaf atm;
-        static const ydk::Enum::YLeaf ethernet;
-        static const ydk::Enum::YLeaf ip;
-        static const ydk::Enum::YLeaf isdn;
-        static const ydk::Enum::YLeaf mpls;
-        static const ydk::Enum::YLeaf sync;
-
-};
-
-class SubscriberProtocolType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf atom;
-        static const ydk::Enum::YLeaf ip;
-        static const ydk::Enum::YLeaf psdn;
-        static const ydk::Enum::YLeaf ppp;
-        static const ydk::Enum::YLeaf vpdn;
-
-};
-
 class SubSessionIdentity : public ydk::Enum
 {
     public:
@@ -61,6 +35,32 @@ class SubSessionIdentity : public ydk::Enum
         static const ydk::Enum::YLeaf serviceName;
         static const ydk::Enum::YLeaf dhcpClass;
         static const ydk::Enum::YLeaf tunnelName;
+
+};
+
+class SubscriberMediaType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf async;
+        static const ydk::Enum::YLeaf atm;
+        static const ydk::Enum::YLeaf ethernet;
+        static const ydk::Enum::YLeaf ip;
+        static const ydk::Enum::YLeaf isdn;
+        static const ydk::Enum::YLeaf mpls;
+        static const ydk::Enum::YLeaf sync;
+
+};
+
+class SubscriberProtocolType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf atom;
+        static const ydk::Enum::YLeaf ip;
+        static const ydk::Enum::YLeaf psdn;
+        static const ydk::Enum::YLeaf ppp;
+        static const ydk::Enum::YLeaf vpdn;
 
 };
 

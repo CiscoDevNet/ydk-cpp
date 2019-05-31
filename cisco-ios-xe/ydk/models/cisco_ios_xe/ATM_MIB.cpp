@@ -511,9 +511,6 @@ ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::AtmInterfaceConfEntry()
     atminterfacecurrentmaxvpibits{YType::int32, "atmInterfaceCurrentMaxVpiBits"},
     atminterfacecurrentmaxvcibits{YType::int32, "atmInterfaceCurrentMaxVciBits"},
     atminterfacesubscraddress{YType::str, "atmInterfaceSubscrAddress"},
-    atmintfcurrentlydowntouppvcls{YType::uint32, "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfCurrentlyDownToUpPVcls"},
-    atmintfoamfailedpvcls{YType::uint32, "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfOAMFailedPVcls"},
-    atmintfcurrentlyoamfailingpvcls{YType::uint32, "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfCurrentlyOAMFailingPVcls"},
     atmintfpvcfailures{YType::uint32, "CISCO-IETF-ATM2-PVCTRAP-MIB:atmIntfPvcFailures"},
     atmintfcurrentlyfailingpvcls{YType::uint32, "CISCO-IETF-ATM2-PVCTRAP-MIB:atmIntfCurrentlyFailingPVcls"},
     atmintfpvcfailurestrapenable{YType::boolean, "CISCO-IETF-ATM2-PVCTRAP-MIB:atmIntfPvcFailuresTrapEnable"},
@@ -541,7 +538,10 @@ ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::AtmInterfaceConfEntry()
     catmintfcuraisrdioamrcovingpvcls{YType::uint32, "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfCurAISRDIOAMRcovingPVcls"},
     catmintfanyoamrcovedpvcls{YType::uint32, "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfAnyOAMRcovedPVcls"},
     catmintfcuranyoamrcovingpvcls{YType::uint32, "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfCurAnyOAMRcovingPVcls"},
-    catmintftypeofoamrecover{YType::enumeration, "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfTypeOfOAMRecover"}
+    catmintftypeofoamrecover{YType::enumeration, "CISCO-ATM-PVCTRAP-EXTN-MIB:catmIntfTypeOfOAMRecover"},
+    atmintfcurrentlydowntouppvcls{YType::uint32, "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfCurrentlyDownToUpPVcls"},
+    atmintfoamfailedpvcls{YType::uint32, "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfOAMFailedPVcls"},
+    atmintfcurrentlyoamfailingpvcls{YType::uint32, "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfCurrentlyOAMFailingPVcls"}
 {
 
     yang_name = "atmInterfaceConfEntry"; yang_parent_name = "atmInterfaceConfTable"; is_top_level_class = false; has_list_ancestor = false; 
@@ -570,9 +570,6 @@ bool ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::has_data() const
 	|| atminterfacecurrentmaxvpibits.is_set
 	|| atminterfacecurrentmaxvcibits.is_set
 	|| atminterfacesubscraddress.is_set
-	|| atmintfcurrentlydowntouppvcls.is_set
-	|| atmintfoamfailedpvcls.is_set
-	|| atmintfcurrentlyoamfailingpvcls.is_set
 	|| atmintfpvcfailures.is_set
 	|| atmintfcurrentlyfailingpvcls.is_set
 	|| atmintfpvcfailurestrapenable.is_set
@@ -600,7 +597,10 @@ bool ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::has_data() const
 	|| catmintfcuraisrdioamrcovingpvcls.is_set
 	|| catmintfanyoamrcovedpvcls.is_set
 	|| catmintfcuranyoamrcovingpvcls.is_set
-	|| catmintftypeofoamrecover.is_set;
+	|| catmintftypeofoamrecover.is_set
+	|| atmintfcurrentlydowntouppvcls.is_set
+	|| atmintfoamfailedpvcls.is_set
+	|| atmintfcurrentlyoamfailingpvcls.is_set;
 }
 
 bool ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::has_operation() const
@@ -622,9 +622,6 @@ bool ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::has_operation() const
 	|| ydk::is_set(atminterfacecurrentmaxvpibits.yfilter)
 	|| ydk::is_set(atminterfacecurrentmaxvcibits.yfilter)
 	|| ydk::is_set(atminterfacesubscraddress.yfilter)
-	|| ydk::is_set(atmintfcurrentlydowntouppvcls.yfilter)
-	|| ydk::is_set(atmintfoamfailedpvcls.yfilter)
-	|| ydk::is_set(atmintfcurrentlyoamfailingpvcls.yfilter)
 	|| ydk::is_set(atmintfpvcfailures.yfilter)
 	|| ydk::is_set(atmintfcurrentlyfailingpvcls.yfilter)
 	|| ydk::is_set(atmintfpvcfailurestrapenable.yfilter)
@@ -652,7 +649,10 @@ bool ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::has_operation() const
 	|| ydk::is_set(catmintfcuraisrdioamrcovingpvcls.yfilter)
 	|| ydk::is_set(catmintfanyoamrcovedpvcls.yfilter)
 	|| ydk::is_set(catmintfcuranyoamrcovingpvcls.yfilter)
-	|| ydk::is_set(catmintftypeofoamrecover.yfilter);
+	|| ydk::is_set(catmintftypeofoamrecover.yfilter)
+	|| ydk::is_set(atmintfcurrentlydowntouppvcls.yfilter)
+	|| ydk::is_set(atmintfoamfailedpvcls.yfilter)
+	|| ydk::is_set(atmintfcurrentlyoamfailingpvcls.yfilter);
 }
 
 std::string ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::get_absolute_path() const
@@ -690,9 +690,6 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmInterfaceConfTable::At
     if (atminterfacecurrentmaxvpibits.is_set || is_set(atminterfacecurrentmaxvpibits.yfilter)) leaf_name_data.push_back(atminterfacecurrentmaxvpibits.get_name_leafdata());
     if (atminterfacecurrentmaxvcibits.is_set || is_set(atminterfacecurrentmaxvcibits.yfilter)) leaf_name_data.push_back(atminterfacecurrentmaxvcibits.get_name_leafdata());
     if (atminterfacesubscraddress.is_set || is_set(atminterfacesubscraddress.yfilter)) leaf_name_data.push_back(atminterfacesubscraddress.get_name_leafdata());
-    if (atmintfcurrentlydowntouppvcls.is_set || is_set(atmintfcurrentlydowntouppvcls.yfilter)) leaf_name_data.push_back(atmintfcurrentlydowntouppvcls.get_name_leafdata());
-    if (atmintfoamfailedpvcls.is_set || is_set(atmintfoamfailedpvcls.yfilter)) leaf_name_data.push_back(atmintfoamfailedpvcls.get_name_leafdata());
-    if (atmintfcurrentlyoamfailingpvcls.is_set || is_set(atmintfcurrentlyoamfailingpvcls.yfilter)) leaf_name_data.push_back(atmintfcurrentlyoamfailingpvcls.get_name_leafdata());
     if (atmintfpvcfailures.is_set || is_set(atmintfpvcfailures.yfilter)) leaf_name_data.push_back(atmintfpvcfailures.get_name_leafdata());
     if (atmintfcurrentlyfailingpvcls.is_set || is_set(atmintfcurrentlyfailingpvcls.yfilter)) leaf_name_data.push_back(atmintfcurrentlyfailingpvcls.get_name_leafdata());
     if (atmintfpvcfailurestrapenable.is_set || is_set(atmintfpvcfailurestrapenable.yfilter)) leaf_name_data.push_back(atmintfpvcfailurestrapenable.get_name_leafdata());
@@ -721,6 +718,9 @@ std::vector<std::pair<std::string, LeafData> > ATMMIB::AtmInterfaceConfTable::At
     if (catmintfanyoamrcovedpvcls.is_set || is_set(catmintfanyoamrcovedpvcls.yfilter)) leaf_name_data.push_back(catmintfanyoamrcovedpvcls.get_name_leafdata());
     if (catmintfcuranyoamrcovingpvcls.is_set || is_set(catmintfcuranyoamrcovingpvcls.yfilter)) leaf_name_data.push_back(catmintfcuranyoamrcovingpvcls.get_name_leafdata());
     if (catmintftypeofoamrecover.is_set || is_set(catmintftypeofoamrecover.yfilter)) leaf_name_data.push_back(catmintftypeofoamrecover.get_name_leafdata());
+    if (atmintfcurrentlydowntouppvcls.is_set || is_set(atmintfcurrentlydowntouppvcls.yfilter)) leaf_name_data.push_back(atmintfcurrentlydowntouppvcls.get_name_leafdata());
+    if (atmintfoamfailedpvcls.is_set || is_set(atmintfoamfailedpvcls.yfilter)) leaf_name_data.push_back(atmintfoamfailedpvcls.get_name_leafdata());
+    if (atmintfcurrentlyoamfailingpvcls.is_set || is_set(atmintfcurrentlyoamfailingpvcls.yfilter)) leaf_name_data.push_back(atmintfcurrentlyoamfailingpvcls.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -835,24 +835,6 @@ void ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::set_value(const std::
         atminterfacesubscraddress = value;
         atminterfacesubscraddress.value_namespace = name_space;
         atminterfacesubscraddress.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfCurrentlyDownToUpPVcls")
-    {
-        atmintfcurrentlydowntouppvcls = value;
-        atmintfcurrentlydowntouppvcls.value_namespace = name_space;
-        atmintfcurrentlydowntouppvcls.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfOAMFailedPVcls")
-    {
-        atmintfoamfailedpvcls = value;
-        atmintfoamfailedpvcls.value_namespace = name_space;
-        atmintfoamfailedpvcls.value_namespace_prefix = name_space_prefix;
-    }
-    if(value_path == "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfCurrentlyOAMFailingPVcls")
-    {
-        atmintfcurrentlyoamfailingpvcls = value;
-        atmintfcurrentlyoamfailingpvcls.value_namespace = name_space;
-        atmintfcurrentlyoamfailingpvcls.value_namespace_prefix = name_space_prefix;
     }
     if(value_path == "CISCO-IETF-ATM2-PVCTRAP-MIB:atmIntfPvcFailures")
     {
@@ -1022,6 +1004,24 @@ void ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::set_value(const std::
         catmintftypeofoamrecover.value_namespace = name_space;
         catmintftypeofoamrecover.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfCurrentlyDownToUpPVcls")
+    {
+        atmintfcurrentlydowntouppvcls = value;
+        atmintfcurrentlydowntouppvcls.value_namespace = name_space;
+        atmintfcurrentlydowntouppvcls.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfOAMFailedPVcls")
+    {
+        atmintfoamfailedpvcls = value;
+        atmintfoamfailedpvcls.value_namespace = name_space;
+        atmintfoamfailedpvcls.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "CISCO-IETF-ATM2-PVCTRAP-MIB-EXTN:atmIntfCurrentlyOAMFailingPVcls")
+    {
+        atmintfcurrentlyoamfailingpvcls = value;
+        atmintfcurrentlyoamfailingpvcls.value_namespace = name_space;
+        atmintfcurrentlyoamfailingpvcls.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1089,18 +1089,6 @@ void ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::set_filter(const std:
     if(value_path == "atmInterfaceSubscrAddress")
     {
         atminterfacesubscraddress.yfilter = yfilter;
-    }
-    if(value_path == "atmIntfCurrentlyDownToUpPVcls")
-    {
-        atmintfcurrentlydowntouppvcls.yfilter = yfilter;
-    }
-    if(value_path == "atmIntfOAMFailedPVcls")
-    {
-        atmintfoamfailedpvcls.yfilter = yfilter;
-    }
-    if(value_path == "atmIntfCurrentlyOAMFailingPVcls")
-    {
-        atmintfcurrentlyoamfailingpvcls.yfilter = yfilter;
     }
     if(value_path == "atmIntfPvcFailures")
     {
@@ -1214,11 +1202,23 @@ void ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::set_filter(const std:
     {
         catmintftypeofoamrecover.yfilter = yfilter;
     }
+    if(value_path == "atmIntfCurrentlyDownToUpPVcls")
+    {
+        atmintfcurrentlydowntouppvcls.yfilter = yfilter;
+    }
+    if(value_path == "atmIntfOAMFailedPVcls")
+    {
+        atmintfoamfailedpvcls.yfilter = yfilter;
+    }
+    if(value_path == "atmIntfCurrentlyOAMFailingPVcls")
+    {
+        atmintfcurrentlyoamfailingpvcls.yfilter = yfilter;
+    }
 }
 
 bool ATMMIB::AtmInterfaceConfTable::AtmInterfaceConfEntry::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ifIndex" || name == "atmInterfaceMaxVpcs" || name == "atmInterfaceMaxVccs" || name == "atmInterfaceConfVpcs" || name == "atmInterfaceConfVccs" || name == "atmInterfaceMaxActiveVpiBits" || name == "atmInterfaceMaxActiveVciBits" || name == "atmInterfaceIlmiVpi" || name == "atmInterfaceIlmiVci" || name == "atmInterfaceAddressType" || name == "atmInterfaceAdminAddress" || name == "atmInterfaceMyNeighborIpAddress" || name == "atmInterfaceMyNeighborIfName" || name == "atmInterfaceCurrentMaxVpiBits" || name == "atmInterfaceCurrentMaxVciBits" || name == "atmInterfaceSubscrAddress" || name == "atmIntfCurrentlyDownToUpPVcls" || name == "atmIntfOAMFailedPVcls" || name == "atmIntfCurrentlyOAMFailingPVcls" || name == "atmIntfPvcFailures" || name == "atmIntfCurrentlyFailingPVcls" || name == "atmIntfPvcFailuresTrapEnable" || name == "atmIntfPvcNotificationInterval" || name == "atmPreviouslyFailedPVclInterval" || name == "catmIntfCurrentlyDownToUpPVcls" || name == "catmIntfOAMFailedPVcls" || name == "catmIntfCurrentOAMFailingPVcls" || name == "catmIntfSegCCOAMFailedPVcls" || name == "catmIntfCurSegCCOAMFailingPVcls" || name == "catmIntfEndCCOAMFailedPVcls" || name == "catmIntfCurEndCCOAMFailingPVcls" || name == "catmIntfAISRDIOAMFailedPVcls" || name == "catmIntfCurAISRDIOAMFailingPVcls" || name == "catmIntfAnyOAMFailedPVcls" || name == "catmIntfCurAnyOAMFailingPVcls" || name == "catmIntfTypeOfOAMFailure" || name == "catmIntfOAMRcovedPVcls" || name == "catmIntfCurrentOAMRcovingPVcls" || name == "catmIntfSegCCOAMRcovedPVcls" || name == "catmIntfCurSegCCOAMRcovingPVcls" || name == "catmIntfEndCCOAMRcovedPVcls" || name == "catmIntfCurEndCCOAMRcovingPVcls" || name == "catmIntfAISRDIOAMRcovedPVcls" || name == "catmIntfCurAISRDIOAMRcovingPVcls" || name == "catmIntfAnyOAMRcovedPVcls" || name == "catmIntfCurAnyOAMRcovingPVcls" || name == "catmIntfTypeOfOAMRecover")
+    if(name == "ifIndex" || name == "atmInterfaceMaxVpcs" || name == "atmInterfaceMaxVccs" || name == "atmInterfaceConfVpcs" || name == "atmInterfaceConfVccs" || name == "atmInterfaceMaxActiveVpiBits" || name == "atmInterfaceMaxActiveVciBits" || name == "atmInterfaceIlmiVpi" || name == "atmInterfaceIlmiVci" || name == "atmInterfaceAddressType" || name == "atmInterfaceAdminAddress" || name == "atmInterfaceMyNeighborIpAddress" || name == "atmInterfaceMyNeighborIfName" || name == "atmInterfaceCurrentMaxVpiBits" || name == "atmInterfaceCurrentMaxVciBits" || name == "atmInterfaceSubscrAddress" || name == "atmIntfPvcFailures" || name == "atmIntfCurrentlyFailingPVcls" || name == "atmIntfPvcFailuresTrapEnable" || name == "atmIntfPvcNotificationInterval" || name == "atmPreviouslyFailedPVclInterval" || name == "catmIntfCurrentlyDownToUpPVcls" || name == "catmIntfOAMFailedPVcls" || name == "catmIntfCurrentOAMFailingPVcls" || name == "catmIntfSegCCOAMFailedPVcls" || name == "catmIntfCurSegCCOAMFailingPVcls" || name == "catmIntfEndCCOAMFailedPVcls" || name == "catmIntfCurEndCCOAMFailingPVcls" || name == "catmIntfAISRDIOAMFailedPVcls" || name == "catmIntfCurAISRDIOAMFailingPVcls" || name == "catmIntfAnyOAMFailedPVcls" || name == "catmIntfCurAnyOAMFailingPVcls" || name == "catmIntfTypeOfOAMFailure" || name == "catmIntfOAMRcovedPVcls" || name == "catmIntfCurrentOAMRcovingPVcls" || name == "catmIntfSegCCOAMRcovedPVcls" || name == "catmIntfCurSegCCOAMRcovingPVcls" || name == "catmIntfEndCCOAMRcovedPVcls" || name == "catmIntfCurEndCCOAMRcovingPVcls" || name == "catmIntfAISRDIOAMRcovedPVcls" || name == "catmIntfCurAISRDIOAMRcovingPVcls" || name == "catmIntfAnyOAMRcovedPVcls" || name == "catmIntfCurAnyOAMRcovingPVcls" || name == "catmIntfTypeOfOAMRecover" || name == "atmIntfCurrentlyDownToUpPVcls" || name == "atmIntfOAMFailedPVcls" || name == "atmIntfCurrentlyOAMFailingPVcls")
         return true;
     return false;
 }

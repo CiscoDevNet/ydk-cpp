@@ -74,7 +74,7 @@ int main(int argc, char* argv[])
     if (mode == "")
         mode = "ONCE";
 
-    ydk::path::Repository repo{"/home/osboxes/ydk-gen/sdk/cpp/core/tests/models/"};
+    ydk::path::Repository repo{TEST_HOME};
     int port = stoi(sport);
     gNMIServiceProvider provider{repo, host, port, username, password};
 

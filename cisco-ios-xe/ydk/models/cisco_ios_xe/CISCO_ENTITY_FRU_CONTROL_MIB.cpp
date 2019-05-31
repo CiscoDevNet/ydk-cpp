@@ -4257,19 +4257,37 @@ bool CISCOENTITYFRUCONTROLMIB::CefcModulePowerConsumptionTable::CefcModulePowerC
     return false;
 }
 
-const Enum::YLeaf ModuleAdminType::enabled {1, "enabled"};
-const Enum::YLeaf ModuleAdminType::disabled {2, "disabled"};
-const Enum::YLeaf ModuleAdminType::reset {3, "reset"};
-const Enum::YLeaf ModuleAdminType::outOfServiceAdmin {4, "outOfServiceAdmin"};
-
-const Enum::YLeaf FRUCoolingUnit::cfm {1, "cfm"};
-const Enum::YLeaf FRUCoolingUnit::watts {2, "watts"};
+const Enum::YLeaf PowerRedundancyType::notsupported {1, "notsupported"};
+const Enum::YLeaf PowerRedundancyType::redundant {2, "redundant"};
+const Enum::YLeaf PowerRedundancyType::combined {3, "combined"};
+const Enum::YLeaf PowerRedundancyType::nonRedundant {4, "nonRedundant"};
+const Enum::YLeaf PowerRedundancyType::psRedundant {5, "psRedundant"};
+const Enum::YLeaf PowerRedundancyType::inPwrSrcRedundant {6, "inPwrSrcRedundant"};
+const Enum::YLeaf PowerRedundancyType::psRedundantSingleInput {7, "psRedundantSingleInput"};
 
 const Enum::YLeaf PowerAdminType::on {1, "on"};
 const Enum::YLeaf PowerAdminType::off {2, "off"};
 const Enum::YLeaf PowerAdminType::inlineAuto {3, "inlineAuto"};
 const Enum::YLeaf PowerAdminType::inlineOn {4, "inlineOn"};
 const Enum::YLeaf PowerAdminType::powerCycle {5, "powerCycle"};
+
+const Enum::YLeaf PowerOperType::offEnvOther {1, "offEnvOther"};
+const Enum::YLeaf PowerOperType::on {2, "on"};
+const Enum::YLeaf PowerOperType::offAdmin {3, "offAdmin"};
+const Enum::YLeaf PowerOperType::offDenied {4, "offDenied"};
+const Enum::YLeaf PowerOperType::offEnvPower {5, "offEnvPower"};
+const Enum::YLeaf PowerOperType::offEnvTemp {6, "offEnvTemp"};
+const Enum::YLeaf PowerOperType::offEnvFan {7, "offEnvFan"};
+const Enum::YLeaf PowerOperType::failed {8, "failed"};
+const Enum::YLeaf PowerOperType::onButFanFail {9, "onButFanFail"};
+const Enum::YLeaf PowerOperType::offCooling {10, "offCooling"};
+const Enum::YLeaf PowerOperType::offConnectorRating {11, "offConnectorRating"};
+const Enum::YLeaf PowerOperType::onButInlinePowerFail {12, "onButInlinePowerFail"};
+
+const Enum::YLeaf ModuleAdminType::enabled {1, "enabled"};
+const Enum::YLeaf ModuleAdminType::disabled {2, "disabled"};
+const Enum::YLeaf ModuleAdminType::reset {3, "reset"};
+const Enum::YLeaf ModuleAdminType::outOfServiceAdmin {4, "outOfServiceAdmin"};
 
 const Enum::YLeaf ModuleOperType::unknown {1, "unknown"};
 const Enum::YLeaf ModuleOperType::ok {2, "ok"};
@@ -4323,26 +4341,8 @@ const Enum::YLeaf ModuleResetReasonType::standbyCdHealthierReset {21, "standbyCd
 const Enum::YLeaf ModuleResetReasonType::nonNativeConfigClearReset {22, "nonNativeConfigClearReset"};
 const Enum::YLeaf ModuleResetReasonType::memoryProtectionErrorReset {23, "memoryProtectionErrorReset"};
 
-const Enum::YLeaf PowerRedundancyType::notsupported {1, "notsupported"};
-const Enum::YLeaf PowerRedundancyType::redundant {2, "redundant"};
-const Enum::YLeaf PowerRedundancyType::combined {3, "combined"};
-const Enum::YLeaf PowerRedundancyType::nonRedundant {4, "nonRedundant"};
-const Enum::YLeaf PowerRedundancyType::psRedundant {5, "psRedundant"};
-const Enum::YLeaf PowerRedundancyType::inPwrSrcRedundant {6, "inPwrSrcRedundant"};
-const Enum::YLeaf PowerRedundancyType::psRedundantSingleInput {7, "psRedundantSingleInput"};
-
-const Enum::YLeaf PowerOperType::offEnvOther {1, "offEnvOther"};
-const Enum::YLeaf PowerOperType::on {2, "on"};
-const Enum::YLeaf PowerOperType::offAdmin {3, "offAdmin"};
-const Enum::YLeaf PowerOperType::offDenied {4, "offDenied"};
-const Enum::YLeaf PowerOperType::offEnvPower {5, "offEnvPower"};
-const Enum::YLeaf PowerOperType::offEnvTemp {6, "offEnvTemp"};
-const Enum::YLeaf PowerOperType::offEnvFan {7, "offEnvFan"};
-const Enum::YLeaf PowerOperType::failed {8, "failed"};
-const Enum::YLeaf PowerOperType::onButFanFail {9, "onButFanFail"};
-const Enum::YLeaf PowerOperType::offCooling {10, "offCooling"};
-const Enum::YLeaf PowerOperType::offConnectorRating {11, "offConnectorRating"};
-const Enum::YLeaf PowerOperType::onButInlinePowerFail {12, "onButInlinePowerFail"};
+const Enum::YLeaf FRUCoolingUnit::cfm {1, "cfm"};
+const Enum::YLeaf FRUCoolingUnit::watts {2, "watts"};
 
 const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::CefcPowerNonRedundantReason::notApplicable {1, "notApplicable"};
 const Enum::YLeaf CISCOENTITYFRUCONTROLMIB::CefcFRUPowerSupplyGroupTable::CefcFRUPowerSupplyGroupEntry::CefcPowerNonRedundantReason::unknown {2, "unknown"};

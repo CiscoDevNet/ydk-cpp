@@ -2796,7 +2796,7 @@ Ipsla::ServerTwamp::ServerTwamp()
     port{YType::uint16, "port"}
 {
 
-    yang_name = "server-twamp"; yang_parent_name = "ipsla"; is_top_level_class = false; has_list_ancestor = false; 
+    yang_name = "server-twamp"; yang_parent_name = "ipsla"; is_top_level_class = false; has_list_ancestor = false; is_presence_container = true;
 }
 
 Ipsla::ServerTwamp::~ServerTwamp()

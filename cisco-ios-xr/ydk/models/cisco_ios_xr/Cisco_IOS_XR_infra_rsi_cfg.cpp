@@ -797,7 +797,8 @@ Vrfs::Vrf::Afs::Af::Bgp::Bgp()
     :
     export_route_policy{YType::str, "export-route-policy"},
     import_route_policy{YType::str, "import-route-policy"},
-    import_vrf_options{YType::boolean, "import-vrf-options"}
+    import_vrf_options{YType::boolean, "import-vrf-options"},
+    import_from_bridge_domain{YType::boolean, "import-from-bridge-domain"}
         ,
     import_route_targets(std::make_shared<Vrfs::Vrf::Afs::Af::Bgp::ImportRouteTargets>())
     , export_route_targets(std::make_shared<Vrfs::Vrf::Afs::Af::Bgp::ExportRouteTargets>())
@@ -822,6 +823,7 @@ bool Vrfs::Vrf::Afs::Af::Bgp::has_data() const
     return export_route_policy.is_set
 	|| import_route_policy.is_set
 	|| import_vrf_options.is_set
+	|| import_from_bridge_domain.is_set
 	|| (import_route_targets !=  nullptr && import_route_targets->has_data())
 	|| (export_route_targets !=  nullptr && export_route_targets->has_data())
 	|| (vrf_to_global_export_route_policy !=  nullptr && vrf_to_global_export_route_policy->has_data())
@@ -835,6 +837,7 @@ bool Vrfs::Vrf::Afs::Af::Bgp::has_operation() const
 	|| ydk::is_set(export_route_policy.yfilter)
 	|| ydk::is_set(import_route_policy.yfilter)
 	|| ydk::is_set(import_vrf_options.yfilter)
+	|| ydk::is_set(import_from_bridge_domain.yfilter)
 	|| (import_route_targets !=  nullptr && import_route_targets->has_operation())
 	|| (export_route_targets !=  nullptr && export_route_targets->has_operation())
 	|| (vrf_to_global_export_route_policy !=  nullptr && vrf_to_global_export_route_policy->has_operation())
@@ -856,6 +859,7 @@ std::vector<std::pair<std::string, LeafData> > Vrfs::Vrf::Afs::Af::Bgp::get_name
     if (export_route_policy.is_set || is_set(export_route_policy.yfilter)) leaf_name_data.push_back(export_route_policy.get_name_leafdata());
     if (import_route_policy.is_set || is_set(import_route_policy.yfilter)) leaf_name_data.push_back(import_route_policy.get_name_leafdata());
     if (import_vrf_options.is_set || is_set(import_vrf_options.yfilter)) leaf_name_data.push_back(import_vrf_options.get_name_leafdata());
+    if (import_from_bridge_domain.is_set || is_set(import_from_bridge_domain.yfilter)) leaf_name_data.push_back(import_from_bridge_domain.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -963,6 +967,12 @@ void Vrfs::Vrf::Afs::Af::Bgp::set_value(const std::string & value_path, const st
         import_vrf_options.value_namespace = name_space;
         import_vrf_options.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "import-from-bridge-domain")
+    {
+        import_from_bridge_domain = value;
+        import_from_bridge_domain.value_namespace = name_space;
+        import_from_bridge_domain.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void Vrfs::Vrf::Afs::Af::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
@@ -979,11 +989,15 @@ void Vrfs::Vrf::Afs::Af::Bgp::set_filter(const std::string & value_path, YFilter
     {
         import_vrf_options.yfilter = yfilter;
     }
+    if(value_path == "import-from-bridge-domain")
+    {
+        import_from_bridge_domain.yfilter = yfilter;
+    }
 }
 
 bool Vrfs::Vrf::Afs::Af::Bgp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "import-route-targets" || name == "export-route-targets" || name == "vrf-to-global-export-route-policy" || name == "export-vrf-options" || name == "global-to-vrf-import-route-policy" || name == "export-route-policy" || name == "import-route-policy" || name == "import-vrf-options")
+    if(name == "import-route-targets" || name == "export-route-targets" || name == "vrf-to-global-export-route-policy" || name == "export-vrf-options" || name == "global-to-vrf-import-route-policy" || name == "export-route-policy" || name == "import-route-policy" || name == "import-vrf-options" || name == "import-from-bridge-domain")
         return true;
     return false;
 }
@@ -3307,7 +3321,8 @@ GlobalAf::Afs::Af::Bgp::Bgp()
     :
     export_route_policy{YType::str, "export-route-policy"},
     import_route_policy{YType::str, "import-route-policy"},
-    import_vrf_options{YType::boolean, "import-vrf-options"}
+    import_vrf_options{YType::boolean, "import-vrf-options"},
+    import_from_bridge_domain{YType::boolean, "import-from-bridge-domain"}
         ,
     import_route_targets(std::make_shared<GlobalAf::Afs::Af::Bgp::ImportRouteTargets>())
     , export_route_targets(std::make_shared<GlobalAf::Afs::Af::Bgp::ExportRouteTargets>())
@@ -3332,6 +3347,7 @@ bool GlobalAf::Afs::Af::Bgp::has_data() const
     return export_route_policy.is_set
 	|| import_route_policy.is_set
 	|| import_vrf_options.is_set
+	|| import_from_bridge_domain.is_set
 	|| (import_route_targets !=  nullptr && import_route_targets->has_data())
 	|| (export_route_targets !=  nullptr && export_route_targets->has_data())
 	|| (vrf_to_global_export_route_policy !=  nullptr && vrf_to_global_export_route_policy->has_data())
@@ -3345,6 +3361,7 @@ bool GlobalAf::Afs::Af::Bgp::has_operation() const
 	|| ydk::is_set(export_route_policy.yfilter)
 	|| ydk::is_set(import_route_policy.yfilter)
 	|| ydk::is_set(import_vrf_options.yfilter)
+	|| ydk::is_set(import_from_bridge_domain.yfilter)
 	|| (import_route_targets !=  nullptr && import_route_targets->has_operation())
 	|| (export_route_targets !=  nullptr && export_route_targets->has_operation())
 	|| (vrf_to_global_export_route_policy !=  nullptr && vrf_to_global_export_route_policy->has_operation())
@@ -3366,6 +3383,7 @@ std::vector<std::pair<std::string, LeafData> > GlobalAf::Afs::Af::Bgp::get_name_
     if (export_route_policy.is_set || is_set(export_route_policy.yfilter)) leaf_name_data.push_back(export_route_policy.get_name_leafdata());
     if (import_route_policy.is_set || is_set(import_route_policy.yfilter)) leaf_name_data.push_back(import_route_policy.get_name_leafdata());
     if (import_vrf_options.is_set || is_set(import_vrf_options.yfilter)) leaf_name_data.push_back(import_vrf_options.get_name_leafdata());
+    if (import_from_bridge_domain.is_set || is_set(import_from_bridge_domain.yfilter)) leaf_name_data.push_back(import_from_bridge_domain.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3473,6 +3491,12 @@ void GlobalAf::Afs::Af::Bgp::set_value(const std::string & value_path, const std
         import_vrf_options.value_namespace = name_space;
         import_vrf_options.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "import-from-bridge-domain")
+    {
+        import_from_bridge_domain = value;
+        import_from_bridge_domain.value_namespace = name_space;
+        import_from_bridge_domain.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void GlobalAf::Afs::Af::Bgp::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3489,11 +3513,15 @@ void GlobalAf::Afs::Af::Bgp::set_filter(const std::string & value_path, YFilter 
     {
         import_vrf_options.yfilter = yfilter;
     }
+    if(value_path == "import-from-bridge-domain")
+    {
+        import_from_bridge_domain.yfilter = yfilter;
+    }
 }
 
 bool GlobalAf::Afs::Af::Bgp::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "import-route-targets" || name == "export-route-targets" || name == "vrf-to-global-export-route-policy" || name == "export-vrf-options" || name == "global-to-vrf-import-route-policy" || name == "export-route-policy" || name == "import-route-policy" || name == "import-vrf-options")
+    if(name == "import-route-targets" || name == "export-route-targets" || name == "vrf-to-global-export-route-policy" || name == "export-vrf-options" || name == "global-to-vrf-import-route-policy" || name == "export-route-policy" || name == "import-route-policy" || name == "import-vrf-options" || name == "import-from-bridge-domain")
         return true;
     return false;
 }
@@ -7622,6 +7650,10 @@ bool SelectiveVrfDownload::has_leaf_or_child_of_name(const std::string & name) c
     return false;
 }
 
+const Enum::YLeaf VrfSubAddressFamily::unicast {1, "unicast"};
+const Enum::YLeaf VrfSubAddressFamily::multicast {2, "multicast"};
+const Enum::YLeaf VrfSubAddressFamily::flow_spec {133, "flow-spec"};
+
 const Enum::YLeaf VrfAddressFamily::ipv4 {1, "ipv4"};
 const Enum::YLeaf VrfAddressFamily::ipv6 {2, "ipv6"};
 
@@ -7630,10 +7662,6 @@ const Enum::YLeaf SrlgPriority::high {1, "high"};
 const Enum::YLeaf SrlgPriority::default_ {2, "default"};
 const Enum::YLeaf SrlgPriority::low {3, "low"};
 const Enum::YLeaf SrlgPriority::very_low {4, "very-low"};
-
-const Enum::YLeaf VrfSubAddressFamily::unicast {1, "unicast"};
-const Enum::YLeaf VrfSubAddressFamily::multicast {2, "multicast"};
-const Enum::YLeaf VrfSubAddressFamily::flow_spec {133, "flow-spec"};
 
 
 }

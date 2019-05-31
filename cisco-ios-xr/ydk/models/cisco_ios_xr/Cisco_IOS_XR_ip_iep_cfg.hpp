@@ -236,11 +236,11 @@ class IpExplicitPaths::Paths::Path::Identifier::Hops::Hop : public ydk::Entity
 
 }; // IpExplicitPaths::Paths::Path::Identifier::Hops::Hop
 
-class IpIepPath : public ydk::Enum
+class IpIepNum : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf identifier;
-        static const ydk::Enum::YLeaf name;
+        static const ydk::Enum::YLeaf unnumbered;
+        static const ydk::Enum::YLeaf numbered;
 
 };
 
@@ -255,11 +255,11 @@ class IpIepHop : public ydk::Enum
 
 };
 
-class IpIepNum : public ydk::Enum
+class IpIepPath : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf unnumbered;
-        static const ydk::Enum::YLeaf numbered;
+        static const ydk::Enum::YLeaf identifier;
+        static const ydk::Enum::YLeaf name;
 
 };
 

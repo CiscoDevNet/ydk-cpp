@@ -1038,10 +1038,16 @@ Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::NeighborSummary()
     multicast(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Multicast>())
     , static_(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Static>())
     , dynamic(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Dynamic>())
+    , sync(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Sync>())
+    , static_sync(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::StaticSync>())
+    , dynamic_sync(std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::DynamicSync>())
 {
     multicast->parent = this;
     static_->parent = this;
     dynamic->parent = this;
+    sync->parent = this;
+    static_sync->parent = this;
+    dynamic_sync->parent = this;
 
     yang_name = "neighbor-summary"; yang_parent_name = "node"; is_top_level_class = false; has_list_ancestor = true; 
 }
@@ -1056,7 +1062,10 @@ bool Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::has_data() const
     return total_neighbor_entries.is_set
 	|| (multicast !=  nullptr && multicast->has_data())
 	|| (static_ !=  nullptr && static_->has_data())
-	|| (dynamic !=  nullptr && dynamic->has_data());
+	|| (dynamic !=  nullptr && dynamic->has_data())
+	|| (sync !=  nullptr && sync->has_data())
+	|| (static_sync !=  nullptr && static_sync->has_data())
+	|| (dynamic_sync !=  nullptr && dynamic_sync->has_data());
 }
 
 bool Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::has_operation() const
@@ -1065,7 +1074,10 @@ bool Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::has_operation() const
 	|| ydk::is_set(total_neighbor_entries.yfilter)
 	|| (multicast !=  nullptr && multicast->has_operation())
 	|| (static_ !=  nullptr && static_->has_operation())
-	|| (dynamic !=  nullptr && dynamic->has_operation());
+	|| (dynamic !=  nullptr && dynamic->has_operation())
+	|| (sync !=  nullptr && sync->has_operation())
+	|| (static_sync !=  nullptr && static_sync->has_operation())
+	|| (dynamic_sync !=  nullptr && dynamic_sync->has_operation());
 }
 
 std::string Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::get_segment_path() const
@@ -1114,6 +1126,33 @@ std::shared_ptr<ydk::Entity> Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::ge
         return dynamic;
     }
 
+    if(child_yang_name == "sync")
+    {
+        if(sync == nullptr)
+        {
+            sync = std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Sync>();
+        }
+        return sync;
+    }
+
+    if(child_yang_name == "static-sync")
+    {
+        if(static_sync == nullptr)
+        {
+            static_sync = std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::StaticSync>();
+        }
+        return static_sync;
+    }
+
+    if(child_yang_name == "dynamic-sync")
+    {
+        if(dynamic_sync == nullptr)
+        {
+            dynamic_sync = std::make_shared<Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::DynamicSync>();
+        }
+        return dynamic_sync;
+    }
+
     return nullptr;
 }
 
@@ -1134,6 +1173,21 @@ std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6NodeDiscovery::Nodes::No
     if(dynamic != nullptr)
     {
         _children["dynamic"] = dynamic;
+    }
+
+    if(sync != nullptr)
+    {
+        _children["sync"] = sync;
+    }
+
+    if(static_sync != nullptr)
+    {
+        _children["static-sync"] = static_sync;
+    }
+
+    if(dynamic_sync != nullptr)
+    {
+        _children["dynamic-sync"] = dynamic_sync;
     }
 
     return _children;
@@ -1159,7 +1213,7 @@ void Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::set_filter(const std::stri
 
 bool Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "multicast" || name == "static" || name == "dynamic" || name == "total-neighbor-entries")
+    if(name == "multicast" || name == "static" || name == "dynamic" || name == "sync" || name == "static-sync" || name == "dynamic-sync" || name == "total-neighbor-entries")
         return true;
     return false;
 }
@@ -1644,6 +1698,492 @@ void Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Dynamic::set_filter(const 
 }
 
 bool Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Dynamic::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "incomplete-entries" || name == "reachable-entries" || name == "stale-entries" || name == "delayed-entries" || name == "probe-entries" || name == "deleted-entries" || name == "subtotal-neighbor-entries")
+        return true;
+    return false;
+}
+
+Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Sync::Sync()
+    :
+    incomplete_entries{YType::uint32, "incomplete-entries"},
+    reachable_entries{YType::uint32, "reachable-entries"},
+    stale_entries{YType::uint32, "stale-entries"},
+    delayed_entries{YType::uint32, "delayed-entries"},
+    probe_entries{YType::uint32, "probe-entries"},
+    deleted_entries{YType::uint32, "deleted-entries"},
+    subtotal_neighbor_entries{YType::uint32, "subtotal-neighbor-entries"}
+{
+
+    yang_name = "sync"; yang_parent_name = "neighbor-summary"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Sync::~Sync()
+{
+}
+
+bool Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Sync::has_data() const
+{
+    if (is_presence_container) return true;
+    return incomplete_entries.is_set
+	|| reachable_entries.is_set
+	|| stale_entries.is_set
+	|| delayed_entries.is_set
+	|| probe_entries.is_set
+	|| deleted_entries.is_set
+	|| subtotal_neighbor_entries.is_set;
+}
+
+bool Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Sync::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(incomplete_entries.yfilter)
+	|| ydk::is_set(reachable_entries.yfilter)
+	|| ydk::is_set(stale_entries.yfilter)
+	|| ydk::is_set(delayed_entries.yfilter)
+	|| ydk::is_set(probe_entries.yfilter)
+	|| ydk::is_set(deleted_entries.yfilter)
+	|| ydk::is_set(subtotal_neighbor_entries.yfilter);
+}
+
+std::string Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Sync::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "sync";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Sync::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (incomplete_entries.is_set || is_set(incomplete_entries.yfilter)) leaf_name_data.push_back(incomplete_entries.get_name_leafdata());
+    if (reachable_entries.is_set || is_set(reachable_entries.yfilter)) leaf_name_data.push_back(reachable_entries.get_name_leafdata());
+    if (stale_entries.is_set || is_set(stale_entries.yfilter)) leaf_name_data.push_back(stale_entries.get_name_leafdata());
+    if (delayed_entries.is_set || is_set(delayed_entries.yfilter)) leaf_name_data.push_back(delayed_entries.get_name_leafdata());
+    if (probe_entries.is_set || is_set(probe_entries.yfilter)) leaf_name_data.push_back(probe_entries.get_name_leafdata());
+    if (deleted_entries.is_set || is_set(deleted_entries.yfilter)) leaf_name_data.push_back(deleted_entries.get_name_leafdata());
+    if (subtotal_neighbor_entries.is_set || is_set(subtotal_neighbor_entries.yfilter)) leaf_name_data.push_back(subtotal_neighbor_entries.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Sync::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Sync::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Sync::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "incomplete-entries")
+    {
+        incomplete_entries = value;
+        incomplete_entries.value_namespace = name_space;
+        incomplete_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reachable-entries")
+    {
+        reachable_entries = value;
+        reachable_entries.value_namespace = name_space;
+        reachable_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stale-entries")
+    {
+        stale_entries = value;
+        stale_entries.value_namespace = name_space;
+        stale_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "delayed-entries")
+    {
+        delayed_entries = value;
+        delayed_entries.value_namespace = name_space;
+        delayed_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "probe-entries")
+    {
+        probe_entries = value;
+        probe_entries.value_namespace = name_space;
+        probe_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "deleted-entries")
+    {
+        deleted_entries = value;
+        deleted_entries.value_namespace = name_space;
+        deleted_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subtotal-neighbor-entries")
+    {
+        subtotal_neighbor_entries = value;
+        subtotal_neighbor_entries.value_namespace = name_space;
+        subtotal_neighbor_entries.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Sync::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "incomplete-entries")
+    {
+        incomplete_entries.yfilter = yfilter;
+    }
+    if(value_path == "reachable-entries")
+    {
+        reachable_entries.yfilter = yfilter;
+    }
+    if(value_path == "stale-entries")
+    {
+        stale_entries.yfilter = yfilter;
+    }
+    if(value_path == "delayed-entries")
+    {
+        delayed_entries.yfilter = yfilter;
+    }
+    if(value_path == "probe-entries")
+    {
+        probe_entries.yfilter = yfilter;
+    }
+    if(value_path == "deleted-entries")
+    {
+        deleted_entries.yfilter = yfilter;
+    }
+    if(value_path == "subtotal-neighbor-entries")
+    {
+        subtotal_neighbor_entries.yfilter = yfilter;
+    }
+}
+
+bool Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::Sync::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "incomplete-entries" || name == "reachable-entries" || name == "stale-entries" || name == "delayed-entries" || name == "probe-entries" || name == "deleted-entries" || name == "subtotal-neighbor-entries")
+        return true;
+    return false;
+}
+
+Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::StaticSync::StaticSync()
+    :
+    incomplete_entries{YType::uint32, "incomplete-entries"},
+    reachable_entries{YType::uint32, "reachable-entries"},
+    stale_entries{YType::uint32, "stale-entries"},
+    delayed_entries{YType::uint32, "delayed-entries"},
+    probe_entries{YType::uint32, "probe-entries"},
+    deleted_entries{YType::uint32, "deleted-entries"},
+    subtotal_neighbor_entries{YType::uint32, "subtotal-neighbor-entries"}
+{
+
+    yang_name = "static-sync"; yang_parent_name = "neighbor-summary"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::StaticSync::~StaticSync()
+{
+}
+
+bool Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::StaticSync::has_data() const
+{
+    if (is_presence_container) return true;
+    return incomplete_entries.is_set
+	|| reachable_entries.is_set
+	|| stale_entries.is_set
+	|| delayed_entries.is_set
+	|| probe_entries.is_set
+	|| deleted_entries.is_set
+	|| subtotal_neighbor_entries.is_set;
+}
+
+bool Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::StaticSync::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(incomplete_entries.yfilter)
+	|| ydk::is_set(reachable_entries.yfilter)
+	|| ydk::is_set(stale_entries.yfilter)
+	|| ydk::is_set(delayed_entries.yfilter)
+	|| ydk::is_set(probe_entries.yfilter)
+	|| ydk::is_set(deleted_entries.yfilter)
+	|| ydk::is_set(subtotal_neighbor_entries.yfilter);
+}
+
+std::string Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::StaticSync::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "static-sync";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::StaticSync::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (incomplete_entries.is_set || is_set(incomplete_entries.yfilter)) leaf_name_data.push_back(incomplete_entries.get_name_leafdata());
+    if (reachable_entries.is_set || is_set(reachable_entries.yfilter)) leaf_name_data.push_back(reachable_entries.get_name_leafdata());
+    if (stale_entries.is_set || is_set(stale_entries.yfilter)) leaf_name_data.push_back(stale_entries.get_name_leafdata());
+    if (delayed_entries.is_set || is_set(delayed_entries.yfilter)) leaf_name_data.push_back(delayed_entries.get_name_leafdata());
+    if (probe_entries.is_set || is_set(probe_entries.yfilter)) leaf_name_data.push_back(probe_entries.get_name_leafdata());
+    if (deleted_entries.is_set || is_set(deleted_entries.yfilter)) leaf_name_data.push_back(deleted_entries.get_name_leafdata());
+    if (subtotal_neighbor_entries.is_set || is_set(subtotal_neighbor_entries.yfilter)) leaf_name_data.push_back(subtotal_neighbor_entries.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::StaticSync::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::StaticSync::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::StaticSync::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "incomplete-entries")
+    {
+        incomplete_entries = value;
+        incomplete_entries.value_namespace = name_space;
+        incomplete_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reachable-entries")
+    {
+        reachable_entries = value;
+        reachable_entries.value_namespace = name_space;
+        reachable_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stale-entries")
+    {
+        stale_entries = value;
+        stale_entries.value_namespace = name_space;
+        stale_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "delayed-entries")
+    {
+        delayed_entries = value;
+        delayed_entries.value_namespace = name_space;
+        delayed_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "probe-entries")
+    {
+        probe_entries = value;
+        probe_entries.value_namespace = name_space;
+        probe_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "deleted-entries")
+    {
+        deleted_entries = value;
+        deleted_entries.value_namespace = name_space;
+        deleted_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subtotal-neighbor-entries")
+    {
+        subtotal_neighbor_entries = value;
+        subtotal_neighbor_entries.value_namespace = name_space;
+        subtotal_neighbor_entries.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::StaticSync::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "incomplete-entries")
+    {
+        incomplete_entries.yfilter = yfilter;
+    }
+    if(value_path == "reachable-entries")
+    {
+        reachable_entries.yfilter = yfilter;
+    }
+    if(value_path == "stale-entries")
+    {
+        stale_entries.yfilter = yfilter;
+    }
+    if(value_path == "delayed-entries")
+    {
+        delayed_entries.yfilter = yfilter;
+    }
+    if(value_path == "probe-entries")
+    {
+        probe_entries.yfilter = yfilter;
+    }
+    if(value_path == "deleted-entries")
+    {
+        deleted_entries.yfilter = yfilter;
+    }
+    if(value_path == "subtotal-neighbor-entries")
+    {
+        subtotal_neighbor_entries.yfilter = yfilter;
+    }
+}
+
+bool Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::StaticSync::has_leaf_or_child_of_name(const std::string & name) const
+{
+    if(name == "incomplete-entries" || name == "reachable-entries" || name == "stale-entries" || name == "delayed-entries" || name == "probe-entries" || name == "deleted-entries" || name == "subtotal-neighbor-entries")
+        return true;
+    return false;
+}
+
+Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::DynamicSync::DynamicSync()
+    :
+    incomplete_entries{YType::uint32, "incomplete-entries"},
+    reachable_entries{YType::uint32, "reachable-entries"},
+    stale_entries{YType::uint32, "stale-entries"},
+    delayed_entries{YType::uint32, "delayed-entries"},
+    probe_entries{YType::uint32, "probe-entries"},
+    deleted_entries{YType::uint32, "deleted-entries"},
+    subtotal_neighbor_entries{YType::uint32, "subtotal-neighbor-entries"}
+{
+
+    yang_name = "dynamic-sync"; yang_parent_name = "neighbor-summary"; is_top_level_class = false; has_list_ancestor = true; 
+}
+
+Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::DynamicSync::~DynamicSync()
+{
+}
+
+bool Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::DynamicSync::has_data() const
+{
+    if (is_presence_container) return true;
+    return incomplete_entries.is_set
+	|| reachable_entries.is_set
+	|| stale_entries.is_set
+	|| delayed_entries.is_set
+	|| probe_entries.is_set
+	|| deleted_entries.is_set
+	|| subtotal_neighbor_entries.is_set;
+}
+
+bool Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::DynamicSync::has_operation() const
+{
+    return is_set(yfilter)
+	|| ydk::is_set(incomplete_entries.yfilter)
+	|| ydk::is_set(reachable_entries.yfilter)
+	|| ydk::is_set(stale_entries.yfilter)
+	|| ydk::is_set(delayed_entries.yfilter)
+	|| ydk::is_set(probe_entries.yfilter)
+	|| ydk::is_set(deleted_entries.yfilter)
+	|| ydk::is_set(subtotal_neighbor_entries.yfilter);
+}
+
+std::string Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::DynamicSync::get_segment_path() const
+{
+    std::ostringstream path_buffer;
+    path_buffer << "dynamic-sync";
+    return path_buffer.str();
+}
+
+std::vector<std::pair<std::string, LeafData> > Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::DynamicSync::get_name_leaf_data() const
+{
+    std::vector<std::pair<std::string, LeafData> > leaf_name_data {};
+
+    if (incomplete_entries.is_set || is_set(incomplete_entries.yfilter)) leaf_name_data.push_back(incomplete_entries.get_name_leafdata());
+    if (reachable_entries.is_set || is_set(reachable_entries.yfilter)) leaf_name_data.push_back(reachable_entries.get_name_leafdata());
+    if (stale_entries.is_set || is_set(stale_entries.yfilter)) leaf_name_data.push_back(stale_entries.get_name_leafdata());
+    if (delayed_entries.is_set || is_set(delayed_entries.yfilter)) leaf_name_data.push_back(delayed_entries.get_name_leafdata());
+    if (probe_entries.is_set || is_set(probe_entries.yfilter)) leaf_name_data.push_back(probe_entries.get_name_leafdata());
+    if (deleted_entries.is_set || is_set(deleted_entries.yfilter)) leaf_name_data.push_back(deleted_entries.get_name_leafdata());
+    if (subtotal_neighbor_entries.is_set || is_set(subtotal_neighbor_entries.yfilter)) leaf_name_data.push_back(subtotal_neighbor_entries.get_name_leafdata());
+
+    return leaf_name_data;
+
+}
+
+std::shared_ptr<ydk::Entity> Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::DynamicSync::get_child_by_name(const std::string & child_yang_name, const std::string & segment_path)
+{
+    return nullptr;
+}
+
+std::map<std::string, std::shared_ptr<ydk::Entity>> Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::DynamicSync::get_children() const
+{
+    std::map<std::string, std::shared_ptr<ydk::Entity>> _children{};
+    char count_=0;
+    return _children;
+}
+
+void Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::DynamicSync::set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix)
+{
+    if(value_path == "incomplete-entries")
+    {
+        incomplete_entries = value;
+        incomplete_entries.value_namespace = name_space;
+        incomplete_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "reachable-entries")
+    {
+        reachable_entries = value;
+        reachable_entries.value_namespace = name_space;
+        reachable_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "stale-entries")
+    {
+        stale_entries = value;
+        stale_entries.value_namespace = name_space;
+        stale_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "delayed-entries")
+    {
+        delayed_entries = value;
+        delayed_entries.value_namespace = name_space;
+        delayed_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "probe-entries")
+    {
+        probe_entries = value;
+        probe_entries.value_namespace = name_space;
+        probe_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "deleted-entries")
+    {
+        deleted_entries = value;
+        deleted_entries.value_namespace = name_space;
+        deleted_entries.value_namespace_prefix = name_space_prefix;
+    }
+    if(value_path == "subtotal-neighbor-entries")
+    {
+        subtotal_neighbor_entries = value;
+        subtotal_neighbor_entries.value_namespace = name_space;
+        subtotal_neighbor_entries.value_namespace_prefix = name_space_prefix;
+    }
+}
+
+void Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::DynamicSync::set_filter(const std::string & value_path, YFilter yfilter)
+{
+    if(value_path == "incomplete-entries")
+    {
+        incomplete_entries.yfilter = yfilter;
+    }
+    if(value_path == "reachable-entries")
+    {
+        reachable_entries.yfilter = yfilter;
+    }
+    if(value_path == "stale-entries")
+    {
+        stale_entries.yfilter = yfilter;
+    }
+    if(value_path == "delayed-entries")
+    {
+        delayed_entries.yfilter = yfilter;
+    }
+    if(value_path == "probe-entries")
+    {
+        probe_entries.yfilter = yfilter;
+    }
+    if(value_path == "deleted-entries")
+    {
+        deleted_entries.yfilter = yfilter;
+    }
+    if(value_path == "subtotal-neighbor-entries")
+    {
+        subtotal_neighbor_entries.yfilter = yfilter;
+    }
+}
+
+bool Ipv6NodeDiscovery::Nodes::Node::NeighborSummary::DynamicSync::has_leaf_or_child_of_name(const std::string & name) const
 {
     if(name == "incomplete-entries" || name == "reachable-entries" || name == "stale-entries" || name == "delayed-entries" || name == "probe-entries" || name == "deleted-entries" || name == "subtotal-neighbor-entries")
         return true;
@@ -5143,6 +5683,9 @@ bool Ipv6NodeDiscovery::Nodes::Node::SlaacInterfaces::SlaacInterface::RouterAdve
     return false;
 }
 
+const Enum::YLeaf Ipv6NdShVrFlags::no_flags {0, "no-flags"};
+const Enum::YLeaf Ipv6NdShVrFlags::final_ra {1, "final-ra"};
+
 const Enum::YLeaf Ipv6NdShVrState::deleted {0, "deleted"};
 const Enum::YLeaf Ipv6NdShVrState::standby {1, "standby"};
 const Enum::YLeaf Ipv6NdShVrState::active {2, "active"};
@@ -5150,6 +5693,10 @@ const Enum::YLeaf Ipv6NdShVrState::active {2, "active"};
 const Enum::YLeaf Ipv6NdBndlState::run {0, "run"};
 const Enum::YLeaf Ipv6NdBndlState::error {1, "error"};
 const Enum::YLeaf Ipv6NdBndlState::wait {2, "wait"};
+
+const Enum::YLeaf Ipv6NdNeighborOrigin::other {0, "other"};
+const Enum::YLeaf Ipv6NdNeighborOrigin::static_ {1, "static"};
+const Enum::YLeaf Ipv6NdNeighborOrigin::dynamic {2, "dynamic"};
 
 const Enum::YLeaf Ipv6NdMediaEncap::none {0, "none"};
 const Enum::YLeaf Ipv6NdMediaEncap::arpa {1, "arpa"};
@@ -5165,10 +5712,6 @@ const Enum::YLeaf Ipv6NdMediaEncap::dot1q {10, "dot1q"};
 const Enum::YLeaf Ipv6NdMediaEncap::fr {11, "fr"};
 const Enum::YLeaf Ipv6NdMediaEncap::gre {12, "gre"};
 
-const Enum::YLeaf Ipv6NdNeighborOrigin::other {0, "other"};
-const Enum::YLeaf Ipv6NdNeighborOrigin::static_ {1, "static"};
-const Enum::YLeaf Ipv6NdNeighborOrigin::dynamic {2, "dynamic"};
-
 const Enum::YLeaf Ipv6NdShState::incomplete {0, "incomplete"};
 const Enum::YLeaf Ipv6NdShState::reachable {1, "reachable"};
 const Enum::YLeaf Ipv6NdShState::stale {2, "stale"};
@@ -5176,9 +5719,6 @@ const Enum::YLeaf Ipv6NdShState::glean {3, "glean"};
 const Enum::YLeaf Ipv6NdShState::delay {4, "delay"};
 const Enum::YLeaf Ipv6NdShState::probe {5, "probe"};
 const Enum::YLeaf Ipv6NdShState::delete_ {6, "delete"};
-
-const Enum::YLeaf Ipv6NdShVrFlags::no_flags {0, "no-flags"};
-const Enum::YLeaf Ipv6NdShVrFlags::final_ra {1, "final-ra"};
 
 
 }

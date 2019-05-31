@@ -1250,18 +1250,6 @@ class HsrpVmacState : public ydk::Enum
 
 };
 
-class StandbyGrpState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf state_initial;
-        static const ydk::Enum::YLeaf state_learn;
-        static const ydk::Enum::YLeaf state_listen;
-        static const ydk::Enum::YLeaf state_speak;
-        static const ydk::Enum::YLeaf state_standby;
-        static const ydk::Enum::YLeaf state_active;
-
-};
-
 class HsrpStateChangeReason : public ydk::Enum
 {
     public:
@@ -1295,15 +1283,6 @@ class HsrpStateChangeReason : public ydk::Enum
 
 };
 
-class HsrpBAf : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ipv4;
-        static const ydk::Enum::YLeaf ipv6;
-        static const ydk::Enum::YLeaf count;
-
-};
-
 class HsrpBfdSessionState : public ydk::Enum
 {
     public:
@@ -1311,6 +1290,27 @@ class HsrpBfdSessionState : public ydk::Enum
         static const ydk::Enum::YLeaf bfd_state_inactive;
         static const ydk::Enum::YLeaf bfd_state_up;
         static const ydk::Enum::YLeaf bfd_state_down;
+
+};
+
+class StandbyGrpState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf state_initial;
+        static const ydk::Enum::YLeaf state_learn;
+        static const ydk::Enum::YLeaf state_listen;
+        static const ydk::Enum::YLeaf state_speak;
+        static const ydk::Enum::YLeaf state_standby;
+        static const ydk::Enum::YLeaf state_active;
+
+};
+
+class HsrpBAf : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ipv4;
+        static const ydk::Enum::YLeaf ipv6;
+        static const ydk::Enum::YLeaf count;
 
 };
 

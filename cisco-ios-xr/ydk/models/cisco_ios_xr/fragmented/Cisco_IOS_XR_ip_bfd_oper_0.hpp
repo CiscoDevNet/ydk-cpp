@@ -4235,30 +4235,6 @@ class Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::L
 
 }; // Bfd::Ipv6MultiHopSessionDetails::Ipv6MultiHopSessionDetail::LspPingInfo::LspPingTxLastErrorTime
 
-class BfdSession : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf undefined;
-        static const ydk::Enum::YLeaf bundle_member;
-        static const ydk::Enum::YLeaf bundle_interface;
-        static const ydk::Enum::YLeaf state_inheriting;
-        static const ydk::Enum::YLeaf bundle_vlan;
-        static const ydk::Enum::YLeaf mpls_tp;
-        static const ydk::Enum::YLeaf gre;
-        static const ydk::Enum::YLeaf pseudowire_headend;
-        static const ydk::Enum::YLeaf ip_single_hop;
-
-};
-
-class BfdAfId : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bfd_af_id_none;
-        static const ydk::Enum::YLeaf bfd_af_id_ipv4;
-        static const ydk::Enum::YLeaf bfd_af_id_ipv6;
-
-};
-
 class BfdMpDownloadState : public ydk::Enum
 {
     public:
@@ -4268,18 +4244,6 @@ class BfdMpDownloadState : public ydk::Enum
         static const ydk::Enum::YLeaf bfd_mp_download_ack;
         static const ydk::Enum::YLeaf bfd_mp_download_nack;
         static const ydk::Enum::YLeaf bfd_mp_download_delete;
-
-};
-
-class BfdMgmtSessionState : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf bfd_mgmt_session_state_admin_down;
-        static const ydk::Enum::YLeaf bfd_mgmt_session_state_down;
-        static const ydk::Enum::YLeaf bfd_mgmt_session_state_init;
-        static const ydk::Enum::YLeaf bfd_mgmt_session_state_up;
-        static const ydk::Enum::YLeaf bfd_mgmt_session_state_failing;
-        static const ydk::Enum::YLeaf bfd_mgmt_session_state_unknown;
 
 };
 
@@ -4299,12 +4263,48 @@ class BfdMgmtSessionDiag : public ydk::Enum
 
 };
 
+class BfdAfId : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bfd_af_id_none;
+        static const ydk::Enum::YLeaf bfd_af_id_ipv4;
+        static const ydk::Enum::YLeaf bfd_af_id_ipv6;
+
+};
+
 class BfdMgmtPktDisplay : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf bfd_mgmt_pkt_display_type_none;
         static const ydk::Enum::YLeaf bfd_mgmt_pkt_display_type_bob_mbr;
         static const ydk::Enum::YLeaf bfd_mgmt_pkt_display_type_max;
+
+};
+
+class BfdSession : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf undefined;
+        static const ydk::Enum::YLeaf bundle_member;
+        static const ydk::Enum::YLeaf bundle_interface;
+        static const ydk::Enum::YLeaf state_inheriting;
+        static const ydk::Enum::YLeaf bundle_vlan;
+        static const ydk::Enum::YLeaf mpls_tp;
+        static const ydk::Enum::YLeaf gre;
+        static const ydk::Enum::YLeaf pseudowire_headend;
+        static const ydk::Enum::YLeaf ip_single_hop;
+
+};
+
+class BfdMgmtSessionState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf bfd_mgmt_session_state_admin_down;
+        static const ydk::Enum::YLeaf bfd_mgmt_session_state_down;
+        static const ydk::Enum::YLeaf bfd_mgmt_session_state_init;
+        static const ydk::Enum::YLeaf bfd_mgmt_session_state_up;
+        static const ydk::Enum::YLeaf bfd_mgmt_session_state_failing;
+        static const ydk::Enum::YLeaf bfd_mgmt_session_state_unknown;
 
 };
 

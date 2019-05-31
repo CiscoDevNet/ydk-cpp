@@ -1005,17 +1005,6 @@ class IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry : public ydk::Entity
 
 }; // IPMIB::IcmpMsgStatsTable::IcmpMsgStatsEntry
 
-class IpAddressPrefixOriginTC : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf other;
-        static const ydk::Enum::YLeaf manual;
-        static const ydk::Enum::YLeaf wellknown;
-        static const ydk::Enum::YLeaf dhcp;
-        static const ydk::Enum::YLeaf routeradv;
-
-};
-
 class IpAddressOriginTC : public ydk::Enum
 {
     public:
@@ -1038,6 +1027,17 @@ class IpAddressStatusTC : public ydk::Enum
         static const ydk::Enum::YLeaf tentative;
         static const ydk::Enum::YLeaf duplicate;
         static const ydk::Enum::YLeaf optimistic;
+
+};
+
+class IpAddressPrefixOriginTC : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf other;
+        static const ydk::Enum::YLeaf manual;
+        static const ydk::Enum::YLeaf wellknown;
+        static const ydk::Enum::YLeaf dhcp;
+        static const ydk::Enum::YLeaf routeradv;
 
 };
 

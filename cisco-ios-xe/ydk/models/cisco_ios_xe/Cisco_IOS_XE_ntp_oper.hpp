@@ -274,6 +274,31 @@ class NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress : public ydk::Enti
 
 }; // NtpOperData::NtpStatusInfo::NtpAssociations::NtpAddress
 
+class RefClockSourceType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ntp_ref_goes;
+        static const ydk::Enum::YLeaf ntp_ref_gps;
+        static const ydk::Enum::YLeaf ntp_ref_gal;
+        static const ydk::Enum::YLeaf ntp_ref_pps;
+        static const ydk::Enum::YLeaf ntp_ref_irig;
+        static const ydk::Enum::YLeaf ntp_ref_wwvb;
+        static const ydk::Enum::YLeaf ntp_ref_dcf;
+        static const ydk::Enum::YLeaf ntp_ref_hbg;
+        static const ydk::Enum::YLeaf ntp_ref_msf;
+        static const ydk::Enum::YLeaf ntp_ref_jjy;
+        static const ydk::Enum::YLeaf ntp_ref_lorc;
+        static const ydk::Enum::YLeaf ntp_ref_tdf;
+        static const ydk::Enum::YLeaf ntp_ref_chu;
+        static const ydk::Enum::YLeaf ntp_ref_wwv;
+        static const ydk::Enum::YLeaf ntp_ref_wwvh;
+        static const ydk::Enum::YLeaf ntp_ref_nist;
+        static const ydk::Enum::YLeaf ntp_ref_acts;
+        static const ydk::Enum::YLeaf ntp_ref_usno;
+        static const ydk::Enum::YLeaf ntp_ref_ptb;
+
+};
+
 class KissCodeType : public ydk::Enum
 {
     public:
@@ -291,6 +316,54 @@ class KissCodeType : public ydk::Enum
         static const ydk::Enum::YLeaf ntp_ref_rate;
         static const ydk::Enum::YLeaf ntp_ref_rmot;
         static const ydk::Enum::YLeaf ntp_ref_step;
+
+};
+
+class RefidPktTypeInfo : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ntp_ref_state_kod;
+        static const ydk::Enum::YLeaf ntp_ref_state_resolved_with_clk_source;
+        static const ydk::Enum::YLeaf ntp_ref_state_resolved_with_ip_addr;
+        static const ydk::Enum::YLeaf ntp_ref_state_bad_state;
+
+};
+
+class PeerSelectStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ntp_peer_as_backup;
+        static const ydk::Enum::YLeaf ntp_peer_rejected;
+        static const ydk::Enum::YLeaf ntp_peer_false_ticker;
+        static const ydk::Enum::YLeaf ntp_peer_excess;
+        static const ydk::Enum::YLeaf ntp_peer_outlier;
+        static const ydk::Enum::YLeaf ntp_peer_candidate;
+        static const ydk::Enum::YLeaf ntp_peer_sys_peer;
+        static const ydk::Enum::YLeaf ntp_peer_pps_peer;
+
+};
+
+class PeerAuthStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf ntp_auth_ok;
+        static const ydk::Enum::YLeaf ntp_auth_bad_auth;
+        static const ydk::Enum::YLeaf ntp_auth_auth_not_configured;
+        static const ydk::Enum::YLeaf ntp_auth_status_not_available;
+        static const ydk::Enum::YLeaf ntp_auth_none;
+        static const ydk::Enum::YLeaf ntp_auth_crypto;
+
+};
+
+class PeerStatusWord : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf crypto_flag_sig;
+        static const ydk::Enum::YLeaf crypto_flag_leap;
+        static const ydk::Enum::YLeaf crypto_flag_vrfy;
+        static const ydk::Enum::YLeaf crypto_flag_cook;
+        static const ydk::Enum::YLeaf crypto_flag_auto;
+        static const ydk::Enum::YLeaf crypto_flag_cert;
 
 };
 
@@ -323,79 +396,6 @@ class ServerType : public ydk::Enum
         static const ydk::Enum::YLeaf ntp_peer;
         static const ydk::Enum::YLeaf ntp_server;
         static const ydk::Enum::YLeaf ntp_unknown_type;
-
-};
-
-class RefidPktTypeInfo : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ntp_ref_state_kod;
-        static const ydk::Enum::YLeaf ntp_ref_state_resolved_with_clk_source;
-        static const ydk::Enum::YLeaf ntp_ref_state_resolved_with_ip_addr;
-        static const ydk::Enum::YLeaf ntp_ref_state_bad_state;
-
-};
-
-class PeerStatusWord : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf crypto_flag_sig;
-        static const ydk::Enum::YLeaf crypto_flag_leap;
-        static const ydk::Enum::YLeaf crypto_flag_vrfy;
-        static const ydk::Enum::YLeaf crypto_flag_cook;
-        static const ydk::Enum::YLeaf crypto_flag_auto;
-        static const ydk::Enum::YLeaf crypto_flag_cert;
-
-};
-
-class PeerSelectStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ntp_peer_as_backup;
-        static const ydk::Enum::YLeaf ntp_peer_rejected;
-        static const ydk::Enum::YLeaf ntp_peer_false_ticker;
-        static const ydk::Enum::YLeaf ntp_peer_excess;
-        static const ydk::Enum::YLeaf ntp_peer_outlier;
-        static const ydk::Enum::YLeaf ntp_peer_candidate;
-        static const ydk::Enum::YLeaf ntp_peer_sys_peer;
-        static const ydk::Enum::YLeaf ntp_peer_pps_peer;
-
-};
-
-class RefClockSourceType : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ntp_ref_goes;
-        static const ydk::Enum::YLeaf ntp_ref_gps;
-        static const ydk::Enum::YLeaf ntp_ref_gal;
-        static const ydk::Enum::YLeaf ntp_ref_pps;
-        static const ydk::Enum::YLeaf ntp_ref_irig;
-        static const ydk::Enum::YLeaf ntp_ref_wwvb;
-        static const ydk::Enum::YLeaf ntp_ref_dcf;
-        static const ydk::Enum::YLeaf ntp_ref_hbg;
-        static const ydk::Enum::YLeaf ntp_ref_msf;
-        static const ydk::Enum::YLeaf ntp_ref_jjy;
-        static const ydk::Enum::YLeaf ntp_ref_lorc;
-        static const ydk::Enum::YLeaf ntp_ref_tdf;
-        static const ydk::Enum::YLeaf ntp_ref_chu;
-        static const ydk::Enum::YLeaf ntp_ref_wwv;
-        static const ydk::Enum::YLeaf ntp_ref_wwvh;
-        static const ydk::Enum::YLeaf ntp_ref_nist;
-        static const ydk::Enum::YLeaf ntp_ref_acts;
-        static const ydk::Enum::YLeaf ntp_ref_usno;
-        static const ydk::Enum::YLeaf ntp_ref_ptb;
-
-};
-
-class PeerAuthStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf ntp_auth_ok;
-        static const ydk::Enum::YLeaf ntp_auth_bad_auth;
-        static const ydk::Enum::YLeaf ntp_auth_auth_not_configured;
-        static const ydk::Enum::YLeaf ntp_auth_status_not_available;
-        static const ydk::Enum::YLeaf ntp_auth_none;
-        static const ydk::Enum::YLeaf ntp_auth_crypto;
 
 };
 

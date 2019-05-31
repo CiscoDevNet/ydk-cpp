@@ -1068,7 +1068,7 @@ class Native::Crypto::Isakmp::Profile : public ydk::Entity
         ydk::YLeaf name; //type: string
         ydk::YLeaf accounting; //type: string
         ydk::YLeaf description; //type: string
-        ydk::YLeaf keyring; //type: one of string, enumeration
+        ydk::YLeaf keyring; //type: one of enumeration, string
         ydk::YLeaf qos_group; //type: uint16
         ydk::YLeaf virtual_template; //type: uint16
         ydk::YLeaf vrf; //type: string
@@ -1114,7 +1114,7 @@ class Native::Crypto::Isakmp::Profile::Default : public ydk::Entity
 
         ydk::YLeaf accounting; //type: empty
         ydk::YLeaf description; //type: string
-        ydk::YLeaf keyring; //type: one of string, enumeration
+        ydk::YLeaf keyring; //type: one of enumeration, string
         ydk::YLeaf local_address; //type: empty
         ydk::YLeaf qos_group; //type: empty
         ydk::YLeaf virtual_template; //type: empty
@@ -3110,7 +3110,7 @@ class Native::Crypto::CryptoMap::Map::Set::SecurityAssociation::Lifetime : publi
         bool has_leaf_or_child_of_name(const std::string & name) const override;
 
         ydk::YLeaf days; //type: uint8
-        ydk::YLeaf kilobytes; //type: one of uint64, enumeration
+        ydk::YLeaf kilobytes; //type: one of enumeration, uint64
         ydk::YLeaf seconds; //type: uint64
         class Kilobytes;
 

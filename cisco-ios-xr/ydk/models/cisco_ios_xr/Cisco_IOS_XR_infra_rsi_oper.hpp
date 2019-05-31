@@ -1299,18 +1299,6 @@ class SelectiveVrfDownload::State : public ydk::Entity
 
 }; // SelectiveVrfDownload::State
 
-class Priority : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf critical;
-        static const ydk::Enum::YLeaf high;
-        static const ydk::Enum::YLeaf medium;
-        static const ydk::Enum::YLeaf low;
-        static const ydk::Enum::YLeaf very_low;
-        static const ydk::Enum::YLeaf invald;
-
-};
-
 class Source : public ydk::Enum
 {
     public:
@@ -1322,6 +1310,18 @@ class Source : public ydk::Enum
         static const ydk::Enum::YLeaf from_group_and_notified;
         static const ydk::Enum::YLeaf inherited_and_notified;
         static const ydk::Enum::YLeaf from_optical_and_notified;
+
+};
+
+class Priority : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf critical;
+        static const ydk::Enum::YLeaf high;
+        static const ydk::Enum::YLeaf medium;
+        static const ydk::Enum::YLeaf low;
+        static const ydk::Enum::YLeaf very_low;
+        static const ydk::Enum::YLeaf invald;
 
 };
 

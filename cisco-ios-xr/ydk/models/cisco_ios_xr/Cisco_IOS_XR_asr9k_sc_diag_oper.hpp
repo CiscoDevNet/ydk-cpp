@@ -1293,19 +1293,27 @@ class Diag::Racks::Rack::Summary::Summary_ : public ydk::Entity
 
 }; // Diag::Racks::Rack::Summary::Summary_
 
-class DiagProcessor : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mpc8614d;
-
-};
-
 class DiagSlot : public ydk::Enum
 {
     public:
         static const ydk::Enum::YLeaf fan_tray;
         static const ydk::Enum::YLeaf power_module;
         static const ydk::Enum::YLeaf module;
+
+};
+
+class DiagNode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf node;
+        static const ydk::Enum::YLeaf spa;
+
+};
+
+class DiagProcessor : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf mpc8614d;
 
 };
 
@@ -1363,14 +1371,6 @@ class NodeState : public ydk::Enum
         static const ydk::Enum::YLeaf down;
         static const ydk::Enum::YLeaf max;
         static const ydk::Enum::YLeaf unknown;
-
-};
-
-class DiagNode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf node;
-        static const ydk::Enum::YLeaf spa;
 
 };
 

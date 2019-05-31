@@ -14,6 +14,544 @@ namespace cisco_ios_xr {
 namespace Cisco_IOS_XR_ipv4_ospf_oper {
 
 
+class Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::AreaFlood : public ydk::Entity
+{
+    public:
+        AreaFlood();
+        ~AreaFlood();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf header_lsa_type; //type: Lsa
+        ydk::YLeaf header_lsa_age; //type: uint16
+        ydk::YLeaf header_ls_id; //type: string
+        ydk::YLeaf header_advertising_router; //type: string
+        ydk::YLeaf header_sequence_number; //type: uint32
+        ydk::YLeaf header_lsa_checksum; //type: uint16
+
+}; // Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::AreaFlood
+
+
+class Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::AsFlood : public ydk::Entity
+{
+    public:
+        AsFlood();
+        ~AsFlood();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf header_lsa_type; //type: Lsa
+        ydk::YLeaf header_lsa_age; //type: uint16
+        ydk::YLeaf header_ls_id; //type: string
+        ydk::YLeaf header_advertising_router; //type: string
+        ydk::YLeaf header_sequence_number; //type: uint32
+        ydk::YLeaf header_lsa_checksum; //type: uint16
+
+}; // Ospf::Processes::Process::DefaultVrf::FloodListTable::Flood::AsFlood
+
+
+class Ospf::Processes::Process::DefaultVrf::SegmentRouting : public ydk::Entity
+{
+    public:
+        SegmentRouting();
+        ~SegmentRouting();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class AdjacencySids; //type: Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids
+        class SrEndpointPolicies; //type: Ospf::Processes::Process::DefaultVrf::SegmentRouting::SrEndpointPolicies
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids> adjacency_sids;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::SegmentRouting::SrEndpointPolicies> sr_endpoint_policies;
+        
+}; // Ospf::Processes::Process::DefaultVrf::SegmentRouting
+
+
+class Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids : public ydk::Entity
+{
+    public:
+        AdjacencySids();
+        ~AdjacencySids();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class AdjacencySid; //type: Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids::AdjacencySid
+
+        ydk::YList adjacency_sid;
+        
+}; // Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids
+
+
+class Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids::AdjacencySid : public ydk::Entity
+{
+    public:
+        AdjacencySid();
+        ~AdjacencySid();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf adj_sid; //type: uint32
+        ydk::YLeaf sr_adjacency_sid; //type: uint32
+        ydk::YLeaf sr_adj_sid_is_configured; //type: boolean
+        ydk::YLeaf is_deleted_adjacency_protected; //type: boolean
+        ydk::YLeaf deleted_adjacency_protection_timer; //type: uint32
+        class SrAdjSidNeighbor; //type: Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor
+
+        ydk::YList sr_adj_sid_neighbor;
+        
+}; // Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids::AdjacencySid
+
+
+class Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor : public ydk::Entity
+{
+    public:
+        SrAdjSidNeighbor();
+        ~SrAdjSidNeighbor();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf neighbor_id; //type: string
+        ydk::YLeaf sr_adj_sid_is_protected; //type: boolean
+        ydk::YLeaf sr_adj_sid_has_backup; //type: boolean
+        class PrimaryPathInfo; //type: Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo
+        class BackupPathInfo; //type: Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo> primary_path_info;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo> backup_path_info;
+        
+}; // Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor
+
+
+class Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo : public ydk::Entity
+{
+    public:
+        PrimaryPathInfo();
+        ~PrimaryPathInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_handle; //type: string
+        ydk::YLeaf nexthop_ip_address; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        class LabelStack; //type: Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::LabelStack
+
+        ydk::YList label_stack;
+        
+}; // Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo
+
+
+class Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::LabelStack : public ydk::Entity
+{
+    public:
+        LabelStack();
+        ~LabelStack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::PrimaryPathInfo::LabelStack
+
+
+class Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo : public ydk::Entity
+{
+    public:
+        BackupPathInfo();
+        ~BackupPathInfo();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf interface_handle; //type: string
+        ydk::YLeaf nexthop_ip_address; //type: string
+        ydk::YLeaf load_metric; //type: uint32
+        class LabelStack; //type: Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::LabelStack
+
+        ydk::YList label_stack;
+        
+}; // Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo
+
+
+class Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::LabelStack : public ydk::Entity
+{
+    public:
+        LabelStack();
+        ~LabelStack();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint32
+
+}; // Ospf::Processes::Process::DefaultVrf::SegmentRouting::AdjacencySids::AdjacencySid::SrAdjSidNeighbor::BackupPathInfo::LabelStack
+
+
+class Ospf::Processes::Process::DefaultVrf::SegmentRouting::SrEndpointPolicies : public ydk::Entity
+{
+    public:
+        SrEndpointPolicies();
+        ~SrEndpointPolicies();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class SrEndpointPolicy; //type: Ospf::Processes::Process::DefaultVrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy
+
+        ydk::YList sr_endpoint_policy;
+        
+}; // Ospf::Processes::Process::DefaultVrf::SegmentRouting::SrEndpointPolicies
+
+
+class Ospf::Processes::Process::DefaultVrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy : public ydk::Entity
+{
+    public:
+        SrEndpointPolicy();
+        ~SrEndpointPolicy();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf endpoint_ip; //type: string
+        ydk::YLeaf sr_endpoint; //type: string
+        ydk::YLeaf sr_router_id; //type: uint32
+        ydk::YLeaf sr_area_id_string; //type: string
+        ydk::YLeaf sr_policy_count; //type: uint32
+        ydk::YLeaf sr_valid_policy_count; //type: uint32
+        ydk::YLeaf sr_endp_state_is_valid; //type: boolean
+        ydk::YLeaf sr_endp_state_is_stale; //type: boolean
+        ydk::YLeaf sr_endp_state_is_unres; //type: boolean
+        ydk::YLeaf sr_endp_resolution_fail_reason; //type: OspfSrEndpResFailReason
+        class SrPolicy; //type: Ospf::Processes::Process::DefaultVrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::SrPolicy
+
+        ydk::YList sr_policy;
+        
+}; // Ospf::Processes::Process::DefaultVrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy
+
+
+class Ospf::Processes::Process::DefaultVrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::SrPolicy : public ydk::Entity
+{
+    public:
+        SrPolicy();
+        ~SrPolicy();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf policy_name; //type: string
+        ydk::YLeaf policy_if_handle; //type: string
+        ydk::YLeaf policy_metric; //type: int32
+        ydk::YLeaf policy_metric_mode; //type: OspfSrPolMetricMode
+        ydk::YLeaf policy_is_sspf; //type: boolean
+        ydk::YLeaf policy_is_autoroute_include; //type: boolean
+        ydk::YLeaf policy_state_is_valid; //type: boolean
+        ydk::YLeaf policy_state_is_stale; //type: boolean
+        ydk::YLeaf policy_state_is_ifh_error; //type: boolean
+        ydk::YLeaf policy_state_is_idb_pending; //type: boolean
+        ydk::YLeaf policy_update_timestamp; //type: uint32
+
+}; // Ospf::Processes::Process::DefaultVrf::SegmentRouting::SrEndpointPolicies::SrEndpointPolicy::SrPolicy
+
+
+class Ospf::Processes::Process::DefaultVrf::MplsTe : public ydk::Entity
+{
+    public:
+        MplsTe();
+        ~MplsTe();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class MplsTeLinks; //type: Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks
+        class MplsTeFragments; //type: Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks> mpls_te_links;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeFragments> mpls_te_fragments;
+        
+}; // Ospf::Processes::Process::DefaultVrf::MplsTe
+
+
+class Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks : public ydk::Entity
+{
+    public:
+        MplsTeLinks();
+        ~MplsTeLinks();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class MplsTeLink; //type: Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
+
+        ydk::YList mpls_te_link;
+        
+}; // Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks
+
+
+class Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink : public ydk::Entity
+{
+    public:
+        MplsTeLink();
+        ~MplsTeLink();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf area_id; //type: uint32
+        ydk::YLeaf mpls_te_router_id; //type: string
+        ydk::YLeaf mpls_te_enabled; //type: boolean
+        ydk::YLeaf mpls_te_initialized; //type: boolean
+        ydk::YLeaf mpls_te_area_id; //type: string
+        ydk::YLeaf mpls_te_area_instance; //type: uint32
+        ydk::YLeaf mpls_te_router_address; //type: string
+        ydk::YLeaf mpls_te_next_fragment_id; //type: uint32
+        ydk::YLeaf spacious_fragment; //type: boolean
+        class MplsTeLink_; //type: Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_
+        class MplsTeFragment; //type: Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeFragment
+
+        ydk::YList mpls_te_link;
+        ydk::YList mpls_te_fragment;
+        
+}; // Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink
+
+
+class Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_ : public ydk::Entity
+{
+    public:
+        MplsTeLink_();
+        ~MplsTeLink_();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf new_link; //type: boolean
+        ydk::YLeaf fragment_id; //type: uint32
+        ydk::YLeaf mpls_link_instance; //type: uint32
+        ydk::YLeaf mpls_link_type; //type: LinkSubnet
+        ydk::YLeaf neighbor_system_id; //type: string
+        ydk::YLeaf link_address; //type: string
+        ydk::YLeaf neighbor_ip_address; //type: string
+        ydk::YLeaf igp_metric; //type: uint32
+        ydk::YLeaf te_metric; //type: uint32
+        ydk::YLeaf maximum_link_bw; //type: uint32
+        ydk::YLeaf maximum_link_reservable_bw; //type: uint32
+        ydk::YLeaf maximum_link_sub_reservable_bw; //type: uint32
+        ydk::YLeaf priority_count; //type: int32
+        ydk::YLeaf affinity; //type: uint32
+        ydk::YLeaf output_interface_id; //type: uint32
+        ydk::YLeaf input_interface_id; //type: uint32
+        ydk::YLeaf dste_in_use; //type: boolean
+        ydk::YLeaf dste_allocation_model_id; //type: IgpteLibBwModel
+        ydk::YLeaf number_of_optional_tl_vs; //type: uint8
+        class GlobalUnreserveBwPerPriority; //type: Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority
+        class SubPoolUnreserveBwPerPriority; //type: Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority
+        class LinkProtocolPriorityCapability; //type: Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability
+        class LinkSwCapability; //type: Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability
+        class ExtendedAdminGroupList; //type: Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList
+        class MplsteLinkOptTlv; //type: Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::MplsteLinkOptTlv
+
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority> global_unreserve_bw_per_priority;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority> sub_pool_unreserve_bw_per_priority;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkProtocolPriorityCapability> link_protocol_priority_capability;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::LinkSwCapability> link_sw_capability;
+        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::ExtendedAdminGroupList> extended_admin_group_list;
+        ydk::YList mplste_link_opt_tlv;
+        
+}; // Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_
+
+
+class Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority : public ydk::Entity
+{
+    public:
+        GlobalUnreserveBwPerPriority();
+        ~GlobalUnreserveBwPerPriority();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class BwPerPriority; //type: Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority::BwPerPriority
+
+        ydk::YList bw_per_priority;
+        
+}; // Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority
+
+
+class Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority::BwPerPriority : public ydk::Entity
+{
+    public:
+        BwPerPriority();
+        ~BwPerPriority();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        ydk::YLeaf entry; //type: uint64
+
+}; // Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::GlobalUnreserveBwPerPriority::BwPerPriority
+
+
+class Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority : public ydk::Entity
+{
+    public:
+        SubPoolUnreserveBwPerPriority();
+        ~SubPoolUnreserveBwPerPriority();
+
+        bool has_data() const override;
+        bool has_operation() const override;
+        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
+        std::string get_segment_path() const override;
+        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
+        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
+        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
+        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
+        bool has_leaf_or_child_of_name(const std::string & name) const override;
+
+        class BwPerPriority; //type: Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority
+
+        ydk::YList bw_per_priority;
+        
+}; // Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority
+
+
 class Ospf::Processes::Process::DefaultVrf::MplsTe::MplsTeLinks::MplsTeLink::MplsTeLink_::SubPoolUnreserveBwPerPriority::BwPerPriority : public ydk::Entity
 {
     public:
@@ -3294,559 +3832,6 @@ class Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiS
         ydk::YLeaf nanosecond; //type: uint32
 
 }; // Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiStartTime
-
-
-class Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiDuration : public ydk::Entity
-{
-    public:
-        SiDuration();
-        ~SiDuration();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf second; //type: uint32
-        ydk::YLeaf nanosecond; //type: uint32
-
-}; // Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsRuntime::SiDuration
-
-
-class Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime : public ydk::Entity
-{
-    public:
-        OsSumRuntime();
-        ~OsSumRuntime();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sp_adv_rtr_id; //type: uint32
-        ydk::YLeaf sp_dest_count; //type: uint32
-        ydk::YLeaf sp_dest_addr; //type: uint32
-        class SpStartTime; //type: Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime
-        class SpDuration; //type: Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime> sp_start_time;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration> sp_duration;
-        
-}; // Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime
-
-
-class Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime : public ydk::Entity
-{
-    public:
-        SpStartTime();
-        ~SpStartTime();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf second; //type: uint32
-        ydk::YLeaf nanosecond; //type: uint32
-
-}; // Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpStartTime
-
-
-class Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration : public ydk::Entity
-{
-    public:
-        SpDuration();
-        ~SpDuration();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf second; //type: uint32
-        ydk::YLeaf nanosecond; //type: uint32
-
-}; // Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsSumRuntime::SpDuration
-
-
-class Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime : public ydk::Entity
-{
-    public:
-        OsExRuntime();
-        ~OsExRuntime();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf sp_adv_rtr_id; //type: uint32
-        ydk::YLeaf sp_dest_count; //type: uint32
-        ydk::YLeaf sp_dest_addr; //type: uint32
-        class SpStartTime; //type: Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime
-        class SpDuration; //type: Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime> sp_start_time;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration> sp_duration;
-        
-}; // Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime
-
-
-class Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime : public ydk::Entity
-{
-    public:
-        SpStartTime();
-        ~SpStartTime();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf second; //type: uint32
-        ydk::YLeaf nanosecond; //type: uint32
-
-}; // Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpStartTime
-
-
-class Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration : public ydk::Entity
-{
-    public:
-        SpDuration();
-        ~SpDuration();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf second; //type: uint32
-        ydk::YLeaf nanosecond; //type: uint32
-
-}; // Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::OsExRuntime::SpDuration
-
-
-class Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime : public ydk::Entity
-{
-    public:
-        Runtime();
-        ~Runtime();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf spf_start_time; //type: uint32
-        ydk::YLeaf lsa_change_cnt; //type: int16
-        class GblSpfTime; //type: Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime
-        class LsaInfo; //type: Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::LsaInfo
-        class AreaStat; //type: Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime> gbl_spf_time;
-        ydk::YList lsa_info;
-        ydk::YList area_stat;
-        
-}; // Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime
-
-
-class Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime : public ydk::Entity
-{
-    public:
-        GblSpfTime();
-        ~GblSpfTime();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf spf_dijkstra; //type: uint32
-        ydk::YLeaf spf_intra_prefix; //type: uint32
-        ydk::YLeaf spf_intra_prefix_del; //type: uint32
-        ydk::YLeaf spf_inter_prefix; //type: uint32
-        ydk::YLeaf spf_inter_prefix_del; //type: uint32
-        ydk::YLeaf spf_ext_prefix; //type: uint32
-        ydk::YLeaf spf_ext_prefix_del; //type: uint32
-
-}; // Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::GblSpfTime
-
-
-class Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::LsaInfo : public ydk::Entity
-{
-    public:
-        LsaInfo();
-        ~LsaInfo();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf area_id; //type: uint32
-        ydk::YLeaf adv_rtr; //type: string
-        ydk::YLeaf id; //type: string
-        ydk::YLeaf type; //type: uint8
-        ydk::YLeaf flush; //type: boolean
-
-}; // Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::LsaInfo
-
-
-class Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat : public ydk::Entity
-{
-    public:
-        AreaStat();
-        ~AreaStat();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf area_id; //type: uint32
-        class SpfTime; //type: Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime
-        class LsaTypeCnt; //type: Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::LsaTypeCnt
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime> spf_time;
-        ydk::YList lsa_type_cnt;
-        
-}; // Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat
-
-
-class Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime : public ydk::Entity
-{
-    public:
-        SpfTime();
-        ~SpfTime();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf spf_dijkstra; //type: uint32
-        ydk::YLeaf spf_intra_prefix; //type: uint32
-        ydk::YLeaf spf_intra_prefix_del; //type: uint32
-        ydk::YLeaf spf_inter_prefix; //type: uint32
-        ydk::YLeaf spf_inter_prefix_del; //type: uint32
-        ydk::YLeaf spf_ext_prefix; //type: uint32
-        ydk::YLeaf spf_ext_prefix_del; //type: uint32
-
-}; // Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::SpfTime
-
-
-class Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::LsaTypeCnt : public ydk::Entity
-{
-    public:
-        LsaTypeCnt();
-        ~LsaTypeCnt();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf entry; //type: uint32
-
-}; // Ospf::Processes::Process::DefaultVrf::Statistics::SpfStats::Runtime::AreaStat::LsaTypeCnt
-
-
-class Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats : public ydk::Entity
-{
-    public:
-        RibBatchStats();
-        ~RibBatchStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        class PriorityBatch; //type: Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::PriorityBatch
-
-        ydk::YList priority_batch;
-        
-}; // Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats
-
-
-class Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::PriorityBatch : public ydk::Entity
-{
-    public:
-        PriorityBatch();
-        ~PriorityBatch();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf batches_sent; //type: uint32
-        ydk::YLeaf routes_sent; //type: uint32
-        ydk::YLeaf routes_pending; //type: uint32
-        ydk::YLeaf max_routes; //type: uint32
-        ydk::YLeaf paths_sent; //type: uint32
-        ydk::YLeaf paths_pending; //type: uint32
-        ydk::YLeaf paths_add; //type: uint32
-        ydk::YLeaf paths_add_errs; //type: uint32
-        ydk::YLeaf paths_del; //type: uint32
-        ydk::YLeaf paths_del_errs; //type: uint32
-        ydk::YLeaf lfas_pending; //type: uint32
-        ydk::YLeaf lfas_add; //type: uint32
-        ydk::YLeaf lfas_del; //type: uint32
-        ydk::YLeaf lfas_sent; //type: uint32
-        ydk::YLeaf priority_level; //type: string
-
-}; // Ospf::Processes::Process::DefaultVrf::Statistics::RibBatchStats::PriorityBatch
-
-
-class Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats : public ydk::Entity
-{
-    public:
-        IssuStats();
-        ~IssuStats();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf nsr_rev; //type: int32
-        ydk::YLeaf nsr_fsm_state; //type: int32
-        ydk::YLeaf nsr_version; //type: uint32
-        ydk::YLeaf nsr_nodeid; //type: uint32
-        ydk::YLeaf nsr_peer_version; //type: uint32
-        ydk::YLeaf nsr_peer_nodeid; //type: uint32
-        ydk::YLeaf nsr_fabric_mtu; //type: uint32
-        ydk::YLeaf nsr_nbr_qad_qid; //type: uint32
-        ydk::YLeaf nsr_lsa_qad_qid; //type: uint32
-        ydk::YLeaf nsr_nbr_qad_mdata_count; //type: uint32
-        ydk::YLeaf nsr_lsa_qad_mdata_count; //type: uint32
-        ydk::YLeaf nsr_nbr_init_sync_pend_count; //type: int32
-        ydk::YLeaf nsr_lsa_init_sync_pend_count; //type: int32
-        ydk::YLeaf nsr_nbr_seq_no; //type: uint32
-        ydk::YLeaf nsr_intf_seq_no; //type: uint32
-        ydk::YLeaf nsr_tmr_quant; //type: int32
-        ydk::YLeaf nsr_conn_to_active_attempts; //type: uint64
-        ydk::YLeaf nsr_conn_to_active_fails; //type: uint64
-        ydk::YLeaf nsr_conn_to_active_opens; //type: uint64
-        ydk::YLeaf nsr_conn_to_active_closes; //type: uint64
-        ydk::YLeaf nsr_conn_to_active_errors; //type: uint64
-        class NsrThdSched; //type: Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched
-        class NsrRtrThdSched; //type: Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched
-        class NsrFsmFlag; //type: Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmFlag
-        class NsrFsmRunningTimer; //type: Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrFsmRunningTimer
-        class NsrIssuMilestone; //type: Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrIssuMilestone
-        class NsrErrHistory; //type: Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrErrHistory
-
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched> nsr_thd_sched;
-        std::shared_ptr<cisco_ios_xr::Cisco_IOS_XR_ipv4_ospf_oper::Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched> nsr_rtr_thd_sched;
-        ydk::YList nsr_fsm_flag;
-        ydk::YList nsr_fsm_running_timer;
-        ydk::YList nsr_issu_milestone;
-        ydk::YList nsr_err_history;
-        
-}; // Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats
-
-
-class Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched : public ydk::Entity
-{
-    public:
-        NsrThdSched();
-        ~NsrThdSched();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf nsr_pulse_quant; //type: int32
-        ydk::YLeaf nsr_events_in_q; //type: uint32
-        ydk::YLeaf nsr_events_tx; //type: uint64
-        ydk::YLeaf nsr_events_rx; //type: uint64
-        ydk::YLeaf nsr_bad_pulses_rx; //type: uint64
-        ydk::YLeaf nsr_good_pulses_rx; //type: uint64
-        ydk::YLeaf nsr_pulses_tx; //type: uint64
-        ydk::YLeaf nsr_pulse_tx_fails; //type: uint64
-        class NsrPri; //type: Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::NsrPri
-
-        ydk::YList nsr_pri;
-        
-}; // Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched
-
-
-class Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::NsrPri : public ydk::Entity
-{
-    public:
-        NsrPri();
-        ~NsrPri();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf nsr_sched_pri; //type: uint32
-        ydk::YLeaf nsr_sched_quant; //type: uint8
-        ydk::YLeaf nsr_sched_remain_quant; //type: uint8
-        ydk::YLeaf nsr_sched_evs_in_q; //type: uint16
-        ydk::YLeaf nsr_sched_max_evs; //type: uint16
-        ydk::YLeaf nsr_sched_peak_q_len; //type: uint16
-        ydk::YLeaf nsr_sched_evs_qd; //type: uint64
-        ydk::YLeaf nsr_sched_enq_fails; //type: uint64
-        ydk::YLeaf nsr_sched_evs_deqd; //type: uint64
-
-}; // Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrThdSched::NsrPri
-
-
-class Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched : public ydk::Entity
-{
-    public:
-        NsrRtrThdSched();
-        ~NsrRtrThdSched();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf nsr_pulse_quant; //type: int32
-        ydk::YLeaf nsr_events_in_q; //type: uint32
-        ydk::YLeaf nsr_events_tx; //type: uint64
-        ydk::YLeaf nsr_events_rx; //type: uint64
-        ydk::YLeaf nsr_bad_pulses_rx; //type: uint64
-        ydk::YLeaf nsr_good_pulses_rx; //type: uint64
-        ydk::YLeaf nsr_pulses_tx; //type: uint64
-        ydk::YLeaf nsr_pulse_tx_fails; //type: uint64
-        class NsrPri; //type: Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::NsrPri
-
-        ydk::YList nsr_pri;
-        
-}; // Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched
-
-
-class Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::NsrPri : public ydk::Entity
-{
-    public:
-        NsrPri();
-        ~NsrPri();
-
-        bool has_data() const override;
-        bool has_operation() const override;
-        std::vector<std::pair<std::string, ydk::LeafData> > get_name_leaf_data() const override;
-        std::string get_segment_path() const override;
-        std::shared_ptr<ydk::Entity> get_child_by_name(const std::string & yang_name, const std::string & segment_path) override;
-        void set_value(const std::string & value_path, const std::string & value, const std::string & name_space, const std::string & name_space_prefix) override;
-        void set_filter(const std::string & value_path, ydk::YFilter yfliter) override;
-        std::map<std::string, std::shared_ptr<ydk::Entity>> get_children() const override;
-        bool has_leaf_or_child_of_name(const std::string & name) const override;
-
-        ydk::YLeaf nsr_sched_pri; //type: uint32
-        ydk::YLeaf nsr_sched_quant; //type: uint8
-        ydk::YLeaf nsr_sched_remain_quant; //type: uint8
-        ydk::YLeaf nsr_sched_evs_in_q; //type: uint16
-        ydk::YLeaf nsr_sched_max_evs; //type: uint16
-        ydk::YLeaf nsr_sched_peak_q_len; //type: uint16
-        ydk::YLeaf nsr_sched_evs_qd; //type: uint64
-        ydk::YLeaf nsr_sched_enq_fails; //type: uint64
-        ydk::YLeaf nsr_sched_evs_deqd; //type: uint64
-
-}; // Ospf::Processes::Process::DefaultVrf::Statistics::IssuStats::NsrRtrThdSched::NsrPri
 
 
 }

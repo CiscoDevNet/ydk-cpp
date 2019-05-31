@@ -383,6 +383,23 @@ class Rollback::Output : public ydk::Entity
 
 }; // Rollback::Output
 
+class ParserMsgProcessingMethod : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf blacklist;
+        static const ydk::Enum::YLeaf whitelist;
+
+};
+
+class CiaSyncType : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf disabled;
+        static const ydk::Enum::YLeaf without_defaults;
+        static const ydk::Enum::YLeaf include_defaults;
+
+};
+
 class CiaLogLevel : public ydk::Enum
 {
     public:
@@ -394,12 +411,16 @@ class CiaLogLevel : public ydk::Enum
 
 };
 
-class CiaSyncType : public ydk::Enum
+class OnepLogLevel : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf disabled;
-        static const ydk::Enum::YLeaf without_defaults;
-        static const ydk::Enum::YLeaf include_defaults;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf fatal;
+        static const ydk::Enum::YLeaf error;
+        static const ydk::Enum::YLeaf warning;
+        static const ydk::Enum::YLeaf information;
+        static const ydk::Enum::YLeaf debug;
+        static const ydk::Enum::YLeaf trace;
 
 };
 
@@ -415,27 +436,6 @@ class SyslogSeverity : public ydk::Enum
         static const ydk::Enum::YLeaf notice;
         static const ydk::Enum::YLeaf info;
         static const ydk::Enum::YLeaf debug;
-
-};
-
-class ParserMsgProcessingMethod : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf blacklist;
-        static const ydk::Enum::YLeaf whitelist;
-
-};
-
-class OnepLogLevel : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf fatal;
-        static const ydk::Enum::YLeaf error;
-        static const ydk::Enum::YLeaf warning;
-        static const ydk::Enum::YLeaf information;
-        static const ydk::Enum::YLeaf debug;
-        static const ydk::Enum::YLeaf trace;
 
 };
 

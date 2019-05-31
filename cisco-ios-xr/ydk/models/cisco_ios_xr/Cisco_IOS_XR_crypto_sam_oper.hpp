@@ -594,6 +594,24 @@ class Sam::CertificateRevocationListSummary::Issuer : public ydk::Entity
 
 }; // Sam::CertificateRevocationListSummary::Issuer
 
+class LogTables : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unkown;
+        static const ydk::Enum::YLeaf memory_digest_table;
+        static const ydk::Enum::YLeaf system_database_digest;
+        static const ydk::Enum::YLeaf sam_tables;
+
+};
+
+class CertificateIssuer : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf code_signing_server_certificate_authority;
+
+};
+
 class LogError : public ydk::Enum
 {
     public:
@@ -627,24 +645,6 @@ class LogCode : public ydk::Enum
         static const ydk::Enum::YLeaf sam_log_file_recovered_from_system_database;
         static const ydk::Enum::YLeaf validated_elf;
         static const ydk::Enum::YLeaf namespace_deleted_recovered_by_sam;
-
-};
-
-class CertificateIssuer : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf code_signing_server_certificate_authority;
-
-};
-
-class LogTables : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf unkown;
-        static const ydk::Enum::YLeaf memory_digest_table;
-        static const ydk::Enum::YLeaf system_database_digest;
-        static const ydk::Enum::YLeaf sam_tables;
 
 };
 

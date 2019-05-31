@@ -12510,18 +12510,13 @@ bool Pppoe::Nodes::Node::SummaryTotal::has_leaf_or_child_of_name(const std::stri
     return false;
 }
 
-const Enum::YLeaf PppoeMaSessionState::destroying {0, "destroying"};
-const Enum::YLeaf PppoeMaSessionState::deleting {1, "deleting"};
-const Enum::YLeaf PppoeMaSessionState::initializing {2, "initializing"};
-const Enum::YLeaf PppoeMaSessionState::created {3, "created"};
-const Enum::YLeaf PppoeMaSessionState::stopping {4, "stopping"};
-const Enum::YLeaf PppoeMaSessionState::started {5, "started"};
-const Enum::YLeaf PppoeMaSessionState::activated {6, "activated"};
-const Enum::YLeaf PppoeMaSessionState::complete {7, "complete"};
+const Enum::YLeaf PppoeMaThrottleState::idle {0, "idle"};
+const Enum::YLeaf PppoeMaThrottleState::monitor {1, "monitor"};
+const Enum::YLeaf PppoeMaThrottleState::block {2, "block"};
 
-const Enum::YLeaf PppoeMaSessionIdbSrgState::none {0, "none"};
-const Enum::YLeaf PppoeMaSessionIdbSrgState::active {1, "active"};
-const Enum::YLeaf PppoeMaSessionIdbSrgState::standby {2, "standby"};
+const Enum::YLeaf PppoeMaLimitState::ok {0, "ok"};
+const Enum::YLeaf PppoeMaLimitState::warning {1, "warning"};
+const Enum::YLeaf PppoeMaLimitState::block {2, "block"};
 
 const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_error {0, "pppoe-ma-session-trig-error"};
 const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_publish_encaps_attr_fail {1, "pppoe-ma-session-trig-publish-encaps-attr-fail"};
@@ -12545,13 +12540,18 @@ const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_srg_disconnect {18, 
 const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_srg_sweep {19, "pppoe-ma-session-trig-srg-sweep"};
 const Enum::YLeaf PppoeMaSessionTrig::pppoe_ma_session_trig_count {20, "pppoe-ma-session-trig-count"};
 
-const Enum::YLeaf PppoeMaLimitState::ok {0, "ok"};
-const Enum::YLeaf PppoeMaLimitState::warning {1, "warning"};
-const Enum::YLeaf PppoeMaLimitState::block {2, "block"};
+const Enum::YLeaf PppoeMaSessionIdbSrgState::none {0, "none"};
+const Enum::YLeaf PppoeMaSessionIdbSrgState::active {1, "active"};
+const Enum::YLeaf PppoeMaSessionIdbSrgState::standby {2, "standby"};
 
-const Enum::YLeaf PppoeMaThrottleState::idle {0, "idle"};
-const Enum::YLeaf PppoeMaThrottleState::monitor {1, "monitor"};
-const Enum::YLeaf PppoeMaThrottleState::block {2, "block"};
+const Enum::YLeaf PppoeMaSessionState::destroying {0, "destroying"};
+const Enum::YLeaf PppoeMaSessionState::deleting {1, "deleting"};
+const Enum::YLeaf PppoeMaSessionState::initializing {2, "initializing"};
+const Enum::YLeaf PppoeMaSessionState::created {3, "created"};
+const Enum::YLeaf PppoeMaSessionState::stopping {4, "stopping"};
+const Enum::YLeaf PppoeMaSessionState::started {5, "started"};
+const Enum::YLeaf PppoeMaSessionState::activated {6, "activated"};
+const Enum::YLeaf PppoeMaSessionState::complete {7, "complete"};
 
 
 }

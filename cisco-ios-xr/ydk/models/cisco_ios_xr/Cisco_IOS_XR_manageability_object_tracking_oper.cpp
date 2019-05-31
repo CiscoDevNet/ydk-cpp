@@ -979,7 +979,8 @@ ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::Ipsla
     :
     ipsla_op_id{YType::uint32, "ipsla-op-id"},
     rtt{YType::uint32, "rtt"},
-    return_code{YType::uint32, "return-code"}
+    return_code{YType::uint32, "return-code"},
+    return_code_string{YType::str, "return-code-string"}
 {
 
     yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
@@ -994,7 +995,8 @@ bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::
     if (is_presence_container) return true;
     return ipsla_op_id.is_set
 	|| rtt.is_set
-	|| return_code.is_set;
+	|| return_code.is_set
+	|| return_code_string.is_set;
 }
 
 bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::has_operation() const
@@ -1002,7 +1004,8 @@ bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::
     return is_set(yfilter)
 	|| ydk::is_set(ipsla_op_id.yfilter)
 	|| ydk::is_set(rtt.yfilter)
-	|| ydk::is_set(return_code.yfilter);
+	|| ydk::is_set(return_code.yfilter)
+	|| ydk::is_set(return_code_string.yfilter);
 }
 
 std::string ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::get_absolute_path() const
@@ -1026,6 +1029,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
     if (ipsla_op_id.is_set || is_set(ipsla_op_id.yfilter)) leaf_name_data.push_back(ipsla_op_id.get_name_leafdata());
     if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
     if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
+    if (return_code_string.is_set || is_set(return_code_string.yfilter)) leaf_name_data.push_back(return_code_string.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -1063,6 +1067,12 @@ void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::
         return_code.value_namespace = name_space;
         return_code.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "return-code-string")
+    {
+        return_code_string = value;
+        return_code_string.value_namespace = name_space;
+        return_code_string.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::set_filter(const std::string & value_path, YFilter yfilter)
@@ -1079,11 +1089,15 @@ void ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::
     {
         return_code.yfilter = yfilter;
     }
+    if(value_path == "return-code-string")
+    {
+        return_code_string.yfilter = yfilter;
+    }
 }
 
 bool ObjectTracking::TrackTypeInterface::TrackInfo::TrackTypeInfo::IpslaTracks::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code")
+    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code" || name == "return-code-string")
         return true;
     return false;
 }
@@ -2622,7 +2636,8 @@ ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTra
     :
     ipsla_op_id{YType::uint32, "ipsla-op-id"},
     rtt{YType::uint32, "rtt"},
-    return_code{YType::uint32, "return-code"}
+    return_code{YType::uint32, "return-code"},
+    return_code_string{YType::str, "return-code-string"}
 {
 
     yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true; 
@@ -2637,7 +2652,8 @@ bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::Ips
     if (is_presence_container) return true;
     return ipsla_op_id.is_set
 	|| rtt.is_set
-	|| return_code.is_set;
+	|| return_code.is_set
+	|| return_code_string.is_set;
 }
 
 bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_operation() const
@@ -2645,7 +2661,8 @@ bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::Ips
     return is_set(yfilter)
 	|| ydk::is_set(ipsla_op_id.yfilter)
 	|| ydk::is_set(rtt.yfilter)
-	|| ydk::is_set(return_code.yfilter);
+	|| ydk::is_set(return_code.yfilter)
+	|| ydk::is_set(return_code_string.yfilter);
 }
 
 std::string ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_segment_path() const
@@ -2662,6 +2679,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackBriefs::Trac
     if (ipsla_op_id.is_set || is_set(ipsla_op_id.yfilter)) leaf_name_data.push_back(ipsla_op_id.get_name_leafdata());
     if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
     if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
+    if (return_code_string.is_set || is_set(return_code_string.yfilter)) leaf_name_data.push_back(return_code_string.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -2699,6 +2717,12 @@ void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::Ips
         return_code.value_namespace = name_space;
         return_code.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "return-code-string")
+    {
+        return_code_string = value;
+        return_code_string.value_namespace = name_space;
+        return_code_string.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::set_filter(const std::string & value_path, YFilter yfilter)
@@ -2715,11 +2739,15 @@ void ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::Ips
     {
         return_code.yfilter = yfilter;
     }
+    if(value_path == "return-code-string")
+    {
+        return_code_string.yfilter = yfilter;
+    }
 }
 
 bool ObjectTracking::TrackBriefs::TrackBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code")
+    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code" || name == "return-code-string")
         return true;
     return false;
 }
@@ -3579,7 +3607,8 @@ ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks:
     :
     ipsla_op_id{YType::uint32, "ipsla-op-id"},
     rtt{YType::uint32, "rtt"},
-    return_code{YType::uint32, "return-code"}
+    return_code{YType::uint32, "return-code"},
+    return_code_string{YType::str, "return-code-string"}
 {
 
     yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
@@ -3594,7 +3623,8 @@ bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTr
     if (is_presence_container) return true;
     return ipsla_op_id.is_set
 	|| rtt.is_set
-	|| return_code.is_set;
+	|| return_code.is_set
+	|| return_code_string.is_set;
 }
 
 bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::has_operation() const
@@ -3602,7 +3632,8 @@ bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTr
     return is_set(yfilter)
 	|| ydk::is_set(ipsla_op_id.yfilter)
 	|| ydk::is_set(rtt.yfilter)
-	|| ydk::is_set(return_code.yfilter);
+	|| ydk::is_set(return_code.yfilter)
+	|| ydk::is_set(return_code_string.yfilter);
 }
 
 std::string ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::get_absolute_path() const
@@ -3626,6 +3657,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
     if (ipsla_op_id.is_set || is_set(ipsla_op_id.yfilter)) leaf_name_data.push_back(ipsla_op_id.get_name_leafdata());
     if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
     if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
+    if (return_code_string.is_set || is_set(return_code_string.yfilter)) leaf_name_data.push_back(return_code_string.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -3663,6 +3695,12 @@ void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTr
         return_code.value_namespace = name_space;
         return_code.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "return-code-string")
+    {
+        return_code_string = value;
+        return_code_string.value_namespace = name_space;
+        return_code_string.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::set_filter(const std::string & value_path, YFilter yfilter)
@@ -3679,11 +3717,15 @@ void ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTr
     {
         return_code.yfilter = yfilter;
     }
+    if(value_path == "return-code-string")
+    {
+        return_code_string.yfilter = yfilter;
+    }
 }
 
 bool ObjectTracking::TrackTypeRtrReachability::TrackInfo::TrackTypeInfo::IpslaTracks::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code")
+    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code" || name == "return-code-string")
         return true;
     return false;
 }
@@ -5135,7 +5177,8 @@ ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::Ip
     :
     ipsla_op_id{YType::uint32, "ipsla-op-id"},
     rtt{YType::uint32, "rtt"},
-    return_code{YType::uint32, "return-code"}
+    return_code{YType::uint32, "return-code"},
+    return_code_string{YType::str, "return-code-string"}
 {
 
     yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
@@ -5150,7 +5193,8 @@ bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInf
     if (is_presence_container) return true;
     return ipsla_op_id.is_set
 	|| rtt.is_set
-	|| return_code.is_set;
+	|| return_code.is_set
+	|| return_code_string.is_set;
 }
 
 bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_operation() const
@@ -5158,7 +5202,8 @@ bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInf
     return is_set(yfilter)
 	|| ydk::is_set(ipsla_op_id.yfilter)
 	|| ydk::is_set(rtt.yfilter)
-	|| ydk::is_set(return_code.yfilter);
+	|| ydk::is_set(return_code.yfilter)
+	|| ydk::is_set(return_code_string.yfilter);
 }
 
 std::string ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_absolute_path() const
@@ -5182,6 +5227,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeRtrReach
     if (ipsla_op_id.is_set || is_set(ipsla_op_id.yfilter)) leaf_name_data.push_back(ipsla_op_id.get_name_leafdata());
     if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
     if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
+    if (return_code_string.is_set || is_set(return_code_string.yfilter)) leaf_name_data.push_back(return_code_string.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -5219,6 +5265,12 @@ void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInf
         return_code.value_namespace = name_space;
         return_code.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "return-code-string")
+    {
+        return_code_string = value;
+        return_code_string.value_namespace = name_space;
+        return_code_string.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::set_filter(const std::string & value_path, YFilter yfilter)
@@ -5235,11 +5287,15 @@ void ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInf
     {
         return_code.yfilter = yfilter;
     }
+    if(value_path == "return-code-string")
+    {
+        return_code_string.yfilter = yfilter;
+    }
 }
 
 bool ObjectTracking::TrackTypeRtrReachabilityBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code")
+    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code" || name == "return-code-string")
         return true;
     return false;
 }
@@ -6193,7 +6249,8 @@ ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::IpslaTrack
     :
     ipsla_op_id{YType::uint32, "ipsla-op-id"},
     rtt{YType::uint32, "rtt"},
-    return_code{YType::uint32, "return-code"}
+    return_code{YType::uint32, "return-code"},
+    return_code_string{YType::str, "return-code-string"}
 {
 
     yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = true; 
@@ -6208,7 +6265,8 @@ bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::has_d
     if (is_presence_container) return true;
     return ipsla_op_id.is_set
 	|| rtt.is_set
-	|| return_code.is_set;
+	|| return_code.is_set
+	|| return_code_string.is_set;
 }
 
 bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::has_operation() const
@@ -6216,7 +6274,8 @@ bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::has_o
     return is_set(yfilter)
 	|| ydk::is_set(ipsla_op_id.yfilter)
 	|| ydk::is_set(rtt.yfilter)
-	|| ydk::is_set(return_code.yfilter);
+	|| ydk::is_set(return_code.yfilter)
+	|| ydk::is_set(return_code_string.yfilter);
 }
 
 std::string ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::get_segment_path() const
@@ -6233,6 +6292,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::Tracks::Track::Tr
     if (ipsla_op_id.is_set || is_set(ipsla_op_id.yfilter)) leaf_name_data.push_back(ipsla_op_id.get_name_leafdata());
     if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
     if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
+    if (return_code_string.is_set || is_set(return_code_string.yfilter)) leaf_name_data.push_back(return_code_string.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -6270,6 +6330,12 @@ void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::set_v
         return_code.value_namespace = name_space;
         return_code.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "return-code-string")
+    {
+        return_code_string = value;
+        return_code_string.value_namespace = name_space;
+        return_code_string.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::set_filter(const std::string & value_path, YFilter yfilter)
@@ -6286,11 +6352,15 @@ void ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::set_f
     {
         return_code.yfilter = yfilter;
     }
+    if(value_path == "return-code-string")
+    {
+        return_code_string.yfilter = yfilter;
+    }
 }
 
 bool ObjectTracking::Tracks::Track::TrackInfo::TrackTypeInfo::IpslaTracks::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code")
+    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code" || name == "return-code-string")
         return true;
     return false;
 }
@@ -7686,7 +7756,8 @@ ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTra
     :
     ipsla_op_id{YType::uint32, "ipsla-op-id"},
     rtt{YType::uint32, "rtt"},
-    return_code{YType::uint32, "return-code"}
+    return_code{YType::uint32, "return-code"},
+    return_code_string{YType::str, "return-code-string"}
 {
 
     yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
@@ -7701,7 +7772,8 @@ bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::Ips
     if (is_presence_container) return true;
     return ipsla_op_id.is_set
 	|| rtt.is_set
-	|| return_code.is_set;
+	|| return_code.is_set
+	|| return_code_string.is_set;
 }
 
 bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_operation() const
@@ -7709,7 +7781,8 @@ bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::Ips
     return is_set(yfilter)
 	|| ydk::is_set(ipsla_op_id.yfilter)
 	|| ydk::is_set(rtt.yfilter)
-	|| ydk::is_set(return_code.yfilter);
+	|| ydk::is_set(return_code.yfilter)
+	|| ydk::is_set(return_code_string.yfilter);
 }
 
 std::string ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_absolute_path() const
@@ -7733,6 +7806,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
     if (ipsla_op_id.is_set || is_set(ipsla_op_id.yfilter)) leaf_name_data.push_back(ipsla_op_id.get_name_leafdata());
     if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
     if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
+    if (return_code_string.is_set || is_set(return_code_string.yfilter)) leaf_name_data.push_back(return_code_string.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -7770,6 +7844,12 @@ void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::Ips
         return_code.value_namespace = name_space;
         return_code.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "return-code-string")
+    {
+        return_code_string = value;
+        return_code_string.value_namespace = name_space;
+        return_code_string.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::set_filter(const std::string & value_path, YFilter yfilter)
@@ -7786,11 +7866,15 @@ void ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::Ips
     {
         return_code.yfilter = yfilter;
     }
+    if(value_path == "return-code-string")
+    {
+        return_code_string.yfilter = yfilter;
+    }
 }
 
 bool ObjectTracking::TrackTypeIpv4RouteBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code")
+    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code" || name == "return-code-string")
         return true;
     return false;
 }
@@ -8657,7 +8741,8 @@ ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::Ipsla
     :
     ipsla_op_id{YType::uint32, "ipsla-op-id"},
     rtt{YType::uint32, "rtt"},
-    return_code{YType::uint32, "return-code"}
+    return_code{YType::uint32, "return-code"},
+    return_code_string{YType::str, "return-code-string"}
 {
 
     yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
@@ -8672,7 +8757,8 @@ bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::
     if (is_presence_container) return true;
     return ipsla_op_id.is_set
 	|| rtt.is_set
-	|| return_code.is_set;
+	|| return_code.is_set
+	|| return_code_string.is_set;
 }
 
 bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::has_operation() const
@@ -8680,7 +8766,8 @@ bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::
     return is_set(yfilter)
 	|| ydk::is_set(ipsla_op_id.yfilter)
 	|| ydk::is_set(rtt.yfilter)
-	|| ydk::is_set(return_code.yfilter);
+	|| ydk::is_set(return_code.yfilter)
+	|| ydk::is_set(return_code_string.yfilter);
 }
 
 std::string ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::get_absolute_path() const
@@ -8704,6 +8791,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeIpv4Rout
     if (ipsla_op_id.is_set || is_set(ipsla_op_id.yfilter)) leaf_name_data.push_back(ipsla_op_id.get_name_leafdata());
     if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
     if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
+    if (return_code_string.is_set || is_set(return_code_string.yfilter)) leaf_name_data.push_back(return_code_string.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -8741,6 +8829,12 @@ void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::
         return_code.value_namespace = name_space;
         return_code.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "return-code-string")
+    {
+        return_code_string = value;
+        return_code_string.value_namespace = name_space;
+        return_code_string.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::set_filter(const std::string & value_path, YFilter yfilter)
@@ -8757,11 +8851,15 @@ void ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::
     {
         return_code.yfilter = yfilter;
     }
+    if(value_path == "return-code-string")
+    {
+        return_code_string.yfilter = yfilter;
+    }
 }
 
 bool ObjectTracking::TrackTypeIpv4Route::TrackInfo::TrackTypeInfo::IpslaTracks::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code")
+    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code" || name == "return-code-string")
         return true;
     return false;
 }
@@ -10213,7 +10311,8 @@ ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTra
     :
     ipsla_op_id{YType::uint32, "ipsla-op-id"},
     rtt{YType::uint32, "rtt"},
-    return_code{YType::uint32, "return-code"}
+    return_code{YType::uint32, "return-code"},
+    return_code_string{YType::str, "return-code-string"}
 {
 
     yang_name = "ipsla-tracks"; yang_parent_name = "track-type-info"; is_top_level_class = false; has_list_ancestor = false; 
@@ -10228,7 +10327,8 @@ bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::Ips
     if (is_presence_container) return true;
     return ipsla_op_id.is_set
 	|| rtt.is_set
-	|| return_code.is_set;
+	|| return_code.is_set
+	|| return_code_string.is_set;
 }
 
 bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_operation() const
@@ -10236,7 +10336,8 @@ bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::Ips
     return is_set(yfilter)
 	|| ydk::is_set(ipsla_op_id.yfilter)
 	|| ydk::is_set(rtt.yfilter)
-	|| ydk::is_set(return_code.yfilter);
+	|| ydk::is_set(return_code.yfilter)
+	|| ydk::is_set(return_code_string.yfilter);
 }
 
 std::string ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::get_absolute_path() const
@@ -10260,6 +10361,7 @@ std::vector<std::pair<std::string, LeafData> > ObjectTracking::TrackTypeInterfac
     if (ipsla_op_id.is_set || is_set(ipsla_op_id.yfilter)) leaf_name_data.push_back(ipsla_op_id.get_name_leafdata());
     if (rtt.is_set || is_set(rtt.yfilter)) leaf_name_data.push_back(rtt.get_name_leafdata());
     if (return_code.is_set || is_set(return_code.yfilter)) leaf_name_data.push_back(return_code.get_name_leafdata());
+    if (return_code_string.is_set || is_set(return_code_string.yfilter)) leaf_name_data.push_back(return_code_string.get_name_leafdata());
 
     return leaf_name_data;
 
@@ -10297,6 +10399,12 @@ void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::Ips
         return_code.value_namespace = name_space;
         return_code.value_namespace_prefix = name_space_prefix;
     }
+    if(value_path == "return-code-string")
+    {
+        return_code_string = value;
+        return_code_string.value_namespace = name_space;
+        return_code_string.value_namespace_prefix = name_space_prefix;
+    }
 }
 
 void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::set_filter(const std::string & value_path, YFilter yfilter)
@@ -10313,11 +10421,15 @@ void ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::Ips
     {
         return_code.yfilter = yfilter;
     }
+    if(value_path == "return-code-string")
+    {
+        return_code_string.yfilter = yfilter;
+    }
 }
 
 bool ObjectTracking::TrackTypeInterfaceBrief::TrackInfoBrief::TrackTypeInfo::IpslaTracks::has_leaf_or_child_of_name(const std::string & name) const
 {
-    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code")
+    if(name == "ipsla-op-id" || name == "rtt" || name == "return-code" || name == "return-code-string")
         return true;
     return false;
 }

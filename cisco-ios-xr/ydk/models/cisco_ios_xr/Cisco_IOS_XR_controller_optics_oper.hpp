@@ -360,6 +360,7 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo : public ydk::Entity
         ydk::YLeaf osri_config_val; //type: boolean
         ydk::YLeaf tx_config_val; //type: boolean
         ydk::YLeaf rx_config_val; //type: boolean
+        ydk::YLeaf rx_thr_fail_low_delta_val; //type: int32
         ydk::YLeaf safety_control_mode_config_val; //type: OpticsAmplifierSafetyControlMode
         ydk::YLeaf total_rx_power; //type: int32
         ydk::YLeaf total_tx_power; //type: int32
@@ -389,6 +390,8 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsInfo : public ydk::Entity
         ydk::YLeaf tx_span_loss; //type: int32
         ydk::YLeaf baud_rate; //type: string
         ydk::YLeaf bits_per_symbol; //type: string
+        ydk::YLeaf rx_low_threshold_delta; //type: int32
+        ydk::YLeaf wait_to_restore; //type: uint32
         class NetworkSrlgInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::NetworkSrlgInfo
         class OpticsAlarmInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OpticsAlarmInfo
         class OtsAlarmInfo; //type: OpticsOper::OpticsPorts::OpticsPort::OpticsInfo::OtsAlarmInfo
@@ -3304,37 +3307,12 @@ class OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::Networ
 
 }; // OpticsOper::OpticsPorts::OpticsPort::OpticsDbInfo::NetworkSrlgInfo::NetworkSrlgArray
 
-class OpticsAmplifierGainRange : public ydk::Enum
+class OpticsAinsStateEt : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf optics_amplifier_gain_range_invalid;
-        static const ydk::Enum::YLeaf optics_amplifier_gain_range_normal;
-        static const ydk::Enum::YLeaf optics_amplifier_gain_range_ext_end_ed;
-
-};
-
-class OpticsModulation : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf mod_bpsk;
-        static const ydk::Enum::YLeaf mod_qpsk;
-        static const ydk::Enum::YLeaf mod_8qam;
-        static const ydk::Enum::YLeaf mod_16qam;
-        static const ydk::Enum::YLeaf mod_32qam;
-        static const ydk::Enum::YLeaf mod_64qam;
-        static const ydk::Enum::YLeaf mod_bpsk_qpsk;
-        static const ydk::Enum::YLeaf mod_qpsk_8qam;
-        static const ydk::Enum::YLeaf mod_8qam_16qam;
-        static const ydk::Enum::YLeaf mode_16qam_32qam;
-        static const ydk::Enum::YLeaf mod_32qam_64qam;
-
-};
-
-class OpticsAmplifierControlMode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf automatic;
-        static const ydk::Enum::YLeaf manual;
+        static const ydk::Enum::YLeaf none;
+        static const ydk::Enum::YLeaf active_running;
+        static const ydk::Enum::YLeaf active_pending;
 
 };
 
@@ -3370,63 +3348,11 @@ class EthernetPmd : public ydk::Enum
         static const ydk::Enum::YLeaf optics_eth_100gbase_cr4;
         static const ydk::Enum::YLeaf optics_eth_100gbase_al;
         static const ydk::Enum::YLeaf optics_eth_100gbase_pl;
+        static const ydk::Enum::YLeaf optics_eth_400gbase_fr4;
+        static const ydk::Enum::YLeaf optics_eth_400gbase_dr4;
+        static const ydk::Enum::YLeaf optics_eth_400gbase_cr8;
         static const ydk::Enum::YLeaf optics_eth_100gbase_srbd;
         static const ydk::Enum::YLeaf optics_eth_undefined;
-
-};
-
-class OpticsWaveBand : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf c_band;
-        static const ydk::Enum::YLeaf l_band;
-        static const ydk::Enum::YLeaf c_band_odd;
-        static const ydk::Enum::YLeaf c_band_even;
-        static const ydk::Enum::YLeaf invalid_band;
-
-};
-
-class OpticsAinsStateEt : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf none;
-        static const ydk::Enum::YLeaf active_running;
-        static const ydk::Enum::YLeaf active_pending;
-
-};
-
-class FiberConnector : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf optics_connect_or_not_set;
-        static const ydk::Enum::YLeaf optics_sc_connect_or;
-        static const ydk::Enum::YLeaf optics_lc_connect_or;
-        static const ydk::Enum::YLeaf optics_mpo_connect_or;
-        static const ydk::Enum::YLeaf optics_undefined_connect_or;
-
-};
-
-class OpticsFormFactor : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf not_set;
-        static const ydk::Enum::YLeaf invalid;
-        static const ydk::Enum::YLeaf cpak;
-        static const ydk::Enum::YLeaf cxp;
-        static const ydk::Enum::YLeaf sfp_plus;
-        static const ydk::Enum::YLeaf qsfp;
-        static const ydk::Enum::YLeaf qsfp_plus;
-        static const ydk::Enum::YLeaf qsfp28;
-        static const ydk::Enum::YLeaf sfp;
-        static const ydk::Enum::YLeaf cfp;
-        static const ydk::Enum::YLeaf cfp2;
-        static const ydk::Enum::YLeaf cfp2_aco;
-        static const ydk::Enum::YLeaf cfp2_dco;
-        static const ydk::Enum::YLeaf cfp4;
-        static const ydk::Enum::YLeaf xfp;
-        static const ydk::Enum::YLeaf x2;
-        static const ydk::Enum::YLeaf non_pluggable;
-        static const ydk::Enum::YLeaf other;
 
 };
 
@@ -3441,12 +3367,25 @@ class SonetApplicationCode : public ydk::Enum
 
 };
 
-class OpticsControllerState : public ydk::Enum
+class OtnApplicationCode : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf optics_state_up;
-        static const ydk::Enum::YLeaf optics_state_down;
-        static const ydk::Enum::YLeaf optics_state_admin_down;
+        static const ydk::Enum::YLeaf optics_not_set;
+        static const ydk::Enum::YLeaf optics_p1l1_2d1;
+        static const ydk::Enum::YLeaf optics_p1s1_2d2;
+        static const ydk::Enum::YLeaf optics_p1l1_2d2;
+        static const ydk::Enum::YLeaf optics_undefined;
+
+};
+
+class FiberConnector : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf optics_connect_or_not_set;
+        static const ydk::Enum::YLeaf optics_sc_connect_or;
+        static const ydk::Enum::YLeaf optics_lc_connect_or;
+        static const ydk::Enum::YLeaf optics_mpo_connect_or;
+        static const ydk::Enum::YLeaf optics_undefined_connect_or;
 
 };
 
@@ -3459,14 +3398,40 @@ class OpticsAmplifierSafetyControlMode : public ydk::Enum
 
 };
 
-class OpticsLaserState : public ydk::Enum
+class OpticsAmplifierGainRange : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf on;
-        static const ydk::Enum::YLeaf off;
-        static const ydk::Enum::YLeaf unknown;
-        static const ydk::Enum::YLeaf apr;
-        static const ydk::Enum::YLeaf na;
+        static const ydk::Enum::YLeaf optics_amplifier_gain_range_invalid;
+        static const ydk::Enum::YLeaf optics_amplifier_gain_range_normal;
+        static const ydk::Enum::YLeaf optics_amplifier_gain_range_ext_end_ed;
+
+};
+
+class OpticsAmplifierControlMode : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf automatic;
+        static const ydk::Enum::YLeaf manual;
+
+};
+
+class OpticsPortStatus : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf active;
+        static const ydk::Enum::YLeaf standby;
+
+};
+
+class OpticsPort : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf com;
+        static const ydk::Enum::YLeaf line;
+        static const ydk::Enum::YLeaf osc;
+        static const ydk::Enum::YLeaf com_check;
+        static const ydk::Enum::YLeaf work;
+        static const ydk::Enum::YLeaf prot;
 
 };
 
@@ -3481,14 +3446,6 @@ class OpticsFec : public ydk::Enum
         static const ydk::Enum::YLeaf fec_enabled;
         static const ydk::Enum::YLeaf fec_not_set;
         static const ydk::Enum::YLeaf fec_cl91;
-
-};
-
-class OpticsPortStatus : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf active;
-        static const ydk::Enum::YLeaf standby;
 
 };
 
@@ -3562,38 +3519,47 @@ class OpticsPhy : public ydk::Enum
         static const ydk::Enum::YLeaf ten_gig_emrdwdm;
         static const ydk::Enum::YLeaf ten_gig_e_edge_performance;
         static const ydk::Enum::YLeaf one_gig_csfp;
+        static const ydk::Enum::YLeaf four_hundred_gig_fr4_four_lanes;
+        static const ydk::Enum::YLeaf four_hundred_gig_dr4_four_lanes;
+        static const ydk::Enum::YLeaf four_x_hundred_gig_fr_four_lanes;
+        static const ydk::Enum::YLeaf four_hundred_gig_aoc_four_lanes;
+        static const ydk::Enum::YLeaf four_hundred_gig_cu_four_lanes;
+        static const ydk::Enum::YLeaf eight_x_fifty_gig_cu_four_lanes;
         static const ydk::Enum::YLeaf short_reach_bd;
 
 };
 
-class OpticsTas : public ydk::Enum
+class OpticsFormFactor : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf tas_ui_oos;
-        static const ydk::Enum::YLeaf tas_ui_main;
-        static const ydk::Enum::YLeaf tas_ui_is;
-        static const ydk::Enum::YLeaf tas_ui_ains;
+        static const ydk::Enum::YLeaf not_set;
+        static const ydk::Enum::YLeaf invalid;
+        static const ydk::Enum::YLeaf cpak;
+        static const ydk::Enum::YLeaf cxp;
+        static const ydk::Enum::YLeaf sfp_plus;
+        static const ydk::Enum::YLeaf qsfp;
+        static const ydk::Enum::YLeaf qsfp_plus;
+        static const ydk::Enum::YLeaf qsfp28;
+        static const ydk::Enum::YLeaf sfp;
+        static const ydk::Enum::YLeaf cfp;
+        static const ydk::Enum::YLeaf cfp2;
+        static const ydk::Enum::YLeaf cfp2_aco;
+        static const ydk::Enum::YLeaf cfp2_dco;
+        static const ydk::Enum::YLeaf cfp4;
+        static const ydk::Enum::YLeaf xfp;
+        static const ydk::Enum::YLeaf x2;
+        static const ydk::Enum::YLeaf qsfpdd;
+        static const ydk::Enum::YLeaf non_pluggable;
+        static const ydk::Enum::YLeaf other;
 
 };
 
-class Optics : public ydk::Enum
+class OpticsControllerState : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf optics_unknown;
-        static const ydk::Enum::YLeaf optics_grey;
-        static const ydk::Enum::YLeaf optics_dwdm;
-        static const ydk::Enum::YLeaf optics_cwdm;
-
-};
-
-class OtnApplicationCode : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf optics_not_set;
-        static const ydk::Enum::YLeaf optics_p1l1_2d1;
-        static const ydk::Enum::YLeaf optics_p1s1_2d2;
-        static const ydk::Enum::YLeaf optics_p1l1_2d2;
-        static const ydk::Enum::YLeaf optics_undefined;
+        static const ydk::Enum::YLeaf optics_state_up;
+        static const ydk::Enum::YLeaf optics_state_down;
+        static const ydk::Enum::YLeaf optics_state_admin_down;
 
 };
 
@@ -3610,15 +3576,63 @@ class OpticsLedState : public ydk::Enum
 
 };
 
-class OpticsPort : public ydk::Enum
+class OpticsModulation : public ydk::Enum
 {
     public:
-        static const ydk::Enum::YLeaf com;
-        static const ydk::Enum::YLeaf line;
-        static const ydk::Enum::YLeaf osc;
-        static const ydk::Enum::YLeaf com_check;
-        static const ydk::Enum::YLeaf work;
-        static const ydk::Enum::YLeaf prot;
+        static const ydk::Enum::YLeaf mod_none;
+        static const ydk::Enum::YLeaf mod_bpsk;
+        static const ydk::Enum::YLeaf mod_qpsk;
+        static const ydk::Enum::YLeaf mod_8qam;
+        static const ydk::Enum::YLeaf mod_16qam;
+        static const ydk::Enum::YLeaf mod_32qam;
+        static const ydk::Enum::YLeaf mod_64qam;
+        static const ydk::Enum::YLeaf mod_bpsk_qpsk;
+        static const ydk::Enum::YLeaf mod_qpsk_8qam;
+        static const ydk::Enum::YLeaf mod_8qam_16qam;
+        static const ydk::Enum::YLeaf mode_16qam_32qam;
+        static const ydk::Enum::YLeaf mod_32qam_64qam;
+
+};
+
+class OpticsLaserState : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf on;
+        static const ydk::Enum::YLeaf off;
+        static const ydk::Enum::YLeaf unknown;
+        static const ydk::Enum::YLeaf apr;
+        static const ydk::Enum::YLeaf na;
+
+};
+
+class Optics : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf optics_unknown;
+        static const ydk::Enum::YLeaf optics_grey;
+        static const ydk::Enum::YLeaf optics_dwdm;
+        static const ydk::Enum::YLeaf optics_cwdm;
+
+};
+
+class OpticsTas : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf tas_ui_oos;
+        static const ydk::Enum::YLeaf tas_ui_main;
+        static const ydk::Enum::YLeaf tas_ui_is;
+        static const ydk::Enum::YLeaf tas_ui_ains;
+
+};
+
+class OpticsWaveBand : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf c_band;
+        static const ydk::Enum::YLeaf l_band;
+        static const ydk::Enum::YLeaf c_band_odd;
+        static const ydk::Enum::YLeaf c_band_even;
+        static const ydk::Enum::YLeaf invalid_band;
 
 };
 

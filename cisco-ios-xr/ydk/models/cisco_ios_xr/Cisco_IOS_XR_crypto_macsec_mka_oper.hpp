@@ -607,17 +607,6 @@ class Macsec::Mka::Interfaces::Interface::Info::InterfaceSummary : public ydk::E
 
 }; // Macsec::Mka::Interfaces::Interface::Info::InterfaceSummary
 
-class MacsecCipherSuite : public ydk::Enum
-{
-    public:
-        static const ydk::Enum::YLeaf cipher_suite_none;
-        static const ydk::Enum::YLeaf cipher_suite_gcm_aes_128;
-        static const ydk::Enum::YLeaf cipher_suite_gcm_aes_256;
-        static const ydk::Enum::YLeaf cipher_suite_gcm_aes_128_xpn;
-        static const ydk::Enum::YLeaf cipher_suite_gcm_aes_256_xpn;
-
-};
-
 class MkaAuthenticationMode : public ydk::Enum
 {
     public:
@@ -633,6 +622,17 @@ class MacsecServicePort : public ydk::Enum
         static const ydk::Enum::YLeaf macsec_service_port_none;
         static const ydk::Enum::YLeaf macsec_service_port_encryption;
         static const ydk::Enum::YLeaf macsec_service_port_decryption;
+
+};
+
+class MacsecCipherSuite : public ydk::Enum
+{
+    public:
+        static const ydk::Enum::YLeaf cipher_suite_none;
+        static const ydk::Enum::YLeaf cipher_suite_gcm_aes_128;
+        static const ydk::Enum::YLeaf cipher_suite_gcm_aes_256;
+        static const ydk::Enum::YLeaf cipher_suite_gcm_aes_128_xpn;
+        static const ydk::Enum::YLeaf cipher_suite_gcm_aes_256_xpn;
 
 };
 

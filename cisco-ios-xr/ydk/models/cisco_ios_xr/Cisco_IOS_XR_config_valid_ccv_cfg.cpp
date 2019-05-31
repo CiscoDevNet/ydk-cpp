@@ -333,9 +333,9 @@ bool Configurationvalidation::FailureTypeActions::FailureTypeAction::has_leaf_or
     return false;
 }
 
-const Enum::YLeaf Failure::unsupported {0, "unsupported"};
-
 const Enum::YLeaf FailureAction::report {1, "report"};
+
+const Enum::YLeaf Failure::unsupported {0, "unsupported"};
 
 
 }
