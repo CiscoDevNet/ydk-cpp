@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/CiscoDevNet/ydk-cpp.svg?branch=master)](https://travis-ci.org/CiscoDevNet/ydk-cpp)
+[![Build Status](https://travis-ci.com/CiscoDevNet/ydk-cpp.svg?branch=master)](https://travis-ci.com/CiscoDevNet/ydk-cpp)
 
 ![ydk-logo-128](https://cloud.githubusercontent.com/assets/16885441/24175899/2010f51e-0e56-11e7-8fb7-30a9f70fbb86.png)
 
