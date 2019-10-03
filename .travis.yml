@@ -18,13 +18,19 @@ before_install:
 
 script:
     - cd core/ydk
-    - mkdir -p build && cd build && cmake .. && sudo make install test
+    - echo "Compiling and installing YDK core library"
+    - mkdir -p build && cd build && cmake .. && sudo make install &> /dev/null
+    - echo "Running core tests"
+    - make test
 
     - cd ../../../ietf
-    - mkdir -p build && cd build && cmake .. && sudo make install
+    - echo "Compiling ietf API"
+    - mkdir -p build && cd build && cmake .. && sudo make install &> /dev/null
 
     - cd ../../openconfig
-    - mkdir -p build && cd build && cmake .. && sudo make install
+    - echo "Compiling openconfig API"
+    - mkdir -p build && cd build && cmake .. && sudo make install &> /dev/null
 
     - cd ../../cisco-nx-os
-    - mkdir -p build && cd build && cmake .. && sudo make install
+    - echo "Compiling cisco-nx-os API"
+    - mkdir -p build && cd build && cmake .. && sudo make install &> /dev/null

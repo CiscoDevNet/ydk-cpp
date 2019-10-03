@@ -42,6 +42,16 @@ function check_install_gcc {
   fi
 }
 
+function install_libssh {
+    print_msg "Installing libssh-0.7.6"
+    wget https://git.libssh.org/projects/libssh.git/snapshot/libssh-0.7.6.tar.gz
+    tar zxf libssh-0.7.6.tar.gz && rm -f libssh-0.7.6.tar.gz
+    mkdir libssh-0.7.6/build && cd libssh-0.7.6/build
+    cmake .. && make
+    sudo make install
+    cd -
+}
+
 # Terminal colors
 RED="\033[0;31m"
 NOCOLOR="\033[0m"
@@ -56,3 +66,4 @@ apt-get update -y > /dev/null
 apt-get install git gdebi-core libtool-bin wget sudo -y > /dev/null
 
 check_install_gcc
+install_libssh
