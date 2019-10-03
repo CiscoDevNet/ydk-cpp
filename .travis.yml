@@ -14,22 +14,17 @@ matrix:
 before_install:
 #    - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update  ; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then ./dependencies_osx.sh ; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then wget -O - http://llvm.org/apt/llvm-snapshot.gpg.key|sudo apt-key add - ; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update > /dev/null; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install -y bison curl doxygen flex git libboost-all-dev libboost-log-dev libcurl4-openssl-dev libpcre3-dev libpcre++-dev libssh-dev libtool libxml2-dev libxslt1-dev pkg-config software-properties-common unzip  zlib1g-dev cmake > /dev/null; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install clang-3.8 lldb-3.8 -y; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo ln -f -s /usr/bin/clang++-3.8 /usr/bin/clang++ ; fi
-    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo ln -f -s /usr/bin/clang-3.8 /usr/bin/clang ; fi
+    - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./dependencies_ubuntu.sh ; fi
 
 script:
     - cd core/ydk
-    - mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ .. && sudo make install test
+    - mkdir -p build && cd build && cmake .. && sudo make install test
 
     - cd ../../../ietf
-    - mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ .. && sudo make install
+    - mkdir -p build && cd build && cmake .. && sudo make install
 
     - cd ../../openconfig
-    - mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ .. && sudo make install
+    - mkdir -p build && cd build && cmake .. && sudo make install
 
     - cd ../../cisco-nx-os
-    - mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ .. && sudo make install
+    - mkdir -p build && cd build && cmake .. && sudo make install
